@@ -1,4 +1,10 @@
-func xml()->String{
+func xml(string:String)->Dictionary{
+
+}
+func xml(filePath:String)->Dictionary{
+	
+}
+func xml(URL:String)->Dictionary{
 	
 }
 /*
