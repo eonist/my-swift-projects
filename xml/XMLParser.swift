@@ -32,7 +32,7 @@ func data(#filePath:String)->Dictionary{//# must use param naming
 	let theFilePath:NSURL = NSURL(filePath)
 	var traverser = XMLTraverser(contentsOfURL: configURL )//contentsOfURL url: NSURL
 	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
-   traverser.parse()//init the parse proces
+   traverser.parse()//init the parse procesjd
 }
 /*
  * url:"http://www.blubrry.com/feeds/onorte.xml"
@@ -58,12 +58,19 @@ func xml(data:Dictionary)->String{
 	var xmlString:String = ""
 	for (nodeName,nodes) in data{
 		for node in nodes{
-			element(name:nodeName,xml(node["content"]),node["attributes"])
+			xmlString += element(nodeName, xml(node["content"]), node["attributes"])
 		}
 	}
+	return xmlString
 }
+/*
+ * 
+ */
 func element(name:String,content:String,attributes:Dictionary)->String{
 	//use code from your equivilent applescript method
+	
+	// :TODO: fill me in, use your apllescript method 
+	
 	return ""
 }
 /*
