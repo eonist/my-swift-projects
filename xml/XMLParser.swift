@@ -2,13 +2,16 @@
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  */
 func xml(string:String)->Dictionary{
-	var traverser = XMLTraverser()
+	var traverser = XMLTraverser(data: string )
+	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
+   traverser.parse()//init the parse proces
 }
 /*
  * 
  */
 func xml(filePath:String)->Dictionary{
-	
+	//filepath stuuf
+	//xml()
 }
 /*
  * 
