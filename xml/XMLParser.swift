@@ -9,15 +9,19 @@ func xml(string:String)->Dictionary{
 /*
  * 
  */
-func xml(filePath:String)->Dictionary{
+func xml(#filePath:String)->Dictionary{//# must use param naming
 	//filepath stuuf
-	//xml()
+	// :TODO: nsxml may support the data handling part
+	//load the string
+	//xml(string)
 }
 /*
  * 
  */
-func xml(URL:String)->Dictionary{
-	
+func xml(#URL:String)->Dictionary{//# must use param naming
+	//url stuff, nsurl
+	// :TODO: nsxml may support handling loading from external url
+	//xml(string)
 }
 /*
  * Traverses xml data 
