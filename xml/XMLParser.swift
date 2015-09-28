@@ -4,7 +4,7 @@
  * Returns a Dictonary with a tree structure of the data in an xml doc
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
- * 2. content is a dictonary that stores xml nodes
+ * 2. content is a dictonary that stores xml nodes under the key of the name of the xml node key:"item" stores node: <item> etc
  * 2. dictionaries inside an array item store attributes and content of the xml node
  * 3. xml node content is stored in the dictionary under the key "content"
  * 4. content is stored as a string if its just text or as a dictonary with arrays of xml children (begin again from 1)
