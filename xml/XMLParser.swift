@@ -64,6 +64,7 @@ func xml(data:Dictionary)->String{
 
 	)
 	for (key,value) in data{
+		
 		element(name:key,value["content"],value["attributes"])
 	}
 	//use code from your equivilent applescript method
