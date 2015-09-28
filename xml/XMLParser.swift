@@ -56,7 +56,12 @@ func data(URL:String)->Dictionary{//# must use param naming
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
 	//many for loops
-	
+	for theItem in anotherArray{
+		printin("your value: \(theItem)")
+	}
+	for var i = 0; i < list.count;i++(
+
+	)
 	//use code from your equivilent applescript method
 }
 /*
