@@ -6,7 +6,11 @@ func xml(string:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
 	traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
-   traverser.parse()//init the parse proces
+   if( traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
+   	return traverser.root//the root dictionary
+   }else{
+   	return nil
+   }
 }
 /*
  * filePath:"//Users/<path>/someFile.xml"
@@ -38,7 +42,7 @@ func xml(#URL:String)->Dictionary{//# must use param naming
  * NOTE: nsxmlparser help: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSXMLParser_Class/index.html#//apple_ref/occ/instm/NSXMLParser/initWithContentsOfURL:
  */
 class XMLTraverser: NSObject, NSXMLParser{
-	 func parseXML()->
+	 
 	 /*
 	  * found string content
 	  */
