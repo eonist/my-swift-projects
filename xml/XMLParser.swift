@@ -1,5 +1,6 @@
 /*
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
+ * string:xml string data
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
  */
 func xml(string:String)->Dictionary{
@@ -47,30 +48,42 @@ class XMLTraverser: NSObject, NSXMLParser{
 	var root:Dictionary = ["content":[:]]
 	var openParents:Array = [root["content"]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
-	
     /*
 	  * enter node
 	  */
     func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
-        if elementName == "category" {
-            self.currentSubcategory = [String : String]()
-        }
-        else {
-            self.currentElementName = elementName
-        }
+      var tempParent:Dictionary = openParents.last
+		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
+		tempNode = ["attributes":attributes]
+		tempNode["content"] = [:]//this can potentially be String, but then you just set it to string in the exit method
+		tempParent[nodename].append(tempNode["content"])
+		if(hasClosed){//means the item is an sibling
+			//which means you dont add the parent to the parentList
+		}else{//means you stepped into a subnode
+			openParents.append(tempNode["content"])//parent must always be the content dictionary
+		}
+		prevEnteredNodeName = nodeName
+		hasClosed = false
     }
     /*
 	  * found string content
 	  */
     func parser(parser: NSXMLParser, foundCharacters string: String) {
-		
+		stringContent += foundCharacters
     }
 	 /*
 	  * exit node
 	  */
     func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-    }
+	   if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
+			if(!stringContent.isEmpty){
+				tempNode["content"] = stringContent
+			}
+		}else{//means you exit an elemnt back one level (had children)
+			openParents.removeLast()//you close a parent
+		}
+		hasClosed = true
+	}
     /*
 	  * error
 	  */
@@ -84,21 +97,3 @@ class XMLTraverser: NSObject, NSXMLParser{
         //not needed
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
