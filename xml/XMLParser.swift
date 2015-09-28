@@ -20,8 +20,12 @@ func xml(#filePath:String)->Dictionary{//# must use param naming
  */
 func xml(#URL:String)->Dictionary{//# must use param naming
 	//url stuff, nsurl
-	// :TODO: nsxml may support handling loading from external url
-	//xml(string)
+
+	
+	var traverser = XMLTraverser(contentsOfURL: configURL )
+	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
+   traverser.parse()//init the parse proces
+
 }
 /*
  * Traverses xml data 
