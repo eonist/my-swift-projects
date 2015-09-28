@@ -37,7 +37,7 @@ func data(#filePath:String)->Dictionary{//# must use param naming
 /*
  * url:"http://www.blubrry.com/feeds/onorte.xml"
  */
-func data(#URL:String)->Dictionary{//# must use param naming
+func data(URL:String)->Dictionary{//# must use param naming
 	//url stuff, nsurl
   let urlString = NSURL(string: “http://www.blubrry.com/feeds/onorte.xml")
   let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
