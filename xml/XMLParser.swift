@@ -3,7 +3,7 @@
 /*
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * string:xml string data
- * // :TODO: you can probably 
+ * // :TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
  */
 func xml(string:String)->Dictionary{
