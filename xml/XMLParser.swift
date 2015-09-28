@@ -2,8 +2,9 @@
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  */
 func xml(string:String)->Dictionary{
+	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
-	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
+	traverser.delegate = nsXmlDelegate//this may need to be passed in the method argument of the xml() cal
    traverser.parse()//init the parse proces
 }
 /*
