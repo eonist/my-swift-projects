@@ -3,6 +3,7 @@
 /*
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * string:xml string data
+ * // :TODO: you can probably 
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
  */
 func xml(string:String)->Dictionary{
@@ -50,10 +51,7 @@ class XMLTraverser: NSObject, NSXMLParser{
 	var root:Dictionary = ["content":[:]]
 	var openParents:Array = [root["content"]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
-    //core methods:
-    func parseXML(){
-    	parse()
-    }
+    
     //delegate handlers:
     
     /*
