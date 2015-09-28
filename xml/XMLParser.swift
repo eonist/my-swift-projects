@@ -2,20 +2,20 @@
 // :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
  * Returns a Dictonary with a tree structure of the data in an xml doc
+ * PARAM: string:xml string data
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
  * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
  * 3. each array contains dictonaries that has 2 key/value pairs
- * 4. 
- * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
- * Param: string:xml string data
+ * 4. if the content of a node is text then the content value will not be a dictonary but a string 
+ * EXAMPLE: XMLParser.data("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
- * Returns: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]//"green" that is an attribute value of color
- * Returns: root["content"]["categories"][0]["content"]["category"][0]//{attributes:{color:green,name:"tinits"},content:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
- * Returns: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
+ * NOTE: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]//"green" that is an attribute value of color
+ * NOTE: root["content"]["categories"][0]["content"]["category"][0]//{attributes:{color:green,name:"tinits"},content:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
+ * NOTE: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
  * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  */
-func xml(string:String)->Dictionary{
+func data(string:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
 	traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
@@ -28,7 +28,7 @@ func xml(string:String)->Dictionary{
 /*
  * filePath:"//Users/<path>/someFile.xml"
  */
-func xml(#filePath:String)->Dictionary{//# must use param naming
+func data(#filePath:String)->Dictionary{//# must use param naming
 	let theFilePath:NSURL = NSURL(filePath)
 	var traverser = XMLTraverser(contentsOfURL: configURL )//contentsOfURL url: NSURL
 	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
@@ -37,7 +37,7 @@ func xml(#filePath:String)->Dictionary{//# must use param naming
 /*
  * url:"http://www.blubrry.com/feeds/onorte.xml"
  */
-func xml(#URL:String)->Dictionary{//# must use param naming
+func data(#URL:String)->Dictionary{//# must use param naming
 	//url stuff, nsurl
   let urlString = NSURL(string: “http://www.blubrry.com/feeds/onorte.xml")
   let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
@@ -49,6 +49,12 @@ func xml(#URL:String)->Dictionary{//# must use param naming
   }else{
 	 print(result.error)
   }
+}
+/*
+ *  
+ */
+func xml()->String{
+
 }
 /*
  * Traverses xml data 
