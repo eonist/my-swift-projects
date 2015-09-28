@@ -2,6 +2,11 @@
 // :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
  * Returns a Dictonary with a tree structure of the data in an xml doc
+ * NOTE: here is how it works:
+ * 1. a dictionary store arrays of xml nodes of the same name
+ * 2. dictionaries inside an array item store attributes and content of the xml node
+ * 3. xml node content is stored in the dictionary under the key "content"
+ * 4. content is stored as a string if its just text or as a dictonary with arrays of xml children (begin again from 1)
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * Param: string:xml string data
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
