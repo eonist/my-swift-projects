@@ -5,7 +5,7 @@
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
  * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
- * 3. each array item in the array holdes a dictonary that has 2 key/value pairs
+ * 3. each array contains dictonaries that has 2 key/value pairs
  * 4. 
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * Param: string:xml string data
