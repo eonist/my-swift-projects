@@ -32,7 +32,7 @@ func xml(#URL:String)->Dictionary{//# must use param naming
   //the bellow is sudo code
   let result = NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
   if(result.response = "success"){
-    xml(data)
+    xml(result.data)
   }else{
 	 print(result.error)
   }
@@ -42,7 +42,6 @@ func xml(#URL:String)->Dictionary{//# must use param naming
  * NOTE: nsxmlparser help: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSXMLParser_Class/index.html#//apple_ref/occ/instm/NSXMLParser/initWithContentsOfURL:
  */
 class XMLTraverser: NSObject, NSXMLParser{
-	 
 	 /*
 	  * found string content
 	  */
