@@ -50,6 +50,10 @@ class XMLTraverser: NSObject, NSXMLParser{
 	var root:Dictionary = ["content":[:]]
 	var openParents:Array = [root["content"]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
+    //core methods:
+    funcparseXML()
+    //delegate handlers:
+    
     /*
 	  * enter node
 	  */
