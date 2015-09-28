@@ -5,7 +5,7 @@
 func xml(string:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
-	traverser.delegate = nsXmlDelegate//this may need to be passed in the method argument of the xml() cal
+	traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
    traverser.parse()//init the parse proces
 }
 /*
