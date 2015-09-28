@@ -1,14 +1,8 @@
+
+/*
+ * Traverses xml data 
+ */
 class XMLTraverser: NSObject, NSXMLParserDelegate {
-
-    
-
-    
-	 /*
-	  * complete
-	  */
-    func parserDidEndDocument(parser: NSXMLParser) {
-        
-    }
 	 /*
 	  * found string content
 	  */
@@ -41,7 +35,7 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
     /*
 	  * complete
 	  */
-    func parseXML( string: String, completion: (([[String : String]]) -> ())? ) {
+    func parserDidEndDocument(parser: NSXMLParser) {
         
     }
 }
