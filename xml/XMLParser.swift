@@ -64,9 +64,12 @@ func xml(data:Dictionary)->String{
 
 	)
 	for (key,value) in data{
-		element(key:)
+		element(name:key,value["content"],value["attributes"])
 	}
 	//use code from your equivilent applescript method
+}
+func element(name:String,content:String,attributes:Dictionary)->String{
+	
 }
 /*
  * Traverses xml data 
