@@ -42,10 +42,16 @@ func xml(#URL:String)->Dictionary{//# must use param naming
  * NOTE: nsxmlparser help: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSXMLParser_Class/index.html#//apple_ref/occ/instm/NSXMLParser/initWithContentsOfURL:
  */
 class XMLTraverser: NSObject, NSXMLParser{
+	var hasClosed = false//you step into an xml so this must be false
+	var prevEnteredNodeName:String?
+	var root:Dictionary = ["content":[:]]
+	var openParents:Array = [root["content"]]//flat list of previous entered parents aka openParents
+	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
+	
     /*
 	  * enter node
 	  */
-    func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
         if elementName == "category" {
             self.currentSubcategory = [String : String]()
         }
@@ -69,13 +75,13 @@ class XMLTraverser: NSObject, NSXMLParser{
 	  * error
 	  */
     func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        
+        //not needed
     }
     /*
 	  * complete
 	  */
     func parserDidEndDocument(parser: NSXMLParser) {
-        
+        //not needed
     }
 }
 
