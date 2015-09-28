@@ -1,8 +1,8 @@
 /*
- * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]
+ * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  */
 func xml(string:String)->Dictionary{
-
+	var traverser = XMLTraverser()
 }
 /*
  * 
