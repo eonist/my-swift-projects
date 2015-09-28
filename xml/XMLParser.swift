@@ -56,6 +56,7 @@ func data(URL:String)->Dictionary{//# must use param naming
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
 	//many for loops
+	
 	//use code from your equivilent applescript method
 }
 /*
