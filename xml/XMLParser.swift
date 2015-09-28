@@ -79,14 +79,6 @@ class XMLTraverser: NSObject, NSXMLParser{
 
 
 
-let categoryParser = CategoryParser()
-let xmlString = "<subCategories><category><id>someId</id><name>someName</name></category></subCategories>"
-categoryParser.parseXML( xmlString ) { (categories) in
-    print( categories )
-}
-
-
-
 
 
 
