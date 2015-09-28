@@ -5,10 +5,8 @@
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
  * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
- * 2. dictionaries inside an array item store attributes and content of the xml node
- * 2. 
- * 3. xml node content is stored in the dictionary under the key "content"
- * 4. content is stored as a string if its just text or as a dictonary with arrays of xml children (begin again from 1)
+ * 3. each array item in the array holdes a dictonary that has 2 key/value pairs
+ * 4. 
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * Param: string:xml string data
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
