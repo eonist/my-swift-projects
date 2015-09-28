@@ -53,6 +53,7 @@ func data(URL:String)->Dictionary{//# must use param naming
 /*
  * // :TODO: make this recursive
  * xml(data["content"])//xml string <categories><categories/> etc
+ * with this method you can find any element or any content or any attribute etc. 
  */
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
