@@ -1,13 +1,14 @@
 //// :TODO: to access sub nodes etc we could probably make some utils that will traverse the multi dim array
 // :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
+ * Returns a Dictonary with a tree structure of the data in an xml doc
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
- * string:xml string data
- * // :TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
+ * Param: string:xml string data
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
  * Returns: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]//"green" that is an attribute value of color
  * Returns: root["content"]["categories"][0]["content"]["category"][0]//{attributes:{color:green,name:"tinits"},content:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
  * Returns: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
+ * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  */
 func xml(string:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
