@@ -28,15 +28,15 @@ func xml(#URL:String)->Dictionary{//# must use param naming
   let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
   let queue:NSOperationQueue = NSOperationQueue()
  
-  NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
+  let result = NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
+  if(result.response = "success"){
     (response, data, error) -> Void in
     self.xmlParser = NSXMLParser(data: data)
     self.xmlParser.delegate = self
     self.xmlParser.parse()
+  }else{
+  
   }
-	
-	
-
 }
 /*
  * Traverses xml data 
