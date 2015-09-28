@@ -15,14 +15,8 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
     func parser(parser: NSXMLParser, foundCharacters string: String) {
 		
     }
-	 /*
-	  * exit node
-	  */
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-    }
-	 /*
-	  * complete
+    /*
+	  * enter node
 	  */
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if elementName == "category" {
@@ -31,6 +25,12 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
         else {
             self.currentElementName = elementName
         }
+    }
+	 /*
+	  * exit node
+	  */
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        
     }
     /*
 	  * error
