@@ -1,4 +1,6 @@
+func xml()->String{
 
+}
 /*
  * Traverses xml data 
  */
