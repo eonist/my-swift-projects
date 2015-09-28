@@ -15,7 +15,7 @@
  * NOTE: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
  * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  */
-func data(string:String)->Dictionary{
+func data(xml:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
 	traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
@@ -53,8 +53,10 @@ func data(#URL:String)->Dictionary{//# must use param naming
 /*
  *  
  */
-func xml()->String{
-
+func xml(data:Dictionary)->String{
+	var xmlString:String = ""
+	//many for loops
+	//use code from your equivilent applescript method
 }
 /*
  * Traverses xml data 
