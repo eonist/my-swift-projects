@@ -27,15 +27,12 @@ func xml(#URL:String)->Dictionary{//# must use param naming
   let urlString = NSURL(string: “http://www.blubrry.com/feeds/onorte.xml")
   let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
   let queue:NSOperationQueue = NSOperationQueue()
- 
+  //the bellow is sudo code
   let result = NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
   if(result.response = "success"){
-    (response, data, error) -> Void in
-    self.xmlParser = NSXMLParser(data: data)
-    self.xmlParser.delegate = self
-    self.xmlParser.parse()
+    xml(data)
   }else{
-  
+	 print(result.error)
   }
 }
 /*
