@@ -4,8 +4,9 @@
  * Returns a Dictonary with a tree structure of the data in an xml doc
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
- * 2. content is a dictonary that stores many arrays each node of the same name is stored in the same array xml nodes under the key of the name of the xml node key:"item" stores node: <item> etc
+ * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
  * 2. dictionaries inside an array item store attributes and content of the xml node
+ * 2. 
  * 3. xml node content is stored in the dictionary under the key "content"
  * 4. content is stored as a string if its just text or as a dictonary with arrays of xml children (begin again from 1)
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
