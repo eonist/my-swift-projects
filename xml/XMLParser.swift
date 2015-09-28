@@ -1,9 +1,18 @@
+/*
+ * 
+ */
 func xml(string:String)->Dictionary{
 
 }
+/*
+ * 
+ */
 func xml(filePath:String)->Dictionary{
 	
 }
+/*
+ * 
+ */
 func xml(URL:String)->Dictionary{
 	
 }
@@ -55,3 +64,21 @@ let xmlString = "<subCategories><category><id>someId</id><name>someName</name></
 categoryParser.parseXML( xmlString ) { (categories) in
     print( categories )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
