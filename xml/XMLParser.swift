@@ -3,25 +3,28 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
     
 
     
-
+	 /*
+	  * complete
+	  */
     func parserDidEndDocument(parser: NSXMLParser) {
         
     }
-
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        
-    }
-
+	 /*
+	  * found string content
+	  */
     func parser(parser: NSXMLParser, foundCharacters string: String) {
 		
     }
-
+	 /*
+	  * exit node
+	  */
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
     }
-
+	 /*
+	  * complete
+	  */
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-
         if elementName == "category" {
             self.currentSubcategory = [String : String]()
         }
@@ -29,6 +32,15 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
             self.currentElementName = elementName
         }
     }
+    /*
+	  * error
+	  */
+    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
+        
+    }
+    /*
+	  * complete
+	  */
     func parseXML( string: String, completion: (([[String : String]]) -> ())? ) {
         
     }
