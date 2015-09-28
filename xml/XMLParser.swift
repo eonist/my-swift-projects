@@ -2,9 +2,7 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
 
     
 
-    func parseXML( string: String, completion: (([[String : String]]) -> ())? ) {
-        
-    }
+    
 
     func parserDidEndDocument(parser: NSXMLParser) {
         
@@ -30,6 +28,9 @@ class XMLTraverser: NSObject, NSXMLParserDelegate {
         else {
             self.currentElementName = elementName
         }
+    }
+    func parseXML( string: String, completion: (([[String : String]]) -> ())? ) {
+        
     }
 }
 
