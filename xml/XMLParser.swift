@@ -61,9 +61,9 @@ func xml(data:Dictionary)->String{
 			element(name:nodeName,xml(node["content"]),node["attributes"])
 		}
 	}
-	//use code from your equivilent applescript method
 }
 func element(name:String,content:String,attributes:Dictionary)->String{
+	//use code from your equivilent applescript method
 	return ""
 }
 /*
