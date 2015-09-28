@@ -1,5 +1,5 @@
 /*
- * 
+ * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]
  */
 func xml(string:String)->Dictionary{
 
