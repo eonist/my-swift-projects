@@ -1,3 +1,5 @@
+//// :TODO: to access sub nodes etc we could probably make some utils that will traverse the multi dim array
+// :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
  * Example: XMLParser.xml("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
  * string:xml string data
