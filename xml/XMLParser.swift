@@ -15,7 +15,7 @@ func xml(#filePath:String)->Dictionary{//# must use param naming
 	// :TODO: nsxml may support the data handling part
 	//load the string
 	//xml(string)
-	var traverser = XMLTraverser(contentsOfURL: configURL )
+	var traverser = XMLTraverser(contentsOfURL: configURL )//contentsOfURL url: NSURL
 	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
    traverser.parse()//init the parse proces
 }
@@ -37,8 +37,9 @@ func xml(#URL:String)->Dictionary{//# must use param naming
 }
 /*
  * Traverses xml data 
+ *
  */
-class XMLTraverser: NSObject, NSXMLParserDelegate {
+class XMLTraverser: NSObject, NSXMLParser{
 	 /*
 	  * found string content
 	  */
