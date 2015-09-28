@@ -7,7 +7,7 @@ func xml(string:String)->Dictionary{
    traverser.parse()//init the parse proces
 }
 /*
- * 
+ * filePath:"//Users/<path>/someFile.xml"
  */
 func xml(#filePath:String)->Dictionary{//# must use param naming
 	//filepath stuuf
