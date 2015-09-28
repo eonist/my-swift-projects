@@ -20,11 +20,20 @@ func xml(#filePath:String)->Dictionary{//# must use param naming
    traverser.parse()//init the parse proces
 }
 /*
- * 
+ * url:"http://www.blubrry.com/feeds/onorte.xml"
  */
 func xml(#URL:String)->Dictionary{//# must use param naming
 	//url stuff, nsurl
-
+  let urlString = NSURL(string: “http://www.blubrry.com/feeds/onorte.xml")
+  let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
+  let queue:NSOperationQueue = NSOperationQueue()
+ 
+  NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
+    (response, data, error) -> Void in
+    self.xmlParser = NSXMLParser(data: data)
+    self.xmlParser.delegate = self
+    self.xmlParser.parse()
+  }
 	
 	
 
