@@ -5,6 +5,9 @@
  * string:xml string data
  * // :TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
+ * Returns: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]//"green" that is an attribute value of color
+ * Returns: root["content"]["categories"][0]["content"]["category"][0]//{attributes:{color:green,name:"tinits"},content:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
+ * Returns: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
  */
 func xml(string:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
