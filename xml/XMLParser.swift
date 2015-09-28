@@ -51,7 +51,8 @@ func data(URL:String)->Dictionary{//# must use param naming
   }
 }
 /*
- *  
+ * // :TODO: make this recursive
+ * xml(data["content"])//xml string <categories><categories/> etc
  */
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
@@ -62,6 +63,9 @@ func xml(data:Dictionary)->String{
 	for var i = 0; i < list.count;i++(
 
 	)
+	for (key,value) in data{
+		
+	}
 	//use code from your equivilent applescript method
 }
 /*
