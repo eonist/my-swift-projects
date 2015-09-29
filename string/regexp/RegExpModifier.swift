@@ -14,6 +14,19 @@ func replace(text: String!, pattern: String!,replacement:String,options:Array = 
                               options options: NSMatchingOptions,
                                 range range: NSRange,
                          withTemplate templ: String) -> String
+                         
+    var original = NSMutableString(string: "<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o")
+var search = "<\\/?strong>"
+var replaceWith = "*"
+var err: NSError? = nil
+var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
+if (err === nil) { 
+  expr?.replaceMatchesInString(original, options: nil, range: NSMakeRange(0, original.length), withTemplate: replaceWith)
+  println(original)
+}
+ 
+>> "*Hell*o, *Hell*o, *Hell*o"
+
 }
 *
 Flag (Pattern) Description:
