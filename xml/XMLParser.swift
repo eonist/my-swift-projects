@@ -34,7 +34,8 @@ func data(xml:String)->Dictionary{
  * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
  */
 func data(#filePath:String)->Dictionary{//# must use param naming
-	let content:String = FileParser.string(filePath)
+	let xml:String = FileParser.string(filePath)
+	data(xml)
 }
 /*
  * url:"http://www.google.com/feeds/news.xml"
