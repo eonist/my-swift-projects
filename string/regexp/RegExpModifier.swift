@@ -13,7 +13,7 @@ func replace(text: String!, pattern: String!,replacement:String,options:Array = 
 	var err: NSError? = nil
 	var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
 	if (err === nil) { 
-	  expr?.replaceMatchesInString(original, options: nil, range: NSMakeRange(0, original.length), withTemplate: replaceWith)
+	  expr?.replaceMatchesInString(original, options: nil, range: NSMakeRange(0, original.length), withTemplate: replacment)
 	  println(original)
 	}
  
