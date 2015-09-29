@@ -13,6 +13,9 @@ func replace(string: String!, pattern: String!,replacement:String,options:NSMatc
 	var err: NSError? = nil
 	var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
 	if (err === nil) { 
+		if let replacement = expr?.stringByReplacingMatchesInString(original, options: nil, range: NSMakeRange(0, countElements(original)), withTemplate: replaceWith) {
+   		 println(replacement)
+ 		 }
 	  expr?.replaceMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement)
 	  return string
 	}
