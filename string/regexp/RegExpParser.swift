@@ -1,9 +1,6 @@
 /*
  * Returns an Array with the matches 
- * EXAMPLE: let string = "€4€9"
- * let matches = match("[0-9]", text: string)
- * print(matches)
- * // [4, 9]
+ * EXAMPLE: match("£4$9", "[0-9]", text: string)//Output: [4, 9]
  * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
  */
 func match(text: String!, pattern: String!, options:Array = []) -> [String] {
@@ -17,5 +14,3 @@ func match(text: String!, pattern: String!, options:Array = []) -> [String] {
         return []
     }
 }
-
-
