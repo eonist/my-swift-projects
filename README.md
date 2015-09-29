@@ -2,8 +2,7 @@
 Generic swift utilities
 
 
-**XMLParser is inspired by ECMAscript for XML (E4X)**. 
-A  call to a static method in XMLParser.swift and a tree-structured data set is returned.  
+**XMLParser**. 
 
 ```swift
 let xml:String = <media><book>The shining</book><music type="digital"></music><media>
