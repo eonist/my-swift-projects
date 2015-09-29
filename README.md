@@ -1,6 +1,4 @@
 # swift-utils
-Generic swift utilities
-
 
 **XMLParser inspired by E4X**
 
