@@ -1,5 +1,6 @@
 /*
  * Replaces all matches with the replacment string
+ * Note: you can use this call to not modify the original string
  string The string to search for values within.
 options The matching options to use. See NSMatchingOptions for possible values.
 range	The range of the string to search.
