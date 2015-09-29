@@ -5,7 +5,9 @@ Generic swift utilities
 XMLParser:
 
 ```swift
- * EXAMPLE: XMLParser.data("<category><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
+let xml:String = "<media><book>Killing a mocking bird</book><music type=\"digital\">Mozzart</music><media>"
+XMLParser.data(xml)["content"]["subCategories"][0]["comtent"] etc
 
 
 ```
+
