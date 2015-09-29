@@ -4,4 +4,8 @@
  */
 func replace(text: String!, pattern: String!,replacement:String,options:Array = []){
 	//not implemented yet
+	func stringByReplacingMatchesInString(_ string: String,
+                              options options: NSMatchingOptions,
+                                range range: NSRange,
+                         withTemplate templ: String) -> String
 }
