@@ -1,11 +1,12 @@
 /*
+ * Returns an Array with the matches 
  * EXAMPLE: let string = "🇩🇪€4€9"
  * let matches = matchesForRegexInText("[0-9]", text: string)
  * print(matches)
  * // [4, 9]
  * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
  */
-func match(regex: String!, text: String!) -> [String] {
+func match(text: String!, pattern: String!) -> [String] {
     do {
         let regex = try NSRegularExpression(pattern: regex, options: [])
         let nsString = text as NSString
