@@ -1,3 +1,9 @@
+/*
+ * EXAMPLE: let string = "🇩🇪€4€9"
+ * let matches = matchesForRegexInText("[0-9]", text: string)
+ * print(matches)
+ * // [4, 9]
+ */
 func match(regex: String!, text: String!) -> [String] {
     do {
         let regex = try NSRegularExpression(pattern: regex, options: [])
@@ -12,7 +18,3 @@ func match(regex: String!, text: String!) -> [String] {
 }
 
 
-let string = "🇩🇪€4€9"
-let matches = matchesForRegexInText("[0-9]", text: string)
-print(matches)
-// [4, 9]
