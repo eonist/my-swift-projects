@@ -61,7 +61,7 @@ func xml(data:Dictionary)->String{
 	var xmlString:String = ""
 	for (nodeName,nodes) in data["content"]{
 		for node in nodes{
-			xmlString += element(nodeName, xml(node), node["attributes"])
+			xmlString += element(nodeName, xml(node), node["@"])
 		}
 	}
 	return xmlString
@@ -107,7 +107,7 @@ class XMLTraverser: NSObject, NSXMLParser{
     func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
       var tempParent:Dictionary = openParents.last
 		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
-		tempNode = ["attributes":attributes]
+		tempNode = ["@":attributes]
 		tempNode["content"] = [:]//this can potentially be String, but then you just set it to string in the exit method
 		tempParent[nodename].append(tempNode["content"])
 		if(hasClosed){//means the item is an sibling
