@@ -54,12 +54,12 @@ func data(#URL:String)->Dictionary{//# must use param naming
  * 
  * NOTE: xml(data)//xml string <categories><categories/> etc
  * with this method setup you can find any element or any content or any attribute etc. 
- * PARAM data: a Dictionary like: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]/
+ * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
  * EXAMPLE: 
  */
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
-	for (nodeName,nodes) in data["content"]{
+	for (nodeName,nodes) in data["."]{
 		for node in nodes{
 			xmlString += element(nodeName, xml(node), node["@"])
 		}
@@ -95,8 +95,8 @@ func element(name:String,content:String,attributes:Dictionary)->String{
 class XMLTraverser: NSObject, NSXMLParser{
 	var hasClosed = false//you step into an xml so this must be false
 	var prevEnteredNodeName:String?
-	var root:Dictionary = ["content":[:]]
-	var openParents:Array = [root["content"]]//flat list of previous entered parents aka openParents
+	var root:Dictionary = [".":[:]]
+	var openParents:Array = [root["."]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
     
     //delegate handlers:
@@ -108,12 +108,12 @@ class XMLTraverser: NSObject, NSXMLParser{
       var tempParent:Dictionary = openParents.last
 		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
 		tempNode = ["@":attributes]
-		tempNode["content"] = [:]//this can potentially be String, but then you just set it to string in the exit method
-		tempParent[nodename].append(tempNode["content"])
+		tempNode["."] = [:]//this can potentially be String, but then you just set it to string in the exit method
+		tempParent[nodename].append(tempNode["."])
 		if(hasClosed){//means the item is an sibling
 			//which means you dont add the parent to the parentList
 		}else{//means you stepped into a subnode
-			openParents.append(tempNode["content"])//parent must always be the content dictionary
+			openParents.append(tempNode["."])//parent must always be the content dictionary
 		}
 		prevEnteredNodeName = nodeName
 		hasClosed = false
@@ -130,7 +130,7 @@ class XMLTraverser: NSObject, NSXMLParser{
     func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
 	   if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
 			if(!stringContent.isEmpty){
-				tempNode["content"] = stringContent
+				tempNode["."] = stringContent
 			}
 		}else{//means you exit an elemnt back one level (had children)
 			openParents.removeLast()//you close a parent
