@@ -6,22 +6,16 @@ options The matching options to use. See NSMatchingOptions for possible values.
 range	The range of the string to search.
 template	The substitution template used when replacing matching instances.
 Return Value A string with matching regular expressions replaced by the template string.
-
+	EXAMPLE: RegExpModifier.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*"
  * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
  */
-func replace(text: String!, pattern: String!,replacement:String,options:Array = []){
-	//not implemented yet
-	func stringByReplacingMatchesInString(_ ) -> String
-                         
-    var original = NSMutableString(string: "<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o")
-var search = "<\\/?strong>"
-var replaceWith = "*"
-var err: NSError? = nil
-var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
-if (err === nil) { 
-  expr?.replaceMatchesInString(original, options: nil, range: NSMakeRange(0, original.length), withTemplate: replaceWith)
-  println(original)
-}
+func replace(text: String!, pattern: String!,replacement:String,options:Array = [])-> String{
+	var err: NSError? = nil
+	var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
+	if (err === nil) { 
+	  expr?.replaceMatchesInString(original, options: nil, range: NSMakeRange(0, original.length), withTemplate: replaceWith)
+	  println(original)
+	}
  
 >> "*Hell*o, *Hell*o, *Hell*o"
 
