@@ -1,6 +1,6 @@
 /*
  * Replaces all matches with the replacment string
- * Note: you can use this call to not modify the original string
+ * Note: you can use this call replaceMatchesInString to modify the original string, must use nsmurablestring to do this
  string The string to search for values within.
 options The matching options to use. See NSMatchingOptions for possible values.
 range	The range of the string to search.
@@ -13,11 +13,9 @@ func replace(string: String!, pattern: String!,replacement:String,options:NSMatc
 	var err: NSError? = nil
 	var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
 	if (err === nil) { 
-		if let replacement = expr?.stringByReplacingMatchesInString(original, options: nil, range: NSMakeRange(0, countElements(original)), withTemplate: replaceWith) {
-   		 println(replacement)
+		if let replacement = expr?.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
+   		 return replacement
  		 }
-	  expr?.replaceMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement)
-	  return string
 	}
 	return ""
 }
