@@ -1,3 +1,7 @@
+//import ../file/FileParser.swift
+//import ../network/NetworkParser.swift
+
+
 //// :TODO: to access sub nodes etc we could probably make some utils that will traverse the multi dim array
 // :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
@@ -27,52 +31,61 @@ func data(xml:String)->Dictionary{
 }
 /*
  * filePath:"//Users/<path>/someFile.xml"
+ * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
  */
 func data(#filePath:String)->Dictionary{//# must use param naming
-	let theFilePath:NSURL = NSURL(filePath)
-	var traverser = XMLTraverser(contentsOfURL: configURL )//contentsOfURL url: NSURL
-	traverser.delegate = self//this may need to be passed in the method argument of the xml() cal
-   traverser.parse()//init the parse procesjd
+	let content:String = FileParser.string(filePath)
 }
 /*
- * url:"http://www.blubrry.com/feeds/onorte.xml"
+ * url:"http://www.google.com/feeds/news.xml"
  */
-func data(URL:String)->Dictionary{//# must use param naming
-	//url stuff, nsurl
-  let urlString = NSURL(string: “http://www.blubrry.com/feeds/onorte.xml")
-  let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
-  let queue:NSOperationQueue = NSOperationQueue()
-  //the bellow is sudo code
-  let result = NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
+func data(#URL:String)->Dictionary{//# must use param naming
+  var result = NetworkParser.string(URL)
   if(result.response = "success"){
-    xml(result.data)
+    return xml(result.data)
   }else{
 	 print(result.error)
+	 return nil
   }
 }
 /*
- * // :TODO: make this recursive
- * xml(data["content"])//xml string <categories><categories/> etc
- * with this method you can find any element or any content or any attribute etc. 
+ * Returns xml from PARAM: data
+ * 
+ * NOTE: xml(data)//xml string <categories><categories/> etc
+ * with this method setup you can find any element or any content or any attribute etc. 
+ * PARAM data: a Dictionary like: root["content"]["categories"][0]["content"]["category"][0]["attributes"]["color"]/
+ * EXAMPLE: 
  */
 func xml(data:Dictionary)->String{
 	var xmlString:String = ""
-	for (nodeName,nodes) in data{
+	for (nodeName,nodes) in data["content"]{
 		for node in nodes{
-			xmlString += element(nodeName, xml(node["content"]), node["attributes"])
+			xmlString += element(nodeName, xml(node), node["attributes"])
 		}
 	}
 	return xmlString
 }
 /*
- * 
+ * Returns xml like: <item color="blue" age="2">some text goes here<item/>
+ * PARAM content: text
+ * PARAM attributes: ["color":"blue","age":"2"]
+ * PARAM name: the name of the xml node: "item"
  */
 func element(name:String,content:String,attributes:Dictionary)->String{
-	//use code from your equivilent applescript method
-	
-	// :TODO: fill me in, use your apllescript method 
-	
-	return ""
+	set attributeText to ""
+	for (key,value) in attributes{
+		var attributeText:String +=  (key + "=" + "\"" + value + "\"")
+		if (attribute != attributes.last ){
+			set attributeText to attributeText + " " //append a space after each key value pair, unless its at the end
+		}
+	}
+	var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
+	if (content.length > 0) { //has content
+		set xmlText to xmlText + ">" + content + "</" + name + ">" //end of xml text
+	else {//no content
+		set xmlText to xmlText + "/>" //end of xml text
+	}
+	return xmlText
 }
 /*
  * Traverses xml data 
