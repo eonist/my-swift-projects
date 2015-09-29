@@ -1,35 +1,38 @@
 //import ../file/FileParser.swift
 //import ../network/NetworkParser.swift
+//import XMLTraverser.swift.swift
 
-
-// :TODO: to access sub nodes etc we could probably make some utils that will traverse the multi dim array
-// :TODO: also make a method that can turn the muli dim acociative array into valid xml data
 /*
- * Returns a Dictonary with a tree structure of the data in an xml doc
+ * Returns a tree-structures dictionary populated with xml data from an string with xml data
  * PARAM: string:xml string data
+ * Note: this method is inspired by E4X (https://en.wikipedia.org/wiki/ECMAScript_for_XML)
  * NOTE: here is how it works:
  * 1. a dictionary stores two values under the keys "content" and "attributes"
  * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
  * 3. each array contains dictonaries that has 2 key/value pairs
  * 4. if the content of a node is text then the content value will not be a dictonary but a string 
  * EXAMPLE: XMLParser.data("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
+ * EXAMPLE XML: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
+ * EXAMPLE XML: <categories><category>text goes here</category><!--if a sibling closes and moves to the next then did end elemnt is called--></category><category><item color:"blue" type:"car"></item><item>text goes here</item><item/><movie/><picture>img.jpg</picture><category/></categories><test></test> 
  * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
- * NOTE: root["content"]["categories"][0]["content"]["category"][0]["@"]["color"]//"green" that is an attribute value of color
- * NOTE: root["content"]["categories"][0]["content"]["category"][0]//{@:{color:green,name:"tinits"},content:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
- * NOTE: root["content"]["categories"][0]["content"]["category"][0]["content"]["item"][0]["content"]//"well designed car" //i guess optional chaining would suit the bellow line well
+ * NOTE: root["."]["categories"][0]["."]["category"][0]["@"]["color"]//"green" that is an attribute value of color
+ * NOTE: root["."]["categories"][0]["."]["category"][0]//{@:{color:green,name:"tinits"},.:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
+ * NOTE: root["."]["categories"][0]["."]["category"][0]["."]["item"][0]["."]//"well designed car" //i guess optional chaining would suit the bellow line well
+ * NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
  * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
  */
 func data(xml:String)->Dictionary{
 	var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 	var traverser = XMLTraverser(data: string )
 	traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
-   if( traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
+   if(traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
    	return traverser.root//the root dictionary
    }else{
    	return nil
    }
 }
 /*
+ * Returns a tree-structures dictionary populated with xml data from a file path (osx location for a .xml file)
  * filePath:"//Users/<path>/someFile.xml"
  * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
  */
@@ -38,7 +41,8 @@ func data(#filePath:String)->Dictionary{//# must use param naming
 	data(xml)
 }
 /*
- * url:"http://www.google.com/feeds/news.xml"
+ * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
+ * PARAM URL:"http://www.google.com/feeds/news.xml"
  */
 func data(#URL:String)->Dictionary{//# must use param naming
   var result = NetworkParser.string(URL)
@@ -50,10 +54,9 @@ func data(#URL:String)->Dictionary{//# must use param naming
   }
 }
 /*
- * Returns xml from PARAM: data
- * 
+ * Returns a xml structured string with data from a tree-structured dictionary
  * NOTE: xml(data)//xml string <categories><categories/> etc
- * with this method setup you can find any element or any content or any attribute etc. 
+ * NOTE: with this method setup you can find any element or any content or any attribute etc. 
  * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
  * EXAMPLE: 
  */
@@ -87,66 +90,4 @@ func element(name:String,content:String,attributes:Dictionary)->String{
 		set xmlText to xmlText + "/>" //end of xml text
 	}
 	return xmlText
-}
-/*
- * Traverses xml data 
- * NOTE: nsxmlparser help: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSXMLParser_Class/index.html#//apple_ref/occ/instm/NSXMLParser/initWithContentsOfURL:
- */
-class XMLTraverser: NSObject, NSXMLParser{
-	var hasClosed = false//you step into an xml so this must be false
-	var prevEnteredNodeName:String?
-	var root:Dictionary = [".":[:]]
-	var openParents:Array = [root["."]]//flat list of previous entered parents aka openParents
-	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
-    
-    //delegate handlers:
-    
-    /*
-	  * enter node
-	  */
-    func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
-      var tempParent:Dictionary = openParents.last
-		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
-		tempNode = ["@":attributes]
-		tempNode["."] = [:]//this can potentially be String, but then you just set it to string in the exit method
-		tempParent[nodename].append(tempNode["."])
-		if(hasClosed){//means the item is an sibling
-			//which means you dont add the parent to the parentList
-		}else{//means you stepped into a subnode
-			openParents.append(tempNode["."])//parent must always be the content dictionary
-		}
-		prevEnteredNodeName = nodeName
-		hasClosed = false
-    }
-    /*
-	  * found string content
-	  */
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
-		stringContent += foundCharacters
-    }
-	 /*
-	  * exit node
-	  */
-    func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
-	   if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
-			if(!stringContent.isEmpty){
-				tempNode["."] = stringContent
-			}
-		}else{//means you exit an elemnt back one level (had children)
-			openParents.removeLast()//you close a parent
-		}
-		hasClosed = true
-	}
-    /*
-	  * error
-	  */
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        //not needed
-    }
-    /*
-	  * complete
-	  */
-    func parserDidEndDocument(parser: NSXMLParser) {
-        //not needed
-    }
 }
