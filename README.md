@@ -9,11 +9,13 @@ It is based on apples NSXMLParser, in order to keep it simple it uses only Dicti
 Its simplicity is great when you just need to get some data, and when you want to understand the code in order to add functionality
 
 ```swift
-import XMLParser.swift
+
 let xml:String = <media><book>The shining</book><music type="digital"></music><media>
 let data:Dictionary = XMLParser.data(xml)
 XMLParser.data(xml)["content"]["media"][0]["content"]["book"][0]["content"] //Output: The shining
 XMLParser.data(xml)["content"]["media"][0]["content"]["music"][0]["attributes"]["type"] //Output: digital
 
+//To create xml:
+XMLParser.xml(data)//Output:<media><book>The shining</book><music type="digital"></music><media>
 ```
 
