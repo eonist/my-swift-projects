@@ -1,5 +1,5 @@
 class GitParser{
-	class var git_path : String = "/usr/local/git/bin/" --to execute git commands we need to call the git commands from this path
+	class var gitPath : String = "/usr/local/git/bin/" --to execute git commands we need to call the git commands from this path
 	/*
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
@@ -16,7 +16,7 @@ class GitParser{
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
 	func diff(localRepoPath, cmd){
-		return ShellUtils.run( "cd " & local_repo_path & ";" & git_path & "git diff " & cmd)
+		return ShellUtils.run( "cd " & localRepoPath & ";" & gitPath & "git diff " & cmd)
 	}
 }
 
