@@ -6,7 +6,7 @@ class GitParser{
 	 */
 	func unMergedFiles(localPath){
 		var unmMergedPaths = diff(localPath, "--name-only --diff-filter=U")
-		return paragraphs of unmMergedPaths//// :TODO: use some sort of linesToArray method here
+		return unmMergedPaths.componentsSeparatedByString("\n")//// :TODO: use some sort of linesToArray method here
 	}
 	/*
 	 * "git diff --name-only --diff-filter=U" --returns a list of unmerged files
