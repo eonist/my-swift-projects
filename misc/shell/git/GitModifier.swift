@@ -1,3 +1,5 @@
+//Continue here
+
 
 import "text:TextAsserter.applescript"
 class GitModifier{
