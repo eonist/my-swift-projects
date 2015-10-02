@@ -11,7 +11,7 @@ class GitModifier{
     * Example: GitUtils's add(localRepoPath, "*")
     * Note: the opposite of add is reset, see the reset method for more info
     */
-   func add(localRepoPath, fileName)->String{
+   func add(localRepoPath:String, fileName:String)->String{
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
    	if (StringAsserters.isWrappedWith(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
    		fileName = StringModifer.wrapWith(fileName,"'") 
@@ -34,7 +34,7 @@ class GitModifier{
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     */
-   func commit(localRepoPath, messageTitle, messageDescription)->String{
+   func commit(localRepoPath:String, messageTitle:String, messageDescription:String)->String{
    	//log ("GitModifier's commit(" + message_title + ")")
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git commit" + " " + "-m" + " '" + messageTitle + "' " + "-m" + " '" + messageDescription + "'")
    }
@@ -57,7 +57,7 @@ class GitModifier{
     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
     * @PARAM: branch: usually "master"
     */
-   func push(localRepoPath, remotePath, userName, userPassword, branch)->String{
+   func push(localRepoPath:String, remotePath:String, userName:String, userPassword:String, branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
    	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git push" + " " + remoteLocation + " " + branch
