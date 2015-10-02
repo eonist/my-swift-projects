@@ -4,7 +4,7 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property GitParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitParser.applescript"))
 property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
 property GitModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitModifier.applescript"))
-property git_path : "/usr/local/git/bin/" --to execute git commands we need to call the git commands from this path
+property gitPath : "/usr/local/git/bin/" --to execute git commands we need to call the git commands from this path
 /*
  * Manual pull
  * CAUTION: its best practice to always commit any uncommited files before you attempt to pull. 
@@ -14,7 +14,7 @@ property git_path : "/usr/local/git/bin/" --to execute git commands we need to c
  */
 func manualPull(locaPath, remotePath, branch){
 	//log ("GitUtil's manual_pull()")
-	GitModifier's fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
+	GitModifiers.fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
 	let isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 	//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
 	if isRemoteBranchAhead { //--asserts if a merge isneeded
