@@ -10,3 +10,9 @@ func string(filePath:String)->String{
 		return nil
 	}
 }
+/**
+ * 
+ */
+func resourcePath(){
+	let sourcePath = NSBundle.mainBundle().pathForResource("contacts", ofType: "db")
+}
