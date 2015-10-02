@@ -4,6 +4,8 @@
 //NOTE: internal This is the default accessible across multiple code files, but must be compiled together into the same module 
 //NOTE: public accessible from any module that has imported yours 
 
+//list superclass names: https://books.google.no/books?id=AYonCgAAQBAJ&pg=PA18&lpg=PA18&dq=list+superclass+swift&source=bl&ots=CAg5jeCqhE&sig=09AMGUBkiK601C7COjP-7n20lsQ&hl=en&sa=X&ved=0CC4Q6AEwB2oVChMI7eDJnMukyAIVJXVyCh2K7wul
+
 //Changing access levels public 
 class Player {
 	//properties no modifier, will default to internal 
