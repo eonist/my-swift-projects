@@ -1,15 +1,14 @@
---property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
-property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
-property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
-property GitParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitParser.applescript"))
-property GitModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitModifier.applescript"))
+import "git/GitAsserter.applescript"
+import "file/FileAsserter.applescript"
+import "git/GitParser.applescript"
+import "git/GitModifier.applescript"
 /*
 * Asserts if a folder has a git repository
 * Example: is_git_repo("~/test/.git/")--true/false
 * Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
 * Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
 */
-func isGitRepo(filePath:String){
+func isGitRepo(filePath:String)->Boolean{
 	do{
 		try GitParsers.status(filePath, "")
 		return true
@@ -21,39 +20,40 @@ func isGitRepo(filePath:String){
 /*
  * 
  */
-func hasRemoteRepoAttached(filePath, branch){
+func hasRemoteRepoAttached(filePath, branch)->Boolean{
 	do{
 		try GitParsers.status(filePath, "origin" & "/" & branch)
 		return true
-	}catch error
+	}catch let error as NSError{
+		//print(error.type)
 		return false
-	end try
+	}
 }
 /*
  * Asserts if a remote branch is ahead of a local branch
  */
-func is_remote_branch_ahead(local_repo_path, branch){
+func isRemoteBranchAhead(localPath, branch)->Boolean{
 	//--log "GitAsserter's is_remote_branch_ahead()"
-	set the_log to GitParser's do_log(local_repo_path, "--oneline " & branch & ".." & "origin" & "/" & branch) --move this to the gitparser as a ref
+	let theLog to GitParsers.doLog(localPath, "--oneline " & branch & ".." & "origin" & "/" & branch) //--move this to the gitparser as a ref
 	//--log the_log
-	set log_list to paragraphs of the_log
-	if (length of log_list > 0) then
+	let logList to ListParser.paragraphs( the_log)
+	if (log_list.count > 0) {
 		return true
-	else
+	}else{
 		return false
-	end if
+	}
 }
 /*
  * you could also maybe use log to assert this, see is_remote_branch_ahead but opposite
  */
-func has_local_commits(local_repo_path, branch){
+func hasLocalCommits(localRepoPath, branch)->Boolean{
 	//--log "GitAsserter's has_local_commits()"
 	//--move the bellow to gitModifier?
-	GitModifier's git_remote_update(local_repo_path) --in order for the cherry to work with "git add" that uses https, we need to call this method
-	set cherry_result to GitParser's cherry(local_repo_path, branch)
+	GitModifiers.gitRemoteUpdate(localPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
+	let cherryResult = GitParsers.cherry(localPath, branch)
 	//--log "cherry_result: " & cherry_result
-	set has_commits to (length of cherry_result > 0)
-	return has_commits
+	let hasCommits = (cherry_result.count > 0)
+	return hasCommits
 }
 
 /*
