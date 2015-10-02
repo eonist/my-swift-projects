@@ -105,3 +105,14 @@ func swapTwoInts(inout a: Int, inout _ b: Int) {
     a = b
     b = temporaryA
 }
+func swapTwoStrings(inout a: String, inout _ b: String) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+ 
+func swapTwoDoubles(inout a: Double, inout _ b: Double) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
