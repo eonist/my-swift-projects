@@ -122,7 +122,7 @@ class GitModifier{
    /*
     * Init
     */
-   func init(localRepoPath){
+   func init(localRepoPath:String)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git init"
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -133,7 +133,7 @@ class GitModifier{
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
-   func attach_remote_repo(localRepoPath, remoteRepoPath){
+   func attach_remote_repo(localRepoPath, remoteRepoPath)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote add origin" + " " + (quoted form of remoteRepoPath)
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -143,7 +143,7 @@ class GitModifier{
     * NOTE: the reverse of attach_remote_repo method
     * NOTE: git remote rm origin
     */
-   func detach_remote_repo(localRepoPath){
+   func detach_remote_repo(localRepoPath)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote rm origin"
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -154,7 +154,7 @@ class GitModifier{
     * NOTE: git clone <repo> <directory>
     * NOTE: 
     */
-   func clone(remotePath, localPath){
+   func clone(remotePath, localPath)->String{
    	let shellScript:String = gitPath + "git clone " + remotePath + " " + localPath
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -172,7 +172,7 @@ class GitModifier{
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
-   func git_remote_update(localRepoPath){
+   func gitRemoteUpdate(localRepoPath)->String{
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git remote update")
    }
    /*
@@ -194,7 +194,7 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   func fetch(localRepoPath, remotePath, branch){
+   func fetch(localRepoPath, remotePath, branch)->String{
    	//--log "fetch()"
    	//log ("GitModifier's fetch(" + branch + ")")
    	//--condition
