@@ -103,7 +103,7 @@ class GitModifier{
     */
    func pull(localRepoPath:String, remotePath:String, userName:String, userPassword:String)->String{ //--TODO: add branch here
    	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
-   	let targetBranch:String = "master" --master branch
+   	let targetBranch:String = "master" //--master branch
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git pull" + " " + remoteLocation + " " + targetBranch)
    }
    /*
@@ -184,7 +184,6 @@ class GitModifier{
    func remote(){
    	//--complete this method
    }
-   
    /*
     * Fetch
     * NOTE: Fetching is what you do when you want to see what everybody else has been working on. Since fetched content is represented as a remote branch, it has absolutely no effect on your local development work. This makes fetching a safe way to review commits before integrating them with your local repository.
@@ -298,7 +297,7 @@ class GitModifier{
     * @param filePath: can be a relative file path, or the astrix sign for every file "*"
     */
    
-	func check_out(localRepoPath:String, loc, filePath:String)->String{
+	func check_out(localRepoPath:String, loc:String, filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
 		if (filePath != " "){
