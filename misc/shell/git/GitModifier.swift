@@ -32,7 +32,7 @@ class GitModifier{
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     */
-   func commit(localRepoPath, messageTitle, messageDescription)
+   func commit(localRepoPath, messageTitle, messageDescription){
    	//log ("GitModifier's commit(" + message_title + ")")
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git commit" + " " + "-m" + " '" + messageTitle + "' " + "-m" + " '" + messageDescription + "'")
    )
@@ -55,7 +55,7 @@ class GitModifier{
     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
     * @PARAM: branch: usually "master"
     */
-   func push(localRepoPath, remotePath, userName, userPassword, branch)
+   func push(localRepoPath, remotePath, userName, userPassword, branch){
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
    	set remoteLoc to "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
    	set shellScript to "cd " + localRepoPath + ";" + gitPath + "git push" + " " + remoteLocation + " " + branch
@@ -75,7 +75,7 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   func reset(localRepoPath, fileName)
+   func reset(localRepoPath, fileName){
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName)
    )
    /*
@@ -86,10 +86,9 @@ class GitModifier{
     * NOTE: git clean -df --Remove untracked files and untracked directories from the current directory.
     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
     */
-   func clean()
+   func clean(){
    	//--condition 
    )
-
    /*
     * Downloads the current from the remote git to the local git (git pull = git fetch + git merge)
     * NOTE: the original git cmd is "git pull origin master"
@@ -100,7 +99,7 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   func pull(localRepoPath, remotePath, userName, userPassword) //--TODO: add branch here
+   func pull(localRepoPath, remotePath, userName, userPassword){ //--TODO: add branch here
    	set remoteLocation to "https://" + userName + ":" + userPassword + "@" + remotePath
    	set targetBranch to "master" --master branch
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git pull" + " " + remoteLocation + " " + targetBranch)
