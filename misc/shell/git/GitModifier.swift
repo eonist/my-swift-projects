@@ -13,7 +13,7 @@ class GitModifier{
     */
    func add(localRepoPath, fileName){
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
-   	if (StringAsserters.isWrappedIn(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   	if (StringAsserters.isWrappedWith(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
    		fileName = StringModifer.wrapWith(fileName,"'") 
    	}
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
@@ -101,7 +101,7 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   func pull(localRepoPath, remotePath, userName, userPassword){ //--TODO: add branch here
+   func pull(localRepoPath, remotePath, userName, userPassword)->String{ //--TODO: add branch here
    	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
    	let targetBranch:String = "master" --master branch
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git pull" + " " + remoteLocation + " " + targetBranch)
