@@ -12,10 +12,10 @@ property git_path : "/usr/local/git/bin/" --to execute git commands we need to c
  * NOTE: the goal of this method is to arrive at the same state as the remote branch
  * TODO: add support for different local and remote branch name
  */
-func manualPull(locaPath, remote_path, branch){
+func manualPull(locaPath, remotePath, branch){
 	//log ("GitUtil's manual_pull()")
-	GitModifier's fetch(locaPath, remote_path, branch) //--git fetch origin master, retrive the latest repo info
-	set is_remote_branch_ahead to GitAsserter's is_remote_branch_ahead(local_path, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+	GitModifier's fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
+	set isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 	//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
 	if is_remote_branch_ahead { //--asserts if a merge isneeded
 		//log tab & "remote branch is ahead, so there is something to merge"
