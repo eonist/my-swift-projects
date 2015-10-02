@@ -14,5 +14,5 @@ func string(filePath:String)->String{
  * 
  */
 func resourcePath(){
-	let sourcePath = NSBundle.mainBundle().pathForResource("contacts", ofType: "db")
+	return NSBundle.mainBundle().resourcePath
 }
