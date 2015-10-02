@@ -11,11 +11,8 @@ class GitModifier{
     */
    func add(localRepoPath, fileName)
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
-      
-      //continue here
-      
-   	if (TextAsserter's is_wrapped_in(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
-   		fileName = StringModifer.quotedForm(fileName) 
+   	if (StringAsserters.isWrappedIn(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   		fileName = StringModifer.wrapIn(fileName,"'") 
    	}
    	let shellScript to "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
    	//--log "shellScript: " + shellScript
