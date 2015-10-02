@@ -1,9 +1,10 @@
 import Foundation
 class NetworkAsserter {
 	/**
-	 * 
+	 * Asserts if the device is connected to internet
+	 * NOTE: works in IOS and OSX
 	 */
-	func isConnectedToNetwork()->Bool{
+	func isConnectedToInternet()->Bool{
 	  let url = NSURL(string: "http://google.com/")
 	  let request = NSMutableURLRequest(URL: url!)
 	  request.HTTPMethod = "HEAD"
