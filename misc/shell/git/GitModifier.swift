@@ -1,21 +1,21 @@
 
 import "text:TextAsserter.applescript"
 class GitModifier{
-   class var gitPath : "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
+   class var gitPath = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
    /*
     * Add a file or many files to a commit
-    * @param file_name is the file name you want to add, use * if you want to add all files
+    * @param fileName is the file name you want to add, use * if you want to add all files
     * Caution: when a file is removed, the * char wont work, you have to add the file manually
-    * Example: GitUtils's add(local_repo_path, "*")
+    * Example: GitUtils's add(localRepoPath, "*")
     * Note: the opposite of add is reset, see the reset method for more info
     */
-   func add(local_repo_path, file_name)
-   	log ("GitModifier's add(" & local_repo_path & file_name & ")")
-   	if (TextAsserter's is_wrapped_in(file_name, "\"") = false) then --avoids quoting a file_name that is already quoated, this can happen when git removes a file
-   		set file_name to quoted form of file_name
-   	end if
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git add" & " " & file_name
-   	--log "shell_cmd: " & shell_cmd
+   func add(localRepoPath, fileName)
+   	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
+   	if (TextAsserter's is_wrapped_in(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   		set fileName to quoted form of fileName
+   	}
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git add" + " " + fileName
+   	//--log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -26,15 +26,15 @@ class GitModifier{
     * 1 file changed, 0 insertions(+), 0 deletions(-)
     * create mode 100644 error.html
     * NOTE: its important that the message is betweentwo single quates
-    * Example: GitUtils's commit(local_repo_path, "changes made")
+    * Example: GitUtils's commit(localRepoPath, "changes made")
     * TODO: can we also add desscription to a commit?
     * TODO: what does commit -a do? -all?
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     */
-   func commit(local_repo_path, message_title, message_description)
-   	log ("GitModifier's commit(" & message_title & ")")
-   	return do shell script "cd " & local_repo_path & ";" & git_path & "git commit" & " " & "-m" & " '" & message_title & "' " & "-m" & " '" & message_description & "'"
+   func commit(localRepoPath, message_title, message_description)
+   	//log ("GitModifier's commit(" + message_title + ")")
+   	return do shell script "cd " + localRepoPath + ";" + git_path + "git commit" + " " + "-m" + " '" + message_title + "' " + "-m" + " '" + message_description + "'"
    )
    /*
     * Uploads the current from the local git commits to the remote git
@@ -42,11 +42,11 @@ class GitModifier{
     * @param from_where: "master"
     * @param to_where: "origin"
     * NOTE: git push <remote> <branch> (Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won�t let you push when it results in a non-fast-forward merge in the destination repository.)
-    * @param remote_repo_url: github.com/user-name/repo-name.git
+    * @param remotePath: github.com/user-name/repo-name.git
     * NOTE: you may mitigate using username and pass by researching how to use SSH key in github from trusted maschines
     * TODO: maybe add try error when doing the shell part
     * TODO: add branch as a param
-    * Example: GitUtils's push(local_repo_path, "github.com/user-name/repo-name.git", user_name, user_password)
+    * Example: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", user_name, user_password)
     * NOTE: Original gti cmd: git push https://github.com/user/test.git master
     * NOTE: ssh-example: ssh://user@host/path/to/repo.git
     * NOTE: Only Push to Bare Repositories In addition, you should only push to repositories that have been created with the --bare flag. Since pushing messes with the remote branch structure, it's important to never push to another developers repository. But because bare repos don't have a working directory, it's impossible to interrupt anybodys developments.
@@ -55,11 +55,11 @@ class GitModifier{
     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
     * @PARAM: branch: usually "master"
     */
-   func push(local_repo_path, remote_repo_url, user_name, user_password, branch)
-   	log ("GitModifier's push(" & "local_path: " & local_repo_path & ", remote_path: " & remote_repo_url & ", user: " & user_name & ", pass: " & user_password & ", branch: " & branch & ")")
-   	set remote_loc to "https://" & user_name & ":" & user_password & "@" & remote_repo_url --https://user:pass@github.com/user/repo.git--"origin"
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git push" & " " & remote_loc & " " & branch
-   	--log "shell_cmd: " & shell_cmd
+   func push(localRepoPath, remotePath, user_name, user_password, branch)
+   	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + user_name + ", pass: " + user_password + ", branch: " + branch + ")")
+   	set remote_loc to "https://" + user_name + ":" + user_password + "@" + remotePath --https://user:pass@github.com/user/repo.git--"origin"
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git push" + " " + remote_loc + " " + branch
+   	//--log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -75,8 +75,8 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   func reset(local_repo_path, file_name)
-   	return do shell script "cd " & local_repo_path & ";" & git_path & "git reset" & " " & file_name
+   func reset(localRepoPath, fileName)
+   	return do shell script "cd " + localRepoPath + ";" + git_path + "git reset" + " " + fileName
    )
    /*
     * Clean
@@ -87,7 +87,7 @@ class GitModifier{
     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
     */
    func clean()
-   	--condition 
+   	//--condition 
    )
 
    /*
@@ -100,30 +100,30 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   func pull(local_repo_path, remote_repo_url, user_name, user_password) --TODO: add branch here
-   	set remote_loc to "https://" & user_name & ":" & user_password & "@" & remote_repo_url
+   func pull(localRepoPath, remotePath, user_name, user_password) --TODO: add branch here
+   	set remote_loc to "https://" + user_name + ":" + user_password + "@" + remotePath
    	set target_branch to "master" --master branch
-   	return do shell script "cd " & local_repo_path & ";" & git_path & "git pull" & " " & remote_loc & " " & target_branch
+   	return do shell script "cd " + localRepoPath + ";" + git_path + "git pull" + " " + remote_loc + " " + target_branch
    )
    /*
     * The opposite of the add action
     * "git reset"
     */
    func revert()
-   	--complete this method
+   	//--complete this method
    )
    /*
     * --rm --remove files, research this
     */
    func remove()
-   	--complete this method
+   	//--complete this method
    )
    /*
     * Init
     */
-   func init(local_repo_path)
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git init"
-   	log "shell_cmd: " & shell_cmd
+   func init(localRepoPath)
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git init"
+   	//log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -132,9 +132,9 @@ class GitModifier{
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
-   func attach_remote_repo(local_repo_path, remote_repo_path)
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git remote add origin" & " " & (quoted form of remote_repo_path)
-   	log "shell_cmd: " & shell_cmd
+   func attach_remote_repo(localRepoPath, remoteRepoPath)
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git remote add origin" + " " + (quoted form of remoteRepoPath)
+   	//log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -142,9 +142,9 @@ class GitModifier{
     * NOTE: the reverse of attach_remote_repo method
     * NOTE: git remote rm origin
     */
-   func detach_remote_repo(local_repo_path)
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git remote rm origin"
-   	log "shell_cmd: " & shell_cmd
+   func detach_remote_repo(localRepoPath)
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git remote rm origin"
+   	//log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -153,9 +153,9 @@ class GitModifier{
     * NOTE: git clone <repo> <directory>
     * NOTE: 
     */
-   func clone(remote_path, local_path)
-   	set shell_cmd to git_path & "git clone " & remote_path & " " & local_path
-   	log "shell_cmd: " & shell_cmd
+   func clone(remotePath, localPath)
+   	set shell_cmd to git_path + "git clone " + remotePath + " " + localPath
+   	//log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -165,14 +165,14 @@ class GitModifier{
     * NOTE: git config --global core.editor "vi", or use nano or atom, see gitsync on github in the wiki: dev tips
     */
    func config()
-   	--complete this method
+   	//--complete this method
    )
    /*
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
-   func git_remote_update(local_repo_path)
-   	return do shell script "cd " & local_repo_path & ";" & git_path & "git remote update"
+   func git_remote_update(localRepoPath)
+   	return do shell script "cd " + localRepoPath + ";" + git_path + "git remote update"
    )
    /*
     * NOTE: git remote -v (List the remote connections you have to other repositories. include the URL of each connection.)
@@ -181,7 +181,7 @@ class GitModifier{
     * NOTE: git remote rename <old-name> <new-name> (Rename a remote connection from <old-name> to <new-name>.)
     */
    func remote()
-   	--complete this method
+   	//--complete this method
    )
    
    /*
@@ -193,15 +193,15 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   func fetch(local_repo_path, remote_path, branch)
-   	--log "fetch()"
-   	log ("GitModifier's fetch(" & branch & ")")
-   	--condition
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git fetch " & "origin"
-   	if branch is not space then
-   		set shell_cmd to shell_cmd & " " & branch
-   	end if
-   	--log "shell_cmd: " & shell_cmd
+   func fetch(localRepoPath, remotePath, branch)
+   	//--log "fetch()"
+   	//log ("GitModifier's fetch(" + branch + ")")
+   	//--condition
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git fetch " + "origin"
+   	if branch != " " {
+   		 shell_cmd += + " " + branch
+   	}
+   	//--log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -220,7 +220,7 @@ class GitModifier{
     * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
     */
    func branch(target_branch, delete_flag)
-   	--complete this method
+   	//--complete this method
    )
    /*
     * Merging is Git's way of putting a forked history back together again
@@ -239,10 +239,10 @@ class GitModifier{
     * @param into_branch is the branch you usually checkout before doing the merge
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
-   func merge(local_repo_path, into_branch, from_branch)
-   	log ("GitModifier's merge()")
-   	set shell_cmd to "cd " & local_repo_path & ";" & git_path & "git merge " & into_branch & " " & from_branch
-   	--log "shell_cmd: " & shell_cmd
+   func merge(localRepoPath, into_branch, from_branch)
+   	//log ("GitModifier's merge()")
+   	set shell_cmd to "cd " + localRepoPath + ";" + git_path + "git merge " + into_branch + " " + from_branch
+   	//--log "shell_cmd: " + shell_cmd
    	return do shell script shell_cmd
    )
    /*
@@ -256,7 +256,7 @@ class GitModifier{
     * TODO: try "git rebase -i" see if it works as a commit squassher
     */
    func rebase()
-   	--complete this method
+   	//--complete this method
    )
    /*
     * stash
@@ -274,8 +274,8 @@ class GitModifier{
     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
     */
    func stash(title)
-   	--TODO: if no title is provided store the stash without title: by not including the save syntax
-   	--"git stash -u save " & title
+   	//--TODO: if no title is provided store the stash without title: by not including the save syntax
+   	//--"git stash -u save " + title
    )
    /*
     * Checkout
@@ -292,18 +292,18 @@ class GitModifier{
     * NOTE: git checkout master hello.py (checks out a spessific file in a spessific branch)
     * NOTE: you can switch to a newly fetched branch with: "git checkout origin/master"
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
-    * @param local_repo_path: path to the repository to operate on, must be absolute not relative
+    * @param localRepoPath: path to the repository to operate on, must be absolute not relative
     * @param loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
     * @param file_path: can be a relative file path, or the astrix sign for every file "*"
     */
    
-	func check_out(local_repo_path, loc, file_path){
-		//log ("GitModifier's check_out(" & loc & " " & file_path & ")")
-		var shell_cmd to "cd " + local_repo_path + ";" + git_path + "git checkout " + loc
+	func check_out(localRepoPath, loc, file_path){
+		//log ("GitModifier's check_out(" + loc + " " + file_path + ")")
+		var shell_cmd to "cd " + localRepoPath + ";" + git_path + "git checkout " + loc
 		if file_path != " "{
 			var shell_cmd = shell_cmd + " " + file_path
 		}
-		//--log "shell_cmd: " & shell_cmd
+		//--log "shell_cmd: " + shell_cmd
 		ShellUtils.run(shell_cmd)
 	}
 }
