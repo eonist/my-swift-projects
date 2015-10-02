@@ -220,7 +220,7 @@ class GitModifier{
     * # origin/some-feature
     * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
     */
-   func branch(targetBranch, deleteFlag){
+   func branch(targetBranch:String, deleteFlag:String){
    	//--complete this method
    }
    /*
@@ -240,9 +240,9 @@ class GitModifier{
     * @param into_branch is the branch you usually checkout before doing the merge
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
-   func merge(localRepoPath, into_branch, fromBranch)->String{
+   func merge(localRepoPath:String, intoBranch:String, fromBranch:String)->String{
    	//log ("GitModifier's merge()")
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git merge " + into_branch + " " + fromBranch
+   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git merge " + intoBranch + " " + fromBranch
    	//--log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
    }
@@ -298,7 +298,7 @@ class GitModifier{
     * @param filePath: can be a relative file path, or the astrix sign for every file "*"
     */
    
-	func check_out(localRepoPath, loc, filePath)->String{
+	func check_out(localRepoPath:String, loc, filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
 		if (filePath != " "){
