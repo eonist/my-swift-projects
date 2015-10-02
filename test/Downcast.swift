@@ -41,12 +41,12 @@ if let movie = item as? Movie {
   print("Song: '\(song.name)', by \(song.artist)")
 }
 
-//in other languages:
+//similar in other languages:
 var movie:Movie
 if(item as Movie){
-	
-}else(){
-	
+	movie = item
+}else{
+	movie = null
 }
 
 
