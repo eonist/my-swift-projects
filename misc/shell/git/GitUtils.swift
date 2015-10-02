@@ -1,14 +1,9 @@
-import git/GitModifier.applescript
-import file:ScriptLoader.scpt
-import git:GitParser.applescript
-import
+import "git/GitModifier.applescript"
+import "file/ScriptLoader.scpt"
+import "git/GitParser.applescript"
+import "git/GitAsserter.applescript"
 //continue here
 class GitUtils{
-	property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
-	property GitParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitParser.applescript"))
-	property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
-	
-	property GitModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitModifier.applescript"))
 	var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
 	/*
 	 * Manual pull
@@ -34,7 +29,7 @@ class GitUtils{
 	 * NOTE:  same as clone but differs in that it clones into an existing folder
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com
 	 */
-	func manual_clone(local_repo_path, remote_repo_path){
+	func manualClone(locaPath, remotePath){
 		//--"git init" <--Installs the invisible .git folder
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
 		//--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
