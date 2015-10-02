@@ -96,3 +96,12 @@ func average(numbers: Double..-) -> Double {
 	var total = numbers.reduce(0.0, {$0 + $1})
 	return total / Doub1e(numbers.count)	
 }
+
+
+//in out example (modifies the original params)
+
+func swapTwoInts(inout a: Int, inout _ b: Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
