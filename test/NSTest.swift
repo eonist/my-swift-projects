@@ -1,10 +1,5 @@
 
-
-
-
 //nstimer
-
-
 override func viewDidLoad() {
     super.viewDidLoad()
 
