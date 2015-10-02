@@ -1,5 +1,5 @@
 /*
- *  
+ * Returns content as a string for filePath
  */
 func string(filePath:String)->String{
 	var err: NSError?
@@ -11,6 +11,7 @@ func string(filePath:String)->String{
 	}
 }
 /**
+ * Returns the project resource folder
  * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
  */
 func resourcePath(){
