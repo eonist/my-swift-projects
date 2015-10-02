@@ -1,8 +1,13 @@
+import git/GitModifier.applescript
+import file:ScriptLoader.scpt
+import git:GitParser.applescript
+import
 //continue here
 class GitUtils{
 	property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 	property GitParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitParser.applescript"))
 	property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
+	
 	property GitModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitModifier.applescript"))
 	var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
 	/*
