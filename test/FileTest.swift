@@ -1,0 +1,1 @@
+//"~/a.txt".stringByExpandingTildeInPath // prints /Users/<your user>/a.txt
