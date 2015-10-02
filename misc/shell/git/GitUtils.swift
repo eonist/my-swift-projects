@@ -15,11 +15,11 @@ property git_path : "/usr/local/git/bin/" --to execute git commands we need to c
 func manualPull(locaPath, remotePath, branch){
 	//log ("GitUtil's manual_pull()")
 	GitModifier's fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
-	set isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+	let isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 	//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
-	if is_remote_branch_ahead { //--asserts if a merge isneeded
+	if isRemoteBranchAhead { //--asserts if a merge isneeded
 		//log tab & "remote branch is ahead, so there is something to merge"
-		GitModifier's merge(local_path, branch, "origin/" & branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
+		GitModifiers.merge(localPath, branch, "origin/" & branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
 	}else{
 		//log tab & "nothing to merge, local branch is up-to-date"
 	}
