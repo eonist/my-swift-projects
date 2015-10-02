@@ -11,7 +11,7 @@ func string(filePath:String)->String{
 	}
 }
 /**
- * 
+ * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
  */
 func resourcePath(){
 	return NSBundle.mainBundle().resourcePath
