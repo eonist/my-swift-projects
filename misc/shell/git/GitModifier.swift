@@ -77,7 +77,7 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   func reset(localRepoPath, fileName)->String{
+   func reset(localRepoPath:String, fileName:String)->String{
    	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName)
    }
    /*
