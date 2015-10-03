@@ -14,7 +14,7 @@ class KeyChainParser {
         return status == noErr
     }
 	/**
-	 * 
+	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
         let query = [
@@ -31,7 +31,7 @@ class KeyChainParser {
         }
     }
 	/**
-	 * 
+	 * Deletes a keychain item for key
 	 */
     class func delete(key: String) -> Bool {
         let query = [
