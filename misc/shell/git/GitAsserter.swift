@@ -4,11 +4,11 @@ import "git/GitParser.applescript"
 import "git/GitModifier.applescript"
 class GitAsserter{
 	/*
-	* Asserts if a folder has a git repository
-	* Example: is_git_repo("~/test/.git/")--true/false
-	* Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
-	* Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
-	*/
+	 * Asserts if a folder has a git repository
+	 * Example: is_git_repo("~/test/.git/")--true/false
+	 * Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
+	 * Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
+	 */
 	func isGitRepo(filePath:String)->Bool{
 		do{
 			try GitParsers.status(filePath, "")
@@ -53,7 +53,6 @@ class GitAsserter{
 		let hasCommits:Bool = (cherryResult.count > 0)
 		return hasCommits
 	}
-	
 	/*
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
