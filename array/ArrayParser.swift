@@ -1,6 +1,6 @@
 class ArrayParser{
 
-	func array(string:String,seperator:String)->Array{
+	func split(string:String,seperator:String)->Array{
 		return unmMergedPaths.componentsSeparatedByString("\n")
 	}
 }
