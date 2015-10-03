@@ -1,5 +1,6 @@
-//guard is a great way to make a break in your methods
-
+//guard is a great way to make a exit in your methods
+guard let someVal = anotherVal where anotherVal > 0 else {return}
+guard let someVal = anotherVal else {return}
 
 //if condition is met, the variable z only exists inside the if block
 func fooBinding(x: Int?) {
