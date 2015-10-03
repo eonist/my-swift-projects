@@ -46,8 +46,8 @@ class GitParser{
 	 * NOTE: branch: usually "master"
 	 */
 	func cherry(localPath:String, branch:String)->String{
-		set loc = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
-		let shellScript = "cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch
+		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
+		let shellScript:String = "cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch
 		return ShellUtils.run(shellScript)//--TODO: whats the -v, verbose?
 	}
 	
