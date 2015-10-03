@@ -1,9 +1,12 @@
-//merge,append,
-
-func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>) { 
+//
+/**
+ * Merges 2 arrays, changes the left array, the right is untouched
+ */
+func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>)-> { 
     for (k, v) in right { 
         left.updateValue(v, forKey: k) 
     } 
+    return left
 }
 /**
  * combines the key and property pairs of object @param a and @param b 
