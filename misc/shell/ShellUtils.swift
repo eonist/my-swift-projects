@@ -1,27 +1,29 @@
-/**
- * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
- * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
- * TODO: add some explination about what happens line for line
- */
-func run(input: String) -> (output: String, exitCode: Int32) {
-    let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
-        $0 == " "
-    }
-    let task = NSTask()
-    task.launchPath = "/usr/bin/env"
-    task.arguments = arguments
-    task.environment = [
-        "LC_ALL" : "en_US.UTF-8",
-        "HOME" : NSHomeDirectory()
-    ]
-    let pipe = NSPipe()
-    task.standardOutput = pipe
-    task.launch()
-    task.waitUntilExit()
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output: String = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
-    return (output, task.terminationStatus)
+class ShellUtils{
+	/**
+	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
+	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
+	 * TODO: add some explination about what happens line for line
+	 */
+	func run(input: String) -> (output: String, exitCode: Int32) {
+	    let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
+	        $0 == " "
+	    }
+	    let task = NSTask()
+	    task.launchPath = "/usr/bin/env"
+	    task.arguments = arguments
+	    task.environment = [
+	        "LC_ALL" : "en_US.UTF-8",
+	        "HOME" : NSHomeDirectory()
+	    ]
+	    let pipe = NSPipe()
+	    task.standardOutput = pipe
+	    task.launch()
+	    task.waitUntilExit()
+	    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+	    let output: String = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
+	    return (output, task.terminationStatus)
+	}
+	
+	// Example
+	println(shell("git log --oneline").output)
 }
-
-// Example
-println(shell("git log --oneline").output)
