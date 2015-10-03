@@ -38,3 +38,11 @@ if let johnsStreet = john.residence?.address?.street {
 // prints "John's street name is Laurel Street."
 
 john.residence?.address?.buildingIdentifier()?.hasPrefix("The") 
+
+
+
+//nil coalescing operator: ()
+
+let currentColor: UIColor = view.backgroundColor ?? UIColor.whiteColor()
+//If view.backgroundColor is not nil, it is used for the assignment, otherwise what comes to the right of ??
+
