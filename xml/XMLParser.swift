@@ -21,7 +21,7 @@ class XMLParser{
 	 * NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
 	 * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
 	 */
-	func data(xml:String)->Dictionary{
+	class func data(xml:String)->Dictionary{
 		var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 		var traverser = XMLTraverser(data: string )
 		traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
@@ -36,7 +36,7 @@ class XMLParser{
 	 * filePath:"//Users/<path>/someFile.xml"
 	 * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
 	 */
-	func data(#filePath:String)->Dictionary{//# must use param naming
+	class func data(#filePath:String)->Dictionary{//# must use param naming
 		let xml:String = FileParser.string(filePath)
 		data(xml)
 	}
@@ -44,7 +44,7 @@ class XMLParser{
 	 * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
 	 * PARAM URL:"http://www.google.com/feeds/news.xml"
 	 */
-	func data(#URL:String)->Dictionary{//# must use param naming
+	class func data(#URL:String)->Dictionary{//# must use param naming
 	  var result = NetworkParser.string(URL)
 	  if(result.response = "success"){
 	    return xml(result.data)
@@ -60,7 +60,7 @@ class XMLParser{
 	 * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
 	 * EXAMPLE: 
 	 */
-	func xml(data:Dictionary)->String{
+	class func xml(data:Dictionary)->String{
 		var xmlString:String = ""
 		for (nodeName,nodes) in data["."]{
 			for node in nodes{
@@ -75,8 +75,8 @@ class XMLParser{
 	 * PARAM attributes: ["color":"blue","age":"2"]
 	 * PARAM name: the name of the xml node: "item"
 	 */
-	func element(name:String,content:String,attributes:Dictionary)->String{
-		set attributeText to ""
+	class func element(name:String,content:String,attributes:Dictionary)->String{
+		var attributeText = ""
 		for (key,value) in attributes{
 			var attributeText:String +=  (key + "=" + "\"" + value + "\"")
 			if (attribute != attributes.last ){
@@ -84,7 +84,7 @@ class XMLParser{
 			}
 		}
 		var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
-		if (content.length > 0) { //has content
+		if (content.count > 0) { //has content
 			set xmlText to xmlText + ">" + content + "</" + name + ">" //end of xml text
 		else {//no content
 			set xmlText to xmlText + "/>" //end of xml text
