@@ -12,7 +12,7 @@ class GitUtils{
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
-	func manualPull(locaPath, remotePath, branch){
+	func manualPull(locaPath:String, remotePath:String, branch:String){
 		//log ("GitUtil's manual_pull()")
 		GitModifiers.fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
