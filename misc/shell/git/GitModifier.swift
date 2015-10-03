@@ -302,9 +302,7 @@ class GitModifier{
 	func check_out(localRepoPath:String, loc:String, filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
-		if (filePath != " "){
-			shellScript  += " " + filePath
-		}
+		if (filePath != " "){ shellScript  += " " + filePath }
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript)
 	}
