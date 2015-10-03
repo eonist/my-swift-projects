@@ -47,14 +47,15 @@ class GitParser{
 	 */
 	func cherry(localPath:String, branch:String)->String{
 		set loc = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
-		return ShellUtils.run("cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch )//--TODO: whats the -v, verbose?
+		let shellScript = "cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch
+		return ShellUtils.run(shellScript)//--TODO: whats the -v, verbose?
 	}
 	
 	/* 
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
 	 */
-	func unMergedFiles(localPath){
+	func unMergedFiles(localPath:String){
 		var unmMergedPaths = diff(localPath, "--name-only --diff-filter=U")
 		return unmMergedPaths.componentsSeparatedByString("\n")//// :TODO: use some sort of linesToArray method here
 	}
