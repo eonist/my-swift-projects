@@ -1,3 +1,5 @@
+//examples of optional chaining:
+
 if let roomCount = john.residence?.numberOfRooms {
 
 if let johnsStreet = john.residence?.address?.street {
@@ -11,3 +13,13 @@ let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
     print("John's building identifier is \(buildingIdentifier).")
 }
 // prints "John's building identifier is The Larches."
+
+
+if let beginsWithThe =
+    john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
+        if beginsWithThe {
+            print("John's building identifier begins with \"The\".")
+        } else {
+            print("John's building identifier does not begin with \"The\".")
+        }
+}
