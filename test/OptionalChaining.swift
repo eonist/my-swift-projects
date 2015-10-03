@@ -1,0 +1,1 @@
+if let roomCount = john.residence?.numberOfRooms {
