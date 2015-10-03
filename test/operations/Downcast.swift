@@ -52,6 +52,7 @@ if(item as Movie){
 }
 
 
+
 //downcasting in a loop:
 //Because this array is known to contain only Movie instances, you can downcast and unwrap directly to a nonoptional Movie with the forced version of the type cast operator (as!):
 
