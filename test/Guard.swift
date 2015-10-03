@@ -35,3 +35,29 @@ func test(x:Int?){
 	}
 	else return
 }
+
+
+//parsing example using guard:
+func parseJSONWithGuard(data : [String : AnyObject]) throws -> Developer {
+
+    guard let firstname = data["First"] as? String  else {
+        return Developer() // we could return a nil Developer()
+    }
+
+    guard let lastname = data["Last"] as? String else {
+        throw ParseError.BadName // or we could throw a custom exception and handle the error
+    }
+
+    guard let website = data["WebSite"] as? String else {
+        throw ParseError.BadName
+    }
+
+    guard let iosDev = data["iosDeveloper"] as? Bool else {
+        throw ParseError.BadName
+    }
+
+
+
+    return Developer(first: firstname, last: lastname, site: website, ios: iosDev)
+
+}
