@@ -1,5 +1,5 @@
 //Unlike if, guard creates the variable that can be accessed from outside its block. It is useful to unwrap a lot of Optionals.
-
+//guard is greate for parsing data
 //guard is a great way to make a exit in your methods
 guard let someVal = anotherVal where anotherVal > 0 else {return}//if anither val isnt over 0 then exit method
 guard let someVal = anotherVal.item? else {return}//if item doesnt exist then exit your method(works with optional chaining aswell)
