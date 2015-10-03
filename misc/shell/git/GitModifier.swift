@@ -13,7 +13,7 @@ class GitModifier{
     */
    func add(localRepoPath:String, fileName:String)->String{
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
-   	if (StringAsserters.isWrappedWith(fileName, "\"") = false) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   	if (!StringAsserters.isWrappedWith(fileName, "\"")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
    		fileName = StringModifer.wrapWith(fileName,"'") 
    	}
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
