@@ -39,56 +39,35 @@ $n - n is a digit. Back referencing to a capture group. n must be >= 0 and not g
 
 \b - Word boundary, if outside of a [Set]. BACKSPACE, if within a [Set].
 
-\BNot word boundary.
+\B - Not word boundary.
 
-\s
+\s - White space character.
 
-White space character.
+\S - Non-white space character.
 
-\S
-Non-white space character.
+\d - Digit character.
 
-\d
+\D - Non-digit character.
 
-Digit character.
+\w - Word character.
 
-\D
+\W - Non-word character.
 
-Non-digit character.
+**Groups and Ranges**
 
-\w
-Word character.
+(...) - Capturing parentheses (capturing group).
 
-\W
+(?:...) - Non-capturing parentheses. Matches but doesn’t capture. Somewhat more efficient than capturing parentheses.
 
-Non-word character.
+(?!...) -Negative look-ahead. True if the parenthesized pattern does not match at the current input position.
 
-Groups and Ranges
+[...] - Any one character in the set.
 
-(...)
+[^...] - Negated set. Not any one in the set.
 
-Capturing parentheses (capturing group).
-
-(?:...)
-Non-capturing parentheses. Matches but doesn’t capture. Somewhat more efficient than capturing parentheses.
-
-(?!...)
-Negative look-ahead. True if the parenthesized pattern does not match at the current input position.
-
-[...]
-
-Any one character in the set.
-
-[^...]
-Negated set. Not any one in the set.
-
-Useful Examples
-
-m[^o] matches any “m” followed by anything other than “o”
-
-m(?!o) matches any “m” (and only “m”) not followed by “o”
-
-(?<=,|^)([^,]*)(,\1)+(?=,|$) matches consecutive duplicates from a comma-delimited list1
-
-<([a-z][a-z0-9]*)\b[^>]*>(.*?)</\1> matches any HTML or XML tags1
+**Useful Examples**
+m[^o] - matches any “m” followed by anything other than “o”
+m(?!o) - matches any “m” (and only “m”) not followed by “o”
+(?<=,|^)([^,]*)(,\1)+(?=,|$) - matches consecutive duplicates from a comma-delimited list1
+<([a-z][a-z0-9]*)\b[^>]*>(.*?)</\1> - matches any HTML or XML tags1
 1 From http://www.regular-expressions.info/duplicatelines.html by Jan Goyvaerts.
