@@ -3,6 +3,7 @@ import Security
 class KeyChainParser {
     /**
 	  * Save keychain data for key
+	  * TODO: move to KeyChainModifier.swift
 	  */
     class func save(key: String, data: NSData) -> Bool {
         let query = [
@@ -32,6 +33,7 @@ class KeyChainParser {
     }
 	/**
 	 * Deletes a keychain item for key
+	 * TODO: move to KeyChainModifier.swift
 	 */
     class func delete(key: String) -> Bool {
         let query = [
@@ -41,7 +43,8 @@ class KeyChainParser {
         return status == noErr
     }
     /**
-	  * 
+	  * what does this method do? research needed
+	  * TODO: move to KeyChainModifier.swift
 	  */
     class func clear() -> Bool {
         let query = [ kSecClass as String : kSecClassGenericPassword ]
