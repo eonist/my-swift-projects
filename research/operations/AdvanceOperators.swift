@@ -20,3 +20,16 @@ let anotherVector = Vector2D(x: 2.0, y: 4.0)
 let combinedVector = vector + anotherVector//amazing!!!
 // combinedVector is a Vector2D instance with values of (5.0, 5.0)
 //This example adds together the vectors (3.0, 1.0) and (2.0, 4.0) to make the vector (5.0, 5.0), as illustrated below.
+
+//You implement a prefix or postfix unary operator by writing the prefix or postfix modifier before the func keyword when declaring the operator function:
+
+
+
+prefix func - (vector: Vector2D) -> Vector2D {
+    return Vector2D(x: -vector.x, y: -vector.y)
+}
+//
+//The example above implements the unary minus operator (-a) for Vector2D instances. The unary minus operator is a prefix operator, and so this function has to be qualified with the prefix modifier.
+
+//For simple numeric values, the unary minus operator converts positive numbers into their negative equivalent and vice versa. The corresponding implementation for Vector2D instances performs this operation on both the x and y properties:
+
