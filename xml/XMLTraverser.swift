@@ -12,7 +12,7 @@ class XMLTraverser: NSObject, NSXMLParser{
     /*
 	  * enter node
 	  */
-    class func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
+    func parser(parser: NSXMLParser, didStartElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
       var tempParent:Dictionary = openParents.last
 		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
 		tempNode = ["@":attributes]
@@ -29,13 +29,13 @@ class XMLTraverser: NSObject, NSXMLParser{
     /*
 	  * found string content
 	  */
-    class func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
 		stringContent += foundCharacters
     }
 	 /*
 	  * exit node
 	  */
-    class func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
 	   if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
 			if(!stringContent.isEmpty){
 				tempNode["."] = stringContent
@@ -44,17 +44,17 @@ class XMLTraverser: NSObject, NSXMLParser{
 			openParents.removeLast()//you close a parent
 		}
 		hasClosed = true
-	 }
+	}
     /*
 	  * error
 	  */
-    class func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
+    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
         //not needed
     }
     /*
 	  * complete
 	  */
-    class func parserDidEndDocument(parser: NSXMLParser) {
+    func parserDidEndDocument(parser: NSXMLParser) {
         //not needed
     }
 }
