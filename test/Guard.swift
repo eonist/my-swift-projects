@@ -22,5 +22,5 @@ func fooGuard(x: Int?) {
 //an alternative:
 
 func test(x:Int?){
-	let x:Int = x > 0 ? 
+	let x:Int = x > 0 ? return : x
 }
