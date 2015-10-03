@@ -2,7 +2,7 @@ class NetworkParser{
 	/**
 	 * Returns a string for a URL
 	 */
-	func string(URL:String)->String{
+	class func string(URL:String)->String{
 		let theURL = NSURL(string: URL)
 		let rssUrlRequest:NSURLRequest = NSURLRequest(URL:theURL!)
 	 	let queue:NSOperationQueue = NSOperationQueue()
