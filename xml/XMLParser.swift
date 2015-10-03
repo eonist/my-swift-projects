@@ -78,16 +78,16 @@ class XMLParser{
 	class func element(name:String,content:String,attributes:Dictionary)->String{
 		var attributeText = ""
 		for (key,value) in attributes{
-			var attributeText:String +=  (key + "=" + "\"" + value + "\"")
+			attributeText  (key + "=" + "\"" + value + "\"")
 			if (attribute != attributes.last ){
-				set attributeText to attributeText + " " //append a space after each key value pair, unless its at the end
+				attributeText += " " //append a space after each key value pair, unless its at the end
 			}
 		}
 		var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
 		if (content.count > 0) { //has content
-			set xmlText to xmlText + ">" + content + "</" + name + ">" //end of xml text
+			xmlText += ">" + content + "</" + name + ">" //end of xml text
 		else {//no content
-			set xmlText to xmlText + "/>" //end of xml text
+			xmlText += "/>" //end of xml text
 		}
 		return xmlText
 	}
