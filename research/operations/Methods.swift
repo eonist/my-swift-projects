@@ -1,3 +1,5 @@
+//priv,internal,public :https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID3
+
 func someFunction(name:String,var key:String)->String{//params are constant by default, to make the mutable add the var infront of the param
 	//doSomething
 	key = key + "c"
