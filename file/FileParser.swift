@@ -14,6 +14,6 @@ func string(filePath:String)->String{
  * Returns the project resource folder
  * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
  */
-func resourcePath(){
+func resourcePath()->String{
 	return NSBundle.mainBundle().resourcePath
 }

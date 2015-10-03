@@ -1,15 +1,16 @@
 //
 /**
  * Merges 2 arrays, changes the left array, the right is untouched
+ * Returns the left dictionary for convenience purposes
  */
-func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>)-> { 
+func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>)-> Dictionary<KeyType, ValueType>{ 
     for (k, v) in right { 
         left.updateValue(v, forKey: k) 
     } 
     return left
 }
 /**
- * combines the key and property pairs of object @param a and @param b 
+ * Combines the key and property pairs of object @param a and @param b 
  * @Note: if key and property pairs have the same key the key from @param b takes precedence
  * @Note: If the @param a and @param b both specify arrays, the elements of that array are concatenated // :TODO: test if they also merge?
  * @Example:
