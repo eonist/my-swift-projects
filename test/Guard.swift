@@ -21,3 +21,6 @@ func fooGuard(x: Int?) {
 
 //an alternative:
 
+func test(x:Int?){
+	let x:Int = x > 0 ? 
+}
