@@ -49,3 +49,9 @@ class KeyChainParser {
         return status == noErr
     }
 }
+
+//examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
+
+
+
+
