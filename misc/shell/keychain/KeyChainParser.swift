@@ -1,8 +1,5 @@
-//add documentation and examples
-
 import UIKit
 import Security
-
 class KeyChainParser {
     /**
 	  * 
@@ -12,11 +9,8 @@ class KeyChainParser {
             kSecClass as String       : kSecClassGenericPassword as String,
             kSecAttrAccount as String : key,
             kSecValueData as String   : data ]
-        
         SecItemDelete(query as CFDictionaryRef)
-        
         let status: OSStatus = SecItemAdd(query as CFDictionaryRef, nil)
-        
         return status == noErr
     }
 	/**
@@ -28,11 +22,8 @@ class KeyChainParser {
             kSecAttrAccount as String : key,
             kSecReturnData as String  : kCFBooleanTrue,
             kSecMatchLimit as String  : kSecMatchLimitOne ]
-        
         var dataTypeRef :Unmanaged<AnyObject>?
-        
-        let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
-        
+        let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)        
         if status == noErr {
             return (dataTypeRef!.takeRetainedValue() as NSData)
         } else {
@@ -46,19 +37,15 @@ class KeyChainParser {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
             kSecAttrAccount as String : key ]
-        
         let status: OSStatus = SecItemDelete(query as CFDictionaryRef)
-        
         return status == noErr
     }
-    
-    
+    /**
+	  * 
+	  */
     class func clear() -> Bool {
         let query = [ kSecClass as String : kSecClassGenericPassword ]
-        
         let status: OSStatus = SecItemDelete(query as CFDictionaryRef)
-        
         return status == noErr
     }
-    
 }
