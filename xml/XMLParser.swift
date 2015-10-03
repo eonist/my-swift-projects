@@ -96,6 +96,6 @@ class XMLParser{
 	 * 
 	 */
 	func children(dictionary:Dictionary){
-
+		
 	}
 }
