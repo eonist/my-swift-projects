@@ -30,9 +30,9 @@ class GitParser{
 		return ShellUtils.run(shellScript)
 	}
 	/*
-	 *Returns https://github.com/user/repository.git
+	 * Returns https://github.com/user/repository.git
 	 */
-	func originUrl(localPath:String){
+	func originUrl(localPath:String)->String{
 		set shellScript = "cd " + localPath + ";" + gitPath + "git config --get remote.origin.url"
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript)
@@ -45,7 +45,7 @@ class GitParser{
 	 * Caution: if you use git add with https login and pass, you need to run "git remote update" in order for the above note to work
 	 * NOTE: branch: usually "master"
 	 */
-	func cherry(localPath, branch){
+	func cherry(localPath:String, branch:String)->String{
 		set loc = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
 		return ShellUtils.run("cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch )//--TODO: whats the -v, verbose?
 	}
