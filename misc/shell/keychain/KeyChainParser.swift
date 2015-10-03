@@ -19,7 +19,9 @@ class KeyChainParser {
         
         return status == noErr
     }
-    jd2	
+	/**
+	 * 
+	 */	
     class func load(key: String) -> NSData? {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
@@ -37,7 +39,9 @@ class KeyChainParser {
             return nil
         }
     }
-    
+	/**
+	 * 
+	 */
     class func delete(key: String) -> Bool {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
