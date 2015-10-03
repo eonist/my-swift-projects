@@ -8,7 +8,6 @@ class XMLTraverser: NSObject, NSXMLParser{
 	var root:Dictionary = [".":[:]]
 	var openParents:Array = [root["."]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
-    
     // MARK: - delegate handlers
     /*
 	  * enter node
