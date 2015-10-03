@@ -4,7 +4,9 @@ import UIKit
 import Security
 
 class KeyChainParser {
-    
+    /**
+	  * 
+	  */
     class func save(key: String, data: NSData) -> Bool {
         let query = [
             kSecClass as String       : kSecClassGenericPassword as String,
