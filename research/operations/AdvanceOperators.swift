@@ -33,3 +33,10 @@ prefix func - (vector: Vector2D) -> Vector2D {
 
 //For simple numeric values, the unary minus operator converts positive numbers into their negative equivalent and vice versa. The corresponding implementation for Vector2D instances performs this operation on both the x and y properties:
 
+
+let positive = Vector2D(x: 3.0, y: 4.0)
+let negative = -positive
+// negative is a Vector2D instance with values of (-3.0, -4.0)
+let alsoPositive = -negative
+// alsoPositive is a Vector2D instance with values of (3.0, 4.0)
+
