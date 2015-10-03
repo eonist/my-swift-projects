@@ -96,6 +96,9 @@ class XMLParser{
 	 * 
 	 */
 	func children(dictionary:Dictionary){
-		
+		var theChildren:Array = []
+		for (key,value) in dictionary{
+			
+		}
 	}
 }
