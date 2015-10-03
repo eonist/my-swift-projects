@@ -2,7 +2,7 @@ import UIKit
 import Security
 class KeyChainParser {
     /**
-	  * 
+	  * Save keychain data for key
 	  */
     class func save(key: String, data: NSData) -> Bool {
         let query = [
