@@ -1,4 +1,4 @@
-//if condition is met, the variable x only exists inside the if block
+//if condition is met, the variable z only exists inside the if block
 func fooBinding(x: Int?) {
     if let z = x where z > 0 {
         // Do stuff with x
@@ -8,7 +8,7 @@ func fooBinding(x: Int?) {
     // Value requirements not met, do something
 }
 
-//if condition is met the variable x is also avilable outside the guard clause
+//if condition is met the variable z is also avilable outside the guard clause
 func fooGuard(x: Int?) {
     guard let z = x where z > 0 else {
         // Value requirements not met, do something
@@ -19,11 +19,13 @@ func fooGuard(x: Int?) {
     z.description
 }
 
-//an alternative:
+//an alternative: (now z is available outside the condition block aswell)
 
 func test(x:Int?){
+	let z:Int?
 	if x > 0{ 
-		x.description
+		z = x;
+		z.description
 	}
 	else return
 }
