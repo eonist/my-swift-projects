@@ -1,6 +1,5 @@
 //add documentation and examples
 
-
 import UIKit
 import Security
 
