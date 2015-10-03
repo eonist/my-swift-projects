@@ -74,6 +74,7 @@ class XMLParser{
 	 * PARAM content: text
 	 * PARAM attributes: ["color":"blue","age":"2"]
 	 * PARAM name: the name of the xml node: "item"
+	 * TODO: move to internal util class?
 	 */
 	func element(name:String,content:String,attributes:Dictionary)->String{
 		var attributeText = ""
@@ -90,5 +91,11 @@ class XMLParser{
 			xmlText += "/>" //end of xml text
 		}
 		return xmlText
+	}
+	/**
+	 * 
+	 */
+	func children(dictionary:Dictionary){
+
 	}
 }
