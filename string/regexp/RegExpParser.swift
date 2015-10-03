@@ -4,7 +4,7 @@ class RegExpParser{
 	 * EXAMPLE: match("£4$9", "[0-9]", text: string)//Output: [4, 9]
 	 * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
 	 */
-	func match(text: String!, pattern: String!, options:Array = []) -> [String] {
+	class func match(text: String!, pattern: String!, options:Array = []) -> [String] {
 	    do {
 	        let regex = try NSRegularExpression(pattern: regex, options: [])
 	        let nsString = text as NSString

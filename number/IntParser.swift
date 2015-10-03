@@ -2,7 +2,7 @@ class IntParser{
 	/**
 	 * 
 	 */
-	func kind(theInt:Int)->Int{
+	class func kind(theInt:Int)->Int{
         switch theInt {
 	        case 0:
 	            return "Zero"

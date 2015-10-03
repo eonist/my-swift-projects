@@ -10,7 +10,7 @@ class RegExpModifier{
 		EXAMPLE: RegExpModifier.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
 	 * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
 	 */
-	func replace(string: String!, pattern: String!,replacement:String,options:NSMatchingOptions = nil)-> String{
+	class func replace(string: String!, pattern: String!,replacement:String,options:NSMatchingOptions = nil)-> String{
 		var err: NSError? = nil
 		var expr = NSRegularExpression(pattern: search, options: .CaseInsensitive, error: &err)
 		if (err === nil) { 
