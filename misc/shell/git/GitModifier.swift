@@ -36,7 +36,8 @@ class GitModifier{
     */
    func commit(localRepoPath:String, messageTitle:String, messageDescription:String)->String{
    	//log ("GitModifier's commit(" + message_title + ")")
-   	return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git commit" + " " + "-m" + " '" + messageTitle + "' " + "-m" + " '" + messageDescription + "'")
+   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git commit" + " " + "-m" + " '" + messageTitle + "' " + "-m" + " '" + messageDescription + "'"
+   	return ShellUtils.run(shellScript)
    }
    /*
     * Uploads the current from the local git commits to the remote git
