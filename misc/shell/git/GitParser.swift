@@ -55,9 +55,9 @@ class GitParser{
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
 	 */
-	func unMergedFiles(localPath:String){
-		var unmMergedPaths = diff(localPath, "--name-only --diff-filter=U")
-		return unmMergedPaths.componentsSeparatedByString("\n")//// :TODO: use some sort of linesToArray method here
+	func unMergedFiles(localPath:String)->Array{
+		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
+		return StringParser.split(unmMergedPaths)// :TODO: use some sort of linesToArray method here
 	}
 	/*
 	 * "git diff --name-only --diff-filter=U" --returns a list of unmerged files
@@ -66,11 +66,8 @@ class GitParser{
 	 * NOTE: git diff does not reurn a result if a file is added
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
-	func diff(localRepoPath, cmd){
-		return ShellUtils.run( "cd " + localRepoPath + ";" + gitPath + "git diff " + cmd)
+	func diff(localRepoPath, cmd)->String{
+		let shellScript:String =  "cd " + localRepoPath + ";" + gitPath + "git diff " + cmd
+		return ShellUtils.run(shellScript)
 	}
 }
-
-
-//continue here, clean up the above class
-
