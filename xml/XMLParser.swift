@@ -23,7 +23,7 @@ class XMLParser{
 	 */
 	class func data(xml:String)->Dictionary{
 		var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
-		var traverser = XMLTraverser(data: string )
+		var traverser:XMLTraverser = XMLTraverser(data: string )
 		traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
 	   if(traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
 	   	return traverser.root//the root dictionary
@@ -38,18 +38,18 @@ class XMLParser{
 	 */
 	class func data(#filePath:String)->Dictionary{//# must use param naming
 		let xml:String = FileParser.string(filePath)
-		data(xml)
+		return data(xml)
 	}
 	/*
 	 * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
 	 * PARAM URL:"http://www.google.com/feeds/news.xml"
 	 */
 	class func data(#URL:String)->Dictionary{//# must use param naming
-	  var result = NetworkParser.string(URL)
+	  let result:String = NetworkParser.string(URL)
 	  if(result.response = "success"){
 	    return xml(result.data)
 	  }else{
-		 print(result.error)
+		 //print(result.error)
 		 return nil
 	  }
 	}
