@@ -75,7 +75,7 @@ class XMLParser{
 	 * PARAM attributes: ["color":"blue","age":"2"]
 	 * PARAM name: the name of the xml node: "item"
 	 */
-	class func element(name:String,content:String,attributes:Dictionary)->String{
+	func element(name:String,content:String,attributes:Dictionary)->String{
 		var attributeText = ""
 		for (key,value) in attributes{
 			attributeText  (key + "=" + "\"" + value + "\"")
