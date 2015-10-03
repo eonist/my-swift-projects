@@ -93,12 +93,13 @@ class XMLParser{
 		return xmlText
 	}
 	/**
-	 * 
+	 * Returns all children from the content of an xml node
 	 */
-	func children(dictionary:Dictionary){
+	class func children(dictionary:Dictionary)->Array{
 		var theChildren:Array = []
 		for value in dictionary.values{
-			
+			theChildren += value
 		}
+		return theChildren
 	}
 }
