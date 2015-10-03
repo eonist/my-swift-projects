@@ -1,5 +1,5 @@
 //guard is a great way to make a break in your methods
-x > 0 ? 
+
 
 //if condition is met, the variable z only exists inside the if block
 func fooBinding(x: Int?) {
