@@ -4,7 +4,7 @@ class NetworkAsserter {
 	 * Asserts if the device is connected to internet
 	 * NOTE: works in IOS and OSX
 	 */
-	func isConnectedToInternet()->Bool{
+	class func isConnectedToInternet()->Bool{
 	  let url = NSURL(string: "http://google.com/")
 	  let request = NSMutableURLRequest(URL: url!)
 	  request.HTTPMethod = "HEAD"
