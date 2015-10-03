@@ -2,9 +2,8 @@ import "git/GitModifier.applescript"
 import "file/ScriptLoader.scpt"
 import "git/GitParser.applescript"
 import "git/GitAsserter.applescript"
-//continue here
 class GitUtils{
-	var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
+	class var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
 	/*
 	 * Manual pull
 	 * CAUTION: its best practice to always commit any uncommited files before you attempt to pull. 
@@ -15,11 +14,11 @@ class GitUtils{
 	func manualPull(locaPath:String, remotePath:String, branch:String){
 		//log ("GitUtil's manual_pull()")
 		GitModifiers.fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
-		let isRemoteBranchAhead to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+		let isRemoteBranchAhead:Bool to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 		//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			//log tab & "remote branch is ahead, so there is something to merge"
-			GitModifiers.merge(localPath, branch, "origin/" & branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
+			GitModifiers.merge(localPath, branch, "origin/" + branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
 		}else{
 			//log tab & "nothing to merge, local branch is up-to-date"
 		}
