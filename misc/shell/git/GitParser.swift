@@ -10,7 +10,7 @@ class GitParser{
 	 * NOTE: Appending -s simplifies the ret msg or you can also use --porcelain which does the same
 	 * NOTE: make the option param optional with an if clause
 	 */
-	func status(localPath, option){
+	func status(localPath:String, option:String){
 		//--log "localPath: " + localPath
 		return ShellUtils.run("cd " + localPath + ";" + gitPath + "git status" + " " + option
 	}
