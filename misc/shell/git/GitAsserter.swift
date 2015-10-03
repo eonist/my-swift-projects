@@ -21,7 +21,7 @@ class GitAsserter{
 	/*
 	 * 
 	 */
-	func hasRemoteRepoAttached(filePath, branch)->Bool{
+	func hasRemoteRepoAttached(filePath:String, branch:String)->Bool{
 		do{
 			try GitParsers.status(filePath, "origin" & "/" & branch)
 			return true
@@ -33,30 +33,31 @@ class GitAsserter{
 	/*
 	 * Asserts if a remote branch is ahead of a local branch
 	 */
-	func isRemoteBranchAhead(localPath, branch)->Bool{
+	func isRemoteBranchAhead(localPath:String, branch:String)->Bool{
 		//--log "GitAsserter's is_remote_branch_ahead()"
 		let theLog:String = GitParsers.doLog(localPath, "--oneline " & branch & ".." & "origin" & "/" & branch) //--move this to the gitparser as a ref
 		//--log the_log
 		let logList:Array = ListParser.paragraphs(theLog)
-		return logList.count > 0
+		let isAhead:Bool = logList.count > 0
+		return isAhead
 	}
 	/*
 	 * you could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
-	func hasLocalCommits(localRepoPath, branch)->Bool{
+	func hasLocalCommits(localRepoPath:String, branch:String)->Bool{
 		//--log "GitAsserter's has_local_commits()"
 		//--move the bellow to gitModifier?
 		GitModifiers.gitRemoteUpdate(localPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
 		let cherryResult:Array = GitParsers.cherry(localPath, branch)
 		//--log "cherry_result: " & cherry_result
-		let hasCommits = (cherryResult.count > 0)
+		let hasCommits:Bool = (cherryResult.count > 0)
 		return hasCommits
 	}
 	
 	/*
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
-	func hasUnMergePaths(localPath)->Bool{
+	func hasUnMergePaths(localPath:String)->Bool{
 		//log length of GitParser's unmerged_files(local_path)
 		return GitParser.unmergedFiles(localPath).count > 0
 	}
