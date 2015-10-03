@@ -32,20 +32,14 @@ $ End of a line.
 
 **Character Classes**
 
-$n n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than the number of capture groups. $ not followed by a digit has no special meaning.
+$n - n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than the number of capture groups. $ not followed by a digit has no special meaning.
 
-\
-
-Treat the following character as a literal, suppressing any special meaning.
+\ - Treat the following character as a literal, suppressing any special meaning.
 
 
-\b
+\b - Word boundary, if outside of a [Set]. BACKSPACE, if within a [Set].
 
-Word boundary, if outside of a [Set]. BACKSPACE, if within a [Set].
-
-\B
-
-Not word boundary.
+\BNot word boundary.
 
 \s
 
