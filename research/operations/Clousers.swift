@@ -17,3 +17,16 @@ someFunctionThatTakesAClosure() {
 }
 
 
+//auto clousures:
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+// prints "5"
+ 
+let customerProvider = { customersInLine.removeAtIndex(0) }
+print(customersInLine.count)
+// prints "5"
+ 
+print("Now serving \(customerProvider())!")
+// prints "Now serving Chris!"
+print(customersInLine.count)
+// prints "4"
