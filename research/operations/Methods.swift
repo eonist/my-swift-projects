@@ -135,7 +135,7 @@ struct TrackedString {
  
  
  //You can make the structure’s numberOfEdits property getter public, and its property setter private, by combining the public and private(set) access level modifiers:
- 
+
  public struct TrackedString {
     public private(set) var numberOfEdits = 0
     public var value: String = "" {
@@ -149,4 +149,8 @@ struct TrackedString {
 
 //Variadic Parameters
 
-//
+//A variadic parameter accepts zero or more values of a specified type. You use a variadic parameter to specify that the parameter can be passed a varying number of input values when the function is called. Write variadic parameters by inserting three period characters (...) after the parameter’s type name.
+
+//The values passed to a variadic parameter are made available within the function’s body as an array of the appropriate type. For example, a variadic parameter with a name of numbers and a type of Double... is made available within the function’s body as a constant array called numbers of type [Double].
+
+//The example below calculates the arithmetic mean (also known as the average) for a list of numbers of any length
