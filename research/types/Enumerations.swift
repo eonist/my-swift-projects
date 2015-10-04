@@ -22,3 +22,6 @@ class EnumTest{//enumerations:
 			break;
 	}
 }
+enum Planet {
+    case Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
+}
