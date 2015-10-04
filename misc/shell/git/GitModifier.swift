@@ -75,7 +75,7 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   class func reset(localRepoPath:String, fileName:String)->String{
+   class func reset(localRepoPath:String, _ fileName:String)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript)
    }
@@ -100,7 +100,7 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   class func pull(localRepoPath:String, remotePath:String, userName:String, userPassword:String)->String{ //--TODO: add branch here
+   class func pull(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
    	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
    	let targetBranch:String = "master" //--master branch
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git pull" + " " + remoteLocation + " " + targetBranch
