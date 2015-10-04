@@ -34,3 +34,12 @@ let max = (x < y) ? y : x ; // So max = 20
 
 //semi shorthand, you cant do if (true) //do something in swift,but you could do:
 if num == 0 { temp = 0 }
+
+
+//Not identical to (!==)
+//Use these operators to check whether two constants or variables refer to the same single instance:
+
+if tenEighty === alsoTenEighty {
+    print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
+}
+// prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."
