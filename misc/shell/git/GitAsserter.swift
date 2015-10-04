@@ -33,7 +33,7 @@ class GitAsserter{
 	/*
 	 * Asserts if a remote branch is ahead of a local branch
 	 */
-	class func isRemoteBranchAhead(localPath:String, branch:String)->Bool{
+	class func isRemoteBranchAhead(localPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's is_remote_branch_ahead()"
 		let theLog:String = GitParsers.doLog(localPath, "--oneline " & branch & ".." & "origin" & "/" & branch) //--move this to the gitparser as a ref
 		//--log the_log
@@ -44,7 +44,7 @@ class GitAsserter{
 	/*
 	 * you could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
-	class func hasLocalCommits(localRepoPath:String, branch:String)->Bool{
+	class func hasLocalCommits(localRepoPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's has_local_commits()"
 		//--move the bellow to gitModifier?
 		GitModifiers.gitRemoteUpdate(localPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
