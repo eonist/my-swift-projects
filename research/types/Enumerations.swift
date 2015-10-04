@@ -25,3 +25,7 @@ class EnumTest{//enumerations:
 enum Planet {
     case Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
+
+enum Planet: Int {
+    case Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
+}
