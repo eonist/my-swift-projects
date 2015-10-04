@@ -46,3 +46,4 @@ func serveCustomer(@autoclosure customerProvider: () -> String) {
 }
 serveCustomer(customersInLine.removeAtIndex(0))
 // prints "Now serving Ewa!"
+//NOTE Overusing autoclosures can make your code hard to understand. The context and function name should make it clear that evaluation is being deferred.
