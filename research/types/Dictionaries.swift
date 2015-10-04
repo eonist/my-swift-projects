@@ -1,4 +1,10 @@
 //dictionaries are like associative arrays
+//the following two declarations are equivalent:
+
+let someDictionary: [String: Int] = ["Alex": 31, "Paul": 39]
+let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
+
+
 var theDict=["color":"blue","type":"car"]
 printin("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values

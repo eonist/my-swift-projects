@@ -1,4 +1,13 @@
 //array
+
+
+the following two declarations are equivalent:
+
+let someArray: Array<String> = ["Alex", "Brian", "Dave"]
+let someArray: [String] = ["Alex", "Brian", "Dave"]
+
+
+
 var someArray:Array = [1,2,3]//mutable
 let stringArray = ["a","some","this"]//immutable
 var anotherArray:[String]
@@ -69,3 +78,9 @@ totalCount//num of chars of all items in array
 //fast map reduce:
 let totalLength = colorLengths.reduce(0) { $0 + $1 }
 totalLength//num of chars of all items in array
+
+
+//multi dim:
+//You can create multidimensional arrays by nesting pairs of square brackets, where the name of the base type of the elements is contained in the innermost pair of square brackets. For example, you can create a three-dimensional array of integers using three sets of square brackets:
+
+var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
