@@ -44,3 +44,23 @@ struct Point {
     }
 }
 
+//Mutating methods for enumerations can set the implicit self parameter to be a different case from the same enumeration:
+
+enum TriStateSwitch {
+    case Off, Low, High
+    mutating func next() {
+        switch self {
+        case Off:
+            self = Low
+        case Low:
+            self = High
+        case High:
+            self = Off
+        }
+    }
+}
+var ovenLight = TriStateSwitch.Low
+ovenLight.next()
+// ovenLight is now equal to .High
+ovenLight.next()
+// ovenLight is now equal to .Off
