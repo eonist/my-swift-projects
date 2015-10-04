@@ -31,10 +31,18 @@ print("Now serving \(customerProvider())!")
 print(customersInLine.count)
 // prints "4"
 
-//qsimolified:
+//simolified:
 // customersInLine is ["Alex", "Ewa", "Barry", "Daniella"]
 func serveCustomer(customerProvider: () -> String) {
     print("Now serving \(customerProvider())!")
 }
 serveCustomer( { customersInLine.removeAtIndex(0) } )
 // prints "Now serving Alex!"
+
+//shorter version with autoclousures:
+//customersInLine is ["Ewa", "Barry", "Daniella"]
+func serveCustomer(@autoclosure customerProvider: () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serveCustomer(customersInLine.removeAtIndex(0))
+// prints "Now serving Ewa!"
