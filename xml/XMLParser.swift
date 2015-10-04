@@ -76,7 +76,7 @@ class XMLParser{
 	 * PARAM name: the name of the xml node: "item"
 	 * TODO: move to internal util class?
 	 */
-	func element(name:String,content:String,attributes:Dictionary)->String{
+	func element(name:String,_ content:String,_ attributes:Dictionary)->String{
 		var attributeText = ""
 		for (key,value) in attributes{
 			attributeText  (key + "=" + "\"" + value + "\"")
