@@ -6,10 +6,7 @@ class KeyChainParser {
 	  * TODO: move to KeyChainModifier.swift
 	  */
     class func save(key: String, _data: NSData) -> Bool {
-        let query = [
-            kSecClass as String       : kSecClassGenericPassword as String,
-            kSecAttrAccount as String : key,
-            kSecValueData as String   : data ]
+        let query = [kSecClass as String       : kSecClassGenericPassword as String, kSecAttrAccount as String : key,  kSecValueData as String   : data ]
         SecItemDelete(query as CFDictionaryRef)
         let status: OSStatus = SecItemAdd(query as CFDictionaryRef, nil)
         return status == noErr
@@ -18,11 +15,7 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
-        let query = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrAccount as String : key,
-            kSecReturnData as String  : kCFBooleanTrue,
-            kSecMatchLimit as String  : kSecMatchLimitOne ]
+        let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
         var dataTypeRef :Unmanaged<AnyObject>?
         let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)        
         if status == noErr {
@@ -36,9 +29,7 @@ class KeyChainParser {
 	 * TODO: move to KeyChainModifier.swift
 	 */
     class func delete(key: String) -> Bool {
-        let query = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrAccount as String : key ]
+        let query = [ kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key ]
         let status: OSStatus = SecItemDelete(query as CFDictionaryRef)
         return status == noErr
     }
