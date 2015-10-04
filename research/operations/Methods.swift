@@ -80,8 +80,8 @@ println("power(base: 2, exponent: 10) = \(power(base: 2, exponent: 10))")
  
  
  /**
- * modifying a value passed in an param:
- */
+  * modifying a value passed in an param:
+  */
  
  // square function that modifies its argument in the caller
 func square(inout value: Int) {//inout prefix enables the param to be edited directly
@@ -129,6 +129,7 @@ struct TrackedString {
      }
    }
  }
+
  // the access level for the numberOfEdits property is marked with a private(set) modifier to indicate that the property should be settable only from within the same source file as the TrackedString structure’s definition. The property’s getter still has the default access level of internal, but its setter is now private to the source file in which TrackedString is defined
  //This modification tracking is implemented with a didSet property observer on the value property, which increments numberOfEdits every time the value property is set to a new value.
  
