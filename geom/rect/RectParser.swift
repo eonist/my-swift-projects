@@ -62,3 +62,26 @@ struct Cuboid {
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // prints "the volume of fourByFiveByTwo is 40.0"
+
+
+/*
+Modifying Value Types from Within Instance Methods
+
+Structures and enumerations are value types. By default, the properties of a value type cannot be modified from within its instance methods.
+
+However, if you need to modify the properties of your structure or enumeration within a particular method, you can opt in to mutating behavior for that method. The method can then mutate (that is, change) its properties from within the method, and any changes that it makes are written back to the original structure when the method ends. The method can also assign a completely new instance to its implicit self property, and this new instance will replace the existing one when the method ends.
+
+You can opt in to this behavior by placing the mutating keyword before the func keyword for that method:
+
+*/
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveByX(deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveByX(2.0, y: 3.0)
+print("The point is now at (\(somePoint.x), \(somePoint.y))")
+// prints "The point is now at (3.0, 4.0)"
