@@ -18,3 +18,14 @@ let someInstance: SomeBaseClass = SomeSubClass()
 someInstance.dynamicType.printClassName()
 // prints "SomeSubClass"
 
+
+
+//Use the identity operators (=== and !==) to test whether an instance’s runtime type is the same as its compile-time type.
+
+if someInstance.dynamicType === someInstance.self {
+    print("The dynamic type of someInstance is SomeBaseCass")
+} else {
+    print("The dynamic type of someInstance isn't SomeBaseClass")
+}
+// prints "The dynamic type of someInstance isn't SomeBaseClass"
+//Use an initializer expression to construct an instance of a type from that type’s metatype value. For class instances, the initializer that’s called must be marked with the required keyword or the entire class marked with the final keyword.
