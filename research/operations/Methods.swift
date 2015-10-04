@@ -198,3 +198,14 @@ let originalString = "hello"
 let paddedString = alignRight(originalString, totalLength: 10, pad: "-")
 // paddedString is equal to "-----hello"
 // originalString is still equal to "hello"
+
+/*
+This example defines a new function called alignRight(_:totalLength:pad:), which aligns an input string to the right edge of a longer output string. Any space on the left is filled with a specified padding character. In this example, the string "hello" is converted to the string "-----hello".
+
+The alignRight(_:totalLength:pad:) function defines the input parameter string to be a variable parameter. This means that string is now available as a local variable, initialized with the passed-in string value, and can be manipulated within the body of the function.
+
+The function starts by working out how many characters need to be added to the left of string in order to right-align it within the overall string. This value is stored in a local constant called amountToPad. If no padding is needed (that is, if amountToPad is less than 1), the function simply returns the input value of string without any padding.
+
+Otherwise, the function creates a new temporary String constant called padString, initialized with the pad character, and adds amountToPad copies of padString to the left of the existing string. (A String value cannot be added on to a Character value, and so the padString constant is used to ensure that both sides of the + operator are String values.)
+
+*/
