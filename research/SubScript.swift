@@ -1,3 +1,4 @@
+//aubscripts enable you to access data via brackets like: instance[2] pr instance["color"] or instance["color",3]
 //NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html#//apple_ref/doc/uid/TP40014097-CH16-ID305
 
 struct TimesTable {
