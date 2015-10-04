@@ -51,6 +51,7 @@ struct AlternativeRect {
     }
 }
 
+//You can simplify the declaration of a read-only computed property by removing the get keyword and its braces
 
 struct Cuboid {
     var width = 0.0, height = 0.0, depth = 0.0
