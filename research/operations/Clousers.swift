@@ -30,3 +30,11 @@ print("Now serving \(customerProvider())!")
 // prints "Now serving Chris!"
 print(customersInLine.count)
 // prints "4"
+
+//qsimolified:
+// customersInLine is ["Alex", "Ewa", "Barry", "Daniella"]
+func serveCustomer(customerProvider: () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serveCustomer( { customersInLine.removeAtIndex(0) } )
+// prints "Now serving Alex!"
