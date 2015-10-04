@@ -43,3 +43,4 @@ struct Point {
         self = Point(x: x + deltaX, y: y + deltaY)
     }
 }
+
