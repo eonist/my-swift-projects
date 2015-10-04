@@ -29,3 +29,18 @@ if someInstance.dynamicType === someInstance.self {
 }
 // prints "The dynamic type of someInstance isn't SomeBaseClass"
 //Use an initializer expression to construct an instance of a type from that type’s metatype value. For class instances, the initializer that’s called must be marked with the required keyword or the entire class marked with the final keyword.
+
+
+//Use an initializer expression to construct an instance of a type from that type’s metatype value. For class instances, the initializer that’s called must be marked with the required keyword or the entire class marked with the final keyword.
+
+class AnotherSubClass: SomeBaseClass {
+    let string: String
+    required init(string: String) {
+        self.string = string
+    }
+    override class func printClassName() {
+        print("AnotherSubClass")
+    }
+}
+let metatype: AnotherSubClass.Type = AnotherSubClass.self
+let anotherInstance = metatype.init(string: "some string")
