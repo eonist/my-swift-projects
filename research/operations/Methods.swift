@@ -209,3 +209,22 @@ The function starts by working out how many characters need to be added to the l
 Otherwise, the function creates a new temporary String constant called padString, initialized with the pad character, and adds amountToPad copies of padString to the left of the existing string. (A String value cannot be added on to a Character value, and so the padString constant is used to ensure that both sides of the + operator are String values.)
 
 */
+
+//NOTE: The changes you make to a variable parameter do not persist beyond the end of each call to the function, and are not visible outside the function’s body. The variable parameter only exists for the lifetime of that function call.
+
+
+
+
+/*
+
+In-Out Parameters
+
+Variable parameters, as described above, can only be changed within the function itself. If you want a function to modify a parameter’s value, and you want those changes to persist after the function call has ended, define that parameter as an in-out parameter instead.
+
+You write an in-out parameter by placing the inout keyword at the start of its parameter definition. An in-out parameter has a value that is passed in to the function, is modified by the function, and is passed back out of the function to replace the original value. For a detailed discussion of the behavior of in-out parameters and associated compiler optimizations, see In-Out Parameters.
+
+You can only pass a variable as the argument for an in-out parameter. You cannot pass a constant or a literal value as the argument, because constants and literals cannot be modified. You place an ampersand (&) directly before a variable’s name when you pass it as an argument to an in-out parameter, to indicate that it can be modified by the function.
+NOTE
+
+In-out parameters cannot have default values, and variadic parameters cannot be marked as inout. If you mark a parameter as inout, it cannot also be marked as var or let.
+*/
