@@ -1,5 +1,5 @@
-Trailing Closures
-
+//Trailing Closures
+//NOTE: //https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94
 func someFunctionThatTakesAClosure(closure: () -> Void) {
     // function body goes here
 }
@@ -15,3 +15,5 @@ someFunctionThatTakesAClosure({
 someFunctionThatTakesAClosure() {
     // trailing closure's body goes here
 }
+
+
