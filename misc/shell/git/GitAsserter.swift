@@ -21,7 +21,7 @@ class GitAsserter{
 	/*
 	 * 
 	 */
-	class func hasRemoteRepoAttached(filePath:String, branch:String)->Bool{
+	class func hasRemoteRepoAttached(filePath:String, _ branch:String)->Bool{
 		do{
 			try GitParsers.status(filePath, "origin" & "/" & branch)
 			return true
