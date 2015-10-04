@@ -20,5 +20,6 @@ class StringModifier{
 		    return s1 > s2
 		}
 		var reversed:String = string.sort(backwards)
+		return reversed
 	}
 } 

@@ -8,7 +8,7 @@ class StringParser{
 	/**
 	 * NOTE: use "\n" to retrive paragraphs
 	 */
-	class func split(string:String,delimiter:String)->Array{
+	class func split(string:String,_ delimiter:String)->Array{
 		return unmMergedPaths.componentsSeparatedByString(delimiter)
 	}
 }
