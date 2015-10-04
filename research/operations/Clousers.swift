@@ -47,3 +47,4 @@ func serveCustomer(@autoclosure customerProvider: () -> String) {
 serveCustomer(customersInLine.removeAtIndex(0))
 // prints "Now serving Ewa!"
 //NOTE Overusing autoclosures can make your code hard to understand. The context and function name should make it clear that evaluation is being deferred.
+//The @autoclosure attribute implies the @noescape attribute, which indicates that the closure is used only within the function. That is, the closure isn’t allowed to be stored in a way that would let it “escape” the scope of the function and be executed after the function returns. If you want an autoclosure that is allowed to escape, use the @autoclosure(escaping) form of the attribute.
