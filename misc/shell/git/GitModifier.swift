@@ -133,7 +133,7 @@ class GitModifier{
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
-   class func attachRemoteRepo(localRepoPath:String, remoteRepoPath:String)->String{
+   class func attachRemoteRepo(localRepoPath:String, _ remoteRepoPath:String)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote add origin" + " " + (quoted form of remoteRepoPath)
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -154,7 +154,7 @@ class GitModifier{
     * NOTE: git clone <repo> <directory>
     * NOTE: 
     */
-   class func clone(remotePath:String, localPath:String)->String{
+   class func clone(remotePath:String, _ localPath:String)->String{
    	let shellScript:String = gitPath + "git clone " + remotePath + " " + localPath
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
@@ -194,7 +194,7 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   class func fetch(localRepoPath:String, remotePath:String, branch:String)->String{
+   class func fetch(localRepoPath:String, _ remotePath:String, _ branch:String)->String{
    	//--log "fetch()"
    	//log ("GitModifier's fetch(" + branch + ")")
    	//--condition
@@ -218,7 +218,7 @@ class GitModifier{
     * # origin/some-feature
     * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
     */
-   class func branch(targetBranch:String, deleteFlag:String){
+   class func branch(targetBranch:String, _ deleteFlag:String){
    	//--complete this method
    }
    /*
@@ -238,7 +238,7 @@ class GitModifier{
     * @param into_branch is the branch you usually checkout before doing the merge
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
-   class func merge(localRepoPath:String, intoBranch:String, fromBranch:String)->String{
+   class func merge(localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
    	//log ("GitModifier's merge()")
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git merge " + intoBranch + " " + fromBranch
    	//--log "shellScript: " + shellScript
@@ -295,7 +295,7 @@ class GitModifier{
     * @param loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
     * @param filePath: can be a relative file path, or the astrix sign for every file "*"
     */
-	class func check_out(localRepoPath:String, loc:String, filePath:String)->String{
+	class func check_out(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
 		if (filePath != " "){ shellScript  += " " + filePath }'

@@ -5,7 +5,7 @@ class KeyChainParser {
 	  * Save keychain data for key
 	  * TODO: move to KeyChainModifier.swift
 	  */
-    class func save(key: String, data: NSData) -> Bool {
+    class func save(key: String, _data: NSData) -> Bool {
         let query = [
             kSecClass as String       : kSecClassGenericPassword as String,
             kSecAttrAccount as String : key,

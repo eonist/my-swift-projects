@@ -10,7 +10,7 @@ class GitParser{
 	 * NOTE: Appending -s simplifies the ret msg or you can also use --porcelain which does the same
 	 * NOTE: make the option param optional with an if clause
 	 */
-	class func status(localPath:String, option:String)->String{
+	class func status(localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
 		let shellScript:String = "cd " + localPath + ";" + gitPath + "git status" + " " + option
 		return ShellUtils.run(shellScript)
@@ -24,7 +24,7 @@ class GitParser{
 	 * NOTE: "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
-	class func doLog(localPath:String, cmd:String)->String{
+	class func doLog(localPath:String, _ cmd:String)->String{
 		let shellScript:String = "cd " + localPath + ";" + gitPath + "git log " + cmd
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript)
@@ -45,7 +45,7 @@ class GitParser{
 	 * Caution: if you use git add with https login and pass, you need to run "git remote update" in order for the above note to work
 	 * NOTE: branch: usually "master"
 	 */
-	class func cherry(localPath:String, branch:String)->String{
+	class func cherry(localPath:String, _ branch:String)->String{
 		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
 		let shellScript:String = "cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch
 		return ShellUtils.run(shellScript)//--TODO: whats the -v, verbose?
@@ -65,7 +65,7 @@ class GitParser{
 	 * NOTE: git diff does not reurn a result if a file is added
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
-	class func diff(localRepoPath, cmd)->String{
+	class func diff(localRepoPath, _ cmd)->String{
 		let shellScript:String =  "cd " + localRepoPath + ";" + gitPath + "git diff " + cmd
 		return ShellUtils.run(shellScript)
 	}
