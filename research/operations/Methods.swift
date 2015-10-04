@@ -166,3 +166,35 @@ arithmeticMean(1, 2, 3, 4, 5)
 // returns 3.0, which is the arithmetic mean of these five numbers
 arithmeticMean(3, 8.25, 18.75)
 // returns 10.0, which is the arithmetic mean of these three numbers
+
+
+
+
+
+
+//Constant and Variable Parameters
+
+/*
+Function parameters are constants by default. Trying to change the value of a function parameter from within the body of that function results in a compile-time error. This means that you can’t change the value of a parameter by mistake.
+
+However, sometimes it is useful for a function to have a variable copy of a parameter’s value to work with. You can avoid defining a new variable yourself within the function by specifying one or more parameters as variable parameters instead. Variable parameters are available as variables rather than as constants, and give a new modifiable copy of the parameter’s value for your function to work with.
+
+Define variable parameters by prefixing the parameter name with the var keyword:
+*/
+
+
+func alignRight(var string: String, totalLength: Int, pad: Character) -> String {
+    let amountToPad = totalLength - string.characters.count
+    if amountToPad < 1 {
+        return string
+    }
+    let padString = String(pad)
+    for _ in 1...amountToPad {
+        string = padString + string
+    }
+    return string
+}
+let originalString = "hello"
+let paddedString = alignRight(originalString, totalLength: 10, pad: "-")
+// paddedString is equal to "-----hello"
+// originalString is still equal to "hello"
