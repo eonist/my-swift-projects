@@ -1,0 +1,3 @@
+func getClass(instance:AnyObject){
+
+}
