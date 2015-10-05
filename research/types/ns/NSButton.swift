@@ -4,4 +4,10 @@ let button = NSButton()
 
 //The above specifies callback on 'self' to be the function
 
-func myAction(obj:AnyObject?)
+func myAction(obj:AnyObject?){
+   print("press")
+      if let btn = obj as? NSButton{
+           print(btn.title)
+      }
+   
+}

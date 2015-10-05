@@ -1,3 +1,8 @@
+//apple help: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/WinPanel/Tasks/SizingPlacingWindows.html
+//aplle refs: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSWindow_Class/index.html#//apple_ref/occ/instm/NSWindow/setTitle:
+
+//round borderless,titleless, etc interface window: https://developer.apple.com/library/mac/samplecode/RoundTransparentWindow/Introduction/Intro.html
+
 //borderless window
 //http://www.cimgf.com/cocoa-code-snippets/nswindow-snippets/
 
