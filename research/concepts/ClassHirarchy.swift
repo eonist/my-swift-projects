@@ -1,5 +1,5 @@
 //here is agood idea: http://stackoverflow.com/questions/25828147/traverse-view-controller-hierarchy-in-swift
-
+//https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html#//apple_ref/doc/uid/TP40014097-CH17-ID193
 
 //You can use the postfix self expression to access a type as a value. For example, SomeClass.self returns SomeClass itself, not an instance of SomeClass. And SomeProtocol.self returns SomeProtocol itself, not an instance of a type that conforms to SomeProtocol at runtime. You can use a dynamicType expression with an instance of a type to access that instance’s dynamic, runtime type as a value, as the following example shows:
 class SomeBaseClass {
