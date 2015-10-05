@@ -55,3 +55,11 @@ import XCPlayground
   //http://practicalswift.com/2014/06/27/a-minimal-webkit-browser-in-30-lines-of-swift/
   
   //
+  
+  
+  
+  
+  let textField =. NSTextView()
+textView.stringvalue = "Some string"
+textView.frame = CGRectMake(10,20,50,400)
+ mywindow.contentView.addSubview(textView)
