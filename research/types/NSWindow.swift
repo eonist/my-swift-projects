@@ -63,3 +63,12 @@ import XCPlayground
 textView.stringvalue = "Some string"
 textView.frame = CGRectMake(10,20,50,400)
  mywindow.contentView.addSubview(textView)
+ 
+ 
+ //http://stackoverflow.com/questions/24224886/correct-way-to-create-nswindow-using-swift-and-cocoa
+ 
+ //http://stackoverflow.com/questions/28031732/create-programmatically-nswindow-in-swift
+ 
+ 
+ //vim
+ http://stackoverflow.com/questions/24068763/create-a-new-window-with-nswindow
