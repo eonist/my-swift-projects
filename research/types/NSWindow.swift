@@ -3,3 +3,7 @@
 
 //custom window: in objc: http://www.cocoawithlove.com/2008/12/drawing-custom-window-on-mac-os-x.html
 
+
+
+//create a win in swift osx: http://stackoverflow.com/questions/24068763/create-a-new-window-with-nswindow
+
