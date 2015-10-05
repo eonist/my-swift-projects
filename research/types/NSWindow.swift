@@ -50,3 +50,8 @@ import XCPlayground
     NSRect(x: 0, y: 0, width: 300, height: 300))
 
   XCPShowView("chart", view)
+  
+  
+  //http://practicalswift.com/2014/06/27/a-minimal-webkit-browser-in-30-lines-of-swift/
+  
+  //
