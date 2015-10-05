@@ -186,3 +186,18 @@ Inheriting between languages
 
  */
  class Player : NSObject, NSCopying, NSCoding {}
+ 
+ 
+ 
+ /**
+ * Accessing Properties
+
+Objective-C property declarations using the @property syntax are imported as Swift properties in the following way:
+
+Properties with the nullability property attributes (nonnull, nullable, and null_resettable) are imported as Swift properties with optional or non-optional type as described in Nullability and Optionals.
+Properties with the readonly property attribute are imported as Swift computed properties with a getter ({ get }).
+Properties with the weak property attribute are imported as Swift properties marked with the weak keyword (weak var).
+Properties with an ownership property attribute other than weak (that is, assign, copy, strong, or unsafe_unretained) are imported as Swift properties with the appropriate storage.
+Atomicity property attributes (atomic and nonatomic) are ignored by Swift. All Swift properties are nonatomic.
+Accessor property attributes (getter= and setter=) are ignored by Swift.
+ */
