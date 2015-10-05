@@ -72,3 +72,19 @@ for movie in someObjects as! [Movie] {
 // Movie: '2001: A Space Odyssey', dir. Stanley Kubrick
 // Movie: 'Moon', dir. Duncan Jones
 // Movie: 'Alien', dir. Ridley Scott
+
+
+//upcasting:
+
+func f(any: Any) { print("Function for Any") }
+func f(int: Int) { print("Function for Int") }
+let x = 10
+f(x)
+// prints "Function for Int"
+ 
+let y: Any = x
+f(y)
+// prints "Function for Any"
+ 
+f(x as Any)
+// prints "Function for Any"
