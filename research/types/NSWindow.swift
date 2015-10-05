@@ -7,3 +7,6 @@
 
 //create a win in swift osx: http://stackoverflow.com/questions/24068763/create-a-new-window-with-nswindow
 
+
+//docs: nswin swift osx: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSWindow_Class/#//apple_ref/occ/instm/NSWindow/initWithContentRect:styleMask:backing:defer:
+
