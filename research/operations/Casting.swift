@@ -88,3 +88,11 @@ f(y)
  
 f(x as Any)
 // prints "Function for Any"
+
+//
+import Foundation
+let myString: NSString = "123"
+if let integerValue = Int(myString as String) {
+    print("\(myString) is the integer \(integerValue)")
+}
+// prints "123 is the integer 123"

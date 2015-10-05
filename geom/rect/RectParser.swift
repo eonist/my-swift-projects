@@ -85,3 +85,12 @@ var somePoint = Point(x: 1.0, y: 1.0)
 somePoint.moveByX(2.0, y: 3.0)
 print("The point is now at (\(somePoint.x), \(somePoint.y))")
 // prints "The point is now at (3.0, 4.0)"
+
+
+//
+let size = CGSize(width: 20, height: 40)
+The overlay also lets you call Foundation functions on structures in a natural way.
+
+let rect = CGRect(x: 50, y: 50, width: 100, height: 100)
+let width = rect.width    // equivalent of CGRectGetWidth(rect)
+let maxX = rect.maxY      // equivalent of CGRectGetMaxY(rect)

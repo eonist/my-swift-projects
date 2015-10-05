@@ -22,4 +22,10 @@ class StringModifier{
 		var reversed:String = string.sort(backwards)
 		return reversed
 	}
+	/**
+	 * 
+	 */
+	func capitalize(string:String)->String{
+		return string.capitalizedString
+	}
 } 
