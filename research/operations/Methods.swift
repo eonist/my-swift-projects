@@ -250,3 +250,22 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 //The example above shows that the original values of someInt and anotherInt are modified by the swapTwoInts(_:_:) function, even though they were originally defined outside of the function.
 
 //NOTE In-out parameters are not the same as returning a value from a function. The swapTwoInts example above does not define a return type or return a value, but it still modifies the values of someInt and anotherInt. In-out parameters are an alternative way for a function to have an effect outside of the scope of its function body.
+
+
+
+//methods can be simplified:
+//The following closure expressions are equivalent:
+
+myFunction {
+    (x: Int, y: Int) -> Int in
+    return x + y
+}
+ 
+myFunction {
+    (x, y) in
+    return x + y
+}
+ 
+myFunction { return $0 + $1 }
+ 
+myFunction { $0 + $1 }
