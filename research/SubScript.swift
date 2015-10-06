@@ -39,3 +39,21 @@ Matrix {
 matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 
+//Subscripts
+
+//Extensions can add new subscripts to an existing type. This example adds an integer subscript to Swift’s built-in Int type. This subscript [n] returns the decimal digit n places in from the right of the number:
+
+123456789[0] returns 9
+123456789[1] returns 8
+//…and so on:
+
+extension Int {
+    subscript(var digitIndex: Int) -> Int {
+        var decimalBase = 1
+        while digitIndex > 0 {
+            decimalBase *= 10
+            --digitIndex
+        }
+        return (self / decimalBase) % 10
+    }
+}
