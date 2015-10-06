@@ -39,3 +39,13 @@ extension Int {
 // Hello!
 // Hello!
 // Hello!
+
+
+//Use trailing closure syntax to make the call more succinct:
+
+3.repetitions {
+    print("Goodbye!")
+}
+// Goodbye!
+// Goodbye!
+// Goodbye!
