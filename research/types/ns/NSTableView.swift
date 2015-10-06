@@ -6,3 +6,5 @@
 
 
 //in ib: http://www.raywenderlich.com/87002/getting-started-with-os-x-and-swift-tutorial-part-1
+
+//apple: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTableView_Class/
