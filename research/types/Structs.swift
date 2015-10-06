@@ -9,3 +9,10 @@ screenLocat1on.x
 screenLocation.y
 // CGRect struct
 var rectangle : CGRect = CGRectMake(10, 10, 400, 400)
+
+
+//
+struct Size {
+    var width = 0.0, height = 0.0
+}
+let twoByTwo = Size(width: 2.0, height: 2.0)
