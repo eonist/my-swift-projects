@@ -34,3 +34,10 @@ john.residence?.address?.buildingIdentifier()?.hasPrefix("The")
 let currentColor: UIColor = view.backgroundColor ?? UIColor.whiteColor()
 //If view.backgroundColor is not nil, it is used for the assignment, otherwise what comes to the right of ??
 
+//Nil Coalescing Operator
+
+//The nil coalescing operator (a ?? b) unwraps an optional a if it contains a value, or returns a default value b if a is nil. The expression a is always of an optional type. The expression b must match the type that is stored inside a.
+
+//The nil coalescing operator is shorthand for the code below:
+
+a != nil ? a! : b
