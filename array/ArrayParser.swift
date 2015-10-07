@@ -18,13 +18,10 @@ class ArrayParser{
         }
         return nil
     }
-    mutating func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
-        var returnArray = self
+    class func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
+        var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         returnArray.insertContentsOf(values, at: Int(startIndex))
         return returnArray
-    }
-    mutating func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:Element)->Array {
-        return splice(startIndex, deleteCount: deleteCount, values: [values])
     }
 }
