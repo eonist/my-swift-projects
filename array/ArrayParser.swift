@@ -10,4 +10,21 @@ class ArrayParser{
 	    }
 	    return -1
 	}
+	class func pop(array:Array)->Element? {
+        let last = self.last
+        if let last = last {
+            array.removeLast()
+            return last
+        }
+        return nil
+    }
+    mutating func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
+        var returnArray = self
+        returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        returnArray.insertContentsOf(values, at: Int(startIndex))
+        return returnArray
+    }
+    mutating func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:Element)->Array {
+        return splice(startIndex, deleteCount: deleteCount, values: [values])
+    }
 }
