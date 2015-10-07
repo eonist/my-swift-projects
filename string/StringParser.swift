@@ -11,8 +11,11 @@ class StringParser{
 	class func split(string:String,_ delimiter:String)->Array{
 		return unmMergedPaths.componentsSeparatedByString(delimiter)
 	}
-	class func frstWord()->String {
-       return self.componentsSeparatedByString(" ")[0]
+	class func firstWord(string:String)->String {
+       return string.componentsSeparatedByString(" ")[0]
    }
+   class lastChar(string:String)->String {
+        return string[string.length()-1]
+    }
     //resolve path extension
 }
