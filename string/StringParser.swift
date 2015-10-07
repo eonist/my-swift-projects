@@ -11,4 +11,5 @@ class StringParser{
 	class func split(string:String,_ delimiter:String)->Array{
 		return unmMergedPaths.componentsSeparatedByString(delimiter)
 	}
+	
 }
