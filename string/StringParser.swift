@@ -17,5 +17,23 @@ class StringParser{
    class lastChar(string:String)->String {
         return string[string.length()-1]
     }
+    class func pop()->Element? {
+        let last = self.last
+        if let last = last {
+            self.removeLast()
+            return last
+        }
+        return nil
+    }
+    mutating func splice(startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
+        var returnArray = self
+        returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        returnArray.insertContentsOf(values, at: Int(startIndex))
+        return returnArray
+    }
+    mutating func splice(startIndex:UInt,deleteCount:UInt, values:Element)->Array {
+        return splice(startIndex, deleteCount: deleteCount, values: [values])
+    }
+}
     //resolve path extension
 }
