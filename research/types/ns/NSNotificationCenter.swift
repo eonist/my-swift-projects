@@ -31,8 +31,9 @@ Note: set it to self and then have the observer determine if its a child via a s
 
 a propsal for 
 
-isChild(target:NSView,child:NSChild){
-	
+isChild(parent:NSView,child:NSChild){
+	loop up the view hirarchy until parent === child.superview then return true
+	else return false
 }
 
 */
