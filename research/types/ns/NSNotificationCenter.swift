@@ -28,6 +28,9 @@ TODO: read about the object in nsnotifactioncenter
 NOTE: or you could set the object to self and let the observer determine if it is a child or not
 
 Note: set it to self and then have the observer determine if its a child via a static method that walks up the view hirarchy
+
+a propsal for isChild(target:NSView,)
+
 */
 
 //Is there a simple way to walk back up the NSView hierarchy (superview of superview of superview of nsview) to the main window or a point in between?
