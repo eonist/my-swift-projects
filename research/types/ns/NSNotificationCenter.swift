@@ -29,7 +29,11 @@ NOTE: or you could set the object to self and let the observer determine if it i
 
 Note: set it to self and then have the observer determine if its a child via a static method that walks up the view hirarchy
 
-a propsal for isChild(target:NSView,)
+a propsal for 
+
+isChild(target:NSView,child:NSChild){
+	
+}
 
 */
 
