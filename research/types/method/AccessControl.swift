@@ -19,7 +19,7 @@ public var somePublicVariable = 0
 internal let someInternalConstant = 0
 private func somePrivateFunction() {}
 
-//no protected in swift, use public and private, you should also use implicit getters and setters, so that you dont inavertedly use a variable. 
+//no protected in swift, use public and private, or set the var as private and employ implicit public getters and setters, so that you dont inavertedly use a variable that you shouldnt have
 
 //https://developer.apple.com/swift/blog/?id=11
 

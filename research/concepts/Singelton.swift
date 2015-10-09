@@ -30,3 +30,4 @@ class Singleton {
 }
 //For more information, see Type Properties in The Swift Programming Language (Swift 2.1).
 
+//find more example of this class
