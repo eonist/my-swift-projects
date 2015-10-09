@@ -36,3 +36,4 @@ var string: String = String(letters)
 print(letters.count) // 4
 print(string) // cafe
 print(string.characters.count) // 4
+countElements("abc")//3
