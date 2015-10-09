@@ -1,3 +1,4 @@
+//https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html#//apple_ref/doc/uid/10000019i
 let button = NSButton()
    button.target = self
    button.action = "myAction:"
