@@ -1,14 +1,12 @@
 // Add an observer that will respond to loginComplete
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMainMenu:) name:@"loginComplete" object:nil];
-
+NSNotificationCenter.defaultCenter.addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil])
 
 // Post a notification to loginComplete
-[[NSNotificationCenter defaultCenter] postNotificationName:@"loginComplete" object:nil];
-
+NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:self)
 
 // the function specified in the same class where we defined the addObserver
-- (void)showMainMenu:(NSNotification *)note {
-    NSLog(@"Received Notification - Someone seems to have logged in"); 
+func showMainMenu(notification:NSNotification) {
+    print("Received Notification - Someone seems to have logged in" + String(notification.object.self))
 }
 
 
