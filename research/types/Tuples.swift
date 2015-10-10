@@ -1,5 +1,5 @@
 class TuppleTest{
-	//tuples almost like objects
+	//tuples are almost like objects
 	var someTuple = ("test",22,10.2,"abc")
 	func testingTuples()->(String,Int){
 		return ("test",55)
@@ -32,3 +32,19 @@ class TuppleTest{
 
 (a, _, (b, c)) = ("test", 9.45, (12, 3))
 // a is "test", b is 12, c is 3, and 9.45 is ignored
+
+
+//Toggle different tuple types
+// This url consists of host name.com and path /12345
+let urlComponents = componentsFromUrlString("http://name.com/12345;param?foo=1&baa=2#fragment")
+
+switch (urlComponents.host, urlComponents.path) {
+case let (.Some(host), .Some(path)):
+    println("This url consists of host \(host) and path \(path)")
+case let (.Some(host), .None):
+    println("This url only has a host \(host)")
+case let (.None, .Some(path)):
+    println("This url only has path \(path). Make sure to add a host!")
+case let (.None, .None):
+    println("This is not a url!")
+}
