@@ -47,9 +47,12 @@ let m1   = MPEG4Movie(resolution .TenEightyProgressive)
 let m2   = QuicktimeMovie(resolutin: .SevenTwentyProgressive)
 let m3  = QuicktimeMovie(resolutin: .TenEightylnterlaced)
 let al  = MP3(bitRate: 128)
-let a2  = 0gg(bitRate: 128)
+let a2  = Ogg(bitRate: 128)
 let a3  = MP3(bitRate: 256)
 let stuff = [m1, a3, m2, a2, m3, a1, "Foobar", 123, false]
+func  (){
+    
+}
 for thing in stuff {
 	if thing is MediaType {
 		let media = thing as MediaType
