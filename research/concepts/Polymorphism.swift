@@ -50,21 +50,22 @@ let al  = MP3(bitRate: 128)
 let a2  = Ogg(bitRate: 128)
 let a3  = MP3(bitRate: 256)
 let stuff = [m1, a3, m2, a2, m3, a1, "Foobar", 123, false]
-func  (){
-    
+func test(){
+    for thing in stuff {
+        if thing is MediaType {
+            let media = thing as MediaType
+            println("Media found:\(media.contentType)")
+            print("     ")
+            if let movie = thing as? Movie {
+                println("Movie resolution is \(movie.resolution.toRaw())")
+            }else if let sound = thing as? Audio {
+                println("Audio bit rate is \(sound.bitRat) kbps")
+            }
+        }
+        else {
+            println("Unknown media: \(thing)")
+        }
+    }
+
 }
-for thing in stuff {
-	if thing is MediaType {
-		let media = thing as MediaType
-		println("Media found:\(media.contentType)")
-		print("     ")
-		if let movie = thing as? Movie {
-			println("Movie resolution is \(movie.resolution.toRaw())")
-		}else if let sound = thing as? Audio {
-			println("Audio bit rate is \(sound.bitRat) kbps")
-		}
-	}
-	else {
-		println("Unknown media: \(thing)")
-	}
-}
+
