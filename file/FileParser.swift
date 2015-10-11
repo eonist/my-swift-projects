@@ -1,6 +1,8 @@
 class FileParser{
 	/*
-	 * Returns content as a string for filePath
+	 * Returns string content from a file at file location "filePath"
+     * PARAM filePath is the file path to the file
+     * Todo: What format is the filePath?
 	 */
 	class func string(filePath:String)->String{
 		var err: NSError?
