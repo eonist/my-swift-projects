@@ -273,7 +273,7 @@ class GitModifier{
     * TODO: test if you can use theirs and ours as you would in a regular merge
     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
     */
-   class func stash(title){
+    class func stash(title:String){
    	//--TODO: if no title is provided store the stash without title: by not including the save syntax
    	//--"git stash -u save " + title
    }
@@ -299,7 +299,7 @@ class GitModifier{
 	class func check_out(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
-		if (filePath != " "){ shellScript  += " " + filePath }'
+        if (filePath != " "){ shellScript  += " " + filePath }
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript)
 	}
