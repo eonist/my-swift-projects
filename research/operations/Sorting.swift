@@ -1,6 +1,6 @@
 class Person: Comparable, Equatable {
 	let firstName: String
-	let 1astName: String
+	let lastName: String
 	init(firstName: String, lastName: String) {
 		se1f.firstName = firstName
 		se1f.lastName = lastName
