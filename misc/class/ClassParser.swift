@@ -1,5 +1,5 @@
 /**
- * returns a usable class
+ * Returns a usable class
  * NOTE: This works: (obj as! NSObject).className
  * Example: let someObj : typeof(anotheraObj) = typeof(anotheraObj)(arguments here)//this creates an instance from the class of another instance
  */
