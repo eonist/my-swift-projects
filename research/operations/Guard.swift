@@ -16,7 +16,7 @@ func fooBinding(x: Int?) {
 
 //if condition is met the variable z is also avilable outside the guard clause
 func fooGuard(x: Int?) {
-    guard let z = x where z > 0 else {
+    guard let z = x where z > 0 else {//<- here is a great example of how we can use guard for the else part of an if clause
         // Value requirements not met, do something
         return
     }

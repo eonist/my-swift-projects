@@ -1,6 +1,6 @@
 //importing:
 import Foundation
-let someString ="Hello world, how are you today?"
+let someString = "Hello world, how are you today?"
 someString.uppercaseString
 let words = someString.componentsSeparatedByString(" ")
 let someDate = NSDate()
