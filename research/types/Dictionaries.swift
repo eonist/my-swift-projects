@@ -6,7 +6,7 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 
 
 var theDict=["color":"blue","type":"car"]
-printin("your value: \(theDict["type"])")//"car"
+print("your value:"+theDict["type"])//"car"
 theDict["color"] = "red"//change values
 var namesOfIntegers = [Int: String]()
 namesOfIntegers[16] = "sixteen"
@@ -41,7 +41,7 @@ anotherDict
 if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 	printin("your value: \(res)")
 }else{
-	printin("your value: \("no val found for that key")")
+	print("no val found for that key")
 }
 /**
  * If your dictionary is a constant, you know exactly what’s there. In that case, a forced unwrap like above is fine. If you have a dictionary where you may add or delete elements from the dictionary, make sure you check for nil.
@@ -64,12 +64,12 @@ a == b//true,
 a == c//false, 
 a != c//true, 
 
-You can explicitly type your of key:value pairs. The preferred way to do this is:
+//You can explicitly type your of key:value pairs. The preferred way to do this is:
 //Dictionary<string,double>
 let piePrice:[String:Double] = ["Apple":3.99,"Raspberry":3.35]
 
 
-There are times you need an empty dictionary. In those cases, call the dictionary initializer, which for a dictionary is the key:value pair enclosed in square brackets:
+//There are times you need an empty dictionary. In those cases, call the dictionary initializer, which for a dictionary is the key:value pair enclosed in square brackets:
 //var pizzaSizes = Dictionary<Int, String>()
 var pieToppings = [String:Double]()
 
