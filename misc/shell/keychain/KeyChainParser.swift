@@ -1,5 +1,5 @@
-import UIKit
 import Security
+//examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
 class KeyChainParser {
     /**
 	  * Save keychain data for key
@@ -44,7 +44,7 @@ class KeyChainParser {
     }
 }
 
-//examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
+
 
 
 

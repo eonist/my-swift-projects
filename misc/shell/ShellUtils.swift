@@ -2,7 +2,7 @@ class ShellUtils{
 	/**
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
-	 * TODO: add some explination about what happens line for line
+	 * TODO: add some explination about what happens here, line for line
 	 * Example: println(shell("git log --oneline").output)
 	 */
 	class func run(input: String) -> (output: String, exitCode: Int32) {
