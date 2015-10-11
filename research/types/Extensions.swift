@@ -1,8 +1,9 @@
 /*
-Extensions in Swift
+ Extensions in Swift
  Add methods and properties to existing types
  Doesn't require source code for the type
-' Can be added to classes, structures and enumerations
+ Can be added to classes, structures and enumerations
+ IMPORTANT: Extensions are global. Define them anywhere in the source code and they will adher to the type it extends
 */
 
 //NOTE: extensions are almost like prototypes in other languages
@@ -32,6 +33,7 @@ extension Int {
         }
     }
 }
+
 
 3.repetitions({
     print("Hello!")
