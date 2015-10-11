@@ -1,8 +1,8 @@
 //operators and their operandees
-var a : 11:55
-var b : 11:55
-var c : 11:55
-var highScore = 50o080
+var a : Number = 11.55
+var b : Number = 11.55
+var c : NUmber = 11.55
+var highScore = 50080
 // arithmetic operators:  + - * /
 var result = a + b
 result = b - 20
@@ -14,7 +14,7 @@ highScore += 10
 highScore -= 10
 
 // increment, decrement: ++ --
-var score : 99
+var score : Number =  99
 
 // POSTfix
 score++
