@@ -25,7 +25,7 @@ func fooGuard(x: Int?) {
     z.description
 }
 
-//an alternative: (now z is available outside the condition block aswell)
+//an alternative: (now z is available outside the condition block aswell) this looks more logical than guard. but guard can be handy in complex if else setups
 
 func test(x:Int?){
 	let z:Int?
