@@ -27,6 +27,23 @@ func doDangerousStuff() throws -> SomeObject {
     return SomeObject()
 }
 
+func test(){
+    do {
+        let theResult = try obj.doDangerousStuff()
+    }
+    catch AwfulError.Bad {
+        // Deal with badness.
+    }
+    catch AwfulError.Worse {
+        // Deal with worseness.
+    }
+    catch AwfulError.Terrible {
+        // Deal with terribleness.
+    }
+    catch ErrorType {
+        // Unexpected error!
+    }
+}
 
 //In order to throw an error you use throw keyword like this
 /*
