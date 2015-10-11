@@ -1,7 +1,3 @@
-import "git/GitAsserter.applescript"
-import "file/FileAsserter.applescript"
-import "git/GitParser.applescript"
-import "git/GitModifier.applescript"
 class GitAsserter{
 	/*
 	 * Asserts if a folder has a git repository

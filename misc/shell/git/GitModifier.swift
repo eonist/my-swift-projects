@@ -1,4 +1,4 @@
-import "text:TextAsserter.applescript"
+//import "text:TextAsserter.applescript"
 class GitModifier{
    class var gitPath = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
    /*
