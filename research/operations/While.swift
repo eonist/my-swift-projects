@@ -1,26 +1,6 @@
-//while loops
-//
-while condition{
-	//change condition
-}
-do{
-	//change condition
-	//always executed once
-}while condition{
-    
-    
-}
-
-//methods
-
-
-
-
-
 var someOptionalInt: Int?
 
-do
-{
+repeat{
     println("Trying to get an integer")
     someOptionalInt = functionThatMayReturnAnInteger()
     //change condition
@@ -29,3 +9,10 @@ do
 } while (someOptionalInt != nil)
 
 println("Got a nil instead")
+
+
+while i < 5{
+    println("\(i)")
+    i++
+    //change condition
+}
