@@ -21,12 +21,28 @@ class Player {
 	}
 }
 
-
-class Person {
-    init() {
-        // initializer implementation goes here
-    }
+//classes:
+class Person{
+	//properties accessabøe outside a class:
+	var name:String = "Paul"//values must be set if you use a class aka initialized
+	let age:Int = 77;
+	/**
+ 	 * NOTE: initializers are optional you can still use this object without passing params
+	 */
+    init(name:String = "jo",age:Int = 22){//class initializer w/ params
+		self.name = name;//self refers to properties outside the method bit inside the class, aka this in other languages
+		self.age = age;
+	}
+	//methods accessable outside a class:
+    func desc()->String{
+		return name + ", " + age
+	}
+    deinit{//system calls this method when an object is not used anymor
+		//usefull if you need to close a connection to a database at the end of a lifetime of the ojb etc
+		//needs more research
+	}
 }
+
 
 newPerson.name = "Pete"
 newPerson.age = 25
@@ -61,7 +77,7 @@ printin("your value: \(newPerson.desc())")
  	 * NOTE: designated initiaizers are inherited if the class doesnt provide any of its own
  	 * NOTE: convenince initializers are inherited if the subclass has all of the superclasses designated initializers
  	 */
- 	overide init(sallery:Int){
+ 	override init(sallery:Int){
  		self.sallery = sallery;
  		super.init()//we always call the super init last in the method, unlike obj-c
  	}
@@ -79,7 +95,7 @@ printin("your value: \(newPerson.desc())")
  	func calcBonus()->Int{
 		return 5+2
 	}		
- 	overide func desc()->String{
+ 	override func desc()->String{
  		return super.description + " " + sallery
  	}
  	final func sallery()->Int{//final methods cant be overridden, but are still accesible from outside the class
