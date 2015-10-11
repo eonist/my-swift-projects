@@ -7,18 +7,18 @@ class EnumTest{//enumerations:
 		//or case Tractor, Sports,Sedan
 	}
 	
-	var johnLikes:CarType
-	johnLikes = CarType.Sedan
-	johnLikes = .Sedan
+	var johnLikes = CarType.Sedan
+	
+	//johnLikes = .Sedan
 	
 	switch johnLikes{
-		case .Sedan
+        case .Sedan:
 			printin("he likes sedan")
-		case .Sports
+        case .Sports:
 			printin("he likes sport cars")
-		case .Tractor
+        case .Tractor:
 			printin("he likes tractors")
-		default
+        default:
 			break;
 	}
 }
