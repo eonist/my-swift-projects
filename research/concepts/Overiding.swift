@@ -104,7 +104,6 @@ printin("your value: \(newPerson.desc())")
 	/**
 	 * computed properties, aka getters and setters?
  	 */
- 
  	var fullName:String {
 	 	get{//getter
 			 return firstName + " " + lastName 	
@@ -116,7 +115,7 @@ printin("your value: \(newPerson.desc())")
 	 	}
 	 }
 	 var occupation:String{//same as getter just "shorthand"
-	 	return = "Quant"
+	 	return "Quant"
 	 }
  }
  var sammy:Employee = Employee(name:"Sammy")

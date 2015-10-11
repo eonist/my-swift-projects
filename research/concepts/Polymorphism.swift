@@ -15,7 +15,7 @@ You better know what you're doing
 class Movie {
 	enum Resolution: String {
 		case TenEightyProgressive = "1080p"
-		case SevenTwentyProgressive - "720p"
+		case SevenTwentyProgressive = "720p"
 		case TenEightylnterlaced = "1080i"
 	}
 	var resolution: Resolution
@@ -26,7 +26,7 @@ class Movie {
 class MPEG4Movie: Movie, MediaType {
 	var contentType: String { return "video/mp4" }
 }
-class 0uicktimeMovie: Movie, MediaType {
+class QuicktimeMovie: Movie, MediaType {
 	var contentType: String { return "video/quicktime" }
 }
 
@@ -44,8 +44,8 @@ class Ogg: Audio, MediaType {
 }
 
 let m1   = MPEG4Movie(resolution .TenEightyProgressive)
-let m2   = 0uicktimeMovie(resolutin: .SevenTwentyProgressive)
-let m3  = 0uicktimeMovie(resolutin: .TenEightylnterlaced)
+let m2   = QuicktimeMovie(resolutin: .SevenTwentyProgressive)
+let m3  = QuicktimeMovie(resolutin: .TenEightylnterlaced)
 let al  = MP3(bitRate: 128)
 let a2  = 0gg(bitRate: 128)
 let a3  = MP3(bitRate: 256)
