@@ -9,9 +9,9 @@ class Observer: Object {
 	override init() {
 		super.init()
 		let nc = NSNotificationCenter.defaultCenter()
-		nc.addobserver(self, selector: "processBigEvent:", name: TheBigObject: nil)
+		nc.addobserver(self, selector: "processBigEvent:", name: "TheBigObject")
 	}
-	fund processBigEvent(notification: NSNotification) {
+	func processBigEvent(notification:NSNotification) {
 		println("Whoa! Looks like a Big Event has occurred")
 	}	
 }
