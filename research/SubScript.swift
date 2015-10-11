@@ -43,8 +43,8 @@ matrix[1, 0] = 3.2
 
 //Extensions can add new subscripts to an existing type. This example adds an integer subscript to Swift’s built-in Int type. This subscript [n] returns the decimal digit n places in from the right of the number:
 
-123456789[0] returns 9
-123456789[1] returns 8
+123456789[0] //returns 9
+123456789[1] //returns 8
 //…and so on:
 
 extension Int {
@@ -57,3 +57,4 @@ extension Int {
         return (self / decimalBase) % 10
     }
 }
+
