@@ -20,7 +20,7 @@ class DictionaryModifier{
 	 * ObjectDescriber.describe2(c)//Output:    [number] index => 2, [string] color => red, [string] name => john
 	 */
 	class func combine(a:Dictionary, b:Dictionary)->Dictionary{//// :TODO: rename to combine since merge implies that the passed obj is also changed
-		var c:Dictionary = [:];
+		var c:Dictionary = [String:String];
 		for(keyA, in a) c[keyA] = a[keyA];//copies the items in a to the return object
 		//for(keyB in b) c[keyB] = b[keyB];//assigns the items in b to the return object, if they already exist s they are overriden
 		return c;
