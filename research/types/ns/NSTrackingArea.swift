@@ -1,3 +1,4 @@
+//apple docs: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSTrackingArea_class/#//apple_ref/c/tdef/NSTrackingAreaOptions
 //import AppKit
 
 struct NSTrackingAreaOptions : OptionSetType {

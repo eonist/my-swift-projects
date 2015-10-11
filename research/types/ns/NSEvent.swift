@@ -28,3 +28,5 @@ NSOtherMouseDown
 
 NSKeyDown
 */
+
+//code for clicking outside a popup: http://swiftrien.blogspot.no/2015/05/mouse-up-mouse-down-and-popup-menus.html
