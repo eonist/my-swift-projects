@@ -10,7 +10,7 @@ if let johnsStreet = john.residence?.address?.street {
 // prints "Unable to retrieve the address."
 
 let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
-    print("John's building identifier is \(buildingIdentifier).")
+    print("John's building identifier is \(self).")
 }
 // prints "John's building identifier is The Larches."
 
