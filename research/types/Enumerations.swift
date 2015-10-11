@@ -7,17 +7,17 @@ class EnumTest{//enumerations:
 		//or case Tractor, Sports,Sedan
 	}
     func test(){
-        var johnLikes?
+        var johnLikes:CarType
         johnLikes = CarType.Sedan
         johnLikes = .Sedan
         
         switch johnLikes{
             case .Sedan:
-                printin("he likes sedan")
+                print("he likes sedan")
             case .Sports:
-                printin("he likes sport cars")
+                print("he likes sport cars")
             case .Tractor:
-                printin("he likes tractors")
+                print("he likes tractors")
             default:
                 break;
         }
@@ -28,7 +28,7 @@ enum Planet {
     case Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
 
-enum Planet: Int {
+enum PlanetNumbers:Int {
     case Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
 
