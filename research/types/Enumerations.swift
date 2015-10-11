@@ -7,21 +7,21 @@ class EnumTest{//enumerations:
 		//or case Tractor, Sports,Sedan
 	}
 	
-	var johnLikes:CarType = CarType.Sedan // .Sedan
+	var johnLikes:CarType
+	johnLikes = CarType.Sedan
+	johnLikes = .Sedan
+	
+	switch johnLikes{
+		case .Sedan
+			printin("he likes sedan")
+		case .Sports
+			printin("he likes sport cars")
+		case .Tractor
+			printin("he likes tractors")
+		default
+			break;
+	}
 }
-
-
-switch johnLikes{
-case CarType.Sedan
-    printin("he likes sedan")
-case CarType.Sports
-    printin("he likes sport cars")
-case .Tractor
-    printin("he likes tractors")
-default
-    break;
-}
-
 enum Planet {
     case Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
