@@ -5,7 +5,7 @@
 
 let someArray: Array<String> = ["Alex", "Brian", "Dave"]
 let someArray: [String] = ["Alex", "Brian", "Dave"]
-let someArray: []
+let someArray: [String]//string array
 
 
 var someArray:Array = [1,2,3]//mutable

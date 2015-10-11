@@ -65,7 +65,7 @@ class GitParser{
 	 * NOTE: git diff does not reurn a result if a file is added
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
-	class func diff(localRepoPath, _ cmd)->String{
+    class func diff(localRepoPath:String, _ cmd:String)->String{
 		let shellScript:String =  "cd " + localRepoPath + ";" + gitPath + "git diff " + cmd
 		return ShellUtils.run(shellScript)
 	}

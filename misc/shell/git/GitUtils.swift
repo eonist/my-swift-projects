@@ -1,7 +1,3 @@
-import "git/GitModifier.applescript"
-import "file/ScriptLoader.scpt"
-import "git/GitParser.applescript"
-import "git/GitAsserter.applescript"
 class GitUtils{
 	class var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
 	/*
@@ -14,7 +10,7 @@ class GitUtils{
 	class func manualPull(locaPath:String, _ remotePath:String, _ branch:String){
 		//log ("GitUtil's manual_pull()")
 		GitModifiers.fetch(locaPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
-		let isRemoteBranchAhead:Bool to GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+		let isRemoteBranchAhead:Bool = GitAsserters.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 		//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			//log tab & "remote branch is ahead, so there is something to merge"
