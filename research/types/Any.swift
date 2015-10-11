@@ -1,7 +1,8 @@
 
 //Here’s an example of using Any to work with a mix of different types, including function types and non-class types. The example creates an array called things, which can store values of type Any:
 
-var things = [Any]()
+var things = [Any]()//equivilent code: var things:Array<Any> = []
+
  
 things.append(0)
 things.append(0.0)
