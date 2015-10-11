@@ -6,7 +6,11 @@
 //this line should normally be present do-catch block like this
 
 
-func test(){
+
+
+//In order to throw an error you use throw keyword like this
+
+func test3(){
     do {
         try rideTheDragon(redDragon)
     } catch DragonError.DragonIsMissing {
@@ -16,35 +20,24 @@ func test(){
     } catch {
         // Catch all error-handling
     }
-}
-
-
-//Alternatively in function that is itself marked with throws keyword like this
-func test2(){
-    
+    //Alternatively in function that is itself marked with throws keyword like this
     throw {
         try rideTheDragon(quest.dragon)
     }
-}
-
-
-
-//In order to throw an error you use throw keyword like this
-
-func test3(){
+    
+    
     throw DragonError.DragonIsMissing
     
     enum DragonError: ErrorType {
         case DragonIsMissing
         case NotEnoughMana(manaRequired: Int)
-        ...
     }
 }
 
 
 //Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C (Swift 2 Prerelease).” iBooks.
 //Example: (from the book)
-
+/*
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *URL = [NSURL fileURLWithPath:@"/path/to/file"];
 NSError *error = nil;
@@ -52,7 +45,7 @@ BOOL success = [fileManager removeItemAtURL:URL error:&error];
 if (!success && error){
     NSLog(@"Error: %@", error.domain);
 }
-
+*/
 
 //The equivalent in swift will be:
 
