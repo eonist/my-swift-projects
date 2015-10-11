@@ -120,13 +120,14 @@ class GitModifier{
    	//--complete this method
    }
    /*
-    * Init
+    * initialize
+    * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
-   class func init(localRepoPath:String)->String{
+   class func initialize(localRepoPath:String)->String{
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git init"
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
-   )
+    }
    /*
     * Attach a remote repo to a local repo
     * NOTE: git remote add origin https://github.com/user/test.git
