@@ -31,3 +31,14 @@ enum Planet {
 enum Planet: Int {
     case Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
+
+enum Letters: Character {
+    case a = "A"
+    case b = "B"
+    case c = "C"
+}
+
+//When integers are used for raw values, they auto-increment if no value is specified.
+enum Numbers: Int {
+    case One = 1, Two, Three, Four, Five
+}
