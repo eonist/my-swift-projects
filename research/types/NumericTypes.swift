@@ -44,14 +44,15 @@ func test(){
     let pi = 3.14159
     let f_pi: Float = 3.141592
     let theResult = sizeofValue(pi)
-    sizeofValue(f_pi)
+    print(theResult)
+    print(sizeofValue(f_pi))
     pi.advancedBy(1)
     pi.advancedBy(-2)
     pi.distanceTo(2.0)
     Double.abs(2.0)
-    Double.abs(-2.0)
-    Float.abs(2.0)
-    Float.abs(-2.0)
+    print(Double.abs(-2.0))
+    print(Float.abs(2.0))
+    print(Float.abs(-2.0))
 }
 
 

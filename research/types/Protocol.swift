@@ -16,13 +16,13 @@ protocol Cleaner {
 //import UIKit
 protocol ExampleProtocol {
 	// method signatures
-	func simp1eMethod() -> Bool
+	func simpleMethod() -> Bool
 	// properties
-	var simp1eProperty : Int { get }
+	var simpleProperty : Int { get }
 }
 class MyClass : ExampleProtocol {
 	// provide anything else you need this class to do
-	func simp1eMethod() -> Bool {
+	func simpleMethod() -> Bool {
 		// do some work...
 		return true
 	}
