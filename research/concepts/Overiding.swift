@@ -9,15 +9,14 @@
 //Changing access levels public 
 class Player {
 	//properties no modifier, will default to internal 
-	var name: String 
-	var score Int 
+	var name:String
+    var score:Int
 	//public methods 
-	public func description {
-		printin ("Player V (name) has a score of V (score)") 
-	
+	public func description(){
+		printin ("Player V (name) has a score of V (score)")
 	}
 	//private methods 
-	private func calculateBonus {
+	private func calculateBonus (){
 		//
 	}
 }
