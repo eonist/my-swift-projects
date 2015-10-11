@@ -18,7 +18,7 @@ class NumbeParser{
    /*
     * Return odd numbers
     */
-    func odds(numbers:Array<Numbers>)->Array<Numbers>{
+    class func odds(numbers:Array<Numbers>)->Array<Numbers>{
        return let odds = numbers.filter{$0 % 2 == 1}//great example of the filter method
     }
 }
