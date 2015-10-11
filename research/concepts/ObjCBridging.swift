@@ -156,6 +156,7 @@ car.numberofwheels = 4
 //NSLog(@"Results: %@",[firstPlayer description]):
 
 //in the swift file change class to "@objc class": or extend the class to NSObjectlike so: "class Player : NSObject"
+
 @objc class Player {
 	// properties
 	var score : Int
@@ -191,13 +192,14 @@ Limitations on dynamic untype behavior
 aka dynamic method calling:
 NOTE: this is not allowed in swift:
  */
+/*
 NSString *methodName;
 if (someF1ag)
 	methodName = @"someMethoW"
 else
 	methodName = @"someoTHERMethod";	
 [myobject performSe1ector:NSSe1ectorFromString(methodName)]]
-
+*/
 
 /**
 Inheriting between languages
