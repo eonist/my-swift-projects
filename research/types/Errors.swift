@@ -6,33 +6,41 @@
 //this line should normally be present do-catch block like this
 
 
-
-do {
-    try rideTheDragon(redDragon) 
-} catch DragonError.DragonIsMissing {
-    // Error-handling
-} catch DragonError.NotEnoughMana(let manaRequired) {
-    // More error-handlng
-} catch {
-    // Catch all error-handling
+func test(){
+    do {
+        try rideTheDragon(redDragon)
+    } catch DragonError.DragonIsMissing {
+        // Error-handling
+    } catch DragonError.NotEnoughMana(let manaRequired) {
+        // More error-handlng
+    } catch {
+        // Catch all error-handling
+    }
 }
 
-//Alternatively in function that is itself marked with throws keyword like this
 
-throws {
-    try rideTheDragon(quest.dragon)
-} 
+//Alternatively in function that is itself marked with throws keyword like this
+func test2(){
+    
+    throw {
+        try rideTheDragon(quest.dragon)
+    }
+}
+
 
 
 //In order to throw an error you use throw keyword like this
 
-throw DragonError.DragonIsMissing
-
-enum DragonError: ErrorType {
-    case DragonIsMissing
-    case NotEnoughMana(manaRequired: Int)
-    ...
+func test3(){
+    throw DragonError.DragonIsMissing
+    
+    enum DragonError: ErrorType {
+        case DragonIsMissing
+        case NotEnoughMana(manaRequired: Int)
+        ...
+    }
 }
+
 
 //Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C (Swift 2 Prerelease).” iBooks.
 //Example: (from the book)
