@@ -10,7 +10,9 @@ enum AwfulError: ErrorType {
     case Worse
     case Terrible
 }
-
+class SomeObject{
+    
+}
 func doDangerousStuff() throws -> SomeObject {
     // If something bad happens throw the error:
     throw AwfulError.Bad
