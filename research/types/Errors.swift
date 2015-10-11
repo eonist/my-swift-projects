@@ -9,7 +9,7 @@
 
 
 //In order to throw an error you use throw keyword like this
-
+/*
 func test3(){
     do {
         try rideTheDragon(redDragon)
@@ -33,7 +33,7 @@ func test3(){
         case NotEnoughMana(manaRequired: Int)
     }
 }
-
+*/
 
 //Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C (Swift 2 Prerelease).” iBooks.
 //Example: (from the book)
@@ -48,6 +48,7 @@ if (!success && error){
 */
 
 //The equivalent in swift will be:
+import Foundation
 func test4(){
     let fileManager = NSFileManager.defaultManager()
     let URL = NSURL.fileURLWithPath("path/to/file")
