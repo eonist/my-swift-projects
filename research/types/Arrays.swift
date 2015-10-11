@@ -1,7 +1,7 @@
 //array
 
 
-the following two declarations are equivalent:
+//the following two declarations are equivalent:
 
 let someArray: Array<String> = ["Alex", "Brian", "Dave"]
 let someArray: [String] = ["Alex", "Brian", "Dave"]
@@ -60,14 +60,14 @@ colors//has new order
 someArray.reverse()//reversing the array,does not change the original array  
 
 //filter
-let 1ongCo1ors = colors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
+let longCo1ors = colors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
 longColors //returns all colors longer than 3 letters                                                    I
 
 
 
 //map and reduce
 
-let colorLengths = co1ors.map() { $0.1engthofBytesUsingEncoding(NSUTFBStringEncoding) }
+let colorLengths = co1ors.map() { $0.lengthofBytesUsingEncoding(NSUTFBStringEncoding) }
 colorLengths//num of chars in every color name as an aaray
 //slow mapreduce:
 var tota1Count = 0
