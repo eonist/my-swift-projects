@@ -10,10 +10,8 @@ enum AwfulError: ErrorType {
     case Worse
     case Terrible
 }
-class SomeObject{
-    
-}
-func doDangerousStuff() throws -> SomeObject {
+
+func doDangerousStuff() throws -> String {
     // If something bad happens throw the error:
     throw AwfulError.Bad
     
@@ -24,12 +22,15 @@ func doDangerousStuff() throws -> SomeObject {
     throw AwfulError.Terrible
     
     // If you made it here, you can return:
-    return SomeObject()
+    return "some data"
 }
+
+
 
 func test(){
     do {
-        let theResult = try obj.doDangerousStuff()
+        let theResult = try doDangerousStuff()
+        print(theResult)
     }
     catch AwfulError.Bad {
         // Deal with badness.
