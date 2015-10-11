@@ -13,7 +13,7 @@ print("six times three is \(threeTimesTable[6])")
 
 //
 
-Matrix {
+class Matrix {
     let rows: Int, columns: Int
     var grid: [Double]
     init(rows: Int, columns: Int) {
