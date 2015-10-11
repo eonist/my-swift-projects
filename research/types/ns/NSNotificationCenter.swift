@@ -8,7 +8,7 @@ NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:s
 func showMainMenu(notification:NSNotification) {
     print("Received Notification - Someone seems to have logged in" + String(notification.object.self))
 }
-
+//http://nshipster.com/nsnotification-and-nsnotificationcenter/
 
 /*
 Maybe you can use NSNotificationCenter this way:
