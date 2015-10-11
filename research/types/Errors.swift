@@ -5,7 +5,25 @@
 //NOTE: guard statement (using guard keyword) which let you write little less if/else code than in normal error checking/signaling code.
 //this line should normally be present do-catch block like this
 
+enum AwfulError: ErrorType {
+    case Bad
+    case Worse
+    case Terrible
+}
 
+func doDangerousStuff() throws -> SomeObject {
+    // If something bad happens throw the error:
+    throw AwfulError.Bad
+    
+    // If something worse happens, throw another error:
+    throw AwfulError.Worse
+    
+    // If something terrible happens, you know what to do:
+    throw AwfulError.Terrible
+    
+    // If you made it here, you can return:
+    return SomeObject()
+}
 
 
 //In order to throw an error you use throw keyword like this
@@ -68,9 +86,9 @@ func test4(){
 
 //Will be automatically propagated to the caller:
 //swift
-func test5(){
-    throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)
-}
+
+//throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)
+
 
 
 //From Apple books, The Swift Programming Language it's seems erros should be handle using enum
