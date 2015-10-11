@@ -48,14 +48,16 @@ if (!success && error){
 */
 
 //The equivalent in swift will be:
-
-let fileManager = NSFileManager.defaultManager()
-let URL = NSURL.fileURLWithPath("path/to/file")
-do {
-    try fileManager.removeItemAtURL(URL)
-} catch let error as NSError {
-    print ("Error: \(error.domain)")
+func test4(){
+    let fileManager = NSFileManager.defaultManager()
+    let URL = NSURL.fileURLWithPath("path/to/file")
+    do {
+        try fileManager.removeItemAtURL(URL)
+    } catch let error as NSError {
+        print ("Error: \(error.domain)")
+    }
 }
+
 
 //Throwing an Error:
 //objc
