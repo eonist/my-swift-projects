@@ -42,3 +42,10 @@ enum Letters: Character {
 enum Numbers: Int {
     case One = 1, Two, Three, Four, Five
 }
+
+var five = Numbers.Five
+func testing(){
+    print(five.rawValue)
+    let possibleNum = Numbers(rawValue: 2)!
+    print(possibleNum == Numbers.Two)       // true
+}
