@@ -1,3 +1,3 @@
-class NumberAsserter {
+class NumberAsserter{
     
 }
