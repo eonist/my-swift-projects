@@ -29,8 +29,9 @@ class Person{
 	/**
  	 * NOTE: initializers are optional you can still use this object without passing params
 	 */
-    func init(){
-        
+    required func init(name:String = "jo", _ age:Int = 22){//class initializer w/ params
+        self.name = name;//self refers to properties outside the method bit inside the class, aka this in other languages
+        self.age = age;
     }
 	//methods accessable outside a class:
 	func desc()->String{
