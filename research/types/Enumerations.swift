@@ -1,6 +1,6 @@
 class EnumTest{//enumerations:
 	//enums are simple classes that can be used like this:
-	enum CarsType{
+	enum CarType{
 		case Tractor
 		case Sports
 		case Sedan
