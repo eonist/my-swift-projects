@@ -2,7 +2,7 @@ class FileUtils{
 	/*
 	 * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSWorkspace_Class/index.html#//apple_ref/occ/instm/NSWorkspace/openURL:
 	 * Example: openFile((path to desktop as text) & "del.txt")
-     * TODO: what 
+     * TODO: what format is the filePath in?
 	 */
 	class func openFile(filePath:String){
 		//log file_path

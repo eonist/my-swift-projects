@@ -1,4 +1,7 @@
 extension UIBezierPath {
+    /*
+     * TODO: explain what this does
+     */
     convenience init(triangleSideLength: CGFloat, origin: CGPoint) {
         self.init()
         let squareRoot = CGFloat(sqrt(3.0))
