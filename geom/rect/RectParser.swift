@@ -26,8 +26,7 @@ struct Rect {
         }
     }
 }
-var square = Rect(origin: Point(x: 0.0, y: 0.0),
-    size: Size(width: 10.0, height: 10.0))
+var square = Rect(origin: Point(x: 0.0, y: 0.0),size: Size(width: 10.0, height: 10.0))
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
