@@ -1,8 +1,11 @@
 let userDefaults = NSUserDefaults.standardUserDefaults()
 let lastRefreshDate: AnyObject? = userDefaults.objectForKey("LastRefreshDate")
-if let date = lastRefreshDate as? NSDate {
-    print("\(date.timeIntervalSinceReferenceDate)")
+func test(){
+    if let date = lastRefreshDate as? NSDate {
+        print("\(date.timeIntervalSinceReferenceDate)")
+    }
 }
+
 
 
 //Alternatively, you can use the forced downcast operator (as!), which returns a non-optional value of the type you are trying to downcast to:
