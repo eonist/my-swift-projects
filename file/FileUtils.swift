@@ -11,7 +11,7 @@ class FileUtils{
 	 * @param: file_paths should be a list of "hsf" or "alias hsf" paths
 	 */
 	class func openFiles(filePaths:Array){
-		for (filePath in filePaths){
+		for filePath in filePaths{
 			openFile(filePath)
 		}	
 	}
