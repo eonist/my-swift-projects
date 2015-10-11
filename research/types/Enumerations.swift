@@ -7,7 +7,7 @@ class EnumTest{//enumerations:
 		//or case Tractor, Sports,Sedan
 	}
     func test(){
-        var johnLikes
+        var johnLikes?
         johnLikes = CarType.Sedan
         johnLikes = .Sedan
         
