@@ -27,10 +27,12 @@
 import Cocoa
 
 func test(){
+    let mywindow = NSWindow()
     let textView = NSTextView()
-    textView.stringvalue = "Some string"
+    let textField = NSTextField()
+    textField.stringValue = "Some string"
     textView.frame = CGRectMake(10,20,50,400)
-    //mywindow.contentView.addSubview(textView)
+    mywindow.contentView!.addSubview(textView)
     
 }
 
