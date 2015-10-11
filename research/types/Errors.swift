@@ -45,6 +45,8 @@ func test(){
         // Unexpected error!
     }
 }
+//A variant of the try keyword is try!. That keyword may be appropriate for those programmer errors again. If you mark a throwing call with try!, you are promising the compiler that that error will never happen and you do not need to catch it. If the statement does produce an error, the application will stop execution and you should start debugging.
+let theResult = try! doDangerousStuff()
 
 //In order to throw an error you use throw keyword like this
 /*
