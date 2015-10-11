@@ -5,6 +5,7 @@ Singletons provide a globally accessible, shared instance of an object. You can 
 
 In Objective-C, you can ensure that only one instance of a singleton object is created by wrapping its initialization in a call the dispatch_once function, which executes a block once and only once for the lifetime of an app:
 */
+/*
 + (instancetype)sharedInstance {
     static id _sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -14,6 +15,7 @@ In Objective-C, you can ensure that only one instance of a singleton object is c
  
     return _sharedInstance;
 }
+*/
 //In Swift, you can simply use a static type property, which is guaranteed to be lazily initialized only once, even when accessed across multiple threads simultaneously:
 
 class Singleton {
