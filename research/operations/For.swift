@@ -8,3 +8,8 @@ for number in primeNumbers{//can also work with strings printing out single char
 }
 
 
+
+
+for var i = 0; i < 3; i++{
+    print(i)
+}
