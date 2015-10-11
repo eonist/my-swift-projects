@@ -4,11 +4,11 @@ for someItem in allItems{//can also work with strings printing out single chars,
 	//do something eith someItem
 }
 
-for var i = 0; i < 5;i++{
-
+for var i = 0; i < 3; i++{
+    println("\(i)")
 }
 //loop with range
-for a in 1...9 {//0...someVal will also work, or 0...<5 will do 0-4
+for index in 1...9 {//0...someVal will also work, or 0...<5 will do 0-4
 	//do something with index
 }
 
