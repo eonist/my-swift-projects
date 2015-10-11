@@ -41,7 +41,8 @@ func test(){
     catch AwfulError.Terrible {
         // Deal with terribleness.
     }
-    catch ErrorType {
+    catch {//ErrorType
+        
         // Unexpected error!
     }
 }
