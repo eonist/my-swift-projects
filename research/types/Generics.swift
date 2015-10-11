@@ -1,14 +1,14 @@
 //Generics
 //NOTE: generics are better than using any or anyobject in that they keep the type that was passed to them
 
-class SimpleC1ass {
+class SimpleClass {
 	var singleProperty : String = "A string"
 }
 let myInts  = [123,456,789,345,678,234]
 let myStrings = ["red","green","blue"]
 let myobjects = [SimpleClass(),SimpleClass(),SimpleClass()]
 func displayArray<T>(theArray : [T]) -> T {
-	println(Printing the array:)
+	print("Printing the array:")
 	for eachitem in theArray {
 		print(eachitem)
 		print("  :  ")
@@ -18,9 +18,9 @@ func displayArray<T>(theArray : [T]) -> T {
 	return finalElement
 }
 var finalInt = displayArray(myInts)
-++finalInt
+//print(finalInt)
 var finalString = displayArray(myStrings)
-finalString.uppercaseString
+//print(finalString.uppercaseString)
 
 
 
