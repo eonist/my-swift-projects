@@ -4,11 +4,11 @@
 //you can use ranges in cases like: 3...8 which will evalute a range from 3 to 8
 
 switch someVal{
-	case 1
+    case 1:
 		printin("one")
-	case 3...8
+    case 3...8:
 		printin("range from 3 to 8")
-	default
+    default:
 		break;
 }
 
