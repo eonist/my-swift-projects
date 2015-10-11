@@ -61,10 +61,15 @@ func test4(){
 
 //Throwing an Error:
 //objc
+/*
 *errorPtr = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCannotOpenFile userInfo: nil]
-Will be automatically propagated to the caller:
+*/
+
+//Will be automatically propagated to the caller:
 //swift
-throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)
+func test5(){
+    throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)
+}
 
 
 //From Apple books, The Swift Programming Language it's seems erros should be handle using enum
@@ -76,12 +81,15 @@ enum ServerResponse {
 let success = ServerResponse.Result("6:00 am", "8:09 pm")
 let failure = ServerResponse.Error("Out of cheese.")
 
-switch success {
-   case let .Result(sunrise, sunset):
-       let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."
-   case let .Error(error):
-       let serverResponse = "Failure...  \(error)"
+func test6(){
+    switch success {
+    case let .Result(sunrise, sunset):
+        let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."
+    case let .Error(error):
+        let serverResponse = "Failure...  \(error)"
+    }
 }
+
 
 
 
