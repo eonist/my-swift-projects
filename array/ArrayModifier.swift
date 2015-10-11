@@ -8,7 +8,7 @@ class ArrayModifier{
 	 * a,b,c,d
     * _,a,b,c,d
 	 */
-	class func unshift(array:Array,item:Any)->{
+	class func unshift(array:Array,item:Any)->Int{
 		array.insert(item,atIndex:0)
 		return array.length
 	}
