@@ -43,7 +43,7 @@ func test(){
     
     let pi = 3.14159
     let f_pi: Float = 3.141592
-    sizeofValue(pi)
+    let theResult = sizeofValue(pi)
     sizeofValue(f_pi)
     pi.advancedBy(1)
     pi.advancedBy(-2)
