@@ -21,28 +21,12 @@ class Player {
 	}
 }
 
-//classes:
-class Person{
-	//properties accessabøe outside a class:
-	var name:String = "Paul"//values must be set if you use a class aka initialized
-	let age:Int = 77;
-	/**
- 	 * NOTE: initializers are optional you can still use this object without passing params
-	 */
-    required func init(name:String = "jo", _ age:Int = 22){//class initializer w/ params
-        self.name = name;//self refers to properties outside the method bit inside the class, aka this in other languages
-        self.age = age;
-    }
-	//methods accessable outside a class:
-	func desc()->String{
-		return name + ", " + age
-	}
-	func deinit(){//system calls this method when an object is not used anymor
-		//usefull if you need to close a connection to a database at the end of a lifetime of the ojb etc
-		//needs more research
-	}
-}
 
+class Person {
+    init() {
+        // initializer implementation goes here
+    }
+}
 
 newPerson.name = "Pete"
 newPerson.age = 25
