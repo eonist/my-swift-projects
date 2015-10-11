@@ -7,9 +7,6 @@ for number in primeNumbers{//can also work with strings printing out single char
     println("\(number)")
 }
 
-
-
-
 for var i = 0; i < 3; ++i{
     print(i)
 }
