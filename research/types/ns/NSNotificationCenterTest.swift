@@ -4,7 +4,9 @@ import Cocoa
 class Test{
     func testing(){
         // Add an observer that will respond to loginComplete
-        NSNotificationCenter.defaultCenter.addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil])
+        let center:NSNotificationCenter = NSNotificationCenter.defaultCenter(self,selector:"showMainMenu", name:"loginComplete")
+        
+        //
         
         // Post a notification to loginComplete
         NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:self)
