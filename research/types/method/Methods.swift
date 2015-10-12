@@ -22,7 +22,7 @@ class MethodTest{//pass a method via a para and execute it
 			theMethod()//performs this method 5 times
 		}
 	}
-	anotherMethod(someMethod)
+	anotherMethod(someMethod())
 	anotherMethod({printin("hello")})//hello 5 times
 }
 
