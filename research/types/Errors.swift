@@ -245,4 +245,6 @@ Sometimes you know a throwing function or method won’t, in fact, throw an erro
 
 For example, the following code uses a loadImage(_:) function, which loads the image resource at a given path or throws an error if the image can’t be loaded. In this case, because the image is shipped with the application, no error will be thrown at runtime, so it is appropriate to disable error propagation.
 */
-let photo = try! loadImage("./Resources/John Appleseed.jpg")
+//let photo = try! loadImage("./Resources/John Appleseed.jpg")
+
+
