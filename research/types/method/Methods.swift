@@ -246,11 +246,3 @@ In-out parameters cannot have default values, and variadic parameters cannot be 
 
 
 */
-
-//Here’s an example of a function called swapTwoInts(_:_:), which has two in-out integer parameters called a and b:
-
-func swapTwoInts(inout a: Int, inout _ b: Int) {
-    let temporaryA = a
-    a = b
-    b = temporaryA
-}
