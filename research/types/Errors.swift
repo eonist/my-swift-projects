@@ -168,8 +168,10 @@ func test6(){
     switch success {
     case let .Result(sunrise, sunset):
         let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."
+        print(serverResponse)
     case let .Error(error):
         let serverResponse = "Failure...  \(error)"
+        print(serverResponse)
     }
 }
 
@@ -185,11 +187,14 @@ var writeError : NSError?
 let written = myString.writeToFile(path, atomically: false,
     encoding: NSUTF8StringEncoding,
     error: &writeError)
-if !written {
-    if let error = writeError {
-        println("write failure: \(error.localizedDescription)")
+func testingError(){
+    if !written {
+        if let error = writeError {
+            print("write failure: " + error.localizedDescription)
+        }
     }
 }
+
 
 
 //In development, you can use assert to catch any errors which might appear, and need to be fixed before going to production.
