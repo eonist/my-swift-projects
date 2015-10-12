@@ -13,7 +13,7 @@ func displayArray<T>(theArray : [T]) -> T {
 		print(eachitem)
 		print("  :  ")
 	}
-	println()
+	print("")
 	let finalElement : T = theArray[theArray.count-1]
 	return finalElement
 }
