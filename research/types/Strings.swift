@@ -1,7 +1,7 @@
 
 import Foundation
 
-func test1ing(){
+func testing(){
     let someStr:String = "abc 123"
     someStr.isEmpty //false
     someStr.hasPrefix("abc")//true

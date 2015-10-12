@@ -1,4 +1,6 @@
 // CGSize struct
+import Foundation
+
 var size : CGSize = CGSizeMake(100, 100)
 // access struct members
 size.height
