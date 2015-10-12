@@ -3,8 +3,10 @@
 class Job {
     var title = ""
 }
-
-var job1 = Job()
-var job2 = job1
-job1.title = "singer"
-print(job2.title)
+func test(){
+    let job1 = Job()
+    let job2 = job1
+    job1.title = "singer"
+    print(job2.title)
+    
+}
