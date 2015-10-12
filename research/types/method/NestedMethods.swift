@@ -1,15 +1,17 @@
 func myFunctionWithNumber(someNumber: Int) {
 
-    func increment(var someNumber: Int) -> Int {
+    func increment( someNumber: Int) -> Int {
         return someNumber + 10
     }
 
     let incrementedNumber = increment(someNumber)
-    println("The incremented number is \(incrementedNumber)")
+    print("The incremented number is \(incrementedNumber)")
+}
+func test(){
+    myFunctionWithNumber(5)// The incremented number is 15
 }
 
-myFunctionWithNumber(5)
-// The incremented number is 15
+
 
 
 //Nested Functions
@@ -26,4 +28,6 @@ func summer(var num: Double) -> (Double...) -> Double {
     return internalFunc
 }
 
-summer(1.0)(2.0, 3.0)              // 6.0
+func test2(){
+    summer(1.0)(2.0, 3.0)              // 6.0
+}
