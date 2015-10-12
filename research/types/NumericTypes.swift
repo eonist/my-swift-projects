@@ -1,6 +1,6 @@
 //ints
 func test(){
-    var someInt:Int = 33
+    let someInt:Int = 33
     someInt.predecessor()//32
     someInt.successor()//34
     someInt.advancedBy(2)//35,returns the value doesnt set the value
@@ -49,7 +49,7 @@ func test(){
     pi.advancedBy(1)
     pi.advancedBy(-2)
     pi.distanceTo(2.0)
-    Double.abs(2.0)
+    print(Double.abs(2.0))
     print(Double.abs(-2.0))
     print(Float.abs(2.0))
     print(Float.abs(-2.0))
