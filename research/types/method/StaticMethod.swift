@@ -7,7 +7,7 @@ class StringUtil{
     * Returns a list of text items by splitting a text at every delimiter
     */
     class func split(string:String, delimiter:String)->Array<String>{
-        string.componentsSeparatedByString(delimiter)
+        return string.componentsSeparatedByString(delimiter)
     }
     /**
     * NOTE: you cant access instance level variables when using public static constants
@@ -16,5 +16,7 @@ class StringUtil{
         return STRING_UTIL_NAME
     }
 }
-StringUtil.name//string util
-StringUtil.split("abc 123"," ")[0]//"123"
+func test(){
+    print(StringUtil.name)////string util
+    print(StringUtil.split("abc 123"," ")[0])//"123"
+}
