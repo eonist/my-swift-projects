@@ -128,7 +128,7 @@ func save(media: protocol<Image, Video>) {
 }
 
 import Foundation
-
+//This feature requires protocols be marked, with @objc, which exposes the protocol to Objective-C code.
 @objc protocol Time {
     var day: Int { get }
     var month: Int { get }
