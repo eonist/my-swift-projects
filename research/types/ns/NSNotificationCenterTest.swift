@@ -1,11 +1,15 @@
+import Foundation
+import Cocoa
 
 class Test{
-    // Add an observer that will respond to loginComplete
-    NSNotificationCenter.defaultCenter.addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil])
-    
-    // Post a notification to loginComplete
-    NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:self)
-    
+    func testing(){
+        // Add an observer that will respond to loginComplete
+        NSNotificationCenter.defaultCenter.addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil])
+        
+        // Post a notification to loginComplete
+        NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:self)
+    }
+   
     // the function specified in the same class where we defined the addObserver
     func showMainMenu(notification:NSNotification) {
         print("Received Notification - Someone seems to have logged in" + String(notification.object.self))
