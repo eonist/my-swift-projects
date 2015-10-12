@@ -10,9 +10,7 @@ func test1ing(){
     
     var anotherStr = "66"
     let someInt = Int(anotherStr)//66
-    //var theInt = anotherInt.toInt() as? Int//this unwraps the variable and assigns it,
     //the better solution would be to do:
-    var theInt:Int = anotherStr ?? 0//which would set the theInt to 0 of the anotherStr.toInt() doesnt yield an int
     
     var thirdStr = "test"
     thirdStr += "abc"//concat the string
@@ -20,7 +18,9 @@ func test1ing(){
     //NOTE: you can concat a vhar and a string
     var theChar:Character = "a"
     var theChar2:Character = "b"
-    theChar + theChar2//yields a string containing "ab",
+    var someString:String = ""
+    someString.append(theChar)
+    someString.append(theChar2)//yields a string containing "ab"
     
     //comparing strings
     "a" == "b"//false
