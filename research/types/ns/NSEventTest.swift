@@ -1,4 +1,7 @@
 //https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/HandlingMouseEvents/HandlingMouseEvents.html
+
+/*
+
 theEvent {
     [self setFrameColor:[NSColor redColor]];
     [self setNeedsDisplay:YES];
@@ -13,6 +16,8 @@ theEvent {
     [[self frameColor] set];
     NSRectFill(rect);
 }
+
+*/
 /*
 NSLeftMouseUp
 
