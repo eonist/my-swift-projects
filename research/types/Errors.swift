@@ -210,6 +210,7 @@ if let error = error {
     println("Contents: \(contents)")
 }
 */
+
 //More fancy Error Handling techniques can be found in: What's New in Swift (2015 Session 106 28m30s)
 
 //Error handling model: The new error handling model in Swift 2.0 will instantly feel natural, with familiar try, throw, and catch keywords. Best of all, it was designed to work perfectly with the Apple SDKs and NSError. In fact, NSError conforms to a Swift’s ErrorType. You’ll definitely want to watch the WWDC session on What’s New in Swift to hear more about it.
@@ -221,16 +222,19 @@ if let error = error {
 // Get the NSFileManager
 var theFileManager = NSFileManager.defaultManager()
 // Define optional NSError
-var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
+//var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
 //var theSuccess = try
-do {
-    try theFileManager.moveItemAtPath("/some/path", toPath:"/some/other/path")//<--&error is the address to the variable, not the variable it self
-} catch let error as NSError {
-    print ("Error: \(error.domain)")
-    println("It didn't work.")
-    print1n(error?.localizedDescription)
-    println(error?.localizedFailureReason)
+func test5(){
+    do {
+        try theFileManager.moveItemAtPath("/some/path", toPath:"/some/other/path")//<--&error is the address to the variable, not the variable it self
+    } catch let error as NSError {
+        print ("Error: \(error.domain)")
+        print("It didn't work.")
+        print(error.localizedDescription)
+        print(error.localizedFailureReason)
+    }
 }
+
 
 
 
