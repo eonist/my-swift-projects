@@ -71,9 +71,9 @@ func power(myBase base:Int, exponent:Int) -> Int {
     return result
 }
 func test2(){
-    print("power(base: 10, exponent: 2) = " + power(myBase: 1, exponent: 2))
-    print("power(base: 2, exponent: 10) = " + power(base: 2, exponent: 10))
-    println("")
+    print("power(base: 10, exponent: 2) = \(power(myBase: 1, exponent: 2))")
+    print("power(base: 2, exponent: 10) = \(power(myBase:2, exponent: 10))")
+
 }
 /**
 * using external named parameter for the second param
