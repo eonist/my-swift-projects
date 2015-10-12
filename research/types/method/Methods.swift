@@ -110,3 +110,51 @@ func average(numbers: Double...) -> Double {
     return total / Double(numbers.count)
 }
 
+
+
+//in out example (modifies the original params)
+
+func swapTwoInts(inout a: Int, inout _ b: Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+func swapTwoStrings(inout a: String, inout _ b: String) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+func swapTwoDoubles(inout a: Double, inout _ b: Double) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+//public getter but private setter:
+struct TrackedString {
+    private(set) var numberOfEdits = 0
+    var value: String = "" {
+        didSet {
+            numberOfEdits++
+        }
+    }
+}
+
+
+// the access level for the numberOfEdits property is marked with a private(set) modifier to indicate that the property should be settable only from within the same source file as the TrackedString structure’s definition. The property’s getter still has the default access level of internal, but its setter is now private to the source file in which TrackedString is defined
+//This modification tracking is implemented with a didSet property observer on the value property, which increments numberOfEdits every time the value property is set to a new value.
+
+
+//You can make the structure’s numberOfEdits property getter public, and its property setter private, by combining the public and private(set) access level modifiers:
+
+public struct TrackedString2 {
+    public private(set) var numberOfEdits = 0
+    public var value: String = "" {
+        didSet {
+            numberOfEdits++
+        }
+    }
+    public init() {}
+}
+
