@@ -1,13 +1,21 @@
-// Add an observer that will respond to loginComplete
-NSNotificationCenter.defaultCenter.addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil])
+import Foundation
+import Cocoa
 
-// Post a notification to loginComplete
-NSNotificationCenter.defaultCenter.postNotificationName("loginComplete",object:self)
-
-// the function specified in the same class where we defined the addObserver
-func showMainMenu(notification:NSNotification) {
-    print("Received Notification - Someone seems to have logged in" + String(notification.object.self))
+class Test{
+    func testing(){
+        // Add an observer that will respond to loginComplete
+        NSNotificationCenter.defaultCenter().addObserver(self,selector:"showMainMenu", name:"loginComplete", object:nil)
+        
+        // Post a notification to loginComplete
+        NSNotificationCenter.defaultCenter().postNotificationName("loginComplete",object:self)
+    }
+   
+    // the function specified in the same class where we defined the addObserver
+    func showMainMenu(notification:NSNotification) {
+        print("Received Notification - Someone seems to have logged in" + String(notification.object.self))
+    }
 }
+
 //http://nshipster.com/nsnotification-and-nsnotificationcenter/
 
 /*
@@ -37,10 +45,19 @@ isChild(parent:NSView,child:NSChild){
 */
 
 //Is there a simple way to walk back up the NSView hierarchy (superview of superview of superview of nsview) to the main window or a point in between?
+
+
+
+
+/*
 NSView *aView = myView;
 while ((aView = [aView superview])) {
-    NSLog(@"%@", aView);
+NSLog(@"%@", aView);
 }
-
+*/
 //to get the window of a view :
-view.window
+//view.window
+
+
+
+

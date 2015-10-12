@@ -1,6 +1,6 @@
 //apple docs: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSTrackingArea_class/#//apple_ref/c/tdef/NSTrackingAreaOptions
-//import AppKit
-
+import AppKit
+/*
 struct NSTrackingAreaOptions : OptionSetType {
     init(rawValue rawValue: UInt)
     static var MouseEnteredAndExited: NSTrackingAreaOptions { get }
@@ -14,11 +14,17 @@ struct NSTrackingAreaOptions : OptionSetType {
     static var InVisibleRect: NSTrackingAreaOptions { get }
     static var EnabledDuringMouseDrag: NSTrackingAreaOptions { get }
 }
+*/
+
+
 
 /*
  * this may be for ios only:
  */
 //In viewDidMove, define an NSTrackingArea to track mouse events and add it to the view
+
+/*
+
 let options = NSTrackingAreaOptions.MouseMoved | NSTrackingAreaOptions.ActiveInKeyWindow
 let trackingArea = NSTrackingArea(rect:view.frame,options:options,owner:self,userInfo:nil)
 view.addTrackingArea(trackingArea)
@@ -30,7 +36,11 @@ sprite.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.fram
 sprite.setScale(0.5)
 self.addChild(sprite)
 
+*/
+
+
 //Override the mouseMoved method
+/*
 override func mouseMoved(event: NSEvent) {
     // Get mouse position in scene coordinates
     let location = event.locationInNode(self)
@@ -42,3 +52,4 @@ override func mouseMoved(event: NSEvent) {
         sprite.color = SKColor.greenColor()
     }
 }
+*/

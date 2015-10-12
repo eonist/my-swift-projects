@@ -1,3 +1,5 @@
+/*
+
 cild.node
 
 child.node.removeFromParent()
@@ -65,3 +67,5 @@ CGPathAddPath(myPath, NULL, pathThree);
 shape.path = myPath;
 
 [self addChild:shape];
+
+*/
