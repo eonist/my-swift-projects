@@ -18,7 +18,7 @@ class MethodTest{//pass a method via a para and execute it
 	}
 	
 	func anotherMethod( theMethod : ()->() ){
-		for i in 0...5 {
+		for _ in 0...5 {
 			theMethod()//performs this method 5 times
 		}
 	}
