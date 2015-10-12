@@ -8,10 +8,20 @@ myFunction {
     return x + y
 }
 
-
+/*
+XCODE crashes on these
 myFunction2 {
     (x, y) in
     return x + y
 }
 
 
+*/
+
+
+
+/*
+XCODE crashes on these
+myFunction3 { return $0 + $1 }
+
+*/
