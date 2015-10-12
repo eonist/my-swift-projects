@@ -16,26 +16,14 @@ func update() {
 //with param
 var somethingToPass = "It worked"
 
-class Testing {
-    func init(){
-    
-    }
-    let timer:NSTimer?
-    func test(){
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
-    }
-    
-    
-    func tester(timer: NSTimer){
-        let theStringToPrint = timer.userInfo as String
-        println(theStringToPrint)
-    }
-}
+
 
 //
 //NSLog is available in Swift for logging to the system console. You use the same formatting syntax you would use in Objective-C.
 
-NSLog("%.7f", pi)
+func someMethod(){
+    NSLog("%.7f", Math.PI)
+}
 // Logs "3.1415927" to the console
 //Swift also has print functions like print(_:) available. These functions are simple, powerful, and versatile due to Swift’s string interpolation. They don’t print to the system console but are available for general printing needs.
 
