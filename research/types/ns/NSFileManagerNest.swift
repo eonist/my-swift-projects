@@ -12,10 +12,14 @@ NSLog(@"Error: %@", error.domain);
 }
 */
 
-let fileManager = NSFileManager.defaultManager()
-let URL = NSURL.fileURLWithPath("path/to/file")
-do {
-    try fileManager.removeItemAtURL(URL)
-} catch let error as NSError {
-    print ("Error: \(error.domain)")
+
+func test(){
+    let fileManager = NSFileManager.defaultManager()
+    let URL = NSURL.fileURLWithPath("path/to/file")
+    
+    do {
+        try fileManager.removeItemAtURL(URL)
+    } catch let error as NSError {
+        print ("Error: \(error.domain)")
+    }
 }
