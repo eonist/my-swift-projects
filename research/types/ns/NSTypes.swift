@@ -1,10 +1,12 @@
-
+import Foundation
 //nstimer
+/*
 override func viewDidLoad() {
     super.viewDidLoad()
 
     var timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update", userInfo: nil, repeats: true)
 }
+*/
 
 // must be internal or public. 
 func update() {
@@ -14,13 +16,15 @@ func update() {
 //with param
 var somethingToPass = "It worked"
 
-let timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
-
-func tester(timer: NSTimer)
-{
-    let theStringToPrint = timer.userInfo as String
-    println(theStringToPrint)
+class Testing{
+    let timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
+    
+    func tester(timer: NSTimer){
+        let theStringToPrint = timer.userInfo as String
+        println(theStringToPrint)
+    }
 }
+
 //
 //NSLog is available in Swift for logging to the system console. You use the same formatting syntax you would use in Objective-C.
 
