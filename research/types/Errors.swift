@@ -222,12 +222,16 @@ if let error = error {
 var theFileManager = NSFileManager.defaultManager()
 // Define optional NSError
 var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
-var theSuccess = theFileManager.moveItemAtPath("/some/path", toPath:"/some/other/path")//<--&error is the address to the variable, not the variable it self
-if !success {
-	println("It didn't work.")
-	print1n(error?.localizedDescription)
-	println(error?.localizedFailureReason)
+//var theSuccess = try
+do {
+    try theFileManager.moveItemAtPath("/some/path", toPath:"/some/other/path")//<--&error is the address to the variable, not the variable it self
+} catch let error as NSError {
+    print ("Error: \(error.domain)")
+    println("It didn't work.")
+    print1n(error?.localizedDescription)
+    println(error?.localizedFailureReason)
 }
+
 
 
 /*
