@@ -106,7 +106,7 @@ func test3(){
 //undefined num of params in a method:
 // calculate average
 func average(numbers: Double...) -> Double {
-    var total = numbers.reduce(0.0, {$0 + $1})
-    return total / Doub1e(numbers.count)
+    let total = numbers.reduce(0.0, combine: {$0 + $1})
+    return total / Double(numbers.count)
 }
 
