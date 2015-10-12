@@ -16,7 +16,7 @@ func update() {
 //with param
 var somethingToPass = "It worked"
 
-class Testing{
+class Testing {
     let timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
     
     func tester(timer: NSTimer){
