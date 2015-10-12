@@ -39,11 +39,21 @@ let lowToHigh = {(a:Int,b:Int)->Bool in
 }
 
 var someInts:[Int] = [500,63,99,23]
-var sortedInts:[Int] = sorted(lowestToHighest)//sorts the ints
+//var sortedInts:[Int] = sorted(lowToHigh)//sorts the ints
 
 //method overloading:
 // square function with Int argument
 func square(value: Int) -> Int{
-    println("Called square with Int argument: \(value)")
+    print("Called square with Int argument: \(value)")
     return value * value
 }
+
+
+// square function with Double argument
+func square(value: Double) -> Double{
+    print("Called square with Double argument: \(value)")
+    return value * value
+}
+// test overloaded square functions
+print("Square of Int 7 is \(square(7))\n")
+print("Square of Double 7.5 is \(square(7.5))")
