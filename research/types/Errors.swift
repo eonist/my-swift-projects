@@ -105,7 +105,22 @@ enum SecureStoreError: ErrorType {
     case DirectoryNotExist
     case NoRights
 }
-
+func testing(){
+    func storeData(data: NSData, path: String) throws -> String{
+        
+    }
+    
+    do {
+        try store.storeData(NSData(), path: "path/to/dir")
+    } catch SecureStoreError.DirectoryNotExist {
+        print("dir not exist")
+    } catch SecureStoreError.NoRights {
+        print("no rights")
+    } catch {
+        print("not handled error")
+    }
+}
+//a class example
 class SecureStore {
     
     func storeData(data: NSData, path: String) throws -> String {
