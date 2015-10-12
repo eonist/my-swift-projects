@@ -101,6 +101,34 @@ func test4(){
     }
 }
 
+enum SecureStoreError: ErrorType {
+    case DirectoryNotExist
+    case NoRights
+}
+
+class SecureStore {
+    
+    func storeData(data: NSData, path: String) throws -> String {
+        // Some logic goes here...
+        // More logic...
+        
+        // Ooops, directory not exist, throw error
+        throw SecureStoreError.DirectoryNotExist
+        
+        // the code here is executed when directory exist.
+        
+        // checking rights...
+        // Oops, no write-rights, throw error
+        throw SecureStoreError.NoRights
+        
+        // We've got rights
+        
+        // Saving logic goes here
+        // Generates some identifier for stored data
+        // This will be only returned if method didn't throw above.
+        return NSUUID().UUIDString
+    }
+}
 
 //Throwing an Error:
 //objc
