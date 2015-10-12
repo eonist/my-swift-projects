@@ -6,7 +6,9 @@ func someFunction(name:String,var key:String)->String{//params are constant by d
 	print("hello,"+someText)
 	return key;
 }
-someFunction("test",key: "ab")
+func testing(){
+    someFunction("test",key: "ab")
+}
 
 //NOTE: can params have default values? yes but you must name them
 //some()
@@ -22,6 +24,6 @@ class MethodTest{//pass a method via a para and execute it
 			theMethod()//performs this method 5 times
 		}
 	}
-	anotherMethod(someMethod())
+    
 	anotherMethod({printin("hello")})//hello 5 times
 }
