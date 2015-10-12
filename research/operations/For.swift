@@ -17,6 +17,11 @@ for index in 1...9 {//0...someVal will also work, or 0...<5 will do 0-4
     print(index)
 }
 
+//reapeat 5 times:
+for _ in 0...5 {//avoids creating the i variable if your not going to use it, but need to repate something 5 times
+      print("go")
+}
+
 //for loop with a break:
 //break statement exiting a for..in statement
 for count in 1...10 { //I supposed to loop 10 times
