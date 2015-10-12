@@ -202,7 +202,7 @@ func testingError(){
 //Brief example:
 
 var error: NSError?
-var contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros", error: &error)
+var contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros")
 if let error = error {
     println("An error occurred \(error)")
 } else {
