@@ -17,7 +17,14 @@ func update() {
 var somethingToPass = "It worked"
 
 class Testing {
-    let timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
+    func init(){
+    
+    }
+    let timer:NSTimer?
+    func test(){
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "tester:", userInfo: somethingToPass, repeats: false)
+    }
+    
     
     func tester(timer: NSTimer){
         let theStringToPrint = timer.userInfo as String
