@@ -202,17 +202,17 @@ func testingError(){
 //The classic NSError approach isn't altered, you send an NSErrorPointer, which gets populated.
 //Brief example:
 
-/*
-
-var error: NSError?
-var contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros")
-if let error = error {
-    println("An error occurred \(error)")
-} else {
-    println("Contents: \(contents)")
+func testing3(){
+    let error: NSError?
+    var contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros")
+    if let error = error {
+        print("An error occurred \(error)")
+    } else {
+        print("Contents: \(contents)")
+    }
 }
 
-*/
+
 
 //More fancy Error Handling techniques can be found in: What's New in Swift (2015 Session 106 28m30s)
 
