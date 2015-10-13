@@ -16,8 +16,10 @@ class RegExpModifier{
             let expr = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
             //string, options: options, range: , withTemplate: replacement) {
             //
-            let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.endIndex), withTemplate: replacement)
+            let len = string.characters.endIndex
+            let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, len), withTemplate: replacement)
             return replacement
+            //
         }catch let error as NSError {
             print("invalid regexp: \(error.localizedDescription)")
             return ""//return an empty string
