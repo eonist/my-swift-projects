@@ -11,7 +11,7 @@ class StringAsserter{
 	 *	@param prefix: The prefix that will be tested against the string.
 	 *	@return True if the string starts with the prefix, false if it does not.
 	 */	
-	class func beginsWith(input:String, prefix:String):Boolean->String{
-		return (prefix == input.substring(0, prefix.length));
+	class func beginsWith(input:String, prefix:String)->Bool{
+		return (prefix == input.subString(0, prefix.characters.count));
 	}	
 }
