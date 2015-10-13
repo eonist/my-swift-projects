@@ -30,11 +30,5 @@ class StringParser{
 		let retVal:Array = [a,b]
 		return retVal
 	}
-	/**
-	 * Asserts
-	 */
-	class func boolean(string:String)->Bool{
-		return string == "true";
-	}
 }
     //resolve path extension

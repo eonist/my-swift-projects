@@ -16,9 +16,15 @@ class StringAsserter{
         return (prefix == string.substringWithRange(range));
 	}
     /*
-     *
+     * Asserts if a 
      */
     class func containsChar(string:String, char:Character)-> Bool{
        return string.characters.contains(char)
+    }
+    /**
+     * Asserts if a string is the word true
+     */
+    class func boolean(string:String)->Bool{
+        return string == "true";
     }
 }
