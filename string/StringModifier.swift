@@ -19,7 +19,7 @@ class StringModifier{
 		func backwards(s1: String, _ s2: String) -> Bool {
 		    return s1 > s2
 		}
-		var reversed:String = string.sort(backwards)
+		let reversed:String = ""//needs work -> = string.characters.sort(backwards)
 		return reversed
 	}
 	/**
