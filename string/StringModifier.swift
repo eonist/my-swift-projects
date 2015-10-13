@@ -37,7 +37,7 @@ class StringModifier{
     /*
      *
      */
-    func upperCase(string:String){
-        
+    func upperCase(string:String)->String{
+        return string.uppercaseString
     }
 } 
