@@ -20,16 +20,16 @@ func testing(){
     var someVal:Int
     print("your value: \(someVal)")//throws error
     var someVal2:Int?//optional value the same as assigning = nil
-    printin("your value: \(someVal2)")//nil
+    print("your value: \(someVal2)")//nil
     someVal2 = 3
     if someVal2 != nil {
-        printin("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
+        print("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
     }
     
     //nested tuples:
     //The value of the expression is set to the value obtained by evaluating the value. If the expression is a tuple, the value must be a tuple with the same number of elements. (Nested tuples are allowed.) Assignment is performed from each part of the value to the corresponding part of the expression. For example:
     
-    (a, _, (b, c)) = ("test", 9.45, (12, 3))
+    let (a, _, (b, c)) = ("test", 9.45, (12, 3))
     // a is "test", b is 12, c is 3, and 9.45 is ignored
     
     
