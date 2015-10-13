@@ -8,14 +8,14 @@ class StringParser{
 	/**
 	 * NOTE: use "\n" to retrive paragraphs
 	 */
-	class func split(string:String,_ delimiter:String)->Array{
-		return unmMergedPaths.componentsSeparatedByString(delimiter)
+	class func split(string:String,_ delimiter:String)->Array<String>{
+		return string.componentsSeparatedByString(delimiter)
 	}
 	class func firstWord(string:String)->String {
        return string.componentsSeparatedByString(" ")[0]
    }
    class func lastChar(string:String)->String {
-        return string[string.length()-1]
+        return string[string.endIndex - 1]
     }
     /**
 	 * Returns an array comprised of two strings derived from splitting @param string at @param index
