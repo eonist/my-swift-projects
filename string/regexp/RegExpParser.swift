@@ -13,7 +13,7 @@ class RegExpParser{
 	        return results.map { nsString.substringWithRange($0.range)}
 	    } catch let error as NSError {
 	        print("invalid regexp: \(error.localizedDescription)")
-	        return []
+	        return []//return empty array
 	    }
 	}
 }
