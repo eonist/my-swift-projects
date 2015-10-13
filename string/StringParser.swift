@@ -36,7 +36,7 @@ class StringParser{
         return str.substringWithRange(range)
     }
     /**
-     *
+     * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
      */
     func subStr(str:String,beginning:Int,end:Int){
         
