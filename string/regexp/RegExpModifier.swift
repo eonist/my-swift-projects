@@ -14,7 +14,8 @@ class RegExpModifier{
 	class func replace(string: String, searchPattern: String,replacement:String,options:NSMatchingOptions)-> String{
         do {
             let expr = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
-            let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
+            //string, options: options, range: , withTemplate: replacement) {
+            let replacement = expr.stringByReplacingMatchesInString(<#T##string: String##String#>, options: <#T##NSMatchingOptions#>, range: NSMakeRange(0, 12), withTemplate: replacement)
             //return replacement
         }catch let error as NSError {
             print("invalid regexp: \(error.localizedDescription)")
