@@ -26,8 +26,8 @@ class StringParser{
         return String(string.characters.last)
     }
     /**
-	 * Returns an array comprised of two strings derived from splitting @param string at @param index
-	 * splitAt("Hello, playground",5)//["hello"," playground"]
+	 * 
+	 * "Hello from Paris, Texas!!!";
 	 */
     class func subString(str:String,beginning:Int,len:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
@@ -43,7 +43,7 @@ class StringParser{
     }
     /*
      * Returns an array comprised of two strings that is the result of splitting the @param str
-     *
+     * splitAt("Hello, playground",5)//["hello"," playground"]
      */
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
