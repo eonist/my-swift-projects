@@ -10,4 +10,6 @@ func myFuncThatReturnsAFunc() -> returnedFunctionType {
 
 let returnedFunction = myFuncThatReturnsAFunc()
 
-returnedFunction(5) // The lucky number is 5
+func test(){
+    returnedFunction(5) // The lucky number is 5
+}
