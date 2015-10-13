@@ -24,11 +24,10 @@ class StringParser{
 	 * splitAt("Hello, playground",5)//["hello"," playground"]
 	 */
     class func range(str:String,start:Int,len:Int)->String{
-        let start:<String.Index> = str.startIndex
-        let end:<String.Index> = str.startIndex
-        
-        let theRange:Range = Range(start: str.startIndex,end:str.startIndex.advancedBy(len))
-       return str.substringWithRange()
+        let start = str.startIndex
+        let end = str.startIndex.advancedBy(len)
+        let range:Range = Range(start:start,end:end)
+        return str.substringWithRange(range)
     }
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
