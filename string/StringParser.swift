@@ -23,7 +23,7 @@ class StringParser{
 	 * Returns an array comprised of two strings derived from splitting @param string at @param index
 	 * splitAt("Hello, playground",5)//["hello"," playground"]
 	 */
-    class func range(string:String){
+    class func range(string:String,start:Int,end:Int){
         let str = "Hello, playground"
         let helloStr = str.substringWithRange(Range(start: str.startIndex,end:str.startIndex.advancedBy(5)))
         helloStr //"Hello"
