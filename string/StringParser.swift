@@ -31,7 +31,7 @@ class StringParser{
 		return retVal
 	}
 	/**
-	 * 
+	 * Asserts
 	 */
 	class func boolean(string:String)->Bool{
 		return string == "true";
