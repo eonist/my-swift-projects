@@ -63,12 +63,12 @@ class StringParser{
      *
      */
     class func indexOf(a:String,b:String){
-        
+        let range:Range<String.Index> = matchRange
     }
     /**
-    *
-    */
-    func matchIndices(a:String,b:String)->Range<String.Index>{
+     * 
+     */
+    func matchRange(a:String,b:String)->Range<String.Index>{
         /*
         let text = "abc"
         let index2 = text.startIndex.advancedBy(2) //will call succ 2 times
