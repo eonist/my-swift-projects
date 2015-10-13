@@ -28,4 +28,10 @@ class StringModifier{
 	func capitalize(string:String)->String{
 		return string.capitalizedString
 	}
+    /*
+     *
+     */
+    func (string:String){
+        string.lowercaseString
+    }
 } 
