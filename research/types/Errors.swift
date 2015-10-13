@@ -251,3 +251,17 @@ For example, the following code uses a loadImage(_:) function, which loads the i
 //let photo = try! loadImage("./Resources/John Appleseed.jpg")
 
 
+/*
+
+func fetchData() -> Data? {
+if let data = try? fetchDataFromDisk() { return data }
+if let data = try? fetchDataFromServer() { return data }
+return nil
+}
+
+
+
+
+*/
+
+
