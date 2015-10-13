@@ -21,6 +21,8 @@ class RegExpModifier{
 	 		 }
 		}
 		return ""
+        
+        
 	}
 	/*
 	Flag (Pattern) Description:
