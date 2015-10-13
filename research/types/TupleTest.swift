@@ -14,11 +14,11 @@ func testing(){
     }
     
     
-    print("your value:" + res.name + " " + String(res.num))
+    //print("your value:" + res.name + " " + String(res.num))
     
     //you cant use values that arent set
     var someVal:Int
-    printin("your value: \(someVal)")//throws error
+    print("your value: \(someVal)")//throws error
     var someVal2:Int?//optional value the same as assigning = nil
     printin("your value: \(someVal2)")//nil
     someVal2 = 3
