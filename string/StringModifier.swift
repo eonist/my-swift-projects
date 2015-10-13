@@ -52,8 +52,10 @@ class StringModifier{
     /*
      *
      */
-    class func insert(){
-        
+    class func insertAt(str:String){
+        var welcome = "hello"
+        welcome.insert("!", atIndex: welcome.endIndex)
+        // welcome now equals "hello!"
     }
     
     /**
