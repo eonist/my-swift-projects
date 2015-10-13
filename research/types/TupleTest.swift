@@ -40,12 +40,12 @@ func testing(){
     
     switch (urlComponents.host, urlComponents.path) {
     case let (.Some(host), .Some(path)):
-        println("This url consists of host \(host) and path \(path)")
+        print("This url consists of host \(host) and path \(path)")
     case let (.Some(host), .None):
-        println("This url only has a host \(host)")
+        print("This url only has a host \(host)")
     case let (.None, .Some(path)):
-        println("This url only has path \(path). Make sure to add a host!")
+        print("This url only has path \(path). Make sure to add a host!")
     case let (.None, .None):
-        println("This is not a url!")
+        print("This is not a url!")
     }
 }
