@@ -30,7 +30,8 @@ class StringParser{
         return str.substringWithRange(range)
     }
     /*
-     * Returns an array of string items by splitting a text at every delimiter
+     * Returns an array comprised of two strings that is the result of splitting the @param str
+     *
      */
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
@@ -38,5 +39,8 @@ class StringParser{
 		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
 		return [a,b]
 	}
+    class func occurrences(){
+    
+    }
 }
-    //resolve path extension
+//resolve path extension
