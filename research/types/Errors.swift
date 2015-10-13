@@ -224,12 +224,14 @@ func testing3(){
 /**
  * this is how you deal with address pointers and errors in swift when calling an obj-c method
  */
-// Get the NSFileManager
-var theFileManager = NSFileManager.defaultManager()
-// Define optional NSError
-//var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
-//var theSuccess = try
-func test5(){
+
+func testing2(){
+    // Get the NSFileManager
+    let theFileManager = NSFileManager.defaultManager()
+    // Define optional NSError
+    //var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
+    //var theSuccess = try
+
     do {
         try theFileManager.moveItemAtPath("/some/path", toPath:"/some/other/path")//<--&error is the address to the variable, not the variable it self
     } catch let error as NSError {
