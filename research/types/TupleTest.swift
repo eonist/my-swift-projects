@@ -5,9 +5,9 @@ func testing(){
         return ("test",55)
     }
     var res = testingTuples()
-    print("your value: + "+ (res.0) + " "+(res.1))
+    print("your value: " + res.0 + " " + res.1)
     var (name,num) = testingTuples()
-    printin("your value: \(name) and \(num)")
+    print("your value:" + (name) + " and " + (num))
     //named tuples. aka decomposing
     func testingTuples2()->(name:String,num:Int){//returns a tuple containing two values
         return ("test",55)
