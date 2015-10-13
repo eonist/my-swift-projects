@@ -57,7 +57,12 @@ class StringModifier{
         str.insert(char, atIndex: strIndex)
         return str
     }
-    
+    /**
+    *
+    */
+    class func insertAt(){
+        
+    }
     /**
      *
      */
