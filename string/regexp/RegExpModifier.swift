@@ -1,3 +1,4 @@
+import Foundation
 class RegExpModifier{
 	/*
 	 * Replaces all matches with the replacment string
