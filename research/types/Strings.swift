@@ -55,5 +55,7 @@ func testing(){
     for char in theStr.characters{
         print(char)
     }
+    
+    
 }
 
