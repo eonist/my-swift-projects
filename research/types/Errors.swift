@@ -187,9 +187,9 @@ func test6(){
 func test5(){
     var writeError : NSError?
     let someText:String = "some text"
-    let written = try? someText.writeToFile("/some/path/here", atomically: false, encoding: NSUTF8StringEncoding)
+    let writtenData:()? = try? someText.writeToFile("/some/path/here", atomically: false, encoding: NSUTF8StringEncoding)
     func testingError(){
-        if !(written != nil) {
+        if !(writtenData != nil) {
             if let error = writeError {
                 print("write failure: " + error.localizedDescription)
             }
