@@ -14,22 +14,14 @@ class RegExpModifier{
 	class func replace(string: String, searchPattern: String,replacement:String,options:NSMatchingOptions)-> String{
 		var err: NSError? = nil
         //pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: err)
-		var expr = try?
-		if (err === nil) { 
-			
-	 		 }
-		}
-		return ""
-        
-        
         
         do {
             let expr = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
-            if let replacement = expr?.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
+            if let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
             return replacement
-        } catch let error as NSError {
+        }catch let error as NSError {
             print("invalid regexp: \(error.localizedDescription)")
-            return []//return empty array
+            return ""//return an empty string
         }
         
 	}
