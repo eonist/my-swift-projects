@@ -14,7 +14,7 @@ class RegExpModifier{
 	class func replace(string: String, searchPattern: String,replacement:String,options:NSMatchingOptions)-> String{
 		var err: NSError? = nil
         //pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: err)
-		var expr = NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
+		var expr = try? NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
 		if (err === nil) { 
 			if let replacement = expr?.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
 	   		 return replacement
