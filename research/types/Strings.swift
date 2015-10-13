@@ -49,5 +49,11 @@ func testing(){
     print(string) // cafe
     print(string.characters.count) // 4
     //countElements("abc")//3//not working
+    
+    //looping:
+    var theStr = "This is a string"
+    for char in theStr.characters{
+        print(char)
+    }
 }
 
