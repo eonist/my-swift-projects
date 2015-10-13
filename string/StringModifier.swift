@@ -45,7 +45,8 @@ class StringModifier{
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      */
     class func capFirstChar(str:String)->String{
-        return str.characters[0] + StringParser.subString(str,1,str.characters.count)
+        let firstChar:Character = str.characters[0]
+        return firstChar + StringParser.subString(str,1,str.characters.count)
     }
     /*
      *
