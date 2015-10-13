@@ -2,6 +2,10 @@
 import Foundation
 
 func testing(){
+    let emptyString = String()
+    print(emptyString)
+    let anotherEmptyString:String = ""
+    print(anotherEmptyString)
     let someStr:String = "abc 123"
     someStr.isEmpty //false
     someStr.hasPrefix("abc")//true
