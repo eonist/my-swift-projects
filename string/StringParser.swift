@@ -11,12 +11,15 @@ class StringParser{
 	class func split(string:String,_ delimiter:String)->Array<String>{
 		return string.componentsSeparatedByString(delimiter)
 	}
+    /*
+     *
+     */
 	class func firstWord(string:String)->String {
        return string.componentsSeparatedByString(" ")[0]
-   }
+    }
     /*
-    *
-    */
+     *
+     */
    class func lastChar(string:String)->String {
         let lastCharIndex:Int = string.characters.count - 1
         print(lastCharIndex)
@@ -49,4 +52,3 @@ class StringParser{
         //impliment this
     }
 }
-//resolve path extension
