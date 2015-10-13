@@ -9,19 +9,25 @@ class CharacterParser {
     /**
      * Returns the char before @param index
      */
-    func predecessorAt(str:String,index:Int)->Character{
+    class func predecessorAt(str:String,index:Int)->Character{
         let strIndex = str.startIndex.advancedBy(index)
         return str.characters[strIndex.predecessor()]
     }
     /**
      * Returns the first occurence of @param char in @param str
      */
-    func indexOf(str:String,char:Character)->Int{
+    class func indexOf(str:String,char:Character)->Int{
         if let strIndex = str.characters.indexOf(char) {
             return str.startIndex.distanceTo(strIndex)
         }
         else {
             -1//indicates that the char doesnt exist
         }
+    }
+    /**
+     *
+     */
+    class func charAt(str:String,index:Int){
+        
     }
 }

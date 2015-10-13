@@ -59,5 +59,20 @@ class StringParser{
     class func occurrences(){
         //impliment this
     }
-    
+    /**
+    *
+    */
+    func matchIndices(a:String,b:String)->Range<String.Index>{
+        /*
+        let text = "abc"
+        let index2 = text.startIndex.advancedBy(2) //will call succ 2 times
+        let lastChar: Character = text[index2] //now we can index!
+        let lastChar = text.characters[index2] //will do the same
+        
+        
+        let index: Int = text.startIndex.distanceTo(range.startIndex) //will call successor/predecessor several times until the indices match
+        */
+        let range: Range<String.Index> = a.rangeOfString(b)!
+        return range
+    }
 }
