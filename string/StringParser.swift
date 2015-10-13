@@ -28,7 +28,7 @@ class StringParser{
     /**
 	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
 	 */
-    class func subString(str:String,beginning:Int,end:Int)->String{
+    class func subString(str:String,_ beginning:Int,_ end:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
         let endIndex = str.startIndex.advancedBy(end-beginning)
         let range:Range = Range(start:startIndex,end:endIndex)
@@ -37,7 +37,7 @@ class StringParser{
     /**
      * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
      */
-    func subStr(str:String, beginning:Int,len:Int)->String{
+    func subStr(str:String, _ beginning:Int,_ len:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
         let endIndex = str.startIndex.advancedBy(beginning+len)
         let range:Range = Range(start:startIndex,end:endIndex)
@@ -47,7 +47,7 @@ class StringParser{
      * Returns an array comprised of two strings that is the result of splitting the @param str
      * splitAt("Hello, playground",5)//["hello"," playground"]
      */
-	class func splitAt(str:String, index:Int)->Array<String> {
+	class func splitAt(str:String, _ index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
 		let a:String = str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
 		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
@@ -62,13 +62,14 @@ class StringParser{
     /**
      *
      */
-    class func indexOf(a:String,b:String){
-        let range:Range<String.Index> = matchRange
+    class func indexOf(a:String,_ b:String)->Int{
+        let range:Range<String.Index> = StringParser.matchRange(a,b)
+        return a.startIndex.distanceTo(range.startIndex)
     }
     /**
-     * 
+     *
      */
-    func matchRange(a:String,b:String)->Range<String.Index>{
+    class func matchRange(a:String,_ b:String)->Range<String.Index>{
         /*
         let text = "abc"
         let index2 = text.startIndex.advancedBy(2) //will call succ 2 times
