@@ -30,7 +30,7 @@ class StringParser{
         return str.substringWithRange(range)
     }
     /*
-     *
+     * Returns an array of string items by splitting a text at every delimiter
      */
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
