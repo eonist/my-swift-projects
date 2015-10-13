@@ -25,9 +25,11 @@ class CharacterParser {
         }
     }
     /**
-     *
+     * Returns a Character instance at @param index
      */
-    class func charAt(str:String,index:Int){
-        
+    class func charAt(str:String,index:Int)->Character{
+        let index = str.startIndex.advancedBy(index) //will call succ n times until index
+        let char:Character = str[index] //you can also do: text.characters[index2]
+        return char
     }
 }

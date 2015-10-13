@@ -60,6 +60,12 @@ class StringParser{
         //impliment this
     }
     /**
+     *
+     */
+    class func indexOf(a:String,b:String){
+        
+    }
+    /**
     *
     */
     func matchIndices(a:String,b:String)->Range<String.Index>{
@@ -72,7 +78,6 @@ class StringParser{
         
         let index: Int = text.startIndex.distanceTo(range.startIndex) //will call successor/predecessor several times until the indices match
         */
-        let range: Range<String.Index> = a.rangeOfString(b)!
-        return range
+        return Range<String.Index> = a.rangeOfString(b)!
     }
 }
