@@ -78,6 +78,6 @@ class StringParser{
         
         let index: Int = text.startIndex.distanceTo(range.startIndex) //will call successor/predecessor several times until the indices match
         */
-        return Range<String.Index> = a.rangeOfString(b)!
+        return a.rangeOfString(b)!
     }
 }
