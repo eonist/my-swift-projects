@@ -43,5 +43,7 @@ class StringModifier{
     /*
      *
      */
-    class func
+    func capSentence(string:){
+        myString.replaceRange(myString.startIndex...myString.startIndex, with: String(myString[myString.startIndex]).capitalizedString)
+    }
 } 
