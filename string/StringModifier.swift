@@ -29,13 +29,13 @@ class StringModifier{
 		return string.capitalizedString
 	}
     /*
-     *
+     * Returns a lowercase string
      */
     func lowerCase(string:String)->String{
        return string.lowercaseString
     }
     /*
-     *
+     * Returns an uppercase string
      */
     func upperCase(string:String)->String{
         return string.uppercaseString
