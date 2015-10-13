@@ -29,10 +29,10 @@ class StringParser{
 	 * Returns an array comprised of two strings derived from splitting @param string at @param index
 	 * splitAt("Hello, playground",5)//["hello"," playground"]
 	 */
-    class func range(str:String,start:Int,len:Int)->String{
-        let start = str.startIndex
-        let end = str.startIndex.advancedBy(len)
-        let range:Range = Range(start:start,end:end)
+    class func range(str:String,beginning:Int,len:Int)->String{
+        let startIndex = str.startIndex.advancedBy(beginning)
+        let endIndex = str.startIndex.advancedBy(beginning+len)
+        let range:Range = Range(start:startIndex,end:endIndex)
         return str.substringWithRange(range)
     }
     /*
