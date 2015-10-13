@@ -12,7 +12,13 @@ class StringAsserter{
 	 *	@return True if the string starts with the prefix, false if it does not.
 	 */	
 	class func beginsWith(input:String, prefix:String)->Bool{
-		return (prefix == input.subString(0, prefix.characters.count));
+		//return (prefix == input.subString(0, prefix.characters.count));
+        let name = "How do you use String.substringWithRange?"
+        let range = prefix.startIndex..<name.startIndex.advancedBy(10)
+        let res:String = name.substringWithRange(range)
+
+        
+        return false
 	}
     /*
      *
