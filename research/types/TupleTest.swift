@@ -32,11 +32,16 @@ func testing(){
     
     let (a, _, (b, c)) = ("test", 9.45, (12, 3))
     // a is "test", b is 12, c is 3, and 9.45 is ignored
-    
+    print(b)
+    print(c)
+    print(a)
     
     //Toggle different tuple types
     // This url consists of host name.com and path /12345
     /*
+    
+    
+    
     let urlComponents = componentsFromUrlString("http://name.com/12345;param?foo=1&baa=2#fragment")
     
     switch (urlComponents.host, urlComponents.path) {
