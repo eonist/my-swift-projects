@@ -12,18 +12,15 @@ class RegExpModifier{
 	 * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
 	 */
 	class func replace(string: String, searchPattern: String,replacement:String,options:NSMatchingOptions)-> String{
-		var err: NSError? = nil
-        //pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: err)
-        
         do {
             let expr = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
             let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.length), withTemplate: replacement) {
-            return replacement
+            //return replacement
         }catch let error as NSError {
             print("invalid regexp: \(error.localizedDescription)")
-            return ""//return an empty string
+            //return ""//return an empty string
         }
-        
+        return ""
 	}
 	/*
 	Flag (Pattern) Description:
