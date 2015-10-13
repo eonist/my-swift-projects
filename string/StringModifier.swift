@@ -31,7 +31,7 @@ class StringModifier{
     /*
      *
      */
-    func (string:String){
-        string.lowercaseString
+    func lowerCase(string:String)->String{
+       return string.lowercaseString
     }
 } 
