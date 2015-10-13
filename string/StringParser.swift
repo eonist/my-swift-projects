@@ -26,20 +26,23 @@ class StringParser{
         return String(string.characters.last)
     }
     /**
-	 * 
-	 * "Hello from Paris, Texas!!!";
+	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
+	 *
 	 */
-    class func subString(str:String,beginning:Int,len:Int)->String{
+    class func subString(str:String,beginning:Int,end:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
-        let endIndex = str.startIndex.advancedBy(beginning+len)
+        let endIndex = str.startIndex.advancedBy(end-beginning)
         let range:Range = Range(start:startIndex,end:endIndex)
         return str.substringWithRange(range)
     }
     /**
      * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
      */
-    func subStr(str:String,beginning:Int,end:Int){
-        
+    func subStr(str:String,beginning:Int,len:Int){
+        let startIndex = str.startIndex.advancedBy(beginning)
+        let endIndex = str.startIndex.advancedBy(beginning+len)
+        let range:Range = Range(start:startIndex,end:endIndex)
+        return str.substringWithRange(range)
     }
     /*
      * Returns an array comprised of two strings that is the result of splitting the @param str
