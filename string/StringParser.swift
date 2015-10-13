@@ -23,14 +23,12 @@ class StringParser{
 	 * Returns an array comprised of two strings derived from splitting @param string at @param index
 	 * splitAt("Hello, playground",5)//["hello"," playground"]
 	 */
-    class func test(){
-        var str = "Hello, playground"
-        
-        let rangeOfHello = Range(start: str.startIndex,end:str.startIndex.advancedBy(5))
-        let helloStr = str.substringWithRange(rangeOfHello)
+    class func range(string:String){
+        let str = "Hello, playground"
+        let helloStr = str.substringWithRange(Range(start: str.startIndex,end:str.startIndex.advancedBy(5)))
         helloStr //"Hello"
     }
-    /*
+    
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
 		let a:String = str.substringWithRange(Range<String.Index>(start:0 , end:index )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
@@ -38,6 +36,6 @@ class StringParser{
 		let retVal:Array = [a,b]
 		return retVal
 	}
-    */
+    
 }
     //resolve path extension
