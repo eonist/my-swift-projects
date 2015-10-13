@@ -1,3 +1,4 @@
+import Foundation
 func testing(){
     //tuples are almost like objects
     var someTuple = ("test",22,10.2,"abc")
@@ -35,7 +36,7 @@ func testing(){
     
     //Toggle different tuple types
     // This url consists of host name.com and path /12345
-    let urlComponents = componentsFromUrlString("http://name.com/12345;param?foo=1&baa=2#fragment")
+    let urlComponents = NSURL.componentsFromUrlString("http://name.com/12345;param?foo=1&baa=2#fragment")
     
     switch (urlComponents.host, urlComponents.path) {
     case let (.Some(host), .Some(path)):
