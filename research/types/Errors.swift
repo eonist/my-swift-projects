@@ -184,6 +184,7 @@ func test6(){
 
 //Error reporting in Swift follows the same pattern it does in Objective-C, with the added benefit of offering optional return values. In the simplest case, you return a Bool value from the function to indicate whether or not it succeeded. When you need to report the reason for the error, you can add to the function an NSError out parameter of type NSErrorPointer. This type is roughly equivalent to Objective-C’s NSError **, with additional memory safety and optional typing. You can use the prefix & operator to pass in a reference to an optional NSError type as an NSErrorPointer object, as shown in the code listing below.
 
+/*
 
 var writeError : NSError?
 let written = myString.writeToFile("/some/path/here", atomically: false,encoding: NSUTF8StringEncoding,error: &writeError)
@@ -195,7 +196,7 @@ func testingError(){
     }
 }
 
-
+*/
 
 //In development, you can use assert to catch any errors which might appear, and need to be fixed before going to production.
 //The classic NSError approach isn't altered, you send an NSErrorPointer, which gets populated.
