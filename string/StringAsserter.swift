@@ -13,5 +13,11 @@ class StringAsserter{
 	 */	
 	class func beginsWith(input:String, prefix:String)->Bool{
 		return (prefix == input.subString(0, prefix.characters.count));
-	}	
+	}
+    /*
+     *
+     */
+    class func containsChar(string:String, char:Character)-> Bool{
+       return string.characters.contains(char)
+    }
 }
