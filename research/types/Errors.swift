@@ -202,6 +202,7 @@ func testingError(){
 //Brief example:
 
 /*
+
 var error: NSError?
 var contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros")
 if let error = error {
@@ -209,6 +210,7 @@ if let error = error {
 } else {
     println("Contents: \(contents)")
 }
+
 */
 
 //More fancy Error Handling techniques can be found in: What's New in Swift (2015 Session 106 28m30s)
