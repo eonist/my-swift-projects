@@ -14,6 +14,9 @@ class StringParser{
 	class func firstWord(string:String)->String {
        return string.componentsSeparatedByString(" ")[0]
    }
+    /*
+    *
+    */
    class func lastChar(string:String)->String {
         let lastCharIndex:Int = string.characters.count - 1
         print(lastCharIndex)
