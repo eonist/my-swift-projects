@@ -27,12 +27,10 @@ class StringAsserter{
     class func boolean(string:String)->Bool{
         return string == "true";
     }
-    func contains(a:String,b:String){
-        //Check if string contains another string
-        
-        var myString = "Swift is really easy!"
-        if myString.rangeOfString("easy") != nil {
-            println("Exists!")
-        }
+    /*
+     * Check if string contains another string
+     */
+    func contains(a:String,b:String)->Bool{
+        return a.rangeOfString(b) != nil        
     }
 }
