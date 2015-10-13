@@ -7,8 +7,7 @@ class RegExpParser{
 	 */
 	class func match(text: String!, searchPattern: String!, options:NSRegularExpressionOptions = []) -> [String] {
 	    do {
-            (pattern:searchPattern, options: options)
-	        let regex = try? NSRegularExpression(pattern: searchPattern, options: options)
+	        let regex = try NSRegularExpression(pattern: searchPattern, options: options)
 	        let nsString = text as NSString
 	        let results = regex.matchesInString(text,options: [], range: NSMakeRange(0, nsString.length))
 	        return results.map { nsString.substringWithRange($0.range)}
