@@ -34,4 +34,10 @@ class StringModifier{
     func lowerCase(string:String)->String{
        return string.lowercaseString
     }
+    /*
+     *
+     */
+    func upperCase(string:String){
+        
+    }
 } 
