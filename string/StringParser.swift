@@ -15,7 +15,9 @@ class StringParser{
        return string.componentsSeparatedByString(" ")[0]
    }
    class func lastChar(string:String)->String {
-        return string[string.endIndex - 1]
+    var lastCharIndex:Int = string.characters.count
+    lastCharIndex = lastCharIndex - 1
+    return string[5]
     }
     /**
 	 * Returns an array comprised of two strings derived from splitting @param string at @param index
