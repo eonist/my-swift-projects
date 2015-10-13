@@ -1,5 +1,3 @@
-import Foundation
-
 class CharacterParser {
     /**
      * Returns the char after @param index
