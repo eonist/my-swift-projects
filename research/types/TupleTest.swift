@@ -7,14 +7,14 @@ func testing(){
     var res = testingTuples()
     print("your value: " + res.0 + " " + res.1)
     var (name,num) = testingTuples()
-    print("your value:" + (name) + " and " + (num))
+    print("your value:" + (name) + " and " + (num as String))
     //named tuples. aka decomposing
     func testingTuples2()->(name:String,num:Int){//returns a tuple containing two values
         return ("test",55)
     }
     
     
-    printin("your value: \(res.name) and \(res.num)")
+    print("your value:" + res.name + " " + res.num)
     
     //you cant use values that arent set
     var someVal:Int
