@@ -22,7 +22,7 @@ func testing(){
     
     //NOTE: you can concat a vhar and a string
     let theChar:Character = "a"
-    let theChar2:Character = "b"
+    let theChar2:Character = "b"// You must use the append method when working with characters (no longer the +- operator).
     var someString:String = ""
     someString.append(theChar)
     someString.append(theChar2)//yields a string containing "ab"
