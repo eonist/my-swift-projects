@@ -29,15 +29,14 @@ class StringParser{
         let range:Range = Range(start:start,end:end)
         return str.substringWithRange(range)
     }
-    
-    
+    /*
+     *
+     */
 	class func splitAt(str:String, index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
-		let a:String = str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(<#T##n: Self.Distance##Self.Distance#>) )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
-		let b:String = str.substringWithRange(Range(start:index , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
-		let retVal:Array = [a,b]
-		return retVal
+		let a:String = str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
+		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
+		return [a,b]
 	}
-    
 }
     //resolve path extension
