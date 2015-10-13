@@ -39,8 +39,11 @@ class StringParser{
 		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
 		return [a,b]
 	}
+    /*
+     * Counts how many times a string appears in a string
+     */
     class func occurrences(){
-    
+        //impliment this
     }
 }
 //resolve path extension
