@@ -14,9 +14,9 @@ class CharacterParser {
         return str.characters[strIndex.predecessor()]
     }
     /**
-     * Returns the first occurence of @param char
+     * Returns the first occurence of @param char in @param str
      */
-    func indexOf(char:Character)->Int{
+    func indexOf(str:String,char:Character)->Int{
         /*
         let text = "abc"
         let index2 = text.startIndex.advancedBy(2) //will call succ 2 times
@@ -26,16 +26,13 @@ class CharacterParser {
         let range: Range<String.Index> = text.rangeOfString("b")!
         let index: Int = text.startIndex.distanceTo(range.startIndex) //will call successor/predecessor several times until the indices match
         */
-        let string = "Hello.World"
-        let needle: Character = "."
-        if let idx = string.characters.indexOf(needle) {
-            let pos = string.startIndex.distanceTo(idx)
-            print("Found \(needle) at position \(pos)")
+        
+        
+        if let strIndex = str.characters.indexOf(char) {
+            return str.startIndex.distanceTo(strIndex)
         }
         else {
-            print("Not found")
+            -1//indicates that the char doesnt exist
         }
-        
-        
     }
 }
