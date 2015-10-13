@@ -25,22 +25,23 @@ class StringModifier{
 	/**
 	 * 
 	 */
-	func capitalize(string:String)->String{
+	class func capitalize(string:String)->String{
 		return string.capitalizedString
 	}
     /*
      * Returns a lowercase string
      */
-    func lowerCase(string:String)->String{
+    class func lowerCase(string:String)->String{
        return string.lowercaseString
     }
     /*
      * Returns an uppercase string
      */
-    func upperCase(string:String)->String{
+    class func upperCase(string:String)->String{
         return string.uppercaseString
     }
     /*
      *
      */
+    class func
 } 
