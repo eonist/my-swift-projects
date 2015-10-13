@@ -1,4 +1,5 @@
 //ios
+/*
 let myTableView: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
 
 //
@@ -8,8 +9,9 @@ let color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
 
 let image = UIImage(contentsOfFile: "MyImage.png") {
 
-
+*/
 //this for ios
+/*
 import UIKit
 class MyViewController: UIViewController {
     let myButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
@@ -27,3 +29,4 @@ class MyViewController: UIViewController {
         super.init(coder: coder)
     }
 }
+*/
