@@ -44,7 +44,6 @@ class StringModifier{
      *
      */
     func capFirstWord(var string:String){
-        
-        string.replaceRange(string.startIndex...myString.startIndex, with: String(myString[myString.startIndex]).capitalizedString)
+        string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString)
     }
 } 
