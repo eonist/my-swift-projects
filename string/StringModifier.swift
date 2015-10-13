@@ -42,17 +42,22 @@ class StringModifier{
     }
     /*
      * Returns @param string with the first character capitalizesed, 
-     * NOTE: we use replaceRange in combination with the .capitalizedString method
-     * NOTE: string[string.start.index] returns a Character instance. then we cast this as a string
+     * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      */
-    class func capFirstChar(var str:String){
-        return string.characters[0] + StringParser.subString(1,str.characters.count)
-        //string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString)
+    class func capFirstChar(var str:String)->String{
+        return str.characters[0] + StringParser.subString(str,1,str.characters.count)
     }
     /*
      *
      */
     class func insert(){
+        
+    }
+    
+    /**
+    *
+    */
+    class func replaceRange(){
         
     }
 } 
