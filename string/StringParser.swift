@@ -70,15 +70,6 @@ class StringParser{
      *
      */
     class func matchRange(a:String,_ b:String)->Range<String.Index>{
-        /*
-        let text = "abc"
-        let index2 = text.startIndex.advancedBy(2) //will call succ 2 times
-        let lastChar: Character = text[index2] //now we can index!
-        let lastChar = text.characters[index2] //will do the same
-        
-        
-        let index: Int = text.startIndex.distanceTo(range.startIndex) //will call successor/predecessor several times until the indices match
-        */
         return a.rangeOfString(b)!
     }
 }
