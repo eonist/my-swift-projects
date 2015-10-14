@@ -75,4 +75,12 @@ class StringModifier{
         let range:Range<String.Index> = StringParser.stringRange(str, start, end)
         str.replaceRange(range, with: replacement)
     }
-} 
+    /**
+    *
+    */
+    class func swapStrings(){
+        var a:String = ""
+        var b:String = ""
+        swap(&a, &b)
+    }
+}
