@@ -26,7 +26,12 @@ class ArrayModifier{
 	 * Removes the last element from an array and returns the value of that element.
 	 */
 	class func pop(array:[T])->Any {
-        let last = self.last
+        
+        
+        //continue here
+        
+        
+        let last = array.last
         if let last = last {
             array.removeLast()
             return last
