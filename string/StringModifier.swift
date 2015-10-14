@@ -58,13 +58,13 @@ class StringModifier{
         return str
     }
     /**
-     * Returns 
+     * Returns @param a with the content of @param b inserted at @param i
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      * NOTE: Does not alter the original strings
      */
-    class func insertAt(var a:String,_ b:String,index:Int)->String{
-        let strIndex = a.startIndex.advancedBy(index)
-        a.insertContentsOf(b.characters, at: strIndex)
+    class func insertAt(var a:String,_ b:String,_ i:Int)->String{
+        let index = a.startIndex.advancedBy(i)
+        a.insertContentsOf(b.characters, at: index)
         return a
     }
     /**
