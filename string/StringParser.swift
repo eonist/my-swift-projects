@@ -60,7 +60,7 @@ class StringParser{
         //impliment this
     }
     /**
-     *
+     * Returns 
      */
     class func indexOf(a:String,_ b:String)->Int{
         let range:Range<String.Index> = StringParser.rangeOf(a,b)
