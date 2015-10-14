@@ -63,13 +63,13 @@ class StringParser{
      *
      */
     class func indexOf(a:String,_ b:String)->Int{
-        let range:Range<String.Index> = StringParser.matchRange(a,b)
+        let range:Range<String.Index> = StringParser.rangeOf(a,b)
         return a.startIndex.distanceTo(range.startIndex)
     }
     /**
-     *
+     * Returns a Range of where the @param b is located in @param a
      */
-    class func matchRange(a:String,_ b:String)->Range<String.Index>{
+    class func rangeOf(a:String,_ b:String)->Range<String.Index>{
         return a.rangeOfString(b)!
     }
 }
