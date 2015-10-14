@@ -1,7 +1,8 @@
 class NumberModifier{
-    class func swapTwoDoubles(inout a:Double, inout _ b:Double) {
-        let temporaryA = a
-        a = b
-        b = temporaryA
+    /*
+     *
+     */
+    class func swap(inout a:Double, inout _ b:Double) {
+        ObjectModifier.swapObjects(&a, &b)
     }
 }
