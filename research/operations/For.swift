@@ -50,5 +50,11 @@ func test(){
         print(String(format:"%5d%7d", index, element))
     }
     */
+    
+    let array = ["Apples", "Peaches", "Plums"]
+    
+    for (index, item) in array.enumerate() {
+        print("Found \(item) at position \(index)")
+    }
 }
 
