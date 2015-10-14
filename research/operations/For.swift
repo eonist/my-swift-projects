@@ -7,7 +7,7 @@ func test(){
     let primeNumbers = [2, 3, 5, 7]
     
     for number in primeNumbers{//can also work with strings printing out single chars, like in applescript
-        println("\(number)")
+        print("\(number)")
     }
     
     for var i = 0; i < 3; ++i{
@@ -31,7 +31,7 @@ func test(){
         if (count == 5) {
             break //I terminates Loop if count is 5
         }
-        print("\(Count)  ")
+        print("\(count)  ")
     }
     
     //for loop with continue:
@@ -43,8 +43,12 @@ func test(){
         print("\(count)  ")
     }
     // for...in loop with enumerate global function
+    
+    /*
+    let integers = [21,2,13,5,223]
     for (index, element) in enumerate(integers) {//enumerate returns tuple
-        println(String(format:"%5d%7d", index, element))
+        print(String(format:"%5d%7d", index, element))
     }
+    */
 }
 

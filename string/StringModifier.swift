@@ -17,7 +17,7 @@ class StringModifier{
 	 */		
 	class func reverse(var str:String)->String{
         var revStr = ""
-        for i in str.characters {
+        for _ in str.characters {//loop n times
             revStr.append(str.characters.last!)
             str = String(str.characters.dropLast())
         }
