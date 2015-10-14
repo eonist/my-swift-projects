@@ -7,7 +7,7 @@ class StringAsserter{
 	}
 	/**
 	 *	Asserts whether the specified string begins with the spcified prefix.
-	 *	@param input: The string that the prefix will be checked against.
+	 *	@param string: The string that the prefix will be checked against.
 	 *	@param prefix: The prefix that will be tested against the string.
 	 *	@return True if the string starts with the prefix, false if it does not.
 	 */	
@@ -17,7 +17,7 @@ class StringAsserter{
         return string.hasPrefix(prefix)
 	}
     /**
-     *
+     * Asserts if @param str ends with @param suffix
      */
     class func endWith(str:String,suffix:String)->Bool{
         return str.hasSuffix(suffix)
