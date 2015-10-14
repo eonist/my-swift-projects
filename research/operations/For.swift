@@ -51,6 +51,8 @@ func test(){
     }
     */
     
+    //Enumeration example: (this is good!!)
+    
     let array = ["Apples", "Peaches", "Plums"]
     
     for (index, item) in array.enumerate() {
