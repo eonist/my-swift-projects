@@ -1,3 +1,4 @@
+import foundation
 class StringModifier{
 	/**
 	 * 
@@ -89,9 +90,9 @@ class StringModifier{
         ObjectModifier.swapObjects(&a, &b)
     }
     /**
-    *
-    */
-    class func trim(){
-        "ss".stringByTrimmingCharactersInSet
+     * Example: "    Let's trim the whitespace    "
+     */
+    class func trimWhiteSpace(str:String){
+        str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
 }
