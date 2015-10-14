@@ -1,3 +1,4 @@
+import Foundation
 class FileModifier{
 	/**
 	 * fromURL: "/path/to/old"
@@ -17,11 +18,11 @@ class FileModifier{
 		}
 	}
     /**
-     *
+     * let str = "Super long string here"
      */
     class func write(path:String,content:String)->Bool{
-        /*
-        let str = "Super long string here"
+        
+        
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("output.txt")
         
         do {
@@ -30,6 +31,6 @@ class FileModifier{
         // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
         }
 
-        */
+        
     }
 }
