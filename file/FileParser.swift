@@ -23,13 +23,14 @@ class FileParser{
     /**
      * resourceString("example","txt")
      */
-    class func resourceString(fileName:String, _ fileExtension:String)->String{
+    class func resourceString(fileName:String, _ fileExtension:String)->String?{
         if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
             do {
-                let contents = try String(contentsOfFile: filepath, usedEncoding: nil) as String
-                print(contents)
+                let content = try String(contentsOfFile: filepath, usedEncoding: nil) as String//encoding: NSUTF8StringEncoding
+                return content
             } catch {
                 // contents could not be loaded
+                return nil
             }
         } else {
             // example.txt not found!
