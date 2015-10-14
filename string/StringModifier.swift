@@ -90,9 +90,11 @@ class StringModifier{
         ObjectModifier.swapObjects(&a, &b)
     }
     /**
-     * Example: "    Let's trim the whitespace    "
+     * Trims all whitespace from left and right of @param str
+     * @NOTE: the original string is not modified
+     * Example: trimWhiteSpace("    Let's trim the whitespace    ")//"Let's trim the whitespace"
      */
-    class func trimWhiteSpace(str:String){
-        str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    class func trimWhiteSpace(str:String)->String{
+        return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
 }
