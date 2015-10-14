@@ -33,9 +33,15 @@ class CharacterParser {
         return char
     }
     /**
-     * 
+     * // retrieve last letter
      */
     class func last(str:String)->Character{
-        
+        return str.characters.last!
+    }
+    /**
+     * // retrieve first letter
+     */
+    class func first(str:String)->Character{
+        return str.characters.first!
     }
 }
