@@ -14,14 +14,19 @@ class StringModifier{
 	 * NOTE: even shorter: string.sort( { $0 > $1 } )//shorthand argument names, the in is omitted since the expression is made up entirly of its body
 	 * NOTE: even shorther string.sort(>)//operator function
 	 * NOTE: keep the long version around so that its easier to understand
+     * Example: reverse("hello")//"olleh"
 	 */		
-	class func reverse(var str:String)->String{
+	class func reverse(str:String)->String{
+        /*
+        //Nice to have: you may need similar code in the future
         var revStr = ""
         for _ in str.characters {//loop n times
             revStr.append(str.characters.last!)
             str = String(str.characters.dropLast())
         }
-        return revStr // "olleh"
+        return revStr
+        */
+        return String(str.characters.reverse())//new in swift 2
 	}
 	/**
 	 * 
