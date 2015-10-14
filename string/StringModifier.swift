@@ -93,6 +93,7 @@ class StringModifier{
      * Trims all whitespace from left and right of @param str
      * @NOTE: the original string is not modified
      * Example: trimWhiteSpace("    Let's trim the whitespace    ")//"Let's trim the whitespace"
+     * @NOTE: you can also use: NSCharacterSet.whitespaceAndNewlineCharacterSet()
      */
     class func trimWhiteSpace(str:String)->String{
         return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())

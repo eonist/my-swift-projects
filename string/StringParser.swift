@@ -5,6 +5,14 @@ class StringParser{
 	class func paragraphs(string:String){
 		split(string,"\n")
 	}
+    /**
+     *
+     */
+    class func splitOn(){
+        var myString = "Berlin, Paris, New York, San Francisco"
+        var myArray = myString.componentsSeparatedByString(",")
+        //Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
+    }
 	/**
 	 * NOTE: use "\n" to retrive paragraphs
 	 */
