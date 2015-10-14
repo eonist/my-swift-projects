@@ -1,11 +1,10 @@
 import Foundation
 class StringModifier{
     /**
-    *
-    */
-    class func replaceEvery(str:String)->String{
-        let str = "Swift 1.2 is the best version of Swift to learn, so if you're starting fresh you should definitely learn Swift 1.2."
-        let replaced = str.stringByReplacingOccurrencesOfString("1.2", withString: "2.0")
+     * replaceEvery("abc 123 abc 123","123","abc")
+     */
+    class func replaceEvery(str:String,match:String,replacment:String)->String{
+        let replaced = str.stringByReplacingOccurrencesOfString(match, withString: replacment)
         return replaced
     }
     /**
