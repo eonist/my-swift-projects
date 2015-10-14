@@ -1,13 +1,4 @@
 class StringParser{
-    /**
-     *
-     */
-    class func classIndex(){
-        //paragraphs
-        split("","")
-        firstWord("")
-        lastChar("")
-    }
 	/*
 	 * return array for every line in a string
 	 */
