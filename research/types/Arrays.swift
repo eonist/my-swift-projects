@@ -1,6 +1,11 @@
 //array
 
-
+/**
+*
+*/
+func testing(){
+    
+}
 //the following two declarations are equivalent:
 
 let someArray: Array<String> = ["Alex", "Brian", "Dave"]
