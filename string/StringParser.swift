@@ -3,9 +3,10 @@ class StringParser{
      *
      */
     class func classIndex(){
-        paragraphs("")
+        //paragraphs
         split("","")
-        firstWord
+        firstWord("")
+        lastChar("")
     }
 	/*
 	 * return array for every line in a string
