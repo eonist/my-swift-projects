@@ -76,8 +76,8 @@ class StringModifier{
         str.replaceRange(range, with: replacement)
     }
     /**
-     * 
-     * NOTE: Modifies the original a and b values
+     * Directly replaces a with b, and b with a
+     * NOTE: Modifies the original a and b strings
      */
     class func swapStrings(inout a: String, inout _ b: String){
         ObjectModifier.swapObjects(&a, &b)
