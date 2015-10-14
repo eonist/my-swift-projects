@@ -8,16 +8,16 @@ class ArrayModifier{
 	 * a,b,c,d
     * _,a,b,c,d
 	 */
-	class func unshift(var array:Array<Any>,item:Any)->Int{
+	class func unshift(inout array:Array<T>,item:Any)->Int{
 		array.insert(item,atIndex:0)
-		return array.length
+		return array.count
 	}
 	/**
 	 * SHIFT
 	 * Removes the first element from an array and returns that element.
 	 * The remaining array elements are moved from their original position, i, to i-1.
 	 */
-	class func shift(array:Array)->Any{
+	class func shift(inout array:Array<T>)->Any{
 		return array.removeAt(0)
 	}
 	/**
