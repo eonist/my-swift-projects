@@ -1,21 +1,22 @@
 class StringParser{
-	/*
-	 * return array for every line in a string
-	 */
-	class func paragraphs(string:String)->Array<String>{
-		return splitOn(string,"\n")
-	}
     /**
-     *
+     * Returns an Array of words derived from @param str by splitting it at every @param delimiter
      */
-    class func splitOn(str:String,delimiter:String)->Array<String>{
+    class func splitOn(str:String,_ delimiter:String)->Array<String>{
         return split(string,delimiter)
     }
     /**
+     * Returns an Array of words derived from @param str by splitting it at every @param delimiter
      * EXAMPLE: components("Berlin, Paris, New York, San Francisco")//Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
      */
     class func components(str:String,delimiter:String)->Array<String>{
         return str.componentsSeparatedByString(delimiter)
+    }
+    /*
+     * Returns an array for every line in a string
+     */
+    class func paragraphs(string:String)->Array<String>{
+        return splitOn(string,"\n")
     }
 	/**
 	 * NOTE: use "\n" to retrive paragraphs
@@ -30,7 +31,7 @@ class StringParser{
        return string.componentsSeparatedByString(" ")[0]
     }
     /*
-     *
+     * Returns the 
      */
    class func lastChar(string:String)->String {
         let lastCharIndex:Int = string.characters.count - 1
