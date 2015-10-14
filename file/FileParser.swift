@@ -1,13 +1,13 @@
 import Foundation
 class FileParser{
 	/*
-	 * Returns string content from a file at file location "filePath"
-     * PARAM filePath is the file path to the file
-     * Todo: What format is the filePath?
+	 * Returns string content from a file at file location "path"
+     * PARAM path is the file path to the file
+     * Todo: What format is the path?
 	 */
-	class func string(path:String)->String?{
+	class func content(path:String)->String?{
         do {
-            let content = try String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
+            let content = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
             return content
         } catch {
             // contents could not be loaded
@@ -23,17 +23,11 @@ class FileParser{
 		return NSBundle.mainBundle().resourcePath!
 	}
     /**
-     * resourceString("example","txt")
+     * resourceContent("example","txt")
      */
-    class func resourceString(fileName:String, _ fileExtension:String)->String?{
+    class func resourceContent(fileName:String, _ fileExtension:String)->String?{
         if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
-            do {
-                let content = try String(contentsOfFile: filepath, usedEncoding: nil) as String//encoding: NSUTF8StringEncoding
-                return content
-            } catch {
-                // contents could not be loaded
-                return nil
-            }
+            content(filepath)
         } else {
             // example.txt not found!
         }
