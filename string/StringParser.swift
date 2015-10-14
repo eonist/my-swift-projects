@@ -87,14 +87,16 @@ class StringParser{
         return startIndex...endIndex//longhand -> Range(start: startIndex,end: endIndex)
     }
     /**
-     *
+     * Returns str sans the first char
+     * @Note does not modify the original string
      */
     class func sansPrefix(str:String)->String{
         return String(str.characters.dropFirst())
     }
     /**
-    *
-    */
+     * Returns str sans the last char
+     * @Note does not modify the original string
+     */
     class func sansSuffix(str:String)->String{
         return String(str.characters.dropLast())
     }
