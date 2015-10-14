@@ -8,10 +8,16 @@ class StringModifier{
         return replaced
     }
     /**
-    *
-    */
+     *
+     */
     class func replaceFirst(){
         
+    }
+    /**
+     * EXAMPLE: combine(["Andrew", "Ben", "John", "Paul", "Peter", "Laura"]," ")//"Andrew Ben John Paul Peter Laura"
+     */
+    class func combine(strings:Array<String>,delimiter:String)->String{
+        return strings.joinWithSeparator(", ")
     }
 	/**
 	 *
