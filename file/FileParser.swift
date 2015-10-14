@@ -17,16 +17,16 @@ class FileParser{
 	 * Returns the project resource folder
 	 * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
 	 */
-	class func resourcePath()->String{
-		return NSBundle.mainBundle().resourcePath
+    class func resourcePath()->String{
+		return NSBundle.mainBundle().resourcePath!
 	}
     /**
-     *
+     * resourceString("example","txt")
      */
-    class func resourceString(fileName:String,_ fileExtension:String)->String{
-        if let filepath = NSBundle.mainBundle().pathForResource("example", ofType: "txt") {
+    class func resourceString(fileName:String, _ fileExtension:String)->String{
+        if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
             do {
-                let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
+                let contents = try String(contentsOfFile: filepath, usedEncoding: nil) as String
                 print(contents)
             } catch {
                 // contents could not be loaded
