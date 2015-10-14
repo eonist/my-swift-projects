@@ -68,9 +68,9 @@ class StringModifier{
         return a
     }
     /**
-     *
+     * Returns a new string that has @param b replacing @range in @param a
      */
-    class func replaceRange(a:String,_ b:String,_ range:Range<String.Index>)->String{
-        a.replaceRange(range, with: b) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
+    class func replaceRange(var str:String,_ replacement:String,_ range:Range<String.Index>)->String{
+        str.replaceRange(range, with: replacement) 
     }
 } 
