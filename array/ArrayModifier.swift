@@ -16,10 +16,10 @@ class ArrayModifier{
 	 * SHIFT
 	 * Removes the first element from an array and returns that element.
 	 * The remaining array elements are moved from their original position, i, to i-1.
+     * TODO: Write an example
 	 */
-	class func shift(inout array:[T])->Any{
-        let finalElement = array.removeFirst()
-        return finalElement
+	class func shift<T>(inout array:[T])->T{
+        return array.removeFirst()
 	}
 	/**
 	 * POP
