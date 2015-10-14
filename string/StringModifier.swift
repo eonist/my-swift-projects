@@ -1,6 +1,21 @@
 import Foundation
 class StringModifier{
-    
+    /**
+    *
+    */
+    class func replaceEvery(){
+        let myString = "Here is the string"
+        let myReplacementString = String(map(myString.generate()) {
+            $0 == " " ? "-" : $0
+            })
+        println(myReplacementString) //Outputs "Here-is-the-string" to the console.
+    }
+    /**
+    *
+    */
+    class func replaceFirst(){
+        
+    }
 	/**
 	 *
 	 */
