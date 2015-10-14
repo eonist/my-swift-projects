@@ -11,4 +11,10 @@ class ArrayAsserter {
             return -1//-1 indicates non was found
         }
     }
+    /**
+    *
+    */
+    class func indexOfObj<T : Equatable>(x:T){
+        
+    }
 }
