@@ -5,13 +5,15 @@ class FileParser{
      * PARAM filePath is the file path to the file
      * Todo: What format is the filePath?
 	 */
-	class func string(path:String)->String{
-        do{
-            let content = try String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding)
+	class func string(path:String)->String?{
+        do {
+            let content = try String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
             return content
-        }catch {
-            return ""
+        } catch {
+            // contents could not be loaded
+            return nil
         }
+        
 	}
 	/**
 	 * Returns the project resource folder
