@@ -88,4 +88,10 @@ class StringModifier{
     class func swap(inout a: String, inout _ b: String){
         ObjectModifier.swapObjects(&a, &b)
     }
+    /**
+    *
+    */
+    class func trim(){
+        "ss".stringByTrimmingCharactersInSet
+    }
 }
