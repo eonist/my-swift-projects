@@ -37,7 +37,7 @@ class StringParser{
     /**
      * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
      */
-    func subStr(str:String, _ beginning:Int,_ len:Int)->String{
+    class func subStr(str:String, _ beginning:Int,_ len:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
         let endIndex = str.startIndex.advancedBy(beginning+len)
         let range:Range = Range(start:startIndex,end:endIndex)
@@ -46,11 +46,11 @@ class StringParser{
     /*
      * Returns an array comprised of two strings that is the result of splitting the @param str
      * splitAt("Hello, playground",5)//["hello"," playground"]
+     * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
 	class func splitAt(str:String, _ index:Int)->Array<String> {
-		//return [string.substring(0,index),string.substring(index,string.length)];
-		let a:String = str.substringWithRange(RangeParser.stringRange(str,0,index)) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
-		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
+		let a:String =  subStr(str,0,index)
+		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
 	}
     /*
