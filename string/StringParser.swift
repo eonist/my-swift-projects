@@ -60,7 +60,7 @@ class StringParser{
         //impliment this
     }
     /**
-     * Returns 
+     * Returns the index of the first match of @param b in @param a
      */
     class func indexOf(a:String,_ b:String)->Int{
         let range:Range<String.Index> = StringParser.rangeOf(a,b)
