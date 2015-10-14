@@ -3,15 +3,19 @@ class StringParser{
 	 * return array for every line in a string
 	 */
 	class func paragraphs(string:String)->Array<String>{
-		return split(string,"\n")
+		return splitOn(string,"\n")
 	}
     /**
      *
      */
-    class func splitOn(){
-        var myString = "Berlin, Paris, New York, San Francisco"
-        var myArray = myString.componentsSeparatedByString(",")
-        //Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
+    class func splitOn(str:String,delimiter:String)->Array<String>{
+        return split(string,delimiter)
+    }
+    /**
+     * EXAMPLE: components("Berlin, Paris, New York, San Francisco")//Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
+     */
+    class func components(str:String,delimiter:String)->Array<String>{
+        return str.componentsSeparatedByString(delimiter)
     }
 	/**
 	 * NOTE: use "\n" to retrive paragraphs
