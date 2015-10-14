@@ -14,4 +14,10 @@ class PathParser {
         let url = NSURL(string: stringPath)
         return url!
     }
+    /**
+     * EXAMPLE: stringPath(path("file:///Users/Me/Desktop/Doc.txt"))//"file:///Users/Me/Desktop/Doc.txt"
+     */
+    class func stringPath(path:NSURL)->String{
+        return path.absoluteString
+    }
 }
