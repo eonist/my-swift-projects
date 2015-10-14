@@ -22,12 +22,6 @@ class StringAsserter{
     class func endWith(str:String,suffix:String)->Bool{
         return str.hasSuffix(suffix)
     }
-    /*
-     * Asserts if a string contains a character
-     */
-    class func containsChar(string:String, char:Character)-> Bool{
-       return string.characters.contains(char)
-    }
     /**
      * Asserts if a string is the word true
      */
