@@ -17,14 +17,14 @@ class ArrayModifier{
 	 * Removes the first element from an array and returns that element.
 	 * The remaining array elements are moved from their original position, i, to i-1.
 	 */
-	class func shift(inout array:Array<T>)->Any{
+	class func shift(inout array:[T])->T?{
 		return array.removeAt(0)
 	}
 	/**
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
 	 */
-	class func pop(array:Array)->Element? {
+	class func pop(array:[T])->T? {
         let last = self.last
         if let last = last {
             array.removeLast()
