@@ -86,4 +86,5 @@ class StringParser{
         let endIndex = str.startIndex.advancedBy(i + len)
         return startIndex...endIndex//longhand -> Range(start: startIndex,end: endIndex)
     }
+    
 }
