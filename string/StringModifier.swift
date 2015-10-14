@@ -79,8 +79,6 @@ class StringModifier{
     *
     */
     class func swapStrings(){
-        var a:String = ""
-        var b:String = ""
-        swap(&a, &b)
+        
     }
 }
