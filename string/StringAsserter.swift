@@ -12,8 +12,9 @@ class StringAsserter{
 	 *	@return True if the string starts with the prefix, false if it does not.
 	 */	
 	class func beginsWith(string:String, prefix:String)->Bool{
-        let range = prefix.startIndex..<prefix.endIndex//create a range
-        return (prefix == string.substringWithRange(range));
+        //let range = prefix.startIndex..<prefix.endIndex//create a range
+        //return (prefix == string.substringWithRange(range));
+        return string.hasPrefix(prefix)
 	}
     /*
      * Asserts if a string contains a character
