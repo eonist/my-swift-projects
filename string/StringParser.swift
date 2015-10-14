@@ -1,6 +1,14 @@
 class StringParser{
+    /**
+     *
+     */
+    class func classIndex(){
+        paragraphs("")
+        split("","")
+        firstWord
+    }
 	/*
-	 * return array for every line in a string 
+	 * return array for every line in a string
 	 */
 	class func paragraphs(string:String){
 		split(string,"\n")
