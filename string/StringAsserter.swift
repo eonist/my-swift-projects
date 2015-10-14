@@ -17,10 +17,10 @@ class StringAsserter{
         return string.hasPrefix(prefix)
 	}
     /**
-     * 
+     *
      */
-    class func endWith(str:String,suffix:String){
-        
+    class func endWith(str:String,suffix:String)->Bool{
+        return str.hasSuffix(suffix)
     }
     /*
      * Asserts if a string contains a character
