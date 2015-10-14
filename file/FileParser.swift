@@ -6,12 +6,11 @@ class FileParser{
      * Todo: What format is the filePath?
 	 */
 	class func string(path:String)->String{
-
         do{
             let content = try String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding)
             return content
         }catch {
-            return nil
+            return ""
         }
 	}
 	/**
@@ -24,7 +23,7 @@ class FileParser{
     /**
      *
      */
-    class func resourceString(filePath)->String{
+    class func resourceString(fileName:String,_ fileExtension:String)->String{
         if let filepath = NSBundle.mainBundle().pathForResource("example", ofType: "txt") {
             do {
                 let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
