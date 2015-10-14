@@ -49,7 +49,7 @@ class StringParser{
      */
 	class func splitAt(str:String, _ index:Int)->Array<String> {
 		//return [string.substring(0,index),string.substring(index,string.length)];
-		let a:String = str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
+		let a:String = str.substringWithRange(RangeParser.stringRange(str,0,index)) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
 		let b:String = str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex )) //"llo, playgroun",str.startIndex.advancedBy(2),str.endIndex.advancedBy(-1)
 		return [a,b]
 	}
