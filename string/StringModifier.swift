@@ -3,12 +3,10 @@ class StringModifier{
     /**
     *
     */
-    class func replaceEvery(){
-        let myString = "Here is the string"
-        let myReplacementString = String(map(myString.generate()) {
-            $0 == " " ? "-" : $0
-            })
-        println(myReplacementString) //Outputs "Here-is-the-string" to the console.
+    class func replaceEvery(str:String)->String{
+        let str = "Swift 1.2 is the best version of Swift to learn, so if you're starting fresh you should definitely learn Swift 1.2."
+        let replaced = str.stringByReplacingOccurrencesOfString("1.2", withString: "2.0")
+        return replaced
     }
     /**
     *
