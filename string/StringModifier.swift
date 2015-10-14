@@ -68,9 +68,10 @@ class StringModifier{
         return a
     }
     /**
-     * Returns a new string that has @param b replacing @range in @param a
+     * Returns a new string that has @param b replacing the @param range in @param a
+     * @Example: 
      */
     class func replaceRange(var str:String,_ replacement:String,_ range:Range<String.Index>)->String{
-        str.replaceRange(range, with: replacement) 
+        str.replaceRange(range, with: replacement)
     }
 } 
