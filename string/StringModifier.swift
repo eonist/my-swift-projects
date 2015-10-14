@@ -61,9 +61,9 @@ class StringModifier{
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      *
      */
-    class func insertAt(){
-        
-        
+    class func insertAt(a:String,_ b:String,index:Int){
+        let index:Int 
+        a.insertContentsOf(b, at: <#T##Index#>)
         //continue here
         
         
