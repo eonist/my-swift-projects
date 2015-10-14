@@ -7,4 +7,11 @@ class PathParser {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         return paths[0]
     }
+    /**
+     *
+     */
+    class func path(stringPath:String)->NSURL{
+        let url = NSURL(string: stringPath)
+        return url!
+    }
 }
