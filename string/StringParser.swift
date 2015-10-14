@@ -86,5 +86,16 @@ class StringParser{
         let endIndex = str.startIndex.advancedBy(i + len)
         return startIndex...endIndex//longhand -> Range(start: startIndex,end: endIndex)
     }
-    
+    /**
+     *
+     */
+    class func sansPrefix(str:String)->String{
+        return String(str.characters.dropFirst())
+    }
+    /**
+    *
+    */
+    class func sansSuffix(str:String)->String{
+        return String(str.characters.dropLast())
+    }
 }
