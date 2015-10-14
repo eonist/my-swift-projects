@@ -4,12 +4,13 @@ class NetworkParser{
 	 * Returns a string for a URL
 	 */
 	class func string(URL:String)->String{
+        //needs research
 		/*
         let theURL = NSURL(string: URL)
 		let rssUrlRequest:NSURLRequest = NSURLRequest(URL:theURL!)
 	 	let queue:NSOperationQueue = NSOperationQueue()
 	 	//the bellow is sudo code
-	 	let result = NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) 
+	 	let result = NSURLConnection.sendAsynchronousRequest(<#T##request: NSURLRequest##NSURLRequest#>, queue: <#T##NSOperationQueue#>, completionHandler: <#T##(NSURLResponse?, NSData?, NSError?) -> Void#>)
 		return result
         */
 	}
