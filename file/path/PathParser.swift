@@ -8,7 +8,7 @@ class PathParser {
         return paths[0]
     }
     /**
-     *
+     * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
     class func path(stringPath:String)->NSURL{
         let url = NSURL(string: stringPath)
