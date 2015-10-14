@@ -20,4 +20,5 @@ class FileParser{
 	class func resourcePath()->String{
 		return NSBundle.mainBundle().resourcePath
 	}
+    
 }
