@@ -15,12 +15,13 @@ class StringModifier{
 	 * NOTE: even shorther string.sort(>)//operator function
 	 * NOTE: keep the long version around so that its easier to understand
 	 */		
-	class func reverse(string:String)->String{
-		func backwards(s1: String, _ s2: String) -> Bool {
-		    return s1 > s2
-		}
-		let reversed:String = ""//needs work -> = string.characters.sort(backwards)
-		return reversed
+	class func reverse(var str:String)->String{
+        var revStr = ""
+        for i in str.characters {
+            revStr.append(str.characters.last!)
+            str = String(str.characters.dropLast())
+        }
+        return revStr // "olleh"
 	}
 	/**
 	 * 
