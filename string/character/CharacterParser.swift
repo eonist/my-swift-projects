@@ -32,4 +32,10 @@ class CharacterParser {
         let char:Character = str[index] //you can also do: text.characters[index2]
         return char
     }
+    /**
+     * 
+     */
+    class func last(str:String)->Character{
+        
+    }
 }
