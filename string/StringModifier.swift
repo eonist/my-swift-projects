@@ -68,11 +68,11 @@ class StringModifier{
         return a
     }
     /**
-     * Returns a new string that has @param b replacing the @param range in @param a
-     * @Example: replaceRange("Finland", RangeParser.stringRange("Finland",2,5),"NLA")//fiNLAnd
+     * Returns a new string that has that has a section of its text replaced with @param b, the section is from @param start to @param end
+     * @Example: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
      */
     class func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
-        let range:Range<String.Index> = 
+        let range:Range<String.Index> = StringParser.stringRange(str, start, end)
         str.replaceRange(range, with: replacement)
     }
 } 
