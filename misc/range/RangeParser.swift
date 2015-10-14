@@ -11,6 +11,6 @@ class RangeParser {
     class func strRange(str:String,_ i:Int,_ len:Int)->Range<String.Index>{
         let startIndex = str.startIndex.advancedBy(i)
         let endIndex = str.startIndex.advancedBy(i + len)
-        return Range(start: startIndex,end: endIndex)
+        return startIndex...endIndex//longhand -> Range(start: startIndex,end: endIndex)
     }
 }
