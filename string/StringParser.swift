@@ -2,8 +2,8 @@ class StringParser{
 	/*
 	 * return array for every line in a string
 	 */
-	class func paragraphs(string:String){
-		split(string,"\n")
+	class func paragraphs(string:String)->Array<String>{
+		return split(string,"\n")
 	}
     /**
      *
