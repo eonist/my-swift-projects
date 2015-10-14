@@ -69,7 +69,7 @@ class StringModifier{
     }
     /**
      * Returns a new string that has @param b replacing the @param range in @param a
-     * @Example: 
+     * @Example: replaceRange("Finland", RangeParser.stringRange("Finland",2,5),"NLA")//fiNLAnd
      */
     class func replaceRange(var str:String,_ replacement:String,_ range:Range<String.Index>)->String{
         str.replaceRange(range, with: replacement)
