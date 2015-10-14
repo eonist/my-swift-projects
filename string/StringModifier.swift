@@ -58,10 +58,11 @@ class StringModifier{
         return str
     }
     /**
+     * Returns
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
-     * NOTE: 
+     * NOTE: Does not alter the original strings
      */
-    class func insertAt(var a:String,_ b:String,index:Int){
+    class func insertAt(var a:String,_ b:String,index:Int)->String{
         let strIndex = a.startIndex.advancedBy(index)
         a.insertContentsOf(b, at: strIndex)
         return a
