@@ -8,7 +8,7 @@ class ArrayModifier{
 	 * a,b,c,d
     * _,a,b,c,d
 	 */
-	class func unshift<T>(inout array:[T],item:T)->Int{//<T>(theArray : [T]
+	class func unshift<T>(inout array:[T],item:T)->Int{
 		array.insert(item,atIndex:0)
 		return array.count
 	}
@@ -17,14 +17,15 @@ class ArrayModifier{
 	 * Removes the first element from an array and returns that element.
 	 * The remaining array elements are moved from their original position, i, to i-1.
 	 */
-	class func shift(inout array:[T])->T?{
-		return array.removeAt(0)
+	class func shift(inout array:[T])->Any{
+        let finalElement = array.removeFirst()
+        return finalElement
 	}
 	/**
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
 	 */
-	class func pop(array:[T])->T? {
+	class func pop(array:[T])->Any {
         let last = self.last
         if let last = last {
             array.removeLast()
