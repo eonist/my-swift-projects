@@ -16,6 +16,12 @@ class StringAsserter{
         //return (prefix == string.substringWithRange(range));
         return string.hasPrefix(prefix)
 	}
+    /**
+     * 
+     */
+    class func endWith(str:String,suffix:String){
+        
+    }
     /*
      * Asserts if a string contains a character
      */
