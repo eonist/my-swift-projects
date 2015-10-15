@@ -1,9 +1,10 @@
-class Person: Comparable, Equatable {
+import Foundation
+class Human: Comparable, Equatable {
 	let firstName: String
 	let lastName: String
 	init(firstName: String, lastName: String) {
-		se1f.firstName = firstName
-		se1f.lastName = lastName
+		self.firstName = firstName
+		self.lastName = lastName
 	}
 }
 /*
@@ -20,10 +21,10 @@ func (lhs: Person, rhs: Person) -> Bool{
 	}
 }
 */
-let eva = Person(firstName: "Eddie", lastName: "Van Halen" )
-let jp = Person(firstName:"Jimmy", lastName: "Page")
-let jh = Person(firstName:"Jimi", lastName: "Hendrix")
-let sv = Person(firstName:"Steve", lastName: "Vai")
+let eva = Human(firstName: "Eddie", lastName: "Van Halen" )
+let jp = Human(firstName:"Jimmy", lastName: "Page")
+let jh = Human(firstName:"Jimi", lastName: "Hendrix")
+let sv = Human(firstName:"Steve", lastName: "Vai")
 var guitarists = [eva, jp,jh, sv]
 /*
 sort(&guitarists)//& is address of operator to use the adress of the value not the value it self
