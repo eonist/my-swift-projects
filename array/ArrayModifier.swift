@@ -67,10 +67,10 @@ class ArrayModifier{
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
      *
      */
-    class func shuffle(array:Array){
-        for i in 0 ..< (count - 1) {
+    class func shuffle<T>(inout array:Array[T])->T{
+        for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(count - i))) + i
-            swap(&self[i], &self[j])
+            swap(array[i], array[j])
         }
     }
 }
