@@ -3,7 +3,7 @@ class RegExpParser{
     /*
      * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      */
-    class func match(){
+    class func match(text: String!, searchPattern: String!, options:NSRegularExpressionOptions = []) -> [String]{
         do {
             let input = "My name is Taylor Swift"
             let regex = try NSRegularExpression(pattern: "My name is (.*)", options: NSRegularExpressionOptions.CaseInsensitive)
@@ -33,6 +33,7 @@ class RegExpParser{
         }
         return nil
     }
+    
 	/*
 	 * Returns an Array with the matches 
 	 * EXAMPLE: match("£4$9", "[0-9]", text: string)//Output: [4, 9]
