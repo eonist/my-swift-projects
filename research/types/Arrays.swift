@@ -56,7 +56,8 @@ func testing(){
     intArray.reserveCapacity(10)//adds more capacity
     
     //sorting
-    …
+    var someColors = ["blue","red","green","yellow","browm","black"]
+    let sortedColors = someColors.sort() { $0 < $1 }//returns but does not change the original array
     sortedCo1ors//has new order
     colors//remains the same order
     colors.sort() { $0 < $1 }//changes the original array
