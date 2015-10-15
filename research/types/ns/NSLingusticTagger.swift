@@ -28,6 +28,11 @@ func testing(){
     
     If you want to make things slightly nicer, add this helper function:
     */
+    
+    /*
+
+    //needs work: 
+
     func rangeFromNSRange(nsRange: NSRange, forString str: String) -> Range<String.Index>? {
         if let from = String.Index(str.utf16.startIndex + nsRange.location, within: str),
             let to = String.Index(str.utf16.startIndex + nsRange.location + nsRange.length, within: str) {
@@ -36,8 +41,10 @@ func testing(){
         
         return nil
     }
+    
     //With that in place you can now pull out the token like this:
     
     let token = inputString.substringWithRange(rangeFromNSRange(tokenRange, forString: inputString)!)
-
+    
+    */
 }
