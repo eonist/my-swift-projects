@@ -49,13 +49,17 @@ class ArrayModifier{
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
      * IMPORTANT: the original array is NOT modified
-     * splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
+     * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
     class func slice<T>(var array:[T],startIndex:Int, endIndex:Int)->Array<T>{
         let deleteCount = endIndex - startIndex
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return array
     }
+    
+    //reverse
+    //concat
+    //append
 }
 //combine
 //merge
