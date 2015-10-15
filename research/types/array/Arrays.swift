@@ -93,8 +93,5 @@ func testing(){
     //multi dim:
     //You can create multidimensional arrays by nesting pairs of square brackets, where the name of the base type of the elements is contained in the innermost pair of square brackets. For example, you can create a three-dimensional array of integers using three sets of square brackets:
     
-    let array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
-    print(array3D.count)
-    
     
 }
