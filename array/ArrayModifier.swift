@@ -34,20 +34,13 @@ class ArrayModifier{
         return nil
     }
     /**
-	  * 
+	  * NOTE: values used to be: values:[Element], but didnt work
 	  */
-    /*
-
-    class func splice<T>(inout array:Array[T],startIndex:UInt,deleteCount:UInt, values:[Element])->Array<T> {
+    class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt,values:Array<T>)->Array<T>{
         var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         returnArray.insertContentsOf(values, at: Int(startIndex))
         return returnArray
-    }
-    
-    */
-    class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt)->T{
-        return array.removeFirst()
     }
     /**
      * TODO: Impliment this
