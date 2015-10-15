@@ -32,3 +32,7 @@ guitarists.reverse()
 var sortedGuitarists = sorted(guitarists)
 sorted(&guitarists) {$0.firstName < $1.firstName}//comparable protocol
 */
+
+var someColors = ["blue","red","green","yellow","browm","black"]
+//sorting returns but does not change the original array,
+let sortedColors = someColors.sort() { $0 < $1 }//["black", "blue", "browm", "green", "red", "yellow"]
