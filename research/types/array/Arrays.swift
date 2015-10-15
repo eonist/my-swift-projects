@@ -58,15 +58,16 @@ func testing(){
     //sorting
     var someColors = ["blue","red","green","yellow","browm","black"]
     let sortedColors = someColors.sort() { $0 < $1 }//returns but does not change the original array
+    print(sortedColors.count)
     //sortedColors//has new order
     //someColors//remains the same order
     someColors.sortInPlace() { $0 < $1 }//changes the original array
     //someColors//has new order
     //reversing the order
     let reversedArray = someArray.reverse()//reversing the array,does not change the original array
-    
+    print(reversedArray.count)
     //filter
-    var hexColors:Array<Double>
+    let hexColors:Array<String> = ["0x333","0x123122","0x444","0x999","0x234234"]
     let longColors = hexColors.filter() { $0.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
     longColors //returns all colors longer than 3 letters                                                    I
     
@@ -75,22 +76,25 @@ func testing(){
     /*
     //does not work, needs more research
     let colorLengths = hexColors.map() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) }
-    
-    */
     colorLengths//num of chars in every color name as an aaray
     //slow mapreduce:
     var totalCount = 0
     for length in colorLengths {
-        totalCount += length
+    totalCount += length
     }
     print(totalCount)//num of chars of all items in array
     //fast map reduce:
     let totalLength = colorLengths.reduce(0) { $0 + $1 }
     totalLength//num of chars of all items in array
+
+    */
     
     
     //multi dim:
     //You can create multidimensional arrays by nesting pairs of square brackets, where the name of the base type of the elements is contained in the innermost pair of square brackets. For example, you can create a three-dimensional array of integers using three sets of square brackets:
     
-    var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+    let array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+    print(array3D.count)
+    
+    
 }
