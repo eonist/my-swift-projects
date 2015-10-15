@@ -7,6 +7,16 @@
 //NOTE: guard statement (using guard keyword) which let you write little less if/else code than in normal error checking/signaling code.
 //this line should normally be present do-catch block like this
 //IMPORTANT: there are two ways of doing error handeling. 1. you wrap an error function in a do catch block and 2. you use a variable for the result with the try? . see apple link above for both, they are also here
+/*
+do {
+    try expression
+    statements
+} catch pattern 1 {
+    statements
+} catch pattern 2 where condition {
+    statements
+}
+*/
 enum AwfulError: ErrorType {
     case Bad
     case Worse
