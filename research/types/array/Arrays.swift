@@ -17,7 +17,7 @@ func testing(){
     anotherArray = ["abc","123"]
     print("your value: \(anotherArray[0])")//"abc"
     //adding items
-    anotherArray.append("test")
+    anotherArray.append("test")//same as push in other languages
     //plus equal mutating operator,concatinates 2 arrays,
     //non array items wont work
     //the items we concat are restricted by the same types that the oroginal array had
