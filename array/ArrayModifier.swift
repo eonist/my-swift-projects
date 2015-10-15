@@ -25,12 +25,7 @@ class ArrayModifier{
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
 	 */
-	class func pop(array:[T])->Any {
-        
-        
-        //continue here
-        
-        
+	class func pop<T>(inout array:[T])->T? {
         let last = array.last
         if let last = last {
             array.removeLast()
@@ -46,6 +41,12 @@ class ArrayModifier{
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         returnArray.insertContentsOf(values, at: Int(startIndex))
         return returnArray
+    }
+    /**
+    *
+    */
+    class func slice<T>(array:[T])->Array<T>{
+        return Array()
     }
     
 }
