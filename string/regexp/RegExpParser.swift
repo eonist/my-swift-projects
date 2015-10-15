@@ -18,8 +18,8 @@ public class RegExpParser{
             }
         } catch {
             // regex was bad!
-            return []
         }
+        return []
     }
     /**
      * helper function that you should take: rangeFromNSRange(). Annoyingly, regular expression matches demand Swift strings as input then return NSString and NSRange in their output. This function converts from NSRange to Swift string ranges:
