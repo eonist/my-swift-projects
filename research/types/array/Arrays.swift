@@ -30,6 +30,7 @@ func testing(){
     anotherArray.removeAll()//clears out the array
     anotherArray.capacity//how much memory allocated to the array
     anotherArray.removeLast()
+    anotherArray.removeFirst()
     //find array length
     anotherArray.count
     //.count = 0 can be written as:
