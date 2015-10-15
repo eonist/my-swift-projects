@@ -1,5 +1,5 @@
 //array
-
+import Foundation
 /**
 *
 */
@@ -58,15 +58,15 @@ func testing(){
     //sorting
     var someColors = ["blue","red","green","yellow","browm","black"]
     let sortedColors = someColors.sort() { $0 < $1 }//returns but does not change the original array
-    sortedCo1ors//has new order
-    colors//remains the same order
-    colors.sort() { $0 < $1 }//changes the original array
-    colors//has new order
+    //sortedColors//has new order
+    //someColors//remains the same order
+    someColors.sortInPlace() { $0 < $1 }//changes the original array
+    //someColors//has new order
     //reversing the order
-    someArray.reverse()//reversing the array,does not change the original array
+    let reversedArray = someArray.reverse()//reversing the array,does not change the original array
     
     //filter
-    let longCo1ors = colors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
+    let longColors = colors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
     longColors //returns all colors longer than 3 letters                                                    I
     
     
