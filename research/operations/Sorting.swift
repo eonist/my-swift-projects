@@ -1,11 +1,52 @@
-class Person: Comparable, Equatable {
+import Foundation
+
+var someColors = ["blue","red","green","yellow","browm","black"]
+//sorting returns but does not change the original array,
+let sortedColors = someColors.sort() { $0 < $1 }//["black", "blue", "browm", "green", "red", "yellow"]
+
+
+/**
+*
+*/
+func test(){
+    //If you have a custom struct or class and want to sort them arbitrarily, you should call sort() using a trailing closure that sorts on a field you specify. Here's an example using an array of custom structs that sorts on a particular property:
+    struct MyCustomStruct {
+        var someSortableField: String
+    }
+    
+    var customArray = [
+        MyCustomStruct(someSortableField: "Jemima"),
+        MyCustomStruct(someSortableField: "Peter"),
+        MyCustomStruct(someSortableField: "David"),
+        MyCustomStruct(someSortableField: "Kelly"),
+        MyCustomStruct(someSortableField: "Isabella")
+    ]
+    
+    let sortedArray = customArray.sort { (element1, element2) -> Bool in
+        return element1.someSortableField < element2.someSortableField
+    }
+    print(sortedArray)
+    
+    //if you want to sort the array in place rather than assign it to another value, use sortInPlace() like this:
+    customArray.sortInPlace { (element1, element2) -> Bool in
+        return element1.someSortableField < element2.someSortableField
+    }
+}
+
+/*
+
+TODO: more research
+
+class Human: Comparable, Equatable {
 	let firstName: String
 	let lastName: String
 	init(firstName: String, lastName: String) {
-		se1f.firstName = firstName
-		se1f.lastName = lastName
+		self.firstName = firstName
+		self.lastName = lastName
 	}
 }
+*/
+
 /*
 func == (lhs: Person, rhs: Person) -> Bool {
 	return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
@@ -20,11 +61,15 @@ func (lhs: Person, rhs: Person) -> Bool{
 	}
 }
 */
-let eva = Person(firstName: "Eddie", lastName: "Van Halen" )
-let jp = Person(firstName:"Jimmy", lastName: "Page")
-let jh = Person(firstName:"Jimi", lastName: "Hendrix")
-let sv = Person(firstName:"Steve", lastName: "Vai")
+/*
+
+let eva = Human(firstName: "Eddie", lastName: "Van Halen" )
+let jp = Human(firstName:"Jimmy", lastName: "Page")
+let jh = Human(firstName:"Jimi", lastName: "Hendrix")
+let sv = Human(firstName:"Steve", lastName: "Vai")
 var guitarists = [eva, jp,jh, sv]
+
+*/
 /*
 sort(&guitarists)//& is address of operator to use the adress of the value not the value it self
 sort(&guitarists) {$0.firstName < $1.firstName}//comparable protocol

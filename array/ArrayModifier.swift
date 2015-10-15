@@ -1,3 +1,8 @@
+import Foundation
+
+//reverse
+//concat
+//append
 class ArrayModifier{
 	/**
 	 * UNSHIFT
@@ -6,7 +11,7 @@ class ArrayModifier{
 	 * original position, i, to i+1.
 	 * OUTPUT
 	 * a,b,c,d
-    * _,a,b,c,d
+     * _,a,b,c,d
 	 */
 	class func unshift<T>(inout array:[T],item:T)->Int{
 		array.insert(item,atIndex:0)
@@ -25,12 +30,7 @@ class ArrayModifier{
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
 	 */
-	class func pop(array:[T])->Any {
-        
-        
-        //continue here
-        
-        
+	class func pop<T>(inout array:[T])->T? {
         let last = array.last
         if let last = last {
             array.removeLast()
@@ -39,15 +39,41 @@ class ArrayModifier{
         return nil
     }
     /**
-	  * 
+	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
+      * NOTE: splice can also be used to remove item from array
+      * IMPORTANT: the original array is modified
+      * NOTE: values used to be: values:[Element], but didnt work
+      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
-    class func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
+    class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt,values:Array<T>)->Array<T>{
         var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        returnArray.insertContentsOf(values, at: Int(startIndex))
+        if(values.count > 0 ){returnArray.insertContentsOf(values, at: Int(startIndex))}
         return returnArray
     }
-    
+    /**
+     * Returns a new array derived from the @param array sans the items from @param start to @param end
+     * IMPORTANT: the original array is NOT modified
+     * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
+     */
+    class func slice<T>(var array:[T],startIndex:Int, endIndex:Int)->Array<T>{
+        let deleteCount = endIndex - startIndex
+        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        return array
+    }
+    /**
+     * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
+     * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
+     * NOTE: If you want to be able to replicate a shuffle or series of shuffles, choose and seed a specific random source; e.g.
+     * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
+     * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
+     */
+    class func shuffle<T>(inout array:[T])->T{
+        for i in 0 ..< (array.count - 1) {
+            let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
+            swap(&array[i], &array[j])//the & sign indicates that you confirm that the values will be changed
+        }
+    }
 }
 //combine
 //merge
