@@ -66,7 +66,7 @@ func testing(){
     let reversedArray = someArray.reverse()//reversing the array,does not change the original array
     
     //filter
-    var hexColors:Array<UInt> = [0x333,0x123122,0x444,0x999,0x234234]
+    var hexColors:Array = ["0x333","0x123122","0x444","0x999","0x234234"]
     let longColors = hexColors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
     longColors //returns all colors longer than 3 letters                                                    I
     
