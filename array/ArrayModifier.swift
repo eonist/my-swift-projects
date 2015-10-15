@@ -34,7 +34,9 @@ class ArrayModifier{
         return nil
     }
     /**
-	  * IMPORTANT: the original array is modified
+	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
+      * NOTE: splice can also be used to remove item from array
+      * IMPORTANT: the original array is modified
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
