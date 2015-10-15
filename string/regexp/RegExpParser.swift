@@ -1,5 +1,5 @@
 import Foundation
-class RegExpParser{
+public class RegExpParser{
     /*
      * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      * EXAMPLE: match("My name is Taylor Swift","My name is (.*)",NSRegularExpressionOptions.CaseInsensitive)
@@ -12,12 +12,13 @@ class RegExpParser{
                 let range = match.rangeAtIndex(1)
                 if let swiftRange = rangeFromNSRange(range, forString: input) {
                     let name = input.substringWithRange(swiftRange)
-                    name
+                    return [name]
                     print(name)
                 }
             }
         } catch {
             // regex was bad!
+            return []
         }
     }
     /**
