@@ -43,6 +43,10 @@ class ArrayModifier{
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         returnArray.insertContentsOf(values, at: Int(startIndex))
         return returnArray
+        
+        
+        vegetables.splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, "tomato");
+        trace(vegetables); // tomato,cilantro,onion,green pepper,avocado
     }
     /**
      * TODO: Impliment this
