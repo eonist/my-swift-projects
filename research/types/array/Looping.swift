@@ -1,5 +1,14 @@
 import Foundation
+/*
 
+Swift loop types
+
+for-statement
+for-in-statement
+while-statement
+do-while-statement
+
+*/
 /**
 * Reversing
 */
