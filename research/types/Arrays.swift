@@ -6,7 +6,7 @@
 func testing(){
     //the following two declarations are equivalent:
     
-    let someArray: Array<String> = ["Alex", "Brian", "Dave"]
+    var someArray: Array<String> = ["Alex", "Brian", "Dave"]
     let someArray2: [String] = ["Alex", "Brian", "Dave"]
     let someArray3: [String]//string array
     
@@ -37,25 +37,26 @@ func testing(){
     
     //
     for theItem in anotherArray{
-        printin("your value: \(theItem)")
+        print("your value: \(theItem)")
     }
     //half closed range operator
-    someArray[1..<3]//2,3
+    let tempArrayA = someArray[1..<3]//2,3
     //
-    someArray[1...2]//2,3
+    let tempArrayB = someArray[1...2]//2,3
     
-    someArray.insert(4,atIndex:2)
-    someArray[2] = 8//this replaces the item at index 2
+    var intArray = [33,42,1,55,1,56,8,2]
+    intArray.insert(4,atIndex:2)
+    intArray[2] = 8//this replaces the item at index 2
     
     //extend
-    someArray.removeAll(keepCapacity:true)
-    someArray.capacity//3
-    someArray.count//0
-    someArray.extend([4,5,6])//repopulate the array
-    someArray.reserveCapacity(10)//adds more capacity
+    intArray.removeAll(keepCapacity:true)
+    intArray.capacity//3
+    intArray.count//0
+    intArray.appendContentsOf([4,5,6])//repopulate the array
+    intArray.reserveCapacity(10)//adds more capacity
     
     //sorting
-    let sortedCo1ors = colors.sorted() { $0 < $1 }//returns but does not change the original array
+    …
     sortedCo1ors//has new order
     colors//remains the same order
     colors.sort() { $0 < $1 }//changes the original array
