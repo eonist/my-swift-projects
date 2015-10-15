@@ -8,7 +8,7 @@ class RegExpParser{
     }
    
     
-    class func rangeFromNSRange(nsRange: NSRange, forString str: String) -> Range<String.Index>? {
+    private class func rangeFromNSRange(nsRange: NSRange, forString str: String) -> Range<String.Index>? {
         let fromUTF16 = str.utf16.startIndex.advancedBy(nsRange.location, limit: str.utf16.endIndex)
         let toUTF16 = fromUTF16.advancedBy(nsRange.length, limit: str.utf16.endIndex)
         
