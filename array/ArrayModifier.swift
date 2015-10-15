@@ -47,11 +47,14 @@ class ArrayModifier{
         return returnArray
     }
     /**
-     * TODO: Impliment this
+     * Returns a new array derived from the @param array sans the items from @param start to @param end
      * IMPORTANT: the original array is NOT modified
+     * splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
      */
-    class func slice<T>(array:[T],startIndex:Int, endIndex:Int)->Array<T>{
-        return Array()
+    class func slice<T>(var array:[T],startIndex:Int, endIndex:Int)->Array<T>{
+        let deleteCount = endIndex - startIndex
+        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        return array
     }
 }
 //combine
