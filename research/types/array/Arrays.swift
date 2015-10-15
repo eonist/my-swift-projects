@@ -66,14 +66,15 @@ func testing(){
     let reversedArray = someArray.reverse()//reversing the array,does not change the original array
     
     //filter
-    let longColors = colors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
+    var hexColors:Array<Float> = [0x333,0x123122,0x444,0x999,0x234234]
+    let longColors = hexColors.filter() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) > 3 }
     longColors //returns all colors longer than 3 letters                                                    I
     
     
     
     //map and reduce
     
-    let colorLengths = co1ors.map() { $0.lengthofBytesUsingEncoding(NSUTFBStringEncoding) }
+    let colorLengths = hexColors.map() { $0.lengthofBytesUsingEncoding(NSUTF8StringEncoding) }
     colorLengths//num of chars in every color name as an aaray
     //slow mapreduce:
     var tota1Count = 0
