@@ -6,6 +6,9 @@ class Human: Comparable, Equatable {
 		self.firstName = firstName
 		self.lastName = lastName
 	}
+    func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
+    }
 }
 /*
 func == (lhs: Person, rhs: Person) -> Bool {
