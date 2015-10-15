@@ -1,4 +1,8 @@
 import Foundation
+/*
+
+TODO: more research
+
 class Human: Comparable, Equatable {
 	let firstName: String
 	let lastName: String
@@ -6,10 +10,9 @@ class Human: Comparable, Equatable {
 		self.firstName = firstName
 		self.lastName = lastName
 	}
-    func ==(lhs: Person, rhs: Person) -> Bool {
-        return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
-    }
 }
+*/
+
 /*
 func == (lhs: Person, rhs: Person) -> Bool {
 	return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
@@ -24,11 +27,15 @@ func (lhs: Person, rhs: Person) -> Bool{
 	}
 }
 */
+/*
+
 let eva = Human(firstName: "Eddie", lastName: "Van Halen" )
 let jp = Human(firstName:"Jimmy", lastName: "Page")
 let jh = Human(firstName:"Jimi", lastName: "Hendrix")
 let sv = Human(firstName:"Steve", lastName: "Vai")
 var guitarists = [eva, jp,jh, sv]
+
+*/
 /*
 sort(&guitarists)//& is address of operator to use the adress of the value not the value it self
 sort(&guitarists) {$0.firstName < $1.firstName}//comparable protocol
