@@ -36,17 +36,13 @@ class ArrayModifier{
     /**
 	  * IMPORTANT: the original array is modified
       * NOTE: values used to be: values:[Element], but didnt work
-      * public function splice(startIndex:int, deleteCount:uint, ...items:*):Vector;
+      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
     class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt,values:Array<T>)->Array<T>{
         var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        returnArray.insertContentsOf(values, at: Int(startIndex))
+        if(values.count > 0 ){returnArray.insertContentsOf(values, at: Int(startIndex))}
         return returnArray
-        
-        
-        vegetables.splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, "tomato");
-        trace(vegetables); // tomato,cilantro,onion,green pepper,avocado
     }
     /**
      * TODO: Impliment this
