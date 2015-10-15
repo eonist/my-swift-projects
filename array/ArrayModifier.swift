@@ -44,6 +44,7 @@ class ArrayModifier{
     }
     /**
      * TODO: Impliment this
+     * public function slice(startIndex:int = 0, endIndex:int = 16777215):Vector;
      */
     class func slice<T>(array:[T])->Array<T>{
         return Array()
