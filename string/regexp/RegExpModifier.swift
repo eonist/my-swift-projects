@@ -10,11 +10,12 @@ class RegExpModifier{
 	Return Value A string with matching regular expressions replaced by the template string.
 		EXAMPLE: RegExpModifier.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
 	 * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-	 */
+	 *  
+    */
 	class func replace(string: String, searchPattern: String,replacement:String,options:NSMatchingOptions)-> String{
         do {
             let expr = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
-            let len:Int =
+            //let len:Int =
             let replacement = expr.stringByReplacingMatchesInString(string, options: options, range: NSMakeRange(0, string.characters.count), withTemplate: replacement)
             return replacement
         }catch let error as NSError {
