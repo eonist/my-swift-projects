@@ -34,7 +34,9 @@ class ArrayModifier{
         return nil
     }
     /**
-	  * NOTE: values used to be: values:[Element], but didnt work
+	  * IMPORTANT: the original array is modified
+      * NOTE: values used to be: values:[Element], but didnt work
+      * public function splice(startIndex:int, deleteCount:uint, ...items:*):Vector;
 	  */
     class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt,values:Array<T>)->Array<T>{
         var returnArray = array
@@ -44,9 +46,9 @@ class ArrayModifier{
     }
     /**
      * TODO: Impliment this
-     * public function slice(startIndex:int = 0, endIndex:int = 16777215):Vector;
+     * IMPORTANT: the original array is NOT modified
      */
-    class func slice<T>(array:[T])->Array<T>{
+    class func slice<T>(array:[T],startIndex:Int, endIndex:Int)->Array<T>{
         return Array()
     }
 }
