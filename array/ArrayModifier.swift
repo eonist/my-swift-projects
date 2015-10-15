@@ -1,4 +1,8 @@
 import Foundation
+
+//reverse
+//concat
+//append
 class ArrayModifier{
 	/**
 	 * UNSHIFT
@@ -57,16 +61,12 @@ class ArrayModifier{
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return array
     }
-    
-    //reverse
-    //concat
-    //append
     /**
      * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
      * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
      * NOTE: If you want to be able to replicate a shuffle or series of shuffles, choose and seed a specific random source; e.g.
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
-     *
+     * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
      */
     class func shuffle<T>(inout array:[T])->T{
         for i in 0 ..< (array.count - 1) {
