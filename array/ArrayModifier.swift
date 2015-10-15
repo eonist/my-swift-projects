@@ -36,19 +36,14 @@ class ArrayModifier{
     /**
 	  * 
 	  */
-    class func splice(array:Array,startIndex:UInt,deleteCount:UInt, values:[Element])->Array {
-        var returnArray = array
-        returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        returnArray.insertContentsOf(values, at: Int(startIndex))
-        return returnArray
-    }
+    class func splice<T>(inout array:Array[T])->Array<T>? {
+        return nil    }
     /**
-    *
-    */
+     * TODO: Impliment this
+     */
     class func slice<T>(array:[T])->Array<T>{
         return Array()
     }
-    
 }
 //combine
 //merge
