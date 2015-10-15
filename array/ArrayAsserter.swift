@@ -9,12 +9,14 @@ class ArrayAsserter {
         //continue here
         
         //needs the equatable syntax
-        
+        /*
         
         if array.contains(obj) {
             return true
         } else {
             return false;
         }
+
+        */
     }
 }
