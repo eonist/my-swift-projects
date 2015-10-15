@@ -2,13 +2,12 @@ import Foundation
 class RegExpParser{
     /*
      * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
+     * EXAMPLE: match("My name is Taylor Swift","My name is (.*)",NSRegularExpressionOptions.CaseInsensitive)
      */
-    class func match(text: String!, searchPattern: String!, options:NSRegularExpressionOptions = []) -> [String]{
+    class func match(input: String!, searchPattern: String!, options:NSRegularExpressionOptions = []) -> [String]{
         do {
-            let input = "My name is Taylor Swift"
-            let regex = try NSRegularExpression(pattern: "My name is (.*)", options: NSRegularExpressionOptions.CaseInsensitive)
+            let regex = try NSRegularExpression(pattern: searchPattern, options: NSRegularExpressionOptions.CaseInsensitive)
             let matches = regex.matchesInString(input, options: [], range: NSMakeRange(0, input.characters.count))
-            
             if let match = matches.first {
                 let range = match.rangeAtIndex(1)
                 if let swiftRange = rangeFromNSRange(range, forString: input) {
