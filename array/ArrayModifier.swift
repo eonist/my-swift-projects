@@ -6,7 +6,7 @@ class ArrayModifier{
 	 * original position, i, to i+1.
 	 * OUTPUT
 	 * a,b,c,d
-    * _,a,b,c,d
+     * _,a,b,c,d
 	 */
 	class func unshift<T>(inout array:[T],item:T)->Int{
 		array.insert(item,atIndex:0)
