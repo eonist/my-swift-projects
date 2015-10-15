@@ -71,7 +71,7 @@ class ArrayModifier{
     class func shuffle<T>(inout array:[T])->T{
         for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
-            swap(&array[i], &array[j])
+            swap(&array[i], &array[j])//the & sign indicates that you confirm that the values will be changed
         }
     }
 }
