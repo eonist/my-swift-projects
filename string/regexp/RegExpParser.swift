@@ -6,6 +6,39 @@ class RegExpParser{
     class func match(){
         
     }
+   
+    
+    class func rangeFromNSRange(nsRange: NSRange, forString str: String) -> Range<String.Index>? {
+        let fromUTF16 = str.utf16.startIndex.advancedBy(nsRange.location, limit: str.utf16.endIndex)
+        let toUTF16 = fromUTF16.advancedBy(nsRange.length, limit: str.utf16.endIndex)
+        
+        
+        if let from = String.Index(fromUTF16, within: str),
+            let to = String.Index(toUTF16, within: str) {
+                return from ..< to
+        }
+        
+        return nil
+    }
+    
+    class func testing(){
+        do {
+            let input = "My name is Taylor Swift"
+            let regex = try NSRegularExpression(pattern: "My name is (.*)", options: NSRegularExpressionOptions.CaseInsensitive)
+            let matches = regex.matchesInString(input, options: [], range: NSMakeRange(0, input.characters.count))
+            
+            if let match = matches.first {
+                let range = match.rangeAtIndex(1)
+                if let swiftRange = rangeFromNSRange(range, forString: input) {
+                    let name = input.substringWithRange(swiftRange)
+                    name
+                    print(name)
+                }
+            }
+        } catch {
+            // regex was bad!
+        }
+    }
     
     
 	/*
