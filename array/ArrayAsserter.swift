@@ -3,7 +3,13 @@ class ArrayAsserter {
     /**
      *
      */
-    class func pop<T>(array:[T],obj:T)->Bool {
+    class func contains<T>(array:[T],obj:T)->Bool {
+        
+        
+        //continue here
+        
+        //needs the equatable syntax
+        
         
         if array.contains(obj) {
             return true
