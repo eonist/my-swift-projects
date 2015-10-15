@@ -60,6 +60,19 @@ class ArrayModifier{
     //reverse
     //concat
     //append
+    /**
+     * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
+     * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
+     * NOTE: If you want to be able to replicate a shuffle or series of shuffles, choose and seed a specific random source; e.g.
+     * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
+     *
+     */
+    class func shuffle(array:Array){
+        for i in 0 ..< (count - 1) {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            swap(&self[i], &self[j])
+        }
+    }
 }
 //combine
 //merge
