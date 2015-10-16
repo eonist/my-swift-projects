@@ -24,9 +24,10 @@ public class RegExpParser{
     }
     
     /*
-    * TODO: The @param text should be inout
-    * TODO: move to RegExpModifer, or just create RegExpUtils for all?
-    */
+     * TODO: The @param text should be inout
+     * TODO: move to RegExpModifer, or just create RegExpUtils for all?
+     * NOTE: NSRegularExpressionOptions.DotMatchesLineSeparators
+     */
     public class func replace(str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpressionOptions)->String{
         do {
             let stringlength = str.characters.count
