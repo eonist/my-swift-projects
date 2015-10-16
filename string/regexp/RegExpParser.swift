@@ -22,7 +22,6 @@ public class RegExpParser{
             return []
         }
     }
-    
     /*
      * TODO: The @param text should be inout
      * TODO: move to RegExpModifer, or just create RegExpUtils for all?
