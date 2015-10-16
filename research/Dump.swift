@@ -1,4 +1,29 @@
-
+    /*
+    
+    //whats wrong with this:
+    
+    public class func replace(text:String, _ regex: String, _ replacement: String,_ options: NSRegularExpressionOptions = []) -> String {
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: options)
+            let range: NSRange = NSMakeRange(0, text.characters.count)
+            regex.stringByReplacingMatchesInString(text, options: .Anchored, range: range, withTemplate: replacement)
+            return text
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            return ""
+        }
+        /*
+        let matches = match(str,pattern)
+        let range: NSRange = NSMakeRange(0, str.characters.count)
+        
+        return
+        
+        return ""
+        */
+    }
+    
+    
+    */
     /*
     public class func match(input: String!, searchPattern: String!, options:NSRegularExpressionOptions = []) -> [String]{
         do {
