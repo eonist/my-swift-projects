@@ -68,12 +68,7 @@ class StringParser{
         let range:Range<String.Index> = StringParser.rangeOf(a,b)
         return a.startIndex.distanceTo(range.startIndex)
     }
-    /**
-     * Returns a Range of where the @param b is located in @param a
-     */
-    class func rangeOf(a:String,_ b:String)->Range<String.Index>{
-        return a.rangeOfString(b)!
-    }
+
     /**
      * Returns str sans the first char
      * @Note does not modify the original string
