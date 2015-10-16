@@ -1,16 +1,16 @@
 import Foundation
 public class RegExpParser{
     /**
-    * EXAMPLE: test("hello world","o.*o")//true
-    * NOTE: for simple implimentations:  str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
-    */
+     * EXAMPLE: test("hello world","o.*o")//true
+     * NOTE: for simple implimentations:  str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
+     */
     public class func test(str:String,_ pattern:String)->Bool{
         return str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
     }
     /*
-    * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-    * EXAMPLE: match("My name is Taylor Swift","My name is (.*)",NSRegularExpressionOptions.CaseInsensitive)
-    */
+     * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
+     * EXAMPLE: match("My name is Taylor Swift","My name is (.*)",NSRegularExpressionOptions.CaseInsensitive)
+     */
     public class func match(text: String!, _ regex: String!, _ options: NSRegularExpressionOptions = []) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex, options: options)
