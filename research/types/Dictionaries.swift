@@ -18,8 +18,7 @@ func testing(){
     theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist
     theDict.count//num of items
     theDict.keys//returns all keys in map collection view properties
-    let favoriteGenres = ["Funk":"Funk"]
-    //favoriteGenres.contains("Funk") //To check whether a set contains a particular item, use the contains(_:) method.
+    
     theDict.values//returns all values in map collection view properties
     print(Array(theDict.values))//convert the map collection view propertiesinto an usable Array
     theDict["material"] = "plastic"//add new key value pairs
@@ -43,7 +42,7 @@ func testing(){
     
     
     if var res : String = theDict["someKeyNameThatDoesNotExist"] {
-        printin("your value: \(res)")
+        print("your value: \(res)")
     }else{
         print("no val found for that key")
     }
@@ -99,10 +98,10 @@ func testing(){
     //set
     var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
     //You can add a new item into a set by calling the set’s insert(_:) method:
-    
+    print(favoriteGenres.contains("Funk")) //To) check whether a set contains a particular item, use the contains(_:) method.
     favoriteGenres.insert("Jazz")
     // favoriteGenres now contains 4 items
-    Array(theDict.keys)//convert the map collection view propertiesinto an usable Array
+    print(Array(theDict.keys))//convert the map collection view propertiesinto an usable Array
     
     /**
     Use the intersect(_:) method to create a new set with only the values common to both sets.
