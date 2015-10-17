@@ -8,11 +8,15 @@ func testing(){
     
     var someArray: Array<String> = ["Alex", "Brian", "Dave"]
     let someArray2: [String] = ["Alex", "Brian", "Dave"]
+    print(someArray2)
     let someArray3: [String]//string array
-    
+    print(someArray3)
     
     var someArray4:Array = [1,2,3]//mutable
+    someArray4.append(5)
+    print(someArray4)
     let stringArray = ["a","some","this"]//immutable
+    print(stringArray)
     var anotherArray:[String]
     anotherArray = ["abc","123"]
     print("your value: \(anotherArray[0])")//"abc"
