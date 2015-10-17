@@ -6,15 +6,15 @@ public class RegExpParser{
      * EXAMPLE: match("My name is Taylor Swift","My name is (.*)")//Swift
      * EXAMPLE: RegExpParser.match("hello world","(\\b\\w+\\b)")//hello, world
      */
-    public class func match(text: String!, _ regex: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
-        return matches(text, regex).map { (text as NSString).substringWithRange($0.range)}
+    public class func match(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
+        return matches(text, pattern).map { (text as NSString).substringWithRange($0.range)}
     }
     /**
      * NOTE: Use this method when doing named capturing group
      */
-    public class func matches(text: String!, _ regex: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
+    public class func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
         do {
-            let regex = try NSRegularExpression(pattern: regex, options: options)
+            let regex = try NSRegularExpression(pattern: pattern, options: options)
             let nsString = text as NSString
             let results = regex.matchesInString(text,options: [], range: NSMakeRange(0, nsString.length))
             return results

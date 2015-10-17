@@ -1,7 +1,7 @@
 import Foundation
 
 /*
-NOTE: example use of addociative capturing groups: (this doesnt highlight repeating captuing groups, so make an example for this as well)
+NOTE: example use of associative capturing groups: (this doesnt highlight repeating captuing groups, so make an example for this as well)
 
 
 
