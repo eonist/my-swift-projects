@@ -18,17 +18,17 @@ func testing(){
     theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist
     theDict.count//num of items
     theDict.keys//returns all keys in map collection view properties
-    let favoriteGenres = ["Funk":""]
-    favoriteGenres.contains("Funk") //To check whether a set contains a particular item, use the contains(_:) method.
+    let favoriteGenres = ["Funk":"Funk"]
+    //favoriteGenres.contains("Funk") //To check whether a set contains a particular item, use the contains(_:) method.
     theDict.values//returns all values in map collection view properties
-    Array(theDict.values)//convert the map collection view propertiesinto an usable Array
+    print(Array(theDict.values))//convert the map collection view propertiesinto an usable Array
     theDict["material"] = "plastic"//add new key value pairs
     theDict["color"] = nil//removes the value key pair
     for (theKey,theValue) in theDict{
-        printin("your value: \(value) and key: \(key)")
+        print("your value: \(theValue) and key: \(theKey)")
     }
     var anotherDict : [String]
-    anotherDict
+    print(anotherDict)
     
     
     /**
