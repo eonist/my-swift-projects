@@ -7,7 +7,8 @@ func testing(){
     //Arrays with dictionaries (method 1):
     var taskItems:[Dictionary<String,String>] = []
     taskItems.append(["color":"blue"])
+    
     //Arrays with dictionaries (method 2):
-    var taskItems2 = [String:String]()
+    var taskItems2 = [[String:String]()]
     taskItems2.append(["color":"blue"])
 }
