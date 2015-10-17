@@ -10,27 +10,29 @@ let sortedColors = someColors.sort() { $0 < $1 }//["black", "blue", "browm", "gr
 */
 func test(){
     //If you have a custom struct or class and want to sort them arbitrarily, you should call sort() using a trailing closure that sorts on a field you specify. Here's an example using an array of custom structs that sorts on a particular property:
-    struct MyCustomStruct {
-        var someSortableField: String
+    struct People {
+        var name: String
     }
     
     var customArray = [
-        MyCustomStruct(someSortableField: "Jemima"),
-        MyCustomStruct(someSortableField: "Peter"),
-        MyCustomStruct(someSortableField: "David"),
-        MyCustomStruct(someSortableField: "Kelly"),
-        MyCustomStruct(someSortableField: "Isabella")
+        People(name: "Jemima"),
+        People(name: "Peter"),
+        People(name: "David"),
+        People(name: "Kelly"),
+        People(name: "Isabella")
     ]
     
     let sortedArray = customArray.sort { (element1, element2) -> Bool in
-        return element1.someSortableField < element2.someSortableField
+        return element1.name < element2.name
     }
     print(sortedArray)
     
     //if you want to sort the array in place rather than assign it to another value, use sortInPlace() like this:
+    /*
     customArray.sortInPlace { (element1, element2) -> Bool in
-        return element1.someSortableField < element2.someSortableField
+    return element1.someSortableField < element2.someSortableField
     }
+    */
 }
 
 /*
