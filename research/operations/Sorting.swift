@@ -28,11 +28,11 @@ func test(){
     print(sortedArray)
     
     //if you want to sort the array in place rather than assign it to another value, use sortInPlace() like this:
-    /*
+    
     customArray.sortInPlace { (element1, element2) -> Bool in
-    return element1.someSortableField < element2.someSortableField
+        return element1.name < element2.name
     }
-    */
+    
 }
 
 /*
