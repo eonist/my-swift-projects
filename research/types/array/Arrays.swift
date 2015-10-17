@@ -14,7 +14,7 @@ func testing(){
     
     var someArray4:Array = [1,2,3]//mutable
     someArray4.append(5)
-    print(someArray4)
+    print(someArray4)//1,2,3,4,5
     let stringArray = ["a","some","this"]//immutable
     print(stringArray)
     var anotherArray:[String]
