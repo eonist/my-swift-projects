@@ -1,3 +1,4 @@
+//AnyObject can represent an instance of any class type.
 let userDefaults = NSUserDefaults.standardUserDefaults()
 let lastRefreshDate: AnyObject? = userDefaults.objectForKey("LastRefreshDate")
 func test(){
