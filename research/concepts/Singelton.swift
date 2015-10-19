@@ -26,10 +26,17 @@ class Singleton {
 class Singleton {
     static let sharedInstance: Singleton = {
         let instance = Singleton()
-        // setup code
-        return instance
+        return instance// setup code
     }()
 }
 //For more information, see Type Properties in The Swift Programming Language (Swift 2.1).
 
 //find more example of this class
+
+class VehicleList {
+  let vehicles: [String]
+  static var sharedInstance = VehicleList()
+  private init() {
+    vehicles = []
+  }
+}

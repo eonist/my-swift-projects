@@ -1,3 +1,5 @@
+Great tutorial on operator overloading (also saved as pdf): http://www.raywenderlich.com/80818/operator-overloading-in-swift-tutorial
+
 //operators and their operandees
 var a : Number = 11.55
 var b : Number = 11.55
