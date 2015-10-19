@@ -48,15 +48,11 @@ func test(){
     // on
     // separate
     // lines
-    
-    
-    
-    
-}
 
+}
 /**
-*
-*/
+ *
+ */
 func testing(){
     //find the longst word:
     var problem = "find the longest word in the problem description"
