@@ -4,8 +4,9 @@ class RegExpUtils {
     /**
     *
     */
-    class func value(str:String, _ result:NSTextCheckingResult, _ type:Any)->String{
-        (str as NSString).substringWithRange(result.rangeAtIndex(enum(type).rawValue))
-        return ""
+    class func value(str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
+        
+        return (str as NSString).substringWithRange(result.rangeAtIndex(key))
+        
     }
 }
