@@ -5,12 +5,19 @@ public class RegExpParser{
      * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      * EXAMPLE: match("My name is Taylor Swift","My name is (.*)")//Swift
      * EXAMPLE: RegExpParser.match("hello world","(\\b\\w+\\b)")//hello, world
+     * NOTE: NSRegularExpressionOptions: DotMatchesLineSeparators,CaseInsensitive,AnchorsMatchLines
      */
     public class func match(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
         return matches(text, pattern).map { (text as NSString).substringWithRange($0.range)}
     }
     /**
-     * NOTE: Use this method when doing named capturing group
+     * NOTE: NSRegExp uses the ICU regexp syntax: http://userguide.icu-project.org/strings/regexp
+     * NOTE: Use this method when doing named capturing group or location of matches
+     * Note: use this call to get the capturing group: (str as NSString).substringWithRange(match.rangeAtIndex(1))  capturing groups from index (1 - n)
+     * NOTE: use an "enum" if you need named capturing groups. like: enum FolderTaskParts:Int{ case folder = 1, content }
+     * TODO: Figure out how to do numbered capturing groups ($n - n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than ) maybe with \$2 \$3 etc?
+     * TODO: Research how to deal with swift unicode chars, emojis etc: see this: http://stackoverflow.com/questions/25882503/how-can-i-use-nsregularexpression-on-swift-strings-with-variable-width-unicode-c
+     * NOTE: its also possible to find number of matches this way: regex.numberOfMatchesInString(text options:[] NSMakeRange(0, nsString.length))
      */
     public class func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
         do {

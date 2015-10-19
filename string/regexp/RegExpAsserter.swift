@@ -1,3 +1,5 @@
+import Foundation
+
 public class RegExpAsserter{
     /**
      * Asserts if a match exists
