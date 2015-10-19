@@ -1,6 +1,6 @@
 //import "text:TextAsserter.applescript"
 class GitModifier{
-   class var gitPath = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
+   static var gitPath = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
    /*
     * Add a file or many files to a commit
     * @param fileName is the file name you want to add, use * if you want to add all files
@@ -8,10 +8,10 @@ class GitModifier{
     * Example: GitUtils's add(localRepoPath, "*")
     * Note: the opposite of add is reset, see the reset method for more info
     */
-   class func add(localRepoPath:String, _ fileName:String)->String{
+   class func add(localRepoPath:String, var _ fileName:String)->String{
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
-   	if (!StringAsserters.isWrappedWith(fileName, "\"")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
-   		fileName = StringModifer.wrapWith(fileName,"'") 
+   	if (!StringAsserter.isWrappedWith(fileName, "\"")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   		fileName = StringModifier.wrapWith(fileName,"'")
    	}
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
    	//--log "shellScript: " + shellScript

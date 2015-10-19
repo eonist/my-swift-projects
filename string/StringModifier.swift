@@ -19,13 +19,13 @@ class StringModifier{
     /**
      * EXAMPLE: combine(["Andrew", "Ben", "John", "Paul", "Peter", "Laura"]," ")//"Andrew Ben John Paul Peter Laura"
      */
-    class func combine(strings:Array<String>,delimiter:String)->String{
+    class func combine(strings:Array<String>, _ delimiter:String)->String{
         return strings.joinWithSeparator(", ")
     }
 	/**
 	 *
 	 */
-	class func wrapWith(string:String,wrapper:String)->String{
+	class func wrapWith(string:String, _ wrapper:String)->String{
 	   return wrapper + string + wrapper
 	}
 	/**
@@ -101,7 +101,7 @@ class StringModifier{
      * @Example: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
      */
     class func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
-        let range:Range<String.Index> = StringParser.stringRange(str, start, end)
+        let range:Range<String.Index> = StringRangeParser.stringRange(str, start, end)
         str.replaceRange(range, with: replacement)
     }
     /**
