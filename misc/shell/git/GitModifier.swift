@@ -15,7 +15,7 @@ class GitModifier{
    	}
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
    	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript).output
+   	return ShellUtils.run(shellScript)
    }
    /*
     * Commits current changes
@@ -34,7 +34,7 @@ class GitModifier{
    class func commit(localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
    	//log ("GitModifier's commit(" + message_title + ")")
    	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git commit" + " " + "-m" + " '" + messageTitle + "' " + "-m" + " '" + messageDescription + "'"
-   	return ShellUtils.run(shellScript).output
+   	return ShellUtils.run(shellScript)
    }
    /*
     * Uploads the current from the local git commits to the remote git
@@ -58,7 +58,7 @@ class GitModifier{
    class func push(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
    	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git push" + " " + remoteLocation + " " + branch
+   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git push" + " " + remoteLoc + " " + branch
    	//--log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
    }
@@ -76,7 +76,7 @@ class GitModifier{
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
    class func reset(localRepoPath:String, _ fileName:String)->String{
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName
+    let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript)
    }
    /*
