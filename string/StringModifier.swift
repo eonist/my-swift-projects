@@ -8,12 +8,13 @@ class StringModifier{
         return replaced
     }
     /**
-     * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈")
+     * Replaces @param match in @param input with @param replacement
+     * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈") // Hello 🐈
      */
-    class func replaceFirst(str:String,match:String,replacement:String){
-        combined.insertContentsOf(replacement.characters, at: combined.rangeOfString(match)!.startIndex)
-        combined.removeAtIndex(combined.rangeOfString(smile)!.startIndex)
-        print(combined)                    // Hello 🐈
+    class func replaceFirst(var input:String,_ match:String,_ replacement:String)->String{
+        input.insertContentsOf(replacement.characters, at: input.rangeOfString(match)!.startIndex)
+        input.removeRange(input.rangeOfString(match)!)
+        return input
     }
     /**
      * EXAMPLE: combine(["Andrew", "Ben", "John", "Paul", "Peter", "Laura"]," ")//"Andrew Ben John Paul Peter Laura"
