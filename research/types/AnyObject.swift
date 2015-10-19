@@ -1,4 +1,8 @@
-//AnyObject can represent an instance of any class type.
+//AnyObject can hold only class-based objects
+//AnyObject doesn't allow primitives
+//Any allows primitives and class-based objects.
+import Foundation
+
 let userDefaults = NSUserDefaults.standardUserDefaults()
 let lastRefreshDate: AnyObject? = userDefaults.objectForKey("LastRefreshDate")
 func test(){
