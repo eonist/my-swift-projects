@@ -2,7 +2,7 @@ class StringAsserter{
 	/*
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
 	 */
-	class func isWrappedWith(string:String, char:Character)->Bool{
+	class func isWrappedWith(string:String, _ char:Character)->Bool{
 		return (string.characters.first == char) && (string.characters.last == char)
 	}
 	/**
@@ -11,7 +11,7 @@ class StringAsserter{
 	 *	@param prefix: The prefix that will be tested against the string.
 	 *	@return True if the string starts with the prefix, false if it does not.
 	 */	
-	class func beginsWith(string:String, prefix:String)->Bool{
+	class func beginsWith(string:String, _ prefix:String)->Bool{
         //let range = prefix.startIndex..<prefix.endIndex//create a range
         //return (prefix == string.substringWithRange(range));
         return string.hasPrefix(prefix)
@@ -19,7 +19,7 @@ class StringAsserter{
     /**
      * Asserts if @param str ends with @param suffix
      */
-    class func endWith(str:String,suffix:String)->Bool{
+    class func endWith(str:String, _ suffix:String)->Bool{
         return str.hasSuffix(suffix)
     }
     /**
@@ -31,7 +31,7 @@ class StringAsserter{
     /*
      * Check if string contains another string
      */
-    func contains(a:String,b:String)->Bool{
+    func contains(a:String, _ b:String)->Bool{
         
         return a.rangeOfString(b) != nil
     }
