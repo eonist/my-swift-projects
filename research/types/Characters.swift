@@ -17,4 +17,6 @@ func test(){
             replacedString = replacedString + char
         }
     }
+    
+    
 }
