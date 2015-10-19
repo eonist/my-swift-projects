@@ -296,7 +296,7 @@ class GitModifier{
     * @param loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
     * @param filePath: can be a relative file path, or the astrix sign for every file "*"
     */
-	class func check_out(localRepoPath:String, _ loc:String, _ filePath:String)->String{
+	class func checkOut(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
         if (filePath != " "){ shellScript  += " " + filePath }
