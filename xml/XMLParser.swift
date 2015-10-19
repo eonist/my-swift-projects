@@ -21,7 +21,7 @@ class XMLParser{
 	 * NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
 	 * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
 	 */
-	class func data(xml:String)->Dictionary{
+	class func data(xml:String)->Dictionary<String,Any>{
 		var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 		var traverser:XMLTraverser = XMLTraverser(data: string )
 		traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
