@@ -6,11 +6,14 @@ class ShellUtils{
 	 * Example: println(shell("git log --oneline").output)
 	 */
 	class func run(input: String) -> (output: String, exitCode: Int32) {
+        /*
+        let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
+            $0 == " "
+        }
+        */
         
-        input.componentsSeparatedByString(<#T##separator: String##String#>)
-	    let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
-	        $0 == " "
-	    }
+        let arguments = input.componentsSeparatedByString(" ")
+	    
 	    let task = NSTask()
 	    task.launchPath = "/usr/bin/env"
 	    task.arguments = arguments
