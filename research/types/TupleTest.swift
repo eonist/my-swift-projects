@@ -1,6 +1,44 @@
 import Foundation
 func testing(){
     //tuples are almost like objects
+    //good overview: https://www.weheartswift.com/tuples-enums/
+    
+   // Unnamed Tuples
+
+   let tipAndTotal = (4.00, 25.19)
+   let tipAndTotal2:(Double, Double) = (4.00, 25.19)
+   tipAndTotal.0
+   tipAndTotal.1
+
+   let (theTipAmt, theTotal) = tipAndTotal
+   theTipAmt
+   theTotal
+
+
+   //Named Tuples
+   let tipAndTotalNamed = (tipAmt:4.00, total:25.19)
+   tipAndTotalNamed.tipAmt
+   tipAndTotalNamed.total
+   let tipAndTotalNamed2:(tipAmt:Double, total:Double) = (4.00, 25.19)
+    
+    //Returning Tuples
+   let total = 21.19
+   let taxPct = 0.06
+   let subtotal = total / (taxPct + 1)
+   func calcTipWithTipPct(tipPct:Double) -> (tipAmt:Double, total:Double) {
+     let tipAmt = subtotal * tipPct
+     let finalTotal = total + tipAmt
+     return (tipAmt, finalTotal)
+   }
+   calcTipWithTipPct(0.20)
+   
+   
+   
+   
+   
+   
+   
+       
     var someTuple = ("test",22,10.2,"abc")
     func testingTuples()->(String,Int){
         return ("test",55)
