@@ -58,5 +58,13 @@ func test(){
     for (index, item) in array.enumerate() {
         print("Found \(item) at position \(index)")
     }
+    
+    
+    //reverse
+    var listOfNumbers = [1, 2, 3, 10, 100]
+
+      for var i = listOfNumbers.count - 1; i >= 0; --i {
+          println(listOfNumbers[i])
+      }
 }
 
