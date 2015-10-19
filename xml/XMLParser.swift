@@ -24,13 +24,13 @@ class XMLParser{
 	 * TODO: may need to use infix operator and extensions to make the xml parser work.
      */
 	class func data(xml:String)->Dictionary<String,Any>{
-		var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
+		var nsXmlDelegate:NSXMLParserDelegate = NSXMLParserDelegate()
 		var traverser:XMLTraverser = XMLTraverser(data: string )
 		traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
 	   if(traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
-	   	return traverser.root//the root dictionary
+            return traverser.root//the root dictionary
 	   }else{
-	   	return nil
+            return nil
 	   }
 	}
 	/*
