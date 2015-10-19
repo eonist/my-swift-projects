@@ -1,3 +1,4 @@
+import Foundation
 class ShellUtils{
 	/**
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
@@ -7,6 +8,7 @@ class ShellUtils{
 	 */
 	class func run(input: String) -> (output: String, exitCode: Int32) {
         /*
+        Was this: (but Swift doesnt use spit anymore, may need further research)
         let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
             $0 == " "
         }

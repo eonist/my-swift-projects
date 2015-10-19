@@ -1,6 +1,12 @@
 import Foundation
 class StringModifier{
     /**
+     * Returns an array with 2 strings
+     */
+    class func split(str:String, _ delimiter:String)->[String]{
+        return str.componentsSeparatedByString(delimiter)
+    }
+    /**
      * replaceEvery("abc 123 abc 123","123","abc")
      */
     class func replaceEvery(str:String,match:String,replacment:String)->String{
