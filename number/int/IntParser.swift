@@ -30,5 +30,11 @@ class IntParser{
         }
         return (currentMin, currentMax)
     }
+    /**
+     *
+     */
+    class func max(ints:Array<Int>)->Int{
+        
+    }
 }
 
