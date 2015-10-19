@@ -6,9 +6,14 @@ class Month {
     init(name: String) {
         self.name = name
     }
-    
+    /*
+     * Used to be just: //return name[name.startIndex..<advance(name.startIndex, 3)]
+     */
     func shortened() -> String {
-        return name[name.startIndex..<advanceBy(name.startIndex, 3)]
+        let startIndex = name.startIndex.advancedBy(0)
+        let endIndex = name.startIndex.advancedBy(3)
+        let range:Range = Range(start:startIndex,end:endIndex)
+        return name.substringWithRange(range)
     }
 }
 /**
