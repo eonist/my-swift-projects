@@ -1,3 +1,4 @@
+import Foundation
 class XMLParser{
 	//import ../file/FileParser.swift
 	//import ../network/NetworkParser.swift
@@ -20,7 +21,8 @@ class XMLParser{
 	 * NOTE: root["."]["categories"][0]["."]["category"][0]["."]["item"][0]["."]//"well designed car" //i guess optional chaining would suit the bellow line well
 	 * NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
 	 * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
-	 */
+	 * TODO: may need to use infix operator and extensions to make the xml parser work.
+     */
 	class func data(xml:String)->Dictionary<String,Any>{
 		var nsXmlDelegate:NSXMLDelegate = NSXMLParserDelegate()
 		var traverser:XMLTraverser = XMLTraverser(data: string )
