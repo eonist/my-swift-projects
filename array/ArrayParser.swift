@@ -50,24 +50,21 @@ class ArrayParser{
     }
     
     /**
+     * Returns a list unique with all the unique int from @param ints
      * unique([1, 2, 3, 1, 2, 10, 100])
      */
-    class func unique(listOfNumbers:Array<Int>){
-               var unique: [Int] = []
-        
-        for number in listOfNumbers {
+    class func unique(ints:Array<Int>)->Array<Int>{
+        var uniqueList: [Int] = []
+        for number in ints {
             var numberIsNew = true
-            
-            for otherNumber in unique {
+            for otherNumber in uniqueList {
                 if number == otherNumber {
                     numberIsNew = false
                     break
                 }
             }
-            
-            if numberIsNew {
-                unique.append(number)
-            }
+            if numberIsNew {uniqueList.append(number)}
         }
+        return uniqueList
     }
 }
