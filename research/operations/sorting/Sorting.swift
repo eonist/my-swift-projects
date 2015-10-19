@@ -33,6 +33,21 @@ func test(){
         return element1.name < element2.name
     }
     
+      array.sort(<) // will sort the array in ascending order
+      array.sort(>) // will sort the array in descending order
+      
+      var listOfNumbers = [3, 2, 100, 10, 1]
+
+      listOfNumbers.sort(<)
+
+      println(listOfNumbers)
+      // [1, 2, 3, 10, 100]
+
+      listOfNumbers.sort(>)
+
+      print(listOfNumbers)
+      // [100, 10, 3, 2, 1]
+    
 }
 
 /*
