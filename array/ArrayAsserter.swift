@@ -19,5 +19,20 @@ class ArrayAsserter {
 
         */
     }
-    
+    /**
+     * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
+     * TODO: upgrade to support 
+     */
+    class func similar(a:Array<Int>,b:Array<Int>)->Array<Int>{
+        var similarList:Array<Int> = []
+        for x in b {
+            for y in a {
+                if y == x {
+                    similarList.append(y)
+                    break
+                }
+            }
+        }
+        return similarList
+    }
 }
