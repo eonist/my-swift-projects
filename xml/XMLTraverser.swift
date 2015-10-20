@@ -28,14 +28,14 @@ class XMLTraverser: NSXMLParser{//NSObject,
 		if(hasClosed){//means the item is an sibling
 			//which means you dont add the parent to the parentList
 		}else{//means you stepped into a subnode
-			openParents.append(tempNode["."])//parent must always be the content dictionary
+			openParents.append(tempNode["."] as! Dictionary<String,Any>)//parent must always be the content dictionary
 		}
 		prevEnteredNodeName = nodeName
 		hasClosed = false
     }
     /*
-	  * found string content
-	  */
+     * found string content
+     */
     func parser(parser: NSXMLParser, foundCharacters string: String) {
 		stringContent += foundCharacters
     }
