@@ -102,6 +102,13 @@ class XMLParser{
 	/**
 	 * Returns all children from the content of an xml node
 	 */
+    
+    
+    
+    //What does this method do again?
+    
+    
+    
 	class func children(dictionary:Dictionary)->Array{
 		var theChildren:Array = []
 		for value in dictionary.values{
