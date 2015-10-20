@@ -22,8 +22,8 @@ class XMLTraverser: NSXMLParser{//NSObject,
         tempParent[nodeName] = tempParent[nodeName] == nil ? [Dictionary<String,Any>]() : tempParent[nodeName]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
 		tempNode = ["@":attributes]
 		tempNode["."] = [:]//this can potentially be String, but then you just set it to string in the exit method
-        //var temp:Dictionary<String,Any>]
-        (tempParent[nodeName] as! Dictionary<String,Any>]).append(tempNode["."])
+        var temp:[Dictionary<String,Any>] = tempParent[nodeName] as! [Dictionary<String,Any>]
+        temp.append(tempNode["."] as! Dictionary<String,Any>)
         
 		if(hasClosed){//means the item is an sibling
 			//which means you dont add the parent to the parentList
