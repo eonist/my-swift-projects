@@ -45,8 +45,8 @@ class XMLParser{
 	 */
 	class func dataByURL(URL:String)->Dictionary<String,Any>{//# must use param naming
 	  let result:String = NetworkParser.string(URL)
-	  if(result.response == "success"){
-	    return xml(result.data)
+	  if(result == "success"){
+	    return data(result.data)
 	  }else{
 		 //print(result.error)
 		 return nil
