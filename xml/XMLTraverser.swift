@@ -69,7 +69,7 @@ class XMLTraverser: NSXMLParser{//NSObject,
     /**
     *
     */
-    func getRoot()->Dictionary<String,Any>{
+    func getRoot()->[Dictionary<String,Any>]{
         return root
     }
 }
