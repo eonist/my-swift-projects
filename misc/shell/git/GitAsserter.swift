@@ -13,16 +13,16 @@ class GitAsserter{
 	 * 
 	 */
 	class func hasRemoteRepoAttached(filePath:String, _ branch:String)->Bool{
-		return GitParser.status(filePath, "origin" & "/" & branch) != ""
+		return GitParser.status(filePath, "origin" + "/" + branch) != ""
 	}
 	/*
 	 * Asserts if a remote branch is ahead of a local branch
 	 */
 	class func isRemoteBranchAhead(localPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's is_remote_branch_ahead()"
-		let theLog:String = GitParsers.doLog(localPath, "--oneline " & branch & ".." & "origin" & "/" & branch) //--move this to the gitparser as a ref
+		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" & branch) //--move this to the gitparser as a ref
 		//--log the_log
-		let logList:Array = ListParser.paragraphs(theLog)
+		let logList:Array<String> = StringParser.paragraphs(theLog)
 		let isAhead:Bool = logList.count > 0
 		return isAhead
 	}
