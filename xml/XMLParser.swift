@@ -1,8 +1,5 @@
 import Foundation
 class XMLParser{
-	//import ../file/FileParser.swift
-	//import ../network/NetworkParser.swift
-	//import XMLTraverser.swift.swift
 	/*
 	 * Returns a tree-structures dictionary populated with xml data from an string with xml data
 	 * PARAM: string:xml string data
