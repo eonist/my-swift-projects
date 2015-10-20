@@ -67,4 +67,10 @@ class ArrayParser{
         }
         return uniqueList
     }
+    /**
+     * Returns the last item in an array
+     */
+    class func last<T>(arr:[T])->T{
+        arr[arr.count-1]
+    }
 }

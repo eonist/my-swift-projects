@@ -30,7 +30,7 @@ func testing(){
     anotherArray.insert("hello",atIndex:2)
     //remove at index
     anotherArray.removeAtIndex(2)
-    anotherArray[2] = 3//change a value of an item in an array
+    anotherArray[2] = "3"//change a value of an item in an array
     anotherArray.removeRange(1...2)//you can also use NSMakeRange(0, 9)
     anotherArray.removeAll()//clears out the array
     anotherArray.capacity//how much memory allocated to the array
