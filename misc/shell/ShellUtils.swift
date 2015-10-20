@@ -7,7 +7,10 @@ class ShellUtils{
 	 * Example: ShellUtils.run("git log --oneline")
 	 */
 	class func run(input: String) -> String {
-        exc(input).output
+        let (output, terminationStatus) = exc(input)
+        return output
+        //throws ->
+        
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
