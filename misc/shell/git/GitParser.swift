@@ -54,9 +54,9 @@ class GitParser{
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
 	 */
-	class func unMergedFiles(localPath:String)->Array{
+	class func unMergedFiles(localPath:String)->Array<String>{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
-		return StringParser.split(unmMergedPaths)// :TODO: use some sort of linesToArray method here
+		return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
 	}
 	/*
 	 * "git diff --name-only --diff-filter=U" --returns a list of unmerged files
