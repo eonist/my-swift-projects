@@ -43,10 +43,10 @@ class XMLParser{
 	 * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
 	 * PARAM URL:"http://www.google.com/feeds/news.xml"
 	 */
-	class func dataByURL(URL:String)->Dictionary<String,Any>{//# must use param naming
+	class func dataByURL(URL:String)->Dictionary<String,Any>?{//# must use param naming
 	  let result:String = NetworkParser.string(URL)
 	  if(result == "success"){
-	    return data(result.data)
+	    return data(result)
 	  }else{
 		 //print(result.error)
 		 return nil
@@ -59,7 +59,7 @@ class XMLParser{
 	 * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
 	 * EXAMPLE: 
 	 */
-	class func xml(data:Dictionary)->String{
+	class func xml(data:Dictionary<String,Any>)->String{
 		var xmlString:String = ""
 		for (nodeName,nodes) in data["."]{
 			for node in nodes{
