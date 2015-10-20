@@ -14,6 +14,7 @@ class StringModifier{
         return replaced
     }
     /**
+     * Replaces first match
      * Replaces @param match in @param input with @param replacement
      * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈") // Hello 🐈
      */
