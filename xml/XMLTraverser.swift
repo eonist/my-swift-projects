@@ -7,10 +7,10 @@ class XMLTraverser: NSXMLParser{//NSObject,
 	var hasClosed = false//you step into an xml so this must be false
 	var prevEnteredNodeName:String?
 	var root:[Dictionary<String,Any>] = []
-	var openParents:Array = [root["."]]//flat list of previous entered parents aka openParents
-	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
+	var openParents:[Dictionary<String,Any>] = []//flat list of previous entered parents aka openParents
+	var tempNode:Dictionary<String,String>//this may not be needed to be declared here, if you have the parent you can get to this aswell
     // MARK: - delegate handlers
-    init(data: NSData) {
+    override init(data: NSData) {
         <#code#>
     }
     /*
