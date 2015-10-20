@@ -8,7 +8,7 @@ class GitAsserter{
 	 */
 	class func isGitRepo(filePath:String)->Bool{
 		do{
-			try GitParser.status(filePath, "")
+			try 
 			return true
 		}catch let error as NSError{
 			print(error.localizedDescription)
