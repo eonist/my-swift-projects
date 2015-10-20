@@ -13,13 +13,7 @@ class GitAsserter{
 	 * 
 	 */
 	class func hasRemoteRepoAttached(filePath:String, _ branch:String)->Bool{
-		do{
-			try GitParsers.status(filePath, "origin" & "/" & branch)
-			return true
-		}catch let error as NSError{
-			//print(error.type)
-			return false
-		}
+		return GitParser.status(filePath, "origin" & "/" & branch) != ""
 	}
 	/*
 	 * Asserts if a remote branch is ahead of a local branch
