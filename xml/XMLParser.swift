@@ -59,11 +59,18 @@ class XMLParser{
 	 * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
 	 * EXAMPLE: 
 	 */
+    
+    
+    
+    
+    //rethinnk the bellow:
+    
+    
+    
+    
 	class func xml(data:Dictionary<String,Any>)->String{
 		var xmlString:String = ""
-        
-		for temp in data["."] as! [Dictionary<String,Any>]{
-            let nodes = temp
+		for (nodeName, nodes) in data["."]{
 			for node in nodes{
 				xmlString += element(nodeName, xml(node), node["@"])
 			}
