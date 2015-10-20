@@ -88,10 +88,9 @@ class XMLParser{
 		var attributeText = ""
 		for (key,value) in attributes{
 			var attributeText  = (key + "=" + "\"" + value + "\"")
-			if (attribute != attributes.last ){
-				attributeText += " " //append a space after each key value pair, unless its at the end
-			}
+            attributeText += " " //append a space after each key value pair, unless its at the end
 		}
+        StringModifier.
 		var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
 		if (content.count > 0) { //has content
 			xmlText += ">" + content + "</" + name + ">" //end of xml text
