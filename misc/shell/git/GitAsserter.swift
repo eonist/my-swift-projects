@@ -11,7 +11,7 @@ class GitAsserter{
 			try GitParser.status(filePath, "")
 			return true
 		}catch let error as NSError{
-			//print(error.type)
+			print(error.localizedDescription)
 			return false
 		}
 	}
