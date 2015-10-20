@@ -9,8 +9,16 @@ class CharacterModifier {
     /**
      *
      */
-    class func removeLast(){
-        
+    class func removeFirst(var str:String)->String{
+        str.removeAtIndex(str.characters.indices.first!)// remove last letter
+        return str
+    }
+    /**
+     *
+     */
+    class func removeLast(var str:String)->String{
+        str.removeAtIndex(str.characters.indices.last!)// remove last letter
+        return str
     }
     /**
      * Returns the @param str in reverse order
