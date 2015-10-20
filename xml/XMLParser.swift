@@ -35,7 +35,7 @@ class XMLParser{
 	 * filePath:"//Users/<path>/someFile.xml"
 	 * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
 	 */
-	class func data(#filePath:String)->Dictionary{//# must use param naming
+	class func data(filePath filePath:String)->Dictionary<String,Any>{//# must use param naming
 		let xml:String = FileParser.string(filePath)
 		return data(xml)
 	}
@@ -43,7 +43,7 @@ class XMLParser{
 	 * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
 	 * PARAM URL:"http://www.google.com/feeds/news.xml"
 	 */
-	class func data(#URL:String)->Dictionary{//# must use param naming
+	class func data(#URL:String)->Dictionary<String,Any>{//# must use param naming
 	  let result:String = NetworkParser.string(URL)
 	  if(result.response = "success"){
 	    return xml(result.data)
