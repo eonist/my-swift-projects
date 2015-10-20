@@ -8,7 +8,7 @@ class XMLTraverser: NSXMLParser{//NSObject,
 	var prevEnteredNodeName:String?
 	var root:[Dictionary<String,Any>] = []
 	var openParents:[Dictionary<String,Any>] = []//flat list of previous entered parents aka openParents
-	var tempNode:Dictionary<String,String>//this may not be needed to be declared here, if you have the parent you can get to this aswell
+	var tempNode:Dictionary<String,Any>//this may not be needed to be declared here, if you have the parent you can get to this aswell
     // MARK: - delegate handlers
     override init(data: NSData) {
         <#code#>
@@ -22,7 +22,9 @@ class XMLTraverser: NSXMLParser{//NSObject,
         tempParent[nodeName] = tempParent[nodeName] == nil ? [Dictionary<String,Any>]() : tempParent[nodeName]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
 		tempNode = ["@":attributes]
 		tempNode["."] = [:]//this can potentially be String, but then you just set it to string in the exit method
-		tempParent[nodename].append(tempNode["."])
+        //var temp:Dictionary<String,Any>]
+        (tempParent[nodeName] as! Dictionary<String,Any>]).append(tempNode["."])
+        
 		if(hasClosed){//means the item is an sibling
 			//which means you dont add the parent to the parentList
 		}else{//means you stepped into a subnode
