@@ -17,9 +17,9 @@ class XMLTraverser: NSXMLParser{//NSObject,
      * enter node
      */
     func parser(parser: NSXMLParser, didStartElement elementName : String, namespaceURI: String?, qualifiedName qName: String?, attributes : [String : String]) {
-        let nodeName = elementName
+        let nodeName:String = elementName
         var tempParent:Dictionary<String,Any> = ArrayParser.last(openParents)
-		tempParent[nodename] = tempParent[nodename] == nil ? [] : tempParent[nodename]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
+        tempParent[nodeName] = tempParent[nodeName] == nil ? [Dictionary<String,Any>]() : tempParent[nodeName]//siblings of the same node name does not exist, create and add an array to store siblings of the same nodeName
 		tempNode = ["@":attributes]
 		tempNode["."] = [:]//this can potentially be String, but then you just set it to string in the exit method
 		tempParent[nodename].append(tempNode["."])
