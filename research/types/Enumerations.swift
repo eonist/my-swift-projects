@@ -1,3 +1,5 @@
+//advance usage of enum: http://appventure.me/2015/10/17/advanced-practical-enum-examples/
+
 class EnumTest{//enumerations:
 	//enums are simple classes that can be used like this:
 	enum CarType{
@@ -49,3 +51,50 @@ func testing(){
     let possibleNum = Numbers(rawValue: 2)!
     print(possibleNum == Numbers.Two)       // true
 }
+
+
+//nested enums:
+enum Character {
+  enum Weapon {
+    case Bow
+    case Sword
+    case Lance
+    case Dagger
+  }
+  enum Helmet {
+    case Wooden
+    case Iron
+    case Diamond
+  }
+  case Thief
+  case Warrior
+  case Knight
+}
+Now you have a hierachical system to describe the various items that your character has access to.
+
+let character = Character.Thief
+let weapon = Character.Weapon.Bow
+let helmet = Character.Helmet.Iron
+
+//enums in structs:
+Containing Enums
+In a similar vein, you can also embed enums in structs or classes. Continuing with our previous example:
+
+struct Character {
+   enum CharacterType {
+    case Thief
+    case Warrior
+    case Knight
+  }
+  enum Weapon {
+    case Bow
+    case Sword
+    case Lance
+    case Dagger
+  }
+  let type: CharacterType
+  let weapon: Weapon
+}
+
+let warrior = Character(type: .Warrior, weapon: .Sword)
+This, again, helps in keeping related information together.
