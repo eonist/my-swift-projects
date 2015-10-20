@@ -12,7 +12,7 @@ class XMLTraverser: NSXMLParser{//NSObject,
     var stringContent:String = ""
     // MARK: - delegate handlers
     override init(data: NSData) {
-        <#code#>
+        //code here
     }
     /*
      * enter node
