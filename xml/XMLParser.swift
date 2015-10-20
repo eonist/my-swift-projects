@@ -84,10 +84,10 @@ class XMLParser{
 	 * PARAM name: the name of the xml node: "item"
 	 * TODO: move to internal util class?
 	 */
-	func element(name:String,_ content:String,_ attributes:Dictionary)->String{
+	func element(name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
 		var attributeText = ""
 		for (key,value) in attributes{
-			attributeText  (key + "=" + "\"" + value + "\"")
+			var attributeText  = (key + "=" + "\"" + value + "\"")
 			if (attribute != attributes.last ){
 				attributeText += " " //append a space after each key value pair, unless its at the end
 			}
