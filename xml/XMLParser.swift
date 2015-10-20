@@ -62,7 +62,8 @@ class XMLParser{
 	class func xml(data:Dictionary<String,Any>)->String{
 		var xmlString:String = ""
         
-		for (nodeName, nodes) in {
+		for temp in data["."] as! [Dictionary<String,Any>]{
+            let nodes = temp
 			for node in nodes{
 				xmlString += element(nodeName, xml(node), node["@"])
 			}
