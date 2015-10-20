@@ -1,13 +1,18 @@
 import Foundation
 class ShellUtils{
+    enum ShellError: ErrorType {
+        case success,failure
+    }
 	/**
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
 	 * TODO: add some explination about what happens here, line for line
 	 * Example: ShellUtils.run("git log --oneline")
 	 */
-	class func run(input: String) -> String {
+	class func run(input: String) throws -> String {
         let (output, terminationStatus) = exc(input)
+        print(terminationStatus)
+        if(output == "") { throw ShellError.failure }
         return output
         //throws ->
         
