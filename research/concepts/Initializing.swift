@@ -15,3 +15,7 @@ class SomeSubclass: SomeClass {
         // subclass implementation of the required initializer goes here
     }
 }
+
+//https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html
+//convenience
+//designated
