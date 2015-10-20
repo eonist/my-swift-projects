@@ -1,14 +1,18 @@
+import Foundation
 /*
  * Traverses xml data 
  * NOTE: nsxmlparser help: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSXMLParser_Class/index.html#//apple_ref/occ/instm/NSXMLParser/initWithContentsOfURL:
  */
-class XMLTraverser: NSObject, NSXMLParser{
+class XMLTraverser: NSXMLParser{//NSObject,
 	var hasClosed = false//you step into an xml so this must be false
 	var prevEnteredNodeName:String?
 	var root:[Dictionary<String,Any>] = []
 	var openParents:Array = [root["."]]//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary//this may not be needed to be declared here, if you have the parent you can get to this aswell
     // MARK: - delegate handlers
+    init(data: NSData) {
+        <#code#>
+    }
     /*
      * enter node
      */
