@@ -6,7 +6,12 @@ class CharacterModifier {
     class func removeAt(var str:String,_ index:Int)->String{
         str.removeAtIndex(str.startIndex.advancedBy(index))
     }
-    
+    /**
+     *
+     */
+    class func removeLast(){
+        
+    }
     /**
      * Returns the @param str in reverse order
      * EXAMPLE: reverse("this string has 29 characters")//sretcarahc 92 sah gnirts siht
