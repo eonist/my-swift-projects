@@ -68,6 +68,12 @@ class ArrayParser{
         return uniqueList
     }
     /**
+     * Returns the first item in an array
+     */
+    class func first<T>(arr:[T])->T{
+        arr[0]
+    }
+    /**
      * Returns the last item in an array
      */
     class func last<T>(arr:[T])->T{
