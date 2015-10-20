@@ -189,7 +189,6 @@ func test6(){
 
 
 
-
 //Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C.” iBooks. https://itun.es/br/1u3-0.l
 
 //And the books also encourage you to use cocoa error pattern from Objective-C (NSError Object)
