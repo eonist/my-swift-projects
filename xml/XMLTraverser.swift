@@ -9,6 +9,7 @@ class XMLTraverser: NSXMLParser{//NSObject,
 	var root:[Dictionary<String,Any>] = []
 	var openParents:[Dictionary<String,Any>] = []//flat list of previous entered parents aka openParents
 	var tempNode:Dictionary<String,Any>//this may not be needed to be declared here, if you have the parent you can get to this aswell
+    var stringContent:String = ""
     // MARK: - delegate handlers
     override init(data: NSData) {
         <#code#>
@@ -42,8 +43,9 @@ class XMLTraverser: NSXMLParser{//NSObject,
 	 /*
 	  * exit node
 	  */
-    func parser(parser: NSXMLParser, didEndElement elementName nodeName: String, namespaceURI: String?, qualifiedName qName: String?) {
-	   if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
+    func parser(parser: NSXMLParser, didEndElement  elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        let nodeName = elementName
+        if(nodeName == prevEnteredNodeName && !hasClosed){//means you closed the element you just entered (no children,but has potential string content)
 			if(!stringContent.isEmpty){
 				tempNode["."] = stringContent
 			}
