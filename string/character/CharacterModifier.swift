@@ -1,23 +1,22 @@
 class CharacterModifier {
     /**
      * Removes a character at @param index
-     * NOTE: Modifies the original @param str
      * NOTE: These can be used to remove first and last: str.removeAtIndex(str.characters.indices.first!) // remove first letterstr.removeAtIndex(str.characters.indices.last!) // remove last letter
      */
-    class func removeAt(inout str:String,_ index:Int)->String{
+    class func removeAt(var str:String,_ index:Int)->String{
         str.removeAtIndex(str.startIndex.advancedBy(index))
     }
     /**
-     * NOTE: Modifies the original @param str
+     *
      */
-    class func removeFirst(inout str:String)->String{
+    class func removeFirst(var str:String)->String{
         str.removeAtIndex(str.characters.indices.first!)// remove last letter
         return str
     }
     /**
-     * NOTE: Modifies the original @param str
+     *
      */
-    class func removeLast(inout str:String)->String{
+    class func removeLast(var str:String)->String{
         str.removeAtIndex(str.characters.indices.last!)// remove last letter
         return str
     }

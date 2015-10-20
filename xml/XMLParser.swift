@@ -90,11 +90,11 @@ class XMLParser{
 			var attributeText  = (key + "=" + "\"" + value + "\"")
             attributeText += " " //append a space after each key value pair
 		}
-        CharacterModifier.removeLast(attributeText)//remove trailing space
+        attributeText = CharacterModifier.removeLast(attributeText)//remove trailing space
 		var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
-		if (content.count > 0) { //has content
+		if (content.characters.count > 0) { //has content
 			xmlText += ">" + content + "</" + name + ">" //end of xml text
-		else {//no content
+        }else {//no content
 			xmlText += "/>" //end of xml text
 		}
 		return xmlText
