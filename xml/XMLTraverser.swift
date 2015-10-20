@@ -36,7 +36,7 @@ class XMLTraverser: NSXMLParser{//NSObject,
     /*
      * found string content
      */
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(parser: NSXMLParser, foundCharacters: String) {
 		stringContent += foundCharacters
     }
 	 /*
