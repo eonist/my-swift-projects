@@ -1,3 +1,4 @@
+import Foundation
 class GitAsserter{
 	/*
 	 * Asserts if a folder has a git repository
@@ -7,7 +8,7 @@ class GitAsserter{
 	 */
 	class func isGitRepo(filePath:String)->Bool{
 		do{
-			try GitParsers.status(filePath, "")
+			try GitParser.status(filePath, "")
 			return true
 		}catch let error as NSError{
 			//print(error.type)
