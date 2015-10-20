@@ -9,11 +9,11 @@ class ShellUtils{
 	 * TODO: add some explination about what happens here, line for line
 	 * Example: ShellUtils.run("git log --oneline")
 	 */
-	class func run(input: String) throws -> String {
-        let (output, terminationStatus) = exc(input)
-        print(terminationStatus)
-        if(output == "") { throw ShellError.failure }
-        return output
+	class func run(input: String) /*throws*/ -> String {
+        //let (output, terminationStatus) = exc(input)
+        //print(terminationStatus)
+        //if(output == "") { throw ShellError.failure }
+        return exc(input).output//output
         //throws ->
         
     }

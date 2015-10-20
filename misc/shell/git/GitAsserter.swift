@@ -7,13 +7,7 @@ class GitAsserter{
 	 * Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
 	 */
 	class func isGitRepo(filePath:String)->Bool{
-		do{
-			try 
-			return true
-		}catch let error as NSError{
-			print(error.localizedDescription)
-			return false
-		}
+		return GitParser.status(filePath, "") != ""
 	}
 	/*
 	 * 
