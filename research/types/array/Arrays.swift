@@ -47,9 +47,10 @@ func testing(){
     }
     //half closed range operator
     let tempArrayA = someArray[1..<3]//2,3
+    print(tempArrayA.count)
     //
     let tempArrayB = someArray[1...2]//2,3
-    
+    print(tempArrayB.count)
     var intArray = [33,42,1,55,1,56,8,2]
     intArray.insert(4,atIndex:2)
     intArray[2] = 8//this replaces the item at index 2
