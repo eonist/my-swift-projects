@@ -21,7 +21,7 @@ class CharacterParser {
             return str.startIndex.distanceTo(strIndex)
         }
         else {
-            -1//indicates that the char doesnt exist
+            return -1//indicates that the char doesnt exist
         }
     }
     /**

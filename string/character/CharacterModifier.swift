@@ -5,6 +5,7 @@ class CharacterModifier {
      */
     class func removeAt(var str:String,_ index:Int)->String{
         str.removeAtIndex(str.startIndex.advancedBy(index))
+        return str
     }
     /**
      *

@@ -5,6 +5,15 @@ class FileParser{
      * PARAM path is the file path to the file
      * Todo: What format is the path?
 	 */
+    
+    /*
+    let path = "//Users/<path>/someFile.xml"
+    
+    var err: NSError?
+    let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
+
+
+    */
 	class func content(path:String)->String?{
         do {
             let content = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding

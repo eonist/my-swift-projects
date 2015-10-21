@@ -110,6 +110,7 @@ class StringModifier{
     class func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
         let range:Range<String.Index> = StringRangeParser.stringRange(str, start, end)
         str.replaceRange(range, with: replacement)
+        return str
     }
     /**
      * Directly replaces a with b, and b with a

@@ -34,6 +34,7 @@ class XMLUtils {
     class func xmlByFilePath(filePath:String)->NSXMLDocument?{//# must use param naming
         //implement when you need it
         let xml:String = FileParser.content(filePath)!
+        print(xml)
         return nil
     }
     /*
