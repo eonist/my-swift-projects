@@ -23,7 +23,8 @@ public class XMLParser{
     *
     */
     public class func rootChildrenByFilePath(filePath:String)->Array<NSXMLElement>{
-        let xml:String = FileParser.content(filePath)!
+        let xmlStr:String = FileParser.content(filePath)!
+        return rootChildren(xmlStr)
     }
     /**
      * Returns the value of a child
