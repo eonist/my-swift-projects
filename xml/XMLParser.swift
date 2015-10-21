@@ -1,118 +1,68 @@
 import Foundation
-class XMLParser{
-	/*
-	 * Returns a tree-structures dictionary populated with xml data from an string with xml data
-	 * PARAM: string:xml string data
-	 * Note: this method is inspired by E4X (https://en.wikipedia.org/wiki/ECMAScript_for_XML)
-	 * NOTE: here is how it works:
-	 * 1. a dictionary stores two values under the keys "content" and "attributes"
-	 * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
-	 * 3. each array contains dictonaries that has 2 key/value pairs
-	 * 4. if the content of a node is text then the content value will not be a dictonary but a string 
-	 * EXAMPLE: XMLParser.data("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
-	 * EXAMPLE XML: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
-	 * EXAMPLE XML: <categories><category>text goes here</category><!--if a sibling closes and moves to the next then did end elemnt is called--></category><category><item color:"blue" type:"car"></item><item>text goes here</item><item/><movie/><picture>img.jpg</picture><category/></categories><test></test> 
-	 * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
-	 * NOTE: root["."]["categories"][0]["."]["category"][0]["@"]["color"]//"green" that is an attribute value of color
-	 * NOTE: root["."]["categories"][0]["."]["category"][0]//{@:{color:green,name:"tinits"},.:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
-	 * NOTE: root["."]["categories"][0]["."]["category"][0]["."]["item"][0]["."]//"well designed car" //i guess optional chaining would suit the bellow line well
-	 * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
-	 * TODO: may need to use infix operator and extensions to make the xml parser work.
+
+public class XMLParser{
+    /**
+     * Returns the value of a child 
+     * NOTE: retuns "" if there is no value
+     * EXAMPLE: XMLParser.value(child)
      */
-	class func data(xml:String)->Dictionary<String,Any>{
-		var nsXmlDelegate:NSXMLParserDelegate = NSXMLParserDelegate()
-		var traverser:XMLTraverser = XMLTraverser(data: string )
-		traverser.delegate = nsXmlDelegate//:TODO: this may need to be passed in the method argument of the xml() cal
-	   if(traverser.parse()){//init the parse process,returns true if succesfull or false if ere was an error
-            return traverser.root//the root dictionary
-	   }else{
-            return nil
-	   }
-	}
-	/*
-	 * Returns a tree-structures dictionary populated with xml data from a file path (osx location for a .xml file)
-	 * filePath:"//Users/<path>/someFile.xml"
-	 * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
-	 */
-	class func dataByFilePath(filePath:String)->Dictionary<String,Any>{//# must use param naming
-		let xml:String = FileParser.content(filePath)!
-		return data(xml)
-	}
-	/*
-	 * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
-	 * PARAM URL:"http://www.google.com/feeds/news.xml"
-	 */
-	class func dataByURL(URL:String)->Dictionary<String,Any>?{//# must use param naming
-	  let result:String = NetworkParser.string(URL)
-	  if(result == "success"){
-	    return data(result)
-	  }else{
-		 //print(result.error)
-		 return nil
-	  }
-	}
-	/*
-	 * Returns a xml structured string with data from a tree-structured dictionary
-	 * NOTE: xml(data)//xml string <categories><categories/> etc
-	 * NOTE: with this method setup you can find any element or any content or any attribute etc. 
-	 * PARAM data: a Dictionary like: root["."]["categories"][0]["."]["category"][0]["attributes"]["color"]/
-	 * EXAMPLE: 
-	 */
-    
-    
-    
-    
-    //rethinnk the bellow:
-    
-    
-    
-    //move to xml utils class
-	class func xml(data:Dictionary<String,Any>)->String{
-		var xmlString:String = ""
-		for (nodeName, nodes) in data["."]{
-			for node in nodes{
-				xmlString += element(nodeName, xml(node), node["@"])
-			}
-		}
-		return xmlString
-	}
-	/*
-	 * Returns xml like: <item color="blue" age="2">some text goes here<item/>
-	 * PARAM content: text
-	 * PARAM attributes: ["color":"blue","age":"2"]
-	 * PARAM name: the name of the xml node: "item"
-	 * TODO: move to internal util class?
-	 */
-	func element(name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
-		var attributeText = ""
-		for (key,value) in attributes{
-			var attributeText  = (key + "=" + "\"" + value + "\"")
-            attributeText += " " //append a space after each key value pair
-		}
-        attributeText = CharacterModifier.removeLast(attributeText)//remove trailing space
-		var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
-		if (content.characters.count > 0) { //has content
-			xmlText += ">" + content + "</" + name + ">" //end of xml text
-        }else {//no content
-			xmlText += "/>" //end of xml text
-		}
-		return xmlText
-	}
-	/**
-	 * Returns all children from the content of an xml node
-	 */
-    
-    
-    
-    //What does this method do again?
-    
-    
-    
-	class func children(dictionary:Dictionary)->Array{
-		var theChildren:Array = []
-		for value in dictionary.values{
-			theChildren += value
-		}
-		return theChildren
-	}
+    public class func value(child:NSXMLElement)->String{
+        return child.stringValue!
+    }
+    /**
+     * Returns all attributes in @param child
+     * EXAMPLE: attributes.count// num of attributes
+     * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
+     */
+    public class func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
+        var attributes:[Dictionary<String,String>] = []
+        if(child.attributes?.count > 0){
+            for node:NSXMLNode in child.attributes!{
+                var attribute:Dictionary<String,String> = [:]
+                let name:String = node.name!
+                let value:String = node.stringValue!
+                //print("name: " + name + " " + "value:"+value)
+                attribute["name"] = name
+                attribute["value"] = value
+                attributes.append(attribute)
+            }
+        }
+        return attributes
+    }
+    /**
+     * Returns child from @param children at @param index
+     * EXAMPLE: XMLParser.childAt(children, 0)
+     */
+    public class func childAt(children:NSArray, _ index:Int)->NSXMLElement?{
+        return children[index] as? NSXMLElement
+    }
+    /**
+     * Returns the attribute value of @param child by key @param name
+     * @pram name: name of the attribute
+     * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
+     * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
+     * NOTE: returns nil if there is no attr by that name
+     */
+    public class func attribute(child:NSXMLElement,_ name:String)->String?{
+        return child.attributeForName(name)?.stringValue
+    }
+    /**
+     * Returns the name of the @param child
+     */
+    public class func name(child:NSXMLElement)->String{
+        return child.name!//child.localName also works
+    }
+    /**
+     * Returns the first attribute that contains the attribute by the @param name and with the @param value
+     */
+    public class func childByAttribute(child:NSXMLElement,_ attributeName:String,_ attributeValue:String){
+        //not implimented yet
+    }
+    /**
+     * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ] 
+     * You can use the returned nodes as the new context node for evaluating further XPath expressions.
+     */
+    class func xPath(){
+        
+    }
 }
