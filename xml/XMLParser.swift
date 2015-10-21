@@ -20,6 +20,12 @@ public class XMLParser{
         return theChildren
     }
     /**
+    *
+    */
+    public class func rootChildrenByFilePath(filePath:String)->Array<NSXMLElement>{
+        let xml:String = FileParser.content(filePath)!
+    }
+    /**
      * Returns the value of a child
      * NOTE: retuns "" if there is no value
      * EXAMPLE: XMLParser.value(child)
