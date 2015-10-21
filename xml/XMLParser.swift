@@ -3,6 +3,7 @@ import Foundation
 public class XMLParser{
     /**
      * Returns the root of an xml
+     https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
     public class func root(xmlStr:String)->NSXMLElement?{
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
