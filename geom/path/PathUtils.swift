@@ -1,3 +1,4 @@
+/*
 extension UIBezierPath {
     /*
      * TODO: explain what this does
@@ -12,3 +13,4 @@ extension UIBezierPath {
         closePath()
     }
 }
+*/

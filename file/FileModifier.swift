@@ -25,8 +25,10 @@ class FileModifier{
         let filename = theURL.URLByAppendingPathComponent("output.txt")
         do {
             try content.writeToFile(String(filename), atomically: true, encoding: NSUTF8StringEncoding)
+            return true
         } catch {
             // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
         }
+        return false
     }
 }

@@ -4,7 +4,7 @@
 //The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
 //A way to refer to ranges within a series, perhaps encapsulating a start property and a length property, both of type Int.
 //A point in a 3D coordinate system, perhaps encapsulating x, y and z properties, each of type Double.
-
+/*
 struct Point {
     var x = 0.0, y = 0.0
 }
@@ -30,10 +30,14 @@ var square = Rect(origin: Point(x: 0.0, y: 0.0),size: Size(width: 10.0, height: 
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+*/
 // prints "square.origin is now at (10.0, 10.0)"
 
 //Shorthand Setter Declaration
 //If a computed property’s setter does not define a name for the new value to be set, a default name of newValue is used. Here’s an alternative version of the Rect structure, which takes advantage of this shorthand notation:
+
+/*
+
 struct AlternativeRect {
     var origin = Point()
     var size = Size()
@@ -93,3 +97,7 @@ let size = CGSize(width: 20, height: 40)
 let rect = CGRect(x: 50, y: 50, width: 100, height: 100)
 let width = rect.width    // equivalent of CGRectGetWidth(rect)
 let maxX = rect.maxY      // equivalent of CGRectGetMaxY(rect)
+
+
+
+*/

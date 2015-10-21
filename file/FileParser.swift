@@ -27,9 +27,10 @@ class FileParser{
      */
     class func resourceContent(fileName:String, _ fileExtension:String)->String?{
         if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
-            content(filepath)
+            return content(filepath)
         } else {
             // example.txt not found!
+            return ""
         }
     }
 }

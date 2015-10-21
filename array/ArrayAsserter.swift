@@ -18,5 +18,6 @@ class ArrayAsserter {
         }
 
         */
+        return false
     }
 }

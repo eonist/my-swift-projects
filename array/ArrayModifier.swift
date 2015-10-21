@@ -73,6 +73,7 @@ class ArrayModifier{
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
             swap(&array[i], &array[j])//the & sign indicates that you confirm that the values will be changed
         }
+        return array as! T//<--does this work//this is a convenince return
     }
 }
 //combine

@@ -13,11 +13,13 @@ class NetworkParser{
 	 	let result = NSURLConnection.sendAsynchronousRequest(<#T##request: NSURLRequest##NSURLRequest#>, queue: <#T##NSOperationQueue#>, completionHandler: <#T##(NSURLResponse?, NSData?, NSError?) -> Void#>)
 		return result
         */
+        return ""
 	}
     /**
      * @param url: "https://www.google.com"
      */
     class func stringContent(url:String)->String{
+        //needs research
         if let urlObj = NSURL(string: url) {
             do {
                 let contents = try NSString(contentsOfURL: urlObj, usedEncoding: nil)
@@ -28,5 +30,6 @@ class NetworkParser{
         } else {
             // the URL was bad!
         }
+        return ""
     }
 }
