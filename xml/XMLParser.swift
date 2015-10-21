@@ -66,7 +66,7 @@ class XMLParser{
     
     
     
-    
+    //move to xml utils class
 	class func xml(data:Dictionary<String,Any>)->String{
 		var xmlString:String = ""
 		for (nodeName, nodes) in data["."]{
