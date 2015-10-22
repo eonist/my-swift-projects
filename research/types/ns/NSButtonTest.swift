@@ -1,4 +1,14 @@
 //https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html#//apple_ref/doc/uid/10000019i
+https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html
+
+/**
+
+you set pos:
+(buttons[0] as NSButton).setFrameOrigin(newPos)
+
+you set size: 
+(buttons[0] as NSButton).setFrameSize(newSize)
+*/
 import Cocoa
 
 class NSButtonTest {
