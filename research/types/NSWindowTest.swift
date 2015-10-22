@@ -19,6 +19,11 @@
 //http://practicalswift.com/2014/06/27/a-minimal-webkit-browser-in-30-lines-of-swift/
 
  //really good: http://objc.toodarkpark.net/AppKit/Classes/NSWindow.html
+ 
+ /*
+ Not all windows are suitable for acting as the key or main window. 
+ For example, a window that merely displays information, and contains no objects that need to respond to events or action messages, can completely forgo ever becoming the key window. Similarly, a window that acts as a floating palette of items that are only dragged out by mouse actions never needs to be the key window. Such a window can be defined as a subclass of NSWindow that overrides the methods canBecomeKeyWindow and canBecomeMainWindow to return NO instead of the default of YES. Defining a window in this way prevents it from ever becoming the key or main window. Though NSWindow defines these methods, typically only subclasses of NSPanel refuse to accept key or main window status.
+ */
 
 import Cocoa
 
