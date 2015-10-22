@@ -18,7 +18,8 @@
 
 //http://practicalswift.com/2014/06/27/a-minimal-webkit-browser-in-30-lines-of-swift/
 
-  
+ //really good: http://objc.toodarkpark.net/AppKit/Classes/NSWindow.html
+
 import Cocoa
 
 func test(){
