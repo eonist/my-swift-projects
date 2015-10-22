@@ -1,5 +1,5 @@
 //https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html#//apple_ref/doc/uid/10000019i
-https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html
+//https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Button/Button.html
 //changing the osx close minimize and max buttons: http://fredandrandall.com/blog/2011/09/22/how-to-make-your-app-window-look-like-the-mac-app-store-twitter-and-chrome/
 /**
 
