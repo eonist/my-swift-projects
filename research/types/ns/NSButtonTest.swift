@@ -18,6 +18,11 @@ to get button size:
 //Swift.print("button.frame.width: " + "\(button.frame.width)")
         //Swift.print("button.frame.height: " + "\(button.frame.height)")
 */
+
+
+//Add button to titlebar: http://fredandrandall.com/blog/2011/09/14/adding-a-button-or-view-to-the-nswindow-title-bar/
+
+
 import Cocoa
 
 class NSButtonTest {
