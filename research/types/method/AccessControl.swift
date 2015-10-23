@@ -26,3 +26,20 @@ private func somePrivateFunction() {}
 //a public getter and private settet:
 public private(set) var numberOfEdits = 0
 
+/*
+“Access Control
+Swift defines three levels of access control, which determines what information is accessible to which parts of the application:
+Public
+Public classes, methods, and properties are accessible by any part of the app. For example, all of the classes in UIKit that you use to build iOS apps are public.
+Internal
+Internal data is only accessible to the module in which they’re defined. A module is an application, library, or framework. This is ”
+
+
+
+“why you can’t access the inner workings of UIKit—it’s defined as internal to the UIKit framework. Internal is the default level of access control: if you don’t specify the access control level, it’s assumed to be internal.
+Private
+Private data is only accessible to the file in which it’s declared. This means that you can create classes that hide their inner workings from other classes in the same module, which helps to keep the amount of surface area that those classes expose to each other to a minimum.
+The kind of access control that a method or property can have depends on the access level of the class that it’s contained in. You can’t make a method more accessible than the class in which it’s contained. For example, you can’t define a private class that has a public method:”
+
+
+*/
