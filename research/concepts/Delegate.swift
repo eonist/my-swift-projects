@@ -1,6 +1,6 @@
 //https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267
-.
-Basically delegate is just an "interface in other languages" and passing a reference to the method in another class that you want to call. Simple concept
+
+//Basically delegate is just an "interface in other languages" and passing a reference to the method in another class that you want to call. Simple concept
 
 // Define a protocol that has a function called handleIntruder
 protocol HouseSecurityDelegate {
