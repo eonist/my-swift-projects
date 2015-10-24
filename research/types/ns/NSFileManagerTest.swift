@@ -74,6 +74,57 @@ func testing() {
    fileManager.contentsOfDirectoryAtURL(folderURL,includingPropertiesForKeys: attributes,options: NSDirectoryEnumerationOptions(), error: nil)
    
    //“To get the location of a temporary directory that your application can use, you use the”
-   NSTemporaryDirectory function:
+   //NSTemporaryDirectory function:
    let temporaryDirectoryPath = NSTemporaryDirectory()
+   //“This function returns a string, which contains the path of a directory you can store files in. If you want to use it as an NSURL, you’ll need to use the fileURLWithPath method to convert it.”
+
+
+   //“Creating directories
+
+   //Using NSFileManager, you can create and remove items on the filesystem. To create a new directory, for example, use:
+   let newDirectoryURL  = NSURL.fileURLWithPath(temporaryDirectoryPath +
+       "/MyNewDirectory")
+
+   var error : NSError? = nil
+   var didCreate = fileManager.createDirectoryAtURL(newDirectoryURL!,
+       withIntermediateDirectories: false, attributes: nil, error: &error)
+   if (didCreate) {
+       // The directory was successfully created
+   } else {
+       // The directory wasn't created (maybe one already exists at the path?)
+       // More information is stored in the 'error' variable
+   }
+   // note If you set a YES value for the withIntermediateDirectories parameter, the system will create any additional folders that are necessary to create the folder. For example, if you have a folder named Foo, and want to have a folder named Foo/Bar/Bas, you would create an NSURL that points to the second folder and ask the NSFileManager to create it. The system would create the Bar folder, and then create the Bas folder inside that.”
+
+   //“Creating files
+   //Creating files works the same way. You provide a path in an NSString, the NSData that the file should contain, and an optional dictionary of attributes that the file should have:
+   // Note that the first parameter is the path (as a string), NOT an NSURL!
+   fileManager.createFileAtPath(newFilePath!,contents: newFileData,attributes: nil)”
+   
+   //“Removing files
+
+   //Given a URL, NSFileManager is also able to delete files and directories. You can only delete items that your app has permission to delete, which limits your ability to write a program that accidentally erases the entire system.
+   //To remove an item, you do this:
+   fileManager.removeItemAtURL(newFileURL!, error: nil)”
+   //“WARNING There’s no undo for removing files or folders using NSFileManager. Items aren’t moved to the Trash—they’re immediately deleted.”
+
+
+   //“Moving and copying files
+
+   //To move a file, you need to provide both an original URL and a destination URL. You can also copy a file, which duplicates it and places the duplicate at the destination URL.
+   //To move an item, you do this:
+   fileManager.moveItemAtURL(sourceURL!, toURL: destinationURL, error: nil)
+   //To copy an item, you do this:
+   fileManager.copyItemAtURL(sourceURL!, toURL: destinationURL, error: nil)
+   //Just like all the other file manipulation methods, these methods return true on success, and false if there was a problem.”
+   
+   //“user’s Documents directory, you do this:
+   let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) as [NSURL]
+
+   let documentURL = URLs[0]
+   
+   //“You can then use this URL to create additional URLs. For example, to generate a URL that points to a file called Example.txt in your Documents directory, you can use URLByAppendingPathComponent:
+   let fileURL = documentURL.URLByAppendingPathComponent("Example.txt")”
+ 
+
 }
