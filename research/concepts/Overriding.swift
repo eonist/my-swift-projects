@@ -133,5 +133,32 @@ printin("your value: \(newPerson.desc())")
 
 //You can mark an entire class as final by writing the final modifier before the class keyword in its class definition (final class). Any attempt to subclass a final class is reported as a compile-time error.
 
+/*
 
+public class MyBaseClass {
+        private var _name: String = "Hi"
+        public internal(set) var name: String {
+            get {
+                return self._name
+            }
+            set {
+                self._name = newValue
+            }
+        }
+    }
 
+    public class MyDerivedClass:MyBaseClass {
+        override public var name: String {
+            get {
+                return "Derived - \(super.name)"
+            }
+            set {
+                super._name = newValue
+            }
+        }
+    }
+
+    MyDerivedClass().name
+	 
+	 
+	 */
