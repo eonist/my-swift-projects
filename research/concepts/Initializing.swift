@@ -17,5 +17,5 @@ class SomeSubclass: SomeClass {
 }
 
 //https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html
-//convenience
-//designated
+//convenience (can only refere to init methods within its own class)
+//designated 
