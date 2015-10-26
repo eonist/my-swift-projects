@@ -11,6 +11,12 @@ public class GraphicStyle {
 public class IGraphicsFill {
     
 }
+
 public class IGraphicsStroke {
     
+}
+
+protocol IGraphicsStyle {
+    var fill: String { get set }
+    var stroke: String { get set }
 }
