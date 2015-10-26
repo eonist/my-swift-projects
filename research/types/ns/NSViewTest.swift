@@ -15,3 +15,6 @@ Sizes:
 */
 
 //Setting a bg color of an NSView can be done via drityrect and layers
+
+
+//good about MOuseEvents in NSView: http://stackoverflow.com/questions/7504917/getting-mouse-down-event-on-superview?rq=1
