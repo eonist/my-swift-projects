@@ -18,3 +18,12 @@ Sizes:
 
 
 //good about MOuseEvents in NSView: http://stackoverflow.com/questions/7504917/getting-mouse-down-event-on-superview?rq=1
+
+/*
+//this will fill a view with color but stroke needs more research
+override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        fillColor.setFill()
+         NSRectFill(dirtyRect)
+}
+*/
