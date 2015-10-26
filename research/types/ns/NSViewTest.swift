@@ -13,3 +13,5 @@ Sizes:
         Swift.print("view.frame.size.height: " + "\(view.frame.size.height)")
 
 */
+
+//Setting a bg color of an NSView can be done via drityrect and layers
