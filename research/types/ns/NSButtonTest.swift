@@ -43,3 +43,13 @@ class NSButtonTest {
         
     }
 }
+
+
+/*
+
+Supports fill not stroke
+(button.cell as! NSButtonCell).bordered = false//The background color is used only when drawing borderless buttons.
+(button.cell as! NSButtonCell).backgroundColor = NSColor.redColor()
+
+
+*/
