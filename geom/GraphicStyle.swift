@@ -1,8 +1,8 @@
 import Foundation
 
 public class GraphicStyle {
-    //var fill:IGraphicsFill;
-    //var stroke:IGraphicsStroke;
+    private var fill:IGraphicsFill;
+    private var stroke:IGraphicsStroke;
     init(_ fill:IGraphicsFill,_ stroke:IGraphicsStroke) {
         self.fill = fill;
         self.stroke = stroke;
@@ -12,7 +12,7 @@ public class GraphicStyle {
             return self.fill
         }
         set {
-            
+            self.fill = newValue
         }
     }
     public var stroke: IGraphicsStroke {
