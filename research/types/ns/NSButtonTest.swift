@@ -53,3 +53,17 @@ Supports fill not stroke
 
 
 */
+
+
+/*
+setting button style:
+let button = NSButton(frame: NSRect(x: 0, y: 0, width: width, height: height))
+        
+        //button.highlight(true)
+        let buttonCell:NSButtonCell = button.cell! as! NSButtonCell
+        buttonCell.bezelStyle = bezelStyle//NSBezelStyle.SmallSquareBezelStyle//NSBezelStyle.RoundedBezelStyle
+        
+
+
+
+*/
