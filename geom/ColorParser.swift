@@ -1,5 +1,13 @@
 import Cocoa
 class ColorParser {
+    /*
+    * Returns NSColor for hex int
+    * TODO: use UINT?
+    */
+    class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor?{
+        let hexString = NSString(format: "%2X", hex)
+        return ColorParser.nsColor(hexString as String , alpha)
+    }
     /**
     * NOTE: works for now
     * TODO: Improve this, check your libs
@@ -34,4 +42,5 @@ class ColorParser {
             return NSColor()
         }
     }
+
 }
