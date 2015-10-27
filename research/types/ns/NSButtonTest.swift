@@ -81,3 +81,11 @@ Add cursor to buttons:
 }
 
 */
+
+
+/*
+chaining text color of NSButton
+https://www.youtube.com/watch?v=zgBG6IemE8M
+
+
+*/
