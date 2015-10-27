@@ -1,11 +1,18 @@
 import Cocoa
 
-public class FillStyle {
-    public var color:NSColor
+class FillStyle {
+    var color:NSColor
     /**
     *
     */
     init(color:NSColor){
         self.color = color
     }
+}
+protocol IGraphicsFill {
+    var color: NSColor { get set }
+}
+
+protocol IGraphicsStroke {
+    
 }

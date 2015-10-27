@@ -8,13 +8,7 @@ public class GraphicStyle {
         self.stroke = stroke;
     }
 }
-public class IGraphicsFill {
-    
-}
 
-public class IGraphicsStroke {
-    
-}
 
 protocol IGraphicsStyle {
     var fill: String { get set }
