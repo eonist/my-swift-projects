@@ -1,5 +1,14 @@
 //more on protocol conformance: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID283
+/**
+Checking for Protocol Conformance
 
+You can use the is and as operators described in Type Casting to check for protocol conformance, and to cast to a specific protocol. Checking for and casting to a protocol follows exactly the same syntax as checking for and casting to a type:
+
+The is operator returns true if an instance conforms to a protocol and returns false if it does not.
+The as? version of the downcast operator returns an optional value of the protocol’s type, and this value is nil if the instance does not conform to that protocol.
+The as! version of the downcast operator forces the downcast to the protocol type and triggers a runtime error if the downcast does not succeed.
+
+*/
 //interfaces in swift are called protocols
 //NOTE: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267
 protocol Cleaner {
