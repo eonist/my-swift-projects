@@ -1,16 +1,16 @@
 import Cocoa
 protocol IStroke {
     var color: NSColor { get set }
-    var width: NSColor { get set }
+    var width: CGFloat { get set }
 }
 class Stroke :IStroke{
     static var clear:IStroke = Stroke(0,NSColor.clearColor())
     var color:NSColor
-    var width:Int
+    var width:CGFloat
     /**
     *
     */
-    init(_ width:Int = 0,_ color:NSColor = NSColor.clearColor()){
+    init(_ width:CGFloat = 0,_ color:NSColor = NSColor.clearColor()){
         self.width = width
         self.color = color
     }
