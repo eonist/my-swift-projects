@@ -14,9 +14,11 @@ class LineStyle :ILineStyle{
     }
 }
 extension LineStyle {
-    var color: Int {
-        get {
-            return 0
-        }
+    /**
+    *
+    */
+    func color()->NSColor{
+        return NSColor.clearColor()
     }
+    
 }
