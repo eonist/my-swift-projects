@@ -4,7 +4,7 @@ protocol IStroke {
     var width: CGFloat { get set }
     func testing()
 }
-class Stroke :IStroke{
+public class Stroke :IStroke{
     static var clear:IStroke = Stroke(0,NSColor.clearColor())
     var color:NSColor
     var width:CGFloat
@@ -18,16 +18,17 @@ class Stroke :IStroke{
     /**
     *
     */
-    func testing(){
+    public func testing(){
         print("from class")
     }
 }
-extension IStroke {
+extension Stroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
     /**
     *
     */
-    override func testing(){
+    override public func testing(){
+        
         print("from extension")
     }
     
