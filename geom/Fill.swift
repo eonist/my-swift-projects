@@ -8,7 +8,7 @@ class Fill :IFill{
     /**
     *
     */
-    init(_ color:NSColor){
+    init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
     }
 }
