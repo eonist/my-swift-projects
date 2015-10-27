@@ -11,3 +11,9 @@ class ClassParser {
         //return typeOf(instance)
     }
 }
+/*
+print("press")
+print(String(obj))
+print(classNameAsString(obj))
+print("My class is \((obj as! NSObject).className)")
+*/
