@@ -7,6 +7,7 @@
 */
 
 //NOTE: Extensions can add new functionality to a type, but they cannot override existing functionality.
+//NOTE: Extensions can overide functionality of another extensions
 
 //NOTE: extensions are almost like prototypes in other languages
 //example of an extension:
