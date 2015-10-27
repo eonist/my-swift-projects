@@ -22,13 +22,12 @@ class Stroke :IStroke{
         print("from class")
     }
 }
-extension Stroke {
+extension IStroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
     /**
     *
     */
     override func testing(){
-        
         print("from extension")
     }
     
