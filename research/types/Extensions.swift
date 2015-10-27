@@ -6,6 +6,8 @@
  IMPORTANT: Extensions are global. Define them anywhere in the source code and they will adher to the type it extends
 */
 
+//NOTE: Extensions can add new functionality to a type, but they cannot override existing functionality.
+
 //NOTE: extensions are almost like prototypes in other languages
 //example of an extension:
 //import UIKit
