@@ -13,6 +13,6 @@ class Fill :IFill{
     }
 }
 
-extension Fill {
+extension IFill {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
 }

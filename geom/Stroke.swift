@@ -14,6 +14,6 @@ class Stroke :IStroke{
         self.color = color
     }
 }
-extension Stroke {
+extension IStroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
 }
