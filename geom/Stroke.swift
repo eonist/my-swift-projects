@@ -1,8 +1,8 @@
 import Cocoa
-protocol ILineStyle {
+protocol IStroke {
     var color: NSColor { get set }
 }
-class LineStyle :ILineStyle{
+class Stroke :IStroke{
     var color:NSColor
     var borderWidth:Int
     /**
@@ -13,6 +13,6 @@ class LineStyle :ILineStyle{
         self.color = color
     }
 }
-extension LineStyle {
+extension Stroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
 }
