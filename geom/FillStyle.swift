@@ -12,3 +12,6 @@ class FillStyle :IFillStyle{
     }
 }
 
+extension FillStyle {
+    var cgColor: CGColor {return NSColorParser.cgColor(color)}
+}
