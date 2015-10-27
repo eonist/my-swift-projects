@@ -2,7 +2,7 @@ import Cocoa
 protocol IFillStyle {
     var color: NSColor { get set }
 }
-class FillStyle {
+class FillStyle :IFillStyle{
     var color:NSColor
     /**
     *

@@ -2,7 +2,7 @@ import Cocoa
 protocol ILineStyle {
     var color: NSColor { get set }
 }
-class LineStyle {
+class LineStyle :ILineStyle{
     var color:NSColor
     var borderWidth:Int
     /**
