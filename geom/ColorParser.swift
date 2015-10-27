@@ -6,6 +6,7 @@ class ColorParser {
     */
     class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor{
         let hexString = NSString(format: "%2X", hex)
+        print("hexString:" + "\(hexString)")
         return ColorParser.nsColor(hexString as String , alpha)
     }
     /**
