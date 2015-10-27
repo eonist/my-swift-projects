@@ -1,6 +1,14 @@
-import Foundation
+import Cocoa
 
-
+class FillStyle {
+    public var color:NsColor
+    /**
+    *
+    */
+    init(color:NsColor){
+        
+    }
+}
 
 /*
 
