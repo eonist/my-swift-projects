@@ -3,6 +3,7 @@ class ColorParser {
     /*
     * Returns NSColor for hex int
     * TODO: use UINT?
+    * TODO: this does not work!!! more research needed, works on some hex ints but not all
     */
     class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor{
         let hexString = NSString(format: "%2X", hex)
