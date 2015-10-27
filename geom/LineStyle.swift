@@ -1,11 +1,13 @@
 import Cocoa
 
-public class LineStyle {
-    public var color:NSColor
+class LineStyle {
+    var color:NSColor
+    var borderWidth:Int
     /**
     *
     */
-    init(color:NSColor){
+    init(borderWidth:Int = 0,color:NSColor = NSColor.clearColor()){
+        self.borderWidth = borderWidth
         self.color = color
     }
 }
