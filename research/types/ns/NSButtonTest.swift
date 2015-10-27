@@ -67,3 +67,17 @@ let button = NSButton(frame: NSRect(x: 0, y: 0, width: width, height: height))
 
 
 */
+¨
+/*
+Add cursor to buttons:
+
+- (void)resetCursorRects
+{
+    if (self.cursor) {
+        [self addCursorRect:[self bounds] cursor: self.cursor];
+    } else {
+        [super resetCursorRects];
+    }
+}
+
+*/

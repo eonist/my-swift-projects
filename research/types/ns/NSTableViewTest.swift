@@ -15,7 +15,13 @@
 /**
 Drag and droping in NSViewTable: (Awesome)
 https://www.youtube.com/watch?v=V0yLZnVFJjw
+
+Row Groups:
+Cocoa Programming L53 - Groups in NSTableView
 */
+
+
+
 
 //Add the tableView(viewForTableColumn:row:) method to AppDelegate. This method returns an NSView that will appear in the table view cell, based on the row number and column used:
 func test(){
