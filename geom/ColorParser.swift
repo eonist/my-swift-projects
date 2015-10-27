@@ -4,7 +4,7 @@ class ColorParser {
     * Returns NSColor for hex int
     * TODO: use UINT?
     */
-    class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor?{
+    class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor{
         let hexString = NSString(format: "%2X", hex)
         return ColorParser.nsColor(hexString as String , alpha)
     }
@@ -14,7 +14,7 @@ class ColorParser {
     * NOTE: the alpha support is nice
     * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
     */
-    class func nsColor(hexStr:String, _ alpha: Float = 1.0)->NSColor?{
+    class func nsColor(hexStr:String, _ alpha: Float = 1.0)->NSColor{
         var hex = hexStr
         // Check for hash and remove the hash
         if hex.hasPrefix("#") {
