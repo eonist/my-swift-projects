@@ -1,6 +1,14 @@
-import Foundation
+import Cocoa
 
-
+public class LineStyle {
+    public var color:NSColor
+    /**
+    *
+    */
+    init(color:NSColor){
+        self.color = color
+    }
+}
 
 //add borderWidth
 
