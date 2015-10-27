@@ -8,17 +8,11 @@ class LineStyle :ILineStyle{
     /**
     *
     */
-    init(borderWidth:Int = 0,color:NSColor = NSColor.clearColor()){
+    init(_ borderWidth:Int = 0,_ color:NSColor = NSColor.clearColor()){
         self.borderWidth = borderWidth
         self.color = color
     }
 }
 extension LineStyle {
-    /**
-    *
-    */
-    func color()->NSColor{
-        return NSColor.clearColor()
-    }
-    
+    var cgColor: CGColor {return NSColorParser.cgColor(color)}
 }

@@ -7,7 +7,7 @@ class FillStyle :IFillStyle{
     /**
     *
     */
-    init(color:NSColor){
+    init(_ color:NSColor){
         self.color = color
     }
 }
