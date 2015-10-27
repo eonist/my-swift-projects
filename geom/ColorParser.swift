@@ -39,6 +39,7 @@ class ColorParser {
             NSScanner(string: blueHex).scanHexInt(&blueInt)
             return NSColor(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
         }else {
+            print("clear color")
             return NSColor()
         }
     }
