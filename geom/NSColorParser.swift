@@ -10,5 +10,6 @@ class NSColorParser {
         let cgColor = CIColorParser.cgColor(ciColor)
         return cgColor
     }
+    
 }
 
