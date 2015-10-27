@@ -3,7 +3,7 @@ protocol IFill {
     var color: NSColor { get set }
 }
 class Fill :IFill{
-    static var clearFill:IFill = Fill(NSColor.clearColor())
+    static var clear:IFill = Fill(NSColor.clearColor())
     var color:NSColor
     /**
     *

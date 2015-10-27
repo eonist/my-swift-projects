@@ -3,7 +3,9 @@ protocol IGraphicsStyle {
     var fill: String { get set }
     var stroke: String { get set }
 }
-class GraphicStyle {
+class GraphicStyle:IGraphicsStyle {
+    static var clear:IGraphicStyle = GraphicStyle(Fill.clear,Stroke.clear)
+    
     var fill: IFill //{ get {return self.fill} set {self.fill = newValue} }
     var stroke: IStroke //{ get {return self.stroke } set {self.stroke = newValue}}
     init(_ fill:IFill,_ stroke:IStroke) {

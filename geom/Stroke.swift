@@ -3,6 +3,7 @@ protocol IStroke {
     var color: NSColor { get set }
 }
 class Stroke :IStroke{
+    static var clear:IStroke = Stroke(0,NSColor.clearColor())
     var color:NSColor
     var borderWidth:Int
     /**
