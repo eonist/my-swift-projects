@@ -1,5 +1,7 @@
 import Cocoa
-
+protocol IFillStyle {
+    var color: NSColor { get set }
+}
 class FillStyle {
     var color:NSColor
     /**
@@ -9,10 +11,4 @@ class FillStyle {
         self.color = color
     }
 }
-protocol IGraphicsFill {
-    var color: NSColor { get set }
-}
 
-protocol IGraphicsStroke {
-    
-}

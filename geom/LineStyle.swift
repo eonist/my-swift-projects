@@ -1,5 +1,7 @@
 import Cocoa
-
+protocol ILineStyle {
+    var color: NSColor { get set }
+}
 class LineStyle {
     var color:NSColor
     var borderWidth:Int
