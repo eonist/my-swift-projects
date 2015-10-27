@@ -14,7 +14,20 @@ class Stroke :IStroke{
         self.width = width
         self.color = color
     }
+    /**
+    *
+    */
+    func testing(){
+        
+    }
 }
 extension IStroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
+    /**
+    *
+    */
+    func testing(){
+        
+    }
+    
 }
