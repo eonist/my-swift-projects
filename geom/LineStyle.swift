@@ -13,3 +13,10 @@ class LineStyle :ILineStyle{
         self.color = color
     }
 }
+extension LineStyle {
+    var color: Int {
+        get {
+            return 0
+        }
+    }
+}
