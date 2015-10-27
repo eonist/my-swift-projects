@@ -4,10 +4,10 @@ protocol IGraphicsStyle {
     var stroke: String { get set }
 }
 class GraphicStyle {
-    var fill: IFillStyle //{ get {return self.fill} set {self.fill = newValue} }
-    var line: ILineStyle //{ get {return self.stroke } set {self.stroke = newValue}}
-    init(_ fill:IFillStyle,_ line:ILineStyle) {
+    var fill: IFill //{ get {return self.fill} set {self.fill = newValue} }
+    var stroke: IStroke //{ get {return self.stroke } set {self.stroke = newValue}}
+    init(_ fill:IFill,_ stroke:IStroke) {
         self.fill = fill;
-        self.line = line;
+        self.stroke = stroke;
     }
 }
