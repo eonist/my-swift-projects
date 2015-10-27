@@ -1,8 +1,8 @@
 import Cocoa
-protocol IFillStyle {
+protocol IFill {
     var color: NSColor { get set }
 }
-class FillStyle :IFillStyle{
+class Fill :IFill{
     var color:NSColor
     /**
     *
@@ -12,6 +12,6 @@ class FillStyle :IFillStyle{
     }
 }
 
-extension FillStyle {
+extension Fill {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
 }
