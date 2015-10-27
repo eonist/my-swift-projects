@@ -12,6 +12,10 @@
 
 //https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/TableView/Introduction/Introduction.html#//apple_ref/doc/uid/10000026i
 
+/**
+Drag and droping in NSViewTable: (Awesome)
+https://www.youtube.com/watch?v=V0yLZnVFJjw
+*/
 
 //Add the tableView(viewForTableColumn:row:) method to AppDelegate. This method returns an NSView that will appear in the table view cell, based on the row number and column used:
 func test(){
