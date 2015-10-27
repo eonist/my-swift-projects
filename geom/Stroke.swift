@@ -24,12 +24,4 @@ public class Stroke :IStroke{
 }
 extension Stroke {
     var cgColor: CGColor {return NSColorParser.cgColor(color)}
-    /**
-    *
-    */
-    override public func testing(){
-        
-        print("from extension")
-    }
-    
 }
