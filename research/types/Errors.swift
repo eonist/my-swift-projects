@@ -8,6 +8,11 @@
 //this line should normally be present do-catch block like this
 //IMPORTANT: there are two ways of doing error handeling. 1. you wrap an error function in a do catch block and 2. you use a variable for the result with the try? . see apple link above for both, they are also here
 /*
+
+
+//Use fatalError("message here") for debugging
+
+
 do {
     try expression
     statements
