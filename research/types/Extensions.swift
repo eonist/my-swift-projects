@@ -60,3 +60,6 @@ func testing3(){
     // Goodbye!
     // Goodbye!
 }
+
+
+//if you want to extend a protocol and then use self in the extension then set the protocol to: IColor:class (this only works for classes, structures, use mutating infront of the method etc ee apple docs for this)
