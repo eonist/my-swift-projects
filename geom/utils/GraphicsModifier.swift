@@ -1,20 +1,20 @@
-import Foundation
+import Cocoa
 
 class GraphicsModifier{
     /**
     *
     */
-    /*
-    class func drawRect(graphics:NSView,rectangle:Rectangle) {
-        graphics.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+ 
+    class func drawRect(rect:NSRect)  -> NSBezierPath{
+        let path = NSBezierPath(rect: rect)
+        return path
     }
-*/
+
     /**
     *
     */
-    /*
-    class func drawRoundRect(graphics:Graphics,rectangle:Rectangle,ellipseWidth:Number,ellipseHeight:Number) {
-        graphics.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, ellipseWidth, ellipseHeight);
+    class func drawRoundRect(rect:NSRect,_ ellipseWidth:CGFloat,_ ellipseHeight:CGFloat) -> NSBezierPath{
+        let path = NSBezierPath(roundedRect:rect, xRadius:ellipseWidth, yRadius:ellipseHeight);
+        return path
     }
-*/
 }
