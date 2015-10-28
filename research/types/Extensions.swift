@@ -63,3 +63,21 @@ func testing3(){
 
 
 //if you want to extend a protocol and then use self in the extension then set the protocol to: IColor:class (this only works for classes, structures, use mutating infront of the method etc ee apple docs for this)
+
+
+protocol Vehicle
+{
+    var numberOfWheels: Int {get}
+    var color: UIColor {get set}
+
+    mutating func changeColor()
+}
+
+struct MyCar: Vehicle {
+    let numberOfWheels = 4
+    var color = UIColor.blueColor()
+
+    mutating func changeColor() {
+        color = UIColor.redColor()
+    }
+}
