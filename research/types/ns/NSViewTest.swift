@@ -58,3 +58,12 @@ override func drawRect(dirtyRect: NSRect) {
  @available(OSX 10.10, *)
     public var allowsVibrancy: Bool { get }
 */
+
+
+
+//this is interesting:
+
+/*
+public var focusRingType: NSFocusRingType
+    public class func defaultFocusRingType() -> NSFocusRingType
+*/
