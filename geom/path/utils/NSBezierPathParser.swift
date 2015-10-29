@@ -2,13 +2,13 @@ import Cocoa
 
 class NSBezierPathParser {
     /**
-    *
+    * untest
     */
     class func cgPath(nsBezierPath:NSBezierPath)->CGPathRef{
         
         // Create path
-        var path = CGPathCreateMutable()
-        var points = UnsafeMutablePointer<NSPoint>.alloc(3)
+        let path = CGPathCreateMutable()
+        let points = UnsafeMutablePointer<NSPoint>.alloc(3)
         let numElements = nsBezierPath.elementCount
         
         if numElements > 0 {
@@ -17,7 +17,7 @@ class NSBezierPathParser {
             
             for index in 0..<numElements {
                 
-                let pathType = self.elementAtIndex(index, associatedPoints: points)
+                let pathType = nsBezierPath.elementAtIndex(index, associatedPoints: points)
                 
                 switch pathType {
                     
