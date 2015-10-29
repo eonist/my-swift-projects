@@ -52,6 +52,7 @@ imageLayer.masksToBounds = YES;
 
 
 /*
+//more in the COcoa book from big nerd ranch
 //TextLayer: 
 let textContainer = CALayer()
         textContainer.anchorPoint = CGPoint.zeroPoint
