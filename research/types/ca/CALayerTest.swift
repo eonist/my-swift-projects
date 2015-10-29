@@ -1,5 +1,31 @@
 //this is good: http://www.raywenderlich.com/90488/calayer-in-ios-with-swift-10-examples
 
+
+
+/*
+Properties of CALayer:
+
+class CALayer: NSObject {
+    var bounds: CGRect
+    var position: CGPoint
+    var zPosition: CGFloat
+    var frame: CGRect
+
+    var opacity: CGFloat
+    var hidden: Bool
+    var mask: CALayer!
+    var borderWidth: CGFloat
+    var borderColor: CGColor!
+    var cornerRadius: CGFloat
+    var shadowOpacity: CGFloat
+    var shadowRadius: CGFloat
+	 var shadowOffset: CGSize
+    var shadowColor: CGColor!
+
+    var actions: [NSObject : AnyObject]!  // Defaults to nil!
+    var delegate: AnyObject! // NSObject (CALayerDelegate)
+    // ...
+*/
 /*
 Draw an image in an calayer:
 
