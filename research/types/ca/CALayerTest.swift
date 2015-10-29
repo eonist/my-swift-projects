@@ -48,3 +48,29 @@ imageLayer.contents = (id) [UIImage imageNamed:@"BattleMapSplashScreen.jpg"].CGI
 imageLayer.masksToBounds = YES;
 [sublayer addSublayer:imageLayer];
 */
+
+
+
+/*
+//TextLayer: 
+let textContainer = CALayer()
+        textContainer.anchorPoint = CGPoint.zeroPoint
+        textContainer.position = CGPointMake(10, 10)
+        textContainer.zPosition = 100
+        textContainer.backgroundColor = NSColor.blackColor().CGColor
+        textContainer.borderColor = NSColor.whiteColor().CGColor
+        textContainer.borderWidth = 2
+        textContainer.cornerRadius = 15
+        textContainer.shadowOpacity = 0.5
+        view.layer!.addSublayer(textContainer)
+
+        let textLayer = CATextLayer()
+        textLayer.anchorPoint = CGPoint.zeroPoint
+        textLayer.position = CGPointMake(10, 6)
+        textLayer.zPosition = 100
+        textLayer.fontSize = 24
+        textLayer.foregroundColor = NSColor.whiteColor().CGColor
+        self.textLayer = textLayer”
+
+		   textContainer.addSublayer(textLayer)
+*/
