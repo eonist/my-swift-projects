@@ -55,7 +55,6 @@ class CGPathParser{
             pointsPtr.destroy()
         }
     }
-    
 }
 
 
