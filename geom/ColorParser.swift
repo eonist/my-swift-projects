@@ -6,6 +6,12 @@ class ColorParser {
     class func nsColor(r:Int,g:Int,b:Int,a:Int)->NSColor{
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 100.0)
     }
+    /**
+    * untested
+    */
+    class func nsColor(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat) -> NSColor{
+        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
+    }
     /*
     * Returns NSColor for hex int
     * TODO: use UINT?
@@ -45,16 +51,12 @@ class ColorParser {
             NSScanner(string: redHex).scanHexInt(&redInt)
             NSScanner(string: greenHex).scanHexInt(&greenInt)
             NSScanner(string: blueHex).scanHexInt(&blueInt)
+            //TODO: use ColorParser.nsCOlor(r,g,b,a) here
             return NSColor(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
         }else {
             print("clear color")
             return NSColor()
         }
     }
-    /**
-    * untested
-    */
-    class func nsColor(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)->NSColor{
-        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
-    }
+   
 }
