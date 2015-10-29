@@ -3,13 +3,13 @@ class ColorParser {
     /**
     * r: 0.0 - 255.0
     */
-    class func nsColor(r:Int,g:Int,b:Int,a:Int)->NSColor{
+    class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100)->NSColor{
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 100.0)
     }
     /**
     * untested
     */
-    class func nsColor(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat) -> NSColor{
+    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
     }
     /*
