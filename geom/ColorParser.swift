@@ -1,6 +1,13 @@
 import Cocoa
 class ColorParser {
     /**
+    * r: from 0.0 to 1.0
+    * NOte research: CGColorCreateGenericGray(gray: CGFloat, _ alpha: CGFloat) -> CGColor
+    */
+    class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
+        return CGColorCreateGenericRGB(r,g,b,a)
+    }
+    /**
     * r: 0.0 - 255.0
     */
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100)->NSColor{
