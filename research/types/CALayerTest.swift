@@ -1,3 +1,5 @@
+//this is good: http://www.raywenderlich.com/90488/calayer-in-ios-with-swift-10-examples
+
 /*
 Draw an image in an calayer:
 
