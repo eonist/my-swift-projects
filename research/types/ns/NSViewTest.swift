@@ -46,3 +46,15 @@ override func drawRect(dirtyRect: NSRect) {
         
     }
      */
+     
+     
+     
+       
+    /* allowsVibrancy is queried when a vibrant appearance is used on a view hierarchy. When allowsVibrancy returns YES, the view will have an appropriate measure taken to ensure it is vibrant on top of its given material.
+     
+     Specific subclasses, such as NSControl, will answer this question based on the artwork they draw for a given appearance.
+     */
+   /*
+ @available(OSX 10.10, *)
+    public var allowsVibrancy: Bool { get }
+*/
