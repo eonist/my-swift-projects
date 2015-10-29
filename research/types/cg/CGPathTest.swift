@@ -1,3 +1,8 @@
+//getting bounds of a path:
+/*
+CGPathGetBoundingBox(self.path);
+*/
+
 /*
 
 needs work
