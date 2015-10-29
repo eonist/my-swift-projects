@@ -13,7 +13,7 @@ class ArrayModifier{
 	 * a,b,c,d
      * _,a,b,c,d
 	 */
-	class func unshift<T>(inout array:[T],item:T)->Int{
+	class func unshift<T>(inout array:[T],_ item:T)->Int{
 		array.insert(item,atIndex:0)
 		return array.count
 	}
@@ -45,7 +45,7 @@ class ArrayModifier{
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
-    class func splice<T>(inout array:[T],startIndex:UInt,deleteCount:UInt,values:Array<T>)->Array<T>{
+    class func splice<T>(inout array:[T],_ startIndex:UInt,_ deleteCount:UInt,_ values:Array<T>)->Array<T>{
         var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         if(values.count > 0 ){returnArray.insertContentsOf(values, at: Int(startIndex))}
@@ -56,7 +56,7 @@ class ArrayModifier{
      * IMPORTANT: the original array is NOT modified
      * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
-    class func slice<T>(var array:[T],startIndex:Int, endIndex:Int)->Array<T>{
+    class func slice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let deleteCount = endIndex - startIndex
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return array
