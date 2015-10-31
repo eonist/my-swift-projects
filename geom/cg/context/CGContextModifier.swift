@@ -26,4 +26,28 @@ class CGContextModifier{
 		CGContextStrokeLineSegments(context, points, points.count);
 		//unsure if you need to close it here
     }
+    /**
+     *
+     */
+    class func drawWithWidth(){
+       
+    }
+}
+
+
+@implementation UIBezierPath (HandyUtilities)
+// Draw with width
+- (void) stroke: (CGFloat) width color: (UIColor *) color {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+{
+    
+    }
+    // Fill with supplied color
+    - (void) fill: (UIColor *) fillColor {
+    CGContextRef context = UIGraphicsGetCurrentContext(); if (context == NULL)
+{
+    NSLog(@"Error: No context to draw to");
+    return; }
+    CGContextSaveGState(context); [fillColor set];
+    [self fill]; CGContextRestoreGState(context);
 }
