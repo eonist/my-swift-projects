@@ -29,7 +29,7 @@ class CGContextModifier{
     /**
      *
      */
-    class func drawWithWidth(){
+    class func drawWithWidth(/*stroke: (CGFloat) width color: (UIColor *) color*/){
         /*
         CGContextRef context = UIGraphicsGetCurrentContext();
         if (context == NULL){
@@ -45,5 +45,20 @@ class CGContextModifier{
         // Restore the width self.lineWidth = holdWidth; CGContextRestoreGState(context);
         */
     }
-    
+    /**
+     * Fill with supplied color
+     */
+    class func drawWithFill(/*fill:UIColor*/){
+            /*
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            if (context == NULL){
+                NSLog(@"Error: No context to draw to");
+                return;
+            }
+            CGContextSaveGState(context);
+            [fillColor set];
+            [self fill]; CGContextRestoreGState(context);
+            }
+            */
+    }
 }
