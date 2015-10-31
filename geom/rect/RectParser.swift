@@ -1,4 +1,26 @@
-//math related to the rectangle 
+import Cocoa
+class RectParser{
+    /**
+     * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
+     */
+    class func roundRect( rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
+        let path:CGMutablePathRef = CGPathCreateMutable();
+        CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), radius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), radius);
+        CGPathCloseSubpath(path);
+        return path;
+    }
+}
+/*
+
+
+
+
+
+//math related to the rectangle
 //Examples of good candidates for structures include:
 
 //The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
