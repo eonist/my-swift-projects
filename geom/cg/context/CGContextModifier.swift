@@ -16,4 +16,13 @@ class CGContextModifier{
 		}
 		CGContextClosePath(context)// And close the subpath.
    }
+	/**
+    * Bulk call to stroke a sequence of line segments.
+	 * Note: // Equivalent to for(i=0; i<count; i+=2) { MoveToPoint(point[i]); AddLineToPoint(point[i+1]); StrokePath(); }
+	 * Example: [CGPointMake(10.0, 150.0),CGPointMake(70.0, 120.0),CGPointMake(130.0, 150.0), CGPointMake(190.0, 120.0), CGPointMake(250.0, 150.0), CGPointMake(310.0, 120.0)]
+    */
+   class func addLine(context:CGContextRef, _ points:Array<CGPoint>){
+		CGContextStrokeLineSegments(context, points, points.count);
+		//unsure if you need to close it here
+    }
 }
