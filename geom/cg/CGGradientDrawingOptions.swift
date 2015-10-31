@@ -1,7 +1,8 @@
 import Cocoa
 //CGGradientDrawingOptions
-class CGGradientDrawingOptions{
-	 static var default:Int = 0
-    static var extendsPastStart:Int = kCGGradientDrawsBeforeStartLocation
-	 static var extendsPastEnd:Int = kCGGradientDrawsAfterEndLocation
+//this doesnt work, fix it later
+class CGGradientOptions{
+	 static var defaultValue = 0
+     static var extendsPastStart = 1//CGGradientDrawingOptions.kCGGradientDrawsBeforeStartLocation
+	 static var extendsPastEnd = 2//CGGradientDrawingOptions.kCGGradientDrawsAfterEndLocation
 }
