@@ -61,4 +61,11 @@ class CGContextModifier{
             }
             */
     }
+    
+    /**
+     *
+     */
+    class func drawRoundedRect(){
+                
+    }
 }
