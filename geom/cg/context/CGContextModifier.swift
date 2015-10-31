@@ -3,10 +3,11 @@ class CGContextModifier{
     /**
     *  
     */
-   class func addStar(context:CGContextRef,_ center:CGPoint, _ radius:CGFloat, _ angle:CGFloat){
-        let x:CGFloat  = radius * CGFloat(sinf(angle * CGFloat(M_PI) / CGFloat(5.0))) + center.x
+   class func addStar(context:CGContextRef,_ center:CGPoint, _ radius:Float, _ angle:Float){
+        let x:Float  = radius * sinf(angle * Float(M_PI) / 5.0) + Float(center.x)
     
-        let y:CGFloat  = radius * cosf(angle * M_PI / 5.0) + center.y
+        let y:Float  = radius * cosf(angle * Float(M_PI) / 5.0) + Float(center.y)
+    
 		CGContextMoveToPoint(context, x, y)
 		for(var i:Int = 1; i < 5; ++i){
 			let x:CGFloat = radius * sinf((i * 4.0 * M_PI + angle) / 5.0) + center.x;
