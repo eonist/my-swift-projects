@@ -30,24 +30,20 @@ class CGContextModifier{
      *
      */
     class func drawWithWidth(){
-       
+        /*
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        if (context == NULL){
+            NSLog(@"Error: No context to draw to");
+            return; }
+        CGContextSaveGState(context);
+        // Set the color
+        if (color) [color setStroke];
+        // Store the width
+        CGFloat holdWidth = self.lineWidth; self.lineWidth = width;
+        // Draw
+        [self stroke];
+        // Restore the width self.lineWidth = holdWidth; CGContextRestoreGState(context);
+        */
     }
-}
-
-
-@implementation UIBezierPath (HandyUtilities)
-// Draw with width
-- (void) stroke: (CGFloat) width color: (UIColor *) color {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-{
     
-    }
-    // Fill with supplied color
-    - (void) fill: (UIColor *) fillColor {
-    CGContextRef context = UIGraphicsGetCurrentContext(); if (context == NULL)
-{
-    NSLog(@"Error: No context to draw to");
-    return; }
-    CGContextSaveGState(context); [fillColor set];
-    [self fill]; CGContextRestoreGState(context);
 }
