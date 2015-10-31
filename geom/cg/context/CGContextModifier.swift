@@ -63,6 +63,7 @@ class CGContextModifier{
     }
     
     /**
+     * IMPORTANT: i think Quartz has a similar method now built in. but nice to have around, untill you bring in better code
      * Note: The routine addRoundedRectToPath first makes sure that neither the oval width or the oval height is zero. If either is zero, the code simply adds the rectangle to the current path. For the case where the oval width and oval height are both
      * Example:
      CGRect rect = {{10., 10.}, {210., 150.}};
