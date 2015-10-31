@@ -65,7 +65,7 @@ class CGContextModifier{
     /**
      *
      */
-    class func drawRoundedRect(){
-                
+    class func addRoundedRectToPath(context:CGContextRef ,  rect:CGRect,  ovalWidth:Float,  ovalHeight:Float){
+        float fw, fh
     }
 }
