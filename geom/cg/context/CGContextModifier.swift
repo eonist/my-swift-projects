@@ -63,9 +63,39 @@ class CGContextModifier{
     }
     
     /**
-     *
+     * Note: The routine addRoundedRectToPath first makes sure that neither the oval width or the oval height is zero. If either is zero, the code simply adds the rectangle to the current path. For the case where the oval width and oval height are both
+     * Example:
+     CGRect rect = {{10., 10.}, {210., 150.}};
+     float ovalWidth = 100., ovalHeight = 100.; CGContextSetLineWidth(context, 2.); CGContextBeginPath(context);
+     addRoundedRectToPath(context, rect, ovalWidth, ovalHeight); CGContextSetRGBStrokeColor(context, 1., 0., 0., 1.); CGContextDrawPath(context, kCGPathStroke);
      */
     class func addRoundedRectToPath(context:CGContextRef ,  rect:CGRect,  ovalWidth:Float,  ovalHeight:Float){
-        float fw, fh
+        /*
+                float fw, fh
+                // If either ovalWidth or ovalHeight is 0, add a regular rectangle. if (ovalWidth == 0 || ovalHeight == 0) {
+                CGContextAddRect(context, rect);
+    }else{
+    CGContextSaveGState(context);
+    // Translate to lower-left corner of rectangle. CGContextTranslateCTM(context, CGRectGetMinX(rect),
+    CGRectGetMinY(rect));
+    // Scale by the oval width and height so that
+    // each rounded corner is 0.5 units in radius. CGContextScaleCTM(context, ovalWidth, ovalHeight);
+    // Unscale the rectangle width by the amount of the x scaling.
+    fw = CGRectGetWidth(rect) / ovalWidth;
+    // Unscale the rectangle height by the amount of the y scaling.
+    fh = CGRectGetHeight(rect) / ovalHeight;
+    // Start at the right edge of the rectangle, at the midpoint in Y. CGContextMoveToPoint(context, fw, fh/2);
+    // ***** Segment 1 *****
+    CGContextAddArcToPoint(context, fw, fh, fw/2, fh, 0.5);
+    // ***** Segment 2 *****
+    CGContextAddArcToPoint(context, 0, fh, 0, fh/2, 0.5);
+    // ***** Segment 3 *****
+    CGContextAddArcToPoint(context, 0, 0, fw/2, 0, 0.5);
+    // ***** Segment 4 *****
+    CGContextAddArcToPoint(context, fw, 0, fw, fh/2, 0.5);
+    // Closing the path adds the last segment. CGContextClosePath(context);
+    CGContextRestoreGState(context);
+    } }
+    */
     }
 }
