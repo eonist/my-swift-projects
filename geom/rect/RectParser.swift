@@ -16,16 +16,15 @@ class RectParser{
 }
 /*
 
-
-
-
-
 //math related to the rectangle
 //Examples of good candidates for structures include:
 
 //The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
 //A way to refer to ranges within a series, perhaps encapsulating a start property and a length property, both of type Int.
 //A point in a 3D coordinate system, perhaps encapsulating x, y and z properties, each of type Double.
+
+*/
+
 /*
 struct Point {
     var x = 0.0, y = 0.0
@@ -53,10 +52,13 @@ let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 */
+
+
 // prints "square.origin is now at (10.0, 10.0)"
 
 //Shorthand Setter Declaration
 //If a computed property’s setter does not define a name for the new value to be set, a default name of newValue is used. Here’s an alternative version of the Rect structure, which takes advantage of this shorthand notation:
+*/
 
 /*
 
@@ -87,7 +89,7 @@ struct Cuboid {
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // prints "the volume of fourByFiveByTwo is 40.0"
-
+*/
 
 /*
 Modifying Value Types from Within Instance Methods
@@ -99,6 +101,7 @@ However, if you need to modify the properties of your structure or enumeration w
 You can opt in to this behavior by placing the mutating keyword before the func keyword for that method:
 
 */
+/*
 struct Point {
     var x = 0.0, y = 0.0
     mutating func moveByX(deltaX: Double, y deltaY: Double) {
