@@ -18,6 +18,7 @@ class CGContextModifier{
    }
 	/**
     * Bulk call to stroke a sequence of line segments.
+    * Note: Stroke a sequence of line segments one after another in `context'. Theline segments are specified by `points', an array of `count' CGPoints.This function is equivalent to
 	 * Note: // Equivalent to for(i=0; i<count; i+=2) { MoveToPoint(point[i]); AddLineToPoint(point[i+1]); StrokePath(); }
 	 * Example: [CGPointMake(10.0, 150.0),CGPointMake(70.0, 120.0),CGPointMake(130.0, 150.0), CGPointMake(190.0, 120.0), CGPointMake(250.0, 150.0), CGPointMake(310.0, 120.0)]
     */
