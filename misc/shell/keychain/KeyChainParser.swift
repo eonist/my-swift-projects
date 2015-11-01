@@ -1,11 +1,12 @@
 import Security
+import Foundation
 //examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
 class KeyChainParser {
     /**
 	  * Save keychain data for key
 	  * TODO: move to KeyChainModifier.swift
 	  */
-    class func save(key: String, _data: NSData) -> Bool {
+    class func save(key: String, _ data: NSData) -> Bool {
         let query = [kSecClass as String       : kSecClassGenericPassword as String, kSecAttrAccount as String : key,  kSecValueData as String   : data ]
         SecItemDelete(query as CFDictionaryRef)
         let status: OSStatus = SecItemAdd(query as CFDictionaryRef, nil)
@@ -16,10 +17,10 @@ class KeyChainParser {
 	 */	
     class func load(key: String) -> NSData? {
         let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
-        var dataTypeRef :Unmanaged<AnyObject>?
-        let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)        
+        var dataTypeRef :UnsafeMutablePointer<AnyObject?>?
+        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
         if status == noErr {
-            return (dataTypeRef!.takeRetainedValue() as NSData)
+            return (dataTypeRef! as! NSData)
         } else {
             return nil
         }
