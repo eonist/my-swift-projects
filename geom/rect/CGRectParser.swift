@@ -14,25 +14,17 @@ class RectParser{
         return path;
     }
     /**
-     * TODO: finish this with CGPATH
+     * Create a path using the coordinates of the rect passed in
      */
-    class func path(rect:CGPathRef){
-        
-        let path:CGPath = CGPathCreateMutable()
+    class func path(rect:CGRect)->CGPath{
+        let path:CGMutablePath = CGPathCreateMutable()
         Swift.print(path)
-        /*
-        void createRectPath(CGContextRef context, CGRect rect) {
-        // Create a path using the coordinates of the rect passed in. CGContextBeginPath(context);
-        CGContextMoveToPoint(context, rect.origin.x, rect.origin.y); // ***** Segment 1 *****
-        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y);
-        // ***** Segment 2 *****
-        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width,
-        rect.origin.y + rect.size.height); // ***** Segment 3 *****
-        CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height);
-        // ***** Segment 4 created by closing the path *****
-        CGContextClosePath(context);
-        }
-        */
+        CGPathMoveToPoint(path, nil, rect.origin.x, rect.origin.y)
+        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width, rect.origin.y);// ***** Segment 1 *****
+        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width,rect.origin.y + rect.size.height);// ***** Segment 2 *****
+        CGPathAddLineToPoint(path, nil, rect.origin.x, rect.origin.y + rect.size.height);// ***** Segment 3 *****
+        CGPathCloseSubpath(path);// ***** Segment 4 created by closing the path *****
+        return path
     }
 }
 
