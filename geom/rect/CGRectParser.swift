@@ -13,6 +13,27 @@ class RectParser{
         CGPathCloseSubpath(path);
         return path;
     }
+    /**
+     * TODO: finish this with CGPATH
+     */
+    class func path(rect:CGPathRef){
+        
+        let path:CGPath = CGPathCreateMutable()
+        Swift.print(path)
+        /*
+        void createRectPath(CGContextRef context, CGRect rect) {
+        // Create a path using the coordinates of the rect passed in. CGContextBeginPath(context);
+        CGContextMoveToPoint(context, rect.origin.x, rect.origin.y); // ***** Segment 1 *****
+        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y);
+        // ***** Segment 2 *****
+        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width,
+        rect.origin.y + rect.size.height); // ***** Segment 3 *****
+        CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height);
+        // ***** Segment 4 created by closing the path *****
+        CGContextClosePath(context);
+        }
+        */
+    }
 }
 
 
