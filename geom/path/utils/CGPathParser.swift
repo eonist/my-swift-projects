@@ -2,7 +2,7 @@ import Foundation
 
 import AppKit
 
-class CGPathParser{
+public class CGPathParser{
 	/**
      * EXAMPLE: CGContextAddPath(context, CircleParser.circlePath(0,0,100))
      * PARAM: x is the center x
