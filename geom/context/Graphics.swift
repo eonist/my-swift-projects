@@ -134,7 +134,7 @@ public class Graphics{
         }
     }
 }
-class Utils{
+private class Utils{
     /*
     * Draws a gradient into the current path in the context
     */
