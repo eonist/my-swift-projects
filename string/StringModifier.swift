@@ -106,6 +106,7 @@ class StringModifier{
     /**
      * Returns a new string that has that has a section of its text replaced with @param b, the section is from @param start to @param end
      * @Example: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
+     * TODO: probably use inout
      */
     class func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
         let range:Range<String.Index> = StringRangeParser.stringRange(str, start, end)
