@@ -45,7 +45,7 @@ class ArrayModifier{
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
-    class func splice<T>(inout array:[T],_ startIndex:UInt,_ deleteCount:UInt,_ values:Array<T> = [])->Array<T>{
+    class func splice<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         var returnArray = array
         returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         if(values.count > 0 ){returnArray.insertContentsOf(values, at: Int(startIndex))}
