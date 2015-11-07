@@ -1,7 +1,7 @@
 import Foundation
 class StringModifier{
     /**
-     * Returns an array with 2 strings
+     * Returns an array with many strings
      */
     class func split(str:String, _ delimiter:String)->[String]{
         return str.componentsSeparatedByString(delimiter)
