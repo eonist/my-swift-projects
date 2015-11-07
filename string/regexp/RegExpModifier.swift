@@ -14,6 +14,7 @@ public class RegExpModifier{
     /**
     * Returns the @param input without whitespace on the left and right side
     * @Note: writing this function is not easy, check proto website for inspiration
+    * @Note: StringModifier.trimWhiteSpace can also be used. could be faster
     * // :TODO: possible rewrite inspiration: test6.match(/(?<=<[tT][iI][tT][lL][eE]>).*(?=<\/[tT][iI][tT][lL][eE]>)/g))
     */
     class func removeWrappingWhitespace(input:String)->String {
