@@ -32,7 +32,6 @@ class StringAsserter{
      * Check if string contains another string
      */
     func contains(a:String, _ b:String)->Bool{
-        
         return a.rangeOfString(b) != nil
     }
 }
