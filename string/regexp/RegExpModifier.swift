@@ -16,6 +16,7 @@ public class RegExpModifier{
     * @Note: writing this function is not easy, check proto website for inspiration
     * @Note: StringModifier.trimWhiteSpace can also be used. could be faster
     * // :TODO: possible rewrite inspiration: test6.match(/(?<=<[tT][iI][tT][lL][eE]>).*(?=<\/[tT][iI][tT][lL][eE]>)/g))
+    * CAUTION: Does not work well with strings that are empty, this is a problem in the current regExp code
     */
     class func removeWrappingWhitespace(input:String)->String {
         // :TODO: the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
