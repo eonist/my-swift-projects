@@ -75,9 +75,9 @@ public class RegExp{
         }
     }
     /**
-     * Extracts associate capture groups
+     * Extracts associate capture groups from the RegExp.matches result
      * TODO: Would be great if .rawValue was done inside this method, can be done with <T> possibly look at the apple docs about enumerations
-     * TODO: write an example
+     * EXAMPLE: RegExp.value(fullString,match,StatusParts.second.rawValue)
      */
     class func value(str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
         return (str as NSString).substringWithRange(result.rangeAtIndex(key))
