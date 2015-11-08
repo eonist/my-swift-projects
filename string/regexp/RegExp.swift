@@ -26,6 +26,9 @@ public class RegExp{
     * NOTE: NSRegularExpressionOptions: DotMatchesLineSeparators,CaseInsensitive,AnchorsMatchLines
     */
     public class func match(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
+        //todo: figure out how map works
+        //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
+        //todo: then if it is outof bound return eigther an empty array or nil
         return matches(text, pattern).map { (text as NSString).substringWithRange($0.range)}
     }
     /**
