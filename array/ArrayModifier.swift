@@ -75,7 +75,13 @@ class ArrayModifier{
         }
         return array as! T//<--does this work//this is a convenince return
     }
-    
+    /**
+     * Note: Usefull if you want to do inline appendation
+     */
+    class func append<T>(var array:[T],_ item:T)->Array<T>{
+        array.append(item)
+        return array
+    }
 }
 //combine
 //merge
