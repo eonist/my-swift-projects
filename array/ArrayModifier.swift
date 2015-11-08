@@ -75,6 +75,7 @@ class ArrayModifier{
         }
         return array as! T//<--does this work//this is a convenince return
     }
+    
 }
 //combine
 //merge
