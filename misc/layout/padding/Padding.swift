@@ -3,16 +3,16 @@ import Foundation
 * TopRightBottomLeft (TRBL aka Trouble)
 */
 class Padding {
-    var _top:Double = 0;
-    var _right:Double = 0;
-    var _bottom:Double = 0;
-    var _left:Double = 0;
+    var top:Double = 0;
+    var right:Double = 0;
+    var bottom:Double = 0;
+    var left:Double = 0;
     init(array:Array<Double>) {
       switch(array.count){
-         case 1: _left = array[0]; _right = array[0]; _top = array[0]; _bottom = array[0]; break;
-         case 2: _top = array[0]; _bottom = array[0];_left = array[1]; _right = array[1]; break;
-         case 3: _top = array[0]; _left = array[1]; _right = array[1]; _bottom = array[2];break;
-         case 4: _top = array[0]; _right = array[1]; _bottom = array[2]; _left = array[3]; break;
+         case 1: left = array[0]; right = array[0]; top = array[0]; bottom = array[0]; break;
+         case 2: top = array[0]; bottom = array[0];left = array[1]; right = array[1]; break;
+         case 3: top = array[0]; left = array[1]; right = array[1]; bottom = array[2];break;
+         default:top = array[0]; right = array[1]; bottom = array[2]; left = array[3]; break;//4
       }
     }
 }
