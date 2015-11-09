@@ -31,7 +31,7 @@ class ColorParser {
         return ColorParser.nsColor(hexString as String , alpha)
     }
     /**
-    * NOTE: works for now
+    * NOTE: works for now (with colors like: "FF00FF" use Colors.swift)
     * TODO: Improve this, check your libs
     * NOTE: the alpha support is nice
     * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
