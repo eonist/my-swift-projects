@@ -1,8 +1,8 @@
 import Cocoa
-public enum GradientType:Int{
-    case Axial = 0, Radial//rename Axial to linear
+public enum GradientType:Int{//TODO:move to its own class?
+    case Axial = 0, Radial//TODO: rename Axial to linear
 }
-public class Gradient{
+public class Gradient:IGradient{
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
     public var gradientType:GradientType
