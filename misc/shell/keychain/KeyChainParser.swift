@@ -16,14 +16,17 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
+        /*
         let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
-        let dataTypeRef :UnsafeMutablePointer<AnyObject?>?
+        var dataTypeRef :UnsafeMutablePointer<AnyObject?>?
         let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
         if status == noErr {
             return (dataTypeRef! as! NSData)
         } else {
             return nil
         }
+        */
+        fatalError("NOT IMPLEMENTED YET")
     }
 	/**
 	 * Deletes a keychain item for key
