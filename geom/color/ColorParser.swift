@@ -22,6 +22,7 @@ class ColorParser {
     }
     /*
     * Returns NSColor for hex int
+    * TODO: You have a similar method in your old lib from StringModifier.color(), copy that
     * TODO: use UINT?
     * TODO: this does not work!!! more research needed, works on some hex ints but not all
     */
