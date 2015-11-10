@@ -12,11 +12,12 @@ class ColorParser {
     class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
         return CGColorCreateGenericRGB(r,g,b,a)
     }
+
     /**
-    * r: 0.0 - 255.0
-    */
-    class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100)->NSColor{
-        return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 100.0)
+     * Note: ColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
+     */
+    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
+        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
     }
     /*
     * Returns NSColor for hex int
@@ -70,9 +71,9 @@ class ColorParser {
 
 extension ColorParser{
     /**
-     * Note: ColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
+     * r: 0.0 - 255.0
      */
-    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
-        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
+    class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100)->NSColor{
+        return ColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
     }
 }
