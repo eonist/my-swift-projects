@@ -18,12 +18,6 @@ class ColorParser {
     class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100)->NSColor{
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 100.0)
     }
-    /**
-    * Note: ColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
-    */
-    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
-        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
-    }
     /*
     * Returns NSColor for hex int
     * TODO: You have a similar method in your old lib from StringModifier.color(), copy that
@@ -72,4 +66,13 @@ class ColorParser {
         }
     }
    
+}
+
+extension ColorParser{
+    /**
+     * Note: ColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
+     */
+    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
+        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
+    }
 }
