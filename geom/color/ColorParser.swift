@@ -55,6 +55,7 @@ extension ColorParser{
     }
     /*
      * Returns NSColor for hex int
+     * NOTE: Convenience method
      */
     class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
         let hexString:String = NSString(format: "%2X", hexColor) as String
