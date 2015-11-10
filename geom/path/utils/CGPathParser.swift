@@ -45,17 +45,16 @@ public class CGPathParser{
     /**
      * EXAMPLE: roundRect(5,100,100)
      * TODO:  Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void
+     * NOTE: was: //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
      */
-    //x, y, graphic.width, graphic.height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
-    //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
     public class func roundRect(x:CGFloat, y:CGFloat, w:CGFloat, h:CGFloat, topLeftRadius:CGFloat, topRightRadius:CGFloat, bottomLeftRadius:CGFloat, bottomRightRadius:CGFloat) -> CGMutablePathRef{
         let rect:CGRect = CGRectMake(x,y,w,h)
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
         CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), topRightRadius);//TR
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), radius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), radius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), bottomRightRadius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), bottomLeftRadius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), topLeftRadius);
         CGPathCloseSubpath(path);
         return path;
     }
