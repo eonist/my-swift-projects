@@ -28,13 +28,9 @@ class ColorParser {
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
-            let rgb:UInt = UInt(Float(hex)!)
-            let r:UInt = rgb >> 16;
-            let g:UInt = (rgb ^ (r << 16)) >> 8;
-            let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
-            return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
+            return nsColor()
         }else{
-            return ColorFactory.color(hexColor);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            return ColorTypes.color(hexColor);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
             //fatalError("THE HEXCOLOR: " + hexColor + "IS IN THE WRONG FORMAT")
         }
     }
@@ -54,8 +50,10 @@ extension ColorParser{
      * NOTE: Convenience method
      */
     class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
-        let hexString:String = NSString(format: "%2X", hexColor) as String
-        print("hexString:" + "\(hexString)")
-        return nsColor(hexString , alpha)
+        let rgb:UInt = hexColor
+        let r:UInt = rgb >> 16;
+        let g:UInt = (rgb ^ (r << 16)) >> 8;
+        let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
+        return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
 }
