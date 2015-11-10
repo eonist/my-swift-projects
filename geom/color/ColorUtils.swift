@@ -1,10 +1,8 @@
 import Cocoa
-
 class ColorUtils {
-    
     /**
-    *
-    */
+     *
+     */
     class func randomColor()-> NSColor{
         let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
@@ -13,8 +11,8 @@ class ColorUtils {
         return nsColor
     }
     /**
-    *
-    */
+     *
+     */
     class func randomColor()->CGColor{
         let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
