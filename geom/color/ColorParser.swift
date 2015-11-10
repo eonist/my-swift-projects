@@ -24,16 +24,16 @@ class ColorParser {
      * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
      */
     class func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
-        Swift.print("hexColor: " + "\(hexColor)")
+        //Swift.print("hexColor: " + "\(hexColor)")
         let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
-            Swift.print("hex: " + "\(hex)")
+            //Swift.print("hex: " + "\(hex)")
             return nsColor(UInt(Float(hex)!),alpha)
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
-            Swift.print("uintColor: " + "\(uintColor)")
+            //Swift.print("uintColor: " + "\(uintColor)")
             return nsColor(uintColor,alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
     }
@@ -53,14 +53,14 @@ extension ColorParser{
      * NOTE: Convenience method
      */
     class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
-        Swift.print("hexColor: " + "\(hexColor)")
+        //Swift.print("hexColor: " + "\(hexColor)")
         let rgb:UInt = hexColor
         let r:UInt = rgb >> 16;
-        Swift.print("r: " + "\(r)")
+        //Swift.print("r: " + "\(r)")
         let g:UInt = (rgb ^ (r << 16)) >> 8;
-        Swift.print("g: " + "\(g)")
+        //Swift.print("g: " + "\(g)")
         let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
-        Swift.print("b: " + "\(b)")
+        //Swift.print("b: " + "\(b)")
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
 }
