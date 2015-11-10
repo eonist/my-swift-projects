@@ -22,13 +22,13 @@ class ColorUtils {
         return color
     }
     /**
-     *
+     * EXAMPLE: hexNumber(FF0000)//Output:16711680
      */
     class func hexNumber(hex:String) -> UInt{
         return UInt(Float(hex)!)
     }
     /**
-     *
+     * EXAMPLE: hexString(16711680)//Output: FF0000
      */
     class func hexString(hex:UInt) -> String{
         return NSString(format: "%2X", hex) as String
