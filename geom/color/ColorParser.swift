@@ -28,10 +28,9 @@ class ColorParser {
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
-            return nsColor()
+            return nsColor(UInt(Float(hex)!),alpha)
         }else{
-            return ColorTypes.color(hexColor);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
-            //fatalError("THE HEXCOLOR: " + hexColor + "IS IN THE WRONG FORMAT")
+            return nsColor(ColorTypes.color(hexColor),alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
     }
 }
