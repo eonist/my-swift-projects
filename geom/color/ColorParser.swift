@@ -19,17 +19,6 @@ class ColorParser {
     class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
     }
-    /*
-    * Returns NSColor for hex int
-    * TODO: You have a similar method in your old lib from StringModifier.color(), copy that
-    * TODO: use UINT?
-    * TODO: this does not work!!! more research needed, works on some hex ints but not all
-    */
-    class func nsColor(hexColor:Int, _ alpha: Float = 1.0)->NSColor{
-        let hexString:String = NSString(format: "%2X", hexColor) as String
-        print("hexString:" + "\(hexString)")
-        return nsColor(hexString , alpha)
-    }
     /**
     * NOTE: works for now (with colors like: "FF00FF" use Colors.swift)
     * TODO: Improve this, check your libs
@@ -39,7 +28,7 @@ class ColorParser {
      /**
      * NOTE: Supports 4 hex color formats: #FF0000,0xFF0000, FF0000, F00
      */
-    func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
+    class func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
         let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
@@ -63,5 +52,13 @@ extension ColorParser{
      */
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
         return ColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
+    }
+    /*
+     * Returns NSColor for hex int
+     */
+    class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
+        let hexString:String = NSString(format: "%2X", hexColor) as String
+        print("hexString:" + "\(hexString)")
+        return nsColor(hexString , alpha)
     }
 }
