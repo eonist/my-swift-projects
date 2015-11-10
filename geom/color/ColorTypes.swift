@@ -2,118 +2,118 @@ import Foundation
 
 class ColorTypes{
     class func color(colorType:String) -> UInt {
-        var color:uint;
+        var color:UInt;
         switch(colorType) {
         case "blue":
-            color = Color.BLUE;
+            color = Colors.BLUE;
             break;
         case "fuchsia":
-            color = Color.FUCHSIA;
+            color = Colors.FUCHSIA;
             break;
         case "black":
-            color = Color.BLACK;
+            color = Colors.BLACK;
             break;
         case "white":
-            color = Color.WHITE;
+            color = Colors.WHITE;
             break;
         case "gray":
-            color = Color.GRAY;
+            color = Colors.GRAY;
             break;
         case "silver":
-            color = Color.SILVER;
+            color = Colors.SILVER;
             break;
         case "maroon":
-            color = Color.MAROON;
+            color = Colors.MAROON;
             break;
         case "red":
-            color = Color.RED;
+            color = Colors.RED;
             break;
         case "orange":
-            color = Color.ORANGE;
+            color = Colors.ORANGE;
             break;
         case "yellow":
-            color = Color.YELLOW;
+            color = Colors.YELLOW;
             break;
         case "olive":
-            color = Color.OLIVE;
+            color = Colors.OLIVE;
             break;
         case "green":
-            color = Color.GREEN;
+            color = Colors.GREEN;
             break;
         case "teal":
-            color = Color.TEAL;
+            color = Colors.TEAL;
             break;
         case "lime":
-            color = Color.LIME;
+            color = Colors.LIME;
             break;
         case "aqua":
-            color = Color.AQUA;
+            color = Colors.AQUA;
             break;
         case "navy":
-            color = Color.NAVY;
+            color = Colors.NAVY;
             break;
         case "purple":
-            color = Color.PURPLE;
+            color = Colors.PURPLE;
             break;
         case "pink":
-            color = Color.PINK;
+            color = Colors.PINK;
             break;
         case "grey":
-            color = Color.GREY;
+            color = Colors.GREY;
             break;
         case "grey1":
-            color = Color.GREY_1;
+            color = Colors.GREY_1;
             break;
         case "grey2":
-            color = Color.GREY_2;
+            color = Colors.GREY_2;
             break;
         case "grey3":
-            color = Color.GREY_3;
+            color = Colors.GREY_3;
             break;
         case "grey4":
-            color = Color.GREY_4;
+            color = Colors.GREY_4;
             break;
         case "grey5":
-            color = Color.GREY_5;
+            color = Colors.GREY_5;
             break;
         case "grey6":
-            color = Color.GREY_6;
+            color = Colors.GREY_6;
             break;
         case "grey7":
-            color = Color.GREY_7;
+            color = Colors.GREY_7;
             break;
         case "grey8":
-            color = Color.GREY_8;
+            color = Colors.GREY_8;
             break;
         case "grey9":
-            color = Color.GREY_9;
+            color = Colors.GREY_9;
             break;
         case "white1":
-            color = Color.WHITE_1;
+            color = Colors.WHITE_1;
             break;
         case "white2":
-            color = Color.WHITE_2;
+            color = Colors.WHITE_2;
             break;
         case "white3":
-            color = Color.WHITE_3;
+            color = Colors.WHITE_3;
             break;
         case "white4":
-            color = Color.WHITE_4;
+            color = Colors.WHITE_4;
             break;
         case "white5":
-            color = Color.WHITE_5;
+            color = Colors.WHITE_5;
             break;
         case "white6":
-            color = Color.WHITE_6;
+            color = Colors.WHITE_6;
             break;
         case "white7":
-            color = Color.WHITE_7;
+            color = Colors.WHITE_7;
             break;
         case "white8":
-            color = Color.WHITE_8;
+            color = Colors.WHITE_8;
             break;
         case "white9":
-            color = Color.WHITE_9;
+            color = Colors.WHITE_9;
             break;
         default:
             throw new Error("COLORTYPE:" + colorType + " IS NOT SUPORTED YET");
