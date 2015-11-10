@@ -48,11 +48,11 @@ public class CGPathParser{
      */
     //x, y, graphic.width, graphic.height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
     //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
-    public class func roundRect(x, y, width, height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight) ->CGMutablePathRef{
+    public class func roundRect(x:CGFloat, y:CGFloat, w:CGFloat, h:CGFloat, topLeftRadius:CGFloat, topRightRadius:CGFloat, bottomLeftRadius:CGFloat, bottomRightRadius:CGFloat) -> CGMutablePathRef{
         let rect:CGRect = CGRectMake(x,y,w,h)
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), topRightRadius);//TR
         CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius);
         CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), radius);
         CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), radius);
