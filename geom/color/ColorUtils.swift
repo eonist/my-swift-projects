@@ -21,5 +21,16 @@ class ColorUtils {
         let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
         return color
     }
-    
+    /**
+     *
+     */
+    class func hexNumber(hex:String) -> UInt{
+        return UInt(Float(hex)!)
+    }
+    /**
+     *
+     */
+    class func hexString(hex:UInt) -> String{
+        return NSString(format: "%2X", hex) as String
+    }
 }
