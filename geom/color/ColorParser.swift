@@ -34,7 +34,8 @@ class ColorParser {
             let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
             return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
         }else{
-            fatalError("THE HEXCOLOR: " + hexColor + "IS IN THE WRONG FORMAT")
+            return ColorFactory.color(hexColor);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            //fatalError("THE HEXCOLOR: " + hexColor + "IS IN THE WRONG FORMAT")
         }
     }
 }
