@@ -30,7 +30,8 @@ class ColorParser {
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
             return nsColor(UInt(Float(hex)!),alpha)
         }else{
-            return nsColor(ColorTypes.color(hexColor),alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            let literalColor:String = ColorTypes.color(hexColor)
+            return nsColor(literalColor,alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
     }
 }
@@ -49,6 +50,7 @@ extension ColorParser{
      * NOTE: Convenience method
      */
     class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
+        Swift.print("hexColor: " + "\(hexColor)")
         let rgb:UInt = hexColor
         let r:UInt = rgb >> 16;
         Swift.print("r: " + "\(r)")
