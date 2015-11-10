@@ -1,5 +1,9 @@
 import Cocoa
 class ColorParser {
+    private class func index(){
+        cgColor(1, 0, 0, 1)//Output:CGColor that is red
+        nsColor(250, 0, 0,100)
+    }
     /**
     * r: from 0.0 to 1.0
     * Note: research: CGColorCreateGenericGray(gray: CGFloat, _ alpha: CGFloat) -> CGColor
