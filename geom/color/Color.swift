@@ -1,6 +1,6 @@
-import foundation
+import Foundation
 
-class color {
+class Color {
     static var grey1:UInt = 0x111111;/*near black*/
     static var grey2:UInt = 0x222222;
     static var grey3:UInt = 0x333333;
