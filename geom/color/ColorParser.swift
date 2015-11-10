@@ -2,7 +2,7 @@ import Cocoa
 class ColorParser {
     private class func index(){
         cgColor(1, 0, 0, 1)//Output:CGColor that is red
-        nsColor(250.0, 0, 0,100)//output:NSColor that is red
+        nsColor(250.0, 0, 0,100)//output: NSColor that is red
     }
     /**
     * r: from 0.0 to 1.0
@@ -71,9 +71,13 @@ class ColorParser {
 
 extension ColorParser{
     /**
+     * Convenince implementation of nsColor
      * r: 0.0 - 255.0
      */
-    class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100)->NSColor{
+    class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100) -> NSColor{
+        return ColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
+    }
+    class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
         return ColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
     }
 }
