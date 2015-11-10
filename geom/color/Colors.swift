@@ -1,18 +1,22 @@
 import Foundation
 
 class Colors {
-    static var red:String = "FF3B30"
-    static var orange:String = "FF9500"
-    static var yellow:String = "FFCC00"
-    static var green:String = "4CD964"
-    static var lightBlue:String = "34AADC"
-    static var darkBlue:String = "007AFF"
-    static var purple:String = "5856D6"
-    static var pink:String = "FF2D55"
-    static var darkGray:String = "8E8E93"
-    static var lightGray:String = "C7C7CC"
+    
 }
 /*
+
+FANCY IOS8 Colors:
+static var red:String = "FF3B30"
+static var orange:String = "FF9500"
+static var yellow:String = "FFCC00"
+static var green:String = "4CD964"
+static var lightBlue:String = "34AADC"
+static var darkBlue:String = "007AFF"
+static var purple:String = "5856D6"
+static var pink:String = "FF2D55"
+static var darkGray:String = "8E8E93"
+static var lightGray:String = "C7C7CC"
+
 Gradients:
 
 
