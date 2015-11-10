@@ -28,10 +28,12 @@ class ColorParser {
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
+            Swift.print("hex: " + "\(hex)")
             return nsColor(UInt(Float(hex)!),alpha)
         }else{
-            let literalColor:String = ColorTypes.color(hexColor)
-            return nsColor(literalColor,alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            let uintColor:UInt = ColorTypes.color(hexColor)
+            Swift.print("uintColor: " + "\(uintColor)")
+            return nsColor(uintColor,alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
     }
 }
