@@ -1,6 +1,10 @@
 import Foundation
 
 class ColorTypes{
+    /**
+     * Returns a color in hex
+     * // :TODO: Sort alphabetically
+     */
     class func color(colorType:String) -> UInt {
         var color:UInt;
         switch(colorType) {
@@ -116,7 +120,7 @@ class ColorTypes{
             color = Colors.WHITE_9;
             break;
         default:
-            throw new Error("COLORTYPE:" + colorType + " IS NOT SUPORTED YET");
+            fatalError("COLORTYPE:" + colorType + " IS NOT SUPORTED YET")
             break;
         }
         return color;
