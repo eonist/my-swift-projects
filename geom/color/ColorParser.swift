@@ -1,8 +1,8 @@
 import Cocoa
 class ColorParser {
     private class func index(){
-        cgColor(1, 0, 0, 1)//Output:CGColor that is red
-        nsColor(250.0, 0, 0,100)//output: NSColor that is red
+        cgColor(1, 0, 0, 1)//Output: red CGColor
+        nsColor(250.0, 0, 0,100)//output: red NSColor
     }
     /**
     * r: from 0.0 to 1.0
