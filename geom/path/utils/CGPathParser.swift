@@ -45,7 +45,9 @@ public class CGPathParser{
     /**
      * EXAMPLE: roundRect(5,100,100)
      */
-    public class func roundRect(radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0) ->CGMutablePathRef{
+    //x, y, graphic.width, graphic.height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
+    //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
+    public class func roundRect(x, y, width, height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight) ->CGMutablePathRef{
         let rect:CGRect = CGRectMake(x,y,w,h)
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
