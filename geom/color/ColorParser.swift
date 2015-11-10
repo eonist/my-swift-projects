@@ -25,10 +25,10 @@ class ColorParser {
     * TODO: use UINT?
     * TODO: this does not work!!! more research needed, works on some hex ints but not all
     */
-    class func nsColor(hex:Int, _ alpha: Float = 1.0)->NSColor{
-        let hexString = NSString(format: "%2X", hex)
+    class func nsColor(hexColor:Int, _ alpha: Float = 1.0)->NSColor{
+        let hexString = NSString(format: "%2X", hexColor)
         print("hexString:" + "\(hexString)")
-        return ColorParser.nsColor(hexString as String , alpha)
+        return ColorParser.nsColor(String(hexString) , alpha)
     }
     /**
     * NOTE: works for now (with colors like: "FF00FF" use Colors.swift)
@@ -36,37 +36,23 @@ class ColorParser {
     * NOTE: the alpha support is nice
     * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
     */
-    class func nsColor(hexStr:String, _ alpha: Float = 1.0)->NSColor{
-        var hex = hexStr
-        // Check for hash and remove the hash
-        if hex.hasPrefix("#") {
-            hex = hex.substringFromIndex(hex.startIndex.advancedBy(1))
-        }
-        if (hex.rangeOfString("(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)", options: .RegularExpressionSearch) != nil) {
-            // Deal with 3 character Hex strings
-            if hex.characters.count == 3 {
-                let redHex   = hex.substringToIndex(hex.startIndex.advancedBy(1))
-                let greenHex = hex.substringWithRange(Range<String.Index>(start: hex.startIndex.advancedBy(1), end: hex.startIndex.advancedBy(2)))
-                let blueHex  = hex.substringFromIndex(hex.startIndex.advancedBy(2))
-                hex = redHex + redHex + greenHex + greenHex + blueHex + blueHex
-            }
-            let redHex = hex.substringToIndex(hex.startIndex.advancedBy(2))
-            let greenHex = hex.substringWithRange(Range<String.Index>(start: hex.startIndex.advancedBy(2), end: hex.startIndex.advancedBy(4)))
-            let blueHex = hex.substringWithRange(Range<String.Index>(start: hex.startIndex.advancedBy(4), end: hex.startIndex.advancedBy(6)))
-            var redInt:   CUnsignedInt = 0
-            var greenInt: CUnsignedInt = 0
-            var blueInt:  CUnsignedInt = 0
-            NSScanner(string: redHex).scanHexInt(&redInt)
-            NSScanner(string: greenHex).scanHexInt(&greenInt)
-            NSScanner(string: blueHex).scanHexInt(&blueInt)
-            //TODO: use ColorParser.nsCOlor(r,g,b,a) here
-            return NSColor(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
-        }else {
-            print("clear color")
-            return NSColor()
+     /**
+     * NOTE: Supports 4 hex color formats: #FF0000,0xFF0000, FF0000, F00
+     */
+    func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
+        let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
+        if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
+            var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
+            if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
+            let rgb:UInt = UInt(Float(hex)!)
+            let r:UInt = rgb >> 16;
+            let g:UInt = (rgb ^ (r << 16)) >> 8;
+            let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
+            return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
+        }else{
+            fatalError("THE HEXCOLOR: " + hexColor + "IS IN THE WRONG FORMAT")
         }
     }
-   
 }
 
 extension ColorParser{
