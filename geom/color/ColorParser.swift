@@ -26,9 +26,9 @@ class ColorParser {
     * TODO: this does not work!!! more research needed, works on some hex ints but not all
     */
     class func nsColor(hexColor:Int, _ alpha: Float = 1.0)->NSColor{
-        let hexString = NSString(format: "%2X", hexColor)
+        let hexString:String = NSString(format: "%2X", hexColor) as String
         print("hexString:" + "\(hexString)")
-        return ColorParser.nsColor(String(hexString) , alpha)
+        return nsColor(hexString , alpha)
     }
     /**
     * NOTE: works for now (with colors like: "FF00FF" use Colors.swift)
