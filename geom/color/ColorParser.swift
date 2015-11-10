@@ -20,13 +20,8 @@ class ColorParser {
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
     }
     /**
-    * NOTE: works for now (with colors like: "FF00FF" use Colors.swift)
-    * TODO: Improve this, check your libs
-    * NOTE: the alpha support is nice
-    * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
-    */
-     /**
      * NOTE: Supports 4 hex color formats: #FF0000,0xFF0000, FF0000, F00
+     * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
      */
     class func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
         let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
