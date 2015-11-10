@@ -2,7 +2,7 @@ import Cocoa
 class ColorParser {
     private class func index(){
         cgColor(1, 0, 0, 1)//Output:CGColor that is red
-        nsColor(250, 0, 0,100)
+        nsColor(250.0, 0, 0,100)//output:NSColor that is red
     }
     /**
     * r: from 0.0 to 1.0
@@ -15,7 +15,7 @@ class ColorParser {
     /**
     * r: 0.0 - 255.0
     */
-    class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100)->NSColor{
+    class func nsColor(r:Double,_ g:Double,_ b:Double,_ a:Double = 100)->NSColor{
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 100.0)
     }
     /**
