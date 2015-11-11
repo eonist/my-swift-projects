@@ -190,8 +190,3 @@ extension Colors{
    static var darkGray:String = "8E8E93"
    static var lightGray:String = "C7C7CC"
 }
-/*
-
-
-
-
