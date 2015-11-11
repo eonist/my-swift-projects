@@ -97,4 +97,5 @@ class StringParser{
         let value:String = RegExp.value(string, match, 2)
         return Double(value)!
     }
+    
 }

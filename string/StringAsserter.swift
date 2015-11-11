@@ -40,4 +40,10 @@ class StringAsserter{
     class func digit(string:String)->Bool{
         return RegExp.test(string, "^-?\\d*?\\.?\\d*?(px)?$")
     }
+    /**
+     *
+     */
+    class func metric(string:String) -> Bool{
+        return RegExp.test(string, "^-?\\d*?\\.?\\d*?(ems|%)?$")
+    }
 }
