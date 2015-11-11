@@ -1,3 +1,4 @@
+import Foundation
 class StringParser{
     /*
      * Returns an array for every line in a string
@@ -91,7 +92,8 @@ class StringParser{
     class func digit(string:String)->Double{
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
-        
+        let match:NSTextCheckingResult = matches[0]
+        substringWithRange(match.rangeAtIndex(1))
         fatalError("")
         //return Number(match["value"]);
     }
