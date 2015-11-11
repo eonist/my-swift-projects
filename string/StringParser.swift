@@ -97,5 +97,10 @@ class StringParser{
         let value:String = RegExp.value(string, match, 2)
         return Double(value)!
     }
-    
+    /**
+     *
+     */
+    class func boolean(string:String) -> Bool {
+        return string == "true";
+    }
 }
