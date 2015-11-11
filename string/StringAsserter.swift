@@ -34,4 +34,10 @@ class StringAsserter{
     class func contains(a:String, _ b:String)->Bool{
         return a.rangeOfString(b) != nil
     }
+    /**
+     * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 20%, 0.2)
+     */
+    class func digit(string:String)->Bool{
+        return RegExp.test(string, "^-?\\d*?\\.?\\d*?(px)?$")
+    }
 }
