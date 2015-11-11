@@ -91,10 +91,13 @@ class StringParser{
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
     class func digit(string:String)->Double{
+        Swift.print("string: " + string)
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
         let match:NSTextCheckingResult = matches[0]
         let value:String = RegExp.value(string, match, 2)
+        Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+        Swift.print("value: " + value)
         return Double(value)!
     }
     /**
