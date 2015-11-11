@@ -89,8 +89,9 @@ class StringParser{
      * @Note if the digit has a trailing % character it is returned as a String
      */
     class func digit(string:String)->Double{
-        let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"
-        var match:Object = string.match(//);// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
+        let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
+        let matches = RegExp.matches(string, pattern)
+        
         fatalError("")
         //return Number(match["value"]);
     }
