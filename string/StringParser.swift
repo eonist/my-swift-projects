@@ -93,8 +93,7 @@ class StringParser{
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
         let match:NSTextCheckingResult = matches[0]
-        substringWithRange(match.rangeAtIndex(1))
-        fatalError("")
-        //return Number(match["value"]);
+        let value:String = RegExp.value(string, match, 2)
+        return Double(value)!
     }
 }
