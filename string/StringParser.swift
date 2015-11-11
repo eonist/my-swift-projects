@@ -103,4 +103,21 @@ class StringParser{
     class func boolean(string:String) -> Bool {
         return string == "true";
     }
+    /**
+     * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
+     */
+    class func color(hexColor:String, _ alpha: Float = 1.0) -> UInt{
+        //Swift.print("hexColor: " + "\(hexColor)")
+        let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
+        if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
+            var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
+            if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
+            //Swift.print("hex: " + "\(hex)")
+            return UInt(Float(hex)!)
+        }else{
+            let uintColor:UInt = ColorTypes.color(hexColor)
+            //Swift.print("uintColor: " + "\(uintColor)")
+            return uintColor;//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+        }
+    }
 }

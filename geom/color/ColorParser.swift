@@ -24,18 +24,8 @@ class ColorParser {
      * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
      */
     class func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
-        //Swift.print("hexColor: " + "\(hexColor)")
-        let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
-        if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
-            var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
-            if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
-            //Swift.print("hex: " + "\(hex)")
-            return nsColor(UInt(Float(hex)!),alpha)
-        }else{
-            let uintColor:UInt = ColorTypes.color(hexColor)
-            //Swift.print("uintColor: " + "\(uintColor)")
-            return nsColor(uintColor,alpha);//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
-        }
+        let uintColor:UInt = StringParser.color(hexColor)
+        return nsColor(uintColor,alpha);
     }
 }
 
