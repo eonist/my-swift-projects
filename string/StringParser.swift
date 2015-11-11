@@ -82,4 +82,16 @@ class StringParser{
     class func sansSuffix(str:String)->String{
         return String(str.characters.dropLast())
     }
+    /**
+     * Returns a digit as a Number or a String type (suffix are removed from the return value)
+     * @param string can be 10, 20px, -20px, 0.2px, -.2, 20%, 0.2
+     * @return a Numberor a String type
+     * @Note if the digit has a trailing % character it is returned as a String
+     */
+    class func digit(string:String)->Double{
+        let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"
+        var match:Object = string.match(//);// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
+        fatalError("")
+        //return Number(match["value"]);
+    }
 }
