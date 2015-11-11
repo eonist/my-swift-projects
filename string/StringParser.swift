@@ -88,6 +88,7 @@ class StringParser{
      * @param string can be 10, 20px, -20px, 0.2px, -.2, 20%, 0.2
      * @return a Numberor a String type
      * @Note if the digit has a trailing % character it is returned as a String
+     * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
     class func digit(string:String)->Double{
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
