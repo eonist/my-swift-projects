@@ -10,6 +10,12 @@ class ClassParser {
         return _stdlib_getDemangledTypeName(instance).componentsSeparatedByString(".").last!//This call is subjected to change in future versions of swift
         //return typeOf(instance)
     }
+    /**
+    *  Not tested
+    */
+   class func classType(instance:Any):AnyClass{
+      return instance.dynamicType
+   }
 }
 /*
 print("press")
