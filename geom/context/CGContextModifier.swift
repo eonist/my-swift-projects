@@ -9,6 +9,8 @@ public class CGContextModifier{
      * Clears the CGContext
      * EXAMPLE: CGContextModifier.clear(context,self.bounds)
      _ Note: there is also: CGTextDrawingMode.Invisible
+     * self.view.clearsContextBeforeDrawing = YES;
+     * a call to setNeedsDisplay may work
      */
     public class func clear(context:CGContext,_ bounds:NSRect){
         CGContextClearRect(context, bounds)
