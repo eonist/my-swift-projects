@@ -1,5 +1,3 @@
-import Foundation
-
-class ILayout {
-
+protocol ILayout{
+    init(_ args:Double...)
 }
