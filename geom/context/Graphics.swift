@@ -39,7 +39,7 @@ public class Graphics{
      * Note: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
      */
     public func fill(color:NSColor){
-        Swift.print("Graphics.fill()")
+        //Swift.print("Graphics.fill()")
         fillMode = FillMode.Color
         CGContextSetFillColorWithColor(context,color.CGColor)
     }
