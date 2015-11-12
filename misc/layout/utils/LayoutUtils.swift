@@ -5,6 +5,8 @@ class LayoutUtils {
      * Returns an instance from @param classType populated with values from @param array
      * @param value can be an array, if its a single value then its added to a new array
      * @param classType (Padding,Margin,Offset,OffsetType,Fillet)
+     * NOTE: remember to pass in the layoutClasstype as this: Fillet.self
+     * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
     class func instance(value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
         let params:Array<Double> = value is Array<Double> ? value as! Array<Double> : [Double(String(value))!]
