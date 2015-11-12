@@ -11,8 +11,19 @@ class ClassParser {
         //return typeOf(instance)
     }
     /**
-    *  Not tested
-    */
+     * Not tested
+     * Note: there is a good example of this in LayoutUtils.swift
+     * Example: 
+     * protocol ILayout{ init(_ a:String)}
+     * class A:ILayout{required init(_ a:String)}
+     * class B:ILayout{required init(_ a:String)}
+     * var instance:ILayout
+     * var classType:ILayout.Type
+     * classType = A.self
+     * instance = classType.init("abc")
+     * classType = B.self
+     * instance = classType.init("abc")
+     */
    class func classType(instance:Any)->Any{
       return instance.dynamicType
    }
