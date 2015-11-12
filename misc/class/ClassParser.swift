@@ -13,7 +13,7 @@ class ClassParser {
     /**
     *  Not tested
     */
-   class func classType(instance:Any):AnyClass{
+   class func classType(instance:Any)->Any{
       return instance.dynamicType
    }
 }
