@@ -11,6 +11,7 @@ public class CGContextModifier{
      _ Note: there is also: CGTextDrawingMode.Invisible
      * self.view.clearsContextBeforeDrawing = YES;
      * a call to setNeedsDisplay may work
+     * creating a zero width and height rect and clipping it, then drawing on to of that and then making a new clip. try chaing clip a few times to see this idea in effect
      */
     public class func clear(context:CGContext,_ bounds:NSRect){
         CGContextClearRect(context, bounds)
