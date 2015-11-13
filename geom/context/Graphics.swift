@@ -99,6 +99,7 @@ public class Graphics{
         let w = CGContextGetClipBoundingBox(context).width
         let h = CGContextGetClipBoundingBox(context).width
         CGContextClearRect(context, NSMakeRect(0, 0, w, h))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
+        CGContextEndTransparencyLayer(context);
     }
     /**
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
