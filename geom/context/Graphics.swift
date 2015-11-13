@@ -53,10 +53,12 @@ public class Graphics{
         self.cgGradient = GradientUtils.cgGradient(gradient)
     }
     /**
-     *
+     * Note: could use: CGContextGetPathBoundingBox
      */
     public func clear(){
-        CGContextClearRect(context, NSMakeRect(0, 0, dirtyRect.width, dirtyRect.height))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
+        let w = CGContextGetClipBoundingBox(context).width
+        let h = CGContextGetClipBoundingBox(context).width
+        CGContextClearRect(context, NSMakeRect(0, 0, w, h))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
     }
     /**
      * Set the current line style
