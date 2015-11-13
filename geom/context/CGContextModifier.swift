@@ -7,6 +7,7 @@ import Foundation
 public class CGContextModifier{
     /**
      * Clears the CGContext
+     * NOTE: it makes a black hole right through the window
      * EXAMPLE: CGContextModifier.clear(context,self.bounds)
      _ Note: there is also: CGTextDrawingMode.Invisible
      * self.view.clearsContextBeforeDrawing = YES;
