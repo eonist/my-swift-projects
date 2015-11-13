@@ -31,6 +31,7 @@ public class Graphics{
     public init(){
         self.graphicsContext = NSGraphicsContext.currentContext()!
         self.context = graphicsContext.CGContext/* Get the handle to the current context */
+        CGContextBeginTransparencyLayer(context, nil);
     }
     /**
      * Initiate filling
@@ -50,6 +51,12 @@ public class Graphics{
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
+    }
+    /**
+     *
+     */
+    public func clear(){
+        
     }
     /**
      * Set the current line style
