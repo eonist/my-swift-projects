@@ -56,7 +56,7 @@ public class Graphics{
      *
      */
     public func clear(){
-        
+        CGContextClearRect(context, NSMakeRect(0, 0, dirtyRect.width, dirtyRect.height))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
     }
     /**
      * Set the current line style
