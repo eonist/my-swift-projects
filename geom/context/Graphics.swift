@@ -53,14 +53,6 @@ public class Graphics{
         self.cgGradient = GradientUtils.cgGradient(gradient)
     }
     /**
-     * Note: could use: CGContextGetPathBoundingBox
-     */
-    public func clear(){
-        let w = CGContextGetClipBoundingBox(context).width
-        let h = CGContextGetClipBoundingBox(context).width
-        CGContextClearRect(context, NSMakeRect(0, 0, w, h))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
-    }
-    /**
      * Set the current line style
      * NOTE: there is also a CGContextStrokePath(context) method availbale
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
@@ -99,6 +91,14 @@ public class Graphics{
         strokeMode = StrokeMode.None
         //CGContextSetFillColorWithColor(context,NSColor.clearColor().CGColor)
         //test the end fill theory
+    }
+    /**
+     * Note: could use: CGContextGetPathBoundingBox
+     */
+    public func clear(){
+        let w = CGContextGetClipBoundingBox(context).width
+        let h = CGContextGetClipBoundingBox(context).width
+        CGContextClearRect(context, NSMakeRect(0, 0, w, h))//will now only clear graphics made after the CGContextBeginTransparencyLayer call was made
     }
     /**
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
