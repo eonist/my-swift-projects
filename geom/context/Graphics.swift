@@ -31,7 +31,6 @@ public class Graphics{
     public init(){
         self.graphicsContext = NSGraphicsContext.currentContext()!
         self.context = graphicsContext.CGContext/* Get the handle to the current context */
-        CGContextBeginTransparencyLayer(context, nil);//required to get the clear call to work properly
     }
     /**
      * Initiate filling
