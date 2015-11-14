@@ -16,4 +16,11 @@ class Graphic:FlippedView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    /**
+     *
+     */
+    override func drawRect(dirtyRect: NSRect) {
+        Swift.print("Graphic.drawRect() ")
+        super.drawRect(dirtyRect)
+    }
 }
