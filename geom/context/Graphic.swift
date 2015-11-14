@@ -1,6 +1,10 @@
 import Foundation
 
-class Graphix:FlippedView{
+
+//this class is incomplete
+
+
+class Graphic:FlippedView{
     var hasClear:Bool = false
     var graphics:Graphics
     init(_ width:Int = 400, _ height:Int = 400) {
