@@ -3,7 +3,7 @@ import Foundation
  * set needsDisplay = true to clear the graphics
  */
 class Graphic:FlippedView{
-    var graphics:Graphics?
+    var graphics:Graphics!
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
