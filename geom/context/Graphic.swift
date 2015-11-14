@@ -7,8 +7,10 @@ class Graphic:FlippedView{
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
-        graphics = Graphics()
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
+    }
+    override func drawRect(dirtyRect: NSRect) {
+        graphics = Graphics()
     }
     /*
      * Required by super class
