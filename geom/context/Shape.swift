@@ -1,5 +1,5 @@
 import Foundation
 
-class Shape {
+class Shape:FlippedView{
 
 }
