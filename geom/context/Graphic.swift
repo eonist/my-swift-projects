@@ -3,7 +3,7 @@ import Foundation
  * set needsDisplay = true to clear the graphics
  */
 class Graphic:FlippedView{
-    lazy var graphics: Graphics = {return Graphics()}()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
+    lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
 
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init() {
