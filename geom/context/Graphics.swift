@@ -39,7 +39,7 @@ public class Graphics{
      * Note: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
      */
     public func fill(color:NSColor){
-        //Swift.print("Graphics.fill()")
+        Swift.print("Graphics.fill()")
         fillMode = FillMode.Color
         CGContextSetFillColorWithColor(context,color.CGColor)
     }
@@ -95,6 +95,7 @@ public class Graphics{
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
      */
     public func draw(path:CGPath){
+        Swift.print("Grpahics.draw() ")
         CGContextAddPath(context,path)//Adds the path to the context
         
         switch true{
