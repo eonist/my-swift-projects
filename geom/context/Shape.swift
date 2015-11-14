@@ -23,9 +23,9 @@ class Shape:FlippedView{
         Swift.print("drawRect: " + "\(hasClear)")
         if(!hasClear){
             var path:CGPath = CGPathParser.rect(200,200)//Shapes
-            CGPathModifier.translate(&path,CGFloat(x),CGFloat(y))//Transformations
+            //CGPathModifier.translate(&path,CGFloat(x),CGFloat(y))//Transformations
             //graphics.line(12)//Stylize the line
-            graphics.fill(color)//Stylize the fill
+            //graphics.fill(color)//Stylize the fill
             graphics.draw(path)//draw everything
             hasClear = false;
         }
