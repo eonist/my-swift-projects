@@ -115,7 +115,7 @@ class StringParser{
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
-            //Swift.print("hex: " + "\(hex)")
+            Swift.print("hex: " + "\(hex)")
             return UInt(Float(hex)!)
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
