@@ -53,4 +53,10 @@ extension ColorParser{
         //Swift.print("b: " + "\(b)")
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
+    /*
+    * hexColor -> cgColor
+    */
+    class func cgColor(hexColor:UInt, _ alpha: Float = 1.0)->CGColor{
+        return nsColor(hexColor,alpha).CGColor
+    }
 }
