@@ -2,6 +2,9 @@ import Cocoa
 public enum GradientType:Int{//TODO:move to its own class?
     case Axial = 0, Radial//TODO: rename Axial to linear
 }
+/**
+ * EXAMPLE: let gradient:Gradient = Gradient([NSColor.blueColor().CGColor,NSColor.redColor().CGColor])
+ */
 public class Gradient:IGradient{
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
