@@ -1,3 +1,4 @@
+import Foundation
 class ClassAsserter{
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
@@ -12,9 +13,7 @@ class ClassAsserter{
      * object.dynamicType is Decoratable.Type//true
      * NOTE: beware of isKindOfClass vs isMemberOfClass
 	 */
-	class func isOfClass(instance:AnyObject,_ theClass:AnyClass)->Bool{
-        //needs more research
-		//return instance is theClass
-        return false
-	}
+    class func isOfClassType(obj:AnyObject,_ classType:AnyClass)->Bool{
+        return obj.isMemberOfClass(classType)
+    }
 }
