@@ -4,7 +4,7 @@ import Foundation
  */
 class Graphic:FlippedView{
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
-    var path:CGPath = CGPathCreateMutable()
+    var path:CGMutablePath = CGPathCreateMutable()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))

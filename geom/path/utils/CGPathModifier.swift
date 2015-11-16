@@ -7,7 +7,7 @@ public class CGPathModifier {
      * NOTE: there is also: CGPathCreateCopyByTransformingPath
      * EXAMPLE: CGPathModifier.translate(&path,20,20)
      */
-    public class func translate(inout path:CGPath,_ x:CGFloat = 0,_ y:CGFloat = 0)->CGPath{
+    public class func translate(inout path:CGMutablePath,_ x:CGFloat = 0,_ y:CGFloat = 0)->CGPath{
         var transformation:CGAffineTransform = CGAffineTransformMakeTranslation(x, y)
         path = CGPathCreateMutableCopyByTransformingPath(path, &transformation)!
         return path
