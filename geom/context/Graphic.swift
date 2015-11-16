@@ -23,7 +23,4 @@ class Graphic:FlippedView{
         Swift.print("Graphic.drawRect() ")
         super.drawRect(dirtyRect)
     }
-    func setPosition(position:CGPoint){
-        CGPathModifier.translate(&path,position.x,position.y)//Transformations
-    }
 }
