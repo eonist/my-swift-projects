@@ -28,5 +28,12 @@ class ClassAsserter{
      */
     class func isOfSame(a: AnyObject, _ b: AnyObject) -> Bool {
         return object_getClassName(a) == object_getClassName(b)
-    } 
+    }
+    class isOfProtocol(proto: Protocol,AnyClass) -> Bool {
+        if protocol_isEqual(proto, Foo.self) {
+            return FooImpl()
+        }
+        
+        // other type checking here
+    }
 }
