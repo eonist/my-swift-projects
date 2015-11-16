@@ -22,7 +22,9 @@ class ClassAsserter{
      * NOTE: it also supports checking core classes like String and Double etc
      * NOTE: it also supports checking a class agains another
      * EXAMPLE: instancesOfSameClass("","")//true
-     * EXAMPLE: instancesOfSameClass
+     * EXAMPLE: instancesOfSameClass("".dynamicType,"".dynamicType)//true
+     * EXAMPLE: 
+     * CAUTION: currently checking against protocols isnt supported
      */
     func instancesOfSameClass(a: AnyObject, _ b: AnyObject) -> Bool {
         return object_getClassName(a) == object_getClassName(b)
