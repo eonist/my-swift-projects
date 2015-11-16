@@ -145,9 +145,9 @@ private class Utils{
         
         CGContextSaveGState(context)
         CGContextClip(context);
-        if(gradient.gradientType == GradientType.Axial) {
+        if(gradient.gradientType == GradientType.Axial) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox)
-        }else{
+        }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox)
         }
         CGContextRestoreGState(context)
