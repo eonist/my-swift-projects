@@ -120,7 +120,7 @@ public class Graphics{
             case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
                 //Swift.print("gradient stroke")
                 Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-            case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
+            case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Gradient)://gradient  fill and gradient stroke
                 //Swift.print("gradient fill & gradient stroke")
                 Utils.drawGradientFill(path, context, gradient, cgGradient)
                 CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
