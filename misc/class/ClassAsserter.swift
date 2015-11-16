@@ -10,6 +10,7 @@ class ClassAsserter{
      * object.dynamicType is A.Type//true
      * object.dynamicType is B.Type//false
      * object.dynamicType is Decoratable.Type//true
+     * NOTE: beware of isKindOfClass vs isMemberOfClass
 	 */
 	class func isOfClass(instance:AnyObject,_ theClass:AnyClass)->Bool{
         //needs more research
