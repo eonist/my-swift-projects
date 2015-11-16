@@ -30,7 +30,7 @@ class ClassAsserter{
         return object_getClassName(a) == object_getClassName(b)
     }
     /**
-     *
+     * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true
      */
     class func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)
