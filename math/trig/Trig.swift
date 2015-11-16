@@ -3,6 +3,7 @@ class Trig{
     static var right:Double = 0;
     static var bottom:Double = 90;
     static var top:Double = 270;
+    static var rad:Double =  / 180;
     /**
      * Returns an angle in Degrees
      * @param angleType A string describing an angle in numeric value
