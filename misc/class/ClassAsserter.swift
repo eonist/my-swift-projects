@@ -2,6 +2,7 @@ import Foundation
 class ClassAsserter{
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
+     * CAUTION: doesnt work well with Double,String etc
      * IMPORTANT: doesnt work with protocols yet, do protocols as the example bellow:
      * EXAMPLE: 
      * protocol Decoratable{}
