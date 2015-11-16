@@ -1,11 +1,11 @@
 import Foundation
 class Trig{
-    static var π = M_PI
+    static var pi = M_PI//π
     static var left:Double = 180;
     static var right:Double = 0;
     static var bottom:Double = 90;
     static var top:Double = 270;
-    static var rad:Double = π / 180;
+    static var rad:Double = pi / 180;//㎭
     
     /**
      * Returns an angle in Degrees
