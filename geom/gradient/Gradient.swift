@@ -20,6 +20,7 @@ public class Gradient:IGradient{
             self.locations = locations
         }
         self.gradientType = gradientType
+        self.rotation = rotation
     }
 }
 
