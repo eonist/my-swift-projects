@@ -4,7 +4,7 @@ import Foundation
  */
 class Graphic:FlippedView{
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
-
+    var path:CGPath = CGPathCreateMutable()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
@@ -22,5 +22,8 @@ class Graphic:FlippedView{
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Graphic.drawRect() ")
         super.drawRect(dirtyRect)
+    }
+    func setPosition(position:CGPoint){
+        CGPathModifier.translate(&path,position.x,position.y)//Transformations
     }
 }
