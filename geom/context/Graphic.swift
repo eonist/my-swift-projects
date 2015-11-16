@@ -6,9 +6,6 @@ class Graphic:FlippedView{
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
     var path:CGPath = CGPathCreateMutable()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-    }
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
         //self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
