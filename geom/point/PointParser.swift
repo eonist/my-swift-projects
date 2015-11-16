@@ -1,12 +1,12 @@
 import Foundation
 class PointParser{
     /**
-     * @param radius: rotation (-π to π) (3.14.. to 3.14..)
-     * @param angle: the angle where the point is (in radians)
-     * @return a point on an ellipsis where the pivot is TopLeft Corner
+     * @param radius: the radius of the circle
+     * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
+     * @return a point on a circle where the pivot is TopLeft Corner (0,0)
      * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      */
-    class func polarPoint(radius:Double, angle:Double) -> (Double,Double) {
+    class func polarPoint(radius:Double, _ angle:Double) -> (Double,Double) {
         let x:Double = radius + (radius * cos(angle));
         let y:Double = radius + (radius * sin(angle));
         return (x, y);
