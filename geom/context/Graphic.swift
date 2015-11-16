@@ -24,3 +24,11 @@ class Graphic:FlippedView{
         super.drawRect(dirtyRect)
     }
 }
+extension CGMutablePath{
+    /**
+     *
+     */
+    func add(path:CGPath){
+        CGPathAddPath(self, nil, path)
+    }
+}
