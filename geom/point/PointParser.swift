@@ -5,9 +5,9 @@ class PointParser{
     * @return a point on an ellipsis where the pivot is TopLeft Corner
     * @Note: One can also use Point.polar(radius,radian)
     */
-    public static function polarPoint(radius:Number, angle:Number):Point {
-    var x:Number = radius + (radius * Math.cos(angle));
-    var y:Number = radius + (radius * Math.sin(angle));
+    class func polarPoint(radius:Double, angle:Double):Point {
+    var x:Double = radius + (radius * Math.cos(angle));
+    var y:Double = radius + (radius * Math.sin(angle));
     return new Point(x, y);
     }
 }
