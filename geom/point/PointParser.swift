@@ -1,3 +1,17 @@
+class PointParser{
+    /**
+    * @param radius: rotation
+    * @param angle: the angle where the point is (in radians)
+    * @return a point on an ellipsis where the pivot is TopLeft Corner
+    * @Note: One can also use Point.polar(radius,radian)
+    */
+    public static function polarPoint(radius:Number, angle:Number):Point {
+    var x:Number = radius + (radius * Math.cos(angle));
+    var y:Number = radius + (radius * Math.sin(angle));
+    return new Point(x, y);
+    }
+}
+
 /*
  * Equivalence Operators
  * Custom classes and structures do not receive a default implementation of the equivalence operators, known as the “equal to” operator (==) and “not equal to” operator (!=). It is not possible for Swift to guess what would qualify as “equal” for your own custom types, because the meaning of “equal” depends on the roles that those types play in your code.
