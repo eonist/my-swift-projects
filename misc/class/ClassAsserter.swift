@@ -2,7 +2,7 @@ import Foundation
 class ClassAsserter{
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
-     * IMPORTANT: This isnt possible yet to do via a method call but see the example on how to do this in a regular way:
+     * IMPORTANT: doesnt work with protocols yet, do protocols as the example bellow:
      * EXAMPLE: 
      * protocol Decoratable{}
      * class A:Decoratable{}
