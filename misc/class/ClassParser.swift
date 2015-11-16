@@ -4,6 +4,7 @@ class ClassParser {
     * NOTE: This works: (obj as! NSObject).className
     * Note: also works: String(obj)
     * NOTE: also works: classNameAsString(obj)
+    * NOTE: This also works: print(NSStringFromClass(someInstance.dynamicType))
     * Example: let someObj : typeof(anotheraObj) = typeof(anotheraObj)(arguments here)//this creates an instance from the class of another instance
     */
     class func getClass(instance:Any!)->String{
