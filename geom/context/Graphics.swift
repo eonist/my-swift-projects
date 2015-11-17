@@ -177,9 +177,9 @@ private class Utils{
         let topLeft:CGPoint = boundingBox.origin
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         let distance:CGFloat = topLeft.distance(center)
-        let a:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
+        let a:CGPoint = center.polarPoint(-distance, CGFloat(rotation))
         //Swift.print(a)
-        let b:CGPoint = .polarPoint(distance,-rotation) + a
+        let b:CGPoint = center.polarPoint(distance, CGFloat(rotation))
         //Swift.print(b)
         CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
