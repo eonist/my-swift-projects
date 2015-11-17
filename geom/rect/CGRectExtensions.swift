@@ -33,9 +33,11 @@ extension CGRect{
     
     subscript(key: String) -> CGPoint {
         get {
-            if key == "topLeft" {
+            switch
+            
+            if key == Alignment.topLeft {
                 return topLeft
-            } else if key == "topRight" {
+            } else if key == Alignment.topRight {
                 return topRight
             }else{
                 fatalError("UNSUPORTED CORNER TYPE: " + key)
