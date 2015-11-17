@@ -11,14 +11,15 @@ extension CGRect {
 }
 /*Convenient extensions*/
 extension CGRect{
-    init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){
-        self.origin = CGPoint(x,y)
-        self.size = CGSize(width: width,height: height)//add initializer to CGSize
-    }
+    /*Initialization*/
+    init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize(width: width,height: height);}//TODO:add initializer to CGSize
+    /*Position*/
     var x:CGFloat {set {origin.x = newValue} get {return origin.x} }
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
+    /*Size*/
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    /*Corners*/
     var topLeft:CGPoint {get {return self.origin} }
     var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
     var bottomRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
@@ -28,9 +29,7 @@ extension CGRect{
     var bottom:CGPoint {get {return CGPoint(self.midX, self.maxY)}}
     var left:CGPoint {get {return CGPoint(self.maxX, self.midY)}}
     var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
-    
-    //TODO:  support for double and int aswell, also for x,y
-    
+    /*Easy Access to corners*/
     subscript(key: String) -> CGPoint {
         get {
             switch key{
@@ -50,6 +49,7 @@ extension CGRect{
             fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(newValue))
         }
     }
+    //TODO:  support for double and int aswell, also for x,y
 }
 
 
