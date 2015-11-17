@@ -177,7 +177,8 @@ private class Utils{
     //continue here, you need to rotate a point from a point and extend it some length asy 100pixels, do this in playground with your graphics classes
     
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect){
-        let myStartPoint:CGPoint = CGPointMake(boundingBox.origin.x, boundingBox.origin.y)
+        
+        let myStartPoint:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(myStartPoint)
         let myEndPoint:CGPoint = CGPointMake(boundingBox.origin.x+boundingBox.width, boundingBox.origin.y+boundingBox.height)
         CGContextDrawLinearGradient(context, cgGradient, myStartPoint, myEndPoint, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
