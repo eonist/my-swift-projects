@@ -176,10 +176,10 @@ private class Utils{
         Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let topLeft:CGPoint = boundingBox.origin
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
-        let distance:CGFloat = topLeft.distance(<#T##a: CGPoint##CGPoint#>, b: <#T##CGPoint#>)
+        let distance:CGFloat = topLeft.distance(center)
         let a:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(a)
-        let b:CGPoint = PointParser.polarPoint(90,-rotation) + a
+        let b:CGPoint = PointParser.polarPoint(distance,-rotation) + a
         //Swift.print(b)
         CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }

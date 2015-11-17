@@ -3,26 +3,25 @@ import Foundation
 
 extension CGPoint{
     /**
-    * Returns the distance between two points
-    * @Note: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
-    * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
-    */
+     * @param radius: the radius of the circle
+     * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
+     * @return a point on a circle where the pivot is TopLeft Corner (0,0)
+     * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
+     */
+    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
+        let x:CGFloat = /*radius + */(radius * cos(angle));
+        let y:CGFloat = /*radius + */(radius * sin(angle));
+        return CGPoint(x, y);
+    }
+    /**
+     * Returns the distance between two points
+     * @Note: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
+     * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
+     */
     func distance(p:CGPoint) -> CGFloat {
         let xDifference:CGFloat = p.x-self.x;
         let yDifference:CGFloat = p.y-self.y;
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
-    }
-    /**
-     *
-     */
-    func add(p:CGPoint)->CGPoint{
-        return CGPointMake(x + p.x, y + p.y)
-    }
-    /**
-     *
-     */
-    func subtract(p:CGPoint)->CGPoint{
-        return CGPointMake(x - p.x, y - p.y)
     }
     /**
      * Init a CGPoint with Double values
