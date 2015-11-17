@@ -3,12 +3,18 @@ import Foundation
 
 extension CGPoint{
     /**
+     *
+     */
+    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
+        return self + CGPoint.polarPoint(radius, angle)
+    }
+    /**
      * @param radius: the radius of the circle
      * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
      * @return a point on a circle where the pivot is TopLeft Corner (0,0)
      * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      */
-    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
+    static func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
         let x:CGFloat = /*radius + */(radius * cos(angle));
         let y:CGFloat = /*radius + */(radius * sin(angle));
         return CGPoint(x, y);
