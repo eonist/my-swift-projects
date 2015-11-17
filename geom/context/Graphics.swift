@@ -147,7 +147,7 @@ private class Utils{
         CGContextSaveGState(context)
         CGContextClip(context);
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
-            drawAxialGradient(path, context, cgGradient, boundingBox)
+            drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox)
         }
@@ -163,7 +163,7 @@ private class Utils{
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
         if(lineGradient.gradientType == GradientType.Axial) {
-            drawAxialGradient(path, context, cgLineGradient, boundingBox)
+            drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient.rotation)
         }else{
             drawRadialGradient(path, context, cgLineGradient, boundingBox)
         }
@@ -172,7 +172,7 @@ private class Utils{
     /**
      * Axial gradient "Linear"
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect){
+    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:Double){
         let a:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(a)
         let b:CGPoint = PointParser.polarPoint(100,-Trig.pi/4*3) + a
