@@ -13,6 +13,7 @@ extension CGRect{
         self.origin = CGPoint(x,y)
         self.size = CGSize(width: width,height: height)//add initializer to CGSize
     }
+    var x:CGFloat {}
 }
 
 //make the conventient init with x,y etc and also implement x,y as get values
