@@ -1,22 +1,21 @@
 import Foundation
+/**
+ * Increments a CGPoint with the value of another.
+ */
+public func += (inout left: CGPoint, right: CGPoint) {
+    left = left + right
+}
+
+/**
+ * Adds two CGPoint values and returns the result as a new CGPoint.
+ */
+public func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
 
 extension CGPoint{
-    func +- (left: Vector2D, right: Vector2D) -> Vector2D {
-        return Vector2D(x: left.x + right.x, y: left.y - right.y)
-    }
-    /**
-     * Adds two CGPoint values and returns the result as a new CGPoint.
-     */
-    func + (left: CGPoint, right: CGPoint) -> CGPoint {
-        return CGPoint(x: left.x + right.x, y: left.y + right.y)
-    }
     
-    /**
-     * Increments a CGPoint with the value of another.
-     */
-    public func += (inout left: CGPoint, right: CGPoint) {
-        left = left + right
-    }
+   
     /**
      *
      */
