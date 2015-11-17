@@ -33,25 +33,32 @@ extension CGRect{
     
     subscript(key: String) -> CGPoint {
         get {
-            switch
-            
-            if key == Alignment.topLeft {
+            switch key{
+            case Alignment.topLeft:
                 return topLeft
-            } else if key == Alignment.topRight {
-                return topRight
-            }else{
+            case Alignment.topRight:
+                return topLeft
+            case Alignment.bottomRight:
+                return topLeft
+            case Alignment.bottomLeft:
+                return topLeft
+            case Alignment.top:
+                return topLeft
+            case Alignment.bottom:
+                return topLeft
+            case Alignment.left:
+                return topLeft
+            case Alignment.right:
+                return topLeft
+            case Alignment.center:
+                return topLeft
+            default:
                 fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
-        /*
         set {
-            if key == "nid" {
-                nid = newValue
-            } else if key == "title" {
-                title = newValue
-            }
+            fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(newValue))
         }
-        */
     }
 }
 
