@@ -9,7 +9,6 @@ class Point {
     }
 }
 extension Point{
-    override var x { get{return CGFloat(3)}}
     /**
      *
      */
