@@ -19,8 +19,12 @@ extension CGRect{
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    var topLeft:CGPoint {get {return self.origin} }
+    var center:CGPoint {get {return CGPoint(self.midX, self.midY)}}
+    var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
+    var bottomRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
+    var topRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
     
-    var topLeft:CGPoint = CGRect
     //TODO:  support for double and int aswell, also for x,y
     
     /*
