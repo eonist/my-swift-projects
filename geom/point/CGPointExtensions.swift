@@ -22,7 +22,7 @@ extension CGPoint{
         let xDifference:CGFloat = b.x-a.x;
         let yDifference:CGFloat = b.y-a.y;
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
-    }  
+    }
 }
 /*Convenient extensions*/
 extension CGPoint{
