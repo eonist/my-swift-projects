@@ -20,6 +20,26 @@ extension CGRect{
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
     //TODO:  support for double and int aswell, also for x,y
+    
+    /*
+    subscript(key: String) -> String? {
+        get {
+            if key == "nid" {
+                return nid
+            } else if key == "title" {
+                return title
+            }
+            return nil
+        }
+        set {
+            if key == "nid" {
+                nid = newValue
+            } else if key == "title" {
+                title = newValue
+            }
+        }
+    }
+    */
 }
 
 
