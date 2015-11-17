@@ -33,4 +33,11 @@ class NumbeParser{
         }
         return sum;
     }
+    /** 
+     * Linearly interpolation (lerp)
+     * EXAMPLE: interpolate(5, 15, 0.5) //10
+     */
+    class func interpolate( fromValue: Double, _ toValue: Double, _ fraction: Double) -> Double {
+        return fraction * (toValue - fromValue) + fromValue
+    }
 }
