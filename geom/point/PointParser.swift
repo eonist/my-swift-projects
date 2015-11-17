@@ -7,8 +7,8 @@ class PointParser{
      * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      */
     class func polarPoint(radius:Double, _ angle:Double) -> (x:Double,y:Double) {
-        let x:Double = radius + (radius * cos(angle));
-        let y:Double = radius + (radius * sin(angle));
+        let x:Double = /*radius + */(radius * cos(angle));
+        let y:Double = /*radius + */(radius * sin(angle));
         return (x, y);
     }
 }
