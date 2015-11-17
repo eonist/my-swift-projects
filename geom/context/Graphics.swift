@@ -180,7 +180,9 @@ private class Utils{
         
         let myStartPoint:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(myStartPoint)
-        let myEndPoint:CGPoint = CGPointMake(boundingBox.origin.x+boundingBox.width, boundingBox.origin.y+boundingBox.height)
+        let polarPoint = PointParser.polarPoint(100,-Trig.pi/4*3)
+        
+        let myEndPoint:CGPoint = CGPoint(myStartPoint.x + polarPoint.x, myStartPoint.y + polarPoint.y)
         CGContextDrawLinearGradient(context, cgGradient, myStartPoint, myEndPoint, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
