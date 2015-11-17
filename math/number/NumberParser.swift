@@ -35,9 +35,12 @@ class NumbeParser{
     }
     /** 
      * Linearly interpolation (lerp)
+     * @param a: start number
+     * @param b: end number
+     * @param fraction: interpolation value (between 0 - 1)
      * EXAMPLE: interpolate(5, 15, 0.5) //10
      */
-    class func interpolate( fromValue: Double, _ toValue: Double, _ fraction: Double) -> Double {
-        return fraction * (toValue - fromValue) + fromValue
+    class func interpolate( a: Double, _ b: Double, _ fraction: Double) -> Double {
+        return fraction * (b - a) + a
     }
 }
