@@ -10,7 +10,8 @@ extension CGRect {
 }
 extension CGRect{
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){
-        init(x: x,y: y,width: width,height: height)
+        self.origin = CGPoint(x,y)
+        self.size = CGSize(width: width,height: height)//add initializer to CGSize
     }
 }
 
