@@ -20,10 +20,14 @@ extension CGRect{
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
     var topLeft:CGPoint {get {return self.origin} }
-    var center:CGPoint {get {return CGPoint(self.midX, self.midY)}}
     var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
     var bottomRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
-    var topRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
+    var topRight:CGPoint {get {return CGPoint(self.maxX, self.minY)}}
+    var center:CGPoint {get {return CGPoint(self.midX, self.midY)}}
+    var top:CGPoint {get {return CGPoint(self.midX, self.minY)}}
+    var bottom:CGPoint {get {return CGPoint(self.midX, self.maxY)}}
+    var left:CGPoint {get {return CGPoint(self.maxX, self.midY)}}
+    var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
     
     //TODO:  support for double and int aswell, also for x,y
     
