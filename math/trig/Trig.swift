@@ -1,7 +1,6 @@
 import Foundation
 class Trig{
     static var pi = M_PI//π
-    typealias π
     static var π = pi
     static var left:Double = 180;
     static var right:Double = 0;
