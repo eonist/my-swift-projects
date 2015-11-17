@@ -176,9 +176,9 @@ private class Utils{
         Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let a:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(a)
-        let b:CGPoint = PointParser.polarPoint(50,rotation) + a
+        let b:CGPoint = PointParser.polarPoint(90,-rotation) + a
         //Swift.print(b)
-        CGContextDrawLinearGradient(context, cgGradient, a, b, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
