@@ -8,8 +8,6 @@ class Trig{
     static var top:Double = 270;
     static var rad:Double = pi / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:Double = 180 / M_PI;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
-    
-    
     /**
      * Returns an angle in Degrees
      * @param angleType A string describing an angle in numeric value
@@ -30,18 +28,16 @@ class Trig{
         let angle = CGFloat(0.0)
         return (radius,angle)
     }
-    
     /**
      * Converts an angle in degrees to radians.
      */
     class func degrees(radians:Double) -> Double {
-        return Trig.pi * radians / 180.0
+        return π * radians / 180.0
     }
-    
     /**
      * Converts an angle in radians to degrees.
      */
-    public func radians(degrees:Double) -> Double {
-        return self * 180.0 / Trig.pi
+    class func radians(degrees:Double) -> Double {
+        return degrees * 180.0 / π
     }
 }
