@@ -1,12 +1,14 @@
 import Foundation
 class Trig{
     static var pi = M_PI//π
+    typealias π
+    static var π = pi
     static var left:Double = 180;
     static var right:Double = 0;
     static var bottom:Double = 90;
     static var top:Double = 270;
     static var rad:Double = pi / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
-    static var deg:Double = 180 / Math.PI;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
+    static var deg:Double = 180 / M_PI;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
     
     
     /**
@@ -33,14 +35,14 @@ class Trig{
     /**
      * Converts an angle in degrees to radians.
      */
-    public func degreesToRadians() -> CGFloat {
-        return π * self / 180.0
+    class func degrees(radians:Double) -> Double {
+        return Trig.pi * radians / 180.0
     }
     
     /**
      * Converts an angle in radians to degrees.
      */
     public func radians(degrees:Double) -> Double {
-        return self * 180.0 / π
+        return self * 180.0 / Trig.pi
     }
 }
