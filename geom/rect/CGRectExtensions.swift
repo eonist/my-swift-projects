@@ -19,3 +19,6 @@ extension CGRect{
         
     
 }
+
+
+//add setter to width and support for double and int aswell, also for x,y
