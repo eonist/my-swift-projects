@@ -27,4 +27,18 @@ class Trig{
         let angle = CGFloat(0.0)
         return (radius,angle)
     }
+    
+    /**
+     * Converts an angle in degrees to radians.
+     */
+    public func degreesToRadians() -> CGFloat {
+        return π * self / 180.0
+    }
+    
+    /**
+     * Converts an angle in radians to degrees.
+     */
+    public func radiansToDegrees() -> CGFloat {
+        return self * 180.0 / π
+    }
 }
