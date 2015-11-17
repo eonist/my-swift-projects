@@ -31,14 +31,14 @@ extension CGRect{
     
     //TODO:  support for double and int aswell, also for x,y
     
-    subscript(key: String) -> CGPoint? {
+    subscript(key: String) -> CGPoint {
         get {
             if key == "topLeft" {
                 return topLeft
             } else if key == "topRight" {
                 return topRight
             }else{
-                fatalError("NO CORNER TYPE OF: " + key)
+                fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
         /*
