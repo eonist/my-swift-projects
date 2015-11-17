@@ -4,14 +4,13 @@ extension CGPoint{
     /**
      *
      */
-    mutating func add(p:CGPoint)->CGPoint{
-        x += p.x
-        y += p.y
-        return self
+    func add(p:CGPoint)->CGPoint{
+        return CGPointMake(x + p.x, y + p.y)
     }
-    mutating func subtract(p:CGPoint)->CGPoint{
-        x -= p.x
-        y -= p.y
-        return self
+    /**
+     *
+     */
+    func subtract(p:CGPoint)->CGPoint{
+        return CGPointMake(x - p.x, y - p.y)
     }
 }
