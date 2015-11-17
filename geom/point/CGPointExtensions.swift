@@ -22,31 +22,13 @@ extension CGPoint{
         let xDifference:CGFloat = b.x-a.x;
         let yDifference:CGFloat = b.y-a.y;
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
-    }
-    /**
-     * Init a CGPoint with Double values
-     */
-    init(_ x: Double, _ y:Double) {
-        self.x = CGFloat(x)
-        self.y = CGFloat(y)
-    }
-    /**
-     * Init a CGPoint with Int values
-     */
-    init(_ x: Int, _ y:Int) {
-        self.x = CGFloat(x)
-        self.y = CGFloat(y)
-    }
-    /**
-     * Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
-     */
-    init(_ x: CGFloat, _ y:CGFloat) {
-        self.x = x
-        self.y = y
-    }
+    }  
 }
 /*Convenient extensions*/
 extension CGPoint{
-    func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }
-    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) } 
+    func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
+    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
+    init(_ x: Double, _ y:Double) { self.x = CGFloat(x); self.y = CGFloat(y); }//Init a CGPoint with Double values
+    init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }//Init a CGPoint with Int values
+    init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
 }
