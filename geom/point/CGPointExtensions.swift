@@ -3,6 +3,16 @@ import Foundation
 
 extension CGPoint{
     /**
+    * Returns the distance between two points
+    * @Note: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
+    * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
+    */
+    func distance(p:CGPoint) -> CGFloat {
+        let xDifference:CGFloat = p.x-self.x;
+        let yDifference:CGFloat = p.y-self.y;
+        return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
+    }
+    /**
      *
      */
     func add(p:CGPoint)->CGPoint{

@@ -176,7 +176,7 @@ private class Utils{
         Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let topLeft:CGPoint = boundingBox.origin
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
-        let distance:CGFloat = topLeft.
+        let distance:CGFloat = topLeft.distance(<#T##a: CGPoint##CGPoint#>, b: <#T##CGPoint#>)
         let a:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         //Swift.print(a)
         let b:CGPoint = PointParser.polarPoint(90,-rotation) + a
