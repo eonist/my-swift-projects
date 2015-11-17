@@ -43,4 +43,10 @@ class NumbeParser{
     class func interpolate( a: Double, _ b: Double, _ fraction: Double) -> Double {
         return fraction * (b - a) + a
     }
+    /**
+     * Clips a value so that it falls between the specified minimum and maximum.
+     */
+    public func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {
+        return max(min(value, maxValue), minValue)
+    }
 }
