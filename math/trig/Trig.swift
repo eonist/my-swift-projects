@@ -18,4 +18,13 @@ class Trig{
         else if(angleType == "top") {return top}
         else {/*bottom*/ return bottom}
     }
+    /**
+     * Needs code
+     */
+    func cartesianToPolar(point:CGPoint)->(radius:CGFloat,angle:CGFloat){
+        /* do some math here to get radius and angle */
+        let radius = CGFloat(0.0)
+        let angle = CGFloat(0.0)
+        return (radius,angle)
+    }
 }
