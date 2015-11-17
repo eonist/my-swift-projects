@@ -9,5 +9,16 @@ class Point {
     }
 }
 extension Point{
-    
+    override var x:CGFloat get {return 0}
+    /**
+     *
+     */
+    func add(p:Point){
+        x += p.x
+        y += p.y
+    }
+    func subtract(p:Point){
+        x -= p.x
+        y -= p.y
+    }
 }
