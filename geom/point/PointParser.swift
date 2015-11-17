@@ -6,10 +6,10 @@ class PointParser{
      * @return a point on a circle where the pivot is TopLeft Corner (0,0)
      * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      */
-    class func polarPoint(radius:Double, _ angle:Double) -> (x:Double,y:Double) {
+    class func polarPoint(radius:Double, _ angle:Double) -> CGPoint {
         let x:Double = /*radius + */(radius * cos(angle));
         let y:Double = /*radius + */(radius * sin(angle));
-        return (x, y);
+        return CGPoint(x, y);
     }
 }
 
