@@ -3,12 +3,6 @@ import Foundation
 
 extension CGPoint{
     /**
-     *
-     */
-    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
-        return self + CGPoint.polarPoint(radius, angle)
-    }
-    /**
      * @param radius: the radius of the circle
      * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
      * @return a point on a circle where the pivot is TopLeft Corner (0,0)
@@ -18,9 +12,6 @@ extension CGPoint{
         let x:CGFloat = /*radius + */(radius * cos(angle));
         let y:CGFloat = /*radius + */(radius * sin(angle));
         return CGPoint(x, y);
-    }
-    func distance(p:CGPoint) -> CGFloat {
-        return CGPoint.distance(self,p)
     }
     /**
      * Returns the distance between two points
@@ -54,7 +45,11 @@ extension CGPoint{
         self.y = y
     }
 }
-
+/*Convenient extensions*/
+extension CGPoint{
+    func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }
+    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) } 
+}
 /**
  * Increments a CGPoint with the value of another.
  */
