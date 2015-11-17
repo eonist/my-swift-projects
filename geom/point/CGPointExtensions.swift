@@ -29,6 +29,11 @@ extension CGPoint{
         let yDifference:CGFloat = p.y-self.y;
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
     }
+    static func distance(a:CGPoint,b:CGPoint){
+        let xDifference:CGFloat = b.x-a.x;
+        let yDifference:CGFloat = b.y-a.y;
+        return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
+    }
     /**
      * Init a CGPoint with Double values
      */
