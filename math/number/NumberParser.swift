@@ -44,9 +44,9 @@ class NumbeParser{
         return fraction * (b - a) + a
     }
     /**
-     * Clips a value so that it falls between the specified minimum and maximum.
+     * Returns the number if its within min-max returns min if its lower and max if its higher
      */
-    public func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {
+    class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {
         return max(min(value, maxValue), minValue)
     }
 }
