@@ -5,7 +5,9 @@ class Trig{
     static var right:Double = 0;
     static var bottom:Double = 90;
     static var top:Double = 270;
-    static var rad:Double = pi / 180;//㎭
+    static var rad:Double = pi / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
+    static var deg:Number = 180 / Math.PI;
+    
     
     /**
      * Returns an angle in Degrees
