@@ -31,16 +31,17 @@ extension CGRect{
     
     //TODO:  support for double and int aswell, also for x,y
     
-    /*
-    subscript(key: String) -> String? {
+    subscript(key: String) -> CGPoint? {
         get {
-            if key == "nid" {
-                return nid
-            } else if key == "title" {
-                return title
+            if key == "topLeft" {
+                return topLeft
+            } else if key == "topRight" {
+                return topRight
+            }else{
+                fatalError("NO CORNER TYPE OF: " + key)
             }
-            return nil
         }
+        /*
         set {
             if key == "nid" {
                 nid = newValue
@@ -48,8 +49,8 @@ extension CGRect{
                 title = newValue
             }
         }
+        */
     }
-    */
 }
 
 
