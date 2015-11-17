@@ -1,5 +1,5 @@
 import Foundation
-class CGPointParser{
+class PointParser{
     /**
      * @param radius: the radius of the circle
      * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
