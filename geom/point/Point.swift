@@ -9,6 +9,7 @@ class Point {
     }
 }
 extension Point{
+    var z : String { get { return "YinA"; } }
     /**
      *
      */
