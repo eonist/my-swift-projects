@@ -19,6 +19,8 @@ extension CGRect{
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    
+    var topLeft:CGPoint = CGRect
     //TODO:  support for double and int aswell, also for x,y
     
     /*
