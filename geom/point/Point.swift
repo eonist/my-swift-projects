@@ -1,5 +1,5 @@
 import Foundation
-
+/*
 class Point{
     var cgPoint:CGPoint = CGPoint()
     var x:Double {return 0}
@@ -22,3 +22,4 @@ extension Point{
         y -= p.y
     }
 }
+*/
