@@ -22,3 +22,16 @@ extension Point{
         y -= p.y
     }
 }
+
+extension Point
+{
+    // THESE OVERIDES DO COMPILE:
+    override var  z : String { get { return "YinB"; } }
+    
+    
+    // THESE OVERIDES DO NOT COMPILE:
+    //override func h(val: NotSubbed, test: Bool = false) { }
+    //override func j(val: SomeEnum) { }
+    //override func k(val: SubNSObject, inout test: Bool) { }
+    
+}
