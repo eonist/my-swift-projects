@@ -1,6 +1,9 @@
 import Foundation
 
 extension CGPoint{
+    func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y - right.y)
+    }
     /**
      * Adds two CGPoint values and returns the result as a new CGPoint.
      */
