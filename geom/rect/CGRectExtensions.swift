@@ -2,7 +2,8 @@ import Foundation
 
 extension CGRect {
     /**
-     *
+     * Clones CGRect
+     * EXAMPLE: CGRect(0,0,100,100).clone()
      */
     func clone()->CGRect{
         return CGRect(self.origin.x,self.origin.y,self.width,self.height)
@@ -18,7 +19,7 @@ extension CGRect{
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
     var width:CGFloat {set {size.width = newValue} get {return size.width} }
     var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    //TODO:  support for double and int aswell, also for x,y
 }
 
 
-//add setter to width and support for double and int aswell, also for x,y
