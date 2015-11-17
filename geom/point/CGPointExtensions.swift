@@ -2,6 +2,19 @@ import Foundation
 
 extension CGPoint{
     /**
+     * Adds two CGPoint values and returns the result as a new CGPoint.
+     */
+    func + (left: CGPoint, right: CGPoint) -> CGPoint {
+        return CGPoint(x: left.x + right.x, y: left.y + right.y)
+    }
+    
+    /**
+     * Increments a CGPoint with the value of another.
+     */
+    public func += (inout left: CGPoint, right: CGPoint) {
+        left = left + right
+    }
+    /**
      *
      */
     func add(p:CGPoint)->CGPoint{
