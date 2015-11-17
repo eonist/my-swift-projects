@@ -21,6 +21,13 @@ extension CGPoint{
         self.x = CGFloat(x)
         self.y = CGFloat(y)
     }
+    /**
+     * Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
+     */
+    init(_ x: CGFloat, _ y:CGFloat) {
+        self.x = CGFloat(x)
+        self.y = CGFloat(y)
+    }
 }
 
 /**
