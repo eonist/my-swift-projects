@@ -21,6 +21,7 @@ extension CGRect{
     /*Initialization*/
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize(width: width,height: height);}//TODO:add initializer to CGSize
     init(_ x:Double,_ y:Double,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize(width: width,height: height);}//TODO:add initializer to CGSize
+    init(_ x:CGFloat,_ y:CGFloat,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize(width: width,height: height);}//TODO:add initializer to CGSize
     /*Position*/
     var x:CGFloat {set {origin.x = newValue} get {return origin.x} }
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
