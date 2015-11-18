@@ -42,14 +42,14 @@ extension CGRect{
         get {
             switch key{
                case Alignment.topLeft:return topLeft
-               case Alignment.topRight:return topLeft
-               case Alignment.bottomRight:return topLeft
-               case Alignment.bottomLeft:return topLeft
-               case Alignment.top:return topLeft
-               case Alignment.bottom:return topLeft
-               case Alignment.left:return topLeft
-               case Alignment.right:return topLeft
-               case Alignment.center:return topLeft
+               case Alignment.topRight:return topRight
+               case Alignment.bottomRight:return bottomRight
+               case Alignment.bottomLeft:return bottomLeft
+               case Alignment.top:return top
+               case Alignment.bottom:return bottom
+               case Alignment.left:return left
+               case Alignment.right:return right
+               case Alignment.center:return center
                default:fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
