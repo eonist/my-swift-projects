@@ -16,7 +16,7 @@ class CGRectParser{
     /**
      * Create a path using the coordinates of the rect passed in
      */
-    class func path(rect:CGRect)->CGPath{
+    class func path(rect:CGRect)->CGMutablePath{
         let path:CGMutablePath = CGPathCreateMutable()
         Swift.print(path)
         CGPathMoveToPoint(path, nil, rect.origin.x, rect.origin.y)
