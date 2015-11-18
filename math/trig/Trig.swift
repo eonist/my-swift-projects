@@ -1,5 +1,5 @@
 import Foundation
-typealias ㎭ = Trig.rad
+var ㎭ = Trig.rad
 class Trig{
     static var pi = M_PI//π
     static var π = pi
