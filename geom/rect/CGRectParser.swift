@@ -1,5 +1,5 @@
 import Cocoa
-class RectParser{
+class CGRectParser{
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
      */

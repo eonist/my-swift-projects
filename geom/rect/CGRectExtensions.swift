@@ -9,10 +9,11 @@ extension CGRect {
         return CGRect(self.origin.x,self.origin.y,self.width,self.height)
     }
     /**
-     *
+     * Create a path using the coordinates of the rect passed in
+     * EXAMPLE: CGRect(0,0,100,100).path
      */
     func path()->CGPath{
-        
+        return CGRectParser.path(self)
     }
 }
 /*Convenient extensions*/
