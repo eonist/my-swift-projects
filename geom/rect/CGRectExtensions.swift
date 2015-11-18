@@ -8,6 +8,12 @@ extension CGRect {
     func clone()->CGRect{
         return CGRect(self.origin.x,self.origin.y,self.width,self.height)
     }
+    /**
+     *
+     */
+    func path()->CGPath{
+        
+    }
 }
 /*Convenient extensions*/
 extension CGRect{
