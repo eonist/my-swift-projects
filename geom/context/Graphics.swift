@@ -95,7 +95,7 @@ public class Graphics{
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
      */
     public func draw(path:CGPath){
-        Swift.print("Grpahics.draw() ")
+        //Swift.print("Grpahics.draw() ")
         CGContextAddPath(context,path)//Adds the path to the context
         
         switch true{
@@ -103,7 +103,7 @@ public class Graphics{
                 //Swift.print("fill")
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Color)://color stroke  only
-                Swift.print("stroke")
+                //Swift.print("stroke")
                 CGContextDrawPath(context, CGPathDrawingMode.Stroke)
             case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.Color)://fill and stroke
                 //Swift.print("fill & stroke")
