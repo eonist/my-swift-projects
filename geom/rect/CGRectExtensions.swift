@@ -12,9 +12,7 @@ extension CGRect {
      * Create a path using the coordinates of the rect passed in
      * EXAMPLE: CGRect(0,0,100,100).path
      */
-    func path()->CGMutablePath{
-        return CGRectParser.path(self)
-    }
+    var path:CGMutablePath{return CGRectParser.path(self)}
 }
 /*Convenient extensions*/
 extension CGRect{
