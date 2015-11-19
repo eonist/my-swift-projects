@@ -1,3 +1,3 @@
 protocol ILayout{
-    init(_ args:Double...)
+    //init(_ args:Double...)
 }
