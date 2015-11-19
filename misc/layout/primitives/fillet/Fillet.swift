@@ -2,6 +2,7 @@ import Foundation
 /**
  * A fillet is a class that represents the curved corners of a rectangle (DataContainer, Bean style class)
  * // :TODO: refactor to be TRBL or?
+ * TODO: this should probably use GEnerics, to get rid of the casting
  */
 class Fillet:ILayout {
     var topLeft:CGFloat;
