@@ -10,7 +10,7 @@ class OffsetType:ILayout{
     var right:String
     var top:String
     var bottom:String
-    init(args:String...){
+    init(args:Any...){
         switch(args.count){
         case 0: left = OffsetType.center; right = OffsetType.center; top = OffsetType.center; bottom = OffsetType.center
         case 1: left = args[0]; right = args[0]; top = args[0]; bottom = args[0];

@@ -8,7 +8,7 @@ class Fillet:ILayout {
     var topRight:Double;
     var bottomLeft:Double;
     var bottomRight:Double;
-    required init(_ args:Double...) {//TODO:you may need to add the _ char infront of args
+    required init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
         switch(args.count){
 				case 0: topLeft = 0; topRight = 0; bottomLeft = 0; bottomRight = 0; break;
 				case 1: topLeft = args[0];topRight = args[0];bottomLeft = args[0];bottomRight = args[0]; break;
