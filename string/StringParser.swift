@@ -90,7 +90,7 @@ class StringParser{
      * @Note if the digit has a trailing % character it is returned as a String
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
-    class func digit(string:String)->Double{
+    class func digit(string:String)->CGFloat{
         //Swift.print("string: " + string)
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
@@ -98,7 +98,7 @@ class StringParser{
         let value:String = RegExp.value(string, match, 1)
         //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
         //Swift.print("value: " + value)
-        return Double(value)!
+        return CGFloat(Double(value)!)
     }
     /**
      *
