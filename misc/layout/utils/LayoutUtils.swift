@@ -9,7 +9,7 @@ class LayoutUtils {
      * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
     class func instance(value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
-        let params:Array<Any> = value is Array<Any> ? value as! Array<Any> : [Double(String(value))!]
+        let params:Array<Any> = value is Array<Any> ? value as! Array<Any> : [value]
         let classType:ILayout.Type = layoutClassType
         var instance:ILayout
         switch(params.count){
