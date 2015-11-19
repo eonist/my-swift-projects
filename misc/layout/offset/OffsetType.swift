@@ -10,13 +10,14 @@ class OffsetType:ILayout{
     var right:String
     var top:String
     var bottom:String
-    init(args:Any...){
+    required init(_ params:Any...){
+        let args:Array<String> = params as! Array<String>
         switch(args.count){
-        case 0: left = OffsetType.center; right = OffsetType.center; top = OffsetType.center; bottom = OffsetType.center
-        case 1: left = args[0]; right = args[0]; top = args[0]; bottom = args[0];
-        case 2: left = args[0]; right = args[0];top = args[1]; bottom = args[1];
-        case 3: left = args[0];right = args[1];top = args[2];bottom = OffsetType.center;
-        default: left = args[0];right = args[1];top = args[2];bottom = args[3]; /*length >= 4*/
+            case 0: left = OffsetType.center; right = OffsetType.center; top = OffsetType.center; bottom = OffsetType.center
+            case 1: left = args[0]; right = args[0]; top = args[0]; bottom = args[0];
+            case 2: left = args[0]; right = args[0];top = args[1]; bottom = args[1];
+            case 3: left = args[0];right = args[1];top = args[2];bottom = OffsetType.center;
+            default: left = args[0];right = args[1];top = args[2];bottom = args[3]; /*length >= 4*/
         }
     }
 }
