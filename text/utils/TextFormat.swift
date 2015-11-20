@@ -11,19 +11,19 @@ class TextFormat {
     subscript(key: String) -> Any {
         get {
             switch key{
-                case "background":return background
-                case "backgroundColor":return backgroundColor
-                case "selectable":return selectable
-                case "textColor":return textColor
+                case TextFormatConstants.background:return background
+                case TextFormatConstants.backgroundColor:return backgroundColor
+                case TextFormatConstants.selectable:return selectable
+                case TextFormatConstants.textColor:return textColor
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
         set {
             switch key{
-                case "background":background = newValue as! Bool
-                case "backgroundColor":backgroundColor = newValue as! NSColor
-                case "selectable":return selectable = newValue as! Bool
-                case "textColor":return textColor = newValue as! NSColor
+                case TextFormatConstants.background:background = newValue as! Bool
+                case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
+                case TextFormatConstants.selectable:return selectable = newValue as! Bool
+                case TextFormatConstants.textColor:return textColor = newValue as! NSColor
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
