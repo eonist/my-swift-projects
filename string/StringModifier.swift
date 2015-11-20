@@ -26,8 +26,8 @@ class StringModifier{
     /**
      * EXAMPLE: combine(["Andrew", "Ben", "John", "Paul", "Peter", "Laura"]," ")//"Andrew Ben John Paul Peter Laura"
      */
-    class func combine(strings:Array<String>, _ delimiter:String)->String{
-        return strings.joinWithSeparator(", ")
+    class func combine(strings:Array<String>, _ seperator:String = ", ")->String{
+        return strings.joinWithSeparator(seperator)
     }
 	/**
 	 *
