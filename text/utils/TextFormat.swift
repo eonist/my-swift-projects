@@ -22,8 +22,8 @@ class TextFormat {
             switch key{
                 case TextFormatConstants.background:background = newValue as! Bool
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
-                case TextFormatConstants.selectable:return selectable = newValue as! Bool
-                case TextFormatConstants.textColor:return textColor = newValue as! NSColor
+                case TextFormatConstants.selectable:selectable = newValue as! Bool
+                case TextFormatConstants.textColor:textColor = newValue as! NSColor
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
