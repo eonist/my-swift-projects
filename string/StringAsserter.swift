@@ -26,7 +26,8 @@ class StringAsserter{
      * Asserts if a string is the word true
      */
     class func boolean(string:String)->Bool{
-        return string == "true";
+        Swift.print("StringAsserter.boolean()")
+        return Bool(string == "true");
     }
     /*
      * Check if string contains another string
