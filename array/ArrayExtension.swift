@@ -1,5 +1,10 @@
 import Foundation
 
-class ArrayExtension {
-
+extension Array {
+    /**
+     *
+     */
+    func join(seperator:String)->String{
+        return StringModifier.combine(self as! Array<String>,seperator)
+    }
 }
