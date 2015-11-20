@@ -9,7 +9,6 @@ extension String {
     func split(delimiter:String)->Array<String>{
         return StringParser.split(self, delimiter)
     }
-    
     /**
      *
      */
