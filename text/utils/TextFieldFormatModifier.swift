@@ -4,7 +4,7 @@ class TextFieldFormatModifier {
     /**
      *
      */
-    class func applyTextFormat(textField:NSText,textFormat:TextFormat){
+    class func applyTextFormat(textField:NSText,_ textFormat:TextFormat){
         
     }
 }
