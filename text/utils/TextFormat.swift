@@ -22,7 +22,9 @@ class TextFormat {
             switch key{
                 case TextFormatConstants.background:background = newValue as! Bool
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
-                case TextFormatConstants.selectable:selectable = newValue as! Bool
+                case TextFormatConstants.selectable:
+                    Swift.print("newValue: " + "\(newValue)")
+                    selectable = newValue as! Bool
                 case TextFormatConstants.textColor:textColor = newValue as! NSColor
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
