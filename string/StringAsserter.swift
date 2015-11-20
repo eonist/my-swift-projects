@@ -26,7 +26,7 @@ class StringAsserter{
      * Asserts if a string is the word true
      */
     class func boolean(string:String)->Bool{
-        Swift.print("StringAsserter.boolean()")
+        Swift.print("StringAsserter.boolean()"+"\(Bool(string == "true").dynamicType)")
         return Bool(string == "true");
     }
     /*
