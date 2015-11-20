@@ -1,10 +1,10 @@
 import Foundation
 
-extension Array {
+extension Array where Element:String{
     /**
      *
      */
     func join(seperator:String)->String{
-        return StringModifier.combine(self as! Array<String>,seperator)
+        return StringModifier.combine(self,seperator)
     }
 }
