@@ -9,7 +9,7 @@ class TextFieldModifier {
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
-        textField.textColor = NSColor.orangeColor()
+        textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
     }
 }
