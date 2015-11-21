@@ -1,6 +1,6 @@
 import Cocoa
 
-class TextFieldFormatModifier {
+class TextFieldModifier {
     /**
      *
      */
