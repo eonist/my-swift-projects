@@ -4,7 +4,7 @@ class TextFormat {
     var background:Bool = false;
     var backgroundColor:NSColor = NSColor.clearColor()
     var selectable:Bool = false
-    var textColor:NSColor = NSColor.blackColor()
+    var color:NSColor = NSColor.blackColor()
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
@@ -17,7 +17,7 @@ class TextFormat {
                 case TextFormatConstants.background:return background
                 case TextFormatConstants.backgroundColor:return backgroundColor
                 case TextFormatConstants.selectable:return selectable
-                case TextFormatConstants.textColor:return textColor
+                case TextFormatConstants.color:return color
                 case TextFormatConstants.align:return align
                 case TextFormatConstants.font:return font
                 case TextFormatConstants.size:return size
@@ -30,7 +30,7 @@ class TextFormat {
                 case TextFormatConstants.background:background = newValue as! Bool
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
                 case TextFormatConstants.selectable:selectable = newValue as! Bool
-                case TextFormatConstants.textColor:textColor = newValue as! NSColor
+                case TextFormatConstants.color:color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
                 case TextFormatConstants.font:font = newValue as! String
                 case TextFormatConstants.size:size = newValue as! CGFloat
