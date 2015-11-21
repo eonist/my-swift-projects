@@ -8,9 +8,21 @@ class TextFieldModifier {
         textField.selectable = textFormat.selectable
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
-        let align:NSTextAlignment
-        if(){
-        textField.alignment = (textFormat.align)//Left,Right,Justified,Natural,Center
+        textField.alignment = Utils.alignment(textFormat)//Left,Right,Justified,Natural,Center
         textField.textColor = NSColor.orangeColor()
+    }
+}
+private class Utils{
+    /**
+     *
+     */
+    class func alignment(textFormat:TextFormat)->NSTextAlignment{
+        let align:NSTextAlignment
+        if(textFormat.align == "left"){align = NSTextAlignment.Left}
+        else if(textFormat.align == "right"){align = NSTextAlignment.Right}
+        else if(textFormat.align == "center"){align = NSTextAlignment.Center}
+        else if(textFormat.align == "justified"){align = NSTextAlignment.Justified}
+        else if(textFormat.align == "Natural"){align = NSTextAlignment.Natural}
+        return align
     }
 }
