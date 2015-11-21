@@ -10,15 +10,20 @@ class TextFieldModifier {
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = NSColor.orangeColor()
-        let timesRoman:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:"Times-Roman"])//NSForegroundColorAttributeName:NSColor.redColor(),
         
-
-        let font = NSFont(descriptor: timesRoman, size: 22)
-        text.font = font
+        textField.font = Utils.font(textFormat.font)
         //do font and size
     }
 }
 private class Utils{
+    /**
+     *
+     */
+    class func font(fontName:String){
+        let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName])//NSForegroundColorAttributeName:NSColor.redColor(),
+        let font = NSFont(descriptor: fontDescriptor, size: 22)
+        return font
+    }
     /**
      *
      */

@@ -6,7 +6,7 @@ class TextFormat {
     var selectable:Bool = false
     var textColor:NSColor = NSColor.blackColor()
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
-    var font:String = ""
+    var font:String = "Lucida Grande"
     init(){
         
     }
@@ -30,6 +30,7 @@ class TextFormat {
                 case TextFormatConstants.selectable:selectable = newValue as! Bool
                 case TextFormatConstants.textColor:textColor = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
+                case TextFormatConstants.font:font = newValue as! String
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
