@@ -7,6 +7,7 @@ class TextFormat {
     var textColor:NSColor = NSColor.blackColor()
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
+    var size:CGFloat = 12
     init(){
         
     }
@@ -19,6 +20,7 @@ class TextFormat {
                 case TextFormatConstants.textColor:return textColor
                 case TextFormatConstants.align:return align
                 case TextFormatConstants.font:return font
+                case TextFormatConstants.size:return size
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -31,6 +33,7 @@ class TextFormat {
                 case TextFormatConstants.textColor:textColor = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
                 case TextFormatConstants.font:font = newValue as! String
+                case TextFormatConstants.size:size = newValue as! CGFloat
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }

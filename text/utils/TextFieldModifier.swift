@@ -10,19 +10,17 @@ class TextFieldModifier {
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = NSColor.orangeColor()
-        
-        textField.font = Utils.font(textFormat.font)
-        //do font and size
+        textField.font = Utils.font(textFormat.font,textFormat.size)
     }
 }
 private class Utils{
     /**
      *
      */
-    class func font(fontName:String){
+    class func font(fontName:String,_ size:CGFloat) -> NSFont{
         let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName])//NSForegroundColorAttributeName:NSColor.redColor(),
-        let font = NSFont(descriptor: fontDescriptor, size: 22)
-        return font
+        let font = NSFont(descriptor: fontDescriptor, size: size)
+        return font!
     }
     /**
      *
