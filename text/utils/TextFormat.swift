@@ -31,7 +31,7 @@ class TextFormat {
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
                 case TextFormatConstants.selectable:selectable = newValue as! Bool
                 case TextFormatConstants.color:
-                    Swift.print("Setting color: ")
+                    //Swift.print("Setting color: ")
                     color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
                 case TextFormatConstants.font:font = newValue as! String
