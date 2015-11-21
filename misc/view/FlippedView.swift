@@ -1,6 +1,6 @@
 import Cocoa
 import Foundation
-protocol IView{
+protocol IView:class{
     var layer: CALayer?{get}//TODO:remove?
     var bounds: NSRect{get}
     var frame: NSRect{get set}
