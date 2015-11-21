@@ -16,7 +16,7 @@ private class Utils{
     /**
      *
      */
-    class func alignment(textFormat:TextFormat)->NSTextAlignment{
+    class func alignment(textFormat:TextFormat) -> NSTextAlignment{
         let align:NSTextAlignment
         if(textFormat.align == "left"){align = NSTextAlignment.Left}
         else if(textFormat.align == "right"){align = NSTextAlignment.Right}
