@@ -19,7 +19,7 @@ class TextFormat {
             }
         }
         set {
-            Swift.print("TextFormat.set() newValue: " + "\(newValue)")
+            //Swift.print("TextFormat.set() newValue: " + "\(newValue)")
             switch key{
                 case TextFormatConstants.background:background = newValue as! Bool
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
