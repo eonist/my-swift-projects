@@ -4,7 +4,7 @@ class TextFormatConstants {
     static var selectable:String = "selectable"
     static var background:String = "background"
     static var backgroundColor:String = "backgroundColor"
-    static var color:String = "textColor"
+    static var color:String = "color"
     static var align:String = "align"
     static var font:String = "font"
     static var size:String = "size"
