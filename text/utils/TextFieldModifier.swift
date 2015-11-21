@@ -10,7 +10,11 @@ class TextFieldModifier {
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = NSColor.orangeColor()
+        let timesRoman:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:"Times-Roman"])//NSForegroundColorAttributeName:NSColor.redColor(),
         
+
+        let font = NSFont(descriptor: timesRoman, size: 22)
+        text.font = helveticaBoldFont
         //do font and size
     }
 }
