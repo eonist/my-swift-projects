@@ -4,7 +4,7 @@ class TextFormat {
     var background:Bool = false;
     var backgroundColor:NSColor = NSColor.clearColor()
     var selectable:Bool = false
-    var color:NSColor = NSColor.blackColor()
+    var color:NSColor = NSColor.grayColor()
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
