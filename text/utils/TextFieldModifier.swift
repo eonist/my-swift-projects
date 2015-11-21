@@ -14,7 +14,7 @@ class TextFieldModifier {
         
 
         let font = NSFont(descriptor: timesRoman, size: 22)
-        text.font = helveticaBoldFont
+        text.font = font
         //do font and size
     }
 }
