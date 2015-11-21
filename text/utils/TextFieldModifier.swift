@@ -8,21 +8,24 @@ class TextFieldModifier {
         textField.selectable = textFormat.selectable
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
-        textField.alignment = Utils.alignment(textFormat)//Left,Right,Justified,Natural,Center
+        textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = NSColor.orangeColor()
+        
+        //do font and size
     }
 }
 private class Utils{
     /**
      *
      */
-    class func alignment(textFormat:TextFormat) -> NSTextAlignment{
+    class func alignment(alignType:String) -> NSTextAlignment{
         let align:NSTextAlignment
-        if(textFormat.align == "left"){align = NSTextAlignment.Left}
-        else if(textFormat.align == "right"){align = NSTextAlignment.Right}
-        else if(textFormat.align == "center"){align = NSTextAlignment.Center}
-        else if(textFormat.align == "justified"){align = NSTextAlignment.Justified}
-        else if(textFormat.align == "Natural"){align = NSTextAlignment.Natural}
+        if(alignType == "left"){align = NSTextAlignment.Left}
+        else if(alignType == "right"){align = NSTextAlignment.Right}
+        else if(alignType == "center"){align = NSTextAlignment.Center}
+        else if(alignType == "justified"){align = NSTextAlignment.Justified}
+        else if(alignType == "natural"){align = NSTextAlignment.Natural}
+        else {fatalError("ALIGN TYPE NOT SUPPORTED: " + alignType)}
         return align
     }
 }
