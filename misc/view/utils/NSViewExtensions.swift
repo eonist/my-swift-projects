@@ -1,10 +1,11 @@
-import Foundation
+import Cocoa
 
-extension View {
+extension NSView {
     /**
      *
      */
-    func hitTestPoint(mousePos:NSPoint)->Bool{
+    func hitTestPoint(locationInWindow:NSPoint)->Bool{
+        let mousePos:NSPoint = convertPoint(locationInWindow, fromView: nil)
         return NSPointInRect(mousePos, frame)
     }
 }
