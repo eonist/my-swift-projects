@@ -2,6 +2,7 @@ import Cocoa
 
 class View :FlippedView{
     var isInteractive:Bool = true
+    var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame: NSRect) {
         super.init(frame: frame)
@@ -10,5 +11,20 @@ class View :FlippedView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func hitTest(aPoint: NSPoint) -> NSView? {return isInteractive ? self : nil}//Avoids covering the graphic behind when dealing with mouse down events
+    /**
+     * Avoids covering the graphic behind when dealing with mouse down events
+     */
+    override func hitTest(aPoint: NSPoint) -> NSView? {return isInteractive ? self : nil}
+    /**
+     * Enables the hand cursor on enter
+     */
+    override func resetCursorRects() {
+        if(hasHandCursor){
+            let cursor:NSCursor = NSCursor.pointingHandCursor()
+            addCursorRect(frame, cursor: cursor)
+            cursor.setOnMouseEntered(true)
+        }else{
+            super.resetCursorRects()
+        }
+    }
 }
