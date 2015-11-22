@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:  
+ */
 class View :FlippedView{
     var isInteractive:Bool = true
     var hasHandCursor:Bool = false
