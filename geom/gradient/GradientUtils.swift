@@ -7,7 +7,7 @@ class GradientUtils{
      * Note: we use an array of CGColor instances as aposed to NSColors, support for initiating an gradient with NSColors can be done in utility methods elswehere, this code needs to have as little convenince code as possible
      * Note: there exists also a method for component colors named: CGGradientCreateWithColorComponents, see Quartz books for this
      */
-    class func cgGradient(gradient:IGradient)->CGGradientRef{
+    class func cgGradient(gradient:Gradient/*IGradient*/)->CGGradientRef{
         let myColorspace:CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!
         let colors: [CFTypeRef] = gradient.colors
         let colorsPointer = UnsafeMutablePointer<UnsafePointer<Void>>(colors)
@@ -17,6 +17,7 @@ class GradientUtils{
         Swift.print(myColorspace)
         Swift.print(colorsCFArray)
         Swift.print(locationsPointer)
+        Swift.print("---")
         let myGradient:CGGradientRef = CGGradientCreateWithColors(myColorspace, colorsCFArray, locationsPointer)!
         return myGradient
     }
