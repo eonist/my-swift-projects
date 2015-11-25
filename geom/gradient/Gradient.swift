@@ -12,7 +12,7 @@ public class Gradient:IGradient{
     public var rotation:Double;/*this doesnt belong here, you apply rotations in the matrix*/
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Axial,_ rotation:Double = 4.71238898038469){/*,startPoint:CGPoint = CGPoint(),endPoint:CGPoint = CGPoint()*/
         self.colors = colors
-        if locations.count == 0 {//add support for nil aswell
+        if (locations.count == 0 && colors.count > 0) {//add support for nil aswell
             //Swift.print(colors.count)
             self.locations = CGFloatParser.interpolatedRange(0,  1,  colors.count)
             //Swift.print(self.locations)
