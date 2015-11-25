@@ -24,7 +24,7 @@ public class Graphics{
     let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
-    var gradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var gradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgGradient:CGGradientRef?/*This value exists because of performance*/
     var lineGradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
@@ -46,7 +46,7 @@ public class Graphics{
     /*
      * Initiate gradient filling
      */
-    public func gradientFill(gradient:Gradient){
+    public func gradientFill(gradient:IGradient){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
@@ -141,7 +141,7 @@ private class Utils{
     * Draws a gradient into the current path in the context
     * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
     */
-    class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:Gradient, _ cgGradient:CGGradientRef?){
+    class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         
         CGContextSaveGState(context)
