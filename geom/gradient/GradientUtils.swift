@@ -9,7 +9,7 @@ class GradientUtils{
      */
     class func cgGradient(gradient:Gradient/*IGradient*/)->CGGradientRef{
         let myColorspace:CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!
-        let colors: [CFTypeRef] = gradient.colors
+        let colors:[CFTypeRef] = gradient.colors
         let colorsPointer = UnsafeMutablePointer<UnsafePointer<Void>>(colors)
         let colorsCFArray = CFArrayCreate(nil, colorsPointer, colors.count, nil)
         let locations:[CGFloat] = gradient.locations//should be a CGFloat between 0 and 1
