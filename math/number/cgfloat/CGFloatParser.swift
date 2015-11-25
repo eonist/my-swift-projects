@@ -7,6 +7,7 @@ public class CGFloatParser{
      */
     public class func interpolatedRange(min:CGFloat ,_ max:CGFloat,_ length:Int)->Array<CGFloat>{
         var interpolatedRange:Array<CGFloat> = []
+        if(length == 0){return interpolatedRange}//only populate the array with values if the length is more than zero
         let increaseBy:CGFloat = max/CGFloat(length-1)
         //Swift.print(value)
         var curVal:CGFloat = 0
