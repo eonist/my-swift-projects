@@ -14,6 +14,9 @@ class GradientUtils{
         let colorsCFArray = CFArrayCreate(nil, colorsPointer, colors.count, nil)
         let locations:[CGFloat] = gradient.locations//should be a CGFloat between 0 and 1
         let locationsPointer = UnsafePointer<CGFloat>(locations)
+        Swift.print(myColorspace)
+        Swift.print(colorsCFArray)
+        Swift.print(locationsPointer)
         let myGradient:CGGradientRef = CGGradientCreateWithColors(myColorspace, colorsCFArray, locationsPointer)!
         return myGradient
     }
