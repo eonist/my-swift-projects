@@ -11,7 +11,7 @@ extension CGPoint{
     /**
      * Returns the distance between two points
      */
-    static func distance(a:CGPoint,_ b:CGPoint) -> CGFloat{
+    static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{
         return PointParser.distance(a,b)
     }
 }

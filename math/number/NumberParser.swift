@@ -54,7 +54,7 @@ class NumberParser{
     * trace(distance(5,2));//3
     * trace(distance(5,-2));//7
     */
-    class func distance(a:CGFloat,b:CGFloat)->CGFloat {
+    class func distance(a:CGFloat,_ b:CGFloat)->CGFloat {
         if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(min(a,b)) - abs(max(a,b))}
         else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return max(a, b) - min(a,b)}
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
