@@ -32,6 +32,26 @@ class Trig{
         else {/*bottom*/ return bottom}
     }
     /**
+    * Returns a radian to be between 0 and Math.PI*2 Radian (0 - 6.28)
+    * @param theta: An radian in degrees typically 0 - Math.PI*2
+    * @Note: we use "while" function type here because angle could be very low at which point Math.PI*2 needs to be contrinuasly added until its above 0 )
+    * // :TODO: use modulo like normalize2 does, is that faster ? do an optimization test.
+    */
+    class func normalize(angle:CGFloat)->CGFloat {
+        while (angle < 0) angle += Math.PI*2;
+        while (angle >= Math.PI*2) angle -= Math.PI*2;
+        return angle;
+    }
+    /**
+    * Returns an radian to be between -Math.PI(-3.14) and Math.PI(3.14)
+    * @param theta: An radian in degrees typically 0 - Math.PI*2
+    */
+    class func normalize2(angle:CGFloat)->CGFloat {
+        if(angle < -Math.PI) return Math.PI + (angle % Math.PI);
+        if(angle > Math.PI) return -Math.PI + (angle % Math.PI);
+        return angle;
+    }
+    /**
      * Needs code
      */
     func cartesianToPolar(point:CGPoint)->(radius:CGFloat,angle:CGFloat){
