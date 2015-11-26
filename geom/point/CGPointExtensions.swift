@@ -22,13 +22,8 @@ extension CGPoint{
     init(_ x: Double, _ y:Double) { self.x = CGFloat(x); self.y = CGFloat(y); }//Init a CGPoint with Double values
     init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }//Init a CGPoint with Int values
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
-    func add(p:CGPoint)->CGPoint{return CGPoint(self.x+p.x, self.y+p.y)}//Adds the coordinates of point p to the coordinates of this point to create a new point
-    func substract(p:CGPoint)->CGPoint{return CGPoint(self.x-p.x, self.y-p.y)}//Subtracts the coordinates of point p from the coordinates of this point to create a new point.
-   
 }
-public func +(a: CGPoint, b: CGPoint) -> CGPoint { return a.add(b)}
-/// Modifies the x and y values by adding a size to the coordinates.
-public func +=(inout a: CGPoint, b: CGPoint) {
-    a.x += b.x
-    a.y += b.y
-}
+public func +(a: CGPoint, b: CGPoint) -> CGPoint { return CGPoint(a.x+b.x, a.y+b.y)}//Adds the coordinates of point p to the coordinates of this point to create a new point
+public func -(a: CGPoint, b: CGPoint) -> CGPoint { return CGPoint(a.x-b.x, a.y-b.y)}//Subtracts the coordinates of point p from the coordinates of this point to create a new point.
+public func +=(inout a: CGPoint, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b
+public func -=(inout a: CGPoint, b: CGPoint) {a.x -= b.x;a.y -= b.y;}//modifies a by adding b
