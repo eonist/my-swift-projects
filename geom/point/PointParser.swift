@@ -1,8 +1,35 @@
 import Foundation
 class PointParser{
     /**
-    * @param rotation must be between -PI and +PI
-    */
+     * Returns a point in a polar cordinate system by @param len and @param angle (in a safe way)
+     * @param angle must be between -PI and PI use:  Angle.normalized2(angle)
+     * TODO: compact this method
+     * TODO: why is this safe and regular polar isnt
+     */
+    class func safePolar(len:CGFloat, angle:CGFloat)->CGPoint {
+        var x:CGFloat = cos(angle) * len;
+        var y:CGFloat = sin(angle) * len;
+        if(angle == 0){
+            x = len;
+            y = 0;
+        }else if(angle == π || angle == -π){
+            x = -len;
+            y = 0;
+        }else if(angle == -π/2){
+            x = 0;
+            y = -len;
+        }else if(angle == π/2){
+            x = 0;
+            y = len;
+        }else{
+            x = cos(angle) * len;
+            y = sin(angle) * len;
+        }
+        return CGPoint(x,y);
+    }
+    /**
+     * @param rotation must be between -PI and +PI
+     */
     class func safeRotatePoint(pivot:CGPoint, point:CGPoint, rotation:CGFloat)->CGPoint {
         var pointAngle:CGFloat = Trig.angle(pivot, point)//find the angle of point
         var distance:CGFloat = PointParser.distance(pivot, point);//length of point and pivotPoint
