@@ -9,6 +9,16 @@ class PointParser{
         var rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
         return pivot.add(PointParser.safePolar(distance, rot));//use Point.polar
     }
+    /**
+     * Returns the distance between two points
+     * @Note: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
+     * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
+     */
+    class func distance(a:CGPoint,_ b:CGPoint) -> CGFloat{
+        let xDifference:CGFloat = b.x-a.x;
+        let yDifference:CGFloat = b.y-a.y;
+        return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
+    }
 }
 
 /*
