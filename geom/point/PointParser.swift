@@ -6,7 +6,7 @@ class PointParser{
      * TODO: compact this method
      * TODO: why is this safe and regular polar isnt
      */
-    class func safePolar(len:CGFloat, angle:CGFloat)->CGPoint {
+    class func safePolar(len:CGFloat, _ angle:CGFloat)->CGPoint {
         var x:CGFloat = cos(angle) * len;
         var y:CGFloat = sin(angle) * len;
         if(angle == 0){
@@ -31,14 +31,10 @@ class PointParser{
      * @param rotation must be between -PI and +PI
      */
     class func safeRotatePoint(pivot:CGPoint, point:CGPoint, rotation:CGFloat)->CGPoint {
-        var pointAngle:CGFloat = Trig.angle(pivot, point)//find the angle of point
-        var distance:CGFloat = PointParser.distance(pivot, point);//length of point and pivotPoint
-        var rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
-        pivot
-        
-        //add support for adding points that returns a new point
-        
-        return pivot.add(PointParser.safePolar(distance, rot));//use Point.polar
+        let pointAngle:CGFloat = Trig.angle(pivot, point)//find the angle of point
+        let distance:CGFloat = PointParser.distance(pivot, point);//length of point and pivotPoint
+        let rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
+        return pivot + PointParser.safePolar(distance, rot);//use Point.polar
     }
     /**
      * Returns the distance between two points
