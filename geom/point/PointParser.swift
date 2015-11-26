@@ -19,6 +19,21 @@ class PointParser{
         let yDifference:CGFloat = b.y-a.y;
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
     }
+    /**
+     * Returns a point, in a polar cordinate system (from 0,0), for @param angle and @param length
+     * @param radius: the radius of the circle
+     * @param angle: the angle where the point is (in radians) (-π to π) (3.14.. to 3.14..)
+     * @return a point on a circle where the pivot is TopLeft Corner (0,0)
+     * @Note formula "<angle*cos*radius,angle*sin*radius>"
+     * Base formula CosΘ = x/len
+     * Base Formula SinΘ = y/len
+     * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
+     */
+    class func polar(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
+        let x:CGFloat = /*radius + */(radius * cos(angle));
+        let y:CGFloat = /*radius + */(radius * sin(angle));
+        return CGPoint(x, y);
+    }
 }
 
 /*
