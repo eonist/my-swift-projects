@@ -100,20 +100,17 @@ class PointParser{
      * // :TODO: you may not need to use rotation with pivot, the pivot may not be needed
      * // :TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
      */
-    class func directionalAxisDifference(pivot:CGPoint,point:CGPoint,rotation:CGFloat)->CGPoint {
+    class func directionalAxisDifference(pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return PointParser.difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
     /**
-     *
+     * NOTE: same as directionalAxisDifference, but uses the NumerParser.relativeDifference() method
      */
-    class func directionalAxisDifference(pivot:CGPoint,point:CGPoint,rotation:CGFloat)->CGPoint {
+    class func relativeDirectionalAxisDifference(pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return PointParser.relativeDifference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
-    
-    //continue here: make a relativeDirectionalAxisDifference() that uses the relativeDifference
-    
 }
 
 /*
