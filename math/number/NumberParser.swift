@@ -76,9 +76,9 @@ class NumberParser{
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
     /**
-     * Returns the distance between a and b (the returning number can be negative or posetive or zero)
+     * Returns the difference between a and b (the returning number can be negative or posetive or zero)
      */
-    class func relativeDistance(a:CGFloat,_ b:CGFloat)->CGFloat{
+    class func relativeDifference(a:CGFloat,_ b:CGFloat)->CGFloat{
         return b-a
     }
     /**
