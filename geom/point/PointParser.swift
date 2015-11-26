@@ -72,8 +72,10 @@ class PointParser{
     /**
      *
      */
-    class func relativeDifference(a:CGPoint,_ bCGPoint)->CGPoint{
-        return 
+    class func relativeDifference(a:CGPoint,_ b:CGPoint)->CGPoint{
+        let x:CGFloat = NumberParser.relativeDifference(a.x, b.x);
+        let y:CGFloat = NumberParser.relativeDifference(a.y, b.y);
+        return CGPoint(x,y);
     }
     /**
      * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
