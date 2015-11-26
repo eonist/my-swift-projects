@@ -44,7 +44,24 @@ class NumbeParser{
         return fraction * (b - a) + a
     }
     /**
+    * Returns the numeric distance between two values (always positive)
+    * @example
+    * @Note doing Math.abs(b-a) instead of this method may be faster
+    * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
+    * trace(distance(-5,-2));//3
+    * trace(distance(-5,2));//7
+    * trace(distance(5,2));//3
+    * trace(distance(5,-2));//7
+    */
+    class func distance(a:Number,b:Number):Number {
+        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) return Math.abs(Math.min(a,b)) - Math.abs(Math.max(a,b));
+        else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) return Math.max(a, b) - Math.min(a,b);
+        else return Math.abs(a) + Math.abs(b);/*if a is positive then b is negative and opposite*/
+    }
+    
+    /**
      * Returns the number if its within min-max returns min if its lower and max if its higher
+     * TODO: write examples for this
      */
     class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {
         return max(min(value, maxValue), minValue)
