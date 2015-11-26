@@ -34,8 +34,8 @@ class PointParser{
      * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
      */
     class func distance(a:CGPoint,_ b:CGPoint) -> CGFloat{
-        let xDifference:CGFloat = b.x-a.x;
-        let yDifference:CGFloat = b.y-a.y;
+        let xDifference:CGFloat = NumberParser.relativeDistance(a.x,b.x);
+        let yDifference:CGFloat = NumberParser.relativeDistance(a.y,b.y);
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
     }
     /**
