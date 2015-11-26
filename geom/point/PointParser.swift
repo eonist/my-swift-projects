@@ -68,6 +68,18 @@ class PointParser{
     class func axisDistance(p1:CGPoint, _ p2:CGPoint)->CGPoint {
         return CGPoint(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y));
     }
+    /**
+     * Returns the distance (can be positive or negative) in x and y axis
+     * @Note: remember to rotate the axix after its been returned from this method
+     * @param rotation: the angle you want to levle with
+     * // :TODO: shouldnt the axis be found by Angle.angle(p1,p2) ?!?
+     * // :TODO: you may not need to use rotation with pivot, the pivot may not be needed
+     * // :TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
+     */
+    class func directionalAxisDifference(pivot:Point,point:Point,rotation:Number):Point {
+        var leveledPoint:Point = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
+    }
 }
 
 /*
