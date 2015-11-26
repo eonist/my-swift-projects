@@ -1,3 +1,4 @@
+import Foundation
 class NumbeParser{
    /**
     * Returns the floor and ceil of many numbers
@@ -53,10 +54,10 @@ class NumbeParser{
     * trace(distance(5,2));//3
     * trace(distance(5,-2));//7
     */
-    class func distance(a:CGFloat,b:CGFloat):CGFloat {
-        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) return Math.abs(Math.min(a,b)) - Math.abs(Math.max(a,b));
-        else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) return Math.max(a, b) - Math.min(a,b);
-        else return Math.abs(a) + Math.abs(b);/*if a is positive then b is negative and opposite*/
+    class func distance(a:CGFloat,b:CGFloat)->CGFloat {
+        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(min(a,b)) - abs(max(a,b))}
+        else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return max(a, b) - min(a,b)}
+        else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
     
     //continue here, fix thi smethod and continue in the PointParser class and then make the gradient box test
