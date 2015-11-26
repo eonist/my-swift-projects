@@ -1,5 +1,5 @@
 import Foundation
-class NumbeParser{
+class NumberParser{
    /**
     * Returns the floor and ceil of many numbers
     */
@@ -62,8 +62,8 @@ class NumbeParser{
     /**
      *
      */
-    class func relativeDist(){
-        
+    class func relativeDistance(a:CGFloat,_ b:CGFloat)->CGFloat{
+        return b-a
     }
     //continue here, fix thi smethod and continue in the PointParser class and then make the gradient box test
     
