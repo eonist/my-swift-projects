@@ -175,7 +175,10 @@ private class Utils{
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:Double){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let topLeft:CGPoint = boundingBox.origin
+        
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
+        Swift.print("center: " + String(center))
+        
         let distance:CGFloat = topLeft.distance(center)//radius
         let a:CGPoint = center.polarPoint(-distance, CGFloat(rotation))//the rotation seems to be inverted, try to fix this later
         Swift.print("a: " + "\(a)")
