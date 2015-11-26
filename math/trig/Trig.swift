@@ -17,7 +17,7 @@ class Trig{
      * @Note use this formula to find the angle in a (0,0) point-space Math.atan2(pointB.y, pointB.x)
      * @Note formula in standard form: Tan Ɵ = y/x (then use inverse tan to find the angle)
      */
-    class func angle(a:CGPoint, b:CGPoint)->CGFloat {
+    class func angle(a:CGPoint, _ b:CGPoint)->CGFloat {
         return atan2(b.y - a.y, b.x - a.x);
     }
     /**
