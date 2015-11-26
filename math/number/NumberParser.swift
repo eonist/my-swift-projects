@@ -44,7 +44,7 @@ class NumberParser{
      * print(difference(-3,-7))//-4
      * print(difference(-3,7))//10
      */
-    class func difference(a:CGFloat, b:CGFloat)->CGFloat{
+    class func difference(a:CGFloat, _ b:CGFloat)->CGFloat{
         let distance:CGFloat = NumberParser.distance(a, b)
         if(a > b) {return -distance}
         else if(a < b) {return distance}
