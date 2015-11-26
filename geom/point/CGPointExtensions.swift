@@ -23,6 +23,5 @@ extension CGPoint{
     init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }//Init a CGPoint with Int values
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
     func add(p:CGPoint)->CGPoint{return CGPoint(self.x+p.x, self.y+p.y)}//Adds the coordinates of point p to the coordinates of this point to create a new point
-    func add(p:CGPoint)->CGPoint{return CGPoint(self.x+p.x, self.y+p.y)}//Adds the coordinates of point p to the coordinates of this point to create a new point
-    //Subtracts the coordinates of point p from the coordinates of this point to create a new point.
+    func substract(p:CGPoint)->CGPoint{return CGPoint(self.x-p.x, self.y-p.y)}//Subtracts the coordinates of point p from the coordinates of this point to create a new point.
 }
