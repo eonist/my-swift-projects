@@ -59,7 +59,12 @@ class NumbeParser{
         else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return max(a, b) - min(a,b)}
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
-    
+    /**
+     *
+     */
+    class func relativeDist(){
+        
+    }
     //continue here, fix thi smethod and continue in the PointParser class and then make the gradient box test
     
     
