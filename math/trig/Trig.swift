@@ -2,8 +2,8 @@ import Foundation
 var ㎭ = M_PI/180/*Global variable*/
 var π = M_PI/*Global variable*/
 class Trig{
-    static var pi = M_PI//π
-    static var π = pi
+    static var pi:CGFloat = CGFloat(M_PI)//π
+    static var π:CGFloat = pi
     static var left:Double = 180;
     static var right:Double = 0;
     static var bottom:Double = 90;
