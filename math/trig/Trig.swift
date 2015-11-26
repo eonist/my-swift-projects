@@ -39,7 +39,7 @@ class Trig{
     */
     class func normalize(var angle:CGFloat)->CGFloat {
         while (angle < 0) {angle += π*2};
-        while (angle >= Math.PI*2) {angle -= Math.PI*2};
+        while (angle >= π*2) {angle -= π*2};
         return angle;
     }
     /**
@@ -47,8 +47,8 @@ class Trig{
     * @param theta: An radian in degrees typically 0 - Math.PI*2
     */
     class func normalize2(angle:CGFloat)->CGFloat {
-        if(angle < -Math.PI) return Math.PI + (angle % Math.PI);
-        if(angle > Math.PI) return -Math.PI + (angle % Math.PI);
+        if(angle < -π){ return π + (angle % π)};
+        if(angle > π){ return -π + (angle % π)};
         return angle;
     }
     /**
