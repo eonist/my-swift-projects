@@ -27,3 +27,8 @@ extension CGPoint{
    
 }
 public func +(a: CGPoint, b: CGPoint) -> CGPoint { return a.add(b)}
+/// Modifies the x and y values by adding a size to the coordinates.
+public func +=(inout a: CGPoint, b: CGPoint) {
+    a.x += b.x
+    a.y += b.y
+}
