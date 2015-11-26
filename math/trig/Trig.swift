@@ -11,6 +11,16 @@ class Trig{
     static var rad:Double = M_PI / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:Double = 180 / M_PI;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
     /**
+     * Returns an angle in radian between -3.14 and 3.14 (-180 and 180 converted to degress)
+     * @param a is the pivot point
+     * @param b is the polar point
+     * @Note use this formula to find the angle in a (0,0) point-space Math.atan2(pointB.y, pointB.x)
+     * @Note formula in standard form: Tan Ɵ = y/x (then use inverse tan to find the angle)
+     */
+    class func angle(a:CGPoint, b:CGPoint)->CGFloat {
+        return atan2(b.y - a.y, b.x - a.x);
+    }
+    /**
      * Returns an angle in Degrees
      * @param angleType A string describing an angle in numeric value
      * @return angle in degrees (0-360)
