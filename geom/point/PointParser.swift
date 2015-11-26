@@ -54,6 +54,22 @@ class PointParser{
         return CGPoint(x, y);
     }
     /**
+     * Returns the difference between two points
+     * trace(new Point(20,20),new Point(-40,-40))//Output: (-60,-60)
+     * trace(new Point(20,20),new Point(40,-40))//Output: (20,-60)
+     * trace(difference(new Point(2,2), new Point(4,4)))//Outputs: (2,2)
+     * trace(difference(new Point(2,2), new Point(-4,-4)))//Outputs: (-6,-6)
+     * trace(difference(new Point(-2,-2), new Point(-4,-4)))//Outputs: (-2,-2)
+     * trace(difference(new Point(-2,-2), new Point(4,4)))//Outputs: (6,6)
+     * @Note great at finding polar points when the pivot isnt at point 0,0
+     * // :TODO: is there a math formula ? write the formula you have atleast
+     */
+    class func difference(p1:CGPoint,_ p2:CGPoint)->CGPoint {
+        var x:CGFloat = NumberParser.difference(p1.x, p2.x);
+        var y:CGFloat = NumberParser.difference(p1.y, p2.y);
+        return new Point(x,y);
+    }
+    /**
      * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
      */
     class func directionalAxisDistance(pivot:CGPoint,_ point:CGPoint,rotation:CGFloat)->CGPoint {
@@ -76,9 +92,9 @@ class PointParser{
      * // :TODO: you may not need to use rotation with pivot, the pivot may not be needed
      * // :TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
      */
-    class func directionalAxisDifference(pivot:Point,point:Point,rotation:Number):Point {
-        var leveledPoint:Point = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
+    class func directionalAxisDifference(pivot:CGPoint,point:CGPoint,rotation:CGFloat)->CGPoint {
+        var leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return PointParser.difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
 }
 
