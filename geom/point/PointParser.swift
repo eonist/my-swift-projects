@@ -34,8 +34,8 @@ class PointParser{
      * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
      */
     class func distance(a:CGPoint,_ b:CGPoint) -> CGFloat{
-        let xDifference:CGFloat = NumberParser.relativeDistance(a.x,b.x);
-        let yDifference:CGFloat = NumberParser.relativeDistance(a.y,b.y);
+        let xDifference:CGFloat = NumberParser.relativeDifference(a.x,b.x);
+        let yDifference:CGFloat = NumberParser.relativeDifference(a.y,b.y);
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
     }
     /**
@@ -70,6 +70,12 @@ class PointParser{
         return CGPoint(x,y);
     }
     /**
+     *
+     */
+    class func relativeDifference(a:CGPoint,_ bCGPoint)->CGPoint{
+        return 
+    }
+    /**
      * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
      */
     class func directionalAxisDistance(pivot:CGPoint,_ point:CGPoint, rotation:CGFloat)->CGPoint {
@@ -96,9 +102,15 @@ class PointParser{
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return PointParser.difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
+    /**
+     *
+     */
+    class func directionalAxisDifference(pivot:CGPoint,point:CGPoint,rotation:CGFloat)->CGPoint {
+        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return PointParser.relativeDifference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
+    }
     
-    
-    //continue here: make a relativeAxisDifference() that uses the relativeDifference
+    //continue here: make a relativeDirectionalAxisDifference() that uses the relativeDifference
     
 }
 
