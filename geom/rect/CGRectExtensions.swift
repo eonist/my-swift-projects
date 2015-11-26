@@ -1,4 +1,5 @@
 import Foundation
+//lots of great stuff here: https://github.com/nschum/SwiftCGRectExtensions/blob/master/CGRectExtensions/CGRectExtensions.swift
 
 extension CGRect {
     /**

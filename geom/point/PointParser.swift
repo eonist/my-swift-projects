@@ -65,8 +65,8 @@ class PointParser{
      * // :TODO: potentially make polarAxisDistance which would potentially support any angled axis
      * @Note: think of this method as a way of finding the horizontal and vertical distance between two points
      */
-    class func function axisDistance(p1:Point, p2:Point)->CGPoint {
-        return new Point(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y));
+    class func axisDistance(p1:CGPoint, _p2:CGPoint)->CGPoint {
+        return CGPoint(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y));
     }
 }
 
