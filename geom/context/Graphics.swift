@@ -177,10 +177,10 @@ private class Utils{
         let topLeft:CGPoint = boundingBox.origin
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
         let distance:CGFloat = topLeft.distance(center)//radius
-        let a:CGPoint = center.polarPoint(distance, CGFloat(rotation))//the rotation seems to be inverted, try to fix this later
-        Swift.print(a)
-        let b:CGPoint = center.polarPoint(-distance, CGFloat(rotation))
-        Swift.print(b)
+        let a:CGPoint = center.polarPoint(-distance, CGFloat(rotation))//the rotation seems to be inverted, try to fix this later
+        Swift.print("a: " + "\(a)")
+        let b:CGPoint = center.polarPoint(distance, CGFloat(rotation))
+        Swift.print("b: " + "\(b)")
         CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
