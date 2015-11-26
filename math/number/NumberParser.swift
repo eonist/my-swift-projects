@@ -34,6 +34,22 @@ class NumberParser{
         }
         return sum;
     }
+    /**
+     * Returns the number you can add to start that becomes end (start + x = end)
+     * @Note unlike the distance method this can return negative and positive values
+     * @Note suppliments the distance function in that it returns the directional correct distance
+     * // :TODO: couldnt you just do b - a ? there is no difference, this method is a waste of cpu
+     * print(difference(3,7))//4
+     * print(difference(3,-2))//-5
+     * print(difference(-3,-7))//-4
+     * print(difference(-3,7))//10
+     */
+    class func difference(a:CGFloat, b:CGFloat)->CGFloat{
+        let distance:CGFloat = NumberParser.distance(a, b)
+        if(a > b) {return -distance}
+        else if(a < b) {return distance}
+        else {return 0}
+    }
     /** 
      * Linearly interpolation (lerp)
      * @param a: start number
@@ -49,10 +65,10 @@ class NumberParser{
     * @example
     * @Note doing Math.abs(b-a) instead of this method may be faster
     * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
-    * trace(distance(-5,-2));//3
-    * trace(distance(-5,2));//7
-    * trace(distance(5,2));//3
-    * trace(distance(5,-2));//7
+    * print(distance(-5,-2));//3
+    * print(distance(-5,2));//7
+    * print(distance(5,2));//3
+    * print(distance(5,-2));//7
     */
     class func distance(a:CGFloat,_ b:CGFloat)->CGFloat {
         if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(min(a,b)) - abs(max(a,b))}
