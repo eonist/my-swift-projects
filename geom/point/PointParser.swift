@@ -3,7 +3,7 @@ class PointParser{
     /**
     * @param rotation must be between -PI and +PI
     */
-    class func safeRotatePoint(pivot:CGPoint, point:CGPoint, rotation:CGFloat):CGPoint {
+    class func safeRotatePoint(pivot:CGPoint, point:CGPoint, rotation:CGFloat)->CGPoint {
         var pointAngle:CGFloat = Trig.angle(pivot, point);//find the angle of point
         var distance:CGFloat = Point.distance(pivot, point);//length of point and pivotPoint
         var rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
