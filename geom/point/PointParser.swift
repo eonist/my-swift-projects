@@ -61,6 +61,21 @@ class PointParser{
         let y:CGFloat = /*radius + */(radius * sin(angle));
         return CGPoint(x, y);
     }
+    /**
+     * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
+     */
+    class func directionalAxisDistance(pivot:Point,point:Point,rotation:Number)->CGPoint {
+        var leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return axisDistance(pivot, leveledPoint);
+    }
+    /**
+     * Returns the distance between points in both the x and y axis. (unlike Point.distance which returns the diagonal distance between two points)
+     * // :TODO: potentially make polarAxisDistance which would potentially support any angled axis
+     * @Note: think of this method as a way of finding the horizontal and vertical distance between two points
+     */
+    class func function axisDistance(p1:Point, p2:Point)->CGPoint {
+        return new Point(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y));
+    }
 }
 
 /*
