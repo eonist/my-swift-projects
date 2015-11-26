@@ -138,9 +138,9 @@ public class Graphics{
 }
 private class Utils{
     /*
-    * Draws a gradient into the current path in the context
-    * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
-    */
+     * Draws a gradient into the current path in the context
+     * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
+     */
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         
