@@ -60,14 +60,11 @@ class NumberParser{
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
     /**
-     *
+     * Returns the distance between a and b (the returning number can be negative or posetive or zero)
      */
     class func relativeDistance(a:CGFloat,_ b:CGFloat)->CGFloat{
         return b-a
     }
-    //continue here, fix thi smethod and continue in the PointParser class and then make the gradient box test
-    
-    
     /**
      * Returns the number if its within min-max returns min if its lower and max if its higher
      * TODO: write examples for this
