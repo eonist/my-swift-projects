@@ -8,6 +8,9 @@ class PointParser{
         var distance:CGFloat = PointParser.distance(pivot, point);//length of point and pivotPoint
         var rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
         pivot
+        
+        //add support for adding points that returns a new point
+        
         return pivot.add(PointParser.safePolar(distance, rot));//use Point.polar
     }
     /**
