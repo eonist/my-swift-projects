@@ -143,7 +143,7 @@ private class Utils{
      */
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
-        
+        Swift.print("boundingBox: " + String(boundingBox))
         CGContextSaveGState(context)
         CGContextClip(context);
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
