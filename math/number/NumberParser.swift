@@ -54,6 +54,9 @@ class NumbeParser{
     * trace(distance(5,-2));//7
     */
     class func distance(a:Number,b:Number):Number {
+        
+        //continue here, fix thi smethod and continue in the PointParser class and then make the gradient box test
+        
         if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) return Math.abs(Math.min(a,b)) - Math.abs(Math.max(a,b));
         else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) return Math.max(a, b) - Math.min(a,b);
         else return Math.abs(a) + Math.abs(b);/*if a is positive then b is negative and opposite*/
