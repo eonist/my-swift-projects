@@ -1,6 +1,5 @@
 import Foundation
-
-import AppKit
+import AppKit/*Needed for the NSBezierPath type*/
 
 public class CGPathParser{
     public class func line(p1:CGPoint,p2:CGPoint)->CGMutablePathRef{
