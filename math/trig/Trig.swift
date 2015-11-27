@@ -2,13 +2,13 @@ import Foundation
 var π = CGFloat(M_PI)/*Global variable*/
 var ㎭ = π/180/*Global variable*/
 class Trig{
-    static var pi:CGFloat = CGFloat(M_PI)//π
-    static var left:Double = 180;
-    static var right:Double = 0;
-    static var bottom:Double = 90;
-    static var top:Double = 270;
-    static var rad:Double = M_PI / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
-    static var deg:Double = 180 / M_PI;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
+    static var pi:CGFloat = π
+    static var left:CGFloat = 180;
+    static var right:CGFloat = 0;
+    static var bottom:CGFloat = 90;
+    static var top:CGFloat = 270;
+    static var rad:CGFloat = π / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
+    static var deg:CGFloat = 180 / π;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
     /**
      * Returns an angle in radian between -3.14 and 3.14 (-180 and 180 converted to degress)
      * @param a is the pivot point
@@ -24,7 +24,7 @@ class Trig{
      * @param angleType A string describing an angle in numeric value
      * @return angle in degrees (0-360)
      */
-    class func angleType(angleType:String)->Double {
+    class func angleType(angleType:String)->CGFloat {
         if(angleType == "left") {return left}
         else if(angleType == "right") {return right}
         else if(angleType == "top") {return top}
