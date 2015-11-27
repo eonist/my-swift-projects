@@ -3,6 +3,16 @@ import Foundation
 import AppKit
 
 public class CGPathParser{
+    public class func line(radius:CGFloat, _ x:CGFloat = 0, _ y:CGFloat = 0)->CGMutablePathRef{
+        let circlePath:CGMutablePathRef = CGPathCreateMutable()
+        let circleCenter:CGPoint = CGPoint(x: x, y: x);
+        let circleRadius:CGFloat  = radius;
+        let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI);
+        // Construct the circle path counterclockwise.
+        CGPathAddArc(circlePath,nil,circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, false)
+        CGPathCloseSubpath(circlePath);
+        return circlePath
+    }
 	/**
      * EXAMPLE: CGContextAddPath(context, CircleParser.circlePath(0,0,100))
      * PARAM: x is the center x
