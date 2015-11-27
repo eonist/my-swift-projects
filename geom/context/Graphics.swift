@@ -180,9 +180,9 @@ private class Utils{
         Swift.print("center: " + String(center))
         
         let distance:CGFloat = topLeft.distance(center)//radius
-        let a:CGPoint = center.polarPoint(-distance, CGFloat(rotation))//the rotation seems to be inverted, try to fix this later
+        let a:CGPoint = center.polarPoint(-distance, rotation)//the rotation seems to be inverted, try to fix this later
         Swift.print("a: " + "\(a)")
-        let b:CGPoint = center.polarPoint(distance, CGFloat(rotation))
+        let b:CGPoint = center.polarPoint(distance, rotation)
         Swift.print("b: " + "\(b)")
         CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
