@@ -1,5 +1,5 @@
 import Foundation
-class PathParser {
+class PathParser {//TODO:rename to FilePathParser
     /**
      * Returns the path to where you can save your app's files. Here it is:
      */

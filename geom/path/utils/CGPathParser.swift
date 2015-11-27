@@ -16,8 +16,7 @@ public class CGPathParser{
         let circleRadius:CGFloat  = radius;
         let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI);
         // Construct the circle path counterclockwise.
-        CGPathAddArc(circlePath,nil,circleCenter.x, circleCenter.y, circleRadius,
-            startingAngle, endingAngle, false)
+        CGPathAddArc(circlePath,nil,circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, false)
         return circlePath
     }
     /**
