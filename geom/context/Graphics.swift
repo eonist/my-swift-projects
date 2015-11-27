@@ -172,7 +172,7 @@ private class Utils{
     /**
      * Axial gradient "Linear"
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:Double){
+    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let topLeft:CGPoint = boundingBox.origin
         Swift.print("topLeft: " + "\(topLeft)")
