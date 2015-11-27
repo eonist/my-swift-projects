@@ -5,7 +5,7 @@ public class CGPathParser{
     /**
      * NOTE: We do not need to close this path
      */
-    public class func line(p1:CGPoint,p2:CGPoint)->CGMutablePathRef{
+    public class func line(p1:CGPoint,_ p2:CGPoint)->CGMutablePathRef{
         let linePath:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(linePath, nil, p1.x, p1.y)
         CGPathAddLineToPoint(linePath, nil, p2.x, p2.y)
