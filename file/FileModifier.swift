@@ -21,7 +21,7 @@ class FileModifier{
      * let str = "Super long string here"
      */
     class func write(path:String,content:String)->Bool{
-        let theURL:NSURL = NSURL(fileURLWithPath: PathParser.appDocPath())
+        let theURL:NSURL = NSURL(fileURLWithPath: FilePathParser.appDocPath())
         let filename = theURL.URLByAppendingPathComponent("output.txt")
         do {
             try content.writeToFile(String(filename), atomically: true, encoding: NSUTF8StringEncoding)
