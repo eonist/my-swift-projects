@@ -62,13 +62,13 @@ class Trig{
     /**
      * Converts an angle in degrees to radians.
      */
-    class func degrees(radians:Double) -> Double {
+    class func degrees(radians:CGFloat) -> CGFloat {
         return π * radians / 180.0
     }
     /**
      * Converts an angle in radians to degrees.
      */
-    class func radians(degrees:Double) -> Double {
+    class func radians(degrees:CGFloat) -> CGFloat {
         return degrees * 180.0 / π
     }
 }
