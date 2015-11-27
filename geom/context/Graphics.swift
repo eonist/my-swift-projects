@@ -131,7 +131,7 @@ public class Graphics{
                 CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the color fill call
                 Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
             default:
-                fatalError("THIS DRAW METHOD IS NOT SUPPORTED: " + "\(fillMode)")
+                fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " lineMode: " + "\(lineMode)")
                 break;
         }
     }
