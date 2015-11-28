@@ -20,7 +20,7 @@ public class CGPathParser{
      */
     public class func circle(radius:CGFloat, _ x:CGFloat = 0, _ y:CGFloat = 0)->CGMutablePathRef{
         let circlePath:CGMutablePathRef = CGPathCreateMutable()
-        let circleCenter:CGPoint = CGPoint(x: x, y: x);
+        let circleCenter:CGPoint = CGPoint(x: x, y: y);
         let circleRadius:CGFloat  = radius;
         let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI);
         // Construct the circle path counterclockwise.
