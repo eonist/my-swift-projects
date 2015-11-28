@@ -10,4 +10,8 @@ extension IPositionable{
         self.x = x
         self.y = y
     }
+    mutating func setPosition(position:CGPoint){
+        self.position.x = position.x
+        self.position.y = position.y
+    }
 }
