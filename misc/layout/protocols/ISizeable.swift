@@ -9,7 +9,7 @@ extension ISizeable{
         self.width = point.width
         self.height = point.height
     }
-    func getSize()->CGPoint{
+    func getSize()->CGSize{
         return CGSize(self.width,self.height)
     }
 }
