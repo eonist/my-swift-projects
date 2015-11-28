@@ -1,6 +1,7 @@
 import Foundation
 
 protocol ISizeable {
+    var size:CGSize {get set}
     var width:CGFloat{get set}
     var height:CGFloat{get set}
 }
