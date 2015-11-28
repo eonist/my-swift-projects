@@ -2,19 +2,12 @@ import Foundation
 
 protocol ISizeable {
     var size:CGSize {get set}
-    var width:CGFloat{get set}
-    var height:CGFloat{get set}
 }
 extension ISizeable{
-    mutating func setSize(size:CGSize){
-        self.width = size.width
-        self.height = size.height
-    }
+    var width:CGFloat{get{return self.size.width} set{self.width = newValue}}
+    var height:CGFloat{get{return self.size.height} set{self.height = newValue}}
     mutating func setSize(width:CGFloat,height:CGFloat){
         self.width = width
         self.height = height
-    }
-    func getSize()->CGSize{
-        return CGSize(self.width,self.height)
     }
 }
