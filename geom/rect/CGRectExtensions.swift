@@ -38,6 +38,7 @@ extension CGRect{
     var bottom:CGPoint {get {return CGPoint(self.midX, self.maxY)}}
     var left:CGPoint {get {return CGPoint(self.maxX, self.midY)}}
     var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
+    var corners:Array<CGPoint> {return [self.topLeft,self.topRight,self.bottomLeft,self.bottomRight]}
     /*Easy Access to corners*/
     subscript(key: String) -> CGPoint {
         get {
