@@ -1,19 +1,13 @@
 import Foundation
 
 protocol IPositionable {
-    var x:CGFloat{get set}
-    var y:CGFloat{get set}
+    var position:CGPoint{get set}
 }
 extension IPositionable{
-    mutating func setPosition(point:CGPoint){
-        self.x = point.x
-        self.y = point.y
-    }
+    var x:CGFloat{get{return self.position.x} set{self.position.x = newValue}}
+    var y:CGFloat{get{return self.position.y} set{self.position.y = newValue}}
     mutating func setPosition(x:CGFloat,y:CGFloat){
         self.x = x
         self.y = y
-    }
-    func getPosition()->CGPoint{
-        return CGPoint(self.x,self.y)
     }
 }
