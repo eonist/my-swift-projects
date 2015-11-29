@@ -15,3 +15,13 @@ class Margin:ILayout{
         }
     }
 }
+
+
+/*
+
+case 1: _left = _right = _top = _bottom = array[0]; break;
+case 2: _top = _bottom = array[0];_left = _right = array[1]; break;
+case 3: _top = array[0];_left = _right = array[1];_bottom = array[2];break;
+case 4: _top = array[0];_right = array[1]; _bottom = array[2];_left = array[3]; break;
+
+*/
