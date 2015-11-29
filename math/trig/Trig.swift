@@ -9,10 +9,10 @@ class Trig{
     static var top:CGFloat = 270;
     static var rad:CGFloat = π / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:CGFloat = 180 / π;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
-    static var T:Range = (-π/4,-π*0.75);
-    static var B:Range = NSRange(π/4,π*0.75);
-    static var L:Range = NSRange(Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
-    static var R:Range = NSRange(-π/4, π/4);
+    static var T:(CGFloat, CGFloat) = (-π/4,-π*0.75);
+    static var B:(CGFloat, CGFloat) = (π/4,π*0.75);
+    static var L:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
+    static var R:(CGFloat, CGFloat) = (-π/4, π/4);
     /**
      * Returns an angle in radian between -3.14 and 3.14 (-180 and 180 converted to degress)
      * @param a is the pivot point
