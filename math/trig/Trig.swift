@@ -14,6 +14,10 @@ class Trig{
     static var b:(CGFloat, CGFloat) = (π/4,π*0.75);
     static var l:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
     static var r:(CGFloat, CGFloat) = (-π/4, π/4);
+    static var tl:(CGFloat,CGFloat) = (-180*㎭,-90*㎭)
+    static var tr:(CGFloat,CGFloat) = (-90*㎭,0)
+    static var bl:(CGFloat,CGFloat) = (0,90*㎭)
+    static var br:(CGFloat,CGFloat) = (90*㎭,180*㎭)
     
     
     /**
