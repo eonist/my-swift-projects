@@ -174,20 +174,8 @@ private class Utils{
      */
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
-        
-        
-        
-        let topLeft:CGPoint = boundingBox.origin
-        Swift.print("topLeft: " + "\(topLeft)")
-        let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
-        Swift.print("center: " + String(center))
-        
-        let distance:CGFloat = topLeft.distance(center)//radius
-        let a:CGPoint = center.polarPoint(-distance, rotation)//the rotation seems to be inverted, try to fix this later
-        Swift.print("a: " + "\(a)")
-        let b:CGPoint = center.polarPoint(distance, rotation)
-        Swift.print("b: " + "\(b)")
-        CGContextDrawLinearGradient(context, cgGradient, a, b, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        let points = GradientBoxUtils.points(boundingBox, rotation)
+        CGContextDrawLinearGradient(context, cgGradient, points.start, points.end, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
