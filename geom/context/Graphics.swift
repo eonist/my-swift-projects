@@ -174,6 +174,9 @@ private class Utils{
      */
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
+        
+        
+        
         let topLeft:CGPoint = boundingBox.origin
         Swift.print("topLeft: " + "\(topLeft)")
         let center:CGPoint = CGPoint(boundingBox.midX, boundingBox.midY)
