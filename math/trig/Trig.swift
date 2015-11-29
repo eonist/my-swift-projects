@@ -7,7 +7,7 @@ class Trig{
     static var left:CGFloat = 180;
     static var right:CGFloat = 0;
     static var bottom:CGFloat = 90;
-    static var top:CGFloat = 270;
+    static var top:CGFloat = 270;//-90
     static var rad:CGFloat = π / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:CGFloat = 180 / π;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
     static var t:(CGFloat, CGFloat) = (-π/4,-π*0.75);
