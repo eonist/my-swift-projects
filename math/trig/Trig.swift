@@ -2,7 +2,7 @@ import Foundation
 var π = CGFloat(M_PI)/*Global variable*/
 var ㎭ = π/180/*Global variable*/
 class Range{
-    //todo create a Range class that uses Generics
+    //todo create a Range class that uses Generics for its range Duties
 }
 class Trig{
     static var pi:CGFloat = π
