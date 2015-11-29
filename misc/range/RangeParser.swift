@@ -1,3 +1,3 @@
-class RangeParser {
-
+class RangeParser<T> {
+    
 }

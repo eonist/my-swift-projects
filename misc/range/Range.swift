@@ -7,10 +7,11 @@ class Range<T> {
         self.start = start;
         self.end = end;
     }
+}
+extension Range{
     func within(range:Range,number:T)->Bool {
         return false//(number <= RangeParser.max(range) && number >= RangeParser.min(range));
     }
-
 }
 
 /*
