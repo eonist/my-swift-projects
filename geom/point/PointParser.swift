@@ -66,7 +66,7 @@ class PointParser{
      * Zero line is horizontal
      * Undefined line is vertical
      */
-    class func slope(p1:CGPoint,p2:CGPoint)->CGFloat {
+    class func slope(p1:CGPoint,_ p2:CGPoint)->CGFloat {
         let a:CGFloat = (p2.y-p1.y);
         //print("a: " + a);
         let b:CGFloat = (p2.x-p1.x);
@@ -83,7 +83,7 @@ class PointParser{
      * @Note this method is great if you have 2 points and you want to find the third but you only know the y value of that point
      * @example PointParser.x(new Point(100,100), 200, 1);//Output: 200
      */
-    class func x(p1:CGPoint,y2:CGFloat,slope:CGFloat)->CGFloat {
+    class func x(p1:CGPoint,_ y2:CGFloat,_ slope:CGFloat)->CGFloat {
         return ((y2-p1.y)/slope)+p1.x;
     }
     /**
@@ -94,7 +94,7 @@ class PointParser{
      * @Note this method is great if you have 2 points and you want to find the third but you only know the x value of that point
      * @example PointParser.y(new Point(100,100), 200, 1);//Output: 200
      */
-    class func y(p1:CGPoint,x2:CGFloat,slope:CGFloat)->CGFloat {
+    class func y(p1:CGPoint,_ x2:CGFloat,_ slope:CGFloat)->CGFloat {
         return (slope*(x2 - p1.x))+p1.y;
     }
     /**
