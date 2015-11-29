@@ -80,7 +80,7 @@ class PointParser{
     /**
      * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
      */
-    class func directionalAxisDistance(pivot:CGPoint,_ point:CGPoint, rotation:CGFloat)->CGPoint {
+    class func directionalAxisDistance(pivot:CGPoint,_ point:CGPoint, _ rotation:CGFloat)->CGPoint {
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return axisDistance(pivot, leveledPoint);
     }
