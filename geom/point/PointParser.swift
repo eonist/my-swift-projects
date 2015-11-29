@@ -54,6 +54,28 @@ class PointParser{
         return CGPoint(x, y);
     }
     /**
+     * Returns the slope of two points (the rate of change)
+     * @Formula "y2-y1/x2-x1"
+     * @Note you can also find slope by this: Math.tan(Trig.angle(p1,p2))
+     * @Note if slope returns infinity that means its straight down
+     * @Note if slope returns -infinity that means its straight up
+     * @Note if the slope returns 0 that means its straight forward or straight back, this makes it hard to destinguish between forward and backward slope unless you flip the x and y for both values incases where all y values are equal
+     * @Note if the slope returns NaN that means p1 equals p2
+     * Positive line increases from left to right
+     * Negative line decreases from right to left
+     * Zero line is horizontal
+     * Undefined line is vertical
+     */
+    public static function slope(p1:CGPoint,p2:CGPoint)->CGFloat {
+        var a:CGFloat = (p2.y-p1.y);
+        //print("a: " + a);
+        var b:CGFloat = (p2.x-p1.x);
+        //print("b: " + b);
+        //var test:Number = Math.tan(Trig.angle(p1,p2));
+        //print("test: " + test);
+        return a/b;
+    }
+    /**
      * Returns the x position when a line passes through @param p1 and @param y2 and that line has a slope-value of @param slope
      * @param slope (the rate of change between x and y) use PointParser.slope(p1,p2) to find the slope
      * @Note based on the equation: "slope = (y2-y1)/(x2-x1)"
