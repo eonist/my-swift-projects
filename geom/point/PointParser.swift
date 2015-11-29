@@ -54,6 +54,28 @@ class PointParser{
         return CGPoint(x, y);
     }
     /**
+     * Returns the x position when a line passes through @param p1 and @param y2 and that line has a slope-value of @param slope
+     * @param slope (the rate of change between x and y) use PointParser.slope(p1,p2) to find the slope
+     * @Note based on the equation: "slope = (y2-y1)/(x2-x1)"
+     * @Note the Angle.y() is a similar method but it uses the angle to find the x
+     * @Note this method is great if you have 2 points and you want to find the third but you only know the y value of that point
+     * @example PointParser.x(new Point(100,100), 200, 1);//Output: 200
+     */
+    class func x(p1:CGPoint,y2:CGFloat,slope:CGFloat)->CGFloat {
+        return ((y2-p1.y)/slope)+p1.x;
+    }
+    /**
+     * Returns the y position when a line passes through @param p1 and @param y2 and that line has a slope-value of @param slope
+     * @param slope (the rate of change between x and y) use PointParser.slope(p1,p2) to find the slope
+     * @Note based on the equation: "slope = (y2-y1)/(x2-x1)"
+     * @Note the Angle.x() is a similar method but it uses the angle to find the x
+     * @Note this method is great if you have 2 points and you want to find the third but you only know the x value of that point
+     * @example PointParser.y(new Point(100,100), 200, 1);//Output: 200
+     */
+    class func y(p1:CGPoint,x2:CGFloat,slope:CGFloat)->CGFloat {
+        return (slope*(x2 - p1.x))+p1.y;
+    }
+    /**
      * Returns the difference between two points
      * print(new Point(20,20),new Point(-40,-40))//Output: (-60,-60)
      * print(new Point(20,20),new Point(40,-40))//Output: (20,-60)
