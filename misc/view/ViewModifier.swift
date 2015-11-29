@@ -19,4 +19,11 @@ class ViewModifier {
             view.layer!.borderWidth = CGFloat(lineWidth)
         }
     }
+    /**
+     * Sets the position of an NSView instance
+     * TODO: make the same method for size
+     */
+    class func setPosition(view:NSView,point:CGPoint){
+        view.frame.origin = point
+    }
 }
