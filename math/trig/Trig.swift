@@ -1,6 +1,9 @@
 import Foundation
 var π = CGFloat(M_PI)/*Global variable*/
 var ㎭ = π/180/*Global variable*/
+class Range{
+    //todo create a Range class that uses Generics
+}
 class Trig{
     static var pi:CGFloat = π
     static var left:CGFloat = 180;
@@ -13,6 +16,8 @@ class Trig{
     static var B:(CGFloat, CGFloat) = (π/4,π*0.75);
     static var L:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
     static var R:(CGFloat, CGFloat) = (-π/4, π/4);
+    
+    
     /**
      * Returns an angle in radian between -3.14 and 3.14 (-180 and 180 converted to degress)
      * @param a is the pivot point
