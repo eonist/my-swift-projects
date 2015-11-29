@@ -66,10 +66,10 @@ class PointParser{
      * Zero line is horizontal
      * Undefined line is vertical
      */
-    public static function slope(p1:CGPoint,p2:CGPoint)->CGFloat {
-        var a:CGFloat = (p2.y-p1.y);
+    class func slope(p1:CGPoint,p2:CGPoint)->CGFloat {
+        let a:CGFloat = (p2.y-p1.y);
         //print("a: " + a);
-        var b:CGFloat = (p2.x-p1.x);
+        let b:CGFloat = (p2.x-p1.x);
         //print("b: " + b);
         //var test:Number = Math.tan(Trig.angle(p1,p2));
         //print("test: " + test);
