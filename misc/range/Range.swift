@@ -8,3 +8,5 @@ class Range<T> {
         self.end = end;
     }
 }
+
+//this doesnt work straight out of the box, you cant use operators on generics, so you need to typecheck each value etc. 
