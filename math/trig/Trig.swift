@@ -10,10 +10,10 @@ class Trig{
     static var top:CGFloat = 270;
     static var rad:CGFloat = π / 180;//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:CGFloat = 180 / π;//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
-    static var T:(CGFloat, CGFloat) = (-π/4,-π*0.75);
-    static var B:(CGFloat, CGFloat) = (π/4,π*0.75);
-    static var L:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
-    static var R:(CGFloat, CGFloat) = (-π/4, π/4);
+    static var t:(CGFloat, CGFloat) = (-π/4,-π*0.75);
+    static var b:(CGFloat, CGFloat) = (π/4,π*0.75);
+    static var l:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
+    static var r:(CGFloat, CGFloat) = (-π/4, π/4);
     
     
     /**
