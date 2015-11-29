@@ -7,6 +7,14 @@ class Margin:ILayout{
     var left:CGFloat = 0;
     required init(_ args:Any...){
         switch(args.count){
+        case 1: left = array[0]; right = array[0]; top = array[0]; bottom = array[0]; break;
+        case 2: top = array[0]; bottom = array[0];left = array[1]; right = array[1]; break;
+        case 3: top = array[0]; left = array[1]; right = array[1]; bottom = array[2];break;
+        case 4: top = array[0]; right = array[1]; bottom = array[2]; left = array[3]; break;
+        default:break;
+        }
+        
+        switch(args.count){
         case 0: left = args[0] as! CGFloat; right = args[0] as! CGFloat; top = args[0] as! CGFloat; bottom = args[0] as! CGFloat
         case 1: left = args[0] as! CGFloat; right = args[0] as! CGFloat; top = args[0] as! CGFloat; bottom = args[0] as! CGFloat;
         case 2: left = args[0] as! CGFloat; right = args[0] as! CGFloat;top = args[1] as! CGFloat; bottom = args[1] as! CGFloat;
@@ -15,13 +23,3 @@ class Margin:ILayout{
         }
     }
 }
-
-
-/*
-
-case 1: _left = _right = _top = _bottom = array[0]; break;
-case 2: _top = _bottom = array[0];_left = _right = array[1]; break;
-case 3: _top = array[0];_left = _right = array[1];_bottom = array[2];break;
-case 4: _top = array[0];_right = array[1]; _bottom = array[2];_left = array[3]; break;
-
-*/
