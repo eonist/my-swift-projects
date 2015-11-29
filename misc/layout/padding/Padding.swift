@@ -1,8 +1,8 @@
 import Foundation
 /*
-* TopRightBottomLeft (TRBL aka Trouble)
-*/
-class Padding {
+ * TopRightBottomLeft (TRBL aka Trouble)
+ */
+class Padding {//TODO: this is incomplete
     var top:Double = 0;
     var right:Double = 0;
     var bottom:Double = 0;
