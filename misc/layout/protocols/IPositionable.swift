@@ -14,4 +14,5 @@ extension IPositional{
         self.position.x = position.x
         self.position.y = position.y
     }
+    var positional:IPositional {get{return self as IPositional}set{/*you may implement setting x and y here*/}}
 }
