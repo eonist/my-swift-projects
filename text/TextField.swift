@@ -1,5 +1,5 @@
-import Foundation
+import Cocoa
 
-class TextField {
-
+class TextField:NSText{
+    
 }
