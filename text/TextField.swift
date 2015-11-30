@@ -2,6 +2,7 @@ import Cocoa
 
 class TextField:NSText{
     override init(frame frameRect: NSRect) {
+        Swift.print("TextField.init()")
         super.init(frame: frameRect)
     }
 
