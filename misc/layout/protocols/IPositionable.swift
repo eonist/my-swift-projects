@@ -2,6 +2,8 @@ import Foundation
 
 protocol IPositional {
     var position:CGPoint{get set}
+    func setPosition(position:CGPoint)
+    func setPosition(x:CGFloat,y:CGFloat)
 }
 extension IPositional{
     var x:CGFloat{get{return self.position.x} set{self.position.x = newValue}}
