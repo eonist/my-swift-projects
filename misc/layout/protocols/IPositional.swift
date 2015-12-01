@@ -1,7 +1,7 @@
 import Foundation
 protocol IPositional {
     var position:CGPoint{get set}
-    func setPosition(x:CGFloat,y:CGFloat)
+    func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
 }
 /**
