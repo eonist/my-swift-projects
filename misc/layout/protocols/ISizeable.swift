@@ -2,7 +2,11 @@ import Foundation
 
 protocol ISizeable {
     var size:CGSize {get set}
+    func setSize(width:CGFloat,height:CGFloat)
 }
+/**
+ * CAUTION: These extensions can only be used if you dont need to cast the instance to ISizeable
+ */
 extension ISizeable{
     //var sizeable:ISizeable {get{return self as ISizeable}set{}}/*This method provides support for returning a direct pointer when casting to protocol, which swift doesnt do, it only provides an immutable reference, which is unusable when setting mutating variables via extensions*/
     var width:CGFloat{get{return self.size.width} set{self.width = newValue}}
