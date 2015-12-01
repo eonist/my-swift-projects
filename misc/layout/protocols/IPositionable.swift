@@ -1,7 +1,7 @@
 import Foundation
 protocol IPositional {
     var position:CGPoint{get set}
-    func setPosition(position:CGPoint)//unsure if this can be here when you have that same method in the extension
+    //func setPosition(position:CGPoint)//unsure if this can be here when you have that same method in the extension
 }
 /**
  * CAUTION: These extensions can only be used if you dont need to cast the instance to ISizeable

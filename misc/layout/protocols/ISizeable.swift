@@ -2,7 +2,7 @@ import Foundation
 
 protocol ISizeable {
     var size:CGSize {get set}
-    func setSize(width:CGFloat,height:CGFloat)//unsure if this can be here when you have that same method in the extension
+    //func setSize(width:CGFloat,height:CGFloat)//unsure if this can be here when you have that same method in the extension
 }
 /**
  * CAUTION: These extensions can only be used if you dont need to cast the instance to ISizeable
