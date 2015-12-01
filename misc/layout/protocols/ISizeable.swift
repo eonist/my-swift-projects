@@ -6,6 +6,9 @@ protocol ISizeable {
 extension ISizeable{
     var width:CGFloat{get{return self.size.width} set{self.width = newValue}}
     var height:CGFloat{get{return self.size.height} set{self.height = newValue}}
+    func getSize() -> CGSize {
+        return size
+    }
     mutating func setSize(width:CGFloat,height:CGFloat){
         self.width = width
         self.height = height

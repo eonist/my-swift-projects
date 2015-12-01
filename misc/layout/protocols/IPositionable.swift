@@ -6,6 +6,9 @@ protocol IPositional {
 extension IPositional{
     var x:CGFloat{get{return self.position.x} set{self.position.x = newValue}}
     var y:CGFloat{get{return self.position.y} set{self.position.y = newValue}}
+    func getPosition() -> CGPoint {
+        return position
+    }
     mutating func setPosition(x:CGFloat,y:CGFloat){
         self.x = x
         self.y = y
