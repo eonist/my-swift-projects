@@ -14,5 +14,7 @@ extension ISizeable{
         self.width = size.width
         self.height = size.height
     }
-    
+    func getSize() -> CGSize {
+        return size
+    }
 }
