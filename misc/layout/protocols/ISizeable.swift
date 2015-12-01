@@ -14,5 +14,4 @@ extension ISizeable{
         self.width = size.width
         self.height = size.height
     }
-    
 }
