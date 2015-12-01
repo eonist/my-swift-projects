@@ -17,4 +17,8 @@ extension IPositional{
         self.position.x = position.x
         self.position.y = position.y
     }
+    
+    //Continue here: test a protocol with out extension, can you do setSomeVar on a let var?
+    
+    var positional:IPositional {get{return self as IPositional}set{}}/*This method provides support for returning a direct pointer when casting to protocol, which swift doesnt do, it only provides an immutable reference, which is unusable when setting variables*/
 }
