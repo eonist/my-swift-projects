@@ -18,9 +18,9 @@ class View :FlippedView{
      * Avoids covering the graphic behind when dealing with mouse down events
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("View.hitTest(): " + String(aPoint))
-        Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint)))
-        return isInteractive ? self : nil
+        //Swift.print("View.hitTest(): " + String(aPoint))
+        //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
+        return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
      * Enables the hand cursor on enter
