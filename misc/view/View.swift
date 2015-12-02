@@ -19,7 +19,7 @@ class View :FlippedView{
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         Swift.print("View.hitTest(): " + String(aPoint))
-        Swift.print("View.hitTestPoint() " + String(hitTestPoint(aPoint)))
+        Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint)))
         return isInteractive ? self : nil
     }
     /**
