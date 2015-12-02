@@ -13,6 +13,7 @@ extension NSView {
     }
     func hitTestFromView(locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
         let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)
+        Swift.print("hitTestFromView.locationInWindow: " + String(locationInWindow))
         Swift.print("hitTestFromView.mousePos(): " + String(mousePos))
         Swift.print("hitTestFromView.frame: " + String(frame))
         return NSPointInRect(mousePos, frame)
