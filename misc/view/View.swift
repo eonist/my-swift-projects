@@ -20,7 +20,7 @@ class View :FlippedView{
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("View.hitTest(): " + String(aPoint))
         //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
-        return isInteractive /* && hitTestToView(aPoint,self) */ ? self : nil
+        return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
      * Enables the hand cursor on enter
