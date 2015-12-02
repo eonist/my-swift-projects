@@ -5,7 +5,7 @@ import Cocoa
  */
 class View :FlippedView{
     var isInteractive:Bool = true
-    var hasHandCursor:Bool = true
+    var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame: NSRect) {
         super.init(frame: frame)
