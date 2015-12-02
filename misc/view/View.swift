@@ -16,7 +16,7 @@ class View :FlippedView{
     }
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
-     * NOTE: the hitTestToView method makes sure the 
+     * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("View.hitTest(): " + String(aPoint))
