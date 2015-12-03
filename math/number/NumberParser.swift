@@ -85,7 +85,7 @@ class NumberParser{
      * Returns the number if its within min-max returns min if its lower and max if its higher
      * TODO: write examples for this
      */
-    class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {
+    class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
         return max(min(value, maxValue), minValue)
     }
 }
