@@ -41,7 +41,7 @@ class ArrayModifier{
     /**
 	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
       * NOTE: splice can also be used to remove item from array
-      * IMPORTANT: the original array is modified
+      * IMPORTANT: the original array is modified, actually it isnt in this method but it should (remove the returnArray and it shall work)
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
