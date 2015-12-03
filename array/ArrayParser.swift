@@ -36,7 +36,7 @@ class ArrayParser{
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
      */
-    class func similar<T:Equatable>(a:[T],b:[T])->[T]{
+    class func similar<T:Equatable>(a:[T],_ b:[T])->[T]{
         var similarList:[T] = []
         for x in b {
             for y in a {
