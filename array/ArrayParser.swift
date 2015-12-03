@@ -80,4 +80,17 @@ class ArrayParser{
     class func last<T>(arr:[T])->T{
         return arr[arr.count-1]
     }
+    /**
+     * Returns a new array with every item in @param array sorted according a custom method provided in @param contition
+     * @Note: leaves the original array intact
+     * @example: trace(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],function(a:Number, b:Number):Boolean{return a < b;}));// -1,0,0,1,2,3,4,5,22
+     */
+    class func conditionSort(array:Array,contition:Function):Array{
+        var sortedArray:Array = [];
+        for (var i : int = 0; i < array.length; i++) {
+            var index:int = Utils.index(array[i], sortedArray,contition);/**/
+            index > -1 ? sortedArray.splice(index, 1, array[i], sortedArray[index]) : sortedArray.push(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */
+        }
+        return sortedArray;
+    }
 }
