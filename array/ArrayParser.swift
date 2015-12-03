@@ -83,7 +83,7 @@ class ArrayParser{
     /**
      * Returns a new array with every item in @param array sorted according a custom method provided in @param contition
      * @Note: leaves the original array intact
-     * @example: trace(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],function(a:Number, b:Number):Boolean{return a < b;}));// -1,0,0,1,2,3,4,5,22
+     * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],function(a:Number, b:Number):Boolean{return a < b;}));// -1,0,0,1,2,3,4,5,22
      */
     func conditionSort<T:Comparable>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = [];
