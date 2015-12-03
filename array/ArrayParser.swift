@@ -2,6 +2,7 @@ class ArrayParser{
     /**
      * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")
      * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
+     * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
      */
     class func indexOfStr(arr:Array<String>,str:String)->Int{
         if let index = arr.indexOf(str) {
