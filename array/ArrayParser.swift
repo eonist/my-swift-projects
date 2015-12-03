@@ -85,7 +85,7 @@ class ArrayParser{
      * @Note: leaves the original array intact
      * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,0,1,2,3,4,5,22
      */
-    class func conditionSort<T:Comparable>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
+    class func conditionSort<T>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = [];
         for (var i : Int = 0; i < array.count; i++) {
             let index:Int = Utils.index(array[i], sortedArray, condition);/**/
@@ -99,7 +99,7 @@ private class Utils{
     /**
      * Returns the index of the item in @param sortedArray that meets the @param condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
-    class func index<T:Comparable>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
+    class func index<T>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
         for (var i : Int = 0; i < sortedArray.count; i++) {
             if(condition(a: value,b: sortedArray[i])) {return i}
         }
