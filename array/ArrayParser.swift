@@ -85,12 +85,29 @@ class ArrayParser{
      * @Note: leaves the original array intact
      * @example: trace(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],function(a:Number, b:Number):Boolean{return a < b;}));// -1,0,0,1,2,3,4,5,22
      */
-    class func conditionSort(array:Array,contition:Function):Array{
-        var sortedArray:Array = [];
-        for (var i : int = 0; i < array.length; i++) {
-            var index:int = Utils.index(array[i], sortedArray,contition);/**/
-            index > -1 ? sortedArray.splice(index, 1, array[i], sortedArray[index]) : sortedArray.push(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */
+    func conditionSort<T:Comparable>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
+        var sortedArray:Array<T> = [];
+        for (var i : Int = 0; i < array.count; i++) {
+            let index:Int = Utils.index(array[i], sortedArray, condition);/**/
+            if(index > -1){
+                sortedArray = ArrayModifier.splice(&sortedArray,index, 1, [array[i],sortedArray[index]])
+            }else{
+                sortedArray.append(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */
+            }
         }
         return sortedArray;
+    }
+}
+private class Utils{
+    /**
+     * Returns the index of the item in @param sortedArray that meets the @param condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
+     */
+    class func index<T:Comparable>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
+        for (var i : Int = 0; i < sortedArray.count; i++) {
+            if(condition(a: value,b: sortedArray[i])) {
+                return i
+            }
+        }
+        return -1;
     }
 }
