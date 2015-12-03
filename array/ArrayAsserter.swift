@@ -3,7 +3,7 @@ class ArrayAsserter {
     /**
      *
      */
-    class func contains<T>(array:[T],obj:T)->Bool {
+    class func contains<T:Equatable>(array:[T],obj:T)->Bool {
         
         
         //continue here

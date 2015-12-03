@@ -13,7 +13,7 @@ class ArrayParser{
     /**
      * Returns the index of @param value in @param arr
      */
-    class func index<T : Equatable>(arr : [T], _ value:T)->Int{
+    class func index<T : Equatable>(arr : [T], _ value:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
         if let i = arr.indexOf(value) {
             return i
         }else{
