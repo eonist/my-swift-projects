@@ -5,7 +5,7 @@ class ArrayAsserter {
      */
     class func contains<T:Equatable>(array:[T],obj:T)->Bool {
         
-        
+       return array.contains(obj)
         //continue here
         
         //needs the equatable syntax
