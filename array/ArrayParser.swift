@@ -83,17 +83,14 @@ class ArrayParser{
     /**
      * Returns a new array with every item in @param array sorted according a custom method provided in @param contition
      * @Note: leaves the original array intact
-     * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],function(a:Number, b:Number):Boolean{return a < b;}));// -1,0,0,1,2,3,4,5,22
+     * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,0,1,2,3,4,5,22
      */
-    func conditionSort<T:Comparable>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
+    class func conditionSort<T:Comparable>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = [];
         for (var i : Int = 0; i < array.count; i++) {
             let index:Int = Utils.index(array[i], sortedArray, condition);/**/
-            if(index > -1){
-                sortedArray = ArrayModifier.splice(&sortedArray,index, 1, [array[i],sortedArray[index]])
-            }else{
-                sortedArray.append(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */
-            }
+            if(index > -1){sortedArray = ArrayModifier.splice(&sortedArray,index, 1, [array[i],sortedArray[index]])}
+            else{sortedArray.append(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
         }
         return sortedArray;
     }
@@ -104,9 +101,7 @@ private class Utils{
      */
     class func index<T:Comparable>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
         for (var i : Int = 0; i < sortedArray.count; i++) {
-            if(condition(a: value,b: sortedArray[i])) {
-                return i
-            }
+            if(condition(a: value,b: sortedArray[i])) {return i}
         }
         return -1;
     }
