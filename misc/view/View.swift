@@ -7,15 +7,15 @@ class View :FlippedView{
     var isInteractive:Bool = true
     var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override var wantsUpdateLayer:Bool{return false;}
+    //override var wantsUpdateLayer:Bool{return false;}
     override init(frame:NSRect) {
         super.init(frame:frame)
-        self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("View.drawRect() ")
-        super.drawRect(dirtyRect)
+        //super.drawRect(dirtyRect)
     }
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
