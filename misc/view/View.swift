@@ -14,7 +14,7 @@ class View :FlippedView{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("View.drawRect() ")
-        super.dr
+        super.drawRect(dirtyRect)
     }
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
