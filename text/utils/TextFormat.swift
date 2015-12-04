@@ -34,7 +34,7 @@ class TextFormat {
                     //Swift.print("Setting color: ")
                     color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
-                case TextFormatConstants.font:font = String(newValue)
+                case TextFormatConstants.font:font = newValue as! String
                 case TextFormatConstants.size:size = newValue as! CGFloat
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
