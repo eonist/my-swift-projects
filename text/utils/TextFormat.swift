@@ -34,7 +34,7 @@ class TextFormat {
                     //Swift.print("Setting color: ")
                     color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
-            case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine(newValue, " ")
+            case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String($0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
                 case TextFormatConstants.size:size = newValue as! CGFloat
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
