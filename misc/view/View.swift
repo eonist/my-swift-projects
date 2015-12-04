@@ -11,8 +11,9 @@ class View :FlippedView{
         super.init(frame: frame)
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func drawRect(dirtyRect: NSRect) {
+        Swift.print("View")
     }
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
