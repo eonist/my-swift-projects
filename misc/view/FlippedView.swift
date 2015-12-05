@@ -7,5 +7,5 @@ protocol IView:class{/*the :class enables you to set variables via extension*/
     func addSubview(aView: NSView)
 }
 class FlippedView:NSView{
-    override var flipped:Bool {return true}//Organizes your view from top to bottom
+    override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
 }
