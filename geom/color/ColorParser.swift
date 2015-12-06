@@ -27,6 +27,12 @@ class ColorParser {
         let uintColor:UInt = StringParser.color(hexColor)
         return nsColor(uintColor,alpha);
     }
+    /**
+     * EXAMPLE: :ColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
+     */
+    class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
+        return color.colorWithAlphaComponent(alpha)
+    }
 }
 
 extension ColorParser{
