@@ -189,7 +189,7 @@ private class Utils{
     }
 }
 
-//NOte there is probably a peformace gain by not drowing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
+//NOte there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
 
 /*_ graphicsContext:NSGraphicsContext*//*context:CGContextRef*/
 /*self.context = context*/
