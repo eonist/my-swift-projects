@@ -108,7 +108,9 @@ public class Graphics{
         
         /**/
         if(dropShadow != nil){
-            CGContextSetShadowWithColor(context, CGSizeMake(14, -14), 17.0, NSColor.grayColor().CGColor);//offset,bl
+            
+            //NSShadow(shadow.shadowColor!.colorWithAlphaComponent(1.0),shadow.shadowOffset.width,shadow.shadowOffset.height,shadow.shadowBlurRadius).set()
+            //CGContextSetShadowWithColor(context, CGSizeMake(14, -14), 17.0, NSColor.grayColor().CGColor);//offset,bl
         }
         switch true{
             case (fillMode == FillMode.None)://no fill
