@@ -16,5 +16,10 @@ extension NSColor{
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
     }
-    
+    /**
+     *
+     */
+    func rgba()->(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){
+        return ColorParser.rgba(self)
+    }
 }
