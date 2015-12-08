@@ -26,7 +26,7 @@ class Graphic:FlippedView{
 }
 extension CGMutablePath{
     /**
-     *
+     * Note its probably better to move this method into the Graphic class since then it can be overriden by subclasses, which you cant do with this extension method
      */
     func add(path:CGPath){
         CGPathAddPath(self, nil, path)
