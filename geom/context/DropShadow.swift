@@ -1,12 +1,11 @@
 import Cocoa
 
-class DropShadow : CustomStringConvertible{
+class DropShadow {
     var color:NSColor
     var offsetX:CGFloat
     var offsetY:CGFloat
     var blurRadius:CGFloat
     var inner:Bool
-    var description: String { get{return "Color: " + color.hex + "\n" + "offsetX: " + String(offsetX) + "\n" + "offsetY: " + String(offsetY)} }
     init(_ color:NSColor,_ offsetX:CGFloat,_ offsetY:CGFloat,_ blurRadius:CGFloat,_ inner:Bool){
         self.color = color
         self.offsetX = offsetX
@@ -15,8 +14,6 @@ class DropShadow : CustomStringConvertible{
         self.inner = inner
     }
 }
-/*
-extension DropShadow{
-
+extension DropShadow:CustomStringConvertible{
+    var description: String { get{return "Color: " + color.hex + "\n" + "offsetX: " + String(offsetX) + "\n" + "offsetY: " + String(offsetY)} }
 }
-*/
