@@ -45,9 +45,12 @@ class ColorParser {/*Covers returning hex colors etc*/
     * trace(hexColor); // Traces FF00FF
     */
     public static function hexByRgb(r:uint, g:uint, b:uint):String {
-    var rr:String = r.toString(16);
-    var gg:String = g.toString(16);
-    var bb:String = b.toString(16);
+    let hexValue = String(format:"%X", Int(rgba.r * 255)) + String(format:"%X", Int(rgba.g * 255)) + String(format:"%X", Int(rgba.b * 255))
+    Swift.print("hexValue: " + "\(hexValue)")
+    
+    var rr:String = String(format:"%X", Int(rgba.r * 255));
+    var gg:String = String(format:"%X", Int(rgba.g * 255));
+    var bb:String = String(format:"%X", Int(rgba.b * 255));
     rr = (rr.length == 1) ? '0' + rr : rr;
     gg = (gg.length == 1) ? '0' + gg : gg;
     bb = (bb.length == 1) ? '0' + bb : bb;
@@ -55,9 +58,6 @@ class ColorParser {/*Covers returning hex colors etc*/
     }
     
     
-    
-    
-    just fill in the above and you got !!!! then back to tracing the dropshadow instance variable color.
     
     
     /**
