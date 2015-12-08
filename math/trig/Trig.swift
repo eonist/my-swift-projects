@@ -79,6 +79,7 @@ class Trig{
     }
     /**
      * Converts an angle in radians to degrees.
+     * NOTE: can also be defined degrees * (π / 180)
      */
     class func radians(degrees:CGFloat) -> CGFloat {
         return degrees / 180.0 * π
