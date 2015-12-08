@@ -5,7 +5,7 @@ class ColorParser {/*Covers returning hex colors etc*/
      *
      */
     class func hexColor(nsColor:NSColor)->String{
-        
+        let rgba = nsColor.rgba()
         return ColorUtils.hexString(<#T##hex: UInt##UInt#>)
     }
     /**

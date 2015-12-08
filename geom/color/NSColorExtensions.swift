@@ -17,7 +17,7 @@ extension NSColor{
         return NSColor(self,alpha)
     }
     /**
-     * EXAMPLE: NSColor.redColor.r//Outputs 1.0
+     * EXAMPLE: NSColor.redColor().rgba.r//Outputs 1.0
      */
     var rgba:(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){return ColorParser.rgba(self)}
 }
