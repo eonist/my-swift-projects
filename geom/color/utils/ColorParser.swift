@@ -44,22 +44,15 @@ class ColorParser {/*Covers returning hex colors etc*/
     * var hexColor : String = ColorParser.hexByRgb(255, 0, 255);
     * trace(hexColor); // Traces FF00FF
     */
-    public static function hexByRgb(r:uint, g:uint, b:uint):String {
-    let hexValue = String(format:"%X", Int(rgba.r * 255)) + String(format:"%X", Int(rgba.g * 255)) + String(format:"%X", Int(rgba.b * 255))
-    Swift.print("hexValue: " + "\(hexValue)")
-    
-    var rr:String = String(format:"%X", Int(rgba.r * 255));
-    var gg:String = String(format:"%X", Int(rgba.g * 255));
-    var bb:String = String(format:"%X", Int(rgba.b * 255));
-    rr = (rr.length == 1) ? '0' + rr : rr;
-    gg = (gg.length == 1) ? '0' + gg : gg;
-    bb = (bb.length == 1) ? '0' + bb : bb;
-    return (rr + gg + bb).toUpperCase();
+    class func hexByRgb(r:CGFloat, _ g:CGFloat, _ b:CGFloat)->String {
+        var rr:String = String(format:"%X", Int(rgba.r * 255));
+        var gg:String = String(format:"%X", Int(rgba.g * 255));
+        var bb:String = String(format:"%X", Int(rgba.b * 255));
+        rr = (rr.length == 1) ? "0" + rr : rr;
+        gg = (gg.length == 1) ? "0" + gg : gg;
+        bb = (bb.length == 1) ? "0" + bb : bb;
+        return (rr + gg + bb).toUpperCase();
     }
-    
-    
-    
-    
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
