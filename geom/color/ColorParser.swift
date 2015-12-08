@@ -23,7 +23,7 @@ class ColorParser {
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
      * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
      */
-    class func nsColor(hexColor:String, _ alpha: Float = 1.0) -> NSColor{
+    class func nsColor(hexColor:String, _ alpha: CGFloat = 1.0) -> NSColor{
         let uintColor:UInt = StringParser.color(hexColor)
         return nsColor(uintColor,alpha);
     }
