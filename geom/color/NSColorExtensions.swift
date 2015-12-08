@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * NOTE: it seems you cant override NSColor description{return ""} (research needed as you did this once with NSView and drawRect etc)
+ */
 extension NSColor{
     /**
      * EXAMPLE: :NSColor(NSColor.blackColor(),0.5)//outputs: a black color with 50% transparancy
@@ -14,4 +16,5 @@ extension NSColor{
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
     }
+    
 }
