@@ -147,30 +147,17 @@ public class Graphics{
      */
     private func drawLine(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
-        
-        switch true{
-       
-        case (strokeMode == StrokeMode.Color)://color stroke  only
-            //Swift.print("stroke")
-            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (strokeMode == StrokeMode.Color)://gradientFill and color stroke
-            CGContextAddPath(context,path)//Adds the path to the context
-            //Swift.print("gradient fill and color stroke")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
-            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (strokeMode == StrokeMode.Gradient)://gradient stroke only
-            //Swift.print("gradient stroke")
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
-            //Swift.print("color fill & gradient stroke")
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the color fill call
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        default:
-            fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
-            break;
-        }
+        switch true {
+            case (strokeMode == StrokeMode.Color)://color stroke
+                //Swift.print("stroke")
+                CGContextDrawPath(context, CGPathDrawingMode.Stroke)
+            case (strokeMode == StrokeMode.Gradient)://gradient stroke
+                //Swift.print("gradient stroke")
+                Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
+            default:
+                fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
+                break;
+            }
     }
 }
 private class Utils{
