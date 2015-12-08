@@ -3,16 +3,17 @@ import Cocoa
 class ColorParser {/*Covers returning hex colors etc*/
     /**
      * Converts an RGB color value into a hexidecimal String representation.
-     * @param r: A uint from 0 to 255 representing the red color value.
-     * @param g: A uint from 0 to 255 representing the green color value.
-     * @param b: A uint from 0 to 255 representing the blue color value.
+     * @param r: A CGFloat from 0 to 1 representing the red color value.
+     * @param g: A CGFloat from 0 to 1 representing the green color value.
+     * @param b: A CGFloat from 0 to 1 representing the blue color value.
      * @return Returns a hexidecimal color as a String.
      * @example
      * var hexColor : String = ColorParser.hexByRgb(1, 0, 1);
-     * trace(hexColor); // Traces FF00FF
+     * print(hexColor); // prints FF00FF
+     * TODO: maybe make another method that takes int from 0-255?
      */
     
-    func hexColor(r:CGFloat,g:CGFloat,b:CGFloat)->String{
+    class func hexColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
         var rr:String = String(format:"%X", Int(r * 255));
         var gg:String = String(format:"%X", Int(g * 255));
         var bb:String = String(format:"%X", Int(b * 255));
@@ -31,8 +32,11 @@ class ColorParser {/*Covers returning hex colors etc*/
 }
 
 extension ColorParser{
+    /**
+     * Support for NSColor
+     */
     class func hexColor(nsColor:NSColor)->String {
         let rgba = nsColor.rgba
-        return hexColor(rgba.r,rgba.g,rgba.b)
+        return ColorParser.hexColor(rgba.r,rgba.g,rgba.b)
     }
 }
