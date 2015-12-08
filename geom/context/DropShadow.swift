@@ -1,6 +1,6 @@
 import Cocoa
 
-class DropShadow {
+class DropShadow : CustomStringConvertible{
     var color:NSColor
     var offsetX:CGFloat
     var offsetY:CGFloat
