@@ -48,7 +48,7 @@ extension ColorParser{
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */
-    class func nsColor(hexColor:UInt, _ alpha: Float = 1.0)->NSColor{
+    class func nsColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->NSColor{
         //Swift.print("hexColor: " + "\(hexColor)")
         let rgb:UInt = hexColor
         let r:UInt = rgb >> 16;
@@ -62,7 +62,7 @@ extension ColorParser{
     /*
     * hexColor -> cgColor
     */
-    class func cgColor(hexColor:UInt, _ alpha: Float = 1.0)->CGColor{
+    class func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
         return nsColor(hexColor,alpha).CGColor
     }
 }

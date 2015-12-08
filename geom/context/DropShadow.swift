@@ -6,7 +6,7 @@ class DropShadow {
     var offsetY:CGFloat
     var blurRadius:CGFloat
     var inner:Bool
-    init(_ color:NSColor,_ offsetX:CGFloat,_ offsetY:CGFloat,_ blurRadius:CGFloat,inner:Bool){
+    init(_ color:NSColor,_ offsetX:CGFloat,_ offsetY:CGFloat,_ blurRadius:CGFloat,_ inner:Bool){
         self.color = color
         self.offsetX = offsetX
         self.offsetY = offsetY
