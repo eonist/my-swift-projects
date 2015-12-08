@@ -1,5 +1,10 @@
-import Foundation
+import Cocoa
 
-class ColorParser2 {/*Covers returning hex colors etc*/
-
+class ColorParser {/*Covers returning hex colors etc*/
+    /**
+     *
+     */
+    class func hexColor(nsColor:NSColor)->String{
+        return ""
+    }
 }
