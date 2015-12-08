@@ -6,7 +6,9 @@ class ColorParser {/*Covers returning hex colors etc*/
      */
     class func hexColor(nsColor:NSColor)->String{
         let rgba = nsColor.rgba
-        return ColorUtils.hexString(UInt(rgba.r + rgba.g + rgba.b))
+        let rgbValue = (rgba.r + rgba.g + rgba.b)
+        Swift.print("rgbValue" + "\(rgbValue)")
+        return ColorUtils.hexString(UInt(rgbValue))
     }
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
