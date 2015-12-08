@@ -5,7 +5,7 @@ class UIntParser {
      * Adds a zero infront of a number
      * // :TODO: Add more advance features to this function, when you have time!
      */
-    class func digit(n:UInt)->String{
+    class func digit(n:UInt,numOfDigits:UInt)->String{
         
         //continue here: complete this method to also support 3 digits, and continue with the nsColorToHexColor code
         

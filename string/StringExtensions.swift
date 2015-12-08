@@ -29,9 +29,11 @@ extension String {
     }
 }
 /**
- * Support for addition of CGFLoat and Double
+ * Multiplies a string
+ * EXAMPLE: "hello" * 3 //hellohellohello
  */
-public func * (left: Double, right: CGFloat) -> CGFloat {
-    
-    return CGFloat(left) + right
+public func * (left: String, right: Int) -> String {
+    var result:String = ""
+    for _ in 0...right {  result += left }
+    return result
 }
