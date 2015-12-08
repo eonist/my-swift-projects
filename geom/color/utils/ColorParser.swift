@@ -12,7 +12,8 @@ class ColorParser {/*Covers returning hex colors etc*/
         let rgbValue = (rgba.r + rgba.g + rgba.b)
         Swift.print("rgbValue" + "\(rgbValue)")
         */
-        let tempRGB = NSColorParser.
+        let tempRGB = StringParser.color("FF0000")
+        Swift.print("tempRGB: " + "\(tempRGB)")
         
         let stringR = UIntParser.digit(UInt(rgba.r * 255), 3)
         Swift.print("stringR: " + "\(stringR)")

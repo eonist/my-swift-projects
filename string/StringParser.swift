@@ -109,6 +109,7 @@ class StringParser{
     }
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
+     * Returns an rgb value
      */
     class func color(hexColor:String, _ alpha: Float = 1.0) -> UInt{
         //Swift.print("hexColor: " + "\(hexColor)")
