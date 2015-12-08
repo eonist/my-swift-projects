@@ -105,6 +105,10 @@ public class Graphics{
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
         
+        
+        //continue here, refactor to only fillmode, then test, then make a outer shadow test on a square
+        
+        
         switch true{
         case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.None)://fill only
             //Swift.print("fill")
@@ -148,8 +152,11 @@ public class Graphics{
     private func drawLine(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
         switch true {
+            case (strokeMode == StrokeMode.None)://no stroke
+                //Swift.print("no stroke")
+                break
             case (strokeMode == StrokeMode.Color)://color stroke
-                //Swift.print("stroke")
+                //Swift.print("color")
                 CGContextDrawPath(context, CGPathDrawingMode.Stroke)
             case (strokeMode == StrokeMode.Gradient)://gradient stroke
                 //Swift.print("gradient stroke")
