@@ -32,6 +32,34 @@ class ColorParser {/*Covers returning hex colors etc*/
         let uintTemp:UInt = UInt(intTemp)
         return ColorUtils.hexString(uintTemp)
     }
+    
+    
+    /**
+    * Converts an RGB color value into a hexidecimal String representation.
+    * @param r: A uint from 0 to 255 representing the red color value.
+    * @param g: A uint from 0 to 255 representing the green color value.
+    * @param b: A uint from 0 to 255 representing the blue color value.
+    * @return Returns a hexidecimal color as a String.
+    * @example
+    * var hexColor : String = ColorParser.hexByRgb(255, 0, 255);
+    * trace(hexColor); // Traces FF00FF
+    */
+    public static function hexByRgb(r:uint, g:uint, b:uint):String {
+    var rr:String = r.toString(16);
+    var gg:String = g.toString(16);
+    var bb:String = b.toString(16);
+    rr = (rr.length == 1) ? '0' + rr : rr;
+    gg = (gg.length == 1) ? '0' + gg : gg;
+    bb = (bb.length == 1) ? '0' + bb : bb;
+    return (rr + gg + bb).toUpperCase();
+    }
+    
+    
+    
+    
+    just fill in the above and you got !!!! then back to tracing the dropshadow instance variable color.
+    
+    
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
