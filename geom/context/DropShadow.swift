@@ -19,4 +19,5 @@ extension DropShadow:CustomStringConvertible{
      * For easier printing of the class variables
      */
     var description: String { get{return "Color: " + color.hex + "\n" + "offsetX: " + String(offsetX) + "\n" + "offsetY: " + String(offsetY)} }
+    var shadow:NSShadow{get{return NSShadow()} }
 }
