@@ -1,5 +1,5 @@
 import Cocoa
-class ColorParser {
+class ColorParser {//rename to NSColorParser
     private class func index(){
         cgColor(1, 0, 0, 1)//Output: red CGColor
         nsColor(250.0, 0, 0,100)//output: red NSColor
