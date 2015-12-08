@@ -8,14 +8,14 @@ class ColorParser {/*Covers returning hex colors etc*/
      * @param b: A uint from 0 to 255 representing the blue color value.
      * @return Returns a hexidecimal color as a String.
      * @example
-     * var hexColor : String = ColorParser.hexByRgb(255, 0, 255);
+     * var hexColor : String = ColorParser.hexByRgb(1, 0, 1);
      * trace(hexColor); // Traces FF00FF
      */
-    class func hexColor(nsColor:NSColor)->String {
-        let rgba = nsColor.rgba
-        var rr:String = String(format:"%X", Int(rgba.r * 255));
-        var gg:String = String(format:"%X", Int(rgba.g * 255));
-        var bb:String = String(format:"%X", Int(rgba.b * 255));
+    
+    func hexColor(r:CGFloat,g:CGFloat,b:CGFloat)->String{
+        var rr:String = String(format:"%X", Int(r * 255));
+        var gg:String = String(format:"%X", Int(g * 255));
+        var bb:String = String(format:"%X", Int(b * 255));
         rr = (rr.count == 1) ? "0" + rr : rr;
         gg = (gg.count == 1) ? "0" + gg : gg;
         bb = (bb.count == 1) ? "0" + bb : bb;
@@ -31,7 +31,8 @@ class ColorParser {/*Covers returning hex colors etc*/
 }
 
 extension ColorParser{
-    func hexColor(r:CGFloat,g:CGFloat,b:CGFloat)->String{
-        
+    class func hexColor(nsColor:NSColor)->String {
+        let rgba = nsColor.rgba
+        return hexColor(rgba.r,rgba.g,rgba.b)
     }
 }
