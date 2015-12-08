@@ -14,9 +14,13 @@ class ColorParser {/*Covers returning hex colors etc*/
         */
         
         let stringR = UIntParser.digit(UInt(rgba.r * 255), 3)
+        Swift.print("stringR: " + "\(stringR)")
         let stringG = UIntParser.digit(UInt(rgba.g * 255), 3)
+        Swift.print("stringG: " + "\(stringG)")
         let stringB = UIntParser.digit(UInt(rgba.b * 255), 3)
+        Swift.print("stringB: " + "\(stringB)")
         let temp:String = stringR + stringG + stringB
+        s
         let numericTemp:Double = Double(temp)!
         let floatTemp:Float = Float(numericTemp)
         let intTemp:Int = Int(floatTemp)
