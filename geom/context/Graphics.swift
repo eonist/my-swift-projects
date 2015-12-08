@@ -150,25 +150,17 @@ public class Graphics{
         
         switch true{
        
-        case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Color)://color stroke  only
+        case (strokeMode == StrokeMode.Color)://color stroke  only
             //Swift.print("stroke")
             CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.None)://gradientFill only
-            //Swift.print("gradient fill")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Color)://gradientFill and color stroke
+        case (strokeMode == StrokeMode.Color)://gradientFill and color stroke
             CGContextAddPath(context,path)//Adds the path to the context
             //Swift.print("gradient fill and color stroke")
             Utils.drawGradientFill(path, context, gradient, cgGradient)
             CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
             CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
+        case (strokeMode == StrokeMode.Gradient)://gradient stroke only
             //Swift.print("gradient stroke")
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Gradient)://gradient  fill and gradient stroke
-            //Swift.print("gradient fill & gradient stroke")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
             Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
         case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
             //Swift.print("color fill & gradient stroke")
