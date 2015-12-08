@@ -8,4 +8,6 @@ class ColorParser {/*Covers returning hex colors etc*/
         
         return ColorUtils.hexString(<#T##hex: UInt##UInt#>)
     }
+    
+    
 }
