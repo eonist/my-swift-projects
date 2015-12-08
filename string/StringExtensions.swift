@@ -38,6 +38,8 @@ extension String {
  */
 public func * (left: String, right: Int) -> String {
     var result:String = ""
-    for _ in 1...right {  result += left }
+    for var i = 0; i < right; ++i{
+        result += left
+    }
     return result
 }
