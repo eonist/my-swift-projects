@@ -23,5 +23,5 @@ public class Stroke :IStroke{
     }
 }
 extension IStroke {
-    var cgColor: CGColor {return NSColorParser.cgColor(color)}
+    var cgColor: CGColor {return CGColorParser.cgColor(color)}
 }

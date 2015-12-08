@@ -14,5 +14,5 @@ class Fill :IFill{
 }
 
 extension IFill {
-    var cgColor: CGColor {return NSColorParser.cgColor(color)}
+    var cgColor: CGColor {return CGColorParser.cgColor(color)}
 }
