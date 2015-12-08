@@ -28,3 +28,10 @@ extension String {
         return RegExp.test(self, pattern)
     }
 }
+/**
+ * Support for addition of CGFLoat and Double
+ */
+public func * (left: Double, right: CGFloat) -> CGFloat {
+    
+    return CGFloat(left) + right
+}
