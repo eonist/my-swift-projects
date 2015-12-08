@@ -20,4 +20,8 @@ extension NSColor{
      * EXAMPLE: NSColor.redColor().rgba.r//Outputs 1.0
      */
     var rgba:(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){return ColorParser.rgba(self)}
+    /**
+     * EXAMPLE: NSColor.redColor().hex//FF0000
+     */
+    var hex:String{return ColorParser.hexColor(self)}
 }
