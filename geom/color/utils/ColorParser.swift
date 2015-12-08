@@ -12,7 +12,6 @@ class ColorParser {/*Covers returning hex colors etc*/
      * print(hexColor); // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */
-    
     class func hexColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
         var rr:String = String(format:"%X", Int(r * 255));
         var gg:String = String(format:"%X", Int(g * 255));
