@@ -2,11 +2,11 @@ import Cocoa
 
 class ColorParser {/*Covers returning hex colors etc*/
     /**
-     *
+     * 
      */
     class func hexColor(nsColor:NSColor)->String{
-        let rgba = nsColor.rgba()
-        return ColorUtils.hexString(<#T##hex: UInt##UInt#>)
+        let rgba = nsColor.rgba
+        return ColorUtils.hexString(UInt(rgba.r + rgba.g + rgba.b))
     }
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
