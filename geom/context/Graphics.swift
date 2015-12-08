@@ -124,7 +124,7 @@ public class Graphics{
      *
      */
     private func drawLine(path:CGPath){
-        CGContextAddPath(context,path)//Adds the path to the context
+        //CGContextAddPath(context,path)//Adds the path to the context
         switch true {
             case (strokeMode == StrokeMode.None)://no stroke
                 //Swift.print("no stroke")
