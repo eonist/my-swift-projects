@@ -88,4 +88,11 @@ class NumberParser{
     class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
         return max(min(value, maxValue), minValue)
     }
+    /**
+     * Adds a zero infront of a number
+     * // :TODO: Add more advance features to this function, when you have time!
+     */
+    class func digit(){
+        //return aNr < 10 ? "0"+aNr : String(aNr);
+    }
 }
