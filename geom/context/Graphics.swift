@@ -100,7 +100,7 @@ public class Graphics{
         drawFill(path)
     }
     /**
-     *
+     * NOTE: You can also use CGPathDrawingMode.FillStroke, but since we need to seperate stroking and filling because of we want to add dropshadow if applicaple we dont use it
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
@@ -149,15 +149,10 @@ public class Graphics{
         CGContextAddPath(context,path)//Adds the path to the context
         
         switch true{
-        case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.None)://fill only
-            //Swift.print("fill")
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
+       
         case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Color)://color stroke  only
             //Swift.print("stroke")
             CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.Color)://fill and stroke
-            //Swift.print("fill & stroke")
-            CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
         case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.None)://gradientFill only
             //Swift.print("gradient fill")
             Utils.drawGradientFill(path, context, gradient, cgGradient)
