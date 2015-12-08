@@ -98,46 +98,26 @@ public class Graphics{
     public func draw(path:CGPath){
         //Swift.print("Grpahics.draw() ")
         drawFill(path)
+        drawLine(path)
     }
     /**
      * NOTE: You can also use CGPathDrawingMode.FillStroke, but since we need to seperate stroking and filling because of we want to add dropshadow if applicaple we dont use it
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
-        
-        
-        //continue here, refactor to only fillmode, then test, then make a outer shadow test on a square
-        
-        
         switch true{
-        case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.None)://fill
-            //Swift.print("fill")
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.None)://gradientFill 
-            //Swift.print("gradient fill")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Color)://gradientFill and color stroke
-            CGContextAddPath(context,path)//Adds the path to the context
-            //Swift.print("gradient fill and color stroke")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
-            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        case (fillMode == FillMode.None) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
-            //Swift.print("gradient stroke")
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.Gradient)://gradient  fill and gradient stroke
-            //Swift.print("gradient fill & gradient stroke")
-            Utils.drawGradientFill(path, context, gradient, cgGradient)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the clipping of the gradient
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.Gradient)://gradient stroke only
-            //Swift.print("color fill & gradient stroke")
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
-            CGContextAddPath(context,path)//Adds the path to the context since it was consumed by the color fill call
-            Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
-        default:
-            fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
-            break;
+            case (fillMode == FillMode.None)://no fill
+                //Swift.print("gradient stroke")
+                break
+            case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.None)://fill
+                //Swift.print("fill")
+                CGContextDrawPath(context, CGPathDrawingMode.Fill)
+            case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.None)://gradientFill
+                //Swift.print("gradient fill")
+                Utils.drawGradientFill(path, context, gradient, cgGradient)
+            default:
+                fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
+                break;
         }
     }
     /**
