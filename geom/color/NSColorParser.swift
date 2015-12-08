@@ -1,5 +1,5 @@
 import Cocoa
-class ColorParser {//rename to NSColorParser
+class NSColorParser {
     private class func index(){
         cgColor(1, 0, 0, 1)//Output: red CGColor
         nsColor(250.0, 0, 0,100)//output: red NSColor
@@ -35,7 +35,7 @@ class ColorParser {//rename to NSColorParser
     }
 }
 
-extension ColorParser{
+extension NSColorParser{
     /**
      * Convenince implementation of nsColor with Int values
      * NOTE: there is no need to make a convenince method for Double values, since Double values foes well with thte CGFLoat implementation of the same method

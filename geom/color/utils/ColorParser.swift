@@ -1,5 +1,5 @@
 import Foundation
 
-class ColorParser {
+class ColorParser2 {/*Covers returning hex colors etc*/
 
 }
