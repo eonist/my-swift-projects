@@ -108,6 +108,7 @@ public class Graphics{
         
         /**/
         if(dropShadow != nil){
+            CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
             dropShadow!.shadow.set()/*One can also do CGContextSetShadowWithColor*/
         }
         switch true{
@@ -124,6 +125,8 @@ public class Graphics{
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
+        if(dropShadow != nil){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
+        
     }
     /**
      * NOTE:aperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
