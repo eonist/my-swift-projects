@@ -27,6 +27,10 @@ extension String {
     func test(pattern:String)->Bool{
         return RegExp.test(self, pattern)
     }
+    /**
+     *
+     */
+    var count:Int{return self.characters.count}
 }
 /**
  * Multiplies a string
