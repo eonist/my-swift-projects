@@ -109,10 +109,10 @@ public class Graphics{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient stroke")
                 break
-            case (fillMode == FillMode.Color) && (strokeMode == StrokeMode.None)://fill
+            case (fillMode == FillMode.Color)://fill
                 //Swift.print("fill")
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
-            case (fillMode == FillMode.Gradient) && (strokeMode == StrokeMode.None)://gradientFill
+            case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
                 Utils.drawGradientFill(path, context, gradient, cgGradient)
             default:
