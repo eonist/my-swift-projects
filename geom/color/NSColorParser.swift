@@ -14,7 +14,7 @@ class NSColorParser {
     }
 
     /**
-     * Note: ColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
+     * Note: NSColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
      */
     class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
@@ -28,7 +28,7 @@ class NSColorParser {
         return nsColor(uintColor,alpha);
     }
     /**
-     * EXAMPLE: :ColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
+     * EXAMPLE: :NSColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
      */
     class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
         return color.colorWithAlphaComponent(alpha)
