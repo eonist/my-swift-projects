@@ -1,6 +1,8 @@
 import Foundation
 /**
  * set needsDisplay = true to clear the graphics
+ * TODO: Write an example
+ * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView{
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
