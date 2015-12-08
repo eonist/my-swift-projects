@@ -105,6 +105,11 @@ public class Graphics{
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
+        
+        /**/
+        if(dropShadow != nil){
+            CGContextSetShadowWithColor(context, CGSizeMake(14, -14), 17.0, NSColor.grayColor().CGColor);//offset,bl
+        }
         switch true{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient stroke")
