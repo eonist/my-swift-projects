@@ -127,7 +127,7 @@ public class Graphics{
         }
         if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
         
-        
+        ShadowUtils.applyInnerShadow(self,path)
         
     }
     /**
@@ -204,14 +204,15 @@ private class Utils{
     }
 }
 
-private class ShadowUtils{
+extension Graphics{//private class ShadowUtils
     /**
      *
      */
-    class func applyInnerShadow(graphics:Graphics){
+    func applyInnerShadow(graphics:Graphics,_ path:CGPath){
+        /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
-        let path = graphics.path
+        */
         if(dropShadow != nil && dropShadow!.inner){/*init inner shadow*/
             CGContextSaveGState(context);/*init the gState*/
             CGContextAddPath(context, path);/*add The clipping path to the context*/
