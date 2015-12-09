@@ -32,6 +32,8 @@ class ClassAsserter{
     /**
      * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true
      * Note: protocol_conformsToProtocol(a,b) also exist
+     * NOTE: // Works, but seems hackish as it reverts to string comparison NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
+     * 
      */
     class func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)
