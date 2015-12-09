@@ -24,11 +24,15 @@ extension DropShadow:CustomStringConvertible{
      * NOTE: The class should extend NSShadow instead but we do this for now
      */
     var shadow:NSShadow{get{return NSShadow(color,offsetX,offsetY,blurRadius)} }
+    /**
+     * NOTE: We need a copy of the shadow color with alpha set to 1.0
+     */
     var opaqueShadow:NSShadow{get{return NSShadow(color.alpha(1.0),offsetX,offsetY,blurRadius)} }
 }
 private class Utils{
     /**
      * We need a copy of the shadow color as CGColor with alpha set to 1.0
+     * NOTE: this isnt used anymore
      */
     class func opaqueColor(color:NSColor)->CGColorRef{
         return CGColorCreateCopyWithAlpha(color.CGColor, 1.0)!

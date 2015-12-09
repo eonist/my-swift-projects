@@ -133,10 +133,11 @@ public class Graphics{
             CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
             
             
-            let opaqueShadowColor:CGColorRef = CGColorCreateCopyWithAlpha(shadow.shadowColor!.CGColor, 1.0)!/*We need a copy of the shadow color as CGColor with alpha set to 1*/
+    
             CGContextSetAlpha(context, CGColorGetAlpha(shadow.shadowColor!.CGColor));
             CGContextBeginTransparencyLayer(context, nil);
-            CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);/*This is where the setting of the shadow happens*/
+            //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
+            dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
             
             CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
             CGContextSetFillColorWithColor(context, opaqueShadowColor);
