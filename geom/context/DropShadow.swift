@@ -25,3 +25,7 @@ extension DropShadow:CustomStringConvertible{
      */
     var shadow:NSShadow{get{return NSShadow(color,offsetX,offsetY,blurRadius)} }
 }
+private class Utils{
+    cfun
+    let opaqueShadowColor:CGColorRef = CGColorCreateCopyWithAlpha(shadow.shadowColor!.CGColor, 1.0)!/*We need a copy of the shadow color as CGColor with alpha set to 1*/
+}
