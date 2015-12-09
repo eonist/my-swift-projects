@@ -131,7 +131,7 @@ public class Graphics{
         
     }
     /**
-     * NOTE:aperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
+     * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
     private func drawLine(path:CGPath){
         //CGContextAddPath(context,path)//Adds the path to the context
