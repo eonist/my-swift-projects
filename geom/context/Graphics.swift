@@ -105,7 +105,6 @@ public class Graphics{
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
-        
         beginOuterShadow(path)
         switch true{
             case (fillMode == FillMode.None)://no fill
@@ -122,9 +121,7 @@ public class Graphics{
                 break;
         }
         endOuterShadow()
-        
         applyInnerShadow(path)/*init inner shadow*/
-        
     }
     /**
      * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
