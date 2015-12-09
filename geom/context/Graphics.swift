@@ -131,22 +131,16 @@ public class Graphics{
             CGContextSaveGState(context);/*init the gState*/
             CGContextAddPath(context, path);/*add The clipping path to the context*/
             CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
-            
-            
-    
             CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
             CGContextBeginTransparencyLayer(context, nil);
             //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
             dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
-            
             CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
-            CGContextSetFillColorWithColor(context, opaqueShadowColor);
+            CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
             CGContextAddPath(context, path);
             CGContextFillPath(context);
             CGContextEndTransparencyLayer(context);
-            
             CGContextRestoreGState(context);/*end the gState*/
-        
         }
     }
     /**
