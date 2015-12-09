@@ -107,7 +107,7 @@ public class Graphics{
         CGContextAddPath(context,path)//Adds the path to the context
         
         /**/
-        if(dropShadow != nil){
+        if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
             CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
             dropShadow!.shadow.set()/*One can also do CGContextSetShadowWithColor*/
         }
@@ -125,7 +125,7 @@ public class Graphics{
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
-        if(dropShadow != nil){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
+        if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
         
     }
     /**
