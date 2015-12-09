@@ -30,7 +30,7 @@ class ClassAsserter{
         return object_getClassName(a) == object_getClassName(b)
     }
     /**
-     * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true
+     * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true (this does not work if you add that line of text inside a method)
      * Note: protocol_conformsToProtocol(a,b) also exist
      * NOTE: // Works, but seems hackish as it reverts to string comparison NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
      * TODO: needs example, cant get this to work easily
