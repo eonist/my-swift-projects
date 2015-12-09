@@ -24,7 +24,7 @@ extension DropShadow:CustomStringConvertible{
      * NOTE: The class should extend NSShadow instead but we do this for now
      */
     var shadow:NSShadow{get{return NSShadow(color,offsetX,offsetY,blurRadius)} }
-    var opaqueShadow:NSShadow{get{return NSShadow(Utils.opaqueColor(color),offsetX,offsetY,blurRadius)} }
+    var opaqueShadow:NSShadow{get{return NSShadow(color.alpha(1.0),offsetX,offsetY,blurRadius)} }
 }
 private class Utils{
     /**
