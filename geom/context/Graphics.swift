@@ -127,21 +127,8 @@ public class Graphics{
         }
         if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
         
-        if(dropShadow != nil && dropShadow!.inner){/*init inner shadow*/
-            CGContextSaveGState(context);/*init the gState*/
-            CGContextAddPath(context, path);/*add The clipping path to the context*/
-            CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
-            CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
-            CGContextBeginTransparencyLayer(context, nil);
-            //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
-            dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
-            CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
-            CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
-            CGContextAddPath(context, path);
-            CGContextFillPath(context);
-            CGContextEndTransparencyLayer(context);
-            CGContextRestoreGState(context);/*end the gState*/
-        }
+        
+        
     }
     /**
      * NOTE:aperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
@@ -217,6 +204,31 @@ private class Utils{
     }
 }
 
+private class ShadowUtils{
+    /**
+     *
+     */
+    class func applyInnerShadow(graphics:Graphics){
+        let context = graphics.context
+        let dropShadow = graphics.dropShadow
+        let path = graphics.path
+        if(dropShadow != nil && dropShadow!.inner){/*init inner shadow*/
+            CGContextSaveGState(context);/*init the gState*/
+            CGContextAddPath(context, path);/*add The clipping path to the context*/
+            CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
+            CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
+            CGContextBeginTransparencyLayer(context, nil);
+            //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
+            dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
+            CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
+            CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
+            CGContextAddPath(context, path);
+            CGContextFillPath(context);
+            CGContextEndTransparencyLayer(context);
+            CGContextRestoreGState(context);/*end the gState*/
+        }
+    }
+}
 //NOte there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
 
 /*_ graphicsContext:NSGraphicsContext*//*context:CGContextRef*/
