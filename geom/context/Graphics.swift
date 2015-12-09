@@ -134,7 +134,7 @@ public class Graphics{
             
             
     
-            CGContextSetAlpha(context, CGColorGetAlpha(shadow.shadowColor!.CGColor));
+            CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
             CGContextBeginTransparencyLayer(context, nil);
             //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
             dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
