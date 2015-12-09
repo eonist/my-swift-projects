@@ -106,11 +106,7 @@ public class Graphics{
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
         
-        /**/
-        if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
-            CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
-            dropShadow!.shadow.set()/*One can also do CGContextSetShadowWithColor*/
-        }
+        beginOuterShadow(path)
         switch true{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient stroke")
@@ -125,9 +121,9 @@ public class Graphics{
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
-        if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
+        endOuterShadow()
         
-        applyInnerShadow(path)
+        applyInnerShadow(path)/*init inner shadow*/
         
     }
     /**
@@ -208,12 +204,28 @@ extension Graphics{//private class ShadowUtils
     /**
      *
      */
+    func beginOuterShadow(path:CGPath){
+        /**/
+        if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
+            CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
+            dropShadow!.shadow.set()/*One can also do CGContextSetShadowWithColor*/
+        }
+    }
+    /**
+     *
+     */
+    func endOuterShadow(){
+        if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
+    }
+    /**
+     *
+     */
     func applyInnerShadow(path:CGPath){
         /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
         */
-        if(dropShadow != nil && dropShadow!.inner){/*init inner shadow*/
+        if(dropShadow != nil && dropShadow!.inner){
             CGContextSaveGState(context);/*init the gState*/
             CGContextAddPath(context, path);/*add The clipping path to the context*/
             CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
