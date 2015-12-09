@@ -127,7 +127,7 @@ public class Graphics{
      * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
     private func drawLine(path:CGPath){
-        CGContextAddPath(context,path)//Adds the path to the context
+        if(dropShadow != nil) {CGContextAddPath(context,path)}//Adds the path to the context only if
         switch true {
             case (strokeMode == StrokeMode.None)://no stroke
                 //Swift.print("no stroke")
