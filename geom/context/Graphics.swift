@@ -127,6 +127,11 @@ public class Graphics{
         }
         if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
         
+        if(dropShadow != nil && dropShadow!.inner){/*init inner shadow*/
+            CGContextSaveGState(context);/*init the gState*/
+            CGContextAddPath(context, path);/*add The clipping path to the context*/
+            CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
+        }
     }
     /**
      * NOTE:aperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
