@@ -127,7 +127,7 @@ public class Graphics{
         }
         if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
         
-        ShadowUtils.applyInnerShadow(self,path)
+        applyInnerShadow(path)
         
     }
     /**
@@ -208,7 +208,7 @@ extension Graphics{//private class ShadowUtils
     /**
      *
      */
-    func applyInnerShadow(graphics:Graphics,_ path:CGPath){
+    func applyInnerShadow(path:CGPath){
         /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
