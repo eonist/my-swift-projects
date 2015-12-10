@@ -13,6 +13,7 @@ class ClassAsserter{
      * object.dynamicType is B.Type//false
      * object.dynamicType is Decoratable.Type//true
      * NOTE: beware of isKindOfClass vs isMemberOfClass
+     * NOTE: this works: layer.isKindOfClass(CALayer.self)//true
 	 */
     class func isOfClassType(obj:AnyObject,_ classType:AnyClass)->Bool{
         return obj.isMemberOfClass(classType)
