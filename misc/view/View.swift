@@ -3,7 +3,7 @@ import Cocoa
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:  
  * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
  */
-class View :FlippedView{
+class View:FlippedView{
     var isInteractive:Bool = true
     var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
