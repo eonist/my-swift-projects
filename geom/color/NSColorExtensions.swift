@@ -24,4 +24,8 @@ extension NSColor{
      * EXAMPLE: NSColor.redColor().hex//FF0000
      */
     var hex:String{return ColorParser.hexColor(self)}
+    /**
+     *
+     */
+    var random:NSColor{return ColorUtils.randomColor()}
 }
