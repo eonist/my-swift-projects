@@ -33,7 +33,7 @@ class CustomCALayer:CALayer{
         let context = ctx
         let path:CGMutablePathRef  = CGPathCreateMutable();
         /* Here are our rectangle boundaries */
-        let rectangle:CGRect = CGRectMake(0.0, 0.0, 50.0, 50.0);
+        let rectangle:CGRect = CGRectMake(0.0, 0.0, frame.width, frame.height);
         //let circle:CGEl
         /* Add the rectangle to the path */
         CGPathAddRect(path,nil, rectangle);

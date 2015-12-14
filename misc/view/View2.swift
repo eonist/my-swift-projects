@@ -42,7 +42,7 @@ class View2:FlippedView {
         layer!.addSublayer(layerB)
         //now try to add a sibling that somehow draws to cgcontext
         let layerC:CustomCALayer = CustomCALayer()
-        layerC.frame = CGRectMake(150,150,  150, 150);
+        layerC.frame = CGRectMake(150,150,150,150);
         //layerC.needsDisplayOnBoundsChange = true
         //layerC.needsDisplay()
         layerC.display()
