@@ -11,12 +11,18 @@ class TempNSView :FlippedView{
         
     
     override func drawRect(dirtyRect: NSRect) {
-        Swift.print("drawRect()")
+        Swift.print("TempNSView.drawRect()")
         let graphicsContext = NSGraphicsContext.currentContext()!
         let context = graphicsContext.CGContext/* Get the handle to the current context */
         let path = CGRect(0,0,100,100).path
         CGContextAddPath(context, path)
         CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
+    }
+    override func mouseEntered( event: NSEvent){
+        Swift.print("TempNSView.mouseEntered: ")
+    }
+    override func mouseExited(event: NSEvent){
+        Swift.print("TempNSView.mouseExited:")
     }
 }
