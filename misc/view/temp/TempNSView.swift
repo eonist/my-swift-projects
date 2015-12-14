@@ -19,7 +19,7 @@ class TempNSView :FlippedView{
       override var acceptsFirstResponder: Bool { return true }
     
     override func mouseMoved(theEvent: NSEvent) {
-        Swift.print("mouseMoved")
+        //Swift.print("mouseMoved")
     }
     
     override func drawRect(dirtyRect: NSRect) {
