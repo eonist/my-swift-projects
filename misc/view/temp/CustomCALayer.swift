@@ -100,7 +100,7 @@ class CustomCALayer:CALayer{
     override func hitTest(p: CGPoint) -> CALayer? {
         Swift.print("p: " + String(p))
         //self.hitTestFromViewRelativeToFrame(p,frame)//theEvent.locationInWindow
-        let pos = convertPoint(p, toLayer: self)
+        let pos = convertPoint(p, fromLayer: self)
         Swift.print("pos: " + "\(pos)")
         Swift.print("containsPoint(p): " + String(containsPoint(p)))
         
