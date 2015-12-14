@@ -24,6 +24,9 @@ class TempNSView :FlippedView{
         CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
     }
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print("TempNSView.mouseDown()")
+    }
     override func mouseEntered( event: NSEvent){
         Swift.print("TempNSView.mouseEntered: ")
     }
