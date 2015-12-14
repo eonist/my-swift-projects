@@ -22,7 +22,7 @@ class View:FlippedView{
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        //Swift.print("View.hitTest(): " + String(aPoint))
+        Swift.print("View.hitTest(): " + String(aPoint))
         //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
         return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
