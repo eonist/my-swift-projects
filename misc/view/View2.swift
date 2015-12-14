@@ -71,8 +71,8 @@ class View2:FlippedView {
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("mouse down")
         needsDisplay = true//should now call updatlayer, which it does.
-        let mousePos = self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow)
-        Swift.print("mousePos: " + "\(mousePos)")
+        //let mousePos = self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow)
+        //Swift.print("mousePos: " + "\(mousePos)")
         let hitLayer = layer!.hitTest(theEvent.locationInWindow)
         Swift.print("hitLayer: " + String(hitLayer))
     }
@@ -178,6 +178,7 @@ class CustomCALayer:CALayer{
     
     override func hitTest(p: CGPoint) -> CALayer? {
         Swift.print("p: " + String(p))
+        self.hitTestFromViewRelativeToFrame(p,frame)//theEvent.locationInWindow
         Swift.print("containsPoint(p): " + String(containsPoint(p)))
         
         return self
