@@ -71,10 +71,10 @@ class View2:FlippedView {
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("mouse down")
         needsDisplay = true//should now call updatlayer, which it does.
-        self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow)
+        //self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow)
         //Swift.print("mousePos: " + "\(mousePos)")
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)/*converts the mouse pos from a wrongly flipped view to a correctly flipped view*/
-        let hitLayer = layer!.hitTest(mousePos)
+        let hitLayer = layer!.hitTest(theEvent.locationInWindow)
         Swift.print("hitLayer: " + String(hitLayer))
         
     }
