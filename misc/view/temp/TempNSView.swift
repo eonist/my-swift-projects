@@ -13,8 +13,14 @@ class TempNSView :FlippedView{
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
         Swift.print("hitTest")
-        return self
+        let pos = convertPoint(aPoint, fromView: nil)/*converts the p to local coordinates*/
+        Swift.print("pos: " + "\(pos)")
+        Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
+        
+        return NSPointInRect(pos + frame.origin, frame) ? self : nil
+
     }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
       override var acceptsFirstResponder: Bool { return true }
     
