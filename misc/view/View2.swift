@@ -57,7 +57,7 @@ class View2:FlippedView {
         layer!.addSublayer(layerC)
         
         
-        let layerD = CustomCALayer(NSColor.blueColor())
+        let layerD = CustomLayer(NSColor.blueColor())
         layerD.frame = CGRect(120,120,50,50);
         layerD.display()
         //layerD.masksToBounds = false
