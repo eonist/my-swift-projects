@@ -37,7 +37,7 @@ class CustomCALayer:CALayer{
         //let circle:CGEl
         /* Add the rectangle to the path */
         CGPathAddRect(path,nil, rectangle);
-        CGPathAddRoundedRect(path, nil, rectangle, 10, 10)
+        //CGPathAddRoundedRect(path, nil, rectangle, 10, 10)
         
         //CGContextAddArc(context, circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, 0);
         
