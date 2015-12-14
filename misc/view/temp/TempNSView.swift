@@ -8,7 +8,7 @@ class TempNSView :FlippedView{
         let context = graphicsContext.CGContext/* Get the handle to the current context */
         let path = CGRect(0,0,100,100).path
         CGContextAddPath(context, path)
-        CGContextSetFillColorWithColor(context,NSColor.blueColor().CGColor)
+        CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
     }
 }

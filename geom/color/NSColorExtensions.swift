@@ -27,5 +27,5 @@ extension NSColor{
     /**
      *
      */
-    var random:NSColor{return ColorUtils.randomColor()}
+    static var random:NSColor{return ColorUtils.randomColor()}
 }
