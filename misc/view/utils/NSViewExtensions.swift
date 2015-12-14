@@ -24,12 +24,12 @@ extension NSView {
         return NSPointInRect(mousePos, frame)
     }
     func hitTestFromViewRelativeToFrame(locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
-        let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)
-        /*
+        let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)/*converts the mouse pos from a wrongly flipped view to a correctly flipped view*/
+        
         Swift.print("hitTestFromView.locationInWindow: " + String(locationInWindow))
         Swift.print("hitTestFromView.mousePos(): " + String(mousePos))
         Swift.print("hitTestFromView.frame: " + String(frame))
-        */
+        /**/
         return NSPointInRect(mousePos + frame.origin, frame)
     }
 }
