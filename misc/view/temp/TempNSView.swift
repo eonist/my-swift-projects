@@ -15,6 +15,10 @@ class TempNSView :FlippedView{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
       override var acceptsFirstResponder: Bool { return true }
     
+    override func mouseMoved(theEvent: NSEvent) {
+        Swift.print("mouseMoved")
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("TempNSView.drawRect()")
         let graphicsContext = NSGraphicsContext.currentContext()!
