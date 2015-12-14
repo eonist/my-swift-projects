@@ -55,6 +55,11 @@ class View2:FlippedView {
         
         
         layer!.addSublayer(layerC)
+        
+        
+        let layerD = CustomCALayer()
+        layerC.frame = CGRect(50,50,50,50);
+        layer!.addSublayer(layerD)
         //then try to refresh the underlaying sibling cgcontext graphic
         
         
