@@ -13,9 +13,9 @@ class TempNSView :FlippedView{
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
         Swift.print("hitTest")
-        var pos = convertPoint(aPoint, fromView: nil)
-        Swift.print("pos: " + "\(pos)")
-        pos = convertPoint(pos, toView: self)/*converts the p to local coordinates*/
+        
+        var pos = convertPoint(aPoint, toView: self)/*converts the p to local coordinates*/
+        pos -= frame.origin
         Swift.print("pos: " + "\(pos)")
         Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
         
