@@ -1,6 +1,7 @@
 import Cocoa
 
 class TempNSView :FlippedView{
+    var name:String = ""
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame frameRect: NSRect) {
