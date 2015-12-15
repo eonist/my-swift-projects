@@ -17,21 +17,18 @@ class TempInteractiveView : InteractiveView{
     }
     override func mouseOut() {
         Swift.print(name+" mouseOut")
-        //super.mouseOut()
+        
     }
     override func mouseOver() {
         Swift.print(name+" mouseOver")
-        //super.mouseOver()
-    
-        //Continue here:
-        //1. make this method so that you dont need to call super, do the same with mouseOut
-        //2. finish the interactiveview and then test it on button etc.
-        //3. then make the GraphicSkin with a stroke and a fill CALayer
-        //4. get the outer shadow to work on the layer and the inner shadow to work on the fill only
-        //5. start making other Elements
-        //6. mouseUpInside and mouseUpOutSide should work how the current mouseOut and mouseOver works. Respecting visible part of the view. 
-        //7. mouseUpInside and mouseUpOutside is so general that we can include it in INteractiveView and thus the Button class will be alot simpler, which is good
         
+    
+    }
+    override func mouseUpInside(theEvent: NSEvent) {
+        Swift.print(name+" mouseUpInside")
+    }
+    override func mouseUpOutside(theEvent: NSEvent) {
+        Swift.print(name+" mouseUpOutside")
     }
     override func mouseMove(){
         //Swift.print(name + " mouseMove")
