@@ -61,8 +61,30 @@ class InteractiveView:FlippedView{
         //Swift.print(pos)
         //hitTest(winMousePos)
     }
+    /**
+     * Handles actions and drawing states for the release event.
+     * @Note: bubbling= true was added to make Stepper class dragable
+     */
+    func mouseUpInside(theEvent: NSEvent){
+        Swift.print("Button.mouseUpInside: ")
+        state = SkinStates.over;// :TODO: why in two lines like this?
+        setSkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
+    }
+    /**
+     * Handles actions and drawing states for the mouseUpOutside event.
+     * @Note: bubbling = true was added to make Stepper class dragable
+     */
+    func mouseUpOutside(theEvent: NSEvent){
+        Swift.print("Button.mouseUpOutside: ")
+        state = SkinStates.none
+        setSkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
+    }
+
     override func mouseUp(theEvent: NSEvent) {
-        
+        viewUnderMouse === self ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
+        super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * MouseMoved
