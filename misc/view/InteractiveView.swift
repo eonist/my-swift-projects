@@ -18,19 +18,7 @@ class InteractiveView:FlippedView{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
    
-    /**
-     * NOTE: draws a 100 by 100 square with a random color
-     */
-    override func drawRect(dirtyRect: NSRect) {
-        Swift.print("InteractiveView.drawRect()")
-        let graphicsContext = NSGraphicsContext.currentContext()!
-        let context = graphicsContext.CGContext/* Get the handle to the current context */
-        let path = CGRect(0,0,100,100).path
-        CGContextAddPath(context, path)
-        CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
-        CGContextDrawPath(context, CGPathDrawingMode.Fill)
-        //super.drawRect(dirtyRect)
-    }
+    
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
