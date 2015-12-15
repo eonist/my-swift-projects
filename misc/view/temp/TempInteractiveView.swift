@@ -17,12 +17,9 @@ class TempInteractiveView : InteractiveView{
     }
     override func mouseOut() {
         Swift.print(name+" mouseOut")
-        
     }
     override func mouseOver() {
         Swift.print(name+" mouseOver")
-        
-    
     }
     override func mouseUpInside(theEvent: NSEvent) {
         Swift.print(name+" mouseUpInside")
