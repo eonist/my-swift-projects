@@ -82,16 +82,15 @@ class InteractiveView:FlippedView{
      * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
      */
     override func mouseEntered( event: NSEvent){
-        //Swift.print("TempNSView.mouseEntered: ")
+        //Swift.print("InteractiveView.mouseEntered: ")
         hasMouseEntered = true/*optimization*/
-        //Swift.print("theHitView: " + "\(theHitView)")
         if(viewUnderMouse === self){mouseOver();isMouseOver = true;}//mouse move on visible view
     }
     /**
      * Fires when the mouse exits the tracking area, regardless if it is overlapping with other trackingAreas of other views
      */
     override func mouseExited(event: NSEvent){
-        //Swift.print("TempNSView.mouseExited:")
+        //Swift.print("InteractiveView.mouseExited:")
         hasMouseEntered = false/*optimization*/
         if(isMouseOver){mouseOut();isMouseOver = false;}
     }
