@@ -55,13 +55,13 @@ class InteractiveView:FlippedView{
      * Only fires if the mouse is over the visible part of this view
      */
     func mouseOver(){
-        isMouseOver = true
+        //override in subclass
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(){
-        isMouseOver = false
+        //override in subclass
     }
     /**
      * MouseMoved
@@ -72,10 +72,10 @@ class InteractiveView:FlippedView{
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             //Swift.print("theHitView: " + "\(theHitView)")
             if(theHitView === self){//mouse move on the "visible" part of the view
-                if(!isMouseOver){mouseOver()}
+                if(!isMouseOver){mouseOver();isMouseOver = true;}
                 mouseMove()
             }
-            else if(isMouseOver){mouseOut()}//mouse move on the "invisible" parth of the view
+            else if(isMouseOver){mouseOut();isMouseOver = false;}//mouse move on the "invisible" parth of the view
         }
     }
     /**
