@@ -1,5 +1,5 @@
 import Foundation
 
-class TempInteractiveView {
+class TempInteractiveView : InteractiveView{
 
 }
