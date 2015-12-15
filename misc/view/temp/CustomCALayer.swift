@@ -3,7 +3,7 @@ class CustomCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
         super.init()
-        
+        self.display()
     }
     /*
     override func containsPoint(p: CGPoint) -> Bool {
