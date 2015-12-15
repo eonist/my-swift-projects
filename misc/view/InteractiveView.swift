@@ -40,9 +40,9 @@ class InteractiveView:FlippedView{
     }
     override func mouseDown(theEvent: NSEvent) {
         //Swift.print(pos)
-        Swift.print("mouseDOwn start")
+        Swift.print("mouseDown start")
         hitTest(winMousePos)
-        Swift.print("mouseDOwn end")
+        Swift.print("mouseDown end")
     }
     /**
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
