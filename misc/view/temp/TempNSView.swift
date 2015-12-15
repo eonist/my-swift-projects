@@ -35,6 +35,9 @@ class TempNSView :FlippedView{
             else if(isMouseOver){mouseOut()}//mouse move on the "invisible" parth of the view
         }
     }
+    /**
+     * NOTE: draws a 100 by 100 square with a random color
+     */
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("TempNSView.drawRect()")
         let graphicsContext = NSGraphicsContext.currentContext()!
@@ -46,24 +49,28 @@ class TempNSView :FlippedView{
     }
     /**
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
+     * NOTE: It could be possible to only call this method if a bool value was true. Optimization
      */
     func mouseMove(){
         //Swift.print(name + " mouseMove")
     }
-    override func mouseDown(theEvent: NSEvent) {
-        Swift.print("TempNSView.mouseDown()")
-        //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
-        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-        Swift.print("theHitView: " + "\(theHitView)")
-    }
+    /**
+     * Only fires if the mouse is over the visible part of this view
+     */
     func mouseOver(){
         Swift.print(name + " mouseOver")
         isMouseOver = true
     }
+    /**
+     * Only fires if the mouse is "rolls" out of the visible part of this view
+     */
     func mouseOut(){
         Swift.print(name + " mouseOut")
         isMouseOver = false
     }
+    /**
+     * 
+     */
     override func mouseEntered( event: NSEvent){
         //Swift.print("TempNSView.mouseEntered: ")
         hasMouseEntered = true/*optimization*/
@@ -75,6 +82,12 @@ class TempNSView :FlippedView{
         //Swift.print("TempNSView.mouseExited:")
         hasMouseEntered = false/*optimization*/
         if(isMouseOver){mouseOut()}
+    }
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print("TempNSView.mouseDown()")
+        //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        Swift.print("theHitView: " + "\(theHitView)")
     }
 }
 
