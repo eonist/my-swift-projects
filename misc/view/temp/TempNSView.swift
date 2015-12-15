@@ -20,12 +20,6 @@ class TempNSView :FlippedView{
         Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
         
         
-        window.viewsNeedDisplay
-        
-        //continue heres
-        //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
-        
-        
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
         
         
@@ -50,6 +44,14 @@ class TempNSView :FlippedView{
     }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("TempNSView.mouseDown()")
+        Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
+        
+        window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        
+        //continue heres
+        //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
+        
+
     }
     override func mouseEntered( event: NSEvent){
         Swift.print("TempNSView.mouseEntered: ")
