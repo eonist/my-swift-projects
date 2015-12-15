@@ -55,14 +55,12 @@ class InteractiveView:FlippedView{
      * Only fires if the mouse is over the visible part of this view
      */
     func mouseOver(){
-        Swift.print(" mouseOver")
         isMouseOver = true
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(){
-        Swift.print(" mouseOut")
         isMouseOver = false
     }
     /**
