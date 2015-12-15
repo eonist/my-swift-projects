@@ -86,8 +86,9 @@ class TempNSView :FlippedView{
         //Swift.print("TempNSView.mouseExited:")
         if(isMouseOver){
             mouseOut()
+            isMouseOver = false
         }
-        isMouseOver = false
+        
     }
 }
 
