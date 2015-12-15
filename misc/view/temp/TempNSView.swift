@@ -47,7 +47,7 @@ class TempNSView :FlippedView{
         //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
         
         let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-        //Swift.print("theHitView: " + "\(theHitView)")
+        Swift.print("theHitView: " + "\(theHitView)")
         
         //continue heres
         //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
@@ -56,6 +56,8 @@ class TempNSView :FlippedView{
     }
     override func mouseEntered( event: NSEvent){
         Swift.print("TempNSView.mouseEntered: ")
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        Swift.print("theHitView: " + "\(theHitView)")
     }
     override func mouseExited(event: NSEvent){
         Swift.print("TempNSView.mouseExited:")
