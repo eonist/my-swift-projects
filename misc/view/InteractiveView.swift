@@ -81,6 +81,7 @@ class InteractiveView:FlippedView{
         //Swift.print("InteractiveView.mouseEntered: ")
         hasMouseEntered = true/*optimization*/
         if(viewUnderMouse === self){mouseOver();isMouseOver = true;}//mouse move on visible view
+        super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Fires when the mouse exits the tracking area, regardless if it is overlapping with other trackingAreas of other views
@@ -89,6 +90,7 @@ class InteractiveView:FlippedView{
         //Swift.print("InteractiveView.mouseExited:")
         hasMouseEntered = false/*optimization*/
         if(isMouseOver){mouseOut();isMouseOver = false;}
+        super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
 }
 extension InteractiveView{
