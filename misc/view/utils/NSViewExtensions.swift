@@ -1,5 +1,5 @@
 import Cocoa
-
+//todo rename to convertPointToView etc. dont use the hiTest prefix
 extension NSView {
     /**
      * Asserts if locationInWindow is within the NSView frame
