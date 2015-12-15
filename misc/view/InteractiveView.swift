@@ -78,6 +78,7 @@ class InteractiveView:FlippedView{
     }
     /**
      * MouseMoved
+     * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("InteractiveView.mouseMoved")
@@ -91,6 +92,7 @@ class InteractiveView:FlippedView{
     }
     /**
      * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
+     * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseEntered( event: NSEvent){
         //Swift.print("InteractiveView.mouseEntered: ")
@@ -100,6 +102,7 @@ class InteractiveView:FlippedView{
     }
     /**
      * Fires when the mouse exits the tracking area, regardless if it is overlapping with other trackingAreas of other views
+     * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseExited(event: NSEvent){
         //Swift.print("InteractiveView.mouseExited:")
