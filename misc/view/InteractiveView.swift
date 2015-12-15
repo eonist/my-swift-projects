@@ -4,6 +4,7 @@ import Cocoa
 /**
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
+ * NOTE: Remember to override the mouseDown method in subclasses if you want to add functionality to the mouseDown action
  */
 class InteractiveView:FlippedView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
@@ -57,31 +58,20 @@ class InteractiveView:FlippedView{
     func mouseOut(){
         /*override in subclass*/
     }
-    override func mouseDown(theEvent: NSEvent) {
-        //Swift.print(pos)
-        //hitTest(winMousePos)
-    }
     /**
      * Handles actions and drawing states for the release event.
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     func mouseUpInside(theEvent: NSEvent){
-        Swift.print("Button.mouseUpInside: ")
-        state = SkinStates.over;// :TODO: why in two lines like this?
-        setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
+        /*override in subclass*/
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(theEvent: NSEvent){
-        Swift.print("Button.mouseUpOutside: ")
-        state = SkinStates.none
-        setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
+       /*override in subclass*/
     }
-
     override func mouseUp(theEvent: NSEvent) {
         viewUnderMouse === self ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
