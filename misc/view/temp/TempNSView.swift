@@ -1,7 +1,7 @@
 import Cocoa
 
 class TempNSView :FlippedView{/*Organizes your view from top to bottom*/
-    var name:String = ""
+    var name:String = ""/*Makes it easier to test*/
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
