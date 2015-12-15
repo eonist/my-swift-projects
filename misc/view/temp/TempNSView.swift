@@ -35,10 +35,10 @@ class TempNSView :FlippedView{
         if(isOver){
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             Swift.print("theHitView: " + "\(theHitView)")
-            if(theHitView === self){
+            if(theHitView === self){//mouse move on visible view
                 
-            }else{
-                
+            }else{//mouse move on invisible view
+                mouseOut()
             }
         }
         
@@ -71,10 +71,18 @@ class TempNSView :FlippedView{
     }
     override func mouseEntered( event: NSEvent){
         //Swift.print("TempNSView.mouseEntered: ")
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        Swift.print("theHitView: " + "\(theHitView)")
+        if(theHitView === self){//mouse move on visible view
+            
+        }
         isOver = true
     }
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
+        if(isOver){
+            mouseOut()
+        }
         isOver = false
     }
 }
