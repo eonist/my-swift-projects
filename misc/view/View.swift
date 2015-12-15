@@ -9,6 +9,7 @@ class View:FlippedView{
     //start implementing the new mouseOver mouseOut code in a new View class named InteractiveView, this will also easy the creation of the Button Element
     
     
+    
     var isInteractive:Bool = true//why is this here?
     var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
