@@ -21,6 +21,7 @@ class TempNSView :FlippedView{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * MouseMoved
+     * NOTE: You need to silently check for if you re-enter the visible shape so you cant stop checking if you rolled over!!!
      */
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
@@ -43,12 +44,8 @@ class TempNSView :FlippedView{
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("TempNSView.mouseDown()")
         //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
-        
         let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
         Swift.print("theHitView: " + "\(theHitView)")
-        
-        //continue heres
-        //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
     }
     func mouseOver(){
         Swift.print(name + " mouseOver")
@@ -72,6 +69,4 @@ class TempNSView :FlippedView{
     }
 }
 
-
-//TODO: you need to silently check for if you re-enter the visible shape so you cant stop checking if you rolled over!!!
 
