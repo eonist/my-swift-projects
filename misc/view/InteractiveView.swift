@@ -5,6 +5,7 @@ import Cocoa
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
  * NOTE: Remember to override the mouseDown method in subclasses if you want to add functionality to the mouseDown action
+ * NOTE: Use mouseDragged method if you want to call a method while the mouse is dragged
  */
 class InteractiveView:FlippedView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
@@ -92,9 +93,6 @@ class InteractiveView:FlippedView{
             }
             else if(isMouseOver){mouseOut();isMouseOver = false;}//mouse move on the "invisible" parth of the view
         }
-    }
-    override func mouseDragged(theEvent: NSEvent) {
-        Swift.print("InteractiveView.mouseDragged")
     }
     /**
      * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
