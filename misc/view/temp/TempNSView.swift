@@ -21,6 +21,7 @@ class TempNSView :FlippedView{
         
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
         
+        Swift.print("window?.frame.width: " + "\(window?.frame.width)")
         //continue heres
         //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
     }
