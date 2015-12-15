@@ -40,4 +40,7 @@ class InteractiveView:FlippedView{
             super.resetCursorRects()
         }
     }
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print(window?.mouseLocationOutsideOfEventStream)
+    }
 }
