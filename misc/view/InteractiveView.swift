@@ -38,10 +38,6 @@ class InteractiveView:FlippedView{
             cursor.setOnMouseEntered(true)
         }else{super.resetCursorRects()}
     }
-    override func mouseDown(theEvent: NSEvent) {
-        //Swift.print(pos)
-        //hitTest(winMousePos)
-    }
     /**
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
      * NOTE: It could be possible to only call this method if a bool value was true. Optimization
@@ -60,6 +56,13 @@ class InteractiveView:FlippedView{
      */
     func mouseOut(){
         /*override in subclass*/
+    }
+    override func mouseDown(theEvent: NSEvent) {
+        //Swift.print(pos)
+        //hitTest(winMousePos)
+    }
+    override func mouseUp(theEvent: NSEvent) {
+        
     }
     /**
      * MouseMoved
