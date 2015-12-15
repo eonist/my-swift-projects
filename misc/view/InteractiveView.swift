@@ -85,7 +85,7 @@ class InteractiveView:FlippedView{
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseMoved(theEvent: NSEvent) {
-        Swift.print("InteractiveView.mouseMoved")
+        //Swift.print("InteractiveView.mouseMoved")
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){mouseOver();isMouseOver = true;}
