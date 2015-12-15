@@ -84,11 +84,11 @@ class TempNSView :FlippedView{
     }
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
+        hasMouse
         if(isMouseOver){
             mouseOut()
             isMouseOver = false
         }
-        
     }
 }
 
