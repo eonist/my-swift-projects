@@ -41,6 +41,12 @@ class TempNSView :FlippedView{
         CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
     }
+    /**
+     * MouseMove (only fires when the mouse is actualy moving on the visiivle  part of the view)
+     */
+    func mouseMove(){
+        
+    }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("TempNSView.mouseDown()")
         //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
