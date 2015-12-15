@@ -1,6 +1,6 @@
 import Cocoa
 
-class TempNSView :FlippedView{
+class TempNSView :FlippedView{/*Organizes your view from top to bottom*/
     var name:String = ""
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
@@ -10,10 +10,13 @@ class TempNSView :FlippedView{
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         addTrackingArea(trackingArea)
     }
+    /**
+     * NOTE: this method is called from the root view if this view is the top-most visible view
+     */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest")
         var pos = convertPoint(aPoint, toView: self)/*converts the p to local coordinates*/
-        pos -= frame.origin
+        pos -= frame.origin/*converts the point from a global position to a local position*/
         //Swift.print("pos: " + "\(pos)")
         //Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
@@ -21,7 +24,6 @@ class TempNSView :FlippedView{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * MouseMoved
-     * NOTE: You need to silently check for if you re-enter the visible shape so you cant stop checking if you rolled over!!!
      */
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
@@ -69,7 +71,7 @@ class TempNSView :FlippedView{
         isMouseOver = false
     }
     /**
-     * 
+     * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
      */
     override func mouseEntered( event: NSEvent){
         //Swift.print("TempNSView.mouseEntered: ")
@@ -78,11 +80,17 @@ class TempNSView :FlippedView{
         //Swift.print("theHitView: " + "\(theHitView)")
         if(theHitView === self){mouseOver()}//mouse move on visible view
     }
+    /**
+     * Fires when the mouse exits the tracking area, regardless if it is overlapping with other trackingAreas of other views
+     */
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
         hasMouseEntered = false/*optimization*/
         if(isMouseOver){mouseOut()}
     }
+    /**
+     * MouseDown (for testing purposes)
+     */
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("TempNSView.mouseDown()")
         //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
