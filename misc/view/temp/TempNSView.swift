@@ -87,3 +87,6 @@ class TempNSView :FlippedView{
         isMouseOver = false
     }
 }
+
+
+//TODO: you need to silently check for if you reenter the visible shape so you cant stop checking if you rolled over!!!
