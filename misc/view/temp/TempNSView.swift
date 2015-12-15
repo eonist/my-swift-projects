@@ -12,31 +12,31 @@ class TempNSView :FlippedView{
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest")
-        
         var pos = convertPoint(aPoint, toView: self)/*converts the p to local coordinates*/
         pos -= frame.origin
         //Swift.print("pos: " + "\(pos)")
         //Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
-        
-        
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    
-    
+    /**
+     * MouseMoved
+     */
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
-        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-        //Swift.print("theHitView: " + "\(theHitView)")
-        if(theHitView === self){//mouse move on visible view
-            if(!isMouseOver){
-                mouseOver()
-                isMouseOver = true
-            }
-        }else{//mouse move on invisible view
-            if(isMouseOver){
-                mouseOut()
-                isMouseOver = false
+        if(hasMouseEntered){/*Only */
+            let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+            //Swift.print("theHitView: " + "\(theHitView)")
+            if(theHitView === self){//mouse move on visible view
+                if(!isMouseOver){
+                    mouseOver()
+                    isMouseOver = true
+                }
+            }else{//mouse move on invisible view
+                if(isMouseOver){
+                    mouseOut()
+                    isMouseOver = false
+                }
             }
         }
     }
