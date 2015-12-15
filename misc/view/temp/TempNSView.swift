@@ -3,14 +3,12 @@ import Cocoa
 class TempNSView :FlippedView{
     var name:String = ""
     var isMouseOver:Bool = false;/*you should hit test this on init*/
+    var hasMouseEntered:Bool = false/*you should hit test this on init*/
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
-        
-       addTrackingArea(trackingArea)
-        
-        
+        addTrackingArea(trackingArea)
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
@@ -23,13 +21,9 @@ class TempNSView :FlippedView{
         
         
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
-        
-        
-       
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    override var acceptsFirstResponder: Bool { return true }
+    
     
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
@@ -74,6 +68,7 @@ class TempNSView :FlippedView{
     }
     override func mouseEntered( event: NSEvent){
         //Swift.print("TempNSView.mouseEntered: ")
+        hasMouseEntered = true/*optimization*/
         let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
         //Swift.print("theHitView: " + "\(theHitView)")
         if(theHitView === self){//mouse move on visible view
@@ -84,7 +79,7 @@ class TempNSView :FlippedView{
     }
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
-        hasMouse
+        hasMouseEntered = false/*optimization*/
         if(isMouseOver){
             mouseOut()
             isMouseOver = false
