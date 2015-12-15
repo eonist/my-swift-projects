@@ -27,17 +27,8 @@ class TempNSView :FlippedView{
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             //Swift.print("theHitView: " + "\(theHitView)")
-            if(theHitView === self){//mouse move on the "visible" part of the view
-                if(!isMouseOver){
-                    mouseOver()
-                    
-                }
-            }else{//mouse move on the "invisible" parth of the view
-                if(isMouseOver){
-                    mouseOut()
-                   
-                }
-            }
+            if(theHitView === self && !isMouseOver){mouseOver()}//mouse move on the "visible" part of the view
+            else if(isMouseOver){mouseOut()}//mouse move on the "invisible" parth of the view
         }
     }
     override func drawRect(dirtyRect: NSRect) {
