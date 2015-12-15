@@ -89,4 +89,5 @@ class TempNSView :FlippedView{
 }
 
 
-//TODO: you need to silently check for if you reenter the visible shape so you cant stop checking if you rolled over!!!
+//TODO: you need to silently check for if you re-enter the visible shape so you cant stop checking if you rolled over!!!
+
