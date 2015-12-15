@@ -6,8 +6,8 @@ import Cocoa
  * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
  */
 class InteractiveView:FlippedView{
-
-    
+    var isMouseOver:Bool = false;/*you should hit test this on init*/
+    var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var isInteractive:Bool = true//why is this here?
     var hasHandCursor:Bool = false
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
@@ -36,15 +36,52 @@ class InteractiveView:FlippedView{
             let cursor:NSCursor = NSCursor.pointingHandCursor()
             addCursorRect(frame, cursor: cursor)
             cursor.setOnMouseEntered(true)
-        }else{
-            super.resetCursorRects()
-        }
+        }else{super.resetCursorRects()}
     }
     override func mouseDown(theEvent: NSEvent) {
         //Swift.print(pos)
         Swift.print("mouseDOwn start")
         hitTest(winMousePos)
         Swift.print("mouseDOwn end")
+    }
+    /**
+     * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
+     * NOTE: It could be possible to only call this method if a bool value was true. Optimization
+     */
+    func mouseMove(){
+        //Swift.print(name + " mouseMove")
+    }
+    /**
+     * Only fires if the mouse is over the visible part of this view
+     */
+    func mouseOver(){
+        Swift.print(" mouseOver")
+        isMouseOver = true
+    }
+    /**
+     * Only fires if the mouse is "rolls" out of the visible part of this view
+     */
+    func mouseOut(){
+        Swift.print(" mouseOut")
+        isMouseOver = false
+    }
+    /**
+     * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
+     */
+    override func mouseEntered( event: NSEvent){
+        //Swift.print("TempNSView.mouseEntered: ")
+        hasMouseEntered = true/*optimization*/
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        //Swift.print("theHitView: " + "\(theHitView)")
+        if(theHitView === self){mouseOver()}//mouse move on visible view
+    }
+    /**
+     * Fires when the mouse exits the tracking area, regardless if it is overlapping with other trackingAreas of other views
+     */
+    override func mouseExited(event: NSEvent){
+        //Swift.print("TempNSView.mouseExited:")
+        hasMouseEntered = false/*optimization*/
+        if(isMouseOver){mouseOut()}
     }
 }
 extension InteractiveView{
@@ -53,5 +90,8 @@ extension InteractiveView{
         pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
         return pos
     }
-    
+    var viewUnderMouse:NSView?{
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        return theHitView
+    }
 }
