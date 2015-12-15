@@ -32,19 +32,18 @@ class TempNSView :FlippedView{
     
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
-        if(isMouseOver){
-            let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-            //Swift.print("theHitView: " + "\(theHitView)")
-            if(theHitView === self){//mouse move on visible view
-                
-            }else{//mouse move on invisible view
-                mouseOut()
+        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+        //Swift.print("theHitView: " + "\(theHitView)")
+        if(theHitView === self){//mouse move on visible view
+            if(isMouseOver){
                 isMouseOver = false
+                mouseOver()
             }
+        }else{//mouse move on invisible view
+            mouseOut()
+            isMouseOver = false
         }
-        
     }
-    
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("TempNSView.drawRect()")
         let graphicsContext = NSGraphicsContext.currentContext()!
