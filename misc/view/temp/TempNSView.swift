@@ -27,15 +27,15 @@ class TempNSView :FlippedView{
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             //Swift.print("theHitView: " + "\(theHitView)")
-            if(theHitView === self){//mouse move on visible view
+            if(theHitView === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){
                     mouseOver()
-                    isMouseOver = true
+                    
                 }
-            }else{//mouse move on invisible view
+            }else{//mouse move on the "invisible" parth of the view
                 if(isMouseOver){
                     mouseOut()
-                    isMouseOver = false
+                   
                 }
             }
         }
@@ -61,9 +61,11 @@ class TempNSView :FlippedView{
     }
     func mouseOver(){
         Swift.print(name + " mouseOver")
+        isMouseOver = true
     }
     func mouseOut(){
         Swift.print(name + " mouseOut")
+        isMouseOver = false
     }
     override func mouseEntered( event: NSEvent){
         //Swift.print("TempNSView.mouseEntered: ")
@@ -72,7 +74,7 @@ class TempNSView :FlippedView{
         //Swift.print("theHitView: " + "\(theHitView)")
         if(theHitView === self){//mouse move on visible view
             mouseOver()
-            isMouseOver = true
+            
         }
         
     }
@@ -81,7 +83,7 @@ class TempNSView :FlippedView{
         hasMouseEntered = false/*optimization*/
         if(isMouseOver){
             mouseOut()
-            isMouseOver = false
+            
         }
     }
 }
