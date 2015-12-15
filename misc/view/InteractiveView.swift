@@ -45,7 +45,9 @@ class InteractiveView:FlippedView{
         pos.y = window!.frame.height - pos.y
         
         
-        Swift.print(pos)
+        //Swift.print(pos)
+        Swift.print("mouseDOwn start")
         hitTest(pos)
+        Swift.print("mouseDOwn end")
     }
 }
