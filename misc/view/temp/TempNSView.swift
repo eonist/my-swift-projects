@@ -78,8 +78,9 @@ class TempNSView :FlippedView{
         //Swift.print("theHitView: " + "\(theHitView)")
         if(theHitView === self){//mouse move on visible view
             mouseOver()
+            isMouseOver = true
         }
-        isMouseOver = true
+        
     }
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
