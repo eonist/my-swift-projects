@@ -41,6 +41,7 @@ class InteractiveView:FlippedView{
         }
     }
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print(window?.mouseLocationOutsideOfEventStream)
+        let pos = convertPoint((window?.mouseLocationOutsideOfEventStream)!, toView: nil)/*converts the p to local coordinates*/
+        Swift.print(pos)
     }
 }
