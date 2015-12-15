@@ -6,7 +6,7 @@ import Cocoa
 class View:FlippedView{
     
     
-    //start implementing the new mouseOver mouseOut code
+    //start implementing the new mouseOver mouseOut code in a new View class named InteractiveView
     
     
     var isInteractive:Bool = true//why is this here?
