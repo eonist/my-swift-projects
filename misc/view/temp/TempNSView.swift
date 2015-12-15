@@ -1,6 +1,7 @@
 import Cocoa
 
 class TempNSView :FlippedView{
+    var isOver:Bool = false;/*you should hit test this on init*/
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -27,10 +28,15 @@ class TempNSView :FlippedView{
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-      override var acceptsFirstResponder: Bool { return true }
+    override var acceptsFirstResponder: Bool { return true }
     
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
+        if(isOver){
+            let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
+            Swift.print("theHitView: " + "\(theHitView)")
+        }
+        
     }
     
     override func drawRect(dirtyRect: NSRect) {
@@ -51,15 +57,19 @@ class TempNSView :FlippedView{
         
         //continue heres
         //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
+    }
+    func mouseOver(){
         
-
+    }
+    func mouseOut(){
+        
     }
     override func mouseEntered( event: NSEvent){
-        Swift.print("TempNSView.mouseEntered: ")
-        let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-        Swift.print("theHitView: " + "\(theHitView)")
+        //Swift.print("TempNSView.mouseEntered: ")
+        isOver = true
     }
     override func mouseExited(event: NSEvent){
-        Swift.print("TempNSView.mouseExited:")
+        //Swift.print("TempNSView.mouseExited:")
+        isOver = false
     }
 }
