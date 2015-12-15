@@ -72,6 +72,9 @@ class InteractiveView:FlippedView{
     func mouseUpOutside(theEvent: NSEvent){
        /*override in subclass*/
     }
+    /**
+     * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
+     */
     override func mouseUp(theEvent: NSEvent) {
         viewUnderMouse === self ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
