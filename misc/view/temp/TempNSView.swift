@@ -1,7 +1,7 @@
 import Cocoa
 
 class TempNSView :FlippedView{
-    var isOver:Bool = false;/*you should hit test this on init*/
+    var isMouseOver:Bool = false;/*you should hit test this on init*/
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -32,13 +32,14 @@ class TempNSView :FlippedView{
     
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
-        if(isOver){
+        if(isMouseOver){
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             //Swift.print("theHitView: " + "\(theHitView)")
             if(theHitView === self){//mouse move on visible view
                 
             }else{//mouse move on invisible view
                 mouseOut()
+                isMouseOver = false
             }
         }
         
@@ -76,13 +77,13 @@ class TempNSView :FlippedView{
         if(theHitView === self){//mouse move on visible view
             mouseOver()
         }
-        isOver = true
+        isMouseOver = true
     }
     override func mouseExited(event: NSEvent){
         //Swift.print("TempNSView.mouseExited:")
-        if(isOver){
+        if(isMouseOver){
             mouseOut()
         }
-        isOver = false
+        isMouseOver = false
     }
 }
