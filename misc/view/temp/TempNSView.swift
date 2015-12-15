@@ -19,11 +19,17 @@ class TempNSView :FlippedView{
         Swift.print("pos: " + "\(pos)")
         Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
         
-        return NSPointInRect(pos + frame.origin, frame) ? self : nil
         
-        Swift.print("window?.frame.width: " + "\(window?.frame.width)")
+        window.viewsNeedDisplay
+        
         //continue heres
         //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
+        
+        
+        return NSPointInRect(pos + frame.origin, frame) ? self : nil
+        
+        
+       
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
