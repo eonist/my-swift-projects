@@ -1,6 +1,7 @@
 import Cocoa
 
 class TempInteractiveView : InteractiveView{
+    var name:String = ""/*Makes it easier to test*/
     /**
      * NOTE: draws a 100 by 100 square with a random color
      */
@@ -13,5 +14,14 @@ class TempInteractiveView : InteractiveView{
         CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         //super.drawRect(dirtyRect)
+    }
+    override func mouseOut() {
+        Swift.print(name+" mouseOut")
+    }
+    override func mouseOver() {
+        Swift.print(name+" mouseOver")
+    }
+    override func mouseMove(){
+        //Swift.print(name + " mouseMove")
     }
 }
