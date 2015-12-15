@@ -22,9 +22,13 @@ class TempInteractiveView : InteractiveView{
     override func mouseOver() {
         Swift.print(name+" mouseOver")
         super.mouseOver()
-        
-        //make this method so that you dont need to call super, do the same with mouseOut
-        //finish the interactiveview and then 
+    
+        //Continue here:
+        //1. make this method so that you dont need to call super, do the same with mouseOut
+        //2. finish the interactiveview and then test it on button etc.
+        //3. then make the GraphicSkin with a stroke and a fill CALayer
+        //4. get the outer shadow to work on the layer and the inner shadow to work on the fill only
+        //5. start making other Elements
         
     }
     override func mouseMove(){
