@@ -35,6 +35,11 @@ class TempNSView :FlippedView{
         if(isOver){
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             Swift.print("theHitView: " + "\(theHitView)")
+            if(theHitView === self){
+                
+            }else{
+                
+            }
         }
         
     }
