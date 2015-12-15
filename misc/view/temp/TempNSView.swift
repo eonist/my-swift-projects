@@ -12,12 +12,12 @@ class TempNSView :FlippedView{
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("hitTest")
+        //Swift.print("hitTest")
         
         var pos = convertPoint(aPoint, toView: self)/*converts the p to local coordinates*/
         pos -= frame.origin
-        Swift.print("pos: " + "\(pos)")
-        Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
+        //Swift.print("pos: " + "\(pos)")
+        //Swift.print("containsPoint(p): " + String(NSPointInRect(pos + frame.origin, frame)))
         
         
         return NSPointInRect(pos + frame.origin, frame) ? self : nil
@@ -44,10 +44,10 @@ class TempNSView :FlippedView{
     }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("TempNSView.mouseDown()")
-        Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
+        //Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
         
         let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
-        Swift.print("theHitView: " + "\(theHitView)")
+        //Swift.print("theHitView: " + "\(theHitView)")
         
         //continue heres
         //TODO: What if we hittest from the window with the cur mouse pos. From the subview. refToWin.view.hittest(mousePos,nil), then assert if self == to the returned view?
