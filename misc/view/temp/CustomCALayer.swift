@@ -3,7 +3,7 @@ class CustomCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
         super.init()
-        self.display()
+        
     }
     /*
     override func containsPoint(p: CGPoint) -> Bool {
@@ -18,9 +18,10 @@ class CustomCALayer:CALayer{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    init(_ color:NSColor){
+    convenience init(_ color:NSColor){
+        
+        self.init()
         self.color = color
-        super.init()
     }
     
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
