@@ -15,17 +15,17 @@ class InteractiveView:FlippedView{
     override init(frame:NSRect) {
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
+        let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-   
-    
     /**
      * Avoids covering the graphic behind when dealing with mouse down events
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("View.hitTest(): " + String(aPoint))
-        Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
+        //Swift.print("View.hitTest(): " + String(aPoint))
+        //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
         return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
