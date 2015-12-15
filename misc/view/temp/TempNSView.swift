@@ -24,7 +24,7 @@ class TempNSView :FlippedView{
      */
     override func mouseMoved(theEvent: NSEvent) {
         //Swift.print("mouseMoved")
-        if(hasMouseEntered){/*Only */
+        if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
             //Swift.print("theHitView: " + "\(theHitView)")
             if(theHitView === self){//mouse move on visible view
