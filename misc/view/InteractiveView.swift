@@ -93,6 +93,9 @@ class InteractiveView:FlippedView{
             else if(isMouseOver){mouseOut();isMouseOver = false;}//mouse move on the "invisible" parth of the view
         }
     }
+    override func mouseDragged(theEvent: NSEvent) {
+        Swift.print("InteractiveView.mouseDragged")
+    }
     /**
      * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
