@@ -8,8 +8,8 @@ class Graphic:FlippedView,IGraphic{
     
     var fillShape:FillShape
     var lineShape:LineShape//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle? {return fillShape.fillStyle}
-    var lineStyle:ILineStyle? {return lineShape.lineStyle}
+    var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
+    var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
