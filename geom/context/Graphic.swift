@@ -9,7 +9,7 @@ class Graphic:FlippedView{
     var lineShape:Shape = Shape()
     var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
-    var lineOffsetType:OffsetType?;
+    var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         self.fillStyle = fillStyle
