@@ -11,11 +11,12 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
+    
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
-        super.init()
+        super.init(frame:NSRect(0,0,100,100))//<---move this into the arguments
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
