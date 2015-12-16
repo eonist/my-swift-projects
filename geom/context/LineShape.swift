@@ -1,12 +1,11 @@
 import Foundation
 
 class LineShape :Shape{
-    var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
     override func drawInContext(ctx: CGContext) {
-        Swift.print("TempShape.drawInContext")
+        Swift.print("LineShape.drawInContext")
         graphics.context = ctx
         self.graphics.line(lineStyle!.thickness)//Stylize the line
-        self.graphics.draw(thePath)//draw everything
+        self.graphics.draw(path)//draw everything
     }
 }
