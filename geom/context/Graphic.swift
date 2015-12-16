@@ -20,6 +20,8 @@ class Graphic:FlippedView{
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
+        
+        //continue here, create the CALAyer class, should hold a path and the graphics instance
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
         
