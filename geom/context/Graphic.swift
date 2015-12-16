@@ -5,7 +5,6 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView,IGraphic{
-    
     var fillShape:FillShape
     var lineShape:LineShape//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
