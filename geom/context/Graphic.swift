@@ -32,6 +32,10 @@ class Graphic:FlippedView,IGraphic{
         layer!.addSublayer(layerA)
         */
         //layer?.masksToBounds = false
+        
+        //move this into the GraphicTest class
+        //start making the alignment classes for
+        
         let a:Shape = fillShape//TempShape()
         a.path = CGPathParser.rect(CGFloat(50/*/2*/),CGFloat(50/*/2*/))//Shapes
         //a.frame = CGRect(120,120,50,50);
