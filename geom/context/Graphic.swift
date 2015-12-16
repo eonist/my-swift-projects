@@ -20,6 +20,7 @@ class Graphic:FlippedView,IGraphic{
         
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         self.layer!.masksToBounds = false//this is needed!!!
+        /*
         let layerA = CALayer()
         //layerA.bounds = CGRectMake(0, 0, 100, 100);//this doesnt matter
         layerA.frame = CGRectMake(20, 20, 300, 300);
@@ -27,12 +28,18 @@ class Graphic:FlippedView,IGraphic{
         //layerA.position = CGPointMake(10, 10);
         layerA.backgroundColor = NSColor.greenColor().CGColor
         layer!.addSublayer(layerA)
-        
+        */
         layer?.masksToBounds = false
         layer?.addSublayer(fillShape)
         fillShape.masksToBounds = false
         layer?.addSublayer(lineShape)
         lineShape.masksToBounds = false
+        
+        let layerD = CustomLayer(NSColor.blueColor())
+        layerD.frame = CGRect(120,120,50,50);
+        layerD.display()
+        //layerD.masksToBounds = false
+        layer!.addSublayer(layerD)
     }
     /*
     override init(frame frameRect: NSRect) {
