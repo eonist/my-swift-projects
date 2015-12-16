@@ -15,6 +15,7 @@ class Graphic:FlippedView,IGraphic{
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
+        super.init()
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
