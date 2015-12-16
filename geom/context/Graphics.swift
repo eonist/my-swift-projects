@@ -21,7 +21,7 @@ public class Graphics{
     enum FillMode: Int {case None = 0, Color, Gradient}
     enum StrokeMode: Int {case None = 0, Color, Gradient}
     public var context:CGContextRef
-    let graphicsContext:NSGraphicsContext
+    //let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
@@ -29,9 +29,13 @@ public class Graphics{
     var lineGradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
-    public init(_ ctx:CGContext){
-        self.graphicsContext = NSGraphicsContext.currentContext()!
-        self.context = graphicsContext.CGContext/* Get the handle to the current context */
+    public init(_ ctx:CGContext? = nil){
+        if(ctx == nil){
+            let graphicsContext = NSGraphicsContext.currentContext()!
+            self.context = graphicsContext.CGContext/* Get the handle to the current context */
+        }else{
+            self.context = ctx!
+        }
     }
     /**
      * Initiate filling
