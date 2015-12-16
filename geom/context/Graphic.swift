@@ -7,6 +7,11 @@ import Cocoa
 class Graphic:FlippedView{
     var fillShape:CALayer = CALayer()
     var lineShape:CALayer = CALayer()
+    var fillStyle:IFillStyle?;
+    var lineStyle:ILineStyle?;
+    var lineOffsetType:OffsetType?;
+    
+    
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
     var path:CGMutablePath = CGPathCreateMutable()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
