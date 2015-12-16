@@ -16,11 +16,13 @@ class Graphic:FlippedView,IGraphic{
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
-        super.init(frame:NSRect(0,0,100,100))//<---move this into the arguments
+        super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments
+        
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        self.layer!.masksToBounds = false//this is needed!!!
         let layerA = CALayer()
         //layerA.bounds = CGRectMake(0, 0, 100, 100);//this doesnt matter
-        layerA.frame = CGRectMake(20, 20, 100, 100);
+        layerA.frame = CGRectMake(20, 20, 300, 300);
         layerA.masksToBounds = false//finally it works
         //layerA.position = CGPointMake(10, 10);
         layerA.backgroundColor = NSColor.greenColor().CGColor
