@@ -40,7 +40,7 @@ class Graphic:FlippedView{
     */
     
     /**
-     *
+     * Convenince implicit setter
      */
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;
