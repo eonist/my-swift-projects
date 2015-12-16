@@ -18,6 +18,8 @@ class Graphic:FlippedView{
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        layer?.addSublayer(fillShape)
+        layer?.addSublayer(lineShape)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
         
