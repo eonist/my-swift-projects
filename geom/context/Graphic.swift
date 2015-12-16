@@ -5,7 +5,7 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView,IGraphic{
-    var fillShape:Shape = Shape()
+    var fillShape:Shape = TempShape()
     var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
@@ -29,7 +29,7 @@ class Graphic:FlippedView,IGraphic{
         layerA.backgroundColor = NSColor.greenColor().CGColor
         layer!.addSublayer(layerA)
         */
-        layer?.masksToBounds = false
+        //layer?.masksToBounds = false
         fillShape.frame = CGRect(120,120,50,50);
         layer?.addSublayer(fillShape)
         fillShape.masksToBounds = false
