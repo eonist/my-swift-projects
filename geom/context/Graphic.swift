@@ -5,8 +5,11 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView,IGraphic{
+    
     var fillShape:FillShape
     var lineShape:LineShape//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
+    var fillStyle:IFillStyle? {return fillShape.fillStyle}
+    var lineStyle:ILineStyle? {return lineShape.lineStyle}
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
@@ -14,7 +17,7 @@ class Graphic:FlippedView,IGraphic{
         fillShape = FillShape()
         fillShape.fillStyle = fillStyle
         lineShape = LineShape()
-        self.lineStyle = lineStyle
+        lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments
         
