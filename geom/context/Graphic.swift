@@ -11,8 +11,8 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
+        Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
@@ -28,9 +28,6 @@ class Graphic:FlippedView,IGraphic{
     }
     */
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
-    
-    
-    
     /**
      *
      */
