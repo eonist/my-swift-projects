@@ -4,20 +4,20 @@ import Cocoa
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  */
-class Graphic:CALayer{
+class Graphic:FlippedView{
     var fillShape:Shape = Shape()
     var lineShape:Shape = Shape()
     var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType?;
-    //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    init(frame frameRect: NSRect) {
-        super.init(/*frame: frameRect*/)
-        //self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
-        self.addSublayer(fillShape)
-        self.addSublayer(lineShape)
+    override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        layer?.addSublayer(fillShape)
+        layer?.addSublayer(lineShape) 
     }
-    //required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     
     
     
