@@ -127,7 +127,7 @@ public class Graphics{
      * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
     private func drawLine(path:CGPath){
-        if(dropShadow != nil) {CGContextAddPath(context,path)}//Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
+        /*if(dropShadow != nil) {*/CGContextAddPath(context,path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
         switch true {
             case (strokeMode == StrokeMode.None)://no stroke
                 Swift.print("no stroke")
