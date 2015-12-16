@@ -30,10 +30,11 @@ class Graphic:FlippedView,IGraphic{
         layer!.addSublayer(layerA)
         */
         //layer?.masksToBounds = false
-        fillShape.frame = CGRect(120,120,50,50);
-        fillShape.display()
-        layer?.addSublayer(fillShape)
-        fillShape.masksToBounds = false
+        let a:Shape = TempShape()
+        a.frame = CGRect(120,120,50,50);
+        a.display()
+        layer?.addSublayer(a)
+        //a.masksToBounds = false
         /*
         layer?.addSublayer(lineShape)
         lineShape.masksToBounds = false
