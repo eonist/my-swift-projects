@@ -33,8 +33,12 @@ class Graphic:FlippedView,IGraphic{
         */
         //layer?.masksToBounds = false
         
+        
+        //continue here:
+        
         //move this into the GraphicTest class
         //start making the alignment classes for the stroke, maybe you should base the stroke path on the fillpath
+        //remember that the Graphic class shouldnt do any path drawing etc. this is the task of the subclass or utility methods
         
         let a:Shape = fillShape//TempShape()
         a.path = CGPathParser.rect(CGFloat(50/*/2*/),CGFloat(50/*/2*/))//Shapes
