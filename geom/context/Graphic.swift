@@ -30,7 +30,9 @@ class Graphic:FlippedView,IGraphic{
         
         layer?.masksToBounds = false
         layer?.addSublayer(fillShape)
+        fillShape.masksToBounds = false
         layer?.addSublayer(lineShape)
+        lineShape.masksToBounds = false
     }
     /*
     override init(frame frameRect: NSRect) {
