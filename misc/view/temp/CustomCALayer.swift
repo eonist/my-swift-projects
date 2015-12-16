@@ -31,7 +31,9 @@ class CustomCALayer:CALayer{
     /**/
     override func drawInContext(ctx: CGContext) {
         Swift.print("CustomCALayer.drawInContext()")
-        let context = ctx
+        let graphicsContext = NSGraphicsContext.currentContext()!
+        let context = graphicsContext.CGContext/* Get the handle to the current context */
+        //let context = ctx
         let path:CGMutablePathRef  = CGPathCreateMutable();
         /* Here are our rectangle boundaries */
         let rectangle:CGRect = CGRectMake(0.0, 0.0, frame.width, frame.height);

@@ -36,11 +36,13 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(lineShape)
         lineShape.masksToBounds = false
         
+        /*
         let layerD = CustomLayer(NSColor.blueColor())
         layerD.frame = CGRect(120,120,50,50);
         layerD.display()
         //layerD.masksToBounds = false
         layer!.addSublayer(layerD)
+        */
     }
     /*
     override init(frame frameRect: NSRect) {
