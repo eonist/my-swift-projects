@@ -11,12 +11,20 @@ class Graphic:FlippedView{
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType?;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
+    init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
+        self.fillStyle = fillStyle
+        self.lineStyle = lineStyle
+        self.lineOffsetType = lineOffsetType
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer?.addSublayer(fillShape)
-        layer?.addSublayer(lineShape) 
+        layer?.addSublayer(lineShape)
     }
+    /*
+    override init(frame frameRect: NSRect) {
+    super.init(frame: frameRect)
+    
+    }
+    */
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     
     
