@@ -6,7 +6,7 @@ import Cocoa
  */
 class Graphic:FlippedView,IGraphic{
     var fillShape:Shape = Shape()
-    var lineShape:Shape = {
+    var lineShape:Shape  {
         get{
             return fillShape
         }
