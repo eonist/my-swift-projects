@@ -31,6 +31,7 @@ class Graphic:FlippedView,IGraphic{
         */
         //layer?.masksToBounds = false
         let a:Shape = TempShape()
+        a.path = CGPathParser.rect(CGFloat(50/*/2*/),CGFloat(50/*/2*/))//Shapes
         a.frame = CGRect(120,120,50,50);
         a.display()
         layer?.addSublayer(a)
