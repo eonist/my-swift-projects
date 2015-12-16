@@ -4,7 +4,7 @@ import Cocoa
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  */
-class Graphic:FlippedView{
+class Graphic:FlippedView,IGraphic{
     var fillShape:Shape = Shape()
     var lineShape:Shape = Shape()
     var fillStyle:IFillStyle?;
