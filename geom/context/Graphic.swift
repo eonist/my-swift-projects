@@ -38,6 +38,14 @@ class Graphic:FlippedView{
     super.drawRect(dirtyRect)
     }
     */
+    
+    /**
+     *
+     */
+    func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
+        self.fillStyle = fillStyle;
+        self.lineStyle = lineStyle;
+    }
 }
 extension CGMutablePath{
     /**
