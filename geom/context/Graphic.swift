@@ -6,14 +6,7 @@ import Cocoa
  */
 class Graphic:FlippedView,IGraphic{
     var fillShape:Shape = Shape()
-    var lineShape:Shape  {
-        get{
-            return fillShape
-        }
-        set{
-            fillShape = newValue
-        }
-    }/*Shape()*/
+    var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType;
