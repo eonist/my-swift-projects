@@ -20,7 +20,7 @@ import Cocoa
 public class Graphics{
     enum FillMode: Int {case None = 0, Color, Gradient}
     enum StrokeMode: Int {case None = 0, Color, Gradient}
-    public var context:CGContextRef
+    public var context:CGContextRef?
     //let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
