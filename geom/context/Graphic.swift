@@ -18,6 +18,8 @@ class Graphic:FlippedView,IGraphic{
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,100,100))//<---move this into the arguments
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        layer = layer!
+        layer?.masksToBounds = false
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
     }
