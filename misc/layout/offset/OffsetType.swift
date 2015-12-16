@@ -21,3 +21,6 @@ class OffsetType:Equatable,ILayout{
         }
     }
 }
+func == (lhs: OffsetType, rhs: OffsetType) -> Bool {
+    return lhs.left == rhs.left && lhs.right == rhs.right && lhs.top == rhs.top && lhs.bottom == rhs.bottom
+}
