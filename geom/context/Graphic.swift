@@ -5,15 +5,15 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView,IGraphic{
-    var fillShape:Shape = TempShape()
-    var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle?;
-    var lineStyle:ILineStyle?;
+    var fillShape:FillShape
+    var lineShape:LineShape//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         Swift.print("Graphic.init()")
-        self.fillStyle = fillStyle
+        fillShape = FillShape()
+        fillShape.fillStyle = fillStyle
+        lineShape = LineShape()
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments
