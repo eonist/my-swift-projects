@@ -25,9 +25,7 @@ class Graphic:FlippedView{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     
-    override func displayLayer(layer: CALayer) {
-        //try
-    }
+    
     
     /**
      *
