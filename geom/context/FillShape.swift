@@ -1,5 +1,5 @@
 import Foundation
 
-class FIllShape {
+class FillShape :Shape{
 
 }
