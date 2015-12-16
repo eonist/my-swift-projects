@@ -5,8 +5,8 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView{
-    var fillShape:CALayer = Shape()
-    var lineShape:CALayer = Shape()
+    var fillShape:Shape = Shape()
+    var lineShape:Shape = Shape()
     var fillStyle:IFillStyle?;
     var lineStyle:ILineStyle?;
     var lineOffsetType:OffsetType?;
