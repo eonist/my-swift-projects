@@ -29,12 +29,10 @@ public class Graphics{
     var lineGradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
-    public init(_ ctx:CGContext? = nil){
-        if(ctx == nil){
+    public init(){
+        if(NSGraphicsContext.currentContext() != nil){
             let graphicsContext = NSGraphicsContext.currentContext()!
             self.context = graphicsContext.CGContext/* Get the handle to the current context */
-        }else{
-            self.context = ctx!
         }
     }
     /**
@@ -119,7 +117,7 @@ public class Graphics{
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 Swift.print("gradient fill")
-                Utils.drawGradientFill(path, context, gradient, cgGradient)
+                Utils.drawGradientFill(path, context!, gradient, cgGradient)
             default:
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
@@ -142,7 +140,7 @@ public class Graphics{
                 CGContextDrawPath(context, CGPathDrawingMode.Stroke)
             case (strokeMode == StrokeMode.Gradient)://gradient stroke
                 Swift.print("gradient stroke")
-                Utils.drawGradientStroke(path, context, lineGradient, cgLineGradient)
+                Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient)
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
                 break;
