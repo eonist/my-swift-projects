@@ -9,5 +9,7 @@ class TempShape:Shape{
         graphics.context = ctx
         self.graphics.fill(NSColor.blueColor())//Stylize the fill
         self.graphics.draw(path)//draw everything
+        self.graphics.line(lineStyle!.thickness)//Stylize the line
+        self.graphics.draw(thePath)//draw everything
     }
 }
