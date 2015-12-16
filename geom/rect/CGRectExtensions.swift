@@ -60,7 +60,12 @@ extension CGRect{
         }
     }
     //TODO:  support for double and int aswell, also for x,y
-    
+    /**
+     *
+     */
+    func outset(dx:CGFloat,_ dy:CGFloat)->CGRect{
+        return insetBy(dx: -dx, dy: -dy)
+    }
 }
 
 
