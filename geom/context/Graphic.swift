@@ -21,10 +21,12 @@ class Graphic:FlippedView{
     /**
      *
      */
+    /*
     override func drawRect(dirtyRect: NSRect) {
-        Swift.print("Graphic.drawRect() ")
-        super.drawRect(dirtyRect)
+    Swift.print("Graphic.drawRect() ")
+    super.drawRect(dirtyRect)
     }
+    */
 }
 extension CGMutablePath{
     /**
