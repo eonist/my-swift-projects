@@ -13,9 +13,9 @@ class Graphic:FlippedView,IGraphic{
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         Swift.print("Graphic.init()")
-        fillShape = FillShape()
+        fillShape = FillShape(CGRect(120,120,50,50))
         fillShape.fillStyle = fillStyle
-        lineShape = LineShape()
+        lineShape = LineShape(CGRect(120,120,50,50))
         lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments
@@ -34,7 +34,7 @@ class Graphic:FlippedView,IGraphic{
         //layer?.masksToBounds = false
         let a:Shape = fillShape//TempShape()
         a.path = CGPathParser.rect(CGFloat(50/*/2*/),CGFloat(50/*/2*/))//Shapes
-        a.frame = CGRect(120,120,50,50);
+        //a.frame = CGRect(120,120,50,50);
         a.display()
         layer?.addSublayer(a)
         //a.masksToBounds = false
