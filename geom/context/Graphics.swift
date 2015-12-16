@@ -29,7 +29,7 @@ public class Graphics{
     var lineGradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
-    public init(){
+    public init(_ ctx:CGContext){
         self.graphicsContext = NSGraphicsContext.currentContext()!
         self.context = graphicsContext.CGContext/* Get the handle to the current context */
     }
