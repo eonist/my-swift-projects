@@ -87,5 +87,3 @@ class View2:FlippedView {
         
     }
 }
-
-
