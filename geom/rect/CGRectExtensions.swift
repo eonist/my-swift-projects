@@ -66,6 +66,12 @@ extension CGRect{
     func outset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: -dx, dy: -dy)
     }
+    /**
+     * NOTE:Same as insetBy, but this method is simpler to call, similar to Outset (Convenience)
+     */
+    func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
+        return insetBy(dx: dx, dy: dy)
+    }
 }
 
 
