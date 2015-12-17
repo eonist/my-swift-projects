@@ -74,4 +74,4 @@ extension CGRect{
     }
 }
 
-public func +=(inout a: CGRect, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b
+public func +=(inout a: CGRect, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b, could also have used: offsetBy()
