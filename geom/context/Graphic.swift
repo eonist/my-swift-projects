@@ -82,4 +82,10 @@ extension CGMutablePath{
     func add(path:CGPath){
         CGPathAddPath(self, nil, path)
     }
+    /**
+     * Returns a copy of it self
+     */
+    var copy:CGMutablePathRef {//possibly return CGMutablePathRef
+        return CGPathCreateMutableCopy(self)!
+    }
 }
