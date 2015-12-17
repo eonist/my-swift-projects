@@ -110,13 +110,13 @@ public class Graphics{
         beginOuterShadow(path)
         switch true{
             case (fillMode == FillMode.None)://no fill
-                Swift.print("gradient fill none")
+                //Swift.print("gradient fill none")
                 break
             case (fillMode == FillMode.Color)://fill
-                Swift.print("color fill ")
+                //Swift.print("color fill ")
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
-                Swift.print("gradient fill")
+                //Swift.print("gradient fill")
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
             default:
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
@@ -133,13 +133,13 @@ public class Graphics{
         /*if(dropShadow != nil) {*/CGContextAddPath(context,path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
         switch true {
             case (strokeMode == StrokeMode.None)://no stroke
-                Swift.print("no stroke")
+                //Swift.print("no stroke")
                 break
             case (strokeMode == StrokeMode.Color)://color stroke
-                Swift.print("color stroke")
+                //Swift.print("color stroke")
                 CGContextDrawPath(context, CGPathDrawingMode.Stroke)
             case (strokeMode == StrokeMode.Gradient)://gradient stroke
-                Swift.print("gradient stroke")
+                //Swift.print("gradient stroke")
                 Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient)
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
