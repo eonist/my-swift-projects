@@ -1,7 +1,7 @@
 import Foundation
 
 class LineShape :Shape{
-    var lineStyle:ILineStyle?;
+    var lineStyle:ILineStyle? //TODO:rename to style?
     override func drawInContext(ctx: CGContext) {
         //Swift.print("LineShape.drawInContext")
         graphics.context = ctx
