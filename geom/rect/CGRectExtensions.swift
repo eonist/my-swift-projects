@@ -6,7 +6,13 @@ extension CGRect {
      * Clones CGRect
      * EXAMPLE: CGRect(0,0,100,100).clone()
      */
-    func clone()->CGRect{
+    func clone()->CGRect{//remove this
+        return CGRect(self.origin.x,self.origin.y,self.width,self.height)
+    }
+    /**
+     * Same as clone (Consistency)
+     */
+    func copy()->CGRect{
         return CGRect(self.origin.x,self.origin.y,self.width,self.height)
     }
     /**
