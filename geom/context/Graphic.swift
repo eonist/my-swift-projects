@@ -22,6 +22,9 @@ class Graphic:FlippedView,IGraphic{
         
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         self.layer!.masksToBounds = false//this is needed!!!
+        layer?.addSublayer(fillShape)
+        layer?.addSublayer(lineShape)
+        
         /*
         let layerA = CALayer()
         //layerA.bounds = CGRectMake(0, 0, 100, 100);//this doesnt matter
