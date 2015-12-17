@@ -85,7 +85,7 @@ extension CGMutablePath{
     /**
      * Returns a copy of it self
      */
-    var copy:CGMutablePathRef {//possibly return CGMutablePathRef
+    func copy()->CGMutablePathRef {//possibly return CGMutablePathRef
         return CGPathCreateMutableCopy(self)!
     }
 }
