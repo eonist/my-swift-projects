@@ -12,7 +12,7 @@ class Graphic:FlippedView,IGraphic{
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
-        Swift.print("Graphic.init()")
+        //Swift.print("Graphic.init()")
         fillShape = FillShape(CGRect(120,120,50,50))
         fillShape.fillStyle = fillStyle
         lineShape = LineShape(CGRect(120,120,50,50))
