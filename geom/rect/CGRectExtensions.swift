@@ -80,10 +80,10 @@ extension CGRect{
     }
     
     /**
-     * (Convenience)
+     * Convenience
      */
     func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{
-        return offsetBy(dx: <#T##CGFloat#>, dy: <#T##CGFloat#>)
+        return offsetBy(dx: dx, dy: dy)
     }
     /**
      * Expands the size of the rect from its pivot
