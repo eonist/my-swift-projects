@@ -78,6 +78,12 @@ extension CGRect{
     func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
     }
+    /**
+     * Expands the size of the rect from its pivot
+     */
+    func expand(dx:CGFloat,dy:CGFloat)->CGRect{
+        return CGRect(self.x,self.y,self.width + dx, self.height + dy)
+    }
 }
 public func +(a: CGRect, b: CGPoint) -> CGRect { return CGRect(a.x+b.x, a.y+b.y,a.width,a.height)}//Adds the coordinates of point p to the coordinates of this point to create a new point
 public func +=(inout a: CGRect, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b, could also have used: offsetBy()
