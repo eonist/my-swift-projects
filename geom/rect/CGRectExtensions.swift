@@ -88,7 +88,7 @@ extension CGRect{
     /**
      * Expands the size of the rect from its pivot
      */
-    func expand(dx:CGFloat,dy:CGFloat)->CGRect{
+    func expand(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return CGRect(self.x,self.y,self.width + dx, self.height + dy)
     }
 }
