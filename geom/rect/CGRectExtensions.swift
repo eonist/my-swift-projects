@@ -78,6 +78,13 @@ extension CGRect{
     func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
     }
+    
+    /**
+     * (Convenience)
+     */
+    func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{
+        return offsetBy(dx: <#T##CGFloat#>, dy: <#T##CGFloat#>)
+    }
     /**
      * Expands the size of the rect from its pivot
      */
