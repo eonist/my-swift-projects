@@ -11,12 +11,12 @@ class TempCALayer:CALayer{
         
         //needsLayout()
     }
-    /*
+    
     override init(layer: AnyObject) {
         Swift.print("TempCALayer.init(_layer_)")
         super.init(layer: layer)
     }
-    */
+    
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
         
     /*

@@ -17,11 +17,12 @@ class Graphic:FlippedView,IGraphic{
         fillShape.fillStyle = fillStyle
         lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
-        super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments/*the width and the height arent clipped*/
+        super.init(frame:NSRect(0,0,1,1))//<---move this into the arguments/*the width and the height arent clipped*/
         
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
-        layer = TempCALayer()
-        layer?.display()
+        layer = TempCALayer(layer: layer!)
+        layer!.frame = NSRect(0,0,1,1)
+        //layer?.display()
         
         let a = TempCALayer()
         a.frame = NSRect(0,0,100,100)
