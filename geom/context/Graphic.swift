@@ -21,10 +21,11 @@ class Graphic:FlippedView,IGraphic{
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments/*the width and the height arent clipped*/
         
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        layer = layer!
         self.layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
-        
+        layer?.frame = NSRect(0,0,100,100)
         
         /*
         let layerA = CALayer()
