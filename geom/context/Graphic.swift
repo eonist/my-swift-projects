@@ -21,7 +21,7 @@ class Graphic:FlippedView,IGraphic{
         
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer()
-        let a = TempCALayer()
+        let a = Shape()
         layer?.addSublayer(a)
         a.display()
         layer!.masksToBounds = false//this is needed!!!
