@@ -47,6 +47,7 @@ class Graphic:FlippedView,IGraphic{
         //layerD.masksToBounds = false
         layer!.addSublayer(layerD)
         */
+        
     }
     /*
     override init(frame frameRect: NSRect) {
