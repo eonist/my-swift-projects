@@ -18,7 +18,7 @@ class Graphic:FlippedView,IGraphic{
         lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,1,1))//<---move this into the arguments/*the width and the height arent clipped*/
-        
+        layerContentsRedrawPolicy = 
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer(layer: layer!)
         //layer!.frame = NSRect(0,0,1,1)
