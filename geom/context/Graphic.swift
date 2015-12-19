@@ -40,8 +40,14 @@ class Graphic:FlippedView,IGraphic{
         layer?.needsLayout()
         
         
+        
+        
         //Continue here, check if you can still ad NSText and NSViews with drawRect as children, 
         //then try to implement this code in the Element code. And delete the LineShape and FillShape as they are not needed. Use Shape for everything
+        //also try to add a dropshadow to the layer! ref, see if it works, imp!
+        
+        
+        
         
         /*
         a.frame = NSRect(0,0,100,100)
