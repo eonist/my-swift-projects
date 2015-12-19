@@ -11,6 +11,7 @@ class FillShape :Shape{
         //TODO:you only need to call the draw method from here, the fill setting etc can be done in the decoratable classes
         
         self.graphics.fill(fillStyle!.color)//Stylize the fill
+        Swift.print("inside drawInContext")
         self.graphics.draw(path)//draw everything
         
     }
