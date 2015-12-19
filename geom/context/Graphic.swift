@@ -83,9 +83,11 @@ class Graphic:FlippedView,IGraphic{
     /**
     *
     */
-    override func  displayLayer(layer: CALayer){
-        Swift.print("Graphic.displayLayer: " + "\(layer)")
-    }
+     /*
+     override func  displayLayer(layer: CALayer){
+     Swift.print("Graphic.displayLayer: " + "\(layer)")
+     }
+     */
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
     }
