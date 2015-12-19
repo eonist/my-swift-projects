@@ -21,6 +21,8 @@ class Graphic:FlippedView,IGraphic{
     var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
     var lineOffsetType:OffsetType;
+    var a:Temp = Temp()
+    var b:Temp = Temp()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
@@ -38,11 +40,17 @@ class Graphic:FlippedView,IGraphic{
         layer?.needsLayout()
         
         
-        let a = Temp()
+        
         a.frame = NSRect(0,0,100,100)
         //layer?.addSublayer(a)
         a.delegate = self
         a.display()
+        
+        
+        b.frame = NSRect(0,0,100,100)
+        //layer?.addSublayer(a)
+        b.delegate = self
+        b.display()
         //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
         //or look inside the CALayer class, is there a context caller or similar. research this.
         //what about that delegate method maybe?
@@ -86,6 +94,9 @@ class Graphic:FlippedView,IGraphic{
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawLayer(layer,inContext)")
+        if(){
+            
+        }
     }
     /**
     * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
