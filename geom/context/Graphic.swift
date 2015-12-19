@@ -6,12 +6,14 @@ import QuartzCore
  * NOTE: Example is in the Graphics class
  */
 class Temp:CALayer{
+    /*
     override func drawInContext(ctx: CGContext) {
-        Swift.print("Temp.drawInContext()")
+    Swift.print("Temp.drawInContext()")
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Temp.drawLayer()")
+    Swift.print("Temp.drawLayer()")
     }
+    */
 }
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape = FillShape()
