@@ -11,6 +11,7 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
+    override var wantsUpdateLayer:Bool {return false}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
         fillShape.fillStyle = fillStyle
@@ -49,6 +50,7 @@ class Graphic:FlippedView,IGraphic{
         */
         
     }
+    
     /*
     override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
