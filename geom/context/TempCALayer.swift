@@ -5,8 +5,11 @@ class TempCALayer:CALayer{
     override init() {
         Swift.print("TempCALayer.init()")
         super.init()
-        //needsDisplay()
-        displayIfNeeded()
+        needsDisplay()
+        //displayIfNeeded()
+        layoutIfNeeded()
+        display()
+        needsLayout()
     }
     override init(layer: AnyObject) {
         Swift.print("TempCALayer.init(_layer_)")
