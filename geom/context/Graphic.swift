@@ -50,7 +50,12 @@ class Graphic:FlippedView,IGraphic{
         */
         
     }
-    
+    override func updateLayer(){
+        Swift.print("Graphic.updateLayer()")
+    }
+    override func layout(){
+        Swift.print("Graphic.layout()")
+    }
     /*
     override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
