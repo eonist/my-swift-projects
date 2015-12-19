@@ -3,7 +3,10 @@ import Cocoa
 class TempCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
+        Swift.print("TempCALayer.init()")
         super.init()
+        //needsDisplay()
+        displayIfNeeded()
     }
     override init(layer: AnyObject) {
         Swift.print("TempCALayer.init(_layer_)")
@@ -12,11 +15,6 @@ class TempCALayer:CALayer{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    init(_ color:NSColor){
-        self.color = color
-        super.init()
-    }
-    
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("TempCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
@@ -75,19 +73,15 @@ class TempCALayer:CALayer{
         l.shadowOpacity = 0.8;
         */
     }
-    /*
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-    Swift.print("CustomCALayer.drawLayer")
-    super.drawLayer(layer, inContext: ctx)
-    }
+    
     override func display() {
-    Swift.print("CustomCALayer.display()")
-    super.display()
+        Swift.print("TempCALayer.display()")
+        super.display()
     }
     override func displayIfNeeded() {
-    Swift.print("CustomCALayer.displayIfNeeded()")
-    super.displayIfNeeded()
+        Swift.print("TempCALayer.displayIfNeeded()")
+        super.displayIfNeeded()
     }
-    */
+    /**/
     /**/
 }
