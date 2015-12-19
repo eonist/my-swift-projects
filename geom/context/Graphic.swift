@@ -5,6 +5,9 @@ import QuartzCore
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  */
+class Temp:NSObject,CALayerDelegate{
+    
+}
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape = FillShape()
     var lineShape:LineShape = LineShape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
@@ -22,7 +25,7 @@ class Graphic:FlippedView,IGraphic{
         layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer(layer: layer!)
-        let temp = CADel
+        let temp = Temp()
         layer?.delegate = self
         //layer!.frame = NSRect(0,0,1,1)
         layer?.display()
