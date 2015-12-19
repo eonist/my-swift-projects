@@ -25,7 +25,7 @@ class Graphic:FlippedView,IGraphic{
         self.layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
-        layer?.frame = NSRect(0,0,100,100)
+        //layer?.frame = NSRect(0,0,0,0)
         
         /*
         let layerA = CALayer()
