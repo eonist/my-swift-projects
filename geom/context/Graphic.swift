@@ -13,9 +13,9 @@ class Graphic:FlippedView,IGraphic{
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
-        fillShape = FillShape(CGRect(0 ,0,0,0))
+        fillShape = FillShape(CGRect(0 ,0,50,50))
         fillShape.fillStyle = fillStyle
-        lineShape = LineShape(CGRect(120,120,50,50))
+        lineShape = LineShape(CGRect(0,0,50,50))
         lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments/*the width and the height arent clipped*/
