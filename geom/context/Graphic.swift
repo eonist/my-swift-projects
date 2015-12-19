@@ -5,7 +5,9 @@ import QuartzCore
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  */
-
+class Temp:CALayer{
+    
+}
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape = FillShape()
     var lineShape:LineShape = LineShape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
@@ -23,11 +25,17 @@ class Graphic:FlippedView,IGraphic{
         layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer(layer: layer!)
-        fillShape.delegate = self
+        
         //layer!.frame = NSRect(0,0,1,1)
         layer?.display()
         layer?.needsLayout()
         
+        
+        let a = Temp()
+        a.frame = NSRect(0,0,100,100)
+        layer?.addSublayer(a)
+        a.delegate = self
+        a.display()
         //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
         //or look inside the CALayer class, is there a context caller or similar. research this.
         //what about that delegate method maybe?
@@ -72,6 +80,7 @@ class Graphic:FlippedView,IGraphic{
     func drawInContext(ctx: CGContext) {
         Swift.print("Graphic.drawInContext")
     }
+    
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
     }
