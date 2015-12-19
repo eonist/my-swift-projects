@@ -70,6 +70,7 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(fillShape)
         fillShape.delegate = self
         layer?.addSublayer(lineShape)
+        lineShape.delegate = self
         //layer?.frame = NSRect(0,0,0,0)
         /*
         let layerA = CALayer()
