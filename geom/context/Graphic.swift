@@ -21,8 +21,8 @@ class Graphic:FlippedView,IGraphic{
         
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer(layer: layer!)
-        layer!.frame = NSRect(0,0,1,1)
-        //layer?.display()
+        //layer!.frame = NSRect(0,0,1,1)
+        layer?.display()
         
         let a = TempCALayer()
         a.frame = NSRect(0,0,100,100)
