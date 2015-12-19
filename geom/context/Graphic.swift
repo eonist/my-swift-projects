@@ -5,19 +5,17 @@ import Cocoa
  * NOTE: Example is in the Graphics class
  */
 class Graphic:FlippedView,IGraphic{
-    var fillShape:FillShape
-    var lineShape:LineShape//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
+    var fillShape:FillShape = FillShape(CGRect(0,0,0,0))
+    var lineShape:LineShape = LineShape(CGRect(0,0,0,0))//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
     var lineOffsetType:OffsetType;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
-        fillShape = FillShape(CGRect(0 ,0,50,50))
         fillShape.fillStyle = fillStyle
-        lineShape = LineShape(CGRect(0,0,50,50))
         lineShape.lineStyle = lineStyle
-        self.lineOffsetType = lineOffsetType
+        lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0,0))//<---move this into the arguments/*the width and the height arent clipped*/
         
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
