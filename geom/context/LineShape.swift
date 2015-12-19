@@ -11,7 +11,7 @@ class LineShape :Shape{
         
         
         
-        
+        self.graphics.line(lineStyle!.thickness,lineStyle!.color/*,lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit*/)//Stylize the line
         self.graphics.draw(path)//draw everything
     }
 }
