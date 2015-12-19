@@ -10,7 +10,7 @@ class Temp:CALayer{
         Swift.print("Temp.drawInContext()")
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Temp.drawInContext()")
+        Swift.print("Temp.drawLayer()")
     }
 }
 class Graphic:FlippedView,IGraphic{
