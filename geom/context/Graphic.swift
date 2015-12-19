@@ -18,12 +18,13 @@ class Graphic:FlippedView,IGraphic{
         lineShape = LineShape(CGRect(120,120,50,50))
         lineShape.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
-        super.init(frame:NSRect(50,50,100,100))//<---move this into the arguments
+        super.init(frame:NSRect(50,50,100,100))//<---move this into the arguments/*the width and the height arent clipped*/
         
         self.wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         self.layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
+
         
         /*
         let layerA = CALayer()
