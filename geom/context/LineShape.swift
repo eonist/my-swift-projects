@@ -7,7 +7,7 @@ class LineShape :Shape{
         graphics.context = ctx
         
         
-        //TODO:you only need to call the draw method from here
+        //TODO:you only need to call the draw method from here, the line setting etc can be done in the decoratable classes
         
         
         
