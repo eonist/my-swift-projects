@@ -6,7 +6,9 @@ import QuartzCore
  * NOTE: Example is in the Graphics class
  */
 class Temp:CALayer{
-    
+    override func drawInContext(ctx: CGContext) {
+        Swift.print("Temp.drawInContext()")
+    }
 }
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape = FillShape()
@@ -78,7 +80,7 @@ class Graphic:FlippedView,IGraphic{
         
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Graphic.drawInContext")
+        Swift.print("Graphic.drawLayer(layer,inContext)")
     }
     /**
     * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
