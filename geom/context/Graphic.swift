@@ -27,6 +27,7 @@ class Graphic:FlippedView,IGraphic{
         
         //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
         //or look inside the CALayer class, is there a context caller or similar. research this.
+        //what about that delegate method maybe?
         
         //let a = TempCALayer()
         //a.frame = NSRect(0,0,100,100)
