@@ -13,7 +13,7 @@ class Shape : CALayer{
     init(_ frame:NSRect){
         super.init()
         self.frame = frame
-        Swift.print("Shape.NSScreen().backingScaleFactor: " + "\(NSScreen().backingScaleFactor)")
+        //Swift.print("Shape.NSScreen().backingScaleFactor: " + "\(NSScreen().backingScaleFactor)")//this is not the contentsScale it returns 0,0
         self.contentsScale = 2.0/*Makes lines smooth on retina screends, you may want to consider toggeling this on non-retina displays. From apple docs: The default value of this property is 1.0. For layers attached to a view, the view changes the scale factor automatically to a value that is appropriate for the current screen. For layers you create and manage yourself, you must set the value of this property yourself based on the resolution of the screen and the content you are providing. Core Animation uses the value you specify as a cue to determine how to render your content.*/
     }
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
