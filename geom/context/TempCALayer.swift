@@ -8,7 +8,7 @@ class TempCALayer:CALayer{
         //needsDisplay()
         //displayIfNeeded()
         //layoutIfNeeded()
-        display()
+        
         //needsLayout()
     }
     override init(layer: AnyObject) {
@@ -17,12 +17,15 @@ class TempCALayer:CALayer{
     }
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
         
-    
+    /*
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("TempCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
     }
-    /**/
+    */
+    /*
+     *
+     */
     override func drawInContext(ctx: CGContext) {
         Swift.print("TempCALayer.drawInContext()")
         let context = ctx
@@ -76,7 +79,7 @@ class TempCALayer:CALayer{
         l.shadowOpacity = 0.8;
         */
     }
-    
+    /*
     override func display() {
         Swift.print("TempCALayer.display()")
         super.display()
@@ -85,6 +88,6 @@ class TempCALayer:CALayer{
         Swift.print("TempCALayer.displayIfNeeded()")
         super.displayIfNeeded()
     }
-    /**/
+    */
     /**/
 }
