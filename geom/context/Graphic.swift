@@ -23,10 +23,11 @@ class Graphic:FlippedView,IGraphic{
         layer = TempCALayer(layer: layer!)
         //layer!.frame = NSRect(0,0,1,1)
         layer?.display()
+        layer?.needsLayout()
         
-        let a = TempCALayer()
-        a.frame = NSRect(0,0,100,100)
-        layer?.addSublayer(a)
+        //let a = TempCALayer()
+        //a.frame = NSRect(0,0,100,100)
+        //layer?.addSublayer(a)
         /*
         */        //a.display()
         
