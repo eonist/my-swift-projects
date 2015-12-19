@@ -4,8 +4,9 @@ class FillShape :Shape{
     var fillStyle:IFillStyle?;
     override init(_ frame:NSRect){
         super.init(frame)
-        self.masksToBounds = false//this is needed!!!
+        
     }
+    
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
         
