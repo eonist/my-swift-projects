@@ -21,10 +21,13 @@ class Graphic:FlippedView,IGraphic{
         
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = TempCALayer()
-        let a = Shape()
+        layer?.display()
+        
+        let a = TempCALayer()
         a.frame = NSRect(0,0,100,100)
         layer?.addSublayer(a)
-        //a.display()
+        /*
+        */        //a.display()
         
         layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
