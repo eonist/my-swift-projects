@@ -33,7 +33,7 @@ class Graphic:FlippedView,IGraphic{
         
         let a = Temp()
         a.frame = NSRect(0,0,100,100)
-        layer?.addSublayer(a)
+        //layer?.addSublayer(a)
         a.delegate = self
         a.display()
         //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
@@ -77,14 +77,14 @@ class Graphic:FlippedView,IGraphic{
         */
         
     }
-    func drawInContext(ctx: CGContext) {
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawInContext")
     }
     /**
     *
     */
-    func func displayLayer(_ layer: CALayer){
-        
+    override func  displayLayer(layer: CALayer){
+        Swift.print("Graphic.displayLayer")
     }
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
