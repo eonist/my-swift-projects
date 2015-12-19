@@ -1,7 +1,7 @@
 import Cocoa
 
 class TempCALayer:CALayer{
-    var color:NSColor = NSColor.magentaColor()
+    
     override init() {
         Swift.print("TempCALayer.init()")
         super.init()
