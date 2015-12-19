@@ -9,6 +9,9 @@ class Temp:CALayer{
     override func drawInContext(ctx: CGContext) {
         Swift.print("Temp.drawInContext()")
     }
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        Swift.print("Temp.drawInContext()")
+    }
 }
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape = FillShape()
