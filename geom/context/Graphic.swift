@@ -4,7 +4,7 @@ import Cocoa
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  */
-class Graphic:FlippedView,IGraphic{
+class Graphic:FlippedView,IGraphic,CALayerDelegate{
     var fillShape:FillShape = FillShape()
     var lineShape:LineShape = LineShape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
