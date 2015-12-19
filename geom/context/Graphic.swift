@@ -80,7 +80,12 @@ class Graphic:FlippedView,IGraphic{
     func drawInContext(ctx: CGContext) {
         Swift.print("Graphic.drawInContext")
     }
-    
+    /**
+    *
+    */
+    func func displayLayer(_ layer: CALayer){
+        
+    }
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
     }
