@@ -43,13 +43,13 @@ class Graphic:FlippedView,IGraphic{
         
         a.frame = NSRect(0,0,100,100)
         //layer?.addSublayer(a)
-        a.delegate = self
+        //a.delegate = self
         a.display()
         
         
         b.frame = NSRect(0,0,100,100)
         //layer?.addSublayer(a)
-        b.delegate = self
+        //b.delegate = self
         b.display()
         //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
         //or look inside the CALayer class, is there a context caller or similar. research this.
@@ -65,6 +65,7 @@ class Graphic:FlippedView,IGraphic{
         
         layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
+        fillShape.delegate = self
         layer?.addSublayer(lineShape)
         //layer?.frame = NSRect(0,0,0,0)
         /*
@@ -94,8 +95,16 @@ class Graphic:FlippedView,IGraphic{
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawLayer(layer,inContext)")
-        if(layer === a){
-            Swift.print("A")
+        if(layer === fillShape){
+            Swift.print("fillShape")
+            fillShape.graphics.context = ctx
+            
+            //TODO:you only need to call the draw method from here, the fill setting etc can be done in the decoratable classes
+            
+            fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
+            //Swift.print("inside drawInContext")
+            fillShape.graphics.draw(fillShape.path)//draw everything
+            
         }else if(layer === b){
             Swift.print("B")
         }
