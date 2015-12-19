@@ -5,19 +5,19 @@ class TempCALayer:CALayer{
     override init() {
         Swift.print("TempCALayer.init()")
         super.init()
-        needsDisplay()
+        //needsDisplay()
         //displayIfNeeded()
-        layoutIfNeeded()
+        //layoutIfNeeded()
         display()
-        needsLayout()
+        //needsLayout()
     }
     override init(layer: AnyObject) {
         Swift.print("TempCALayer.init(_layer_)")
         super.init(layer: layer)
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+        
+    
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("TempCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
