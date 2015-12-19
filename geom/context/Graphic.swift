@@ -94,8 +94,10 @@ class Graphic:FlippedView,IGraphic{
     }
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawLayer(layer,inContext)")
-        if(){
-            
+        if(layer === a){
+            Swift.print("A")
+        }else if(layer === b){
+            Swift.print("B")
         }
     }
     /**
