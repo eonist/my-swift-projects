@@ -71,8 +71,8 @@ class Graphic:FlippedView,IGraphic{
         
         
         
-        fillShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix
-        lineShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix
+        fillShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix, or else display wont be called
+        lineShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix, or else display wont be called
         
         
         
