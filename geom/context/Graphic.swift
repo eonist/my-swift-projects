@@ -103,6 +103,9 @@ class Graphic:FlippedView,IGraphic{
         */
         
     }
+    /**
+     *
+     */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawLayer(layer,inContext)")
         if(layer === fillShape){
@@ -135,12 +138,14 @@ class Graphic:FlippedView,IGraphic{
      Swift.print("Graphic.displayLayer: " + "\(layer)")
      }
      */
+    /*
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
     }
     override func layout(){
         Swift.print("Graphic.layout()")
     }
+     */
     /*
     override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
@@ -150,12 +155,13 @@ class Graphic:FlippedView,IGraphic{
     /**
      *
      */
-    /**/
+    /*
+    
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Graphic.drawRect() ")
         super.drawRect(dirtyRect)
     }
-
+    */
     
     /**
      * Convenince implicit setter
