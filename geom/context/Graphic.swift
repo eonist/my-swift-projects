@@ -16,10 +16,10 @@ class Temp:CALayer{
     */
 }
 class Graphic:FlippedView,IGraphic{
-    var fillShape:Shape = Shape()
-    var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
-    var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
+    lazy var fillShape:Shape = Shape()
+    lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
+    var fillStyle:IFillStyle?
+    var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     var a:Temp = Temp()
     var b:Temp = Temp()
@@ -27,8 +27,8 @@ class Graphic:FlippedView,IGraphic{
     override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
-        fillShape.fillStyle = fillStyle
-        lineShape.lineStyle = lineStyle
+        self.fillStyle = fillStyle
+        self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
@@ -43,14 +43,6 @@ class Graphic:FlippedView,IGraphic{
         //layer!.frame = NSRect(0,0,1,1)
         //layer?.display()
         //layer?.needsLayout()
-        
-        
-        
-        
-        //Continue here, check if you can still ad NSText and NSViews with drawRect as children, 
-        //then try to implement this code in the Element code. And delete the LineShape and FillShape as they are not needed. Use Shape for everything
-        //also try to add a dropshadow to the layer! ref, see if it works, imp!
-        
         
         
         
