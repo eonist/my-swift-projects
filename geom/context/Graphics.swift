@@ -29,6 +29,7 @@ public class Graphics{
     var lineGradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
+    var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box*/
     public init(){
         if(NSGraphicsContext.currentContext() != nil){
             let graphicsContext = NSGraphicsContext.currentContext()!
@@ -61,6 +62,7 @@ public class Graphics{
      */
     public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10){
         strokeMode = StrokeMode.Color
+        self.lineWidth = lineWidth
         CGContextSetStrokeColorWithColor(context, color.CGColor)
         //set the stroke width!
         CGContextSetLineWidth(context, lineWidth)
