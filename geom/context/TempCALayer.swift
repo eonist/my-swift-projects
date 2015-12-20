@@ -5,8 +5,8 @@ class TempCALayer:CALayer{
     override init() {
         Swift.print("TempCALayer.init()")
         super.init()
-        //needsDisplay()
-        //displayIfNeeded()
+        needsDisplay()
+        displayIfNeeded()
         //layoutIfNeeded()
         
         //needsLayout()
@@ -57,7 +57,7 @@ class TempCALayer:CALayer{
         
         //CGContextSetRGBFillColor(
         //CGContextStrokePath(context)
-        CGContextSetFillColorWithColor(context,NSColor.orangeColor().CGColor)
+        CGContextSetFillColorWithColor(context,NSColor.random.CGColor)
         //CGContextSetStrokeColorWithColor(context, NSColor.blueColor().CGColor)
         //set the stroke width!
         //CGContextSetLineWidth(context, 15.0)
