@@ -37,7 +37,7 @@ class Graphic:FlippedView,IGraphic{
         
         //layer!.frame = NSRect(0,0,1,1)
         //layer?.display()
-        layer?.needsLayout()
+        //layer?.needsLayout()
         
         
         
