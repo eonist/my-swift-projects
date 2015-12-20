@@ -16,8 +16,8 @@ class Temp:CALayer{
     */
 }
 class Graphic:FlippedView,IGraphic{
-    var fillShape:FillShape = FillShape()
-    var lineShape:LineShape = LineShape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
+    var fillShape:Shape = Shape()
+    var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle? {get{return lineShape.lineStyle}set{lineShape.lineStyle = newValue}}
     var lineOffsetType:OffsetType;
