@@ -29,7 +29,7 @@ public class Graphics{
     var lineGradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
-    var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box*/
+    var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
     public init(){
         if(NSGraphicsContext.currentContext() != nil){
             let graphicsContext = NSGraphicsContext.currentContext()!
@@ -142,7 +142,7 @@ public class Graphics{
                 CGContextDrawPath(context, CGPathDrawingMode.Stroke)
             case (strokeMode == StrokeMode.Gradient)://gradient stroke
                 //Swift.print("gradient stroke")
-                Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient)
+                Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient, lineWidth)
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
                 break;
@@ -169,9 +169,9 @@ private class Utils{
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
-    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?){
+    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
-        //boundingBox.outset(0, 0)
+        boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
