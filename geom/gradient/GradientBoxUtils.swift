@@ -5,7 +5,7 @@ class GradientBoxUtils{
      * Returns the start and end of a linear gradient (that fills an exact rectangle at any angle)
      */
     class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
-        let angle = Trig.normalize2(angle)/*normalizes the angle between between -π and π*/ //<----TODO: fix this problem in the cssPropertyparser not here
+        //let angle = Trig.normalize2(angle)/*normalizes the angle between between -π and π*/ //<----TODO: fix this problem in the cssPropertyparser not here
         //Swift.print("GradientBoxUtils.angle: " + "\(angle)")
         var cornerPoint:CGPoint = CGPoint()
         switch true{
