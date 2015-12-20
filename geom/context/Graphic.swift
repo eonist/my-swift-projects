@@ -16,9 +16,10 @@ class Graphic:FlippedView,IGraphic{
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
-        //Swift.print("Graphic.init()")
+        Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
+        fillShape.frame = NSRect(0,0,50,50)
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
