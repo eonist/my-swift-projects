@@ -4,8 +4,8 @@ class GradientBoxUtils{
     /**
      * Returns the start and end of a linear gradient (that fills an exact rectangle at any angle)
      */
-    class func points(rect:CGRect, var angle:CGFloat)->(start:CGPoint,end:CGPoint){
-        angle = Trig.normalize2(angle)
+    class func points(rect:CGRect, var _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
+        angle = Trig.normalize2(angle)/*normalizes the angle between between -π and π*/
         var cornerPoint:CGPoint = CGPoint()
         switch true{
         case CGFloatRangeAsserter.within(Trig.tl, angle):
