@@ -22,7 +22,7 @@ class Graphic:FlippedView,IGraphic{
         
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
-        //fillShape.frame = NSRect(0.0,0.0,50.0,50.0)
+        
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()//TempCALayer(layer: layer!)
@@ -68,6 +68,13 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(fillShape)
         //fillShape.delegate = self
         layer?.addSublayer(lineShape)
+        
+        
+        
+        fillShape.frame = NSRect(0.0,0.0,50.0,50.0)
+        
+        
+        
         //lineShape.delegate = self
         //layer?.frame = NSRect(0,0,0,0)
         /*
