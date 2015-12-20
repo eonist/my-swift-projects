@@ -168,6 +168,7 @@ private class Utils{
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
+     * 
      */
     class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
         var boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
