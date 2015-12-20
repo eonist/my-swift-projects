@@ -13,7 +13,7 @@ class InteractiveView:FlippedView{
     var isInteractive:Bool = true//why is this here?
     var hasHandCursor:Bool = false
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override var wantsUpdateLayer:Bool{return true;}
+    //override var wantsUpdateLayer:Bool{return true;}
     override init(frame:NSRect) {
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
