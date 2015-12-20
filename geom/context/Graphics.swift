@@ -170,8 +170,8 @@ private class Utils{
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
     class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
-        let boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
-        boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
+        var boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
+        boundingBox = boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
