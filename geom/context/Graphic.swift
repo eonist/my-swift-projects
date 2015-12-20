@@ -138,7 +138,13 @@ class Graphic:FlippedView,IGraphic{
     }
     */
     
-    //continue here: add a display() method that calls fill.display() and line.display()
+    /**
+     * NOTE: Convenience method
+     */
+    func setDelegate(delegate:AnyObject){
+        fillShape.delegate = delegate
+        lineShape.delegate = delegate
+    }
     
     
     /**
