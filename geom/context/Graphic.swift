@@ -6,17 +6,16 @@ import QuartzCore
  * NOTE: Example is in the Graphics class
  * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
  */
-
 class Graphic:FlippedView,IGraphic{
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
-    //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
+    //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
-        Swift.print("Graphic.init()")
+        //Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         
@@ -37,70 +36,11 @@ class Graphic:FlippedView,IGraphic{
         //layer?.needsLayout()
         
         
-        
-        /*
-        a.frame = NSRect(0,0,100,100)
-        //layer?.addSublayer(a)
-        //a.delegate = self
-        a.display()
-        */
-        
-        
-        /*
-        b.frame = NSRect(0,0,100,100)
-        //layer?.addSublayer(a)
-        //b.delegate = self
-        b.display()
-        */
-        //continue here: try to access the context before the displaycall or else you need to implement a first in last out array that stores all the calls to graphics.
-        //or look inside the CALayer class, is there a context caller or similar. research this.
-        //what about that delegate method maybe?
-        //look into why CAShapeLayer exists
-        
-        
-        //let a = TempCALayer()
-        //a.frame = NSRect(0,0,100,100)
-        //layer?.addSublayer(a)
-        /*
-        */        //a.display()
-        
         layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         //fillShape.delegate = self
         layer?.addSublayer(lineShape)
         
-        
-        
-        //fillShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix, or else display wont be called
-        //lineShape.frame = NSRect(0.0,0.0,50.0,50.0)//<---temp fix, or else display wont be called
-        
-        
-        
-        //lineShape.delegate = self
-        //layer?.frame = NSRect(0,0,0,0)
-        /*
-        let layerA = CALayer()
-        //layerA.bounds = CGRectMake(0, 0, 100, 100);//this doesnt matter
-        layerA.frame = CGRectMake(20, 20, 300, 300);
-        layerA.masksToBounds = false//finally it works
-        //layerA.position = CGPointMake(10, 10);
-        layerA.backgroundColor = NSColor.greenColor().CGColor
-        layer!.addSublayer(layerA)
-        */
-        //layer?.masksToBounds = false
-        
-        /*
-        layer?.addSublayer(lineShape)
-        lineShape.masksToBounds = false
-        */
-        
-        /*
-        let layerD = CustomLayer(NSColor.blueColor())
-        layerD.frame = CGRect(120,120,50,50);
-        layerD.display()
-        //layerD.masksToBounds = false
-        layer!.addSublayer(layerD)
-        */
         
     }
     
