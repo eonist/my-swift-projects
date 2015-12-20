@@ -13,11 +13,10 @@ class InteractiveView:FlippedView{
     var isInteractive:Bool = true//why is this here?
     var hasHandCursor:Bool = false
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override var wantsUpdateLayer:Bool{return true;}
+    //override var wantsUpdateLayer:Bool{return true;}
     override init(frame:NSRect) {
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
-        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         layer = CALayer()
         layer!.masksToBounds = false
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
