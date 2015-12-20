@@ -26,7 +26,7 @@ public class Graphics{
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgGradient:CGGradientRef?/*This value exists because of performance*/
-    var lineGradient:Gradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var lineGradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
     public init(){
@@ -73,7 +73,7 @@ public class Graphics{
      * Note: width is set by the method line
      * TODO: Contemplate including lineWidth etc in this call
      */
-    public func gradientLine(gradient:Gradient){
+    public func gradientLine(gradient:IGradient){
         strokeMode = StrokeMode.Gradient
         lineGradient = gradient
         cgLineGradient = GradientUtils.cgGradient(gradient)
@@ -167,7 +167,7 @@ private class Utils{
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
-    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:Gradient,_ cgLineGradient:CGGradientRef?){
+    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
         //boundingBox.outset(0, 0)
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
