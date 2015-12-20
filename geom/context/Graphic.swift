@@ -138,6 +138,9 @@ class Graphic:FlippedView,IGraphic{
     }
     */
     
+    //continue here: add a display() method that calls fill.display() and line.display()
+    
+    
     /**
      * Convenince implicit setter
      */
