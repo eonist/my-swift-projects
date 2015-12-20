@@ -14,6 +14,7 @@ class Shape : CALayer{
     /**/
     override init(){
         super.init()
+        NSScreen()
         //drawsAsynchronously = true;
         Swift.print("graphics.context: " + "\(graphics.context)")
         //Swift.print("Shape.NSScreen().backingScaleFactor: " + "\(NSScreen().backingScaleFactor)")//this is not the contentsScale it returns 0,0
