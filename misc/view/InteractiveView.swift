@@ -18,6 +18,7 @@ class InteractiveView:FlippedView{
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()
+        needsDisplay = true
         layer!.masksToBounds = false
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         addTrackingArea(trackingArea)
