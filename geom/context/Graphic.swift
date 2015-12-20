@@ -74,9 +74,9 @@ class Graphic:FlippedView,IGraphic{
         
         layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
-        fillShape.delegate = self
+        //fillShape.delegate = self
         layer?.addSublayer(lineShape)
-        lineShape.delegate = self
+        //lineShape.delegate = self
         //layer?.frame = NSRect(0,0,0,0)
         /*
         let layerA = CALayer()
@@ -103,32 +103,7 @@ class Graphic:FlippedView,IGraphic{
         */
         
     }
-    /**
-     * This is a delegate handler method
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Graphic.drawLayer(layer,inContext)")
-        if(layer === fillShape){
-            Swift.print("fillShape")
-            fillShape.graphics.context = ctx
-            
-            //TODO:you only need to call the draw method from here, the fill setting etc can be done in the decoratable classes
-            
-            fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
-            //Swift.print("inside drawInContext")
-            fillShape.graphics.draw(fillShape.path)//draw everything
-            
-        }else if(layer === lineShape){
-            Swift.print("lineShape")
-            lineShape.graphics.context = ctx
-            
-            //TODO:you only need to call the draw method from here, the line setting etc can be done in the decoratable classes
-            
-            lineShape.graphics.line(lineStyle!.thickness,lineStyle!.color/*,lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit*/)//Stylize the line
-            lineShape.graphics.draw(lineShape.path)//draw everything
-
-        }
-    }
+    
     /**
     * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
      * NOTE: you can probably derive the cgcontext from inside this method. by utilizing the graphics.contect etc.
