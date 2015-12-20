@@ -4,25 +4,15 @@ import QuartzCore
  * set needsDisplay = true to clear the graphics
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
+ * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
  */
-class Temp:CALayer{
-    /*
-    override func drawInContext(ctx: CGContext) {
-    Swift.print("Temp.drawInContext()")
-    }
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-    Swift.print("Temp.drawLayer()")
-    }
-    */
-}
+
 class Graphic:FlippedView,IGraphic{
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
-    var a:Temp = Temp()
-    var b:Temp = Temp()
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
