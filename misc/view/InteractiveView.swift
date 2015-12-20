@@ -17,6 +17,7 @@ class InteractiveView:FlippedView{
     override init(frame:NSRect) {
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
+        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         layer = CALayer()
         layer!.masksToBounds = false
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)

@@ -13,7 +13,7 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
-    //override var wantsUpdateLayer:Bool {return true}
+    override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
@@ -22,10 +22,10 @@ class Graphic:FlippedView,IGraphic{
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
         
-        //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
+        
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()//TempCALayer(layer: layer!)
-        
+        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         /*layer!.shadowColor = NSColor.blackColor().CGColor;
         layer!.shadowOpacity = 1.0;
         layer!.shadowRadius = 5.0;
