@@ -13,7 +13,7 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
-    override var wantsUpdateLayer:Bool {return true}
+    //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
@@ -41,7 +41,7 @@ class Graphic:FlippedView,IGraphic{
         //fillShape.delegate = self
         layer?.addSublayer(lineShape)
         
-        needsDisplay = true
+        
     }
     
     /**
