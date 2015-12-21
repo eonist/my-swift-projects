@@ -3,7 +3,7 @@ import Foundation
  * The overall goal of this class is to provide a universal way to define gradients on a graphic. IMPORTANT ->>> So that if you scale the graphic the gradient will not look strange. <<<- IMPORTANT
  * EXAMPLE: let gradient:Gradient = Gradient([NSColor.blueColor().CGColor,NSColor.redColor().CGColor])
  */
-class Gradient2 {
+class Gradient2:IGradient2 {
     var colors:Array<CGColor>
     var locations:Array<CGFloat>
     var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
