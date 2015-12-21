@@ -214,7 +214,7 @@ extension Graphics{//private class ShadowUtils
         /**/
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
             CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
-            dropShadow!.shadow.set()/*One can also do CGContextSetShadowWithColor*/
+            dropShadow!.shadow.set()/*<- dont use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
     }
     /**
@@ -242,8 +242,8 @@ extension Graphics{//private class ShadowUtils
             Swift.print("1.3")
             CGContextBeginTransparencyLayer(context, nil);
             Swift.print("1.4")
-            CGContextSetShadowWithColor(context, dropShadow!.offset, dropShadow!.blurRadius, dropShadow!.opaqueShadow.CGcolor);
-            //dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
+            CGContextSetShadowWithColor(context, dropShadow!.offset, dropShadow!.blurRadius, dropShadow!.opaqueColor.CGColor);/*This is where the setting of the shadow happens*/
+            //dropShadow!.opaqueShadow.set()/*<-- dont use this, since you need to ref context if you use CALayer. This is where the setting of the shadow happens*/
             Swift.print("2")
             CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
             CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
