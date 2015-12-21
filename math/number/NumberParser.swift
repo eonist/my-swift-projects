@@ -57,7 +57,7 @@ class NumberParser{
      * @param fraction: interpolation value (between 0 - 1)
      * EXAMPLE: interpolate(5, 15, 0.5) //10
      */
-    class func interpolate( a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {//was Double, cgfloat makes more sense
+    class func interpolate( a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {//<--was Double, cgfloat makes more sense
         return fraction * (b - a) + a
     }
     /**
