@@ -202,8 +202,8 @@ private class Utils{
         
         //Dont forget to add the boundingbox that work with gradients
         let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
-        let radius:CGFloat = points.start.distance(points.end)
-        
+        let yAxisRadius:CGFloat = points.start.distance(points.end)
+        let relativeAspectRatio = boundingBox.height / boundingBox.width
         
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
