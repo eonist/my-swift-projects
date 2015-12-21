@@ -13,7 +13,7 @@ public enum GradientType:Int{//TODO:move to its own class?
 public class Gradient:IGradient{
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
-    public  gradientType:GradientType
+    public var gradientType:GradientType
     public var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
     public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
