@@ -9,11 +9,12 @@ public enum GradientType:Int{//TODO:move to its own class?
  * NOTE: the radial scalar values can also be more or less than 0 and 1. think width * 1.2 etc. Works for both pos and size. (the only thing that is capped is the size if it goes under 0, then it is capped to 0)
  * NOTE: Why are we using realtive values for the radial gradient when xcode supports absolute points? Because absolute values cant be applied to different graphics. Absolute values only work with one exact graphic.
  * NOTE: the scalar values are subjected to change, if -1 to +1 makes more sense when doing the polar point calculations etc
+ * TODO: Find that medium article on axial gradient. the one that looks like a "spread out patonefan"
  */
 public class Gradient:IGradient{
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
-    public var gradientType:GradientType
+    public var gradientType:GradientType//TODO: rename to type
     public var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
     public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
