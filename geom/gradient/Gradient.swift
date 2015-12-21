@@ -14,11 +14,11 @@ class Gradient:IGradient{
     var locations:Array<CGFloat>
     var gradientType:GradientType
     var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
-    var relativeStartCenter:CGPoint//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)
+    var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)
     var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
     var relativeStartRadius:CGSize?//0 to 1 (x:0.5 means half the size of the current cross-section in the x-axis) the x-axis is determined by the rotation
     var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Axial,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/){/*,*/
+    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Axial,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,relativeStartCenter:CGPoint? = nil,relativeEndCenter:CGPoint? = nil,relativeStartRadius:CGSize? = nil,relativeEndRadius:CGSize? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)
@@ -29,6 +29,10 @@ class Gradient:IGradient{
         }
         self.gradientType = gradientType
         self.rotation = rotation
+        self.relativeStartCenter = relativeStartCenter
+        self.relativeEndCenter = relativeEndCenter
+        self.relativeStartRadius = relativeStartRadius
+        self.relativeEndRadius = relativeEndRadius
     }
 }
 
