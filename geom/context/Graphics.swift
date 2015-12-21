@@ -34,6 +34,8 @@ public class Graphics{
         if(NSGraphicsContext.currentContext() != nil){
             let graphicsContext = NSGraphicsContext.currentContext()!
             self.context = graphicsContext.CGContext/* Get the handle to the current context */
+            
+            
         }
     }
     /**
