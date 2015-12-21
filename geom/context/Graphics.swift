@@ -109,7 +109,7 @@ public class Graphics{
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
-        beginOuterShadow(path)/*this will only process if there is an outershadow applied*/
+        beginOuterShadow(path)
         switch true{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient fill none")
@@ -124,7 +124,7 @@ public class Graphics{
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
-        endOuterShadow()/*this will only process if there is an outershadow applied*/
+        endOuterShadow()
         applyInnerShadow(path)/*init inner shadow*/
     }
     /**
@@ -208,6 +208,7 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func beginOuterShadow(path:CGPath){
+        "Graphics.beginOuterShadow"
         /**/
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
             CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
@@ -224,6 +225,7 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func applyInnerShadow(path:CGPath){
+        Swift.print("Graphics.applyInnerShadow")
         /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
