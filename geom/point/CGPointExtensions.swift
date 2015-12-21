@@ -14,11 +14,20 @@ extension CGPoint{
     static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{
         return PointParser.distance(a,b)
     }
+    /**
+     *
+     */
+    static func interpolate(a:CGPoint, _ b:CGPoint, scalar:CGFloat) -> CGFloat{
+        return PointParser.interpolate(a,b, scalar)
+    }
 }
 /*Convenient extensions*/
 extension CGPoint{
     func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
     func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
+    func interpolate(b:CGPoint,scalar:CGFloat) -> CGFloat { return CGPoint.interpolate(self,b,scalar) }//interpolate from self to b by scalar
+    
+
     init(_ x: Double, _ y:Double) { self.x = CGFloat(x); self.y = CGFloat(y); }//Init a CGPoint with Double values
     init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }//Init a CGPoint with Int values
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
