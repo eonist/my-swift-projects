@@ -13,7 +13,7 @@ public class Gradient:IGradient{
     public var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix*/
     public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc)
     public var relativeEndCenter:CGPoint?//0 to 1
-    public var relativeStartRadius:CGSize?//0 to 1 (x:0.5)
+    public var relativeStartRadius:CGSize?//0 to infinity (x:0.5 means half the size of the radius of the boundingbox)
     public var relativeEndRadius:CGSize?//0 to 1
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Axial,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/){/*,*/
         self.colors = colors
