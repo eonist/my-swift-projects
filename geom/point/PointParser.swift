@@ -7,7 +7,7 @@ class PointParser{
      * the former multiplies form p1 tp p2 which i think is more logical
      * // :TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
      */
-    class func interpolate(a:CGPoint, b:CGPoint, scalar:CGFloat)->CGPoint {
+    class func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat)->CGPoint {
         return CGPoint(NumberParser.interpolate(a.x, b.x, scalar), NumberParser.interpolate(a.y, b.y, scalar));
     }
     /**
