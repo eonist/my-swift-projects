@@ -195,6 +195,7 @@ private class Utils{
     }
     /**
      * Radial gradient
+     * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect){
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
