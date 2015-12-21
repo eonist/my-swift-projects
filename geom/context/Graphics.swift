@@ -235,24 +235,17 @@ extension Graphics{//private class ShadowUtils
         if(dropShadow != nil && dropShadow!.inner){
             CGContextSaveGState(context);/*init the gState*/
             CGContextAddPath(context, path);/*add The clipping path to the context*/
-            Swift.print("1")
             CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
-            Swift.print("1.2")
             CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
-            Swift.print("1.3")
             CGContextBeginTransparencyLayer(context, nil);
-            Swift.print("1.4")
             CGContextSetShadowWithColor(context, dropShadow!.offset, dropShadow!.blurRadius, dropShadow!.opaqueColor.CGColor);/*This is where the setting of the shadow happens*/
             //dropShadow!.opaqueShadow.set()/*<-- dont use this, since you need to ref context if you use CALayer. This is where the setting of the shadow happens*/
-            Swift.print("2")
             CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
             CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
             CGContextAddPath(context, path);
-            Swift.print("3")
             CGContextFillPath(context);
             CGContextEndTransparencyLayer(context);
             CGContextRestoreGState(context);/*end the gState*/
-            Swift.print("4")
         }
     }
 }
