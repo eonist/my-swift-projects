@@ -207,7 +207,7 @@ private class Utils{
         let xAxisRadius:CGFloat = yAxisRadius * relativeAspectRatio//TODO:test this out in a test case first
         let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
         
-        //think, draw in illustrator etc
+        //continue here think, draw in illustrator etc
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0) - 2.0),((boundingBox.size.height/2.0) - 2.0) )
