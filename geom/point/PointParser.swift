@@ -1,6 +1,16 @@
 import Foundation
 class PointParser{
     /**
+     * Returns a point between @param p1 and @param p2 multiplied by the @param scalar
+     * @param scalar: the scalar is between 0 and 1
+     * @Note: PointParser.interpolate() is different form the Adobe flash native Point.interpolate, the later multiplies from p2 to p1,
+     * the former multiplies form p1 tp p2 which i think is more logical
+     * // :TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
+     */
+    class func interpolate(a:CGPoint, b:CGPoint, scalar:CGFloat)->CGPoint {
+        return CGPoint(NumberParser.interpolate(a.x, b.x, scalar), NumberParser.interpolate(a.y, b.y, scalar));
+    }
+    /**
      * Returns a point in a polar cordinate system by @param len and @param angle (in a safe way)
      * @param angle must be between -PI and PI use:  Angle.normalized2(angle)
      * TODO: compact this method
