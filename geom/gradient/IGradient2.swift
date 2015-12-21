@@ -1,5 +1,5 @@
 import Foundation
 
-class IGradient2 {
-
+protocol IGradient2 {
+    //start implementing the new gradient scheme
 }
