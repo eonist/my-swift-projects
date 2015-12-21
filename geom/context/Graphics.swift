@@ -196,6 +196,7 @@ private class Utils{
     /**
      * Radial gradient
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
+     * NOTE: I think you need to get the points for the 45 deg of the normal aswell, think, you may getaway with just using the relative aspect ratio between w and h, if it doesnt work you need to get the 45deg normal points aswell
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         
@@ -203,7 +204,7 @@ private class Utils{
         let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
         let radius:CGFloat = points.start.distance(points.end)
         
-        //i think you need to get the points for the 45 deg of the normal aswell, think
+        
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0) - 2.0),((boundingBox.size.height/2.0) - 2.0) )
