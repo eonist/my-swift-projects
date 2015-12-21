@@ -210,7 +210,7 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func beginOuterShadow(path:CGPath){
-        "Graphics.beginOuterShadow"
+        //"Graphics.beginOuterShadow"
         /**/
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
             CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
@@ -227,7 +227,7 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func applyInnerShadow(path:CGPath){
-        Swift.print("Graphics.applyInnerShadow: " + "\(context)")
+        //Swift.print("Graphics.applyInnerShadow: " + "\(context)")
         /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
