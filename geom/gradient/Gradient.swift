@@ -8,6 +8,7 @@ public enum GradientType:Int{//TODO:move to its own class?
  * TODO: create two Gradient classes the extends a common Gradient class. LinearGradient and RadialGradient, ILinearGradient, IRadialGradient etc
  * NOTE: the radial scalar values can also be more or less than 0 and 1. think width * 1.2 etc. Works for both pos and size. (the only thing that is capped is the size if it goes under 0, then it is capped to 0)
  * NOTE: Why are we using realtive values for the radial gradient when xcode supports absolute points? Because absolute values cant be applied to different graphics. Absolute values only work with one exact graphic.
+ * NOTE: the scalar values are subjected to change, if -1 to +1 makes more sense when doing the polar point calculations etc
  */
 class Gradient:IGradient{
     var colors:Array<CGColor>
