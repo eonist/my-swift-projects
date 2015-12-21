@@ -201,7 +201,9 @@ private class Utils{
         
         //Dont forget to add the boundingbox that work with gradients
         let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
+        let radius:CGFloat = points.start.distance(points.end)
         
+        //i think you need to get the points for the 45 deg of the normal aswell, think
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0) - 2.0),((boundingBox.size.height/2.0) - 2.0) )
