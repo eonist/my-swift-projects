@@ -242,8 +242,8 @@ extension Graphics{//private class ShadowUtils
             Swift.print("1.3")
             CGContextBeginTransparencyLayer(context, nil);
             Swift.print("1.4")
-            //CGContextSetShadowWithColor(context, shadow.shadowOffset, shadow.shadowBlurRadius, opaqueShadowColor);
-            dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
+            CGContextSetShadowWithColor(context, dropShadow!.offset, dropShadow!.blurRadius, dropShadow!.opaqueShadow.CGcolor);
+            //dropShadow!.opaqueShadow.set()/*This is where the setting of the shadow happens*/
             Swift.print("2")
             CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
             CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized

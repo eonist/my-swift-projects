@@ -27,7 +27,8 @@ extension DropShadow:CustomStringConvertible{
     /**
      * NOTE: We need a copy of the shadow color with alpha set to 1.0
      */
-    var opaqueShadow:NSShadow{get{return NSShadow(color.alpha(1.0),offsetX,offsetY,blurRadius)} }
+    var opaqueShadow:NSShadow{get{return NSShadow(opaqueColor,offsetX,offsetY,blurRadius)} }
+    var opaqueColor:NSColor{return color.alpha(1.0)}
     var offset:CGSize{return CGSize(offsetX,offsetY)}
 }
 private class Utils{
