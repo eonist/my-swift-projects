@@ -109,7 +109,7 @@ public class Graphics{
      */
     private func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
-        beginOuterShadow(path)
+        beginOuterShadow(path)/*this will only process if there is an outershadow applied*/
         switch true{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient fill none")
@@ -124,7 +124,7 @@ public class Graphics{
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
-        endOuterShadow()
+        endOuterShadow()/*this will only process if there is an outershadow applied*/
         applyInnerShadow(path)/*init inner shadow*/
     }
     /**
