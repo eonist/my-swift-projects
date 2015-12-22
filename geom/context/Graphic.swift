@@ -39,14 +39,14 @@ class Graphic:FlippedView,IGraphic{
     }
     
     /**
-    * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
-     * NOTE: you can probably derive the cgcontext from inside this method. by utilizing the graphics.contect etc.
-    */
-     /*
-     override func  displayLayer(layer: CALayer){
-     Swift.print("Graphic.displayLayer: " + "\(layer)")
-     }
+     * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
+     * NOTE: you can probably derive the cgcontext from inside this method. by utilizing the graphics.contect etc. no you cant
      */
+    /*
+     override func  displayLayer(layer: CALayer){
+        Swift.print("Graphic.displayLayer: " + "\(layer)")
+     }
+    */
     /*
     override func updateLayer(){
         Swift.print("Graphic.updateLayer()")
