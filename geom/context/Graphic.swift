@@ -40,9 +40,10 @@ class Graphic:FlippedView,IGraphic{
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         fillShape.graphics.context = ctx
-        //a.fillShape.graphics.fill(a.fillStyle!.color)
+        fillShape.graphics.fill(fillStyle!.color)
         //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
-        fillShape.graphics.draw(a.fillShape.path)
+        fillShape.graphics.draw(fillShape.path)
+        fillShape.graphics.line(<#T##lineWidth: CGFloat##CGFloat#>, <#T##color: NSColor##NSColor#>, <#T##lineCap: CGLineCap##CGLineCap#>, <#T##lineJoin: CGLineJoin##CGLineJoin#>, <#T##miterLimit: CGFloat##CGFloat#>)
     }
     /**
      * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
