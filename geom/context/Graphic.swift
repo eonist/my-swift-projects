@@ -25,12 +25,6 @@ class Graphic:FlippedView,IGraphic{
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()//TempCALayer(layer: layer!)
-        
-        /*layer!.shadowColor = NSColor.blackColor().CGColor;
-        layer!.shadowOpacity = 1.0;
-        layer!.shadowRadius = 5.0;
-        layer!.shadowOffset = CGSizeMake(0, 3);
-        */
         //layer!.frame = NSRect(0,0,1,1)
         //layer?.display()
         //layer?.needsLayout()

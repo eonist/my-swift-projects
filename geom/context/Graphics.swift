@@ -181,7 +181,7 @@ private class Utils{
         if(lineGradient.gradientType == GradientType.Axial) {
             drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient.rotation)
         }else{
-            drawRadialGradient(path, context, cgLineGradient, boundingBox, gradient)
+            drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
         }
         CGContextRestoreGState(context)//restore the graphic mask
     }
