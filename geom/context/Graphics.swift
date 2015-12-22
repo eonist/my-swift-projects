@@ -109,7 +109,7 @@ public class Graphics{
     /**
      * NOTE: You can also use CGPathDrawingMode.FillStroke, but since we need to seperate stroking and filling because of we want to add dropshadow if applicaple we dont use it
      */
-    private func drawFill(path:CGPath){
+    public func drawFill(path:CGPath){
         CGContextAddPath(context,path)//Adds the path to the context
         beginOuterShadow(path)
         switch true{
@@ -132,7 +132,7 @@ public class Graphics{
     /**
      * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
-    private func drawLine(path:CGPath){
+    public func drawLine(path:CGPath){
         //the change to the bellow line is need in order to get the fill and line working together
         /*if(dropShadow != nil) {*/CGContextAddPath(context,path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
         switch true {
