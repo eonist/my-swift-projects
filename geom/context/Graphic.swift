@@ -31,13 +31,14 @@ class Graphic:FlippedView,IGraphic{
      * TODO: Maybe create the LineShape and FillShape again and add this method and the FillStyle LineStyle to them. 
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        fillShape.graphics.context = ctx
-        if(fillStyle != nil){
+        if(layer === fillShape && fillStyle != nil){
+            fillShape.graphics.context = ctx
             fillShape.graphics.fill(fillStyle!.color)
             //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
             fillShape.graphics.drawFill(fillShape.path)
         }
-        if(lineStyle != nil){
+        if(layer === lineShape && lineStyle != nil){
+            lineShape.graphics.context = ctx
             lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
             lineShape.graphics.drawLine(lineShape.path)
         }
