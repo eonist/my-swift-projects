@@ -34,10 +34,11 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(fillShape)
         //fillShape.delegate = self
         layer?.addSublayer(lineShape)
-        
-        
     }
     
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        
+    }
     /**
      * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
      * NOTE: you can probably derive the cgcontext from inside this method. by utilizing the graphics.contect etc. no you cant
@@ -62,30 +63,19 @@ class Graphic:FlippedView,IGraphic{
     */
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     /**
-     *
-     */
-    /*
-    
-    override func drawRect(dirtyRect: NSRect) {
-        Swift.print("Graphic.drawRect() ")
-        super.drawRect(dirtyRect)
-    }
-    */
-    
-    /**
-     * NOTE: Convenience method
-     */
-    func setDelegate(delegate:AnyObject){
-        fillShape.delegate = delegate
-        lineShape.delegate = delegate
-    }
-    
-    
-    /**
      * Convenince implicit setter
      */
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;
         self.lineStyle = lineStyle;
+    }
+}
+extension Graphic{
+    /**
+     * NOTE: Convenience method
+     */
+    func setDelegate(delegate:AnyObject){
+        self.fillShape.delegate = delegate
+        self.lineShape.delegate = delegate
     }
 }
