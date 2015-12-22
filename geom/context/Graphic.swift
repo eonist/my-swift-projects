@@ -27,6 +27,25 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(lineShape)
     }
     
+    //continue here: move drawlayer into shape, move the styles aswell, see if you can makes things work without a delegte and with a delegate
+    
+    
+    /**
+     * NOTE: if you set the delegate then this method wont be called on graphic.setNeedsDisplay()
+     * TODO: Maybe create the LineShape and FillShape again and add this method and the FillStyle LineStyle to them. 
+     */
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        fillShape.graphics.context = ctx
+        if(fillStyle != nil){
+            fillShape.graphics.fill(fillStyle!.color)
+            //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
+            fillShape.graphics.drawFill(fillShape.path)
+        }
+        if(lineStyle != nil){
+            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            lineShape.graphics.drawLine(lineShape.path)
+        }
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     /**
      * Convenince implicit setter
