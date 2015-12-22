@@ -28,7 +28,7 @@ class Graphic:FlippedView,IGraphic{
     }
     /**
      * NOTE: if you set the delegate then this method wont be called on graphic.setNeedsDisplay()
-     *
+     * TODO: Maybe create the LineShape and FillShape again and add this method and the FillStyle LineStyle to them. 
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         fillShape.graphics.context = ctx
