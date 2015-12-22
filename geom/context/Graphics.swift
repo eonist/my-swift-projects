@@ -181,7 +181,7 @@ private class Utils{
         if(lineGradient.gradientType == GradientType.Axial) {
             drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient.rotation)
         }else{
-            drawRadialGradient(path, context, cgLineGradient, boundingBox)
+            drawRadialGradient(path, context, cgLineGradient, boundingBox, gradient)
         }
         CGContextRestoreGState(context)//restore the graphic mask
     }
@@ -206,7 +206,7 @@ private class Utils{
         let yAxisRadius:CGFloat = points.start.distance(points.end)
         let relativeAspectRatio = boundingBox.height / boundingBox.width
         let xAxisRadius:CGFloat = yAxisRadius * relativeAspectRatio//TODO:test this out in a test case first
-        let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
+        //let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
         
         //continue here think, draw in illustrator etc
         
