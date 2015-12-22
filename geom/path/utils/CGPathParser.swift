@@ -32,7 +32,7 @@ public class CGPathParser{
      * Returns a circle path from top left
      */
     public class func circ(radius:CGFloat, _ x:CGFloat = 0, _ y:CGFloat = 0)->CGMutablePathRef{
-        return ellipse(radius, radius, x, x)
+        return ellipse(radius*2, radius*2, x, x)
     }
     /**
      *
