@@ -27,9 +27,6 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(lineShape)
     }
     
-    //continue here: move drawlayer into shape, move the styles aswell, see if you can makes things work without a delegte and with a delegate
-    
-    
     /**
      * NOTE: if you set the delegate then this method wont be called on graphic.setNeedsDisplay()
      * TODO: Maybe create the LineShape and FillShape again and add this method and the FillStyle LineStyle to them. 
