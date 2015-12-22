@@ -82,3 +82,11 @@ public class CGPathParser{
     }
     
 }
+extension CGPathParser{
+    /**
+     * Convenince method
+     */
+    class func ellipse(rect:CGRect)->CGMutablePathRef{
+        return ellipse(rect.width, rect.height, rect.x, rect.y)
+    }
+}
