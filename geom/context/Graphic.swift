@@ -11,6 +11,7 @@ class Graphic:FlippedView,IGraphic{
     var fillStyle:IFillStyle? //{get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
+    var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
@@ -30,7 +31,15 @@ class Graphic:FlippedView,IGraphic{
         self.lineShape.delegate = self
         //self.setDelegate(self)
     }
-    
+    /**
+     * This is a delegate handler method
+     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
+     * NOTE: this is a delegate method for the shapes in Graphic
+     */
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
+        selector!(layer: layer,ctx: ctx)/*call the selector*/
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
