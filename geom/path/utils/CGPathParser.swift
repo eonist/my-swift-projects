@@ -18,15 +18,21 @@ public class CGPathParser{
      * IMPORTANT: circle is drawn from center position
      * Note: you may add convenience methods for drawing circles from the topLeft position later
      */
-    public class func circle(radius:CGFloat, _ x:CGFloat = 0, _ y:CGFloat = 0)->CGMutablePathRef{
+    public class func circle(radius:CGFloat, _ cx:CGFloat = 0, _ cy:CGFloat = 0)->CGMutablePathRef{
         let circlePath:CGMutablePathRef = CGPathCreateMutable()
-        let circleCenter:CGPoint = CGPoint(x: x, y: y);
+        let circleCenter:CGPoint = CGPoint(x: cx, y: cy);
         let circleRadius:CGFloat  = radius;
         let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI);
         // Construct the circle path counterclockwise.
         CGPathAddArc(circlePath,nil,circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, false)
         CGPathCloseSubpath(circlePath);
         return circlePath
+    }
+    /**
+     * Draws circle from top left
+     */
+    public class func circ(radius:CGFloat, _ x:CGFloat = 0, _ y:CGFloat = 0)->CGMutablePathRef{
+        return ellipse(radius, radius, x, x)
     }
     /**
      *
