@@ -35,9 +35,14 @@ class Graphic:FlippedView,IGraphic{
         //fillShape.delegate = self
         layer?.addSublayer(lineShape)
     }
-    
+    /**
+     * 
+     */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        
+        fillShape.graphics.context = ctx
+        //a.fillShape.graphics.fill(a.fillStyle!.color)
+        //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
+        fillShape.graphics.draw(a.fillShape.path)
     }
     /**
      * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
