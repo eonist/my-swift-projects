@@ -26,6 +26,9 @@ class Graphic:FlippedView,IGraphic{
         layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
+        self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
+        self.lineShape.delegate = self
+        //self.setDelegate(self)
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
@@ -34,10 +37,12 @@ extension Graphic{
     /**
      * NOTE: Convenience method
      */
+    /*
     func setDelegate(delegate:AnyObject){
         self.fillShape.delegate = delegate
         self.lineShape.delegate = delegate
     }
+     */
     /**
      * Convenince implicit setter
      */
