@@ -6,16 +6,17 @@ import QuartzCore
  * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
  */
 class Graphic:FlippedView,IGraphic{
-    lazy var fillShape:Shape = Shape()
+    var fillShape:FillShape
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle? = {get{return fillShape.fillStyle}set{}}
+    var fillStyle:IFillStyle? {return fillShape.fillStyle}
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
-        self.fillStyle = fillStyle
+        //self.fillStyle = fillStyle
+        self.fillShape = FillShape(fillStyle)
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
@@ -57,7 +58,7 @@ extension Graphic{
      * Convenince implicit setter
      */
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
-        self.fillStyle = fillStyle;
+        self.fillShape.fillStyle = fillStyle;
         self.lineStyle = lineStyle;
     }
 }
