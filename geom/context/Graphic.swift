@@ -8,7 +8,7 @@ import QuartzCore
 class Graphic:FlippedView,IGraphic{
     var fillShape:FillShape
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle? {return fillShape.fillStyle}
+    var fillStyle:IFillStyle? {get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
