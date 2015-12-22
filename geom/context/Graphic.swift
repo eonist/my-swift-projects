@@ -27,23 +27,7 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
     }
-    /**
-     * NOTE: if you set the delegate then this method wont be called on graphic.setNeedsDisplay()
-     * TODO: Maybe create the LineShape and FillShape again and add this method and the FillStyle LineStyle to them. 
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        if(layer === fillShape && fillStyle != nil){
-            fillShape.graphics.context = ctx
-            fillShape.graphics.fill(fillStyle!.color)
-            //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
-            fillShape.graphics.drawFill(fillShape.path)
-        }
-        if(layer === lineShape && lineStyle != nil){
-            lineShape.graphics.context = ctx
-            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
-            lineShape.graphics.drawLine(lineShape.path)
-        }
-    }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
