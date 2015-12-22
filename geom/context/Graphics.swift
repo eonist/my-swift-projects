@@ -206,6 +206,7 @@ private class Utils{
         let yAxisRadius:CGFloat = points.start.distance(points.end)
         let relativeAspectRatio = boundingBox.height / boundingBox.width
         let xAxisRadius:CGFloat = yAxisRadius * relativeAspectRatio//TODO:test this out in a test case first
+        Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         //let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
         
         //continue here think, draw in illustrator etc
