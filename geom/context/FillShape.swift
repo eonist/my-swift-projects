@@ -1,5 +1,5 @@
 import Foundation
 
-class FillShape {
-
+class FillShape :Shape{
+    lazy var fillShape:Shape = Shape()
 }
