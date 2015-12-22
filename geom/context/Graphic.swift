@@ -43,13 +43,12 @@ class Graphic:FlippedView,IGraphic{
         if(fillStyle != nil){
             fillShape.graphics.fill(fillStyle!.color)
             //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
+            fillShape.graphics.drawFill(fillShape.path)
         }
         if(lineStyle != nil){
-            fillShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            lineShape.graphics.drawLine(lineShape.path)
         }
-        
-        fillShape.graphics.draw(fillShape.path)
-        
     }
     /**
      * If you do not implement this method, the layer calls the drawLayer:inContext: method instead.
