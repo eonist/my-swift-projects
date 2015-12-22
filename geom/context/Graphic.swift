@@ -26,21 +26,6 @@ class Graphic:FlippedView,IGraphic{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
     }
-    /**
-     * 
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        fillShape.graphics.context = ctx
-        if(fillStyle != nil){
-            fillShape.graphics.fill(fillStyle!.color)
-            //fillShape.graphics.gradientFill((a.fillStyle as! GradientFillStyle).gradient)
-            fillShape.graphics.drawFill(fillShape.path)
-        }
-        if(lineStyle != nil){
-            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
-            lineShape.graphics.drawLine(lineShape.path)
-        }
-    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     /**
      * Convenince implicit setter
