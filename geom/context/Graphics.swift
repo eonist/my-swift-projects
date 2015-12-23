@@ -238,7 +238,7 @@ private class Utils{
         //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = newXAxisRadius
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
-        let endRadius:CGFloat = 0.0
+        let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
 }
