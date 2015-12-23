@@ -160,14 +160,14 @@ private class Utils{
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
-        //CGContextSaveGState(context)
+        CGContextSaveGState(context)
         
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }
-        //CGContextRestoreGState(context)
+        CGContextRestoreGState(context)
        
     }
     /**
