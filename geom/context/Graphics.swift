@@ -160,14 +160,14 @@ private class Utils{
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
-        CGContextSaveGState(context)
+        //CGContextSaveGState(context)
         
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }
-        CGContextRestoreGState(context)
+        //CGContextRestoreGState(context)
        
     }
     /**
@@ -193,7 +193,7 @@ private class Utils{
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let points = GradientBoxUtils.points(boundingBox, rotation)
-        CGContextDrawLinearGradient(context, cgGradient, points.start, points.end + CGPoint(0,120), [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextDrawLinearGradient(context, cgGradient, points.start, points.end , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
