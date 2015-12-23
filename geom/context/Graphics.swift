@@ -211,11 +211,11 @@ private class Utils{
         
         // to squeze the square, just extend the distance the focal point can extend
         
-        let startCenter:CGPoint =
+        let startCenter:CGPoint = CGPoint(boundingBox.width*gradient.relativeStartCenter.x,boundingBox.width*gradient.relativeStartCenter.y)
         
         
-        let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
-        let xAxisRadius:CGFloat = boundingBox.left.distance(boundingBox.center)
+        let yAxisRadius:CGFloat = boundingBox.width/2
+        let xAxisRadius:CGFloat = boundingBox.height/2
         let minRadius:CGFloat = min(yAxisRadius,xAxisRadius)
         
         let newXAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.width
@@ -235,7 +235,7 @@ private class Utils{
         
         
         //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
-        let startRadius:CGFloat = newXAxisRadius / 2
+        let startRadius:CGFloat = newXAxisRadius
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
