@@ -190,6 +190,7 @@ private class Utils{
     }
     /**
      * Axial gradient "Linear"
+     * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
@@ -198,9 +199,9 @@ private class Utils{
     }
     /**
      * Radial gradient
-     * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
-     * NOTE: I think you need to get the points for the 45 deg of the normal aswell, think, you may getaway with just using the relative aspect ratio between w and h, if it doesnt work you need to get the 45deg normal points aswell
-     * NOTE: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
+     * NOTE: to squeze the square, just extend the distance the focal point can extend
+     * TODO: I think you need to get the points for the 45 deg of the normal aswell, think, you may getaway with just using the relative aspect ratio between w and h, if it doesnt work you need to get the 45deg normal points aswell
+     * TODO: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         Swift.print("Graphics.drawRadialGradient")
@@ -209,9 +210,9 @@ private class Utils{
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
         
-        // to squeze the square, just extend the distance the focal point can extend
         
-        let startCenter:CGPoint = CGPoint(boundingBox.width*gradient.relativeStartCenter.x,boundingBox.width*gradient.relativeStartCenter.y)
+        
+        let startCenter:CGPoint = CGPoint(boundingBox.width * gradient.relativeStartCenter!.x,boundingBox.height * gradient.relativeStartCenter!.y)
         
         
         let yAxisRadius:CGFloat = boundingBox.width/2
