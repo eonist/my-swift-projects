@@ -211,7 +211,7 @@ private class Utils{
         
         // to squeze the square, just extend the distance the focal point can extend
         
-        //let startCenter:CGPoint =
+        let startCenter:CGPoint =
         
         
         let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
