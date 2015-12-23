@@ -16,7 +16,7 @@ public class Gradient:IGradient{
     public var locations:Array<CGFloat>
     public var gradientType:GradientType//TODO: rename to type
     public var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
-    public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)
+    public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)(ACtually use scalar values from -1 to 0 to +1 since 1 is absolutly presice aposed to 0.5 which can return fractions. zero is also absolute)
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
     public var relativeStartRadius:CGSize?//0 to 1 (x:0.5 means half the size of the current cross-section in the x-axis) the x-axis is determined by the rotation
     public var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
