@@ -168,9 +168,7 @@ private class Utils{
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }
         CGContextRestoreGState(context)
-        
-        CGContextAddPath(context,path)
-        CGContextClip(context);
+       
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
