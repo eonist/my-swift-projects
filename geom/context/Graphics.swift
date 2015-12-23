@@ -209,6 +209,7 @@ private class Utils{
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
         
+        // to squeze the square, just extend the distance the focal point can extend
         
         //let startCenter:CGPoint =
         
