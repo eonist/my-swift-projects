@@ -24,6 +24,7 @@ extension CGRect {
 /*Convenient extensions*/
 extension CGRect{
     /*Initialization*/
+    init(_ pos:CGPoint,_ size:CGSize){ self.origin = pos; self.size = size;}//TODO:add initializer to CGSize
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
     init(_ x:Double,_ y:Double,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
     init(_ x:CGFloat,_ y:CGFloat,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize(width,height);}
