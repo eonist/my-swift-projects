@@ -159,6 +159,8 @@ private class Utils{
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
+        CGContextSetFillColorWithColor(context,gradient.colors.first.CGColor)
+        CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
         CGContextSaveGState(context)//why is this here again?
         
