@@ -208,7 +208,9 @@ private class Utils{
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
-        let startCenter:CGPoint = 
+        
+        
+        //let startCenter:CGPoint =
         
         
         let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
