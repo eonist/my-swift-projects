@@ -208,6 +208,7 @@ private class Utils{
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
+        let startCenter:CGPoint = 
         
         
         let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
@@ -227,7 +228,7 @@ private class Utils{
         
         
         
-        let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
+        //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0)/* - 2.0*/),((boundingBox.size.height/2.0)/* - 2.0*/) )
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0
