@@ -205,7 +205,7 @@ private class Utils{
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         Swift.print("Graphics.drawRadialGradient")
         
-        CGContextSetFillColorWithColor(context,gradient.colors[0])
+        CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
         //Dont forget to add the boundingbox that work with gradients
