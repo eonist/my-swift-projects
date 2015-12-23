@@ -213,6 +213,8 @@ private class Utils{
         let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
         let xAxisRadius:CGFloat = boundingBox.left.distance(boundingBox.center)
         
+        let p1:CGPoint = 
+        
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
         
