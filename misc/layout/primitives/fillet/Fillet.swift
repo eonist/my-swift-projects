@@ -10,8 +10,7 @@ class Fillet:ILayout {
     var bottomLeft:CGFloat;
     var bottomRight:CGFloat;
     required convenience init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
-        let cgFloatArray:Array<CGFloat> = args.map {CGFloat(Double(String($0))!)}
-        self.init(cgFloatArray)
+        self.init(args.map {CGFloat(Double(String($0))!)})/*<-- it looks complicated but its just array casting, see research docs for the explination*/
     }
     init(_ args:Array<CGFloat>){
         switch(args.count){
