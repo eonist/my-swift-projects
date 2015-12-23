@@ -159,8 +159,7 @@ private class Utils{
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
-        CGContextSetFillColorWithColor(context,gradient.colors.first.CGColor)
-        CGContextDrawPath(context, CGPathDrawingMode.Fill)
+        
         
         CGContextSaveGState(context)//why is this here again?
         
@@ -205,6 +204,10 @@ private class Utils{
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         Swift.print("Graphics.drawRadialGradient")
+        
+        CGContextSetFillColorWithColor(context,gradient.colors[0])
+        CGContextDrawPath(context, CGPathDrawingMode.Fill)
+        
         //Dont forget to add the boundingbox that work with gradients
         let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
         let yAxisRadius:CGFloat = points.start.distance(points.end)
