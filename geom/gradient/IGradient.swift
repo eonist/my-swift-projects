@@ -6,6 +6,6 @@ public protocol IGradient{
     var rotation:CGFloat{get set}
     var relativeStartCenter:CGPoint?{get set}
     var relativeEndCenter:CGPoint?{get set}
-    var relativeStartRadius:CGSize?{get set}
-    var relativeEndRadius:CGSize?{get set}
+    var relativeStartRadius:CGSize?{get set}//rename to startScale
+    var relativeEndRadius:CGSize?{get set}//rename to endScale
 }
