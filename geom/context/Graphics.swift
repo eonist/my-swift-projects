@@ -200,7 +200,7 @@ private class Utils{
      * NOTE: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
-        
+        Swift.print("Graphics.drawRadialGradient")
         //Dont forget to add the boundingbox that work with gradients
         let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
         let yAxisRadius:CGFloat = points.start.distance(points.end)
