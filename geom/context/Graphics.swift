@@ -218,7 +218,7 @@ private class Utils{
         let p2:CGPoint = boundingBox.center.polarPoint(minRadius, gradient.rotation)
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
-        let start = p1.interpolate(p2, gradient.relativeStartCenter!.y)
+        let endCenter = p1.interpolate(p2, gradient.relativeStartCenter!.y)
         
         //TODO: take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width, 
         //TODO: maybe even add the option to specify start end width and height and focalratio etc. Simplest and gives total controll
@@ -227,7 +227,7 @@ private class Utils{
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0)/* - 2.0*/),((boundingBox.size.height/2.0)/* - 2.0*/) )
-        let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
+        //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
