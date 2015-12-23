@@ -208,15 +208,15 @@ private class Utils{
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)
         
-        //Dont forget to add the boundingbox that work with gradients
-        let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
-        let yAxisRadius:CGFloat = points.start.distance(points.end)
-        //let relativeAspectRatio = boundingBox.height / boundingBox.width
-        //let xAxisRadius:CGFloat = yAxisRadius * relativeAspectRatio//TODO:test this out in a test case first
-        //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
-        //let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
         
-        //continue here think, draw in illustrator etc
+        
+        let yAxisRadius:CGFloat = boundingBox.top.distance(boundingBox.center)
+        let xAxisRadius:CGFloat = boundingBox.left.distance(boundingBox.center)
+        
+        //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
+        let start = points.start.interpolate(points.end, gradient.relativeStartCenter)(CGPoint)
+        
+        
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = min( ((boundingBox.size.width/2.0)/* - 2.0*/),((boundingBox.size.height/2.0)/* - 2.0*/) )
