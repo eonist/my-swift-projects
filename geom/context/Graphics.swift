@@ -219,6 +219,7 @@ private class Utils{
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         let endCenter = p1.interpolate(p2, gradient.relativeStartCenter!.y)
+        Swift.print("endCenter: " + "\(endCenter)")
         
         //TODO: take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width, 
         //TODO: maybe even add the option to specify start end width and height and focalratio etc. Simplest and gives total controll
