@@ -218,7 +218,8 @@ private class Utils{
         let xAxisRadius:CGFloat = boundingBox.left.distance(boundingBox.center)
         let minRadius:CGFloat = min(yAxisRadius,xAxisRadius)
         
-        let newYAxisRadius:CGFloat = 
+        let newXAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.width
+        let newYAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.height
         
         
         let endFocusPoint:CGPoint = boundingBox.center.polarPoint(minRadius, gradient.rotation)
