@@ -193,7 +193,7 @@ private class Utils{
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
         let points = GradientBoxUtils.points(boundingBox, rotation)
-        CGContextDrawLinearGradient(context, cgGradient, points.start, points.end, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextDrawLinearGradient(context, cgGradient, points.start, points.end + CGPoint(0,120), [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
