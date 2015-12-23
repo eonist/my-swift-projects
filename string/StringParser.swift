@@ -87,8 +87,10 @@ class StringParser{
     /**
      * Returns the percentage as a string
      */
-    class funcpercentage(value:*)->CGFloat{
-        return Number(String(value).match(/.*?(?=%)/)[0]);
+    class func percentage(value:String)->CGFloat{
+        let pattern:String = ".*?(?=%)"
+        value
+        return //Number(String(value).match()[0]);
     }
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
