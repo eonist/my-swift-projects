@@ -214,11 +214,12 @@ private class Utils{
         let xAxisRadius:CGFloat = boundingBox.left.distance(boundingBox.center)
         let minRadius:CGFloat = min(yAxisRadius,xAxisRadius)
         
-        let p1:CGPoint = boundingBox.center.polarPoint(minRadius, -gradient.rotation)
-        let p2:CGPoint = boundingBox.center.polarPoint(minRadius, gradient.rotation)
+        
+        let endFocusPoint:CGPoint = boundingBox.center.polarPoint(minRadius, gradient.rotation)
+        let focalRatio:CGFloat = gradient.relativeStartCenter!.y
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
-        let endCenter = p1.interpolate(p2, gradient.relativeStartCenter!.y)
+        let endCenter = boundingBox.center.interpolate(endFocusPoint, focalRatio)
         Swift.print("endCenter: " + "\(endCenter)")
         
         //TODO: take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width, 
