@@ -159,14 +159,18 @@ private class Utils{
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
+        
         CGContextSaveGState(context)
-        CGContextClip(context);
+        
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }
         CGContextRestoreGState(context)
+        
+        CGContextAddPath(context,path)
+        CGContextClip(context);
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
