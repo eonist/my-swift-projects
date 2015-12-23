@@ -17,7 +17,7 @@ extension Array {
     /**
      * Shift
      */
-    mutating func shift(/*x:[Element]*/) {
-        ArrayModifier.shift(&self)
+    mutating func shift(/*x:[Element]*/) ->Element{
+        return ArrayModifier.shift(&self)
     }
 }
