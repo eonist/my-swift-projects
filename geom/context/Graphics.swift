@@ -219,10 +219,10 @@ private class Utils{
         //continue here think, draw in illustrator etc
         
         let startCenter:CGPoint = boundingBox.top//NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
-        let startRadius:CGFloat = min( ((boundingBox.size.width/2.0) - 2.0),((boundingBox.size.height/2.0) - 2.0) )
+        let startRadius:CGFloat = min( ((boundingBox.size.width/2.0)),((boundingBox.size.height/2.0) ) )
         let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
-        let endRadius:CGFloat = startRadius//0.0
-        CGContextDrawRadialGradient(context, cgGradient, startCenter, 0.0, endCenter, endRadius, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        let endRadius:CGFloat = 20
+        CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
 }
 
