@@ -219,6 +219,8 @@ private class Utils{
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         let start = p1.interpolate(p2, gradient.relativeStartCenter!.y)
         
+        //take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width
+        
         
         
         let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
