@@ -217,16 +217,19 @@ private class Utils{
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         let startRadius:CGFloat = minRadius/**/
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
-        let rot:CGFloat = gradient.rotation
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
-        var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
+        let scale:CGPoint = CGPoint(gradient.relativeStartRadius!.width,gradient.relativeStartRadius!.height)
+        var transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, <#T##offset: CGPoint##CGPoint#>, <#T##pivot: CGPoint##CGPoint#>)//CGAffineTransformMakeTranslation(x, y);
         let offsetX = -minRadius + (minAxis*gradient.relativeStartCenter!.x)
         let offsetY = -minRadius + (minAxis*gradient.relativeStartCenter!.y)
         //Swift.print("offsetX: " + "\(offsetX)")
         //Swift.print("offsetY: " + "\(offsetY)")
+        
+        /*
         transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
         transform = CGAffineTransform.scaleFromPoint(transform, gradient.relativeStartRadius!.height/**/,  gradient.relativeStartRadius!.width/**/, pivot)
+        */
         CGContextSaveGState(context)/*save the current context*/
         CGContextConcatCTM(context, transform)/*transform the current context*/
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
