@@ -207,7 +207,7 @@ private class Utils{
         Swift.print("Graphics.drawRadialGradient")
         
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
-        CGContextDrawPath(context, CGPathDrawingMode.Fill)
+        CGContextDrawPath(context, CGPathDrawingMode.Fill)//draws the background color to the context
         
         
         
@@ -240,7 +240,14 @@ private class Utils{
         let startRadius:CGFloat = minRadius
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
+        
+        
+        
+        //CGContextSaveGState(context)//why is this here again?
+        
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        
+        //CGContextRestoreGState(context)//why is this here again?
     }
 }
 
