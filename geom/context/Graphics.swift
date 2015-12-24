@@ -234,10 +234,7 @@ private class Utils{
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         Swift.print("endCenter: " + "\(endCenter)")
 
-        
-        //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = minRadius
-        //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         
         CGContextSaveGState(context)
@@ -258,7 +255,6 @@ private class Utils{
         CGContextConcatCTM(context, transform)
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)
-
     }
 }
 
