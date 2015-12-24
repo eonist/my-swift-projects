@@ -209,7 +209,7 @@ private class Utils{
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)//draws the background color to the context
         /*End of background fill*/
-        let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox*/
+        let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
@@ -217,13 +217,9 @@ private class Utils{
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         let startRadius:CGFloat = minRadius/**/
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
-        let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         let scale:CGPoint = CGPoint(gradient.relativeStartRadius!.width,gradient.relativeStartRadius!.height)
-        var transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, <#T##offset: CGPoint##CGPoint#>, <#T##pivot: CGPoint##CGPoint#>)//CGAffineTransformMakeTranslation(x, y);
-        let offsetX = -minRadius + (minAxis*gradient.relativeStartCenter!.x)
-        let offsetY = -minRadius + (minAxis*gradient.relativeStartCenter!.y)
-        //Swift.print("offsetX: " + "\(offsetX)")
-        //Swift.print("offsetY: " + "\(offsetY)")
+        let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.relativeStartCenter!.x),-minRadius + (minAxis*gradient.relativeStartCenter!.y))
+        let transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, offset, startCenter)//CGAffineTransformMakeTranslation(x, y);
         
         /*
         transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
