@@ -14,7 +14,10 @@ extension CGAffineTransform {
         self = CGAffineTransformTranslate(self, x, y)
     }
     mutating func rotateAroundPoint(rotation:CGFloat, pivot:CGPoint){
-        self = CGAffineTransform.rotateAroundPoint(&self, pivot, rotation)
+        CGAffineTransform.rotateAroundPoint(&self, pivot, rotation)
+    }
+    mutating func scaleFromPoint(xScale:CGFloat,yScale:CGFloat,pivot:CGPoint){
+        CGAffineTransform.scaleFromPoint(&self, xScale,yScale,pivot)
     }
     /**
      * Scales a matrix and returns the result. The skewSide parameter lets the user determine which side to skew (right or bottom).
@@ -36,7 +39,7 @@ extension CGAffineTransform {
     /**
      *
      */
-    static func scaleFromPoint(inout transform:CGAffineTransform, xScale:CGFloat,yScale:CGFloat,pivot:CGPoint){
+    static func scaleFromPoint(inout transform:CGAffineTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.scale(xScale,yScale)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
