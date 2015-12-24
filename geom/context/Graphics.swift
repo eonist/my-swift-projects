@@ -204,35 +204,21 @@ private class Utils{
      * TODO: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
-        Swift.print("Graphics.drawRadialGradient")
-        
+        //Swift.print("Graphics.drawRadialGradient")
+        /*Begining of background fill*/
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)//draws the background color to the context
-        
-        
-        
-        
-        let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)
-        
-        
-        /*
-        let xAxisRadius:CGFloat = boundingBox.width/2
-        let yAxisRadius:CGFloat = boundingBox.height/2
-        */
-        
+        /*End of background fill*/
+        let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)
         let minRadius:CGFloat = minAxis/2
-        
-        //let newXAxisRadius:CGFloat = minRadius// * gradient.relativeStartRadius!.width
-        //let newYAxisRadius:CGFloat = minRadius// * gradient.relativeStartRadius!.height
-        //Swift.print("newYAxisRadius: " + "\(newYAxisRadius)")
         
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
-        Swift.print("endCenter: " + "\(endCenter)")
+        //Swift.print("endCenter: " + "\(endCenter)")
 
         let startRadius:CGFloat = minRadius
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
