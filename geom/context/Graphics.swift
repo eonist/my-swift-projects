@@ -249,9 +249,9 @@ private class Utils{
         
         CGContextSaveGState(context)
         
-        var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
+        //var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
         // Apply a scaling transformation to the transform just created.
-        transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
+        //transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
         //CGContextConcatCTM(context, transform)
         //CGContextRestoreGState(context)//why is this here again?
         
@@ -264,8 +264,8 @@ private class Utils{
         //2. rotate, scale etc,
         //3. offset cgContext to opposite of step1
         
-        CGContextConcatCTM(context, transform)
-        //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
+        //CGContextConcatCTM(context, transform)
+        CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
         //CGContextRotateCTM(context, π/4)
         //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
         
@@ -288,6 +288,8 @@ private class Utils{
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         
         CGContextRestoreGState(context)//why is this here again?
+        
+        CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
     }
 }
 
