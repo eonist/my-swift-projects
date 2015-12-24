@@ -248,29 +248,7 @@ private class Utils{
         //CGContextSaveGState(context)//why is this here again?
         
         CGContextSaveGState(context)
-        
-        //var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
-        // Apply a scaling transformation to the transform just created.
-        //transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
-        //CGContextConcatCTM(context, transform)
-        //CGContextRestoreGState(context)//why is this here again?
-        
-        //transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
-        //CGContextSaveGState(context)
-        
-        //transform = CGAffineTransformRotate(transform, π/4)
-        
-        //1. move the path so that its centered at tl
-        //2. rotate, scale etc,
-        //3. offset cgContext to opposite of step1
-        
-        //CGContextConcatCTM(context, transform)
-        //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
-        //CGContextRotateCTM(context, π/4)
-        //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
-        
-        //CGContextConcatCTM(context, transform2)
-        //CGContextRestoreGState(context)
+       
         let a:CGFloat = π/2
         /*
         let x:CGFloat = 100.0
@@ -278,34 +256,12 @@ private class Utils{
         */
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
+        transform = CGAffineTransform.translate(transform,0,50)
         transform = CGAffineTransform.rotateAroundPoint(transform, a, pivot)
-        transform = CGAffineTransform.translate(transform,0,20)
         transform = CGAffineTransform.scaleFromPoint(transform,2.5,  1.0, pivot)
-        //CGAffineTransform.scaleFromPoint(2.5,  1.0,  pivot)
-        /*
-        transform.translate(pivot.x, pivot.y)
-        transform.scale(2.5, 1.0)
-        transform.translate(-pivot.x, -pivot.y)
-        */
-        
-        
-        //CGAffineTransform.transformWithPivot(&transform, CGPoint(1.0,1.5), a, CGPoint(0,0), CGPoint(boundingBox.width/2,boundingBox.height/2))
-        //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
+       
         CGContextConcatCTM(context, transform)
-        //CGContextSaveGState(context)
-        
-        //transform = CGAffineTransformTranslate(transform, boundingBox.width/2, boundingBox.height/2)
-        //CGContextConcatCTM(context, transform)
-        //CGContextRestoreGState(context)
-        
-        
-        //moves entire context
-        //
-        
-        
-        
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        
         CGContextRestoreGState(context)//why is this here again?
         
         //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
