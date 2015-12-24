@@ -201,7 +201,7 @@ private class Utils{
      * Radial gradient
      * NOTE:
      * TODO:
-     * TODO: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
+     * TODO: you may want to add a param that can set to fit the gradient inside bounding box, if false then fit the smallest axis see css specs for this workflow
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         //Swift.print("Graphics.drawRadialGradient")
@@ -215,14 +215,11 @@ private class Utils{
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y/*from -1 to 1*/
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
-        //Swift.print("endCenter: " + "\(endCenter)")
         let startRadius:CGFloat = minRadius/**/
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
-        
         let rot:CGFloat = gradient.rotation
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
-        
         let offsetX = -minRadius + (minAxis*gradient.relativeStartCenter!.x)
         let offsetY = -minRadius + (minAxis*gradient.relativeStartCenter!.y)
         Swift.print("offsetX: " + "\(offsetX)")
