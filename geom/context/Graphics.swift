@@ -210,8 +210,8 @@ private class Utils{
         CGContextDrawPath(context, CGPathDrawingMode.Fill)//draws the background color to the context
         /*End of background fill*/
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox*/
-        let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)
-        let minRadius:CGFloat = minAxis/2
+        let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
+        let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
         
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y
