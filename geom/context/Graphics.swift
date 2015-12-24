@@ -161,14 +161,14 @@ private class Utils{
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
         
-        CGContextSaveGState(context)//why is this here again?
+        //CGContextSaveGState(context)//why is this here again?
         
         if(gradient.gradientType == GradientType.Axial) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }
-        CGContextRestoreGState(context)//why is this here again?
+        //CGContextRestoreGState(context)//why is this here again?
        
     }
     /**
