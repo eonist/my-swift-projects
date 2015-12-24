@@ -15,12 +15,16 @@ extension CGAffineTransform {
     /**
     *
     */
-    static func transformWithPivot(inout transform:CGAffineTransform, scale:CGPoint,rotation:CGFloat,offset:CGFloat,pivot:CGPoint,initRotation:CGFloat = 0):Matrix {
+    
+    
+    static func transformWithPivot(inout transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGFloat, _ pivot:CGPoint,_ initRotation:CGFloat = 0) {
+        /*
         transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         if(initRotation != 0) {CGAffineTransformRotate(transform, -initRotation)}
         matrix.scale(scale.x, scale.y);
         matrix.rotate(rotation);
         matrix.translate(pivot.x+offset.x, pivot.y+offset.y);/*globalToLocal*/
         return matrix;
+        */
     }
 }
