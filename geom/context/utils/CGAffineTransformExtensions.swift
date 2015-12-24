@@ -7,6 +7,12 @@ extension CGAffineTransform {
     mutating func rotate(rotation:CGFloat){
         self = CGAffineTransformRotate(self, rotation)
     }
+    mutating func scale(xScale:CGFloat,yScale:CGFloat){
+        self = CGAffineTransformScale(self, xScale, yScale)
+    }
+    mutating func scale(xScale:CGFloat,yScale:CGFloat){
+        self = CGAffineTransformScale(self, xScale, yScale)
+    }
     /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
      * NOTE: The equivelent code in Matrix Trasform form: //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
