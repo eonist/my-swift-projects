@@ -212,19 +212,13 @@ private class Utils{
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
-        
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
-        let focalRatio:CGFloat = gradient.relativeEndCenter!.y
-        
-        //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
+        let focalRatio:CGFloat = gradient.relativeEndCenter!.y/*from -1 to 1*/
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         //Swift.print("endCenter: " + "\(endCenter)")
-
-        let startRadius:CGFloat = minRadius
+        let startRadius:CGFloat = minRadius/**/
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         
-        CGContextSaveGState(context)
-       
         let rot:CGFloat = gradient.rotation
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
@@ -237,10 +231,10 @@ private class Utils{
         transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
         transform = CGAffineTransform.scaleFromPoint(transform, gradient.relativeStartRadius!.height/**/,  gradient.relativeStartRadius!.width/**/, pivot)
-       
-        CGContextConcatCTM(context, transform)
-        CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        CGContextRestoreGState(context)
+        CGContextSaveGState(context)/*save the current context*/
+        CGContextConcatCTM(context, transform)/*transform the current context*/
+        CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextRestoreGState(context)/*restore the context that was saved*/
     }
 }
 
