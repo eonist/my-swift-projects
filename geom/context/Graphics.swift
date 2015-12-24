@@ -249,11 +249,11 @@ private class Utils{
         
         CGContextSaveGState(context)
         
-        var transform:CGAffineTransform  = CGAffineTransformMakeRotation(π/4)//45deg
+        var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
         // Apply a scaling transformation to the transform just created.
-        //transform = CGAffineTransformScale(transform, 1, 2)
+        transform = CGAffineTransformScale(transform, 4, 2)
         //moves entire context
-        CGContextTranslateCTM(context, 100.0, 100.0)
+        //CGContextTranslateCTM(context, 100.0, 100.0)
         
         
         
