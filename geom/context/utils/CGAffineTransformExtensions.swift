@@ -31,7 +31,7 @@ extension CGAffineTransform {
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
     /**
-     *
+     * NOTE
      */
     
     
