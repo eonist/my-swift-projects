@@ -222,7 +222,6 @@ private class Utils{
         CGContextRestoreGState(context)/*restore the context that was saved*/
     }
 }
-
 extension Graphics{//private class ShadowUtils
     /**
      *
