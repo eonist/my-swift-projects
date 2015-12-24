@@ -256,15 +256,17 @@ private class Utils{
         CGContextRestoreGState(context)//why is this here again?
         
         //transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
-        CGContextSaveGState(context)
+        //CGContextSaveGState(context)
         var transform2:CGAffineTransform  = CGAffineTransformIdentity
         transform2 = CGAffineTransformRotate(transform2, π/2)
-        CGContextRestoreGState(context)
+        CGContextConcatCTM(context, transform)
+        //CGContextRestoreGState(context)
         
         
-        CGContextSaveGState(context)
+        //CGContextSaveGState(context)
         var transform3:CGAffineTransform  = CGAffineTransformIdentity
         transform3 = CGAffineTransformTranslate(transform3, boundingBox.width/2, boundingBox.height/2)
+        CGContextConcatCTM(context, transform)
         //CGContextRestoreGState(context)
         
         
