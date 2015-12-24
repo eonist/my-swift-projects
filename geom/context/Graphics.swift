@@ -258,11 +258,11 @@ private class Utils{
         //transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
         //CGContextSaveGState(context)
         
-        transform = CGAffineTransformRotate(transform, π/2)
+        transform = CGAffineTransformRotate(transform, π/4)
         
-        
+        CGContextConcatCTM(context, transform)
         //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
-        CGContextRotateCTM(context, π/4)
+        //CGContextRotateCTM(context, π/4)
         //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
         
         //CGContextConcatCTM(context, transform2)
