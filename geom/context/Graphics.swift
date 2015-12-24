@@ -281,7 +281,7 @@ private class Utils{
         transform.translate(pivot.x, pivot.y)
         transform.scale(2.5, 1.0)
         transform.translate(-pivot.x, -pivot.y)
-        //CGAffineTransform.rotateAroundExternalPoint(&transform, CGPoint(x,y), a)
+        CGAffineTransform.rotateAroundExternalPoint(&transform, CGPoint(pivot.x,pivot.y), a)
         
         //CGAffineTransform.transformWithPivot(&transform, CGPoint(1.0,1.5), a, CGPoint(0,0), CGPoint(boundingBox.width/2,boundingBox.height/2))
         //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
