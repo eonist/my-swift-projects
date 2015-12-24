@@ -215,8 +215,8 @@ private class Utils{
         let startCenter:CGPoint = CGPoint(boundingBox.width * gradient.relativeStartCenter!.x,boundingBox.height * gradient.relativeStartCenter!.y)
         
         
-        let xAxisRadius:CGFloat = boundingBox.height/2
-        let yAxisRadius:CGFloat = boundingBox.width/2
+        let xAxisRadius:CGFloat = boundingBox.width/2
+        let yAxisRadius:CGFloat = boundingBox.height/2
         
         let minRadius:CGFloat = min(xAxisRadius,yAxisRadius)
         
@@ -237,7 +237,7 @@ private class Utils{
         
         
         //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
-        let startRadius:CGFloat = newXAxisRadius
+        let startRadius:CGFloat = xAxisRadius
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
