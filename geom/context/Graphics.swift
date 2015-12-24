@@ -222,9 +222,8 @@ private class Utils{
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
         let offsetX = -minRadius + (minAxis*gradient.relativeStartCenter!.x)
         let offsetY = -minRadius + (minAxis*gradient.relativeStartCenter!.y)
-        Swift.print("offsetX: " + "\(offsetX)")
-        Swift.print("offsetY: " + "\(offsetY)")
-        
+        //Swift.print("offsetX: " + "\(offsetX)")
+        //Swift.print("offsetY: " + "\(offsetY)")
         transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
         transform = CGAffineTransform.scaleFromPoint(transform, gradient.relativeStartRadius!.height/**/,  gradient.relativeStartRadius!.width/**/, pivot)
