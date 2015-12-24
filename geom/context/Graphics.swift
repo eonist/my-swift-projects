@@ -242,10 +242,18 @@ private class Utils{
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         
         
-        let myTransform = CGAffineTransformMakeScale(boundingBox.width, boundingBox.height);
-        CGContextConcatCTM(context, myTransform);
-        CGContextSaveGState(context);
+        //let myTransform = CGAffineTransformMakeScale(boundingBox.width, boundingBox.height);
+        //CGContextConcatCTM(context, myTransform);
+        //CGContextSaveGState(context);
         //CGContextSaveGState(context)//why is this here again?
+        
+        var theTransform:CGAffineTransform  = CGAffineTransformMakeRotation(π/4);//45deg
+        // Apply a scaling transformation to the transform just created.
+        theTransform = CGAffineTransformScale(theTransform, 1, 2);
+        //moves entire context
+        CGContextTranslateCTM(context, 100., 100.);
+        
+        
         
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         
