@@ -213,7 +213,7 @@ private class Utils{
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
         
-        let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)
+        let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
