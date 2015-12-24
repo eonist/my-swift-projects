@@ -259,12 +259,14 @@ private class Utils{
         CGContextSaveGState(context)
         var transform2:CGAffineTransform  = CGAffineTransformIdentity
         transform2 = CGAffineTransformRotate(transform2, π/2)
-        //CGContextRestoreGState(context)
+        CGContextRestoreGState(context)
         
         
         CGContextSaveGState(context)
-        var transform2:CGAffineTransform  = CGAffineTransformIdentity
-        transform = CGAffineTransformTranslate(transform, boundingBox.width/2, boundingBox.height/2)
+        var transform3:CGAffineTransform  = CGAffineTransformIdentity
+        transform3 = CGAffineTransformTranslate(transform3, boundingBox.width/2, boundingBox.height/2)
+        //CGContextRestoreGState(context)
+        
         
         //moves entire context
         //
