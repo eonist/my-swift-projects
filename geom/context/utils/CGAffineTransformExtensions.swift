@@ -30,11 +30,10 @@ extension CGAffineTransform {
         transform.rotate(rotation)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
+    
     /**
-     * NOTE
+     * NOTE: The result may vary if you change the order of how the translations are applied. This method does not work if you need to rotate and scale around a point for instance, then you need to change the order
      */
-    
-    
     static func transformWithPivot(inout transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) {
         transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         if(initRotation != 0) {transform.rotate( -initRotation)}
