@@ -271,8 +271,11 @@ private class Utils{
         
         //CGContextConcatCTM(context, transform2)
         //CGContextRestoreGState(context)
-        
-        
+        let a = π/4
+        let x = 0
+        let y = 0
+        let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x-x*cos(a)+y*sin(a),y-x*sin(a)-y*cos(a));
+
         //CGContextSaveGState(context)
         
         //transform = CGAffineTransformTranslate(transform, boundingBox.width/2, boundingBox.height/2)
