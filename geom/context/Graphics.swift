@@ -262,6 +262,8 @@ private class Utils{
         
         
         CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
+        CGContextRotateCTM(context, π/4)
+        CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
         
         //CGContextConcatCTM(context, transform2)
         //CGContextRestoreGState(context)
