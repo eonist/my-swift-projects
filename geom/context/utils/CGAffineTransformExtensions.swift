@@ -19,8 +19,8 @@ extension CGAffineTransform {
         transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
     /**
-    *
-    */
+     *
+     */
     
     
     static func transformWithPivot(inout transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGFloat, _ pivot:CGPoint,_ initRotation:CGFloat = 0) {
