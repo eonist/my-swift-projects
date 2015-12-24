@@ -13,10 +13,10 @@ extension CGAffineTransform {
     mutating func translate(x:CGFloat,_ y:CGFloat){
         self = CGAffineTransformTranslate(self, x, y)
     }
-    mutating func rotateAroundPoint(rotation:CGFloat, pivot:CGPoint){
-        CGAffineTransform.rotateAroundPoint(&self, pivot, rotation)
+    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint){
+        CGAffineTransform.rotateAroundPoint(&self, rotation,pivot)
     }
-    mutating func scaleFromPoint(xScale:CGFloat,yScale:CGFloat,pivot:CGPoint){
+    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){
         CGAffineTransform.scaleFromPoint(&self, xScale,yScale,pivot)
     }
     /**
@@ -31,7 +31,7 @@ extension CGAffineTransform {
      * // :TODO: we could return the matrix for method chaining
      * // :TODO: rename to just rotate? for simplicity?
      */
-    static func rotateAroundPoint(inout transform:CGAffineTransform,_ pivot:CGPoint, _ rotation:CGFloat){
+    static func rotateAroundPoint(inout transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint){
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.rotate(rotation)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/

@@ -278,10 +278,13 @@ private class Utils{
         */
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
-        CGAffineTransform.rotateAroundExternalPoint(&transform, CGPoint(pivot.x,pivot.y), a)
+        transform.rotateAroundPoint(a,CGPoint(pivot.x,pivot.y))
+        transform.scaleFromPoint(2.5,  1.0,  pivot)
+        /*
         transform.translate(pivot.x, pivot.y)
         transform.scale(2.5, 1.0)
         transform.translate(-pivot.x, -pivot.y)
+        */
         
         
         //CGAffineTransform.transformWithPivot(&transform, CGPoint(1.0,1.5), a, CGPoint(0,0), CGPoint(boundingBox.width/2,boundingBox.height/2))
