@@ -215,10 +215,13 @@ private class Utils{
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)
         
         
+        /*
         let xAxisRadius:CGFloat = boundingBox.width/2
         let yAxisRadius:CGFloat = boundingBox.height/2
+        */
         
-        let minRadius:CGFloat = min(xAxisRadius,yAxisRadius)
+        let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)
+        let minRadius:CGFloat = minAxis/2
         
         //let newXAxisRadius:CGFloat = minRadius// * gradient.relativeStartRadius!.width
         //let newYAxisRadius:CGFloat = minRadius// * gradient.relativeStartRadius!.height
