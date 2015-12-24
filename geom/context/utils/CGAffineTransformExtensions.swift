@@ -16,8 +16,8 @@ extension CGAffineTransform {
     /**
      * Scales a matrix and returns the result. The skewSide parameter lets the user determine which side to skew (right or bottom).
      */
-    mutating func skew(matrix:Matrix, angle:Number, skewSide:String = "right"){
-        self = CGAffineTransformTranslate(self, x, y)
+    mutating func skew(transform:CGAffineTransform, angle:CGFloat, skewSide:String = "right"){
+        //see old code for this implementation
     }
     /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
