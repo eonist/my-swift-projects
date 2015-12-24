@@ -41,6 +41,5 @@ extension CGAffineTransform {
         transform.scale(scale.x, scale.y);
         transform.rotate(rotation);
         transform.translate(-pivot.x+offset.x, -pivot.y+offset.y);/*globalToLocal*/
-        /**/
     }
 }
