@@ -249,21 +249,21 @@ private class Utils{
         
         CGContextSaveGState(context)
         
-        //var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
+        var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
         // Apply a scaling transformation to the transform just created.
-        //transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
+        transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
         //CGContextConcatCTM(context, transform)
         //CGContextRestoreGState(context)//why is this here again?
         
         //transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
         //CGContextSaveGState(context)
         
-        //transform = CGAffineTransformRotate(transform, π/2)
+        transform = CGAffineTransformRotate(transform, π/2)
         
         
-        CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
+        //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
         CGContextRotateCTM(context, π/4)
-        CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
+        //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
         
         //CGContextConcatCTM(context, transform2)
         //CGContextRestoreGState(context)
