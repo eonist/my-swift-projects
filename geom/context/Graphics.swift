@@ -274,7 +274,8 @@ private class Utils{
         let a:CGFloat = π/2
         let x:CGFloat = 100.0
         let y:CGFloat = 100.0
-        var transform:CGAffineTransform = CGAffineTransformMakeTranslation(x, y);
+        var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
+        transform = CGAffineTransformTranslate(transform, x, y)
         transform = CGAffineTransformRotate(transform, a);
         transform = CGAffineTransformTranslate(transform,-x,-y);
         //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
