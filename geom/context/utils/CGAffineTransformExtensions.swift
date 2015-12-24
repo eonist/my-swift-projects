@@ -59,7 +59,7 @@ extension CGAffineTransform {
      * NOTE: the special thing about it is that the scale value follows the axis of the rotation. defualt rotation is 0 and thus scale.y becomes the width sort of
      */
     static func transformAroundPoint(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint)->CGAffineTransform{
-        transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
+        transform = CGAffineTransform.translate(transform,offset.x,offset.y)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rotation, pivot)
         transform = CGAffineTransform.scaleFromPoint(transform, scale.y/**/,  scale.x/**/, pivot)
         return transform
