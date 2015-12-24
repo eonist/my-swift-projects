@@ -8,8 +8,8 @@ extension CGAffineTransform {
      * // :TODO: rename to just rotate? for simplicity?
      */
     static func rotateAroundExternalPoint(inout transform:CGAffineTransform,_ pivot:CGPoint, _ rotation:CGFloat){
-        transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)
+        transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform = CGAffineTransformRotate(transform, rotation);
-        transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y);
+        transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
 }
