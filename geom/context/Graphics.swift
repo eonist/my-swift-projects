@@ -222,7 +222,7 @@ private class Utils{
         
         let newXAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.width
         let newYAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.height
-        
+        Swift.print("newYAxisRadius: " + "\(newYAxisRadius)")
         
         let endFocusPoint:CGPoint = startCenter.polarPoint(newYAxisRadius, gradient.rotation)
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y
