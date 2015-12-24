@@ -245,7 +245,11 @@ private class Utils{
         let rot:CGFloat = gradient.rotation
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
-        transform = CGAffineTransform.translate(transform,0,50)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
+        
+        let offsetX = -minRadius + (minAxis*gradient.relativeStartCenter!.x)
+        Swift.print("offsetX: " + "\(offsetX)")
+        
+        transform = CGAffineTransform.translate(transform,offsetX,0)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
         transform = CGAffineTransform.scaleFromPoint(transform, 0.5/*gradient.relativeStartRadius!.width*/,  2.5/*gradient.relativeStartRadius!.height*/, pivot)
        
