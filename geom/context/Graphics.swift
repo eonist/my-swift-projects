@@ -199,8 +199,8 @@ private class Utils{
     }
     /**
      * Radial gradient
-     * NOTE: to squeze the square, just extend the distance the focal point can extend
-     * TODO: I think you need to get the points for the 45 deg of the normal aswell, think, you may getaway with just using the relative aspect ratio between w and h, if it doesnt work you need to get the 45deg normal points aswell
+     * NOTE:
+     * TODO:
      * TODO: The start and end point of the radial should be defined by the interssection of an array from the center to the embedded ellipse of a rectangle
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
