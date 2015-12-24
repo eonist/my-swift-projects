@@ -253,7 +253,7 @@ private class Utils{
         
         transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
-        transform = CGAffineTransform.scaleFromPoint(transform, 0.5/*gradient.relativeStartRadius!.width*/,  2.5/*gradient.relativeStartRadius!.height*/, pivot)
+        transform = CGAffineTransform.scaleFromPoint(transform, gradient.relativeStartRadius!.height/**/,  gradient.relativeStartRadius!.width/**/, pivot)
        
         CGContextConcatCTM(context, transform)
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
