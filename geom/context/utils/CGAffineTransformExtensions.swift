@@ -10,8 +10,8 @@ extension CGAffineTransform {
     mutating func scale(xScale:CGFloat,yScale:CGFloat){
         self = CGAffineTransformScale(self, xScale, yScale)
     }
-    mutating func scale(xScale:CGFloat,yScale:CGFloat){
-        self = CGAffineTransformScale(self, xScale, yScale)
+    mutating func translate(x:CGFloat,y:CGFloat){
+        self = CGAffineTransformTranslate(self, x, y)
     }
     /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
