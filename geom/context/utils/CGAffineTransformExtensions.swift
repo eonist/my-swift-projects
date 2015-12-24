@@ -13,11 +13,11 @@ extension CGAffineTransform {
     mutating func translate(x:CGFloat,_ y:CGFloat){
         self = CGAffineTransformTranslate(self, x, y)
     }
-    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint){
-        CGAffineTransform.rotateAroundPoint(&self, rotation,pivot)
+    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint)->CGAffineTransform{
+        return CGAffineTransform.rotateAroundPoint(&self, rotation,pivot)
     }
-    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){
-        CGAffineTransform.scaleFromPoint(&self, xScale,yScale,pivot)
+    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+        return CGAffineTransform.scaleFromPoint(&self, xScale,yScale,pivot)
     }
     /**
      * Scales a matrix and returns the result. The skewSide parameter lets the user determine which side to skew (right or bottom).
@@ -38,7 +38,7 @@ extension CGAffineTransform {
         return transform
     }
     /**
-     *
+     * NOTE: You can chain scaleFromPoint and rotatAroundPoint and eventually skewFromPoint. This is a great way to get different transform results quickly
      */
     static func scaleFromPoint(inout transform:CGAffineTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
@@ -48,6 +48,7 @@ extension CGAffineTransform {
     }
     /**
      * NOTE: The result may vary if you change the order of how the translations are applied. This method does not work if you need to rotate and scale around a point for instance, then you need to change the order
+     * NOTE: its prefreable to chain the methods bellow. so if yoou need other variations of this method. You may want to just chain some transform calls instead
      */
     static func transformWithPivot(inout transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) {
         transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
