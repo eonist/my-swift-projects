@@ -223,11 +223,11 @@ private class Utils{
         let newYAxisRadius:CGFloat = minRadius * gradient.relativeStartRadius!.height
         
         
-        let endFocusPoint:CGPoint = boundingBox.center.polarPoint(newYAxisRadius, gradient.rotation)
+        let endFocusPoint:CGPoint = startCenter.polarPoint(newYAxisRadius, gradient.rotation)
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y
         
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
-        let endCenter = boundingBox.center.interpolate(endFocusPoint, focalRatio)
+        let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         Swift.print("endCenter: " + "\(endCenter)")
         
         //TODO: take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width, 
