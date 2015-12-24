@@ -247,11 +247,13 @@ private class Utils{
         //CGContextSaveGState(context);
         //CGContextSaveGState(context)//why is this here again?
         
-        var theTransform:CGAffineTransform  = CGAffineTransformMakeRotation(π/4);//45deg
+        CGContextSaveGState(context)
+        
+        var transform:CGAffineTransform  = CGAffineTransformMakeRotation(π/4)//45deg
         // Apply a scaling transformation to the transform just created.
-        theTransform = CGAffineTransformScale(theTransform, 1, 2);
+        //transform = CGAffineTransformScale(transform, 1, 2)
         //moves entire context
-        CGContextTranslateCTM(context, 100., 100.);
+        CGContextTranslateCTM(context, 100.0, 100.0)
         
         
         
