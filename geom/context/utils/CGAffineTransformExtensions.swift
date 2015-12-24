@@ -12,4 +12,10 @@ extension CGAffineTransform {
         transform = CGAffineTransformRotate(transform, rotation);
         transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
+    /**
+     *
+     */
+    class func scaleFromPoint(){
+        
+    }
 }
