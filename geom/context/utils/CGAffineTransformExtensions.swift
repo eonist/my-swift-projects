@@ -55,6 +55,17 @@ extension CGAffineTransform {
         
     }
     /**
+     * NOTE: this method is used in conjunction with the radial gradient matrix transformation of context
+     * NOTE: the special thing about it is that the scale value follows the axis of the rotation. defualt rotation is 0 and thus scale.y becomes the width sort of
+     */
+    static func transformAroundPoint(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint)->CGAffineTransform{
+        transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
+        transform = CGAffineTransform.rotateAroundPoint(transform, rotation, pivot)
+        transform = CGAffineTransform.scaleFromPoint(transform, scale.y/**/,  scale.x/**/, pivot)
+        return transform
+    }
+    
+    /**
      * NOTE: The result may vary if you change the order of how the translations are applied. This method does not work if you need to rotate and scale around a point for instance, then you need to change the order
      * NOTE: its prefreable to chain the methods bellow. so if yoou need other variations of this method. You may want to just chain some transform calls instead
      */
