@@ -265,7 +265,7 @@ private class Utils{
         //3. offset cgContext to opposite of step1
         
         //CGContextConcatCTM(context, transform)
-        CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
+        //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
         //CGContextRotateCTM(context, π/4)
         //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
         
@@ -289,7 +289,7 @@ private class Utils{
         
         CGContextRestoreGState(context)//why is this here again?
         
-        CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
+        //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
     }
 }
 
