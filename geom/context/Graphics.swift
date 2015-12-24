@@ -212,7 +212,7 @@ private class Utils{
         
         
         
-        let startCenter:CGPoint = CGPoint(boundingBox.width * gradient.relativeStartCenter!.x,boundingBox.height * gradient.relativeStartCenter!.y)
+        let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)
         
         
         let xAxisRadius:CGFloat = boundingBox.width/2
@@ -230,41 +230,26 @@ private class Utils{
         //Swift.print("xAxisRadius: " + "\(xAxisRadius)")
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
         Swift.print("endCenter: " + "\(endCenter)")
-        
-        //TODO: take alook at what is needed, you could just do focalPointRatio, focal width, rotation, center, center width, 
-        //TODO: maybe even add the option to specify start end width and height and focalratio etc. Simplest and gives total controll
-        
-        
+
         
         //let startCenter:CGPoint = NSMakePoint(NSMidX(boundingBox), NSMidY(boundingBox))
         let startRadius:CGFloat = minRadius
         //let endCenter:CGPoint = boundingBox.bottom// + CGPoint(0,100)
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         
-        
-        //let myTransform = CGAffineTransformMakeScale(boundingBox.width, boundingBox.height);
-        //CGContextConcatCTM(context, myTransform);
-        //CGContextSaveGState(context);
-        //CGContextSaveGState(context)//why is this here again?
-        
         CGContextSaveGState(context)
        
-        let a:CGFloat = π/2
-        /*
-        let x:CGFloat = 100.0
-        let y:CGFloat = 100.0
-        */
+        let rot:CGFloat = gradient.rotation
         let pivot = CGPoint(boundingBox.width/2,boundingBox.height/2)
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
-        transform = CGAffineTransform.translate(transform,0,50)
-        transform = CGAffineTransform.rotateAroundPoint(transform, a, pivot)
-        transform = CGAffineTransform.scaleFromPoint(transform,2.5,  1.0, pivot)
+        transform = CGAffineTransform.translate(transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y)//
+        transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
+        transform = CGAffineTransform.scaleFromPoint(transform, 0.5/*gradient.relativeStartRadius!.width*/,  2.5/*gradient.relativeStartRadius!.height*/, pivot)
        
         CGContextConcatCTM(context, transform)
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        CGContextRestoreGState(context)//why is this here again?
-        
-        //CGContextTranslateCTM(context,boundingBox.width/2, boundingBox.height/2)
+        CGContextRestoreGState(context)
+
     }
 }
 
