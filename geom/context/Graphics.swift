@@ -251,8 +251,9 @@ private class Utils{
         
         var transform:CGAffineTransform  = CGAffineTransformIdentity //CGAffineTransformMakeRotation(π/4)//45deg
         // Apply a scaling transformation to the transform just created.
-        CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
+        //transform = CGAffineTransformTranslate(transform, -boundingBox.width/2, -boundingBox.height/2)
         transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
+        //transform = CGAffineTransformTranslate(transform, boundingBox.width/2, boundingBox.height/2)
         CGContextConcatCTM(context, transform)
         //moves entire context
         //
