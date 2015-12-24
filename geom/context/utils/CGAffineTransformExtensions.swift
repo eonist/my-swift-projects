@@ -7,12 +7,9 @@ extension CGAffineTransform {
      * // :TODO: we could return the matrix for method chaining
      * // :TODO: rename to just rotate? for simplicity?
      */
-    static func rotateAroundExternalPoint(transform:CGAffineTransform, pivot:CGPoint, rotation:CGFloat){
-        /*
-        var transform:CGAffineTransform = CGAffineTransformMakeTranslation(x, y);
-        transform = CGAffineTransformRotate(transform, a);
-        transform = CGAffineTransformTranslate(transform,-x,-y);
-        transform
-        */
+    static func rotateAroundExternalPoint(&transform:CGAffineTransform,  pivot:CGPoint, _ rotation:CGFloat){
+        transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)
+        transform = CGAffineTransformRotate(transform, rotation);
+        transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y);
     }
 }
