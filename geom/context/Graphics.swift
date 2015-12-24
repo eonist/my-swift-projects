@@ -199,33 +199,23 @@ private class Utils{
     }
     /**
      * Radial gradient
-     * NOTE:
-     * TODO:
      * TODO: you may want to add a param that can set to fit the gradient inside bounding box, if false then fit the smallest axis see css specs for this workflow
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
         //Swift.print("Graphics.drawRadialGradient")
-        /*Begining of background fill*/
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
-        CGContextDrawPath(context, CGPathDrawingMode.Fill)//draws the background color to the context
-        /*End of background fill*/
+        CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
         let focalRatio:CGFloat = gradient.relativeEndCenter!.y/*from -1 to 1*/
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
-        let startRadius:CGFloat = minRadius/**/
-        let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
+        let startRadius:CGFloat = minRadius/*The radius of the gradient*/
+        let endRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
         let scale:CGPoint = CGPoint(gradient.relativeStartRadius!.width,gradient.relativeStartRadius!.height)
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.relativeStartCenter!.x),-minRadius + (minAxis*gradient.relativeStartCenter!.y))
         let transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, offset, startCenter)//CGAffineTransformMakeTranslation(x, y);
-        
-        /*
-        transform = CGAffineTransform.translate(transform,offsetX,offsetY)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
-        transform = CGAffineTransform.rotateAroundPoint(transform, rot, pivot)
-        transform = CGAffineTransform.scaleFromPoint(transform, gradient.relativeStartRadius!.height/**/,  gradient.relativeStartRadius!.width/**/, pivot)
-        */
         CGContextSaveGState(context)/*save the current context*/
         CGContextConcatCTM(context, transform)/*transform the current context*/
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
