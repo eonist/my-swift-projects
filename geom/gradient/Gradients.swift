@@ -3,13 +3,12 @@
 class Gradients{
     static var iOS8redGradientStartColor:UInt = 0xFF5E3A
     static var iOS8redGradientEndColor:UInt = 0xFF2A68
+    static var iOS8greenGradientStartColor:UInt = 0x87FC70
+    static var iOS8greenGradientEndColor:UInt = 0x0BD318
 }
 /*
 
-+ (instancetype)iOS8redGradientEndColor;
-{
-return [UIColor colorWithHexString:@""];
-}
++
 
 + (instancetype)iOS8orangeGradientStartColor;
 {
@@ -31,15 +30,7 @@ return [UIColor colorWithHexString:@"FFDB4C"];
 return [UIColor colorWithHexString:@"FFCD02"];
 }
 
-+ (instancetype)iOS8greenGradientStartColor;
-{
-return [UIColor colorWithHexString:@"87FC70"];
-}
 
-+ (instancetype)iOS8greenGradientEndColor;
-{
-return [UIColor colorWithHexString:@"0BD318"];
-}
 
 + (instancetype)iOS8tealGradientStartColor;
 {
