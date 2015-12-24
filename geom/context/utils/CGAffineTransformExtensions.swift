@@ -50,7 +50,9 @@ extension CGAffineTransform {
      *
      */
     static func translate(var transform:CGAffineTransform,_ x:CGFloat,_ y:CGFloat)->CGAffineTransform{
-        return transform.translate(x, y);
+        transform.translate(x, y);
+        return transform
+        
     }
     /**
      * NOTE: The result may vary if you change the order of how the translations are applied. This method does not work if you need to rotate and scale around a point for instance, then you need to change the order
