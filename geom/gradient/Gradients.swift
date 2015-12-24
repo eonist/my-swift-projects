@@ -1,17 +1,14 @@
 //FANCY IOS8 Gradients:
 
-
-/*
-#pragma mark - Gradient Colors
-
-+ (instancetype)iOS8redGradientStartColor;
-{
-return [UIColor colorWithHexString:@"FF5E3A"];
+class Gradients{
+    static var iOS8redGradientStartColor:UInt = 0xFF5E3A
+    static var iOS8redGradientEndColor:UInt = 0xFF2A68
 }
+/*
 
 + (instancetype)iOS8redGradientEndColor;
 {
-return [UIColor colorWithHexString:@"FF2A68"];
+return [UIColor colorWithHexString:@""];
 }
 
 + (instancetype)iOS8orangeGradientStartColor;
