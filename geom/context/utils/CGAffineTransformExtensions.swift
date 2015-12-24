@@ -14,10 +14,10 @@ extension CGAffineTransform {
         self = CGAffineTransformTranslate(self, x, y)
     }
     mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint)->CGAffineTransform{
-        return CGAffineTransform.rotateAroundPoint(&self, rotation,pivot)
+        self = CGAffineTransform.rotateAroundPoint(self, rotation,pivot)
     }
     mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
-        return CGAffineTransform.scaleFromPoint(&self, xScale,yScale,pivot)
+        self = CGAffineTransform.scaleFromPoint(self, xScale,yScale,pivot)
     }
     /**
      * Scales a matrix and returns the result. The skewSide parameter lets the user determine which side to skew (right or bottom).
@@ -31,7 +31,7 @@ extension CGAffineTransform {
      * // :TODO: we could return the matrix for method chaining
      * // :TODO: rename to just rotate? for simplicity?
      */
-    static func rotateAroundPoint(inout transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func rotateAroundPoint(var transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.rotate(rotation)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
@@ -40,7 +40,7 @@ extension CGAffineTransform {
     /**
      * NOTE: You can chain scaleFromPoint and rotatAroundPoint and eventually skewFromPoint. This is a great way to get different transform results quickly
      */
-    static func scaleFromPoint(inout transform:CGAffineTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func scaleFromPoint(var transform:CGAffineTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.scale(xScale,yScale)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
