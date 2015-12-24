@@ -275,9 +275,7 @@ private class Utils{
         let x:CGFloat = 100.0
         let y:CGFloat = 100.0
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
-        transform = CGAffineTransformTranslate(transform, x, y)
-        transform = CGAffineTransformRotate(transform, a);
-        transform = CGAffineTransformTranslate(transform,-x,-y);
+        CGAffineTransform.rotateAroundExternalPoint(&transform, CGPoint(x,y), a)
         //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
         CGContextConcatCTM(context, transform)
         //CGContextSaveGState(context)
