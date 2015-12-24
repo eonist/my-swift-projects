@@ -242,12 +242,14 @@ private class Utils{
         let endRadius:CGFloat = 0.0//TODO:test different things with this, can it be used to something
         
         
-        
+        let myTransform = CGAffineTransformMakeScale(boundingBox.width, boundingBox.height);
+        CGContextConcatCTM(context, myTransform);
+        CGContextSaveGState(context);
         //CGContextSaveGState(context)//why is this here again?
         
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])//CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         
-        //CGContextRestoreGState(context)//why is this here again?
+        CGContextRestoreGState(context)//why is this here again?
     }
 }
 
