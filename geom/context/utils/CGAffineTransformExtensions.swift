@@ -13,10 +13,10 @@ extension CGAffineTransform {
     mutating func translate(x:CGFloat,_ y:CGFloat){
         self = CGAffineTransformTranslate(self, x, y)
     }
-    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint)->CGAffineTransform{
+    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint){
         self = CGAffineTransform.rotateAroundPoint(self, rotation,pivot)
     }
-    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){
         self = CGAffineTransform.scaleFromPoint(self, xScale,yScale,pivot)
     }
     /**
