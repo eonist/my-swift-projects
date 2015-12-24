@@ -7,10 +7,10 @@ extension CGAffineTransform {
     mutating func rotate(rotation:CGFloat){
         self = CGAffineTransformRotate(self, rotation)
     }
-    mutating func scale(xScale:CGFloat,yScale:CGFloat){
+    mutating func scale(xScale:CGFloat,_ yScale:CGFloat){
         self = CGAffineTransformScale(self, xScale, yScale)
     }
-    mutating func translate(x:CGFloat,y:CGFloat){
+    mutating func translate(x:CGFloat,_ y:CGFloat){
         self = CGAffineTransformTranslate(self, x, y)
     }
     /**
@@ -26,9 +26,9 @@ extension CGAffineTransform {
      * // :TODO: rename to just rotate? for simplicity?
      */
     static func rotateAroundExternalPoint(inout transform:CGAffineTransform,_ pivot:CGPoint, _ rotation:CGFloat){
-        transform = CGAffineTransformTranslate(transform, pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
+        transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.rotate(rotation)// = CGAffineTransformRotate(transform, rotation);
-        transform = CGAffineTransformTranslate(transform,-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
+        transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
     }
     /**
      *
