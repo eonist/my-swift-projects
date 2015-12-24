@@ -272,11 +272,13 @@ private class Utils{
         //CGContextConcatCTM(context, transform2)
         //CGContextRestoreGState(context)
         let a:CGFloat = π/2
+        /*
         let x:CGFloat = 100.0
         let y:CGFloat = 100.0
+        */
         var transform:CGAffineTransform = CGAffineTransformIdentity//CGAffineTransformMakeTranslation(x, y);
         //CGAffineTransform.rotateAroundExternalPoint(&transform, CGPoint(x,y), a)
-        CGAffineTransform.transformWithPivot(&transform, CGPoint(1,1), a, CGPoint(0,0), CGPoint(boundingBox.width/2,boundingBox.height/2))
+        CGAffineTransform.transformWithPivot(&transform, CGPoint(1.2,1), a, CGPoint(0,0), CGPoint(boundingBox.width/2,boundingBox.height/2))
         //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
         CGContextConcatCTM(context, transform)
         //CGContextSaveGState(context)
