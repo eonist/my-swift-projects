@@ -258,7 +258,11 @@ private class Utils{
         //transform = CGAffineTransformScale(transform, gradient.relativeStartRadius!.height, gradient.relativeStartRadius!.width)
         //CGContextSaveGState(context)
         
-        transform = CGAffineTransformRotate(transform, π/4)
+        //transform = CGAffineTransformRotate(transform, π/4)
+        
+        //1. move the path so that its centered at tl
+        //2. rotate, scale etc,
+        //3. offset cgContext to opposite of step1
         
         CGContextConcatCTM(context, transform)
         //CGContextTranslateCTM(context,-boundingBox.width/2, -boundingBox.height/2)
