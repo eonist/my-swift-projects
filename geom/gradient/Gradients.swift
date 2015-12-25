@@ -28,6 +28,6 @@ extension Gradients{
     //continue here: Create a CGColor(hex,alpha) initializer
     //clean up the COlors.swift class, use methods instead for method overloading
     
-    static func red()->Array<CGColor>{return [NSColorParser.cgColor(redStart),NSColorParser.cgColor(redEnd)]}
+    static func red()->Array<CGColor>{return [CGColor.color(redStart),CGColor.color(redEnd)]}
     
 }
