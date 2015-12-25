@@ -121,7 +121,10 @@ public class Graphics{
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
+                CGContextSaveGState(context)
+                CGContextClip(context) //create a mask for the gradient to be drawn into
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
+                CGContextRestoreGState(context)//restore the graphic mask
             default:
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
