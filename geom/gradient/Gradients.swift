@@ -23,5 +23,9 @@ class Gradients{
     static var silverGradientEndColor:UInt = 0x898C90
 }
 extension Gradients{
+    static func test()->String{
+        
+    }
+    static func test()
     static var red:(start:NSColor,end:NSColor) = (NSColorParser.nsColor(redGradientStartColor),NSColorParser.nsColor(redGradientEndColor))
 }
