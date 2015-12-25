@@ -179,7 +179,7 @@ class Colors {
 }
 /*FANCY IOS Colors:*/
 extension Colors{
-   static var red:UInt = 0xFF3B30
+   static func red()->UInt{return 0xFF3B30}
    static var orange:UInt = 0xFF9500
    static var yellow:UInt = 0xFFCC00
    static var green:UInt = 0x4CD964
