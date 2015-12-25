@@ -25,15 +25,15 @@ class Gradients{
 extension Gradients{
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}
     
-    static func red()->Array<CGColor>{return [CGColor.color(redStart),CGColor.color(redEnd)]}
-    static func green()->Array<CGColor>{return [CGColor.color(greenStart),CGColor.color(greenEnd)]}
-    static func orange()->Array<CGColor>{return [CGColor.color(orangeStart),CGColor.color(orangeEnd)]}
-    static func yellow()->Array<CGColor>{return [CGColor.color(yellowStart),CGColor.color(yellowEnd)]}
-    static func teal(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(tealStart).alpha(alpha),CGColor.color(tealEnd).alpha(alpha)]}
-    static func blue()->Array<CGColor>{return [CGColor.color(blueStart),CGColor.color(blueEnd)]}
-    static func violet()->Array<CGColor>{return [CGColor.color(violetStart),CGColor.color(violetEnd)]}
-    static func magenta()->Array<CGColor>{return [CGColor.color(magentaStart),CGColor.color(magentaEnd)]}
-    static func black()->Array<CGColor>{return [CGColor.color(blackStart),CGColor.color(blackEnd)]}
-    static func silver()->Array<CGColor>{return [CGColor.color(silverStart),CGColor.color(silverEnd)]}
+    static func red(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(redStart.alpha(alpha)),CGColor.color(redEnd).alpha(alpha)]}
+    static func green(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(greenStart.alpha(alpha)),CGColor.color(greenEnd).alpha(alpha)]}
+    static func orange(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(orangeStart.alpha(alpha)),CGColor.color(orangeEnd).alpha(alpha)]}
+    static func yellow(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(yellowStart.alpha(alpha)),CGColor.color(yellowEnd).alpha(alpha)]}
+    static func teal(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(tealStart).alpha(alpha.alpha(alpha)),CGColor.color(tealEnd).alpha(alpha).alpha(alpha)]}
+    static func blue(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(blueStart.alpha(alpha)),CGColor.color(blueEnd).alpha(alpha)]}
+    static func violet(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(violetStart.alpha(alpha)),CGColor.color(violetEnd).alpha(alpha)]}
+    static func magenta(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(magentaStart.alpha(alpha)),CGColor.color(magentaEnd).alpha(alpha)]}
+    static func black(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(blackStart.alpha(alpha)),CGColor.color(blackEnd).alpha(alpha)]}
+    static func silver(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(silverStart.alpha(alpha)),CGColor.color(silverEnd).alpha(alpha)]}
     
 }
