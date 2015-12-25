@@ -24,14 +24,7 @@ class Gradients{
 }
 extension Gradients{
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}
-        
     
-    static func red()->Array<CGColor>{
-        let c = NSColorParser.cgColor(Gradients.red)
-        return [c]
-    }
-        
-    
-    
+    static func red()->Array<CGColor>{return [NSColorParser.cgColor(redStart),NSColorParser.cgColor(redEnd)]}
     
 }
