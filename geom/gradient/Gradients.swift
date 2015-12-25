@@ -7,32 +7,28 @@ class Gradients{
     static var iOS8greenGradientEndColor:UInt = 0x0BD318
     static var iOS8orangeGradientStartColor:UInt = 0xFF9500
     static var iOS8orangeGradientEndColor:UInt = 0xFF5E3A
+    static var iOS8yellowGradientStartColor:UInt = 0xFFDB4C
+    static var iOS8yellowGradientEndColor:UInt = 0xFFCD02
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
+    static var :UInt = 0x
 }
 /*
-
-+
-
-+ (instancetype);
-{
-return [UIColor colorWithHexString:@""];
-}
-
-+ (instancetype);
-{
-return [UIColor colorWithHexString:@""];
-}
-
-+ (instancetype)iOS8yellowGradientStartColor;
-{
-return [UIColor colorWithHexString:@"FFDB4C"];
-}
-
-+ (instancetype)iOS8yellowGradientEndColor;
-{
-return [UIColor colorWithHexString:@"FFCD02"];
-}
-
-
 
 + (instancetype)iOS8tealGradientStartColor;
 {
