@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
  * // :TODO: WHITE1,WHITE2, BLACK2, BLACK3 etc
  * // :TODO: add CYAN,MAGENTA,KEY,YELLOW CMYK
