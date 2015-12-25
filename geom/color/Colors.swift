@@ -192,14 +192,14 @@ extension Colors{
 }
 /*FANCY IOS Colors - NSColor:*/
 extension Colors{
-    static var red:NSColor = NSColorParser.nsColor(Colors.red())
-    static var orange:NSColor = NSColorParser.nsColor(Colors.orange())
-    static var yellow:NSColor = NSColorParser.nsColor(Colors.yellow())
-    static var green:NSColor = NSColorParser.nsColor(Colors.green())
-    static var lightBlue:NSColor = NSColorParser.nsColor(Colors.lightBlue())
-    static var darkBlue:NSColor = NSColorParser.nsColor(Colors.darkBlue())
-    static var purple:NSColor = NSColorParser.nsColor(Colors.purple())
-    static var pink:NSColor = NSColorParser.nsColor(Colors.pink())
-    static var darkGray:NSColor = NSColorParser.nsColor(Colors.darkGray())
-    static var lightGray:NSColor = NSColorParser.nsColor(Colors.red())
+    static func red()->NSColor{return NSColorParser.nsColor(Colors.red())}
+    static func orange()->NSColor{return NSColorParser.nsColor(Colors.orange())}
+    static func yellow()->NSColor{return NSColorParser.nsColor(Colors.yellow())}
+    static func green()->NSColor{return NSColorParser.nsColor(Colors.green())}
+    static func lightBlue()->NSColor{return NSColorParser.nsColor(Colors.lightBlue())}
+    static func darkBlue()->NSColor{return NSColorParser.nsColor(Colors.darkBlue())}
+    static func purple()->NSColor{return NSColorParser.nsColor(Colors.purple())}
+    static func pink()->NSColor{return NSColorParser.nsColor(Colors.pink())}
+    static func darkGray()->NSColor{return NSColorParser.nsColor(Colors.darkGray())}
+    static func lightGray()->NSColor{return NSColorParser.nsColor(Colors.red())}
 }
