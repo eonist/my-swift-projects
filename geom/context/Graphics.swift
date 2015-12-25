@@ -121,10 +121,10 @@ public class Graphics{
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
-                CGContextSaveGState(context)
-                CGContextClip(context) //create a mask for the gradient to be drawn into
+                CGContextSaveGState(context)/*we only want to apply a temporary clip*/
+                CGContextClip(context) /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
-                CGContextRestoreGState(context)//restore the graphic mask
+                CGContextRestoreGState(context)/*we only want to apply a temporary clip*/
             default:
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
