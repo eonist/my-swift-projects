@@ -1,5 +1,5 @@
 //FANCY Gradients:
-
+import Cocoa
 class Gradients{
     static var redGradientStartColor:UInt = 0xFF5E3A
     static var redGradientEndColor:UInt = 0xFF2A68
@@ -21,4 +21,7 @@ class Gradients{
     static var blackGradientEndColor:UInt = 0x2B2B2B
     static var silverGradientStartColor:UInt = 0xDBDDDE
     static var silverGradientEndColor:UInt = 0x898C90
+}
+extension Gradients{
+    static var red:(start:NSColor,end:NSColor) = (NSColorParser.nsColor(redGradientStartColor),NSColorParser.nsColor(redGradientEndColor))
 }
