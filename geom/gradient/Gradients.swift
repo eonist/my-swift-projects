@@ -27,5 +27,13 @@ extension Gradients{
     
     static func red()->Array<CGColor>{return [CGColor.color(redStart),CGColor.color(redEnd)]}
     static func green()->Array<CGColor>{return [CGColor.color(greenStart),CGColor.color(greenEnd)]}
+    static func orange()->Array<CGColor>{return [CGColor.color(orangeStart),CGColor.color(orangeEnd)]}
+    static func yellow()->Array<CGColor>{return [CGColor.color(yellowStart),CGColor.color(yellowEnd)]}
+    static func teal()->Array<CGColor>{return [CGColor.color(tealStart),CGColor.color(tealEnd)]}
+    static func blue()->Array<CGColor>{return [CGColor.color(blueStart),CGColor.color(blueEnd)]}
+    static func violet()->Array<CGColor>{return [CGColor.color(violetStart),CGColor.color(violetEnd)]}
+    static func magenta()->Array<CGColor>{return [CGColor.color(magentaStart),CGColor.color(magentaEnd)]}
+    static func black()->Array<CGColor>{return [CGColor.color(blackStart),CGColor.color(blackEnd)]}
+    static func silver()->Array<CGColor>{return [CGColor.color(silverStart),CGColor.color(silverEnd)]}
     
 }
