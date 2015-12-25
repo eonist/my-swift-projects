@@ -179,14 +179,14 @@ class Colors {
 }
 /*FANCY IOS Colors:*/
 extension Colors{
-   static func red()->UInt{return 0xFF3B30}
-   static var orange:UInt = 0xFF9500
-   static var yellow:UInt = 0xFFCC00
-   static var green:UInt = 0x4CD964
-   static var lightBlue:UInt = 0x34AADC
-   static var darkBlue:UInt = 0x007AFF
-   static var purple:UInt = 0x5856D6
-   static var pink:UInt = 0xFF2D55
-   static var darkGray:UInt = 0x8E8E93
-   static var lightGray:UInt = 0xC7C7CC
+    static func red()->UInt{return 0xFF3B30}
+    static func orange()->UInt{return 0xFF9500}
+    static func yellow()->UInt{return 0xFFCC00}
+    static func green()->UInt{return 0x4CD964}
+    static func lightBlue()->UInt{return 0x34AADC}
+    static func darkBlue()->UInt{return 0x007AFF}
+    static func purple()->UInt{return 0x5856D6}
+    static func pink()->UInt{return 0xFF2D55}
+    static func darkGray()->UInt{return 0x8E8E93}
+    static func lightGray()->UInt{return 0xC7C7CC}
 }
