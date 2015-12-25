@@ -1,5 +1,8 @@
 import Foundation
 
-class CGColorExtensions {
-
+extension CGColor {
+    var  init(){
+        return
+        
+    }
 }
