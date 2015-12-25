@@ -1,8 +1,8 @@
 //FANCY Gradients:
 import Cocoa
 class Gradients{
-    static var redGradientStartColor:UInt = 0xFF5E3A
-    static var redGradientEndColor:UInt = 0xFF2A68
+    static var redStart:UInt = 0xFF5E3A
+    static var redEnd:UInt = 0xFF2A68
     static var greenGradientStartColor:UInt = 0x87FC70
     static var greenGradientEndColor:UInt = 0x0BD318
     static var orangeGradientStartColor:UInt = 0xFF9500
@@ -23,12 +23,12 @@ class Gradients{
     static var silverGradientEndColor:UInt = 0x898C90
 }
 extension Gradients{
-    static func red()->String{return ""}
+    static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redGradientStartColor),NSColorParser.nsColor(redGradientEndColor))}
         
     
-    static func red()->Int{return 2}
+    static func red()->Array<CGColor>{return [NSColorParser.cgColor(<#T##hexColor: UInt##UInt#>)]}
         
     
     
-    static var red:(start:NSColor,end:NSColor) = (NSColorParser.nsColor(redGradientStartColor),NSColorParser.nsColor(redGradientEndColor))
+    
 }
