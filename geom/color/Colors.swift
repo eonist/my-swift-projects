@@ -190,3 +190,16 @@ extension Colors{
     static func darkGray()->UInt{return 0x8E8E93}
     static func lightGray()->UInt{return 0xC7C7CC}
 }
+/*FANCY IOS Colors - NSColor:*/
+extension Colors{
+    static var red:NSColor = NSColorParser.nsColor(Colors.red)
+    static var orange:NSColor = NSColorParser.nsColor(Colors.orange)
+    static var yellow:NSColor = NSColorParser.nsColor(Colors.yellow)
+    static var green:NSColor = NSColorParser.nsColor(Colors.green)
+    static var lightBlue:NSColor = NSColorParser.nsColor(Colors.lightBlue)
+    static var darkBlue:NSColor = NSColorParser.nsColor(Colors.darkBlue)
+    static var purple:NSColor = NSColorParser.nsColor(Colors.purple)
+    static var pink:NSColor = NSColorParser.nsColor(Colors.pink)
+    static var darkGray:NSColor = NSColorParser.nsColor(Colors.darkGray)
+    static var lightGray:NSColor = NSColorParser.nsColor(Colors.red)
+}
