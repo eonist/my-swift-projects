@@ -5,19 +5,21 @@ class Gradients{
     static var iOS8redGradientEndColor:UInt = 0xFF2A68
     static var iOS8greenGradientStartColor:UInt = 0x87FC70
     static var iOS8greenGradientEndColor:UInt = 0x0BD318
+    static var iOS8orangeGradientStartColor:UInt = 0xFF9500
+    static var iOS8orangeGradientEndColor:UInt = 0xFF5E3A
 }
 /*
 
 +
 
-+ (instancetype)iOS8orangeGradientStartColor;
++ (instancetype);
 {
-return [UIColor colorWithHexString:@"FF9500"];
+return [UIColor colorWithHexString:@""];
 }
 
-+ (instancetype)iOS8orangeGradientEndColor;
++ (instancetype);
 {
-return [UIColor colorWithHexString:@"FF5E3A"];
+return [UIColor colorWithHexString:@""];
 }
 
 + (instancetype)iOS8yellowGradientStartColor;
