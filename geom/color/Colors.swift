@@ -179,14 +179,14 @@ class Colors {
 }
 /*FANCY IOS Colors:*/
 extension Colors{
-   static var red:String = "FF3B30"
-   static var orange:String = "FF9500"
-   static var yellow:String = "FFCC00"
-   static var green:String = "4CD964"
-   static var lightBlue:String = "34AADC"
-   static var darkBlue:String = "007AFF"
-   static var purple:String = "5856D6"
-   static var pink:String = "FF2D55"
-   static var darkGray:String = "8E8E93"
-   static var lightGray:String = "C7C7CC"
+   static var red:UInt = 0xFF3B30
+   static var orange:UInt = 0xFF9500
+   static var yellow:UInt = 0xFFCC00
+   static var green:UInt = 0x4CD964
+   static var lightBlue:UInt = 0x34AADC
+   static var darkBlue:UInt = 0x007AFF
+   static var purple:UInt = 0x5856D6
+   static var pink:UInt = 0xFF2D55
+   static var darkGray:UInt = 0x8E8E93
+   static var lightGray:UInt = 0xC7C7CC
 }
