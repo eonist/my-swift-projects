@@ -1,4 +1,4 @@
-//FANCY  Gradients:
+//FANCY Gradients:
 
 class Gradients{
     static var redGradientStartColor:UInt = 0xFF5E3A

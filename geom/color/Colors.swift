@@ -177,7 +177,7 @@ class Colors {
     static var BAUHAUS_COLOR_5:UInt = 0xE1E1E1;
     static var BAUHAUS_COLOR_S:Array<UInt> = [BAUHAUS_COLOR_1,BAUHAUS_COLOR_2,BAUHAUS_COLOR_3,BAUHAUS_COLOR_4,BAUHAUS_COLOR_5];
 }
-/*FANCY IOS8 Colors:*/
+/*FANCY IOS Colors:*/
 extension Colors{
    static var red:String = "FF3B30"
    static var orange:String = "FF9500"
