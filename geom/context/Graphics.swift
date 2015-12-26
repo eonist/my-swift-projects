@@ -205,9 +205,12 @@ private class Utils{
      * TODO: you may want to add a param that can set to fit the gradient inside bounding box, if false then fit the smallest axis see css specs for this workflow
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
-        //Swift.print("Graphics.drawRadialGradient")
+        Swift.print("Graphics.drawRadialGradient")
+        Swift.print("gradient.colors[0]: " + "\(gradient.colors[0])")
+        
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
+        
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
