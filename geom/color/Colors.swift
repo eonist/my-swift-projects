@@ -207,6 +207,9 @@ extension Colors{
     //orangeRed
     #FF1300
     
+    //redOrange
+    #FF3A2D
+    
     //lightBlack
     1F1F21
     
