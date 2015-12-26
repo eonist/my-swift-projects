@@ -10,3 +10,8 @@ protocol IGradient{
     var relativeEndRadius:CGSize?{get set}//rename to endScale
 }
 
+extension IGradient{
+    func copy() -> IGradient {
+        return Gradient(colors,locations,gradientType,rotation,relativeStartCenter,relativeEndCenter,relativeStartRadius,relativeEndRadius)
+    }
+}
