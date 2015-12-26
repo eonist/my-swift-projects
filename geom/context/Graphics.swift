@@ -166,7 +166,7 @@ private class Utils{
         
         //CGContextSaveGState(context)//why is this here again?
         
-        if(gradient.gradientType == GradientType.Axial) {/*Linear*/
+        if(gradient.gradientType == GradientType.Linear) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
@@ -184,7 +184,7 @@ private class Utils{
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
-        if(lineGradient.gradientType == GradientType.Axial) {
+        if(lineGradient.gradientType == GradientType.Linear) {
             drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient.rotation)
         }else{
             drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
