@@ -52,7 +52,7 @@ public class Graphics{
     /*
      * Initiate gradient filling
      */
-    public func gradientFill(gradient:Gradient/*IGradient*/){
+    public func gradientFill(gradient:IGradient/*IGradient*/){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
