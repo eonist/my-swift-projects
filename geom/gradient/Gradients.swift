@@ -26,36 +26,37 @@ class Gradients{
     static var purpleEnd:UInt = 0xE4B7F0
     
     
-    //beige
-    D6CEC3
-    E4DDCA
     
-    //light blue
-    55EFCB
-    5BCAFF
+    static func beige(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(beigeStart).alpha(alpha),CGColor.color(beigeEnd).alpha(alpha)]}
+    static func lightBlue(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(lightBlueStart).alpha(alpha),CGColor.color(lightBlueEnd).alpha(alpha)]}
+    static func lightGray(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(lightGrayStart).alpha(alpha),CGColor.color(lightGrayEnd).alpha(alpha)]}
+    static func redOrange(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(redOrangeStart).alpha(alpha),CGColor.color(redOrangeEnd).alpha(alpha)]}
+    static func lightGreen(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(lightGreenStart).alpha(alpha),CGColor.color(lightGreenEnd).alpha(alpha)]}
+    static func deepPurple(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(deepPurpleStart).alpha(alpha),CGColor.color(deepPurpleEnd).alpha(alpha)]}
+    static func deepPurple(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(deepPurpleStart).alpha(alpha),CGColor.color(deepPurpleEnd).alpha(alpha)]}
     
-    //light gray
-    F7F7F7
-    D7D7D7
+    static var beigeStart:UInt = 0xD6CEC3
+    static var beigeEnd:UInt = 0xE4DDCA
     
+    static var lightBlueStart:UInt = 0x55EFCB
+    static var lightBlueEnd:UInt = 0x5BCAFF
     
-    //redOrange
-    FB2B69
-    FF5B37
-    
-    //light green:
-    5AD427
-    A4E786
+    static var lightGrayStart:UInt = 0xF7F7F7
+    static var lightGrayEnd:UInt = 0xD7D7D7
     
     
-    //deep purple
-    C644FC
-    5856D6
+    static var redOrangeStart:UInt = 0xFB2B69
+    static var redOrangeEnd:UInt = 0xFF5B37
     
-    //purplePink
-    EF4DB6
-    #C643FC
+    static var lightGreenStart:UInt = 0x5AD427
+    static var lightGreenEnd:UInt = 0xA4E786
     
+    static var deepPurpleStart:UInt = 0xC644FC
+    static var deepPurpleEnd:UInt = 0x5856D6
+    
+    static var purplePinkStart:UInt = 0xEF4DB6
+    static var purplePinkEnd:UInt = 0xC643FC
+
 }
 extension Gradients{
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}

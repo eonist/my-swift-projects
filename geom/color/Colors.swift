@@ -189,32 +189,16 @@ extension Colors{
     static func pink()->UInt{return 0xFF2D55}
     static func darkGray()->UInt{return 0x8E8E93}
     static func lightGray()->UInt{return 0xC7C7CC}
-    
-    //paleBlue
-    D1EEFC
-    //pale green
-    E0F8D8
-    
-    //lightPink
-    #FF4981
-    
-    //pale pink
-    #FFD3E0
-    
-    //pale grey
-    #F7F7F7
-    
-    //orangeRed
-    #FF1300
-    
-    //redOrange
-    #FF3A2D
-    
-    //lightBlack
-    1F1F21
-    
-    //gray
-    BDBEC2
+    /*new*/
+    static func paleBlue()->UInt{return 0xD1EEFC}
+    static func paleGreen()->UInt{return 0xE0F8D8}
+    static func lightPink()->UInt{return 0xFF4981}
+    static func palePink()->UInt{return 0xFFD3E0}
+    static func paleGray()->UInt{return 0xF7F7F7}
+    static func orangeRed()->UInt{return 0xFF1300}
+    static func redOrange()->UInt{return 0xFF3A2D}
+    static func lightBlack()->UInt{return 0x1F1F21}
+    static func gray()->UInt{return 0xBDBEC2}
 }
 /*FANCY IOS Colors - NSColor:*/
 extension Colors{
