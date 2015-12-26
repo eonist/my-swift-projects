@@ -21,6 +21,41 @@ class Gradients{
     static var blackEnd:UInt = 0x2B2B2B
     static var silverStart:UInt = 0xDBDDDE
     static var silverEnd:UInt = 0x898C90
+    //
+    static var purpleStart:UInt = 0xC86EDF
+    static var purpleEnd:UInt = 0xE4B7F0
+    
+    
+    //beige
+    D6CEC3
+    E4DDCA
+    
+    //light blue
+    55EFCB
+    5BCAFF
+    
+    //light gray
+    F7F7F7
+    D7D7D7
+    
+    
+    //redOrange
+    FB2B69
+    FF5B37
+    
+    //light green:
+    5AD427
+    A4E786
+    
+    
+    //deep purple
+    C644FC
+    5856D6
+    
+    //purplePink
+    EF4DB6
+    #C643FC
+    
 }
 extension Gradients{
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}

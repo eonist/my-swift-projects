@@ -177,7 +177,7 @@ class Colors {
     static var BAUHAUS_COLOR_5:UInt = 0xE1E1E1;
     static var BAUHAUS_COLOR_S:Array<UInt> = [BAUHAUS_COLOR_1,BAUHAUS_COLOR_2,BAUHAUS_COLOR_3,BAUHAUS_COLOR_4,BAUHAUS_COLOR_5];
 }
-/*FANCY IOS Colors:*/
+/*FANCY IOS Colors - hex colors:*/
 extension Colors{
     static func red()->UInt{return 0xFF3B30}
     static func orange()->UInt{return 0xFF9500}
@@ -189,6 +189,29 @@ extension Colors{
     static func pink()->UInt{return 0xFF2D55}
     static func darkGray()->UInt{return 0x8E8E93}
     static func lightGray()->UInt{return 0xC7C7CC}
+    
+    //paleBlue
+    D1EEFC
+    //pale green
+    E0F8D8
+    
+    //lightPink
+    #FF4981
+    
+    //pale pink
+    #FFD3E0
+    
+    //pale grey
+    #F7F7F7
+    
+    //orangeRed
+    #FF1300
+    
+    //lightBlack
+    1F1F21
+    
+    //gray
+    BDBEC2
 }
 /*FANCY IOS Colors - NSColor:*/
 extension Colors{
