@@ -1,5 +1,5 @@
 import Foundation
-typealias ~ = ~/file.txt
+
 /**
  * Convenince extensions for often used string methods
  */
