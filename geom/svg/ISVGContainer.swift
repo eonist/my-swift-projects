@@ -4,6 +4,6 @@ import Foundation
  */
 protocol ISVGContainer : ISVGElement{
     func add(element:ISVGElement)
-    func get items() : Array
-    func getItem(id:String):*
+    var items : Array<ISVGElement> {get}
+    func getItem(id:String)->ISVGElement
 }

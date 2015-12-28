@@ -4,6 +4,7 @@ import Foundation
  * // :TODO: could we omit the _items and just use the display-stack as a record of items added?
  * // :TODO: we need a remove method to compliment the add method
  */
-class SVGContainer {
-
+class SVGContainer :ISVGContainer{
+    var items : Array<ISVGElement> = [];
+    var id : String = "";
 }
