@@ -29,4 +29,20 @@ class FileModifier{
         }
         return false
     }
+    
+    /**
+     * Append text to file
+     */
+    class func append(path:String,_ text:String ){
+        append(path, text, text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+    }
+    /**
+     * Append text to file at index
+     */
+    class func append(path:String,_ text:String, _ index:Int){
+        let os: NSOutputStream = NSOutputStream(toFileAtPath: path, append: true)!
+        os.open()
+        os.write(text, maxLength: index)
+        os.close()
+    }
 }
