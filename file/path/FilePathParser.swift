@@ -21,9 +21,9 @@ class FilePathParser {//TODO:rename to FilePathParser
         return path.absoluteString
     }
     /**
-     *
+     * NOTE: you can also do: NSString(string: self).stringByExpandingTildeInPath
      */
-    class func userHomePath()-String{
+    class func userHomePath()->String{
         return NSHomeDirectory()
     }
 }
