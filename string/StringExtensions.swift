@@ -6,9 +6,7 @@ extension String {
     /**
      *
      */
-    func tildePath()->String{
-        return NSString(string: self).stringByExpandingTildeInPath
-    }
+    var tildePath:String {get{return NSString(string: self).stringByExpandingTildeInPath}}
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
