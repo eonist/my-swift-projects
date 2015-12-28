@@ -4,7 +4,9 @@ import Foundation
  */
 class SVGGroup : SVGContainer, ISVGView {
     var style : SVGStyle;
-    init(items:Array, style:SVGStyle, id:String){
+    init(_ items:Array<ISVGElement>, _ style:SVGStyle, _ id:String){
+        self.style = style
         super.init(items, id)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
