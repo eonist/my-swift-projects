@@ -10,7 +10,7 @@ class SVGContainer : NSView, ISVGContainer{
     init(items:Array<ISVGElement>, id:String) {
         for item : ISVGElement in items { add(item) }
         self.id = id;
-    }  
+    }
     
     /**
      * @param item (SVGGraphic and elements like SVGLinearGradient)
@@ -19,5 +19,13 @@ class SVGContainer : NSView, ISVGContainer{
         if(element is NSView) { addSubview(element as! NSView) }
         items.append(element);
     }
+    
+    /**
+     * Asserts and returns an svg item by @param id
+     */
+    func getItem(id:String)->ISVGElement{
+        for item : ISVGElement in items{ if(item.id/*["id"]*/ == id) {return item}}
+    }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
