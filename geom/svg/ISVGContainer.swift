@@ -1,5 +1,7 @@
 import Foundation
-
-class ISVGContainer {
+/**
+ * interface for SVGContainer
+ */
+protocol ISVGContainer {
 
 }
