@@ -2,6 +2,6 @@ import Foundation
 /**
  * interface for SVGContainer
  */
-protocol ISVGContainer {
+protocol ISVGContainer : ISVGElement{
 
 }

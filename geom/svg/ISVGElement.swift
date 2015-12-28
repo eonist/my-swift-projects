@@ -1,5 +1,7 @@
 import Foundation
-
-class ISVGElement {
-
+/**
+ * Interface for SVGElement
+ */
+protocol ISVGElement {
+    var id : String  {get set}
 }
