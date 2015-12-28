@@ -7,9 +7,9 @@ import Cocoa
 class SVGContainer : NSView, ISVGContainer{
     var id : String
     var items : Array<ISVGElement> = [];
-    convenience init(_ items:Array<ISVGElement>, id:String) {
-        super.init(frame: NSRect(0,0,800,600))//<--temp
+    init(_ items:Array<ISVGElement>, id:String) {
         self.id = id;
+        super.init(frame: NSRect(0,0,800,600))//<--temp
         for item : ISVGElement in items { add(item) }
         
     }
