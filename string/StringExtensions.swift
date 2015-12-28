@@ -4,6 +4,12 @@ import Foundation
  */
 extension String {
     /**
+     *
+     */
+    func tildePath()->String{
+        return NSString(string: self).stringByExpandingTildeInPath
+    }
+    /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
     func split(delimiter:String)->Array<String>{
