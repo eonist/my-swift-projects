@@ -8,10 +8,14 @@ class SVGContainer :ISVGContainer{
     var items : Array<ISVGElement> = [];
     var id : String
     init(items:Array<ISVGElement>, id:String) {
-        for item : ISVGElement in items {
-            add(item);
-            
-        }
-        _id = id;
+        for item : ISVGElement in items { add(item) }
+        self.id = id;
+    }
+    /**
+     * @param item (SVGGraphic and elements like SVGLinearGradient)
+     */
+    func add(element:ISVGElement) {
+        if(element is DisplayObject) { addSubView(element as NSView) }
+        _items.push(element);
     }
 }
