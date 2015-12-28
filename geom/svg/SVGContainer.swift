@@ -5,12 +5,13 @@ import Cocoa
  * // :TODO: we need a remove method to compliment the add method
  */
 class SVGContainer : NSView, ISVGContainer{
-    var items : Array<ISVGElement> = [];
     var id : String
-    init(items:Array<ISVGElement>, id:String) {
-        super.init()
-        for item : ISVGElement in items { add(item) }
+    var items : Array<ISVGElement> = [];
+    convenience init(_ items:Array<ISVGElement>, id:String) {
+        super.init(frame: NSRect)
         self.id = id;
+        for item : ISVGElement in items { add(item) }
+        
     }
     
     /**
