@@ -20,4 +20,10 @@ class FilePathParser {//TODO:rename to FilePathParser
     class func stringPath(path:NSURL)->String{
         return path.absoluteString
     }
+    /**
+     *
+     */
+    class func userHomePath()-String{
+        return NSHomeDirectory()
+    }
 }
