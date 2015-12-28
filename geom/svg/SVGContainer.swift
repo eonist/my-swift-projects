@@ -8,6 +8,7 @@ class SVGContainer : NSView, ISVGContainer{
     var items : Array<ISVGElement> = [];
     var id : String
     init(items:Array<ISVGElement>, id:String) {
+        super.init()
         for item : ISVGElement in items { add(item) }
         self.id = id;
     }
@@ -23,8 +24,8 @@ class SVGContainer : NSView, ISVGContainer{
     /**
      * Asserts and returns an svg item by @param id
      */
-    func getItem(id:String)->ISVGElement{
-        for item : ISVGElement in items{ if(item.id/*["id"]*/ == id) {return item}}
+    func getItem(id:String)->ISVGElement?{
+        for item : ISVGElement in items{ if(item.id/*["id"]*/ == id) {return item}}; return nil;
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
