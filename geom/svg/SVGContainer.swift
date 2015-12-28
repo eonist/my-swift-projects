@@ -6,5 +6,12 @@ import Foundation
  */
 class SVGContainer :ISVGContainer{
     var items : Array<ISVGElement> = [];
-    var id : String = "";
+    var id : String
+    init(items:Array<ISVGElement>, id:String) {
+        for item : ISVGElement in items {
+            add(item);
+            
+        }
+        _id = id;
+    }
 }
