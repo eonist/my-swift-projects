@@ -9,7 +9,7 @@ class SVGContainer : NSView, ISVGContainer{
     var items : Array<ISVGElement> = [];
     init(_ items:Array<ISVGElement>, id:String) {
         self.id = id;
-        super.init(frame: NSRect(0,0,800,600))//<--temp
+        super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actul graphics. And when you use Layer-hosted views the subchildren doesnt clip
         for item : ISVGElement in items { add(item) }
         
     }
