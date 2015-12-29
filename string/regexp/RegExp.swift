@@ -46,7 +46,7 @@ public class RegExp{
      *    match.numberOfRanges
      *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
      *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-     *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+     *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
      * }
      */
     public class func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {

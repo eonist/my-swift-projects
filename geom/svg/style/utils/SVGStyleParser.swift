@@ -22,21 +22,19 @@ class SVGStyleParser {
 	 * @param style (fill: red; stroke:black; stroke-width: 2;)
 	 */
 	class func inlineStyle(style:String)->Dictionary<String, String> {
-//			trace("inlineStyle: "+style);
+//		Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
-		var pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
-		var lastIndex:int = -1;
-		while(lastIndex != 0){//Loops through the pattern
-			var match:Array = pattern.exec(style);
-			lastIndex = pattern.lastIndex;
-			if(match != null){
-				var name:String =  match["name"];
-//					trace("name: >" + name+"<");
-				var value:String = match["value"];
-//					trace("value: >" + value+"<");
-				inlineStyles[name] = value;
-			}
-		}
+		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
+        let matches = style.matches(pattern)
+        for match:NSTextCheckingResult in matches {//Loops through the pattern
+            match.numberOfRanges
+            //let content = (style as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            let name = (style as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            //Swift.print("name: >" + name+"<");
+            let value = (style as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            //Swift.print("value: >" + value+"<");
+            inlineStyles[name] = value;
+        }
 		return inlineStyles;
 	}
 	/**
