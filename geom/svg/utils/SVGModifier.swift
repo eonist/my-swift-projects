@@ -29,13 +29,13 @@ class SVGModifier {
 		switch(true){
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:(element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
-			case element is SVGRect:SVGRectModifier.scale(element as SVGRect, pivot, scale);break;
-			case element is SVGLine:SVGLineModifier.scale(element as SVGLine,pivot,scale);break;
-			case element is SVGPath:SVGPathModifier.scale(element as SVGPath, pivot, scale);break;
-			case element is SVGCircle:SVGCircleModifier.scale(element as SVGCircle, pivot, scale);break;
-			case element is SVGEllipse:SVGEllipseModifier.scale(element as SVGEllipse, pivot, scale);break;
-			case element is SVGContainer:SVGContainerModifier.scale(element as SVGContainer,pivot,scale);break;
-			case element is SVGGradient:SVGGradientModifier.scale(element as SVGGradient, pivot, scale);break;
+			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
+			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
+			case element is SVGPath:SVGPathModifier.scale(element as! SVGPath, pivot, scale);break;
+			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
+			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
+			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
+			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;
 		}
 		if(element is ISVGGraphic) update(element as ISVGGraphic);
 	}
