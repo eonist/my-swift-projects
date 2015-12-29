@@ -5,7 +5,6 @@ import Cocoa
 class SVGView : NSView,ISVGView{
     var style : SVGStyle;
     var id : String;
-    lazy var graphic:Graphic = Graphic()
     init(_ style:SVGStyle, _ id:String) {
         self.style = style;
         self.id = id;
