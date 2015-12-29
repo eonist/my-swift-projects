@@ -1,6 +1,6 @@
 import Foundation
 class SVGGraphic : SVGView,ISVGGraphic{
-    init(style:SVGStyle? = nil,id:String? = nil) {
+    override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         super.init(style!,id!);
         draw()
         
