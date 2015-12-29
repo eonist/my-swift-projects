@@ -7,7 +7,7 @@ class SVGParser {
      * Returns an SVGDoc instance derived from @param xml
      * @Note the regular expression removes the PX suffix
      */
-    class func svg(xml:XML)->SVG {
+    class func svg(/*xml:XML*/)->SVG {
         /*
         var x:CGFloat = SVGPropertyParser.digit(xml,"x");
         var y:CGFloat = SVGPropertyParser.digit(xml,"y");
@@ -19,6 +19,6 @@ class SVGParser {
         var doc:SVG = new SVG([],x,y,width,height,version,nameSpace,id);
         */
         //for each (child : XML in xml.children()) doc.add(element(child,doc));//trace("Import - child.toXMLString(): " + child.toXMLString());
-        return doc;
+        return SVG()/*doc*/;
     }
 }
