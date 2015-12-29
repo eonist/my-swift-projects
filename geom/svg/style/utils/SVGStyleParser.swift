@@ -6,7 +6,7 @@ class SVGStyleParser {
 	 */
 	class func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
 		var inlineStyle:Object = inlineStyle(prop);
-	//			ObjectDescriber.describe(inlineStyle);
+//			ObjectDescriber.describe(inlineStyle);
 		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
 		let fillRule:String = inlineStyle["fill-rule"]
