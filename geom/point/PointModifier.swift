@@ -10,4 +10,10 @@ class PointModifier {
         let rot:CGFloat = Trig.normalize2(pointAngle + rotation);//sum of pointAngle and rotation, normalize this
         return pivot + PointParser.safePolar(distance, rot);//use Point.polar
     }
+    /**
+     *
+     */
+    class func scale(p:CGPoint,pivot:CGPoint,scale:CGFloat/*0-1*/){
+        CGAffineTransform
+    }
 }
