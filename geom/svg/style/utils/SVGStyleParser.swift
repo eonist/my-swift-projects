@@ -16,17 +16,17 @@ class SVGStyleParser {
 		let strokeLineCap:String = inlineStyle["stroke-linecap"]
 		let strokeLineJoin:String = inlineStyle["stroke-linejoin"]
 		let strokeMiterLimit:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-miterlimit"])
-		return new SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);;
+		return  SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
 	}
 	/**
 	 * @param container the parent container of the svg element querried for
 	 */
-	class func fill(property:Any,container:ISVGContainer):Any {
-		if(property == null) property = NaN;
-		else if(property == "none") property = "none";
-		else if(StringAsserter.color(property) || StringAsserter.webColor(property)) property = StringParser.color(property);
+	class func fill(var property:Any?,container:ISVGContainer)->Any {
+        if(property == nil) { property = Double.NaN}
+        else if(property is String && String(property) == "none") {property = "none"};
+        else if(StringAsserter.color(property) || StringAsserter.webColor(property)) {property = StringParser.color(property)}
 		else{/*url(#three_stops);*/
-			var url:String = String(property).match(/(?<=^url\(\#).+?(?=\)$)/)[0];
+			var url:String = String(property).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
 			property = container.getItem(url);/*SVGLinearGradient*/
 		}
 		return property;
