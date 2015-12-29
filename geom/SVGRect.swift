@@ -35,15 +35,15 @@ class SVGRect : SVGGraphic {
      * @Note The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
      * // :TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
      */
-    func draw() {
-        if(width <= 0 && height <= 0) {
+    override func draw() {
+        if(width <= 0 && height <= 0) {/*None*/
             return
         }
-        if((rx.isNaN) && (ry.isNaN) ) {
-            GraphicsModifier.drawRect(graphics, SVGRectParser.rectangle(this))
+        if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+            //GraphicsModifier.drawRect(graphics, SVGRectParser.rectangle(this))
         }
-        else {
-            GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
+        else {/*RoundRect*/
+            //GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
