@@ -24,3 +24,10 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+/**
+ * Convenience
+ */
+extension SVGLine{
+    var p1:CGPoint {get{return CGPoint(x1,y1)}set {x1 = newValue.x;y1 = newValue.y}}
+    var p2:CGPoint {get{return CGPoint(x2,y2)}set {x2 = newValue.x;y2 = newValue.y}}
+}
