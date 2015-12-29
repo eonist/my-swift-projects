@@ -6,8 +6,8 @@ class SVGCommandParser {
 	 * // :TODO: include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
 	 * // :TODO: isnt this function superflousouse since you can just trace the actual command and get the same value?
 	 */
-	 class func commandLength(command:String):Int {
-		 command = command.toLowerCase();
+	 class func commandLength(var command:String)->Int {
+		 command = command.lowercaseString
 		 /*if(command == GraphicsPathCommand.NO_OP) return 0;*/
 		 if(command == "c") {return 4}
 		 else if(command == "a") {return 7}
