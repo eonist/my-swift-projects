@@ -24,20 +24,12 @@ extension Array {
     mutating func shift(/*x:[Element]*/) ->Element{
         return ArrayModifier.shift(&self)
     }
-    mutating func slice(/*x:[Element]*/) ->Element{
-        return ArrayModifier.slice(&self)
+    /**
+     * Returns a new array derived from the @param array sans the items from @param start to @param end
+     * IMPORTANT: the original array is NOT modified
+     * ["spinach","green pepper","cilantro","onion","avocado"].slice(1, 3)// "spinach","onion","avocado"
+     */
+    func slice(/*x:[Element]*/startIndex:Int, _ endIndex:Int) ->Array<Element>{
+        return ArrayModifier.slice(self,startIndex,endIndex)
     }
 }
-
-/*
-/**
-* Returns a new array derived from the @param array sans the items from @param start to @param end
-* IMPORTANT: the original array is NOT modified
-* slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
-*/
-class func slice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
-let deleteCount = endIndex - startIndex
-array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-return array
-}
-*/
