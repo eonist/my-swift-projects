@@ -36,7 +36,7 @@ class SVGRect {
       if(isNaN(_rx) && isNaN(_ry) ) GraphicsModifier.drawRect(graphics, SVGRectParser.rectangle(this));
       else GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx);
     }
-    func setSize(width:Number,height:Number):void {
+    func setSize(width:CGFloat,height:CGFloat):void {
       _width = width;
       _height = height;
     }
