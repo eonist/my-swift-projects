@@ -12,11 +12,11 @@ class SVGPathDataParser {
 		var commandLength:Int = SVGCommandParser.commandLength(path.commands[index]);
 		return path.parameters.slice(pathDataIndex,pathDataIndex+commandLength);//slice does not modify the original array
 	}
-	/ **
+	/**
 	 * Returns the pathDataIndex based on the @param commandIndex
 	 * @Note: traverses the entire pathData array until it hits the commandIndex, while it counts each pathData integer it traverses. This count is then returned
 	 */
-	class func index(commands:Array<Int>,_ commandIndex:Int)->Int {
+	class func index(commands:Array<String>,_ commandIndex:Int)->Int {
 		var pathDataIndex:Int = 0;
 		for (var i : Int = 0; i < commandIndex; i++) { pathDataIndex += SVGCommandParser.commandLength(commands[i]) };
 		return pathDataIndex;
