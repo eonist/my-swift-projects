@@ -3,6 +3,14 @@ import AppKit/*Needed for the NSBezierPath type*/
 
 public class CGPathParser{
     /**
+     *
+     */
+    class func polyLinePath(points:Array<CGPoint>)->CGMutablePathRef{
+        let path:CGMutablePathRef = CGPathCreateMutable()
+        CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
+        //CGPathAddLineToPoint(path, nil, p2.x, p2.y)
+    }
+    /**
      * NOTE: We do not need to close this path
      */
     public class func line(p1:CGPoint,_ p2:CGPoint)->CGMutablePathRef{
