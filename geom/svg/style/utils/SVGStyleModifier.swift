@@ -8,7 +8,7 @@ class SVGStyleModifier {
     class func merge(a:SVGStyle,_ b:SVGStyle){
         //Swift.print("a.fill: " + a.fill);
         //Swift.print("b.fill: " + b.fill);
-        if((a.fill.isNaN) && !(b.fill.isNaN)) {a.fill = b.fill}/*Fill*/
+        if((a.fill as? Double).isNaN && !(b.fill as! Double).isNaN) {a.fill = b.fill}/*Fill*/
 		if(isNaN(a.fillOpacity) && !isNaN(b.fillOpacity)) a.fillOpacity = b.fillOpacity;
 		if(a.fillRule == null && b.fillRule != null) a.fillRule = b.fillRule;
 		if(isNaN(a.stroke) && !isNaN(b.stroke)) a.stroke = b.stroke;/*Stroke*/
