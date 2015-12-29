@@ -10,7 +10,6 @@ public class CGPathParser{
         let path:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
         for (var i : Int = 1; i < points.count; i++) {CGPathAddLineToPoint(path,nil,points[i].x, points[i].y)}
-        CGPathAddLineToPoint(path,nil,points[0].x, points[0].y);/*closes it self to the start position*/
         return path
     }
     /**
