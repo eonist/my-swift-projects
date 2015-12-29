@@ -7,12 +7,12 @@ class SVGLinearGradient:SVGGradient {
 	var y1 : CGFloat
 	var x2 : CGFloat
 	var y2 : CGFloat
-	init(offsets:Array, colors:Array, opacities:Array, x1:Number, y1:Number, x2:Number,y2:Number, gradientUnits:String, spreadMethod:String, id:String,gradientTransform:Matrix) {
+	init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,_ opacities:Array<CGFloat>, _ x1:CGFloat, _ y1:CGFloat, _ x2:CGFloat,_ y2:CGFloat, _ gradientUnits:String, _ spreadMethod:String, _ id:String/*,gradientTransform:Matrix*/) {
 		self.x1 = x1
 		self.y1 = y1
 		self.x2 = x2
 		self.y2 = y2
-		super.init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,_ opacities:Array<CGFloat>,_ spreadMethod:String,_ id:String,_ gradientUnits:String/*,gradientTransform*/);
+		super.init(offsets, colors, opacities, spreadMethod, id, gradientUnits)
 	}
 }
 /**
