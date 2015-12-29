@@ -12,7 +12,7 @@ class SVGPathDataParser {
 		var commandLength:Int = SVGCommandParser.commandLength(path.commands[index]);
 		return path.parameters.slice(pathDataIndex,pathDataIndex+commandLength);//slice does not modify the original array
 	}
-	/**
+	/ **
 	 * Returns the pathDataIndex based on the @param commandIndex
 	 * @Note: traverses the entire pathData array until it hits the commandIndex, while it counts each pathData integer it traverses. This count is then returned
 	 */
