@@ -24,9 +24,9 @@ class SVGPath :SVGGraphic{
      * Draws a line for the stroke and a line for the fill (Since the flash api doesnt support non-closed fills)
      */
     override func draw()  {
-//			trace("SVGPath.drawLine");
-      //SVGPathModifier.drawPath(_pathShape.graphics,_commands, _parameters);/*draws the fill*/
-      //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
+        //swift.priint("SVGPath.drawLine");
+        //SVGPathModifier.drawPath(_pathShape.graphics,_commands, _parameters);/*draws the fill*/
+        //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
