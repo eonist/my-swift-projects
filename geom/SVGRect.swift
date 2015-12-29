@@ -48,3 +48,8 @@ class SVGRect : SVGGraphic {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+
+
+//continue here: add convenince methods
+
+
