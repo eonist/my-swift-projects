@@ -11,11 +11,11 @@ class PointModifier {
         return pivot + PointParser.safePolar(distance, rot);//use Point.polar
     }
     /**
-     *
+     * Scales @Param p at @param pivot with @param scale
      */
-    class func scale(p:CGPoint,pivot:CGPoint,scale:CGFloat/*0-1*/)->CGPoint{
+    class func scale(p:CGPoint,pivot:CGPoint,scale:CGPoint/*0-1*/)->CGPoint{
         var transform = CGAffineTransformIdentity
-        transform.scaleFromPoint(scale, scale, pivot)
+        transform.scaleFromPoint(scale.x, scale.y, pivot)
         return CGPointApplyAffineTransform(p, transform)
     }
 }
