@@ -27,7 +27,8 @@ class SVGModifier {
 	 */
 	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		switch(true){
-			case element is ISVGPolyLine:(element as ISVGPolyLine).points = PointModifier.scalePoints((element as ISVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
+			case element is ISVGPolyLine:
+                ISVGPolyLine(element).points = PointModifier.scalePoints((element as ISVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
 			case element is SVGRect:SVGRectModifier.scale(element as SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as SVGLine,pivot,scale);break;
 			case element is SVGPath:SVGPathModifier.scale(element as SVGPath, pivot, scale);break;
