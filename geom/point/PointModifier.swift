@@ -13,7 +13,9 @@ class PointModifier {
     /**
      *
      */
-    class func scale(p:CGPoint,pivot:CGPoint,scale:CGFloat/*0-1*/){
-        CGAffineTransform
+    class func scale(p:CGPoint,pivot:CGPoint,scale:CGFloat/*0-1*/)->CGPoint{
+        var transform = CGAffineTransformIdentity
+        transform.scaleFromPoint(scale, scale, pivot)
+        return CGPointApplyAffineTransform(p, transform)
     }
 }
