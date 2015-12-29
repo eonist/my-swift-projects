@@ -5,7 +5,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
         draw()
         
         //setNeedsDisplay = true//initiates everything
-        //TODO: setup the Graphic instance
+        
+        
+        //TODO: setup the fill  and line shape here, do draw delegation hre and setup the ca layer here
+        //TODO: dont use Graphic.swift, use this class,
         
     }
     /**
