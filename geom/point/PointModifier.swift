@@ -18,4 +18,10 @@ class PointModifier {
         transform.scaleFromPoint(scale.x, scale.y, pivot)
         return CGPointApplyAffineTransform(p, transform)
     }
+    /**
+     *
+     */
+    class func scalePoints(){
+        
+    }
 }
