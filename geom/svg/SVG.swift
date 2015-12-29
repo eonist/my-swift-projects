@@ -9,6 +9,20 @@ import Foundation
  * 		<rect x="64" y="64" fill="#0000FF" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
  * </svg>
  */
-class SVG {// :TODO: (SVG should be split into SVGDisplayObject and SVG...something els)
-    
+class SVG : SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...something els)
+    var version:CGFloat
+    var nameSpace:String
+    var x:CGFloat
+    var y:CGFloat
+    var width:CGFloat
+    var height:CGFloat
+    public function SVG(items:Array, x:Number,y:Number,width:Number,height:Number,version:Number,nameSpace:String,id:String) {
+        super(items,id);
+        _x = x;
+        _y = y;
+        _width = width;
+        _height = height;
+        _version = version;
+        _nameSpace = nameSpace;
+    }
 }
