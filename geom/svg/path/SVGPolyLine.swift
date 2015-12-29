@@ -1,5 +1,5 @@
 import Foundation
 
-class SVGPolyLine {
+class SVGPolyLine : ISVGPolyLine{
 
 }
