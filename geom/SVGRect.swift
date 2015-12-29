@@ -23,10 +23,6 @@ class SVGRect : SVGGraphic {
         self.ry = ry;
         super.init(style,id);
     }
-
-    
-        
-    
     /**
      * @Note If you do not specify a starting x or y value, it is presumed to be zero. 
      * @Note If you specify a width or height of zero, then the rectangle is not displayed. 
