@@ -19,6 +19,27 @@ class SVGStyleParser {
 		return  SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
 	}
 	/**
+	 * @param style (fill: red; stroke:black; stroke-width: 2;)
+	 */
+	class func inlineStyle(style:String)->Object {
+//			trace("inlineStyle: "+style);
+		var inlineStyles:Object = {};
+		var pattern:RegExp = /[^\s]*?(?P<name>[\w\-]+?)\s*?\:\s*?(?P<value>[\w\-\#\_\(\)\.]+?)\s*?(\;|$)/g; 
+		var lastIndex:int = -1;
+		while(lastIndex != 0){//Loops through the pattern
+			var match:Array = pattern.exec(style);
+			lastIndex = pattern.lastIndex;
+			if(match != null){
+				var name:String =  match["name"];
+//					trace("name: >" + name+"<");
+				var value:String = match["value"];
+//					trace("value: >" + value+"<");
+				inlineStyles[name] = value;
+			}
+		}
+		return inlineStyles;
+	}
+	/**
 	 * @param container the parent container of the svg element querried for
 	 */
 	class func fill(var property:Any?,container:ISVGContainer)->Any {//TODO:compact this method once its bug tested
