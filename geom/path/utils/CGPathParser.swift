@@ -3,7 +3,8 @@ import AppKit/*Needed for the NSBezierPath type*/
 
 public class CGPathParser{
     /**
-     *
+     * Returns a path with straight lines derived from an array of points (think follow the dots)
+     * TODO: shouldnt this path be closed by a real close call?
      */
     class func polyLinePath(points:Array<CGPoint>)->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
