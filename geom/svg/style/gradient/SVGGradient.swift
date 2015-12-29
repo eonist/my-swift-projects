@@ -12,7 +12,7 @@ class SVGGradient:SVGElement{
 	//gradientTransform /*You can transform (e.g. rotate) the gradient before it is applied. See SVG Transformation for more details.*/
 	//x1, y1 /*The x1 and y1 (starting point) of the vector defining the direction of the gradient. Specified as percentages (%) of x1,y1 and x2,y2 of the shape the gradient is applied to. (Note: You should be able to use absolute numbers, but this doesn't seem to work in the browsers).*/
 	//x2, y2 /*The x2 and y2 (end point) of the vector defining the direction of the gradient.*/
-	init(offsets:Array<CGFloat>,colors:Array<CGColor>,opacities:Array<CGFloat>,spreadMethod:String,id:String,gradientUnits:String/*gradientTransform:Matrix*/) {
+	init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,_ opacities:Array<CGFloat>,_ spreadMethod:String,_ id:String,_ gradientUnits:String/*gradientTransform:Matrix*/) {
 		self.offsets = offsets;
 		self.colors = colors;
 		self.opacities = opacities;
