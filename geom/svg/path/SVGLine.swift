@@ -10,18 +10,17 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
     var x2:CGFloat
     var y2:CGFloat
     init(_ x1:CGFloat,_ y1:CGFloat,_ x2:CGFloat,_ y2:CGFloat,_ style:SVGStyle,_ id:String) {// :TODO: figure out if svg supports alpha on line?// :TODO: use p1:Point and p2:Point ?
-      self.x1 = x1
-      self.y1 = y1
-      self.x2 = x2
-      self.y2 = y2
-      super.init(style,id);
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+        super.init(style,id);
     }
     override func beginFill() {
-      //do nothing
+        //do nothing
     }
-    override func draw()  {
-        
-      graphics.moveTo(_x1,_y1);
-      graphics.lineTo(_x2, _y2);
+    override func draw() {
+        //fillShape.path = CGPathParser.line(CGPoint(x1,y1),CGPoint(x2, y2))
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
