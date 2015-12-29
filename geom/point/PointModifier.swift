@@ -30,7 +30,7 @@ class PointModifier {
      * var scaledPoints:Array = PointModifier.scalePoints([new Point(circle.x,circle.y)], pivotPoint,1, 1.5)
      * circle.setPosition(scaledPoints[0]);//Output: the circle is now at 100,125
      */
-    class func scalePoints(points:Array<CGPoint>,pivot:CGPoint,scale:CGPoint)->Array<CGPoint>{
+    class func scalePoints(points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint)->Array<CGPoint>{
         var scaledPoints:Array<CGPoint> = []
         for p : CGPoint in points{ scaledPoints.append(PointModifier.scale(p,pivot,scale))}
         return scaledPoints
