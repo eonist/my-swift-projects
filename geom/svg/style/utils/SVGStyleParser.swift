@@ -38,9 +38,9 @@ class SVGStyleParser {
 		return property;
 	}
 	/**
-	 * // :TODO: needs support for 3 letter hex color
+	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	public static function stroke(property:*):Number {
-		return property == null || property == "none" ? NaN : StringParser.color(property);
+	class func stroke(property:Any?)->Double {
+		return property == nil || property as! String == "none" ? Double.NaN : Double(StringParser.color(property as! String));
 	}
 }
