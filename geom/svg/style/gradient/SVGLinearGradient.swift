@@ -15,3 +15,10 @@ class SVGLinearGradient:SVGGradient {
 		super.init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,_ opacities:Array<CGFloat>,_ spreadMethod:String,_ id:String,_ gradientUnits:String/*,gradientTransform*/);
 	}
 }
+/**
+ * Convenience
+ */
+extension SVGLinearGradient{
+    var p1:CGPoint {get{return CGPoint(x1,y1)}set {x1 = newValue.x;y1 = newValue.y}}
+    var p2:CGPoint {get{return CGPoint(x2,y2)}set {x2 = newValue.x;y2 = newValue.y}}
+}
