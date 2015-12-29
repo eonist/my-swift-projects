@@ -21,7 +21,7 @@ class SVGStyleParser {
 	/**
 	 * @param container the parent container of the svg element querried for
 	 */
-	class func fill(var property:Any?,container:ISVGContainer)->Any {
+	class func fill(var property:Any?,container:ISVGContainer)->Any {//TODO:compact this method once its bug tested
         if(property == nil) {
             property = Double.NaN
         }
@@ -36,5 +36,11 @@ class SVGStyleParser {
 			property = container.getItem(url);/*SVGLinearGradient*/
 		}
 		return property;
+	}
+	/**
+	 * // :TODO: needs support for 3 letter hex color
+	 */
+	public static function stroke(property:*):Number {
+		return property == null || property == "none" ? NaN : StringParser.color(property);
 	}
 }
