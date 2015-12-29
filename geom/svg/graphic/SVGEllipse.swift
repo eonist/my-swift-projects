@@ -13,19 +13,17 @@ class SVGEllipse : SVGGraphic{
 		self.cy = cy;
 		self.rx = rx;
 		self.ry = ry;
-		super(style, id);
+		super.init(style, id);
 	}
-	//----------------------------------
-	//  core methods
-	//----------------------------------
 	/**
 	 * @Note if the cx or cy is omitted (nan), it is presumed to be zero.
 	 * @Note If the radius is zero, no shape will be displayed
 	 * @Note it is an error to provide a negative radius.
 	 */
-	override public function draw() : void {
-		if(!isNaN(_rx) && !isNaN(_ry)) {
-			graphics.drawEllipse((!isNaN(_cx) ? _cx : 0) - _rx, (!isNaN(_cy) ? _cy : 0) - _ry, _rx * 2, _ry * 2)
+	override func draw() {
+		if(!(rx.isNaN) && !(ry.isNaN)) {
+			//fillShape.path = CGPathParser.ellipse(rx * 2, ry * 2, (!cx.isNaN ? cx : 0)- rx, (!cy.isNaN ? cy : 0)- ry)
 		}
 	}
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
