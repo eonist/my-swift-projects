@@ -50,6 +50,13 @@ class SVGRect : SVGGraphic {
 }
 
 
-//continue here: add convenince methods
+
+/**
+ * Convenience
+ */
+extension SVGRect{
+    var position:CGPoint {get{return CGPoint(x,y)}set {x = newValue.x;y = newValue.y}}
+    var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
+}
 
 
