@@ -21,9 +21,9 @@ class SVGStyleParser {
 	/**
 	 * @param style (fill: red; stroke:black; stroke-width: 2;)
 	 */
-	class func inlineStyle(style:String)->Object {
+	class func inlineStyle(style:String)->Dictionary<String, String> {
 //			trace("inlineStyle: "+style);
-        var inlineStyles:[String,String] = []()
+        var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		var pattern:String = "[^\\s]*?(?P<name>[\\w\\-]+?)\\s*?\\:\\s*?(?P<value>[\\w\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
 		var lastIndex:int = -1;
 		while(lastIndex != 0){//Loops through the pattern
