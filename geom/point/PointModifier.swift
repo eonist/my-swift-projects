@@ -19,9 +19,21 @@ class PointModifier {
         return CGPointApplyAffineTransform(p, transform)
     }
     /**
-     *
+     * Scales an array of points from @param pivotPoint to @param xScale and @param yScale 
+     * @param points reoresents the points to be scaled
+     * @param pivot represents the origin point where the @param points are scaled from 
+     * @param scale represents the x and y axis scale ratio
+     * @Note Does not modify the original array
+     * @example: 
+     * circle.setPosition(100,100)
+     * var pivotPoint:Point = new Point(50,50)
+     * var scaledPoints:Array = PointModifier.scalePoints([new Point(circle.x,circle.y)], pivotPoint,1, 1.5)
+     * circle.setPosition(scaledPoints[0]);//Output: the circle is now at 100,125
      */
-    class func scalePoints(){
-        
+    class func scalePoints(points:Array<CGPoint>,pivot:CGPoint,scale:CGPoint){
+        var scaledPoints:Array<CGPoint> = []
+        var matrix:Matrix = new Matrix()
+        for var p : CGPoint in points{ scaledPoints.append(PointModifier.scale(p,pivot,scale))}
+        return scaledPoints
     }
 }
