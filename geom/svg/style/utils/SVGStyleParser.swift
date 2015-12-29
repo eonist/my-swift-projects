@@ -23,8 +23,8 @@ class SVGStyleParser {
 	 */
 	class func inlineStyle(style:String)->Object {
 //			trace("inlineStyle: "+style);
-		var inlineStyles:Object = {};
-		var pattern:RegExp = /[^\s]*?(?P<name>[\w\-]+?)\s*?\:\s*?(?P<value>[\w\-\#\_\(\)\.]+?)\s*?(\;|$)/g; 
+        var inlineStyles:[String,String] = []()
+		var pattern:String = "[^\\s]*?(?P<name>[\\w\\-]+?)\\s*?\\:\\s*?(?P<value>[\\w\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
 		var lastIndex:int = -1;
 		while(lastIndex != 0){//Loops through the pattern
 			var match:Array = pattern.exec(style);
