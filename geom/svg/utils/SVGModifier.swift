@@ -38,4 +38,14 @@ class SVGModifier {
 		}
 		if(element is ISVGGraphic) update(element as ISVGGraphic);
 	}
+	/**
+	 * Styles an @param element with @param style
+	 * // :TODO: rename to stylize?
+	 * @Note this method is recursive
+	 */
+	class style(element:ISVGElement,_ style:SVGStyle) {
+		if(element is ISVGDisplayObject) (element as ISVGDisplayObject).style = style;
+		if(element is ISVGGraphic) update(element as ISVGGraphic);
+		if(element is SVGContainer) for (var i : int = 0; i < SVGContainer(element).items.length; i++) if(SVGContainer(element).items[i] is ISVGDisplayObject) SVGModifier.style(SVGContainer(element).items[i], style);
+	}
 }
