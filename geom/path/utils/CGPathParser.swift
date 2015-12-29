@@ -8,7 +8,9 @@ public class CGPathParser{
     class func polyLinePath(points:Array<CGPoint>)->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
-        //CGPathAddLineToPoint(path, nil, p2.x, p2.y)
+        for (var i : Int = 1; i < points.count; i++) {CGPathAddLineToPoint(path,nil,points[i].x, points[i].y)}
+        CGPathAddLineToPoint(path,nil,points[0].x, points[0].y);/*closes it self to the start position*/
+        return path
     }
     /**
      * NOTE: We do not need to close this path
