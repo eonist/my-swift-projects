@@ -37,22 +37,22 @@ class SVGPropertyParser {
 	class func style(xml:NSXMLElement,container:ISVGContainer)->SVGStyle {
 //			trace("style: " + xml.toXMLString());
 		var style:SVGStyle;
-		var prop:String? = property(xml,"style");
+		let prop:String? = property(xml,"style");
 //			trace("prop: " + prop);
         if(prop != nil) {style = SVGStyleParser.style(prop,container)}//if a style is present in the @param xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{//if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate
 //				trace("xml.toString(): " + xml.toXMLString());
-			var fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
-			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
-			var fillRule:String = property(xml,"fill-rule")!;
-			var stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
-			var strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
-			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
-			var strokeLineCap:String = property(xml,"stroke-linecap")!;
-			var strokeLineJoin:String = property(xml,"stroke-linejoin")!;
-			var strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
-			if(isNaN(fillOpacity)) fillOpacity = strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"));/*<--new*/
-			style = new SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
+			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
+			let fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
+			let fillRule:String = property(xml,"fill-rule")!;
+			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
+			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
+			let strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
+			let strokeLineCap:String = property(xml,"stroke-linecap")!;
+			let strokeLineJoin:String = property(xml,"stroke-linejoin")!;
+			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
+            if(fillOpacity.isNaN) {fillOpacity = strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
+			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
 		}
 		return style;
 	}
