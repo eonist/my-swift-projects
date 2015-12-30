@@ -22,4 +22,36 @@ class SVGUtils {
 		}
 		return xml;
 	}
+	/**
+	 * Returns pathData from @param path (SVGPath instance)
+	 */
+	class func pathData(path:SVGPath)->String {
+		var pathData:String = "";
+		var commands:Array<String> = path.commands; 
+		var parameters:Array = path.parameters;
+		var index:int = 0;
+		for each (var command : String in commands) {
+			if(new RegExp("[m,M,l,L,t,T]").test(command)) {
+				pathData += command + parameters[index] + " " + parameters[index+1] + " ";
+				index+=2;
+			}else if(new RegExp("[h,H,v,V]").test(command)){
+				pathData += command + parameters[index] + " ";
+				index++;
+			}else if(new RegExp("[s,S,q,Q]").test(command)){
+				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " ";
+				index++;
+			}else if(new RegExp("[c,C]").test(command)){
+				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " ";
+				index++;
+			}else if(new RegExp("[a,A]").test(command)){
+				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " " + parameters[index+6] + " ";
+				index++;
+			}else if(new RegExp("[z,Z]").test(command)){
+				pathData += command + " ";
+				index++;
+			}
+		}
+		pathData = pathData.replace(/\s*?$/, "");/*Removes the ending whitespace, if it exists*/
+		return pathData;	
+	}
 }
