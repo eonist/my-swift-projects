@@ -71,37 +71,38 @@ class SVGPathParser {
 			var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();
 			switch(command.lowercaseString){
 				case SVGPathCommand.m,SVGPathCommand.l: //lineTo,moveTo
-					pos = pos.add(CGPoint(params[i+0],params[i+1]));
-					i +=2;
+					pos += CGPoint(params[i+0],params[i+1]);
+					i += 2;
 					break;
 				case SVGPathCommand.h: //horizontalLineTo
-					pos = pos.add(CGPoint(params[i],isLowerCase ? 0 : prevP.y));
+					pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y);
 					i++;
 					break;
 				case SVGPathCommand.v: //verticalLineTo
-					pos = pos.add(CGPoint(isLowerCase ? 0 : prevP.x,params[i]));
+					pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i]);
 					i++;
 					break;
 				case SVGPathCommand.c:/*cubicCurveTo*/ // :TODO: this isnt tested!!
-					pos = pos.add(CGPoint(params[i+4],params[i+5]));
-					i +=6;
+					pos += CGPoint(params[i+4],params[i+5]);
+					i += 6;
 					break;
 				case SVGPathCommand.s://smooth Cubic curve command
-					pos = pos.add(CGPoint(params[i+2],params[i+3]));
-					i +=4;
+					pos += CGPoint(params[i+2],params[i+3]);
+					i += 4;
 					break;
 				case SVGPathCommand.q://quadCurveTo
-					pos = pos.add(CGPoint(params[i+2],params[i+3]));
-					i +=4;
+					pos += CGPoint(params[i+2],params[i+3]);
+					i += 4;
 					break;
 				case SVGPathCommand.t://smooth quadratic curve command
-					pos = pos.add(CGPoint(params[i],params[i+1]));
-					i +=2;
+					pos += CGPoint(params[i],params[i+1]);
+					i += 2;
 					break;
+                default:break;
 			}
-			positions.push(pos);
-			if(e < commands.length-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
-				prevP = pos.clone();
+			positions.append(pos);
+			if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
+				prevP = pos.copy();
 			}
 		}
 //			trace("positions: " + positions);
