@@ -47,7 +47,7 @@ class SVGParser {
             case SVGConstants.group: element = group(xml,style,id); break;
             case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml); break;
             case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml); break;
-            default: fatalError("type not supported: " + "\(element)");
+            default: fatalError("type not supported: " + xml.localName!);
         }
         return element;
     }
