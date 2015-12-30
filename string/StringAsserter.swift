@@ -66,4 +66,10 @@ class StringAsserter{
     class func lowerCase(string:String)->Bool {
         return string == string.lowercaseString
     }
+	/**
+	 * Asserts if @param value is a percentage
+	 */
+	class func percentage(value:String)->Bool{
+		return value.test(".*?(?=%)")
+	}
 }
