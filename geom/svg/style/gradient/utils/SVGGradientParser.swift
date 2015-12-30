@@ -29,9 +29,9 @@ private class Utils{
 	 */
 	class func gradient(xml:NSXMLElement)->SVGGradient{
 		var offsets:Array<CGFloat> = [];
-		var colors:Array = [];
-		var opacities:Array = [];
-		for each(var child : XML in xml.children()){
+		var colors:Array<Double> = [];
+		var opacities:Array<CGFloat> = [];
+		for child : XML in xml.children()){
 			var offset:* = SVGPropertyParser.property(child,"offset");
 			offset = StringAsserter.digit(offset) ? offset * 255 : Number(StringParser.percentage(offset)) / 100 * 255;
 			/*offset is number between 0-1 or offset is percentage %*/
