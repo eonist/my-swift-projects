@@ -4,9 +4,9 @@ class SVGContainerModifier {
 	/**
 	 * scales the SVGContainer 
 	 */
-	class func scale(container:SVGContainer,pivot:CGPoint,scale:CGPoint) {
-		var position:CGPoint = PointModifier.scale(container.frame.origin, pivot, scale);
-		var size:CGSize = CGSize(container.frame.width * scale.x, container.frame.height * scale.y);
+	class func scale(container:SVGContainer,_ pivot:CGPoint,_ scale:CGPoint) {
+		let position:CGPoint = PointModifier.scale(container.frame.origin, pivot, scale);
+		let size:CGSize = CGSize(container.frame.width * scale.x, container.frame.height * scale.y);
 		container.frame.origin = position;
 		container.frame.size = size;
 
