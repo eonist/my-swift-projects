@@ -94,12 +94,25 @@ class SVGParser {
     /**
      * Returns an SVGLine element derived from the line data in @param xml with the @param style and @param id
      */
-    class func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String):SVGLine {
+    class func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
         // :TODO: should return nil if there is no def ?!?
-        var x1:CGFloat = SVGPropertyParser.digit(xml,"x1");
-        var y1:CGFloat = SVGPropertyParser.digit(xml,"y1");
-        var x2:CGFloat = SVGPropertyParser.digit(xml,"x2");
-        var y2:CGFloat = SVGPropertyParser.digit(xml,"y2");
+        let x1:CGFloat = SVGPropertyParser.digit(xml,"x1");
+        let y1:CGFloat = SVGPropertyParser.digit(xml,"y1");
+        let x2:CGFloat = SVGPropertyParser.digit(xml,"x2");
+        let y2:CGFloat = SVGPropertyParser.digit(xml,"y2");
         return SVGLine(x1, y1, x2, y2,style,id);
+    }
+    /**
+     * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
+     */
+    class func polyLine(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPolyLine {
+//		trace("polyLine");
+        if(!xml.hasOwnProperty("@"+SVGConstants.POINTS)) return null;
+        var pointsString:String = xml["@"+SVGConstants.POINTS];
+//			trace("pointsString: " + pointsString);
+        var points:Array = [];
+        var parameters:Array = SVGPathParser.parameters(pointsString);
+        for (var i : int = 0; i < parameters.length; i+=2) points.push(new Point(parameters[i],parameters[i+1]));
+        return new SVGPolyLine(points,style,id);
     }
 }
