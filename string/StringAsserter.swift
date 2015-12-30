@@ -60,4 +60,10 @@ class StringAsserter{
         let webColorPattern:String = "^(?:blue|fuchsia|black|gray|grey|silver|maroon|red|orange|yellow|olive|green|teal|lime|aqua|navy|purple|white|grey1|grey2|grey3|grey4|grey5|grey6|grey7|grey8|grey9|white1|white2|white3|white4|white5|white6|white7|white8|white9)$"
         return RegExp.test(string,webColorPattern)
     }
+    /**
+     * Asserts if a string is in lower case
+     */
+    class func lowerCase(string:String)->Bool {
+        return string == string.lowercaseString
+    }
 }
