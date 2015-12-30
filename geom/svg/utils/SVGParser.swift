@@ -38,7 +38,7 @@ class SVGParser {
         var id:String = SVGPropertyParser.id(xml);
         switch(xml.localName!){
             case SVGConstants.rect: element = rect(xml,style,id); break;
-            case SVGConstants.polyLine: element =  polyLine(xml,style,id); break;
+            case SVGConstants.polyLine: element =  polyLine(xml,style,id)!; break;
             case SVGConstants.polygon: element = polygon(xml,style,id); break;
             case SVGConstants.path: element = path(xml,style,id); break;
             case SVGConstants.line: element = line(xml,style,id); break;
@@ -72,11 +72,11 @@ class SVGParser {
      * @example <path d="M 12 24 h 15 v 25 h -15 z"/> //
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
-    class func path(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPath? {
+    class func path(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPath? {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
-        var pathDefinition:String = xml[String(SVGConstants.data)]!
-//			print("pathDefinition: " + pathDefinition);
-        var svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
+        let pathDefinition:String = xml[String(SVGConstants.data)]!
+//		print("pathDefinition: " + pathDefinition);
+        let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
         return SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
     }
     /**
@@ -105,11 +105,11 @@ class SVGParser {
     /**
      * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
      */
-    class func polyLine(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPolyLine? {
+    class func polyLine(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
 //		print("polyLine");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil};
-        var pointsString:String = xml[SVGConstants.points]!;
-//			print("pointsString: " + pointsString);
+        let pointsString:String = xml[SVGConstants.points]!;
+//		print("pointsString: " + pointsString);
         var points:Array<CGPoint> = [];
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
@@ -119,14 +119,14 @@ class SVGParser {
      * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
      */
     class func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
-//			print("polygon");
+//		print("polygon");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil};
-        var pointsString:String = xml[SVGConstants.points]!
-//			print("pointsString: " + pointsString);
+        let pointsString:String = xml[SVGConstants.points]!
+//		print("pointsString: " + pointsString);
         var points:Array<CGPoint> = [];
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
-//			print("points: " + points);
+//		print("points: " + points);
         return SVGPolygon(points,style,id);
     }
     /**
