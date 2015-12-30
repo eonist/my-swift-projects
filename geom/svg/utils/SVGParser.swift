@@ -51,4 +51,14 @@ class SVGParser {
         }
         return element;
     }
+    /**
+     * Returns a Group instance comprised of svg elements derived from @param xml
+     * @param xml (<g id="whiskers"></g>)
+     * // :TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
+     */
+    class func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
+        var group:SVGGroup = new SVGGroup([],style,id);
+        for each (var child : XML in xml.children()) group.add(element(child,group));
+        return group;
+    }
 }
