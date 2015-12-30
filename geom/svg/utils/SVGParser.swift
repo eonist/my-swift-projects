@@ -150,4 +150,22 @@ class SVGParser {
         let ry:CGFloat = SVGPropertyParser.digit(xml,"ry")
         return SVGEllipse(cx, cy, rx, ry,style,id)
     }
+    /**
+     * Describes all svg elements in a SVG instance, is not recursive yet
+     * // :TODO: impliment SVGGroup
+     */
+    class func describeAll(svg:SVG) {
+        for svgElement : ISVGElement in svg.items {
+            if(svgElement is SVGPath){
+                trace((svgElement as SVGPath).commands);
+                trace((svgElement as SVGPath).parameters);
+            }else if(svgElement is SVGPolygon){
+                trace((svgElement as SVGPolygon).points);
+            }else if(svgElement is SVGPolyLine){
+                trace((svgElement as SVGPolyLine).points);
+            }else{
+                throw new Error(ClassParser.className(svgElement)+" is not supported yet");
+            }
+        }
+    }
 }
