@@ -65,9 +65,8 @@ class SVGPathParser {
 		var i:Int = 0;/*parameterIndex*/
 		var prevP:CGPoint = CGPoint();
 		for (var e : Int = 0; e < commands.count; e++) {
-			var command:String = commands[e];
-            
-			var isLowerCase:Bool = StringAsserter.lowerCase(command);
+			let command:String = commands[e];
+			let isLowerCase:Bool = StringAsserter.lowerCase(command);
 			var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();
 			switch(command.lowercaseString){
 				case SVGPathCommand.m,SVGPathCommand.l: //lineTo,moveTo
@@ -105,7 +104,15 @@ class SVGPathParser {
 				prevP = pos.copy();
 			}
 		}
-//			trace("positions: " + positions);
+//		Swift.print("positions: " + positions);
 		return positions;
+	}
+	/**
+	 * Returns an Rectangle instance with points derived from @param path
+	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, se notebooks
+	 */
+	class func rectangle(path:SVGPath)-> Rectangle {
+		var points:Array = SVGPathParser.points(path);
+		return PointParser.rectangle(points);
 	}
 }
