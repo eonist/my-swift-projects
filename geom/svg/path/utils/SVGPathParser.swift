@@ -37,6 +37,8 @@ class SVGPathParser {
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
         let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)((?1)\\d+?)(?=px|\\s|\\,|\\-|$)"
-		return parameters.match(pattern);
+		let stringArray:Array<String> = parameters.match(pattern);
+        let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
+        return array
 	}
 }
