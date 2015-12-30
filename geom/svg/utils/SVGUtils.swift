@@ -131,4 +131,15 @@ class SVGUtils {
          if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
 		 return xml;
 	 }
+	 /**
+	  * Returns an XML instance with style properties derived from @param xml
+	  * // :TODO: move to an internal class
+	  */
+	 class func style(xml:XML,graphic:SVGGraphic):XML {
+		 xml.@fill = !isNaN(graphic.style.fill) ? "#"+ColorParser.HexStringFromNumericRGB(graphic.style.fill):"none";
+		 xml.@stroke = !isNaN(graphic.style.stroke) ? "#"+ColorParser.HexStringFromNumericRGB(graphic.style.stroke):"none";
+		 if(!isNaN(graphic.style.strokeWidth) && graphic.style.strokeWidth != 1) xml.@["stroke-width"] = graphic.style.strokeWidth;
+		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from SVGPropertyParser.as)
+		 return xml;
+	 }
 }
