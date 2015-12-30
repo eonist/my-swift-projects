@@ -75,7 +75,7 @@ class SVGParser {
     class func path(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPath? {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
         var pathDefinition:String = xml[String(SVGConstants.data)]!
-//			trace("pathDefinition: " + pathDefinition);
+//			print("pathDefinition: " + pathDefinition);
         var svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
         return SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
     }
@@ -106,13 +106,27 @@ class SVGParser {
      * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
      */
     class func polyLine(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPolyLine? {
-//		trace("polyLine");
+//		print("polyLine");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil};
         var pointsString:String = xml[SVGConstants.points]!;
-//			trace("pointsString: " + pointsString);
+//			print("pointsString: " + pointsString);
         var points:Array<CGFloat> = [];
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
         return SVGPolyLine(points,style,id);
+    }
+    /**
+     * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
+     */
+    class func polygon(xml:XML,style:SVGStyle,id:String)->SVGPolygon {
+//			print("polygon");
+        if(!xml.hasOwnProperty("@"+SVGConstants.POINTS)) return null;
+        var pointsString:String = xml["@"+SVGConstants.POINTS];
+//			print("pointsString: " + pointsString);
+        var points:Array = [];
+        var parameters:Array = SVGPathParser.parameters(pointsString);
+        for (var i : int = 0; i < parameters.length; i+=2) points.push(new Point(parameters[i],parameters[i+1]));
+//			print("points: " + points);
+        return new SVGPolygon(points,style,id);
     }
 }
