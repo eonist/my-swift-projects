@@ -91,4 +91,15 @@ class SVGParser {
         let ry:CGFloat = SVGPropertyParser.digit(xml,"ry");
         return SVGRect(width, height, x, y, rx, ry, style, id);
     }
+    /**
+     * Returns an SVGLine element derived from the line data in @param xml with the @param style and @param id
+     */
+    class func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String):SVGLine {
+        // :TODO: should return nil if there is no def ?!?
+        var x1:CGFloat = SVGPropertyParser.digit(xml,"x1");
+        var y1:CGFloat = SVGPropertyParser.digit(xml,"y1");
+        var x2:CGFloat = SVGPropertyParser.digit(xml,"x2");
+        var y2:CGFloat = SVGPropertyParser.digit(xml,"y2");
+        return SVGLine(x1, y1, x2, y2,style,id);
+    }
 }
