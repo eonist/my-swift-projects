@@ -5,11 +5,7 @@ extension NSXMLElement {
      * Convenience
      */
     subscript(key: String) -> String? {
-        get {
-            return XMLParser.attribute(self, key)
-        }
-        set {
-            fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(newValue))
-        }
+        get {return XMLParser.attribute(self, key)}
+        set {fatalError("SETTING OF ATTRIBUTES IS NOT SUPPORTED YET: " + String(newValue))}
     }
 }
