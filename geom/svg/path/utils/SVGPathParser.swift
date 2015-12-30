@@ -41,4 +41,15 @@ class SVGPathParser {
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
         return array
 	}
+	/**
+	 * Returns the destination end position of a given command at @param commandIndex in @param commands
+	 * @param index the index of the command
+	 */
+	class func end(path:SVGPath, index:Int)->CGPoint {// :TODO: rename to position?!?
+		var command:String = (path.commands[index] as String).toLowerCase();
+		var parameters:Array = SVGPathDataParser.pathData(path, index);
+		if(command == "m" || command == "l") return new Point(parameters[0],parameters[1]);
+		else if(command == "c") return new Point(parameters[2],parameters[3]);
+		else return null;//Arc4Parser.end(PathDataParser.arc(pathData));/*PathCommand.ARC_TO*/
+	}
 }
