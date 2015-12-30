@@ -18,7 +18,8 @@ class SVGUtils {
             else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
             else if(svgElement is SVGPath) {child = path(svgElement as! SVGPath)}
             else if(svgElement is SVGGroup) {child = group(svgElement as! SVGGroup)}
-			xml.appendChild(child);
+            else {fatalError("type not supported: " + "\(svgElement)")}
+            xml.appendChild(child);
 		}
 		return xml;
 	}
@@ -90,7 +91,7 @@ class SVGUtils {
 		xml["width"] = "\(rect.width)";
 		xml["height"] = "\(rect.height)";
 		xml = style(xml,rect);
-		xml["stroke-miterlimit"] = "\(rect.style.strokeMiterLimit)";
+		xml["stroke-miterlimit"] = "\(rect.style!.strokeMiterLimit)";
 		return xml;
 	 }
 	 /**
