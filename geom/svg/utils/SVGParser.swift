@@ -31,10 +31,10 @@ class SVGParser {
      * // :TODO: add Radial gradient support
      * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
-    class func element(xml:XML,container:ISVGContainer)->ISVGElement {
+    class func element(xml:NSXMLElement,_ container:ISVGContainer)->ISVGElement {
         var element:ISVGElement;
-        var style:SVGStyle = SVGPropertyParser.style(xml,container);
-        if(container is SVGGroup && SVGGroup(container).style != null) SVGStyleModifier.merge(style, SVGGroup(container).style);/*parent style is inherited down to sub elements*/
+        var style:SVGStyle = SVGPropertyParser.style(xml, container)
+        if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style)}/*parent style is inherited down to sub elements*/
         var id:String = SVGPropertyParser.id(xml);
         switch(xml.localName()){
             case SVGConstants.RECT: element = rect(xml,style,id); break;
