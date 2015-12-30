@@ -59,11 +59,11 @@ class SVGUtils {
 	 */
 	class func svg(svg:SVG)->NSXMLElement {
 		var xml:NSXMLElement = try! NSXMLElement(XMLString: "<?xml version=“1.0”?><svg></svg>")
-		xml.@xmlns = "http://www.w3.org/2000/svg";
-		xml.@x = svg.x+"px";
-		xml.@y = svg.y+"px";
-		xml.@width = svg.width+"px";
-		xml.@height = svg.height+"px";
+		xml["xmlns"] = "http://www.w3.org/2000/svg";
+		xml["x"] = svg.x+"px";
+		xml["y"] = svg.y+"px";
+		xml["width"] = svg.width+"px";
+		xml["height"] = svg.height+"px";
 		return xml;
 	}
 }
