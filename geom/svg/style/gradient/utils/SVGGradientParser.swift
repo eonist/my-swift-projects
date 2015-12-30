@@ -31,11 +31,12 @@ private class Utils{
 		var offsets:Array<CGFloat> = [];
 		var colors:Array<Double> = [];
 		var opacities:Array<CGFloat> = [];
+        let children:NSArray = xml.children!
         for (var i = 0; i < xml.childCount; i++) {
             let child:NSXMLElement = XMLParser.childAt(children, i)!
             
-			var offset:* = SVGPropertyParser.property(child,"offset");
-			offset = StringAsserter.digit(offset) ? offset * 255 : Number(StringParser.percentage(offset)) / 100 * 255;
+			var offsetStr:String = SVGPropertyParser.property(child,"offset")!
+            var offset:CGFloat = StringAsserter.digit(offset) ? offset * 255 : Number(StringParser.percentage(offset)) / 100 * 255;
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// trace("offset: " + offset);
