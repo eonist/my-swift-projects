@@ -22,6 +22,21 @@ class SVGGradientParser {
 		let svgGradient:SVGGradient = Utils.gradient(xml);
 		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors/*svgGradient.opacities*/,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id/*,svgGradient.gradientTransform*/);
 	}
+	/**
+	 * Returns an gradient instance with data derived from @param xml 
+	 */
+	class func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
+		var cxStr:String = SVGPropertyParser.property(xml,"cx");
+		cx = SVGPropertyParser.value(cx);
+		var cyStr:String = SVGPropertyParser.property(xml,"cy");
+		cy = SVGPropertyParser.value(cy);
+		var rStr:String = SVGPropertyParser.property(xml,"r");
+		r = SVGPropertyParser.value(r);
+		var fxStr:String = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fx"));
+		var fyStr:String = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fy"));
+		var svgGradient:SVGGradient = Utils.gradient(xml);
+		return new SVGRadialGradient(svgGradient.offsets,svgGradient.colors,svgGradient.opacities,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform);
+	}
 }
 private class Utils{
 	/**
