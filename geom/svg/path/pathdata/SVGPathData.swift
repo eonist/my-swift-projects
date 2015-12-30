@@ -5,7 +5,7 @@ import Foundation
 class SVGPathData {
 	var commands:Array<String>//TODO:this could be Character and Not String
 	var parameters:Array<CGFloat>
-	init(_ commands:Array<Int>,_ parameters:Array<CGFloat>) {
+	init(_ commands:Array<String>,_ parameters:Array<CGFloat>) {
 		self.commands = commands
 		self.parameters = parameters
 	}
