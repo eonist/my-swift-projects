@@ -52,4 +52,59 @@ class SVGPathParser {
         else if(command == "c") {return CGPoint(parameters[2],parameters[3])}
         else { return nil}//Arc4Parser.end(PathDataParser.arc(pathData));/*PathCommand.ARC_TO*/
 	}
+	/**
+	 * Returns all points in @param path
+	 * // :TODO: impliment native quad to (if you test the fdt free version on your mac mini first)
+	 * // :TODO: add support for zZ ?!? do we need to?
+	 * // :TODO: cubic and quad curve may have more params and they may have t and s  impliment this
+	 */
+	class func points(path:SVGPath)->Array<CGPoint> {
+		var commands:Array = path.commands;
+		var params:Array = path.parameters;
+		var positions:Array<CGPoint> = [];
+		var i:Int = 0;/*parameterIndex*/
+		var prevP:Point = CGPoint();
+		for (var e : Int = 0; e < commands.count; e++) {
+			var command:String = commands[e];
+			var isLowerCase:Boolean = StringAsserter.lowerCase(command);
+			var pos:Point = isLowerCase ? prevP.clone() : new Point();
+			switch(command.toLocaleLowerCase()){
+				case SVGPathCommand.M: //moveTo
+				case SVGPathCommand.L: //lineTo
+					pos = pos.add(new Point(params[i+0],params[i+1]));
+					i +=2;
+					break;
+				case SVGPathCommand.H: //horizontalLineTo
+					pos = pos.add(new Point(params[i],isLowerCase ? 0 : prevP.y));
+					i++;
+					break;
+				case SVGPathCommand.V: //verticalLineTo
+					pos = pos.add(new Point(isLowerCase ? 0 : prevP.x,params[i]));
+					i++;
+					break;
+				case SVGPathCommand.C:/*cubicCurveTo*/ // :TODO: this isnt tested!!
+					pos = pos.add(new Point(params[i+4],params[i+5]));
+					i +=6;
+					break;
+				case SVGPathCommand.S://smooth Cubic curve command
+					pos = pos.add(new Point(params[i+2],params[i+3]));
+					i +=4;
+					break;
+				case SVGPathCommand.Q://quadCurveTo
+					pos = pos.add(new Point(params[i+2],params[i+3]));
+					i +=4;
+					break;
+				case SVGPathCommand.T://smooth quadratic curve command
+					pos = pos.add(new Point(params[i],params[i+1]));
+					i +=2;
+					break;
+			}
+			positions.push(pos);
+			if(e < commands.length-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
+				prevP = pos.clone();
+			}
+		}
+//			trace("positions: " + positions);
+		return positions;
+	}
 }
