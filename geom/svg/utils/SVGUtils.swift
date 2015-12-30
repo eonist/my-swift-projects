@@ -12,12 +12,12 @@ class SVGUtils {
 	class func xml(svg:SVG)->NSXMLElement {// :TODO: refactor to one or loop?
 		var xml:NSXMLElement = SVGUtils.svg(svg);
 		for (var i : Int = 0; i < svg.items.count; i++) {
-			var svgGraphic:SVGGraphic = svg.items[i];
-			var child:XML;
-            if(svgGraphic is SVGLine) {child = line(svgGraphic as SVGLine)}
-            else if(svgGraphic is SVGRect) {child = rect(svgGraphic as SVGRect)}
-            else if(svgGraphic is SVGPath) {child = path(svgGraphic as SVGPath)}
-            else if(svgGraphic is SVGGroup) {child = group(svgGraphic as SVGGroup)}
+			var svgElement:ISVGElement = svg.items[i];
+			var child:NSXMLElement;
+            if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
+            else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
+            else if(svgElement is SVGPath) {child = path(svgElement as! SVGPath)}
+            else if(svgElement is SVGGroup) {child = group(svgElement as! SVGGroup)}
 			xml.appendChild(child);
 		}
 		return xml;

@@ -14,4 +14,10 @@ extension NSXMLElement {
     func hasAttribute(attrName:String)->Bool{
         return XMLAsserter.hasAttribute(self,attrName)
     }
+    /**
+     *
+     */
+    func appendChild(xml:NSXMLElement){
+        fatalError("not implemented yet")
+    }
 }
