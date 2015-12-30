@@ -40,14 +40,14 @@ private class Utils{
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// trace("offset: " + offset);
-			var stopColor:Number;
-			var stopOpacity:Number;
+			var stopColor:Double;
+			var stopOpacity:CGFloat;
 			/*0-1*/
-			var style:String = SVGPropertyParser.property(child,"style");
+			var style:String? = SVGPropertyParser.property(child,"style");
 			// :TODO: if style is present then dont check for color etc
-			if(style != null){
+			if(style != nil){
 				// trace("style: " + style);
-				var inlineStyle:Object = SVGStyleParser.inlineStyle(style);
+				var inlineStyle:Dictionary<String,String> = SVGStyleParser.inlineStyle(style);
 //				ObjectParser.describe(inlineStyle);
 				var stopColorProperty:* = inlineStyle["stop-color"];
 				// trace("stopColorProperty: " + stopColorProperty);
