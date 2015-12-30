@@ -76,4 +76,20 @@ private class Utils{
 		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits/*,gradientTransform*/);
 	}
+    /**
+     * Returns an Matrix instance with GradientTransform data derived from @param xml
+     */
+    class func gradientTransform(xml:XML)->Matrix {
+        var gradientTransform:Matrix = null;
+        var gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform");
+        if(gradientTransformString != nil){
+            //var string:String = "matrix(0.9999 -0.0141 0.0067 0.4761 -0.2373 19.9364)";
+            //print("gradientTransformString: " + gradientTransformString);
+            var matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0];
+            var matrixArray:Array<String> = matrixString.split(" ");
+            //print("matrixArray: " + matrixArray);
+            gradientTransform = new Matrix(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5]);
+        }
+        return gradientTransform;
+    }
 }
