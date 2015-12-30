@@ -70,12 +70,12 @@ class SVGUtils {
 	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
 	 */
 	class func line(line:SVGLine)->NSXMLElement {
-		var xml:XML = ;
+		var xml:NSXMLElement = try! NSXMLElement(XMLString: "<line></line>")
 		xml = id(xml,line);
-		xml.@x1 = line.x1;
-		xml.@y1 = line.y1;
-		xml.@x2 = line.x2;
-		xml.@y2 = line.y2;
+		xml["x1"] = "\(line.x1)";
+		xml["y1"] = "\(line.y1)";
+		xml["x2"] = "\(line.x2)";
+		xml["y2"] = "\(line.y2)";
 		xml = style(xml,line);
 		return xml;
 	}
