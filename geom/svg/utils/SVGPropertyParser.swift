@@ -44,12 +44,12 @@ class SVGPropertyParser {
 //				trace("xml.toString(): " + xml.toXMLString());
 			var fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
-			var fillRule:String = property(xml,"fill-rule");
-			var stroke:CGFloat = SVGStyleParser.stroke(property(xml,"stroke"));
+			var fillRule:String = property(xml,"fill-rule")!;
+			var stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
 			var strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
-			var strokeLineCap:String = property(xml,"stroke-linecap");
-			var strokeLineJoin:String = property(xml,"stroke-linejoin");
+			var strokeLineCap:String = property(xml,"stroke-linecap")!;
+			var strokeLineJoin:String = property(xml,"stroke-linejoin")!;
 			var strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
 			if(isNaN(fillOpacity)) fillOpacity = strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"));/*<--new*/
 			style = new SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
