@@ -35,8 +35,8 @@ extension String {
     /**
      * Convenince
      */
-    func replace(pattern:String,replacement:String){
-        RegExp.replace(self,pattern, replacement)
+    func replace(pattern:String,_ replacement:String)->String{
+        return RegExp.replace(self,pattern, replacement)
     }
     /**
      * Convenince

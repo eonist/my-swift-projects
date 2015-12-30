@@ -51,7 +51,7 @@ class SVGUtils {
 				index++;
 			}
 		}
-		pathData = pathData.replace(/\s*?$/, "");/*Removes the ending whitespace, if it exists*/
+		pathData = pathData.replace("\\s*?$", "");/*Removes the ending whitespace, if it exists*/
 		return pathData;	
 	}
 }
