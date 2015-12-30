@@ -109,10 +109,11 @@ class SVGPathParser {
 	}
 	/**
 	 * Returns an Rectangle instance with points derived from @param path
-	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, se notebooks
+	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
-	class func rectangle(path:SVGPath)-> Rectangle {
+	class func rectangle(path:SVGPath)-> CGRect {
 		var points:Array = SVGPathParser.points(path);
+        
 		return PointParser.rectangle(points);
 	}
 }
