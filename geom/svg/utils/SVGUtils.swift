@@ -83,7 +83,7 @@ class SVGUtils {
 	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
 	 */
 	 class func rect(rect:SVGRect)->NSXMLElement {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
-		var xml:NSXMLElement = NSXMLElement(XMLString:"<rect></rect>")
+		var xml:NSXMLElement = try! NSXMLElement(XMLString:"<rect></rect>")
 		xml = id(xml,rect);
 		xml["x"] = "\(rect.x)";
 		xml["y"] = "\(rect.y)";
@@ -96,11 +96,31 @@ class SVGUtils {
 	 /**
 	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
 	  */
-	 class func path(path:SVGPath):XML {
-		 var xml:XML = <path></path>;
+	 class func path(path:SVGPath)->NSXMLElement {
+         var xml:NSXMLElement = try! NSXMLElement(XMLString:"<path></path>")
 		 xml = id(xml,path);
-		 xml.@d = SVGUtils.pathData(path);
+		 xml["d"] = SVGUtils.pathData(path);
 		 xml = style(xml,path);
+		 return xml;
+	 }
+	 /**
+	  * Returns an XML instance with SVGGroup data derived from @param group
+	  * @Note: this method is recursive
+	  * // :TODO: remeber groups can have style applied inline cant they?
+	  */
+	 class func group(group:SVGGroup):XML {
+		 var xml:XML = <g></g>;
+		 xml = id(xml,group);
+		 /*xml = style(xml,group); not supported yet*/
+		 for (var i : int = 0; i < group.numChildren; i++) {
+			 var svgGraphic:SVGGraphic = group.getChildAt(i) as SVGGraphic;
+			 var child:XML;
+			 if(svgGraphic is SVGLine) child = line(svgGraphic as SVGLine);
+			 else if(svgGraphic is SVGRect) child = rect(svgGraphic as SVGRect);
+			 else if(svgGraphic is SVGPath) child = path(svgGraphic as SVGPath);
+			 else if(svgGraphic is SVGGroup) child = SVGUtils.group(svgGraphic as SVGGroup);
+			 xml.appendChild(child);
+		 }
 		 return xml;
 	 }
 }
