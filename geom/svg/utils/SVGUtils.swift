@@ -32,7 +32,7 @@ class SVGUtils {
 		var index:Int = 0;
 		for command : String in commands {
 			if("[m,M,l,L,t,T]".test(command)) {
-				pathData += command + parameters[index] + " " + parameters[index+1] + " ";
+				pathData += (command + parameters[index] + " " + parameters[index+1] + " ")
 				index+=2;
 			}else if(new RegExp("[h,H,v,V]").test(command)){
 				pathData += command + parameters[index] + " ";
