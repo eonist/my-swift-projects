@@ -35,7 +35,7 @@ class SVGGradientParser {
 		let fx:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fx"));
 		let fy:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fy"));
 		let svgGradient:SVGGradient = Utils.gradient(xml);
-		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,/*svgGradient.opacities,*/svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform);
+		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,/*svgGradient.opacities,*/svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy/*,svgGradient.gradientTransform*/);
 	}
 }
 private class Utils{
