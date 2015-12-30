@@ -39,39 +39,39 @@ private class Utils{
             var offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) * 255 : StringParser.percentage(offsetStr) / 100 * 255;
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
-			// trace("offset: " + offset);
+			// Swift.print("offset: " + offset);
 			var stopColor:Double;
 			var stopOpacity:CGFloat;
 			/*0-1*/
 			var style:String? = SVGPropertyParser.property(child,"style");
 			// :TODO: if style is present then dont check for color etc
 			if(style != nil){
-				// trace("style: " + style);
+				// Swift.print("style: " + style);
 				var inlineStyle:Dictionary<String,String> = SVGStyleParser.inlineStyle(style!);
 //				ObjectParser.describe(inlineStyle);
 				var stopColorProperty:String = inlineStyle["stop-color"]!;
-				// trace("stopColorProperty: " + stopColorProperty);
+				// Swift.print("stopColorProperty: " + stopColorProperty);
 				stopColor = Double(StringParser.color(stopColorProperty));
 				stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
-				// trace("stopOpacity: " + stopOpacity);
+				// Swift.print("stopOpacity: " + stopOpacity);
 			} else{
-				stopColor = StringParser.color(SVGPropertyParser.property(child,"stop-color"));
-				stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"));
+				stopColor = Double(StringParser.color(SVGPropertyParser.property(child,"stop-color")!))
+				stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
 			}
-			if(isNaN(stopOpacity)) stopOpacity = 1;/*Forces stopOpacity to be 1 if its NaN*/
-			offsets.push(offset);
-			colors.push(stopColor);
-			opacities.push(stopOpacity);
+            if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
+			offsets.append(offset);
+			colors.append(stopColor);
+			opacities.append(stopOpacity);
 		}
-		// trace("colors: " + colors);
-		// trace("offsets: " + offsets);
-		// trace("opacities: " + opacities);
+		// Swift.print("colors: " + colors);
+		// Swift.print("offsets: " + offsets);
+		// Swift.print("opacities: " + opacities);
 		var gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits");
 		/*userSpaceOnUse*/
-		// trace("gradientUnits: " + gradientUnits);
+		// Swift.print("gradientUnits: " + gradientUnits);
 		var spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod");
 		var id:String = SVGPropertyParser.id(xml);
-		var gradientTransform:Matrix = Utils.gradientTransform(xml);
-		return new SVGGradient(offsets,colors,opacities,spreadMethod,id,gradientUnits,gradientTransform);
+		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
+		return SVGGradient(offsets,colors,opacities,spreadMethod,id,gradientUnits/*,gradientTransform*/);
 	}
 }
