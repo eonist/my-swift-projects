@@ -31,7 +31,9 @@ private class Utils{
 		var offsets:Array<CGFloat> = [];
 		var colors:Array<Double> = [];
 		var opacities:Array<CGFloat> = [];
-		for child : XML in xml.children()){
+        for (var i = 0; i < xml.childCount; i++) {
+            let child:NSXMLElement = XMLParser.childAt(children, i)!
+            
 			var offset:* = SVGPropertyParser.property(child,"offset");
 			offset = StringAsserter.digit(offset) ? offset * 255 : Number(StringParser.percentage(offset)) / 100 * 255;
 			/*offset is number between 0-1 or offset is percentage %*/
