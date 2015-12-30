@@ -113,14 +113,22 @@ class SVGUtils {
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
 		 for (var i : Int = 0; i < group.items.count; i++) {
-			 var svgGraphic:SVGGraphic = group.getChildAt(i) as SVGGraphic;
-			 var child:XML;
-			 if(svgGraphic is SVGLine) child = line(svgGraphic as SVGLine);
-			 else if(svgGraphic is SVGRect) child = rect(svgGraphic as SVGRect);
-			 else if(svgGraphic is SVGPath) child = path(svgGraphic as SVGPath);
-			 else if(svgGraphic is SVGGroup) child = SVGUtils.group(svgGraphic as SVGGroup);
+			 var svgGraphic:ISVGElement = group.items[i] as ISVGElement;
+			 var child:NSXMLElement;
+             if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
+             else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
+             else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
+             else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
 			 xml.appendChild(child);
 		 }
+		 return xml;
+	 }
+	 /**
+	  * Returns the id from a ISVG instance
+	  * // :TODO: move to an internal class
+	  */
+	 class func id(xml:XML,svg:ISVGElement)->XML {
+		 if(svg.id != null) xml.@id = svg.id;
 		 return xml;
 	 }
 }
