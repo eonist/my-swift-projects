@@ -97,7 +97,7 @@ class SVGUtils {
 	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
 	  */
 	 class func path(path:SVGPath)->NSXMLElement {
-         var xml:NSXMLElement = try! NSXMLElement(XMLString:"<path></path>")
+         var xml:NSXMLElement = try! NSXMLElement("<path></path>")
 		 xml = id(xml,path);
 		 xml["d"] = SVGUtils.pathData(path);
 		 xml = style(xml,path);
@@ -108,11 +108,11 @@ class SVGUtils {
 	  * @Note: this method is recursive
 	  * // :TODO: remeber groups can have style applied inline cant they?
 	  */
-	 class func group(group:SVGGroup):XML {
-		 var xml:XML = <g></g>;
+	 class func group(group:SVGGroup) -> NSXMLElement {
+		 var xml:NSXMLElement = try! NSXMLElement("<g></g>")
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
-		 for (var i : int = 0; i < group.numChildren; i++) {
+		 for (var i : Int = 0; i < group.numChildren; i++) {
 			 var svgGraphic:SVGGraphic = group.getChildAt(i) as SVGGraphic;
 			 var child:XML;
 			 if(svgGraphic is SVGLine) child = line(svgGraphic as SVGLine);

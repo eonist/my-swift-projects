@@ -2,13 +2,13 @@ import Foundation
 
 extension NSXMLElement {
     /**
-     *
+     * convenience
      */
     convenience init(_ xmlString:String) throws{
         try self.init(XMLString:xmlString)
     }
     /*
-     * Convenience
+     * convenience
      */
     subscript(key: String) -> String? {
         get {return XMLParser.attribute(self, key)}
