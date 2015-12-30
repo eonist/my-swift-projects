@@ -178,8 +178,16 @@ class PointParser{
             if(point.y > max.y){ max.y = point.y}
             else if(point.y < min.y){ min.y = point.y}
         }
-        CGRect.co
-        return RectangleParser.cornersToRectangle(min,max);
+        return cornersToRectangle(min,max);
+    }
+    /**
+     * Returns an rectangle from a topLeft and bottomRight corners
+     * @Note getting the points from an rectangle: _transformBox.boundingBox.getRect(_transformBox) output: (x=0, y=0, w=400, h=400)
+     */
+    class func cornersToRectangle(topLeft:CGPoint, _ bottomRight:CGPoint)->CGRect{
+        let width:CGFloat = NumberParser.distance(topLeft.x, bottomRight.x);
+        let height:CGFloat = NumberParser.distance(topLeft.y, bottomRight.y);
+        return CGRect(topLeft.x, topLeft.y, width, height);
     }
 }
 
