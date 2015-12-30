@@ -136,7 +136,7 @@ class SVGUtils {
 	  * // :TODO: move to an internal class
 	  */
 	 class func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
-		 xml["fill"] = !(graphic.style.fill.isNaN) ? "#"+ColorParser.HexStringFromNumericRGB(graphic.style.fill):"none";
+		 xml["fill"] = graphic.style.fill is Double && !((graphic.style.fill as! Double).isNaN) ? "#"+ColorUtils.hexString(UInt(graphic.style.fill)):"none";
 		 xml["stroke"] = !isNaN(graphic.style.stroke) ? "#"+ColorParser.HexStringFromNumericRGB(graphic.style.stroke):"none";
 		 if(!isNaN(graphic.style.strokeWidth) && graphic.style.strokeWidth != 1) xml.@["stroke-width"] = graphic.style.strokeWidth;
 		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from SVGPropertyParser.as)
