@@ -26,16 +26,16 @@ class SVGGradientParser {
 	 * Returns an gradient instance with data derived from @param xml 
 	 */
 	class func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
-		var cxStr:String = SVGPropertyParser.property(xml,"cx");
-		cx = SVGPropertyParser.value(cx);
-		var cyStr:String = SVGPropertyParser.property(xml,"cy");
-		cy = SVGPropertyParser.value(cy);
-		var rStr:String = SVGPropertyParser.property(xml,"r");
-		r = SVGPropertyParser.value(r);
-		var fxStr:String = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fx"));
-		var fyStr:String = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fy"));
-		var svgGradient:SVGGradient = Utils.gradient(xml);
-		return new SVGRadialGradient(svgGradient.offsets,svgGradient.colors,svgGradient.opacities,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform);
+		let cxStr:String = SVGPropertyParser.property(xml,"cx")!;
+        let cx:CGFloat = SVGPropertyParser.value(cxStr);
+		let cyStr:String = SVGPropertyParser.property(xml,"cy")!;
+		let cy:CGFloat = SVGPropertyParser.value(cyStr);
+		let rStr:String = SVGPropertyParser.property(xml,"r")!;
+		let r:CGFloat = SVGPropertyParser.value(rStr);
+		let fx:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fx"));
+		let fy:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fy"));
+		let svgGradient:SVGGradient = Utils.gradient(xml);
+		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,/*svgGradient.opacities,*/svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform);
 	}
 }
 private class Utils{
