@@ -14,7 +14,7 @@ class SVGRect : SVGGraphic {
     /**
      * @param fill (is of type Number so that we can test for NaN when parsing to svg xml)
      */
-    init(width:CGFloat,_ height:CGFloat,_ x:CGFloat,_ y:CGFloat,_ rx:CGFloat,_ ry:CGFloat, _ style:SVGStyle,_ id:String) {
+    init(_ width:CGFloat,_ height:CGFloat,_ x:CGFloat,_ y:CGFloat,_ rx:CGFloat,_ ry:CGFloat, _ style:SVGStyle,_ id:String) {
         self.width = width;
         self.height = height;
         self.x = x;

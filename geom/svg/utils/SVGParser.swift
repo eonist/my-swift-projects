@@ -82,13 +82,13 @@ class SVGParser {
     /**
      * Returns an SVGRect element derived from the rectangle data in @param xml with the @param style and @param id
      */
-    class func rect(xml:XML,_ style:SVGStyle,_ id:String)->SVGRect {
-        var x:CGFloat = SVGPropertyParser.digit(xml,"x");
-        var y:CGFloat = SVGPropertyParser.digit(xml,"y");
-        var width:CGFloat = SVGPropertyParser.digit(xml,"width");
-        var height:CGFloat = SVGPropertyParser.digit(xml,"height");
-        var rx:CGFloat = SVGPropertyParser.digit(xml,"rx");
-        var ry:CGFloat = SVGPropertyParser.digit(xml,"ry");
-        return new SVGRect(width, height, x, y, rx, ry, style, id);
+    class func rect(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
+        let x:CGFloat = SVGPropertyParser.digit(xml,"x");
+        let y:CGFloat = SVGPropertyParser.digit(xml,"y");
+        let width:CGFloat = SVGPropertyParser.digit(xml,"width");
+        let height:CGFloat = SVGPropertyParser.digit(xml,"height");
+        let rx:CGFloat = SVGPropertyParser.digit(xml,"rx");
+        let ry:CGFloat = SVGPropertyParser.digit(xml,"ry");
+        return SVGRect(width, height, x, y, rx, ry, style, id);
     }
 }
