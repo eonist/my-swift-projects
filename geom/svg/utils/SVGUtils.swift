@@ -57,8 +57,8 @@ class SVGUtils {
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
-	class func svg(svg:SVG):XML {
-		var xml:XML = new XML("<?xml version=“1.0”?><svg></svg>");
+	class func svg(svg:SVG)->NSXMLElement {
+		var xml:NSXMLElement = try! NSXMLElement(XMLString: "<?xml version=“1.0”?><svg></svg>")
 		xml.@xmlns = "http://www.w3.org/2000/svg";
 		xml.@x = svg.x+"px";
 		xml.@y = svg.y+"px";
