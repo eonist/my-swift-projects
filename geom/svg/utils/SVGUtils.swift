@@ -58,12 +58,25 @@ class SVGUtils {
 	 * Returns the root node for the SVG XML document
 	 */
 	class func svg(svg:SVG)->NSXMLElement {
-		var xml:NSXMLElement = try! NSXMLElement(XMLString: "<?xml version=“1.0”?><svg></svg>")
+		let xml:NSXMLElement = try! NSXMLElement(XMLString: "<?xml version=“1.0”?><svg></svg>")
 		xml["xmlns"] = "http://www.w3.org/2000/svg";
-		xml["x"] = svg.x+"px";
-		xml["y"] = svg.y+"px";
-		xml["width"] = svg.width+"px";
-		xml["height"] = svg.height+"px";
+		xml["x"] = String(svg.x)+"px";
+		xml["y"] = String(svg.y)+"px";
+		xml["width"] = String(svg.width)+"px";
+		xml["height"] = String(svg.height)+"px";
+		return xml;
+	}
+	/**
+	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
+	 */
+	class func line(line:SVGLine)->NSXMLElement {
+		var xml:XML = ;
+		xml = id(xml,line);
+		xml.@x1 = line.x1;
+		xml.@y1 = line.y1;
+		xml.@x2 = line.x2;
+		xml.@y2 = line.y2;
+		xml = style(xml,line);
 		return xml;
 	}
 }
