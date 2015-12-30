@@ -29,7 +29,7 @@ private class Utils{
 	 */
 	class func gradient(xml:NSXMLElement)->SVGGradient{
 		var offsets:Array<CGFloat> = [];
-		var colors:Array<Double> = [];
+		var colors:Array<CGColor> = [];
 		var opacities:Array<CGFloat> = [];
         let children:NSArray = xml.children!
         for (var i = 0; i < xml.childCount; i++) {
@@ -40,7 +40,8 @@ private class Utils{
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// Swift.print("offset: " + offset);
-			var stopColor:CGColor
+			let hexColor:UInt
+            let stopOpacity:CGFloat
 			//var stopOpacity:CGFloat;
 			/*0-1*/
 			var style:String? = SVGPropertyParser.property(child,"style");
@@ -52,16 +53,16 @@ private class Utils{
 				var stopColorProperty:String = inlineStyle["stop-color"]!;
 				// Swift.print("stopColorProperty: " + stopColorProperty);
 				
-                let stopOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
-                let hexColor:UInt = StringParser.color(stopColorProperty)
-                stopColor = CGColor.color(hexColor, stopOpacity)//Double();
+                stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
+                hexColor = StringParser.color(stopColorProperty)
 				// Swift.print("stopOpacity: " + stopOpacity);
 			} else{
-                let stopOpacity:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
-				let hexColor:UInt = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
-                stopColor = CGColor.color(hexColor, stopOpacity)//Double();
+                stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
+				hexColor = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
+                
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
+            var stopColor:CGColor = CGColor.color(hexColor, stopOpacity)//Double();
 			offsets.append(offset);
 			colors.append(stopColor);
 			opacities.append(stopOpacity);
