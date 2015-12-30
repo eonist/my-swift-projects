@@ -14,4 +14,13 @@ class SVGPropertyParser {
 	class func value(property:Any?) -> CGFloat {
 		return property == nil ? CGFloat.NaN : CGFloat(Double(String(property))!)//<-may be wrong conversion wrapping, also make a converter for ANy to CGFloat already
 	}
+	/**
+	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
+	 * // :TODO: needs a re-write that doesnt include returning an associative array
+	 */
+	class func digit(xml:XML,key:String):CGFloat{
+		var prop:* = property(xml, key);
+		if(prop == nil) return NaN;
+		return StringParser.digit(prop);//removes the px suffix and casts the value as a Number
+	}
 }
