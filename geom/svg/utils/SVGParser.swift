@@ -157,14 +157,14 @@ class SVGParser {
     class func describeAll(svg:SVG) {
         for svgElement : ISVGElement in svg.items {
             if(svgElement is SVGPath){
-                trace((svgElement as SVGPath).commands);
-                trace((svgElement as SVGPath).parameters);
+                Swift.print((svgElement as! SVGPath).commands);
+                Swift.print((svgElement as! SVGPath).parameters);
             }else if(svgElement is SVGPolygon){
-                trace((svgElement as SVGPolygon).points);
+                Swift.print((svgElement as! SVGPolygon).points);
             }else if(svgElement is SVGPolyLine){
-                trace((svgElement as SVGPolyLine).points);
+                Swift.print((svgElement as! SVGPolyLine).points);
             }else{
-                throw new Error(ClassParser.className(svgElement)+" is not supported yet");
+                fatalError("\(svgElement)" + " is not supported yet")
             }
         }
     }
