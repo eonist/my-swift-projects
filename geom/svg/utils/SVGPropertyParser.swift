@@ -18,9 +18,15 @@ class SVGPropertyParser {
 	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
 	 * // :TODO: needs a re-write that doesnt include returning an associative array
 	 */
-	class func digit(xml:XML,key:String):CGFloat{
-		var prop:* = property(xml, key);
-		if(prop == nil) return NaN;
-		return StringParser.digit(prop);//removes the px suffix and casts the value as a Number
+	class func digit(xml:NSXMLElement,key:String)->CGFloat{
+		let prop:Any? = property(xml, key)
+        if(prop == nil) {return CGFloat.NaN}
+		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
+	}
+	/**
+	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
+	 */
+	class func function id(xml:NSXMLElement)->String {
+		return xml.hasOwnProperty("@id") ? xml["@id"] : "";//xml.(hasOwnProperty("@id")).@id;
 	}
 }
