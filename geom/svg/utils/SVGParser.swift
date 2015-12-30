@@ -24,4 +24,30 @@ class SVGParser {
         }
         return doc;
     }
+    /**
+     * Returns An ISVG instance or SVGLinearGradient instance (For now, in the future other types will be added)
+     * @Note: SVGParser.group uses this method to create elements from xml, and adds the group style to its decendants
+     * // :TODO: Not sure what the purpose of this method is
+     * // :TODO: add Radial gradient support
+     * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
+     */
+    class func element(xml:XML,container:ISVGContainer)->ISVGElement {
+        var element:ISVGElement;
+        var style:SVGStyle = SVGPropertyParser.style(xml,container);
+        if(container is SVGGroup && SVGGroup(container).style != null) SVGStyleModifier.merge(style, SVGGroup(container).style);/*parent style is inherited down to sub elements*/
+        var id:String = SVGPropertyParser.id(xml);
+        switch(xml.localName()){
+            case SVGConstants.RECT: element = rect(xml,style,id); break;
+            case SVGConstants.POLY_LINE: element =  polyLine(xml,style,id); break;
+            case SVGConstants.POLYGON: element = polygon(xml,style,id); break;
+            case SVGConstants.PATH: element = path(xml,style,id); break;
+            case SVGConstants.LINE: element = line(xml,style,id); break;
+            case SVGConstants.CIRCLE: element = circle(xml,style,id); break;
+            case SVGConstants.ELLIPSE: element = ellipse(xml,style,id); break;
+            case SVGConstants.GROUP: element = group(xml,style,id); break;
+            case SVGConstants.LINEAR_GRADIENT: element = SVGGradientParser.linearGradient(xml); break;
+            case SVGConstants.RADIAL_GRADIENT: element = SVGGradientParser.radialGradient(xml); break;
+        }
+        return element;
+    }
 }
