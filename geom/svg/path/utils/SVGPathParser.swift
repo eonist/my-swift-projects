@@ -63,11 +63,12 @@ class SVGPathParser {
 		var params:Array = path.parameters;
 		var positions:Array<CGPoint> = [];
 		var i:Int = 0;/*parameterIndex*/
-		var prevP:Point = CGPoint();
+		var prevP:CGPoint = CGPoint();
 		for (var e : Int = 0; e < commands.count; e++) {
 			var command:String = commands[e];
-			var isLowerCase:Boolean = StringAsserter.lowerCase(command);
-			var pos:Point = isLowerCase ? prevP.clone() : new Point();
+            
+			var isLowerCase:Bool = StringAsserter.lowerCase(command);
+			var pos:Point = isLowerCase ? prevP.clone() : CGPoint();
 			switch(command.toLocaleLowerCase()){
 				case SVGPathCommand.M: //moveTo
 				case SVGPathCommand.L: //lineTo
