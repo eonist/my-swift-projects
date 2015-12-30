@@ -112,7 +112,7 @@ class SVGUtils {
 		 var xml:NSXMLElement = try! NSXMLElement("<g></g>")
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
-		 for (var i : Int = 0; i < group.numChildren; i++) {
+		 for (var i : Int = 0; i < group.items.count; i++) {
 			 var svgGraphic:SVGGraphic = group.getChildAt(i) as SVGGraphic;
 			 var child:XML;
 			 if(svgGraphic is SVGLine) child = line(svgGraphic as SVGLine);
