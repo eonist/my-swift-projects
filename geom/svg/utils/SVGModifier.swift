@@ -37,7 +37,35 @@ class SVGModifier {
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;
 		}
-		if(element is ISVGGraphic) update(element as ISVGGraphic);
+        if(element is ISVGGraphic) {update(element as ISVGGraphic)}
 	}
-	
+	/**
+	 * Styles an @param element with @param style
+	 * // :TODO: rename to stylize?
+	 * @Note this method is recursive
+	 */
+	class func style(element:ISVGElement,_ style:SVGStyle) {
+        if(element is SVGView) {(element as! SVGView).style = style}
+        if(element is SVGGraphic) {update(element as! SVGGraphic)}
+        if(element is SVGContainer) {
+            for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
+                if((element as! SVGContainer).items[i] is ISVGView) {SVGModifier.style((element as! SVGContainer).items[i], style)}
+            }
+        }
+	}
+	/**
+	 * updates an SVGGraphic
+	 */
+	class func update(graphic:ISVGGraphic) {
+        
+        
+        //this method is incomplete, needs correct order of calls etc
+        
+        
+		//graphic.clear();
+		graphic.applyLineStyle();
+		graphic.beginFill();
+		graphic.draw();
+		//graphic.endFill();
+	}
 }
