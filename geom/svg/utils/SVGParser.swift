@@ -33,9 +33,9 @@ class SVGParser {
      */
     class func element(xml:NSXMLElement,_ container:ISVGContainer)->ISVGElement {
         var element:ISVGElement;
-        var style:SVGStyle = SVGPropertyParser.style(xml, container)
+        let style:SVGStyle = SVGPropertyParser.style(xml, container)
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
-        var id:String = SVGPropertyParser.id(xml);
+        let id:String = SVGPropertyParser.id(xml);
         switch(xml.localName!){
             case SVGConstants.rect: element = rect(xml,style,id); break;
             case SVGConstants.polyLine: element =  polyLine(xml,style,id)!; break;
@@ -47,7 +47,7 @@ class SVGParser {
             case SVGConstants.group: element = group(xml,style,id); break;
             case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml); break;
             case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml); break;
-            default: break;
+            default: fatalError("type not supported: " + "\(element)");
         }
         return element;
     }

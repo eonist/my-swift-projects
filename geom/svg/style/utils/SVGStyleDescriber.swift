@@ -10,7 +10,7 @@ class SVGStyleDescriber {
 		else if(style.fill is SVGLinearGradient) {
 			let linearGradient:SVGLinearGradient = style.fill as! SVGLinearGradient;
 			Swift.print("linearGradient.colors: " + "\(linearGradient.colors)");
-			Swift.print("linearGradient.opacities: " + "\(linearGradient.opacities)");
+			//Swift.print("linearGradient.opacities: " + "\(linearGradient.opacities)");
 			Swift.print("linearGradient.offsets: " + "\(linearGradient.offsets)");
 			Swift.print("linearGradient.gradientUnits: " + "\(linearGradient.gradientUnits)");
 			Swift.print("linearGradient.spreadMethod: " + "\(linearGradient.spreadMethod)");

@@ -76,6 +76,7 @@ class SVGPathModifier {
 				case SVGPathCommand.z: 
 					/*do nothing*/
 					break;
+                default:break;
 			}
 		}
 	}
