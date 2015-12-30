@@ -57,8 +57,11 @@ class SVGParser {
      * // :TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
     class func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
-        var group:SVGGroup = new SVGGroup([],style,id);
-        for each (var child : XML in xml.children()) group.add(element(child,group));
+        let group:SVGGroup = SVGGroup([],style,id);
+        for (var i = 0; i < xml.childCount; i++) {
+            let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
+            group.add(element(child,group))
+        }
         return group;
     }
 }
