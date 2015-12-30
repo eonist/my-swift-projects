@@ -25,3 +25,6 @@ class SVGCircle : SVGGraphic{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+extension SVGCircle{
+    var center:CGPoint {get{return CGPoint(cx,cy)}set{cx = newValue.x;cy = newValue.y}}
+}
