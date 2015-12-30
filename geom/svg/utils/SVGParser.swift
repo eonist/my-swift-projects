@@ -39,8 +39,8 @@ class SVGParser {
         switch(xml.localName!){
             case SVGConstants.rect: element = rect(xml,style,id); break;
             case SVGConstants.polyLine: element =  polyLine(xml,style,id)!; break;
-            case SVGConstants.polygon: element = polygon(xml,style,id); break;
-            case SVGConstants.path: element = path(xml,style,id); break;
+            case SVGConstants.polygon: element = polygon(xml,style,id)!; break;
+            case SVGConstants.path: element = path(xml,style,id)!; break;
             case SVGConstants.line: element = line(xml,style,id); break;
             case SVGConstants.circle: element = circle(xml,style,id); break;
             case SVGConstants.ellipse: element = ellipse(xml,style,id); break;
