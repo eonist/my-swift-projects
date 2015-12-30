@@ -23,3 +23,52 @@ class SVGGradientParser {
 		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors,svgGradient.opacities,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,svgGradient.gradientTransform);
 	}
 }
+private class Utils{
+	/**
+	 * Returns an gradient instance with data derived from @param xml 
+	 */
+	class func gradient(xml:NSXMLElement)->SVGGradient{
+		var offsets:Array<CGFloat> = [];
+		var colors:Array = [];
+		var opacities:Array = [];
+		for each(var child : XML in xml.children()){
+			var offset:* = SVGPropertyParser.property(child,"offset");
+			offset = StringAsserter.digit(offset) ? offset * 255 : Number(StringParser.percentage(offset)) / 100 * 255;
+			/*offset is number between 0-1 or offset is percentage %*/
+			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
+			// trace("offset: " + offset);
+			var stopColor:Number;
+			var stopOpacity:Number;
+			/*0-1*/
+			var style:String = SVGPropertyParser.property(child,"style");
+			// :TODO: if style is present then dont check for color etc
+			if(style != null){
+				// trace("style: " + style);
+				var inlineStyle:Object = SVGStyleParser.inlineStyle(style);
+//				ObjectParser.describe(inlineStyle);
+				var stopColorProperty:* = inlineStyle["stop-color"];
+				// trace("stopColorProperty: " + stopColorProperty);
+				stopColor = StringParser.color(stopColorProperty);
+				stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
+				// trace("stopOpacity: " + stopOpacity);
+			} else{
+				stopColor = StringParser.color(SVGPropertyParser.property(child,"stop-color"));
+				stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"));
+			}
+			if(isNaN(stopOpacity)) stopOpacity = 1;/*Forces stopOpacity to be 1 if its NaN*/
+			offsets.push(offset);
+			colors.push(stopColor);
+			opacities.push(stopOpacity);
+		}
+		// trace("colors: " + colors);
+		// trace("offsets: " + offsets);
+		// trace("opacities: " + opacities);
+		var gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits");
+		/*userSpaceOnUse*/
+		// trace("gradientUnits: " + gradientUnits);
+		var spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod");
+		var id:String = SVGPropertyParser.id(xml);
+		var gradientTransform:Matrix = Utils.gradientTransform(xml);
+		return new SVGGradient(offsets,colors,opacities,spreadMethod,id,gradientUnits,gradientTransform);
+	}
+}
