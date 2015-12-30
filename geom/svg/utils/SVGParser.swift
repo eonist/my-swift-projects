@@ -36,7 +36,7 @@ class SVGParser {
         var style:SVGStyle = SVGPropertyParser.style(xml, container)
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
         var id:String = SVGPropertyParser.id(xml);
-        switch(xml./*localName()*/){
+        switch(xml.localName){
             case SVGConstants.RECT: element = rect(xml,style,id); break;
             case SVGConstants.POLY_LINE: element =  polyLine(xml,style,id); break;
             case SVGConstants.POLYGON: element = polygon(xml,style,id); break;
