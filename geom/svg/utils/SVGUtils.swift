@@ -27,7 +27,7 @@ class SVGUtils {
 	 */
 	class func pathData(path:SVGPath)->String {
 		var pathData:String = ""
-		var commands:Array<String> = path.commands
+		let commands:Array<String> = path.commands
 		var parameters:Array<CGFloat> = path.parameters;
 		var index:Int = 0;
 		for command : String in commands {
@@ -38,13 +38,13 @@ class SVGUtils {
 				pathData += command + String(parameters[index]) + " "
 				index++
 			}else if(command.test("[s,S,q,Q]")){
-				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + parameters[index+2] + " " + parameters[index+3] + " "
+				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
 				index++;
 			}else if(command.test("[c,C]")){
-				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " ";
+				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
 				index++;
 			}else if(command.test("[a,A]")){
-				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " " + parameters[index+6] + " ";
+				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
 				index++;
 			}else if(command.test("[z,Z]")){
 				pathData += command + " ";
