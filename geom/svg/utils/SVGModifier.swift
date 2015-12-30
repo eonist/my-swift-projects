@@ -37,7 +37,7 @@ class SVGModifier {
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;
 		}
-        if(element is ISVGGraphic) {update(element as ISVGGraphic)}
+        if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
 	/**
 	 * Styles an @param element with @param style
