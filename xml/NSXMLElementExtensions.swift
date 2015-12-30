@@ -1,10 +1,12 @@
 import Foundation
 
 class NSXMLElementExtensions {
-    /*Easy Access to corners*/
+    /*
+     * Convenience
+     */
     subscript(key: String) -> CGPoint {
         get {
-            
+            return XMLParser.attribute(self, key)
         }
         set {
             fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(newValue))
