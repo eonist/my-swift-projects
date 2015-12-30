@@ -58,7 +58,6 @@ private class Utils{
 			} else{
                 stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
 				hexColor = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
-                
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.color(hexColor, stopOpacity)//Double();
