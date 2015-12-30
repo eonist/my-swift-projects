@@ -134,10 +134,20 @@ class SVGParser {
      * @param xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
      * // :TODO: if cx or cy isnt there it should defualt to 0
      */
-    class func circle(xml:XML,_ style:SVGStyle,_ id:String)->SVGCircle {
-        var cx:CGFloat = SVGPropertyParser.digit(xml,"cx");
-        var cy:CGFloat = SVGPropertyParser.digit(xml,"cy");
-        var r:CGFloat = SVGPropertyParser.digit(xml,"r");
-        return SVGCircle(cx, cy, r,style,id);
+    class func circle(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
+        let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
+        let cy:CGFloat = SVGPropertyParser.digit(xml,"cy")
+        let r:CGFloat = SVGPropertyParser.digit(xml,"r")
+        return SVGCircle(cx, cy, r,style,id)
+    }
+    /**
+     * Returns an SVGEllipse element derived from the ellipse data in @param xml with the @param style and @param id
+     */
+    class func ellipse(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGEllipse {
+        let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
+        let cy:CGFloat = SVGPropertyParser.digit(xml,"cy")
+        let rx:CGFloat = SVGPropertyParser.digit(xml,"rx")
+        let ry:CGFloat = SVGPropertyParser.digit(xml,"ry")
+        return SVGEllipse(cx, cy, rx, ry,style,id)
     }
 }
