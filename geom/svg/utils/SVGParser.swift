@@ -72,9 +72,9 @@ class SVGParser {
      * @example <path d="M 12 24 h 15 v 25 h -15 z"/> //
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
-    class func path(xml:XML,style:SVGStyle,id:String)->SVGPath {
-        if(!xml.hasOwnProperty("@"+SVGConstants.DATA)) return null;
-        var pathDefinition:String = xml["@"+SVGConstants.DATA];
+    class func path(xml:NSXMLElement,style:SVGStyle,id:String)->SVGPath? {
+        if(!xml.hasAttribute("@"+SVGConstants.data)) {return nil}
+        var pathDefinition:String = xml["\(SVGConstants.data)"];
 //			trace("pathDefinition: " + pathDefinition);
         var svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
         return new SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
