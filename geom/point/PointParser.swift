@@ -170,14 +170,15 @@ class PointParser{
      *
      */
     class func rectangle(points:Array<CGPoint>)->CGRect{
-        let max:CGPoint = points[0] is CGPoint ? (points[0] as CGPoint).copy():CGPoint();
-        let min:CGPoint = points[0] is CGPoint ? (points[0] as CGPoint).copy():CGPoint();
-        for each (var point : CGPoint in points) {
+        var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint();
+        var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint();
+        for point : CGPoint in points {
             if(point.x > max.x) {max.x = point.x}
             else if(point.x < min.x){ min = CGPoint(point.x,min.y)}
             if(point.y > max.y){ max.y = point.y}
             else if(point.y < min.y){ min.y = point.y}
         }
+        CGRect.co
         return RectangleParser.cornersToRectangle(min,max);
     }
 }
