@@ -54,4 +54,16 @@ class SVGUtils {
 		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 		return pathData;	
 	}
+	/**
+	 * Returns the root node for the SVG XML document
+	 */
+	class func svg(svg:SVG):XML {
+		var xml:XML = new XML("<?xml version=“1.0”?><svg></svg>");
+		xml.@xmlns = "http://www.w3.org/2000/svg";
+		xml.@x = svg.x+"px";
+		xml.@y = svg.y+"px";
+		xml.@width = svg.width+"px";
+		xml.@height = svg.height+"px";
+		return xml;
+	}
 }
