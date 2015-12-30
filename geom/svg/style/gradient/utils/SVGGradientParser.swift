@@ -40,8 +40,8 @@ private class Utils{
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// Swift.print("offset: " + offset);
-			var stopColor:Double;
-			var stopOpacity:CGFloat;
+			var stopColor:CGColor
+			//var stopOpacity:CGFloat;
 			/*0-1*/
 			var style:String? = SVGPropertyParser.property(child,"style");
 			// :TODO: if style is present then dont check for color etc
@@ -51,12 +51,15 @@ private class Utils{
 //				ObjectParser.describe(inlineStyle);
 				var stopColorProperty:String = inlineStyle["stop-color"]!;
 				// Swift.print("stopColorProperty: " + stopColorProperty);
-				stopColor = Double(StringParser.color(stopColorProperty));
-				stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
+				
+                let stopOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
+                let hexColor:UInt = StringParser.color(stopColorProperty)
+                stopColor = CGColor.color(hexColor, stopOpacity)//Double();
 				// Swift.print("stopOpacity: " + stopOpacity);
 			} else{
-				stopColor = Double(StringParser.color(SVGPropertyParser.property(child,"stop-color")!))
-				stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
+                let stopOpacity:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
+				let hexColor:UInt = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
+                stopColor = CGColor.color(hexColor, stopOpacity)//Double();
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
 			offsets.append(offset);
