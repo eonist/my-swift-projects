@@ -18,7 +18,7 @@ class SVGPropertyParser {
 	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
 	 * // :TODO: needs a re-write that doesnt include returning an associative array
 	 */
-	class func digit(xml:NSXMLElement,key:String)->CGFloat{
+	class func digit(xml:NSXMLElement,_ key:String)->CGFloat{
 		let prop:Any? = property(xml, key)
         if(prop == nil) {return CGFloat.NaN}
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
@@ -34,7 +34,7 @@ class SVGPropertyParser {
 	 * @Note svg styles can have fill-opacity and also opacity, opacity applies to both stroke and fill
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
-	class func style(xml:NSXMLElement,container:ISVGContainer)->SVGStyle {
+	class func style(xml:NSXMLElement,_ container:ISVGContainer)->SVGStyle {
 //			trace("style: " + xml.toXMLString());
 		var style:SVGStyle;
 		let prop:String? = property(xml,"style");
