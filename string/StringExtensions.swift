@@ -5,7 +5,7 @@ import Foundation
  */
 extension String {
     /**
-     *
+     * Convenince
      */
     var tildePath:String {get{return NSString(string: self).stringByExpandingTildeInPath}}
     /**
@@ -15,25 +15,31 @@ extension String {
         return StringParser.split(self, delimiter)
     }
     /**
-     *
+     * Convenince
      */
     func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{
         return RegExp.match(self, pattern, options)
     }
     /**
-     *
+     * Convenince
      */
     func matches(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
         return RegExp.matches(self,pattern,options)
     }
     /**
-     *
+     * Convenince
      */
     func test(pattern:String)->Bool{
         return RegExp.test(self, pattern)
     }
     /**
-     *
+     * Convenince
+     */
+    func replace(pattern:String,replacement:String){
+        RegExp.replace(self,pattern, replacement)
+    }
+    /**
+     * Convenince
      */
     var count:Int{return self.characters.count}
 }
