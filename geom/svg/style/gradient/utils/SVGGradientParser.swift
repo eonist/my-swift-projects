@@ -89,7 +89,7 @@ private class Utils{
             var matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0];
             var matrixArray:Array<String> = matrixString.split(" ");
             //print("matrixArray: " + matrixArray);
-            gradientTransform = new Matrix(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5]);
+            gradientTransform = new Matrix();
         }
         return gradientTransform;
     }
