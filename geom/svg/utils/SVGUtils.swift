@@ -9,15 +9,15 @@ class SVGUtils {
 	 * @param svg (isntance of a custom SVG class that is easy to work with)
 	 * @Note for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
-	class func xml(svg:SVG):XML {// :TODO: refactor to one or loop?
-		var xml:XML = SVGUtils.svg(svg);
-		for (var i : int = 0; i < svg.items.length; i++) {
+	class func xml(svg:SVG)->NSXMLElement {// :TODO: refactor to one or loop?
+		var xml:NSXMLElement = SVGUtils.svg(svg);
+		for (var i : Int = 0; i < svg.items.count; i++) {
 			var svgGraphic:SVGGraphic = svg.items[i];
 			var child:XML;
-			if(svgGraphic is SVGLine) child = line(svgGraphic as SVGLine);
-			else if(svgGraphic is SVGRect) child = rect(svgGraphic as SVGRect);
-			else if(svgGraphic is SVGPath) child = path(svgGraphic as SVGPath);
-			else if(svgGraphic is SVGGroup) child = group(svgGraphic as SVGGroup);
+            if(svgGraphic is SVGLine) {child = line(svgGraphic as SVGLine)}
+            else if(svgGraphic is SVGRect) {child = rect(svgGraphic as SVGRect)}
+            else if(svgGraphic is SVGPath) {child = path(svgGraphic as SVGPath)}
+            else if(svgGraphic is SVGGroup) {child = group(svgGraphic as SVGGroup)}
 			xml.appendChild(child);
 		}
 		return xml;
