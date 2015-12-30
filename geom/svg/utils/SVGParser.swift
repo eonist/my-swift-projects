@@ -110,7 +110,7 @@ class SVGParser {
         if(!xml.hasAttribute(SVGConstants.points)) {return nil};
         var pointsString:String = xml[SVGConstants.points]!;
 //			print("pointsString: " + pointsString);
-        var points:Array<CGFloat> = [];
+        var points:Array<CGPoint> = [];
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
         return SVGPolyLine(points,style,id);
@@ -118,12 +118,12 @@ class SVGParser {
     /**
      * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
      */
-    class func polygon(xml:XML,style:SVGStyle,id:String)->SVGPolygon {
+    class func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon {
 //			print("polygon");
         if(!xml.hasOwnProperty("@"+SVGConstants.POINTS)) return null;
-        var pointsString:String = xml["@"+SVGConstants.POINTS];
+        var pointsString:String = xml["@"+SVGConstants.points];
 //			print("pointsString: " + pointsString);
-        var points:Array = [];
+        var points:Array<CGPoint> = [];
         var parameters:Array = SVGPathParser.parameters(pointsString);
         for (var i : int = 0; i < parameters.length; i+=2) points.push(new Point(parameters[i],parameters[i+1]));
 //			print("points: " + points);
