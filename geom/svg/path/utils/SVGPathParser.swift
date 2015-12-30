@@ -35,7 +35,8 @@ class SVGPathParser {
 	 * // :TODO: write some examples in this comment section
 	 * @Note cant make this private since polyline and polygon uses this method
 	 */
-	public static function parameters(parameters:String):Array {
-		return parameters.match(/(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)/g);
+	class func parameters(parameters:String)->Array<CGFloat> {
+        let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)((?1)\\d+?)(?=px|\\s|\\,|\\-|$)"
+		return parameters.match(pattern);
 	}
 }
