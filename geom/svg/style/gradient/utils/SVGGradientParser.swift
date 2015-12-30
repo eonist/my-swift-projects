@@ -79,8 +79,8 @@ private class Utils{
     /**
      * Returns an Matrix instance with GradientTransform data derived from @param xml
      */
-    class func gradientTransform(xml:NSXMLElement)->CGAffineTransform {
-        var gradientTransform:CGAffineTransform
+    class func gradientTransform(xml:NSXMLElement)->CGAffineTransform? {
+        var gradientTransform:CGAffineTransform? = nil
         let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform");
         if(gradientTransformString != nil){
             //var string:String = "matrix(0.9999 -0.0141 0.0067 0.4761 -0.2373 19.9364)";
@@ -91,6 +91,6 @@ private class Utils{
             //print("matrixArray: " + matrixArray);
             gradientTransform = CGAffineTransformMake(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])
         }
-        return gradientTransform;
+        return gradientTransform
     }
 }
