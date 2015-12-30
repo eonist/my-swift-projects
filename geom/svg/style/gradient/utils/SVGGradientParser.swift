@@ -9,9 +9,9 @@ class SVGGradientParser {
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
 	 */
 	class func linearGradient(xml:NSXMLElement)->SVGLinearGradient{
-		// trace("linearGradient ");
+		// print("linearGradient ");
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!;
-		// trace("x1: " + x1);
+		// print("x1: " + x1);
 		let x1:CGFloat = StringAsserter.percentage(x1Str) ? StringParser.percentage(x1Str) : SVGPropertyParser.value(x1Str);
 		let y1Str:String = SVGPropertyParser.property(xml,"y1")!;
 		let y1:CGFloat = StringAsserter.percentage(y1Str) ? StringParser.percentage(y1Str) : SVGPropertyParser.value(y1Str);
@@ -40,7 +40,7 @@ private class Utils{
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// Swift.print("offset: " + offset);
 			let hexColor:UInt
-            let stopOpacity:CGFloat
+            var stopOpacity:CGFloat
 			//var stopOpacity:CGFloat;
 			/*0-1*/
 			let style:String? = SVGPropertyParser.property(child,"style");
