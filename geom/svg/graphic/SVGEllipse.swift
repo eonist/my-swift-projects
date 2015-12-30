@@ -27,3 +27,7 @@ class SVGEllipse : SVGGraphic{
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+extension SVGEllipse{
+    var center:CGPoint {get{return CGPoint(cx,cy)}set{cx = newValue.x;cy = newValue.y}}
+    var radius:CGPoint {get{return CGPoint(rx,ry)}set{rx = newValue.x;ry = newValue.y}}
+}
