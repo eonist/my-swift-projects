@@ -11,7 +11,7 @@ extension NSXMLElement {
     /**
      * Convenience
      */
-    func hasAttribute(attrName:String){
-        XMLAsserter.hasAttribute(self,attrName)
+    func hasAttribute(attrName:String)->Bool{
+        return XMLAsserter.hasAttribute(self,attrName)
     }
 }
