@@ -32,14 +32,13 @@ class SVGUtils {
 		var index:Int = 0;
 		for command : String in commands {
 			if(command.test("[m,M,l,L,t,T]")) {
-                let addition:String = command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
-				pathData += addition
+				pathData += command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 				index += 2
 			}else if(command.test("[h,H,v,V]")){
-				pathData += (command + parameters[index] + " ")
-				index++;
+				pathData += command + String(parameters[index]) + " "
+				index++
 			}else if(command.test("[s,S,q,Q]")){
-				pathData += (command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " ")
+				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + parameters[index+2] + " " + parameters[index+3] + " "
 				index++;
 			}else if(command.test("[c,C]")){
 				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " ";
