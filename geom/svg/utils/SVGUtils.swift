@@ -83,14 +83,24 @@ class SVGUtils {
 	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
 	 */
 	 class func rect(rect:SVGRect)->NSXMLElement {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
-		var xml:NSXMLElement = "<rect></rect>";
+		var xml:NSXMLElement = NSXMLElement(XMLString:"<rect></rect>")
 		xml = id(xml,rect);
-		xml["x"] = rect.x;
-		xml["y"] = rect.y;
-		xml["width"] = rect.width;
-		xml["height"] = rect.height;
+		xml["x"] = "\(rect.x)";
+		xml["y"] = "\(rect.y)";
+		xml["width"] = "\(rect.width)";
+		xml["height"] = "\(rect.height)";
 		xml = style(xml,rect);
-		xml.@["stroke-miterlimit"] = rect.style.strokeMiterLimit;
+		xml["stroke-miterlimit"] = "\(rect.style.strokeMiterLimit)";
 		return xml;
+	 }
+	 /**
+	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
+	  */
+	 class func path(path:SVGPath):XML {
+		 var xml:XML = <path></path>;
+		 xml = id(xml,path);
+		 xml.@d = SVGUtils.pathData(path);
+		 xml = style(xml,path);
+		 return xml;
 	 }
 }
