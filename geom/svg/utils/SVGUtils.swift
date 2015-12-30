@@ -26,27 +26,27 @@ class SVGUtils {
 	 * Returns pathData from @param path (SVGPath instance)
 	 */
 	class func pathData(path:SVGPath)->String {
-		var pathData:String = "";
-		var commands:Array<String> = path.commands; 
-		var parameters:Array = path.parameters;
+		var pathData:String = ""
+		var commands:Array<String> = path.commands
+		var parameters:Array<CGFloat> = path.parameters;
 		var index:Int = 0;
 		for command : String in commands {
-			if("[m,M,l,L,t,T]".test(command)) {
-				pathData += (command + parameters[index] + " " + parameters[index+1] + " ")
-				index+=2;
-			}else if(new RegExp("[h,H,v,V]").test(command)){
+			if(command.test("[m,M,l,L,t,T]")) {
+				pathData += (command + parameters[index] + " " + parameters[index + 1] + " ")
+				index += 2
+			}else if(command.test("[h,H,v,V]")){
 				pathData += command + parameters[index] + " ";
 				index++;
-			}else if(new RegExp("[s,S,q,Q]").test(command)){
+			}else if(command.test("[s,S,q,Q]")){
 				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " ";
 				index++;
-			}else if(new RegExp("[c,C]").test(command)){
+			}else if(command.test("[c,C]")){
 				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " ";
 				index++;
-			}else if(new RegExp("[a,A]").test(command)){
+			}else if(command.test("[a,A]")){
 				pathData += command + parameters[index] + " " + parameters[index+1] + " " + parameters[index+2] + " " + parameters[index+3] + " " + parameters[index+4] + " " + parameters[index+5] + " " + parameters[index+6] + " ";
 				index++;
-			}else if(new RegExp("[z,Z]").test(command)){
+			}else if(command.test("[z,Z]")){
 				pathData += command + " ";
 				index++;
 			}
