@@ -112,8 +112,7 @@ class SVGPathParser {
 	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
 	class func rectangle(path:SVGPath)-> CGRect {
-		var points:Array = SVGPathParser.points(path);
-        
+		let points:Array<CGPoint> = SVGPathParser.points(path);
 		return PointParser.rectangle(points);
 	}
 }
