@@ -42,15 +42,15 @@ class SVGPropertyParser {
         if(prop != nil) {style = SVGStyleParser.style(prop,container)}//if a style is present in the @param xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{//if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate
 //				trace("xml.toString(): " + xml.toXMLString());
-			var fill:* = SVGStyleParser.fill(property(xml,"fill"), container);
-			var fillOpacity:Number = SVGPropertyParser.value(property(xml,"fill-opacity"));
+			var fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
+			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
 			var fillRule:String = property(xml,"fill-rule");
-			var stroke:Number = SVGStyleParser.stroke(property(xml,"stroke"));
-			var strokeWidth:Number = SVGPropertyParser.value(property(xml,"stroke-width"));
-			var strokeOpacity:Number = SVGPropertyParser.value(property(xml,"stroke-opacity"));
+			var stroke:CGFloat = SVGStyleParser.stroke(property(xml,"stroke"));
+			var strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
+			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
 			var strokeLineCap:String = property(xml,"stroke-linecap");
 			var strokeLineJoin:String = property(xml,"stroke-linejoin");
-			var strokeMiterLimit:Number = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
+			var strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
 			if(isNaN(fillOpacity)) fillOpacity = strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"));/*<--new*/
 			style = new SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
 		}
