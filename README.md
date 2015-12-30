@@ -6,8 +6,8 @@ Generic swift utilities
 - **XMLLib** (Makes parsing and modifying xml data easier)  
 - **RegExpLib** (Makes parsing and modifying with RegExp easier)  
 - **MathLib** (Contains alot of usefull math Utils, more to come)  
-- **SQLLiteLib** - works by utilizing shell (Comming soon, see the applescript lib for now)  
-- **GitLib** - works by utilizing shell and git (Comming soon, see the applescript lib for now)  
+- **SQLLiteLib** - works by utilizing shell (Comming soon, see my applescript lib for now)  
+- **GitLib** - works by utilizing shell and git (Comming soon, see my applescript lib for now)  
 - **Utils** - Other basic programming utilites for working with array, dictionary, numbers, strings etc
 
 ## **Graphic framework for OSX**
