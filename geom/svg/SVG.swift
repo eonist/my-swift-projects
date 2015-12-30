@@ -17,13 +17,13 @@ class SVG : SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...s
     var width:CGFloat
     var height:CGFloat
     init(_ items:Array<ISVGElement>, _ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ version:CGFloat,_ nameSpace:String,_ id:String) {
-        super.init(items,id)
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.version = version
         self.nameSpace = nameSpace
+        super.init(items,id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
