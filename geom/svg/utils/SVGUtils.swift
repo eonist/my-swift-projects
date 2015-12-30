@@ -10,9 +10,9 @@ class SVGUtils {
 	 * @Note for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
 	class func xml(svg:SVG)->NSXMLElement {// :TODO: refactor to one or loop?
-		var xml:NSXMLElement = SVGUtils.svg(svg);
+		let xml:NSXMLElement = SVGUtils.svg(svg);
 		for (var i : Int = 0; i < svg.items.count; i++) {
-			var svgElement:ISVGElement = svg.items[i];
+			let svgElement:ISVGElement = svg.items[i];
 			var child:NSXMLElement;
             if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
             else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
@@ -58,7 +58,7 @@ class SVGUtils {
 	 * Returns the root node for the SVG XML document
 	 */
 	class func svg(svg:SVG)->NSXMLElement {
-		let xml:NSXMLElement = try! NSXMLElement(XMLString: "<?xml version=“1.0”?><svg></svg>")
+		let xml:NSXMLElement = try! NSXMLElement("<?xml version=“1.0”?><svg></svg>")
 		xml["xmlns"] = "http://www.w3.org/2000/svg";
 		xml["x"] = String(svg.x)+"px";
 		xml["y"] = String(svg.y)+"px";
@@ -70,7 +70,7 @@ class SVGUtils {
 	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
 	 */
 	class func line(line:SVGLine)->NSXMLElement {
-		var xml:NSXMLElement = try! NSXMLElement(XMLString: "<line></line>")
+		var xml:NSXMLElement = try! NSXMLElement("<line></line>")
 		xml = id(xml,line);
 		xml["x1"] = "\(line.x1)";
 		xml["y1"] = "\(line.y1)";
@@ -83,7 +83,7 @@ class SVGUtils {
 	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
 	 */
 	 class func rect(rect:SVGRect)->NSXMLElement {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
-		var xml:NSXMLElement = try! NSXMLElement(XMLString:"<rect></rect>")
+		var xml:NSXMLElement = try! NSXMLElement("<rect></rect>")
 		xml = id(xml,rect);
 		xml["x"] = "\(rect.x)";
 		xml["y"] = "\(rect.y)";
@@ -113,7 +113,7 @@ class SVGUtils {
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
 		 for (var i : Int = 0; i < group.items.count; i++) {
-			 var svgGraphic:ISVGElement = group.items[i] as ISVGElement;
+			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement;
 			 var child:NSXMLElement;
              if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
              else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
@@ -127,8 +127,8 @@ class SVGUtils {
 	  * Returns the id from a ISVG instance
 	  * // :TODO: move to an internal class
 	  */
-	 class func id(xml:XML,svg:ISVGElement)->XML {
-		 if(svg.id != null) xml.@id = svg.id;
+	 class func id(xml:NSXMLElement,_ svg:ISVGElement)->NSXMLElement {
+         if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
 		 return xml;
 	 }
 }
