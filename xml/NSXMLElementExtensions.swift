@@ -1,10 +1,10 @@
 import Foundation
 
-class NSXMLElementExtensions {
+extension NSXMLElement {
     /*
      * Convenience
      */
-    subscript(key: String) -> CGPoint {
+    subscript(key: String) -> String? {
         get {
             return XMLParser.attribute(self, key)
         }
