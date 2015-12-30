@@ -11,19 +11,19 @@ class SVGPathParser {
 	class func pathData(data:String)->SVGPathData {
 		var parameters:Array<CGFloat> = [];
 		var commands:Array<String> = [];
-		var pattern:String = "[MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
+		let pattern:String = "[MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             match.numberOfRanges
-            let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
             //Swift.print("cmnd: >" + cmnd+"<");
             commands.append(cmnd);//command()
             let params = (data as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
             //Swift.print("params: >" + params+"<");
-            var array:Array<CGFloat> = SVGPathParser.parameters(params);
+            let array:Array<CGFloat> = SVGPathParser.parameters(params);
             //Swift.print("pathData.parameters: " + array);
-            parameters = parameters.concat(array);
+            parameters += array//<---this is the same as concat
         }
         
 //		Swift.print("pathData.commands: " + commands);
