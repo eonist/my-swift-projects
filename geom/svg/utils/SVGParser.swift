@@ -129,4 +129,15 @@ class SVGParser {
 //			print("points: " + points);
         return new SVGPolygon(points,style,id);
     }
+    /**
+     * Returns an SVGCircle element derived from the circle data in @param xml with the @param style and @param id
+     * @param xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
+     * // :TODO: if cx or cy isnt there it should defualt to 0
+     */
+    class func circle(xml:XML,_ style:SVGStyle,_ id:String)->SVGCircle {
+        var cx:CGFloat = SVGPropertyParser.digit(xml,"cx");
+        var cy:CGFloat = SVGPropertyParser.digit(xml,"cy");
+        var r:CGFloat = SVGPropertyParser.digit(xml,"r");
+        return SVGCircle(cx, cy, r,style,id);
+    }
 }
