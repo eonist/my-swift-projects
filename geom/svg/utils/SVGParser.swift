@@ -64,4 +64,19 @@ class SVGParser {
         }
         return group;
     }
+    /**
+     * Returns an SVGPath element derived from the path data in @param xml with the @param style and @param id
+     * @example <path d="M 10 10, L 40 10, L 40 30, L 10 30, L 10 10" />//rectangle; all four lines
+     * @example <path d="M 60 10, L 90 10, L 90 30, L 60 30, Z" /> //rectangle with closepath
+     * @example <path d="M 30 30 L 55 5 L 80 30 L 55 55 Z" />
+     * @example <path d="M 12 24 h 15 v 25 h -15 z"/> //
+     * // :TODO: remember to differentiate between Uppercase and lower case
+     */
+    class func path(xml:XML,style:SVGStyle,id:String)->SVGPath {
+        if(!xml.hasOwnProperty("@"+SVGConstants.DATA)) return null;
+        var pathDefinition:String = xml["@"+SVGConstants.DATA];
+//			trace("pathDefinition: " + pathDefinition);
+        var svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
+        return new SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
+    }
 }
