@@ -81,14 +81,13 @@ private class Utils{
      */
     class func gradientTransform(xml:NSXMLElement)->CGAffineTransform {
         var gradientTransform:CGAffineTransform
-        var gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform");
+        let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform");
         if(gradientTransformString != nil){
             //var string:String = "matrix(0.9999 -0.0141 0.0067 0.4761 -0.2373 19.9364)";
             //print("gradientTransformString: " + gradientTransformString);
-            
-            var matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0];
-            var matrixArray:Array<String> = matrixString.split(" ");
-            
+            let matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0];
+            let matrixStringArray:Array<String> = matrixString.split(" ");
+            let matrixArray:Array<CGFloat> = matrixStringArray.map {CGFloat(Double($0)!)}
             //print("matrixArray: " + matrixArray);
             gradientTransform = CGAffineTransformMake(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])
         }
