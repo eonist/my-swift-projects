@@ -32,7 +32,8 @@ class SVGUtils {
 		var index:Int = 0;
 		for command : String in commands {
 			if(command.test("[m,M,l,L,t,T]")) {
-				pathData += (command + parameters[index] + " " + parameters[index + 1] + " ")
+                let addition:String = command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
+				pathData += addition
 				index += 2
 			}else if(command.test("[h,H,v,V]")){
 				pathData += (command + parameters[index] + " ")
@@ -51,7 +52,7 @@ class SVGUtils {
 				index++;
 			}
 		}
-		pathData = pathData.replace("\\s*?$", "");/*Removes the ending whitespace, if it exists*/
+		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 		return pathData;	
 	}
 }
