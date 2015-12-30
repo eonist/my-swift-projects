@@ -29,9 +29,9 @@ class SVGUtils {
 		var pathData:String = "";
 		var commands:Array<String> = path.commands; 
 		var parameters:Array = path.parameters;
-		var index:int = 0;
-		for each (var command : String in commands) {
-			if(new RegExp("[m,M,l,L,t,T]").test(command)) {
+		var index:Int = 0;
+		for command : String in commands {
+			if("[m,M,l,L,t,T]".test(command)) {
 				pathData += command + parameters[index] + " " + parameters[index+1] + " ";
 				index+=2;
 			}else if(new RegExp("[h,H,v,V]").test(command)){
