@@ -47,11 +47,11 @@ private class Utils{
 			// :TODO: if style is present then dont check for color etc
 			if(style != nil){
 				// trace("style: " + style);
-				var inlineStyle:Dictionary<String,String> = SVGStyleParser.inlineStyle(style);
+				var inlineStyle:Dictionary<String,String> = SVGStyleParser.inlineStyle(style!);
 //				ObjectParser.describe(inlineStyle);
-				var stopColorProperty:* = inlineStyle["stop-color"];
+				var stopColorProperty:String = inlineStyle["stop-color"]!;
 				// trace("stopColorProperty: " + stopColorProperty);
-				stopColor = StringParser.color(stopColorProperty);
+				stopColor = Double(StringParser.color(stopColorProperty));
 				stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
 				// trace("stopOpacity: " + stopOpacity);
 			} else{
