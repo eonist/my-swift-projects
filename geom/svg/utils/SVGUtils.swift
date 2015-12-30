@@ -119,7 +119,8 @@ class SVGUtils {
              else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
              else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
              else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
-			 xml.appendChild(child);
+             else{ fatalError("type not supported: " + "\(svgGraphic)")}
+             xml.appendChild(child);
 		 }
 		 return xml;
 	 }
