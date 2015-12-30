@@ -79,4 +79,16 @@ class SVGParser {
         var svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
         return SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
     }
+    /**
+     * Returns an SVGRect element derived from the rectangle data in @param xml with the @param style and @param id
+     */
+    class func rect(xml:XML,style:SVGStyle,id:String)->SVGRect {
+        var x:Number = SVGPropertyParser.digit(xml,"x");
+        var y:Number = SVGPropertyParser.digit(xml,"y");
+        var width:Number = SVGPropertyParser.digit(xml,"width");
+        var height:Number = SVGPropertyParser.digit(xml,"height");
+        var rx:* = SVGPropertyParser.digit(xml,"rx");
+        var ry:* = SVGPropertyParser.digit(xml,"ry");
+        return new SVGRect(width, height, x, y, rx, ry, style, id);
+    }
 }
