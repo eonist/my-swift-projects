@@ -122,11 +122,12 @@ class SVGParser {
 		print("SVGPArser.polygon()");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-//		print("pointsString: " + pointsString);
+		//print("SVGPArser.polygon() pointsString: " + pointsString);
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
+        print("SVGPArser.polygon() parameters: " + "\(parameters)");
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
-//		print("points: " + points);
+		//print("SVGPArser.polygon() points: " + "\(points)");
         return SVGPolygon(points,style,id)
     }
     /**
