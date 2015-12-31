@@ -13,8 +13,9 @@ class SVGPathParser {
 		var commands:Array<String> = [];
 		let pattern:String = "[MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
+        //Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
-            match.numberOfRanges
+            //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
             //Swift.print("cmnd: >" + cmnd+"<");
@@ -38,6 +39,7 @@ class SVGPathParser {
 	class func parameters(parameters:String)->Array<CGFloat> {
         let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)(($1)\\d+?)(?=px|\\s|\\,|\\-|$)"//changed ?1 to $1, since swift defines backrefs as $n
 		let stringArray:Array<String> = parameters.match(pattern);
+        Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
         return array
 	}
