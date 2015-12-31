@@ -35,13 +35,13 @@ class SVGPropertyParser {
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	class func style(xml:NSXMLElement,_ container:ISVGContainer)->SVGStyle {
-		Swift.print("style: " + xml.toXMLString());
+		Swift.print("StylePropertyParser.style(): ");//strokeLineCap
 		var style:SVGStyle;
 		let prop:String? = property(xml,"style");
-        Swift.print("prop: " + prop);
+        Swift.print("StylePropertyParser.style() prop: " + "\(prop)");
         if(prop != nil) {style = SVGStyleParser.style(prop,container)}//if a style is present in the @param xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{//if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate
-            Swift.print("xml.toString(): " + xml.toXMLString());
+            //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
 			let fillRule:String? = property(xml,"fill-rule");
