@@ -36,9 +36,6 @@ class SVGPathParser {
 	 * @Note cant make this private since polyline and polygon uses this method
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
-        
-        //continue here: try to add the regexp again, or test it in an isolated test
-        
         let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)(($1)\\d+?)(?=px|\\s|\\,|\\-|$)"//changed ?1 to $1, since swift defines backrefs as $n
 		let stringArray:Array<String> = parameters.match(pattern);
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
@@ -114,7 +111,7 @@ class SVGPathParser {
 	 * Returns an Rectangle instance with points derived from @param path
 	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
-	class func rectangle(path:SVGPath)-> CGRect {
+	class func rectangle(path:SVGPath) -> CGRect {
 		let points:Array<CGPoint> = SVGPathParser.points(path);
 		return PointParser.rectangle(points);
 	}
