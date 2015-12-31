@@ -155,12 +155,13 @@ class SVGParser {
      * // :TODO: impliment SVGGroup
      */
     class func describeAll(svg:SVG) {
+        Swift.print("SVGParser.describeAll()")
         for svgElement : ISVGElement in svg.items {
             if(svgElement is SVGPath){
                 Swift.print((svgElement as! SVGPath).commands);
                 Swift.print((svgElement as! SVGPath).parameters);
             }else if(svgElement is SVGPolygon){
-                Swift.print((svgElement as! SVGPolygon).points);
+                Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
             }else if(svgElement is SVGPolyLine){
                 Swift.print((svgElement as! SVGPolyLine).points);
             }else{
