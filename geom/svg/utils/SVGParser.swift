@@ -119,7 +119,7 @@ class SVGParser {
      * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
      */
     class func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
-//		print("polygon");
+		print("SVGPArser.polygon");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil};
         let pointsString:String = xml[SVGConstants.points]!
 //		print("pointsString: " + pointsString);
