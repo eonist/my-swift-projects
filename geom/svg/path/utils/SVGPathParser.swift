@@ -39,7 +39,7 @@ class SVGPathParser {
         
         //continue here: try to add the regexp again, or test it in an isolated test
         
-        let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)((?1)\\d+?)(?=px|\\s|\\,|\\-|$)"
+        let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)(($1)\\d+?)(?=px|\\s|\\,|\\-|$)"//changed ?1 to $1, since swift defines backrefs as $n
 		let stringArray:Array<String> = parameters.match(pattern);
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
         return array
