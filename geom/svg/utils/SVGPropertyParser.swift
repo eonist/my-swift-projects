@@ -44,7 +44,7 @@ class SVGPropertyParser {
 //				trace("xml.toString(): " + xml.toXMLString());
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
-			let fillRule:String = property(xml,"fill-rule")!;
+			let fillRule:String? = property(xml,"fill-rule");
 			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
 			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
