@@ -36,6 +36,9 @@ class SVGPathParser {
 	 * @Note cant make this private since polyline and polygon uses this method
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
+        
+        //continue here: try to add the regexp again, or test it in an isolated test
+        
         let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)((?1)\\d+?)(?=px|\\s|\\,|\\-|$)"
 		let stringArray:Array<String> = parameters.match(pattern);
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
