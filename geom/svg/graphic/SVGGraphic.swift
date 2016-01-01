@@ -2,16 +2,16 @@ import Foundation
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
-    var fillStyle:IFillStyle?
-    var lineStyle:ILineStyle?
+    var svgStyle:SVGStyle?
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
+        self.svgStyle = style
         super.init(style!,id!);
         draw()
         
         //setNeedsDisplay = true//initiates everything
         
         
-        //TODO: setup the fill  and line shape here, do draw delegation hre and setup the ca layer here
+        //TODO: setup the fill  and line shape here, do draw delegation here and setup the ca layer here
         //TODO: dont use Graphic.swift, use this class,
         
     }
