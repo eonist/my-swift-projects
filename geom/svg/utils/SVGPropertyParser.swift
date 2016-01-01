@@ -12,7 +12,8 @@ class SVGPropertyParser {
 	 * Returns a Number instance or if the property is null then NaN is returned
 	 */
 	class func value(property:Any?) -> CGFloat {
-		return property == nil ? CGFloat.NaN : CGFloat(Double(String(property))!)//<-may be wrong conversion wrapping, also make a converter for ANy to CGFloat already
+        Swift.print("SVGPropertyParser.value() property: " + "\(property)")
+		return property == nil ? CGFloat.NaN : CGFloat(Double((property as! String))!)//<-may be wrong conversion wrapping, also make a converter for ANy to CGFloat already
 	}
 	/**
 	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
