@@ -69,10 +69,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
         if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
             
             
-            let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill : Double(0x000000)
-            let opacity:CGFloat = !style.fillOpacity.isNaN ? style!.fillOpacity : 1
-            let color:NSColor
-            fillShape.graphics.fill()/*Stylize the fill*/
+            let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
+            let opacity:CGFloat = !style!.fillOpacity.isNaN ? style!.fillOpacity : 1
+            let color:NSColor = NSColor(colorVal,opacity)
+            fillShape.graphics.fill(color)/*Stylize the fill*/
         }
         //TODO:complete this
     }
