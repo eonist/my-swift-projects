@@ -1,6 +1,7 @@
 import Cocoa
 /**
- * This si the base graphic class for the svg lib
+ * This is the base graphic class for the svg lib
+ * 
  */
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
@@ -15,11 +16,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         
-        //setNeedsDisplay = true//initiates everything
         
-        
-        //TODO: setup the fill  and line shape here, do draw delegation here and setup the ca layer here
-        //TODO: dont use Graphic.swift, use this class,
         applyLineStyle();
         beginFill();
         //draw();
