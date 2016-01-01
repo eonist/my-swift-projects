@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * This is the base graphic class for the svg lib
- * 
+ * TODO: Write a 1,2,3 explaination on about the steps of the drawing processs
  */
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
