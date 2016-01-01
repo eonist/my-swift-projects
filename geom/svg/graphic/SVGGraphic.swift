@@ -1,12 +1,15 @@
-import Foundation
+import Cocoa
+/**
+ * This si the base graphic class for the svg lib
+ */
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
-    var svgStyle:SVGStyle?/*the var name style is taken*/
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
-        self.svgStyle = style
         super.init(style!,id!);
-        draw()
+        wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
+        layer = CALayer()//TempCALayer(layer: layer!)
+
         
         //setNeedsDisplay = true//initiates everything
         
@@ -16,7 +19,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         applyLineStyle();
         beginFill();
         draw();
-        endFill();
+        //endFill();
         
     }
     /**
