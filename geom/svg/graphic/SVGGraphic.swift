@@ -24,17 +24,16 @@ class SVGGraphic : SVGView,ISVGGraphic{
         beginFill();
         //draw();
         //endFill();
-        
         if(style != nil){
             drawFill();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             drawLine();lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
         }
-        
     }
     /**
-     * This is a delegate handler method
+     * This method starts the actual drawing of the path and style to the context (for fill and stroke)
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
+     * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         if(layer === fillShape){
