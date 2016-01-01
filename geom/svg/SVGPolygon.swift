@@ -9,7 +9,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         super.init(style, id);
     }
     override func draw() {
-        Swift.print("SVGPolygon.draw()");
+        Swift.print("SVGPolygon.draw()")
         fillShape.path = CGPathParser.lines(points,true)
         fillShape.frame = PointParser.rectangle(points)
         Swift.print("SVGPolygon.draw() fillShape.frame: " + "\(fillShape.frame)")
