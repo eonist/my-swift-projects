@@ -22,8 +22,12 @@ class SVGGraphic : SVGView,ISVGGraphic{
         beginFill();
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
-            draw();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
-            /*drawLine();*/lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+            Swift.print("SVGGraphic.init() setNeedsDisplay()")
+            draw();
+            fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
+            lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+            /*drawLine();*/
+            
         }
     }
     /**
