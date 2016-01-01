@@ -50,7 +50,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func fill(){
         Swift.print("SVGGraphic.fill()")
         beginFill();
-        //stylizeFill()
+        stylizeFill()
     }
     /**
      *
@@ -58,7 +58,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func line(){
         Swift.print("SVGGraphic.line()")
         applyLineStyle();
-        //stylizeLine()
+        stylizeLine()
     }
     /**
      * @Note the default is to fill the graphic with black and draw no outline unless you specify some other combination of fill and stroke.
