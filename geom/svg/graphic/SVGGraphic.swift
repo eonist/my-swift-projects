@@ -70,8 +70,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @Note Updates only if style exists and fill is a number
      */
     func beginFill(){
-        Swift.print("SVGGraphic.beginFill()" + "\((style!.fill)!)")
-        if(style != nil && style!.fill! is Double/* && style!.fill != "none"*/) {
+        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
             Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             let opacity:CGFloat = !style!.fillOpacity.isNaN ? style!.fillOpacity : 1
