@@ -9,8 +9,14 @@ public class CGPathParser{
     class func lines(points:Array<CGPoint>,_ close:Bool = false,_ offset:CGPoint = CGPoint())->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, points[0].x+offset.x, points[0].y+offset.y)
-        for (var i : Int = 1; i < points.count; i++) {CGPathAddLineToPoint(path,nil,points[i].x+offset.x, points[i].y+offset.y)}
-        if(close){CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y);/*closes it self to the start position*/}
+        for (var i : Int = 1; i < points.count; i++) {
+            Swift.print("LineTo")
+            CGPathAddLineToPoint(path,nil,points[i].x+offset.x, points[i].y+offset.y)
+        }
+        if(close){
+            Swift.print("close")
+            CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y);/*closes it self to the start position*/
+        }
         return path
     }
     /**
