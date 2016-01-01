@@ -1,6 +1,9 @@
 import Foundation
 
 class RegExpPattern {
+    /**
+     * NOTE: Used in the svg path parameter parser for instance
+     */
     static var digitAssertPattern:String{
         //let g1:String = "(?=\\s|^)"/*must be preceeded by a space char or the begining*/
         let g2:String = "\\-*\\d+?"/*optional minus sign followed by one or more digits*/

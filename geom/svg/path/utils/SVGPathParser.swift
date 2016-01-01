@@ -39,7 +39,7 @@ class SVGPathParser {
 	class func parameters(parameters:String)->Array<CGFloat> {
         let beginning:String = "(?<=^|\\,|\\s|px|\\b)"
         let end:String = "(?=px|\\s|\\,|\\-|$)"
-        let pattern:String = 
+        let pattern:String = beginning + RegExpPattern.digitAssertPattern + end
 		let stringArray:Array<String> = parameters.match(pattern);
         Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
