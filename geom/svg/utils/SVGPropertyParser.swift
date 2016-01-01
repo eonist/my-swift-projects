@@ -28,7 +28,7 @@ class SVGPropertyParser {
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
 	 */
 	class func id(xml:NSXMLElement)->String {
-		return xml.hasAttribute("@id") ? xml["@id"]! : "";//xml.(hasOwnProperty("@id")).@id;
+		return xml.hasAttribute("@id") ? xml["@id"]! : "";//xml.(hasOwnProperty("@id")).@id;TODO: the@ prefix is probably wrong
 	}
 	/**
 	 * Returns an SVGStyle instance comprised of values derived from @param xml and or @param container, if no style data is available then default values are applied, NaN, empty string, null etc 
@@ -36,15 +36,15 @@ class SVGPropertyParser {
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	class func style(xml:NSXMLElement,_ container:ISVGContainer)->SVGStyle {
-		Swift.print("SVGPropertyParser.style(): ");//strokeLineCap
+		//Swift.print("SVGPropertyParser.style(): ");//strokeLineCap
 		var style:SVGStyle;
 		let prop:String? = property(xml,"style");
-        Swift.print("SVGPropertyParser.style() prop: " + "\(prop)");
+        //Swift.print("SVGPropertyParser.style() prop: " + "\(prop)");
         if(prop != nil) {style = SVGStyleParser.style(prop,container)}//if a style is present in the @param xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
             //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container);
-            Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
+            //Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
 			let fillRule:String? = property(xml,"fill-rule");
 			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
