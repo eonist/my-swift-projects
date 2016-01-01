@@ -20,6 +20,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         self.lineShape.delegate = self
         applyLineStyle();
         beginFill();
+        Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
             draw();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             /*drawLine();*/lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
