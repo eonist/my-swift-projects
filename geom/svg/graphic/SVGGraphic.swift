@@ -7,8 +7,8 @@ import Cocoa
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
 class SVGGraphic : SVGView,ISVGGraphic{
-    lazy var fillShape:Shape = Shape()
-    lazy var lineShape:Shape = Shape()
+    /*lazy*/ var fillShape:Shape = Shape()
+    /*lazy*/ var lineShape:Shape = Shape()
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         super.init(style!,id!);
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
@@ -20,12 +20,14 @@ class SVGGraphic : SVGView,ISVGGraphic{
         self.lineShape.delegate = self
         applyLineStyle();
         beginFill();
+        fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
+        lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+        
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
             Swift.print("SVGGraphic.init() setNeedsDisplay()")
-            draw();
-            fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
-            lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+            
+            
             /*drawLine();*/
             
         }
