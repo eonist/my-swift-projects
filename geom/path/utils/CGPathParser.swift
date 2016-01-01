@@ -6,11 +6,11 @@ public class CGPathParser{
      * Returns a path with straight lines derived from an array of points (think follow the dots)
      * TODO: shouldnt this path be closed by a real close call?
      */
-    class func lines(points:Array<CGPoint>,_ close:Bool = false)->CGMutablePathRef{
+    class func lines(points:Array<CGPoint>,_ close:Bool = false,_ offset:CGPoint = CGPoint())->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
-        CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
-        for (var i : Int = 1; i < points.count; i++) {CGPathAddLineToPoint(path,nil,points[i].x, points[i].y)}
-        if(close){CGPathAddLineToPoint(path,nil,points[0].x, points[0].y);/*closes it self to the start position*/}
+        CGPathMoveToPoint(path, nil, points[0].x+offset.x, points[0].y+offset.y)
+        for (var i : Int = 1; i < points.count; i++) {CGPathAddLineToPoint(path,nil,points[i].x+offset.x, points[i].y+offset.y)}
+        if(close){CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y);/*closes it self to the start position*/}
         return path
     }
     /**
