@@ -1,5 +1,9 @@
 import Foundation
 class SVGGraphic : SVGView,ISVGGraphic{
+    lazy var fillShape:Shape = Shape()
+    lazy var lineShape:Shape = Shape()
+    var fillStyle:IFillStyle?
+    var lineStyle:ILineStyle?
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         super.init(style!,id!);
         draw()
