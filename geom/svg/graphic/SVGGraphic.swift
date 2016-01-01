@@ -18,12 +18,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
-        
-        
         applyLineStyle();
         beginFill();
-        //draw();
-        //endFill();
         if(style != nil){
             drawFill();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             drawLine();lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
@@ -37,6 +33,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
             fillShape.graphics.context = ctx
@@ -51,6 +48,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func fill(){
+        Swift.print("SVGGraphic.fill()")
         beginFill();
         //stylizeFill()
     }
@@ -58,6 +56,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func line(){
+        Swift.print("SVGGraphic.line()")
         applyLineStyle();
         //stylizeLine()
     }
@@ -66,12 +65,14 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @Note Updates only if style exists and fill is a number
      */
     func beginFill(){
+        Swift.print("SVGGraphic.beginFill()")
         //TODO:complete this
     }
     /**
      *
      */
     func applyLineStyle(){
+        Swift.print("SVGGraphic.applyLineStyle()")
         //TODO:complete this
     }
     /**
@@ -84,9 +85,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
      }
      */
     func drawLine(){
+        Swift.print("SVGGraphic.drawLine()")
         //fatalError("must be overriden in subclass")
     }
     func drawFill(){
+        Swift.print("SVGGraphic.drawFill()")
         //fatalError("must be overriden in subclass")
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
