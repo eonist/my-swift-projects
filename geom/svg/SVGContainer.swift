@@ -4,12 +4,15 @@ import Cocoa
  * // :TODO: could we omit the _items and just use the display-stack as a record of items added?
  * // :TODO: we need a remove method to compliment the add method
  */
-class SVGContainer : NSView, ISVGContainer{
+class SVGContainer : FlippedView, ISVGContainer{
     var id : String
     var items : Array<ISVGElement> = [];
     init(_ items:Array<ISVGElement>, _ id:String) {
         self.id = id;
-        super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actul graphics. And when you use Layer-hosted views the subchildren doesnt clip
+        super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
+        self.wantsLayer = true/*if true then view is layer backed*/
+        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layer!.masksToBounds = false//this is needed!!!
         for item : ISVGElement in items { add(item) }
         
     }
