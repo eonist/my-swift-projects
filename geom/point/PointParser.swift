@@ -167,7 +167,7 @@ class PointParser{
     }
     
     /**
-     * Returns a CGRect that makes derived from @param points
+     * Returns a CGRect that makes derived from @param points (think bounding box of points)
      */
     class func rectangle(points:Array<CGPoint>)->CGRect{
         var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint();
