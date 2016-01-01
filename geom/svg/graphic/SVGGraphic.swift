@@ -22,8 +22,13 @@ class SVGGraphic : SVGView,ISVGGraphic{
         //TODO: dont use Graphic.swift, use this class,
         applyLineStyle();
         beginFill();
-        draw();
+        //draw();
         //endFill();
+        
+        if(style != nil){
+            drawFill();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
+            drawLine();lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+        }
         
     }
     /**
