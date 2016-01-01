@@ -7,12 +7,10 @@ import Cocoa
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
 class SVGGraphic : SVGView,ISVGGraphic{
-    /*lazy*/ var fillShape:Shape
-    /*lazy*/ var lineShape:Shape = Shape()
+    lazy var fillShape:Shape = Shape()
+    lazy var lineShape:Shape = Shape()
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
-        fillShape = Shape()
         super.init(style!,id!);
-        
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()//TempCALayer(layer: layer!)
         layer!.masksToBounds = false//this is needed!!!
@@ -22,19 +20,15 @@ class SVGGraphic : SVGView,ISVGGraphic{
         self.lineShape.delegate = self
         applyLineStyle();
         beginFill();
-        fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
-        lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
-        
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
             Swift.print("SVGGraphic.init() setNeedsDisplay()")
-            
-            
+            draw();
+            fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
+            lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
             /*drawLine();*/
             
         }
-        
-        
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
