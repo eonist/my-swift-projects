@@ -69,7 +69,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
         if(style != nil && style.fill is Double && style.fill != "none") {
             
             
-            !(style.fill as Double).isNaN ? style.fill : 0x000000, !isNaN(style.fillOpacity) ? style.fillOpacity : 1
+            let colorVal = !(style.fill as! Double).isNaN ? style.fill : 0x000000
+            let opacity:CGFloat = !style.fillOpacity.isNaN ? style.fillOpacity : 1
             let color:NSColor
             fillShape.graphics.fill()/*Stylize the fill*/
         }
