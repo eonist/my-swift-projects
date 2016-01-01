@@ -41,6 +41,7 @@ class SVGStyleParser {
 	 * @param container the parent container of the svg element querried for
 	 */
 	class func fill(var property:Any?,_ container:ISVGContainer)->Any {//TODO:compact this method once its bug tested
+        Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = Double.NaN
         }
