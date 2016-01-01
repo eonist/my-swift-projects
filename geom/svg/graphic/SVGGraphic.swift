@@ -1,7 +1,10 @@
 import Cocoa
 /**
  * This is the base graphic class for the svg lib
- * TODO: Write a 1,2,3 explaination on about the steps of the drawing processs
+ * NOTE: The basic drawing process in steps:
+ * 1. You set the fill and stroke type and attributes to the Graphics instance
+ * 2. You add the path to the Graphics instance
+ * 3. You call the draw method in the Graphics instance
  */
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
