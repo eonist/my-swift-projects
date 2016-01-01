@@ -7,10 +7,12 @@ import Cocoa
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
 class SVGGraphic : SVGView,ISVGGraphic{
-    /*lazy*/ var fillShape:Shape = Shape()
+    /*lazy*/ var fillShape:Shape
     /*lazy*/ var lineShape:Shape = Shape()
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
+        fillShape = Shape()
         super.init(style!,id!);
+        
         wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()//TempCALayer(layer: layer!)
         layer!.masksToBounds = false//this is needed!!!
