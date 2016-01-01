@@ -29,6 +29,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
             /*drawLine();*/
             
         }
+        
+        
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
