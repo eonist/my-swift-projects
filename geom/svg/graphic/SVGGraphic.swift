@@ -2,7 +2,7 @@ import Foundation
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
-    var svgStyle:SVGStyle?
+    var svgStyle:SVGStyle?/*the var name style is taken*/
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         self.svgStyle = style
         super.init(style!,id!);
@@ -13,6 +13,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
         
         //TODO: setup the fill  and line shape here, do draw delegation here and setup the ca layer here
         //TODO: dont use Graphic.swift, use this class,
+        applyLineStyle();
+        beginFill();
+        draw();
+        endFill();
         
     }
     /**
