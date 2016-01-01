@@ -66,6 +66,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func beginFill(){
         Swift.print("SVGGraphic.beginFill()")
+        if(style != nil && style.fill is Double && style.fill != "none") {
+            graphics.beginFill(!isNaN(style.fill) ? style.fill : 0x000000, !isNaN(style.fillOpacity) ? style.fillOpacity : 1)
+        }
         //TODO:complete this
     }
     /**
