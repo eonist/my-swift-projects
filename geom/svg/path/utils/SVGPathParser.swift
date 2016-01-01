@@ -37,7 +37,9 @@ class SVGPathParser {
 	 * @Note cant make this private since polyline and polygon uses this method
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
-        let pattern:String = "(?<=^|\\,|\\s|px|\\b)\\-?\\d*?(\\.?)(($1)\\d+?)(?=px|\\s|\\,|\\-|$)"//changed ?1 to $1, since swift defines backrefs as $n
+        let beginning:String = "(?<=^|\\,|\\s|px|\\b)"
+        let end:String = "(?=px|\\s|\\,|\\-|$)"
+        let pattern:String = 
 		let stringArray:Array<String> = parameters.match(pattern);
         Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
