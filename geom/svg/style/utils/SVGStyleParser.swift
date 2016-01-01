@@ -49,7 +49,7 @@ class SVGStyleParser {
             property = "none"
         }
         else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
-            property = StringParser.color(property as! String)
+            property = Double(StringParser.color(property as! String))
         }
 		else{/*url(#three_stops);*/
 			let url:String = String(property).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
