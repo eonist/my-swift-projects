@@ -31,6 +31,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
+     * Handles the call selector call from the Graphic instance
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
@@ -45,16 +46,6 @@ class SVGGraphic : SVGView,ISVGGraphic{
             lineShape.graphics.context = ctx
             if(style != nil){line()}
         }
-    }
-
-    /**
-     * Handles the call selector call from the Graphic instance
-     */
-    func handleSelector(){
-        //TODO:complete this
-        fill()
-        line()
-        
     }
     /**
      *
@@ -86,10 +77,12 @@ class SVGGraphic : SVGView,ISVGGraphic{
     /**
      * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
      */
-    func draw(){
-        drawLine()
-        drawFill()
-    }
+     /*
+     func draw(){
+     drawLine()
+     drawFill()
+     }
+     */
     func drawLine(){
         //fatalError("must be overriden in subclass")
     }

@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ISVGGraphic {
-    func draw()
+    //func draw()
     func drawLine()
     func drawFill()
     func fill()
