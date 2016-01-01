@@ -72,23 +72,25 @@ class SVGGraphic : SVGView,ISVGGraphic{
             let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }
-        //TODO:complete this
     }
     /**
      *
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
-        //TODO:complete this
+        
+        
+        //Continue here
+        
     }
+    /*
+    func draw(){
+    drawLine()
+    drawFill()
+    }
+    */
     /**
      * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
-     */
-     /*
-     func draw(){
-     drawLine()
-     drawFill()
-     }
      */
     func drawLine(){
         Swift.print("SVGGraphic.drawLine()")
