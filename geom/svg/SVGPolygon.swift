@@ -9,7 +9,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         super.init(style, id);
     }
     override func draw() {
-        Swift.print("SVGPolygon.drawFill()");
+        Swift.print("SVGPolygon.draw()");
         fillShape.path = CGPathParser.lines(points,true)
         
         //TODO: implement setting of the linePath aswell
