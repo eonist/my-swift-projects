@@ -100,5 +100,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
         Swift.print("SVGGraphic.drawFill()")
         //fatalError("must be overriden in subclass")
     }
+    func stylizeFill(){
+        Swift.print("SVGGraphic.stylizeFill()")
+    }
+    func stylizeLine(){
+        Swift.print("SVGGraphic.stylizeLine()")
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
