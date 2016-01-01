@@ -27,6 +27,16 @@ class SVGGraphic : SVGView,ISVGGraphic{
         
     }
     /**
+     * This is a delegate handler method
+     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
+     * NOTE: this is a delegate method for the shapes in Graphic
+     */
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        //Swift.print("Graphic.drawLayer(layer,inContext)")
+        selector!(layer: layer,ctx: ctx)/*call the selector*/
+    }
+
+    /**
      * Handles the call selector call from the Graphic instance
      */
     func handleSelector(){
