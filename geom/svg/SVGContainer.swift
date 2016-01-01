@@ -18,7 +18,10 @@ class SVGContainer : NSView, ISVGContainer{
      * @param item (SVGGraphic and elements like SVGLinearGradient)
      */
     func add(element:ISVGElement) {
-        if(element is NSView) { addSubview(element as! NSView) }
+        if(element is NSView) {
+            Swift.print("SVGContainer.add() element is NSView")
+            addSubview(element as! NSView)
+        }
         items.append(element);
     }
     
