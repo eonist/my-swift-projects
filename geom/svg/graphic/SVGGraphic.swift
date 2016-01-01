@@ -2,9 +2,9 @@ import Cocoa
 /**
  * This is the base graphic class for the svg lib
  * NOTE: The basic drawing process in steps:
- * 1. You set the fill and stroke type and attributes to the Graphics instance
- * 2. You add the path to the Graphics instance
- * 3. You call the draw method in the Graphics instance
+ * 1. You set the fill and stroke type and attributes to the Graphics instance (through the beginFill and applyLineStyle methods)
+ * 2. You add the path to the Graphics instance (through the draw methods)
+ * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
 class SVGGraphic : SVGView,ISVGGraphic{
     lazy var fillShape:Shape = Shape()
@@ -78,10 +78,6 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
-        
-        
-        //Continue here
-        
     }
     /*
     func draw(){
@@ -102,9 +98,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
     }
     func stylizeFill(){
         Swift.print("SVGGraphic.stylizeFill()")
+        GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     func stylizeLine(){
         Swift.print("SVGGraphic.stylizeLine()")
+        GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
