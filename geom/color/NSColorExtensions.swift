@@ -3,14 +3,6 @@ import Cocoa
  * NOTE: it seems you cant override NSColor description{return ""} (research needed as you did this once with NSView and drawRect etc)
  */
 extension NSColor{
-    
-    convenience init(_ color:UInt,_ alpha:CGFloat/*0.0 - 1.0*/){
-        NSColorParser.nsColor(UInt(color), alphaValue)//fill
-        let ciColor:CIColor = CIColor(color: color)!
-        self.init(red: ciColor.red, green: ciColor.green, blue: ciColor.blue, alpha: alpha)
-    }
-
-    
     /**
      * EXAMPLE: :NSColor(NSColor.blackColor(),0.5)//outputs: a black color with 50% transparancy
      */

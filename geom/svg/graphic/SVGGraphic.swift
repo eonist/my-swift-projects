@@ -67,11 +67,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func beginFill(){
         Swift.print("SVGGraphic.beginFill()")
         if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
-            
-            
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             let opacity:CGFloat = !style!.fillOpacity.isNaN ? style!.fillOpacity : 1
-            let color:NSColor = NSColor(colorVal,opacity)
+            let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }
         //TODO:complete this
