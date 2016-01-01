@@ -37,8 +37,15 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * NOTE: this is a delegate method for the shapes in Graphic
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        //Swift.print("Graphic.drawLayer(layer,inContext)")
-        selector!(layer: layer,ctx: ctx)/*call the selector*/
+        if(layer === fillShape){
+            //Swift.print("fillShape: ")
+            fillShape.graphics.context = ctx
+            if(style != nil){fill()}
+        }else if(layer === lineShape){
+            //Swift.print("lineShape")
+            lineShape.graphics.context = ctx
+            if(style != nil){line()}
+        }
     }
 
     /**
