@@ -122,7 +122,7 @@ class SVGParser {
 		print("SVGParser.polygon()");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-		print("SVGParser.polygon() pointsString: " + pointsString);
+		//print("SVGParser.polygon() pointsString: " + pointsString);
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         //print("SVGPArser.polygon() parameters: " + "\(parameters)");
