@@ -21,8 +21,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
         applyLineStyle();
         beginFill();
         if(style != nil){
-            drawFill();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
-            drawLine();lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+            draw();fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
+            /*drawLine();*/lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
         }
     }
     /**
@@ -79,23 +79,28 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
     }
-    /*
+    
     func draw(){
-    drawLine()
-    drawFill()
+        Swift.print("SVGGraphic.draw()")
+        //drawLine()
+        //drawFill()
     }
-    */
+    /**/
     /**
      * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
      */
+    /*
     func drawLine(){
         Swift.print("SVGGraphic.drawLine()")
         //fatalError("must be overriden in subclass")
     }
+     */
+    /*
     func drawFill(){
         Swift.print("SVGGraphic.drawFill()")
         //fatalError("must be overriden in subclass")
     }
+    */
     func stylizeFill(){
         Swift.print("SVGGraphic.stylizeFill()")
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
