@@ -6,7 +6,7 @@ class SVGStyleParser {
 	 */
 	class func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
 		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(prop as! String);
-//		ObjectDescriber.describe(inlineStyle);
+		//ObjectDescriber.describe(inlineStyle);
 		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
 		let fillRule:String = inlineStyle["fill-rule"]!
@@ -22,7 +22,7 @@ class SVGStyleParser {
 	 * @param style (fill: red; stroke:black; stroke-width: 2;)
 	 */
 	class func inlineStyle(style:String)->Dictionary<String, String> {
-//		Swift.print("inlineStyle: "+style);
+		//Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
         let matches = style.matches(pattern)
