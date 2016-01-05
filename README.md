@@ -59,4 +59,4 @@ ColorParser.nsColor(0xFF0000,1)//red nsColor
 ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
-[License](http://opensource.org/licenses/MIT) 
+[MIT License](http://opensource.org/licenses/MIT) 
