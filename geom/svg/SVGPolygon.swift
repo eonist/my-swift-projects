@@ -16,7 +16,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         fillShape.frame = boundingBox
         Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         
-        //continue here: get the code that can make a boundingbox from points, then set the frame of the fillShape, or else the drawLayer method wont work, write a note about this in graphic and shape class
+        //continue here: 
         
         
         //TODO: implement setting of the linePath aswell

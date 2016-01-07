@@ -85,7 +85,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
     }
-    
+    /**
+     * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
+     */
     func draw(){
         Swift.print("SVGGraphic.draw()")
         //drawLine()
