@@ -10,16 +10,20 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
     }
     override func draw() {
         Swift.print("SVGPolygon.draw()")
-        let boundingBox:CGRect = PointParser.rectangle(points)
-        fillShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))
-        Swift.print("fillShape.path: " + "\(fillShape.path)")
-        fillShape.frame = boundingBox
-        Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         
-        //continue here: get the code that can make a boundingbox from points, then set the frame of the fillShape, or else the drawLayer method wont work, write a note about this in graphic and shape class
+            let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
+            fillShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))
+            Swift.print("fillShape.path: " + "\(fillShape.path)")
+            fillShape.frame = boundingBox
+            Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
+            
+            //continue here:
+            
+            
+            //TODO: implement setting of the linePath aswell
+            
+        //if(style!.fill != nil){}
         
-        
-        //TODO: implement setting of the linePath aswell
     
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
