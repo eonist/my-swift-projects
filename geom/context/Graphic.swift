@@ -4,6 +4,7 @@ import QuartzCore
  * TODO: Write an example
  * NOTE: Example is in the Graphics class
  * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
+ * IMPORTANT: You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox method
  */
 class Graphic:FlippedView,IGraphic{
     lazy var fillShape:Shape = Shape()
