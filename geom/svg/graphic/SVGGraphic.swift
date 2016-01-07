@@ -90,6 +90,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func draw(){
         Swift.print("SVGGraphic.draw()")
+        
+        //continue here: figure out what you should check for when calling the drawLine method, see the old svg code about this
+        //also add the two methods drawLine and drawFill, like it is implemented in the GraphicDecoratable class
+        
+        
         //drawLine()
         //drawFill()
     }
