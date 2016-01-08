@@ -36,17 +36,18 @@ class SVGRect : SVGGraphic {
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+            let rect:CGRect = SVGRectParser.rectangle(self)
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path
-            let rect:CGRect = SVGRectParser.rectangle(self)
             let fillFrame = style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             /*line*/
-            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), style!.strokeWidth, OffsetType(OffsetType.center))
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
             lineShape.frame = lineOffsetRect.lineFrameRect
             lineShape.path = lineOffsetRect.lineRect.path
         }
         else {/*RoundRect*/
+            fatalError("Not implemented yet")
             //GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
         }
     }
