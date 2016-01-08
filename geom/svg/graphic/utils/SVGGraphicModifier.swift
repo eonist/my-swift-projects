@@ -17,8 +17,9 @@ class SVGGraphicModifier {
         //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
         //Swift.print("colorVal: " + "\(colorVal)")
+        Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
-        //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
+        Swift.print("strokeOpacity: " + "\(strokeOpacity)")
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
         graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(strokeLineJoin), strokeMiterLimit)
     }
