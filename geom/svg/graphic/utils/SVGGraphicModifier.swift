@@ -11,6 +11,7 @@ class SVGGraphicModifier {
         let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
+        Swift.print("style.fill: " + "\(style.fill)")
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
         Swift.print("colorVal: " + "\(colorVal)")
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
