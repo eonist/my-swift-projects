@@ -36,6 +36,7 @@ class SVGRect : SVGGraphic {
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+            fillShape.path = CGRect(0,0,width,height).path
             //GraphicsModifier.drawRect(graphics, SVGRectParser.rectangle(this))
         }
         else {/*RoundRect*/
