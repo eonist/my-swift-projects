@@ -11,8 +11,6 @@ class SVGGraphicModifier {
         var strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
         var strokeLineCap:String = style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
         var strokeLineJoin:String = style.strokeLineJoin == "" ? style.strokeLineJoin! : "miter";
-        
-        graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
-        lineStyle(strokeWidth , style.stroke, strokeOpacity, false/*<-pixelHinting*/, "normal"/*<-lineScaleMode*/, strokeLineCap, strokeLineJoin , strokeMiterLimit);
+        graphics.line(strokeWidth, style.stroke, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
 }
