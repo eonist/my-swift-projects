@@ -37,6 +37,8 @@ class SVGRect : SVGGraphic {
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
             fillShape.path = CGRect(0,0,width,height).path
+            let fillFrame = style.stroke != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
+            graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
             //GraphicsModifier.drawRect(graphics, SVGRectParser.rectangle(this))
         }
         else {/*RoundRect*/
