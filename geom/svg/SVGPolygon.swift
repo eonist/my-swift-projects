@@ -16,7 +16,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         Swift.print("fillShape.path: " + "\(fillShape.path)")
         fillShape.frame = boundingBox
         Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
-        
+        /**/
         
     
     }
