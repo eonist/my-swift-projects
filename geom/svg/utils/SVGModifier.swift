@@ -24,6 +24,7 @@ class SVGModifier {
 	 * @param scalePoint (0 - 1)
 	 * @Note this method is recursive
 	 * @example SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
+     * @NOTE: The stroke thickness isnt scaled, is this correct or?
 	 */
 	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		switch(true){
