@@ -50,6 +50,7 @@ class SVGPropertyParser {
 			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
 			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
+            Swift.print("strokeOpacity: " + "\(strokeOpacity)")
 			let strokeLineCap:String? = property(xml,"stroke-linecap");
 			let strokeLineJoin:String? = property(xml,"stroke-linejoin");
 			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
