@@ -33,7 +33,7 @@ class SVGParser {
      */
     class func element(xml:NSXMLElement,_ container:ISVGContainer)->ISVGElement {
         var element:ISVGElement;
-        let style:SVGStyle = SVGPropertyParser.style(xml, container)
+        let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
         let id:String = SVGPropertyParser.id(xml);
         switch(xml.localName!){
