@@ -8,7 +8,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         self.points = points;
         super.init(style, id);
     }
-    override func drawFill() {
+    override func draw() {
         Swift.print("SVGPolygon.drawFill()")
         
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
@@ -16,11 +16,10 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         Swift.print("fillShape.path: " + "\(fillShape.path)")
         fillShape.frame = boundingBox
         Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
+        
+        
     
     }
-    override func drawLine() {
-        Swift.print("SVGPolygon.drawLine()")
-        
-    }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
