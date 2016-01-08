@@ -17,3 +17,11 @@ class SVGGraphicModifier {
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
 }
+private class Utils{
+    /**
+     *
+     */
+    class func strokeLineCap(strokeLineCap:String)->CGLineCap{
+        if(strokeLineCap == "")
+    }
+}
