@@ -12,7 +12,9 @@ class SVGGraphicModifier {
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
+        Swift.print("colorVal: " + "\(colorVal)")
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
+        Swift.print("strokeOpacity: " + "\(strokeOpacity)")
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
         graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(strokeLineJoin), strokeMiterLimit)
     }
