@@ -14,11 +14,11 @@ class SVGGraphicModifier {
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
         var strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
-        graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), strokeLineJoin, strokeMiterLimit)
+        graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(), strokeMiterLimit)
     }
 }
 /**
- * Probably move this into a more central place, but in the spirit of moving on!
+ * DISCUSSION:Probably move this into a more central place, but in the spirit of moving on!, Or not since its probably only related to how svg names these variables
  */
 private class Utils{
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
@@ -26,11 +26,18 @@ private class Utils{
         else if(strokeLineCap == "Round"){return CGLineCap.Round}
         else{/*Square*/return CGLineCap.Square}
     }
-    class func strokeLineJoin(strokeLineJoin:String)->CGLineCap{
-        if(strokeLineCap == "Butt"){return CGLineCap.Butt}
-        else if(strokeLineCap == "Round"){return CGLineCap.Round}
-        else{/*Square*/return CGLineCap.Square}
+    class func strokeLineJoin(strokeLineJoin:String)->CGLineJoin{
+        if(strokeLineJoin == "miter"){return CGLineJoin.Miter}
+        else if(strokeLineJoin == "round"){return CGLineJoin.Round}
+        else{/*Bevel*/return CGLineJoin.Bevel}
     }
 }
 
 //CGLineCap,CGLineJoin
+
+/*
+case
+case
+case
+
+*/
