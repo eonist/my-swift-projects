@@ -23,6 +23,15 @@ class SVGEllipse : SVGGraphic{
 	override func draw() {
 		if(!(rx.isNaN) && !(ry.isNaN)) {
 			//fillShape.path = CGPathParser.ellipse(rx * 2, ry * 2, (!cx.isNaN ? cx : 0)- rx, (!cy.isNaN ? cy : 0)- ry)
+            
+            /*Fill*/
+            let x:CGFloat = (!cx.isNaN ? cx : 0) - rx
+            let y:CGFloat = (!cy.isNaN ? cy : 0) - ry
+            let rect:CGRect = CGRect(x, y, r*2, r*2)
+            let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            fillShape.frame = fillFrame/*,position and set the size of the frame*/
+            fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
+            
 		}
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
