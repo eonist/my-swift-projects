@@ -11,8 +11,8 @@ class SVGGraphicModifier {
         let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
-        Swift.print("style.fill: " + "\(style.fill)")
-        let colorVal:Double = !(style.stroke.isNaN) ? style.fill as! Double : Double(0x000000)
+        Swift.print("style.stroke: " + "\(style.stroke)")
+        let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
         Swift.print("colorVal: " + "\(colorVal)")
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
         Swift.print("strokeOpacity: " + "\(strokeOpacity)")
@@ -26,8 +26,8 @@ class SVGGraphicModifier {
  */
 private class Utils{
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
-        if(strokeLineCap == "Butt"){return CGLineCap.Butt}
-        else if(strokeLineCap == "Round"){return CGLineCap.Round}
+        if(strokeLineCap == "butt"){return CGLineCap.Butt}
+        else if(strokeLineCap == "round"){return CGLineCap.Round}
         else{/*Square*/return CGLineCap.Square}
     }
     class func strokeLineJoin(strokeLineJoin:String)->CGLineJoin{
