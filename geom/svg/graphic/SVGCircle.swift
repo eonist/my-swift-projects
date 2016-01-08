@@ -28,14 +28,10 @@ class SVGCircle : SVGGraphic{
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
             /*Line*/
-            
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
             lineShape.frame = lineOffsetRect.lineFrameRect
             //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
-            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
-            
-        
-            
+            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
