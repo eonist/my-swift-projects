@@ -28,11 +28,13 @@ private class Utils{
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
         if(strokeLineCap == "butt"){return CGLineCap.Butt}
         else if(strokeLineCap == "round"){return CGLineCap.Round}
-        else{/*Square*/return CGLineCap.Square}
+        else if(strokeLineCap == "Square"){return CGLineCap.Square}
+        else{fatalError(strokeLineCap + " not supported")}
     }
     class func strokeLineJoin(strokeLineJoin:String)->CGLineJoin{
         if(strokeLineJoin == "miter"){return CGLineJoin.Miter}
         else if(strokeLineJoin == "round"){return CGLineJoin.Round}
-        else{/*Bevel*/return CGLineJoin.Bevel}
+        else if(strokeLineJoin == "Bevel"){return CGLineJoin.Bevel}
+        else{fatalError(strokeLineJoin + " not supported")}
     }
 }
