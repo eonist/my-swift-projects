@@ -39,7 +39,7 @@ class SVGRect : SVGGraphic {
             let rect:CGRect = SVGRectParser.rectangle(self)
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path
-            let fillFrame = style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             /*line*/
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
