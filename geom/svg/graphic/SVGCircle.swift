@@ -23,7 +23,7 @@ class SVGCircle : SVGGraphic{
             let rect:CGRect = CGRect(!cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0,r, r)
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
-            fillShape.path = CGPathParser.circle(r, 0,0)/*<--the path is positioned relative to the frame*/
+            fillShape.path = CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))/*<--the path is positioned relative to the frame*//*CGPathParser.circle(r, 0,0)*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
