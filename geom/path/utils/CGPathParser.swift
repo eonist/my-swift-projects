@@ -16,6 +16,7 @@ public class CGPathParser{
         if(close){
             //Swift.print("close")
             CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y);/*closes it self to the start position*/
+            CGPathCloseSubpath(path)
         }
         return path
     }
