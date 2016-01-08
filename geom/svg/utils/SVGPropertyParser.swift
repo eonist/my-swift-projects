@@ -45,18 +45,18 @@ class SVGPropertyParser {
             //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container)
             Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
-			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"));
-			let fillRule:String? = property(xml,"fill-rule");
-			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"));
-			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"));
-			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"));
+			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
+			let fillRule:String? = property(xml,"fill-rule")
+			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"))
+			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
+			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
             Swift.print("strokeOpacity: " + "\(strokeOpacity)")
-			let strokeLineCap:String? = property(xml,"stroke-linecap");
-			let strokeLineJoin:String? = property(xml,"stroke-linejoin");
-			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
+			let strokeLineCap:String? = property(xml,"stroke-linecap")
+			let strokeLineJoin:String? = property(xml,"stroke-linejoin")
+			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
             if(strokeOpacity.isNaN){strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
-			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
+			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
             Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
         }
 		return style;
