@@ -8,7 +8,7 @@ class SVGGraphicModifier {
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
         let strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
-        let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "butt";
+        let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "butt";/*<-this could be square*/
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
         Swift.print("style.stroke: " + "\(style.stroke)")
@@ -28,7 +28,7 @@ private class Utils{
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
         if(strokeLineCap == "butt"){return CGLineCap.Butt}
         else if(strokeLineCap == "round"){return CGLineCap.Round}
-        else if(strokeLineCap == "Square"){return CGLineCap.Square}
+        else if(strokeLineCap == "square"){return CGLineCap.Square}
         else{fatalError(strokeLineCap + " not supported")}
     }
     class func strokeLineJoin(strokeLineJoin:String)->CGLineJoin{
