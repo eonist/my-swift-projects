@@ -10,7 +10,7 @@ class SVGGraphicModifier {
     */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
-        let strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 4/*<--was 1.414*/;
+        let strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 10/*<--was 1.414*/;
         let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "butt";/*<-this was none, but it doesnt need to be since we wont extract this value from */
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
