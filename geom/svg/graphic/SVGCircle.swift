@@ -20,7 +20,7 @@ class SVGCircle : SVGGraphic{
     */
     override func draw(){
         if(!r.isNaN) {
-            let rect:CGRect = CGRect(!cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0,r, r)
+            let rect:CGRect = CGRect(!cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0,r*2, r*2)
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))/*<--the path is positioned relative to the frame*//*CGPathParser.circle(r, 0,0)*/
