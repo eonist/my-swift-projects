@@ -56,7 +56,8 @@ class SVGPropertyParser {
 			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"));
             if(fillOpacity.isNaN) {strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"));fillOpacity = strokeOpacity;}/*<--new*/
 			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit);
-		}
+            Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
+        }
 		return style;
 	}
 }
