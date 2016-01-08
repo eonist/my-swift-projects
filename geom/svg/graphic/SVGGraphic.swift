@@ -95,8 +95,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
         //also add the two methods drawLine and drawFill, like it is implemented in the GraphicDecoratable class
         
         
-        //drawLine()
-        //drawFill()
+        
+        //
+        if(style != nil){drawFill()}
+        drawLine()
     }
     /**/
     /**
