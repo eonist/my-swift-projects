@@ -8,6 +8,11 @@ class SVGStyle {
     var fillRule : String?/*not implimented yet, This attribute can have the values "nonzero" or "evenodd", which apply different rules for determining whether a point is inside or outside a shape. These rules generate different effects only when a shape has intersecting lines or "holes" in it. Details are in "Filling Polygons That Have Intersecting Lines" earlier in this chapter.*/
     var strokeWidth : CGFloat
     var stroke : Double;
+    
+    
+    //continue here: Stroke needs to be of type Any? since it needs to support gradient stroke aswell
+    
+    
     var strokeOpacity : CGFloat;
     var strokeLineCap : String?;
     var strokeLineJoin : String?;
