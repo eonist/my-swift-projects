@@ -36,10 +36,13 @@ class SVGRect : SVGGraphic {
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+            /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path
             let rect:CGRect = SVGRectParser.rectangle(self)
             let fillFrame = style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
+            /*line*/
+            
         }
         else {/*RoundRect*/
             //GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
