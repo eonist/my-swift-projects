@@ -31,7 +31,15 @@ class SVGEllipse : SVGGraphic{
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.ellipse(rect.width, rect.height, 0, 0)
+            /*Line*/
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+            lineShape.frame = lineOffsetRect.lineFrameRect
             
+            
+            //this may not work if the x and y is more than 0,0 etc make sure it works
+            
+            
+            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
 		}
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
