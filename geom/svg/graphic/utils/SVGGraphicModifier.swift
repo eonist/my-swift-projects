@@ -9,8 +9,10 @@ class SVGGraphicModifier {
         var strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
         var strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
         var strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
-        var strokeLineCap:String = style.strokeLineCap == "" ? style.strokeLineCap : "none";
-        var strokeLineJoin:String = style.strokeLineJoin == "" ? style.strokeLineJoin : "miter";
+        var strokeLineCap:String = style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
+        var strokeLineJoin:String = style.strokeLineJoin == "" ? style.strokeLineJoin! : "miter";
+        
+        graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         lineStyle(strokeWidth , style.stroke, strokeOpacity, false/*<-pixelHinting*/, "normal"/*<-lineScaleMode*/, strokeLineCap, strokeLineJoin , strokeMiterLimit);
     }
 }
