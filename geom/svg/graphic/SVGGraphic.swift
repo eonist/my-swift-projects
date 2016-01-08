@@ -84,6 +84,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
+        
+        if(style != nil) {/*updates only if lineStyle of class LineStyle*/
+            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+        }
     }
     /**
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
