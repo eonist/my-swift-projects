@@ -21,6 +21,9 @@ class SVGCircle : SVGGraphic{
     override func draw(){
         if(!r.isNaN) {
            //fillShape.path = CGPathParser.circle(r, !cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0)
+            
+            //continue here, take notes from the EllipseGraphic implementation
+            
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
