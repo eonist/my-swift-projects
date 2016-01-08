@@ -19,6 +19,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         /*line*/
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
+        //TODO:The bellow should probably be optimized a bit better
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
