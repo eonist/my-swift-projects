@@ -7,8 +7,6 @@ class SVGRectParser {
      */
     class func rectangle(svgRect:SVGRect)->CGRect {
         
-        //continue here
-        
-        return CGRect(!isNaN(svgRect.x) ? svgRect.x : 0, !isNaN(svgRect.y) ? svgRect.y : 0, svgRect.width, svgRect.height);
+        return CGRect(!svgRect.x.isNaN ? svgRect.x : 0, !svgRect.y.isNaN ? svgRect.y : 0, svgRect.width, svgRect.height);
     }
 }
