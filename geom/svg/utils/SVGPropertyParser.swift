@@ -44,20 +44,20 @@ class SVGPropertyParser {
 		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
             //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container)
-            Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
+            //Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
 			let fillRule:String? = property(xml,"fill-rule")
 			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"))
 			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
-            Swift.print("strokeOpacity: " + "\(strokeOpacity)")
+            //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
 			let strokeLineCap:String? = property(xml,"stroke-linecap")
 			let strokeLineJoin:String? = property(xml,"stroke-linejoin")
 			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
             if(strokeOpacity.isNaN){strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
 			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
-            Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
+            //Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
         }
 		return style;
 	}
