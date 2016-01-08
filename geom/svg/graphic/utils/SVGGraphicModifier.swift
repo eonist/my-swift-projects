@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class SVGGraphicModifier {
     /**
@@ -11,6 +11,10 @@ class SVGGraphicModifier {
         var strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
         var strokeLineCap:String = style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
         var strokeLineJoin:String = style.strokeLineJoin == "" ? style.strokeLineJoin! : "miter";
+        /*color*/
+        let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
+        let opacity:CGFloat = !style.fillOpacity.isNaN ? style!.fillOpacity : 1
+        let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
         graphics.line(strokeWidth, style.stroke, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
 }
