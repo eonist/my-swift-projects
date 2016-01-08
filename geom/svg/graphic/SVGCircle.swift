@@ -29,8 +29,11 @@ class SVGCircle : SVGGraphic{
             fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
             /*Line*/
             
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+            lineShape.frame = lineOffsetRect.lineFrameRect
+            //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
+            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
             
-            //continue here implement the line as the above but with code from the EllispeGraphic. remember to use the circle method no tthe ellipse method
         
             
         }
