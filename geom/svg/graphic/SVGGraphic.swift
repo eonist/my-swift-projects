@@ -84,9 +84,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
-        
         if(style != nil && !style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
-            lineShape.graphics.line(style!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }
     }
     /**

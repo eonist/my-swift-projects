@@ -5,7 +5,7 @@ class SVGGraphicModifier {
     * Applies the @param strokeStyle to the @param graphics
     * @Note: If @param strokeStyle Does not have a variable, the default flash variable is applied
     */
-    class func applyStrokeStyle(graphics:Graphics, style:SVGStyle) {
+    class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
         let strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
         let strokeLineCap:String = style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
