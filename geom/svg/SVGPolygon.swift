@@ -17,6 +17,11 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         fillShape.frame = boundingBox/*The positioning happens in the frame*/
         Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
+        
+        
+        //continue here: you need the code that calculates more space for the mask, you have the code for this, just look though some of the masking code from the old code
+        
+        
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         //TODO:The bellow should probably be optimized a bit better
