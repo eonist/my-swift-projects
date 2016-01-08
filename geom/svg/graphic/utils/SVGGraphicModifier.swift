@@ -8,8 +8,8 @@ class SVGGraphicModifier {
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
         let strokeMiterLimit:CGFloat = !(style.strokeMiterLimit.isNaN) ? style.strokeMiterLimit : 1.414;
-        let strokeLineCap:String = style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
-        let strokeLineJoin:String = style.strokeLineJoin == "" ? style.strokeLineJoin! : "miter";
+        let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "none";
+        let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
