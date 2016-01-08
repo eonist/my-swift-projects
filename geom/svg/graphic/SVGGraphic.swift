@@ -94,28 +94,26 @@ class SVGGraphic : SVGView,ISVGGraphic{
         //continue here: figure out what you should check for when calling the drawLine method, see the old svg code about this
         //also add the two methods drawLine and drawFill, like it is implemented in the GraphicDecoratable class
         
-        
-        
-        //
-        if(style != nil){drawFill()}
-        drawLine()
+        if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
+            drawLine()
+            drawFill()
+        }
     }
     /**/
     /**
      * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
      */
-    /*
+    
     func drawLine(){
         Swift.print("SVGGraphic.drawLine()")
         //fatalError("must be overriden in subclass")
     }
-     */
-    /*
+    
     func drawFill(){
         Swift.print("SVGGraphic.drawFill()")
         //fatalError("must be overriden in subclass")
     }
-    */
+    
     func stylizeFill(){
         Swift.print("SVGGraphic.stylizeFill()")
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic

@@ -8,7 +8,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         self.points = points;
         super.init(style, id);
     }
-    override func draw() {
+    override func drawFill() {
         Swift.print("SVGPolygon.draw()")
         if(style!.fill != nil){
             let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
@@ -16,11 +16,6 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
             Swift.print("fillShape.path: " + "\(fillShape.path)")
             fillShape.frame = boundingBox
             Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
-            
-            //continue here:
-            
-            
-            //TODO: implement setting of the linePath aswell
             
         }
         
