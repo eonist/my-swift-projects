@@ -30,7 +30,7 @@ class SVGEllipse : SVGGraphic{
             let rect:CGRect = CGRect(x, y, rx*2, ry*2)
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
-            fillShape.path = CGPathParser.ellipse(rect)
+            fillShape.path = CGPathParser.ellipse(rect.width, rect.height, 0, 0)
             
 		}
 	}

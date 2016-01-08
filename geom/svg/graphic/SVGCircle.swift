@@ -30,6 +30,11 @@ class SVGCircle : SVGGraphic{
             /*Line*/
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
             lineShape.frame = lineOffsetRect.lineFrameRect
+            
+            
+            //this may not work if the x and y is more than 0,0 etc make sure it works 
+            
+            
             lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
         }
     }
