@@ -38,7 +38,7 @@ class SVGRect : SVGGraphic {
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
             let rect:CGRect = SVGRectParser.rectangle(self)
             /*Fill*/
-            fillShape.path = CGRect(0,0,width,height).path
+            fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             /*line*/

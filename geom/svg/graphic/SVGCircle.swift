@@ -20,11 +20,11 @@ class SVGCircle : SVGGraphic{
     */
     override func draw(){
         if(!r.isNaN) {
-            let rect:CGRect = SVGRectParser.rectangle(self)
-            let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
-            graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
-            graphic.fillShape.path = CGPathParser.ellipse(CGRect(0,0,width,height))
-           //fillShape.path = CGPathParser.circle(r, !cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0)
+            let rect:CGRect = CGRect(!cx.isNaN ? cx : 0, !cy.isNaN ? cy : 0,r, r)
+            let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            fillShape.frame = fillFrame/*,position and set the size of the frame*/
+
+            fillShape.path = CGPathParser.circle(r, 0,0)/*<--positioned relative to the frame*/
             
             //continue here, take notes from the EllipseGraphic implementation
             
