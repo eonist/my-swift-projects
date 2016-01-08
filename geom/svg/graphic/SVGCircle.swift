@@ -32,7 +32,7 @@ class SVGCircle : SVGGraphic{
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
             lineShape.frame = lineOffsetRect.lineFrameRect
             //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
-            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
+            lineShape.path = CGPathParser.circle(r,r,r)
             
         
             
