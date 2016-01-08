@@ -14,11 +14,12 @@ class SVGGraphicModifier {
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
         var strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
-        graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(), strokeMiterLimit)
+        graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(strokeLineJoin), strokeMiterLimit)
     }
 }
 /**
  * DISCUSSION:Probably move this into a more central place, but in the spirit of moving on!, Or not since its probably only related to how svg names these variables
+ * TODO: try to find a method in swift that can extract enum values by providing a string
  */
 private class Utils{
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
@@ -32,12 +33,3 @@ private class Utils{
         else{/*Bevel*/return CGLineJoin.Bevel}
     }
 }
-
-//CGLineCap,CGLineJoin
-
-/*
-case
-case
-case
-
-*/
