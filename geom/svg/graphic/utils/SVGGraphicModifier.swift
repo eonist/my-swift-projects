@@ -14,11 +14,11 @@ class SVGGraphicModifier {
         let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "butt";/*<-this was none, but it doesnt need to be since we wont extract this value from */
         let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
         /*color*/
-        Swift.print("style.stroke: " + "\(style.stroke)")
+        //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
-        Swift.print("colorVal: " + "\(colorVal)")
+        //Swift.print("colorVal: " + "\(colorVal)")
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
-        Swift.print("strokeOpacity: " + "\(strokeOpacity)")
+        //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
         graphics.line(strokeWidth, color, Utils.strokeLineCap(strokeLineCap), Utils.strokeLineJoin(strokeLineJoin), strokeMiterLimit)
     }
