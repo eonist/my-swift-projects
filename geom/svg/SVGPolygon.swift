@@ -36,10 +36,10 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         /*line*/
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
-        //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
+        Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
-        //Swift.print("linePathOffset: " + "\(linePathOffset)")
+        Swift.print("linePathOffset: " + "\(linePathOffset)")
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
