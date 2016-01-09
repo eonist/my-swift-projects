@@ -35,6 +35,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
         
     }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
