@@ -13,14 +13,7 @@ class SVGGraphicModifier {
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
-        /*color*/
-        //Swift.print("style.stroke: " + "\(style.stroke)")
-        let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
-        //Swift.print("colorVal: " + "\(colorVal)")
-        Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
-        let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
-        Swift.print("strokeOpacity: " + "\(strokeOpacity)")
-        let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
+        let color:NSColor = SVGStyleUtils.strokeColor(style.stroke, style.strokeOpacity)
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
 }

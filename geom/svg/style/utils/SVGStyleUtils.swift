@@ -39,7 +39,7 @@ class SVGStyleUtils {
     /**
      *
      */
-    class func strokeColor(strokeColor:Double,strokeOpacity:CGFloat)->NSColor{
+    class func strokeColor(strokeColor:Double,_ strokeOpacity:CGFloat)->NSColor{
         /*color*/
         //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : Double(0x000000)
