@@ -8,7 +8,7 @@ class SVGStyleUtils {
      * TODO: try to find a method in swift that can extract enum values by providing a string
      */
     class func lineCap(lineCap:String?)->CGLineCap{
-        let strokeLineCap = lineCap != nil && lineCap == "" ? lineCap : "butt"/*<-this was none, but it doesnt need to be since we wont extract this value from */
+        let strokeLineCap = lineCap != nil && lineCap != "" ? lineCap : "butt"/*<-this was none, but it doesnt need to be since we wont extract this value from */
         if(strokeLineCap == "butt"){return CGLineCap.Butt}
         else if(strokeLineCap == "round"){return CGLineCap.Round}
         else if(strokeLineCap == "square"){return CGLineCap.Square}
@@ -17,7 +17,8 @@ class SVGStyleUtils {
     /**
      *
      */
-    class func lineJoin(strokeLineJoin:String)->CGLineJoin{
+    class func lineJoin(lineJoin:String)->CGLineJoin{
+        let strokeLineJoin = lineJoin != nil && lineJoin != "" ? lineJoin : "miter";
         if(strokeLineJoin == "miter"){return CGLineJoin.Miter}
         else if(strokeLineJoin == "round"){return CGLineJoin.Round}
         else if(strokeLineJoin == "Bevel"){return CGLineJoin.Bevel}
