@@ -23,7 +23,7 @@ class SVGPolyLine : SVGGraphic,ISVGPolyLine{
         //Swift.print("fillShape.path: " + "\(fillShape.path)")
         //Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
-        let strokeBoundingBox:CGRect = SVGPathUtils.boundingBox(path, style!)// + boundingBox.origin
+        let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
         Swift.print("linePathOffset: " + "\(linePathOffset)")
