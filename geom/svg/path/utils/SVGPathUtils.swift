@@ -61,10 +61,10 @@ class SVGPathUtils {
                     pos += CGPoint(params[i+2],params[i+3]);
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.CURVE_TO);
-                    path.pathData.append(cP1.x,cP1.y, pos.x,pos.y);
-                    i +=4;
+                    path.pathData += [cP1.x,cP1.y, pos.x,pos.y]
+                    i += 4;
                     break;
-                case SVGPathCommand.T://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
+                case SVGPathCommand.t://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos = pos.add(CGPoint(params[i],params[i+1]));
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     path.commands.append(PathCommand.CURVE_TO);
