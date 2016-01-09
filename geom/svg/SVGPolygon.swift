@@ -36,7 +36,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
 }
 private class Utils{
     /**
-     * Returns the boundingBoc for the stroke
+     * Returns the boundingBox for the stroke
      */
     class func boundingBox(path:CGPath,_ style:SVGStyle)->CGRect{
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
