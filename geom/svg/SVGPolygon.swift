@@ -21,13 +21,9 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
         
-        
-        //continue here: you need the code that calculates more space for the mask, you have the code for this, just look though some of the masking code from the old code
-        //try to use the outline code that apple provides
-        //then you try to get the bounding box of this outline
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
-        
-        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
+        let strokeBoundingBox:CGRect = Utils.boundingBox(lineShape.path, style!) + boundingBox.origin
+        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         //TODO:The bellow should probably be optimized a bit better
         
