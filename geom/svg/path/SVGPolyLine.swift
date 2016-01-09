@@ -12,7 +12,7 @@ class SVGPolyLine : SVGPolygon{
      * NOTE: we dont call fill because we only need to draw a stroke
      */
     override func draw()  {
-        //swift.print("SVGPolyline.draw"+_points);
+        Swift.print("SVGPolyline.draw" + "\(points)");
         drawLine(false)//Continue here: you do not close the polyline,
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
