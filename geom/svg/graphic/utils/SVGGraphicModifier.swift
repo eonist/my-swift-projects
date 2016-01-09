@@ -9,10 +9,10 @@ class SVGGraphicModifier {
      * @NOTE: miterlimit The limit on the ratio of the miter length to the stroke-width. The value of <miterlimit> must be a <number> greater than or equal to 1.
     */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
-        let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
+        let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
-        let strokeLineCap = SVGStyleUtils.lineCap(style.strokeLineCap);
-        let strokeLineJoin:String = 
+        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
+        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         /*color*/
         //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
