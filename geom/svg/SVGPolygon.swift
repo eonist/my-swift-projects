@@ -44,7 +44,7 @@ private class Utils{
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth)
         let outline = CGPathCreateCopyByStrokingPath(path, nil, strokeWidth, strokeLineCap, strokeLineJoin, strokeMiterLimit)
-        outline
+        
         let boundingBox:CGRect = CGPathGetPathBoundingBox()
     }
 }
