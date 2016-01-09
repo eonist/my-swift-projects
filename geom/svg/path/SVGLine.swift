@@ -21,7 +21,7 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
     }
     override func draw() {
         fillShape.path = CGPathParser.line(CGPoint(x1,y1),CGPoint(x2, y2))
-        
+        let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         //you have to set the frame here
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
