@@ -27,7 +27,13 @@ class SVGStyleUtils {
     /**
      *
      */
-    class func miterLimit(strokeMiterLimit:CGFloat)->CGFloat{
-        return !strokeMiterLimit.isNaN ? strokeMiterLimit : 10/*<--was 1.414*/;
+    class func miterLimit(miterLimit:CGFloat)->CGFloat{
+        return !miterLimit.isNaN ? miterLimit : 10/*<--was 1.414*/;
+    }
+    /**
+     *
+     */
+    class func strokeWidth(strokeWidth:CGFloat)->CGFloat{
+        return !(strokeWidth.isNaN) ? strokeWidth : 0
     }
 }
