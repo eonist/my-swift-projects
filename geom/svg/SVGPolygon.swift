@@ -12,6 +12,13 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works.
      */
     override func draw() {
+        drawFill()
+        drawLine()
+    }
+    /**
+     *
+     */
+    func drawFill(){
         //Swift.print("SVGPolygon.drawFill()")
         
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
@@ -19,10 +26,14 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         //Swift.print("fillShape.path: " + "\(fillShape.path)")
         fillShape.frame = boundingBox/*The positioning happens in the frame*/
         //Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
+        
+    }
+    /**
+     *
+     */
+    func drawLine(){
         /*line*/
-        
-        
-        //continue here: find the difference from the topleft corner of the path and the topleft corner of the strokeboundingbox, this will serve as the offset that you need to apply to the stroke path, i think you can just use regular substract to find the difference, if not see the difference methods in the point library
+        let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
@@ -33,9 +44,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
-        
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
