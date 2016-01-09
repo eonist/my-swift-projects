@@ -9,7 +9,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         super.init(style, id);
     }
     /**
-     * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works. 
+     * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works.
      */
     override func draw() {
         Swift.print("SVGPolygon.drawFill()")
@@ -23,8 +23,10 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         
         
         //continue here: you need the code that calculates more space for the mask, you have the code for this, just look though some of the masking code from the old code
+        //try to use the outline code that apple provides
+        //then you try to get the bounding box of this outline
         
-        
+        boundingBox.path
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         //TODO:The bellow should probably be optimized a bit better
