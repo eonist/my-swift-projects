@@ -38,7 +38,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        //Swift.print("SVGGraphic.drawLayer()")
+        Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
             fillShape.graphics.context = ctx
@@ -70,7 +70,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @Note Updates only if style exists and fill is a number
      */
     func beginFill(){
-        //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
             //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
@@ -85,7 +85,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func applyLineStyle(){
-        //Swift.print("SVGGraphic.applyLineStyle()")
+        Swift.print("SVGGraphic.applyLineStyle()")
         if(style != nil && !style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }
