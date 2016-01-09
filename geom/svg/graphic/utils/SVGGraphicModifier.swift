@@ -29,6 +29,10 @@ class SVGGraphicModifier {
  * TODO: try to find a method in swift that can extract enum values by providing a string
  */
 private class Utils{
+    
+    //continue here: add these to an utility class, and then write a note that you should probably convert these values upon style creation and use nil to symbolize no value
+    //then continue with the SVGPolygon
+    
     class func strokeLineCap(strokeLineCap:String)->CGLineCap{
         if(strokeLineCap == "butt"){return CGLineCap.Butt}
         else if(strokeLineCap == "round"){return CGLineCap.Round}
