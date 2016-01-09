@@ -9,7 +9,7 @@ class SVGPathUtils {
         
         //Continue here: add the IPath and Path classes to geom, youll need them later anyway, finish this method and then also finish the drawPath class, 
         
-        let path:CGMutablePathRef = CGPathCreateMutable()
+        var path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint;/*previous MoveTo pos*/
