@@ -8,6 +8,9 @@ class SVGPolyLine : SVGGraphic,ISVGPolyLine{
         self.points = points;
         super.init(style, id);
     }
+    override func beginFill() {
+        //we override this method to avoid drawing a path in the fill shape
+    }
     /**
      * NOTE: we dont call fill because we only need to draw a stroke
      */
@@ -18,7 +21,6 @@ class SVGPolyLine : SVGGraphic,ISVGPolyLine{
         Swift.print("boundingBox: " + "\(boundingBox)")
         let path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
         //Swift.print("fillShape.path: " + "\(fillShape.path)")
-        fillShape.frame = boundingBox/*The positioning happens in the frame*/
         //Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
         let strokeBoundingBox:CGRect = SVGPathUtils.boundingBox(path, style!)// + boundingBox.origin
