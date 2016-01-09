@@ -11,8 +11,8 @@ class SVGGraphicModifier {
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         let strokeWidth:CGFloat = !(style.strokeWidth.isNaN) ? style.strokeWidth : 0;
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
-        let strokeLineCap:String = style.strokeLineCap != nil && style.strokeLineCap! == "" ? style.strokeLineCap! : "butt";/*<-this was none, but it doesnt need to be since we wont extract this value from */
-        let strokeLineJoin:String = style.strokeLineJoin != nil && style.strokeLineJoin! == "" ? style.strokeLineJoin! : "miter";
+        let strokeLineCap = SVGStyleUtils.lineCap(style.strokeLineCap);
+        let strokeLineJoin:String = 
         /*color*/
         //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(style.stroke.isNaN) ? style.stroke : Double(0x000000)
@@ -21,7 +21,7 @@ class SVGGraphicModifier {
         let strokeOpacity:CGFloat = !(style.strokeOpacity.isNaN) ? style.strokeOpacity : 1;
         Swift.print("strokeOpacity: " + "\(strokeOpacity)")
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacity)
-        graphics.line(strokeWidth, color, SVGStyleUtils.lineCap(strokeLineCap), SVGStyleUtils.lineJoin(strokeLineJoin), strokeMiterLimit)
+        graphics.line(strokeWidth, color, strokeLineCap, SVGStyleUtils.lineJoin(strokeLineJoin), strokeMiterLimit)
     }
 }
 
