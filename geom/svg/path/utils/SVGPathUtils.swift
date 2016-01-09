@@ -35,30 +35,30 @@ class SVGPathUtils {
                     path.pathData += [pos.x,pos.y]
                     i++;
                     break;
-                case SVGPathCommand.V://verticalLineTo
-                    pos = pos.add(CGPoint(isLowerCase ? 0 : prevP.x,params[i]));
+                case SVGPathCommand.v://verticalLineTo
+                    pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i]);
                     path.commands.append(PathCommand.LINE_TO);
-                    path.pathData.append(pos.x,pos.y);
+                    path.pathData += [pos.x,pos.y]
                     i++;
                     break;
-                case SVGPathCommand.C://cubicCurveTo
-                    pos = pos.add(CGPoint(params[i+4],params[i+5]));
-                    var controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + Number(params[i]),prevP.y+Number(params[i+1])) : CGPoint(params[i],params[i+1]);
-                    prevC = isLowerCase ? CGPoint(prevP.x+Number(params[i+2]),prevP.y+Number(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
+                case SVGPathCommand.c://cubicCurveTo
+                    pos += CGPoint(params[i+4],params[i+5]);
+                    var controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1]);
+                    prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
                     path.commands.append(PathCommand.CUBIC_CURVE_TO);
-                    path.pathData.append(controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y);
-                    i +=6;
+                    path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
+                    i += 6;
                     break;
-                case SVGPathCommand.S://smoothCubicCurveTo
-                    pos = pos.add(CGPoint(params[i+2],params[i+3]));
+                case SVGPathCommand.s://smoothCubicCurveTo
+                    pos += CGPoint(params[i+2],params[i+3]);
                     var cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
-                    prevC = isLowerCase ? CGPoint(Number(params[i])+prevP.x,Number(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
+                    prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.CUBIC_CURVE_TO);
-                    path.pathData.append(cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y);
-                    i +=4;
+                    path.pathData += [cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y]
+                    i += 4;
                     break;
-                case SVGPathCommand.Q: //quadCurveTo
-                    pos = pos.add(CGPoint(params[i+2],params[i+3]));
+                case SVGPathCommand.q: //quadCurveTo
+                    pos += CGPoint(params[i+2],params[i+3]);
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.CURVE_TO);
                     path.pathData.append(cP1.x,cP1.y, pos.x,pos.y);
