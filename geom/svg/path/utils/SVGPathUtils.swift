@@ -11,7 +11,7 @@ class SVGPathUtils {
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint;/*previous MoveTo pos*/
         var prevC:CGPoint;/*previous ControlPoint*/
-        for (var e : int = 0; e < commands.length; e++) {
+        for (var e : int = 0; e < commands.count; e++) {
             var command:String = commands[e];
             var isLowerCase:Boolean = StringAsserter.lowerCase(command);
             var pos:CGPoint = isLowerCase ? prevP.clone() : CGPoint();/*the current end pos*/
