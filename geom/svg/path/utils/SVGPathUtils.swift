@@ -76,7 +76,7 @@ class SVGPathUtils {
 //						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
 //						i += 7;
 //						break;
-                default: break;
+                default: fatalError("");
             }
             if(e < commands.length-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
                 prevP = pos.clone();
