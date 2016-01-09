@@ -8,6 +8,9 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         self.points = points;
         super.init(style, id);
     }
+    /**
+     * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works. 
+     */
     override func draw() {
         Swift.print("SVGPolygon.drawFill()")
         
