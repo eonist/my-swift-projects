@@ -32,8 +32,6 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
-        
-        
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
         
     }

@@ -12,7 +12,7 @@ class SVGPolyLine : SVGGraphic, ISVGPolyLine{
         //graphic.lineShape = CGPathParser.lines(points)
         
         
-        //continue here: this is basically 
+        //continue here: this is basically Polygon without the fill part
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
