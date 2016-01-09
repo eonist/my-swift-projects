@@ -34,7 +34,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      */
     func drawLine(){
         
-        //Continue here: your not suppose to close a polyline, 
+        //Continue here: your not suppose to close a polyline,
         
         /*line*/
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
