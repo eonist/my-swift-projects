@@ -27,7 +27,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         
         let linePathOffset:CGPoint = PointParser.difference(boundingBox.origin, strokeBoundingBox.origin)
-        //Swift.print("linePathOffset: " + "\(linePathOffset)")
+        Swift.print("linePathOffset: " + "\(linePathOffset)")
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = strokeBoundingBox.copy()
