@@ -33,7 +33,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         lineShape.frame = strokeBoundingBox.copy()
         
         
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))
+        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
         //TODO:The bellow should probably be optimized a bit better
         
     }

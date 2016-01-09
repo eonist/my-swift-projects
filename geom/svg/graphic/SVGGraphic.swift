@@ -22,7 +22,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         beginFill();
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
-            Swift.print("SVGGraphic.init() setNeedsDisplay()")
+            //Swift.print("SVGGraphic.init() setNeedsDisplay()")
             if(style != nil){draw()}/*this should porbably have a more complex assert for the sake of optimization*/
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
@@ -38,7 +38,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("SVGGraphic.drawLayer()")
+        //Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
             fillShape.graphics.context = ctx
@@ -53,7 +53,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func fill(){
-        Swift.print("SVGGraphic.fill()")
+        //Swift.print("SVGGraphic.fill()")
         beginFill();
         stylizeFill()
     }
@@ -61,7 +61,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func line(){
-        Swift.print("SVGGraphic.line()")
+        //Swift.print("SVGGraphic.line()")
         applyLineStyle();
         stylizeLine()
     }
@@ -70,14 +70,14 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @Note Updates only if style exists and fill is a number
      */
     func beginFill(){
-        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
-            Swift.print("SVGGraphic.beginFill() color")
+            //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
-            Swift.print("colorVal: " + "\(colorVal)")
+            //Swift.print("colorVal: " + "\(colorVal)")
             let opacity:CGFloat = !style!.fillOpacity.isNaN ? style!.fillOpacity : 1
             let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
-            Swift.print("color: " + "\(color)")
+            //Swift.print("color: " + "\(color)")
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }
     }
@@ -85,7 +85,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func applyLineStyle(){
-        Swift.print("SVGGraphic.applyLineStyle()")
+        //Swift.print("SVGGraphic.applyLineStyle()")
         if(style != nil && !style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }
@@ -94,7 +94,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
     func draw(){
-        Swift.print("SVGGraphic.draw()")
+        //Swift.print("SVGGraphic.draw()")
         
         
         /*if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
@@ -118,11 +118,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
     }
     */
     func stylizeFill(){
-        Swift.print("SVGGraphic.stylizeFill()")
+        //Swift.print("SVGGraphic.stylizeFill()")
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     func stylizeLine(){
-        Swift.print("SVGGraphic.stylizeLine()")
+        //Swift.print("SVGGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
