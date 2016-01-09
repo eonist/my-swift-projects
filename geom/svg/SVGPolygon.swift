@@ -10,6 +10,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
     }
     /**
      * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works.
+     * @NOTE: this method calls two sub methods so that SVGPolyLine can use this class as a base method
      */
     override func draw() {
         drawFill()
