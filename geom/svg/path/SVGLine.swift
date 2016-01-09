@@ -20,7 +20,7 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
         //we override this method to avoid drawing apath in the fill shape
     }
     override func draw() {
-        
+        //what y
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
