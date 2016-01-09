@@ -7,18 +7,18 @@ class SVGPathUtils {
      * // :TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * // :TODO: impliment quadTo 
      */
-    class func drawPath(graphics:Graphics, commands:Array,params:Array){
+    class func drawPath(graphics:Graphics, commands:Array<String>,params:Array<CGFloat>){
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint;/*previous MoveTo pos*/
         var prevC:CGPoint;/*previous ControlPoint*/
         for (var e : Int = 0; e < commands.count; e++) {
             var command:String = commands[e];
-            var isLowerCase:Boolean = StringAsserter.lowerCase(command);
-            var pos:Point = isLowerCase ? prevP.clone() : CGPoint();/*the current end pos*/
-            switch(command.toLocaleLowerCase()){
-                case SVGPathCommand.M: //moveTo
-                    pos = prevM = pos.add(new Point(params[i],params[i+1]));
+            var isLowerCase:Bool = StringAsserter.lowerCase(command);
+            var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
+            switch(command.lowercaseString){
+                case SVGPathCommand.m: //moveTo
+                    pos = prevM = pos.add(CGPoint(params[i],params[i+1]));
                     graphics.moveTo(pos.x,pos.y);
                     i +=2;
                     break;
