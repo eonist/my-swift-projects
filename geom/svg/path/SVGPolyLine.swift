@@ -8,17 +8,12 @@ class SVGPolyLine : SVGPolygon{
         //self.points = points;
         super.init(points,style, id);
     }
-    
-    //override func draw()  {
-        //swift.print("SVGPolygon.draw"+_points);
-        //graphic.lineShape = CGPathParser.lines(points)
-        
-        
-        //continue here:
-        
-    //}
-    override func drawFill() {
-        //we override fill because we only need to draw a stroke
+    /**
+     * NOTE: we dont call fill because we only need to draw a stroke
+     */
+    override func draw()  {
+        //swift.print("SVGPolyline.draw"+_points);
+        drawLine(false)//Continue here: you do not close the polyline,
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
