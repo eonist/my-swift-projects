@@ -5,30 +5,30 @@ class SVGPathUtils {
      * Returns a SVGPath instance with data derived frompa commands and @param params (which contains numbers, as in pathData)
      * // :TODO: may not work 100%
      */
-    class func function path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {
-        var path:IPath = PathParser.empty();
+    class func path(commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef {
+        let path:CGMutablePathRef = CGPathCreateMutable()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint;/*previous MoveTo pos*/
         var prevC:CGPoint;/*previous ControlPoint*/
-        for (var e : int = 0; e < commands.count; e++) {
+        for (var e : Int = 0; e < commands.count; e++) {
             var command:String = commands[e];
-            var isLowerCase:Boolean = StringAsserter.lowerCase(command);
-            var pos:CGPoint = isLowerCase ? prevP.clone() : CGPoint();/*the current end pos*/
-            switch(command.toLocaleLowerCase()){
-                case SVGPathCommand.M: //moveTo
+            var isLowerCase:Bool = StringAsserter.lowerCase(command);
+            var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
+            switch(command.lowercaseString){
+                case SVGPathCommand.m: //moveTo
                     pos = prevM = pos.add(CGPoint(params[i],params[i+1]));
                     path.commands.append(PathCommand.MOVE_TO);
                     path.pathData.append(pos.x,pos.y);
-                    i +=2;
+                    i += 2;
                     break;
-                case SVGPathCommand.L: //lineTo
-                    pos = pos.add(CGPoint(params[i],params[i+1]));
+                case SVGPathCommand.l: //lineTo
+                    pos += CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.LINE_TO);
                     path.pathData.append(pos.x,pos.y);
-                    i +=2;
+                    i += 2;
                     break;
-                case SVGPathCommand.H://horizontalLineTo
+                case SVGPathCommand.h://horizontalLineTo
                     pos = pos.add(CGPoint(params[i],isLowerCase ? 0 : prevP.y));
                     path.commands.append(PathCommand.LINE_TO);
                     path.pathData.append(pos.x,pos.y);
