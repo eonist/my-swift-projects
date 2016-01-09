@@ -9,10 +9,10 @@ class SVGPolyLine : SVGGraphic, ISVGPolyLine{
     
     override func draw()  {
         //swift.print("SVGPolygon.draw"+_points);
-        //graphic.fillShape = CGPathParser.lines(points)
+        //graphic.lineShape = CGPathParser.lines(points)
         
         
-        //continue here
+        //continue here: this is basically 
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
