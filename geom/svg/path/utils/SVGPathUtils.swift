@@ -2,7 +2,7 @@ import Foundation
 
 class SVGPathUtils {
     /**
-     * Returns the boundingBox for the stroke in 0,0 space
+     * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
      */
     class func boundingBox(path:CGPath,_ style:SVGStyle)->CGRect{
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)

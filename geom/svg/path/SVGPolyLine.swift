@@ -22,7 +22,7 @@ class SVGPolyLine : SVGPolygon{
         fillShape.frame = boundingBox/*The positioning happens in the frame*/
         //Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
-        let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
+        let strokeBoundingBox:CGRect = SVGPathUtils.boundingBox(path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
@@ -30,7 +30,7 @@ class SVGPolyLine : SVGPolygon{
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
+        lineShape.path = CGPathParser.lines(points,false,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
         
         
     }
