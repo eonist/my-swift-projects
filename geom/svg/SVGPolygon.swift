@@ -35,6 +35,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
     func drawLine(close:Bool){
         /*line*/
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
+        Swift.print("boundingBox: " + "\(boundingBox)")
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         

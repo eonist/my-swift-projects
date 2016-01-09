@@ -10,7 +10,7 @@ public class CGPathParser{
         let path:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, points[0].x+offset.x, points[0].y+offset.y)
         for (var i : Int = 1; i < points.count; i++) {
-            Swift.print("LineTo: x: " + "\(points[i].x+offset.x)")
+            Swift.print("LineTo: x: " + "\(points[i].x+offset.x)" + " y: " + "\(points[i].y+offset.y)")
             CGPathAddLineToPoint(path,nil,points[i].x+offset.x, points[i].y+offset.y)
         }
         if(close){
