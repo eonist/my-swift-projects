@@ -25,12 +25,12 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         //continue here: you need the code that calculates more space for the mask, you have the code for this, just look though some of the masking code from the old code
         //try to use the outline code that apple provides
         //then you try to get the bounding box of this outline
-        
-        boundingBox.path
+        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
+        let outline = CGPathCreateCopyByStrokingPath(lineShape.path, nil, style?.strokeWidth, style, <#T##lineJoin: CGLineJoin##CGLineJoin#>, <#T##miterLimit: CGFloat##CGFloat#>)
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         //TODO:The bellow should probably be optimized a bit better
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
+        
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
