@@ -29,11 +29,11 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         let linePathOffset:CGPoint = PointParser.difference(boundingBox.origin, strokeBoundingBox.origin)
         Swift.print("linePathOffset: " + "\(linePathOffset)")
         
-        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
-        lineShape.frame = lineOffsetRect.lineFrameRect
+        //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
+        lineShape.frame = strokeBoundingBox.copy()
         
         
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
+        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))
         //TODO:The bellow should probably be optimized a bit better
         
     }
