@@ -25,10 +25,14 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         //continue here: find the difference from the topleft corner of the path and the topleft corner of the strokeboundingbox, this will serve as the offset that you need to apply to the stroke path, i think you can just use regular substract to find the difference, if not see the difference methods in the point library
         
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
+        
+        let linePathOffset:CGPoint = PointParser.difference(boundingBox.origin, strokeBoundingBox.origin)
+        Swift.print("linePathOffset: " + "\(linePathOffset)")
+        
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         
-        let linePathOffset:CGPoint = PointParser.difference(<#T##p1: CGPoint##CGPoint#>, <#T##p2: CGPoint##CGPoint#>)
+        
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
         //TODO:The bellow should probably be optimized a bit better
         
