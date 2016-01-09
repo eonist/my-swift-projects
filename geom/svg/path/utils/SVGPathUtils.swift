@@ -6,9 +6,6 @@ class SVGPathUtils {
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef {
-        
-        //Continue here: add the IPath and Path classes to geom, youll need them later anyway, finish this method and then also finish the drawPath class, 
-        
         var path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
