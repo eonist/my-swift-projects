@@ -17,14 +17,14 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
         super.init(style,id);
     }
     override func beginFill() {
-        //do nothing we only need stroke
+        //we override this method to avoid drawing apath in the fill shape
     }
     override func draw() {
         
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
-        lineShape.path = CGPathParser.line(CGPoint(x1,y1),CGPoint(x2, y2))
+        lineShape.path = CGPathParser.line(CGPoint(x1,y1) - boundingBox.origin,CGPoint(x2, y2) - boundingBox.origin)
         //you have to set the frame here
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
