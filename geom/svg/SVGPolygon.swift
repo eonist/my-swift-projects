@@ -26,6 +26,9 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         //try to use the outline code that apple provides
         //then you try to get the bounding box of this outline
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
+        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style!.strokeMiterLimit)
+        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style!.strokeLineCap)
+        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style!.strokeLineJoin)
         let outline = CGPathCreateCopyByStrokingPath(lineShape.path, nil, style?.strokeWidth, style, <#T##lineJoin: CGLineJoin##CGLineJoin#>, <#T##miterLimit: CGFloat##CGFloat#>)
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
@@ -33,4 +36,12 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+private class Utils{
+    /**
+     * Returns the boundingBoc for the stroke
+     */
+    class func boundingBox(){
+        
+    }
 }
