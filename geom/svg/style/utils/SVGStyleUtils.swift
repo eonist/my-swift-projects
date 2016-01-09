@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * DISCUSSION:Probably move this into a more central place, but in the spirit of moving on!, Or not since its probably only related to how svg names these variables
  * NOTE: these methods provide a central place to convert values from the svg value scheme to the quartz value scheme
@@ -35,5 +35,19 @@ class SVGStyleUtils {
      */
     class func strokeWidth(strokeWidth:CGFloat)->CGFloat{
         return !(strokeWidth.isNaN) ? strokeWidth : 0
+    }
+    /**
+     *
+     */
+    class func strokeColor(strokeColor:Double,strokeOpacity:CGFloat)->NSColor{
+        /*color*/
+        //Swift.print("style.stroke: " + "\(style.stroke)")
+        let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : Double(0x000000)
+        //Swift.print("colorVal: " + "\(colorVal)")
+        //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
+        let strokeOpacityVal:CGFloat = !(strokeOpacity.isNaN) ? strokeOpacity : 1;
+        //Swift.print("strokeOpacityVal: " + "\(strokeOpacityVal)")
+        let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacityVal)
+        return color
     }
 }
