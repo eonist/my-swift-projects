@@ -30,7 +30,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         Swift.print("linePathOffset: " + "\(linePathOffset)")
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
-        lineShape.frame = strokeBoundingBox.copy()
+        lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
         
         
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
@@ -40,7 +40,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
 }
 private class Utils{
     /**
-     * Returns the boundingBox for the stroke
+     * Returns the boundingBox for the stroke in 0,0 space
      */
     class func boundingBox(path:CGPath,_ style:SVGStyle)->CGRect{
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
