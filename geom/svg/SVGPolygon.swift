@@ -22,7 +22,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         /*line*/
         
         lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x+(style!.strokeWidth/2),-boundingBox.y+(style!.strokeWidth/2)))
-        let strokeBoundingBox:CGRect = Utils.boundingBox(lineShape.path, style!) + boundingBox.origin
+        let strokeBoundingBox:CGRect = Utils.boundingBox(lineShape.path, style!)// + boundingBox.origin
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         //TODO:The bellow should probably be optimized a bit better
