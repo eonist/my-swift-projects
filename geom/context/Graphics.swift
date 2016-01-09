@@ -63,6 +63,7 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      */
     public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10){
+        Swift.print("context: " + "\(context)")
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
         CGContextSetStrokeColorWithColor(context, color.CGColor)
