@@ -38,11 +38,13 @@ private class Utils{
     /**
      * Returns the boundingBoc for the stroke
      */
-    class func boundingBox(){
-        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style!.strokeMiterLimit)
-        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style!.strokeLineCap)
-        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style!.strokeLineJoin)
-        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style!.strokeWidth)
-        let outline = CGPathCreateCopyByStrokingPath(lineShape.path, nil, strokeWidth, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+    class func boundingBox(path:CGPath,_ style:SVGStyle){
+        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
+        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
+        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
+        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth)
+        let outline = CGPathCreateCopyByStrokingPath(path, nil, strokeWidth, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+        outline
+        let boundingBox:CGRect = CGPathGetPathBoundingBox()
     }
 }
