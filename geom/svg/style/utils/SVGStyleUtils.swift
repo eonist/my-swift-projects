@@ -13,6 +13,9 @@ class SVGStyleUtils {
         else if(strokeLineCap == "square"){return CGLineCap.Square}
         else{fatalError(strokeLineCap + " not supported")}
     }
+    /**
+     *
+     */
     class func lineJoin(strokeLineJoin:String)->CGLineJoin{
         if(strokeLineJoin == "miter"){return CGLineJoin.Miter}
         else if(strokeLineJoin == "round"){return CGLineJoin.Round}
@@ -20,7 +23,7 @@ class SVGStyleUtils {
         else{fatalError(strokeLineJoin + " not supported")}
     }
     /**
-     * 
+     *
      */
     class func miterLimit(strokeMiterLimit:CGFloat)->CGFloat{
         return !strokeMiterLimit.isNaN ? strokeMiterLimit : 10/*<--was 1.414*/;
