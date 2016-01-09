@@ -19,21 +19,20 @@ class SVGPathUtils {
                 case SVGPathCommand.m: //moveTo
                     pos += CGPoint(params[i],params[i+1]);
                     prevM = pos.copy()
-                    
                     path.commands.append(PathCommand.MOVE_TO);
-                    path.pathData.append(pos.x,pos.y);
+                    path.pathData += [pos.x,pos.y]/*<-- used to be path.pathData.append(pos.x,pos.y);*/
                     i += 2;
                     break;
                 case SVGPathCommand.l: //lineTo
                     pos += CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.LINE_TO);
-                    path.pathData.append(pos.x,pos.y);
+                    path.pathData += [pos.x,pos.y]
                     i += 2;
                     break;
                 case SVGPathCommand.h://horizontalLineTo
-                    pos = pos.add(CGPoint(params[i],isLowerCase ? 0 : prevP.y));
+                    pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.commands.append(PathCommand.LINE_TO);
-                    path.pathData.append(pos.x,pos.y);
+                    path.pathData += [pos.x,pos.y]
                     i++;
                     break;
                 case SVGPathCommand.V://verticalLineTo
