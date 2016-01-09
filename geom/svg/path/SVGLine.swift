@@ -24,7 +24,7 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
-        lineShape.path = CGPathParser.line(CGPoint(x1,y1) - boundingBox.origin,CGPoint(x2, y2) - boundingBox.origin)
+        lineShape.path = CGPathParser.line(CGPoint(x1,y1) - boundingBox.origin,CGPoint(x2, y2) - boundingBox.origin)/*<-we offset the original points to make them relative to the frame*/
         //you have to set the frame here
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
