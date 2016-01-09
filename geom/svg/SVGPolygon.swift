@@ -12,13 +12,13 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works.
      */
     override func draw() {
-        Swift.print("SVGPolygon.drawFill()")
+        //Swift.print("SVGPolygon.drawFill()")
         
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         fillShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
-        Swift.print("fillShape.path: " + "\(fillShape.path)")
+        //Swift.print("fillShape.path: " + "\(fillShape.path)")
         fillShape.frame = boundingBox/*The positioning happens in the frame*/
-        Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
+        //Swift.print("SVGPolygon.draw() boundingBox: " + "\(boundingBox)")
         /*line*/
         
         
@@ -27,7 +27,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         
         let linePathOffset:CGPoint = PointParser.difference(boundingBox.origin, strokeBoundingBox.origin)
-        Swift.print("linePathOffset: " + "\(linePathOffset)")
+        //Swift.print("linePathOffset: " + "\(linePathOffset)")
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = strokeBoundingBox.copy()
