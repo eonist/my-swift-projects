@@ -61,21 +61,22 @@ class SVGPathUtils {
                     pos += CGPoint(params[i+2],params[i+3]);
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.CURVE_TO);
-                    path.pathData += [cP1.x,cP1.y, pos.x,pos.y]
+                    path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                     i += 4;
                     break;
                 case SVGPathCommand.t://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
-                    pos = pos.add(CGPoint(params[i],params[i+1]));
+                    pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     path.commands.append(PathCommand.CURVE_TO);
-                    path.pathData.append(cP1.x,cP1.y, pos.x,pos.y);
-                    i +=2;
+                    path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
+                    i += 2;
                     break;
-                case SVGPathCommand.Z: path.commands.push(PathCommand.CLOSE); break;/*closes it self to the prev MT pos*/
+                case SVGPathCommand.z: path.commands.append(PathCommand.CLOSE); break;/*closes it self to the prev MT pos*/
 //					case PathCommand.ARC_TO:
 //						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
 //						i += 7;
 //						break;
+                default: break;
             }
             if(e < commands.length-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
                 prevP = pos.clone();
