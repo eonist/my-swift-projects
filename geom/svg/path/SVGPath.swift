@@ -25,7 +25,10 @@ class SVGPath :SVGGraphic{
      */
     override func draw()  {
         //swift.priint("SVGPath.drawLine");
-        //SVGPathModifier.drawPath(_pathShape.graphics,_commands, _parameters);/*draws the fill*/
+        SVGPathUtils.drawPath(fillShape.graphics,commands, parameters);/*draws the fill*/
+        
+        //implement the setting of the frame here, derived from the bounding box of the path
+        
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
