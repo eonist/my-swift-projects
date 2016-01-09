@@ -18,7 +18,7 @@ class SVGPathUtils {
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
             switch(command.lowercaseString){
                 case SVGPathCommand.m: //moveTo
-                    pos = prevM = pos.add(CGPoint(params[i],params[i+1]));
+                    pos = prevM = pos + CGPoint(params[i],params[i+1]);
                     graphics.moveTo(pos.x,pos.y);
                     i +=2;
                     break;
