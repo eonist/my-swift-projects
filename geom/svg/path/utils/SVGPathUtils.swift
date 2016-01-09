@@ -6,6 +6,9 @@ class SVGPathUtils {
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef {
+        
+        //Continue here: add the IPath and Path 
+        
         let path:CGMutablePathRef = CGPathCreateMutable()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
