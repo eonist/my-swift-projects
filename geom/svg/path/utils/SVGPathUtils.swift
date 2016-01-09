@@ -7,15 +7,15 @@ class SVGPathUtils {
      * // :TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * // :TODO: impliment quadTo 
      */
-    class func drawPath(graphics:Graphics, commands:Array,params:Array):void{
-        var i:int = 0;/*parameterIndex*/
-        var prevP:Point = new Point();
-        var prevM:Point;/*previous MoveTo pos*/
-        var prevC:Point;/*previous ControlPoint*/
-        for (var e : int = 0; e < commands.length; e++) {
+    class func drawPath(graphics:Graphics, commands:Array,params:Array){
+        var i:Int = 0;/*parameterIndex*/
+        var prevP:CGPoint = CGPoint();
+        var prevM:CGPoint;/*previous MoveTo pos*/
+        var prevC:CGPoint;/*previous ControlPoint*/
+        for (var e : Int = 0; e < commands.count; e++) {
             var command:String = commands[e];
             var isLowerCase:Boolean = StringAsserter.lowerCase(command);
-            var pos:Point = isLowerCase ? prevP.clone() : new Point();/*the current end pos*/
+            var pos:Point = isLowerCase ? prevP.clone() : CGPoint();/*the current end pos*/
             switch(command.toLocaleLowerCase()){
                 case SVGPathCommand.M: //moveTo
                     pos = prevM = pos.add(new Point(params[i],params[i+1]));
@@ -23,12 +23,12 @@ class SVGPathUtils {
                     i +=2;
                     break;
                 case SVGPathCommand.L: //lineTo
-                    pos = pos.add(new Point(params[i],params[i+1]));
+                    pos = pos.add(CGPoint(params[i],params[i+1]));
                     graphics.lineTo(pos.x,pos.y); 
                     i +=2;
                     break;
                 case SVGPathCommand.H://horizontalLineTo
-                    pos = pos.add(new Point(params[i],isLowerCase ? 0 : prevP.y));
+                    pos = pos.add(CGPoint(params[i],isLowerCase ? 0 : prevP.y));
                     graphics.lineTo(pos.x, pos.y);
                     i++;
                     break;
