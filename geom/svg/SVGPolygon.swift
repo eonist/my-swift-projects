@@ -14,7 +14,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      */
     override func draw() {
         drawFill()
-        drawLine()
+        drawLine(true)
     }
     /**
      *
@@ -32,13 +32,9 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
     /**
      *
      */
-    func drawLine(){
-        
-        //Continue here: your not suppose to close a polyline,
-        
+    func drawLine(close:Bool){
         /*line*/
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
-        
         let strokeBoundingBox:CGRect = Utils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         
@@ -47,7 +43,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
         
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
+        lineShape.path = CGPathParser.lines(points,close,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
