@@ -25,8 +25,8 @@ class SVGPath :SVGGraphic{
      */
     override func draw()  {
         //swift.priint("SVGPath.drawLine");
-        var path = CGPathCreateMutable()
-        SVGPathUtils.drawPath(&path, commands, parameters);/*draws the fill*/
+        
+        let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
 
         //continue here: use the boundingbox method and also dont forget to make room for stroke and the miter etc, then run some tests
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
