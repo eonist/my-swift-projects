@@ -48,7 +48,8 @@ class SVGPathUtils {
                     CGPathAddCurveToPoint(path, nil, prevC.x, prevC.y, controlP1.x, controlP1.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6;
                     
-                    //create a simple example in illustrator and try it here with static variables, 0,0, 50,50 etc
+                    //Continue: create a simple example in illustrator and try it here with static variables, 0,0, 50,50 etc
+                    //do some research online, maybe there is a nice description on how cubic curves work related to this problem
                     
                     break;
                 case SVGPathCommand.s://smoothCurveTo
