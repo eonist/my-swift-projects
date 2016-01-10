@@ -32,8 +32,8 @@ class SVGGraphicModifier {
         //var interpolationMethod:String = InterpolationMethod.RGB;/*InterpolationMethod.LINEAR_RGB*/
         //			trace("interpolationMethod: " + interpolationMethod);
         var focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
-        if(gradient is SVGRadialGradient && !isNaN(SVGRadialGradient(gradient).fx)) {
-            focalPointRatio = Utils.focalPointRatio(gradient as SVGRadialGradient);
+        if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
+            //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
         }
         //			trace("focalPointRatio: " + focalPointRatio);
         //			trace("gradient.colors: " + gradient.colors);
