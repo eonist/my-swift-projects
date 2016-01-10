@@ -5,7 +5,7 @@ class SVGStyleParser {
 	 * // :TODO: why do we need the @param container here?
 	 */
 	class func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
-		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(prop as! String);
+		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(String(prop));
 		//ObjectDescriber.describe(inlineStyle);
 		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
