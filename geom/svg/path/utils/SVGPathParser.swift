@@ -33,8 +33,9 @@ class SVGPathParser {
 	}
     /**
 	 * Returns an array comprised of values "sans" its prefix and or suffix
-	 * // :TODO: write some examples in this comment section
+	 * // :TODO: write more examples in this comment section
 	 * @Note cant make this private since polyline and polygon uses this method
+     * @EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
@@ -43,9 +44,9 @@ class SVGPathParser {
         let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
         let end:String = "(?=px|\\s|\\,|\\-|$)"
         let pattern:String = beginning + middle + end
-        Swift.print("pattern: " + "\(pattern)")
+        //Swift.print("pattern: " + "\(pattern)")
 		let stringArray:Array<String> = parameters.match(pattern);
-        Swift.print("stringArray: " + "\(stringArray)")
+        //Swift.print("stringArray: " + "\(stringArray)")
         //Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
         let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix, converts the values in the array to CGFloat
         return array
