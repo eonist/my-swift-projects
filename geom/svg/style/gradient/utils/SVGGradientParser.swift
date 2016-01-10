@@ -80,10 +80,11 @@ private class Utils{
 			colors.append(stopColor);
 			opacities.append(stopOpacity);
 		}
-		// Swift.print("colors: " + colors);
-		// Swift.print("offsets: " + offsets);
-		// Swift.print("opacities: " + opacities);
+		 Swift.print("colors: " + "\(colors)");
+		 Swift.print("offsets: " + "\(offsets)");
+		 Swift.print("opacities: " + "\(opacities)");
 		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!;
+        Swift.print("gradientUnits: " + "\(gradientUnits)")
 		/*userSpaceOnUse*/
 		// Swift.print("gradientUnits: " + gradientUnits);
 		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod")!;
