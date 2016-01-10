@@ -36,6 +36,7 @@ class SVGPathParser {
 	 * // :TODO: write more examples in this comment section
 	 * @Note cant make this private since polyline and polygon uses this method
      * @EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
+     * @EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
 	 */
 	class func parameters(parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
