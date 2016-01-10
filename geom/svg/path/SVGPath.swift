@@ -31,7 +31,7 @@ class SVGPath :SVGGraphic{
         //continue here: use the boundingbox method and also dont forget to make room for stroke and the miter etc, then run some tests
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         
-        //continue here: you need to offset the path with a transform
+        //continue here: you need to offset the path with a transform by using the CGPathCreateCopyByTransformingPath
         
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
