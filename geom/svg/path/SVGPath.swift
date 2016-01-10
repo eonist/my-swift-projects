@@ -25,11 +25,11 @@ class SVGPath :SVGGraphic{
      */
     override func draw()  {
         //swift.priint("SVGPath.drawLine");
-        SVGPathUtils.drawPath(&fillShape.path, commands, parameters);/*draws the fill*/
+        SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
 
         //continue here: use the boundingbox method and also dont forget to make room for stroke and the miter etc, then run some tests
         let boundingBox:CGRect = CGPathGetPathBoundingBox(fillShape.path)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        
+        &fillShape.path
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
