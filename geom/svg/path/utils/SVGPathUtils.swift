@@ -7,7 +7,7 @@ class SVGPathUtils {
      * // :TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * // :TODO: impliment quadTo
      */
-    class func drawPath(graphics:Graphics, _ commands:Array<String>,_ params:Array<CGFloat>){
+    class func drawPath(graphics:Graphics, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
@@ -76,6 +76,7 @@ class SVGPathUtils {
                 prevP = pos.copy();
             }
         }
+        return path
     }
     /**
      * Returns a SVGPath instance with data derived frompa commands and @param params (which contains numbers, as in pathData)
