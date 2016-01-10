@@ -15,11 +15,11 @@ class SVGPathUtils {
         for (var e : Int = 0; e < commands.count; e++) {
             let command:String = commands[e];
             let isLowerCase:Bool = StringAsserter.lowerCase(command);
-            Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
+            //Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
             switch(command.lowercaseString){
                 case SVGPathCommand.m: //moveTo
-                    Swift.print("moveTo")
+                    //Swift.print("moveTo")
                     pos += CGPoint(params[i],params[i+1]);
                     prevM = pos.copy()
                     CGPathMoveToPoint(path, nil, pos.x,pos.y)
