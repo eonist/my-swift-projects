@@ -65,8 +65,8 @@ class SVGModifier {
         
         
 		//graphic.clear();
-		graphic.applyLineStyle();
-		graphic.beginFill();
+		//graphic.applyLineStyle();
+		//graphic.beginFill();
 		graphic.draw();
 		//graphic.endFill();
 	}
