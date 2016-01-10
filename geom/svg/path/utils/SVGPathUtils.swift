@@ -54,7 +54,7 @@ class SVGPathUtils {
                     pos += CGPoint(params[i+2],params[i+3]);
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
-                     CGPathAddCurveToPoint(path, nil, prevC.x, prevC.y, cP1.x, cP1.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
+                     CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
                     i += 4;//<---shouldnt this also be 6?
                     break;
                 case SVGPathCommand.q: //quadCurveTo
