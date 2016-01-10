@@ -26,12 +26,11 @@ class SVGPathUtils {
                 break;
             case SVGPathCommand.l: //lineTo
                 pos += CGPoint(params[i],params[i+1])
-                graphics.lineTo(pos.x,pos.y);
                 CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                 i += 2;
                 break;
             case SVGPathCommand.h://horizontalLineTo
-                pos = pos.add(CGPoint(params[i],isLowerCase ? 0 : prevP.y));
+                pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y);
                 graphics.lineTo(pos.x, pos.y);
                 i++;
                 break;
