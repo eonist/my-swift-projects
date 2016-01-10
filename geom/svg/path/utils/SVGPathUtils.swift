@@ -43,17 +43,14 @@ class SVGPathUtils {
                 pos = CGPoint(params[i+4],params[i+5]);
                 var controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1]);
                 prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
-                
-                prevP, controlP1, prevC, pos
-                
-                CGPathAddCurveToPoint(path, nil, <#T##cp1x: CGFloat##CGFloat#>, <#T##cp1y: CGFloat##CGFloat#>, <#T##cp2x: CGFloat##CGFloat#>, <#T##cp2y: CGFloat##CGFloat#>, <#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
+                CGPathAddCurveToPoint(path, nil, prevC.x, prevC.y, controlP1.x, controlP1.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                 i += 6;
                 break;
             case SVGPathCommand.s://smoothCurveTo
-                pos = pos.add(new Point(params[i+2],params[i+3]));
-                var cP1:Point = new Point(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
-                prevC = isLowerCase ? new Point(Number(params[i])+prevP.x,Number(params[i+1])+prevP.y) : new Point(params[i],params[i+1]);
-                CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
+                pos += CGPoint(params[i+2],params[i+3]);
+                var cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
+                prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
+                 CGPathAddCurveToPoint(path, nil, prevC.x, prevC.y, cP1.x, cP1.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
                 i += 4;
                 break;
             case SVGPathCommand.q: //quadCurveTo
