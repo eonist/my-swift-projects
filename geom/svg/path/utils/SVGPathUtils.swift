@@ -50,7 +50,7 @@ class SVGPathUtils {
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
                     //Swift.print("prevC: " + "\(prevC)")
                     CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
-                    i += 6;
+                    i += 4;
                     break;
                 case SVGPathCommand.s://smoothCurveTo
                     pos += CGPoint(params[i+2],params[i+3]);
