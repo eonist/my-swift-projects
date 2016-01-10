@@ -27,7 +27,6 @@ class SVGPathParser {
             //Swift.print("pathData.parameters: " + array);
             parameters += array//<---this is the same as concat
         }
-        
 //		Swift.print("pathData.commands: " + commands);
 //		Swift.print("pathData.parameters: " + parameters);
 		return SVGPathData(commands,parameters);
