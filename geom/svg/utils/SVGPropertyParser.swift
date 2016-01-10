@@ -28,7 +28,7 @@ class SVGPropertyParser {
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
 	 */
 	class func id(xml:NSXMLElement)->String {
-		return xml.hasAttribute("@id") ? xml["@id"]! : "";//xml.(hasOwnProperty("@id")).@id;TODO: the@ prefix is probably wrong
+		return xml.hasAttribute("id") ? xml["id"]! : "";
 	}
 	/**
 	 * Returns an SVGStyle instance comprised of values derived from @param xml and or @param container, if no style data is available then default values are applied, NaN, empty string, null etc 

@@ -81,16 +81,16 @@ private class Utils{
 			colors.append(stopColor);
 			opacities.append(stopOpacity);
 		}
-		 Swift.print("colors: " + "\(colors)");
-		 Swift.print("offsets: " + "\(offsets)");
-		 Swift.print("opacities: " + "\(opacities)");
+		 //Swift.print("colors: " + "\(colors)");
+		 //Swift.print("offsets: " + "\(offsets)");
+		 //Swift.print("opacities: " + "\(opacities)");
 		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!;
-        Swift.print("gradientUnits: " + "\(gradientUnits)")
+        //Swift.print("gradientUnits: " + "\(gradientUnits)")
 		/*userSpaceOnUse*/
 		
 		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? "";/*<--temp*/
 		let id:String = SVGPropertyParser.id(xml);
-        Swift.print("id: " + "\(id)")
+        //Swift.print("id: " + "\(id)")
 		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits/*,gradientTransform*/);
 	}
