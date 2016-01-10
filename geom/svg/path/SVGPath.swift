@@ -33,8 +33,8 @@ class SVGPath :SVGGraphic{
         
         //continue here: you need to offset the path with a transform by using the 
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
-        let transform:CGAffineTransform = CGAffineTransformMakeTranslation(offset.x, offset.y)
-        let offsetPath = CGPathCreateCopyByTransformingPath(path, transform)
+        var transform:CGAffineTransform = CGAffineTransformMakeTranslation(offset.x, offset.y)
+        let offsetPath = CGPathCreateCopyByTransformingPath(path, &transform)
         
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
