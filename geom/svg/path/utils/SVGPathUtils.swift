@@ -13,8 +13,8 @@ class SVGPathUtils {
         var prevM:CGPoint!;/*previous MoveTo pos*/
         var prevC:CGPoint!;/*previous ControlPoint*/
         for (var e : Int = 0; e < commands.count; e++) {
-            Swift.print("commands.count: " + "\(commands.count)")
-            Swift.print("params.count: " + "\(params.count)")
+            //Swift.print("commands.count: " + "\(commands.count)")
+            //Swift.print("params.count: " + "\(params.count)")
             let command:String = commands[e];
             let isLowerCase:Bool = StringAsserter.lowerCase(command);
             //Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
@@ -43,7 +43,7 @@ class SVGPathUtils {
                     i++;
                     break;
                 case SVGPathCommand.c://curveTo
-                    Swift.print("curveTo: " + " i: \(i) params: " + "\(params)")
+                    //Swift.print("curveTo: " + " i: \(i) params: " + "\(params)")
                     pos += CGPoint(params[i+4],params[i+5]);
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     //Swift.print("controlP1: " + "\(controlP1)")
