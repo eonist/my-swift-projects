@@ -16,6 +16,7 @@ class SVGPath :SVGGraphic{
     * @Note: closePath Straight line back to original point
     */
     init(_ commands:Array<String>, _ parameters:Array<CGFloat>, _ style:SVGStyle? = nil,_ id:String? = nil) {
+      Swift.print("SVGPath.init()")
       self.commands = commands;
       self.parameters = parameters;
       super.init(style,id);
@@ -24,7 +25,7 @@ class SVGPath :SVGGraphic{
      * Draws a line for the stroke and a line for the fill (Since the flash api doesnt support non-closed fills)
      */
     override func draw()  {
-        //Swift.print("SVGPath.draw()");
+        Swift.print("SVGPath.draw()");
         /*fill*/
         let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
