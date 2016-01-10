@@ -32,17 +32,15 @@ class SVGPath :SVGGraphic{
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
         var offsetPath = path.copy()
         fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
-        
         /*line*/
         let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin
-        Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
+        //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
-        Swift.print("linePathOffset: " + "\(linePathOffset)")
+        //Swift.print("linePathOffset: " + "\(linePathOffset)")
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
         lineShape.path = fillShape.path.copy()
-        
-        lineShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
-    
+        var lineOffsetPath = fillShape.path.copy()
+        lineShape.path = CGPathModifier.translate(&lineOffsetPath, linePathOffset.x, linePathOffset.y)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
