@@ -8,7 +8,7 @@ class SVGPathUtils {
      * // :TODO: impliment quadTo
      */
     class func drawPath(graphics:Graphics, _ commands:Array<String>,_ params:Array<CGFloat>){
-        var path:CGMutablePathRef = CGPath()
+        var path:CGMutablePathRef = CGPathCreateMutable()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint;/*previous MoveTo pos*/
@@ -25,7 +25,7 @@ class SVGPathUtils {
                 i += 2;
                 break;
             case SVGPathCommand.l: //lineTo
-                pos = pos.add(CGPoint(params[i],params[i+1]));
+                pos += CGPoint(params[i],params[i+1])
                 graphics.lineTo(pos.x,pos.y);
                 CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                 i += 2;
