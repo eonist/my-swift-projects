@@ -72,7 +72,7 @@ class SVGPathUtils {
                     i += 2;
                     break;
                 case SVGPathCommand.z:
-                    Swift.print("close path")
+                    //Swift.print("close path")
                     CGPathCloseSubpath(path);
                     CGPathMoveToPoint(path, nil, prevM.x, prevM.y);/*<--unsure if this is needed?*/
                     break;/*closes it self to the prev MT pos*/
