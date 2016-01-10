@@ -11,9 +11,10 @@ class SVGPathParser {
 	class func pathData(data:String)->SVGPathData {
 		var parameters:Array<CGFloat> = [];
 		var commands:Array<String> = [];
-		let pattern:String = "[MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
+        ///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
+		let pattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
-        //Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
+        Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
