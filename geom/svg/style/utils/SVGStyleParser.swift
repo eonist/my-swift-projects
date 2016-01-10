@@ -45,7 +45,7 @@ class SVGStyleParser {
         if(property == nil) {
             property = Double.NaN
         }
-        else if(property is String && String(property) == "none") {
+        else if(property! is String && String(property) == "none") {
             property = "none"
         }
         else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {

@@ -24,12 +24,12 @@ class SVGPath :SVGGraphic{
      * Draws a line for the stroke and a line for the fill (Since the flash api doesnt support non-closed fills)
      */
     override func draw()  {
-        //swift.priint("SVGPath.drawLine");
+        Swift.print("SVGPath.draw()");
         /*fill*/
         let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
 
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        
+        fillShape.frame = boundingBox
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
         var offsetPath = path.copy()
         fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
