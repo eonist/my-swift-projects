@@ -31,18 +31,18 @@ class SVGPathUtils {
                 break;
             case SVGPathCommand.h://horizontalLineTo
                 pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y);
-                graphics.lineTo(pos.x, pos.y);
+                CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                 i++;
                 break;
             case SVGPathCommand.v://verticalLineTo
-                pos = pos.add(new Point(isLowerCase ? 0 : prevP.x,params[i]));
-                graphics.lineTo(pos.x, pos.y);
+                pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i]);
+                CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                 i++;
                 break;
             case SVGPathCommand.c://curveTo
-                pos = pos.add(new Point(params[i+4],params[i+5]));
-                var controlP1:Point = isLowerCase ? new Point(prevP.x + Number(params[i]),prevP.y+Number(params[i+1])) : new Point(params[i],params[i+1]);
-                prevC = isLowerCase ? new Point(prevP.x+Number(params[i+2]),prevP.y+Number(params[i+3])) : new Point(params[i+2],params[i+3]);/*aka controlP2*/
+                pos = CGPoint(params[i+4],params[i+5]);
+                var controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1]);
+                prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
                 CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                 i += 6;
                 break;
