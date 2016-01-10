@@ -27,7 +27,6 @@ class SVGPath :SVGGraphic{
         //Swift.print("SVGPath.draw()");
         /*fill*/
         let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
-
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         fillShape.frame = boundingBox
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
