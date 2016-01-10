@@ -20,7 +20,7 @@ class SVGGradientParser {
 		let y2Str:String = SVGPropertyParser.property(xml,"y2")!;
 		let y2:CGFloat = StringAsserter.percentage(y2Str) ? StringParser.percentage(y2Str) : SVGPropertyParser.value(y2Str);
 		let svgGradient:SVGGradient = Utils.gradient(xml);
-        Swift.print("linearGradient svgGradient.id: " + "\(svgGradient.id)")
+        //Swift.print("SVGGradientParser.linearGradient svgGradient.id: " + "\(svgGradient.id)")
 		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors/*svgGradient.opacities*/,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id/*,svgGradient.gradientTransform*/);
 	}
 	/**
