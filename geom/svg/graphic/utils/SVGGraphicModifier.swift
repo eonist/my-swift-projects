@@ -21,7 +21,7 @@ class SVGGraphicModifier {
     */
     class func beginGradientFill(graphic:SVGGraphic,gradient:SVGGradient) {
         //			trace("beginGradientFill");
-        var gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
+        let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         //			trace("gradientType: " + gradientType);
         //var matrix:Matrix = Utils.matrix(graphic);
         if(gradient is SVGLinearGradient && gradient.gradientTransform != nil) {
@@ -31,7 +31,7 @@ class SVGGraphicModifier {
         //			trace("spreadMethod: " + spreadMethod);
         //var interpolationMethod:String = InterpolationMethod.RGB;/*InterpolationMethod.LINEAR_RGB*/
         //			trace("interpolationMethod: " + interpolationMethod);
-        var focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
+        let focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
         if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
             //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
         }
@@ -39,7 +39,18 @@ class SVGGraphicModifier {
         //			trace("gradient.colors: " + gradient.colors);
         //			trace("gradient.opacities: " + gradient.opacities);
         //			trace("gradient.offsets: " + gradient.offsets);
-        graphic.graphics.beginGradientFill(gradientType, gradient.colors,gradient.opacities, gradient.offsets, matrix, spreadMethod, interpolationMethod, focalPointRatio);
+        
+        
+        
+        //continue here: you need the code for setting the LinearGradient, 
+        //begin with applying static variables to get things going,
+        //then apply more and more variables from the svg
+        
+        
+        
+        
+        
+        //graphic.graphics.beginGradientFill(gradientType, gradient.colors,gradient.opacities, gradient.offsets, matrix, spreadMethod, interpolationMethod, focalPointRatio);
     }
 }
 
