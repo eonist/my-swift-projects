@@ -52,7 +52,8 @@ class SVGStyleParser {
             property = Double(StringParser.color(property as! String))
         }
 		else{/*url(#three_stops);*/
-			let url:String = String(property).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
+			let url:String = String(property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
+            Swift.print("url: " + "\(url)")
 			property = container.getItem(url);/*SVGLinearGradient*/
 		}
 		return property;
