@@ -86,7 +86,7 @@ private class Utils{
 		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!;
         Swift.print("gradientUnits: " + "\(gradientUnits)")
 		/*userSpaceOnUse*/
-		// Swift.print("gradientUnits: " + gradientUnits);
+		
 		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod")!;
 		let id:String = SVGPropertyParser.id(xml);
 		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
