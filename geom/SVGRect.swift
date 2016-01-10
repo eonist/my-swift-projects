@@ -38,6 +38,8 @@ class SVGRect : SVGGraphic {
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+            //TODO: you need to check to see if line is needed before you draw the fill path
+            
             let rect:CGRect = SVGRectParser.rectangle(self)
             Swift.print("rect: " + "\(rect)")
             /*Fill*/
@@ -45,6 +47,9 @@ class SVGRect : SVGGraphic {
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             Swift.print("fillFrame: " + "\(fillFrame)")
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
+            
+            //TODO: you need to check to see if line is needed before you draw the line path
+            
             /*line*/
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
             Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
