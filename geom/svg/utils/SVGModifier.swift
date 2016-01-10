@@ -59,15 +59,12 @@ class SVGModifier {
 	 * updates an SVGGraphic
 	 */
 	class func update(graphic:ISVGGraphic) {
-        
-        
-        //this method is incomplete, needs correct order of calls etc
-        
+        //WARNING: this method is incomplete, needs correct order of calls etc
         
 		//graphic.clear();
-		//graphic.applyLineStyle();
-		//graphic.beginFill();
-		graphic.draw();
+		//graphic.applyLineStyle();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
+		//graphic.beginFill();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
+		graphic.draw();/*<--draws the path with the new params*/
 		//graphic.endFill();
 	}
 }
