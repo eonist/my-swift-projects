@@ -42,7 +42,7 @@ class SVGPathParser {
         let pattern:String = beginning + RegExpPattern.digitAssertPattern + end
 		let stringArray:Array<String> = parameters.match(pattern);
         //Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
-        let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix
+        let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix, converts the values in the array to CGFloat
         return array
 	}
 	/**
