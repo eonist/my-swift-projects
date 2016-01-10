@@ -41,7 +41,7 @@ class SVGStyleParser {
 	 * @param container the parent container of the svg element querried for
 	 */
 	class func fill(var property:Any?,_ container:ISVGContainer)->Any!/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested
-        Swift.print("SVGStyleParser.fill() property: " + "\(property)")
+        //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = Double.NaN
         }
@@ -53,9 +53,9 @@ class SVGStyleParser {
         }
 		else{/*url(#three_stops);*/
 			let url:String = String(property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
-            Swift.print("url: " + "\(url)")
+            //Swift.print("url: " + "\(url)")
 			property = container.getItem(url);/*SVGLinearGradient*/
-            Swift.print("property: " + "\(property)")
+            //Swift.print("property: " + "\(property)")
 		}
 		return property;
 	}
