@@ -43,7 +43,10 @@ class SVGPathUtils {
                 pos = CGPoint(params[i+4],params[i+5]);
                 var controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1]);
                 prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
-                CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
+                
+                prevP, controlP1, prevC, pos
+                
+                CGPathAddCurveToPoint(path, nil, <#T##cp1x: CGFloat##CGFloat#>, <#T##cp1y: CGFloat##CGFloat#>, <#T##cp2x: CGFloat##CGFloat#>, <#T##cp2y: CGFloat##CGFloat#>, <#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                 i += 6;
                 break;
             case SVGPathCommand.s://smoothCurveTo
