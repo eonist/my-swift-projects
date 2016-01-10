@@ -40,6 +40,7 @@ class SVGPathUtils {
                     i++;
                     break;
                 case SVGPathCommand.c://curveTo
+                    Swift.print("curveTo")
                     pos += CGPoint(params[i+4],params[i+5]);
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
