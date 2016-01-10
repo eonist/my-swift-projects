@@ -65,7 +65,7 @@ class SVGPathUtils {
                 CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                 i += 2;
                 break;
-            case SVGPathCommand.z: graphics.lineTo(prevM.x, prevM.y); break;/*closes it self to the prev MT pos*/
+            case SVGPathCommand.z: CGPathMoveToPoint(path, nil, prevM.x, prevM.y); break;/*closes it self to the prev MT pos*/
                 //					case PathCommand.ARC_TO:
                 //						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
                 //						i += 7;
