@@ -25,9 +25,13 @@ class SVGPath :SVGGraphic{
      */
     override func draw()  {
         //swift.priint("SVGPath.drawLine");
-        SVGPathUtils.drawPath(fillShape.graphics,commands, parameters);/*draws the fill*/
+        let path = SVGPathUtils.drawPath(fillShape.graphics,commands, parameters);/*draws the fill*/
         
         //implement the setting of the frame here, derived from the bounding box of the path
+        
+        
+        //continue here: use the boundingbox method and also dont forget to make room for stroke and the miter etc, then run some tests
+        
         
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
