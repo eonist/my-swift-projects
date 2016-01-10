@@ -39,12 +39,15 @@ class SVGRect : SVGGraphic {
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
             let rect:CGRect = SVGRectParser.rectangle(self)
+            Swift.print("rect: " + "\(rect)")
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
             let fillFrame = !style!.stroke.isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            Swift.print("fillFrame: " + "\(fillFrame)")
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             /*line*/
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+            Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
             lineShape.frame = lineOffsetRect.lineFrameRect
             lineShape.path = lineOffsetRect.lineRect.path
         }
