@@ -4,6 +4,7 @@ class RegExpPattern {
     /**
      * NOTE: Used in the svg path parameter parser for instance
      * NOTE: swift doesnt do conditionals in regex like this: \-?\d*?(\.?)((?1)\d+?)  so the bellow code was madeto do the same thing
+     * NOTE: you may need to add more 
      */
     static var digitAssertPattern:String{
         //let g1:String = "(?=\\s|^)"/*must be preceeded by a space char or the begining*/
