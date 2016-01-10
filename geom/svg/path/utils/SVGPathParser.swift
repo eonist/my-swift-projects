@@ -40,7 +40,7 @@ class SVGPathParser {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
         
         let beginning:String = "(?<=^|\\,|\\s|px|\\b)"
-        let end:String = "(?=px|\\s|\\,|\\-|$)"
+        let end:String = "(?=[^\\d])"
         let pattern:String = beginning + RegExpPattern.digitAssertPattern + end
         Swift.print("pattern: " + "\(pattern)")
 		let stringArray:Array<String> = parameters.match(pattern);
