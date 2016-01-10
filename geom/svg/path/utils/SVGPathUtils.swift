@@ -15,6 +15,7 @@ class SVGPathUtils {
         for (var e : Int = 0; e < commands.count; e++) {
             let command:String = commands[e];
             let isLowerCase:Bool = StringAsserter.lowerCase(command);
+            Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
             switch(command.lowercaseString){
                 case SVGPathCommand.m: //moveTo
@@ -40,7 +41,7 @@ class SVGPathUtils {
                     break;
                 case SVGPathCommand.c://curveTo
                     pos += CGPoint(params[i+4],params[i+5]);
-                    let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1]);
+                    let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
                     CGPathAddCurveToPoint(path, nil, prevC.x, prevC.y, controlP1.x, controlP1.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6;

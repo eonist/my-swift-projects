@@ -22,7 +22,7 @@ class SVGContainer : FlippedView, ISVGContainer{
      */
     func add(element:ISVGElement) {
         if(element is NSView) {
-            Swift.print("SVGContainer.add() element is NSView")
+            //Swift.print("SVGContainer.add() element is NSView")
             addSubview(element as! NSView)
         }
         items.append(element);
