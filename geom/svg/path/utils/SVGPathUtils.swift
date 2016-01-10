@@ -21,6 +21,7 @@ class SVGPathUtils {
                 pos += CGPoint(params[i],params[i+1]);
                 prevM = pos.copy()
                 graphics.moveTo(pos.x,pos.y);
+                CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                 i += 2;
                 break;
             case SVGPathCommand.l: //lineTo
