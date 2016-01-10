@@ -19,6 +19,7 @@ class SVGPathUtils {
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
             switch(command.lowercaseString){
                 case SVGPathCommand.m: //moveTo
+                    Swift.print("moveTo")
                     pos += CGPoint(params[i],params[i+1]);
                     prevM = pos.copy()
                     CGPathMoveToPoint(path, nil, pos.x,pos.y)
