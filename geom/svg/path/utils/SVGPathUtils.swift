@@ -41,13 +41,13 @@ class SVGPathUtils {
                     i++;
                     break;
                 case SVGPathCommand.c://curveTo
-                    Swift.print("curveTo")
+                    //Swift.print("curveTo")
                     pos += CGPoint(params[i+4],params[i+5]);
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
-                    Swift.print("controlP1: " + "\(controlP1)")
+                    //Swift.print("controlP1: " + "\(controlP1)")
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
-                    Swift.print("prevC: " + "\(prevC)")
-                    CGPathAddCurveToPoint(path, nil, 50/*prevC.x*/, 0/*prevC.y*/, 100/*controlP1.x*/, 50/*controlP1.y*/, 100/*pos.x*/, 100/*pos.y*/)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
+                    //Swift.print("prevC: " + "\(prevC)")
+                    CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6;
                     
                     //Continue: create a simple example in illustrator and try it here with static variables, 0,0, 50,50 etc
