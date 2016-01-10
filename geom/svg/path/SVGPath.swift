@@ -34,7 +34,7 @@ class SVGPath :SVGGraphic{
         fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
         
         /*line*/
-        let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(offsetPath, style!)// + boundingBox.origin
+        let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
         Swift.print("linePathOffset: " + "\(linePathOffset)")
