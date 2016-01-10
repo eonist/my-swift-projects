@@ -49,10 +49,6 @@ class SVGPathUtils {
                     //Swift.print("prevC: " + "\(prevC)")
                     CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6;
-                    
-                    //Continue: create a simple example in illustrator and try it here with static variables, 0,0, 50,50 etc
-                    //do some research online, maybe there is a nice description on how cubic curves work related to this problem
-                    
                     break;
                 case SVGPathCommand.s://smoothCurveTo
                     pos += CGPoint(params[i+2],params[i+3]);
@@ -170,3 +166,22 @@ class SVGPathUtils {
         return path;
     }
 }
+/**
+CGPathAddCurveToPoint
+NOTE: more info like the bellow here: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
+The mutable path to change. The path must not be empty.
+m
+A pointer to an affine transformation matrix, or NULL if no transformation is needed. If specified, Quartz applies the transformation to the curve before it is added to the path.
+cp1x
+The x-coordinate of the first control point.
+cp1y
+The y-coordinate of the first control point.
+cp2x
+The x-coordinate of the second control point.
+cp2y
+The y-coordinate of the second control point.
+x
+The x-coordinate of the end point of the curve.
+y
+The y-coordinate of the end point of the curve.
+*/
