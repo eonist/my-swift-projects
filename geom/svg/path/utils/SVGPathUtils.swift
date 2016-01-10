@@ -56,13 +56,13 @@ class SVGPathUtils {
             case SVGPathCommand.q: //quadCurveTo
                 pos = CGPoint(params[i+2],params[i+3]);
                 prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
-                graphics.curveTo(prevC.x, prevC.y, pos.x, pos.y);
+                CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                 i += 4;
                 break;
             case SVGPathCommand.t://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
-                pos = pos.add(new Point(params[i],params[i+1]));
-                prevC = new Point(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
-                graphics.curveTo(prevC.x, prevC.y, pos.x, pos.y);
+                pos = CGPoint(params[i],params[i+1]);
+                prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
+                CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                 i += 2;
                 break;
             case SVGPathCommand.z: graphics.lineTo(prevM.x, prevM.y); break;/*closes it self to the prev MT pos*/
