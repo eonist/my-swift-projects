@@ -38,9 +38,9 @@ class SVGPath :SVGGraphic{
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
         Swift.print("linePathOffset: " + "\(linePathOffset)")
-        //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
-        lineShape.path = offsetPath.copy()
+        lineShape.path = fillShape.path.copy()
+    
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
