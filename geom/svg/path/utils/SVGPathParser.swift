@@ -39,10 +39,9 @@ class SVGPathParser {
 	class func parameters(parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
         
-        let beginning:String = "(?<=^|\\d)"//|\\,|\\s|px|\\b
-        let middle:String = "\\-?\\d+?"//
-        RegExpPattern.digitAssertPattern
-        let end:String = "(?=\\-|$)"//px|\\s|\\,|
+        let beginning:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
+        let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
+        let end:String = "(?=px|\\s|\\,|\\-|$)"
         let pattern:String = beginning + middle + end
         Swift.print("pattern: " + "\(pattern)")
 		let stringArray:Array<String> = parameters.match(pattern);
