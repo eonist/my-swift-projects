@@ -32,8 +32,9 @@ class SVGPath :SVGGraphic{
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         
         //continue here: you need to offset the path with a transform by using the 
-        let offset = CGPoint(-boundingBox.x,)
-        let offsetPath = CGPathCreateCopyByTransformingPath(path, CGAffineTransformMakeTranslation(<#T##tx: CGFloat##CGFloat#>, <#T##ty: CGFloat##CGFloat#>))
+        let offset = CGPoint(-boundingBox.x,-boundingBox.y)
+        let transform:CGAffineTransform = CGAffineTransformMakeTranslation(offset.x, offset.y)
+        let offsetPath = CGPathCreateCopyByTransformingPath(path, transform)
         
         //SVGPathModifier.drawPath(graphics,_commands, _parameters);/*draws the stroke*/
     }
