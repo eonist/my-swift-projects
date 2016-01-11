@@ -41,9 +41,10 @@ class SVGGraphicModifier {
         //			trace("gradient.offsets: " + gradient.offsets);
         
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
+        let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
         
-        let p1:CGPoint? = !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
-        let p2:CGPoint? = !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
+        let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
+        let p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
 
         //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
         
