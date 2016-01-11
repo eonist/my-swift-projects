@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 public protocol IGradient{
     var colors:Array<CGColor>{get set}
     var locations:Array<CGFloat>{get set}
@@ -14,6 +14,6 @@ public protocol IGradient{
 
 extension IGradient{
     func copy() -> IGradient {
-        return Gradient(colors,locations,gradientType,rotation,relativeStartCenter,relativeEndCenter,relativeStartRadius,relativeEndRadius)
+        return Gradient(colors,locations,gradientType,rotation,relativeStartCenter,relativeEndCenter,relativeStartRadius,relativeEndRadius,transformation)
     }
 }
