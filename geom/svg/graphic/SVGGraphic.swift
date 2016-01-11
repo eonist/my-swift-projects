@@ -70,10 +70,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
     /**
      * @Note the default is to fill the graphic with black and draw no outline unless you specify some other combination of fill and stroke.
      * @Note Updates only if style exists and fill is a number
+     * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
         Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
-        if(style != nil && style!.fill is Double/* && style!.fill != "none"*/) {
+        if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/) {
             //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             //Swift.print("colorVal: " + "\(colorVal)")
@@ -81,6 +82,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
             let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
             //Swift.print("color: " + "\(color)")
             fillShape.graphics.fill(color)/*Stylize the fill*/
+        }else if(style!.fill is SVGGradient){//<- may need to use dynamixtype to assert this?!?
+            SVGGraphicModifier.beginGradientFill(fillShape.graphics, style!.fill as! SVGGradient)
         }else{
             fatalError("not implemented yet")
         }
