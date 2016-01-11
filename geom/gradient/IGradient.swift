@@ -10,10 +10,12 @@ public protocol IGradient{
     var relativeEndRadius:CGSize?{get set}//rename to endScale
     var p1:CGPoint?{get set}
     var p2:CGPoint?{get set}
+    var transformation:CGAffineTransform?{get set}
+    var useBoundingBox:Bool{get set}
 }
 
 extension IGradient{
     func copy() -> IGradient {
-        return Gradient(colors,locations,gradientType,rotation,relativeStartCenter,relativeEndCenter,relativeStartRadius,relativeEndRadius,transformation)
+        return Gradient(colors,locations,gradientType,rotation,relativeStartCenter,relativeEndCenter,relativeStartRadius,relativeEndRadius,p1,p2,useBoundingBox,transformation)
     }
 }
