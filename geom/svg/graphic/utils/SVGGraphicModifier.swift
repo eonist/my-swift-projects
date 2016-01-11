@@ -40,8 +40,6 @@ class SVGGraphicModifier {
         //			trace("gradient.opacities: " + gradient.opacities);
         //			trace("gradient.offsets: " + gradient.offsets);
         
-        
-        
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         
         //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
@@ -65,7 +63,6 @@ class SVGGraphicModifier {
         graphic.fillShape.graphics.gradientFill(grad)
     }
 }
-
 private class Utils{
     
 }
