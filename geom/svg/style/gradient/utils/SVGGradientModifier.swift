@@ -16,4 +16,5 @@ class SVGGradientModifier {
         }/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
         Swift.print("gradient.gradientTransform: " + "\(gradient.gradientTransform)")
     }
+    class func scaleGradient(transform)
 }
