@@ -39,32 +39,35 @@ class SVGGraphicModifier {
         //Swift.print("gradient.colors: " + gradient.colors);
         //Swift.print("gradient.opacities: " + gradient.opacities);
         //Swift.print("gradient.offsets: " + gradient.offsets);
+        if(gradient is SVGLinearGradient){
+            let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
+            //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
+            let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
+            
+            let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
+            let p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
+            
+            //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
+            
+            //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
+            
+            //objectBoundingBox — x1, y1, x2, y2 represent coordinates in a system established by the bounding box of the element to which the gradient is applied. In other words the gradient scales with the element it’s applied to.
+            
+            //gradientTransform="rotate(-50)
+            
+            //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
+            
+            //<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+            
+            //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            
+            //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
+            
+            
+            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
+            graphic.fillShape.graphics.gradientFill(grad)
+        }
         
-        //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
-        let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
-        
-        let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
-        let p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
-
-        //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
-        
-        //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
-        
-        //objectBoundingBox — x1, y1, x2, y2 represent coordinates in a system established by the bounding box of the element to which the gradient is applied. In other words the gradient scales with the element it’s applied to.
-
-        //gradientTransform="rotate(-50)
-        
-        //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
-        
-        //<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-        
-        //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-        
-        //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
-        
-        
-        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
-        graphic.fillShape.graphics.gradientFill(grad)
     }
 }
 private class Utils{
