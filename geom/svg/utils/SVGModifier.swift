@@ -33,8 +33,10 @@ class SVGModifier {
                 //Swift.print("points:" + "\((element as! SVGPolygon).points)")
                
                 if((element as! SVGPolygon).style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
+                    Swift.print("SVGPolygon.scale()")
                     SVGGradientModifier.scaleGradient(&((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform,pivot,scale)
                 }
+                Swift.print("transform: " + "\((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform)")
                 //Swift.print("svgPolygon.points: " + "\(svgPolygon.points.count)")
                 //Swift.print("pivot: " + "\(pivot)")
                 //Swift.print("scalePoint: " + "\(scalePoint)")
