@@ -19,6 +19,7 @@ class SVGGraphicModifier {
     /**
      * Begins a gradient fill on @param graphics with @param gradient
      * @NOTE: we use the Shape instance here because we need the frame offset to calculate the correct gradient p1 and p2 when using userspace
+     * @NOTE: userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
      */
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
         let graphics:Graphics = shape.graphics
@@ -46,14 +47,14 @@ class SVGGraphicModifier {
             
             let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             
-            var p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
-            var p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
+            var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1)/* :nil*/
+            var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2)/* :nil*/
             
-            if(userSpaceOnUse){
+            if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }
-            //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
+            
             
             //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
             
@@ -61,10 +62,6 @@ class SVGGraphicModifier {
             
             //there is also this: gradientTransform="rotate(-50), there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
             
-            
-            
-            //continue here: you need to offset the p1,p2 values. Remember your in 0,0 space when drawing the path inside the frame, and not even that when you draw the path for the line
-            //also to supoprt % values for p1,p2 you only need to toggle between gradientUnit types. you could set a bool value to indicate this for the gradient box etc. more arguments but it will keep it moving forward, and radial could also use this variable
             
             
             
