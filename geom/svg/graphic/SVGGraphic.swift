@@ -93,9 +93,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
-        if(/*style != nil && */!style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
+        if(!style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
-        }else if(style!.fill is SVGGradient){
+        }else if(style!.stroke is SVGGradient){
             fatalError("not implemented yet")
         }else{
             //no stroke
