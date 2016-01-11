@@ -54,6 +54,8 @@ class SVGGraphicModifier {
         
         //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         
+        //<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+        
         
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
