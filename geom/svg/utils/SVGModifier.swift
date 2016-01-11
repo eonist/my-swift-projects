@@ -42,7 +42,7 @@ class SVGModifier {
                 
                 
                 //continue here: it appears that that the scaling of the SVGGradient instance is enough. 
-                //You will need to figure out where to find 
+                //You will need to figure out why gradient.transformation: nil when it gets to the Grphics instance 
                 
                 
                 
