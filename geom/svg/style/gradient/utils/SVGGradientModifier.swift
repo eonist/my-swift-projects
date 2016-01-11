@@ -15,7 +15,7 @@ class SVGGradientModifier {
      *
      */
     class func scaleGradient(inout gradientTransform:CGAffineTransform?,_ pivot:CGPoint,_ scale:CGPoint){
-        Swift.print("scaleGradient")
+        Swift.print("SVGGradientModifier.scaleGradient")
         if(gradientTransform != nil) {
             gradientTransform!.scaleFromPoint(scale.x, scale.y, pivot)
         }/*Scale the current applied matrix*/
