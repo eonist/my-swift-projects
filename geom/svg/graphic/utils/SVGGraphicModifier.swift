@@ -42,6 +42,9 @@ class SVGGraphicModifier {
         
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         
+        var p1:CGPoint = CGPoint(gradient.x1,gradient.y1);
+		var p2:CGPoint = CGPoint(gradient.x2,gradient.y2);
+
         //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
         
         //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
