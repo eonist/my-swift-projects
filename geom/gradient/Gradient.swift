@@ -43,6 +43,8 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
         self.relativeEndCenter = relativeEndCenter
         self.relativeStartRadius = relativeStartRadius
         self.relativeEndRadius = relativeEndRadius
+        self.p1 = p1
+        self.p2 = p2
     }
 }
 
