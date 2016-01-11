@@ -7,8 +7,7 @@ class SVGGradientModifier {
 	 */
 	class func scale(gradient:SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
         //fatalError("not implemented yet")
-        
         if(gradient.gradientTransform != nil) {gradient.gradientTransform?.scaleFromPoint(scale.x, scale.y, pivot)}/*Scale the current applied matrix*/
-        else {gradient.gradientTransform = CGAffineTransform.scaleFromPoint(CGAffineTransform, <#T##xScale: CGFloat##CGFloat#>, <#T##yScale: CGFloat##CGFloat#>, <#T##pivot: CGPoint##CGPoint#>)}/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
+        else {gradient.gradientTransform = CGAffineTransform.scaleFromPoint(CGAffineTransformIdentity, scale.x, scale.y, pivot)}/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
 	}
 }
