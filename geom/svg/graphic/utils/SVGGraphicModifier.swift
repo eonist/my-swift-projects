@@ -69,7 +69,7 @@ class SVGGraphicModifier {
             //Swift.print("gradient.colors: " + "\(gradient.colors)")
             //Swift.print("gradient.offsets: " + "\(gradient.offsets)")
             
-            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
+            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse)
             graphics.gradientFill(grad)
         }
         
