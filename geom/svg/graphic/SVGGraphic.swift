@@ -83,7 +83,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             //Swift.print("color: " + "\(color)")
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }else if(style!.fill is SVGGradient){//<- may need to use dynamixtype to assert this?!?
-            SVGGraphicModifier.beginGradientFill(fillShape.graphics, style!.fill as! SVGGradient)
+            SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
         }else{
             fatalError("not implemented yet")
         }
