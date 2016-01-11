@@ -42,7 +42,7 @@ class SVGGraphicModifier {
         
         
         
-        //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc
+        //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
