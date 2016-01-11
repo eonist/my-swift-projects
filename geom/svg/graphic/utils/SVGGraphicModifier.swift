@@ -56,6 +56,8 @@ class SVGGraphicModifier {
         
         //<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
         
+        //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        
         
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
