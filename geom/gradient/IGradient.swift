@@ -8,6 +8,8 @@ public protocol IGradient{
     var relativeEndCenter:CGPoint?{get set}
     var relativeStartRadius:CGSize?{get set}//rename to startScale
     var relativeEndRadius:CGSize?{get set}//rename to endScale
+    var p1:CGPoint?{get set}
+    var p2:CGPoint?{get set}
 }
 
 extension IGradient{

@@ -5,11 +5,11 @@ public enum GradientType:Int{//TODO:move to its own class?
 /**
  * The overall goal of this class is to provide a universal way to define gradients on a graphic. IMPORTANT ->>> So that if you scale the graphic the gradient will not look strange. <<<- IMPORTANT
  * EXAMPLE: let gradient:Gradient = Gradient([NSColor.blueColor().CGColor,NSColor.redColor().CGColor])
- * TODO: create two Gradient classes the extends a common Gradient class. LinearGradient and RadialGradient, ILinearGradient, IRadialGradient etc
  * NOTE: the radial scalar values can also be more or less than 0 and 1. think width * 1.2 etc. Works for both pos and size. (the only thing that is capped is the size if it goes under 0, then it is capped to 0)
  * NOTE: Why are we using realtive values for the radial gradient when xcode supports absolute points? Because absolute values cant be applied to different graphics. Absolute values only work with one exact graphic.
  * NOTE: the scalar values are subjected to change, if -1 to +1 makes more sense when doing the polar point calculations etc
  * TODO: Find that medium article on axial gradient. the one that looks like a "spread out patonefan"
+ * TODO: create two Gradient classes the extends a common Gradient class. LinearGradient and RadialGradient, ILinearGradient, IRadialGradient etc
  */
 public class Gradient:IGradient{/*<---its public so that it works in playground*/
     
@@ -26,7 +26,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
     public var relativeStartRadius:CGSize?//0 to 1 (x:0.5 means half the size of the current cross-section in the x-axis) the x-axis is determined by the rotation
     public var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
-    public var p1:CGPoint?
+    public var p1:CGPoint?/*<--temp*/
     public var p2:CGPoint?
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, p1:CGPoint? = nil, p2:CGPoint? = nil){/*,*/
         self.colors = colors
