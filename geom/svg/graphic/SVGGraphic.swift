@@ -26,10 +26,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
             /*drawLine();*/
             
-            
             //continue here: figure out this problem: CALayer position contains NaN: [nan nan]
 
-            
         }
     }
     /**
