@@ -92,13 +92,13 @@ private class Utils{
 		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? "";/*<--temp*/
 		let id:String = SVGPropertyParser.id(xml);
         //Swift.print("id: " + "\(id)")
-		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
+		let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml);
         
         
         //continue here, uncomment the above line
         
         
-		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits/*,gradientTransform*/);
+		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits,gradientTransform)/**/
 	}
     /**
      * Returns an Matrix instance with GradientTransform data derived from @param xml
