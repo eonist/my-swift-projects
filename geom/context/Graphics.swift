@@ -202,7 +202,11 @@ private class Utils{
         Swift.print("gradient.p2: " + "\(gradient.p2)")
         var points:(start:CGPoint,end:CGPoint) = gradient.p1 != nil && gradient.p2 != nil ? (start:gradient.p1!,end:gradient.p2!) : GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
         Swift.print("points: " + "\(points)")
-        CGPointApplyAffineTransform(points.start, gradient.transformation)
+        if(gradient.transformation){
+            CGPointApplyAffineTransform(points.start, gradient.transformation!)
+            CGPointApplyAffineTransform(points.start, gradient.transformation!)
+        }
+        
         CGContextDrawLinearGradient(context, cgGradient, points.start, points.end , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
