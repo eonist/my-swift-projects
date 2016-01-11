@@ -20,7 +20,7 @@ class SVGGraphicModifier {
     * Begins a gradient fill on @param graphics with @param gradient
     */
     class func beginGradientFill(graphic:SVGGraphic,gradient:SVGGradient) {
-        //Swift.print("SVGGraphicModifier.beginGradientFill");
+        Swift.print("SVGGraphicModifier.beginGradientFill");
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         //Swift.print("gradientType: " + gradientType);
         //var matrix:Matrix = Utils.matrix(graphic);
