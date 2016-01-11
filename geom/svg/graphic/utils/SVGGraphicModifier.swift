@@ -19,7 +19,7 @@ class SVGGraphicModifier {
     /**
     * Begins a gradient fill on @param graphics with @param gradient
     */
-    class func beginGradientFill(graphic:SVGGraphic,gradient:SVGGradient) {
+    class func beginGradientFill(graphic:SVGGraphic,_ gradient:SVGGradient) {
         Swift.print("SVGGraphicModifier.beginGradientFill");
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         //Swift.print("gradientType: " + gradientType);
@@ -64,8 +64,8 @@ class SVGGraphicModifier {
             //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
             
             
-            //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
-            //graphic.fillShape.graphics.gradientFill(grad)
+            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
+            graphic.fillShape.graphics.gradientFill(grad)
         }
         
     }
