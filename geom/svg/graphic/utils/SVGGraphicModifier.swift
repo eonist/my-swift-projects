@@ -64,8 +64,8 @@ class SVGGraphicModifier {
             //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
             
             
-            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
-            graphic.fillShape.graphics.gradientFill(grad)
+            //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
+            //graphic.fillShape.graphics.gradientFill(grad)
         }
         
     }
