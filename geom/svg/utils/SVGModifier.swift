@@ -36,7 +36,7 @@ class SVGModifier {
                     Swift.print("SVGPolygon.scale()")
                     SVGGradientModifier.scaleGradient(&((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform,pivot,scale)
                 }
-                Swift.print("transform: " + "\((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform)")
+                Swift.print("transform: " + "\(((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform)")
                 //Swift.print("svgPolygon.points: " + "\(svgPolygon.points.count)")
                 //Swift.print("pivot: " + "\(pivot)")
                 //Swift.print("scalePoint: " + "\(scalePoint)")
