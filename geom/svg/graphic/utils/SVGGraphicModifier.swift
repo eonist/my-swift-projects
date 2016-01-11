@@ -46,6 +46,7 @@ class SVGGraphicModifier {
         //begin with applying static variables to get things going,
         //then apply more and more variables from the svg
         
+        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
         
         
