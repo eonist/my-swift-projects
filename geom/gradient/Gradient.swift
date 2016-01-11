@@ -17,7 +17,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     //continue here: revamp the gradient system, you need transformation and gradientbox should be applied as a transformation not in graphics.
     //but in order to keep thing s moving, add a few more params and see if it works, add p1 and p2, then come back later to revamp the gradient lib
     
-    public var 
+    public var useBoundingBox:Bool/*<--new toggles the usage of absolute values to the path coordinates and relative values to the boundingBox*/
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
     public var gradientType:GradientType//TODO: rename to type
@@ -28,7 +28,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     public var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
     public var p1:CGPoint?/*<--temp*/
     public var p2:CGPoint?
-    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, _ p1:CGPoint? = nil, _ p2:CGPoint? = nil){/*,*/
+    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, _ p1:CGPoint? = nil, _ p2:CGPoint? = nil,useBoundingBox:Bool = false){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)
@@ -45,6 +45,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
         self.relativeEndRadius = relativeEndRadius
         self.p1 = p1
         self.p2 = p2
+        self.useBoundingBox = useBoundingBox
     }
 }
 
