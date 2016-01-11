@@ -41,7 +41,7 @@ class SVGGraphicModifier {
         //Swift.print("gradient.offsets: " + gradient.offsets);
         if(gradient is SVGLinearGradient){
             let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
-            //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
+            
             let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
             
             let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
