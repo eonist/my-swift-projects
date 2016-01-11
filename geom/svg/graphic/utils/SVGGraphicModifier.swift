@@ -62,8 +62,8 @@ class SVGGraphicModifier {
             //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
             
             //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
-            Swift.print("gradient.colors: " + "\(gradient.colors)")
-            Swift.print("gradient.offsets: " + "\(gradient.offsets)")
+            //Swift.print("gradient.colors: " + "\(gradient.colors)")
+            //Swift.print("gradient.offsets: " + "\(gradient.offsets)")
             
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
             graphics.gradientFill(grad)
