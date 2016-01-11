@@ -58,7 +58,9 @@ class SVGGraphicModifier {
             
             
             //continue here: you need to offset the p1,p2 values. Remember your in 0,0 space when drawing the path inside the frame, and not even that when you draw the path for the line
-            //also to supoprt % values for p1,p2 you only need to toggle between gradientUnit types. 
+            //also to supoprt % values for p1,p2 you only need to toggle between gradientUnit types. you could set a bool value to indicate this for the gradient box etc. more arguments but it will keep it moving forward, and radial could also use this variable
+            
+            
             
             //
             //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
