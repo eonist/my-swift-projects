@@ -26,7 +26,8 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
     public var relativeStartRadius:CGSize?//0 to 1 (x:0.5 means half the size of the current cross-section in the x-axis) the x-axis is determined by the rotation
     public var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
-    public var p1:CGPoint
+    public var p1:CGPoint?
+    public var p2:CGPoint?
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, p1:CGPoint? = nil, p2:CGPoint? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell

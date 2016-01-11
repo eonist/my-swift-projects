@@ -186,7 +186,7 @@ private class Utils{
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
         if(lineGradient.gradientType == GradientType.Linear) {
-            drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient.rotation)
+            drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
         }else{
             drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
         }
@@ -196,9 +196,9 @@ private class Utils{
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ rotation:CGFloat){
+    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ gradient:IGradient){
         //Swift.print("drawAxialGradient.rotation: " + "\(rotation)")
-        let points = GradientBoxUtils.points(boundingBox, rotation)
+        let points = GradientBoxUtils.points(boundingBox, gradient.rotation)
         CGContextDrawLinearGradient(context, cgGradient, points.start, points.end , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
