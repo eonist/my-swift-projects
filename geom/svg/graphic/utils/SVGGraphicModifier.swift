@@ -62,11 +62,7 @@ class SVGGraphicModifier {
         
         
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil)
-        
-        
-        
-        
-        //graphic.graphics.beginGradientFill(gradientType, gradient.colors,gradient.opacities, gradient.offsets, matrix, spreadMethod, interpolationMethod, focalPointRatio);
+        graphic.fillShape.graphics.gradientFill(grad)
     }
 }
 
