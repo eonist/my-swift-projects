@@ -17,7 +17,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     //continue here: revamp the gradient system, you need transformation and gradientbox should be applied as a transformation not in graphics.
     //but in order to keep thing s moving, add a few more params and see if it works, add p1 and p2, then come back later to revamp the gradient lib
     
-    
+    public var 
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
     public var gradientType:GradientType//TODO: rename to type
