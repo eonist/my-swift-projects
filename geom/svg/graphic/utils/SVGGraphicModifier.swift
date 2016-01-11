@@ -42,7 +42,7 @@ class SVGGraphicModifier {
         if(gradient is SVGLinearGradient){
             let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
             
-            let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
+            let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             
             let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
             let p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
@@ -55,10 +55,10 @@ class SVGGraphicModifier {
             
             //there is also this: gradientTransform="rotate(-50), there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
             
-            //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             
             
-            //            
+            
+            //
             //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
             
             //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle

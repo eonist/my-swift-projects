@@ -2,6 +2,7 @@ import Foundation
 /*
  * // :TODO: add an example here
  * @NOTE: there is also preserveAspectRatio in the SVG specs
+ * @NOTE: The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
  */
 class SVGGradient:SVGElement{
 	var offsets : Array<CGFloat>/*How far into the shape this color starts (if the first color of the gradient) or stops (if the last color of the gradient). Specified as percentages of the shape (really the gradient vector) the gradient is applied to. For instance, 10% means that the color should start / stop 10% into the shape.*/
