@@ -49,24 +49,16 @@ class SVGGraphicModifier {
         //Swift.print("gradient.offsets: " + gradient.offsets);
         if(gradient is SVGLinearGradient){
             let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
-            
             let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
-            
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1)/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2)/* :nil*/
-            
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }
-            
-            //Swift.print("gradient.colors: " + "\(gradient.colors)")
-            //Swift.print("gradient.offsets: " + "\(gradient.offsets)")
-            
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse)
             graphics.gradientFill(grad)
         }
-        
     }
 }
 private class Utils{
