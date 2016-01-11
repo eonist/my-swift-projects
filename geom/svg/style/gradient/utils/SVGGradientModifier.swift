@@ -14,6 +14,6 @@ class SVGGradientModifier {
         else {
             gradient.gradientTransform = CGAffineTransform.scaleFromPoint(CGAffineTransformIdentity, scale.x, scale.y, pivot)
         }/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
-        
+        Swift.print("gradient.gradientTransform: " + "\(gradient.gradientTransform)")
     }
 }
