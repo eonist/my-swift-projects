@@ -10,9 +10,12 @@ class SVGGradient:SVGElement{
 	var gradientUnits:String /*If the gradientUnits attribute has the value objectBoundingBox, the coordinates are taken as a percentage of bounding box's dimensions (this is the default). If the value is set to userSpaceOnuse, the coordinates are taken to be in the coordinate system used by the object that is being filled.*/
 	var gradientTransform:CGAffineTransform?/*Matrix*/
 	//gradientTransform /*You can transform (e.g. rotate) the gradient before it is applied. See SVG Transformation for more details.*/
-	//x1, y1 /*The x1 and y1 (starting point) of the vector defining the direction of the gradient. Specified as percentages (%) of x1,y1 and x2,y2 of the shape the gradient is applied to. (Note: You should be able to use absolute numbers, but this doesn't seem to work in the browsers).*/
-	//x2, y2 /*The x2 and y2 (end point) of the vector defining the direction of the gradient.*/
-	init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,/*_ opacities:Array<CGFloat>,*/_ spreadMethod:String,_ id:String,_ gradientUnits:String,_ gradientTransform:CGAffineTransform? = nil/**/) {
+    var x1:CGFloat/*The x1 and y1 (starting point) of the vector defining the direction of the gradient. Specified as percentages (%) of x1,y1 and x2,y2 of the shape the gradient is applied to. (Note: You should be able to use absolute numbers, but this doesn't seem to work in the browsers).*/
+    var y1:CGFloat
+    var x2:CGFloat//x2, y2 /*The x2 and y2 (end point) of the vector defining the direction of the gradient.*/
+    var y2:CGFloat
+	
+    init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,/*_ opacities:Array<CGFloat>,*/_ spreadMethod:String,_ id:String,_ gradientUnits:String,_ gradientTransform:CGAffineTransform? = nil/**/,x1:CGFloat = CGFloat.NaN, y1:CGFloat = CGFloat.NaN, x2:CGFloat = CGFloat.NaN, y2:CGFloat = CGFloat.NaN) {
 		self.offsets = offsets;
 		self.colors = colors;
 		//self.opacities = opacities;
