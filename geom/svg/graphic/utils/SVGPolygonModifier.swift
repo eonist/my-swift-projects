@@ -6,8 +6,8 @@ class SVGPolygonModifier {
      * TODO: we need to scale the gradient.transform of the stroke aswell if it exists
      * TODO: the scaling of the style should be abstracted to the SVGGraphic so you can reuse the code.
      */
-    class func scale(svgPolygon:SVGPolygon,_ pivot:CGPoint,_ scalePoint:CGPoint):SVGPolygon {
-        Swift.print("SVGPolygonModifier.scale()")
+    class func scale(svgPolygon:SVGPolygon,_ pivot:CGPoint,_ scalePoint:CGPoint) {
+        Swift.print("SVGPolygonModifier.scale() " + "\(svgPolygon)")
         if(svgPolygon.style != nil && svgPolygon.style!.fill is SVGGradient){
             SVGGradientModifier.scaleGradient(&(svgPolygon.style!.fill as! SVGGradient).gradientTransform,pivot,scalePoint)
         }
