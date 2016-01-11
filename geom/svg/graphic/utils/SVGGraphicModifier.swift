@@ -42,9 +42,7 @@ class SVGGraphicModifier {
         
         
         
-        //continue here: you need the code for setting the LinearGradient, 
-        //begin with applying static variables to get things going,
-        //then apply more and more variables from the svg
+        //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc
         
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
