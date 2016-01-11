@@ -168,7 +168,7 @@ private class Utils{
         //CGContextSaveGState(context)//why is this here again?
         
         if(gradient.gradientType == GradientType.Linear) {/*Linear*/
-            drawAxialGradient(path, context, cgGradient, boundingBox, gradient.rotation)
+            drawAxialGradient(path, context, cgGradient, boundingBox, gradient)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
         }

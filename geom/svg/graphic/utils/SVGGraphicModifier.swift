@@ -31,7 +31,7 @@ class SVGGraphicModifier {
         //			trace("spreadMethod: " + spreadMethod);
         //var interpolationMethod:String = InterpolationMethod.RGB;/*InterpolationMethod.LINEAR_RGB*/
         //			trace("interpolationMethod: " + interpolationMethod);
-        let focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
+        //let focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
         if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
             //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
         }
@@ -61,7 +61,7 @@ class SVGGraphicModifier {
         //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
         
         
-        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
+        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil)
         
         
         
