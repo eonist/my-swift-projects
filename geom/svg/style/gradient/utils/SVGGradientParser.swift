@@ -93,6 +93,11 @@ private class Utils{
 		let id:String = SVGPropertyParser.id(xml);
         //Swift.print("id: " + "\(id)")
 		//var gradientTransform:Matrix = Utils.gradientTransform(xml);
+        
+        
+        //continue here, uncomment the above line
+        
+        
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits/*,gradientTransform*/);
 	}
     /**
