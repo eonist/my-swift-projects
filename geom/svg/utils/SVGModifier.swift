@@ -66,7 +66,7 @@ class SVGModifier {
 		//graphic.beginFill();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
 		graphic.draw();/*<--draws the path with the new params*/
 		//graphic.endFill();
-        graphic.fillShape.setNeedsDisplay()/**/
+        graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
         graphic.lineShape.setNeedsDisplay()
 	}
 }
