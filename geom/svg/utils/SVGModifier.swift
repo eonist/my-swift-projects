@@ -66,5 +66,7 @@ class SVGModifier {
 		//graphic.beginFill();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
 		graphic.draw();/*<--draws the path with the new params*/
 		//graphic.endFill();
+        graphic.fillShape.setNeedsDisplay()/**/
+        graphic.lineShape.setNeedsDisplay()
 	}
 }
