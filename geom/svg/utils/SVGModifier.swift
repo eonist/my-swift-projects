@@ -31,14 +31,20 @@ class SVGModifier {
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:
                 //Swift.print("points:" + "\((element as! SVGPolygon).points)")
-               
+                /*
                 if((element as! SVGPolygon).style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
                     Swift.print("SVGPolygon.scale()")
                     SVGGradientModifier.scaleGradient(&((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform,pivot,scale)
                 }
                 Swift.print("transform: " + "\(((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform)")
+                */
                 
-                //continue here: it appears that 
+                
+                
+                //continue here: it appears that that the scaling of the SVGGradient instance is enough. 
+                //You will need to figure out where to find 
+                
+                
                 
                 //Swift.print("svgPolygon.points: " + "\(svgPolygon.points.count)")
                 //Swift.print("pivot: " + "\(pivot)")
