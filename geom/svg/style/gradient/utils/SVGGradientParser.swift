@@ -51,7 +51,7 @@ private class Utils{
         for (var i = 0; i < xml.childCount; i++) {
             let child:NSXMLElement = XMLParser.childAt(children, i)!
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
-            let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) * 255 : StringParser.percentage(offsetStr) / 100 * 255;
+            let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
 			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
 			// Swift.print("offset: " + offset);
