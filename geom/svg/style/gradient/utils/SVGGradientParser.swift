@@ -7,6 +7,7 @@ class SVGGradientParser {
 	 * Returns an gradient instance with data derived from @param xml 
 	 * @param xml (<linearGradient id="skyline"><stop offset="0" style="stop-color:blue"/><stop offset="1" style="stop-color:red"/></linearGradient>)
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
+     * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
 	class func linearGradient(xml:NSXMLElement)->SVGLinearGradient{
 		// print("linearGradient ");

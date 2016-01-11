@@ -17,8 +17,8 @@ class SVGGraphicModifier {
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
     /**
-    * Begins a gradient fill on @param graphics with @param gradient
-    */
+     * Begins a gradient fill on @param graphics with @param gradient
+     */
     class func beginGradientFill(graphics:Graphics,_ gradient:SVGGradient) {
         Swift.print("SVGGraphicModifier.beginGradientFill");
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
@@ -58,8 +58,7 @@ class SVGGraphicModifier {
             //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             
             
-            //<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-            
+            //            
             //<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
             
             //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
