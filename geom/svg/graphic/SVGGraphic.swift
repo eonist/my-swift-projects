@@ -18,9 +18,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
-        Swift.print("SVGGraphic.init() style: " + "\(style)")
+        //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
-            Swift.print("SVGGraphic.init() setNeedsDisplay()")
+            //Swift.print("SVGGraphic.init() setNeedsDisplay()")
             if(style != nil){draw()}/*this should porbably have a more complex assert for the sake of optimization*/
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
@@ -40,7 +40,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("SVGGraphic.drawLayer()")
+        //Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
             fillShape.graphics.context = ctx
@@ -55,7 +55,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func fill(){
-        Swift.print("SVGGraphic.fill()")
+        //Swift.print("SVGGraphic.fill()")
         beginFill();
         stylizeFill()
     }
@@ -63,7 +63,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      *
      */
     func line(){
-        Swift.print("SVGGraphic.line()")
+        //Swift.print("SVGGraphic.line()")
         applyLineStyle();
         stylizeLine()
     }
@@ -73,7 +73,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
-        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/) {
             //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
@@ -92,7 +92,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
-        Swift.print("SVGGraphic.applyLineStyle()")
+        //Swift.print("SVGGraphic.applyLineStyle()")
         if(!style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }/*else if(style!.stroke is SVGGradient){

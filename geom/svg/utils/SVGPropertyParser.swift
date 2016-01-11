@@ -44,7 +44,7 @@ class SVGPropertyParser {
 		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
             //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any = SVGStyleParser.fill(property(xml,"fill"), container)
-            Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
+            //Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
 			let fillRule:String? = property(xml,"fill-rule")
 			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"))
