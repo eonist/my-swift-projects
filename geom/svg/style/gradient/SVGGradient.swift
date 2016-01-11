@@ -22,6 +22,10 @@ class SVGGradient:SVGElement{
 		self.spreadMethod = spreadMethod;
 		self.gradientUnits = gradientUnits;/*Sets whether you want to use the viewbox ('userSpaceOnUse') or the the shape the gradient is applied to, for the calculation of x1, y1 and x2,y2.*/
 		self.gradientTransform = gradientTransform;/**/
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
 		super.init(id);
 	}
 }
