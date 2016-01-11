@@ -42,8 +42,8 @@ class SVGGraphicModifier {
         
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         
-        let p1:CGPoint = CGPoint(gradient.x1,gradient.y1);
-		let p2:CGPoint = CGPoint(gradient.x2,gradient.y2);
+        let p1:CGPoint? = !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
+        let p2:CGPoint? = !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
 
         //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
         
@@ -62,7 +62,7 @@ class SVGGraphicModifier {
         //The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
         
         
-        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil)
+        let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2)
         graphic.fillShape.graphics.gradientFill(grad)
     }
 }

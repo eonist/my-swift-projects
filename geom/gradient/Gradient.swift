@@ -28,7 +28,7 @@ public class Gradient:IGradient{/*<---its public so that it works in playground*
     public var relativeEndRadius:CGSize?//0 to 1 (same as relativeStartRadius)
     public var p1:CGPoint?/*<--temp*/
     public var p2:CGPoint?
-    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, p1:CGPoint? = nil, p2:CGPoint? = nil){/*,*/
+    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ gradientType:GradientType = GradientType.Linear,_ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/,_ relativeStartCenter:CGPoint? = nil,_ relativeEndCenter:CGPoint? = nil,_ relativeStartRadius:CGSize? = nil,_ relativeEndRadius:CGSize? = nil, _ p1:CGPoint? = nil, _ p2:CGPoint? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)
