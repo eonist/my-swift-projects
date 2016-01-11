@@ -18,6 +18,7 @@ class SVGGraphicModifier {
     }
     /**
      * Begins a gradient fill on @param graphics with @param gradient
+     * @NOTE: we use the Shape instance here because we need the frame offset to calculate the correct gradient p1 and p2 when using userspace
      */
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
         let graphics:Graphics = shape.graphics
@@ -48,6 +49,10 @@ class SVGGraphicModifier {
             let p1:CGPoint? = userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? CGPoint(gradient.x1,gradient.y1) :nil
             let p2:CGPoint? = userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? CGPoint(gradient.x2,gradient.y2) :nil
             
+            if(userSpaceOnUse){
+                p1 -= shape.frame.origin
+                p2 -= shape.frame.origin
+            }
             //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
             
             //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
