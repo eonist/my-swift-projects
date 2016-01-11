@@ -2,7 +2,9 @@ import Foundation
 
 class GradientBoxUtils{
     /**
-     * Returns the start and end of a linear gradient (that fills an exact rectangle at any angle)
+     * Returns the start and end of a linear gradient (that fills an exact rectangle at any angle) (aka GradientBox)
+     * @NOTE: this is a really important method concerning gradients. And its pretty well coded and easy to understand. 
+     * @NOTE: there may be faster ways to calculate this so imporve it if its necassery
      */
     class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
         //let angle = Trig.normalize2(angle)/*normalizes the angle between between -π and π*/ //<----TODO: fix this problem in the cssPropertyparser not here
