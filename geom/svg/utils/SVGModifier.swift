@@ -31,16 +31,14 @@ class SVGModifier {
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:
                 //Swift.print("points:" + "\((element as! SVGPolygon).points)")
-                if(svgPolygon.style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
-                    SVGGradientModifier.scaleGradient(&(svgPolygon.style!.fill as! SVGGradient).gradientTransform,pivot,scale)
-                }
-                if(svgPolygon.style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
-                    SVGGradientModifier.scaleGradient(&(svgPolygon.style!.fill as! SVGGradient).gradientTransform,pivot,scale)
+               
+                if((element as! SVGPolygon).style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
+                    SVGGradientModifier.scaleGradient(&((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform,pivot,scale)
                 }
                 //Swift.print("svgPolygon.points: " + "\(svgPolygon.points.count)")
                 //Swift.print("pivot: " + "\(pivot)")
                 //Swift.print("scalePoint: " + "\(scalePoint)")
-                svgPolygon.points = PointModifier.scalePoints(svgPolygon.points, pivot, scalePoint)
+                (element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale)
                 
                 break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
