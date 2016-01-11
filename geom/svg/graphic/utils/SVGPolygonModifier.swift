@@ -7,7 +7,7 @@ class SVGPolygonModifier {
      * TODO: the scaling of the style should be abstracted to the SVGGraphic so you can reuse the code.
      */
     class func scale(svgPolygon:SVGPolygon,_ pivot:CGPoint,_ scalePoint:CGPoint) {
-        Swift.print("SVGPolygonModifier.scale() " + "\(svgPolygon)")
+        Swift.print("SVGPolygonModifier.scale() " + "\(svgPolygon.points)")
         if(svgPolygon.style != nil && svgPolygon.style!.fill is SVGGradient){
             SVGGradientModifier.scaleGradient(&(svgPolygon.style!.fill as! SVGGradient).gradientTransform,pivot,scalePoint)
         }
