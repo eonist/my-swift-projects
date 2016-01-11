@@ -203,6 +203,7 @@ private class Utils{
         var points:(start:CGPoint,end:CGPoint) = gradient.p1 != nil && gradient.p2 != nil ? (start:gradient.p1!,end:gradient.p2!) : GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
         Swift.print("points: " + "\(points)")
         if(gradient.transformation != nil){
+            
             points.start = CGPointApplyAffineTransform(points.start, gradient.transformation!)
             points.end = CGPointApplyAffineTransform(points.end, gradient.transformation!)
         }
