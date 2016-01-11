@@ -44,6 +44,15 @@ class SVGGraphicModifier {
         
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         
+        //userspace uses real coordinates, nonuserspace uses relative coordinates 0 - 1 etc
+        
+        //userSpaceOnUse — x1, y1, x2, y2 represent coordinates in the current user coordinate system. In other words the values in the gradient are absolute values.
+        
+        //objectBoundingBox — x1, y1, x2, y2 represent coordinates in a system established by the bounding box of the element to which the gradient is applied. In other words the gradient scales with the element it’s applied to.
+
+        
+        
+        
         let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,)
         
         
