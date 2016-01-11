@@ -53,7 +53,7 @@ class SVGGraphicModifier {
             
             //objectBoundingBox — x1, y1, x2, y2 represent coordinates in a system established by the bounding box of the element to which the gradient is applied. In other words the gradient scales with the element it’s applied to.
             
-            //there is also this: gradientTransform="rotate(-50)
+            //there is also this: gradientTransform="rotate(-50), there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
             
             //The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             
