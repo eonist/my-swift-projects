@@ -89,14 +89,16 @@ class SVGGraphic : SVGView,ISVGGraphic{
         }
     }
     /**
-     *
+     * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
-        if(style != nil && !style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
+        if(/*style != nil && */!style!.stroke.isNaN) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
-        }else{
+        }else if(style!.fill is SVGGradient){
             fatalError("not implemented yet")
+        }else{
+            //no stroke
         }
     }
     /**
