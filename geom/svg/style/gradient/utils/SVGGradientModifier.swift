@@ -9,6 +9,6 @@ class SVGGradientModifier {
         //fatalError("not implemented yet")
         
         if(gradient.gradientTransform != nil) {gradient.gradientTransform?.scaleFromPoint(scale.x, scale.y, pivot)}/*Scale the current applied matrix*/
-        else {gradient.gradientTransform = MatrixModifier.scale(new Matrix(), pivot, scale)}/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
+        else {gradient.gradientTransform = CGAffineTransform.scaleFromPoint(CGAffineTransform, <#T##xScale: CGFloat##CGFloat#>, <#T##yScale: CGFloat##CGFloat#>, <#T##pivot: CGPoint##CGPoint#>)}/*if there is no gradientTransform allready applied to the Gradient instnace, then apply a new Matrix instance w/ the correct scale*/
 	}
 }
