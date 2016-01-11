@@ -20,9 +20,9 @@ class SVGGraphicModifier {
     * Begins a gradient fill on @param graphics with @param gradient
     */
     class func beginGradientFill(graphic:SVGGraphic,gradient:SVGGradient) {
-        //			trace("beginGradientFill");
+        //Swift.print("SVGGraphicModifier.beginGradientFill");
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
-        //			trace("gradientType: " + gradientType);
+        //Swift.print("gradientType: " + gradientType);
         //var matrix:Matrix = Utils.matrix(graphic);
         if(gradient is SVGLinearGradient && gradient.gradientTransform != nil) {
             //matrix.concat(gradient.gradientTransform)
@@ -35,10 +35,10 @@ class SVGGraphicModifier {
         if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
             //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
         }
-        //			trace("focalPointRatio: " + focalPointRatio);
-        //			trace("gradient.colors: " + gradient.colors);
-        //			trace("gradient.opacities: " + gradient.opacities);
-        //			trace("gradient.offsets: " + gradient.offsets);
+        //Swift.print("focalPointRatio: " + focalPointRatio);
+        //Swift.print("gradient.colors: " + gradient.colors);
+        //Swift.print("gradient.opacities: " + gradient.opacities);
+        //Swift.print("gradient.offsets: " + gradient.offsets);
         
         //continue here: create a new gradient-rect with simpler values, i think you need to use the x1 x2 y1 y2 etc, also read about the gradient online
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";
