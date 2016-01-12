@@ -104,6 +104,10 @@ class SVGGraphicModifier {
             if(!((gradient as! SVGRadialGradient).fx).isNaN) {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
+            
+            
+            //continue here: 
+            
         }
     }
 }
