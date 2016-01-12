@@ -111,7 +111,7 @@ class SVGGraphicModifier {
             //then try to fit this into your current way of handeling gradients in the Graphics instance
             //we may need to support relative and absolute values when dealing with radial svg gradients asswell. see output from illustrator
             
-            //So what you do is that you forget about setting the value for the 
+            //So what you do is that you forget about setting the value for the innermost circle, always set this to 0% or 100% or something, if you need the innermost circle bigger this is done via the matrix transform and scaling the outermost circle down 
             
         }
     }
