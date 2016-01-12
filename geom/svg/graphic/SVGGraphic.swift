@@ -75,7 +75,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func beginFill(){
         Swift.print("SVGGraphic.beginFill()" + "\(style!.fill!))")
-        if(/*style != nil && */style!.fill! is Double/* && style!.fill != "none"*/) {
+        if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/) {
             Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             //Swift.print("colorVal: " + "\(colorVal)")
@@ -95,7 +95,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
-        //Swift.print("SVGGraphic.applyLineStyle()")
+        Swift.print("SVGGraphic.applyLineStyle()")
         if(style!.fill is Double) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }else if(style!.stroke is SVGGradient){
