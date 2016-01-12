@@ -107,6 +107,9 @@ class SVGGraphicModifier {
             
             
             //continue here: how does the css radial gradient work, see test cases, and do test cases.
+            //resserach how the radial gradient look in svg syntax and compare the two, 
+            //then try to fit this into your current way of handeling gradients in the Graphics instance
+            //we may need to support relative and absolute values when dealing with radial svg gradients asswell. see output from illustrator
             
             
         }
