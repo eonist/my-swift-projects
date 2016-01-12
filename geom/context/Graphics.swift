@@ -208,7 +208,7 @@ private class Utils{
             points.start = CGPointApplyAffineTransform(points.start, gradient.transformation!)
             points.end = CGPointApplyAffineTransform(points.end, gradient.transformation!)
         }
-        
+        Swift.print("points after: " + "\(points)")
         CGContextDrawLinearGradient(context, cgGradient, points.start, points.end , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
