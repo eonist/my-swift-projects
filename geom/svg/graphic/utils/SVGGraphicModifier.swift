@@ -21,14 +21,24 @@ class SVGGraphicModifier {
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
         SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        
         let graphics = shape.graphics
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         if(gradient is SVGLinearGradient){
-            
+            let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
+            var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
+            var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
+            if(gradient.gradientTransform != nil){
+                p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
+                p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+            }
+            if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+                p1 -= shape.frame.origin
+                p2 -= shape.frame.origin
+            }
+            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
+            graphics.gradientFill(grad)
         }
-        
         //shape.graphics.gradientLine()
     }
     
