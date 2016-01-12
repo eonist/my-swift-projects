@@ -19,9 +19,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
-        if(style != nil){
+        if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             //Swift.print("SVGGraphic.init() setNeedsDisplay()")
-            if(style != nil){draw()}/*this should porbably have a more complex assert for the sake of optimization*/
+            draw()
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
             /*drawLine();*/
