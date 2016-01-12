@@ -38,6 +38,7 @@ class SVGModifier {
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
 			case element is SVGGradient:
+                Swift.print("(element as! SVGGradient).gradientTransform: " + "\((element as! SVGGradient).gradientTransform)")
                 SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);
                 break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
