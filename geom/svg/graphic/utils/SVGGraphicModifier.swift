@@ -16,6 +16,8 @@ class SVGGraphicModifier {
         let color:NSColor = style.stroke is Double && !(style.stroke as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke as! Double, style.strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
+    class func applyGradient
+    
     /**
      * Begins a gradient fill on @param graphics with @param gradient
      * @NOTE: we use the Shape instance here because we need the frame offset to calculate the correct gradient p1 and p2 when using userspace
