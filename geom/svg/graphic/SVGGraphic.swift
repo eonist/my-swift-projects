@@ -24,6 +24,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             
             draw()
             
+            
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
             /*drawLine();*/
