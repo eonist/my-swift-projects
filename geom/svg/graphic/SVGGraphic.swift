@@ -23,8 +23,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             //Swift.print("SVGGraphic.init() setNeedsDisplay()")
             
             draw()
-            beginFill();
-            applyLineStyle()
+            
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
             /*drawLine();*/
@@ -57,7 +56,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func fill(){
         //Swift.print("SVGGraphic.fill()")
-        
+        beginFill();
         stylizeFill()
     }
     /**
@@ -65,7 +64,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func line(){
         //Swift.print("SVGGraphic.line()")
-        
+        applyLineStyle()
         stylizeLine()
     }
     /**
