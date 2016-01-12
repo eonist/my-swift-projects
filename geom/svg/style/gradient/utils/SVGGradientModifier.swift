@@ -6,7 +6,7 @@ class SVGGradientModifier {
 	 * @Note works for SVGRadialGradient and SVGLinearGradient
 	 */
 	class func scale(gradient:SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
-        Swift.print("SVGGradientModifier.scale()")
+        Swift.print("SVGGradientModifier.scale()" + "\(gradient.gradientTransform)")
         //fatalError("not implemented yet")
         scaleGradient(&gradient.gradientTransform,pivot,scale)
         Swift.print("gradient.gradientTransform: " + "\(gradient.gradientTransform)")
