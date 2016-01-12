@@ -57,17 +57,13 @@ class SVGGraphicModifier {
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         //Swift.print("gradientType: " + gradientType);
         //var matrix:Matrix = Utils.matrix(graphic);
-        if(gradient is SVGLinearGradient && gradient.gradientTransform != nil) {
-            //matrix.concat(gradient.gradientTransform)
-        }
+        
         //var spreadMethod:String = gradient.spreadMethod || SpreadMethod.PAD;
         //Swift.print("spreadMethod: " + spreadMethod);
         //var interpolationMethod:String = InterpolationMethod.RGB;/*InterpolationMethod.LINEAR_RGB*/
         //Swift.print("interpolationMethod: " + interpolationMethod);
         //let focalPointRatio:CGFloat = 0;/*from -1 to 1;*/
-        if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
-            //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
-        }
+        
         //Swift.print("focalPointRatio: " + focalPointRatio);
         //Swift.print("gradient.colors: " + gradient.colors);
         //Swift.print("gradient.opacities: " + gradient.opacities);
@@ -99,6 +95,13 @@ class SVGGraphicModifier {
             Swift.print("points after offset: " + "\([p1,p2])")
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             shape.graphics.gradientFill(grad)
+        }else{
+            if(gradient is SVGLinearGradient && gradient.gradientTransform != nil) {
+                //matrix.concat(gradient.gradientTransform)
+            }
+            if(gradient is SVGRadialGradient && !((gradient as! SVGRadialGradient).fx).isNaN) {
+                //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
+            }
         }
     }
 }
