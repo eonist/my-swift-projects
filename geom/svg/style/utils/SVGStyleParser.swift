@@ -63,6 +63,6 @@ class SVGStyleParser {
 	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
 	class func stroke(property:Any?, _ container:ISVGContainer)->Any! {
-        SVGStyleParser.fill(property, container)
+        SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
 }
