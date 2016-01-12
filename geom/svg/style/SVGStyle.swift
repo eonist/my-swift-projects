@@ -1,7 +1,10 @@
 import Foundation
-/**
- * // :TODO: impliment stroke-dasharray
- */
+ /**
+  * NOTE: Double.NaN represents stroke:"none" and nil represents no value for stroke, this is important when you export
+  * NOTE: Same logic goes for Fill
+  * NOTE: why do we use Double and not CGFloat for the color? I dont know, either works, why not use UInt? because UInt doesnt support NaN, May revert to using CGFloat in the future
+  * // :TODO: impliment stroke-dasharray
+  */
 class SVGStyle {
     var fill : Any?/*The fill color or SVGLinearGradient instance*/
     var fillOpacity : CGFloat/*A number ranging from 0.0 to 1.0; 0.0 is entirely transparent, 1.0 is entirely opaque.*/
@@ -13,9 +16,7 @@ class SVGStyle {
     var strokeLineJoin : String?
     var strokeMiterLimit : CGFloat
     
-    //CGFloat.NaN should probably be nil instead?
-    
-    init(_ fill:Any? = CGFloat.NaN,_ fillOpacity:CGFloat = CGFloat.NaN,_ fillRule:String? = nil,_ strokeWidth:CGFloat = CGFloat.NaN,_ stroke:Any? = CGFloat.NaN ,_ strokeOpacity:CGFloat = CGFloat.NaN,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat = CGFloat.NaN) {
+    init(_ fill:Any? = Double.NaN,_ fillOpacity:CGFloat = CGFloat.NaN,_ fillRule:String? = nil,_ strokeWidth:CGFloat = CGFloat.NaN,_ stroke:Any? = Double.NaN ,_ strokeOpacity:CGFloat = CGFloat.NaN,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat = CGFloat.NaN) {
         self.fill = fill;
         self.fillOpacity = fillOpacity;
         self.fillRule = fillRule;

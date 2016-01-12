@@ -13,7 +13,7 @@ class SVGGraphicModifier {
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
-        let color:NSColor = SVGStyleUtils.strokeColor(style.stroke, style.strokeOpacity)
+        let color:NSColor = SVGStyleUtils.strokeColor(style.stroke as! Double, style.strokeOpacity)
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
     /**
