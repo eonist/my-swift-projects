@@ -99,7 +99,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         if(style!.fill is Double) {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }else if(style!.stroke is SVGGradient){
-            SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
+            SVGGraphicModifier.applyGradientLineStyle(lineShape, style as! SVGGradient)
             
         }else{/*clear*/
             fatalError("not implemented yet")
