@@ -44,8 +44,7 @@ class SVGRect : SVGGraphic {
             Swift.print("rect: " + "\(rect)")
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
-            fatalError("the bellow line is wrong, check for ")
-            let fillFrame = style!.stroke is Double && !(style!.stroke as! Double).isNaN ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             Swift.print("fillFrame: " + "\(fillFrame)")
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             
