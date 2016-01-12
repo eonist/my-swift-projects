@@ -202,9 +202,9 @@ private class Utils{
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
     class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ gradient:IGradient){
-        Swift.print("Graphics.drawAxialGradient()")
-        Swift.print("gradient.p1: " + "\(gradient.p1)")
-        Swift.print("gradient.p2: " + "\(gradient.p2)")
+        //Swift.print("Graphics.drawAxialGradient()")
+        //Swift.print("gradient.p1: " + "\(gradient.p1)")
+        //Swift.print("gradient.p2: " + "\(gradient.p2)")
         //Swift.print("gradient.transformation: " + "\(gradient.transformation)")
         let points:(start:CGPoint,end:CGPoint) = gradient.p1 != nil && gradient.p2 != nil ? (start:gradient.p1!,end:gradient.p2!) : GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
         

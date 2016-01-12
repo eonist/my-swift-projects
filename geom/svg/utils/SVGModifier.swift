@@ -65,9 +65,9 @@ class SVGModifier {
 	class func update(graphic:ISVGGraphic) {
         //WARNING: this method is incomplete, needs correct order of calls etc
         
-		//graphic.clear();
-		//graphic.applyLineStyle();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
-		//graphic.beginFill();/*<--this was recently taken away, I think this call is called by swift it self down the line*/
+        graphic.beginFill();//we need to set this before we scale the frame etc, to get the right values
+		graphic.applyLineStyle();
+		
 		graphic.draw();/*<--draws the path with the new params*/
 		//graphic.endFill();
         graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
