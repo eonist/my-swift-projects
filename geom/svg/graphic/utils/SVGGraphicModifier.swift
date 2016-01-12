@@ -57,8 +57,8 @@ class SVGGraphicModifier {
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
             
             //the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
-            //you need to be able to derive variables from the svg graphic instance that reflect what should be in the export
-            //so base your
+            //you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
+            //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
             
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 p1 -= shape.frame.origin
