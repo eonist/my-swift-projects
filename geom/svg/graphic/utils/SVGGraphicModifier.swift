@@ -24,6 +24,10 @@ class SVGGraphicModifier {
         
         let graphics = shape.graphics
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
+        let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
+        if(gradient is SVGLinearGradient){
+            
+        }
         
         //shape.graphics.gradientLine()
     }
