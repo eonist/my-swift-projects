@@ -88,6 +88,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
         }else{
             //clear
+            Swift.print("no fill")
             fatalError("not implemented yet")
         }
     }
@@ -97,10 +98,13 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle()")
         if(style!.fill is Double) {/*updates only if lineStyle of class LineStyle*/
+            Swift.print("color")
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }else if(style!.stroke is SVGGradient){
+            Swift.print("gradient")
             SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style!)
         }else{/*clear*/
+            Swift.print("no stroke")
             fatalError("not implemented yet")
         }
     }
