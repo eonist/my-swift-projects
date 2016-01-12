@@ -16,7 +16,16 @@ class SVGGraphicModifier {
         let color:NSColor = style.stroke is Double && !(style.stroke as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke as! Double, style.strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
-    class func applyGradient
+    /**
+     *
+     */
+    class func applyGradientLineStyle(shape:Shape,_ gradient:SVGGradient){
+        super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed
+            Swift.print("lineStyle is GradientLineStyle")
+            LineStyleModifier.lineGradientStyle(graphic.lineShape.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
+        }//else{fatalError("NOT CORRECT lineStyle")}
+    }
     
     /**
      * Begins a gradient fill on @param graphics with @param gradient
