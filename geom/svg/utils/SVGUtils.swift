@@ -138,10 +138,13 @@ class SVGUtils {
 	  * // :TODO: move to an internal class
 	  */
 	 class func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
+        
+         //this method is missing support for gradient (Get ques from the old SVGPropertyParser)
+        
          xml["fill"] = graphic.style!.fill is Double && !((graphic.style!.fill as! Double).isNaN) ? "#"+ColorUtils.hexString(UInt(graphic.style!.fill as! Double)):"none"
-		 xml["stroke"] = graphic.style!.stroke is Double ? "#"+ColorUtils.hexString(UInt(graphic.style!.stroke)):"none"
+		 xml["stroke"] = graphic.style!.stroke is Double ? "#"+ColorUtils.hexString(UInt(graphic.style!.stroke as! Double)):"none"
          if(!graphic.style!.strokeWidth.isNaN && graphic.style!.strokeWidth != 1) {xml["stroke-width"] = "\(graphic.style!.strokeWidth)"}
-		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from SVGPropertyParser.as)
+		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from the old SVGPropertyParser)
 		 return xml;
 	 }
 }
