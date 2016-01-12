@@ -43,10 +43,10 @@ class SVGStyleParser {
 	class func fill(var property:Any?,_ container:ISVGContainer)->Any!/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
-            property = Double.NaN
+            property = nil
         }
         else if(property! is String && (property as! String) == "none") {
-            property = "none"
+            property = Double.NaN
         }
         else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
             property = Double(StringParser.color(property as! String))
