@@ -21,10 +21,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){
             //Swift.print("SVGGraphic.init() setNeedsDisplay()")
-            if(style != nil){draw()}/*this should porbably have a more complex assert for the sake of optimization*/
+            
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
-            /*drawLine();*/
+            if(style != nil){draw()}/*this should porbably have a more complex assert for the sake of optimization*/
+            
             
             //continue here: figure out this problem: CALayer position contains NaN: [nan nan]
 
