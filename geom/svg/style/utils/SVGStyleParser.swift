@@ -63,6 +63,9 @@ class SVGStyleParser {
 	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
 	class func stroke(property:Any?)->Double {
+        
+        //continue here: implement support for gradient as stroke like you did with the fill method
+        
 		return property == nil || property as! String == "none" ? Double.NaN : Double(StringParser.color(property as! String));
 	}
 }

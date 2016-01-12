@@ -118,7 +118,7 @@ class StringParser{
      * Returns an rgb value
      */
     class func color(hexColor:String, _ alpha: Float = 1.0) -> UInt{
-        Swift.print("hexColor: " + "\(hexColor)")
+        //Swift.print("StringParser.hexColor: " + "\(hexColor)")
         let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
