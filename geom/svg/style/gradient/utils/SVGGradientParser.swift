@@ -93,9 +93,9 @@ private class Utils{
 		let id:String = SVGPropertyParser.id(xml);
         //Swift.print("id: " + "\(id)")
 		let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml);
+        Swift.print("SVGGradientParser.gradient() gradientTransform: " + "\(gradientTransform)")
         
         
-        //continue here, uncomment the above line
         
         
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits,gradientTransform)/**/
