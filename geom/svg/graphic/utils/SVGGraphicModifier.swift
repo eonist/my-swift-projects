@@ -19,10 +19,13 @@ class SVGGraphicModifier {
     /**
      *
      */
-    class func applyGradientStrokeStyle(shape:Shape,_ gradient:SVGGradient){
-        SVGGraphicModifier.applyStrokeStyle(shape.graphics)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+    class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
+        SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         
-        shape.graphics.gradientLine(gradient)
+        let graphics = shape.graphics
+        let gradient:SVGGradient = (style.stroke! as! SVGGradient)
+        
+        //shape.graphics.gradientLine()
     }
     
     /**
