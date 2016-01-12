@@ -19,12 +19,10 @@ class SVGGraphicModifier {
     /**
      *
      */
-    class func applyGradientLineStyle(shape:Shape,_ gradient:SVGGradient){
-        super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed
-            Swift.print("lineStyle is GradientLineStyle")
-            LineStyleModifier.lineGradientStyle(graphic.lineShape.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
-        }//else{fatalError("NOT CORRECT lineStyle")}
+    class func applyGradientStrokeStyle(shape:Shape,_ gradient:SVGGradient){
+        SVGGraphicModifier.applyStrokeStyle(shape.graphics)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+        
+        shape.graphics.gradientLine(gradient)
     }
     
     /**
