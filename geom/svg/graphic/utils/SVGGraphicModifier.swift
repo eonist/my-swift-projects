@@ -71,7 +71,7 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }
-            Swift.print("p1: after " + "\(p1)")
+            Swift.print("points after offset: " + "\([p1,p2])")
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             graphics.gradientFill(grad)
         }
