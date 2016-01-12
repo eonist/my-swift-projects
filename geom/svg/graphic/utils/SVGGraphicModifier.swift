@@ -56,7 +56,7 @@ class SVGGraphicModifier {
             Swift.print("p1: " + "\(p1)")
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
             
-            //the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
+            //Continue here; the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
             //you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
             //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
             
