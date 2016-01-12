@@ -34,8 +34,6 @@ public class Graphics{
         if(NSGraphicsContext.currentContext() != nil){
             let graphicsContext = NSGraphicsContext.currentContext()!
             self.context = graphicsContext.CGContext/* Get the handle to the current context */
-            
-            
         }
     }
     /**
@@ -43,6 +41,7 @@ public class Graphics{
      * EXAMPLE: fill(context,NSColor.greenColor())
      * TODO: add support for CGContextSetRGBFillColor in the future
      * Note: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
+     * @NOTE this method can be called pre context
      */
     public func fill(color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
@@ -62,6 +61,7 @@ public class Graphics{
      * Set the current line style
      * NOTE: there is also a CGContextStrokePath(context) method availbale
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
+     * @NOTE this method can be called pre context
      */
     public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10){
         //Swift.print("context: " + "\(context)")
@@ -78,6 +78,7 @@ public class Graphics{
      * Set the current  gradient line style
      * Note: width is set by the method line
      * TODO: Contemplate including lineWidth etc in this call
+     * @NOTE this method can be called pre context
      */
     public func gradientLine(gradient:IGradient){
         strokeMode = StrokeMode.Gradient
@@ -86,6 +87,7 @@ public class Graphics{
     }
     /**
      * Stop all subsequent filling
+     * @NOTE this method can be called pre context
      */
     public func stopFill(){
         //set the fill mode to void
@@ -94,6 +96,7 @@ public class Graphics{
     /**
      * Stop all subsequent stroking
      * Note could also potentially be called resetStroke, clearStroke etc or be omitted see old code
+     * @NOTE this method can be called pre context
      */
     public func stopStroke(){
         strokeMode = StrokeMode.None
@@ -102,6 +105,7 @@ public class Graphics{
     }
     /**
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
+     * @NOTE this method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
     public func draw(path:CGPath){
         //Swift.print("Grpahics.draw() ")
