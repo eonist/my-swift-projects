@@ -25,30 +25,13 @@ class SVGModifier {
 	 * @Note this method is recursive
 	 * @example SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
      * @NOTE: The stroke thickness isnt scaled, is this correct or?
+     * @NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc
 	 */
 	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		switch(true){
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:
-                //Swift.print("points:" + "\((element as! SVGPolygon).points)")
-                /*
-                if((element as! SVGPolygon).style != nil && (element as! SVGPolygon).style!.fill is SVGGradient){
-                    Swift.print("SVGPolygon.scale()")
-                    SVGGradientModifier.scaleGradient(&((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform,pivot,scale)
-                }
-                Swift.print("transform: " + "\(((element as! SVGPolygon).style!.fill as! SVGGradient).gradientTransform)")
-                */
-                
-                
-                
-                //continue here: it appears that that the  is enough.
-                //You will need to figure out why gradient.transformation: nil when it gets to the Grphics instance
-                
-                
-                
-                //Swift.print("svgPolygon.points: " + "\(svgPolygon.points.count)")
-                //Swift.print("pivot: " + "\(pivot)")
-                //Swift.print("scalePoint: " + "\(scalePoint)")
+               
                 (element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale)
                 
                 break;
