@@ -95,6 +95,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
     /**
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
+    
+    
+    //continue here: 
+    
+    
     func applyLineStyle(){
         Swift.print("SVGGraphic.applyLineStyle() style fill: " + "\(style!.fill)")
         if(style!.fill is Double) {/*updates only if lineStyle of class LineStyle*/
