@@ -106,7 +106,8 @@ class SVGGraphicModifier {
             }
             
             
-            //continue here: 
+            //continue here: how does the css radial gradient work, see test cases, and do test cases.
+            
             
         }
     }
