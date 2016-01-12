@@ -71,7 +71,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
-        //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/) {
             //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
@@ -81,6 +81,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             //Swift.print("color: " + "\(color)")
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }else if(style!.fill is SVGGradient){//<- may need to use dynamixtype to assert this?!?
+            Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
             SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
         }else{
             fatalError("not implemented yet")
