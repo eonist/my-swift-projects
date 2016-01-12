@@ -10,7 +10,7 @@ class SVGStyleParser {
 		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
 		let fillRule:String? = inlineStyle["fill-rule"]
-		let stroke:Double = SVGStyleParser.stroke(inlineStyle["stroke"])
+		let stroke:Any = SVGStyleParser.stroke(inlineStyle["stroke"], container)
 		let strokeWidth:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-width"])
 		let strokeOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-opacity"])
 		let strokeLineCap:String? = inlineStyle["stroke-linecap"]
@@ -40,7 +40,7 @@ class SVGStyleParser {
 	/**
 	 * @param container the parent container of the svg element querried for
 	 */
-	class func fill(var property:Any?,_ container:ISVGContainer)->Any!/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested
+	class func fill(var property:Any?,_ container:ISVGContainer)->Any!/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = nil
@@ -62,7 +62,7 @@ class SVGStyleParser {
 	/**
 	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	class func stroke(property:Any?, _ container:ISVGContainer)->Any! {
-        SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
+	class func stroke(property:Any?, _ container:ISVGContainer)->Any! {//<-- this doesnt have to be Any! it can be Any?
+        return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
 }
