@@ -51,6 +51,7 @@ public class Graphics{
     }
     /*
      * Initiate gradient filling
+     * @NOTE this method can be called pre context
      */
     public func gradientFill(gradient:IGradient/*IGradient*/){
         fillMode = FillMode.Gradient
