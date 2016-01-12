@@ -13,7 +13,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      * @NOTE: this method calls two sub methods so that SVGPolyLine can use this class as a base method
      */
     override func draw() {
-        //Swift.print("SVGPolygon.drawFill()")
+        Swift.print("SVGPolygon.draw()")
         /*Fill*/
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         Swift.print("boundingBox: " + "\(boundingBox)")
