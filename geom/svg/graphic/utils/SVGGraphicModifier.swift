@@ -57,7 +57,7 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }
-            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse,)
+            let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse,gradient.gradientTransform)
             graphics.gradientFill(grad)
         }
     }
