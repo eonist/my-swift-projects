@@ -97,12 +97,12 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     
     
-    //continue here: 
+    //continue here:
     
     
     func applyLineStyle(){
-        Swift.print("SVGGraphic.applyLineStyle() style fill: " + "\(style!.fill)")
-        if(style!.fill is Double) {/*updates only if lineStyle of class LineStyle*/
+        Swift.print("SVGGraphic.applyLineStyle() style stroke: " + "\(style!.stroke)")
+        if(style!.stroke is Double) {/*updates only if lineStyle of class LineStyle*/
             Swift.print("color")
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }else if(style!.stroke is SVGGradient){
