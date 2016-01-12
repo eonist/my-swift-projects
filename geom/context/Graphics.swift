@@ -201,14 +201,8 @@ private class Utils{
         Swift.print("gradient.p1: " + "\(gradient.p1)")
         Swift.print("gradient.p2: " + "\(gradient.p2)")
         Swift.print("gradient.transformation: " + "\(gradient.transformation)")
-        var points:(start:CGPoint,end:CGPoint) = gradient.p1 != nil && gradient.p2 != nil ? (start:gradient.p1!,end:gradient.p2!) : GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
-        Swift.print("points: " + "\(points)")
-        if(gradient.transformation != nil){
-            Swift.print("drawAxialGradient() gradient.transformation()")
-            points.start = CGPointApplyAffineTransform(points.start, gradient.transformation!)
-            points.end = CGPointApplyAffineTransform(points.end, gradient.transformation!)
-        }
-        Swift.print("points after: " + "\(points)")
+        let points:(start:CGPoint,end:CGPoint) = gradient.p1 != nil && gradient.p2 != nil ? (start:gradient.p1!,end:gradient.p2!) : GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
+        
         CGContextDrawLinearGradient(context, cgGradient, points.start, points.end , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
