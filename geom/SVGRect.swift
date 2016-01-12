@@ -46,6 +46,7 @@ class SVGRect : SVGGraphic {
             fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
             let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             Swift.print("fillFrame: " + "\(fillFrame)")
+            //TODO: you can set the frame to the rect, no need for the fancy frame creation method
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             
             //TODO: you need to check to see if line is needed before you draw the line path
