@@ -55,6 +55,10 @@ class SVGGraphicModifier {
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             Swift.print("p1: " + "\(p1)")
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
+            
+            //the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
+            
+            
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
