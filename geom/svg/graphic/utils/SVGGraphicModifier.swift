@@ -37,9 +37,8 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
-            graphics.gradientFill(grad)
+            shape.graphics.gradientLine(grad)
         }
-        //shape.graphics.gradientLine()
     }
     
     /**
@@ -100,8 +99,6 @@ class SVGGraphicModifier {
             Swift.print("points after offset: " + "\([p1,p2])")
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             graphics.gradientFill(grad)
-            
-            //continue here: you need to calc the grad b4 you draw the path, simple as that
         }
     }
 }
