@@ -47,7 +47,7 @@ class SVGPropertyParser {
             //Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
 			let fillRule:String? = property(xml,"fill-rule")
-			let stroke:Double = SVGStyleParser.stroke(property(xml,"stroke"))
+			let stroke:Any = SVGStyleParser.stroke(property(xml,"stroke"),container)
 			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
             //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
