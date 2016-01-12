@@ -20,8 +20,8 @@ class SVGGraphicModifier {
      *
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
+        Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
         SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        let graphics = shape.graphics
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         if(gradient is SVGLinearGradient){
@@ -40,7 +40,6 @@ class SVGGraphicModifier {
             shape.graphics.gradientLine(grad)
         }
     }
-    
     /**
      * Begins a gradient fill on @param graphics with @param gradient
      * @NOTE: we use the Shape instance here because we need the frame offset to calculate the correct gradient p1 and p2 when using userspace
@@ -52,7 +51,7 @@ class SVGGraphicModifier {
      * @NOTE: The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
      */
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
-        let graphics:Graphics = shape.graphics
+        //let graphics:Graphics = shape.graphics
         //Swift.print("SVGGraphicModifier.beginGradientFill");
         let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         //Swift.print("gradientType: " + gradientType);
@@ -98,7 +97,7 @@ class SVGGraphicModifier {
             }
             Swift.print("points after offset: " + "\([p1,p2])")
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
-            graphics.gradientFill(grad)
+            shape.graphics.gradientFill(grad)
         }
     }
 }
