@@ -40,7 +40,7 @@ class SVGStyleParser {
 	/**
 	 * @param container the parent container of the svg element querried for
 	 */
-	class func fill(var property:Any?,_ container:ISVGContainer)->Any!/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
+	class func fill(var property:Any?,_ container:ISVGContainer)->Any?/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = nil
@@ -62,7 +62,7 @@ class SVGStyleParser {
 	/**
 	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	class func stroke(property:Any?, _ container:ISVGContainer)->Any! {//<-- this doesnt have to be Any! it can be Any?
+	class func stroke(property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesnt have to be Any! it can be Any?
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
 }
