@@ -28,7 +28,7 @@ class SVGEllipse : SVGGraphic{
             let x:CGFloat = (!cx.isNaN ? cx : 0) - rx
             let y:CGFloat = (!cy.isNaN ? cy : 0) - ry
             let rect:CGRect = CGRect(x, y, rx*2, ry*2)
-            let fillFrame = style!.stroke is Double && !(style!.stroke as! Double).isNaN ? RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ? RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.ellipse(rect.width, rect.height, 0, 0)
             /*Line*/
