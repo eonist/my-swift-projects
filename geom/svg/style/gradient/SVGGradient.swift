@@ -1,6 +1,13 @@
 import Foundation
 /*
  * // :TODO: add an example here
+ * @FACT: gradientUnits="'userSpaceOnUse' or 'objectBoundingBox'. Use the view box or object to determine relative position of vector points. (Default 'objectBoundingBox')"
+ * @FACT: gradientTransform="the transformation to apply to the gradient"
+ * @FACT: x1="the x start point of the gradient vector (number or % - 0% is default)"
+ * @FACT: y1="the y start point of the gradient vector. (0% default)"
+ * @FACT: x2="the x end point of the gradient vector. (100% default)"
+ * @FACT: y2="the y end point of the gradient vector. (0% default)"
+ *
  * @NOTE: there is also preserveAspectRatio in the SVG specs
  * @NOTE: The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
  * @NOTE: I think setting gradientUnits as objectBoundingBox is the same thing setting no value for this variable (Tests confirm this)
