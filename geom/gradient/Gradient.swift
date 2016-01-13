@@ -10,12 +10,9 @@ public enum GradientType:Int{//TODO:move to its own class?
  * NOTE: the scalar values are subjected to change, if -1 to +1 makes more sense when doing the polar point calculations etc
  * TODO: Find that medium article on axial gradient. the one that looks like a "spread out patonefan"
  * TODO: create two Gradient classes the extends a common Gradient class. LinearGradient and RadialGradient, ILinearGradient, IRadialGradient etc
+ * TODO: revamp the gradient system, you need transformation and gradientbox should be applied as a transformation not in graphics.
  */
 public class Gradient:IGradient{/*<---its public so that it works in playground*/
-    
-    
-    //continue here: revamp the gradient system, you need transformation and gradientbox should be applied as a transformation not in graphics.
-    //but in order to keep thing s moving, add a few more params and see if it works, add p1 and p2, then come back later to revamp the gradient lib
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
     public var gradientType:GradientType//TODO: rename to type
