@@ -12,6 +12,15 @@ public enum GradientType:Int{//TODO:move to its own class?
  * TODO: create two Gradient classes the extends a common Gradient class. LinearGradient and RadialGradient, ILinearGradient, IRadialGradient etc
  * TODO: revamp the gradient system, you need transformation and gradientbox should be applied as a transformation not in graphics.
  */
+
+
+
+//Continue here: in order to move forward we need to seperate radial and linear gradient types. this class should provide the common denominator of the two possible three (concial gradient)
+//Radial gradient should maybe suport a dual system of focal and 2 point system
+//Linear and Radial should support both absolute and relative values and also both boundingbox and ...or only bounding box?
+
+
+
 public class Gradient:IGradient{/*<---its public so that it works in playground*/
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>
