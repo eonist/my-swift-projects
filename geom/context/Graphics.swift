@@ -221,11 +221,11 @@ private class Utils{
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         
-        let radialGradient = RadialGradientUtils.radialGradient(boundingBox,gradient)
+        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)
         
         CGContextSaveGState(context)/*save the current context*/
-        CGContextConcatCTM(context, transform)/*transform the current context*/
-        CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextConcatCTM(context, rg.transform)/*transform the current context*/
+        CGContextDrawRadialGradient(context, cgGradient, rg.startCenter, rg.startRadius, rg.endCenter, rg.endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)/*restore the context that was saved*/
         
         /**/
@@ -285,14 +285,14 @@ circle. The location 0 of `gradient' corresponds to a circle centered at
 corresponds to a circle centered at `endCenter' with radius `endRadius';
 colors are linearly interpolated between these two circles based on the
 values of the gradient's locations. The option flags control whether the
-gradient is drawn before the start circle or after the end circle. 
+gradient is drawn before the start circle or after the end circle.
 */
 
 private class RadialGradientUtils{
     /**
-     *
+     * @NOTE: needs better explinations
      */
-    class func radialGradient(boundingBox:CGRect,gradient:IGradient){
+    class func radialGradient(boundingBox:CGRect,_ gradient:IGradient)->(startCenter:CGPoint,endCenter:CGPoint,startRadius:CGFloat,endRadius:CGFloat,transform:CGAffineTransform){
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
@@ -304,8 +304,7 @@ private class RadialGradientUtils{
         let scale:CGPoint = CGPoint(gradient.relativeStartRadius!.width,gradient.relativeStartRadius!.height)
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.relativeStartCenter!.x),-minRadius + (minAxis*gradient.relativeStartCenter!.y))
         let transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, offset, startCenter)//CGAffineTransformMakeTranslation(x, y);
-        
-        //the calculations above should be done in an Utils method and have a better explinations
+        return (startCenter,endCenter,startRadius,endRadius,transform)
     }
 }
 //NOte there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
