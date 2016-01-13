@@ -29,6 +29,9 @@ You need to operate in percentage values from left to right, and you need to do 
 @NOTE: Support Matrix transformation
  
  
+TODO: when you set the gradient points use absolute values, there is no need to use % values, you can doo all the GradientBox calculations in the Graphic instance etc, Keep Graphics simple.
+TODO: 
+ 
 */
  
 //Continue here: in order to move forward we need to seperate radial and linear gradient types. this class should provide the common denominator of the two possible three (concial gradient)
