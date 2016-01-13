@@ -18,7 +18,7 @@ public enum GradientType:Int{//TODO:move to its own class?
  /*
 OK so here is the thing, you need to operate in percentage values from left to right, and you need to do this in the coordinate system of the boundingbox of the path
 @NOTE: svg will need to operate in boundingbox and viewbox coordinatespace. when svg uses the viewbox coordinatespace you just use the boundingbox and offset the gradient points percentage wise. 
-@NOTE: 
+@NOTE: css 
  
  
 */
