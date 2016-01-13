@@ -5,7 +5,7 @@ import Foundation
 
 Ok so here is how gradient works
 
-if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the 
+if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. The rub is that no matter what the line needs to pass the center of the object but also be the width and height of the viewbox, to do this you can 
 
 
 
