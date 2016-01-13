@@ -5,7 +5,7 @@ import Foundation
 
 Ok so here is how gradient works
 
-if you use userSpaceOnUse and % values from 0 to 100% then 
+if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the 
 
 
 
