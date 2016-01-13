@@ -14,6 +14,15 @@ public enum GradientType:Int{//TODO:move to its own class?
  */
 
 
+ 
+ /*
+OK so here is the thing, you need to operate in percentage values from left to right, and you need to do this in the coordinate system of the boundingbox of the path
+@NOTE: svg will need to operate in boundingbox and viewbox coordinatespace. when svg uses the viewbox coordinatespace you just use the boundingbox and offset the gradient points percentage wise. 
+@NOTE: 
+ 
+ 
+*/
+ 
 //Continue here: in order to move forward we need to seperate radial and linear gradient types. this class should provide the common denominator of the two possible three (concial gradient)
 //Radial gradient should maybe suport a dual system of focal and 2 point system
 //Linear and Radial should support both absolute and relative values and also both boundingbox and ...or only bounding box? Think!
