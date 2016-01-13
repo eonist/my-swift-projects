@@ -5,8 +5,9 @@ import Foundation
 
 Ok so here is how gradient works
 
-1. if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. 
-2. if you use userSpaceOnUse and non-percentage values then the gradient points are set in the coordinatespce of the viewBox..confirm this
+1. if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. multiply width and height with 0 to 1 to represent 0% to 100% values
+2. if you use userSpaceOnUse and non-percentage values then the gradient points are set in the coordinatespce of the viewBox
+3. if you use objectBoundingBox
 
 
  * @FACT: gradientUnits="'userSpaceOnUse' or 'objectBoundingBox'. Use the view box or object to determine relative position of vector points. (Default 'objectBoundingBox')"
