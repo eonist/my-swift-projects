@@ -38,8 +38,8 @@ You need to operate in percentage values from left to right, and you need to do 
 
 public class Gradient:IGradient{/*<---its public so that it works in playground*/
     public var colors:Array<CGColor>
-    public var locations:Array<CGFloat>
-    public var gradientType:GradientType//TODO: rename to type
+    public var locations:Array<CGFloat>/*same as color stops*/
+    public var gradientType:GradientType//TODO: rename to type TODO: use Linear and Radial gradient to represent type
     public var rotation:CGFloat;/*this doesnt belong here, you apply rotations in the matrix, for now its fine*/
     public var relativeStartCenter:CGPoint?//0 to 1 (x:0.5 means half way accross the boundingbox etc) (from the intersection of the normal and an edge in the boundingbox)(ACtually use scalar values from -1 to 0 to +1 since 1 is absolutly presice aposed to 0.5 which can return fractions. zero is also absolute)
     public var relativeEndCenter:CGPoint?//0 to 1 (same as relativeEndCenter)
