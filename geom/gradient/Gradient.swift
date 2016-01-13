@@ -30,7 +30,11 @@ You need to operate in percentage values from left to right, and you need to do 
  
  
 TODO: when you set the gradient points use absolute values, there is no need to use % values, you can doo all the GradientBox calculations in the Graphic instance etc, Keep Graphics simple.
-TODO: setup gradient tests for css,graphic framework, svg
+TODO: setup gradient tests for css,graphic framework, svg. all different gradients and offsets, everything should work. also matrix transformations etc
+TODO: start by setting up a grid of Graphic framework gradients
+TODO: then do the css gradient tests
+TODO: then setup the svg gradients
+TODO: then start refactoring the Graphics class related to the Gradient config methods etc, and start moving them into GradientGraphic etc. 
  
 */
  
