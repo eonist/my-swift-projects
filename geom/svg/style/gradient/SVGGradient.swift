@@ -1,6 +1,14 @@
 import Foundation
 /*
  * // :TODO: add an example here
+
+
+Ok so here is how gradient works
+
+if you use userSpaceOnUse and % values from 0 to 100% then 
+
+
+
  * @FACT: gradientUnits="'userSpaceOnUse' or 'objectBoundingBox'. Use the view box or object to determine relative position of vector points. (Default 'objectBoundingBox')"
  * @FACT: gradientTransform="the transformation to apply to the gradient"
  * @FACT: x1="the x start point of the gradient vector (number or % - 0% is default)"
