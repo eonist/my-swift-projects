@@ -1,16 +1,11 @@
 import Foundation
 /*
  * // :TODO: add an example here
-
-
-Ok so here is how gradient works
-
-1. if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. multiply width and height with 0 to 1 to represent 0% to 100% values
-2. if you use userSpaceOnUse and non-percentage values then the gradient points are set in the coordinatespce of the viewBox (aboslute values)
-3. if you use objectBoundingBox and % values from 0 to 100% then the boundingbox of the path is used to calculate the postion of the gradient start and end. multiply with and height with 0 to 1 to represent 0% to 100% values
-4. if you use objectBoundingBox and non-percentage values then the points are set in the coordinatespace of the boundingBox of the path (aboslute values)
-
-
+ *
+ * @FACT: 1. if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. multiply width and height with 0 to 1 to represent 0% to 100% values
+ * @FACT: 2. if you use userSpaceOnUse and non-percentage values then the gradient points are set in the coordinatespce of the viewBox (aboslute values)
+ * @FACT: 3. if you use objectBoundingBox and % values from 0 to 100% then the boundingbox of the path is used to calculate the postion of the gradient start and end. multiply with and height with 0 to 1 to represent 0% to 100% values
+ * @FACT: 4. if you use objectBoundingBox and non-percentage values then the points are set in the coordinatespace of the boundingBox of the path (aboslute values)
  * @FACT: gradientUnits="'userSpaceOnUse' or 'objectBoundingBox'. Use the view box or object to determine relative position of vector points. (Default 'objectBoundingBox')"
  * @FACT: gradientTransform="the transformation to apply to the gradient"
  * @FACT: x1="the x start point of the gradient vector (number or % - 0% is default)"
@@ -19,9 +14,6 @@ Ok so here is how gradient works
  * @FACT: y2="the y end point of the gradient vector. (0% default)"
  *
  * @NOTE: there is also preserveAspectRatio in the SVG specs
- * @NOTE: The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
- * @NOTE: I think setting gradientUnits as objectBoundingBox is the same thing setting no value for this variable (Tests confirm this)
- * @NOTE: I futher think that objectBoundingBox only works with % variables for the x1,y1,x2,y2 variables (Tests confirm this)
  */
 class SVGGradient:SVGElement{
 	var offsets : Array<CGFloat>/*How far into the shape this color starts (if the first color of the gradient) or stops (if the last color of the gradient). Specified as percentages of the shape (really the gradient vector) the gradient is applied to. For instance, 10% means that the color should start / stop 10% into the shape.*/
