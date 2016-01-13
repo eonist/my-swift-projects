@@ -287,6 +287,7 @@ extension Graphics{//private class ShadowUtils
         }
     }
 }
+private 
 //NOte there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
 
 /*_ graphicsContext:NSGraphicsContext*//*context:CGContextRef*/
