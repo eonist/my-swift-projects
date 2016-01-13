@@ -220,10 +220,8 @@ private class Utils{
         CGContextAddPath(context,path)//Adds the path to the context
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
-        
-        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)
-        
         CGContextSaveGState(context)/*save the current context*/
+        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
         CGContextConcatCTM(context, rg.transform)/*transform the current context*/
         CGContextDrawRadialGradient(context, cgGradient, rg.startCenter, rg.startRadius, rg.endCenter, rg.endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)/*restore the context that was saved*/
