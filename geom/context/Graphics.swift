@@ -232,6 +232,9 @@ private class Utils{
         let scale:CGPoint = CGPoint(gradient.relativeStartRadius!.width,gradient.relativeStartRadius!.height)
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.relativeStartCenter!.x),-minRadius + (minAxis*gradient.relativeStartCenter!.y))
         let transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, offset, startCenter)//CGAffineTransformMakeTranslation(x, y);
+        
+        //the calculations above should be done in an Utils method and have a better explinations
+        
         CGContextSaveGState(context)/*save the current context*/
         CGContextConcatCTM(context, transform)/*transform the current context*/
         CGContextDrawRadialGradient(context, cgGradient, startCenter, startRadius, endCenter, endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
