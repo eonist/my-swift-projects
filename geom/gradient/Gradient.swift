@@ -22,7 +22,7 @@ Solution:
 You need to operate in percentage values from left to right, and you need to do this in the coordinate system of the boundingbox of the path
 @NOTE: svg will need to operate in boundingbox and viewbox coordinatespace. when svg uses the viewbox coordinatespace you just use the boundingbox and offset the gradient points percentage wise. 
 @NOTE: css needs a different approach, when using the radial gradient it uses the percentage from the center etc, this can be done in the css classes tht then set the gradient classes of the Graphics instance
-@NOTE: The reason the Graphics class needs to operate with percentage values is because the 
+@NOTE: The reason the Graphics class needs to operate with percentage values is because the Graphics may be scaled
 @NOTE: Support Matrix transformation
  
  
