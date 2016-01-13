@@ -321,9 +321,10 @@ Fill the current clipping region of `context' with a linear gradient from
 `startPoint'; the location 1 of `gradient' corresponds to `endPoint';
 colors are linearly interpolated between these two points based on the
 values of the gradient's locations. The option flags control whether the
-gradient is drawn before the start point or after the end point. */
+gradient is drawn before the start point or after the end point. 
+*/
 
-/*
+
 
 
 /*
