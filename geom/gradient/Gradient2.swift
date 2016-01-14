@@ -12,6 +12,9 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
     public var locations:Array<CGFloat>/*same as color stops*/
     public var transformation:CGAffineTransform?
     public var useRelativeValues:Bool/*realtive or absolute values in 0,0 coordinatespace in the boundingbox of the path*/
+    
+    //Scaling the gradient could infact be the job of the caller after all, 
+    
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ transformation:CGAffineTransform? = nil,useRelativeValues:Bool = false){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
