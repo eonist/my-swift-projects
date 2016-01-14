@@ -5,3 +5,8 @@ protocol IGradient2 {
     var locations:Array<CGFloat>{get set}
     var transformation:CGAffineTransform?{get set}
 }
+extension IGradient2{
+    func copy() -> IGradient2 {
+        return Gradient2(colors,locations,transformation)
+    }
+}
