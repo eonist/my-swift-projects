@@ -290,6 +290,7 @@ private class RadialGradientUtils{
     /**
      * @NOTE: needs better explinations
      * @NOTE: in order to get a squashed radial gradient we need to use the transform. 
+     * @NOTE: the matrix that is provided needs to 
      */
     class func radialGradient(boundingBox:CGRect,_ gradient:IGradient)->(startCenter:CGPoint,endCenter:CGPoint,startRadius:CGFloat,endRadius:CGFloat,transform:CGAffineTransform){
         let startCenter:CGPoint = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
