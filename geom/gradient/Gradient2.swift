@@ -11,11 +11,9 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>/*same as color stops*/
     public var transformation:CGAffineTransform?
+    public var useRelativeValues:Bool/*realtive or absolute values in 0,0 coordinatespace in the boundingbox of the path*/
     
-    
-    //Scaling the gradient could infact be the job of the caller after all, since the boundingbox isnt allways the reference to work on, think what happens when you manipulate individual path points as oppose to scaling the entire shape at which point you should use the new scale and append this to the transform matrix, rather than calculating the new boundingbox each time
-    
-    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ transformation:CGAffineTransform? = nil,useRelativeValues:Bool = false){/*,*/
+    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ transformation:CGAffineTransform? = nil,_ useRelativeValues:Bool = false){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)
