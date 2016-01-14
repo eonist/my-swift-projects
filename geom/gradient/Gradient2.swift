@@ -13,7 +13,7 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
     public var transformation:CGAffineTransform?
     
     
-    //Scaling the gradient could infact be the job of the caller after all, since the boundingbox isnt allways the reference to work on, think what happens when you manipulate individual path points as oppose to scaling the entire shape at which point you should use the new scale and append this to the transform matrix, rather than calculating the new boundingbox each time
+    //Scaling the gradient could infact be the job of the caller after all, since the boundingbox isnt allways the reference to work on, think what happens when you manipulate individual path points as oppose to scaling the entire shape at which point you should use the new scale and append this to the transform matrix, rather than calculating the new boundingbox each time, which can be cpu intensive
     
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
