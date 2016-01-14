@@ -7,6 +7,8 @@ protocol IGradient2 {
 }
 extension IGradient2{
     func copy() -> IGradient2 {
+        //if type is linear then return linear
+        //else return radial
         return Gradient2(colors,locations,transformation)
     }
 }
