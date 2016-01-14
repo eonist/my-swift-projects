@@ -34,7 +34,7 @@ TODO: setup gradient tests for css,graphic framework, svg. all different gradien
 TODO: start by setting up a grid of Graphic framework gradients
 TODO: then do the css gradient tests
 TODO: then setup the svg gradients
-TODO: then start refactoring the Graphics class related to the Gradient config methods etc, and start moving them into GradientGraphic etc. 
+TODO: then start refactoring the Graphics class related to the Gradient config methods etc, and start moving them into GradientGraphic etc.
  
 */
  
