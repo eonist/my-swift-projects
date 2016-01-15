@@ -24,7 +24,7 @@ public class Graphics{
     //let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
-    var gradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgGradient:CGGradientRef?/*This value exists because of performance*/
     var lineGradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
@@ -52,7 +52,7 @@ public class Graphics{
      * Initiate gradient filling
      * @NOTE this method can be called pre context
      */
-    public func gradientFill(gradient:IGradient/*IGradient*/){
+    public func gradientFill(gradient:IGraphicsGradient/*IGradient*/){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
@@ -343,9 +343,9 @@ CGContextClip(context);
 /**
  *
  */
-protocol IGraphicGradient {
+protocol IGraphicsGradient {
     var colors:Array<CGColor>{get set}
-    var locations:Array<CGFloat>{get set}
+    var locations:Array<CGFloat>{get set}/*same as color stops*/
     var transformation:CGAffineTransform?{get set}
 }
 /**
