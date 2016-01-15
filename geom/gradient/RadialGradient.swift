@@ -1,14 +1,14 @@
 import Foundation
 /**
- * @NOTE: Focal length: 
+ * @NOTE: Focal length:
  */
 public class RadialGradient:Gradient2 {
-    public var startCenter:CGPoint?
-    public var endCenter:CGPoint?
+    public var startCenter:CGPoint?/*should be 0.5,0.5 to mimic the focal ratio radial system*/
+    public var endCenter:CGPoint?/*y = focalRatio (-1 to +1) */
     public var startRadius:CGSize?
-    public var endRadius:CGSize?
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ startCenter:CGPoint? = nil,_ endCenter:CGPoint? = nil,_ startRadius:CGSize? = nil,_ endRadius:CGSize? = nil){
-        super.init(colors, locations)
+    public var endRadius:CGSize?/*should be 0,0 to mimic the focal ratio radial gradient system*/
+    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],rotation:CGFloat = 1.5707963267949, _ startCenter:CGPoint? = nil,_ endCenter:CGPoint? = nil,_ startRadius:CGSize? = nil,_ endRadius:CGSize? = nil){
+        super.init(colors, locations,rotation)
         self.startCenter = startCenter
         self.endCenter = endCenter
         self.startRadius = startRadius
