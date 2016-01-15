@@ -338,3 +338,8 @@ CGContextReplacePathWithStrokedPath(context);
 // Turn the fillable path in to a clipping region.
 CGContextClip(context);
 */
+
+
+class GraphicsGradient{
+    
+}
