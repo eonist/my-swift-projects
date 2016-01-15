@@ -341,5 +341,7 @@ CGContextClip(context);
 
 
 class GraphicsGradient{
-    
+    init(_ transformation:CGAffineTransform? = nil){
+        self.transformation = transformation
+    }
 }
