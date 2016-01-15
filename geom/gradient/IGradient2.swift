@@ -8,8 +8,6 @@ protocol IGradient2 {
 extension IGradient2{
     func copy() -> IGradient2 {
         if(self is LinearGradient){return LinearGradient((self as! LinearGradient).p1,(self as! LinearGradient).p2,colors,locations,transformation)}
-        //if type is linear then return linear
-        //else return radial
-        
+        else{return RadialGradient((self as! RadialGradient).startCenter,(self as! RadialGradient).endCenter,(self as! RadialGradient).startRadius,(self as! RadialGradient).endRadius,colors,locations,transformation)}
     }
 }
