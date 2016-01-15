@@ -339,6 +339,15 @@ CGContextReplacePathWithStrokedPath(context);
 CGContextClip(context);
 */
 
+
+/**
+ *
+ */
+protocol IGraphicGradient {
+    var colors:Array<CGColor>{get set}
+    var locations:Array<CGFloat>{get set}
+    var transformation:CGAffineTransform?{get set}
+}
 /**
  * @param: transformation: we need transformation as this is the only way to achieve the squashed gradient look
  */
