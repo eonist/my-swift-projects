@@ -165,14 +165,14 @@ private class Utils{
      * Draws a gradient into the current path in the context
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
-    class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
+    class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGraphicsGradient, _ cgGradient:CGGradientRef?){
         let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
         
         //CGContextSaveGState(context)//why is this here again?
         
-        if(gradient.gradientType == GradientType.Linear) {/*Linear*/
+        if(gradient == GradientType) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient)
         }else{/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
@@ -343,7 +343,7 @@ CGContextClip(context);
 /**
  *
  */
-protocol IGraphicsGradient {
+public protocol IGraphicsGradient {
     var colors:Array<CGColor>{get set}
     var locations:Array<CGFloat>{get set}/*same as color stops*/
     var transformation:CGAffineTransform?{get set}
@@ -351,7 +351,7 @@ protocol IGraphicsGradient {
 /**
  * @param: transformation: we need transformation as this is the only way to achieve the squashed gradient look
  */
-public class GraphicsGradient{
+public class GraphicsGradient:IGraphicsGradient{
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>/*same as color stops*/
     public var transformation:CGAffineTransform?
