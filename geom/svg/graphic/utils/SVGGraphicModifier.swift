@@ -38,7 +38,8 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
-            shape.graphics.gradientLine(grad)
+            fatalError("implment the bellow first" + "\(grad)")
+            //shape.graphics.gradientLine(grad)
         }
     }
     /**
@@ -96,7 +97,8 @@ class SVGGraphicModifier {
             }
             Swift.print("points after offset: " + "\([p1,p2])")
             let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
-            shape.graphics.gradientFill(grad)
+            fatalError("implment the bellow first" + "\(grad)")
+            //shape.graphics.gradientFill(grad)
         }else{/*gradient is SVGLinearGradient */
             if(gradient.gradientTransform != nil) {
                 //matrix.concat(gradient.gradientTransform)
