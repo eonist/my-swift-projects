@@ -339,8 +339,11 @@ CGContextReplacePathWithStrokedPath(context);
 CGContextClip(context);
 */
 
-
-class GraphicsGradient{
+/**
+ * @param: transformation: we need transformation as this is the only way to achieve the squashed gradient look
+ */
+public class GraphicsGradient{
+    public var transformation:CGAffineTransform?
     init(_ transformation:CGAffineTransform? = nil){
         self.transformation = transformation
     }
