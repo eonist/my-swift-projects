@@ -7,8 +7,9 @@ protocol IGradient2 {
 }
 extension IGradient2{
     func copy() -> IGradient2 {
+        if(self is LinearGradient){return LinearGradient((self as! LinearGradient).p1,(self as! LinearGradient).p2,colors,locations,transformation)}
         //if type is linear then return linear
         //else return radial
-        return Gradient2(colors,locations,transformation)
+        
     }
 }
