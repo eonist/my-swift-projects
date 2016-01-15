@@ -22,5 +22,7 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
             self.locations = locations
         }
         self.transformation = transformation
+        self.p1 = p1
+        self.p2 = p2
     }
 }
