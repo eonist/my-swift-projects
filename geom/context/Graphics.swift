@@ -176,7 +176,7 @@ private class Utils{
             drawAxialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! LinearGraphicsGradient)
         }else if(gradient is RadialGraphicsGradient){/*Radial*/
             drawRadialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! RadialGraphicsGradient)
-        }else{fatalError("type not supported")}
+        }else{fatalError("type not supported: " + "\(gradient)")}
         //CGContextRestoreGState(context)//why is this here again?
     }
     /**
@@ -192,7 +192,7 @@ private class Utils{
             drawAxialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
             drawRadialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! RadialGraphicsGradient)
-        }else{fatalError("this type is not supported")}
+        }else{fatalError("this type is not supported: " + "\(lineGradient)")}
         CGContextRestoreGState(context)//restore the graphic mask
     }
     /**
