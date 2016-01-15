@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * @NOTE: Focal length: 
+ */
 public class RadialGradient:Gradient2 {
     public var startCenter:CGPoint?
     public var endCenter:CGPoint?
