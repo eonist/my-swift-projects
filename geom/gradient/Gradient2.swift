@@ -10,7 +10,6 @@ import Foundation
 public class Gradient2:IGradient2 {/*<---its public so that it works in playground*/
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>/*same as color stops*/
-    
     public var rotation:CGFloat;/*must be between -π and π or it will fail*/
     
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], rotation:CGFloat = 1.5707963267949/*4.71238898038469*/){/*,*/

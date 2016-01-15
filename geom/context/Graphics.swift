@@ -358,9 +358,31 @@ public class GraphicsGradient{
         self.transformation = transformation
     }
 }
-class LinearGraphicsGradient{
-    
+/**
+ *
+ */
+public class LinearGraphicsGradient:GraphicsGradient{
+    public var p1:CGPoint?
+    public var p2:CGPoint?
+    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ transformation:CGAffineTransform? = nil,_ p1:CGPoint? = nil, _ p2:CGPoint? = nil){
+        super.init(colors,locations,transformation)
+        self.p1 = p1
+        self.p2 = p2
+    }
 }
-class RadialGraphicsGradient{
-    
+/**
+ *
+ */
+public class RadialGraphicsGradient:GraphicsGradient{
+    public var startCenter:CGPoint?
+    public var endCenter:CGPoint?
+    public var startRadius:CGSize?
+    public var endRadius:CGSize?
+    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ transformation:CGAffineTransform? = nil,_ startCenter:CGPoint? = nil,_ endCenter:CGPoint? = nil,_ startRadius:CGSize? = nil,_ endRadius:CGSize? = nil){
+        super.init(colors,locations,transformation)
+        self.startCenter = startCenter
+        self.endCenter = endCenter
+        self.startRadius = startRadius
+        self.endRadius = endRadius
+    }
 }
