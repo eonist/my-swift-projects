@@ -166,7 +166,7 @@ private class Utils{
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGradient, _ cgGradient:CGGradientRef?){
-        let boundingBox:CGRect = CGPathGetBoundingBox(path) //creates a boundingbox derived from the bounds of the path
+        let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
         
@@ -208,7 +208,7 @@ private class Utils{
         //Swift.print("gradient.transformation: " + "\(gradient.transformation)")
         
         //Swift.print("points: " + "\(points)")
-        CGContextDrawLinearGradient(context, cgGradient, gradient.p1, gradient.p2 , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextDrawLinearGradient(context, cgGradient, gradient.p1!, gradient.p2! , [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
