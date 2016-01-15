@@ -173,9 +173,9 @@ private class Utils{
         //CGContextSaveGState(context)//why is this here again?
         
         if(gradient is LinearGraphicsGradient) {/*Linear*/
-            drawAxialGradient(path, context, cgGradient, boundingBox, gradient)
+            drawAxialGradient(path, context, cgGradient, boundingBox, gradient as! LinearGraphicsGradient)
         }else if(gradient is RadialGraphicsGradient){/*Radial*/
-            drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
+            drawRadialGradient(path, context, cgGradient, boundingBox, gradient as! RadialGraphicsGradient)
         }else{
             fatalError("type not supported")
         }
@@ -203,7 +203,7 @@ private class Utils{
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ gradient:IGradient){
+    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ gradient:LinearGraphicsGradient){
         //Swift.print("Graphics.drawAxialGradient()")
         //Swift.print("gradient.p1: " + "\(gradient.p1)")
         //Swift.print("gradient.p2: " + "\(gradient.p2)")
@@ -217,7 +217,7 @@ private class Utils{
      * @NOTE: Currently there is no support for the outer circle radius
      * TODO: you may want to add a param that can set to fit the gradient inside bounding box, if false then fit the smallest axis see css specs for this workflow
      */
-    class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:IGradient){
+    class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         CGContextAddPath(context,path)//Adds the path to the context
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
@@ -342,58 +342,6 @@ CGContextClip(context);
 */
 
 
-/**
- *
- */
-public protocol IGraphicsGradient {
-    var colors:Array<CGColor>{get set}
-    var locations:Array<CGFloat>{get set}/*same as color stops*/
-    var transformation:CGAffineTransform?{get set}
-}
-/**
- * @param: transformation: we need transformation as this is the only way to achieve the squashed gradient look
- */
-public class GraphicsGradient:IGraphicsGradient{
-    public var colors:Array<CGColor>
-    public var locations:Array<CGFloat>/*same as color stops*/
-    public var transformation:CGAffineTransform?
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ transformation:CGAffineTransform? = nil){
-        self.colors = colors
-        if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
-            //Swift.print(colors.count)
-            self.locations = CGFloatParser.interpolatedRange(0,  1,  colors.count)
-            //Swift.print(self.locations)
-        }else{
-            self.locations = locations
-        }
-        self.transformation = transformation
-    }
-}
-/**
- *
- */
-public class LinearGraphicsGradient:GraphicsGradient{
-    public var p1:CGPoint?
-    public var p2:CGPoint?
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ transformation:CGAffineTransform? = nil,_ p1:CGPoint? = nil, _ p2:CGPoint? = nil){
-        super.init(colors,locations,transformation)
-        self.p1 = p1
-        self.p2 = p2
-    }
-}
-/**
- *
- */
-public class RadialGraphicsGradient:GraphicsGradient{
-    public var startCenter:CGPoint?
-    public var endCenter:CGPoint?
-    public var startRadius:CGSize?
-    public var endRadius:CGSize?
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [],_ transformation:CGAffineTransform? = nil,_ startCenter:CGPoint? = nil,_ endCenter:CGPoint? = nil,_ startRadius:CGSize? = nil,_ endRadius:CGSize? = nil){
-        super.init(colors,locations,transformation)
-        self.startCenter = startCenter
-        self.endCenter = endCenter
-        self.startRadius = startRadius
-        self.endRadius = endRadius
-    }
-}
+
+
+
