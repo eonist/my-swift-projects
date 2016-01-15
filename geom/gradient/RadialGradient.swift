@@ -2,7 +2,7 @@ import Foundation
 /**
  * @NOTE: Focal length:
  */
-public class RadialGradient:Gradient2 {
+public class RadialGradient:Gradient {
     public var startCenter:CGPoint?/*should be 0.5,0.5 to mimic the focal ratio radial system*/
     public var endCenter:CGPoint?/*y = focalRatio (-1 to +1) */
     public var startRadius:CGSize?
