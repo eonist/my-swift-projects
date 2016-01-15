@@ -21,7 +21,6 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
         }else{
             self.locations = locations
         }
-        
         self.rotation = rotation
     }
 }
