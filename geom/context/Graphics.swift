@@ -26,7 +26,7 @@ public class Graphics{
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgGradient:CGGradientRef?/*This value exists because of performance*/
-    var lineGradient:IGradient = Gradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var lineGradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
     var dropShadow:DropShadow?
     var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
@@ -80,7 +80,7 @@ public class Graphics{
      * TODO: Contemplate including lineWidth etc in this call
      * @NOTE this method can be called pre context
      */
-    public func gradientLine(gradient:IGradient){
+    public func gradientLine(gradient:IGraphicsGradient){
         strokeMode = StrokeMode.Gradient
         lineGradient = gradient
         cgLineGradient = GradientUtils.cgGradient(gradient)
@@ -166,7 +166,7 @@ private class Utils{
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
     class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGraphicsGradient, _ cgGradient:CGGradientRef?){
-        let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
+        //let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
         
@@ -176,34 +176,30 @@ private class Utils{
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient as! LinearGraphicsGradient)
         }else if(gradient is RadialGraphicsGradient){/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient as! RadialGraphicsGradient)
-        }else{
-            fatalError("type not supported")
-        }
+        }else{fatalError("type not supported")}
         //CGContextRestoreGState(context)//why is this here again?
-       
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
-     * 
      */
-    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
+    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
         var boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
         boundingBox = boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
         CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         CGContextClip(context) //create a mask for the gradient to be drawn into
-        if(lineGradient.gradientType == GradientType.Linear) {
-            drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
-        }else{
-            drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient)
-        }
+        if(lineGradient is LinearGraphicsGradient) {
+            drawAxialGradient(path, context, cgLineGradient, boundingBox, lineGradient as! LinearGraphicsGradient)
+        }else if(lineGradient is RadialGraphicsGradient){
+            drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient as! RadialGraphicsGradient)
+        }else{fatalError("this type is not supported")}
         CGContextRestoreGState(context)//restore the graphic mask
     }
     /**
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect, _ gradient:LinearGraphicsGradient){
+    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
         //Swift.print("Graphics.drawAxialGradient()")
         //Swift.print("gradient.p1: " + "\(gradient.p1)")
         //Swift.print("gradient.p2: " + "\(gradient.p2)")
