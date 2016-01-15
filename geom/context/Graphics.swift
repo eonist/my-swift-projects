@@ -172,10 +172,12 @@ private class Utils{
         
         //CGContextSaveGState(context)//why is this here again?
         
-        if(gradient == GradientType) {/*Linear*/
+        if(gradient is LinearGraphicsGradient) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, boundingBox, gradient)
-        }else{/*Radial*/
+        }else if(gradient is RadialGraphicsGradient){/*Radial*/
             drawRadialGradient(path, context, cgGradient, boundingBox, gradient)
+        }else{
+            fatalError("type not supported")
         }
         //CGContextRestoreGState(context)//why is this here again?
        
