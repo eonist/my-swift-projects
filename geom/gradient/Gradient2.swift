@@ -11,7 +11,6 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>/*same as color stops*/
     public var transformation:CGAffineTransform?
-    public var useRelativeValues:Bool/*realtive or absolute values in 0,0 coordinatespace in the boundingbox of the path*/
     
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ transformation:CGAffineTransform? = nil,_ useRelativeValues:Bool = false){/*,*/
         self.colors = colors
@@ -23,6 +22,5 @@ public class Gradient2:IGradient2 {/*<---its public so that it works in playgrou
             self.locations = locations
         }
         self.transformation = transformation
-        self.useRelativeValues = useRelativeValues
     }
 }
