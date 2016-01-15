@@ -361,3 +361,6 @@ public class GraphicsGradient{
 class LinearGraphicsGradient{
     
 }
+class RadialGraphicsGradient{
+    
+}
