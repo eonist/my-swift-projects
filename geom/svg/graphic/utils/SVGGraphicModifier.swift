@@ -24,9 +24,9 @@ class SVGGraphicModifier {
         Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
         SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
+        let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         if(gradient is SVGLinearGradient){/*gradient is SVGRadialGradient */
-            let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             if(gradient.gradientTransform != nil){
