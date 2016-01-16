@@ -110,9 +110,13 @@ class SVGGraphicModifier {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
             
-            
+            let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            let startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
+            let endCenter:CGPoint = CGPoint(radialGradient.fx,radialGradient.fy)/*outer circle*/
+            let startRadius:CGFloat = radialGradient.r/*inner circle*/
+            let endRadius:CGFloat = 0
             //continue here: add support for absolute values first, then add relative values etc.
-            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,)
+            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,radialGradient.gradientTransform)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
     }
