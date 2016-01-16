@@ -160,6 +160,8 @@ class SVGGraphicModifier {
                 //endCenter -= shape.frame.origin
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 Swift.print("transformation: " + "\(transformation)")
+            }else{/*objectBoundingBox*/
+                
             }
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
