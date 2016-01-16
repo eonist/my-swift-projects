@@ -27,8 +27,8 @@ class RadialGradientUtils{
         let endFocusPoint:CGPoint = startCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
         let focalRatio:CGFloat = gradient.endCenter!.y/*from -1 to 1*/
         let endCenter = startCenter.interpolate(endFocusPoint, focalRatio)
-        let startRadius:CGFloat = minRadius/*The radius of the gradient*/
-        let endRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
+        let startRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
+        let endRadius:CGFloat = minRadius/*The radius of the gradient*/
         let scale:CGPoint = CGPoint(gradient.startRadius!.width,gradient.startRadius!.height)
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.startCenter!.x),-minRadius + (minAxis*gradient.startCenter!.y))
         let transform:CGAffineTransform = CGAffineTransform.transformAroundPoint(CGAffineTransformIdentity, scale, gradient.rotation, offset, startCenter)//CGAffineTransformMakeTranslation(x, y);
