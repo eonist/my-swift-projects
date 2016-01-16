@@ -116,7 +116,7 @@ class SVGGraphicModifier {
             if(radialGradient.gradientTransform != nil) {
                 Swift.print("drawRadialGradient() gradient.transformation()")
                 transformation = radialGradient.gradientTransform!.copy()
-                CGAffineTransformConcat(transformation, CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                //transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 //matrix.concat(gradient.gradientTransform)
                 //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
                 //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
