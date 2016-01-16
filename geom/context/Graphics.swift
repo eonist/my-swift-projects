@@ -213,9 +213,9 @@ private class Utils{
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
-        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
+        //let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
         
-        CGContextAddPath(context,boundingBox.path)
+        //CGContextAddPath(context,boundingBox.path)
         
         CGContextAddPath(context,path)//Adds the path to the context
         
