@@ -90,14 +90,17 @@ class SVGGraphicModifier {
             if(gradient.gradientTransform != nil){
                 Swift.print("drawAxialGradient() gradient.transformation()")
                 transformation = gradient.gradientTransform!.copy()
-                p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
-                p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+                var offsetTransformation = CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y)
+                offsetTransformation.concat(transformation)
+                //p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
+                //p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
             }
-            Swift.print("points after: " + "\([p1,p2])")
+            //Swift.print("points after: " + "\([p1,p2])")
             
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-                p1 -= shape.frame.origin
-                p2 -= shape.frame.origin
+                Swift.print("userSpaceOnUse")
+                //p1 -= shape.frame.origin
+                //p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,transformation,p1,p2)
