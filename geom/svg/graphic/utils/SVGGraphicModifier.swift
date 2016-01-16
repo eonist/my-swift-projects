@@ -18,7 +18,7 @@ class SVGGraphicModifier {
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
     /**
-     *
+     * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the 
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
         Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")

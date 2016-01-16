@@ -68,7 +68,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      */
     func beginFill(){
         Swift.print("SVGGraphic.beginFill()" + "\(style!.fill!))")
-        if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/) {
+        if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/ && !(style!.fill as! Double).isNaN) {
             Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             //Swift.print("colorVal: " + "\(colorVal)")
@@ -82,7 +82,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
         }else{
             //clear
             Swift.print("no fill")
-            fatalError("not implemented yet")
+            //fatalError("not implemented yet")
         }
     }
     /**
