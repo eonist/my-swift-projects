@@ -18,7 +18,7 @@ class SVGParser {
         let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id);
         let children:NSArray = xml.children!
         let count = children.count//or use rootElement.childCount TODO: test this
-        for (var i = count-1; i > -1; i--) {
+        for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(children, i)!
             doc.add(element(child,doc))//print("Import - child.toXMLString(): " + child.toXMLString());
         }
