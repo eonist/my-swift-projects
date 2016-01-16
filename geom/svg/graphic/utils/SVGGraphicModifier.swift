@@ -38,7 +38,7 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }else{fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")}
             
-            //Continue here: implement the above
+            //Continue here: implement the above, dont forget PathOutline
             
             //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
