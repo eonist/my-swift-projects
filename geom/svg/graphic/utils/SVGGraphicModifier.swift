@@ -36,7 +36,9 @@ class SVGGraphicModifier {
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
-            }else{fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")}
+            }else{
+                //fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")
+            }
             
             //Continue here: implement the above, dont forget PathOutline
             
