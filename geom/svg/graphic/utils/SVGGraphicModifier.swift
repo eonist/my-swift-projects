@@ -40,6 +40,8 @@ class SVGGraphicModifier {
             //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             fatalError("implment the bellow first")
             //shape.graphics.gradientLine(grad)
+        }else{
+            fatalError("not implemented yet")
         }
     }
     /**
@@ -84,8 +86,6 @@ class SVGGraphicModifier {
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             Swift.print("p1: " + "\(p1)")
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
-            
-            //coninue here: add gradient to stroke, both linear and radial
             
             //TODO:  the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
             //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
