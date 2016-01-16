@@ -32,7 +32,8 @@ class SVGCircle : SVGGraphic{
             fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
             
             /*Line*/
-            if(style!.stroke is Double && !(style!.stroke as! Double).isNaN){//checks if there is a stroke in style
+            Swift.print("style!.stroke: " + "\(style!.stroke)")
+            if(style!.stroke != nil){//checks if there is a stroke in style
                 let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
                 Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
                 lineShape.frame = lineOffsetRect.lineFrameRect
