@@ -139,6 +139,9 @@ class SVGGraphicModifier {
         else{/*gradient is SVGRadialGradient */
             Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            let startRadius:CGFloat = 0
+            let endRadius:CGFloat = radialGradient.r
+            Swift.print("endRadius: " + "\(endRadius)")
             
             var startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
             //Swift.print("startCenter: " + "\(startCenter)")
@@ -169,14 +172,12 @@ class SVGGraphicModifier {
                 endCenter.x = boundingBox.width * (endCenter.x / 100)
                 endCenter.y = boundingBox.height * (endCenter.y / 100)
                 
-                
+                endRadius = 
                 Swift.print("startCenter: " + "\(startCenter)")
                 Swift.print("endCenter: " + "\(endCenter)")
             }
-            let startRadius:CGFloat = 0
-            let endRadius:CGFloat = radialGradient.r
-            Swift.print("endRadius: " + "\(endRadius)")
-            //continue here: add support for absolute values first, then add relative values etc.
+            
+            
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
