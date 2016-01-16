@@ -55,7 +55,7 @@ class SVGGraphicModifier {
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
-            shape.graphics.gradientFill(radialGraphicsGradient)
+            shape.graphics.gradientLine(radialGraphicsGradient)
         }
     }
     /**
