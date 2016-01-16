@@ -116,6 +116,7 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
+                let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
                 
             }
             Swift.print("points after offset: " + "\([p1,p2])")
