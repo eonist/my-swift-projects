@@ -8,3 +8,8 @@ public class LinearGradient:Gradient {
         super.init(colors, locations,rotation)
     }
 }
+extension LinearGradient{
+    convenience init(_ gradient:IGradient){
+        self.init(gradient.colors,gradient.locations,gradient.rotation)
+    }
+}

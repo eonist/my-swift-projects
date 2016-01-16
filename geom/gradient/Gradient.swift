@@ -25,8 +25,6 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
     }
 }
 
-
-
 /*
 
 Solution:
