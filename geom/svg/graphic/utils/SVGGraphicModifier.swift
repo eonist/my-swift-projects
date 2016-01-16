@@ -172,7 +172,9 @@ class SVGGraphicModifier {
                 endCenter.x = boundingBox.width * (endCenter.x / 100)
                 endCenter.y = boundingBox.height * (endCenter.y / 100)
                 
-                endRadius = 
+                let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
+                let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
+                endRadius = minRadius * (endRadius/100)//needs to be half of minwidth of boundingbox
                 Swift.print("startCenter: " + "\(startCenter)")
                 Swift.print("endCenter: " + "\(endCenter)")
             }
