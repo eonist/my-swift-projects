@@ -167,7 +167,7 @@ class SVGGraphicModifier {
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
                 //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
-                transformation = radialGradient.gradientTransform!.copy()
+                
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
                 startCenter.y = boundingBox.height * (startCenter.y / 100)
