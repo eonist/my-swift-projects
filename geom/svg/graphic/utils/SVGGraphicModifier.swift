@@ -137,8 +137,9 @@ class SVGGraphicModifier {
          * @TODO: lets try to scale radial gradient aswell
          */
         else{/*gradient is SVGRadialGradient */
-            Swift.print("drawRadialGradient()" + "\(radialGradient.gradientTransform)")
+            Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            Swift.print("radialGradient.gradientTransform: " + "\(radialGradient.gradientTransform)")
             let startRadius:CGFloat = 0
             var endRadius:CGFloat = radialGradient.r
             Swift.print("endRadius: " + "\(endRadius)")
@@ -165,7 +166,8 @@ class SVGGraphicModifier {
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
-                if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
+                //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
+                transformation = radialGradient.gradientTransform!.copy()
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
                 startCenter.y = boundingBox.height * (startCenter.y / 100)
