@@ -42,7 +42,7 @@ class SVGRect : SVGGraphic {
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
             //TODO: you need to check to see if line is needed before you draw the fill path
             
-            let rect:CGRect = SVGRectParser.rectangle(self)
+            let rect:CGRect = SVGRectParser.rectangle(&self)
             Swift.print("rect: " + "\(rect)")
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
