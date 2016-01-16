@@ -141,9 +141,9 @@ class SVGGraphicModifier {
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             
             let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
-            Swift.print("startCenter: " + "\(startCenter)")
+            //Swift.print("startCenter: " + "\(startCenter)")
             let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
-            Swift.print("endCenter: " + "\(endCenter)")
+            //Swift.print("endCenter: " + "\(endCenter)")
             
             var transformation:CGAffineTransform = CGAffineTransformIdentity
             
@@ -163,6 +163,10 @@ class SVGGraphicModifier {
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
                 if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
+                startCenter
+                endCenter
+                Swift.print("startCenter: " + "\(startCenter)")
+                Swift.print("endCenter: " + "\(endCenter)")
             }
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
