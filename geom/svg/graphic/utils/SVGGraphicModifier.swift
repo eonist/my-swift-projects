@@ -166,7 +166,8 @@ class SVGGraphicModifier {
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
-                //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")} we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
+                //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")} 
+                //TODO: we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
                 
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
