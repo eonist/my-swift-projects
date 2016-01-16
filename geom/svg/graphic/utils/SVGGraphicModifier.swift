@@ -103,28 +103,35 @@ class SVGGraphicModifier {
             //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             //fatalError("implment the bellow first")
             shape.graphics.gradientFill(linearGraphicsGradient)
-        }else{/*gradient is SVGRadialGradient */
+        }
+        /**
+         * @NOTE: it seems you can do the offseting in the matrix transformation
+         * @TODO: lets try to scale radial gradient aswell
+         */
+        else{/*gradient is SVGRadialGradient */
             Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             
-            var startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
+            let startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
             Swift.print("startCenter: " + "\(startCenter)")
-            var endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
+            let endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
             Swift.print("endCenter: " + "\(endCenter)")
             
             var transformation:CGAffineTransform = CGAffineTransformIdentity
             if(radialGradient.gradientTransform != nil) {
                 Swift.print("drawRadialGradient() gradient.transformation()")
                 transformation = radialGradient.gradientTransform!.copy()
-                //transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                Swift.print("transformation: " + "\(transformation)")
+                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                Swift.print("transformation: " + "\(transformation)")
                 //matrix.concat(gradient.gradientTransform)
                 //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
                 //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
             }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 Swift.print("userSpaceOnUse")
-                startCenter -= shape.frame.origin
-                endCenter -= shape.frame.origin
+                //startCenter -= shape.frame.origin
+                //endCenter -= shape.frame.origin
             }
             let startRadius:CGFloat = radialGradient.r/*inner circle*/
             Swift.print("startRadius: " + "\(startRadius)")
