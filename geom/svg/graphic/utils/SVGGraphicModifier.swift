@@ -51,6 +51,8 @@ class SVGGraphicModifier {
      * TODO: there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
      * @NOTE: <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
      * @NOTE: The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
+     * @DISCUSSION: you cant directly apply the matrix transformation in the Graphics since the graphics class operates in 0,0 space and the matrix transformation that comes in operates it 0,0 space from the point of ciew of the viewbox (this probably isnt true when doing gradientUnits=" 'objectBoundingBox' only when doing: 'userSpaceOnUse' or )
+     * TODO: unless you offset it first! try this
      */
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
         //let graphics:Graphics = shape.graphics
@@ -102,21 +104,19 @@ class SVGGraphicModifier {
             //fatalError("implment the bellow first")
             shape.graphics.gradientFill(linearGraphicsGradient)
         }else{/*gradient is SVGRadialGradient */
-            
-            
+            Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
-            Swift.print("drawRadialGradient()" + "\(gradient.gradientTransform)")
-            if(radialGradient.gradientTransform != nil) {
-                 Swift.print("drawRadialGradient() gradient.transformation()")
-                //matrix.concat(gradient.gradientTransform)
-            }
-            
-            
             
             var startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
             Swift.print("startCenter: " + "\(startCenter)")
             var endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
             Swift.print("endCenter: " + "\(endCenter)")
+            if(radialGradient.gradientTransform != nil) {
+                Swift.print("drawRadialGradient() gradient.transformation()")
+                //matrix.concat(gradient.gradientTransform)
+                startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
+                endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
+            }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 Swift.print("userSpaceOnUse")
                 startCenter -= shape.frame.origin
@@ -126,7 +126,7 @@ class SVGGraphicModifier {
             Swift.print("startRadius: " + "\(startRadius)")
             let endRadius:CGFloat = 0/*outer circle*/
             //continue here: add support for absolute values first, then add relative values etc.
-            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,radialGradient.gradientTransform,startCenter,endCenter,startRadius,endRadius)
+            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,nil/*radialGradient.gradientTransform*/,startCenter,endCenter,startRadius,endRadius)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
     }
