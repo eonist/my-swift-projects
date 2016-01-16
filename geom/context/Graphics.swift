@@ -215,19 +215,21 @@ private class Utils{
         //Swift.print("Graphics.drawRadialGradient")
         
         var newPath:CGPath = CGPathCreateMutableCopy(path)!
-        
         newPath = CGPathModifier.scale(&newPath, -1, -1)
         CGContextAddPath(context,newPath)
+        
         let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
         CGContextAddPath(context,boundingBox.path)//Adds the path to the context
         /**/
+        
+        /*
         CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context*/
         CGContextDrawRadialGradient(context, cgGradient, gradient.startCenter, gradient.startRadius, gradient.endCenter, gradient.endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)/*restore the context that was saved*/
-        
+        */
         /**/
         
         //continue here: figure out how to deal with this problem: the last color shouldnt always be the the background fill, sometimes you need it to be the first, think transperancy etc, so you need to either make a square with a hole in it: this could be easily done with two paths one being drawn with reverese winding.
