@@ -35,14 +35,14 @@ class SVGRect : SVGGraphic {
      * // :TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
      */
     override func draw() {
-        Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
+        //Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
         if(width <= 0 && height <= 0) {/*None*/
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
             //TODO: you need to check to see if line is needed before you draw the fill path
             
-            let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);
+            let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet. 
             Swift.print("rect: " + "\(rect)")
             /*Fill*/
             fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
