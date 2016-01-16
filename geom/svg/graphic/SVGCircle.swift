@@ -20,6 +20,9 @@ class SVGCircle : SVGGraphic{
     */
     override func draw(){
         Swift.print("SVGCircle.draw()")
+        if(style != nil && style!.fill is Number && style.fill != "none"){
+            
+        }
         if(!r.isNaN) {
             /*Fill*/
             let x:CGFloat = (!cx.isNaN ? cx : 0) - r
