@@ -215,7 +215,6 @@ private class Utils{
         //Swift.print("Graphics.drawRadialGradient")
         CGContextAddPath(context,path)//Adds the path to the context
         CGContextSetFillColorWithColor(context,gradient.colors[0])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
-        Swift.print("context,gradient.colors[0]: " + "\(context,gradient.colors[0])")
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context*/
