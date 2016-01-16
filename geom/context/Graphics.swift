@@ -210,8 +210,6 @@ private class Utils{
     }
     /**
      * Radial gradient
-     * @NOTE: Currently there is no support for the outer circle radius
-     * TODO: you may want to add a param that can set to fit the gradient inside bounding box, if false then fit the smallest axis see css specs for this workflow
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
