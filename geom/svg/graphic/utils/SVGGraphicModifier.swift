@@ -55,7 +55,7 @@ class SVGGraphicModifier {
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
         //let graphics:Graphics = shape.graphics
         //Swift.print("SVGGraphicModifier.beginGradientFill");
-        let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
+        //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //Swift.print("gradientType: " + gradientType);
         //var matrix:Matrix = Utils.matrix(graphic);
