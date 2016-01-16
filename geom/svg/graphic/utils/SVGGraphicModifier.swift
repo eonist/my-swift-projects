@@ -104,20 +104,21 @@ class SVGGraphicModifier {
             //TODO:  the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
             //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
             Swift.print("points: " + "\([p1,p2])")
-            if(gradient.gradientTransform != nil){
-                Swift.print("drawAxialGradient() gradient.transformation()")
-                //i think you should do tje matrix in Graphics not here
-                p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
-                p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
-            }
+            
             Swift.print("points after: " + "\([p1,p2])")
             
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+                if(gradient.gradientTransform != nil){
+                    Swift.print("drawAxialGradient() gradient.transformation()")
+                    //i think you should do tje matrix in Graphics not here
+                    p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
+                    p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+                }
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
-                p1 -= shape.frame.origin
+                p1 = boundingBox.origin * (p1 / CGFloat(100.0))
                 p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
