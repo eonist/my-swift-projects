@@ -26,6 +26,12 @@ extension CGAffineTransform {
         //see old code for this implementation
     }
     /**
+     *
+     */
+    mutating func concat(transformation:CGAffineTransform){
+        self = CGAffineTransform.concat(self, transformation)
+    }
+    /**
      * 
      */
     func copy()->CGAffineTransform{
@@ -87,5 +93,11 @@ extension CGAffineTransform {
      */
     static func copy(transform:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformMake(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty)//radialGradient.gradientTransform
+    }
+    /**
+     *
+     */
+    static func concat(a:CGAffineTransform,_ b:CGAffineTransform)->CGAffineTransform{
+        return CGAffineTransformConcat(a, b)
     }
 }
