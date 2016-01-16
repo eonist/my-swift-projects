@@ -41,19 +41,13 @@ class SVGGraphicModifier {
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
             //fatalError("implment the bellow first")
             shape.graphics.gradientLine(linearGraphicsGradient)
-        }else{
+        }else{/*radial*/
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
-            
             let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
-            Swift.print("startCenter: " + "\(startCenter)")
             let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
-            Swift.print("endCenter: " + "\(endCenter)")
-            
             var transformation:CGAffineTransform = CGAffineTransformIdentity
             if(radialGradient.gradientTransform != nil) {
-                Swift.print("drawRadialGradient() gradient.transformation()")
                 transformation = radialGradient.gradientTransform!.copy()
-                Swift.print("transformation: " + "\(transformation)")
             }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
