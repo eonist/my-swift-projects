@@ -74,7 +74,7 @@ class SVGGraphicModifier {
         if(gradient is SVGLinearGradient){
             //let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
             
-            
+            //TODO: add support for relative values, see old code, you need to use the bounding box etc and test how relative values work in svg etc
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             Swift.print("p1: " + "\(p1)")
@@ -110,7 +110,7 @@ class SVGGraphicModifier {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
             
-            
+            //continue here: add support for absolute values first, then add relative values etc.
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
