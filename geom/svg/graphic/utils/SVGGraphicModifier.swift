@@ -54,21 +54,12 @@ class SVGGraphicModifier {
                 Swift.print("drawRadialGradient() gradient.transformation()")
                 transformation = radialGradient.gradientTransform!.copy()
                 Swift.print("transformation: " + "\(transformation)")
-                //matrix.concat(gradient.gradientTransform)
-                //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
-                //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
             }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-                Swift.print("userSpaceOnUse")
-                //startCenter -= shape.frame.origin
-                //endCenter -= shape.frame.origin
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
-                Swift.print("transformation: " + "\(transformation)")
             }
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
-            Swift.print("endRadius: " + "\(endRadius)")
-            //continue here: add support for absolute values first, then add relative values etc.
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
