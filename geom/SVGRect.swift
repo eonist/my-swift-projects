@@ -35,7 +35,7 @@ class SVGRect : SVGGraphic {
      * // :TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
      */
     override func draw() {
-        Swift.print("SVGRect.draw()")
+        Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
         if(width <= 0 && height <= 0) {/*None*/
             return
         }
