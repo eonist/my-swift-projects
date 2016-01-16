@@ -140,7 +140,7 @@ class SVGGraphicModifier {
             Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             let startRadius:CGFloat = 0
-            let endRadius:CGFloat = radialGradient.r
+            var endRadius:CGFloat = radialGradient.r
             Swift.print("endRadius: " + "\(endRadius)")
             
             var startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
