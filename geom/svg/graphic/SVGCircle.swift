@@ -22,11 +22,11 @@ class SVGCircle : SVGGraphic{
         Swift.print("SVGCircle.draw()")
         
         if(!r.isNaN) {
+            let x:CGFloat = (!cx.isNaN ? cx : 0) - r
+            let y:CGFloat = (!cy.isNaN ? cy : 0) - r
+            let rect:CGRect = CGRect(x, y, r*2, r*2)
             /*Fill*/
             if(style!.fill != nil){
-                let x:CGFloat = (!cx.isNaN ? cx : 0) - r
-                let y:CGFloat = (!cy.isNaN ? cy : 0) - r
-                let rect:CGRect = CGRect(x, y, r*2, r*2)
                 let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient  ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
                 Swift.print("fillFrame: " + "\(fillFrame)")
                 fillShape.frame = fillFrame/*,position and set the size of the frame*/
@@ -35,13 +35,12 @@ class SVGCircle : SVGGraphic{
             /*Line*/
             Swift.print("style!.stroke: " + "\(style!.stroke)")
             if(style!.stroke != nil){//checks if there is a stroke in style
-                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x, y, r*2, r*2), style!.strokeWidth, OffsetType(OffsetType.center))
+                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
                 Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
                 lineShape.frame = lineOffsetRect.lineFrameRect
                 Swift.print("lineShape.frame: " + "\(lineShape.frame)")
                 
                 //this may not work if the x and y is more than 0,0 etc make sure it works
-                
                 
                 lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
             }
