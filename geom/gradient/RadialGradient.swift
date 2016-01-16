@@ -15,3 +15,8 @@ public class RadialGradient:Gradient {
         self.endRadius = endRadius
     }
 }
+extension RadialGradient{
+    convenience init(_ gradient:IGradient){
+        self.init(gradient.colors,gradient.locations,gradient.rotation)
+    }
+}
