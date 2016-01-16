@@ -7,10 +7,10 @@ class SVGRectParser {
      */
     class func rectangle(svgRect:SVGRect)->CGRect {
         //Swift.print("svgRect: " + "\(svgRect)")
-        //Swift.print("svgRect.x: " + "\(svgRect.x)")
-        //Swift.print("svgRect.y: " + "\(svgRect.y)")
-        //Swift.print("svgRect.width: " + "\(svgRect.width)")
-        //Swift.print("svgRect.height: " + "\(svgRect.height)")
+        Swift.print("svgRect.x: " + "\(svgRect.x)")
+        Swift.print("svgRect.y: " + "\(svgRect.y)")
+        Swift.print("svgRect.width: " + "\(svgRect.width)")
+        Swift.print("svgRect.height: " + "\(svgRect.height)")
         return CGRect(!svgRect.x.isNaN ? svgRect.x : 0, !svgRect.y.isNaN ? svgRect.y : 0, svgRect.width, svgRect.height);
     }
 }
