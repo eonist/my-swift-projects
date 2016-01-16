@@ -54,7 +54,7 @@ class SVGGraphicModifier {
      */
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
         //let graphics:Graphics = shape.graphics
-        //Swift.print("SVGGraphicModifier.beginGradientFill");
+        Swift.print("SVGGraphicModifier.beginGradientFill");
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //Swift.print("gradientType: " + gradientType);
@@ -102,18 +102,26 @@ class SVGGraphicModifier {
             //fatalError("implment the bellow first")
             shape.graphics.gradientFill(linearGraphicsGradient)
         }else{/*gradient is SVGRadialGradient */
-            
-            if(gradient.gradientTransform != nil) {
+            Swift.print("drawRadialGradient()")
+            let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            if(radialGradient.gradientTransform != nil) {
+                 Swift.print("drawRadialGradient() gradient.transformation()")
                 //matrix.concat(gradient.gradientTransform)
             }
-            if(!((gradient as! SVGRadialGradient).fx).isNaN) {
-                //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
-            }
             
-            let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
-            let startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
-            let endCenter:CGPoint = CGPoint(radialGradient.fx,radialGradient.fy)/*outer circle*/
+            
+            
+            var startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
+            Swift.print("startCenter: " + "\(startCenter)")
+            var endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
+            Swift.print("endCenter: " + "\(endCenter)")
+            if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+                Swift.print("userSpaceOnUse")
+                startCenter -= shape.frame.origin
+                endCenter -= shape.frame.origin
+            }
             let startRadius:CGFloat = radialGradient.r/*inner circle*/
+            Swift.print("startRadius: " + "\(startRadius)")
             let endRadius:CGFloat = 0/*outer circle*/
             //continue here: add support for absolute values first, then add relative values etc.
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,radialGradient.gradientTransform,startCenter,endCenter,startRadius,endRadius)
