@@ -222,6 +222,9 @@ private class Utils{
         CGContextRestoreGState(context)/*restore the context that was saved*/
         
         /**/
+        
+        //continue here: figure out how to deal with the problem: the last color shouldnt always be the the background fill, sometimes you need it to be the first, think transperancy etc
+        
     }
 }
 extension Graphics{//private class ShadowUtils
