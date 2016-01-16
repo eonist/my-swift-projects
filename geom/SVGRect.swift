@@ -16,6 +16,8 @@ class SVGRect : SVGGraphic {
      */
     init(_ width:CGFloat,_ height:CGFloat,_ x:CGFloat,_ y:CGFloat,_ rx:CGFloat,_ ry:CGFloat, _ style:SVGStyle,_ id:String) {
         Swift.print("SVGRect.init()" + "\(width)" + " height: " + "\(height)")
+        Swift.print("x: " + "\(x)")
+        Swift.print("y: " + "\(y)")
         self.width = width;
         self.height = height;
         self.x = x;
