@@ -175,7 +175,7 @@ private class Utils{
         if(gradient is LinearGraphicsGradient) {/*Linear*/
             drawAxialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! LinearGraphicsGradient)
         }else if(gradient is RadialGraphicsGradient){/*Radial*/
-            drawRadialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! RadialGraphicsGradient)
+            drawRadialGradient(path, context, cgGradient, boundingBox, gradient as! RadialGraphicsGradient)
         }else{fatalError("type not supported: " + "\(gradient)")}
         //CGContextRestoreGState(context)//why is this here again?
     }
@@ -191,7 +191,7 @@ private class Utils{
         if(lineGradient is LinearGraphicsGradient) {
             drawAxialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
-            drawRadialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! RadialGraphicsGradient)
+            drawRadialGradient(path, context, cgLineGradient, boundingBox, lineGradient as! RadialGraphicsGradient)
         }else{fatalError("this type is not supported: " + "\(lineGradient)")}
         CGContextRestoreGState(context)//restore the graphic mask
     }
@@ -211,7 +211,7 @@ private class Utils{
     /**
      * Radial gradient
      */
-    class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
+    class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, _ boundingBox:CGRect,_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         CGContextAddPath(context,path)//Adds the path to the context
         
