@@ -224,7 +224,7 @@ private class Utils{
         
         /**/
         
-        //continue here: figure out how to deal with the problem: the last color shouldnt always be the the background fill, sometimes you need it to be the first, think transperancy etc, so you need to either make a square with a hole in it: this could be easily done with two paths one being drawn with reverese winding.
+        //continue here: figure out how to deal with this problem: the last color shouldnt always be the the background fill, sometimes you need it to be the first, think transperancy etc, so you need to either make a square with a hole in it: this could be easily done with two paths one being drawn with reverese winding.
         
     }
 }
