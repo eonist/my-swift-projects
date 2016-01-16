@@ -37,8 +37,8 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
-                if(gradient.gradientTransform != nil){fatalError("not supported yet")}
-                let boundingBox:CGRect = shape.frame.copy()//we could use the strokeOutline
+                if(gradient.gradientTransform != nil){fatalError("transform here is not supported yet")}
+                let boundingBox:CGRect = shape.frame.copy()//we could use the SVGStyleUtils.boundingBox which uses the Outline of the stroked line but this is already calculated and used in the frame, so we reuse that
                 p1.x = boundingBox.width * (p1.x / 100)//this and the following lines of code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
                 p2.x = boundingBox.width * (p2.x / 100)
@@ -174,8 +174,7 @@ class SVGGraphicModifier {
             }else{/*objectBoundingBox*/
                 //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")} 
                 //TODO: we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
-                
-                let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
+                let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)//TODO: reuse frame as the bounding box
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
                 startCenter.y = boundingBox.height * (startCenter.y / 100)
                 endCenter.x = boundingBox.width * (endCenter.x / 100)
