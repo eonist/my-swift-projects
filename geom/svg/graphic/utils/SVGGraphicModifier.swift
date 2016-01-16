@@ -112,9 +112,9 @@ class SVGGraphicModifier {
             Swift.print("drawRadialGradient()")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             
-            let startCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)/*inner circle*/
+            let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
             Swift.print("startCenter: " + "\(startCenter)")
-            let endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
+            let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
             Swift.print("endCenter: " + "\(endCenter)")
             
             var transformation:CGAffineTransform = CGAffineTransformIdentity
@@ -122,9 +122,7 @@ class SVGGraphicModifier {
                 Swift.print("drawRadialGradient() gradient.transformation()")
                 transformation = radialGradient.gradientTransform!.copy()
                 Swift.print("transformation: " + "\(transformation)")
-                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
-                Swift.print("transformation: " + "\(transformation)")
-                //matrix.concat(gradient.gradientTransform)
+                                //matrix.concat(gradient.gradientTransform)
                 //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
                 //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
             }
@@ -132,10 +130,12 @@ class SVGGraphicModifier {
                 Swift.print("userSpaceOnUse")
                 //startCenter -= shape.frame.origin
                 //endCenter -= shape.frame.origin
+                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                Swift.print("transformation: " + "\(transformation)")
             }
-            let startRadius:CGFloat = radialGradient.r/*inner circle*/
-            Swift.print("startRadius: " + "\(startRadius)")
-            let endRadius:CGFloat = 0/*outer circle*/
+            let startRadius:CGFloat = 0
+            let endRadius:CGFloat = radialGradient.r
+            Swift.print("endRadius: " + "\(endRadius)")
             //continue here: add support for absolute values first, then add relative values etc.
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
             shape.graphics.gradientFill(radialGraphicsGradient)
