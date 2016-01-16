@@ -26,12 +26,14 @@ class SVGCircle : SVGGraphic{
             let y:CGFloat = (!cy.isNaN ? cy : 0) - r
             let rect:CGRect = CGRect(x, y, r*2, r*2)
             let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient  ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            Swift.print("fillFrame: " + "\(fillFrame)")
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
             /*Line*/
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+            Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
             lineShape.frame = lineOffsetRect.lineFrameRect
-            
+            Swift.print("lineShape.frame: " + "\(lineShape.frame)")
             
             //this may not work if the x and y is more than 0,0 etc make sure it works 
             
