@@ -102,8 +102,10 @@ class SVGGraphicModifier {
             //fatalError("implment the bellow first")
             shape.graphics.gradientFill(linearGraphicsGradient)
         }else{/*gradient is SVGRadialGradient */
-            Swift.print("drawRadialGradient()")
+            
+            
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            Swift.print("drawRadialGradient()" + "\(gradient.gradientTransform)")
             if(radialGradient.gradientTransform != nil) {
                  Swift.print("drawRadialGradient() gradient.transformation()")
                 //matrix.concat(gradient.gradientTransform)
