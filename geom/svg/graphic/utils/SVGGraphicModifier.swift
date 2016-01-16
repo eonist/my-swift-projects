@@ -96,18 +96,19 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
-            let grad:IGradient = GraphicsGradient()
+            let graphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,p1,p2)
             //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             //fatalError("implment the bellow first")
-            shape.graphics.gradientFill(grad)
-        }else{/*gradient is SVGLinearGradient */
+            shape.graphics.gradientFill(graphicsGradient)
+        }else{/*gradient is SVGRadialGradient */
+            
             if(gradient.gradientTransform != nil) {
                 //matrix.concat(gradient.gradientTransform)
             }
             if(!((gradient as! SVGRadialGradient).fx).isNaN) {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
-            
+            fatalError("not implmented yet")
             
                        
             
