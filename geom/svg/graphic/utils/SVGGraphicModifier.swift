@@ -72,7 +72,10 @@ class SVGGraphicModifier {
         //Swift.print("gradient.colors: " + gradient.colors);
         //Swift.print("gradient.opacities: " + gradient.opacities);
         //Swift.print("gradient.offsets: " + gradient.offsets);
-        
+        /**
+         * @NOTE: there is no need for transform in the LinearGraphicsGradient, all matrix transformation can be applied to the points
+         * @NOTE: you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
+         */
         if(gradient is SVGLinearGradient){
             //let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
             
@@ -82,28 +85,25 @@ class SVGGraphicModifier {
             Swift.print("p1: " + "\(p1)")
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
             
+            //coninue here: add gradient to stroke, both linear and radial
+            
             //TODO:  the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
-            //you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
             //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
             Swift.print("points: " + "\([p1,p2])")
-            var transformation:CGAffineTransform = CGAffineTransformIdentity
             if(gradient.gradientTransform != nil){
                 Swift.print("drawAxialGradient() gradient.transformation()")
-                transformation = gradient.gradientTransform!.copy()
-                var offsetTransformation = CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y)
-                offsetTransformation.concat(transformation)
-                //p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
-                //p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+                //i think you should do tje matrix in Graphics not here
+                p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
+                p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
             }
-            //Swift.print("points after: " + "\([p1,p2])")
+            Swift.print("points after: " + "\([p1,p2])")
             
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-                Swift.print("userSpaceOnUse")
-                //p1 -= shape.frame.origin
-                //p2 -= shape.frame.origin
+                p1 -= shape.frame.origin
+                p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
-            let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,transformation,p1,p2)
+            let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
             //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             //fatalError("implment the bellow first")
             shape.graphics.gradientFill(linearGraphicsGradient)
