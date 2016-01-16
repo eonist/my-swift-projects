@@ -111,11 +111,15 @@ class SVGGraphicModifier {
             Swift.print("startCenter: " + "\(startCenter)")
             var endCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*outer circle, if fx or fy isnt found use cx and cy as replacments*/
             Swift.print("endCenter: " + "\(endCenter)")
+            
+            var transformation:CGAffineTransform = CGAffineTransformIdentity
             if(radialGradient.gradientTransform != nil) {
                 Swift.print("drawRadialGradient() gradient.transformation()")
+                transformation = radialGradient.gradientTransform!.copy()
+                CGAffineTransformConcat(transformation, CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 //matrix.concat(gradient.gradientTransform)
-                startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
-                endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
+                //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
+                //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
             }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 Swift.print("userSpaceOnUse")
@@ -126,7 +130,7 @@ class SVGGraphicModifier {
             Swift.print("startRadius: " + "\(startRadius)")
             let endRadius:CGFloat = 0/*outer circle*/
             //continue here: add support for absolute values first, then add relative values etc.
-            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,nil/*radialGradient.gradientTransform*/,startCenter,endCenter,startRadius,endRadius)
+            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
             shape.graphics.gradientFill(radialGraphicsGradient)
         }
     }
