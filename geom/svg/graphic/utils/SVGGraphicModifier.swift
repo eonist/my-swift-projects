@@ -137,7 +137,7 @@ class SVGGraphicModifier {
          * @TODO: lets try to scale radial gradient aswell
          */
         else{/*gradient is SVGRadialGradient */
-            Swift.print("drawRadialGradient()")
+            Swift.print("drawRadialGradient()" + "\(radialGradient.gradientTransform)")
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             let startRadius:CGFloat = 0
             var endRadius:CGFloat = radialGradient.r

@@ -35,9 +35,9 @@ class SVGGradientParser {
 		let rStr:String = SVGPropertyParser.property(xml,"r")!;
 		let r:CGFloat = StringAsserter.percentage(rStr) ? StringParser.percentage(rStr) : SVGPropertyParser.value(rStr);
         let fxStr:String? = SVGPropertyParser.property(xml,"fx")
-        let fyStr:String? = SVGPropertyParser.property(xml,"fy")
-        let fx:CGFloat = SVGPropertyParser.value(fxStr);
-		let fy:CGFloat = SVGPropertyParser.value(fyStr);
+        let fx:CGFloat = fxStr != nil && StringAsserter.percentage(fxStr!) ? StringParser.percentage(fxStr!) : SVGPropertyParser.value(fxStr);
+		let fyStr:String? = SVGPropertyParser.property(xml,"fy")
+        let fy:CGFloat = fyStr != nil && StringAsserter.percentage(fyStr!) ? StringParser.percentage(fyStr!) : SVGPropertyParser.value(fyStr);
 		let svgGradient:SVGGradient = Utils.gradient(xml);
 		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,/*svgGradient.opacities,*/svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform/**/);
 	}
