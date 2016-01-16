@@ -110,6 +110,7 @@ class SVGGraphicModifier {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
             
+            
             //continue here: add support for absolute values first, then add relative values etc.
             let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,)
             shape.graphics.gradientFill(radialGraphicsGradient)
