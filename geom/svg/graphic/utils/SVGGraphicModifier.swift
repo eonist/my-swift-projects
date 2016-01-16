@@ -38,19 +38,14 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
                 if(gradient.gradientTransform != nil){fatalError("not supported yet")}
-                let boundingBox:CGRect = shape.frame.copy()
-                p1.x = boundingBox.width * (p1.x / 100)//this code can be compacted into 1 line
+                let boundingBox:CGRect = shape.frame.copy()//we could use the strokeOutline
+                p1.x = boundingBox.width * (p1.x / 100)//this and the following lines of code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
                 p2.x = boundingBox.width * (p2.x / 100)
                 p2.y = boundingBox.height * (p2.y / 100)
                 //fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")
             }
-            
-            //Continue here: implement the above, dont forget PathOutline
-            
-            //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
-            //fatalError("implment the bellow first")
             shape.graphics.gradientLine(linearGraphicsGradient)
         }else{/*radial*/
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
