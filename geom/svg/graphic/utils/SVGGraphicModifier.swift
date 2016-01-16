@@ -25,7 +25,7 @@ class SVGGraphicModifier {
         SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
-        if(gradient is SVGLinearGradient){
+        if(gradient is SVGLinearGradient){/*gradient is SVGRadialGradient */
             let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
@@ -42,7 +42,35 @@ class SVGGraphicModifier {
             //fatalError("implment the bellow first")
             shape.graphics.gradientLine(linearGraphicsGradient)
         }else{
-            fatalError("not implemented yet")
+            let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
+            
+            let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
+            Swift.print("startCenter: " + "\(startCenter)")
+            let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
+            Swift.print("endCenter: " + "\(endCenter)")
+            
+            var transformation:CGAffineTransform = CGAffineTransformIdentity
+            if(radialGradient.gradientTransform != nil) {
+                Swift.print("drawRadialGradient() gradient.transformation()")
+                transformation = radialGradient.gradientTransform!.copy()
+                Swift.print("transformation: " + "\(transformation)")
+                //matrix.concat(gradient.gradientTransform)
+                //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
+                //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
+            }
+            if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+                Swift.print("userSpaceOnUse")
+                //startCenter -= shape.frame.origin
+                //endCenter -= shape.frame.origin
+                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                Swift.print("transformation: " + "\(transformation)")
+            }
+            let startRadius:CGFloat = 0
+            let endRadius:CGFloat = radialGradient.r
+            Swift.print("endRadius: " + "\(endRadius)")
+            //continue here: add support for absolute values first, then add relative values etc.
+            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
+            shape.graphics.gradientFill(radialGraphicsGradient)
         }
     }
     /**
