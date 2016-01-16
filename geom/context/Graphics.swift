@@ -214,11 +214,11 @@ private class Utils{
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
-        var newPath:CGPath = boundingBox.path.copy()
+        var newPath:CGPath = path.copy()
         
         newPath = CGPathModifier.scale(&newPath, -1, -1)
         CGContextAddPath(context,newPath)
-        //CGContextAddPath(context,path)//Adds the path to the context
+        CGContextAddPath(context,path)//Adds the path to the context
         
         CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
