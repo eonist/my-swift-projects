@@ -38,7 +38,7 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
                 if(gradient.gradientTransform != nil){fatalError("not supported yet")}
-                let boundingBox:CGRect = shape.frame.size
+                let boundingBox:CGRect = shape.frame.copy()
                 p1.x = boundingBox.width * (p1.x / 100)//this code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
                 p2.x = boundingBox.width * (p2.x / 100)
