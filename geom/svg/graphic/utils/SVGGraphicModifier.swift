@@ -146,22 +146,23 @@ class SVGGraphicModifier {
             Swift.print("endCenter: " + "\(endCenter)")
             
             var transformation:CGAffineTransform = CGAffineTransformIdentity
-            if(radialGradient.gradientTransform != nil) {
-                Swift.print("drawRadialGradient() gradient.transformation()")
-                transformation = radialGradient.gradientTransform!.copy()
-                Swift.print("transformation: " + "\(transformation)")
-                                //matrix.concat(gradient.gradientTransform)
-                //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
-                //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
-            }
+            
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 Swift.print("userSpaceOnUse")
+                if(radialGradient.gradientTransform != nil) {
+                    Swift.print("drawRadialGradient() gradient.transformation()")
+                    transformation = radialGradient.gradientTransform!.copy()
+                    Swift.print("transformation: " + "\(transformation)")
+                    //matrix.concat(gradient.gradientTransform)
+                    //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
+                    //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
+                }
                 //startCenter -= shape.frame.origin
                 //endCenter -= shape.frame.origin
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
-                
+                if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
             }
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
