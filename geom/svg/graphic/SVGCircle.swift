@@ -20,9 +20,7 @@ class SVGCircle : SVGGraphic{
     */
     override func draw(){
         Swift.print("SVGCircle.draw()")
-        if(style != nil && style!.fill is Number && style.fill != "none"){
-            
-        }
+        
         if(!r.isNaN) {
             /*Fill*/
             let x:CGFloat = (!cx.isNaN ? cx : 0) - r
@@ -32,16 +30,21 @@ class SVGCircle : SVGGraphic{
             Swift.print("fillFrame: " + "\(fillFrame)")
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
+            
             /*Line*/
-            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
-            Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
-            lineShape.frame = lineOffsetRect.lineFrameRect
-            Swift.print("lineShape.frame: " + "\(lineShape.frame)")
+            if(style!.stroke is Double && !(style!.stroke as! Double).isNaN){//checks if there is a stroke in style
+                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+                Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
+                lineShape.frame = lineOffsetRect.lineFrameRect
+                Swift.print("lineShape.frame: " + "\(lineShape.frame)")
+                
+                //this may not work if the x and y is more than 0,0 etc make sure it works
+                
+                
+                lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
+            }
             
-            //this may not work if the x and y is more than 0,0 etc make sure it works 
             
-            
-            lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)/*<--why arent we using the circle method here?, well this works aswell*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
