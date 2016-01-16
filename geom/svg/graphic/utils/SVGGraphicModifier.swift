@@ -117,7 +117,8 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
-                
+                p1 -= shape.frame.origin
+                p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
