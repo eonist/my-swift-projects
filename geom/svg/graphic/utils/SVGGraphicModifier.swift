@@ -117,13 +117,14 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
+                if(gradient.gradientTransform != nil){fatalError("not supported yet")}
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
-                p1.x = boundingBox.width * (p1.x / 100)
+                p1.x = boundingBox.width * (p1.x / 100)//this code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
                 p2.x = boundingBox.width * (p2.x / 100)
                 p2.y = boundingBox.height * (p2.y / 100)
-                Swift.print("p1: " + "\(p1)")
-                Swift.print("p2: " + "\(p2)")
+                //Swift.print("p1: " + "\(p1)")
+                //Swift.print("p2: " + "\(p2)")
             }
             Swift.print("points after offset: " + "\([p1,p2])")
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
