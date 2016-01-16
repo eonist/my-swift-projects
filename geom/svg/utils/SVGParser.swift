@@ -23,6 +23,9 @@ class SVGParser {
             doc.add(element(child,doc))//print("Import - child.toXMLString(): " + child.toXMLString());
         }
         return doc;
+        
+        //Continue here you need to install a fill that is the first color that is mased to the path, then you fill the rest with the last color
+        
     }
     /**
      * Returns An ISVG instance or SVGLinearGradient instance (For now, in the future other types will be added)
