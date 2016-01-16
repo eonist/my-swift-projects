@@ -166,7 +166,7 @@ class SVGGraphicModifier {
                 transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
                 Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
-                //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
+                //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")} we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
                 
                 let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
@@ -176,7 +176,7 @@ class SVGGraphicModifier {
                 
                 let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
                 let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
-                endRadius = minRadius * (endRadius/100*2)//needs to be half of minwidth of boundingbox
+                endRadius = minRadius * (endRadius/100*2)//needs to be half of minwidth of boundingbox, multiply by 2 since we are using radius not diameter, this can be optimized
                 Swift.print("endRadius: " + "\(endRadius)")
                 Swift.print("startCenter: " + "\(startCenter)")
                 Swift.print("endCenter: " + "\(endCenter)")
