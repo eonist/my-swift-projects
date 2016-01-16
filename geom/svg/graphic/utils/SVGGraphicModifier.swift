@@ -142,7 +142,7 @@ class SVGGraphicModifier {
             Swift.print("radialGradient.gradientTransform: " + "\(radialGradient.gradientTransform)")
             let startRadius:CGFloat = 0
             var endRadius:CGFloat = radialGradient.r
-            Swift.print("endRadius: " + "\(endRadius)")
+            //Swift.print("endRadius: " + "\(endRadius)")
             
             var startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
             //Swift.print("startCenter: " + "\(startCenter)")
@@ -176,7 +176,7 @@ class SVGGraphicModifier {
                 
                 let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
                 let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
-                endRadius = minRadius * (endRadius/100)//needs to be half of minwidth of boundingbox
+                endRadius = minRadius * (endRadius/100/2)//needs to be half of minwidth of boundingbox
                 Swift.print("endRadius: " + "\(endRadius)")
                 Swift.print("startCenter: " + "\(startCenter)")
                 Swift.print("endCenter: " + "\(endCenter)")
