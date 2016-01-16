@@ -37,7 +37,7 @@ class SVGGraphicModifier {
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
-                if(gradient.gradientTransform != nil){fatalError("transform here is not supported yet")}
+                if(gradient.gradientTransform != nil){fatalError("transform here is not supported yet")}//you need to implement individual scaling of gradients first
                 let boundingBox:CGRect = shape.frame.copy()//we could use the SVGStyleUtils.boundingBox which uses the Outline of the stroked line but this is already calculated and used in the frame, so we reuse that
                 p1.x = boundingBox.width * (p1.x / 100)//this and the following lines of code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
