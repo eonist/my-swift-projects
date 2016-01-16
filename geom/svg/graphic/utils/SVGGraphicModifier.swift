@@ -38,8 +38,9 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }
             //let grad:IGradient = Gradient(gradient.colors,gradient.offsets,gradientType,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
-            fatalError("implment the bellow first")
-            //shape.graphics.gradientLine(grad)
+            let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
+            //fatalError("implment the bellow first")
+            shape.graphics.gradientLine(linearGraphicsGradient)
         }else{
             fatalError("not implemented yet")
         }
