@@ -103,7 +103,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
             SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style!)
         }else{/*clear*/
             Swift.print("no stroke")
-            fatalError("not implemented yet " + "\(style!.stroke)")
+            //fatalError("not implemented yet " + "\(style!.stroke)")
         }
     }
     /**
