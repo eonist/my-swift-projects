@@ -29,11 +29,11 @@ class SVGGradientParser {
 	 */
 	class func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
 		let cxStr:String = SVGPropertyParser.property(xml,"cx")!;
-        let cx:CGFloat = SVGPropertyParser.value(cxStr);
+        let cx:CGFloat = StringAsserter.percentage(cxStr) ? StringParser.percentage(cxStr) : SVGPropertyParser.value(cxStr);
 		let cyStr:String = SVGPropertyParser.property(xml,"cy")!;
-		let cy:CGFloat = SVGPropertyParser.value(cyStr);
+		let cy:CGFloat = StringAsserter.percentage(cyStr) ? StringParser.percentage(cyStr) : SVGPropertyParser.value(cyStr);
 		let rStr:String = SVGPropertyParser.property(xml,"r")!;
-		let r:CGFloat = SVGPropertyParser.value(rStr);
+		let r:CGFloat = StringAsserter.percentage(rStr) ? StringParser.percentage(rStr) : SVGPropertyParser.value(rStr);
 		let fx:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fx"));
 		let fy:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml,"fy"));
 		let svgGradient:SVGGradient = Utils.gradient(xml);
