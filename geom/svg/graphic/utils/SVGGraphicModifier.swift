@@ -80,12 +80,13 @@ class SVGGraphicModifier {
             Swift.print("p1: " + "\(p1)")
             Swift.print("shape.frame.origin: " + "\(shape.frame.origin)")
             
-            //Continue here; the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
+            //TODO:  the problem is that you do the offset on values that are not yet sccaled. so either do scaling with matrix here or think of something els
             //you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
             //maybe the graphic gradient is only absolute and you do matrix here instead?, since the offset will always be a problem etc, try this
             Swift.print("points: " + "\([p1,p2])")
             if(gradient.gradientTransform != nil){
                 Swift.print("drawAxialGradient() gradient.transformation()")
+                //i think you should do tje matrix in Graphics not here
                 p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
                 p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
             }
@@ -96,10 +97,10 @@ class SVGGraphicModifier {
                 p2 -= shape.frame.origin
             }
             Swift.print("points after offset: " + "\([p1,p2])")
-            let graphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,p1,p2)
+            let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,p1,p2)
             //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             //fatalError("implment the bellow first")
-            shape.graphics.gradientFill(graphicsGradient)
+            shape.graphics.gradientFill(linearGraphicsGradient)
         }else{/*gradient is SVGRadialGradient */
             
             if(gradient.gradientTransform != nil) {
@@ -108,10 +109,10 @@ class SVGGraphicModifier {
             if(!((gradient as! SVGRadialGradient).fx).isNaN) {
                 //focalPointRatio = Utils.focalPointRatio(gradient as! SVGRadialGradient);
             }
-            fatalError("not implmented yet")
             
-                       
             
+            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(gradient.colors,gradient.offsets,gradient.gradientTransform,)
+            shape.graphics.gradientFill(radialGraphicsGradient)
         }
     }
 }
