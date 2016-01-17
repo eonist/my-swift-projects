@@ -219,7 +219,7 @@ private class Utils{
         CGContextAddPath(context,path)/*Add a path as the background*/
         var ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
         if(gradient.transformation != nil) {ellipsePath = CGPathModifier.transform(ellipsePath, gradient.transformation!)}/*we check if there is a transformation applied to the gradient before we use it*/
-        CGContextAddPath(context,ellipsePath)
+        CGContextAddPath(context,ellipsePath)/*the ellipsePath represents the shape of the gradient*/
         CGContextEOClip(context);/*using clip here may break the gradient stroke clipping, it may also be less optimized than just drawing a square with a hole in it by paths that use winding*/
         CGContextAddPath(context,path)/*we need to have a path to fill something in again, since the clip consumes the clip path etc*/
         
