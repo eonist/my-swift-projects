@@ -55,7 +55,7 @@ class SVGModifier {
 		}
         if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
-    class func scale2(element:ISVGElement) {
+    class func desc(element:ISVGElement) {
         
         switch(true){
         

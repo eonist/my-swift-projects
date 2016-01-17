@@ -201,8 +201,9 @@ class SVGParser {
         for element : ISVGElement in container.items{SVGParser.describe(element)}/**/
     }
     
+    
     class func descContainer(container:SVGContainer) {
        
-        for element : ISVGElement in container.items{SVGModifier.scale2(element)}/**/
+        for element : ISVGElement in container.items{SVGModifier.desc(element)}/**/
     }
 }
