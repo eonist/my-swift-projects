@@ -15,8 +15,7 @@ class SVGParser {
         let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
         let nameSpace:String = ""//xml.namespaceDeclarations().toString();//TODO: implement this later
         let id:String = SVGPropertyParser.id(xml);
-        let arr:Array<ISVGElement> = []
-        let doc:SVG = SVG(arr,x,y,width,height,version,nameSpace,id);
+        let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id);
         let children:NSArray = xml.children!
         let count = children.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
