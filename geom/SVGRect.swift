@@ -38,8 +38,7 @@ class SVGRect : SVGGraphic {
         //Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
         if(width <= 0 && height <= 0) {/*None*/
             return
-        }
-        if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
+        }else if(rx.isNaN && ry.isNaN ) {/*Rect*/
             let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
             Swift.print("rect: " + "\(rect)")
             if(style!.fill != nil){/*Fill*/

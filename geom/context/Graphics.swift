@@ -214,17 +214,12 @@ private class Utils{
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         
+        
+        
         var newPath:CGPath = CGPathCreateMutableCopy(path)!
         newPath = CGPathModifier.scale(&newPath, -1, -1)
         CGContextAddPath(context,newPath)
         
-        
-        //continue here: try to get the winding draing going, and why does it clip?
-        
-        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
-        Swift.print("boundingBox: " + "\(boundingBox)")
-        CGContextAddPath(context,boundingBox.path)//Adds the path to the context
-        /**/
         
         
         CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
