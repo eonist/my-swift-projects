@@ -11,6 +11,9 @@ class SVGContainerModifier {
 		container.frame.size = size;
         for var i = 0; i < container.items.count; ++i{
             let element : ISVGElement = container.items[i]
+            if(element is SVGRect){
+                Swift.print("(element as! SVGRect).width: " + "\((element as! SVGRect).width)")
+            }
             SVGModifier.scale(element, pivot, scale)
         }
         /*for element : ISVGElement in container.items{
