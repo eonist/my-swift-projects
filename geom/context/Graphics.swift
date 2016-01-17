@@ -229,7 +229,6 @@ private class Utils{
         
         
         CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
-        
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         /*
         CGContextSaveGState(context)/*save the current context*/
