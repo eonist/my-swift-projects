@@ -81,7 +81,32 @@ class SVGModifier {
         graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
         graphic.lineShape.setNeedsDisplay()
 	}
-    
+    /**
+     * Describes all svg elements in a SVG instance, is not recursive yet
+     * // :TODO: impliment SVGGroup
+     */
+    class func describeAll(svg:SVG) {
+        Swift.print("SVGParser.describeAll()")
+        for svgElement : ISVGElement in svg.items {
+            if(svgElement is SVGPath){
+                Swift.print((svgElement as! SVGPath).commands);
+                Swift.print((svgElement as! SVGPath).parameters);
+            }else if(svgElement is SVGPolygon){
+                Swift.print("(element as! SVGPolygon).points: " + "\((svgElement as! SVGPolygon).points)")
+                Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
+            }else if(svgElement is SVGPolyLine){
+                Swift.print((svgElement as! SVGPolyLine).points);
+            }else if(svgElement is SVGRect){
+                Swift.print("SVGRect: " + "\(svgElement)");
+                Swift.print("width: " + " + \((svgElement as! SVGRect).width)")
+                Swift.print("height: " + "\((svgElement as! SVGRect).height)")
+                Swift.print("x: " + "\((svgElement as! SVGRect).x)")
+                Swift.print("y: " + "\((svgElement as! SVGRect).y)")
+            }else{
+                fatalError("\(svgElement)" + " is not supported yet")
+            }
+        }
+    }
     /**
      *
      */
@@ -98,9 +123,13 @@ class SVGModifier {
         case element is SVGContainer:
             let container = element as! SVGContainer
             //Swift.print((container.items[0] as! SVGPolygon).points)
-            SVGParser.descContainer(container);
+            SVGModifier.descContainer(container);
             break;
         default: break;
         }
+    }
+    class func descContainer(container:SVGContainer) {
+        
+        for element : ISVGElement in container.items{SVGModifier.desc(element)}/**/
     }
 }

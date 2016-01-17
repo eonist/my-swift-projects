@@ -151,59 +151,5 @@ class SVGParser {
         let ry:CGFloat = SVGPropertyParser.digit(xml,"ry")
         return SVGEllipse(cx, cy, rx, ry,style,id)
     }
-    /**
-     * Describes all svg elements in a SVG instance, is not recursive yet
-     * // :TODO: impliment SVGGroup
-     */
-    class func describe(element:ISVGElement) {
-        Swift.print("SVGParser.describe()")
-        switch(true){
-        
-        case element is SVGPolygon:
-            let polygon = (element as! SVGPolygon)
-            Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
-            
-            break;
-        
-        case element is SVGContainer:
-            let container = element as! SVGContainer
-            //Swift.print((container.items[0] as! SVGPolygon).points)
-            
-            SVGParser.describeContainer(container)
-            break;
-        
-        default: break;
-        }
-
-        /*
-        if(svgElement is SVGContainer){
-            SVGParser.describeContainer(svgElement as! SVGContainer)
-        }else if(svgElement is SVGPath){
-            Swift.print((svgElement as! SVGPath).commands);
-            Swift.print((svgElement as! SVGPath).parameters);
-        }else if(svgElement is SVGPolygon){
-            Swift.print("(element as! SVGPolygon).points: " + "\((svgElement as! SVGPolygon).points)")
-            Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
-        }else if(svgElement is SVGPolyLine){
-            Swift.print((svgElement as! SVGPolyLine).points);
-        }else if(svgElement is SVGRect){
-            Swift.print("SVGRect: " + "\(svgElement)");
-            Swift.print("width: " + " + \((svgElement as! SVGRect).width)")
-            Swift.print("height: " + "\((svgElement as! SVGRect).height)")
-            Swift.print("x: " + "\((svgElement as! SVGRect).x)")
-            Swift.print("y: " + "\((svgElement as! SVGRect).y)")
-        }else{
-            fatalError("\(svgElement)" + " is not supported yet")
-        }
-        */
-    }
-    class func describeContainer(container:SVGContainer){
-        for element : ISVGElement in container.items{SVGParser.describe(element)}/**/
-    }
     
-    
-    class func descContainer(container:SVGContainer) {
-       
-        for element : ISVGElement in container.items{SVGUtils.desc(element)}/**/
-    }
 }
