@@ -175,7 +175,7 @@ class SVGUtils {
      * // :TODO: impliment SVGGroup
      * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
      */
-    class func describeAll(svg:ISVGContainer){
+    class func describeAll(svg:SVGContainer){
         Swift.print("SVGParser.describeAll()")
         for var i = 0; i < svg.items.count; ++i{
             let svgElement:ISVGElement = svg.items[i]
