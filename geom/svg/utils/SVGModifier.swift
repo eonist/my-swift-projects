@@ -32,7 +32,8 @@ class SVGModifier {
         switch(true){
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:
-                Swift.print("(element as! SVGPolygon).points: " + "\((element as! SVGPolygon).points)")
+                let polygon = (element as! SVGPolygon)
+                Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
                 (element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);
                 
                 break;
