@@ -34,7 +34,7 @@ class SVGModifier {
             case element is SVGPolygon:PointModifier.scalePoints(&(element as! SVGPolygon).points, pivot, scale);break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
-			case element is SVGPath:SVGPathModifier.scale(&(element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale);break;
+			case element is SVGPath:SVGPathModifier.scale(element as! SVGPath , pivot, scale);break;
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
@@ -72,32 +72,5 @@ class SVGModifier {
     }
     
 }
-class SVGCircleModifier {
-    /**
-     * Scales the SVGCircle instance from @param pivot to a specific @param scale scalar value (0-1)
-     */
-    class func scale(circle:SVGCircle,_ pivot:CGPoint,_ scale:CGPoint) {
-        Swift.print("SVGCircleModifier.circle() circle: " + "\(circle)")
-        //Swift.print("circle.r: " + "\(circle.r)")
-        let circleCenter:CGPoint = PointModifier.scale(circle.center, pivot, scale);
-        let circleRadius:CGFloat = circle.r * scale.x;
-        circle.center = circleCenter;
-        circle.r = circleRadius;
-    }
-}
-private class SVGRectModifier {
-    /**
-     * Scales the SVGRect instance from @param pivot to a specific @param scale scalar value (0-1)
-     * // :TODO: impliment support for scaling the rx and ry values in the SVGRect instance, you have code for this Think fillet classes
-     * IMPORTANT: this method seems to only work if its in this file (spend 3-4 hours trying to debug it, i think its either xcode or the strange array system that svg uses), you could figure this out if you mimicked the svg system and only used basic classes. Like a dummy test. Then compare unitill you got it working. For now though, we need to move on
-     */
-    class func scale(rect:SVGRect,_ pivot:CGPoint,_ scale:CGPoint) {
-        let position:CGPoint = PointModifier.scale(rect.position, pivot, scale);
-        let size:CGSize = CGSize(rect.width * scale.x, rect.height * scale.y);//TODO:use CGRect scale method instead
-        rect.x = position.x;
-        rect.y = position.y;
-        rect.width = size.width;
-        rect.height = size.height;
-    }
-}
+
 
