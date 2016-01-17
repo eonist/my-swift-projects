@@ -7,6 +7,8 @@ class SVGRectModifier {
 	 */
 	class func scale(rect:SVGRect,_ pivot:CGPoint,_ scale:CGPoint) {
         Swift.print("rect: " + "\(rect)")
+        Swift.print("rect.width: " + "\(rect.width)")
+        Swift.print("rect.height: " + "\(rect.height)")
 		let position:CGPoint = PointModifier.scale(rect.position, pivot, scale);
 		let size:CGSize = CGSize(rect.width * scale.x, rect.height * scale.y);//TODO:use CGRect scale method instead
 		rect.x = position.x;
