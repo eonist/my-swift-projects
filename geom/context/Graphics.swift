@@ -230,15 +230,12 @@ private class Utils{
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
         CGContextRestoreGState(context)//restore the graphic mask
         /*end create background*/
+        /*begin drawing the radial gradient*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
         CGContextDrawRadialGradient(context, cgGradient, gradient.startCenter, gradient.startRadius, gradient.endCenter, gradient.endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)/*restore the context that was saved*/
-        /**/
-        /**/
-        
-        
-        
+        /*end drawing the radial gradient*/
     }
 }
 extension Graphics{//private class ShadowUtils
