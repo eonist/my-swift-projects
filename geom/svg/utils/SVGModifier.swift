@@ -69,6 +69,7 @@ class SVGModifier {
 	 * updates an SVGGraphic
 	 */
 	class func update(graphic:ISVGGraphic) {
+        Swift.print("update")
         //WARNING: this method is incomplete, needs correct order of calls etc
         graphic.draw();/*<--draws the path with the new params*/
         		

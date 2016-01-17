@@ -6,7 +6,7 @@ class SVGCircleModifier {
      */
     class func scale(circle:SVGCircle,_ pivot:CGPoint,_ scale:CGPoint) {
         Swift.print("SVGCircleModifier.circle() circle: " + "\(circle)")
-        Swift.print("circle.r: " + "\(circle.r)")
+        //Swift.print("circle.r: " + "\(circle.r)")
         let circleCenter:CGPoint = PointModifier.scale(circle.center, pivot, scale);
         let circleRadius:CGFloat = circle.r * scale.x;
         circle.center = circleCenter;
