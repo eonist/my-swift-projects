@@ -169,7 +169,7 @@ class SVGUtils {
      * // :TODO: rename to stylize?
      * @Note this method is recursive
      */
-    class func style(element:ISVGElement,_ style:SVGStyle) {
+    class func style(inout element:ISVGElement,_ style:SVGStyle) {
         if(element is SVGView) {(element as! SVGView).style = style}
         if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
         /*if(element is SVGContainer) {
