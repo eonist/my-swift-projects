@@ -40,7 +40,13 @@ class SVGRect : SVGGraphic {
             return
         }
         if((rx.isNaN) && (ry.isNaN) ) {/*Rect*/
-            //TODO: you need to check to see if line is needed before you draw the fill path
+            if(style!.fill != nil){
+                
+            }
+            
+            
+            
+            
             
             let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet. 
             Swift.print("rect: " + "\(rect)")
@@ -51,13 +57,16 @@ class SVGRect : SVGGraphic {
             //TODO: you can set the frame to the rect, no need for the fancy frame creation method
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             
-            //TODO: you need to check to see if line is needed before you draw the line path
             
-            /*line*/
-            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
-            Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
-            lineShape.frame = lineOffsetRect.lineFrameRect
-            lineShape.path = lineOffsetRect.lineRect.path
+            
+            /*Line*/
+            if(style!.stroke != nil){//checks if there is a stroke in style
+                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+                Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
+                lineShape.frame = lineOffsetRect.lineFrameRect
+                lineShape.path = lineOffsetRect.lineRect.path
+            }
+            
         }
         else {/*RoundRect*/
             fatalError("RoundRect Not implemented yet")
