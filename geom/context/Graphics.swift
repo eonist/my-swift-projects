@@ -211,7 +211,10 @@ private class Utils{
     }
     /**
      * Radial gradient
-     * NOTE: to support radial gradients that end their gradient with a color that is transperant we needed to make the background a mask. Think shape with a hole, the hole is the shape of the radial 
+     * NOTE: to support radial gradients that end their gradient with a color that is transperant we needed to make the background a mask. Think shape with a hole, the hole is the area of the radial gradient
+     * TODO: The current way this works is to use a clipping with EOClip (EvenOdd) but this could be easily done with two paths one being drawn with reverese winding. This approche may be faster aswell. so try it
+     * TODO: You may consider drawing the elliptical shape from the top left to get better edge rendering. 
+     * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
