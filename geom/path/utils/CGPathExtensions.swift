@@ -13,4 +13,11 @@ extension CGMutablePath{
     func copy()->CGMutablePathRef {//possibly return CGMutablePathRef
         return CGPathCreateMutableCopy(self)!
     }
+    /**
+     *
+     */
+    func transform(path:CGMutablePathRef,transformation:CGAffineTransform)->CGMutablePathRef{
+        var transformation:CGAffineTransform = transformation.copy()
+        return CGPathCreateMutableCopyByTransformingPath(path, &transformation)!
+    }
 }
