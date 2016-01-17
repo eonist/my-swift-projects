@@ -67,9 +67,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
-        Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
+        //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/ && !(style!.fill as! Double).isNaN) {
-            Swift.print("SVGGraphic.beginFill() color")
+            //Swift.print("SVGGraphic.beginFill() color")
             let colorVal:Double = !(style!.fill as! Double).isNaN ? style!.fill as! Double : Double(0x000000)
             //Swift.print("colorVal: " + "\(colorVal)")
             let opacity:CGFloat = !style!.fillOpacity.isNaN ? style!.fillOpacity : 1
@@ -77,11 +77,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
             //Swift.print("color: " + "\(color)")
             fillShape.graphics.fill(color)/*Stylize the fill*/
         }else if(style!.fill != nil && style!.fill! is SVGGradient){//<- may need to use dynamixtype to assert this?!?
-            Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
+            //Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
             SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
         }else{
             //clear
-            Swift.print("no fill")
+            //Swift.print("no fill")
             //fatalError("not implemented yet")
         }
     }
@@ -94,15 +94,15 @@ class SVGGraphic : SVGView,ISVGGraphic{
     
     
     func applyLineStyle(){
-        Swift.print("SVGGraphic.applyLineStyle() style stroke: " + "\(style!.stroke)")
+        //Swift.print("SVGGraphic.applyLineStyle() style stroke: " + "\(style!.stroke)")
         if(style!.stroke is Double) {/*updates only if lineStyle of class LineStyle*/
-            Swift.print("color")
+            //Swift.print("color")
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
         }else if(style!.stroke is SVGGradient){
-            Swift.print("gradient")
+            //Swift.print("gradient")
             SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style!)
         }else{/*clear*/
-            Swift.print("no stroke")
+            //Swift.print("no stroke")
             //fatalError("not implemented yet " + "\(style!.stroke)")
         }
     }
