@@ -165,6 +165,8 @@ class SVGParser {
                 Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
             }else if(svgElement is SVGPolyLine){
                 Swift.print((svgElement as! SVGPolyLine).points);
+            }else if(svgElement is SVGRect){
+                Swift.print("SVGRect: width: " + "\((svgElement as! SVGRect).width)" + " height: " + "\((svgElement as! SVGRect).height)" + " x: " + "\((svgElement as! SVGRect).x)" + " y: " + "\((svgElement as! SVGRect).y)");
             }else{
                 fatalError("\(svgElement)" + " is not supported yet")
             }
