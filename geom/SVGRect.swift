@@ -56,7 +56,11 @@ class SVGRect : SVGGraphic {
             }
         }else {/*RoundRect*/
             //fatalError("RoundRect Not implemented yet")
-            GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
+            
+            //continue here: implement roundrect, move this within the if fill not nil etc
+            
+            
+            GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(self), !_rx.isNaN ? _rx : _ry, !_ry.isNaN ? _ry : _rx)
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
