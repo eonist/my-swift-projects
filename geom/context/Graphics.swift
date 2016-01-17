@@ -216,24 +216,19 @@ private class Utils{
         
         
         
-        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a faster way*/
-        Swift.print("boundingBox: " + "\(boundingBox)")
-        CGContextAddPath(context,boundingBox.path)//Adds the path to the context
+        
+        CGContextAddPath(context,path)//Adds the path to the context
         /**/
         let ellipsePath:CGMutablePath  = CGPathCreateMutable();
+        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way*/
+        //Swift.print("boundingBox: " + "\(boundingBox)")
         CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 1, 1)
         CGContextAddPath(context,newPath)
         
-        CGContextEOClip(context);
-        CGContextAddPath(context,boundingBox.path)
-        //CGContextBeginPath(context);
-        //let w = boundingBox.width
-        //let h = boundingBox.height
-        //CGContextAddArc(context, w/2, h/2, ((w>h) ? h : w)/2, 0,2*π, 0);
-        //CGContextClosePath (context);
-        //CGContextClip (context);
+        CGContextEOClip(context);/*using clip here may break the gradient stroke clipping, it may also be less optimized than just drawing a square with a hole in it by paths that use winding*/
+        CGContextAddPath(context,boundingBox.path)/*we need to have a path to fill something in again, since the clip consumes the clip path etc*/
         
         
         
