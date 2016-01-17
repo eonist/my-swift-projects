@@ -7,7 +7,6 @@ import QuartzCore
  * IMPORTANT: You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
  */
 class Graphic:FlippedView,IGraphic{
-    fatalError("dont use lazy, they could be the problem to alot of things, casting problems etc")
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? //{get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
@@ -18,6 +17,7 @@ class Graphic:FlippedView,IGraphic{
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         //Swift.print("Graphic.init()")
+        Swift.print("Graphic.init(): dont use lazy, they could be the problem to alot of things, casting problems etc")
         self.fillStyle = fillStyle
         //self.fillShape = FillShape(fillStyle)
         self.lineStyle = lineStyle
