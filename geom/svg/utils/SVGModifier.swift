@@ -32,8 +32,8 @@ class SVGModifier {
         switch(true){
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:
-                let polygon = (element as! SVGPolygon)
-                Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
+                //let polygon = (element as! SVGPolygon)
+                //Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
                 (element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);
                 
                 break;
@@ -82,20 +82,35 @@ class SVGModifier {
         graphic.lineShape.setNeedsDisplay()
 	}
     /**
-     *
-     */
-    class func describeAll(svg:SVG){
-        Utils.describeAll(svg)
-    }
-}
-
-private class Utils{
-    /**
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
      * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
      */
-    class func describeAll(svg:SVG) {
-        SVGUtils.describeAll(svg)
+
+    class func describeAll(svg:SVG){
+        Swift.print("SVGParser.describeAll()")
+        for svgElement : ISVGElement in svg.items {
+            if(svgElement is SVGPath){
+                Swift.print((svgElement as! SVGPath).commands);
+                Swift.print((svgElement as! SVGPath).parameters);
+            }else if(svgElement is SVGPolygon){
+                Swift.print("(element as! SVGPolygon).points: " + "\((svgElement as! SVGPolygon).points)")
+                Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
+            }else if(svgElement is SVGPolyLine){
+                Swift.print((svgElement as! SVGPolyLine).points);
+            }else if(svgElement is SVGRect){
+                Swift.print("SVGRect: " + "\(svgElement)");
+                Swift.print("width: " + " + \((svgElement as! SVGRect).width)")
+                Swift.print("height: " + "\((svgElement as! SVGRect).height)")
+                Swift.print("x: " + "\((svgElement as! SVGRect).x)")
+                Swift.print("y: " + "\((svgElement as! SVGRect).y)")
+            }else{
+                fatalError("\(svgElement)" + " is not supported yet")
+            }
+        }
     }
+}
+
+private class Utils{
+    
 }
