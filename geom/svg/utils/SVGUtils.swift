@@ -170,9 +170,10 @@ class SVGUtils {
      * @Note this method is recursive
      */
     class func style(inout element:ISVGElement,_ style:SVGStyle) {
-        Swift.print(SVGModifier)
+        element as! SVGGraphic
+        //SVGModifier.update()
         //if(element is SVGView) {/*(element as! SVGView).style = style*/}
-        //if(element is SVGGraphic) {}
+        if(element is SVGGraphic) {}
         /*if(element is SVGContainer) {
         for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
         //if((element as! SVGContainer).items[i] is ISVGView) {SVGUtils.style((element as! SVGContainer).items[i], style)}
