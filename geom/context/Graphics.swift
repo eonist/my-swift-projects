@@ -220,9 +220,10 @@ private class Utils{
         Swift.print("boundingBox: " + "\(boundingBox)")
         //CGContextAddPath(context,boundingBox.path)//Adds the path to the context
         /**/
-        var newPath:CGMutablePathRef  = CGPathCreateMutable();
-        CGPathAddEllipseInRect(newPath, nil, boundingBox)
-        newPath = CGPathModifier.scale(&newPath, -1, -1)
+        let ellipsePath:CGMutablePath  = CGPathCreateMutable();
+        CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)
+        var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
+        //newPath = CGPathModifier.scale(&newPath, -1, -1)
         CGContextAddPath(context,newPath)
         
         
