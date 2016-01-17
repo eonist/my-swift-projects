@@ -9,6 +9,7 @@ class SVGContainerModifier {
 		let size:CGSize = CGSize(container.frame.width * scale.x, container.frame.height * scale.y);
 		container.frame.origin = position;
 		container.frame.size = size;
-        for element : ISVGElement in container.items{SVGModifier.scale2(element, pivot, scale)}/**/
+        for element : ISVGElement in container.items{SVGModifier.scale(element, pivot, scale)}/**/
 	}
+    
 }

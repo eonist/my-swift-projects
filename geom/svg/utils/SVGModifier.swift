@@ -67,8 +67,8 @@ class SVGModifier {
             break;
         case element is SVGContainer:
             let container = element as! SVGContainer
-            Swift.print((container.items[0] as! SVGPolygon).points)
-            SVGContainerModifier.scale(container,pivot,scale);
+            //Swift.print((container.items[0] as! SVGPolygon).points)
+            SVGContainerModifier.describe(container,pivot,scale);
             break;
         default: break;
         }
