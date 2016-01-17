@@ -226,8 +226,8 @@ private class Utils{
         
         
         var ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
-        if(gradient.transformation != nil) {ellipsePath = CGPathCreateMutableCopyByTransformingPath(ellipsePath, gradient.transformation)}
-        CGPathModifier
+        if(gradient.transformation != nil) {ellipsePath = CGPathModifier.transform(ellipsePath, gradient.transformation!)}
+        
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 1, 1)
         CGContextAddPath(context,newPath)

@@ -49,4 +49,11 @@ public class CGPathModifier {
         path = CGPathCreateMutableCopyByTransformingPath(path, &transformation)!
         return path
     }
+    /**
+     *
+     */
+    public class func transform(path:CGMutablePathRef,_ transformation:CGAffineTransform)->CGMutablePathRef{
+        var transformation:CGAffineTransform = transformation.copy()
+        return CGPathCreateMutableCopyByTransformingPath(path, &transformation)!
+    }
 }
