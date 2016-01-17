@@ -6,13 +6,15 @@ import Cocoa
  */
 class SVGContainer : FlippedView, ISVGContainer{
     var id : String
-    var items : Array<ISVGElement> = [];
+    var items : Array<ISVGElement>
     init(_ items:Array<ISVGElement>, _ id:String) {
         self.id = id;
+        self.items = items
         super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
+        
         for item : ISVGElement in items { add(item) }
         
     }
@@ -21,12 +23,12 @@ class SVGContainer : FlippedView, ISVGContainer{
      * @param item (SVGGraphic and elements like SVGLinearGradient)
      */
     func add(element:ISVGElement) {
-        items.append(element);
+        
         if(element is NSView) {
             //Swift.print("SVGContainer.add() element is NSView")
-            addSubview(items[items.count-1] as! NSView)
+            addSubview(element as! NSView)
         }
-        
+        items.append(element);
     }
     
     /**
