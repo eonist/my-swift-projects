@@ -147,4 +147,8 @@ class SVGUtils {
 		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from the old SVGPropertyParser)
 		 return xml;
 	 }
+    
+    
+    
+    
 }

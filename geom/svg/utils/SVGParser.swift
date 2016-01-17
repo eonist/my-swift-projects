@@ -204,6 +204,6 @@ class SVGParser {
     
     class func descContainer(container:SVGContainer) {
        
-        for element : ISVGElement in container.items{SVGModifier.desc(element)}/**/
+        for element : ISVGElement in container.items{SVGUtils.desc(element)}/**/
     }
 }
