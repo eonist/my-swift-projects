@@ -15,7 +15,6 @@ class SVGContainer : FlippedView, ISVGContainer{
         layer!.masksToBounds = false//this is needed!!!
         for item : ISVGElement in items { add(item) }
     }
-    
     /**
      * @param item (SVGGraphic and elements like SVGLinearGradient)
      */
