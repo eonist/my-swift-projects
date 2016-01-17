@@ -10,7 +10,6 @@ class SVGPathModifier {
 	 * // :TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
 	 */
 	class func scale(inout path:ISVGElement,_ pivot:CGPoint,_ scalePoint:CGPoint) {
-        let path:SVGPath = path as! SVGPath
 		var i:Int = 0;/*parameterIndex*/
 		var commands:Array<String> = path.commands;
 		var params:Array<CGFloat> = path.parameters;

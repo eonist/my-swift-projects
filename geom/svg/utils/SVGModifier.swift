@@ -27,21 +27,17 @@ class SVGModifier {
      * @NOTE: The stroke thickness isnt scaled, is this correct or?
      * @NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
 	 */
-	class func scale(inout element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
+	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		Swift.print("SVGModifier.scale() element: " + "\(element)")
         switch(true){
 			case element is SVGPolyLine:(element as! SVGPolyLine).points = PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:(element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
-			case element is SVGPath:
-                //var elmnt = (element as! SVGPath)
-                SVGPathModifier.scale(&element, pivot, scale);break;//&(element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale)
+			case element is SVGPath:SVGPathModifier.scale((element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale);break;
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
-			case element is SVGContainer:
-                //var container = element as! SVGContainer
-                SVGContainerModifier.scale(&element,pivot,scale);break;
+			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
@@ -129,6 +125,89 @@ private class SVGRectModifier {
         rect.y = position.y;
         rect.width = size.width;
         rect.height = size.height;
+    }
+}
+import Foundation
+/*
+* // :TODO: impliment graphics.drawGraphicsData
+*/
+class SVGPathModifier {
+    /**
+     * Scales @param path at @param pivot with @param scalePoint
+     * @Note: I guess the reason to use scalePoint and not a scalar value (0-1) is because scalePoint is more precise
+     * // :TODO: discuss why you use scalePoint and not scalar value in more detail.
+     * // :TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
+     */
+    class func scale(var parameters:Array<CGFloat>,/*path:SVGPath*/ _ commands:Array<String>,_ pivot:CGPoint,_ scalePoint:CGPoint) {
+        var i:Int = 0;/*parameterIndex*/
+        var commands:Array<String> = commands;
+        var params:Array<CGFloat> = parameters;
+        var p:CGPoint;
+        var c1:CGPoint;
+        var c2:CGPoint;
+        var a2:CGPoint;
+        for (var e : Int = 0; e < commands.count; e++) {
+            let command:String = commands[e];
+            switch(command.lowercaseString){
+            case SVGPathCommand.l,SVGPathCommand.m://<-this may need testing since it may be || instead of ,
+                p = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint);
+                parameters[i] = p.x;
+                parameters[i+1] = p.y;
+                i += 2;
+                break;
+            case SVGPathCommand.h:
+                p = PointModifier.scale(CGPoint(params[i],0), pivot, scalePoint);
+                parameters[i] = p.x;
+                i++;
+                break;
+            case SVGPathCommand.v:
+                p = PointModifier.scale(CGPoint(0,params[i]), pivot, scalePoint);
+                parameters[i] = p.y;
+                i++;
+                break;
+            case SVGPathCommand.c:
+                c1 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint);
+                c2 = PointModifier.scale(CGPoint(params[i+2],params[i+3]), pivot, scalePoint);
+                a2 = PointModifier.scale(CGPoint(params[i+4],params[i+5]), pivot, scalePoint);
+                //						trace(e+" scale.c c1: "+c1 + " c2:"+c2+" a2:" + a2);
+                parameters[i] = c1.x;
+                parameters[i+1] = c1.y;
+                parameters[i+2] = c2.x;
+                parameters[i+3] = c2.y;
+                parameters[i+4] = a2.x;
+                parameters[i+5] = a2.y;
+                i+=6;
+                break;
+            case SVGPathCommand.s:
+                c2 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint);
+                a2 = PointModifier.scale(CGPoint(params[i+2],params[i+3]), pivot, scalePoint);
+                parameters[i] = c2.x;
+                parameters[i+1] = c2.y;
+                parameters[i+2] = a2.x;
+                parameters[i+3] = a2.y;
+                i+=4;
+                break;
+            case SVGPathCommand.q:
+                c1 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint);
+                a2 = PointModifier.scale(CGPoint(params[i+2],params[i+3]), pivot, scalePoint);
+                parameters[i] = c1.x;
+                parameters[i+1] = c1.y;
+                parameters[i+2] = a2.x;
+                parameters[i+3] = a2.y;
+                i+=4;
+                break;
+            case SVGPathCommand.t:
+                a2 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint);
+                parameters[i] = a2.x;
+                parameters[i+1] = a2.y;
+                i+=2;
+                break;
+            case SVGPathCommand.z: 
+                /*do nothing*/
+                break;
+            default:break;
+            }
+        }
     }
 }
 
