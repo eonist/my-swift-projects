@@ -157,7 +157,7 @@ class SVGUtils {
                 for var e = 0; e < svg.items.count; ++e{
                     if((svg.items[i] as! SVGContainer).items[e] is SVGPath){
                         //Swift.print((svgContainer.items[e] as! SVGPath).parameters)
-                        dsc(&svg.items[i])
+                        dsc(&(svg.items[i] as SVGContainer),pivot,scalePoint)
                     }
                 }
             }else{
