@@ -11,7 +11,7 @@ class SVGContainerModifier {
 		container.frame.origin = position;
 		container.frame.size = size;
         Swift.print(container.items.count)
-        for var i = 0; i < container.items.count-1; ++i{
+        for var i = 0; i < container.items.count; ++i{
             //var element : ISVGElement = container.items[i]
             Swift.print("i: " + "\(i)")
             SVGModifier.scale(container.items[i], pivot, scale)
