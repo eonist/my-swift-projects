@@ -223,7 +223,7 @@ private class Utils{
         let ellipsePath:CGMutablePath  = CGPathCreateMutable();
         CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
-        newPath = CGPathModifier.scale(&newPath, -1, -1)
+        newPath = CGPathModifier.scale(&newPath, 0.5, 1)
         CGContextAddPath(context,newPath)
         
         
