@@ -60,7 +60,7 @@ class SVGRect : SVGGraphic {
             lineShape.path = lineOffsetRect.lineRect.path
         }
         else {/*RoundRect*/
-            fatalError("Not implemented yet")
+            fatalError("RoundRect Not implemented yet")
             //GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(this), !isNaN(_rx) ? _rx : _ry, !isNaN(_ry) ? _ry : _rx)
         }
     }
