@@ -151,18 +151,12 @@ class SVGUtils {
      *
      */
     class func dsc(svg:SVGContainer,_ pivot:CGPoint,_ scalePoint:CGPoint){
-        for var i = 0; i < svg.items.count; ++i{
-            if(svg.items[i] is SVGContainer){
+        for svgElement:ISVGElement in svg.items{
+            if(svgElement is SVGContainer){
                 //let svgContainer:SVGContainer = svg.items[i] as! SVGContainer
-                for var e = 0; e < svg.items.count; ++e{
-                    if((svg.items[i] as! SVGContainer).items[e] is SVGPath){
-                        //Swift.print((svgContainer.items[e] as! SVGPath).parameters)
-                        //let svgCon = svg.items[i] as! SVGContainer
-                        dsc(svg.items[i] as! SVGContainer,pivot,scalePoint)
-                    }
-                }
-            }else if(svg.items[i] is SVGPath){
-                Swift.print((svg.items[i] as! SVGPath).parameters)
+                dsc(svgElement as! SVGContainer,pivot,scalePoint)
+            }else if(svgElement is SVGPath){
+                Swift.print((svgElement as! SVGPath).parameters)
             }else{
                 fatalError("no")
             }
