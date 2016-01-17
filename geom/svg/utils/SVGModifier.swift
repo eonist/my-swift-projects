@@ -43,7 +43,23 @@ class SVGModifier {
 		}
         if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
-    
+    /**
+     *
+     */
+    class func dsc(inout svg:SVGContainer,_ pivot:CGPoint,_ scalePoint:CGPoint){
+        for var i = 0; i < svg.items.count; ++i{
+            if(svg.items[i] is SVGContainer){
+                let svgContainer:SVGContainer = svg.items[i] as! SVGContainer
+                for var e = 0; e < svg.items.count; ++e{
+                    if((svg.items[i] as! SVGContainer).items[e] is SVGPath){
+                        Swift.print((svgContainer.items[e] as! SVGPath).parameters)
+                    }
+                }
+            }else{
+                fatalError("no")
+            }
+        }
+    }
 	/**
 	 * Styles an @param element with @param style
 	 * // :TODO: rename to stylize?
