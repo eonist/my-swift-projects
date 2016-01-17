@@ -164,30 +164,5 @@ class SVGUtils {
             }
         }
     }
-    /**
-     * updates an SVGGraphic
-     */
-    class func update(graphic:SVGGraphic) {
-        Swift.print("update")
-        //WARNING: this method is incomplete, needs correct order of calls etc
-        graphic.draw();/*<--draws the path with the new params*/
-        
-        //graphic.endFill();
-        graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
-        graphic.lineShape.setNeedsDisplay()
-    }
-    /**
-     * Styles an @param element with @param style
-     * // :TODO: rename to stylize?
-     * @Note this method is recursive
-     */
-    private class func style(inout element:ISVGElement,_ style:SVGStyle) {
-        //if(element is SVGView) {/*(element as! SVGView).style = style*/}
-        if(element is SVGGraphic) {SVGUtils.update(element as! SVGGraphic)}
-        /*if(element is SVGContainer) {
-        for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
-        //if((element as! SVGContainer).items[i] is ISVGView) {SVGUtils.style((element as! SVGContainer).items[i], style)}
-        }
-        }*/
-    }
+    
 }

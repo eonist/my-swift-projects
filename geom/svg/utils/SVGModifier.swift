@@ -41,7 +41,7 @@ class SVGModifier {
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
-        if(element is ISVGGraphic) {SVGUtils.update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
+        if(element is ISVGGraphic) {SVGUtils.update(element as! SVGGraphic)}//<---this may need to not use a protocol for casting
 	}
     
 	/**
