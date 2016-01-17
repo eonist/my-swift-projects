@@ -30,8 +30,8 @@ class SVGModifier {
 	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		Swift.print("SVGModifier.scale() element: " + "\(element)")
         switch(true){
-			case element is SVGPolyLine:PointModifier.scalePoints((element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
-            case element is SVGPolygon:PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);break;
+			case element is SVGPolyLine:PointModifier.scalePoints(&(element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
+            case element is SVGPolygon:PointModifier.scalePoints(&(element as! SVGPolygon).points, pivot, scale);break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
 			case element is SVGPath:SVGPathModifier.scale(&(element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale);break;

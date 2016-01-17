@@ -36,7 +36,7 @@ class PointModifier {
         return scaledPoints
     }
     /**
-     *
+     * Use this when you want to scale the points directly
      */
     class func scalePoints(inout points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint) {
         for var i = 0; i < points.count; ++i{points[i] = PointModifier.scale(points[i],pivot,scale)}
