@@ -162,6 +162,7 @@ class SVGParser {
                 Swift.print((svgElement as! SVGPath).commands);
                 Swift.print((svgElement as! SVGPath).parameters);
             }else if(svgElement is SVGPolygon){
+                Swift.print("(element as! SVGPolygon).points: " + "\((svgElement as! SVGPolygon).points)")
                 Swift.print("SVGPolygon: " + "\((svgElement as! SVGPolygon).points)");
             }else if(svgElement is SVGPolyLine){
                 Swift.print((svgElement as! SVGPolyLine).points);
