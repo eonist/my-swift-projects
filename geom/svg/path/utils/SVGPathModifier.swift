@@ -10,7 +10,7 @@ class SVGPathModifier {
      * // :TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
     class func scale(inout parameters:Array<CGFloat>,/*path:SVGPath*/ _ commands:Array<String>,_ pivot:CGPoint,_ scalePoint:CGPoint) {
-        Swift.print("SVGPathModifier.scale")
+        //Swift.print("SVGPathModifier.scale")
         var i:Int = 0;/*parameterIndex*/
         var commands:Array<String> = commands;
         var params:Array<CGFloat> = parameters;
