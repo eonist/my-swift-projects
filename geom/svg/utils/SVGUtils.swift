@@ -161,8 +161,8 @@ class SVGUtils {
                         dsc(&svgCon,pivot,scalePoint)
                     }
                 }
-            }else if(){
-                
+            }else if(svg.items[i] is SVGPath){
+                Swift.print((svg.items[i] as! SVGPath).parameters)
             }else{
                 fatalError("no")
             }
