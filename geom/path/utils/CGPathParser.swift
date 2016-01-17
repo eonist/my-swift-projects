@@ -68,10 +68,10 @@ public class CGPathParser{
      * IMPORTANT: ellipse is drawn from top left position
      * Note: you may add convenience methods for drawing ellipses from the center later
      */
-    public class func ellipse(w:CGFloat = 100,_ h:CGFloat = 100,_ x:CGFloat = 0,_ y:CGFloat = 0)->CGMutablePathRef{
+    public class func ellipse(w:CGFloat = 100,_ h:CGFloat = 100,_ x:CGFloat = 0,_ y:CGFloat = 0, _ transformation:CGAffineTransform? = nil)->CGMutablePathRef{
         let ellipsePath:CGMutablePathRef  = CGPathCreateMutable();
         let rect:CGRect = CGRectMake(x, y,w, h)
-        CGPathAddEllipseInRect(ellipsePath, nil,/*<-Transformation*/ rect)
+        CGPathAddEllipseInRect(ellipsePath, transformation, rect)
         return ellipsePath
     }
     /**
