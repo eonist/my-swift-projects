@@ -222,7 +222,10 @@ private class Utils{
         
         let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way*/
         //Swift.print("boundingBox: " + "\(boundingBox)")
-        let ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGPoint(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
+        
+        
+        
+        let ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
         
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 1, 1)
