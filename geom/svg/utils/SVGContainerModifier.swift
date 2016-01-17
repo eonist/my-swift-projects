@@ -12,11 +12,10 @@ class SVGContainerModifier {
         for var i = 0; i < container.items.count; ++i{
             let element : ISVGElement = container.items[i]
             if(element is SVGRect){
-                let rect:SVGRect = element as! SVGRect
-                Swift.print("rect: " + "\(rect)")
-                Swift.print("rect.x: " + "\(rect.x)")
-                Swift.print("rect.width: " + "\(rect.width)")
                 
+                Swift.print("rect: " + "\(element)")
+                Swift.print("rect.x: " + "\((element as! SVGRect).x)")
+                Swift.print("rect.w: " + "\((element as! SVGRect).width)")
             }
             SVGModifier.scale(element, pivot, scale)
         }
