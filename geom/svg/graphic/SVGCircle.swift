@@ -19,7 +19,7 @@ class SVGCircle : SVGGraphic{
     * @Note it is an error to provide a negative radius.
     */
     override func draw(){
-        Swift.print("SVGCircle.draw()")
+        Swift.print("SVGCircle.draw() + r: " + "\(r)")
         
         if(!r.isNaN) {
             let x:CGFloat = (!cx.isNaN ? cx : 0) - r

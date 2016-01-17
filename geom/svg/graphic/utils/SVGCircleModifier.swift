@@ -11,6 +11,5 @@ class SVGCircleModifier {
         let circleRadius:CGFloat = circle.r * scale.x;
         circle.center = circleCenter;
         circle.r = circleRadius;
-        circle.r
     }
 }
