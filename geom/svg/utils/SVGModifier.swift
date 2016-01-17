@@ -41,7 +41,7 @@ class SVGModifier {
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
-        if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
+        if(element is ISVGGraphic) {SVGUtils.update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
     
 	/**
@@ -51,25 +51,14 @@ class SVGModifier {
 	 */
 	class func style(element:ISVGElement,_ style:SVGStyle) {
         if(element is SVGView) {(element as! SVGView).style = style}
-        if(element is SVGGraphic) {update(element as! SVGGraphic)}
+        if(element is SVGGraphic) {SVGUtils.update(element as! SVGGraphic)}
         if(element is SVGContainer) {
             for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
                 if((element as! SVGContainer).items[i] is ISVGView) {SVGModifier.style((element as! SVGContainer).items[i], style)}
             }
         }
 	}
-	/**
-	 * updates an SVGGraphic
-	 */
-	class func update(graphic:ISVGGraphic) {
-        Swift.print("update")
-        //WARNING: this method is incomplete, needs correct order of calls etc
-        graphic.draw();/*<--draws the path with the new params*/
-        		
-		//graphic.endFill();
-        graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
-        graphic.lineShape.setNeedsDisplay()
-	}
+	
     /**
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
