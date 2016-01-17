@@ -216,15 +216,12 @@ private class Utils{
         
         
         
-        CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
-        CGContextAddPath(context,path)//Adds the path to the context
+        CGContextSaveGState(context)/*store the graphic state so that the mask call bellow doesnt become the permanant mask*/
+        //CGContextAddPath(context,path)/*Adds the path to the context*/
         /**/
         
-        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way*/
+        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way, you could add a bounds:CGRect to the Graphics class as a way to optimize it*/
         //Swift.print("boundingBox: " + "\(boundingBox)")
-        
-        
-        
         var ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
         if(gradient.transformation != nil) {ellipsePath = CGPathModifier.transform(ellipsePath, gradient.transformation!)}
         
