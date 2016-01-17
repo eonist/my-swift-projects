@@ -223,6 +223,7 @@ private class Utils{
         let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way*/
         //Swift.print("boundingBox: " + "\(boundingBox)")
         CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)//base this on the data from the radial gradient
+        
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 1, 1)
         CGContextAddPath(context,newPath)
