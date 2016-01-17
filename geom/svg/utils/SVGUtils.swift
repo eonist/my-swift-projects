@@ -172,10 +172,10 @@ class SVGUtils {
     class func style(element:ISVGElement,_ style:SVGStyle) {
         if(element is SVGView) {(element as! SVGView).style = style}
         if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
-        if(element is SVGContainer) {
-            for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
-                if((element as! SVGContainer).items[i] is ISVGView) {SVGUtils.style((element as! SVGContainer).items[i], style)}
-            }
+        /*if(element is SVGContainer) {
+        for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
+        //if((element as! SVGContainer).items[i] is ISVGView) {SVGUtils.style((element as! SVGContainer).items[i], style)}
         }
+        }*/
     }
 }
