@@ -55,6 +55,25 @@ class SVGModifier {
 		}
         if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
+    class func scale2(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
+        
+        switch(true){
+        
+        case element is SVGPolygon:
+            let polygon = (element as! SVGPolygon)
+            Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
+            //(element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);
+            
+            break;
+        case element is SVGContainer:
+            let container = element as! SVGContainer
+            Swift.print((container.items[0] as! SVGPolygon).points)
+            SVGContainerModifier.scale(container,pivot,scale);
+            break;
+        default: break;
+        }
+        if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
+    }
 	/**
 	 * Styles an @param element with @param style
 	 * // :TODO: rename to stylize?
