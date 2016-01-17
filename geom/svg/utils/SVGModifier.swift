@@ -55,7 +55,7 @@ class SVGModifier {
 		}
         if(element is ISVGGraphic) {update(element as! ISVGGraphic)}//<---this may need to not use a protocol for casting
 	}
-    class func scale2(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
+    class func scale2(element:ISVGElement) {
         
         switch(true){
         
@@ -68,7 +68,7 @@ class SVGModifier {
         case element is SVGContainer:
             let container = element as! SVGContainer
             //Swift.print((container.items[0] as! SVGPolygon).points)
-            SVGContainerModifier.describe(container,pivot,scale);
+            SVGParser.descContainer(container);
             break;
         default: break;
         }
