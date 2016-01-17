@@ -216,13 +216,13 @@ private class Utils{
         
         
         
-        
+        CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
         CGContextAddPath(context,path)//Adds the path to the context
         /**/
         let ellipsePath:CGMutablePath  = CGPathCreateMutable();
         let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way*/
         //Swift.print("boundingBox: " + "\(boundingBox)")
-        CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)
+        CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)//base this on the data from the radial gradient
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 1, 1)
         CGContextAddPath(context,newPath)
@@ -234,6 +234,7 @@ private class Utils{
         
         CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
         CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
+        CGContextRestoreGState(context)//restore the graphic mask
         /*
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context*/
