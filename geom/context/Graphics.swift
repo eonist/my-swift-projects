@@ -226,10 +226,10 @@ private class Utils{
         newPath = CGPathModifier.scale(&newPath, 0.5, 1)
         //CGContextAddPath(context,newPath)
         
-        CGContextBeginPath(context);
+        //CGContextBeginPath(context);
         let w = boundingBox.width
         let h = boundingBox.height
-        CGContextAddArc(context, w/2, h/2, ((w>h) ? h : w)/2, 2*π, 0, 0);
+        CGContextAddArc(context, w/2, h/2, ((w>h) ? h : w)/2, 0,2*π, 0);
         //CGContextClosePath (context);
         //CGContextClip (context);
         
