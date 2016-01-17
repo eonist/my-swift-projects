@@ -3,7 +3,7 @@ import Cocoa
  * SVGDisplayObject impliments the same interface as ISVGElement and also the style params in ISVGDisplayObject and extends Sprite so that it can be seen on stage
  */
 class SVGView : FlippedView,ISVGView{
-    var style : SVGStyle?;
+    weak var style : SVGStyle?;
     var id : String;
     init(_ style:SVGStyle, _ id:String) {
         self.style = style
