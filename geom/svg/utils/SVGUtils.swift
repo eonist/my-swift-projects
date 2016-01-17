@@ -169,7 +169,7 @@ class SVGUtils {
      * // :TODO: impliment SVGGroup
      * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
      */
-    class func describeAll(svg:SVG){
+    class func describeAll(svg:ISVGContainer){
         Swift.print("SVGParser.describeAll()")
         for svgElement : ISVGElement in svg.items {
             if(svgElement is SVGPath){
@@ -186,6 +186,8 @@ class SVGUtils {
                 Swift.print("height: " + "\((svgElement as! SVGRect).height)")
                 Swift.print("x: " + "\((svgElement as! SVGRect).x)")
                 Swift.print("y: " + "\((svgElement as! SVGRect).y)")
+            }else if(svgElement is SVGContainer){
+                describeAll(svgElement as! ISVGContainer)
             }else{
                 fatalError("\(svgElement)" + " is not supported yet")
             }
