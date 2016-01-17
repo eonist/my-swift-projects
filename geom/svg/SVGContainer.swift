@@ -21,11 +21,12 @@ class SVGContainer : FlippedView, ISVGContainer{
      * @param item (SVGGraphic and elements like SVGLinearGradient)
      */
     func add(element:ISVGElement) {
+        items.append(element);
         if(element is NSView) {
             //Swift.print("SVGContainer.add() element is NSView")
             addSubview(element as! NSView)
         }
-        items.append(element);
+        
     }
     
     /**
