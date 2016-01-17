@@ -176,7 +176,7 @@ class SVGUtils {
     class func describeAll(svg:ISVGContainer){
         Swift.print("SVGParser.describeAll()")
         for var i = 0; i < svg.items.count; ++i{
-            var svgElement : ISVGElement = svg.items[i] as ISVGElement
+            let svgElement:ISVGElement = svg.items[i] as ISVGElement
             if(svgElement is SVGPath){
                 Swift.print((svgElement as! SVGPath).commands);
                 Swift.print((svgElement as! SVGPath).parameters);
