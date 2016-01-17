@@ -84,6 +84,7 @@ class SVGModifier {
     /**
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
+     * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
      */
     class func describeAll(svg:SVG) {
         Swift.print("SVGParser.describeAll()")
@@ -106,30 +107,5 @@ class SVGModifier {
                 fatalError("\(svgElement)" + " is not supported yet")
             }
         }
-    }
-    /**
-     *
-     */
-    class func desc(element:ISVGElement) {
-        
-        switch(true){
-            
-        case element is SVGPolygon:
-            let polygon = (element as! SVGPolygon)
-            Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
-            //(element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);
-            
-            break;
-        case element is SVGContainer:
-            let container = element as! SVGContainer
-            //Swift.print((container.items[0] as! SVGPolygon).points)
-            SVGModifier.descContainer(container);
-            break;
-        default: break;
-        }
-    }
-    class func descContainer(container:SVGContainer) {
-        
-        for element : ISVGElement in container.items{SVGModifier.desc(element)}/**/
     }
 }
