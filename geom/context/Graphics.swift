@@ -224,7 +224,14 @@ private class Utils{
         CGPathAddEllipseInRect(ellipsePath, nil, boundingBox)
         var newPath:CGPath = CGPathCreateMutableCopy(ellipsePath)!
         newPath = CGPathModifier.scale(&newPath, 0.5, 1)
-        CGContextAddPath(context,newPath)
+        //CGContextAddPath(context,newPath)
+        
+        CGContextBeginPath(context);
+        let w = boundingBox.width
+        let h = boundingBox.height
+        CGContextAddArc(context, w/2, h/2, ((w>h) ? h : w)/2, 2*π, 0, 0);
+        //CGContextClosePath (context);
+        //CGContextClip (context);
         
         
         
