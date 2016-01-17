@@ -9,6 +9,7 @@ import Cocoa
  * Note: the reason we need a class like Graphics to manage the above process is because we need to know about what type of fill was applied in order to draw using one universal draw method. Also an easy way to store and restore the Graphic state of the context
  * Note: in the future Graphics may be able to extend CGContext or even employ a extension  scheme of sorts
  * Note: this class also simplifies the use of gradient as fill type, since that always involves clipping etc. Esspecially for gradient strokes. Since this isnt really supported in quartz directly.
+ * @NOTE: if you ever need the use the BoundingBox in this class then: you could add a bounds:CGRect to the Graphics class as a way to optimize it*/
  * Example: (add this to a subClass of NSView drawRect() method)
  * let graphics:Graphics = Graphics()
  * var path:CGPath = CGPathParser.rect(200,200)//Shapes
@@ -217,11 +218,8 @@ private class Utils{
         
         
         CGContextSaveGState(context)/*store the graphic state so that the mask call bellow doesnt become the permanant mask*/
-        //CGContextAddPath(context,path)/*Adds the path to the context*/
-        /**/
-        
-        let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way, you could add a bounds:CGRect to the Graphics class as a way to optimize it*/
-        //Swift.print("boundingBox: " + "\(boundingBox)")
+        CGContextAddPath(context,path)/*Add a path as the background*/
+        //let boundingBox:CGRect = CGPathGetBoundingBox(path)/*<-temp, find a more optimized way,
         var ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
         if(gradient.transformation != nil) {ellipsePath = CGPathModifier.transform(ellipsePath, gradient.transformation!)}
         
@@ -230,7 +228,7 @@ private class Utils{
         CGContextAddPath(context,newPath)
         
         CGContextEOClip(context);/*using clip here may break the gradient stroke clipping, it may also be less optimized than just drawing a square with a hole in it by paths that use winding*/
-        CGContextAddPath(context,boundingBox.path)/*we need to have a path to fill something in again, since the clip consumes the clip path etc*/
+        CGContextAddPath(context,path)/*we need to have a path to fill something in again, since the clip consumes the clip path etc*/
         
         
         
