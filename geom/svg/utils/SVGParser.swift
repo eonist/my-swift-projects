@@ -155,9 +155,27 @@ class SVGParser {
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
      */
-    class func describe(svgElement:ISVGElement) {
+    class func describe(element:ISVGElement) {
         Swift.print("SVGParser.describe()")
+        switch(true){
         
+        case element is SVGPolygon:
+            let polygon = (element as! SVGPolygon)
+            Swift.print("(element as! SVGPolygon).points: " + "\(polygon.points)")
+            
+            break;
+        
+        case element is SVGContainer:
+            let container = element as! SVGContainer
+            //Swift.print((container.items[0] as! SVGPolygon).points)
+            
+            SVGParser.describeContainer(container)
+            break;
+        
+        default: break;
+        }
+
+        /*
         if(svgElement is SVGContainer){
             SVGParser.describeContainer(svgElement as! SVGContainer)
         }else if(svgElement is SVGPath){
@@ -177,7 +195,7 @@ class SVGParser {
         }else{
             fatalError("\(svgElement)" + " is not supported yet")
         }
-        
+        */
     }
     class func describeContainer(container:SVGContainer){
         for element : ISVGElement in container.items{SVGParser.describe(element)}/**/
