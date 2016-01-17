@@ -35,8 +35,8 @@ class SVGModifier {
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
 			case element is SVGPath:
-                var elmnt = (element as! SVGPath)
-                SVGPathModifier.scale(&elmnt, pivot, scale);break;//&(element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale)
+                //var elmnt = (element as! SVGPath)
+                SVGPathModifier.scale(&element, pivot, scale);break;//&(element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale)
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
 			case element is SVGContainer:
