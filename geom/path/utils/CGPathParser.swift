@@ -112,7 +112,7 @@ extension CGPathParser{
     /**
      * Draws an ellipse from the center
      */
-    class func ellipse(center:CGPoint,size:CGSize)->CGMutablePathRef{
+    class func ellipse(center:CGPoint,_ size:CGSize)->CGMutablePathRef{
         return ellipse(size.width, size.height, center.x-(size.width/2), center.y-(size.height/2))
     }
 }
