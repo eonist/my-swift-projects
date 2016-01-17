@@ -2,23 +2,7 @@ import Foundation
 
 class SVGModifier {
 	
-    /**
-     *
-     */
-    class func dsc(inout svg:SVGContainer,_ pivot:CGPoint,_ scalePoint:CGPoint){
-        for var i = 0; i < svg.items.count; ++i{
-            if(svg.items[i] is SVGContainer){
-                let svgContainer:SVGContainer = svg.items[i] as! SVGContainer
-                for var e = 0; e < svg.items.count; ++e{
-                    if((svg.items[i] as! SVGContainer).items[e] is SVGPath){
-                        Swift.print((svgContainer.items[e] as! SVGPath).parameters)
-                    }
-                }
-            }else{
-                fatalError("no")
-            }
-        }
-    }
+    
     /**
      * updates an SVGGraphic
      */
