@@ -6,7 +6,7 @@ import Cocoa
  */
 class SVGContainer : FlippedView, ISVGContainer{
     var id : String
-    var items : Array<ISVGElement> = [];
+    lazy var items : Array<ISVGElement> = [];
     init(_ items:Array<ISVGElement>, _ id:String) {
         self.id = id;
         super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip

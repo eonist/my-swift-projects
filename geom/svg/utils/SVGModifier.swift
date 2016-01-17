@@ -82,6 +82,15 @@ class SVGModifier {
         graphic.lineShape.setNeedsDisplay()
 	}
     /**
+     *
+     */
+    class func describeAll(svg:SVG){
+        Utils.describeAll(svg)
+    }
+}
+
+private class Utils{
+    /**
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
      * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
