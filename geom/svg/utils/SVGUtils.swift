@@ -148,7 +148,5 @@ class SVGUtils {
 		 return xml;
 	 }
     
-    
-    
-    
+        
 }
