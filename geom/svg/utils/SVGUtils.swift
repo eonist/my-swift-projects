@@ -156,11 +156,19 @@ class SVGUtils {
                 //let svgContainer:SVGContainer = svg.items[i] as! SVGContainer
                 dsc(svgElement as! SVGContainer,pivot,scalePoint)
             }else if(svgElement is SVGPath){
-                Swift.print((svgElement as! SVGPath).parameters)
+                //Swift.print((svgElement as! SVGPath).parameters)
+                SVGUtils.test(svgElement as! SVGPath)
             }else{
                 fatalError("no")
             }
         }
+    }
+    /**
+     *
+     */
+    class func test(svgPath:SVGPath){
+        Swift.print("svgPath.parameters: " + "\(svgPath.parameters)")
+        
     }
     /**
      * Describes all svg elements in a SVG instance, is not recursive yet
