@@ -4,7 +4,7 @@ class SVGContainerModifier {
 	/**
 	 * scales the SVGContainer 
 	 */
-	class func scale(container:SVGContainer,_ pivot:CGPoint,_ scale:CGPoint) {
+	class func scale(inout container:SVGContainer,_ pivot:CGPoint,_ scale:CGPoint) {
         Swift.print("SVGContainerModifier.scale")
 		let position:CGPoint = PointModifier.scale(container.frame.origin, pivot, scale);
 		let size:CGSize = CGSize(container.frame.width * scale.x, container.frame.height * scale.y);
@@ -14,7 +14,7 @@ class SVGContainerModifier {
         for var i = 0; i < container.items.count; ++i{
             //var element : ISVGElement = container.items[i]
             Swift.print("i: " + "\(i)")
-            SVGModifier.scale(container.items[i], pivot, scale)
+            SVGModifier.scale(&container.items[i], pivot, scale)
         }
         //for element : ISVGElement in container.items{SVGModifier.scale(&element, pivot, scale)}/**/
 	}
