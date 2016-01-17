@@ -187,7 +187,7 @@ class SVGUtils {
                 Swift.print("x: " + "\((svgElement as! SVGRect).x)")
                 Swift.print("y: " + "\((svgElement as! SVGRect).y)")
             }else if(svgElement is SVGContainer){
-                describeAll(svgElement as! ISVGContainer)
+                describeAll(svgElement as! SVGContainer)
             }else{
                 fatalError("\(svgElement)" + " is not supported yet")
             }
