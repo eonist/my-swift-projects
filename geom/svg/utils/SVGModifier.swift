@@ -36,7 +36,9 @@ class SVGModifier {
 			case element is SVGPath:SVGPathModifier.scale(element as! SVGPath, pivot, scale);break;
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
-			case element is SVGContainer:SVGContainerModifier.scale(&(element as! SVGContainer),pivot,scale);break;
+			case element is SVGContainer:
+                var container:SVGContainer = element as! SVGContainer
+                SVGContainerModifier.scale(&container,pivot,scale);break;
 			case element is SVGGradient:
                 Swift.print("(element as! SVGGradient).gradientTransform: " + "\((element as! SVGGradient).gradientTransform)")
                 SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);
