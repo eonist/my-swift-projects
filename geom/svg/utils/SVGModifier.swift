@@ -34,7 +34,7 @@ class SVGModifier {
             case element is SVGPolygon:(element as! SVGPolygon).points = PointModifier.scalePoints((element as! SVGPolygon).points, pivot, scale);break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
 			case element is SVGLine:SVGLineModifier.scale(element as! SVGLine,pivot,scale);break;
-			case element is SVGPath:SVGPathModifier.scale(element as! SVGPath, pivot, scale);break;
+			case element is SVGPath:SVGPathModifier.scale((element as! SVGPath).parameters, (element as! SVGPath).commands , pivot, scale);break;
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
@@ -138,10 +138,10 @@ class SVGPathModifier {
      * // :TODO: discuss why you use scalePoint and not scalar value in more detail.
      * // :TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
-    class func scale(params:Array<CGFloat>,/*path:SVGPath*/_ commands:Array<String>,_ pivot:CGPoint,_ scalePoint:CGPoint) {
+    class func scale(var parameters:Array<CGFloat>,/*path:SVGPath*/ _ commands:Array<String>,_ pivot:CGPoint,_ scalePoint:CGPoint) {
         var i:Int = 0;/*parameterIndex*/
-        //var commands:Array<String> = path.commands;
-        //var params:Array<CGFloat> = path.parameters;
+        var commands:Array<String> = commands;
+        var params:Array<CGFloat> = parameters;
         var p:CGPoint;
         var c1:CGPoint;
         var c2:CGPoint;
