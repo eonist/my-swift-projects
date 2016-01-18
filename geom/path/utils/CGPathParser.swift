@@ -118,8 +118,8 @@ extension CGPathParser{
     /**
      * Draws an ellipse from the center
      */
-    class func roundRect(rect:CGRect,)->CGMutablePathRef{
-        return roundRect(rect.x, rect.y, rect.width, <#T##h: CGFloat##CGFloat#>, <#T##topLeftRadius: CGFloat##CGFloat#>, <#T##topRightRadius: CGFloat##CGFloat#>, <#T##bottomLeftRadius: CGFloat##CGFloat#>, <#T##bottomRightRadius: CGFloat##CGFloat#>)
+    class func roundRect(rect:CGRect,_ fillet:Fillet)->CGMutablePathRef{
+        return roundRect(rect.x, rect.y, rect.width, rect.height, fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
     }
     //CGPathCreateWithRoundedRect
 }
