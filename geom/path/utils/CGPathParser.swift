@@ -93,8 +93,8 @@ public class CGPathParser{
         return path;
     }
     /**
-    * Untested
-    */
+     * Untested
+     */
     class func nsBezierPath(path:CGPath)->NSBezierPath?{
         //see reseach for this CGPathTest.swift
         return nil
@@ -121,5 +121,11 @@ extension CGPathParser{
     class func roundRect(rect:CGRect,_ fillet:Fillet)->CGMutablePathRef{
         return roundRect(rect.x, rect.y, rect.width, rect.height, fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
     }
-    //CGPathCreateWithRoundedRect
+    /**
+     *
+     */
+    class func roundRect(rect:CGRect,cornerheight:CGFloat,cornerWidth:CGFloat){
+        let path:CGMutablePathRef = CGPathCreateMutable();
+        CGPathAddRoundedRect(path, nil, <#T##rect: CGRect##CGRect#>, , <#T##cornerHeight: CGFloat##CGFloat#><#T##cornerWidth: CGFloat##CGFloat#>)
+    }
 }
