@@ -29,6 +29,8 @@ class RadialGradientUtils{
         let startCenter:CGPoint = endCenter.interpolate(endFocusPoint, focalRatio)
         let startRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
         let endRadius:CGFloat = minRadius/*The radius of the gradient*/
+        Swift.print("gradient.endRadius!.width: " + "\(gradient.endRadius!.width)")
+        Swift.print("gradient.endRadius!.height: " + "\(gradient.endRadius!.height)")
         let scale:CGPoint = CGPoint(gradient.endRadius!.width,gradient.endRadius!.height)
         //Swift.print("scale: " + "\(scale)")
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.endCenter!.x),-minRadius + (minAxis*gradient.endCenter!.y))
