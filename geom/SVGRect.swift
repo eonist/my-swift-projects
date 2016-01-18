@@ -55,7 +55,6 @@ class SVGRect : SVGGraphic {
                 lineShape.frame = lineOffsetRect.lineFrameRect
                 lineShape.path = lineOffsetRect.lineRect.path
             }
-            
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
