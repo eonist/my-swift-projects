@@ -26,4 +26,5 @@ class ViewModifier {
     class func position(view:NSView,_ point:CGPoint){
         view.frame.origin = point
     }
+    
 }
