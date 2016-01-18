@@ -53,7 +53,7 @@ class SVGRect : SVGGraphic {
                 let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
                 Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
                 lineShape.frame = lineOffsetRect.lineFrameRect
-                lineShape.path = lineOffsetRect.lineRect.path
+                lineShape.path = (rx.isNaN && ry.isNaN) ? lineOffsetRect.lineRect.path : CGPathParser.roundRect(lineOffsetRect.lineRect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
             }
         }
     }
