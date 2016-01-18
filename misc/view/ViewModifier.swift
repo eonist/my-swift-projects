@@ -38,6 +38,8 @@ class ViewModifier {
      * Removes all children in a Sprite
      * // :TODO: rename to removeAll
      * // :TODO: it could actually be faster to define the number of children first and then just deleting index 0
+     * view.subviews.forEach({ $0.removeFromSuperview() }) // this gets things done
+     * view.subviews.map({ $0.removeFromSuperview() }) // this returns modified array
      */
     class func removeAllChildren(view:NSView){
         while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
