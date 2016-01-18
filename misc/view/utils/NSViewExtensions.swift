@@ -32,4 +32,8 @@ extension NSView {
         /**/
         return NSPointInRect(mousePos + frame.origin, frame)
     }
+    func addSubView(view: NSView)->NSView{
+        self.addSubview(view)
+        return view
+    }
 }
