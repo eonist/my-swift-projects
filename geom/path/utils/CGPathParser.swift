@@ -77,7 +77,7 @@ public class CGPathParser{
     }
     /**
      * EXAMPLE: roundRect(5,100,100)
-     * TODO:  Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void
+     * TODO:  Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void you have the code for this somewhere
      * NOTE: was: //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
      * NOTE: you can also use: CGPathCreateWithRoundedRect() and CGPathAddRoundedRect()
      */
@@ -122,10 +122,11 @@ extension CGPathParser{
         return roundRect(rect.x, rect.y, rect.width, rect.height, fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
     }
     /**
-     *
+     * RoundRect with only w and h of all 4 corners (SVG uses this method)
      */
-    class func roundRect(rect:CGRect,cornerheight:CGFloat,cornerWidth:CGFloat){
+    class func roundRect(rect:CGRect,_ cornerheight:CGFloat,_ cornerWidth:CGFloat)->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable();
-        CGPathAddRoundedRect(path, nil, <#T##rect: CGRect##CGRect#>, , <#T##cornerHeight: CGFloat##CGFloat#><#T##cornerWidth: CGFloat##CGFloat#>)
+        CGPathAddRoundedRect(path, nil, rect, cornerheight, cornerWidth)
+        return path
     }
 }
