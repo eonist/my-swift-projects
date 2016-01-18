@@ -26,5 +26,12 @@ class ViewModifier {
     class func position(view:NSView,_ point:CGPoint){
         view.frame.origin = point
     }
-    
+    /**
+     *
+     */
+    class func removeAll(view:NSView){
+        for subView in view.subviews {
+            subView.removeFromSuperview()
+        }
+    }
 }
