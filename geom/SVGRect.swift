@@ -43,7 +43,7 @@ class SVGRect : SVGGraphic {
             Swift.print("rect: " + "\(rect)")
             
             if(style!.fill != nil){/*Fill*/
-                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(rect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
+                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(CGRect(0,0,width,height), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
                 let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
                 Swift.print("fillFrame: " + "\(fillFrame)")
                 //TODO: you can set the frame to the rect, no need for the fancy frame creation method
