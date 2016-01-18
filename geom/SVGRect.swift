@@ -41,23 +41,21 @@ class SVGRect : SVGGraphic {
         }else{
             let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
             Swift.print("rect: " + "\(rect)")
-            if(rx.isNaN && ry.isNaN ) {/*Rect*/
-                if(style!.fill != nil){/*Fill*/
-                    fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
-                    let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
-                    Swift.print("fillFrame: " + "\(fillFrame)")
-                    //TODO: you can set the frame to the rect, no need for the fancy frame creation method
-                    fillShape.frame = fillFrame/*,position and set the size of the frame*/
-                }
-                if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
-                    let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
-                    Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
-                    lineShape.frame = lineOffsetRect.lineFrameRect
-                    lineShape.path = lineOffsetRect.lineRect.path
-                }
-            }else {/*RoundRect*/
-                CGPathParser.roundRect(rect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)
+            
+            if(style!.fill != nil){/*Fill*/
+                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(rect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
+                let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+                Swift.print("fillFrame: " + "\(fillFrame)")
+                //TODO: you can set the frame to the rect, no need for the fancy frame creation method
+                fillShape.frame = fillFrame/*,position and set the size of the frame*/
             }
+            if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
+                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+                Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
+                lineShape.frame = lineOffsetRect.lineFrameRect
+                lineShape.path = lineOffsetRect.lineRect.path
+            }
+            
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
