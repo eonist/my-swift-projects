@@ -59,7 +59,7 @@ class SVGRect : SVGGraphic {
             
             //continue here: implement roundrect, move this within the if fill not nil etc
             
-            
+            CGPathParser.roundRect(<#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>, <#T##w: CGFloat##CGFloat#>, <#T##h: CGFloat##CGFloat#>, <#T##topLeftRadius: CGFloat##CGFloat#>, <#T##topRightRadius: CGFloat##CGFloat#>, <#T##bottomLeftRadius: CGFloat##CGFloat#>, <#T##bottomRightRadius: CGFloat##CGFloat#>)
             GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(self), !_rx.isNaN ? _rx : _ry, !_ry.isNaN ? _ry : _rx)
         }
     }
