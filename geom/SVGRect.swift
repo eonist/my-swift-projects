@@ -41,7 +41,7 @@ class SVGRect : SVGGraphic {
         }else if(rx.isNaN && ry.isNaN ) {/*Rect*/
             let rect:CGRect = CGRect(!self.x.isNaN ? self.x : 0, !self.y.isNaN ? self.y : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
             Swift.print("rect: " + "\(rect)")
-            if(style!.fill != nil){/*Fill*/
+            
                 fillShape.path = CGRect(0,0,width,height).path/*<--positioned relative to the frame*/
                 let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
                 Swift.print("fillFrame: " + "\(fillFrame)")
@@ -58,9 +58,8 @@ class SVGRect : SVGGraphic {
             //fatalError("RoundRect Not implemented yet")
             
             //continue here: implement roundrect, move this within the if fill not nil etc
-            
-            CGPathParser.roundRect(<#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>, <#T##w: CGFloat##CGFloat#>, <#T##h: CGFloat##CGFloat#>, <#T##topLeftRadius: CGFloat##CGFloat#>, <#T##topRightRadius: CGFloat##CGFloat#>, <#T##bottomLeftRadius: CGFloat##CGFloat#>, <#T##bottomRightRadius: CGFloat##CGFloat#>)
-            GraphicsModifier.drawRoundRect(graphics, SVGRectParser.rectangle(self), !_rx.isNaN ? _rx : _ry, !_ry.isNaN ? _ry : _rx)
+
+            CGPathParser.roundRect(rect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
