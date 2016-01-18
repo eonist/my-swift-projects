@@ -40,7 +40,7 @@ class ViewModifier {
      * // :TODO: it could actually be faster to define the number of children first and then just deleting index 0
      */
     class func removeAllChildren(view:NSView){
-        while(view.subviews.count > 0) {view.subviews[0]}
+        while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
     }
     
 }
