@@ -17,7 +17,12 @@ class SVGModifier {
 			}else if(svgGraphic is SVGRect){
 				(svgGraphic as! SVGRect).x += offset.x;
 				(svgGraphic as! SVGRect).y += offset.y;
-			}
+            }else if(svgGraphic is SVGCircle){
+                (svgGraphic as! SVGCircle).cx += offset.x;
+                (svgGraphic as! SVGCircle).cy += offset.y;
+            }else{
+                //type not supported yet
+            }
 		}
 	}
 	/**
