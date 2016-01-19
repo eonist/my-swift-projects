@@ -7,7 +7,8 @@ class SVGModifier {
 	 */
 	class func offsetItems(svg:SVG, _ offset:CGPoint) {
 		for (var i : Int = 0; i < svg.items.count; i++) {
-			let svgGraphic:SVGGraphic = svg.items[i] as! SVGGraphic;
+            Swift.print(Swift.print("svg.items[i]: " + "\(svg.items[i])"))
+			let svgGraphic = svg.items[i];
 			if(svgGraphic is SVGLine){
 				(svgGraphic as! SVGLine).x1 += offset.x;
 				(svgGraphic as! SVGLine).x2 += offset.x;
