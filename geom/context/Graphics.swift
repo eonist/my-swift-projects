@@ -233,7 +233,7 @@ private class Utils{
         /*begin drawing the radial gradient*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
-        CGContextDrawRadialGradient(context, cgGradient, gradient.startCenter, gradient.startRadius, gradient.endCenter, gradient.endRadius, [])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        CGContextDrawRadialGradient(context, cgGradient, gradient.startCenter, gradient.startRadius, gradient.endCenter, gradient.endRadius, [CGGradientDrawingOptions.DrawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         CGContextRestoreGState(context)/*restore the context that was saved*/
         /*end drawing the radial gradient*/
     }
