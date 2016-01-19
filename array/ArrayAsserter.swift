@@ -25,6 +25,6 @@ class ArrayAsserter {
      * @return True if the array contains the value, False if it does not.
      */
     class func has<T : Equatable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
-        return ArrayParser.index(arr, value)
+        return ArrayParser.index(arr, value) != -1
     }
 }
