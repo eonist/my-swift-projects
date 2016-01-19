@@ -218,18 +218,6 @@ private class Utils{
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
-        /*begin create background*/
-        CGContextSaveGState(context)/*store the graphic state so that the mask call bellow doesnt become the permanant mask*/
-        CGContextAddPath(context,path)/*Add a path as the background*/
-        var ellipsePath:CGMutablePath = CGPathParser.ellipse(gradient.endCenter, CGSize(gradient.endRadius*2,gradient.endRadius*2))//base this on the data from the radial gradient
-        if(gradient.transformation != nil) {ellipsePath = CGPathModifier.transform(ellipsePath, gradient.transformation!)}/*we check if there is a transformation applied to the gradient before we use it*/
-        CGContextAddPath(context,ellipsePath)/*the ellipsePath represents the shape of the gradient, the shape of a radial gradient can infact be another shape aswell but they way we use it it will always be an ellipse, to make support for the other shape you would have to make a shape out of two elliptical shapes and then merge them together with tangents touching both ellipses, you have code for this if its needed*/
-        CGContextEOClip(context);/*using clip here may break the gradient stroke clipping, it may also be less optimized than just drawing a square with a hole in it by paths that use winding*/
-        CGContextAddPath(context,path)/*we need to have a path to fill something in again, since the clip consumes the clip path etc*/
-        CGContextSetFillColorWithColor(context,gradient.colors[gradient.colors.count-1])/*Sets the background to the same color as the first gradient color, this is needed to fill the entire path*/
-        CGContextDrawPath(context, CGPathDrawingMode.Fill)/*draws the background color to the context*/
-        CGContextRestoreGState(context)//restore the graphic mask
-        /*end create background*/
         /*begin drawing the radial gradient*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
