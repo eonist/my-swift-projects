@@ -17,4 +17,11 @@ class ArrayAsserter {
         for (var i:Int = 0 , n:Int = a.count ;i < n ;i++) {if (b.indexOf(a[i]) >= 0 ){ score++ }}
         return score == (strict ? b.count:a.count)
     }
+    /**
+     * Asserts if an array has an item
+     * TODO: merge with the above method
+     */
+    public static function has(array:Array,item:*):Boolean {
+    return array.indexOf(item) != -1;
+    }
 }
