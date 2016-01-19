@@ -24,7 +24,7 @@ class ArrayAsserter {
      * @param value The object which will be searched for within the array
      * @return True if the array contains the value, False if it does not.
      */
-    class func has(array:Array<String>,item:String)->Bool {
-        return array.in
+    class func has<T : Equatable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
+        return ArrayParser.index(arr, value)
     }
 }
