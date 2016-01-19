@@ -19,9 +19,12 @@ class ArrayAsserter {
     }
     /**
      * Asserts if an array has an item
-     * TODO: merge with the above method
+     * NOTE: Determines whether the specified array contains the specified value
+     * @param arr The array that will be checked for the specified value.
+     * @param value The object which will be searched for within the array
+     * @return True if the array contains the value, False if it does not.
      */
-    public static function has(array:Array,item:*):Boolean {
-    return array.indexOf(item) != -1;
+    class func has(array:Array<String>,item:String)->Bool {
+        return array.in
     }
 }
