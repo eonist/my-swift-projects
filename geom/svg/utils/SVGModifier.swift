@@ -4,10 +4,10 @@ class SVGModifier {
 	/**
 	 * Offsets each item in a svg by @param offset (Point)
 	 * // :TODO: add support for other SVG elements as well, use switch method instead of if
+     * @NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
 	class func offsetItems(svg:SVG, _ offset:CGPoint) {
 		for (var i : Int = 0; i < svg.items.count; i++) {
-            Swift.print(Swift.print("svg.items[i]: " + "\(svg.items[i])"))
 			let svgGraphic = svg.items[i];
 			if(svgGraphic is SVGLine){
 				(svgGraphic as! SVGLine).x1 += offset.x;
