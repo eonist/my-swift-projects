@@ -154,7 +154,6 @@ class SVGParser {
     /**
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
-     * IMPORTANT: I have no idea, but this method only works if its inside the class (Spent 3-4 hours debugging it, could be the xcode app acting out, nothing changed after reboot either)
      */
     class func describeAll(svg:SVGContainer){
         Swift.print("SVGParser.describeAll()")
@@ -176,8 +175,8 @@ class SVGParser {
                 Swift.print("y: " + "\((svgElement as! SVGRect).y)")
             }else if(svgElement is SVGContainer){
                 describeAll(svgElement as! SVGContainer)
-            }else if(svgElement is SVGStyle){
-                
+            }else if(svgElement is SVGLinearGradient || svgElement is SVGRadialGradient){
+                //not implemented yet
             }else{
                 fatalError("\(svgElement)" + " is not supported yet")
             }
