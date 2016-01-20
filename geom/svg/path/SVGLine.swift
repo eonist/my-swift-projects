@@ -19,10 +19,13 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
     override func beginFill() {
         //we override this method to avoid drawing a path in the fill shape
     }
+    /**
+     * @NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
+     */
     override func draw() {
         //what y
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
-        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
+        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth!, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         let offset:CGPoint = PointParser.difference(lineOffsetRect.lineFrameRect.origin, boundingBox.origin)
         //Swift.print("offset: " + "\(offset)")
