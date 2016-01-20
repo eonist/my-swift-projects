@@ -16,7 +16,7 @@ class SVGStyleModifier {
         if((a.strokeOpacity == nil || a.strokeOpacity!.isNaN) && (a.strokeOpacity != nil && !b.strokeOpacity!.isNaN)) {a.strokeOpacity = b.strokeOpacity}
 		if(a.strokeLineCap == nil && b.strokeLineCap != nil) {a.strokeLineCap = b.strokeLineCap}
 		if(a.strokeLineJoin == nil && b.strokeLineJoin != nil) {a.strokeLineJoin = b.strokeLineJoin}
-		if(a.strokeMiterLimit a.strokeMiterLimit.isNaN && b.strokeMiterLimit.isNaN) {a.strokeMiterLimit = b.strokeMiterLimit}
+		if(a.strokeMiterLimit == nil || a.strokeMiterLimit!.isNaN && b.strokeMiterLimit.isNaN) {a.strokeMiterLimit = b.strokeMiterLimit}
             
         
     }
