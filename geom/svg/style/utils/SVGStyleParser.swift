@@ -69,7 +69,7 @@ class SVGStyleParser {
      * // :TODO: doesn't this method also exist in the a parser class?
      */
     class func describe(style:SVGStyle) {
-        Swift.print("describe");
+        Swift.print("SVGParser.describe() ");
         if(style.fill is Double) {
             Swift.print("style.fill: " + "\(style.fill)")
             Swift.print("style.fillOpacity: " + "\(style.fillOpacity)")
