@@ -26,9 +26,9 @@ extension NSColor{
      */
     var hex:String{return ColorParser.hexColor(self)}
     /**
-     * numericHex
+     * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
-     var numHex:Double{return Double("0x" + ColorParser.hexColor(self))!}
+     var rgb:Double{return Double("0x" + ColorParser.hexColor(self))!}
     /**
      *
      */
