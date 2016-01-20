@@ -34,7 +34,7 @@ class SVGModifier {
      * @NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
 	 */
 	class func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
-		Swift.print("SVGModifier.scale() element: " + "\(element)")
+		//Swift.print("SVGModifier.scale() element: " + "\(element)")
         switch(true){
 			case element is SVGPolyLine:PointModifier.scalePoints(&(element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:PointModifier.scalePoints(&(element as! SVGPolygon).points, pivot, scale);break;
