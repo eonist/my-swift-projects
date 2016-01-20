@@ -84,6 +84,8 @@ class SVGStyleParser {
             Swift.print("linearGradient.y1: " + "\(linearGradient.y1)");
             Swift.print("linearGradient.x2: " + "\(linearGradient.x2)");
             Swift.print("linearGradient.y2: " + "\(linearGradient.y2)");
+        }else{
+            Swift.print("style.fill: " + "\(style.fill)")
         }
         Swift.print("style.fillRule: " + "\(style.fillRule)")
         Swift.print("style.strokeWidth: " + "\(style.strokeWidth)")
