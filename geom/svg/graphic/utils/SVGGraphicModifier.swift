@@ -10,8 +10,8 @@ class SVGGraphicModifier {
      */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         Swift.print("SVGGraphicModifier.applyStrokeStyle()")
-        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth)
-        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
+        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
+        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         let color:NSColor = style.stroke is Double && !(style.stroke as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke as! Double, style.strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
