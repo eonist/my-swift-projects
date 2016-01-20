@@ -52,6 +52,7 @@ class SVGStyleUtils {
     }
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
+     * @NOTE: strokeMiterLimit should always be something if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
      */
     class func boundingBox(path:CGPath,_ style:SVGStyle)->CGRect{
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit)
