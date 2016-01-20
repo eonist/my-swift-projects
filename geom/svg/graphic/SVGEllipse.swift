@@ -19,7 +19,6 @@ class SVGEllipse : SVGGraphic{
 	 * @Note if the cx or cy is omitted (nan), it is presumed to be zero.
 	 * @Note If the radius is zero, no shape will be displayed
 	 * @Note it is an error to provide a negative radius.
-     * 
 	 */
 	override func draw() {
 		if(!(rx.isNaN) && !(ry.isNaN)) {
@@ -29,11 +28,11 @@ class SVGEllipse : SVGGraphic{
             let x:CGFloat = (!cx.isNaN ? cx : 0) - rx
             let y:CGFloat = (!cy.isNaN ? cy : 0) - ry
             let rect:CGRect = CGRect(x, y, rx*2, ry*2)
-            let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient ? RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+            let fillFrame = ((style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN)) || (style!.stroke != nil && style!.stroke! is SVGGradient) ? RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
             fillShape.frame = fillFrame/*,position and set the size of the frame*/
             fillShape.path = CGPathParser.ellipse(rect.width, rect.height, 0, 0)/*draws from the top left corner*/
             /*Line*/
-            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth!, OffsetType(OffsetType.center))
             lineShape.frame = lineOffsetRect.lineFrameRect
             lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
 		}
