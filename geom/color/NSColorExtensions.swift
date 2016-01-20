@@ -22,9 +22,13 @@ extension NSColor{
     var rgba:(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){return ColorParser.rgba(self)}
     /**
      * EXAMPLE: NSColor.redColor().hex//FF0000
-     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double. 
+     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
      */
     var hex:String{return ColorParser.hexColor(self)}
+    /**
+     * numericHex
+     */
+     var numHex:Double{return Double("0x" + ColorParser.hexColor(self))!}
     /**
      *
      */
