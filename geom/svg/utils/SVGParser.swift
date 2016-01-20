@@ -176,6 +176,8 @@ class SVGParser {
                 Swift.print("y: " + "\((svgElement as! SVGRect).y)")
             }else if(svgElement is SVGContainer){
                 describeAll(svgElement as! SVGContainer)
+            }else if(svgElement is SVGStyle){
+                
             }else{
                 fatalError("\(svgElement)" + " is not supported yet")
             }
