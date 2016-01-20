@@ -16,7 +16,7 @@ class SVGStyle {
     var strokeLineJoin : String?
     var strokeMiterLimit : CGFloat
     
-    init(_ fill:Any? = Double.NaN,_ fillOpacity:CGFloat = CGFloat.NaN,_ fillRule:String? = nil,_ strokeWidth:CGFloat = CGFloat.NaN,_ stroke:Any? = Double.NaN ,_ strokeOpacity:CGFloat = CGFloat.NaN,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat = CGFloat.NaN) {
+    init(_ fill:Any? = Double.NaN,_ fillOpacity:CGFloat = CGFloat.NaN,_ fillRule:String? = nil,_ strokeWidth:CGFloat = CGFloat.NaN,_ stroke:Any? = nil/*was Double.NaN*/ ,_ strokeOpacity:CGFloat = CGFloat.NaN,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat = CGFloat.NaN) {
         self.fill = fill;
         self.fillOpacity = fillOpacity;
         self.fillRule = fillRule;
