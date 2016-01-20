@@ -18,7 +18,7 @@ class SVGStyle {
     
     //TODO: all values should be nil, since we dont want none values by default as these may get exported, and if they didnt exist on the import they should exist on export. nil means no value, none or NaN means variable with none value
     
-    init(_ fill:Any? = Double.NaN,_ fillOpacity:CGFloat? = CGFloat.NaN,_ fillRule:String? = nil,_ strokeWidth:CGFloat? = CGFloat.NaN,_ stroke:Any? = nil/*was Double.NaN*/ ,_ strokeOpacity:CGFloat? = CGFloat.NaN,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat? = CGFloat.NaN) {
+    init(_ fill:Any? = nil,_ fillOpacity:CGFloat? = nil,_ fillRule:String? = nil,_ strokeWidth:CGFloat? = nil,_ stroke:Any? = nil ,_ strokeOpacity:CGFloat? = nil,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat? = nil) {
         self.fill = fill;
         self.fillOpacity = fillOpacity;
         self.fillRule = fillRule;
