@@ -14,7 +14,8 @@ class SVGGraphicModifier {
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
-        let color:NSColor = style.stroke is Double && !(style.stroke as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke as! Double, style.strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
+        let strokeOpacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1/*<-- this line is new, used to be done inline*/
+        let color:NSColor = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
         graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
     }
     /**
