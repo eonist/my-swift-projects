@@ -53,12 +53,13 @@ class SVGStyleUtils {
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
      * @NOTE: if there is no strokeMiterLimit, then 10 is set as the default miter limit in LineStyle, this isnt always applied, and if its not there then we still need a value to work with, we could include it in the parsing of the svg, but then it would be exportable, which is undesired behaviour
+     * TODO: if thre is no value the 0 can be used to calc the bounding box, this should be detected before the bounding box call though, as you dont need to calc the boundingbox if the stroke is 0
      */
     class func boundingBox(path:CGPath,_ style:SVGStyle)->CGRect{
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit != nil ? style.strokeMiterLimit! : 10)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
-        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth != nil ? style.strokeWidth!:0)/*this is new, */
+        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth != nil ? style.strokeWidth!:0)/*this is new, we cant set a default value when parsing svg, if thre is no value the 0 can be used to calc the bounding box, this should be detected before the bounding box call though, as you dont need to calc the boundingbox if the stroke is 0*/
         let outlinePath = CGPathCreateCopyByStrokingPath(path, nil, strokeWidth, strokeLineCap, strokeLineJoin, strokeMiterLimit)
         let boundingBox:CGRect = CGPathGetPathBoundingBox(outlinePath)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         return boundingBox
