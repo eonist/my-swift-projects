@@ -17,6 +17,7 @@ class SVGCircle : SVGGraphic{
     * @Note If the radius is zero, no shape will be displayed; it is an error to provide a negative radius.
     * @Note if the cx or cy is omitted (nan), it is presumed to be zero.
     * @Note it is an error to provide a negative radius.
+    * @NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
     */
     override func draw(){
         Swift.print("SVGCircle.draw() + r: " + "\(r)")
@@ -27,7 +28,7 @@ class SVGCircle : SVGGraphic{
             let rect:CGRect = CGRect(x, y, r*2, r*2)
             /*Fill*/
             if(style!.fill != nil){
-                let fillFrame = (style!.stroke is Double && !(style!.stroke as! Double).isNaN) || style!.stroke is SVGGradient  ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth, OffsetType(OffsetType.center)) : rect
+                let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || style!.stroke! is SVGGradient  ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
                 Swift.print("fillFrame: " + "\(fillFrame)")
                 fillShape.frame = fillFrame/*,position and set the size of the frame*/
                 fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
@@ -35,7 +36,7 @@ class SVGCircle : SVGGraphic{
             /*Line*/
             Swift.print("style!.stroke: " + "\(style!.stroke)")
             if(style!.stroke != nil){//checks if there is a stroke in style
-                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth, OffsetType(OffsetType.center))
+                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth!, OffsetType(OffsetType.center))
                 Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
                 lineShape.frame = lineOffsetRect.lineFrameRect
                 Swift.print("lineShape.frame: " + "\(lineShape.frame)")
