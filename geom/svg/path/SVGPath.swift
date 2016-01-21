@@ -27,12 +27,18 @@ class SVGPath :SVGGraphic{
     override func draw()  {
         //Swift.print("SVGPath.draw()");
         /*fill*/
-        let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
-        let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        fillShape.frame = boundingBox
-        let offset = CGPoint(-boundingBox.x,-boundingBox.y)
-        var offsetPath = path.copy()
-        fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
+        if(style!.fill != nil){/*Fill*/
+            let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
+            let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
+            fillShape.frame = boundingBox
+            let offset = CGPoint(-boundingBox.x,-boundingBox.y)
+            var offsetPath = path.copy()
+            fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
+        }if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
+            
+            
+        }
+       
         /*line*/
         let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin
         //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
