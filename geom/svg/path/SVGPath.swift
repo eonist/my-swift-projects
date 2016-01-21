@@ -23,6 +23,7 @@ class SVGPath :SVGGraphic{
     }
     /**
      * Draws a line for the stroke and a line for the fill (Since the flash api doesnt support non-closed fills)
+     * TODO: Try to find a different way to find the boundingBox.origin for the linsehape.frame, this would be better for the cpu. as you could then have all code within the if statments
      */
     override func draw()  {
         //Swift.print("SVGPath.draw()");
