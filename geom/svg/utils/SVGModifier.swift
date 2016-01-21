@@ -21,6 +21,7 @@ class SVGModifier {
                 (svgGraphic as! SVGCircle).cx += offset.x;
                 (svgGraphic as! SVGCircle).cy += offset.y;
             }else{
+                fatalError("type not supported yet")
                 //type not supported yet
             }
 		}
