@@ -22,4 +22,14 @@ class LayoutUtils {
         }
         return instance;
     }
+    /**
+     * This should be done through generics etc
+     */
+    class func describe(offsetType:OffsetType){
+        Swift.print("LayoutUtils.describe()")
+        Swift.print("offsetType.top: " + "\(offsetType.top)")
+        Swift.print("offsetType.bottom: " + "\(offsetType.bottom)")
+        Swift.print("offsetType.left: " + "\(offsetType.left)")
+        Swift.print("offsetType.right: " + "\(offsetType.right)")
+    }
 }
