@@ -2,7 +2,9 @@ import Cocoa
 
 class WindowParser {
     /**
-     *
+     * NOTE: grab the from applicationDidFinishLaunching
+     * EXAMPLE: let app:NSApplication = aNotification.object as! NSApplication//then use the app in this method
+     * NOTE: to manage the windows: app.windowWithWindowNumber(w.windowNumber)
      */
     class func describeWindows(app:NSApplication){
         Swift.print("app.windows.count: " + "\(app.windows.count)")
