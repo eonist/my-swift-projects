@@ -8,8 +8,7 @@ class NSViewParser {
     func childrenOfType(view:NSView, classType:AnyClass?, protocolType:Protocol?)->Array<NSView> {
         var children:Array<NSView> = []
         for subView in view.subviews {
-            
-            let isOfClassTypeOrProtocol:Bool = (classType != nil && subView.isKindOfClass(classType!)) || (protocolType != nil && classType.self is protocolType)
+            let isOfClassTypeOrProtocol:Bool = (classType != nil && subView.isKindOfClass(classType!)) || (protocolType != nil && protocol_isEqual(subView.dynamicType, protocolType!))
             
             
             
