@@ -42,7 +42,7 @@ extension NSView {
     /**
      * Asserts if @param view is a subView of @param parent
      */
-    func contains(parent:NSView,_ view:NSView)->Bool{
-        return NSViewAsserter.contains(parent, view)
+    func contains(view:NSView)->Bool{
+        return NSViewAsserter.contains(self, view)
     }
 }
