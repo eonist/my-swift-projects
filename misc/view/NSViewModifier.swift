@@ -1,6 +1,6 @@
 import Cocoa
 
-class ViewModifier {
+class ViewModifier {//<----rename to NSViewModifier
     /**
      *
      */
