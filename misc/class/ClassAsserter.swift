@@ -6,6 +6,22 @@ import Foundation
 
 
 class ClassAsserter{
+    protocol IDescribable:class{var text:String{get}}
+    class A:IDescribable{var text:String;init(_ text:String){self.text = text}}
+    class B:A{}
+    class C{}
+    
+    
+    let a = A("I am a")
+    let b = B("I am b")
+    let c = C()
+    
+    func ofType<T>(myValue:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+        if(myValue as? T != nil){return myValue as? T}
+        return nil
+    }
+    
+    
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
      * CAUTION: doesnt work well with Double,String etc
