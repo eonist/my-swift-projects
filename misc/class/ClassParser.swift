@@ -1,5 +1,15 @@
 class ClassParser {
     /**
+     * EXAMPLE: Swift.print(ofType(a,A.self)!.text)//I am a
+     * EXAMPLE: Swift.print(ofType(a,IDescribable.self)!.text)//I am a
+     * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b
+     * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
+     */
+    func ofType<T>(myValue:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+        if(myValue as? T != nil){return myValue as? T}
+        return nil
+    }
+    /**
     * Returns a usable class
     * NOTE: This works: (obj as! NSObject).className
     * Note: also works: String(obj)
