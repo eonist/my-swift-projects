@@ -7,17 +7,13 @@ import Foundation
 
 class ClassAsserter{
     /**
-     * EXAMPLE: Swift.print(ofType(a,A.self))//true or false
-     * EXAMPLE: Swift.print(ofType(a,IDescribable.self))//true or false
-     * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b
-     * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
+     * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
+     * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
      */
     func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
         if(instance as? T != nil){return instance as? T}
         return nil
     }
-    
-    
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
      * CAUTION: doesnt work well with Double,String etc
