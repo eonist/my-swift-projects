@@ -1,4 +1,10 @@
 import Foundation
+
+
+
+/*If you write this in xcode: object_isClass and then cmd click it, you will find alot more methods like it*/
+
+
 class ClassAsserter{
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
