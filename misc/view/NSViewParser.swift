@@ -14,4 +14,8 @@ class NSViewParser {
         }
         return children;
     }
+    func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+        if(instance as? T != nil){return instance as? T}
+        return nil
+    }
 }
