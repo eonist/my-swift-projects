@@ -19,6 +19,9 @@ class Margin{
         default:break;
         }
     }
+    /**
+     * TODO: Could this be added through an extension?
+     */
     init(_ args:Array<CGFloat>){
         switch(args.count){
         case 1: left = args[0]; right = args[0]; top = args[0]; bottom = args[0]; break;
