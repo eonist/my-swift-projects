@@ -7,7 +7,6 @@ class NSViewParser {
      */
     func childrenOfType(view:NSView,classType:AnyClass)->Array<NSView> {
         var children:Array<NSView> = []
-        
         for subView in view.subviews {
             if(subView.isKindOfClass(classType)) {children.append(subView)}
         }
