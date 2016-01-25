@@ -10,7 +10,7 @@ class ClassAsserter{
      * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
      * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
      */
-    func ofType<T>(instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
+    class func ofType<T>(instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
         return instance as? T != nil
     }
 	/**

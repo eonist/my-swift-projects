@@ -6,7 +6,7 @@ class NSViewParser {
      * // :TODO: rename to childrenByClassType, maybe not?
      * NOTE: this works with classes and protocols
      */
-    func childrenOfType<T>(view:NSView, _ type:T)->Array<T> {
+    class func childrenOfType<T>(view:NSView, _ type:T)->Array<T> {
         var children:Array<T> = []
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! T)}
