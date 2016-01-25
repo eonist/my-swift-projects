@@ -10,7 +10,8 @@ class NSViewParser {
         
         for subView in view.subviews {
             subView.removeFromSuperview()
-            if(subView is classType) {children.append(subView)}
+            //layer.isKindOfClass()//true
+            if(subView is classType.dynamicType) {children.append(subView)}
         }
         return children;
     }
