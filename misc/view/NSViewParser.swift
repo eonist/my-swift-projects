@@ -9,13 +9,13 @@ class NSViewParser {
         var children:Array<NSView> = []
         for subView in view.subviews {
             let isOfClassType:Bool = classType != nil && subView.isKindOfClass(classType!)
-            let isOFProtocolType:Bool = NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
-            let isOfClassTypeOrProtocol:Bool = () || (protocolType != nil && protocol_isEqual(subView, protocolType!))
+            let isOFProtocolType:Bool = String(subView.dynamicType) == NSStringFromProtocol(protocolType!)
+            //let isOfClassTypeOrProtocol:Bool =
             
             
             
             
-            //if() {children.append(subView)}
+            if(isOfClassType && isOFProtocolType) {children.append(subView)}
         }
         return children;
     }
