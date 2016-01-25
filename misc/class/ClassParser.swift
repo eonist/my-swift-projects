@@ -5,8 +5,8 @@ class ClassParser {
      * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b
      * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
      */
-    func ofType<T>(myValue:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
-        if(myValue as? T != nil){return myValue as? T}
+    func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+        if(instance as? T != nil){return instance as? T}
         return nil
     }
     /**
