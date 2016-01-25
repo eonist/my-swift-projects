@@ -25,6 +25,12 @@ class ClassAsserter{
         return obj.isMemberOfClass(classType)
     }
     /**
+     * Alternative to the above
+     */
+    class func isOfClassType2(obj:AnyObject, _ classType:AnyClass?, _ protocolType:AnyObject? = nil/**/)->Bool? {
+        return object_getClass(obj) == classType!
+    }
+    /**
      * NOTE: this method supports checking if an instance is of the same ClassType as the other
      * NOTE: it also supports checking core classes like String and Double etc
      * NOTE: it also supports checking a class agains another
