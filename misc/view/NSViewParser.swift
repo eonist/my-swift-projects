@@ -5,10 +5,11 @@ class NSViewParser {
      * Returns an array of all the children in @param view that is of type @param classType
      * // :TODO: rename to childrenByClassType, maybe not?
      */
-    func childrenOfType(view:NSView,classType:A)->Array<NSView> {
+    func childrenOfType(view:NSView,classType:AnyClass?, protocolType:Protocol?)->Array<NSView> {
         var children:Array<NSView> = []
         for subView in view.subviews {
-            if(subView.isKindOfClass(classType)) {children.append(subView)}
+            let isOfClassTypeOrProtocol:Bool (classType != nil && subView.isKindOfClass(classType!)) || ()
+            if() {children.append(subView)}
         }
         return children;
     }
