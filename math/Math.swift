@@ -4,13 +4,13 @@ class Math {
     /**
      *
      */
-    class func max<T:Comparable>(a:Element<T>,b:Element<T>){
-        
+    class func max<T:Comparable>(a:T,b:T)->Bool{
+        return max(a, b: b)
     }
     /**
-     *
+     * 
      */
-    class func min(){
-        
+    class func min<T:Comparable>(a:T,b:T)->Bool{
+        return min(a, b: b)
     }
 }
