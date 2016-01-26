@@ -17,7 +17,13 @@ class RangeParser {
      * Asserts if @param a overlaps @param b
      */
     class func overlaps<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
-        return (equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end));
+        return (RangeAsserter.equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end));
+    }
+    /**
+     * Asserts if @param a contains @param a or @param b contains @param a
+     */
+    class func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
+        return a.start <= b.start && a.end >= b.end;
     }
     /**
      * Returns the minimum or smallest value in the range.
@@ -31,4 +37,5 @@ class RangeParser {
     class func max<T:Comparable>(range:Range<T>)->T {
         return Swift.max(range.start, range.end);
     }
+    
 }
