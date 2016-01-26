@@ -15,6 +15,7 @@ class RangeParser {
      *
      */
     class func difference<T:Comparable>(range:Range<T>)->T {
-        return range.end - range.start
+        return range.start.distanceTo(range.end)
+        //return range.end - range.start
     }
 }
