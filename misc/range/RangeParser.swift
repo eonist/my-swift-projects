@@ -10,8 +10,14 @@ class RangeParser {
      * @Note this method is supplimentary to the within method, concerning the "max" problem
      * @Note another name for this could be absolutlyWithin
      */
-    class func function contained(range:Range,number:Number):Boolean {
+    class func contained<T:Comparable>(range:Range<T>,_ number:T)->Bool {
         return (number < RangeParser.max(range) && number >= RangeParser.min(range));
+    }
+    /**
+     * Asserts if @param a overlaps @param b
+     */
+    class func overlaps<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
+        return (equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end));
     }
     /**
      * Returns the minimum or smallest value in the range.
