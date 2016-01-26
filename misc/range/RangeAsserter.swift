@@ -2,7 +2,8 @@ class RangeAsserter{
     /**
      * Asserts if @param a equals @param b
      */
-    class func equals(a:Range,b:Range)->Bool {
-        return a.start == b.start && a.end == b.end;
+    class func equals<T:Comparable>(a:Range<T>,b:Range<T>)->Bool {
+        return a.startIndex == b.startIndex && a.endIndex == b.endIndex;
     }
 }
+
