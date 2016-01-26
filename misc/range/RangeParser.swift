@@ -22,5 +22,4 @@ class RangeParser {
     class func max<T:Comparable>(range:Range<T>)->T {
         return Swift.max(range.start, range.end);
     }
-    
 }
