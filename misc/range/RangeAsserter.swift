@@ -1,3 +1,6 @@
+/**
+ * NOTE: Swift has some of these methods built in but its nice to have them in one place, and also so that you can create other methods with similar DNA
+ */
 class RangeAsserter{
     /**
      * Asserts if @param a equals @param b
