@@ -14,20 +14,13 @@ class InteractiveView:FlippedView{
     var hasHandCursor:Bool = false
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     //override var wantsUpdateLayer:Bool{return true;}
-    init(frame:NSRect,_ isInteractive:Bool = true) {
+    override init(frame:NSRect) {
         super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()
         layer!.masksToBounds = false
-        
-        //continue here: try to 
-        
-        //self.isInteractive = isInteractive
-        if(isInteractive){
-            Swift.print("interactivity was added: " + "\(self)")
-            let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
-            addTrackingArea(trackingArea)
-        }
+        let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
@@ -35,9 +28,8 @@ class InteractiveView:FlippedView{
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print(self)
-        Swift.print("InteractiveView.hitTest(): " + String(aPoint))
-        Swift.print("InteractiveView.hitTestToView() " + String(hitTestToView(aPoint,self)))
+        //Swift.print("View.hitTest(): " + String(aPoint))
+        //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
         return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
@@ -87,7 +79,6 @@ class InteractiveView:FlippedView{
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseUp(theEvent: NSEvent) {
-        
         viewUnderMouse === self ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
