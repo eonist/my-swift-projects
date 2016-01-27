@@ -19,8 +19,8 @@ class InteractiveView:FlippedView{
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()
         layer!.masksToBounds = false
-        let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         if(isInteractive){
+            let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
             addTrackingArea(trackingArea)
         }
     }
@@ -30,8 +30,8 @@ class InteractiveView:FlippedView{
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        //Swift.print("View.hitTest(): " + String(aPoint))
-        //Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
+        Swift.print("View.hitTest(): " + String(aPoint))
+        Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
         return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
@@ -81,6 +81,7 @@ class InteractiveView:FlippedView{
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseUp(theEvent: NSEvent) {
+        
         viewUnderMouse === self ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
