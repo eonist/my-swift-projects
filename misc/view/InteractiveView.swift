@@ -20,6 +20,7 @@ class InteractiveView:FlippedView{
         layer = CALayer()
         layer!.masksToBounds = false
         if(isInteractive){
+            Swift.print("interactivity was added")
             let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
             addTrackingArea(trackingArea)
         }
@@ -30,8 +31,8 @@ class InteractiveView:FlippedView{
      * NOTE: the hitTestToView method makes sure the the mouseDown call isnt called if the mouseEvent.location is outside the view.frame
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("View.hitTest(): " + String(aPoint))
-        Swift.print("View.hitTestToView() " + String(hitTestToView(aPoint,self)))
+        Swift.print("InteractiveView.hitTest(): " + String(aPoint))
+        Swift.print("InteractiveView.hitTestToView() " + String(hitTestToView(aPoint,self)))
         return isInteractive && hitTestToView(aPoint,self) ? self : nil
     }
     /**
