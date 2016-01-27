@@ -218,8 +218,6 @@ private class Utils{
      */
     class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
-        Swift.print("gradient.colors[0].alpha: " + "\(gradient.colors[0].alpha)")
-        
         /*begin drawing the radial gradient*/
         CGContextSaveGState(context)/*save the current context*/
         if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
