@@ -10,4 +10,5 @@ extension CGColor {
     func alpha(alpha:CGFloat)->CGColor{
         return CGColorCreateCopyWithAlpha(self,alpha)!
     }
+    var alpha:CGFloat{return CGColorGetAlpha(self)}
 }
