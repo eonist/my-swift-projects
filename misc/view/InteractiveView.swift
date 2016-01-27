@@ -14,13 +14,15 @@ class InteractiveView:FlippedView{
     var hasHandCursor:Bool = false
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     //override var wantsUpdateLayer:Bool{return true;}
-    override init(frame:NSRect) {
-        super.init(frame:frame,_ isInteractive:Bool = true)
+    init(frame:NSRect,_ isInteractive:Bool = true) {
+        super.init(frame:frame)
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()
         layer!.masksToBounds = false
         let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
-        addTrackingArea(trackingArea)
+        if(isInteractive){
+            addTrackingArea(trackingArea)
+        }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
