@@ -19,7 +19,10 @@ class InteractiveView:FlippedView{
         self.wantsLayer = true//setting this to false avoids calling drawLayer() and enables drawingRect()
         layer = CALayer()
         layer!.masksToBounds = false
-        self.isInteractive = isInteractive
+        
+        //continue here: try to 
+        
+        //self.isInteractive = isInteractive
         if(isInteractive){
             Swift.print("interactivity was added: " + "\(self)")
             let trackingArea:NSTrackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
