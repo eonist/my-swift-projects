@@ -41,8 +41,13 @@ class Graphic:FlippedView,IGraphic{
         //you have to convert the aPoint to localspace
         let localPoint = convertPoint(aPoint, toView: self)
         Swift.print("localPoint: " + "\(localPoint)")
-        let globalPoint = convertPoint(aPoint, fromView: self)
+        let globalPoint = convertPoint(aPoint, fromView: self.window?.contentView)
         Swift.print("globalPoint: " + "\(globalPoint)")
+        
+        let localRect = convertRect(frame, toView: self)
+        Swift.print("localRect: " + "\(localRect)")
+        let globalRect = convertRect(frame, fromView: self)
+        Swift.print("globalRect: " + "\(globalRect)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         Swift.print("isPointInside: " + "\(isPointInside)")
