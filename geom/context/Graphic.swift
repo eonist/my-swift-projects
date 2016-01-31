@@ -32,13 +32,6 @@ class Graphic:FlippedView,IGraphic{
         self.lineShape.delegate = self
         //self.setDelegate(self)
     }
-    /*override func mouseDown(theEvent: NSEvent) {
-    Swift.print("Graphic.down")
-    //super.mouseDown(theEvent)
-    }
-    override func hitTest(aPoint: NSPoint) -> NSView? {
-    return self//hitTest(aPoint)
-    }*/
     /**
      * This is a delegate handler method
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
