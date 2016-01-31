@@ -118,6 +118,9 @@ class InteractiveView:FlippedView{
     }
 }
 extension InteractiveView{
+    /**
+     * Returns a correctly flipped coordinate of the mouse in window space 0,0
+     */
     var winMousePos:CGPoint {
         var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
         pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
