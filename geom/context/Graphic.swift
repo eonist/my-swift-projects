@@ -37,9 +37,11 @@ class Graphic:FlippedView,IGraphic{
         super.mouseDown(theEvent)
     }*/
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("hitTest in graphic")
+        Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
-        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,aPoint,true)
+        let localPoint = convertPoint(aPoint, toView: self)
+        Swift.print("localPoint: " + "\(localPoint)")
+        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         Swift.print("isPointInside: " + "\(isPointInside)")
         return isPointInside ? self : nil
     }
