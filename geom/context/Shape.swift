@@ -34,6 +34,9 @@ class Shape : CALayer{
     super.display()
     }
     */
-    
+    override func hitTest(p: CGPoint) -> CALayer? {
+        <#code#>
+    }
+    is
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

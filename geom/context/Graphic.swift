@@ -36,6 +36,9 @@ class Graphic:FlippedView,IGraphic{
         Swift.print("Graphic.down")
         super.mouseDown(theEvent)
     }*/
+    /**
+     * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
+     */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
