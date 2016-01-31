@@ -37,6 +37,8 @@ class Graphic:FlippedView,IGraphic{
     super.mouseDown(theEvent)
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
+    
+    Swift.print("hitTest in graphic")
     return self//hitTest(aPoint)
     }*/
     /**
