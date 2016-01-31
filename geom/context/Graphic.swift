@@ -38,8 +38,8 @@ class Graphic:FlippedView,IGraphic{
     }*/
     override func hitTest(aPoint: NSPoint) -> NSView? {
         Swift.print("hitTest in graphic")
-        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,aPoint)
-        return self//hitTest(aPoint)
+        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,aPoint,true)
+        return isPointInside ? self : nil
     }
     /**
      * This is a delegate handler method
