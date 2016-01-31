@@ -46,8 +46,6 @@ class Graphic:FlippedView,IGraphic{
         let localPoint = convertPoint(aPoint, fromView: nil)//self.window?.contentView
         Swift.print("localPoint: " + "\(localPoint)")
         
-        hitTestFromViewRelativeToFrame(<#T##locationInWindow: NSPoint##NSPoint#>)
-        
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         Swift.print("isPointInside: " + "\(isPointInside)")
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
