@@ -43,7 +43,7 @@ class Graphic:FlippedView,IGraphic{
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
-        let localPoint = convertPoint(aPoint, fromView: nil)//self.window?.contentView
+        let localPoint = convertPoint(aPoint, fromView: self.window?.contentView)
         //Swift.print("localPoint: " + "\(localPoint)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
