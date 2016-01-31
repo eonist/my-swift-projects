@@ -35,8 +35,11 @@ class Shape : CALayer{
     }
     */
     override func hitTest(p: CGPoint) -> CALayer? {
-        <#code#>
+        return super.hitTest(p)
     }
-    is
+    /*override func containsPoint(p: CGPoint) -> Bool {
+    //add path inside code here
+    return true
+    }*/
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
