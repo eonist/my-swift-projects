@@ -38,6 +38,7 @@ class Graphic:FlippedView,IGraphic{
     }*/
     override func hitTest(aPoint: NSPoint) -> NSView? {
         Swift.print("hitTest in graphic")
+        //you have to convert the aPoint to localspace
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,aPoint,true)
         Swift.print("isPointInside: " + "\(isPointInside)")
         return isPointInside ? self : nil
