@@ -44,10 +44,10 @@ class Graphic:FlippedView,IGraphic{
         //you have to convert the aPoint to localspace
         
         let localPoint = convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
-        Swift.print("localPoint: " + "\(localPoint)")
+        //Swift.print("localPoint: " + "\(localPoint)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
-        Swift.print("isPointInside: " + "\(isPointInside)")
+        //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
