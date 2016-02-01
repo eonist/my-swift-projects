@@ -51,11 +51,11 @@ class Graphic:FlippedView,IGraphic{
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
-    var winMousePos:CGPoint {
-        var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
-        pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
-        return pos
-    }
+    /*var winMousePos:CGPoint {
+    var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
+    pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
+    return pos
+    }*/
     /**
      * This is a delegate handler method
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
