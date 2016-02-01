@@ -1,3 +1,6 @@
+/**
+ * NOTE: instance.className returns the class name of an instance like this:"NameOfApp.NameOfClass"
+ */
 class ClassParser {
     /**
      * EXAMPLE: Swift.print(ofType(a,A.self)!.text)//I am a
