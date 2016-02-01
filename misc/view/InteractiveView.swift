@@ -10,7 +10,7 @@ import Cocoa
 class InteractiveView:FlippedView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
-    var isInteractive:Bool = true//why is this here?
+    var isInteractive:Bool = true//why is this here? I guess so that you can toggle the interactive part on and of
     var hasHandCursor:Bool = false
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     //override var wantsUpdateLayer:Bool{return true;}
