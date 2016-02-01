@@ -47,7 +47,7 @@ class Graphic:FlippedView,IGraphic{
         Swift.print("localPoint: " + "\(localPoint)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
-        //Swift.print("isPointInside: " + "\(isPointInside)")
+        Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
