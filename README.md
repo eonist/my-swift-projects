@@ -2,7 +2,7 @@
 Generic swift utilities
 ## Index:  
 - **SVGLib** (Read and write svg syntax)  
-- **GraphicsLib** (Makes working with Quartz and core data easier)  
+- **GraphicsKit** (Makes working with Quartz and core data easier)  
 - **XMLLib** (Makes parsing and modifying xml data easier)  
 - **RegExpLib** (Makes parsing and modifying with RegExp easier)  
 - **MathLib** (Contains alot of usefull math Utils, more to come)  
