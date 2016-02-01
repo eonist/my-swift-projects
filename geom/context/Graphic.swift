@@ -43,13 +43,18 @@ class Graphic:FlippedView,IGraphic{
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
-        let localPoint = convertPoint(aPoint, fromView: self.window?.contentView)
+        let localPoint = convertPoint(winMousePos, fromView: nil)//convertPoint(aPoint, fromView: self.window?.contentView)
         Swift.print("localPoint: " + "\(localPoint)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
+    }
+    var winMousePos:CGPoint {
+        var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
+        pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
+        return pos
     }
     /**
      * This is a delegate handler method
