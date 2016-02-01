@@ -10,7 +10,7 @@ Generic swift utilities
 - **GitLib** - works by utilizing shell and git (Comming soon, see my applescript lib for now)  
 - **Utils** - Other basic programming utilites for working with array, dictionary, numbers, strings etc
 
-## **Graphic framework for OSX**
+## **GraphicsKit for OSX**
 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
 
