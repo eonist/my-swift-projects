@@ -13,4 +13,10 @@ class WindowParser {
             app.windowWithWindowNumber(w.windowNumber)//this is how you can manage windows
         }
     }
+    /**
+     * NOTE: 
+     */
+    class func height(window:NSWindow){
+        NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
+    }
 }
