@@ -13,4 +13,14 @@ class NSViewParser {
         }
         return children;
     }
+    
+    /**
+     *
+     */
+    class func parents(view:NSView){
+        var aView:NSView = view;
+        while ((aView = [aView superview])) {
+            NSLog(@"%@", );
+        }
+    }
 }
