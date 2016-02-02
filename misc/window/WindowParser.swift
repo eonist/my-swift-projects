@@ -16,6 +16,7 @@ class WindowParser {
     /**
      * NOTE: returns the window height (including the titleBar height)
      * NOTE: to return window height not including the titleBar height, the use window!.frame.height
+     * NOTE: this method can also be used if you diff this method and the frame.height
      */
     class func height(window:NSWindow)->CGFloat{
         return NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
