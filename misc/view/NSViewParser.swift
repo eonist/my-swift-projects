@@ -15,13 +15,15 @@ class NSViewParser {
     }
     
     /**
-     * NOTE: this may not work, untested, see the your other hirarchy code for a better solution
+     * NOTE: this may not work, untested, looks good though
      */
-    class func parents(view:NSView){
-        var aView:NSView = view;
-        while ((aView == aView.superview!)) {
-            aView = aView.superview!
-            Swift.print("aView: " + "\(aView)")
+    class func parents(view:NSView)->Array<NSView>{
+        var parents:Array<NSView> = []
+        var parent:NSView? = view.superview// :TODO: seperate this into a check if its DO then that, if its Window then do that
+        while(parent != nil) {//loops up the object hierarchy as long as the parent is a Element supertype
+            ArrayModifier.unshift(&parents,parent!)
+            parent = parent!.superview
         }
+        return parents;
     }
 }
