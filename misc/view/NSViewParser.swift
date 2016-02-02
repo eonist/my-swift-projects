@@ -15,12 +15,13 @@ class NSViewParser {
     }
     
     /**
-     *
+     * NOTE: this may not work, untested, see the your other hirarchy code for a better solution
      */
     class func parents(view:NSView){
         var aView:NSView = view;
-        while ((aView = [aView superview])) {
-            NSLog(@"%@", );
+        while ((aView == aView.superview!)) {
+            aView = aView.superview!
+            Swift.print("aView: " + "\(aView)")
         }
     }
 }
