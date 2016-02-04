@@ -45,4 +45,6 @@ extension NSView {
     func contains(view:NSView)->Bool{
         return NSViewAsserter.contains(self, view)
     }
+    var width:CGFloat{return frame.width}
+    var height:CGFloat{return frame.height}
 }
