@@ -5,7 +5,7 @@ import Foundation
  * // :TODO: possibly replace the subclassing with decoration!?!
  */
 class SVGRect : SVGGraphic {
-    var width : CGFloat
+    var width : CGFloat//TODO: rename to w
     var height : CGFloat
     var x:CGFloat
     var y : CGFloat
