@@ -13,6 +13,7 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
+    var trackingArea:NSTrackingArea?
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
@@ -50,6 +51,16 @@ class Graphic:FlippedView,IGraphic{
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
+    }
+    /**
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
+     * NOTE: the only way to update trackingArea is to remove it and add a new one
+     * PARAM: owner is the instance that receives the interaction event
+     */
+    override func updateTrackingAreas() {
+        if(trackingArea != nil) {removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+        trackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self.superview, userInfo: nil)
+        addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
     /*var winMousePos:CGPoint {
     var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
