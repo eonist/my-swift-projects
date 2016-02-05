@@ -13,7 +13,6 @@ class Graphic:FlippedView,IGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
-    var trackingArea:NSTrackingArea?
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
