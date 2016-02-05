@@ -6,5 +6,6 @@ class SVGAsserter {
      */
     class func isPointWithin(svg:SVG){
         //CGPathContainsPoint(path,transform,point)
+        //complete this method when needed
     }
 }
