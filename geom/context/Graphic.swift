@@ -58,6 +58,7 @@ class Graphic:FlippedView,IGraphic{
      * PARAM: owner is the instance that receives the interaction event
      */
     override func updateTrackingAreas() {
+        Swift.print("updateTrackingAreas()")
         if(trackingArea != nil) {removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
         trackingArea = NSTrackingArea(rect: bounds, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self.superview, userInfo: nil)
         addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
