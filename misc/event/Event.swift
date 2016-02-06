@@ -10,5 +10,3 @@ class Event{
     }
 }
 
-//all events are sent through the event variable, so that non-nsViews can hi-jack the eventstream (SelectGroup for instance)
-//button -> onDown() -> event(SelectEvent(SelectEvent.select,self)) -> onEvent(parent.event(event))

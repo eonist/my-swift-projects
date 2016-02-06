@@ -6,6 +6,6 @@ class EventSender:IEventSender {
     * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
     */
     func onEvent(event:Event){
-        
+        //override in subclass
     }
 }
