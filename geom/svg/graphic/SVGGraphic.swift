@@ -161,19 +161,21 @@ class SVGGraphic : SVGView,ISVGGraphic{
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-}
-extension SVGGraphic{
     /**
      * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
      * NOTE: the only way to update trackingArea is to remove it and add a new one
      * PARAM: owner is the instance that receives the interaction event
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
-    func updateTrackingArea(rect:NSRect){
-        Swift.print("Graphic.updateTrackingArea: " + "\(rect)")
+    override func updateTrackingAreas() {
+        Swift.print("SVGGraphic.updateTrackingArea: " + "\(fillShape.frame)")
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: rect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+/*extension SVGGraphic{
+func updateTrackingArea(rect:NSRect){
+}
+}*/
