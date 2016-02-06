@@ -1,6 +1,6 @@
 import Foundation
 
 protocol IEventSender {
-    var event: ((event:Event) -> ())?{get set}
+    var event: ((_ event:Event) -> ())?{get set}
     func onEvent(event:Event)
 }
