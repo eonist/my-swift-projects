@@ -4,9 +4,12 @@ import Foundation
  */
 class EventSender:IEventSender {
     var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
+    init(){
+        event = onEvent
+    }
     /**
-    * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
-    */
+     * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
+     */
     func onEvent(event:Event){
         //override in subclass
     }
