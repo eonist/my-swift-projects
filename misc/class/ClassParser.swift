@@ -1,6 +1,10 @@
 /**
  * NOTE: instance.className returns the class name of an instance like this:"NameOfApp.NameOfClass"
  * NOTE: if you use instance.dynamicType you get only the class name
+ * NOTE: the bellow is from: class A{}
+ * String(A.self.dynamicType)//A.Type
+ * String(A.self)//A
+ * String(A)//A
  */
 class ClassParser {
     /**
