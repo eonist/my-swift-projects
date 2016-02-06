@@ -15,7 +15,7 @@ class NSViewParser {
     }
     
     /**
-     * NOTE: this may not work, untested, looks good though
+     * Returns a list of parents (this works, tested)
      */
     class func parents(view:NSView)->Array<NSView>{
         var parents:Array<NSView> = []
