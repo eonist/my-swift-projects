@@ -40,6 +40,7 @@ class Graphic:InteractiveView2,IGraphic{
     }*/
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
+     * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")

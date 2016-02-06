@@ -144,6 +144,10 @@ class SVGGraphic : SVGView,ISVGGraphic{
         //Swift.print("SVGGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
+    /**
+     * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
+     * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
+     */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
@@ -157,4 +161,18 @@ class SVGGraphic : SVGView,ISVGGraphic{
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension SVGGraphic{
+    /**
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
+     * NOTE: the only way to update trackingArea is to remove it and add a new one
+     * PARAM: owner is the instance that receives the interaction event
+     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
+     */
+    func updateTrackingArea(rect:NSRect){
+        Swift.print("Graphic.updateTrackingArea: " + "\(rect)")
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+        trackingArea = NSTrackingArea(rect: rect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+    }
 }
