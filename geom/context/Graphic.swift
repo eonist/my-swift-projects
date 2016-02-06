@@ -52,7 +52,7 @@ class Graphic:InteractiveView2,IGraphic{
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
-        return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
+        return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
         
         //continue here, you need to check for subViews, since assetDecorator uses this view to add it self to
     }
