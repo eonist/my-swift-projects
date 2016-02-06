@@ -113,6 +113,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
     func draw(){
+        updateTrackingArea(fillShape.frame)
         //Swift.print("SVGGraphic.draw()")
         
         
