@@ -42,14 +42,14 @@ class Graphic:InteractiveView2,IGraphic{
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("hitTest in graphic" + "\(aPoint)")
+        //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
-        let localPoint = convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
-        Swift.print("localPoint: " + "\(localPoint)")
+        let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
+        //Swift.print("localPoint: " + "\(localPoint)")
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
-        Swift.print("isPointInside: " + "\(isPointInside)")
+        //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
