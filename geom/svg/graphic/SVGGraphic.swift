@@ -9,6 +9,7 @@ import Cocoa
 class SVGGraphic : SVGView,ISVGGraphic{
     var fillShape:Shape
     var lineShape:Shape
+    var trackingArea:NSTrackingArea?
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         fillShape = Shape()
         lineShape = Shape()
@@ -142,6 +143,18 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func stylizeLine(){
         //Swift.print("SVGGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
+    }
+    override func hitTest(aPoint: NSPoint) -> NSView? {
+        //Swift.print("hitTest in graphic" + "\(aPoint)")
+        //you have to convert the aPoint to localspace
+        
+        let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
+        //Swift.print("localPoint: " + "\(localPoint)")
+        
+        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
+        //Swift.print("isPointInside: " + "\(isPointInside)")
+        
+        return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
