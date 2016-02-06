@@ -1,6 +1,6 @@
 import Foundation
 
 protocol IEventSender {
-    var event: ((event:Event) -> Void)?
+    var event:Void?
     func onEvent(event:Event)
 }
