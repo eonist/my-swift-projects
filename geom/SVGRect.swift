@@ -56,7 +56,7 @@ class SVGRect : SVGGraphic {
                 lineShape.frame = lineOffsetRect.lineFrameRect
                 lineShape.path = (rx.isNaN && ry.isNaN) ? lineOffsetRect.lineRect.path : CGPathParser.roundRect(lineOffsetRect.lineRect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
             }
-            updateTrackingArea(rect)
+            updateTrackingArea(rect)//<--this should probably use fillFrame
         }
     }
     func setSize(width:CGFloat,height:CGFloat) {
