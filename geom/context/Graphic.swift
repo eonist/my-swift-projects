@@ -53,6 +53,8 @@ class Graphic:InteractiveView2,IGraphic{
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
+        
+        //continue here, you need to check for subViews, since assetDecorator uses this view to add it self to
     }
     /*var winMousePos:CGPoint {
     var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
