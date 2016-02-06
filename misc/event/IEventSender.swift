@@ -1,6 +1,6 @@
 import Foundation
 
-class IEventSender {
-    //var event
-    //onEvent
+protocol IEventSender {
+    var event: ((event:Event) -> ())?
+    func onEvent(event:Event)
 }
