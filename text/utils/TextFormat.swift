@@ -8,7 +8,7 @@ class TextFormat {
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
-    var type:CGFloat = "dynamic"//input and static
+    var type:String = "dynamic"//input and static
     init(){
         
     }
@@ -36,8 +36,9 @@ class TextFormat {
                     //Swift.print("Setting color: ")
                     color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
-            case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String($0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
+                case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String($0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
                 case TextFormatConstants.size:size = newValue as! CGFloat
+                case TextFormatConstants.type:type = newValue as! String
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
