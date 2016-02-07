@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ISizeable {
+protocol ISizeable:class {//<--new extends class
     var size:CGSize {get set}
     func setSizeValue(size:CGSize)
     //func setSize(width:CGFloat,height:CGFloat)//unsure if this can be here when you have that same method in the extension
