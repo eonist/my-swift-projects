@@ -5,7 +5,7 @@ class TextFieldModifier {
      *
      */
     class func applyTextFormat(textField:NSText,_ textFormat:TextFormat){
-        textField.selectable = textFormat.selectable
+        textField.selectable = true//textFormat.selectable
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
