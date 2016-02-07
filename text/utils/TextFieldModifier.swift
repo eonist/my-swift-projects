@@ -5,13 +5,13 @@ class TextFieldModifier {
      *
      */
     class func applyTextFormat(textField:NSText,_ textFormat:TextFormat){
-        textField.selectable = true//textFormat.selectable
+        textField.selectable = textFormat.selectable
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
-        textField.editable = true//textFormat.type == "input"
+        textField.editable = textFormat.type == "input"
         //textField.bordered = false//<--maybe implement later
     }
     /**
