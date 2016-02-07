@@ -8,7 +8,7 @@ class TextFormat {
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
-    var type:CGFloat = ""
+    var type:CGFloat = "dynamic"//input and static
     init(){
         
     }
