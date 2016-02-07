@@ -9,6 +9,6 @@ class TextFormatConstants {
     static var font:String = "font"
     static var size:String = "size"
     static var type:String = "dynamic"//static and input
-    static var textFormatPropertyNames:Array<String> = [size,font,align,selectable,background,backgroundColor,color]
+    static var textFormatPropertyNames:Array<String> = [size,font,align,selectable,background,backgroundColor,color,type]
     //["align","blockIndent","bold","bullet","color","font","indent","italic","kerning","leading","leftMargin","letterSpacing","rightMargin","size","tabStops","target","underline","url"];
 }
