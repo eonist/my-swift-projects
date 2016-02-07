@@ -8,6 +8,7 @@ class TextFormat {
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
+    var type:CGFloat = ""
     init(){
         
     }
@@ -21,6 +22,7 @@ class TextFormat {
                 case TextFormatConstants.align:return align
                 case TextFormatConstants.font:return font
                 case TextFormatConstants.size:return size
+                case TextFormatConstants.type:return type
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }

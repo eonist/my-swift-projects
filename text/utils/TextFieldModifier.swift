@@ -12,7 +12,7 @@ class TextFieldModifier {
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
-        textField.editable = textFormat.type == CSSConstants.
+        textField.editable = textFormat.type == "input"
         nameText.bordered = false
     }
     /**
