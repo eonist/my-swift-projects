@@ -1,5 +1,5 @@
 import Foundation
-protocol IPositional {
+protocol IPositional:class {
     var pos:CGPoint{get set}
     func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
