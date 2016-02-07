@@ -11,7 +11,7 @@ class TextFieldModifier {
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
-        textField.editable = textFormat.type == "input"
+        textField.editable = true//textFormat.type == "input"
         //textField.bordered = false//<--maybe implement later
     }
     /**
