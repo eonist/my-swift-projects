@@ -71,7 +71,7 @@ class Graphic:InteractiveView2,IGraphic{
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         updateTrackingArea()
     }
-        required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
     /**

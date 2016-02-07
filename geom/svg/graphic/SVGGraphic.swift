@@ -28,7 +28,6 @@ class SVGGraphic : SVGView,ISVGGraphic{
             fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
         }
-        updateTrackingArea()
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
@@ -168,9 +167,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * PARAM: owner is the instance that receives the interaction event
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
-    func updateTrackingArea() {
+    override func updateTrackingAreas() {
         //Swift.print("SVGGraphic.updateTrackingArea: " + "\(fillShape.frame)")
-        Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
+        //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
         trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
