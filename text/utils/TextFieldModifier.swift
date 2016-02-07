@@ -13,6 +13,14 @@ class TextFieldModifier {
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
     }
+    /**
+     * Beta
+     */
+    class func size(textField:NSText,_ width:CGFloat,_ height:CGFloat) {
+        textField.frame.width = width;/*SkinParser.width(this);*/
+        textField.frame.height = height;/*SkinParser.height(this);*/
+        //textField.setTextFormat(StylePropertyParser.textFormat(this));
+    }
 }
 private class Utils{
     /**
