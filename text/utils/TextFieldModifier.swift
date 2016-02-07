@@ -13,7 +13,7 @@ class TextFieldModifier {
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
         textField.editable = textFormat.type == "input"
-        nameText.bordered = false
+        //textField.bordered = false//<--maybe implement later
     }
     /**
      * Beta
