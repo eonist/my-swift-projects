@@ -13,9 +13,8 @@ class TextField:NSTextField{
         return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print("theEvent: " + "\(theEvent)")
-        
-        globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:onMouseDownOutside )
+        Swift.print("TextField.mouseDown() theEvent: " + "\(theEvent)")
+        globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:onMouseDownOutside)//we add an eventListener that takes care of resigning the edit mode of the textField
         super.mouseDown(theEvent)
     }
     func onMouseDownOutside(event:NSEvent)-> NSEvent?{
@@ -26,12 +25,5 @@ class TextField:NSTextField{
             self.window?.makeFirstResponder(nil)
         }
         return event
-    }
-    
-    /**
-     *
-     */
-    func onMouseDownOutside(){
-        
     }
 }
