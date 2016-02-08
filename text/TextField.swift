@@ -9,6 +9,6 @@ class TextField:NSTextField{
         //Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
         //let tempPos = self.convertPoint(aPoint,fromView:nil)
         //Swift.print("tempPos: " + "\(tempPos)")
-        return super.hitTest(CGPoint(aPoint.x,localPos().y))
+        return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
 }
