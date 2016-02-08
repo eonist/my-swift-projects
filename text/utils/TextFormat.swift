@@ -10,9 +10,9 @@ class TextFormat {
     var size:CGFloat = 12
     var type:String = "dynamic"//input and static
     var border:Bool = false
-    
-    multiline:true
-    wordWrap
+    var multiline:Bool = false
+    var wordWrap:Bool = true
+    //autoSize can be implemented, check stackoverflow
     init(){
         
     }
@@ -28,6 +28,8 @@ class TextFormat {
                 case TextFormatConstants.size:return size
                 case TextFormatConstants.type:return type
                 case TextFormatConstants.border:return border
+                case TextFormatConstants.multiline:return multiline
+                case TextFormatConstants.wordWrap:return wordWrap
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -45,6 +47,8 @@ class TextFormat {
                 case TextFormatConstants.size:size = newValue as! CGFloat
                 case TextFormatConstants.type:type = newValue as! String
                 case TextFormatConstants.border:border = newValue as! Bool
+                case TextFormatConstants.multiline:multiline = newValue as! Bool
+                case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }

@@ -10,6 +10,8 @@ class TextFormatConstants {
     static var size:String = "size"
     static var type:String = "type"//static and input
     static var border:String = "border"
-    static var textFormatPropertyNames:Array<String> = [size,font,align,selectable,background,backgroundColor,color,type,border]
+    static var multiline:String = "multiline"
+    static var wordWrap:String = "wordWrap"
+    static var textFormatPropertyNames:Array<String> = [size,font,align,selectable,background,backgroundColor,color,type,border,multiline,wordWrap]
 }
 //["align","blockIndent","bold","bullet","color","font","indent","italic","kerning","leading","leftMargin","letterSpacing","rightMargin","size","tabStops","target","underline","url"];
