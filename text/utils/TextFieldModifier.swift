@@ -12,7 +12,7 @@ class TextFieldModifier {
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
         textField.editable = true//textFormat.type == "input"
-        
+        textField.focusRingType = NSFocusRingType.None
         //textField.bordered = false//<--maybe implement later
     }
     /**
