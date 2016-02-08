@@ -16,8 +16,8 @@ class TextFieldModifier {
         textField.bordered = textFormat.border//<--maybe implement later
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         //textField.usesSingleLineMode = true//<---cant get these to work yet
-        textField.cell?.wraps = textFormat.wordWrap
-        textField.cell?.scrollable = true
+        textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically
+        textField.cell?.scrollable = textFormat.wordWrap//i guess this is connected to wordWrap
     }
     /**
      * Beta
