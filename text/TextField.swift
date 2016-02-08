@@ -24,12 +24,7 @@ class TextField:NSTextField{
             Swift.print("hit within")
         }else{
             Swift.print("resign")
-            //NSApp.mainWindow?.resignFirstResponder()
             self.window?.makeFirstResponder(nil)
-            
-            /*[[NSApp mainWindow] performSelector:@selector(resignFirstResponder:)
-            withObject:yourTextfield
-            afterDelay:0.0];*/
         }
         return event
     }
