@@ -43,7 +43,7 @@ class Graphic:InteractiveView2,IGraphic{
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        //Swift.print("hitTest in graphic" + "\(aPoint)")
+        Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
         let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
