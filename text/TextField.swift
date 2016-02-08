@@ -23,7 +23,10 @@ class TextField:NSTextField{
         if(hitTest(event.localPos(self)) != nil){
             Swift.print("hit within")
         }else{
-            NSApp.mainWindow?.resignFirstResponder()
+            Swift.print("resign")
+            //NSApp.mainWindow?.resignFirstResponder()
+            self.window?.makeFirstResponder(nil)
+            
             /*[[NSApp mainWindow] performSelector:@selector(resignFirstResponder:)
             withObject:yourTextfield
             afterDelay:0.0];*/
