@@ -24,6 +24,7 @@ class TextFormat {
                 case TextFormatConstants.font:return font
                 case TextFormatConstants.size:return size
                 case TextFormatConstants.type:return type
+                case TextFormatConstants.border:return border
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -40,6 +41,7 @@ class TextFormat {
                 case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String($0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
                 case TextFormatConstants.size:size = newValue as! CGFloat
                 case TextFormatConstants.type:type = newValue as! String
+                case TextFormatConstants.border:border = newValue as! Bool
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
