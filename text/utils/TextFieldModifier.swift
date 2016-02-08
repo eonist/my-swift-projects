@@ -4,7 +4,7 @@ class TextFieldModifier {
     /**
      *
      */
-    class func applyTextFormat(textField:CustomText,_ textFormat:TextFormat){
+    class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         textField.selectable = textFormat.selectable
         textField.drawsBackground = textFormat.background
         textField.backgroundColor = textFormat.backgroundColor
@@ -18,7 +18,7 @@ class TextFieldModifier {
     /**
      * Beta
      */
-    class func size(textField:CustomText,_ width:CGFloat,_ height:CGFloat) {
+    class func size(textField:TextField,_ width:CGFloat,_ height:CGFloat) {
         textField.frame.width = width;/*SkinParser.width(this);*/
         textField.frame.height = height;/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
