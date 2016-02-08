@@ -10,6 +10,8 @@ class TextFormat {
     var size:CGFloat = 12
     var type:String = "dynamic"//input and static
     var border:Bool = false
+    
+    multiline:true
     init(){
         
     }
