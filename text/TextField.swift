@@ -1,6 +1,7 @@
 import Cocoa
 
 class TextField:NSTextField{
+    var globalMouseDownHandler:AnyObject?
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
@@ -13,9 +14,16 @@ class TextField:NSTextField{
     }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("theEvent: " + "\(theEvent)")
-        globalMouseDownHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseDownOutside )
+        
+        globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseDownOutside )
         super.mouseDown(theEvent)
     }
+    func onMouseDownOutside(event:NSEvent)-> NSEvent?{
+        Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
+        
+        return event
+    }
+    
     /**
      *
      */
