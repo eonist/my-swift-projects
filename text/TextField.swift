@@ -22,6 +22,8 @@ class TextField:NSTextField{
         Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
         if(hitTest(event.localPos(self)) != nil){
             Swift.print("hit within")
+        }else{
+            self.cell?.endEditing(self)
         }
         return event
     }
