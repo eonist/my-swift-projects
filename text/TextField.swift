@@ -19,11 +19,10 @@ class TextField:NSTextField{
         super.mouseDown(theEvent)
     }
     func onMouseDownOutside(event:NSEvent)-> NSEvent?{
-        Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
-        if(hitTest(event.localPos(self)) != nil){
-            Swift.print("hit within")
-        }else{
-            Swift.print("resign")
+        //Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
+        if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
+            //Swift.print("resign")
+            NSEvent.removeMonitor(globalMouseDownHandler!)//we remove the evenListener as its done its job
             self.window?.makeFirstResponder(nil)
         }
         return event
