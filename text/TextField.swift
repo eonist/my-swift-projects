@@ -15,12 +15,14 @@ class TextField:NSTextField{
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("theEvent: " + "\(theEvent)")
         
-        globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseDownOutside )
+        globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:onMouseDownOutside )
         super.mouseDown(theEvent)
     }
     func onMouseDownOutside(event:NSEvent)-> NSEvent?{
         Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
-        
+        if(hitTest(event.localPos(self)) != nil){
+            Swift.print("hit within")
+        }
         return event
     }
     
