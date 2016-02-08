@@ -13,7 +13,13 @@ class TextField:NSTextField{
     }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("theEvent: " + "\(theEvent)")
-        
+        globalMouseDownHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseDownOutside )
         super.mouseDown(theEvent)
+    }
+    /**
+     *
+     */
+    func onMouseDownOutside(){
+        
     }
 }
