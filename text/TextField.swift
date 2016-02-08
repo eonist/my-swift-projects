@@ -11,4 +11,9 @@ class TextField:NSTextField{
         //Swift.print("tempPos: " + "\(tempPos)")
         return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print("theEvent: " + "\(theEvent)")
+        
+        super.mouseDown(theEvent)
+    }
 }
