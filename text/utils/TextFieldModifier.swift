@@ -12,8 +12,8 @@ class TextFieldModifier {
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
         textField.editable = textFormat.type == "input"
-        textField.focusRingType = NSFocusRingType.None
-        textField.bordered = false//<--maybe implement later
+        textField.focusRingType = NSFocusRingType.None//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
+        textField.bordered = textFormat.border//<--maybe implement later
     }
     /**
      * Beta
