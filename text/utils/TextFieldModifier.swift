@@ -16,6 +16,8 @@ class TextFieldModifier {
         textField.bordered = textFormat.border//<--maybe implement later
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         //textField.usesSingleLineMode = true//<---cant get these to work yet
+        textField.cell?.wraps = false
+        textField.cell?.scrollable = true
     }
     /**
      * Beta
