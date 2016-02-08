@@ -1,7 +1,7 @@
 import Cocoa
 
 class TextFormat {
-    var background:Bool = false;
+    var background:Bool = false
     var backgroundColor:NSColor = NSColor.clearColor()
     var selectable:Bool = false
     var color:NSColor = NSColor.grayColor()
@@ -9,6 +9,7 @@ class TextFormat {
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
     var type:String = "dynamic"//input and static
+    var border:Bool = false
     init(){
         
     }
