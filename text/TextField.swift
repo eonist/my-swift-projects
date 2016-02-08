@@ -6,9 +6,9 @@ class TextField:NSTextField{
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
-        let tempPos = self.convertPoint(aPoint,fromView:nil)
-        Swift.print("tempPos: " + "\(tempPos)")
+        //Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
+        //let tempPos = self.convertPoint(aPoint,fromView:nil)
+        //Swift.print("tempPos: " + "\(tempPos)")
         return super.hitTest(CGPoint(aPoint.x,localPos().y))
     }
 }
