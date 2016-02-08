@@ -12,6 +12,7 @@ class TextFormat {
     var border:Bool = false
     
     multiline:true
+    wordWrap
     init(){
         
     }
