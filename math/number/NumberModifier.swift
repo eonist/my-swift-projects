@@ -12,8 +12,8 @@ class NumberModifier{
      * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
      */
     class func increment(number:CGFloat,_ incrementation:CGFloat) -> CGFloat {
-        let decimalCount:CGFloat = CGFloat(NumberParser.decimals(number))
-        let modifier:CGFloat =  pow(10, decimalCount);
+        let decimalCount:Int = NumberParser.decimals(number)
+        let modifier:CGFloat =  pow(10, CGFloat(decimalCount));
         return ((number * modifier) + (incrementation * modifier)) / modifier;
     }
     /**
@@ -21,9 +21,8 @@ class NumberModifier{
      * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
      */
     class func decrement(number:CGFloat,_ decrementation:CGFloat)->CGFloat {
-        var numOfDecimals:Int = NumberParser.decimals(number);
-        var modifier:Number =  Math.pow(10, numOfDecimals);
-        return ((number*modifier) - (decrementation*modifier))/modifier;
+        let numOfDecimals:Int = NumberParser.decimals(number);
+        let modifier:CGFloat =  pow(10, CGFloat(numOfDecimals));
+        return ((number * modifier) - (decrementation * modifier)) / modifier;
     }
-    
 }
