@@ -21,14 +21,5 @@ public class CGFloatParser{
         interpolatedRange.append(max)
         return interpolatedRange
     }
-    /**
-     * Returns the number if its within min-max returns min if its lower and max if its higher
-     * @example: MathUtil.minMax(100, 200, 400)//Output: 200
-     * @example: MathUtil.minMax(500, 200, 400)//Output: 400
-     * @example: MathUtil.minMax(300, 200, 400)//Output: 300
-     * NOTE: a better name for this is clip(2,1,5)
-     */
-    public static function minMax(number:Number , min : Number , max : Number) : Number{
-        return Math.max(min, Math.min(max, number));
-    }
+    
 }
