@@ -11,9 +11,9 @@ class NumberModifier{
      * Returns a number that is incremented by @param incrementation
      * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
      */
-    class func increment(number:CGFloat,incrementation:CGFloat) -> CGFloat {
-        var decimalCount:Int = NumberParser.decimals(number);
-        var modifier:CGFloat =  pow(10, decimalCount);
+    class func increment(number:CGFloat,_ incrementation:CGFloat) -> CGFloat {
+        let decimalCount:CGFloat = CGFloat(NumberParser.decimals(number))
+        let modifier:CGFloat =  pow(10, decimalCount);
         return ((number * modifier) + (incrementation * modifier)) / modifier;
     }
 }
