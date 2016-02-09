@@ -98,4 +98,13 @@ class NumberParser{
     class func minMax<T: Comparable>(num:T , _ min : T , _ max : T) -> T{
         return Swift.max(min, Swift.min(max, num));
     }
+    /**
+     * Returns the number of decimals in a number
+     * @example: NumberParser.decimals(4.433)//Output: 3
+     */
+    public static function decimals(number:CGFloat)->Int {//could also be named decimalPlaces
+        var matches:Array = String(number).split(".");
+        if(matches.length > 1) return String(matches[1]).length;
+        else return 0;
+    }
 }
