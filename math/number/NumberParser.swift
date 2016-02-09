@@ -102,9 +102,9 @@ class NumberParser{
      * Returns the number of decimals in a number
      * @example: NumberParser.decimals(4.433)//Output: 3
      */
-    public static function decimals(number:CGFloat)->Int {//could also be named decimalPlaces
-        var matches:Array = String(number).split(".");
-        if(matches.length > 1) return String(matches[1]).length;
-        else return 0;
+    class func decimals(number:CGFloat)->Int {//could also be named decimalPLaces
+        var matches:Array<String> = String(number).split(".");
+        if(matches.count > 1) {return matches[1].count}
+        else {return 0}
     }
 }
