@@ -13,7 +13,7 @@ class NumberModifier{
      */
     class func increment(number:CGFloat,incrementation:CGFloat) -> CGFloat {
         var decimalCount:Int = NumberParser.decimals(number);
-        var modifier:CGFloat =  Swift.pow(10, decimalCount);
+        var modifier:CGFloat =  pow(10, decimalCount);
         return ((number * modifier) + (incrementation * modifier)) / modifier;
     }
 }
