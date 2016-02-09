@@ -26,4 +26,8 @@ class TextField:NSTextField{
         }
         return event
     }
+    override func textDidChange(notification: NSNotification) {
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        super.textDidChange(notification)
+    }
 }
