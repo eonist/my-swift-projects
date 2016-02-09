@@ -1,3 +1,4 @@
+import Foundation
 class NumberModifier{
     /*
      * Directly replaces a with b, and b with a
@@ -7,12 +8,12 @@ class NumberModifier{
         ObjectModifier.swapObjects(&a, &b)
     }
     /**
-    * Returns a number that is incremented by @param incrementation
-    * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
-    */
-    public static function increment(number:Number,incrementation:Number):Number {
-    var decimalCount:int = NumberParser.decimals(number);
-    var modifier:Number =  Math.pow(10, decimalCount);
-    return ((number*modifier) + (incrementation*modifier))/modifier;
+     * Returns a number that is incremented by @param incrementation
+     * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
+     */
+    class func increment(number:CGFloat,incrementation:CGFloat) -> CGFloat {
+        var decimalCount:Int = NumberParser.decimals(number);
+        var modifier:CGFloat =  Swift.pow(10, decimalCount);
+        return ((number * modifier) + (incrementation * modifier)) / modifier;
     }
 }
