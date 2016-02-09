@@ -107,4 +107,11 @@ class NumberParser{
         if(matches.count > 1) {return matches[1].count}
         else {return 0}
     }
+    /**
+     *
+     */
+    func roundToPlaces(value:CGFloat, places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(value * divisor) / divisor
+    }
 }
