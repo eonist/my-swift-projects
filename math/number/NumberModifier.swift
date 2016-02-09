@@ -30,6 +30,6 @@ class NumberModifier{
      */
     class func toFixed(value:CGFloat, _ places:Int) -> CGFloat {
         let divisor = pow(10, CGFloat(places))
-        return (value * divisor) / divisor
+        return round(value * divisor) / divisor
     }
 }
