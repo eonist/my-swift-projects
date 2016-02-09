@@ -16,4 +16,14 @@ class NumberModifier{
         let modifier:CGFloat =  pow(10, decimalCount);
         return ((number * modifier) + (incrementation * modifier)) / modifier;
     }
+    /**
+     * Returns a number that is decremented by @param incrementation
+     * @Note: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the @param number has
+     */
+    class func decrement(number:CGFloat,_ decrementation:CGFloat)->CGFloat {
+        var numOfDecimals:Int = NumberParser.decimals(number);
+        var modifier:Number =  Math.pow(10, numOfDecimals);
+        return ((number*modifier) - (decrementation*modifier))/modifier;
+    }
+    
 }
