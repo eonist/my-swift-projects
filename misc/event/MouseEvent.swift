@@ -17,11 +17,11 @@ class MouseEvent:Event{
     weak var event:NSEvent?
     /*var pos:CGPoint*/
     
-    init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView/*, immidiate:Any? = nil*/){
+    init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView, _ immediate:AnyObject){
         /*self.pos = pos*/
         self.event = event
-        super.init("", origin)
-        /*self.immidiate = immidiate*/
+        super.init("", origin,immediate)
+        self.immediate = immediate
     }
 }
 /**
