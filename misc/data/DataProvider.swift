@@ -24,9 +24,10 @@ import Foundation
  * trace(dp.length())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
-    private var items:Array<AnyObject> = []
-    override init(object:AnyObject? = nil){
-        
+    private var items:Array<AnyObject> = []//Array<AnyObject>()
+    init(object:AnyObject? = nil){
+        if(object != nil && object is Array<AnyObject>) {items = object as! Array<AnyObject>}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
+        else if(object != nil /*&& object is XML*/) {/*items = XMLParser.parseXMLToArray(object)*/}
         super.init()
     }
 }
