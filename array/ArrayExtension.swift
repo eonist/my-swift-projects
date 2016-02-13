@@ -25,7 +25,7 @@ extension Array {
         return ArrayModifier.shift(&self)
     }
     
-    mutating func splice<T>(startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
+    mutating func splice<Element>(startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<Element>{
         return ArrayModifier.splice(&self, startIndex, deleteCount, values)
     }
     
