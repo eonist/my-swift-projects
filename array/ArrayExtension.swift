@@ -28,7 +28,6 @@ extension Array {
     mutating func splice(startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
         return ArrayModifier.splice(&self, startIndex, deleteCount, values)
     }
-    
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
      * IMPORTANT: the original array is NOT modified
@@ -36,5 +35,8 @@ extension Array {
      */
     func slice(/*x:[Element]*/startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice(self,startIndex,endIndex)
+    }
+    func index<T : Equatable>(arr : [T], _ value:T)->Int{
+        return ArrayParser.index(arr, value)
     }
 }
