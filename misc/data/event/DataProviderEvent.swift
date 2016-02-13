@@ -1,5 +1,5 @@
 import Foundation
 
-class DataProviderEvent {
+class DataProviderEvent :Event{
 
 }
