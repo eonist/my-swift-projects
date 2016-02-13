@@ -30,7 +30,7 @@ class TextField:NSTextField{
         Swift.print("textDidChange")
         if(self.superview is IEventSender){
             Swift.print("superview is IEventSender")
-            (self.superview as! IEventSender).event!(Event(Event.update,self,self))
+            (self.superview as! IEventSender).event!(Event(Event.update,self/*,self*/))
         }
         super.textDidChange(notification)
     }
