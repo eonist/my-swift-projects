@@ -17,7 +17,7 @@ class MouseEvent:Event{
     weak var event:NSEvent?
     /*var pos:CGPoint*/
     
-    init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView, _ immediate:AnyObject){
+    init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView/*, _ immediate:AnyObject*/){
         /*self.pos = pos*/
         self.event = event
         super.init("", origin/*,immediate*/)
