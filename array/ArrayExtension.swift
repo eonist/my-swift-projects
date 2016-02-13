@@ -24,6 +24,11 @@ extension Array {
     mutating func shift(/*x:[Element]*/) ->Element{
         return ArrayModifier.shift(&self)
     }
+    
+    mutating func splice<T>(startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
+        return ArrayModifier.splice(&self, startIndex, deleteCount, values)
+    }
+    
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
      * IMPORTANT: the original array is NOT modified
