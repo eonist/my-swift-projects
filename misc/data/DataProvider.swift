@@ -23,9 +23,10 @@ import Foundation
  * dp.removeItemAt(dp.getItemIndex(orange))
  * trace(dp.length())
  */
-class DataProvider :EventSender{
+class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
     private var items:Array<AnyObject> = []
-    override init(){
+    override init(object:AnyObject? = nil){
+        
         super.init()
     }
 }
