@@ -7,10 +7,10 @@ class Event{
     var type:String/**/
     var origin:AnyObject/*origin sender of event, this could also be weak if you discover a memory leak*/
     var immediate:AnyObject/*prev sender of event*/
-    init(_ type:String = "", _ origin:AnyObject, _ immediate:AnyObject){//TODO:remove the immediate arg
+    init(_ type:String = "", _ origin:AnyObject/*, _ immediate:AnyObject*/){
         self.type = type
         self.origin = origin
-        self.immediate = immediate
+        self.immediate = origin
     }
     /**
      * The immediate previouse sender of event

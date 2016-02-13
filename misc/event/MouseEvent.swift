@@ -20,7 +20,7 @@ class MouseEvent:Event{
     init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView, _ immediate:AnyObject){
         /*self.pos = pos*/
         self.event = event
-        super.init("", origin,immediate)
+        super.init("", origin/*,immediate*/)
     }
 }
 /**
