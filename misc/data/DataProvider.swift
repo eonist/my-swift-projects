@@ -37,4 +37,12 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         else if(object != nil) {fatalError("DataProvider.constructor()<object> must be of type xml, or array")}
         super.init()
     }
+    /**
+    * Adds an array to the exisiting items array
+    * @param items is an Array comprised of objects
+    */
+    func addItems(items:Array<AnyObject>) {
+        self.items += items//concats
+        dispatchEvent(new DataProviderEvent(DataProviderEvent.ADD, items,_items.length - items.length, _items.length,true));
+    }
 }
