@@ -11,7 +11,8 @@ class EventSender:IEventSender {
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
-     * IMPORTANT: Remember to add immediate to the outgoing event. it may be usefull to implement that functionality in the bellow method
+     * IMPORTANT: Remember to add immediate to the outgoing event. 
+     * TODO: it may be usefull to implement the immediate attaching functionality in the bellow method
      */
     func onEvent(event:Event){
         //override in subclass
