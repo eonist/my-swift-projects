@@ -14,8 +14,7 @@ class EventSender:IEventSender {
      * IMPORTANT: Remember to add immediate to the outgoing event. 
      * TODO: it may be usefull to implement the immediate attaching functionality in the bellow method
      */
-    func onEvent(event:Event){
-        //override in subclass
-        
+    func onEvent(event:Event){//override in subclass and call super
+        self.event!(event.setImmediate(self))
     }
 }
