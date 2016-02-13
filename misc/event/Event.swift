@@ -7,9 +7,17 @@ class Event{
     var type:String/**/
     var origin:AnyObject/*origin sender of event, this could also be weak if you discover a memory leak*/
     var immediate:AnyObject/*prev sender of event*/
-    init(_ type:String = "", _ origin:AnyObject, _ immediate:AnyObject){
+    init(_ type:String = "", _ origin:AnyObject, _ immediate:AnyObject){//TODO:remove the immediate arg
         self.type = type
         self.origin = origin
         self.immediate = immediate
+    }
+    /**
+     * The immediate previouse sender of event
+     * NOTE: we return the event as its convenient when chaining method calls
+     */
+    func setImmediate(immediate:AnyObject)->Event{
+        self.immediate = immediate
+        return self
     }
 }
