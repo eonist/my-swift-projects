@@ -17,6 +17,7 @@ class Event{
      * NOTE: we return the event as its convenient when chaining method calls, great for attaching self to incoming events
      */
     func setImmediate(immediate:AnyObject)->Event{
+        Swift.print("Event.setImmediate()")
         self.immediate = immediate
         return self
     }
