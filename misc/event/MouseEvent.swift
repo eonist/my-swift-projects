@@ -21,7 +21,6 @@ class MouseEvent:Event{
         /*self.pos = pos*/
         self.event = event
         super.init("", origin,immediate)
-        self.immediate = immediate
     }
 }
 /**
