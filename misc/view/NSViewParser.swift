@@ -26,4 +26,15 @@ class NSViewParser {
         }
         return parents;
     }
+    /**
+     * Returns the index of @param subView in @param view, -1 if nothing is found
+     */
+    class func getSubViewAt(view:NSView,subView:NSView)->Int{
+        for var i = 0; i < view.subviews.count; ++i{
+            if(view.subviews[i] === subView){
+                return i
+            }
+        }
+        return -1
+    }
 }
