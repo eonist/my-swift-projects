@@ -118,4 +118,10 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         else {fatalError("\(self)" + "no item at the index of " + "\(index)")}
         return item;
     }
+    /**
+     * Returns the count of the self.items
+     */
+    func count() -> Int{
+        return self.items.count
+    }
 }
