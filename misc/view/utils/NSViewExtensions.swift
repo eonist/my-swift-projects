@@ -40,7 +40,8 @@ extension NSView {
         return view
     }
     func addSubviewAt(view: NSView,_ index:Int){
-        self.addSubview(view, positioned: <#T##NSWindowOrderingMode#>, relativeTo: <#T##NSView?#>)(view)
+        let subView = self.subviews
+        self.addSubview(view, positioned: NSWindowOrderingMode.Above, relativeTo: <#T##NSView?#>)(view)
     }
     /**
      * Asserts if @param view is a subView of @param parent
