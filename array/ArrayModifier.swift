@@ -95,9 +95,9 @@ class ArrayModifier{
     *	trace(array); //a,x,b,c
     * TODO: return the array for method chaning purposes?
     */
-    class func addAt(array:Array, item:*, index:int){
-        if(index == 0) array.unshift(item);
-        else if(array.length == index) array.push(item);
+    class func addAt<T>(array:[T], _ item:T, _ index:Int){
+        if(index == 0) {array.unshift(item)}
+        else if(array.length == index) {array.append(item)}
         else array.splice(index, 0, item);
     }
 }
