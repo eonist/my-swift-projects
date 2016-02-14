@@ -79,4 +79,9 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
         return self.items.splice (index,1)
     }
+    func removeAll(){
+        var tempItems:Array = self.items;// :TODO: is this necessary
+        self.items = [];
+        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,tempItems.count,true));
+    }
 }
