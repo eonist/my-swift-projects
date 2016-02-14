@@ -112,11 +112,11 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     /**
      * Returns an item at a spessific index
      */
-    func getItemAt(index:Int) -> AnyObject {
-        var item:AnyObject
+    func getItemAt(index:Int) -> Dictionary<String, String> {
+        var item:Dictionary<String, String>
         if(index < self.items.count) {item = self.items[index]}
         else {fatalError("\(self)" + "no item at the index of " + "\(index)")}
-        return item;
+        return item
     }
     /**
      * Returns the count of the self.items
