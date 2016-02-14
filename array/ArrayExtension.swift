@@ -42,6 +42,8 @@ extension Array {
     func index<T : Equatable>(arr : [T], _ value:T)->Int{
         return ArrayParser.index(arr, value)
     }
+}
+extension Array<AnyObject>{
     func indexOf(item:AnyObject)-> Int{
         return ArrayParser.indexOf(self,item)
     }
