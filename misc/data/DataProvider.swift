@@ -23,7 +23,7 @@ import Foundation
  * Swift.print(dp.count())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
-    private var items:[Dictionary<String, String>] = []//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
+    var items:[Dictionary<String, String>] = []//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
