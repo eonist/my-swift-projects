@@ -42,7 +42,7 @@ class ArrayParser{
             if(arr[i] === item){return i}
         }
         return -1
-    }//add this method to your extension
+    }
     /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
