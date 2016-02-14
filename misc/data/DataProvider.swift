@@ -1,5 +1,5 @@
 import Foundation
-/*
+/**
  *
  * // :TODO: impliment allowDuplicates
  * // :TODO: replaceItem
@@ -13,34 +13,17 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  *
  * @example
-* let orange:Dictionary<String,String> = ["name":"orange", "title":"harry"]
-let blue = ["name":"blue", "url":"na"]
-let red = ["name":"red", "headline":"spring"]
-
-let dp:DataProvider = DataProvider()
-func onEvent(event:Event){
-Swift.print("event.type: " + event.type + " origin: " + "\(event.origin)" )
-}
-dp.event = onEvent
-
-dp.addItem(orange)
-dp.addItem(blue)
-dp.addItem(red)
-
-let i = dp.getItemIndex(orange)
-Swift.print("i: " + "\(i)")
-dp.removeItemAt(i)
-
-/**/
-Swift.print(dp.count())
+ * let orange:Dictionary<String,String> = ["name":"orange", "title":"harry"]
+ * let blue = ["name":"blue", "url":"na"]
+ * let red = ["name":"red", "headline":"spring"]
+ * dp.addItem(orange)
+ * dp.addItem(blue)
+ * dp.addItem(red)
+ * dp.removeItemAt(dp.getItemIndex(orange))
+ * Swift.print(dp.count())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
-    
-    
-    //TODO:dont use AnyObject, use Dictonaries, check your source on dictionary.md files
-    
-    //ideally the bellow should be string,AnyObject
-    private var items:[Dictionary<String, String>] = []//Array<AnyObject>()//TODO:Maybe make this public getter private setter
+    private var items:[Dictionary<String, String>] = []//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
