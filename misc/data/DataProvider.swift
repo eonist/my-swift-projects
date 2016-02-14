@@ -119,6 +119,12 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         return item
     }
     /**
+     * Returns the item index passed through the @param item
+     */
+    func getItemIndex(item:Dictionary<String, String>)->Int{// :TODO: rename to indexToItem?!?
+        return self.items.indexOf{$0 == item} ?? -1
+    }
+    /**
      * Returns the count of the self.items
      */
     func count() -> Int{
