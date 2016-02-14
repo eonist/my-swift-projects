@@ -46,10 +46,10 @@ class ArrayModifier{
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
 	  */
     class func splice<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
-        var returnArray = array
-        returnArray.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        if(values.count > 0 ){returnArray.insertContentsOf(values, at: Int(startIndex))}
-        return returnArray
+        //var returnArray = array
+        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
+        return array
     }
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
