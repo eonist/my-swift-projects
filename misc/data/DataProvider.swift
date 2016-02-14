@@ -93,7 +93,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     func sort(sortType:Int){
         fatalError("not implemented yet")
         //self.items.sortOn("title", sortType);
-        onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
+        //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
     }
     /**
      *
