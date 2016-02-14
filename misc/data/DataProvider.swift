@@ -64,11 +64,11 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     /**
      * Removes an item at a spesific index
      */
-    public function removeItemAt(index:int):Object {
-        var removedItem:Object;
-        if (index <= _items.length) removedItem = _items.splice (index,1);
-        else throw new IllegalOperationError(this+"no item at the index of "+index);
-        dispatchEvent(new DataProviderEvent(DataProviderEvent.REMOVE, [removedItem], index,index+1,true));
+    func removeItemAt(index:Int)->AnyObject {
+        var removedItem:AnyObject
+        if (index <= self.items.count) {removedItem = self.items.splice(index,1)}
+        else {(fatalError("\(self.dynamicType)" + " no item at the index of " + "\(index)"))}
+        super.onEvent(DataProviderEvent(DataProviderEvent.remove, /*[removedItem],*/ index,index+1,self))
         return removedItem;
     }
 }
