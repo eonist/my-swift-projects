@@ -75,7 +75,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Removes the item passed through the @param item
      */
     func removeItem(item:AnyObject)->AnyObject {
-        var index:Int = self.items.indexOf(item)
+        let index:Int = self.items.indexOf(item)
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
         return self.items.splice (index,1)
     }

@@ -1,17 +1,4 @@
 import Foundation
-/*
-
-Needs more research
-
-extension Array where Element:String{
-    /**
-     *
-     */
-    func join(seperator:String)->String{
-        return StringModifier.combine(self as! Array<String>,seperator)
-    }
-}
-*/
 
 extension Array {
     /**
@@ -43,8 +30,26 @@ extension Array {
         return ArrayParser.index(arr, value)
     }
 }
-extension Array<AnyObject>{
+/**
+ * NOTE: only applicable to Array<AnyObject>
+ */
+extension Array where Element:AnyObject{
     func indexOf(item:AnyObject)-> Int{
         return ArrayParser.indexOf(self,item)
     }
 }
+
+
+/*
+
+TODO: Needs more research see similar case with AnyObject
+
+extension Array where Element:String{
+/**
+*
+*/
+func join(seperator:String)->String{
+return StringModifier.combine(self as! Array<String>,seperator)
+}
+}
+*/
