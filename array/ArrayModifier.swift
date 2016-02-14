@@ -82,23 +82,22 @@ class ArrayModifier{
         array.append(item)
         return array
     }
-    
     /**
-    * Adds an item at an index while preserving the order of the array.
-    * @Note: Can be optimized a little bit more if array.length is known.
-    * @Note: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
-    * @example:
-    *	var array:Array = ["a","b","c"];
-    *	var index:int = 1;
-    *	var result:* = array.splice(index, 1, "x", array[index]);
-    *	trace("result: " + result);//b "the deleted item"
-    *	trace(array); //a,x,b,c
-    * TODO: return the array for method chaning purposes?
-    */
-    class func addAt<T>(array:[T], _ item:T, _ index:Int){
+     * Adds an item at an index while preserving the order of the array.
+     * @Note: Can be optimized a little bit more if array.length is known.
+     * @Note: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
+     * @example:
+     *	var array:Array = ["a","b","c"];
+     *	var index:int = 1;
+     *	var result:* = array.splice(index, 1, "x", array[index]);
+     *	trace("result: " + result);//b "the deleted item"
+     *	trace(array); //a,x,b,c
+     * TODO: return the array for method chaning purposes?
+     */
+    class func addAt<T>(inout array:[T], _ item:T, _ index:Int){
         if(index == 0) {array.unshift(item)}
-        else if(array.length == index) {array.append(item)}
-        else array.splice(index, 0, item);
+        else if(array.count == index) {array.append(item)}
+        else {array.splice(index, 0, [item])}
     }
 }
 //combine
