@@ -43,9 +43,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      */
     func addItems(items:Array<AnyObject>) {
         self.items += items//concats
-        super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.length - items.length, self.items.count,self)
+        super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.count - items.count, self.items.count,self))
     }
-    
     /**
      * Adds an item to the Items Array
      * @param item is an Object instance as {title:"title"}
@@ -59,7 +58,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * @param item is an Object instance as {title:"title"}
      */
     func addItemAt(item:AnyObject, index:Int/*<--was UInt*/){
-        ArrayModifier.addAt(self.items, item, index);
-        super.onEvent((DataProviderEvent(DataProviderEvent.ADD/*,[item]*/,index,index+1,self))
+        ArrayModifier.addAt(self.items, item, index)
+        super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
     }
 }
