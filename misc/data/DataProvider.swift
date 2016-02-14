@@ -21,7 +21,7 @@ import Foundation
  * dp.addItem(blue);
  * dp.addItem(red);
  * dp.removeItemAt(dp.getItemIndex(orange))
- * trace(dp.length())
+ * print(dp.length())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
     
