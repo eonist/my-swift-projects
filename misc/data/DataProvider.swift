@@ -62,7 +62,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an item to a spesific index
      * @param item is an Object instance as {title:"title"}
      */
-    func addItemAt(item:AnyObject, index:Int/*<--was UInt*/){
+    func addItemAt(item:Dictionary<String, AnyObject>, index:Int/*<--was UInt*/){
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
     }
@@ -82,7 +82,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     func removeItem(item:AnyObject)->AnyObject {
         let index:Int = self.items.indexOf(item)
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
-        return self.items.splice (index,1)
+        return self.items.splice(index,1)
     }
     func removeAll(){
         //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
