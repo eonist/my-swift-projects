@@ -28,8 +28,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     
     //TODO:dont use AnyObject, use Dictonaries, check your source on dictionary.md files
     
-    
-    private var items:Array<AnyObject> = []//Array<AnyObject>()//TODO:Maybe make this public getter private setter
+
+    private var items:[Dictionary<String, AnyObject>] = []//Array<AnyObject>()//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
