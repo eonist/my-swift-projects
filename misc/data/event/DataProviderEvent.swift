@@ -19,5 +19,10 @@ class DataProviderEvent :Event{
     }
 }
 extension DataProviderEvent{
-    
+    /**
+     * Convenience
+     */
+    func items(){
+        DataProviderParser.itemsInRange(startIndex,  endIndex, (origin as! DataProvider).items)
+    }
 }
