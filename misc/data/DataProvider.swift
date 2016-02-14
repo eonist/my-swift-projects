@@ -28,8 +28,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     
     //TODO:dont use AnyObject, use Dictonaries, check your source on dictionary.md files
     
-
-    private var items:[Dictionary<String, AnyObject>] = []//Array<AnyObject>()//TODO:Maybe make this public getter private setter
+    //ideally the bellow should be string,AnyObject
+    private var items:[Dictionary<String, String>] = []//Array<AnyObject>()//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
@@ -37,7 +37,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * // :TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
     init(object:AnyObject? = nil){
-        if(object != nil && object is [Dictionary<String, AnyObject>]) {items = object as! [Dictionary<String, AnyObject>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
+        if(object != nil && object is [Dictionary<String, AnyObject>]) {items = object as! [Dictionary<String, String>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
         else if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
         else if(object != nil) {fatalError("DataProvider.constructor()<object> must be of type xml, or array")}
         super.init()
@@ -46,7 +46,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an array to the exisiting items array
      * @param items is an Array comprised of objects
      */
-    func addItems(items:[Dictionary<String, AnyObject>]) {
+    func addItems(items:[Dictionary<String, String>]) {
         self.items += items//concats
         super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.count - items.count, self.items.count,self))
     }
@@ -54,7 +54,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an item to the Items Array
      * @param item is an Object instance as {title:"title"}
      */
-    func addItem(item:Dictionary<String, AnyObject>) {
+    func addItem(item:Dictionary<String, String>) {
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,self.items.count-1,self.items.count,self))
     }
@@ -62,7 +62,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an item to a spesific index
      * @param item is an Object instance as {title:"title"}
      */
-    func addItemAt(item:Dictionary<String, AnyObject>, index:Int/*<--was UInt*/){
+    func addItemAt(item:Dictionary<String, String>, index:Int/*<--was UInt*/){
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
     }
@@ -79,8 +79,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     /**
      * Removes the item passed through the @param item
      */
-    func removeItem(item:AnyObject)->AnyObject {
-        let index:Int = self.items.indexOf(item)
+    func removeItem(item:Dictionary<String, String>)->AnyObject {
+        let index:Int = self.items.indexOf{$0 == item} ?? -1//-1 indicates no result found
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
         return self.items.splice(index,1)
     }
