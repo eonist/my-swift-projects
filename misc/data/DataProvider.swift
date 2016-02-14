@@ -26,7 +26,7 @@ import Foundation
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
     
     
-    //TODO:dont use AnyObject, use Dictonaries
+    //TODO:dont use AnyObject, use Dictonaries, check your source on dictionary.md files
     
     
     private var items:Array<AnyObject> = []//Array<AnyObject>()
@@ -104,9 +104,9 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
     func getItem(title:String)->AnyObject{// :TODO: move this to DataProviderParser
-        for object in self.items {
-            if(object["title"] == title) {return object}
-        }
+        /*for object in self.items {
+        if(object["title"] == title) {return object}
+        }*/
         fatalError("\(self.dynamicType)" + " NO ITEM WITH THE TITLE OF: " + "\(title)")
     }
 }
