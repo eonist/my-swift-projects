@@ -34,6 +34,15 @@ class ArrayParser{
         return -1
     }
     /**
+     * Returns the index of the first obj that matches the @param item in the @param arr, -1 of none is found
+     */
+    class func indexOf(arr:Array<AnyObject>,_ item:AnyObject)-> Int{
+        for var i = 0; i < arr.count; ++i{
+            if(arr[i] === item){return i}
+        }
+        return -1
+    }//add this method to your extension
+    /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
      */
