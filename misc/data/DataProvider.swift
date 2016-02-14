@@ -80,7 +80,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         return self.items.splice (index,1)
     }
     func removeAll(){
-        var tempItems:Array = self.items;// :TODO: is this necessary
+        //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
         self.items = [];
         onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,tempItems.count,true));
     }
