@@ -98,7 +98,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     /**
      *
      */
-    func sortOn(names:AnyObject, options:Int = 0,...args){
+    func sortOn(names:AnyObject, _ options:Int = 0,_ args:AnyObject...){
         //self.items.sortOn(names, options,args);
         onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
