@@ -53,5 +53,11 @@ class ViewModifier {//<----rename to NSViewModifier
         let item = view.getSubviewAt(i)
         view.addSubview(subView, positioned: NSWindowOrderingMode.Above, relativeTo: item)
     }
-    
+    /**
+     *
+     */
+    class func removeSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
+        let item = view.getSubviewAt(i)
+        item.removeFromSuperview()
+    }
 }
