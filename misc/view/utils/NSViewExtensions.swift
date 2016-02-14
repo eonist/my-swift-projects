@@ -39,8 +39,17 @@ extension NSView {
         self.addSubview(view)
         return view
     }
+    /**
+     *
+     */
     func addSubviewAt(view: NSView,_ i:Int){
         ViewModifier.addSubviewAt(self, view, i)
+    }
+    /**
+     *
+     */
+    func removeSubviewAt(i:Int){
+        ViewModifier.removeSubviewAt(self, i)
     }
     /**
      * Asserts if @param view is a subView of @param parent
