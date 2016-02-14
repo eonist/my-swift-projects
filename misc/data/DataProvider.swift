@@ -109,4 +109,13 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         }*/
         fatalError("\(self.dynamicType)" + " NO ITEM WITH THE TITLE OF: " + "\(title)")
     }
+    /**
+     * Returns an item at a spessific index
+     */
+    func getItemAt(index:Int) -> AnyObject {
+        var item:AnyObject
+        if(index < _items.length) {item = _items[index]}
+        else throw new IllegalOperationError(this+"no item at the index of "+index);
+        return item;
+    }
 }
