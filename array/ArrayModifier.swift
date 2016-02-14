@@ -50,6 +50,10 @@ class ArrayModifier{
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
         return array
+        
+        
+        //this method was recently edited, it now edits the original array and returns the resulting array. This may break legacy code. HopeFully it doesnt, I think this is the intended functionality.
+        
     }
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
