@@ -114,8 +114,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      */
     func getItemAt(index:Int) -> AnyObject {
         var item:AnyObject
-        if(index < _items.length) {item = _items[index]}
-        else throw new IllegalOperationError(this+"no item at the index of "+index);
+        if(index < self.items.count) {item = self.items[index]}
+        else {fatalError("\(self)" + "no item at the index of " + "\(index)")}
         return item;
     }
 }
