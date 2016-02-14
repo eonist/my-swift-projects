@@ -37,8 +37,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * // :TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
     init(object:AnyObject? = nil){
-        if(object != nil && object is Array<AnyObject>) {items = object as! Array<AnyObject>}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
-        else if(object != nil /*&& object is XML*/) {/*items = XMLParser.parseXMLToArray(object)*/}
+        if(object != nil && object is [Dictionary<String, AnyObject>]) {items = object as! [Dictionary<String, AnyObject>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
+        else if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
         else if(object != nil) {fatalError("DataProvider.constructor()<object> must be of type xml, or array")}
         super.init()
     }
@@ -46,7 +46,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an array to the exisiting items array
      * @param items is an Array comprised of objects
      */
-    func addItems(items:Array<AnyObject>) {
+    func addItems(items:[Dictionary<String, AnyObject>]) {
         self.items += items//concats
         super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.count - items.count, self.items.count,self))
     }
