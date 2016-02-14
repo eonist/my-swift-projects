@@ -7,13 +7,12 @@ import Foundation
 class EventSender:IEventSender {
     var eventCall:((Event) -> ())? {
         return {
-            (event:Event) -> Void in if(self.superview is IEventSender){(self.superview as! IEventSender).onEvent(event)
-            }
+            (event:Event) -> Void in Swift.print("\(self.dynamicType)" + " event.type: " + "\(event.type)" + " event handler missing")//Empty call so that if no event handler is attached it doesnt throw an error
         }
     }/**///returns closure that will take care of propagating the event to the parent
     var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
     init(){
-        event = onEvent
+        event = eventCall
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
@@ -21,6 +20,6 @@ class EventSender:IEventSender {
      * TODO: it may be usefull to implement the immediate attaching functionality in the bellow method
      */
     func onEvent(event:Event){//override in subclass and call super
-        self.event!(event.setImmediate(self))
+        self.event!(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
     }
 }
