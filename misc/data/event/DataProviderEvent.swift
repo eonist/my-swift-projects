@@ -22,7 +22,7 @@ extension DataProviderEvent{
     /**
      * Convenience
      */
-    func items(){
-        DataProviderParser.itemsInRange(startIndex,  endIndex, (origin as! DataProvider).items)
+    var items:[Dictionary<String, String>]{
+        return DataProviderParser.itemsInRange(startIndex,  endIndex, (origin as! DataProvider).items)
     }
 }
