@@ -99,7 +99,14 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      *
      */
     func sortOn(names:AnyObject, _ options:Int = 0,_ args:AnyObject...){
+        fatalError("not implemented yet")
         //self.items.sortOn(names, options,args);
         onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
+    }
+    func getItem(title:String)->AnyObject{// :TODO: move this to DataProviderParser
+        for object in self.items {
+            if(object["title"] == title) {return object}
+        }
+        fatalError("\(self.dynamicType)" + " NO ITEM WITH THE TITLE OF: " + "\(title)")
     }
 }
