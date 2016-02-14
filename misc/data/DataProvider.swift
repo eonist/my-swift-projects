@@ -58,7 +58,17 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * @param item is an Object instance as {title:"title"}
      */
     func addItemAt(item:AnyObject, index:Int/*<--was UInt*/){
-        ArrayModifier.addAt(self.items, item, index)
+        ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
+    }
+    /**
+     * Removes an item at a spesific index
+     */
+    public function removeItemAt(index:int):Object {
+        var removedItem:Object;
+        if (index <= _items.length) removedItem = _items.splice (index,1);
+        else throw new IllegalOperationError(this+"no item at the index of "+index);
+        dispatchEvent(new DataProviderEvent(DataProviderEvent.REMOVE, [removedItem], index,index+1,true));
+        return removedItem;
     }
 }
