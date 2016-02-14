@@ -24,6 +24,11 @@ import Foundation
  * trace(dp.length())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
+    
+    
+    //TODO:dont use AnyObject, use Dictonaries
+    
+    
     private var items:Array<AnyObject> = []//Array<AnyObject>()
     //private var allowDuplicates:Bool = true
     /**
