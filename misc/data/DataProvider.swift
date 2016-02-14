@@ -13,15 +13,26 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  *
  * @example
- * var orange:Object = {name:"orange", title:"harry"}
- * var blue:Object = {name:"blue", url:"na"}
- * var red:Object = {name:"red", headline:"spring"}
- * var dp:DataProvider = new DataProvider();
- * dp.addItem(orange);
- * dp.addItem(blue);
- * dp.addItem(red);
- * dp.removeItemAt(dp.getItemIndex(orange))
- * print(dp.length())
+* let orange:Dictionary<String,String> = ["name":"orange", "title":"harry"]
+let blue = ["name":"blue", "url":"na"]
+let red = ["name":"red", "headline":"spring"]
+
+let dp:DataProvider = DataProvider()
+func onEvent(event:Event){
+Swift.print("event.type: " + event.type + " origin: " + "\(event.origin)" )
+}
+dp.event = onEvent
+
+dp.addItem(orange)
+dp.addItem(blue)
+dp.addItem(red)
+
+let i = dp.getItemIndex(orange)
+Swift.print("i: " + "\(i)")
+dp.removeItemAt(i)
+
+/**/
+Swift.print(dp.count())
  */
 class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
     
