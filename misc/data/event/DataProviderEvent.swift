@@ -12,7 +12,7 @@ class DataProviderEvent :Event{
     static var dataChange:String = "dataChange";
     var startIndex:Int;
     var endIndex:Int;
-    init(_ type: String, startIndex:Int = -1, endIndex:Int = -1, _ origin: AnyObject) {
+    init(_ type: String, _ startIndex:Int = -1, _ endIndex:Int = -1, _ origin: AnyObject) {
         self.startIndex = startIndex;
         self.endIndex = endIndex;
         super.init(type, origin)
