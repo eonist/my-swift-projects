@@ -69,19 +69,16 @@ class ViewModifier {//<----rename to NSViewModifier
         }
         return children;
     }
-    
-    
     /**
      * Beta (not tested, but similar code will work, use pen and paper if it doesnt)
      * @Note: remove children in a backward direction over the array
      */
     class func removeAllOfType<T>(view:NSView, _ type:T.Type) {
-        var children:Array<T> = []
-        for subView in view.subviews {
-            if(subView as? T != nil){children.append(subView as! T)}
+        let childrenLength:Int = view.subviews.count
+        for (var i : Int = childrenLength-1; i >= 0; i--) {
+            if(view.subviews[i] as? T != nil) {
+                view.subviews[i].removeFromSuperview()
+            }
         }
-        
-        var childrenLength:Int = displayObjectContainer.numChildren;
-        for (var i : int = childrenLength-1; i >= 0; i--) if(displayObjectContainer.getChildAt(i) is classType) displayObjectContainer.removeChildAt(i);
     }
 }
