@@ -60,4 +60,16 @@ class ViewModifier {//<----rename to NSViewModifier
         let item = view.getSubviewAt(i)
         item.removeFromSuperview()
     }
+    
+    
+    class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
+        var children:Array<T> = []
+        for subView in view.subviews {
+            if(subView as? T != nil){children.append(subView as! T)}
+        }
+        return children;
+    }
+    
+    
+    
 }

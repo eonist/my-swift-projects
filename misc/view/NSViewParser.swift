@@ -13,7 +13,6 @@ class NSViewParser {
         }
         return children;
     }
-    
     /**
      * Returns a list of parents (this works, tested)
      */
