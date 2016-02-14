@@ -18,3 +18,6 @@ class DataProviderEvent :Event{
         super.init(type, origin)
     }
 }
+extension DataProviderEvent{
+    
+}
