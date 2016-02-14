@@ -81,7 +81,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     }
     func removeAll(){
         //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
-        self.items = [];
-        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,tempItems.count,true));
+        let itemsCount = items.count
+        self.items = []
+        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,true));
     }
 }
