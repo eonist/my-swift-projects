@@ -86,7 +86,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,true));
     }
     func sort(sortType:Int){
-        self.items.sortOn("title", sortType);
-        onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.length,true));
+        fatalError("not implemented yet")
+        //self.items.sortOn("title", sortType);
+        onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,true));
     }
 }
