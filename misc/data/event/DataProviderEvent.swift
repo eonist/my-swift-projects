@@ -10,6 +10,8 @@ class DataProviderEvent :Event{
     static var replace:String = "replace";
     static var sort:String = "sort";
     static var dataChange:String = "dataChange";
+    var startIndex:Int;
+    var endIndex:Int;
     init(_ type: String, startIndex:Int = -1, endIndex:Int = -1, _ origin: AnyObject) {
         self.startIndex = startIndex;
         self.endIndex = endIndex;
