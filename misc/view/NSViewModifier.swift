@@ -61,7 +61,6 @@ class ViewModifier {//<----rename to NSViewModifier
         item.removeFromSuperview()
     }
     
-    
     class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
         var children:Array<T> = []
         for subView in view.subviews {
