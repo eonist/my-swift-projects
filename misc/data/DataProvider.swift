@@ -71,4 +71,12 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, /*[removedItem],*/ index,index+1,self))
         return removedItem;
     }
+    /**
+     * Removes the item passed through the @param item
+     */
+    func removeItem(item:AnyObject)->AnyObject {
+        var index:Int = self.items.indexOf(item)
+        onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
+        return self.items.splice (index,1)
+    }
 }
