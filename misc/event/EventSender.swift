@@ -7,7 +7,7 @@ import Foundation
 class EventSender:IEventSender {
     var eventCall:((Event) -> ())? {
         return {
-            (event:Event) -> Void in Swift.print("" + "\(event)")
+            (event:Event) -> Void in if(self.superview is IEventSender){(self.superview as! IEventSender).onEvent(event)
             }
         }
     }/**///returns closure that will take care of propagating the event to the parent
