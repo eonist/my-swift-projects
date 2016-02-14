@@ -52,6 +52,6 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     */
     func addItem(item:AnyObject) {
         self.items.append(item)
-        onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,self.items.count-1,self.items.count))
+        onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,self.items.count-1,self.items.count,self))
     }
 }
