@@ -5,6 +5,12 @@ import Foundation
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
  */
 class EventSender:IEventSender {
+    var eventCall:((Event) -> ())? {
+        return {
+            (event:Event) -> Void in Swift.print("" + "\(event)")
+            }
+        }
+    }/**///returns closure that will take care of propagating the event to the parent
     var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
     init(){
         event = onEvent
