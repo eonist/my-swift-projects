@@ -40,7 +40,7 @@ extension NSView {
         return view
     }
     func addSubviewAt(view: NSView,_ index:Int){
-        let subView = self.subviews
+        let subView = NSViewParser.getSubViewAt(self.subviews, <#T##NSView#>)
         self.addSubview(view, positioned: NSWindowOrderingMode.Above, relativeTo: <#T##NSView?#>)(view)
     }
     /**
