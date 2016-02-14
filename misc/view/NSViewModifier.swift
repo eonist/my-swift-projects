@@ -46,5 +46,12 @@ class ViewModifier {//<----rename to NSViewModifier
     class func removeAllChildren(view:NSView){
         while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
     }
+    /**
+     *
+     */
+    class func addSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
+        let item = view.getSubviewAt(i)
+        view.addSubview(subView, positioned: NSWindowOrderingMode.Above, relativeTo: item)
+    }
     
 }
