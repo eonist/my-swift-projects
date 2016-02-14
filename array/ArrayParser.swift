@@ -35,6 +35,7 @@ class ArrayParser{
     }
     /**
      * Returns the index of the first obj that matches the @param item in the @param arr, -1 of none is found
+     * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
      */
     class func indexOf(arr:Array<AnyObject>,_ item:AnyObject)-> Int{
         for var i = 0; i < arr.count; ++i{
