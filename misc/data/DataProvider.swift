@@ -88,11 +88,18 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
         let itemsCount = items.count
         self.items = []
-        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,true));
+        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,self));
     }
     func sort(sortType:Int){
         fatalError("not implemented yet")
         //self.items.sortOn("title", sortType);
-        onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,true));
+        onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
+    }
+    /**
+     *
+     */
+    func sortOn(names:AnyObject, options:Int = 0,...args){
+        //self.items.sortOn(names, options,args);
+        onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
 }
