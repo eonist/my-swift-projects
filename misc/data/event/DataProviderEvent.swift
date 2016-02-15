@@ -21,6 +21,7 @@ class DataProviderEvent :Event{
 extension DataProviderEvent{
     /**
      * Convenience
+     * NOTE: Keeps the event light-weight by not referencing the item directly
      */
     var items:[Dictionary<String, String>]{
         return DataProviderParser.itemsInRange(startIndex,  endIndex, (origin as! DataProvider).items)
