@@ -3,8 +3,9 @@ import Cocoa
 class NSViewParser {
     /**
      * Returns an array of all the children in @param view that is of type @param classType
-     * // :TODO: rename to childrenByClassType, maybe not?
+     * // :TODO: rename to childrenByClassType, maybe not?, I say not!
      * NOTE: this works with classes and protocols
+     * IMPORTANT Remember to use: IA.self and A.self as the type 
      */
     class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
         var children:Array<T> = []
