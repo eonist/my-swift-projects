@@ -30,8 +30,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * @param object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
      * // :TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
-    init(object:AnyObject? = nil){
-        if(object != nil && object is [Dictionary<String, AnyObject>]) {items = object as! [Dictionary<String, String>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
+    init(_ object:AnyObject? = nil){
+        if(object != nil && object is [Dictionary<String, String>]) {items = object as! [Dictionary<String, String>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
         else if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
         else if(object != nil) {fatalError("DataProvider.constructor()<object> must be of type xml, or array")}
         super.init()
