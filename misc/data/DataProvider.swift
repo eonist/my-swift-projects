@@ -54,7 +54,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      * Adds an item to a spesific index
      * @param item is an Object instance as {title:"title"}
      */
-    func addItemAt(item:Dictionary<String, String>, index:Int/*<--was UInt*/){
+    func addItemAt(item:Dictionary<String, String>, _ index:Int/*<--was UInt*/){
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
     }
