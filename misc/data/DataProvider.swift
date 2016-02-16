@@ -32,7 +32,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      */
     init(_ object:AnyObject? = nil){
         if(object != nil && object is [Dictionary<String, String>]) {items = object as! [Dictionary<String, String>]}/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
-        else if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
+        
         else if(object != nil) {fatalError("DataProvider.constructor()<object> must be of type xml, or array")}
         super.init()
     }
@@ -123,5 +123,10 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      */
     func count() -> Int{
         return self.items.count
+    }
+}
+extension DataProvider{
+    convenience init(xml:NSXMLDocument){
+        if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
     }
 }
