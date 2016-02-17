@@ -100,9 +100,9 @@ public class XMLParser{
         </items>
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      */
-    class func array(xml:XML)->Array<String,String> {
-        var items:Array<String,String> = [];
-        for each (var child:XML in xml.children()) {
+    class func arr(xml:NSXMLElement)->[Dictionary<String,String>] {
+        var items:[Dictionary<String,String>] = []
+        for var child:NSXMLElement in xml.children {
             var item:Dictionary<String,String> = []
             var attributes:XMLList = XMLParser.attributes(child)
             for attribute in attributes {
