@@ -123,9 +123,14 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         return self.items.count
     }
 }
+/**
+ * TODO: Implement suppert for xmlString as an init argument
+ */
 extension DataProvider{
-    convenience init(xml:NSXMLDocument){
-        items = XMLParser.parseXMLToArray(xml)
+    /**
+     *
+     */
+    convenience init(xml:NSXMLElement){
+        self.init(XMLParser.toArray(xml))
     }
-    
 }
