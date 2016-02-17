@@ -43,7 +43,7 @@ extension NSView {
      *
      */
     func addSubviewAt(view: NSView,_ i:Int){
-        Swift.print("addSubviewAt() i: " + "\(i)")
+        Swift.print("\(self.dynamicType)" + ".addSubviewAt() i: " + "\(i)")
         ViewModifier.addSubviewAt(self, view, i)
     }
     /**

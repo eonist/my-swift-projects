@@ -50,7 +50,7 @@ class ViewModifier {//<----rename to NSViewModifier
      *
      */
     class func addSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
-        if(view.subviews.count == 0){
+        if(i == 0 || view.subviews.count == 0){
             view.addSubview(subView)
         }else{
             let relativeView = view.getSubviewAt(i-1)
