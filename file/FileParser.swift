@@ -24,6 +24,15 @@ class FileParser{
         }
         
 	}
+    /**
+     * Returns an xml instance comprised of the string content at location @param path
+     */
+    class func xml(path:String)->NSXMLDocument {
+        let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
+        let rootElement:NSXMLElement = xmlDoc.rootElement()!
+        rootElement
+        return new XML(string(file));
+    }
 	/**
 	 * Returns the project resource folder
 	 * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
