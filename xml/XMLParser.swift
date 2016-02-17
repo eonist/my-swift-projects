@@ -91,4 +91,26 @@ public class XMLParser{
     class func xPath(){
         
     }
+    /**
+     * Parses through an xml and returns an array
+     * @example
+     * 	<items>
+            <item title="orange" property="harry"/>
+            <item title="blue" property="na"/>
+        </items>
+     * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
+     */
+    class func array(xml:XML):Array {
+        var items:Array = [];
+        for each (var child:XML in xml.children()) {
+            var item:Dictionary<String,String> = []
+            var attributes:XMLList = XMLParser.attributes(child)
+            for attribute in attributes {
+                item[attribute["name"]] = attribute["value"]
+            }
+            if(child.hasComplexContent()) item["xml"] = child;// :TODO: this may need to be rolled back to previouse code state
+            items.append(item);
+        }
+        return items;
+    }
 }
