@@ -124,9 +124,8 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     }
 }
 extension DataProvider{
-    /*
     convenience init(xml:NSXMLDocument){
-        if(object != nil /*&& object is XML*/) {fatalError("not implemented yet")/*items = XMLParser.parseXMLToArray(object)*/}
+        items = XMLParser.parseXMLToArray(xml)
     }
-    */
+    
 }
