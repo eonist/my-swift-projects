@@ -7,12 +7,14 @@ class DictionaryParser{
         //print("object is: " + typeof(dictionary) + ": " + dictionary);
         /*
         for(var val:* in dictionary) {
-            trace(val + ' => ' + dictionary[val] + '   [' + typeof(dictionary[val]) + '] ');
-            if(typeof(dictionary[val]) == "dictionary") describe(dictionary[val]);
+        
         }
         */
         for (theKey,theValue) in dictionary{
             print("your value: \(theValue) and key: \(theKey)")
+            
+            print(val + ' => ' + dictionary[val] + '   [' + typeof(dictionary[val]) + '] ');
+            if(typeof(dictionary[val]) == "dictionary") describe(dictionary[val]);
         }
         
         
