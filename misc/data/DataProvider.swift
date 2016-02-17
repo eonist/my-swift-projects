@@ -130,7 +130,7 @@ extension DataProvider{
     /**
      *
      */
-    convenience init(xml:NSXMLElement){
+    convenience init(_ xml:NSXMLElement){
         self.init(XMLParser.toArray(xml))
     }
 }
