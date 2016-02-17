@@ -1,6 +1,6 @@
 import Foundation
 /**
- *
+ * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
  * // :TODO: replaceItem
  * // :TODO: merge() appends and removes duplicates
