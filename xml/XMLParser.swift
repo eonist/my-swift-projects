@@ -100,8 +100,13 @@ public class XMLParser{
         </items>
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      */
-    class func arr(xml:NSXMLElement)->[Dictionary<String,String>] {
+    class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
         var items:[Dictionary<String,String>] = []
+        let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        for (var i = 0; i < count; i++) {
+            let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
+            //print("Import - child.toXMLString(): " + child.toXMLString());
+        }
         for var child:NSXMLElement in xml.children {
             var item:Dictionary<String,String> = []
             var attributes:XMLList = XMLParser.attributes(child)
