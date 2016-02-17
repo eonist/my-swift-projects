@@ -5,7 +5,7 @@ class DictionaryParser{
      */
     class func describe<T>(dictionary:Dictionary<T,T>){
         for (theKey,theValue) in dictionary{
-            print("value: \(theValue) key: \(theKey)")
+            print("key: \(theKey) value: \(theValue)")
             //if(theValue is Dictionary) {describe(theValue)}
         }
     }
