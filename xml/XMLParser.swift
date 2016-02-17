@@ -111,7 +111,7 @@ public class XMLParser{
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
             }
-            if(child.stringValue != nil) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
+            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
             items.append(item);
         }
         return items;
