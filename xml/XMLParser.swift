@@ -101,21 +101,21 @@ public class XMLParser{
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      */
     class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
-        var items:[Dictionary<String,String>] = []
+        let items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-        }
-        for var child:NSXMLElement in xml.children {
-            var item:Dictionary<String,String> = []
-            var attributes:XMLList = XMLParser.attributes(child)
+            var item:Dictionary<String,String>
+            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
             for attribute in attributes {
-                item[attribute["name"]] = attribute["value"]
+                item[attribute["name"]!] = attribute["value"]
             }
-            if(child.hasComplexContent()) item["xml"] = child;// :TODO: this may need to be rolled back to previouse code state
+            if(child.hasComplexContent()) { item["xml"] = child }// :TODO: this may need to be rolled back to previouse code state
             items.append(item);
+
         }
+       
         return items;
     }
 }
