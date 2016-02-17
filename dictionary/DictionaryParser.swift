@@ -19,4 +19,18 @@ class DictionaryParser{
         
         
     }
+    
+    /**
+     *
+     */
+    class func values(){
+        //var valuesArray = [Double](toppings.values)
+    }
+    
+    /**
+     *
+     */
+    class func keys(){
+        //print(Array(theDict.keys))//convert the map collection view properties into an usable Array
+    }
 }
