@@ -28,10 +28,11 @@ class FileParser{
      * Returns an xml instance comprised of the string content at location @param path
      */
     class func xml(path:String)->NSXMLDocument {
+        let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         rootElement
-        return new XML(string(file));
+        return XML(string(file));
     }
 	/**
 	 * Returns the project resource folder
