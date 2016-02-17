@@ -85,9 +85,9 @@ public class XMLParser{
         //not implimented yet
     }
     /**
-    * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
-    * You can use the returned nodes as the new context node for evaluating further XPath expressions.
-    */
+     * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
+     * You can use the returned nodes as the new context node for evaluating further XPath expressions.
+     */
     class func xPath(){
         
     }
