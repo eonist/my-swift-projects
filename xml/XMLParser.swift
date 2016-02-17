@@ -101,7 +101,7 @@ public class XMLParser{
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      */
     class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
-        let items:[Dictionary<String,String>] = []
+        var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
@@ -111,7 +111,7 @@ public class XMLParser{
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]
             }
-            if(child.hasComplexContent()) { item["xml"] = child }// :TODO: this may need to be rolled back to previouse code state
+            if(child.stringValue) { item["xml"] = child.stringValue }// :TODO: this may need to be rolled back to previouse code state
             items.append(item);
 
         }
