@@ -52,8 +52,8 @@ class ViewModifier {//<----rename to NSViewModifier
     class func addSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
         if(view.subviews.count == 0){
             view.addSubview(subView)
-        }else if(i == 0){
-            
+        }else if(i == 0){/*the view.subviews.count > 0*/
+            view.addSubview(subView, positioned: NSWindowOrderingMode.Below, relativeTo: view.getSubviewAt(1))
         }else{
             let relativeView = view.getSubviewAt(i-1)
             Swift.print("relativeView: " + "\(relativeView)")
