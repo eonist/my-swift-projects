@@ -47,16 +47,16 @@ class ViewModifier {//<----rename to NSViewModifier
         while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
     }
     /**
-     *
+     * NOTE: could also be named insertAt
      */
     class func addSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
         if(view.subviews.count == 0){
             view.addSubview(subView)
         }else if(i == 0){/*the view.subviews.count > 0*/
-            view.addSubview(subView, positioned: NSWindowOrderingMode.Below, relativeTo: view.getSubviewAt(1))
-        }else{
+            view.addSubview(subView, positioned: NSWindowOrderingMode.Below, relativeTo: view.getSubviewAt(0))
+        }else{/*i > 0 && view.subviews.coun > 0*/
             let relativeView = view.getSubviewAt(i-1)
-            Swift.print("relativeView: " + "\(relativeView)")
+            //Swift.print("relativeView: " + "\(relativeView)")
             view.addSubview(subView, positioned: NSWindowOrderingMode.Above, relativeTo: relativeView)
         }
     }
