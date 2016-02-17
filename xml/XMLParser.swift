@@ -100,8 +100,8 @@ public class XMLParser{
         </items>
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      */
-    class func array(xml:XML):Array {
-        var items:Array = [];
+    class func array(xml:XML)->Array<String,String> {
+        var items:Array<String,String> = [];
         for each (var child:XML in xml.children()) {
             var item:Dictionary<String,String> = []
             var attributes:XMLList = XMLParser.attributes(child)
