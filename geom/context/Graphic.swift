@@ -45,6 +45,7 @@ class Graphic:InteractiveView2,IGraphic{
         return super.actionForLayer(layer, forKey: event)//NSNull()
     }
     
+    
 
     /*override func mouseDown(theEvent: NSEvent) {
         Swift.print("Graphic.down")
