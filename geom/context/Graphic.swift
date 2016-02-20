@@ -54,7 +54,7 @@ class Graphic:InteractiveView2,IGraphic{
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         Swift.print("animationDidStop: " + "\(anim)")
     }
-    anim
+    
     /*override func mouseDown(theEvent: NSEvent) {
         Swift.print("Graphic.down")
         super.mouseDown(theEvent)
