@@ -48,7 +48,12 @@ class Graphic:InteractiveView2,IGraphic{
         Swift.print("animationForKey")
         return super.animationForKey(key)
     }
-    
+    override func animationDidStart(anim: CAAnimation) {
+        Swift.print("animationDidStart: " + "\(anim)")
+    }
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        Swift.print("animationDidStop: " + "\(anim)")
+    }
 
     /*override func mouseDown(theEvent: NSEvent) {
         Swift.print("Graphic.down")
