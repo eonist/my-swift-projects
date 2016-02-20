@@ -42,7 +42,7 @@ class Graphic:InteractiveView2,IGraphic{
      */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
         Swift.print("actionForLayer")
-        return NSNull()
+        return super.actionForLayer(layer, forKey: event)//NSNull()
     }
     
 
