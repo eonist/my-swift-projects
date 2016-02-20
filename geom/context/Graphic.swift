@@ -41,7 +41,7 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this method is also called on every frame of the animation it seems
      */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-        Swift.print("actionForLayer")
+        Swift.print("actionForLayer event: " + "\(event)")
         return super.actionForLayer(layer, forKey: event)//NSNull()
     }
     
