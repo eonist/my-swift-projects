@@ -14,14 +14,13 @@ Generic swift utilities
 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
 
-Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
-
+Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
 The swift code for the above example:  
 
 ```swift
 /*Gradients*/
-let gradient = Gradient(Gradients.red(),[],GradientType.Linear,π/2)
-let lineGradient = Gradient(Gradients.teal(0.5),[],GradientType.Linear,π/2)
+let gradient = LinearGradient(Gradients.red(),[],π/2)
+let lineGradient = LinearGradient(Gradients.teal(0.5),[],π/2)
 /*Styles*/
 let fill:GradientFillStyle = GradientFillStyle(gradient);
 let lineStyle = LineStyle(20,NSColorParser.nsColor(Colors.green()).alpha(0.5),CGLineCap.Round)
@@ -43,7 +42,7 @@ let lineGraphic = LineGraphic(CGPoint(300,300),CGPoint(500,500),line.mix(Gradien
 addSubview(lineGraphic.graphic)
 lineGraphic.draw()
 ```
-
+**NOTE:** Also supports RadialGradient now example of this coming soon
 The graphics framework is open source and can be found on github [here](https://github.com/eonist/swift-utils)   
 
 
