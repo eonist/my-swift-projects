@@ -69,5 +69,6 @@ extension Gradients{
     static func lightGreen(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(lightGreenStart).alpha(alpha),CGColor.color(lightGreenEnd).alpha(alpha)]}
     static func deepPurple(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(deepPurpleStart).alpha(alpha),CGColor.color(deepPurpleEnd).alpha(alpha)]}
     static func purplePink(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(purplePinkStart).alpha(alpha),CGColor.color(purplePinkEnd).alpha(alpha)]}
+    static func purple(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(purpleStart).alpha(alpha),CGColor.color(purpleEnd).alpha(alpha)]}
     static func bw(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.color(0x000000).alpha(alpha),CGColor.color(0xFFFFFF).alpha(alpha)]}
 }
