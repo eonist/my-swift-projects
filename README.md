@@ -14,6 +14,8 @@ Generic swift utilities
 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
 
+Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
+
 The swift code for the above example:  
 
 ```swift
