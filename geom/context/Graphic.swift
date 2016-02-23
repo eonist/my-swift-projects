@@ -24,7 +24,7 @@ class Graphic:InteractiveView2,IGraphic{
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
-        //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
+        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         //layer = CALayer()//TempCALayer(layer: layer!)
         //layer!.masksToBounds = false//this is needed!!!
@@ -33,8 +33,11 @@ class Graphic:InteractiveView2,IGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
-        let actions = ["transform": NSNull(),"position":NSNull()]
+        let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
+        self.fillShape.actions = actions;
         self.layer!.actions = actions;
+        self.lineShape.actions = actions;
+        
     }
     /**
      * Stops implicit animation from happening
