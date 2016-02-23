@@ -16,6 +16,7 @@ class Graphic:InteractiveView2,IGraphic{
     var trackingArea:NSTrackingArea?
     
     
+    
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
