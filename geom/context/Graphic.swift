@@ -33,13 +33,8 @@ class Graphic:InteractiveView2,IGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
-        NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNull null], @"onOrderIn",
-            [NSNull null], @"onOrderOut",
-            [NSNull null], @"sublayers",
-            [NSNull null], @"contents",
-            [NSNull null], @"bounds",
-            nil];
-        layer.actions = newActions;
+        let actions = ["transform": NSNull()]
+        self.layer!.actions = actions;
     }
     /**
      * Stops implicit animation from happening
