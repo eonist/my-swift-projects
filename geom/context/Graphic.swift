@@ -47,7 +47,7 @@ class Graphic:InteractiveView2,IGraphic{
         */
         
         //continue here: it seems CADisplayLink uses its own CGContext. so either add this to the graphic, or use NSTimer.
-        //you may want to do more research
+        //you may want to do more research, if you have to change the context then NSText may not work at all. Maybe NStimer or GDC is better
         
         
     }
