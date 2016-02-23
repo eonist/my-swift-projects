@@ -44,7 +44,7 @@ class Graphic:InteractiveView2,IGraphic{
      */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
         //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
-        return NSNull()//super.actionForLayer(layer, forKey: event)//
+        return super.actionForLayer(layer, forKey: event)//NSNull()//
     }
     override func animationForKey(key: String) -> AnyObject? {
         Swift.print("animationForKey")
