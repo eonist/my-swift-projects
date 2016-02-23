@@ -33,12 +33,21 @@ class Graphic:InteractiveView2,IGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
+        
+        
+        /*
+        
         let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
+        
+        
         self.fillShape.actions = actions;
         self.layer!.actions = actions;
         self.lineShape.actions = actions;
         
+        */
         
+        //continue here: it seems CADisplayLink uses its own CGContext. so either add this to the graphic, or use NSTimer.
+        //you may want to do more research
         
         
     }
