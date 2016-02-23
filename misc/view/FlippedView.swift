@@ -11,8 +11,8 @@ class FlippedView:NSView{
 }
 class FlippedView2:NSOpenGLView{
 
-    override init?(frame frameRect: NSRect, pixelFormat format: NSOpenGLPixelFormat?) {
-        super.init(frame: frameRect, pixelFormat: NSOpenGLView.defaultPixelFormat())
+    override init(frame frameRect: NSRect, pixelFormat format: NSOpenGLPixelFormat?) {
+        super.init(frame: frameRect, pixelFormat: NSOpenGLView.defaultPixelFormat())!
     }
     
     required init?(coder: NSCoder) {
