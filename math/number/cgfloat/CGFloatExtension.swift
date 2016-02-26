@@ -1,7 +1,7 @@
 import Foundation
 
 extension CGFloat {
-    func toFixed(places:Int){
-        NumberModifier.toFixed(self, places)
+    func toFixed(places:Int)->CGFloat{
+        return NumberModifier.toFixed(self, places)
     }
 }
