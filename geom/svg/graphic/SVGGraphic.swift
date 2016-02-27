@@ -139,11 +139,11 @@ class SVGGraphic : SVGView,ISVGGraphic{
     */
     func stylizeFill(){
         //Swift.print("SVGGraphic.stylizeFill()")
-        GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
+        GraphicsModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     func stylizeLine(){
         //Swift.print("SVGGraphic.stylizeLine()")
-        GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
+        GraphicsModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
