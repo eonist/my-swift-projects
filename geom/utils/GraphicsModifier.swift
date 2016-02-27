@@ -1,5 +1,5 @@
 import Cocoa
-
+//deprecate this
 class GraphicsModifier{
     /**
     *
