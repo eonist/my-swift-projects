@@ -1,5 +1,7 @@
 import Foundation
 
-class Timer {
-
+class Timer:NSTimer {
+    init(){
+        
+    }
 }
