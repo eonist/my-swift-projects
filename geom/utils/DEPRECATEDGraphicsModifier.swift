@@ -1,6 +1,6 @@
 import Cocoa
 //deprecate this
-class GraphicsModifier{
+class DEPRECATEDGraphicsModifier{
     /**
     *
     */
