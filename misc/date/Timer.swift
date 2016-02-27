@@ -4,8 +4,9 @@ import Darwin
 import Foundation
 
 class Timer {
+    var timer:NSTimer
     init(){
-        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "onTimer:", userInfo: nil, repeats: false)
     }
 }
 
