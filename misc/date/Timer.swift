@@ -20,7 +20,7 @@ class Timer {
      *
      */
     func start(){
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "onTimer:", userInfo: nil, repeats: false)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: selector, userInfo: nil, repeats: repeats)
     }
     /**
      *
