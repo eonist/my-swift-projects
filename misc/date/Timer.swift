@@ -5,7 +5,7 @@ import Foundation
 
 class Timer {
     var timer:NSTimer?
-    init(_ interval:NSTimeInterval,){
+    init(_ interval:NSTimeInterval,_ repeats:Bool = false,_ target:AnyObject,_ selector:ObjectiveC.Selector){
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "onTimer:", userInfo: nil, repeats: false)
     }
 }
