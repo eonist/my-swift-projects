@@ -6,7 +6,20 @@ import Foundation
 class Timer {
     var timer:NSTimer?
     init(_ interval:NSTimeInterval,_ repeats:Bool = false,_ target:AnyObject,_ selector:ObjectiveC.Selector){
+        self.interval = interval
+        self.repeats = repeats
+    }
+    /**
+     *
+     */
+    func start(){
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "onTimer:", userInfo: nil, repeats: false)
+    }
+    /**
+     *
+     */
+    func stop(){
+        if(timer != nil){timer!.invalidate()}
     }
 }
 
