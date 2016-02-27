@@ -5,9 +5,16 @@ import Foundation
 
 class Timer {
     var timer:NSTimer?
+    var interval:NSTimeInterval
+    var repeats:Bool
+    var target:AnyObject
+    var selector:ObjectiveC.Selector
+    
     init(_ interval:NSTimeInterval,_ repeats:Bool = false,_ target:AnyObject,_ selector:ObjectiveC.Selector){
         self.interval = interval
         self.repeats = repeats
+        self.target = target
+        self.selector = selector
     }
     /**
      *
