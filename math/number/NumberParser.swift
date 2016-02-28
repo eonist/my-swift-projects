@@ -110,12 +110,20 @@ class NumberParser{
     
     /**
      * Retuns the highest number in a list of numbers
-     * Note:Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function
+     * Note: Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function
      */
     class func max(numbers:Array<CGFloat>)->CGFloat {
         var max:CGFloat = numbers.count > 0 ? numbers[0] : 0
         for  number : CGFloat in numbers {if(number > max) {max = number}}
         return max
     }
-    
+    /**
+     * Retuns the lowest number in a list of numbers
+     * Note: Swift.min can be used, but this function supports arrays Swift.Min doesnt
+     */
+    class func min(numbers:Array<CGFloat>)->CGFloat {
+        var min:CGFloat = numbers.count > 0 ? numbers[0] : 0
+        for number : CGFloat in numbers{ if(number < min) {min = number}}
+        return min;
+    }
 }
