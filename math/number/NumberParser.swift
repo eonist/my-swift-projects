@@ -71,8 +71,8 @@ class NumberParser{
     * print(distance(5,-2));//7
     */
     class func distance(a:CGFloat,_ b:CGFloat)->CGFloat {
-        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(min(a,b)) - abs(max(a,b))}
-        else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return max(a, b) - min(a,b)}
+        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(min(a,b)) - abs(Swift.max(a,b))}
+        else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return Swift.max(a, b) - Swift.min(a,b)}
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
     /**
@@ -86,7 +86,7 @@ class NumberParser{
      * TODO: write examples for this
      */
     class func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
-        return max(min(value, maxValue), minValue)
+        return Swift.max(Swift.min(value, maxValue), minValue)
     }
     /**
      * Returns the number if its within min-max returns min if its lower and max if its higher
@@ -106,6 +106,16 @@ class NumberParser{
         var matches:Array<String> = String(number).split(".");
         if(matches.count > 1) {return matches[1].count}
         else {return 0}
+    }
+    
+    /**
+     * Retuns the highest number in a list of numbers
+     * Note:Math.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Math.max function
+     */
+    class func max(numbers:Array<CGFloat>)->CGFloat {
+        var max:CGFloat = numbers[0] || 0;
+        for each (var number : Number in numbers) if(number > max) max = number;
+        return max;
     }
     
 }
