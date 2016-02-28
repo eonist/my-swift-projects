@@ -110,12 +110,12 @@ class NumberParser{
     
     /**
      * Retuns the highest number in a list of numbers
-     * Note:Math.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Math.max function
+     * Note:Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function
      */
     class func max(numbers:Array<CGFloat>)->CGFloat {
-        var max:CGFloat = numbers[0] || 0;
-        for each (var number : Number in numbers) if(number > max) max = number;
-        return max;
+        var max:CGFloat = numbers.count > 0 ? numbers[0] : 0
+        for  number : CGFloat in numbers {if(number > max) {max = number}}
+        return max
     }
     
 }
