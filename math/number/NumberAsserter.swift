@@ -20,10 +20,9 @@ class NumberAsserter{
      * NOTE: i think this could be written simpler: Math.abs(a - b) <= epsilon, test different cases to verify
      */
     class func isNear(a:CGFloat,b:CGFloat,epsilon:CGFloat)->Bool {//this could also be named almostEqual
-        if(a == b){
-            return true;
-        }else{
-            var result:CGFloat = Math.max(a, b) - Math.min(a, b);
+        if(a == b){ return true}
+        else{
+            let result:CGFloat = Swift.max(a, b) - Swift.min(a, b);
             //print("result: " + result);
             return result < epsilon;
         }
