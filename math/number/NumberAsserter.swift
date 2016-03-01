@@ -23,7 +23,7 @@ class NumberAsserter{
         if(a == b){ return true}
         else{
             let result:CGFloat = Swift.max(a, b) - Swift.min(a, b)
-            //print("result: " + result);
+            print("result: " + "\(result)");
             return result < epsilon
         }
     }
