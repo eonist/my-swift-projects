@@ -102,6 +102,12 @@ class ArrayModifier{
         else if(array.count == index) {array.append(item)}
         else {array.splice(index, 0, [item])}
     }
+    /**
+     * insert beginning remove last
+     */
+    class func <T>pushPop(inout array:[T],_ item:T)->T{
+        return
+    }
 }
 //combine
 //merge
