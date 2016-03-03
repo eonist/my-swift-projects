@@ -105,8 +105,10 @@ class ArrayModifier{
     /**
      * insert beginning remove last
      */
-    class func <T>pushPop(inout array:[T],_ item:T)->T{
-        return
+    class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
+        array.popLast()
+        array.append(item)
+        return array
     }
 }
 //combine
