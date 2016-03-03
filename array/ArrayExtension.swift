@@ -12,13 +12,6 @@ extension Array {
         return ArrayModifier.shift(&self)
     }
     /**
-     *
-     */
-    mutating func append(item:Element) -> Array<Element>{
-        self.append(item)
-        return self
-    }
-    /**
      * Example: [1,2,3,4].splice(0, 1).count//3
      */
     mutating func splice(startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
