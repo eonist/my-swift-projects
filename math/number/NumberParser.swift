@@ -54,7 +54,7 @@ class NumberParser{
      * Linearly interpolation (lerp)
      * @param a: start number
      * @param b: end number
-     * @param fraction: interpolation value (between 0 - 1)
+     * @param fraction: interpolation value (between 0 - 1) could also be named scalar
      * EXAMPLE: interpolate(5, 15, 0.5) //10
      */
     class func interpolate( a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {//<--was Double, cgfloat makes more sense
