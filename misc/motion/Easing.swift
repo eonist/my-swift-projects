@@ -4,7 +4,7 @@ import Cocoa
  * b: begin (the value it is at the begining)
  * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
  * d: duration (total frames in anim) this can also be actual time
- * TODO:
+ * TODO://Elastic, Circular, Back, bounce, Quibic +++
  */
 class Easing{
     //No easing, linear animation
@@ -65,11 +65,7 @@ class Easing{
 		if (t < 1) {return c/2*t*t + b}
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
-    //Elastic
-    //Circular
-    //Back
-    //bounce
-    //Quibic
+    
 }
 
 /*
