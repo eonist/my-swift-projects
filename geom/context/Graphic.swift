@@ -50,7 +50,6 @@ class Graphic:InteractiveView2,IGraphic{
         
         //continue here: it seems CVDisplayLink uses its own CGContext. so either add this to the graphic, or use NSTimer.
         //you may want to do more research, if you have to change the context then NSText may not work at all. Maybe NStimer or GDC is better
-        //what you can do is use 
         
     }
     /**
@@ -60,19 +59,19 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this method is also called on every frame of the animation it seems
      */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-        //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
-        return super.actionForLayer(layer, forKey: event)//NSNull()//
+        Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
+        return NSNull()//super.actionForLayer(layer, forKey: event)//
     }
-    override func animationForKey(key: String) -> AnyObject? {
-        Swift.print("animationForKey")
-        return super.animationForKey(key)
+    /*override func animationForKey(key: String) -> AnyObject? {
+    Swift.print("animationForKey")
+    return super.animationForKey(key)
     }
     override func animationDidStart(anim: CAAnimation) {
-        Swift.print("animationDidStart: " + "\(anim)")
+    Swift.print("animationDidStart: " + "\(anim)")
     }
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        Swift.print("animationDidStop: " + "\(anim)")
-    }
+    Swift.print("animationDidStop: " + "\(anim)")
+    }*/
     
     /*override func mouseDown(theEvent: NSEvent) {
         Swift.print("Graphic.down")
