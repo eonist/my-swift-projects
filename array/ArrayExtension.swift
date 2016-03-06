@@ -41,8 +41,8 @@ extension Array {
     /**
      *
      */
-    mutating func removeAt<Element>(i:Int)->Array<Element>{
-        return self.splice(i, 1)
+    mutating func removeAt(i:Int){
+        self.splice(i, 1)
     }
 }
 /**
