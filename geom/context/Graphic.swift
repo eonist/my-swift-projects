@@ -130,12 +130,11 @@ extension Graphic{
     func updateTrackingArea() {
         //Swift.print("updateTrackingArea")
         //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
-        if(trackingArea != nil) {
+        if(trackingArea != nil) {//these 3 lines needs to be inside this if clause, if they arent an error may surface when you do animation with the CVDisplayLink
             self.removeTrackingArea(trackingArea!)
             trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
             self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         }//remove old trackingArea if it exists
-        
         super.updateTrackingAreas()
     }
 
