@@ -59,7 +59,7 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this method is also called on every frame of the animation it seems
      */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-        Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
+        //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
         return NSNull()//super.actionForLayer(layer, forKey: event)//
     }
     /*override func animationForKey(key: String) -> AnyObject? {
@@ -128,7 +128,7 @@ extension Graphic{
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
     func updateTrackingArea() {
-        Swift.print("updateTrackingArea")
+        //Swift.print("updateTrackingArea")
         //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
         if(trackingArea != nil) {
             self.removeTrackingArea(trackingArea!)
