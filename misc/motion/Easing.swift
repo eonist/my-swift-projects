@@ -32,9 +32,15 @@ class Easing{
         t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t*t*t*t + b}
         t = t-2
-		return c/2*((t)*t*t*t*t + 2) + b
+		return c/2*(t*t*t*t*t + 2) + b
 	}
     //Quartic
+    class func easeInQuart(var t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
+        t = t/d
+        return c*t*t*t*t + b
+    }
+    
+    //continue here
     
 }
 
