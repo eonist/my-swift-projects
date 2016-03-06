@@ -37,6 +37,13 @@ extension Array {
     func index<T : Equatable>(arr : [T], _ value:T)->Int{
         return ArrayParser.index(arr, value)
     }
+    
+    /**
+     *
+     */
+    mutating func removeAt<T>(i:Int)->T{
+        return self.splice(i, 1)
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
