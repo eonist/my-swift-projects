@@ -130,7 +130,7 @@ extension Graphic{
     func updateTrackingArea() {
         //Swift.print("updateTrackingArea")
         //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
-        if(trackingAreas.count > 0) {//these 3 lines needs to be inside this if clause, if they arent an error may surface when you do animation with the CVDisplayLink
+        if(trackingAreas.count > 0) {
             while(trackingAreas.count > 0){
                 removeTrackingArea(trackingAreas[0])
             }
