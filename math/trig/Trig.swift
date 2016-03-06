@@ -1,5 +1,7 @@
 import Foundation
 var π = CGFloat(M_PI)/*Global variable*/
+var π2 = CGFloat(M_PI_2)/*Global variable,pi/2*/
+var π4 = CGFloat(M_PI_4)/*Global variable,pi/4*/
 var ㎭ = π/180/*Global variable*/
 
 class Trig{
