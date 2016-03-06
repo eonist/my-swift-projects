@@ -19,7 +19,7 @@ class Easing{
     class func easeInOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c/2 * (cos(π*t/d) - 1) + b
     }
-    //Quintic
+    //Quintic - QUINTIC EASING: t^5
     class func easeInQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         t = t/d
         return c*t*t*t*t*t + b
@@ -34,6 +34,8 @@ class Easing{
         t = t-2
 		return c/2*((t)*t*t*t*t + 2) + b
 	}
+    //Quartic
+    
 }
 
 /*
