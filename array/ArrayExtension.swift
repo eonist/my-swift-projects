@@ -41,7 +41,7 @@ extension Array {
     /**
      *
      */
-    mutating func removeAt<T>(i:Int)->T{
+    mutating func removeAt<Element>(i:Int)->Array<Element>{
         return self.splice(i, 1)
     }
 }
