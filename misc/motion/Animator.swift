@@ -30,8 +30,6 @@ class Animator{
      */
     func onFrame(){
         //Swift.print("onFrame()")
-        //var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
-        //val += Easing.easeOut(val, from, to)
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
         //Swift.print("val: " + "\(val)")
         method(val)//call the property method
@@ -40,8 +38,6 @@ class Animator{
             stop()
         }
         self.currentFrameCount++
-        //call the method here
-        //the method should be posible to be created as a inline method closure
     }
     /**
      * Start the animation
