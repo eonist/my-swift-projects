@@ -45,11 +45,26 @@ class Easing{
 		t = (t/d)-1//<--the brackets are important
 		return -c * (t*t*t*t - 1) + b
 	}
-    class func easeInOutQuart(var t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat) -> CGFloat{
+    class func easeInOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
 		t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t*t*t + b}
 		t = t-2
 		return -c/2 * (t*t*t*t - 2) + b;
+	}
+	
+	//Quadratic
+	class func easeInQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+		t = t/d
+		return c*t*t + b;
+	}
+	class func easeOutQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+		t = t/d
+		return -c*t*(t-2) + b;
+	}
+	class func easeInOutQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+		t = t/(d/2)//<--the brackets are important
+		if (t < 1) return {c/2*t*t + b}
+		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
 }
 
