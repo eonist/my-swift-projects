@@ -4,11 +4,8 @@ import Cocoa
  * TODO: take a look at other animation libs
  * TODO: Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
  * TODO: seek,reverse,repeate,autoRepeat
+ * TODO: Implement a way so that the animator can be reused so that you can target it and disable it
  */
-
-
-//Implement a way so that the animator can be reused so that you can target it and disable it
-
 
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable
