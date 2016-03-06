@@ -28,6 +28,10 @@ class Easing{
 		t = t/d-1
 		return c*(t*t*t*t*t + 1) + b
 	}
+	class func easeInOutQuint = ^CGFloat(CGFloat t, CGFloat b, CGFloat c, CGFloat d) {
+		if ((t/=d/2) < 1) {return c/2*t*t*t*t*t + b}
+		return {c/2*((t-=2)*t*t*t*t + 2) + b}
+	}
 }
 
 /*
