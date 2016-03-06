@@ -63,7 +63,7 @@ class Easing{
 	}
 	class func easeInOutQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
 		t = t/(d/2)//<--the brackets are important
-		if (t < 1) return {c/2*t*t + b}
+		if (t < 1) {return c/2*t*t + b}
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
 }
