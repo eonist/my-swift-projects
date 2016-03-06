@@ -29,6 +29,9 @@ class Easing{
 		return c*(t*t*t*t*t + 1) + b
 	}
 	class func easeInOutQuint(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) {
+        
+        
+        
 		if ((t/=d/2) < 1) {
             return c/2*t*t*t*t*t + b
         }
