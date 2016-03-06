@@ -61,15 +61,41 @@ class NumberParser{
         return fraction * (b - a) + a
     }
     /**
-    * Returns the numeric distance between two values (always positive)
-    * @example
-    * @Note doing Math.abs(b-a) instead of this method may be faster
-    * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
-    * print(distance(-5,-2));//3
-    * print(distance(-5,2));//7
-    * print(distance(5,2));//3
-    * print(distance(5,-2));//7
-    */
+     * Returns the scalar value from the real progress between two polar numbers
+     * @param start: start number
+     * @param end: end number
+     * @param progress progress between a and b
+     * @return interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
+     * @Note to find a scalar value i.e 50/100 = 0.5
+     * @example scalar(0,8,4) //Output: 0.5
+     * print("q: " + NumberParser.scalar(0, -100, -25));//0.25
+     * print("q: " + NumberParser.scalar(-200, -100, -150));//0.5
+     * print("q: " + NumberParser.scalar(5, 10, 7.5));//0.5
+     */
+    class func scalar(start:CGFloat,end:CGFloat, progress:CGFloat) -> CGFloat {
+        var a:CGFloat
+        var b:CGFloat
+        if(NumberAsserter.negative(start) || NumberAsserter.negative(end) && end < start){
+            a = Swift.min(start, end)
+            b = Swift.max(start, end)
+        }else{
+            a = Swift.max(start, end)
+            b = Swift.min(start, end)
+        }
+        var scalar:CGFloat = (progress-b)/(a-b)
+        if(scalar.isNaN) {scalar = 0}
+        return scalar
+    }
+    /**
+     * Returns the numeric distance between two values (always positive)
+     * @example
+     * @Note doing Math.abs(b-a) instead of this method may be faster
+     * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
+     * print(distance(-5,-2));//3
+     * print(distance(-5,2));//7
+     * print(distance(5,2));//3
+     * print(distance(5,-2));//7
+     */
     class func distance(a:CGFloat,_ b:CGFloat)->CGFloat {
         if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
         else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return Swift.max(a, b) - Swift.min(a,b)}
