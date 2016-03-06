@@ -32,7 +32,7 @@ class Animator{
         Swift.print("onFrame()")
         //var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
         //val += Easing.easeOut(val, from, to)
-        val = Easing.easeInSine(currentFrameCount, from, to-from, framesToEnd)
+        val = Easing.easeInQuint(currentFrameCount, from, to-from, framesToEnd)
         Swift.print("val: " + "\(val)")
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
