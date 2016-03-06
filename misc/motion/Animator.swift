@@ -24,7 +24,6 @@ class Animator{
         self.method = method
         self.easing = easing
         framesToEnd = fps * duration
-
     }
     /**
      * Fires on every frame tick
@@ -37,7 +36,7 @@ class Animator{
         //Swift.print("val: " + "\(val)")
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
-            Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
+            //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             stop()
         }
         self.currentFrameCount++
@@ -48,7 +47,7 @@ class Animator{
      * Start the animation
      */
     func start(){
-        Swift.print("start")
+        //Swift.print("start")
         if(!CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
         view.animators.append(self)//add your self to the list of animators that gets the onFrame call
     }
@@ -56,10 +55,8 @@ class Animator{
      * Stop the animation
      */
     func stop(){
-        Swift.print("stop")
+        //Swift.print("stop")
         view.animators.removeAt(view.animators.indexOf(self))
         if(view.animators.count == 0 && CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStop(view.displayLink)}//stops the frame ticker if there is not active running animators
     }
-    //pause
-    //resume
 }
