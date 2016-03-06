@@ -45,7 +45,12 @@ extension Array where Element:AnyObject{
     func indexOf(item:AnyObject)-> Int{
         return ArrayParser.indexOf(self,item)
     }
-    f
+    /**
+     *
+     */
+    mutating func remove(item:AnyObject)-> Int{
+        return ArrayModifier.remove(&self, item)
+    }
 }
 
 
