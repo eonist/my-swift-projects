@@ -51,7 +51,6 @@ class Easing{
 		t = t-2
 		return -c/2 * (t*t*t*t - 2) + b;
 	}
-	
 	//Quadratic
 	class func easeInQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
 		t = t/d
@@ -66,6 +65,11 @@ class Easing{
 		if (t < 1) {return c/2*t*t + b}
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
+    //Elastic
+    //Circular
+    //Back
+    //bounce
+    //Quibic
 }
 
 /*
