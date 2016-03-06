@@ -9,7 +9,7 @@ class Easing{
     class func easeLinear (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
         return c*t/d + b;
     }
-    //Sine
+    //Sine SINUSOIDAL EASING: sin(t)
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π2) + c + b
     }
@@ -28,14 +28,15 @@ class Easing{
 		t = t/d-1
 		return c*(t*t*t*t*t + 1) + b
 	}
-	class func easeInOutQuint(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) {
+	class func easeInOutQuint(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
         
+        t = t/d/2
         
-        
-		if ((t/=d/2) < 1) {
+		if (t < 1) {
             return c/2*t*t*t*t*t + b
         }
-		return {c/2*((t-=2)*t*t*t*t + 2) + b}
+        t = t-2
+		return c/2*((t)*t*t*t*t + 2) + b
 	}
 }
 
