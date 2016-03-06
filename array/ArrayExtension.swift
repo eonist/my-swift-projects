@@ -39,10 +39,10 @@ extension Array {
     }
     
     /**
-     *
+     * -1 equals, does not exist
      */
     mutating func removeAt(i:Int){
-        self.splice(i, 1)
+        if(i != -1){self.splice(i, 1)}
     }
 }
 /**
