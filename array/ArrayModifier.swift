@@ -103,6 +103,12 @@ class ArrayModifier{
         else {array.splice(index, 0, [item])}
     }
     /**
+     *
+     */
+    class func remove(){
+        
+    }
+    /**
      * insert beginning remove last
      */
     class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
