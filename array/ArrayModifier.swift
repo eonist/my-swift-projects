@@ -109,8 +109,14 @@ class ArrayModifier{
      * // :TODO: can we use indexOf here?
      * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
      */
-    class func remove(){
-        
+    class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{
+        for(var i:Int=0; i<array.count; i++){
+            if(array[i] === object){
+                array.splice(i, 1);
+                return i;
+            }
+        }
+        return -1;
     }
     /**
      * insert beginning remove last
