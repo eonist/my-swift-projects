@@ -1,3 +1,4 @@
+import Cocoa
 /**
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
  * TODO: take a look at other animation libs
