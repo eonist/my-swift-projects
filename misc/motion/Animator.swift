@@ -14,7 +14,7 @@ class Animator{
     var method:(CGFloat)->Void//the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure
     var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
-    var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat
+    var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat//variable for holding the easing method
     //isActive used by the AnimatiableView to assert if an animator is active or not
     init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.view = view
