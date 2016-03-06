@@ -6,8 +6,9 @@ import Cocoa
  * d: duration (total frames in anim) this can also be actual time
  */
 class Easing{
+    //No easing, linear animation
     class func easeLinear (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
-        return c*t/d + b;
+        return c*t/d + b
     }
     //Sine SINUSOIDAL EASING: sin(t)
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
@@ -39,7 +40,6 @@ class Easing{
         t = t/d
         return c*t*t*t*t + b
     }
-    
     class func easeOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
 		t = (t/d)-1//<--the brackets are important
 		return -c * (t*t*t*t - 1) + b
