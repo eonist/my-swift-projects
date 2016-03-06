@@ -22,8 +22,12 @@ class Easing{
     //Quintic
     class func easeInQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         t = t/d
-        return c*(t)*t*t*t*t + b;
+        return c*(t/=d)*t*t*t*t + b;
     }
+	class func easeOutQuint (var t:Number, b:Number, c:Number, d:Number):CGFloat{
+		t = t/d-1
+		return c*(t*t*t*t*t + 1) + b;
+	}
 }
 
 /*
