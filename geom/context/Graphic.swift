@@ -138,6 +138,7 @@ extension Graphic{
         else{
             trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
             self.addTrackingArea(trackingArea!)
+            self.removeTrackingArea(<#T##trackingArea: NSTrackingArea##NSTrackingArea#>)
         }
         super.updateTrackingAreas()
     }
