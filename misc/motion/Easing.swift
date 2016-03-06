@@ -35,14 +35,14 @@ class Easing{
 		return c/2*(t*t*t*t*t + 2) + b
 	}
     //Quartic
-    class func easeInQuart(var t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
+    class func easeInQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         t = t/d
         return c*t*t*t*t + b
     }
     
-    class func easeOutQuart(var t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
+    class func easeOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
 		t = t/(d-1)
-		return -c * (()*t*t*t - 1) + b
+		return -c * (t*t*t*t - 1) + b
 	}
     
 }
