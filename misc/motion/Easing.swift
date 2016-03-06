@@ -41,7 +41,7 @@ class Easing{
     }
     
     class func easeOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-		t = t/(d-1)
+		t = (t/d)-1//<--the brackets are important
 		return -c * (t*t*t*t - 1) + b
 	}
     

@@ -14,7 +14,7 @@ class Animator{
     var method:(CGFloat)->Void//the closure method that changes the property
     var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
-    var val:CGFloat
+    
     //isActive used by the AnimatiableView to assert if an animator is active or not
     init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
         self.view = view
@@ -23,7 +23,7 @@ class Animator{
         self.to = to
         self.method = method
         framesToEnd = fps * duration
-        val = from
+
     }
     /**
      * Fires on every frame tick
@@ -32,7 +32,7 @@ class Animator{
         Swift.print("onFrame()")
         //var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
         //val += Easing.easeOut(val, from, to)
-        val = Easing.easeOutQuart(currentFrameCount, from, to-from, framesToEnd)
+        let val:CGFloat = Easing.easeOutQuart(currentFrameCount, from, to-from, framesToEnd)
         Swift.print("val: " + "\(val)")
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
