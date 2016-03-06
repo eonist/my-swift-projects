@@ -13,7 +13,7 @@ class Graphic:InteractiveView2,IGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType;
     var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
-    //var trackingArea:NSTrackingArea?
+    var trackingArea:NSTrackingArea?
     
     
     
@@ -130,15 +130,11 @@ extension Graphic{
     func updateTrackingArea() {
         //Swift.print("updateTrackingArea")
         //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
-        if(trackingAreas.count > 0) {
-            while(trackingAreas.count > 0){
-                removeTrackingArea(trackingAreas[0])
-            }
-            
-        }//remove old trackingArea if it exists
-        self.addTrackingArea(NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil))//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-        
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
-
 }
+
+
