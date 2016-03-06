@@ -72,7 +72,7 @@ class NumberParser{
      * print("q: " + NumberParser.scalar(-200, -100, -150));//0.5
      * print("q: " + NumberParser.scalar(5, 10, 7.5));//0.5
      */
-    class func scalar(start:CGFloat,end:CGFloat, progress:CGFloat) -> CGFloat {
+    class func scalar(start:CGFloat,_ end:CGFloat, _ progress:CGFloat) -> CGFloat {
         var a:CGFloat
         var b:CGFloat
         if(NumberAsserter.negative(start) || NumberAsserter.negative(end) && end < start){
