@@ -103,7 +103,11 @@ class ArrayModifier{
         else {array.splice(index, 0, [item])}
     }
     /**
-     *
+     * Removes the object from the array and return the index.
+     * @return the index of the object, -1 if the object is not in the array
+     * // :TODO: should return the array not the index?
+     * // :TODO: can we use indexOf here?
+     * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
      */
     class func remove(){
         
