@@ -1,5 +1,7 @@
 import Foundation
 
-protocol IAnimator {
-    func onFrame()
+class BaseAnimation {
+    func onFrame(){
+        fatalError("Must be overwritten in subclass")
+    }
 }
