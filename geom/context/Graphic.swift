@@ -103,20 +103,6 @@ class Graphic:InteractiveView2,IGraphic{
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         //updateTrackingArea()
     }
-    override func updateTrackingAreas() {}//the reseason this is overriden and not forwarded to super is to avoid calling it too often, as the apple loves calling this method way too often
-        
-    
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
-}
-extension Graphic{
-    /**
-     * Convenince implicit setter
-     */
-    func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
-        //self.fillShape.fillStyle = fillStyle;
-        self.fillStyle = fillStyle;
-        self.lineStyle = lineStyle;
-    }
     /**
      * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
      * NOTE: the only way to update trackingArea is to remove it and add a new one
@@ -131,6 +117,19 @@ extension Graphic{
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
+    
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+}
+extension Graphic{
+    /**
+     * Convenince implicit setter
+     */
+    func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
+        //self.fillShape.fillStyle = fillStyle;
+        self.fillStyle = fillStyle;
+        self.lineStyle = lineStyle;
+    }
+    
 }
 
 
