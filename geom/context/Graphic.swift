@@ -127,7 +127,7 @@ extension Graphic{
      * PARAM: owner is the instance that receives the interaction event
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
-    func updateTrackingArea() {
+    func updateTrackingArea() {//TODO:you dont have to store the trackingarea in this class you can get and set the trackingarea from NSView
         //Swift.print("updateTrackingArea: " + "\(fillShape.frame)")
         Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
