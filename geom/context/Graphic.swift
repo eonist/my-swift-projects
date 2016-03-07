@@ -101,9 +101,22 @@ class Graphic:InteractiveView2,IGraphic{
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         //Swift.print("Graphic.drawLayer(layer,inContext)")
         selector!(layer: layer,ctx: ctx)/*call the selector*/
-        
+        //updateTrackingArea()
     }
-    
+    /**
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
+     * NOTE: the only way to update trackingArea is to remove it and add a new one
+     * PARAM: owner is the instance that receives the interaction event
+     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
+     */
+    override func updateTrackingAreas() {//TODO:you dont have to store the trackingarea in this class you can get and set the trackingarea from NSView
+        Swift.print("updateTrackingArea: " + "\(fillShape.frame)")
+        //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+        super.updateTrackingAreas()
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
@@ -115,20 +128,7 @@ extension Graphic{
         self.fillStyle = fillStyle;
         self.lineStyle = lineStyle;
     }
-    /**
-     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
-     * NOTE: the only way to update trackingArea is to remove it and add a new one
-     * PARAM: owner is the instance that receives the interaction event
-     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
-     */
-    func updateTrackingArea() {//TODO:you dont have to store the trackingarea in this class you can get and set the trackingarea from NSView
-        //Swift.print("updateTrackingArea: " + "\(fillShape.frame)")
-        //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
-        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-        super.updateTrackingAreas()
-    }
+    
 }
 
 
