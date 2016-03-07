@@ -17,8 +17,11 @@ class BaseAnimation {
         Swift.print("view.animators.count: " + "\(view.animators.count)")
         Swift.print("\(self)" + " start " + "displayLinkIsRunning: " + "\(displayLinkIsRunning)")
         if(displayLinkIsRunning == false){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
+        CVDisplayLinkStart(view.displayLink)
         Swift.print("displayLinkIsRunning: " + "\(CVDisplayLinkIsRunning(view.displayLink))")
+        Swift.print("view.displayLink): " + "\(view.displayLink))")
         view.animators.append(self)//add your self to the list of animators that gets the onFrame call
+        Swift.print("view.animators.count: " + "\(view.animators.count)")
     }
     /**
      * Stop the animation
