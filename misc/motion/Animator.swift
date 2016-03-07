@@ -7,7 +7,7 @@ import Cocoa
  * TODO: Implement a way so that the animator can be reused so that you can target it and disable it
  */
 
-class Animator:IAnimator{
+class Animator:BaseAnimation{
     let fps:CGFloat = 60//this should be pulled from a device variable
     var view:AnimatableView//ref to where the displayLink recides
     var duration:CGFloat/*in seconds*/
@@ -30,7 +30,7 @@ class Animator:IAnimator{
     /**
      * Fires on every frame tick
      */
-    func onFrame(){
+    override func onFrame(){
         //Swift.print("onFrame()")
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
         //Swift.print("val: " + "\(val)")
