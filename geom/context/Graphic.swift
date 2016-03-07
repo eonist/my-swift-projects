@@ -103,7 +103,7 @@ class Graphic:InteractiveView2,IGraphic{
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         //updateTrackingArea()
     }
-    override func updateTrackingAreas() {}//the reseason this is overriden and not forwarded to super is to avoid calling it too often
+    override func updateTrackingAreas() {}//the reseason this is overriden and not forwarded to super is to avoid calling it too often, as the apple loves calling this method way too often
         
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
