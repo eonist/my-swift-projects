@@ -101,7 +101,7 @@ class Graphic:InteractiveView2,IGraphic{
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         //Swift.print("Graphic.drawLayer(layer,inContext)")
         selector!(layer: layer,ctx: ctx)/*call the selector*/
-        updateTrackingArea()
+        
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
