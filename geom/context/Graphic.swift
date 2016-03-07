@@ -106,9 +106,9 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this is a delegate method for the shapes in Graphic
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        //Swift.print("Graphic.drawLayer(layer,inContext)")
+        Swift.print("Graphic.drawLayer(layer,inContext)")
         selector!(layer: layer,ctx: ctx)/*call the selector*/
-        updateTrackingArea()
+        //updateTrackingArea()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
