@@ -7,7 +7,7 @@ import Cocoa
  * TODO: Implement a way so that the animator can be reused so that you can target it and disable it
  */
 
-class Animator{
+class Animator:IAnimator{
     let fps:CGFloat = 60//this should be pulled from a device variable
     var view:AnimatableView//ref to where the displayLink recides
     var duration:CGFloat/*in seconds*/
