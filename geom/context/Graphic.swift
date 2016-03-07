@@ -58,7 +58,7 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this is a delegate method for the shapes in Graphic
      * NOTE: this method is also called on every frame of the animation it seems
      */
-    override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
+    override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {//<---this method is probably not needed
         //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
         return NSNull()//super.actionForLayer(layer, forKey: event)//
     }
@@ -92,14 +92,7 @@ class Graphic:InteractiveView2,IGraphic{
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
-        
-        //continue here, you need to check for subViews, since assetDecorator uses this view to add it self to
     }
-    /*var winMousePos:CGPoint {
-    var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
-    pos.y = window!.frame.height - pos.y/*flips the window coordinates*/
-    return pos
-    }*/
     /**
      * This is a delegate handler method
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
@@ -110,11 +103,6 @@ class Graphic:InteractiveView2,IGraphic{
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         updateTrackingArea()
     }
-    
-    
-    //Continue here: seems like drawLayer is out your controll. as its being called inderectly from somewhere. wantsLayer or needDrawing or or or. But it works so why dig further?
-    //now you need to bring the alpha animation into the fold via skin change not directly manipulation
-    
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
