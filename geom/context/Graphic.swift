@@ -110,6 +110,12 @@ class Graphic:InteractiveView2,IGraphic{
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         updateTrackingArea()
     }
+    
+    
+    //Continue here: seems like drawLayer is out your controll. as its being called inderectly from somewhere. wantsLayer or needDrawing or or or. But it works so why dig further?
+    //now you need to bring the alpha animation into the fold via skin change not directly manipulation
+    
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
