@@ -1,8 +1,8 @@
 import Cocoa
 
 class BaseAnimation {
-    var view:AnimatableView//ref to where the displayLink recides
-    init(_ view:AnimatableView){
+    var view:IAnimatable//ref to where the displayLink recides
+    init(_ view:IAnimatable){
         self.view = view
     }
     func onFrame(){
