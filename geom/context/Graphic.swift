@@ -36,19 +36,12 @@ class Graphic:InteractiveView2,IGraphic{
         
         
         /*
-        
         let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
-        
         
         self.fillShape.actions = actions;
         self.layer!.actions = actions;
         self.lineShape.actions = actions;
-        
         */
-        
-        //continue here: it seems CVDisplayLink uses its own CGContext. so either add this to the graphic, or use NSTimer.
-        //you may want to do more research, if you have to change the context then NSText may not work at all. Maybe NStimer or GDC is better
-        
     }
     /**
      * Stops implicit animation from happening
