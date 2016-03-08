@@ -224,4 +224,3 @@ class InteractionUtils{
         return origin === target || origin.isDescendantOf(target)
     }
 }
-
