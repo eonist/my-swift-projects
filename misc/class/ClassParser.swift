@@ -8,6 +8,7 @@
  */
 class ClassParser {
     /**
+     * NOTE: works with protocols and classes
      * EXAMPLE: Swift.print(ofType(a,A.self)!.text)//I am a
      * EXAMPLE: Swift.print(ofType(a,IDescribable.self)!.text)//I am a
      * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b

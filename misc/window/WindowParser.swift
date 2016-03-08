@@ -22,4 +22,12 @@ class WindowParser {
     class func height(window:NSWindow)->CGFloat{
         return NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
     }
+    /**
+     *
+     */
+    class func firstWindowOfType<T>(type:T.Type)-> T? {
+        for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
+        return nil
+    }
 }
+
