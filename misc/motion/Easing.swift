@@ -5,6 +5,7 @@ import Cocoa
  * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
  * d: duration (total frames in anim) this can also be actual time
  * TODO://Elastic, Circular, Back, bounce, Quibic +++
+ * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing work
  */
 class Easing{
     //No easing, linear animation
