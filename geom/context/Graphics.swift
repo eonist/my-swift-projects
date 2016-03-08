@@ -122,7 +122,7 @@ public class Graphics{
         switch true{
             case (fillMode == FillMode.None)://no fill
                 //Swift.print("gradient fill none")
-                break
+                break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
 
