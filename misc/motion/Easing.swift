@@ -65,7 +65,20 @@ class Easing{
 		if (t < 1) {return c/2*t*t + b}
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
-    
+    //Circular
+    //,,
+    private class func easeInCircular(){
+        //return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+    }
+    private class func easeOutCircular(){
+        //return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+    }
+    private class func easeInOutCircular(){
+        /*
+        if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+        return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+        */
+    }
 }
 
 /*
