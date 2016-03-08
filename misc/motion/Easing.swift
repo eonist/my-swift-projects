@@ -78,9 +78,7 @@ class Easing{
         if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
         return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
     }
-    private class func (){
-    
-    }
+   
     //Elastic
     private class func easeInElastic(){
         /*var s:Number;
@@ -117,6 +115,20 @@ class Easing{
         if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
         return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
         */
+    }
+    //Back
+    private class func easeInBack(){
+        //return c*(t/=d)*t*((s+1)*t - s) + b;
+    }
+    private class func easeOutBack(){
+        //return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+    }
+    private class func easeInOutBack(){
+        /*if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+        return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;*/
+    }
+    private class func (){
+    
     }
 }
 
