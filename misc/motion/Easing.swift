@@ -65,6 +65,22 @@ class Easing{
 		if (t < 1) {return c/2*t*t + b}
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
+    //Exponential
+    class func easeInExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+       return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
+    }
+    class func easeOutExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
+    }
+    private class func easeInOutExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        /*if (t==0) return b;
+        if (t==d) return b+c;
+        if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+        return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
+    }
+    private class func (){
+    
+    }
     //Elastic
     private class func easeInElastic(){
         /*var s:Number;
@@ -73,7 +89,7 @@ class Easing{
         else s = p/PI_M2 * Math.asin (c/a);
         return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*PI_M2/p )) + b;*/
     }
-    private class func easeInOutElastic(){
+    private class func easeOutElastic(){
         /*var s:Number;
         if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
         if (!a || a < Math.abs(c)) { a=c; s=p/4; }
