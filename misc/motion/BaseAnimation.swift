@@ -2,7 +2,6 @@ import Cocoa
 
 class BaseAnimation {
     var view:AnimatableView//ref to where the displayLink recides
-    var drawCall:(()->Void)?
     init(_ view:AnimatableView){
         self.view = view
     }
