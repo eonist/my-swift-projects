@@ -72,7 +72,7 @@ class Easing{
     class func easeOutExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
     }
-    private class func easeInOutExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+    private class func easeInOutExpo(){
         /*if (t==0) return b;
         if (t==d) return b+c;
         if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
@@ -146,8 +146,16 @@ class Easing{
         /*if (t < d/2) return easeInBounce (t*2, 0, c, d) * 0.5 + b;
         else return easeOutBounce (t*2-d, 0, c, d) * 0.5 + c*.5 + b;*/
     }
-    
-    
+    private class func easeInCubic(){
+        //c*(t/=d)*t*t + b;
+    }
+    private class func easeOutCubic(){
+        //return c*((t=t/d-1)*t*t + 1) + b;
+    }
+    private class func easeInOutCubic(){
+        /*if ((t/=d/2) < 1) return c/2*t*t*t + b;
+        return c/2*((t-=2)*t*t + 2) + b;*/
+    }
 }
 
 /*
