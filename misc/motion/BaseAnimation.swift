@@ -1,9 +1,9 @@
 import Cocoa
 
 class BaseAnimation {
-    var view:IAnimatable//ref to where the displayLink recides
-    init(_ view:IAnimatable){
-        self.view = view
+    var animatable:IAnimatable//ref to where the displayLink recides
+    init(_ animatable:IAnimatable){
+        self.animatable = animatable
     }
     func onFrame(){
         fatalError("Must be overwritten in subclass")
@@ -13,8 +13,8 @@ class BaseAnimation {
      */
     func start(){
         Swift.print("\(self)" + " start")
-        view.animators.append(self)//add your self to the list of animators that gets the onFrame call
-        if(!CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
+        animatable.animators.append(self)//add your self to the list of animators that gets the onFrame call
+        if(!CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStart(animatable.displayLink)}//start the displayLink if it isnt already running
         
     }
     /**
@@ -22,7 +22,7 @@ class BaseAnimation {
      */
     func stop(){
         Swift.print("\(self)" + " stop")
-        view.animators.removeAt(view.animators.indexOf(self))
-        if(view.animators.count == 0 && CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStop(view.displayLink)}//stops the frame ticker if there is not active running animators
+        animatable.animators.removeAt(animatable.animators.indexOf(self))
+        if(animatable.animators.count == 0 && CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStop(animatable.displayLink)}//stops the frame ticker if there is not active running animators
     }
 }
