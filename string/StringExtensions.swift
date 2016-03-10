@@ -4,44 +4,26 @@ import Foundation
  * Convenince extensions for often used string methods
  */
 extension String {
-    /**
-     * Convenince
-     */
-    var tildePath:String /*{get*/{return NSString(string: self).stringByExpandingTildeInPath}/*}*/
+    var tildePath:String /*{get*/{return NSString(string: self).stringByExpandingTildeInPath}/*}*///Convenince
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
     func split(delimiter:String)->Array<String>{
         return StringParser.split(self, delimiter)
     }
-    /**
-     * Convenince
-     */
-    func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{
+    func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{//Convenince
         return RegExp.match(self, pattern, options)
     }
-    /**
-     * Convenince
-     */
-    func matches(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
+    func matches(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {//Convenince
         return RegExp.matches(self,pattern,options)
     }
-    /**
-     * Convenince
-     */
-    func test(pattern:String)->Bool{
+    func test(pattern:String)->Bool{//Convenince
         return RegExp.test(self, pattern)
     }
-    /**
-     * Convenince
-     */
-    func replace(pattern:String,_ replacement:String)->String{
+    func replace(pattern:String,_ replacement:String)->String{//Convenince
         return RegExp.replace(self,pattern, replacement)
     }
-    /**
-     * Convenince
-     */
-    var count:Int{return self.characters.count}
+    var count:Int{return self.characters.count}//Convenince
 }
 /**
  * Multiplies a string
