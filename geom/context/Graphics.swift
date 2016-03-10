@@ -47,6 +47,7 @@ public class Graphics{
     public func fill(color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
         fillMode = FillMode.Color
+        CGContextSetBlendMode(context, CGBlendMode.SourceOut);
         CGContextSetFillColorWithColor(context,color.CGColor)
     }
     /*
