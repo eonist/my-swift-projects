@@ -1,5 +1,4 @@
 import Foundation
-
 /**
  * Convenince extensions for often used string methods
  */
@@ -24,6 +23,7 @@ extension String {
         return RegExp.replace(self,pattern, replacement)
     }
     var count:Int{return self.characters.count}//Convenince
+    var cgFloat:CGFloat{return CGFloat(Double(self)!)}
 }
 /**
  * Multiplies a string
