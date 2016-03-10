@@ -16,13 +16,13 @@ class SVGParser {
      * @Note the regular expression removes the PX suffix
      */
     class func svg(xml:NSXMLElement)->SVG {
-        let viewBox:CGRect = SVGPropertyParser.viewBox(xml)
+        let viewBox:CGRect = SVGPropertyParser.viewBox(xml)//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         let x:CGFloat = SVGPropertyParser.digit(xml,"x");
         let y:CGFloat = SVGPropertyParser.digit(xml,"y");
         var width:CGFloat = SVGPropertyParser.digit(xml,"width")
-        width = !width.isNaN ? width : viewBox.width
+        width = !width.isNaN ? width : viewBox.width//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         var height:CGFloat = SVGPropertyParser.digit(xml,"height");
-        height = !height.isNaN ? height : viewBox.height
+        height = !height.isNaN ? height : viewBox.height//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
         let nameSpace:String = ""//xml.namespaceDeclarations().toString();//TODO: implement this later
         let id:String = SVGPropertyParser.id(xml);
