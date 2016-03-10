@@ -22,7 +22,7 @@ class TextFieldModifier {
         textField.cell?.wraps = true//textFormat.wordWrap//wordwrap enables the text to be in one line basically
         textField.setContentCompressionResistancePriority(180, forOrientation: .Horizontal)
 
-        textField.cell?.scrollable = textFormat.wordWrap//i guess this is connected to wordWrap
+        textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
     }
     /**
      * Beta

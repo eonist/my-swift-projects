@@ -12,6 +12,7 @@ class TextFormat {
     var border:Bool = false
     var multiline:Bool = false
     var wordWrap:Bool = true
+    var scrollable:Bool = true
     //autoSize can be implemented, check stackoverflow
     init(){
         
@@ -30,6 +31,7 @@ class TextFormat {
                 case TextFormatConstants.border:return border
                 case TextFormatConstants.multiline:return multiline
                 case TextFormatConstants.wordWrap:return wordWrap
+                case TextFormatConstants.scrollable:return scrollable
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -49,6 +51,7 @@ class TextFormat {
                 case TextFormatConstants.border:border = newValue as! Bool
                 case TextFormatConstants.multiline:multiline = newValue as! Bool
                 case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
+                case TextFormatConstants.scrollable:scrollable = newValue as! Bool
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
