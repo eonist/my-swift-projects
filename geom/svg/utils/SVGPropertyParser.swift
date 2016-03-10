@@ -30,8 +30,8 @@ class SVGPropertyParser {
     class func viewBox(xml:NSXMLElement)->NSRect?{
         let prop:String? = property(xml,"viewBox");
         if(prop != nil){
-            let values:Array<String> = prop!.split(" ")
-            return NSRect(values[0].cgFloat,values[1].cgFloat,values[2].cgFloat,values[3].cgFloat)
+            let values:Array<CGFloat> = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
+            return NSRect(values[0],values[1],values[2],values[3])
         }
         return nil
     }
