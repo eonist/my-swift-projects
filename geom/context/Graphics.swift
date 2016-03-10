@@ -125,7 +125,7 @@ public class Graphics{
                 break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
-
+                CGContextSetBlendMode(context, kCGBlendModeColor);
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
