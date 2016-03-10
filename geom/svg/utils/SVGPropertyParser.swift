@@ -24,6 +24,13 @@ class SVGPropertyParser {
         if(prop == nil) {return CGFloat.NaN}
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
 	}
+    /**
+     *
+     */
+    class func viewBox()->NSRect{
+        
+        return NSRect()
+    }
 	/**
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
 	 */
