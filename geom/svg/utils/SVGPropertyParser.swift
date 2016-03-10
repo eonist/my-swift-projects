@@ -25,10 +25,12 @@ class SVGPropertyParser {
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
 	}
     /**
-     *
+     * NEW
      */
-    class func viewBox()->NSRect{
+    class func viewBox(xml:NSXMLElement)->NSRect{
+        let prop:String? = property(xml,"viewBox");
         
+        prop?.split(" ")
         return NSRect()
     }
 	/**
