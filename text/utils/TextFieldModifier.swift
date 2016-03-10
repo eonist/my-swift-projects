@@ -20,7 +20,7 @@ class TextFieldModifier {
         textField.lineBreakMode = .ByWordWrapping
         Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically
-        if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}
+        //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
     }
