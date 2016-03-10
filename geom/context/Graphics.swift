@@ -110,6 +110,7 @@ public class Graphics{
      */
     public func draw(path:CGPath){
         //Swift.print("Grpahics.draw() ")
+        
         drawFill(path)
         drawLine(path)
     }
@@ -125,7 +126,6 @@ public class Graphics{
                 break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
-                CGContextSetBlendMode(context, kCGBlendModeColor);
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
