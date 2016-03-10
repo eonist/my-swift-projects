@@ -19,8 +19,8 @@ class TextFieldModifier {
         textField.usesSingleLineMode = false//<---cant get these to work yet
         textField.lineBreakMode = .ByWordWrapping
         
-        textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically
-        //textField.setContentCompressionResistancePriority(250, forOrientation: .Horizontal)
+        textField.cell?.wraps = true//textFormat.wordWrap//wordwrap enables the text to be in one line basically
+        textField.setContentCompressionResistancePriority(250, forOrientation: .Horizontal)
 
         textField.cell?.scrollable = textFormat.wordWrap//i guess this is connected to wordWrap
     }
