@@ -20,6 +20,10 @@ class SVGParser {
         let y:CGFloat = SVGPropertyParser.digit(xml,"y");
         let width:CGFloat = SVGPropertyParser.digit(xml,"width");
         let height:CGFloat = SVGPropertyParser.digit(xml,"height");
+        let viewBox:CGRect = SVGPropertyParser.viewBox(xml)
+        if(viewBox != nil){
+            viewBox
+        }
         let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
         let nameSpace:String = ""//xml.namespaceDeclarations().toString();//TODO: implement this later
         let id:String = SVGPropertyParser.id(xml);

@@ -27,13 +27,13 @@ class SVGPropertyParser {
     /**
      * NEW
      */
-    class func viewBox(xml:NSXMLElement)->NSRect?{
+    class func viewBox(xml:NSXMLElement)->CGRect{
         let prop:String? = property(xml,"viewBox");
         if(prop != nil){
             let values:Array<CGFloat> = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
-            return NSRect(values[0],values[1],values[2],values[3])
+            return CGRect(values[0],values[1],values[2],values[3])
         }
-        return nil
+        return CGRect(CGFloat.NaN,CGFloat.NaN,CGFloat.NaN,CGFloat.NaN)
     }
 	/**
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
