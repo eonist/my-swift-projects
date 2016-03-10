@@ -16,7 +16,7 @@ class TextFieldModifier {
         textField.focusRingType = NSFocusRingType.None//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
         textField.bordered = textFormat.border//<--maybe implement later
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
-        textField.usesSingleLineMode = true
+        textField.usesSingleLineMode = !textFormat.multiline//<---cant get these to work yet
         //textField.lineBreakMode = .ByWordWrapping
         Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically
