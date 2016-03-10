@@ -9,14 +9,14 @@ protocol IView:class{/*the :class enables you to set variables via extension*/
 class FlippedView:NSView{
     override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
 }
-class FlippedView2:NSOpenGLView{
+/*class FlippedView2:NSOpenGLView{
 
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect, pixelFormat: NSOpenGLView.defaultPixelFormat())!
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
+override init(frame frameRect: NSRect) {
+super.init(frame: frameRect, pixelFormat: NSOpenGLView.defaultPixelFormat())!
 }
+
+required init?(coder: NSCoder) {
+fatalError("init(coder:) has not been implemented")
+}
+override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
+}*/
