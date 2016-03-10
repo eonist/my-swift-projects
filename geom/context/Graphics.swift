@@ -47,10 +47,7 @@ public class Graphics{
     public func fill(color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
         fillMode = FillMode.Color
-        CGContextSetBlendMode(context, CGBlendMode.Exclusion)
-        CGContextSetBlendMode(context, CGBlendMode.Difference)
         CGContextSetFillColorWithColor(context,color.CGColor)
-        
     }
     /*
      * Initiate gradient filling
@@ -128,7 +125,7 @@ public class Graphics{
                 break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
-                
+
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
