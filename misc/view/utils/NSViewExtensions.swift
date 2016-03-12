@@ -35,8 +35,8 @@ extension NSView {
     /**
      * Convenince method that returns the view aswell
      */
-    func addSubView(view: NSView)->NSView{
-        self.addSubview(view)
+    func addSubView<T>(view: T)->T{
+        self.addSubview(view as! NSView)
         return view
     }
     /**
