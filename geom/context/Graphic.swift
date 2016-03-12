@@ -23,7 +23,7 @@ class Graphic:InteractiveView2,IGraphic{
         //self.fillShape = FillShape(fillStyle)
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
-        super.init(frame:NSRect(0,0,0/*<- was 1*/,0/*<- was 1*/))//<---move this into the arguments/*the width and the height arent clipped*/
+        super.init(frame:NSRect())
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         //layer = CALayer()//TempCALayer(layer: layer!)
