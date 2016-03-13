@@ -21,14 +21,6 @@ class ArrayParser{
             return -1//-1 indicates non was found
         }
     }
-    class func indexForced<T>(arr : [T], _ value:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
-        if let i = arr.indexOf(value as! Equatable) {
-            return i
-        }else{
-            return -1//-1 indicates non was found
-        }
-    }
-    
     /**
      * returns the index for item, -1 of none is found
      * NOTE: keep this method around until the index method is tested
