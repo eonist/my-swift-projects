@@ -1,5 +1,7 @@
 import Foundation
 
+var NaN:CGFloat = CGFloat.NaN
+
 extension CGFloat {
     func toFixed(places:Int)->CGFloat{
         return NumberModifier.toFixed(self, places)
