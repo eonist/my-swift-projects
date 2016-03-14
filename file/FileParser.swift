@@ -22,7 +22,6 @@ class FileParser{
             // contents could not be loaded
             return nil
         }
-        
 	}
     /**
      * Returns an xml instance comprised of the string content at location @param path
