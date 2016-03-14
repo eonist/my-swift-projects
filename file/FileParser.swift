@@ -3,11 +3,12 @@ class FileParser{
 	/*
 	 * Returns string content from a file at file location "path"
      * PARAM path is the file path to the file
+     * NOTE: remember to expand the path with the .tilde call, if its a tilde path
      * TODO:  What format is the path?
      * let path = "//Users/<path>/someFile.xml"
      * var err: NSError?
      * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
-     * EXAMPLE: FileParser.content("~/Desktop/del.txt")
+     * EXAMPLE: FileParser.content("~/Desktop/del.txt".tildePath)//
      */
 	class func content(path:String)->String?{
         do {
