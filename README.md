@@ -1,4 +1,4 @@
-# swift-utils
+# swift-utils [![codebeat](https://codebeat.co/badges/59d2725a-e28e-4da4-9749-3ddc138be55b)](https://codebeat.co/projects/github-com-eonist-swift-utils)
 Generic swift utilities
 ## Index:  
 - **SVGLib** (Read and write svg syntax)  
