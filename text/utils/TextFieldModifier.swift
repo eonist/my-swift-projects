@@ -40,10 +40,8 @@ private class Utils{
      *
      */
     class func font(fontName:String,_ size:CGFloat) -> NSFont{
-        let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        Swift.print("paragraphStyle.lineSpacing: " + "\(paragraphStyle.lineSpacing)")
-        paragraphStyle.lineSpacing = 20.0//other paragraph options: paragraphSpacing,alignment,firstLineHeadIndent,lineBreakMode,minimumLineHeight,maximumLineHeight,baseWritingDirection,lineHeightMultiple,paragraphSpacingBefore
-        Swift.print("paragraphStyle.lineSpacing: " + "\(paragraphStyle.lineSpacing)")
+        let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()//NSMutableParagraphStyle.defaultParagraphStyle()
+        paragraphStyle.lineSpacing = 200.0//other paragraph options: paragraphSpacing,alignment,firstLineHeadIndent,lineBreakMode,minimumLineHeight,maximumLineHeight,baseWritingDirection,lineHeightMultiple,paragraphSpacingBefore
         let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName,NSParagraphStyleAttributeName:paragraphStyle])//NSForegroundColorAttributeName:NSColor.redColor(),
         let font = NSFont(descriptor: fontDescriptor, size: size)
         return font!
