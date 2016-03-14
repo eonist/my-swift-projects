@@ -24,10 +24,7 @@ class TextFieldModifier {
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
-        let myStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        myStyle.lineSpacing = (10.0)
-        //textField.cell!.
-            // = (myStyle)
+        
     }
     /**
      * Beta
@@ -46,6 +43,9 @@ private class Utils{
         let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName])//NSForegroundColorAttributeName:NSColor.redColor(),
         let font = NSFont(descriptor: fontDescriptor, size: size)
         
+        let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = (10.0)
+
         
         
         /*
