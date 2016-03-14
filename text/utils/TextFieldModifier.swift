@@ -26,8 +26,8 @@ class TextFieldModifier {
         
         let myStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
         myStyle.lineSpacing = (10.0)
-        textField
-            //defaultParagraphStyle = (myStyle)
+        //textField.cell!.
+            // = (myStyle)
     }
     /**
      * Beta
