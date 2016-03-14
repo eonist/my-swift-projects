@@ -24,7 +24,10 @@ class TextFieldModifier {
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
-        
+        let myStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        myStyle.lineSpacing = (10.0)
+        textField
+            //defaultParagraphStyle = (myStyle)
     }
     /**
      * Beta
