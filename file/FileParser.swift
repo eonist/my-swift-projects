@@ -12,8 +12,8 @@ class FileParser{
     var err: NSError?
     let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
 
-
-    */
+     * EXAMPLE: FileParser.content("~/Desktop/del.txt")
+     */
 	class func content(path:String)->String?{
         do {
             let content = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
