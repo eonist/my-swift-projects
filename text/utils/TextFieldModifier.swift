@@ -45,8 +45,21 @@ private class Utils{
         
         let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = (10.0)
-
+        paragraphStyle.alignment
         
+        
+        /*public var lineSpacing: CGFloat
+        public var paragraphSpacing: CGFloat
+        public var alignment: NSTextAlignment
+        public var firstLineHeadIndent: CGFloat
+        public var headIndent: CGFloat
+        public var tailIndent: CGFloat
+        public var lineBreakMode: NSLineBreakMode
+        public var minimumLineHeight: CGFloat
+        public var maximumLineHeight: CGFloat
+        public var baseWritingDirection: NSWritingDirection
+        public var lineHeightMultiple: CGFloat
+        public var paragraphSpacingBefore: CGFloat*/
         
         /*
         NSFont *fontBolded = [NSFont fontWithName:@"Baskerville Bold" size:12.0f];
