@@ -40,30 +40,11 @@ private class Utils{
      *
      */
     class func font(fontName:String,_ size:CGFloat) -> NSFont{
-        let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName])//NSForegroundColorAttributeName:NSColor.redColor(),
+        var paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 20.0//other paragraph options: paragraphSpacing,alignment,firstLineHeadIndent,lineBreakMode,minimumLineHeight,maximumLineHeight,baseWritingDirection,lineHeightMultiple,paragraphSpacingBefore
+        let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName,NSParagraphStyleAttributeName:paragraphStyle])//NSForegroundColorAttributeName:NSColor.redColor(),
         NSFontNameAttribute
         let font = NSFont(descriptor: fontDescriptor, size: size)
-        
-        let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 10.0//paragraphSpacing,alignment,firstLineHeadIndent,lineBreakMode,minimumLineHeight,maximumLineHeight,baseWritingDirection,lineHeightMultiple,paragraphSpacingBefore
-
-        
-        
-        
-        
-        /*
-        NSFont *fontBolded = [NSFont fontWithName:@"Baskerville Bold" size:12.0f];
-        NSMutableParagraphStyle *paragStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-        [paragStyle setAlignment:NSCenterTextAlignment];
-        NSDictionary *dictBoldAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-        fontBolded, NSFontAttributeName,
-        paragStyle, NSParagraphStyleAttributeName,
-        nil];
-        
-        */
-        
-        
-        
         return font!
     }
     /**
