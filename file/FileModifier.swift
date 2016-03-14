@@ -17,20 +17,10 @@ class FileModifier{
 		    print("Error: \(error.domain)")
 		}
 	}
-    
-    let path = "~/Desktop/del.txt".tildePath //let location = "~/file.txt".stringByExpandingTildeInPath
-    let fileExists = FileAsserter.exists(path)
-    Swift.print("fileExists: " + "\(fileExists)")
-    
-    
-    let success = FileModifier.write(path, content: "test")
-    
-    
     /**
-     * let str = "Super long string here"
-     * EXAMPLE: 
+     * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
      */
-    class func write(path:String,content:String)->Bool{
+    class func write(path:String,_ content:String)->Bool{
         do {
             try content.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
             return true
