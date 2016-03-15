@@ -60,4 +60,8 @@ ColorParser.nsColor(0xFF0000,1)//red nsColor
 ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
+## Event system:  
+
+Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-system/  
+
 [MIT License](http://opensource.org/licenses/MIT) 
