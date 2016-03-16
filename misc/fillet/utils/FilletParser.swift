@@ -17,7 +17,7 @@ class FilletParser {
     class func configRadius(var cornerRadius:CGFloat, _ offsetType:String, _ lineStyle:ILineStyle)->CGFloat{
         var multiplier:CGFloat;
         if(offsetType == OffsetType.outside){multiplier = 1}
-        else if(offsetType == OffsetType.inside){multiplier = 1}
+        else if(offsetType == OffsetType.inside){multiplier = 1}//should this be -1?
         else {multiplier = 0}/*center*/
         if(cornerRadius > 0) { cornerRadius += multiplier * (lineStyle.thickness/2)}//divided by 4 because we are working with radius, which is half of a diameter of a circle
         return cornerRadius;
