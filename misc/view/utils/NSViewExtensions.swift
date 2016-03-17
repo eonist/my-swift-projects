@@ -33,7 +33,7 @@ extension NSView {
         return NSPointInRect(mousePos + frame.origin, frame)
     }
     /**
-     * Convenince method that returns the view aswell
+     * Convenince method that returns the view aswell (by utilising generics)
      */
     func addSubView<T>(view: T)->T{
         self.addSubview(view as! NSView)
