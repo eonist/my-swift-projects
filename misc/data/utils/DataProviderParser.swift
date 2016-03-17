@@ -11,4 +11,20 @@ class DataProviderParser {
         }
         return theItems
     }
+    /**
+     *
+     */
+    class func itemByProperty(dataProvider:DataProvider,property:String) -> Dictionary<String, String>?{
+        for object in dataProvider.items {
+            if(object["property"] == property) {return object}
+        }
+        //fatalError("NO ITEM WITH THE PROPERTY OF: "+property);
+        return nil
+    }
+    
+    
+    //getItemAtIndex
+    //xml
+    //childrenCount
+    
 }
