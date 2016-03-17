@@ -23,7 +23,7 @@ extension String {
         return RegExp.replace(self,pattern, replacement)
     }
     var count:Int{return self.characters.count}//Convenince
-    var cgFloat:CGFloat{return CGFloat(Double(self)!)}
+    var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
 }
 /**
  * Multiplies a string
