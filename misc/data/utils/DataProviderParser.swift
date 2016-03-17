@@ -14,7 +14,7 @@ class DataProviderParser {
     /**
      *
      */
-    class func itemByProperty(dataProvider:DataProvider,property:String) -> Dictionary<String, String>?{
+    class func itemByProperty(dataProvider:DataProvider,_ property:String) -> Dictionary<String, String>?{
         for object in dataProvider.items {
             if(object["property"] == property) {return object}
         }
