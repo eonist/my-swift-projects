@@ -3,24 +3,25 @@ class ShellUtils{
     enum ShellError: ErrorType {
         case success,failure
     }
+    
 	/**
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
 	 * TODO: add some explination about what happens here, line for line
 	 * Example: ShellUtils.run("git log --oneline")
 	 */
-	class func run(input: String) /*throws*/ -> String {
+    class func run(input: String, _ cd:String = "") /*throws*/ -> String {
         //let (output, terminationStatus) = exc(input)
         //print(terminationStatus)
         //if(output == "") { throw ShellError.failure }
-        return exc(input).output//output
+        return exc(input,cd).output//output
         //throws ->
         
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
      */
-    class func exc(input: String) -> (output: String, exitCode: Int32){
+    class func exc(input: String, _ cd:String = "") -> (output: String, exitCode: Int32){
         /*
         Was this: (but Swift doesnt use spit anymore, may need further research)
         let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
@@ -31,6 +32,7 @@ class ShellUtils{
         let arguments = input.componentsSeparatedByString(" ")
         
         let task = NSTask()
+        task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
         task.arguments = arguments
         task.environment = [

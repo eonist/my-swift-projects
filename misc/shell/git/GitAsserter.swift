@@ -22,6 +22,7 @@ class GitAsserter{
 		//--log "GitAsserter's is_remote_branch_ahead()"
 		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" + branch) //--move this to the gitparser as a ref
 		//--log the_log
+        
 		let logList:Array<String> = StringParser.paragraphs(theLog)
 		let isAhead:Bool = logList.count > 0
 		return isAhead
