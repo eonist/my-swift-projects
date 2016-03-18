@@ -13,6 +13,7 @@ class GitParser{
 	class func status(localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
 		let shellScript:String = "cd " + localPath + ";" + gitPath + "git status" + " " + option
+        Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(shellScript)
 	}
 	/*
