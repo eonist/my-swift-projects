@@ -1,7 +1,6 @@
 import Foundation
 
 class KeyChainUtils {
-    
     /**
      *
      */
@@ -16,13 +15,9 @@ class KeyChainUtils {
     }
 }
 extension String {
-    public var dataValue: NSData {
-        return dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-    }
+    public var dataValue: NSData {return KeyChainUtils.dataValue(self)}
 }
 
 extension NSData {
-    public var stringValue: String {
-        return NSString(data: self, encoding: NSUTF8StringEncoding) as! String
-    }
+    public var stringValue: String {return KeyChainUtils.stringValue(self)}
 }
