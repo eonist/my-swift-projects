@@ -58,9 +58,9 @@ class GitModifier{
    class func push(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
    	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git push" + " " + remoteLoc + " " + branch
-   	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git push" + " " + remoteLoc + " " + branch
+   	//Swift.print("shellScript: " + "\(shellScript)")
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * The opposite of the add action
