@@ -199,10 +199,10 @@ class GitModifier{
    	//--log "fetch()"
    	//log ("GitModifier's fetch(" + branch + ")")
    	//--condition
-   	var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git fetch " + "origin"
+   	var shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git fetch " + "origin"
    	if (branch != " ") { shellScript += " " + branch}
    	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * branch

@@ -25,9 +25,9 @@ class GitParser{
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
 	class func doLog(localPath:String, _ cmd:String)->String{
-		let shellScript:String = "cd " + localPath + ";" + gitPath + "git log " + cmd
+		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git log " + cmd
 		//--log "shellScript: " + shellScript
-		return ShellUtils.run(shellScript)
+		return ShellUtils.run(shellScript,localPath)
 	}
 	/*
 	 * Returns https://github.com/user/repository.git

@@ -19,9 +19,9 @@ class GitAsserter{
 	 * Asserts if a remote branch is ahead of a local branch
 	 */
 	class func isRemoteBranchAhead(localPath:String, _ branch:String)->Bool{
-		//--log "GitAsserter's is_remote_branch_ahead()"
+		//Swift.print("GitAsserter's is_remote_branch_ahead()")
 		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" + branch) //--move this to the gitparser as a ref
-		//--log the_log
+		//Swift.print("theLog: " + "\(theLog)")
         
 		let logList:Array<String> = StringParser.paragraphs(theLog)
 		let isAhead:Bool = logList.count > 0
