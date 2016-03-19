@@ -33,7 +33,7 @@ class GitModifier{
     */
    class func commit(localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
    	//log ("GitModifier's commit(" + message_title + ")")
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git commit -m 'New_files_added: 1'" //+ " " + "-m" + " " + messageTitle// + "" + " " + "-m" + " '" + messageDescription + "'"
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git commit -m 'New_files_added:\\ 1'" //+ " " + "-m" + " " + messageTitle// + "" + " " + "-m" + " '" + messageDescription + "'"
     Swift.print("shellScript: " + "\(shellScript)")
    	return ShellUtils.run(shellScript,localRepoPath)
    }
