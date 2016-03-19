@@ -43,26 +43,6 @@ class KeyChainParser {
         }
         return nil
     }
-    /*
-    class func load(key: String) -> NSData? {
-        let query = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrAccount as String : key,
-            kSecReturnData as String  : kCFBooleanTrue,
-            kSecMatchLimit as String  : kSecMatchLimitOne ]
-        
-        let dataTypeRef :Unmanaged<AnyObject>?
-        
-        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
-        
-        if status == noErr {
-            return (dataTypeRef!.takeRetainedValue() as! NSData)
-        } else {
-            return nil
-        }
-    }
-    */
-    
     
 	/**
 	 * Deletes a keychain item for key
