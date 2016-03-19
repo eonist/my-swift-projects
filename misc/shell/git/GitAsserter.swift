@@ -42,7 +42,7 @@ class GitAsserter{
 	/*
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
-	class func hasUnMergePaths(localPath:String)->Bool{
+	class func hasUnMergedPaths(localPath:String)->Bool{
 		//Swift.print("hasUnMergePaths")
         let result = GitParser.unMergedFiles(localPath)
         Swift.print("result: " + "\(result)")
