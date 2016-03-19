@@ -14,8 +14,9 @@ class KeyChainParser {
      * Caution: If there are unusual characters in the password, it isn't output as plain text, it's output encoded in hex. Here's a python script I've been using which covers that case: http://blog.macromates.com/2006/keychain-access-from-shell/
      * Caution: If the password contains special chars, the password will be returned as hex values, Use ShellUtil's hex_to_ascii(hex_text
      */
-    class func keychainData(keychainItemName:String){
-        
+    class func keychainData(keychainItemName:String)->Dictionary<String,String>{
+        let keyChainData:Dictionary<String,String> = ["accountName":"eonist","accountPassword":"12345"]
+        return keyChainData
     }
     
     /**
@@ -32,16 +33,16 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
-        /*
+        
         let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
         let dataTypeRef:UnsafeMutablePointer<AnyObject?>?
-        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
+        let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
         if status == noErr {
             return (dataTypeRef! as! NSData)
         } else {
             return nil
         }
-        */
+        /**/
         fatalError("NOT IMPLEMENTED YET")
     }
 	/**
