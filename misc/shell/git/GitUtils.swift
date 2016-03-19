@@ -8,10 +8,10 @@ class GitUtils{
 	 * TODO: add support for different local and remote branch name
 	 */
 	class func manualPull(localPath:String, _ remotePath:String, _ branch:String){
-		//log ("GitUtil's manual_pull()")
+		//Swift.print("GitUtils.manualPull()")
 		GitModifier.fetch(localPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
-		//--log tab & "is_remote_branch_ahead: " & is_remote_branch_ahead
+		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			//log tab & "remote branch is ahead, so there is something to merge"
 			GitModifier.merge(localPath, branch, "origin/" + branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
