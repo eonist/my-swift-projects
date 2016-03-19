@@ -47,8 +47,8 @@ class GitParser{
 	 */
 	class func cherry(localPath:String, _ branch:String)->String{
 		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
-		let shellScript:String = "cd " + localPath + ";" + gitPath + "git cherry" + " -v " + loc + "/" + branch
-		return ShellUtils.run(shellScript)//--TODO: whats the -v, verbose?
+		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git cherry" + " -v " + loc + "/" + branch
+		return ShellUtils.run(shellScript,localPath)//--TODO: whats the -v, verbose?
 	}
 	/* 
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"

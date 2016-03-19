@@ -174,8 +174,8 @@ class GitModifier{
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
    class func gitRemoteUpdate(localRepoPath:String)->String{
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote update"
-   	return ShellUtils.run(shellScript)
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git remote update"
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * NOTE: git remote -v (List the remote connections you have to other repositories. include the URL of each connection.)
