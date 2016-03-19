@@ -126,7 +126,7 @@ class GitModifier{
    class func initialize(localRepoPath:String)->String{
    	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git init"
    	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
     }
    /*
     * Attach a remote repo to a local repo
@@ -137,7 +137,7 @@ class GitModifier{
    class func attachRemoteRepo(localRepoPath:String, _ remoteRepoPath:String)->String{
    	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
    	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * Detach a remote repo of a local repo
@@ -147,7 +147,7 @@ class GitModifier{
    class func detachRemoteRepo(localRepoPath:String)->String{
    	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git remote rm origin"
    	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * Clone
@@ -256,7 +256,7 @@ class GitModifier{
     * TODO: try "git rebase -i" see if it works as a commit squassher
     */
    class func rebase(){
-   	//--complete this method
+        //--complete this method
    }
    /*
     * stash
