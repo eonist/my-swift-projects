@@ -32,19 +32,25 @@ class KeyChainParser {
 	/**
 	 * Returns a keychain item for key
 	 */	
+    
     class func load(key: String) -> NSData? {
+        let query = [
+            kSecClass as String       : kSecClassGenericPassword,
+            kSecAttrAccount as String : key,
+            kSecReturnData as String  : kCFBooleanTrue,
+            kSecMatchLimit as String  : kSecMatchLimitOne ]
         
-        let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
-        let dataTypeRef:UnsafeMutablePointer<AnyObject?>?
-        let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
+        let dataTypeRef :Unmanaged<AnyObject>?
+        
+        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
+        
         if status == noErr {
-            return (dataTypeRef! as! NSData)
+            return (dataTypeRef!.takeRetainedValue() as! NSData)
         } else {
             return nil
         }
-        /**/
-        fatalError("NOT IMPLEMENTED YET")
     }
+    
 	/**
 	 * Deletes a keychain item for key
 	 * TODO: move to KeyChainModifier.swift
