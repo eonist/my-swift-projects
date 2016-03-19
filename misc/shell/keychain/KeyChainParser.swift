@@ -36,14 +36,14 @@ class KeyChainParser {
         
         let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
         let dataTypeRef:UnsafeMutablePointer<AnyObject?> = nil
-        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
+        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef)
         if status == noErr {
             return (dataTypeRef.takeRetainedValue() as! NSData)
         } else {
             return nil
         }
         /**/
-        fatalError("NOT IMPLEMENTED YET")
+        //fatalError("NOT IMPLEMENTED YET")
     }
     /*
     class func load(key: String) -> NSData? {
