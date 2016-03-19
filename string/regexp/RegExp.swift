@@ -41,7 +41,7 @@ public class RegExp{
      * TODO: Research how to deal with swift unicode chars, emojis etc: see this: http://stackoverflow.com/questions/25882503/how-can-i-use-nsregularexpression-on-swift-strings-with-variable-width-unicode-c
      * NOTE: its also possible to find number of matches this way: regex.numberOfMatchesInString(text options:[] NSMakeRange(0, nsString.length))
      * EXAMPLE:
-     * let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
+     * let matches = RegExp.matches("abc def ghij", "\\w{3}")
      * for match:NSTextCheckingResult in matches {
      *    match.numberOfRanges
      *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
