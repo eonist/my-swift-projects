@@ -33,9 +33,9 @@ class GitParser{
 	 * Returns https://github.com/user/repository.git
 	 */
 	class func originUrl(localPath:String)->String{
-		let shellScript:String = "cd " + localPath + ";" + gitPath + "git config --get remote.origin.url"
+		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git config --get remote.origin.url"
 		//--log "shellScript: " + shellScript
-		return ShellUtils.run(shellScript)
+		return ShellUtils.run(shellScript,localPath)
 	}
 	/*
 	 * Cherry

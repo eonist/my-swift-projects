@@ -124,7 +124,7 @@ class GitModifier{
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
    class func initialize(localRepoPath:String)->String{
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git init"
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git init"
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
     }
@@ -135,7 +135,7 @@ class GitModifier{
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
    class func attachRemoteRepo(localRepoPath:String, _ remoteRepoPath:String)->String{
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
    }
@@ -145,7 +145,7 @@ class GitModifier{
     * NOTE: git remote rm origin
     */
    class func detachRemoteRepo(localRepoPath:String)->String{
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git remote rm origin"
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git remote rm origin"
    	//log "shellScript: " + shellScript
    	return ShellUtils.run(shellScript)
    }
@@ -274,9 +274,9 @@ class GitModifier{
     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
     */
     class func stash(title:String){
-   	//--TODO: if no title is provided store the stash without title: by not including the save syntax
-   	//--"git stash -u save " + title
-   }
+        //--TODO: if no title is provided store the stash without title: by not including the save syntax
+        //--"git stash -u save " + title
+    }
    /*
     * Checkout
     * NOTE: When you switch between branches, the local files change accordingly
@@ -298,9 +298,9 @@ class GitModifier{
     */
 	class func checkOut(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
-		var shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git checkout " + loc
+		var shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git checkout " + loc
         if (filePath != " "){ shellScript  += " " + filePath }
 		//--log "shellScript: " + shellScript
-		return ShellUtils.run(shellScript)
+		return ShellUtils.run(localRepoPath,shellScript)
 	}
 }
