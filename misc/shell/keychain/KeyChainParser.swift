@@ -24,8 +24,10 @@ class KeyChainParser {
 	 */	
     class func load(key: String) -> NSData? {
         let query = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
+        Swift.print("query: " + "\(query)")
         var dataTypeRef: AnyObject?
         let status = withUnsafeMutablePointer(&dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
+        Swift.print("status: " + "\(status)")
         if status == errSecSuccess {
             if let data = dataTypeRef as! NSData? {
                 return data
