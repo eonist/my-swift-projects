@@ -76,7 +76,7 @@ class GitModifier{
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
    class func reset(localRepoPath:String, _ fileName:String)->String{
-    let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git reset" + " " + fileName
+    let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript)
    }
    /*
@@ -103,7 +103,7 @@ class GitModifier{
    class func pull(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
    	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
    	let targetBranch:String = "master" //--master branch
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git pull" + " " + remoteLocation + " " + targetBranch
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git pull" + " " + remoteLocation + " " + targetBranch
    	return ShellUtils.run(shellScript)
    }
    /*
