@@ -33,17 +33,21 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
+        let query = [
+            kSecClass as String       : kSecClassGenericPassword,
+            kSecAttrAccount as String : key,
+            kSecReturnData as String  : kCFBooleanTrue,
+            kSecMatchLimit as String  : kSecMatchLimitOne ]
         
-        let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
-        let dataTypeRef:UnsafeMutablePointer<AnyObject?> = nil
-        let status: OSStatus = SecItemCopyMatching(query, dataTypeRef)
-        if status == noErr {
-            return (dataTypeRef.takeRetainedValue() as! NSData)
-        } else {
-            return nil
+        var dataTypeRef: AnyObject?
+        let status = withUnsafeMutablePointer(&dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
+        
+        if status == errSecSuccess {
+            if let data = dataTypeRef as! NSData? {
+                return data
+            }
         }
-        /**/
-        //fatalError("NOT IMPLEMENTED YET")
+        return nil
     }
     /*
     class func load(key: String) -> NSData? {
