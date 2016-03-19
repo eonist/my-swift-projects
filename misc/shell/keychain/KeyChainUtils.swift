@@ -15,3 +15,14 @@ class KeyChainUtils {
         return NSString(data: data, encoding: NSUTF8StringEncoding) as! String
     }
 }
+extension String {
+    public var dataValue: NSData {
+        return dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+    }
+}
+
+extension NSData {
+    public var stringValue: String {
+        return NSString(data: self, encoding: NSUTF8StringEncoding) as! String
+    }
+}
