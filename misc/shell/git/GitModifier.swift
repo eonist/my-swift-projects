@@ -13,9 +13,9 @@ class GitModifier{
    	if (!StringAsserter.isWrappedWith(fileName, "\"")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
    		fileName = StringModifier.wrapWith(fileName,"'")
    	}
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git add" + " " + fileName
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git add" + " " + fileName
    	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * Commits current changes
