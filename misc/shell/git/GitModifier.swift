@@ -77,7 +77,7 @@ class GitModifier{
     */
    class func reset(localRepoPath:String, _ fileName:String)->String{
     let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git reset" + " " + fileName
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * Clean
@@ -104,7 +104,7 @@ class GitModifier{
    	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
    	let targetBranch:String = "master" //--master branch
    	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git pull" + " " + remoteLocation + " " + targetBranch
-   	return ShellUtils.run(shellScript)
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * The opposite of the add action
