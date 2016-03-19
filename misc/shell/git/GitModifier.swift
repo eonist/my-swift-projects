@@ -241,9 +241,9 @@ class GitModifier{
     */
    class func merge(localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
    	//log ("GitModifier's merge()")
-   	let shellScript:String = "cd " + localRepoPath + ";" + gitPath + "git merge " + intoBranch + " " + fromBranch
-   	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+   	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git merge " + intoBranch + " " + fromBranch
+   	//Swift.print("shellScript: " + "\(shellScript)")
+   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * rebase
