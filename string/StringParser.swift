@@ -4,7 +4,7 @@ class StringParser{
      * Returns an array for every line in a string
      */
     class func paragraphs(string:String)->Array<String>{
-        return split(string,"\n")
+        return string.count > 0 ? split(string,"\n") : []/*<--if the string is empty return an empty array, if this isnt asserted an array with 1 item with an empty string is returned*/
     }
 	/**
      * Returns an Array of words derived from @param str by splitting it at every @param delimiter
