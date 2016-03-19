@@ -3,6 +3,13 @@ import Foundation
 //examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
 class KeyChainParser {
     /**
+     *
+     */
+    class func keychainData(){
+        
+    }
+    
+    /**
 	  * Save keychain data for key
 	  * TODO: move to KeyChainModifier.swift
 	  */
@@ -16,7 +23,7 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
-        /**/
+        /*
         let query = [kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key, kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
         let dataTypeRef:UnsafeMutablePointer<AnyObject?>?
         let status: OSStatus = SecItemCopyMatching(query, dataTypeRef!)
@@ -25,7 +32,7 @@ class KeyChainParser {
         } else {
             return nil
         }
-
+        */
         fatalError("NOT IMPLEMENTED YET")
     }
 	/**
