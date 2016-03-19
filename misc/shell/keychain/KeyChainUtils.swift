@@ -12,6 +12,6 @@ class KeyChainUtils {
      *
      */
     class func stringValue(data:NSData)->String{
-        return NSString(data: data, encoding: NSUTF8StringEncoding)!
+        return NSString(data: data, encoding: NSUTF8StringEncoding) as! String
     }
 }
