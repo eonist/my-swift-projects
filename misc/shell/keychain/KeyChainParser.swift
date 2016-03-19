@@ -33,15 +33,9 @@ class KeyChainParser {
 	 * Returns a keychain item for key
 	 */	
     class func load(key: String) -> NSData? {
-        let query = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrAccount as String : key,
-            kSecReturnData as String  : kCFBooleanTrue,
-            kSecMatchLimit as String  : kSecMatchLimitOne ]
-        
+        let query = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String  : kCFBooleanTrue,kSecMatchLimit as String  : kSecMatchLimitOne ]
         var dataTypeRef: AnyObject?
         let status = withUnsafeMutablePointer(&dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
-        
         if status == errSecSuccess {
             if let data = dataTypeRef as! NSData? {
                 return data
@@ -82,6 +76,7 @@ class KeyChainParser {
     /**
 	  * what does this method do? research needed
 	  * TODO: move to KeyChainModifier.swift
+      * EXAMPLE: Keychain.clear()
 	  */
     class func clear() -> Bool {
         let query = [ kSecClass as String : kSecClassGenericPassword ]
