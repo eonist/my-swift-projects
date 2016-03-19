@@ -2,6 +2,12 @@ import Security
 import Foundation
 //examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
 class KeyChainParser {
+    /**
+     *
+     */
+    class func password(accountName:String)->String{
+       return load(accountName)!.stringValue
+    }
 	/**
 	 * Returns a keychain item for key
      * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//the password for this account
