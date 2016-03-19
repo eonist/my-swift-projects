@@ -14,7 +14,7 @@ class KeyChainParser {
      * Caution: If there are unusual characters in the password, it isn't output as plain text, it's output encoded in hex. Here's a python script I've been using which covers that case: http://blog.macromates.com/2006/keychain-access-from-shell/
      * Caution: If the password contains special chars, the password will be returned as hex values, Use ShellUtil's hex_to_ascii(hex_text
      */
-    class func keychainData(keychainItemName:String)->Dictionary<String,String>{
+    class func keychainData(keychainItemName:String)->Dictionary<String,String>{//TODO:return a tuple
         let keyChainData:Dictionary<String,String> = ["accountName":"eonist","accountPassword":"12345"]
         return keyChainData
     }
