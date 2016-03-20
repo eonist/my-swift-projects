@@ -30,7 +30,7 @@ class ShellUtils{
         */
         
         var arguments = input.componentsSeparatedByString(" ")
-        arguments = arguments.map {String($0)}
+        arguments = arguments.map {$0.decode()!}
         
         let task = NSTask()
         task.currentDirectoryPath = cd
