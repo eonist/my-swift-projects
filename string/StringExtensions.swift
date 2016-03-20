@@ -31,7 +31,10 @@ extension String {
         return StringParser.decode(self)
     }
     func subStr(i:Int,len:Int)->String{
-        StringParser.subStr(self, i, len)
+        return StringParser.subStr(self, i, len)
+    }
+    func subString(beginning:Int,_ end:Int)->String{
+        return StringParser.subString(self,beginning,end)
     }
 }
 /**
