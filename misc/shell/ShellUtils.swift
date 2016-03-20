@@ -29,8 +29,8 @@ class ShellUtils{
         }
         */
         
-        let arguments = input.componentsSeparatedByString(" ")
-        
+        var arguments = input.componentsSeparatedByString(" ")
+        arguments = arguments.map {String($0)}
         
         let task = NSTask()
         task.currentDirectoryPath = cd
