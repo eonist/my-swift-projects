@@ -14,19 +14,20 @@ class StringParser{
      * Caution: encode does not handle the double quote char very well
      * Note: this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
      * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
+     * EXAMPLE: "testing this stuff.121".encode//testing%20this%20stuff.121
      */
-    class func encode(){
-        let escaped = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())
-        Swift.print("escaped: " + "\(escaped)")//escaped: Optional("testing%20this%20stuff.121")
+    class func encode(str:String)->String{
+        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
     }
     
     /**
-     *
+     * Returns dencode text (unescaped)
+     * Note this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
+     * Example: decode(%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg)--<image location:files/img/image.jpg
+     * EXAMPLE: "testing%20this%20stuff.121".decode//testing this stuff.121
      */
-    class func decode(){
-        let unEscaped = escaped!.stringByRemovingPercentEncoding
-        Swift.print("unEscaped: " + "\(unEscaped)")//unEscaped: Optional("testing this stuff.121")
-
+    class func decode(str:String)->String{
+        return str.stringByRemovingPercentEncoding!
     }
     /*
      * Returns an array for every line in a string
