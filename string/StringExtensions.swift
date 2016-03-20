@@ -30,6 +30,9 @@ extension String {
     func decode()->String?{
         return StringParser.decode(self)
     }
+    func subStr(i:Int,len:Int)->String{
+        StringParser.subStr(self, i, len)
+    }
 }
 /**
  * Multiplies a string
