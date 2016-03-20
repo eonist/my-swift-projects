@@ -43,7 +43,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.count - items.count, self.items.count,self))
     }
     /**
-     * Adds an item to the Items Array
+     * Adds an item to the end of the Items Array
      * @param item is an Object instance as {title:"title"}
      */
     func addItem(item:Dictionary<String, String>) {
