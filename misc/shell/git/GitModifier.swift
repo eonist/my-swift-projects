@@ -8,11 +8,11 @@ class GitModifier{
     * Example: GitUtils's add(localRepoPath, "*")
     * Note: the opposite of add is reset, see the reset method for more info
     */
-   class func add(localRepoPath:String, var _ fileName:String)->String{
+   class func add(localRepoPath:String, _ fileName:String)->String{
    	//log ("GitModifier's add(" + localRepoPath + fileName + ")")
-   	if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
+   	//if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
         //fileName = StringModifier.wrapWith(fileName,"'")
-   	}
+   	//}
     
    	let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git add" + " " + fileName
    	//--log "shellScript: " + shellScript
