@@ -1,14 +1,5 @@
 import Foundation
 class StringParser{
-    
-    let str = "testing this stuff.121"
-    
-    
-    
-    //(test as NSString).UTF8String
-    
-    
-    
     /**
      * Returns encode text (escaped)
      * Caution: encode does not handle the double quote char very well
