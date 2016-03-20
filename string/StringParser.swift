@@ -56,7 +56,7 @@ class StringParser{
 	 */
     class func subString(str:String,_ beginning:Int,_ end:Int)->String{
         let startIndex = str.startIndex.advancedBy(beginning)
-        let endIndex = str.startIndex.advancedBy(end/*-beginning*/)
+        let endIndex = str.startIndex.advancedBy(end/*-beginning*/)//<--this was a bug
         let range:Range = Range(start:startIndex,end:endIndex)
         return str.substringWithRange(range)
     }
