@@ -7,8 +7,8 @@ class StringParser{
      * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
      * EXAMPLE: "testing this stuff.121".encode//testing%20this%20stuff.121
      */
-    class func encode(str:String)->String{
-        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
+    class func encode(str:String)->String?{
+        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())
     }
     
     /**
@@ -17,8 +17,8 @@ class StringParser{
      * Example: decode(%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg)--<image location:files/img/image.jpg
      * EXAMPLE: "testing%20this%20stuff.121".decode//testing this stuff.121
      */
-    class func decode(str:String)->String{
-        return str.stringByRemovingPercentEncoding!
+    class func decode(str:String)->String?{
+        return str.stringByRemovingPercentEncoding
     }
     /*
      * Returns an array for every line in a string
