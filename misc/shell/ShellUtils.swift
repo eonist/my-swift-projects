@@ -31,6 +31,7 @@ class ShellUtils{
         
         let arguments = input.componentsSeparatedByString(" ")
         
+        
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
