@@ -1,5 +1,33 @@
 import Foundation
 class StringParser{
+    
+    let str = "testing this stuff.121"
+    
+    
+    
+    //(test as NSString).UTF8String
+    
+    
+    
+    /**
+     * Returns encode text (escaped)
+     * Caution: encode does not handle the double quote char very well
+     * Note: this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
+     * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
+     */
+    class func encode(){
+        let escaped = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())
+        Swift.print("escaped: " + "\(escaped)")//escaped: Optional("testing%20this%20stuff.121")
+    }
+    
+    /**
+     *
+     */
+    class func decode(){
+        let unEscaped = escaped!.stringByRemovingPercentEncoding
+        Swift.print("unEscaped: " + "\(unEscaped)")//unEscaped: Optional("testing this stuff.121")
+
+    }
     /*
      * Returns an array for every line in a string
      */
