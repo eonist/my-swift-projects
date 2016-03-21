@@ -72,7 +72,8 @@ public class XMLParser{
         if(index.count == 0 && xml != nil) {return xml}
         //xml!.children![0]
         else if(index.count == 1 && xml != nil) {
-            let child:NSXMLElement = xml!.children![0]
+            let child:NSXMLElement = xml!.children![0] as! NSXMLElement
+
             return child
         }// :TODO: if index.length is 1 you can just ref index
         
