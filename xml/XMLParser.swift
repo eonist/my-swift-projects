@@ -56,31 +56,43 @@ public class XMLParser{
         return attributes
     }
     /**
-    * Returns child from @param children at @param index
-    * EXAMPLE: XMLParser.childAt(children, 0)
-    */
+     * Returns child from @param children at @param index
+     * EXAMPLE: XMLParser.childAt(children, 0)
+     */
     public class func childAt(children:NSArray, _ index:Int)->NSXMLElement?{
         return children[index] as? NSXMLElement
     }
     /**
-    * Returns the attribute value of @param child by key @param name
-    * @pram name: name of the attribute
-    * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
-    * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
-    * NOTE: returns nil if there is no attr by that name
-    */
+     * Returns an an XML instance at @param index (Array index)
+     * @Note this function is recursive
+     * @Note to find a child at an integer use the native code: xml.children[integer]
+     * @Note to find the children of the root use an empty array as the index value
+     */
+    public static function childAt(xml:XML,index:Array):XML {
+    if(index.length == 0 && xml != null) return xml;
+    else if(index.length == 1 && xml != null && xml.children()[index[0]] != null) return xml.children()[index];// :TODO: if index.length is 1 you can just ref index
+    else if(index.length > 1 && xml.children().length() > 0) return childAt(xml.children()[index[0]],index.slice(1,index.length));
+    return null;
+    }
+    /**
+     * Returns the attribute value of @param child by key @param name
+     * @pram name: name of the attribute
+     * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
+     * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
+     * NOTE: returns nil if there is no attr by that name
+     */
     public class func attribute(child:NSXMLElement,_ name:String)->String?{
         return child.attributeForName(name)?.stringValue
     }
     /**
-    * Returns the name of the @param child
-    */
+     * Returns the name of the @param child
+     */
     public class func name(child:NSXMLElement)->String{
         return child.name!//child.localName also works
     }
     /**
-    * Returns the first attribute that contains the attribute by the @param name and with the @param value
-    */
+     * Returns the first attribute that contains the attribute by the @param name and with the @param value
+     */
     public class func childByAttribute(child:NSXMLElement,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
     }
