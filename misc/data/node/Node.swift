@@ -14,10 +14,10 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
     init(xml:NSXMLElement) {
         self.xml = xml;
     }
-    func removeAt(index:Array):XML{// :TODO: do we still need the event dispatching, cant the calling method do this?
-    var removedXML:XML = DatabaseModifier.removeItemAt(this, index);
-    dispatchEvent(new DatabaseEvent(DatabaseEvent.REMOVE_AT,index,removedXML));// :TODO: we could dispatch from the DatabaseModifier method
-    return removedXML;
+    func removeAt(index:Array):NSXMLElement{// :TODO: do we still need the event dispatching, cant the calling method do this?
+        var removedXML:NSXMLElement = NodeModifier.removeItemAt(this, index);
+        dispatchEvent(new DatabaseEvent(DatabaseEvent.REMOVE_AT,index,removedXML));// :TODO: we could dispatch from the DatabaseModifier method
+        return removedXML;
     }
     //xml
     //removeAt
