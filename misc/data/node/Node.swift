@@ -15,12 +15,7 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
     init(children:Array<Node>) {
         self.children = children;
     }
-    /**
-     * Removes the item @param index in @param node
-     */
-    func removeItemAt(node:Node, index:Array<Int>) -> Node {
-        return ArrayModifier.removeAt(&<#T##array: [T]##[T]#>, i: <#T##Int#>)
-    }
+    
     //xml
     //removeAt
     //removeAll
