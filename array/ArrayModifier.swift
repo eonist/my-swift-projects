@@ -121,7 +121,7 @@ class ArrayModifier{
     /**
      *
      */
-    class func removeAt<T>(inout array:[T],i:Int){
+    class func removeAt<T>(inout array:[T],_ i:Int){
         array.splice(i, 1)
     }
     /**

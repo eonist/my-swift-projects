@@ -5,6 +5,9 @@ class NodeModifier {
      * Removes the item @param index in @param node
      */
     func removeItemAt(inout node:Node, index:Array<Int>) -> Node {
-        return ArrayModifier.removeAt(&node, i: <#T##Int#>)
+        
+        //continue here: check if you have a removeAt that is recursive
+        
+        return ArrayModifier.removeAt(&node, index)
     }
 }
