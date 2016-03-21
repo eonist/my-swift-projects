@@ -1,5 +1,6 @@
 import Foundation
 /**
+ * NOTE: index:Array = [0,2,1,0] //means node at 0, node at 2, node at 1, node at 0
  * // :TODO: addItemsAt
  * // :TODO: removeAll
  * // :TODO: replaceItemAt
