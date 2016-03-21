@@ -36,6 +36,7 @@ extension String {
     func subString(beginning:Int,_ end:Int)->String{
         return StringParser.subString(self,beginning,end)
     }
+    var bool:Bool {return StringParser.boolean(self)}
 }
 /**
  * Multiplies a string
