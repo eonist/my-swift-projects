@@ -70,12 +70,8 @@ public class XMLParser{
      */
     class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->NSXMLElement? {
         if(index.count == 0 && xml != nil) {return xml}
-        //xml!.children![0]
         else if(index.count == 1 && xml != nil && XMLParser.childAt(xml!.children!, index[0]) != nil) {XMLParser.childAt(xml!.children!, index[0])}// :TODO: if index.length is 1 you can just ref index
-        
-        else if(index.count > 1 && xml!.children!.count > 0) {
-            return childAt(xml!.children![index[0]],index.slice(1,index.count))
-        }
+        else if(index.count > 1 && xml!.children!.count > 0) {return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice(1,index.count))}
         return nil
     }
     /**
