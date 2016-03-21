@@ -15,8 +15,8 @@ public class XMLModifier {
      * // :TODO: try to make a recursive remove function that doesnt need the match code snippet
      */
     func removeChildAt(xml:NSXMLElement,index:Array<Int>)->NSXMLElement {// :TODO: remove may need to be recursive, rename to removeAt?
-        var match:NSXMLElement = XMLParser.childAt(xml.children!, index);
-        replaceChildAt(xml, index, new XML());
-        return match;
+        var match:NSXMLElement = XMLParser.childAt(xml, index)!
+        replaceChildAt(xml, index, NSXMLElement())
+        return match
     }
 }
