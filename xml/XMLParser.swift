@@ -73,8 +73,9 @@ public class XMLParser{
         //xml!.children![0]
         else if(index.count == 1 && xml != nil && XMLParser.childAt(xml!.children!, index[0]) != nil) {XMLParser.childAt(xml!.children!, index[0])}// :TODO: if index.length is 1 you can just ref index
         
-        // && xml!.children![index[0]] != nil
-        //else if(index.count > 1 && xml.children().length() > 0) return childAt(xml.children()[index[0]],index.slice(1,index.length))
+        else if(index.count > 1 && xml!.children!.count > 0) {
+            return childAt(xml!.children![index[0]],index.slice(1,index.count))
+        }
         return nil
     }
     /**
