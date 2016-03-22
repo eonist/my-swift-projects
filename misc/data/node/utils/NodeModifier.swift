@@ -48,7 +48,7 @@ class NodeModifier {
     /**
      * Add an item to the node
      * @Note: object syntax example: [title:"Birds"]
-     * EXAMPLE: NodeModifier.addItemAt(database, [0,0], [title:"Peas"])
+     * EXAMPLE: NodeModifier.addItemAt(node, [0,0], ["title":"Peas"])
      */
     class func addDataAt(node:Node, _ index:Array<Int>, _ data:[String:AnyObject]) {
         NodeParser.nodeAt(node, index)?.data = data
@@ -61,9 +61,27 @@ class NodeModifier {
     }
     /**
      * Sets the name of the item @param index in @param database with @param name
-     * @example DatabaseModifier.setNameAt(database, [0], "text");
+     * @example NodeModifier.setNameAt(node, [0], "text");
      */
     class func setNameAt(node:Node, _ index:Array<Int>, _ name:String) {
         NodeParser.nodeAt(node, index)?.name = name
+    }
+    /**
+     * Sorts the items at @param index in @param database on the title of the item with @param options
+     * @example NodeModifier.sortByName(node, [],Array.descending);
+     */
+    public static function sortByName(database:Database, index:Array,options:Number = 0):void {// :TODO: ...rest??
+    var xml:XML = XMLParser.childAt(database.xml, index);
+    xml = XMLModifier.sortByName(xml,options);
+    XMLModifier.replaceChildAt(database.xml, index, xml);
+    }
+    /**
+    * Sorts the items at @param index in @param database on @param attributeKey with @param options
+    * @example DatabaseModifier.sortByAttribute(database, [0], "title");//, Array.DESCENDING
+    */
+    public static function sortByAttribute(database:Database,index:Array,attributeKey:String,options:Number = 0):void {
+    var xml:XML = XMLParser.childAt(database.xml, index);
+    xml = XMLModifier.sortByAttribute(xml,attributeKey,options);
+    XMLModifier.replaceChildAt(database.xml, index, xml);
     }
 }
