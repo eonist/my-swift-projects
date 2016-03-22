@@ -30,7 +30,7 @@ class NodeModifier {
      * @Note: object syntax example: [title:"Birds"]
      * EXAMPLE: NodeModifier.addItemAt(database, [0,0], [title:"Peas"])
      */
-    class func addDataAt(node:Node, _ index:Array<Int>, _ item:[String:AnyObject]) -> Node {
+    class func addDataAt(node:Node, _ index:Array<Int>, _ data:[String:AnyObject]) -> Node {
         NodeParser.nodeAt(node, index)?.data[]
         
         
