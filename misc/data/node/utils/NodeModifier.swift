@@ -59,4 +59,12 @@ class NodeModifier {
     class func addValueAt(node:Node, _ index:Array<Int>, _ key:String, _ value:AnyObject){
         NodeParser.nodeAt(node, index)?.data[key] = value
     }
+    /**
+     * Sets the name of the item @param index in @param database with @param name
+     * @example DatabaseModifier.setNameAt(database, [0], "text");
+     */
+    class func setNameAt(node:Node, _ index:Array<Int>, _ name:String) {
+        
+        //XMLModifier.setNameAt(database.xml, index, name);
+    }
 }
