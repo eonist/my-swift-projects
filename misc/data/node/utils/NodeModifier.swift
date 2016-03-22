@@ -30,15 +30,17 @@ class NodeModifier {
     class func removeAll(inout node:Node){
         
         
-        func removeChildren(n:Node){
+        func removeChildren(n:Node,_ parent:Node?){
             if(n.children.count > 0){
                 for child in n.children{
-                    
+                    removeChildren(child)
                 }
+            }else if(parent != nil){
+                parent?.children.removeAtIndex(<#T##index: Int##Int#>)
             }
         }
         
-        removeChildren(node)
+        removeChildren(node,nil)
         //while
         
         
