@@ -160,9 +160,6 @@ public class XMLParser{
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
-                
-                //continue here: figure out the casting bug bellow, and test if stringValue content works aswell. Then start doing node manipulation, removal, additions, updates, creation. aka crud
-                
                 if(theValue is String) {
                     xml[theKey] = theValue as? String
                     
