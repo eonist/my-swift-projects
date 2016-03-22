@@ -71,7 +71,7 @@ class NodeModifier {
      * @example NodeModifier.sortByName(node, [],Array.descending);
      */
     class func sortByName(node:Node, _ index:Array<Int>,_ options:Int = 0) {// :TODO: ...rest??
-        //not implemented yet, 
+        //not implemented yet, use ArrayParser.conditionSort() and the legacy code 
     }
     /**
     * Sorts the items at @param index in @param database on @param attributeKey with @param options
