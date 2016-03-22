@@ -31,12 +31,12 @@ class NodeModifier {
         
         
         func removeChildren(n:Node,_ parent:Node?,_ index:Int){
-            if(n.children.count > 0){
+            if(n.children.count > 0){//branch, we never remove branches
                 for var i = 0; i < n.children.count; ++i{
                     let child = n.children[i]
                     removeChildren(child,n,i)
                 }
-            }else if(parent != nil){
+            }else if(parent != nil){//leaf, we only remove leafs
                 parent?.children.removeAtIndex(index)
             }
         }
