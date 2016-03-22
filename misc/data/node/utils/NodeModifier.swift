@@ -8,7 +8,7 @@ class NodeModifier {
         
         //continue here: check if you have a removeAt that is recursive
         if(index.count == 1 && node.children.count > index[0]){removeAt(&node, index[0])}
-        else if(index.count > 1){
+        else if(index.count > 1){/*recursive*/
             
         }
          /*
