@@ -13,7 +13,7 @@ class AdvanceArrayParser {
         else if(index.count == 1 && children.count >= index[0]){return [children[index[0]]]}/*the index is at its end point, cut of the branch and packaged as a branch*/
         else if(index.count > 1 && children.count > 0) {
             
-            let i = index.slice(1,index.count)
+            let i = index.slice(0,1)
             Swift.print("\(index)" + " tick: " + "\(i)")
             return AdvanceArrayParser.childAt(children[index[0]] as! Array<AnyObject>,i)
         }/*here is where the recursive magic happens*/
