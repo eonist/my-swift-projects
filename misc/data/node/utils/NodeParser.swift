@@ -45,7 +45,7 @@ class NodeParser {
      *
      */
     class func node(xml:NSXMLElement,_ root:Node = Node())->Node{
-        Swift.print("node xml.children!.count: " + "\(xml.children!.count)")
+        //Swift.print("node xml.children!.count: " + "\(xml.children!.count)")
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
@@ -53,14 +53,9 @@ class NodeParser {
             let node:Node = Node()
             node.name = child.localName!
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
-            for attribute in attributes {
-                node.data[attribute["name"]!] = attribute["value"]!
-            }
+            for attribute in attributes {node.data[attribute["name"]!] = attribute["value"]!}
             if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
-            
-            if(child.hasComplexContent()){
-                NodeParser.node(child, node)//this makes the method recursive
-            }
+            if(child.hasComplexContent()){NodeParser.node(child, node)}//this makes the method recursive
             root.children.append(node)
         }
         return root
