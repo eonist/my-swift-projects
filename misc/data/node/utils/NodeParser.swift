@@ -51,6 +51,7 @@ class NodeParser {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
             let node:Node = Node()
+            node.name = child.localName!
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
             for attribute in attributes {
                 node.data[attribute["name"]!] = attribute["value"]!
