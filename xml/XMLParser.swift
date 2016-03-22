@@ -158,7 +158,13 @@ public class XMLParser{
             xml.stringValue = content as? String
         }else if(content is Array<AnyObject>){
             Swift.print("processing the array")
-            
+            for item in content{
+                if(item is String){
+                    xml.stringValue = content as? String
+                }else if(item is Array<AnyObject>){
+                    xml.appendChild(toXML(theValue,theKey))
+                }
+            }
             
         }else {//content is a dictionary
             let dict = content as! Dictionary<String, AnyObject>
