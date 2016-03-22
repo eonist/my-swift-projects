@@ -113,6 +113,7 @@ public class XMLParser{
             <item title="blue" property="na"/>
         </items>
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
+     * TODO: Does it support xml string value? 
      */
     class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
         var items:[Dictionary<String,String>] = []
