@@ -30,6 +30,6 @@ extension NSXMLElement {
      * NOTE: To test if a child has string content: self.stringValue.count > 0
      */
     func hasComplexContent()->Bool{
-        return self.localName != nil && self.childCount > 0
+        return self.childCount > 0 && self.children![0].localName != nil
     }
 }

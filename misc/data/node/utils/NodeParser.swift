@@ -59,6 +59,7 @@ class NodeParser {
             if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
             
             if(child.hasComplexContent()){
+                
                 NodeParser.node(child, node)//this makes the method recursive
             }
             root.children.append(node)
