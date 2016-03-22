@@ -54,7 +54,7 @@ class NodeModifier {
         NodeParser.nodeAt(node, index)?.data = data
     }
     /**
-     *
+     * Adds a @param value by @param key at @param index in @param node
      */
     class func addValueAt(node:Node, _ index:Array<Int>, _ key:String, _ value:AnyObject){
         NodeParser.nodeAt(node, index)?.data[key] = value
