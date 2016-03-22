@@ -8,8 +8,8 @@ class NodeModifier {
         
         //continue here: check if you have a removeAt that is recursive
         if(index.count == 1 && node.children.count > index[0]){removeAt(&node, index[0])}
-        else if(index.count > 1 && node.children.count > 0 ){/*recursive*/
-            
+        else if(index.count > 1 && node.children.count > index[0] && node.children[index[0]].children.count > 0){/*recursive*/
+            node = removeAt()
         }
         /*
         }else if(index.length > 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != null){
