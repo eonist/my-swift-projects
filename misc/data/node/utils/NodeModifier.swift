@@ -30,10 +30,21 @@ class NodeModifier {
     class func removeAll(inout node:Node){
         
         
+        func removeChildren(n:Node){
+            if(n.children.count > 0){
+                for child in n.children{
+                    
+                }
+            }
+        }
+        
+        removeChildren(node)
         //while
         
         
-        while(NodeParser.countAt(database, []) > 0) {removeAt(database, [0])}
+        
+        
+        //while(NodeParser.countAt(database, []) > 0) {removeAt(database, [0])}
     }
     /**
      * Adds @param child to @param node at @param index
