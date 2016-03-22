@@ -11,11 +11,12 @@ import Foundation
  * // :TODO: add a method for setting the xml setXML that also dispatches an event
  */
 class Node {// :TODO: this should stricly be a DataClass, all none basic functions that are not excplicit get or set should be moved to Parser,Modifier, asserter classes, also make a not of thi sin the java doc
+    var data:Dictionary<String,String>
     var children:Array<Node>
-    init(children:Array<Node>) {
+    init(_ data:Dictionary<String,String>,_ children:Array<Node>) {
+        self.data = data
         self.children = children
     }
-    
     //xml
     //removeAt
     //removeAll
