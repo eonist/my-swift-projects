@@ -14,7 +14,7 @@ class AdvanceArrayParser {
         else if(index.count > 1 && children.count > 0) {
             
             let i = index.slice(1,index.count)
-            Swift.print("tick: " + "\(i)")
+            Swift.print("\(index)" + " tick: " + "\(i)")
             return AdvanceArrayParser.childAt(children[index[0]] as! Array<AnyObject>,i)
         }/*here is where the recursive magic happens*/
         return nil
