@@ -1,10 +1,8 @@
 import Foundation
 /*
  * // :TODO: look into making an prependItemAt, appendItemAt ?
- * // :TODO: addItemsAt
- * // :TODO: removeAll
- * // :TODO: replaceItemAt
- * // :TODO: setNameAt
+ * // :TODO: addAt(items:Array)
+ * // :TODO: remove(item)
  * // :TODO: removeRange(range)
  */
 class NodeModifier {
