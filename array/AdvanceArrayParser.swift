@@ -8,7 +8,7 @@ class AdvanceArrayParser {
      */
     class func childAt<T>(children:Array<T>,index:Array<Int>)->[T]{
         if(index.count == 0 && children.count >= 1){return children}
-        else if(index.count == 1 && )
+        else if(index.count == 1 && children.count >= index[0])
     }
 }
 
