@@ -158,7 +158,12 @@ public class XMLParser{
             let dict = content as! [String:AnyObject]
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
-                if(theValue is [String:AnyObject]) {xml.appendChild(toXML(dict,theKey))}
+                
+                //continue here: figure out the casting bug bellow, and test if stringValue content works aswell. Then start doing node manipulation, removal, additions, updates, creation. aka crud
+                
+                if(theValue is [String:AnyObject]) {
+                    xml.appendChild(toXML(dict,theKey))
+                }
                 else {xml[theKey] = theValue as? String}
             }
         }
