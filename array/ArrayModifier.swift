@@ -60,14 +60,17 @@ class ArrayModifier{
      * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
     class func slice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
+        
+        //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
+        
         let deleteCount = endIndex - startIndex
         //Swift.print("deleteCount: " + "\(deleteCount)")
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return array
     }
-    
     /**
-     * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing
+     * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing and faster, but this work for now
+     * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let range = Utils.range(array, startIndex, endIndex)
