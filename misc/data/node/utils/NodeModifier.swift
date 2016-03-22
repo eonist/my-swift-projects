@@ -25,20 +25,19 @@ class NodeModifier {
         return node.children.removeAtIndex(index)
     }
     /**
+     * Adds @param child to @param node at @param index
+     *
+     */
+    class func addAt(node:Node, _ index:Array<Int>, _ child:Node){
+        NodeParser.nodeAt(node, index)?.children.append(child)
+    }
+    /**
      * Add an item to the node
      * @Note: object syntax example: [title:"Birds"]
      * EXAMPLE: NodeModifier.addItemAt(database, [0,0], [title:"Peas"])
      */
     class func addDataAt(node:Node, _ index:Array<Int>, _ data:[String:AnyObject]) {
         NodeParser.nodeAt(node, index)?.data = data
-    }
-    /**
-     * Adds an array of objects to the node
-     * @Note: the array syntax [[title:"Birds"],[title:"Mamals"]]
-     * EXAMPLE: addDataAt(database, [1], [["title":"Birds"],["title":"Mamals"]]);
-     */
-    class func addDataAt(node:Node, _ index:Array<Int>, _ data:[[String:AnyObject]]){
-        
     }
     /**
      *
