@@ -78,8 +78,6 @@ class ArrayModifier{
         //you need to grab the range here
         return range
     }
-    
-    
     /**
      * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
      * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
