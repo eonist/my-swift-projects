@@ -34,6 +34,7 @@ class NodeModifier {
                 removeAll(child,n)
             }
         }else if(parent != nil){//leaf, we only remove leafs
+            Swift.print("remove")
             parent?.children.removeAtIndex(0)
         }
     }
