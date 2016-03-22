@@ -24,7 +24,7 @@ extension NSXMLElement {
      *
      */
     func appendChild(xml:NSXMLElement){
-        fatalError("not implemented yet")
+        self.addChild(xml)
     }
     /**
      * Asserts if an NSXMLElement has complex content. Meaning something other than a stringValue. In particular another NSXMLElement

@@ -167,7 +167,7 @@ public class XMLParser{
                     xml[theKey] = theValue as? String
                     
                 }else {//[String:T]
-                    xml.appendChild(toXML(dict,theKey))
+                    xml.appendChild(toXML(theValue,theKey))
                 }
             }
         }
