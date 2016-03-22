@@ -70,10 +70,8 @@ class NodeModifier {
      * Sorts the items at @param index in @param database on the title of the item with @param options
      * @example NodeModifier.sortByName(node, [],Array.descending);
      */
-    public static function sortByName(database:Database, index:Array,options:Number = 0):void {// :TODO: ...rest??
-    var xml:XML = XMLParser.childAt(database.xml, index);
-    xml = XMLModifier.sortByName(xml,options);
-    XMLModifier.replaceChildAt(database.xml, index, xml);
+    class func sortByName(node:Node, _ index:Array<Int>,_ options:Int = 0) {// :TODO: ...rest??
+        //not implemented yet, 
     }
     /**
     * Sorts the items at @param index in @param database on @param attributeKey with @param options
