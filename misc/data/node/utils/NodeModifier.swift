@@ -12,7 +12,7 @@ class NodeModifier {
      */
     class func removeAt(inout node:Node, _ index:Array<Int>) -> Node {
         Swift.print("UNTESTED")
-        if(index.count == 1 && node.children.count >= index[0]){return removeAt(&node, index[0])}/*the index is at its end point, cut of the branch*/
+        if(index.count == 1 && node.children.count >= index[0]){return removeAt(node, index[0])}/*the index is at its end point, cut of the branch*/
         else if(index.count > 1 && node.children.count >= index[0] && node.children[index[0]].children.count > 0){/*recursive*/
             node = removeAt(&node.children[index[0]],index.slice2(1,index.count))
         }
@@ -21,28 +21,27 @@ class NodeModifier {
     /**
      * Removes the item @param index in @param node
      */
-    class func removeAt(inout node:Node, _ index:Int)->Node{
+    class func removeAt(/*inout*/ node:Node, _ index:Int)->Node{
         return node.children.removeAtIndex(index)
     }
     /**
      *
      */
-    class func removeAll(inout node:Node){
+    class func removeAll(node:Node){
         
         
-        func removeChildren(n:Node,_ parent:Node?,_ index:Int){
+        func removeChildren(n:Node,_ parent:Node?){//TODO:you may not need index
             if(n.children.count > 0){//branch, we never remove branches
                 while(n.children.count > 0){
-                    
-                    let child = n.children[i]
-                    removeChildren(child,n,i)
+                    let child = n.children[0]
+                    removeChildren(child,n)
                 }
             }else if(parent != nil){//leaf, we only remove leafs
-                parent?.children.removeAtIndex(index)
+                parent?.children.removeAtIndex(0)
             }
         }
         
-        removeChildren(node,nil, 0)
+        removeChildren(node,nil)
         //while
         
         
