@@ -6,8 +6,8 @@ class AdvanceArrayParser {
      * @Note this function is recursive
      * @Note to find the children of the root use an empty array as the index value
      */
-    class func childAt<T>(children:Array<T>,index:Array<Int>)->T{
-        if(index.count == 0 && children.count >= index[])
+    class func childAt<T>(children:Array<T>,index:Array<Int>)->[T]{
+        if(index.count == 0 && children.count >= 1){return children}
     }
 }
 
