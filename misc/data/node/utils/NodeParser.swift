@@ -56,10 +56,11 @@ class NodeParser {
                 node.data[attribute["name"]!] = attribute["value"]!
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
-            root.children.append(node)
+            
             if(child.childCount > 0){
-                NodeParser.node(<#T##xml: NSXMLElement##NSXMLElement#>, <#T##root: Node##Node#>)
+                NodeParser.node(child, node)//this makes the method recursive
             }
+            root.children.append(node)
         }
         return root
     }
