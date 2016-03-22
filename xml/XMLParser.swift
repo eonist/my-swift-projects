@@ -151,11 +151,11 @@ public class XMLParser{
      * </user>
      */
     class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
-        let xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
+        let xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")//short-hand-xml:"<"+name+"/>"
         if(content is [String:AnyObject]){//content is a dictionary
             let dict = content as! [String:AnyObject]
             for (theKey,theValue) in dict{
-                print("key: \(theKey) value: \(theValue)")
+                //print("key: \(theKey) value: \(theValue)")
                 if(theValue is [String:AnyObject]) {xml.appendChild(toXML(dict,theKey))}
                 else {xml[theKey] = theValue as? String}
             }
