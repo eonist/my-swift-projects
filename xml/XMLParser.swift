@@ -150,7 +150,7 @@ public class XMLParser{
      *   </someObject>
      * </user>
      */
-    class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
+    class func toXML<T>(content:T,_ name:String)->NSXMLElement{
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         if(content is String){//content is string
             xml.stringValue = content as? String
@@ -161,10 +161,12 @@ public class XMLParser{
                 
                 //continue here: figure out the casting bug bellow, and test if stringValue content works aswell. Then start doing node manipulation, removal, additions, updates, creation. aka crud
                 
-                if(theValue is [String:AnyObject]) {
+                if(theValue is String) {
+                    xml[theKey] = theValue as? String
+                    
+                }else {//[String:T]
                     xml.appendChild(toXML(dict,theKey))
                 }
-                else {xml[theKey] = theValue as? String}
             }
         }
         return xml
