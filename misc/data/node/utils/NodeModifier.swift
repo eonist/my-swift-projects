@@ -4,7 +4,7 @@ class NodeModifier {
     /**
      * Removes the item @param index in @param node
      */
-    func removeAt(inout node:Node, _ index:Array<Int>) -> Node {
+    class func removeAt(inout node:Node, _ index:Array<Int>) -> Node {
         Swift.print("UNTESTED")
         if(index.count == 1 && node.children.count > index[0]){return removeAt(&node, index[0])}/*the index is at its end point, cut of the branch*/
         else if(index.count > 1 && node.children.count > index[0] && node.children[index[0]].children.count > 0){/*recursive*/
@@ -12,7 +12,7 @@ class NodeModifier {
         }
         return node
     }
-    func removeAt(inout node:Node, _ index:Int)->Node{
+    class func removeAt(inout node:Node, _ index:Int)->Node{
         return ArrayModifier.removeAt(&node.children, index)
     }
 }
