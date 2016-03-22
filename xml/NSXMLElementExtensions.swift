@@ -26,5 +26,8 @@ extension NSXMLElement {
     func appendChild(xml:NSXMLElement){
         fatalError("not implemented yet")
     }
-    //child.children![0].localName
+    //child.children![0]
+    func hasComplexContent()->Bool{
+        return self.localName
+    }
 }
