@@ -14,10 +14,16 @@ class NodeParser {
         return nil
     }
     /**
-     * 
+     *
      */
     class func nodeAt(node:Node,_ index:Int) -> Node?{
         return node.children[index]
+    }
+    /**
+     *
+     */
+    class func valueAt(){
+        
     }
 }
 
