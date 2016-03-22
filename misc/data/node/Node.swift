@@ -15,6 +15,7 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
         self.name = name
         self.children = children
         self.content = content
+        //you could store content and data in one variable ? of type AnyObject?
     }
     //xml
     //removeAt
