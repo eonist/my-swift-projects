@@ -25,29 +25,17 @@ class NodeModifier {
         return node.children.removeAtIndex(index)
     }
     /**
-     *
+     * EXAMPLE: removeAll(node,nil)
      */
-    class func removeAll(node:Node){
-        
-        
-        func removeChildren(n:Node,_ parent:Node?){//TODO:you may not need index
-            if(n.children.count > 0){//branch, we never remove branches
-                while(n.children.count > 0){
-                    let child = n.children[0]
-                    removeChildren(child,n)
-                }
-            }else if(parent != nil){//leaf, we only remove leafs
-                parent?.children.removeAtIndex(0)
+    class func removeAll(/*inout*/n:Node,_ parent:Node? = nil){//TODO:you may not need index
+        if(n.children.count > 0){//branch, we never remove branches
+            while(n.children.count > 0){
+                let child = n.children[0]
+                removeAll(child,n)
             }
+        }else if(parent != nil){//leaf, we only remove leafs
+            parent?.children.removeAtIndex(0)
         }
-        
-        removeChildren(node,nil)
-        //while
-        
-        
-        
-        
-        //while(NodeParser.countAt(database, []) > 0) {removeAt(database, [0])}
     }
     /**
      * Adds @param child to @param node at @param index
