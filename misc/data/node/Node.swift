@@ -9,10 +9,12 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
     var name:String
     var data:Dictionary<String,AnyObject>
     var children:Array<Node>
-    init(_ data:Dictionary<String,AnyObject> = [String:AnyObject](),_ name:String = "", _ children:Array<Node> = []) {
+    var content:String
+    init(_ data:Dictionary<String,AnyObject> = [String:AnyObject](),_ name:String = "", _ children:Array<Node> = [], _ content:String = "") {
         self.data = data
         self.name = name
         self.children = children
+        self.content = content
     }
     //xml
     //removeAt
