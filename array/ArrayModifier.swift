@@ -67,15 +67,12 @@ class ArrayModifier{
     }
     
     /**
-     *
+     * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let range = Utils.range(array, startIndex, endIndex)
         let deleteCount = endIndex - startIndex
-        //Swift.print("deleteCount: " + "\(deleteCount)")
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        //return array
-        //you need to grab the range here
         return range
     }
     /**
@@ -133,7 +130,7 @@ class ArrayModifier{
         return -1;
     }
     /**
-     *
+     * NOTE: I think you can also use: array.removeFirst(n: Int)
      */
     class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
         return array.splice(i, 1)[0]
