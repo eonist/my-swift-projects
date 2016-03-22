@@ -9,7 +9,6 @@ public class XMLParser{
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         return rootElement
-        
     }
     /**
      * Returns all children of the root
