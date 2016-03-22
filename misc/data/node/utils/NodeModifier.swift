@@ -34,6 +34,13 @@ class NodeModifier {
         else if(parent != nil){parent?.children.removeAtIndex(0)}//leaf, we only remove leafs
     }
     /**
+     *
+     */
+    class func replaceAt(node:Node, _ index:Array<Int>, _ child:Node){
+        let i = index.slice2(0, index.count-1)
+        NodeParser.nodeAt(node, i)?.children[]
+    }
+    /**
      * Adds @param child to @param node at @param index
      *
      */
