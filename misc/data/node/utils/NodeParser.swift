@@ -41,5 +41,37 @@ class NodeParser {
     class func countAt(node:Node,_ index:Array<Int>)->Int{
         return nodeAt(node, index)!.children.count
     }
+    /**
+     *
+     */
+    class func node(xml:NSXMLElement)->Node{
+        return Node()
+    }
+    /**
+     *
+     */
+    class func xml(node:Node)->NSXMLElement{
+        return NSXMLElement()
+    }
 }
 
+/*
+
+class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
+    var items:[Dictionary<String,String>] = []
+    let count = xml.children!.count//or use rootElement.childCount TODO: test this
+    for (var i = 0; i < count; i++) {
+        let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
+        //print("Import - child.toXMLString(): " + child.toXMLString());
+        var item:Dictionary<String,String> = Dictionary<String,String>()
+        let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
+        for attribute in attributes {
+            item[attribute["name"]!] = attribute["value"]!
+        }
+        if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
+        items.append(item);
+    }
+    return items;
+}
+
+*/
