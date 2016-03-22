@@ -32,7 +32,8 @@ class NodeModifier {
         
         func removeChildren(n:Node,_ parent:Node?,_ index:Int){
             if(n.children.count > 0){//branch, we never remove branches
-                for var i = 0; i < n.children.count; ++i{
+                while(n.children.count > 0){
+                    
                     let child = n.children[i]
                     removeChildren(child,n,i)
                 }
