@@ -25,13 +25,16 @@ class NodeModifier {
         return node.children.removeAtIndex(index)
     }
     /**
-     * Add an item to the database
+     * Add an item to the node
      * @Note: To modifiy an item at a specific index, first getItemAt, then store that as an xml ,then removeItemAt, then addItemAtIndex (the xml you stored)
      * @Note: object syntax example: [title:"Birds"]
      * EXAMPLE: NodeModifier.addItemAt(database, [0,0], [title:"Peas"])
      */
-    class func addItemAt(node:Node, _ index:Array<Int>, _ item:[String:AnyObject]) -> Node {
-        NodeParser.nodeAt(node, index)?.children
+    class func addDataAt(node:Node, _ index:Array<Int>, _ item:[String:AnyObject]) -> Node {
+        NodeParser.nodeAt(node, index)?.data[]
+        
+        
+        //continue here: append to dictionary
         
     }
 }
