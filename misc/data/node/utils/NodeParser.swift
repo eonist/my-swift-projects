@@ -50,12 +50,12 @@ class NodeParser {
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-            var data:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+            
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
             for attribute in attributes {
-                data[attribute["name"]!] = attribute["value"]!
+                node.data[attribute["name"]!] = attribute["value"]!
             }
-            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
+            if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
             items.append(item);
         }
 
