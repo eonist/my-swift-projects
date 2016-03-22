@@ -36,9 +36,9 @@ class NodeModifier {
     /**
      *
      */
-    class func replaceAt(node:Node, _ index:Array<Int>, _ child:Node){
-        let i = index.slice2(0, index.count-1)
-        NodeParser.nodeAt(node, i)?.children[]
+    class func replaceAt(node:Node, var index:Array<Int>, _ child:Node){
+        let last = index.pop()
+        NodeParser.nodeAt(node, index)?.children[last]
     }
     /**
      * Adds @param child to @param node at @param index

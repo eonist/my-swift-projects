@@ -11,9 +11,9 @@ extension Array {
     mutating func shift(/*x:[Element]*/) ->Element{
         return ArrayModifier.shift(&self)
     }
-    /**
-     *
-     */
+    mutating func pop() -> Element?{
+        return ArrayModifier.pop(&self)
+    }
     mutating func pushPop(item:Element) -> Array<Element>{
         return ArrayModifier.pushPop(&self, item)
     }
