@@ -71,15 +71,13 @@ class NodeModifier {
      * @example NodeModifier.sortByName(node, [],Array.descending);
      */
     class func sortByName(node:Node, _ index:Array<Int>,_ options:Int = 0) {// :TODO: ...rest??
-        //not implemented yet, use ArrayParser.conditionSort() and the legacy code 
+        //not implemented yet, use ArrayParser.conditionSort() and the legacy code
     }
     /**
-    * Sorts the items at @param index in @param database on @param attributeKey with @param options
-    * @example DatabaseModifier.sortByAttribute(database, [0], "title");//, Array.DESCENDING
-    */
-    public static function sortByAttribute(database:Database,index:Array,attributeKey:String,options:Number = 0):void {
-    var xml:XML = XMLParser.childAt(database.xml, index);
-    xml = XMLModifier.sortByAttribute(xml,attributeKey,options);
-    XMLModifier.replaceChildAt(database.xml, index, xml);
+     * Sorts the items at @param index in @param database on @param attributeKey with @param options
+     * @example NodeModifier.sortByAttribute(node, [0], "title");//, Array.descending
+     */
+    class func sortByAttribute(node:Node,index:Array<Int>,attributeKey:String,options:Int = 0) {
+        //not implemented yet, use ArrayParser.conditionSort() and the legacy code
     }
 }
