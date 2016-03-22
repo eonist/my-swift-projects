@@ -66,8 +66,17 @@ class ArrayModifier{
         return array
     }
     
-    //Continue here: fix slice, its wrong atm. it should return the resulting slice not the resulting array, create slice2
-    //also check if you got splice wrong
+    /**
+     *
+     */
+    class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int){
+        let deleteCount = endIndex - startIndex
+        //Swift.print("deleteCount: " + "\(deleteCount)")
+        return array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        //return array
+
+    }
+    
     
     /**
      * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
