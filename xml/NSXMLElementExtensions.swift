@@ -12,7 +12,10 @@ extension NSXMLElement {
      */
     subscript(key: String) -> String? {
         get {return XMLParser.attribute(self, key)}
-        set {fatalError("SETTING OF ATTRIBUTES IS NOT SUPPORTED YET: " + String(newValue))}
+        set {
+            self.setAttributesWithDictionary([key:newValue!])
+            //fatalError("SETTING OF ATTRIBUTES IS NOT SUPPORTED YET: " + String(newValue))
+        }
     }
     /**
      * Convenience
