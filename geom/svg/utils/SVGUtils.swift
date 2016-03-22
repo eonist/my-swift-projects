@@ -10,18 +10,18 @@ class SVGUtils {
 	 * @Note for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
 	class func xml(svg:SVG)->NSXMLElement {// :TODO: refactor to one or loop?
-		let xml:NSXMLElement = SVGUtils.svg(svg);
+		let xml:NSXMLElement = SVGUtils.svg(svg)
 		for (var i : Int = 0; i < svg.items.count; i++) {
-			let svgElement:ISVGElement = svg.items[i];
-			var child:NSXMLElement;
+			let svgElement:ISVGElement = svg.items[i]
+			var child:NSXMLElement
             if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
             else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
             else if(svgElement is SVGPath) {child = path(svgElement as! SVGPath)}
             else if(svgElement is SVGGroup) {child = group(svgElement as! SVGGroup)}
             else {fatalError("type not supported: " + "\(svgElement)")}
-            xml.appendChild(child);
+            xml.appendChild(child)
 		}
-		return xml;
+		return xml
 	}
 	/**
 	 * Returns pathData from @param path (SVGPath instance)
@@ -29,8 +29,8 @@ class SVGUtils {
 	class func pathData(path:SVGPath)->String {
 		var pathData:String = ""
 		let commands:Array<String> = path.commands
-		var parameters:Array<CGFloat> = path.parameters;
-		var index:Int = 0;
+		var parameters:Array<CGFloat> = path.parameters
+		var index:Int = 0
 		for command : String in commands {
 			if(command.test("[m,M,l,L,t,T]")) {
 				pathData += command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
@@ -40,31 +40,31 @@ class SVGUtils {
 				index++
 			}else if(command.test("[s,S,q,Q]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
-				index++;
+				index++
 			}else if(command.test("[c,C]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
-				index++;
+				index++
 			}else if(command.test("[a,A]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
-				index++;
+				index++
 			}else if(command.test("[z,Z]")){
-				pathData += command + " ";
-				index++;
+				pathData += command + " "
+				index++
 			}
 		}
 		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
-		return pathData;	
+		return pathData
 	}
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
 	class func svg(svg:SVG)->NSXMLElement {
 		let xml:NSXMLElement = try! NSXMLElement("<?xml version=“1.0”?><svg></svg>")
-		xml["xmlns"] = "http://www.w3.org/2000/svg";
-		xml["x"] = String(svg.x)+"px";
-		xml["y"] = String(svg.y)+"px";
-		xml["width"] = String(svg.width)+"px";
-		xml["height"] = String(svg.height)+"px";
+		xml["xmlns"] = "http://www.w3.org/2000/svg"
+		xml["x"] = String(svg.x)+"px"
+		xml["y"] = String(svg.y)+"px"
+		xml["width"] = String(svg.width)+"px"
+		xml["height"] = String(svg.height)+"px"
 		return xml;
 	}
 	/**
