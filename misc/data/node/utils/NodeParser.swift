@@ -44,7 +44,7 @@ class NodeParser {
     /**
      *
      */
-    class func node(xml:NSXMLElement,_ root:Node)->Node{
+    class func node(xml:NSXMLElement,_ root:Node = Node())->Node{
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
@@ -57,6 +57,9 @@ class NodeParser {
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
             root.children.append(node)
+            if(child.childCount > 0){
+                NodeParser.node(<#T##xml: NSXMLElement##NSXMLElement#>, <#T##root: Node##Node#>)
+            }
         }
         return root
     }
