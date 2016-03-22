@@ -7,10 +7,16 @@ class NodeModifier {
     func removeAt(inout node:Node, _ index:Array<Int>) -> Node {
         
         //continue here: check if you have a removeAt that is recursive
+        if(index.length == 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != null){
+            xml.replace(index,replacement);
+            xml.normalize();/*removes whitespace after the replace action, if i.e if replacement is an empty xml*/
+        }else if(index.length > 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != null){
+            xml = replaceChildAt(xml.children()[index[0]],index.slice(1,index.length),replacement);
+        }
+        return xml;
         
-        return ArrayModifier.removeAt(&node, index)
     }
-    func removeAt(inout node:Node, _ index:Int){
-        
+    func removeAt(inout node:Node, _ index:Int)->{
+        return ArrayModifier.removeAt(&node, index)
     }
 }
