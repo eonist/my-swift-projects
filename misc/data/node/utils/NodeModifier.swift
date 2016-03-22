@@ -1,5 +1,11 @@
 import Foundation
-
+/*
+ * // :TODO: addItemsAt
+ * // :TODO: removeAll
+ * // :TODO: replaceItemAt
+ * // :TODO: setNameAt
+ * // :TODO: removeRange(range)
+ */
 class NodeModifier {
     /**
      * Removes the item @param index in @param node
