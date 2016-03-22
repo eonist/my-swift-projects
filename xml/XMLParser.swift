@@ -5,6 +5,7 @@ public class XMLParser{
      * Returns the root of an xml
      * EXAMPLE: let xml:NSXMLElement = XMLParser.root("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")!
      * EXAMPLE: Swift.print(xml.children![0].childCount)//2
+     * EXAMPLE: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
     public class func root(xmlStr:String)->NSXMLElement?{
