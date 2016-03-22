@@ -13,7 +13,7 @@ import Foundation
 class Node {// :TODO: this should stricly be a DataClass, all none basic functions that are not excplicit get or set should be moved to Parser,Modifier, asserter classes, also make a not of thi sin the java doc
     var children:Array<Node>
     init(children:Array<Node>) {
-        self.children = children;
+        self.children = children
     }
     
     //xml
