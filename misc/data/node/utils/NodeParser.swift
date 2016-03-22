@@ -45,7 +45,7 @@ class NodeParser {
      *
      */
     class func node(xml:NSXMLElement,_ root:Node = Node())->Node{
-        Swift.print("node")
+        Swift.print("node xml.children!.count: " + "\(xml.children!.count)")
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
