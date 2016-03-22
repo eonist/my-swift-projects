@@ -2,7 +2,7 @@ import Foundation
 
 class NodeParser {
     /**
-     * 
+     * EXAMPLE: nodeAt(Node())
      */
     class func nodeAt(node:Node,_ index:Array<Int>)->Node?{
         if(index.count == 1 && node.children.count >= index[0]){return nodeAt(node, index[0])}/*the index is at its end point, cut of the branch*/
