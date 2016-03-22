@@ -29,14 +29,14 @@ class NodeModifier {
      * Removes every leaf in a tree-structure. Reverse recursive
      * EXAMPLE: removeAll(node).count//0
      */
-    class func removeAll(/*inout*/n:Node,_ parent:Node? = nil){
-        if(n.children.count > 0){while(n.children.count > 0){removeAll(n.children[0],n)}}//branch, we never remove branches
+    class func removeAll(/*inout*/node:Node,_ parent:Node? = nil){
+        if(node.children.count > 0){while(node.children.count > 0){removeAll(node.children[0],node)}}//branch, we never remove branches
         else if(parent != nil){parent?.children.removeAtIndex(0)}//leaf, we only remove leafs
     }
     /**
      * Replaces the item at @param index in @param node with @param replacement
      * @example NodeModifier.replaceAt(database, [0], Node(["title":"Banana"]));
-     * NOTE: Untested, you may need to use slice instead in edge cases
+     * NOTE: Untested, you may need to use slice instead in edge cases, it wont work with an empty node.children array for instance, but i dont think it should either
      */
     class func replaceAt(node:Node, var index:Array<Int>, _ replacement:Node){
         let last = index.pop()
