@@ -11,8 +11,7 @@ class NodeModifier {
         else if(index.count > 1){/*recursive*/
             
         }
-         /*
-            
+        /* 
         }else if(index.length > 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != null){
             xml = replaceChildAt(xml.children()[index[0]],index.slice(1,index.length),replacement);
         }
