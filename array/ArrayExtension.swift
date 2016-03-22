@@ -26,15 +26,13 @@ extension Array {
     mutating func unshift(item:Element)->Int{
         return ArrayModifier.unshift(&self, item)
     }
-    /**
-     * Returns a new array derived from the @param array sans the items from @param start to @param end
-     * IMPORTANT: the original array is NOT modified
-     * ["spinach","green pepper","cilantro","onion","avocado"].slice(1, 3)// "spinach","onion","avocado"
-     */
-    func slice(/*x:[Element]*/startIndex:Int, _ endIndex:Int) ->Array<Element>{
+    func slice(startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice(self,startIndex,endIndex)
     }
-    
+    func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
+        return ArrayModifier.slice2(self,startIndex,endIndex)
+    }
+
     
     
     
