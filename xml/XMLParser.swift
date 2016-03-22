@@ -156,6 +156,10 @@ public class XMLParser{
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         if(content is String){//content is string
             xml.stringValue = content as? String
+        }else if(content is Array<AnyObject>){
+            Swift.print("processing the array")
+            
+            
         }else {//content is a dictionary
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
@@ -164,6 +168,7 @@ public class XMLParser{
                     xml[theKey] = theValue as? String
                 }else if(theValue is Array<AnyObject>){
                     Swift.print("Found the array")
+                    xml.appendChild(toXML(theValue,theKey))
                 }else {//[String:T]
                     xml.appendChild(toXML(theValue,theKey))
                 }
