@@ -29,10 +29,10 @@ class NodeModifier {
      *
      */
     class func addAt(node:Node, _ index:Array<Int>, _ child:Node){
-        NodeParser.nodeAt(node, index)?.children.append(child)
+        NodeParser.nodeAt(node, index)?.add(child)
     }
     /**
-     *
+     * Adds @param child to @param node
      */
     class func add(node:Node,_ child:Node){
         node.children.append(child)
