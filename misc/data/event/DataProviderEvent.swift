@@ -2,7 +2,7 @@ import Foundation
 /**
  * NOTE: we dont add items here, we get access to items from the DataProvider instance instead.
  */
-class DataProviderEvent :Event{
+class DataProviderEvent:Event{
     static var add:String = "add";
     static var remove:String = "remove";
     static var removeAll:String = "removeAll";
