@@ -33,9 +33,9 @@ class NodeModifier {
         NodeParser.nodeAt(node, index)?.data = data
     }
     /**
-     * Adds an array of objects to the database
-     * @Note: the array syntax [{title:"Birds"},{title:"Mamals"}]
-     * @example DatabaseModifier.addItemsAt(database, [1], [{title:"Birds"},{title:"Mamals"}]);
+     * Adds an array of objects to the node
+     * @Note: the array syntax [[title:"Birds"],[title:"Mamals"]]
+     * @example addDataAt(database, [1], [["title":"Birds"],["title":"Mamals"]]);
      */
     class func addDataAt(node:Node, _ index:Array<Int>, _ data:[[String:AnyObject]]){
         
