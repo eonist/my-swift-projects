@@ -22,8 +22,8 @@ class NodeParser {
     /**
      *
      */
-    class func valueAt(){
-        
+    class func valueAt(node:Node,_ index:Array<Int>, _ key:String)->AnyObject?{
+        return nodeAt(node, index)
     }
 }
 
