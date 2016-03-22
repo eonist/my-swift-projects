@@ -136,13 +136,13 @@ public class XMLParser{
      *
      * @example1:
      * var test:Object = {someValue:"abc"}
-     * trace(XmlModifier.convertObjectToXML(test,"user").toXMLString())
+     * print(XmlModifier.convertObjectToXML(test,"user").toXMLString())
      * @output:
      * <user someValue="abc"/>
      *
      * @example2:
      * var test:Object = {someValue:"abc", someObject:{name:"john", anotherObject:{cow:"power"}}}
-     * trace(XmlModifier.convertObjectToXML(test,"user").toXMLString())
+     * print(XmlModifier.convertObjectToXML(test,"user").toXMLString())
      * @output:
      * <user someValue="abc">
      *   <someObject name="john">
