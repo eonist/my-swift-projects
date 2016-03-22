@@ -16,6 +16,6 @@ class NodeModifier {
      *
      */
     class func removeAt(inout node:Node, _ index:Int)->Node{
-        return node.children.removeAt(<#T##i: Int##Int#>
+        return node.children.removeAtIndex(index)
     }
 }
