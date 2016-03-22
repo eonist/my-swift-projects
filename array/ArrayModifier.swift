@@ -61,6 +61,7 @@ class ArrayModifier{
      */
     class func slice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let deleteCount = endIndex - startIndex
+        Swift.print("deleteCount: " + "\(deleteCount)")
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return array
     }
