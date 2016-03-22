@@ -64,7 +64,6 @@ class NodeModifier {
      * @example DatabaseModifier.setNameAt(database, [0], "text");
      */
     class func setNameAt(node:Node, _ index:Array<Int>, _ name:String) {
-        
-        //XMLModifier.setNameAt(database.xml, index, name);
+        NodeParser.nodeAt(node, index)?.name = name
     }
 }
