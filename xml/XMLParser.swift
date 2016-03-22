@@ -132,7 +132,23 @@ public class XMLParser{
         return items;
     }
     /**
+     * Converts a multi dimensional Dictionary to an XML
      *
+     * @example1:
+     * var test:Object = {someValue:"abc"}
+     * trace(XmlModifier.convertObjectToXML(test,"user").toXMLString())
+     * @output:
+     * <user someValue="abc"/>
+     *
+     * @example2:
+     * var test:Object = {someValue:"abc", someObject:{name:"john", anotherObject:{cow:"power"}}}
+     * trace(XmlModifier.convertObjectToXML(test,"user").toXMLString())
+     * @output:
+     * <user someValue="abc">
+     *   <someObject name="john">
+     *     <anotherObject cow="power"/>
+     *   </someObject>
+     * </user>
      */
     class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
