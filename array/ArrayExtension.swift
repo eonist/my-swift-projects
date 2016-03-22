@@ -34,6 +34,11 @@ extension Array {
     func slice(/*x:[Element]*/startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice(self,startIndex,endIndex)
     }
+    
+    
+    
+    
+    
     func index<T : Equatable>(arr : [T], _ value:T)->Int{
         return ArrayParser.index(arr, value)
     }
