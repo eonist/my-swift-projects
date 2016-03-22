@@ -8,8 +8,8 @@ class AdvanceArrayParser {
      */
     class func childAt<T>(children:Array<T>,_ index:Array<Int>)->[T]?{
         if(index.count == 0 && children.count >= 1){return children}/*returns the root*/
-        else if(index.count == 1 && children.count >= index[0]){return [children[index[0]]]}/*returns a branch, packaged as a branch*/
-        else if(index.count > 1 && children.count > 0) {return AdvanceArrayParser.childAt(children[index[0]] as! Array<T>,index.slice(1,index.count))}
+        else if(index.count == 1 && children.count >= index[0]){return [children[index[0]]]}/*the index is at its end point, cut of the branch and packaged as a branch*/
+        else if(index.count > 1 && children.count > 0) {return AdvanceArrayParser.childAt(children[index[0]] as! Array<T>,index.slice(1,index.count))}/*here is where the recursive magic happens*/
         return nil
     }
 }
