@@ -134,13 +134,16 @@ public class XMLParser{
     /**
      *
      */
-    class func toXML(dict:[String:AnyObject],_ name:String){
-        var xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
+    class func toXML(dict:[String:AnyObject],_ name:String)->NSXMLElement{
+        let xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
         for (theKey,theValue) in dict{
             print("key: \(theKey) value: \(theValue)")
-            if(theValue is [String:AnyObject]) {xml.appendChild(toXML(dict,"") }//
+            if(theValue is [String:AnyObject]) {xml.appendChild(toXML(dict,theKey))}
+            else xml["@"+val] = object[val];
+            //
             //if(theValue is Dictionary) {describe(theValue)}
         }
         //xml["x1"] = "\(line.x1)";
+        return xml
     }
 }
