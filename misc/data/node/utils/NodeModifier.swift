@@ -35,7 +35,7 @@ class NodeModifier {
     /**
      * Adds an array of objects to the node
      * @Note: the array syntax [[title:"Birds"],[title:"Mamals"]]
-     * @example addDataAt(database, [1], [["title":"Birds"],["title":"Mamals"]]);
+     * EXAMPLE: addDataAt(database, [1], [["title":"Birds"],["title":"Mamals"]]);
      */
     class func addDataAt(node:Node, _ index:Array<Int>, _ data:[[String:AnyObject]]){
         
