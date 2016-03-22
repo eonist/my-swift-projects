@@ -45,6 +45,9 @@ class NodeParser {
      *
      */
     class func node(xml:NSXMLElement)->Node{
+        let node:Node = Node()
+        
+        
         return Node()
     }
     /**
