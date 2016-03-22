@@ -136,7 +136,10 @@ public class XMLParser{
      */
     class func toXML(dict:[String:String],_ name:String){
         var xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
-
+        for (theKey,theValue) in dict{
+            print("key: \(theKey) value: \(theValue)")
+            //if(theValue is Dictionary) {describe(theValue)}
+        }
         xml["x1"] = "\(line.x1)";
     }
 }
