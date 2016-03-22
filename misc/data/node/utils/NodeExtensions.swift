@@ -1,5 +1,5 @@
 import Foundation
 
-class NodeExtensions {
-
+extension Node {
+    
 }
