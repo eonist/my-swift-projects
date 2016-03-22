@@ -25,18 +25,12 @@ class NodeModifier {
         return node.children.removeAtIndex(index)
     }
     /**
-     * EXAMPLE: removeAll(node,nil)
+     * Removes every leaf in a tree-structure. Reverse recursive
+     * EXAMPLE: removeAll(node).count//0
      */
-    class func removeAll(/*inout*/n:Node,_ parent:Node? = nil){//TODO:you may not need index
-        if(n.children.count > 0){//branch, we never remove branches
-            while(n.children.count > 0){
-                let child = n.children[0]
-                removeAll(child,n)
-            }
-        }else if(parent != nil){//leaf, we only remove leafs
-            Swift.print("remove")
-            parent?.children.removeAtIndex(0)
-        }
+    class func removeAll(/*inout*/n:Node,_ parent:Node? = nil){
+        if(n.children.count > 0){while(n.children.count > 0){removeAll(n.children[0],n)}}//branch, we never remove branches
+        else if(parent != nil){parent?.children.removeAtIndex(0)}//leaf, we only remove leafs
     }
     /**
      * Adds @param child to @param node at @param index
