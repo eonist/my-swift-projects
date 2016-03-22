@@ -131,4 +131,12 @@ public class XMLParser{
         }
         return items;
     }
+    /**
+     *
+     */
+    class func toXML(dict:[String:String],_ name:String){
+        var xml:NSXMLElement = try! NSXMLElement("<"+name+"></"+name+">")
+
+        xml["x1"] = "\(line.x1)";
+    }
 }
