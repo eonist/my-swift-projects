@@ -27,6 +27,7 @@ extension NSXMLElement {
         fatalError("not implemented yet")
     }
     /**
+     * Asserts if an NSXMLElement has complex content. Meaning something other than a stringValue. In particular another NSXMLElement
      * NOTE: To test if a child has string content: self.stringValue.count > 0
      */
     func hasComplexContent()->Bool{
