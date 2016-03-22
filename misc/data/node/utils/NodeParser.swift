@@ -2,7 +2,7 @@ import Foundation
 
 class NodeParser {
     /**
-     * Returns the branch at @param index
+     * Returns the branch at an array index
      * @Note this function is recursive
      */
     class func nodeAt(node:Node,_ index:Array<Int>)->Node?{
@@ -14,7 +14,7 @@ class NodeParser {
         return nil
     }
     /**
-     *
+     * Returns a node at an index
      */
     class func nodeAt(node:Node,_ index:Int) -> Node?{
         return node.children[index]
