@@ -70,12 +70,13 @@ class ArrayModifier{
      *
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
+        let range = Utils.range(array, startIndex, endIndex)
         let deleteCount = endIndex - startIndex
         //Swift.print("deleteCount: " + "\(deleteCount)")
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         //return array
         //you need to grab the range here
-        return Utils.range(array, startIndex, endIndex)
+        return range
     }
     
     
@@ -159,6 +160,6 @@ private class Utils{
     class func range<T>(array:Array<T>, _ start:Int,_ end:Int) -> Array<T>{
         var arr:Array<T> = []
         for var i = start; i < end; ++i{arr.append(array[i])}
-        return array
+        return arr
     }
 }
