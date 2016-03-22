@@ -31,5 +31,11 @@ class NodeParser {
     class func valueAt(node:Node,_ index:Array<Int>, _ key:String)->AnyObject?{
         return dataAt(node, index)[key]
     }
+    /**
+     *
+     */
+    class func countAt(node:Node,_ index:Array<Int>)->Int{
+        return nodeAt(node, index)!.children.count
+    }
 }
 
