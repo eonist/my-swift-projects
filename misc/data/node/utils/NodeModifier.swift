@@ -28,8 +28,12 @@ class NodeModifier {
      *
      */
     class func removeAll(inout node:Node){
-        while(DatabaseParser.childrenCount(database, []) > 0) removeItemAt(database, [0]);
-        return database.xml;
+        
+        
+        //while
+        
+        
+        while(NodeParser.countAt(database, []) > 0) {removeAt(database, [0])}
     }
     /**
      * Adds @param child to @param node at @param index
