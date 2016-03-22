@@ -20,19 +20,19 @@ class NodeParser {
         return node.children[index]
     }
     /**
-     *
+     * Returns data with at @param index in @param node
      */
     class func dataAt(node:Node,_ index:Array<Int>)->[String:AnyObject]{
         return nodeAt(node, index)!.data
     }
     /**
-     *
+     * Returns value in @node at @param index with @param key
      */
     class func valueAt(node:Node,_ index:Array<Int>, _ key:String)->AnyObject?{
         return dataAt(node, index)[key]
     }
     /**
-     *
+     * Returns the num of children a node has in a specified branch
      */
     class func countAt(node:Node,_ index:Array<Int>)->Int{
         return nodeAt(node, index)!.children.count
