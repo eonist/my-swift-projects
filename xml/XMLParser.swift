@@ -150,12 +150,12 @@ public class XMLParser{
      *   </someObject>
      * </user>
      */
-    class func toXML<T>(content:T,_ name:String)->NSXMLElement{
+    class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         if(content is String){//content is string
             xml.stringValue = content as? String
         }else {//content is a dictionary
-            let dict = content as! [String:AnyObject]
+            let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
                 
