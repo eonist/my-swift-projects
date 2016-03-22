@@ -12,7 +12,10 @@ class NodeModifier {
         }
         return node
     }
+    /**
+     *
+     */
     class func removeAt(inout node:Node, _ index:Int)->Node{
-        return ArrayModifier.removeAt(&node.children, index)
+        return node.children.removeAt(<#T##i: Int##Int#>
     }
 }

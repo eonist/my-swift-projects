@@ -43,6 +43,7 @@ extension Array {
     
     /**
      * -1 equals, does not exist
+     * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
     mutating func removeAt(i:Int){
         if(i != -1){self.splice(i, 1)}
