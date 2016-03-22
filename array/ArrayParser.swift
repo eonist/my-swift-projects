@@ -104,12 +104,6 @@ class ArrayParser{
         }
         return sortedArray;
     }
-    /**
-     *
-     */
-    class func range<T>(array:Array<T>, _ start:Int,_ end:Int) -> {
-        
-    }
 }
 private class Utils{
     /**

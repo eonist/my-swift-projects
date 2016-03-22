@@ -152,3 +152,13 @@ class ArrayModifier{
 //merge
 //bubblesort
 //swap
+private class Utils{
+    /**
+     *
+     */
+    class func range<T>(array:Array<T>, _ start:Int,_ end:Int) -> Array<T>{
+        var arr:Array<T> = []
+        for var i = start; i < end; ++i{arr.append(array[i])}
+        return array
+    }
+}
