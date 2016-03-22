@@ -32,6 +32,12 @@ class NodeModifier {
         NodeParser.nodeAt(node, index)?.children.append(child)
     }
     /**
+     *
+     */
+    class func add(node:Node,_ child:Node){
+        node.children.append(child)
+    }
+    /**
      * Add an item to the node
      * @Note: object syntax example: [title:"Birds"]
      * EXAMPLE: NodeModifier.addItemAt(database, [0,0], [title:"Peas"])
