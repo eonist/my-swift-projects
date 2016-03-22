@@ -75,7 +75,7 @@ class ArrayModifier{
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         //return array
         //you need to grab the range here
-        
+        return Utils.range(array, startIndex, endIndex)
     }
     
     
