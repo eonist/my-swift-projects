@@ -56,7 +56,7 @@ class NodeParser {
                 node.data[attribute["name"]!] = attribute["value"]!
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) { node.content = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
-            root.children.append(node);
+            root.children.append(node)
         }
         return root
     }
