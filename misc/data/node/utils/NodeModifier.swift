@@ -34,7 +34,9 @@ class NodeModifier {
         else if(parent != nil){parent?.children.removeAtIndex(0)}//leaf, we only remove leafs
     }
     /**
-     * Untested, you may need to use slice instead in edge cases
+     * Replaces the item at @param index in @param node with @param replacement
+     * @example NodeModifier.replaceAt(database, [0], Node(["title":"Banana"]));
+     * NOTE: Untested, you may need to use slice instead in edge cases
      */
     class func replaceAt(node:Node, var index:Array<Int>, _ replacement:Node){
         let last = index.pop()
