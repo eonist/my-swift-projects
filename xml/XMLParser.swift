@@ -139,7 +139,7 @@ public class XMLParser{
         for (theKey,theValue) in dict{
             print("key: \(theKey) value: \(theValue)")
             if(theValue is [String:AnyObject]) {xml.appendChild(toXML(dict,theKey))}
-            else xml["@"+val] = object[val];
+            else {xml[theKey] = theValue}
             //
             //if(theValue is Dictionary) {describe(theValue)}
         }
