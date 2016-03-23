@@ -15,7 +15,7 @@ public class XMLModifier {
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
     class func addChildAt(xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
-        XMLParser.childAt(xml, index.slice2(1,index.count)).add
+        XMLParser.childAt(xml, index.slice2(0,index.count-1))?.addChild(<#T##child: NSXMLNode##NSXMLNode#>)
         
         /*
         if(index.count == 1) {xml = insertAt(xml, index[0], child)}
