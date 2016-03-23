@@ -33,9 +33,14 @@ class Node2{
     var name:String
     var attributes:Dictionary<String,AnyObject>
     var value:AnyObject?
-    init(attributes:[String,AnyObject] = [String:AnyObject](),name:String,){
-        
+    init(_ attributes:[String:AnyObject] = [String:AnyObject](), _ name:String = "", _ value:AnyObject? = nil){
+        self.name = name
+        self.attributes = attributes
+        self.value = value
     }
+}
+extension Node2{
+    var children:Array<Node> {return }
 }
 
 
