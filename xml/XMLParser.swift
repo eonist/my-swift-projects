@@ -149,7 +149,7 @@ public class XMLParser{
  
         //Swift.print("xml.name!: " + "\(xml.name!)")
         if(xml.hasComplexContent()){
-            Swift.print("has children ")
+            Swift.print("has children " + "\(xml.childCount)")
             //Swift.print("xml.childCount: " + "\(xml.childCount)")
             var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
             for child in xml.children!{
