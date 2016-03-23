@@ -137,6 +137,7 @@ public class XMLParser{
      * TODO: Figure out a more elegant way to grab the node name. Preferably by delaying setting the node name until right before the xml is returned
      * EXAMPLE: toXML(["name":[]])//Output:<name></name>
      * EXAMPLE: toXML(["name":["title":["some content"],"age":"16"],"color":"blue"])//Output: <name color="blue"><title age="16">some content here</title></name>
+     * EXAMPLE: toXML(["name":[["color":["blue"]],["title":["Worker"]]]])//<name><color>blue</color><title>Worker</title></name>
      * EXAMPLE:
      * var titleDict:Dictionary<String,AnyObject> = [String:AnyObject]()
      * titleDict["title"] = ["some content here"]
@@ -159,7 +160,7 @@ public class XMLParser{
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){
                     Swift.print("found the string")
-                    theXML.stringValue = theContent as? String
+                    theXML.stringValue = item as? String
                 }
                 else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
                 else{fatalError("this cant happen")}//array
