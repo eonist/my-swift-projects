@@ -146,19 +146,19 @@ public class XMLParser{
         //assert if children.count == 0
         //then add array with stringValue instead
         
-        Swift.print("xml.name!: " + "\(xml.name!)")
+        //Swift.print("xml.name!: " + "\(xml.name!)")
         if(xml.stringValue != nil && xml.stringValue != ""){
-            Swift.print("xml.stringValue: " + "\(xml.stringValue)")
+            //Swift.print("xml.stringValue: " + "\(xml.stringValue)")
             root[xml.name!] = [xml.stringValue] as? AnyObject//could possibly also use generics here
         }else if(xml.childCount > 0){
-            Swift.print("xml.childCount: " + "\(xml.childCount)")
+            //Swift.print("xml.childCount: " + "\(xml.childCount)")
             var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
             for child in xml.children!{
                 children.append(toDictionary(child as! NSXMLElement))
             }
             root[xml.name!] = children
         }else{
-            Swift.print("empty array")
+            //Swift.print("empty array")
             root[xml.name!] = []
         }
         return root
