@@ -142,6 +142,10 @@ public class XMLParser{
             root[attr["key"]!] = attr["value"]!
         }
         var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
+        
+        //assert if children.count == 0
+        //then add array with stringValue instead
+        
         for child in xml.children!{
             children.append(toDictionary(child as! NSXMLElement))
         }
