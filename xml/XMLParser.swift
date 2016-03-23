@@ -156,6 +156,7 @@ public class XMLParser{
         //Swift.print("content: " + "\(content)")
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         
+        //Continue here: figure out how to set the name after the fact
         
         if(content is String){//content is string
             handleString(xml,content)
