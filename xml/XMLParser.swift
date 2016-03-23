@@ -157,6 +157,7 @@ public class XMLParser{
             for child in xml.children!{
                 children.append(toDictionary(child as! NSXMLElement))
             }
+            Swift.print("children: " + "\(children)")
             root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){
             Swift.print("xml.stringValue: " + "\(xml.stringValue)")
