@@ -136,10 +136,12 @@ public class XMLParser{
      */
     class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
         var root = [String:AnyObject]()
-        root[xml.name!] = []
-        for (key,value) in xml.attributes{
-            root[key]
+        
+        let attributes = XMLParser.attributes(xml)
+        for attr in attributes{
+            root[attr["key"]!] = attr["value"]!
         }
+        root[xml.name!] = []
         return root
     }
     /**
