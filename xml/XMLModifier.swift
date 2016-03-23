@@ -16,7 +16,7 @@ public class XMLModifier {
      */
     class func addChildAt(xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
         XMLParser.childAt(xml, index.slice2(0,index.count-1))?.addChildAt(child,index[index.count-1])
-        
+        return xml
         /*
         if(index.count == 1) {xml = insertAt(xml, index[0], child)}
         else if(index.count > 1 && xml.childCount > 0 && (xml.children![index[0]] as! NSXMLElement).hasComplexContent()){
