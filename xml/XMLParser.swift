@@ -163,6 +163,7 @@ public class XMLParser{
                     xml.stringValue = content as? String
                 }else if(item is Array<AnyObject>){
                     //handle array here
+                    xml.appendChild(toXML(theValue,name))
                 }else{
                     //handle dictionary here
                 }
