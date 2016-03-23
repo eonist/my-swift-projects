@@ -150,29 +150,22 @@ public class XMLParser{
      *   </someObject>
      * </user>
      */
-    class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
-        Swift.print("toXML()")
-        Swift.print("name: " + "\(name)")
-        //Swift.print("content: " + "\(content)")
-        let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
-        
-        //Continue here: figure out how to set the name after the fact
-        
-        if(content is String){//content is string
-            handleString(xml,content)
-        }else if(content is Dictionary<String, AnyObject>){//content is a dictionary
-            handleDictionary(xml,content)
-        }else{//array
-            handleArray(xml,content)
-        }
-        return xml
-    }
-    /**
-     *
-     */
     class func toXML2(content:AnyObject)->NSXMLElement{
+        func nodeName(content:AnyObject)->String{
+            let dict = content as! Dictionary<String, AnyObject>
+            for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
+            fatalError("the node does not have a name")
+        }
         let name = nodeName(content)
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")
+        func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
+            //Swift.print("handleArray2")
+            for item in (theContent as! Array<AnyObject>){
+                if(item is String){theXML.stringValue = theContent as? String}
+                else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML2(item))}//handle dictionary here
+                else{fatalError("this cant happen")}//array
+            }
+        }
         if(content is Dictionary<String, AnyObject>){//content is a dictionary
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
@@ -182,63 +175,5 @@ public class XMLParser{
             }
         }
         return xml
-    }
-    /**
-     *
-     */
-    class func nodeName(content:AnyObject)->String{
-        let dict = content as! Dictionary<String, AnyObject>
-        for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
-        fatalError("the node does not have a name")
-    }
-    class func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
-        //Swift.print("handleArray2")
-        for item in (theContent as! Array<AnyObject>){
-            if(item is String){theXML.stringValue = theContent as? String}
-            else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML2(item))}//handle dictionary here
-            else{fatalError("this cant happen")}//array
-        }
-    }
-   
-    
-  
-    /**
-     *
-     */
-    class func handleString(theXML:NSXMLElement,_ theContent:AnyObject){
-        Swift.print("handleString")
-        theXML.stringValue = theContent as? String
-    }
-    class func handleArray(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
-        Swift.print("handleArray")
-        for item in (theContent as! Array<AnyObject>){
-            if(item is String){
-                handleString(theXML,item)
-            }else if(item is Dictionary<String, AnyObject>){
-                //handle dictionary here
-                theXML.appendChild(handleDictionary(theXML,item))
-            }else{//array
-                //handle array here
-                theXML.appendChild(handleArray(theXML,item))
-            }
-        }
-        return theXML
-    }
-    class func handleDictionary(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
-        Swift.print("handleDictionary")
-        //Swift.print("theContent: " + "\(theContent)")
-        let dict = theContent as! Dictionary<String, AnyObject>
-        for (theKey,theValue) in dict{
-            //print("key: \(theKey) value: \(theValue)")
-            if(theValue is String) {
-                theXML[theKey] = theValue as? String
-            }else if(theValue is Dictionary<String, AnyObject>){//dictionary
-                theXML.appendChild(handleDictionary(theXML,theValue))
-            }else {//array
-                //Swift.print("Found the array")
-                theXML.appendChild(handleArray(theXML,theValue))
-            }
-        }
-        return theXML
     }
 }
