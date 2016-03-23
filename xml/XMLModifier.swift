@@ -18,10 +18,10 @@ public class XMLModifier {
      */
     class func addChildAt(var xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
         if(index.count == 1) {xml = insertAt(xml, index[0], child)}
-        else if(index.count > 1 && xml.childCount > 0 && xml.children[index[0]] != nil){
-            xml = addChildAt(xml.children[index[0]],index.slice(1,index.length),child);
+        else if(index.count > 1 && xml.childCount > 0 && xml.children![index[0]]){
+            xml = addChildAt(xml.children[index[0]],index.slice2(1,index.length),child)
         }
-        return xml;
+        return xml
     }
     /**
      * Inserts @param child at @param index in @param xml
