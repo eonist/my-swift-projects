@@ -171,20 +171,14 @@ public class XMLParser{
      *
      */
     class func toXML2(content:AnyObject)->NSXMLElement{
-        let name = nodeName(content)!
+        let name = nodeName(content)
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")
         if(content is Dictionary<String, AnyObject>){//content is a dictionary
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
-                //print("key: \(theKey) value: \(theValue)")
-                if(theValue is String) {//attributes
-                    xml[theKey] = theValue as? String//TODO:outsource this method to handleAttribute(xml,string)
-                }else if(theValue is Dictionary<String, AnyObject>){//dictionary
-                    xml.appendChild(toXML2(theValue))
-                }else {//array
-                    //Swift.print("Found the array")
-                    handleArray2(xml,theValue)
-                }
+                if(theValue is String) {xml[theKey] = theValue as? String}//attributes
+                else if(theValue is Dictionary<String, AnyObject>){xml.appendChild(toXML2(theValue))}//dictionary
+                else {handleArray2(xml,theValue)}//array
             }
         }
         return xml
@@ -193,15 +187,12 @@ public class XMLParser{
     /**
      *
      */
-    class func nodeName(content:AnyObject)->String?{
+    class func nodeName(content:AnyObject)->String{
         let dict = content as! Dictionary<String, AnyObject>
         for (theKey,theValue) in dict{
-            Swift.print("theKey: " + "\(theKey)")
             if((theValue is String) == false){return theKey}
-                
-            
         }
-        return nil
+        fatalError("the node does not have a name")
     }
     
     
