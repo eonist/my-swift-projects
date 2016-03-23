@@ -156,6 +156,7 @@ public class XMLParser{
         //Swift.print("content: " + "\(content)")
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         
+        
         if(content is String){//content is string
             handleString(xml,content)
         }else if(content is Dictionary<String, AnyObject>){//content is a dictionary
