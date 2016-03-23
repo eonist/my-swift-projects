@@ -148,14 +148,14 @@ public class XMLParser{
      * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
      */
     class func toXML(content:AnyObject)->NSXMLElement{
-        func nodeName(content:AnyObject)->String{
-            let dict = content as! Dictionary<String, AnyObject>
-            for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
-            fatalError("the node does not have a name")
+        /*func nodeName(content:AnyObject)->String{
+        let dict = content as! Dictionary<String, AnyObject>
+        for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
+        fatalError("the node does not have a name")
         }
-        let name = nodeName(content)
-        let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")
-        xml.name = name
+        let name = nodeName(content)*/
+        let xml:NSXMLElement = NSXMLElement()
+        
         func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
             //Swift.print("handleArray2")
             for item in (theContent as! Array<AnyObject>){
@@ -171,8 +171,13 @@ public class XMLParser{
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 if(theValue is String) {xml[theKey] = theValue as? String}//attributes
-                else if(theValue is Dictionary<String, AnyObject>){xml.appendChild(toXML(theValue))}//dictionary
-                else {handleArray2(xml,theValue)}//array
+                else if(theValue is Dictionary<String, AnyObject>){//dictionary
+                    xml.name = theKey
+                    xml.appendChild(toXML(theValue))
+                }else {//array
+                    xml.name = theKey
+                    handleArray2(xml,theValue)
+                }
             }
         }
         return xml
