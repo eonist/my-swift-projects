@@ -154,18 +154,19 @@ public class XMLParser{
         //Swift.print("name: " + "\(name)")
         //Swift.print("content: " + "\(content)")
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
-        if(content is String){//content is string
-            xml.stringValue = content as? String
-        }else if(content is Array<AnyObject>){
+        
+        
+        func handleArray(theContent:AnyObject){
             Swift.print("processing the array")
             for item in (content as! Array<AnyObject>){
                 if(item is String){
                     xml.stringValue = content as? String
                 }else if(item is Array<AnyObject>){
                     //handle array here
-                    xml.appendChild(toXML(theValue,name))
+                    xml.appendChild(toXML(item,name))
                 }else{
                     //handle dictionary here
+                    xml.appendChild(toXML(item,name))
                 }
                 
                 
@@ -173,8 +174,8 @@ public class XMLParser{
                 
                 
             }
-            
-        }else {//content is a dictionary
+        }
+        func handleDictionary(){
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
@@ -183,10 +184,19 @@ public class XMLParser{
                 }else if(theValue is Array<AnyObject>){
                     Swift.print("Found the array")
                     xml.appendChild(toXML(theValue,theKey))
-                }else {//[String:T]
+                }else {//dictionary
                     xml.appendChild(toXML(theValue,theKey))
                 }
             }
+        }
+        
+        if(content is String){//content is string
+            xml.stringValue = content as? String
+        }else if(content is Array<AnyObject>){
+            handleArray(content)
+            
+        }else {//content is a dictionary
+            handleDictionary()
         }
         return xml
     }
