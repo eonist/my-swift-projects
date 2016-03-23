@@ -40,7 +40,9 @@ class Node2{
     }
 }
 extension Node2{
-    var children:Array<Node> {return }
+    var children:Array<Node> {if(value is Array<Node>){return value as! Array<Node>}else{return []} }
+    var content:String {if(value is String){return value as! String}else{return ""}}
+    var data:Dictionary<String,AnyObject> {return attributes}
 }
 
 
