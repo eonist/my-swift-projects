@@ -135,9 +135,12 @@ public class XMLParser{
      *
      */
     class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
-        var root:AnyObject
+        var root = [String:AnyObject]()
         
-        
+        let attributes = XMLParser.attributes(xml)
+        for attr in attributes{
+            root[attr["key"]!] = attr["value"]!
+        }
         
         
         //assert if children.count == 0
@@ -155,25 +158,15 @@ public class XMLParser{
                 children.append(toDictionary(child as! NSXMLElement))
             }
             Swift.print("children: " + "\(children)")
-            
-            root = [xml.name!:children]
+            root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){
             Swift.print("xml.stringValue: " + "\(xml.stringValue)")
-            root = [xml.name!:xml.stringValue!]
+            root[xml.name!] = [xml.stringValue!] //could possibly also use generics here
         }else{
             Swift.print("no value")
             //Swift.print("empty array")
             root[xml.name!] = []
         }
-        
-        
-        let attributes = XMLParser.attributes(xml)
-        for attr in attributes{
-            root[attr["key"]!] = attr["value"]!
-        }
-        
-        
-        
         return root
     }
     /**
