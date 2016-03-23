@@ -9,3 +9,9 @@ public class XMLAsserter {
         return child.attributeForName(attrName) != nil
     }
 }
+
+//hasChildren
+
+//validXML
+
+//equals

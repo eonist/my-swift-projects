@@ -10,3 +10,23 @@ public class XMLModifier {
         
     }
 }
+
+/**
+addXMLToXMLList,
+merge,
+setAttribute,
+addAttribute,
+applyXmlAttributesToObject,
+addChildAt,
+insertAt,
+removeChildAt,
+removeChildrenAt,
+replaceChildAt,
+replaceChildrenAt,
+setNameAt,
+setAttributeAt,
+replace,
+sortByName,
+sortByAttribute;
+
+*/
