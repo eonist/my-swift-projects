@@ -132,7 +132,7 @@ public class XMLParser{
         return items;
     }
     /**
-     *
+     * EXAMPLE: toDictionary(try! NSXMLElement("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
      */
     class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
         var root = [String:AnyObject]()
