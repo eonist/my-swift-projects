@@ -42,7 +42,7 @@ class NodeParser {
         return nodeAt(node, index)!.children.count
     }
     /**
-     *
+     * Converts xml to node
      */
     class func node(xml:NSXMLElement,_ root:Node = Node())->Node{
         //Swift.print("node xml.children!.count: " + "\(xml.children!.count)")
@@ -61,7 +61,7 @@ class NodeParser {
         return root
     }
     /**
-     *
+     * Converts node to xml
      */
     class func xml(node:Node)->NSXMLElement{
         let xml:NSXMLElement = NSXMLElement(name:node.name != "" ? node.name : "node")
