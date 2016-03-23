@@ -173,6 +173,7 @@ public class XMLParser{
         
         func handleDictionary(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
             Swift.print("handleDictionary")
+            Swift.print("theContent: " + "\(theContent)")
             let dict = theContent as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
