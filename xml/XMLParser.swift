@@ -154,7 +154,8 @@ public class XMLParser{
             fatalError("the node does not have a name")
         }
         let name = nodeName(content)
-        let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")
+        let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")
+        xml.name = name
         func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
             //Swift.print("handleArray2")
             for item in (theContent as! Array<AnyObject>){
