@@ -149,9 +149,9 @@ public class XMLParser{
         //Swift.print("xml.name!: " + "\(xml.name!)")
         
         
-        
+        Swift.print("xml.name!: " + "\(xml.name!)")
         if(xml.hasComplexContent()){
-            Swift.print("has children " + "\(xml.name!)")
+            Swift.print("has children ")
             //Swift.print("xml.childCount: " + "\(xml.childCount)")
             var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
             for child in xml.children!{
@@ -159,7 +159,7 @@ public class XMLParser{
             }
             root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){
-            Swift.print(xml."xml.stringValue: " + "\(xml.stringValue)")
+            Swift.print("xml.stringValue: " + "\(xml.stringValue)")
             root[xml.name!] = [xml.stringValue] as? AnyObject//could possibly also use generics here
         }else{
             Swift.print("no value")
