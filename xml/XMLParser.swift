@@ -134,8 +134,10 @@ public class XMLParser{
     /**
      *
      */
-    class func toDictionary(xml:NSXMLElement){
-        
+    class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
+        let root = [String:AnyObject]()
+        root[xml.name] = 
+        return root
     }
     /**
      * Converts a multi dimensional Dictionary to an XML
