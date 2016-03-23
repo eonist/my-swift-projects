@@ -183,19 +183,14 @@ public class XMLParser{
         }
         return xml
     }
-    
     /**
      *
      */
     class func nodeName(content:AnyObject)->String{
         let dict = content as! Dictionary<String, AnyObject>
-        for (theKey,theValue) in dict{
-            if((theValue is String) == false){return theKey}
-        }
+        for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
         fatalError("the node does not have a name")
     }
-    
-    
     class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
         Swift.print("handleArray2")
         for item in (content as! Array<AnyObject>){
