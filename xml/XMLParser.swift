@@ -136,38 +136,14 @@ public class XMLParser{
      */
     class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
         var root = [String:AnyObject]()
-        
         let attributes = XMLParser.attributes(xml)
-        for attr in attributes{
-            root[attr["key"]!] = attr["value"]!
-        }
-    
-        //assert if children.count == 0
-        //then add array with stringValue instead
-        
-        //Swift.print("xml.name!: " + "\(xml.name!)")
- 
-        //Swift.print("xml.name!: " + "\(xml.name!)")
+        for attr in attributes{root[attr["key"]!] = attr["value"]!}
         if(xml.hasComplexContent()){
-            Swift.print("has children " + "\(xml.childCount)")
-            //Swift.print("xml.childCount: " + "\(xml.childCount)")
             var children:[[String:AnyObject]] = []
-            for child in xml.children!{
-                let t = toDictionary(child as! NSXMLElement)
-                //Swift.print("t: " + "\(t)")
-                children.append(t)
-            }
-            //Swift.print("children: " + "\(children)")
+            for child in xml.children!{children.append(toDictionary(child as! NSXMLElement))}
             root[xml.name!] = children
-        }else if(xml.stringValue != nil && xml.stringValue != ""){
-            Swift.print("has string value")
-            //Swift.print("xml.stringValue: " + "\(xml.stringValue)")
-            root[xml.name!] = [xml.stringValue!] //could possibly also use generics here
-        }else{
-            //Swift.print("no value")
-            Swift.print("has no value")
-            root[xml.name!] = []
-        }
+        }else if(xml.stringValue != nil && xml.stringValue != ""){root[xml.name!] = [xml.stringValue!]}
+        else{root[xml.name!] = []}
         return root
     }
     /**
