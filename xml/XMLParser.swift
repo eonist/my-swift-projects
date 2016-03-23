@@ -151,9 +151,11 @@ public class XMLParser{
         if(xml.hasComplexContent()){
             Swift.print("has children " + "\(xml.childCount)")
             //Swift.print("xml.childCount: " + "\(xml.childCount)")
-            var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
+            var children:[[String:AnyObject]] = []
             for child in xml.children!{
-                children.append(toDictionary(child as! NSXMLElement))
+                let t = toDictionary(child as! NSXMLElement)
+                //Swift.print("t: " + "\(t)")
+                children.append(t)
             }
             //Swift.print("children: " + "\(children)")
             root[xml.name!] = children
