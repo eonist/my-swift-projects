@@ -1,5 +1,5 @@
 import Foundation
 
-class DatabaseModifier {
+class DatabaseAsserter {
 
 }
