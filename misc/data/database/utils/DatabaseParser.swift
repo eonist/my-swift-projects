@@ -4,7 +4,7 @@ class DatabaseParser {
     /**
      *
      */
-    class func childAt(db:Database,index:Array<Int>)->NSXMLElement{
-        XMLParser.childAt(db, <#T##index: Array<Int>##Array<Int>#>)
+    class func childAt(db:Database,index:Array<Int>)->NSXMLElement?{
+        return XMLParser.childAt(db.xml, index)
     }
 }
