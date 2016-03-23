@@ -20,6 +20,16 @@ public class XMLModifier {
             }
             return xml;
         }
+        /**
+         * Inserts @param child at @param index in @param xml
+         * @Note: works similarly to the sprite.addChildAt() function
+         */
+        public static function insertAt(xml:XML,index:int,child:XML):XML {
+            if(index == 0) xml.prependChild(child);
+            else if(xml.children().length() == index) xml.appendChild(child);//xml.insertChildAfter(xml.children()[index-1], child);//xml.appendChild(<item title="Test"/>);//;
+            else xml.insertChildBefore(xml.children()[index], child);
+            return xml;
+        }
     }
 }
 
