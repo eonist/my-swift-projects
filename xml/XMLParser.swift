@@ -151,6 +151,7 @@ public class XMLParser{
      * </user>
      */
     class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
+        Swift.print("toXML()")
         Swift.print("name: " + "\(name)")
         //Swift.print("content: " + "\(content)")
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
