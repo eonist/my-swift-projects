@@ -1,8 +1,8 @@
 import Foundation
 
 class Database {
-    var xml : NSXMLElement;
+    var xml : NSXMLElement
     init(xml:NSXMLElement) {
-        self.xml = xml;
+        self.xml = xml
     }
 }
