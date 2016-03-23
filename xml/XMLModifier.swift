@@ -14,12 +14,16 @@ public class XMLModifier {
      * Adds @param child to @param xml at an array index @param index
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
-    class func addChildAt(var xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
+    class func addChildAt(xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
+        XMLParser.childAt(xml, index.slice2(1,index.count)).add
+        
+        /*
         if(index.count == 1) {xml = insertAt(xml, index[0], child)}
         else if(index.count > 1 && xml.childCount > 0 && (xml.children![index[0]] as! NSXMLElement).hasComplexContent()){
             xml = addChildAt(xml.children![index[0]] as! NSXMLElement,index.slice2(1,index.count),child)
         }
         return xml
+        */
     }
     /**
      * Inserts @param child at @param index in @param xml
