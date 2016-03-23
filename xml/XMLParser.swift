@@ -156,42 +156,45 @@ public class XMLParser{
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         
         
-        func handleArray(theContent:AnyObject)->NSXMLElement{
+        func handleArray(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
             Swift.print("processing the array")
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){
-                    xml.stringValue = item as? String
+                    theXML.stringValue = item as? String
                 }else if(item is Array<AnyObject>){
                     //handle array here
-                    xml.appendChild(toXML(item,name))
+                    theXML.appendChild(toXML(item,name))
                 }else{
                     //handle dictionary here
-                    xml.appendChild(toXML(item,name))
+                    theXML.appendChild(toXML(item,name))
                 }
             }
+            return theXML
         }
-        func handleDictionary(theContent:AnyObject)->NSXMLElement{
+        
+        func handleDictionary(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
             let dict = theContent as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 //print("key: \(theKey) value: \(theValue)")
                 if(theValue is String) {
-                    xml[theKey] = theValue as? String
+                    theXML[theKey] = theValue as? String
                 }else if(theValue is Array<AnyObject>){
                     Swift.print("Found the array")
-                    xml.appendChild(toXML(theValue,theKey))
+                    theXML.appendChild(toXML(theValue,theKey))
                 }else {//dictionary
-                    xml.appendChild(toXML(theValue,theKey))
+                    theXML.appendChild(toXML(theValue,theKey))
                 }
             }
+            return theXML
         }
         
         if(content is String){//content is string
             xml.stringValue = content as? String
         }else if(content is Array<AnyObject>){
-            handleArray(content)
+            handleArray(xml,content)
             
         }else {//content is a dictionary
-            handleDictionary(content)
+            handleDictionary(xml,content)
         }
         return xml
     }
