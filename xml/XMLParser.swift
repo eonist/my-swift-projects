@@ -154,7 +154,7 @@ public class XMLParser{
         Swift.print("toXML()")
         Swift.print("name: " + "\(name)")
         //Swift.print("content: " + "\(content)")
-        let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
+        let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         
         //Continue here: figure out how to set the name after the fact
         
