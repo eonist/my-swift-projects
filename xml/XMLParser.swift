@@ -137,6 +137,14 @@ public class XMLParser{
      * TODO: Figure out a more elegant way to grab the node name. Preferably by delaying setting the node name until right before the xml is returned
      * EXAMPLE: toXML(["name":[]])//Output:<name></name>
      * EXAMPLE: toXML(["name":["title":["some content"],"age":"16"],"color":"blue"])//Output: <name color="blue"><title age="16">some content here</title></name>
+     * EXAMPLE:
+     * var titleDict:Dictionary<String,AnyObject> = [String:AnyObject]()
+     * titleDict["title"] = ["some content here"]
+     * titleDict["age"] = "16"
+     * var nameDict:Dictionary<String,AnyObject> = [String:AnyObject]()
+     * nameDict["name"] = titleDict
+     * nameDict["color"] = "blue"
+     * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
      */
     class func toXML(content:AnyObject)->NSXMLElement{
         func nodeName(content:AnyObject)->String{
@@ -149,7 +157,10 @@ public class XMLParser{
         func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
             //Swift.print("handleArray2")
             for item in (theContent as! Array<AnyObject>){
-                if(item is String){theXML.stringValue = theContent as? String}
+                if(item is String){
+                    Swift.print("found the string")
+                    theXML.stringValue = theContent as? String
+                }
                 else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
                 else{fatalError("this cant happen")}//array
             }
