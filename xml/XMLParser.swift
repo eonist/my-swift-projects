@@ -133,17 +133,12 @@ public class XMLParser{
     }
     /**
      * Converts a multi dimensional Dictionary to an XML
-     *
+     * NOTE: supports: attributes,string content, node name, sub nodes etc
+     * TODO: Figure out a more elegant way to grab the node name. Preferably by delaying setting the node name until right before the xml is returned
      * EXAMPLE: toXML(["name":[]])//Output:<name></name>
-     * EXAMPLE: toXML(["name":["title":["some content"],"age":"16"],"color":"blue"])//Output: 
-     *
-     *
-     * @example2:
-     *
-     * @output:
-     * 
+     * EXAMPLE: toXML(["name":["title":["some content"],"age":"16"],"color":"blue"])//Output: <name color="blue"><title age="16">some content here</title></name>
      */
-    class func toXML2(content:AnyObject)->NSXMLElement{
+    class func toXML(content:AnyObject)->NSXMLElement{
         func nodeName(content:AnyObject)->String{
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
@@ -155,7 +150,7 @@ public class XMLParser{
             //Swift.print("handleArray2")
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){theXML.stringValue = theContent as? String}
-                else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML2(item))}//handle dictionary here
+                else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
                 else{fatalError("this cant happen")}//array
             }
         }
@@ -163,7 +158,7 @@ public class XMLParser{
             let dict = content as! Dictionary<String, AnyObject>
             for (theKey,theValue) in dict{
                 if(theValue is String) {xml[theKey] = theValue as? String}//attributes
-                else if(theValue is Dictionary<String, AnyObject>){xml.appendChild(toXML2(theValue))}//dictionary
+                else if(theValue is Dictionary<String, AnyObject>){xml.appendChild(toXML(theValue))}//dictionary
                 else {handleArray2(xml,theValue)}//array
             }
         }
