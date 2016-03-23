@@ -30,7 +30,8 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
  * To store data as a child, you can just add another node and have the data in content variable
  */
 class Node2{
-    
+    var name:String
+    var attributes:Dictionary<String,AnyObject>
 }
 
 
