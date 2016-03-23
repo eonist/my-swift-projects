@@ -13,13 +13,13 @@ class DatabaseParser {
      */
     class func attributesAt(db:Database, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
         let xml:NSXMLElement? = childAt(db,index)
-        return xml != nil ? XMLParser.attributes(xml!) : nil
+        return xml != nil ? XMLParser.attribs(xml!) : nil
     }
     /**
      * Returns a value of an attribute at @param index in @param database by the key @param name
      * @Note: undefined is returned if attribute does not exist
      */
-    func attributeAt(database:Database, _ index:Array<Int>,_ key:String) ->  {
-        return attributesAt(database, index)[name];
+    class func attributeAt(db:Database, _ index:Array<Int>,_ key:String) -> String?{
+        return attributesAt(db, index)?[key]
     }
 }

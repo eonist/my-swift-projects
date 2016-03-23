@@ -64,13 +64,7 @@ public class XMLParser{
         var attributes:Dictionary<String,String> = [:]
         if(child.attributes?.count > 0){
             for node:NSXMLNode in child.attributes!{
-                var attribute:Dictionary<String,String> = [:]
-                let name:String = node.name!
-                let value:String = node.stringValue!
-                //print("name: " + name + " " + "value:"+value)
-                attribute["name"] = name
-                attribute["value"] = value
-                attributes.append(attribute)
+                attributes[node.name!] = node.stringValue!
             }
         }
         return attributes
