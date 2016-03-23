@@ -32,6 +32,10 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
 class Node2{
     var name:String
     var attributes:Dictionary<String,AnyObject>
+    var value:AnyObject?
+    init(attributes:[String,AnyObject] = [String:AnyObject](),name:String,){
+        
+    }
 }
 
 
