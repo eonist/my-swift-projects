@@ -27,6 +27,12 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
 }
 
 
+//Node
+//name:String
+//attributes:Dictionary<String,AnyObject>
+//content:AnyObject
+
+
 /*
 In math terms:
 Root – The top node in a tree.
