@@ -190,7 +190,7 @@ public class XMLParser{
                     xml.appendChild(handleDictionary2(theValue))
                 }else {//array
                     //Swift.print("Found the array")
-                    xml.appendChild(handleArray2(xml,theValue))
+                    handleArray2(xml,theValue)
                 }
             }
         }
@@ -199,7 +199,7 @@ public class XMLParser{
     
     
     
-    class func handleArray2(xml:NSXMLElement,_ content:AnyObject)->NSXMLElement{
+    class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
         Swift.print("handleArray2")
         for item in (content as! Array<AnyObject>){
             if(item is String){
@@ -209,10 +209,10 @@ public class XMLParser{
                 xml.appendChild(handleDictionary2(item))
             }else{//array
                 //handle array here
-                xml.appendChild(handleArray2(xml,item))
+                //handleArray2(xml,item)
+                fatalError("this cant happen")
             }
         }
-        return xml
     }
     
     
