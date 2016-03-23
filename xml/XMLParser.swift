@@ -206,9 +206,9 @@ public class XMLParser{
         let dict = content as! Dictionary<String, AnyObject>
         for (theKey,theValue) in dict{
             Swift.print("theKey: " + "\(theKey)")
-            if(theValue is Dictionary<String, AnyObject>){
-                return theKey
-            }
+            if((theValue is String) == false){return theKey}
+                
+            
         }
         return nil
     }
