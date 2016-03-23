@@ -179,7 +179,7 @@ public class XMLParser{
     class func handleDictionary2(content:AnyObject)->NSXMLElement{
         Swift.print("handleDictionary2")
         let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")
-        xml.ad
+        
         //Swift.print("theContent: " + "\(theContent)")
         if(content is Dictionary<String, AnyObject>){//content is a dictionary
             let dict = content as! Dictionary<String, AnyObject>
@@ -198,6 +198,17 @@ public class XMLParser{
         return xml
     }
     
+    /**
+     *
+     */
+    class func nodeName(content:AnyObject){
+        let dict = content as! Dictionary<String, AnyObject>
+        for (theKey,theValue) in dict{
+            if(theValue is Dictionary<String, AnyObject>){
+                
+            }
+        }
+    }
     
     
     class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
