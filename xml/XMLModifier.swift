@@ -30,7 +30,7 @@ public class XMLModifier {
      * @Note: works similarly to the sprite.addChildAt() function
      */
     class func insertAt(xml:NSXMLElement,_ index:Int,_ child:NSXMLElement) -> NSXMLElement {
-        
+        xml.insertChild(child, atIndex: index)
         return xml;
     }
 }

@@ -33,4 +33,7 @@ extension NSXMLElement {
     func hasComplexContent()->Bool{
         return self.childCount > 0 && self.children![0].localName != nil
     }
+    func addChildAt(child:NSXMLElement,_ index:Int){
+        
+    }
 }
