@@ -1,7 +1,7 @@
 import Foundation
 /**
  * NOTE: index:Array = [0,2,1,0] //means node at 0, node at 2, node at 1, node at 0
- * NOTE: UNLIKE xml nodes should be able to have content and children nodes, thats why these are not one variable. 
+ * NOTE:
  * @example:
  * // :TODO: Node should have some core methods for easy access
  * // :TODO: add a method for setting the xml setXML that also dispatches an event
@@ -26,8 +26,12 @@ class Node {// :TODO: this should stricly be a DataClass, all none basic functio
     //setAttributeAt
     //setXML
 }
-
-
+/**
+ * To store data as a child, you can just add another node and have the data in content variable
+ */
+class Node2{
+    
+}
 
 
 /*
