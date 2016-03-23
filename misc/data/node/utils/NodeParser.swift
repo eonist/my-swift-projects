@@ -65,7 +65,7 @@ class NodeParser {
      */
     class func xml(node:Node)->NSXMLElement{
         
-        let xml:NSXMLElement = try! NSXMLElement("<"+node.name+"/>")
+        let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")
 
         for (theKey,theValue) in node.attributes{
             if(theValue is String) {xml[theKey] = theValue as? String}//attributes
