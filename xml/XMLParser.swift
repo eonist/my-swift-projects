@@ -132,6 +132,12 @@ public class XMLParser{
         return items;
     }
     /**
+     *
+     */
+    class func toDictionary(xml:NSXMLElement){
+        
+    }
+    /**
      * Converts a multi dimensional Dictionary to an XML
      * NOTE: supports: attributes,string content, node name, sub nodes etc
      * TODO: Figure out a more elegant way to grab the node name. Preferably by delaying setting the node name until right before the xml is returned
@@ -166,4 +172,5 @@ public class XMLParser{
         }
         return xml
     }
+    
 }
