@@ -22,4 +22,10 @@ class DatabaseParser {
     class func attributeAt(db:Database, _ index:Array<Int>,_ key:String) -> String?{
         return attributesAt(db, index)?[key]
     }
+    /**
+     * Returns string value at a nested index
+     */
+    class func stringValueAt(db:Database,_ index:Array<Int>)->String?{
+        return childAt(db, index)?.stringValue
+    }
 }
