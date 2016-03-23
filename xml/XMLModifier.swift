@@ -25,6 +25,10 @@ public class XMLModifier {
         return xml
         */
     }
+    
+    
+    //do the same for removeChildAt
+    
     /**
      * Inserts @param child at @param index in @param xml
      * @Note: works similarly to the sprite.addChildAt() function
