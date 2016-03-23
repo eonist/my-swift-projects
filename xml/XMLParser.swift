@@ -155,6 +155,9 @@ public class XMLParser{
                 children.append(toDictionary(child as! NSXMLElement))
             }
             root[xml.name!] = children
+        }else{
+            Swift.print("xml.name!: " + "\(xml.name!)")
+            root[xml.name!] = []
         }
         return root
     }
