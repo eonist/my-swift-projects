@@ -167,5 +167,64 @@ public class XMLParser{
         }
         return xml
     }
-    
+    /**
+     *
+     */
+    class func toXML2(content:AnyObject)->NSXMLElement{
+        let xml:NSXMLElement = try! NSXMLElement("<"+"temp"+"/>")
+        if(content is Dictionary<String, AnyObject>){//content is a dictionary
+            let dict = content as! Dictionary<String, AnyObject>
+            for (theKey,theValue) in dict{
+                //print("key: \(theKey) value: \(theValue)")
+                if(theValue is String) {//attributes
+                    xml[theKey] = theValue as? String
+                }else if(theValue is Dictionary<String, AnyObject>){//dictionary
+                    xml.appendChild(toXML2(theValue))
+                }else {//array
+                    //Swift.print("Found the array")
+                    xml.appendChild(handleArray(xml,theValue))
+                }
+            }
+        }
+        return xml
+    }
+    /**
+     *
+     */
+    class func handleString(theXML:NSXMLElement,_ theContent:AnyObject){
+        Swift.print("handleString")
+        theXML.stringValue = theContent as? String
+    }
+    class func handleArray(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
+        Swift.print("handleArray")
+        for item in (theContent as! Array<AnyObject>){
+            if(item is String){
+                handleString(theXML,item)
+            }else if(item is Dictionary<String, AnyObject>){
+                //handle dictionary here
+                theXML.appendChild(handleDictionary(theXML,item))
+            }else{//array
+                //handle array here
+                theXML.appendChild(handleArray(theXML,item))
+            }
+        }
+        return theXML
+    }
+    class func handleDictionary(theXML:NSXMLElement,_ theContent:AnyObject)->NSXMLElement{
+        Swift.print("handleDictionary")
+        //Swift.print("theContent: " + "\(theContent)")
+        let dict = theContent as! Dictionary<String, AnyObject>
+        for (theKey,theValue) in dict{
+            //print("key: \(theKey) value: \(theValue)")
+            if(theValue is String) {
+                theXML[theKey] = theValue as? String
+            }else if(theValue is Dictionary<String, AnyObject>){//dictionary
+                theXML.appendChild(handleDictionary(theXML,theValue))
+            }else {//array
+                //Swift.print("Found the array")
+                theXML.appendChild(handleArray(theXML,theValue))
+            }
+        }
+        return theXML
+    }
 }
