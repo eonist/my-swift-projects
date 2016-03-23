@@ -169,12 +169,12 @@ public class XMLParser{
         for item in (theContent as! Array<AnyObject>){
             if(item is String){
                 theXML.stringValue = item as? String
-            }else if(theContent is Dictionary<String, AnyObject>){
+            }else if(item is Dictionary<String, AnyObject>){
                 //handle dictionary here
-                theXML.appendChild(handleDictionary(theXML,theContent))
+                theXML.appendChild(handleDictionary(theXML,item))
             }else{//array
                 //handle array here
-                theXML.appendChild(handleArray(theXML,theContent))
+                theXML.appendChild(handleArray(theXML,item))
             }
         }
         return theXML
@@ -187,7 +187,7 @@ public class XMLParser{
             //print("key: \(theKey) value: \(theValue)")
             if(theValue is String) {
                 theXML[theKey] = theValue as? String
-            }else if(theContent is Dictionary<String, AnyObject>){//dictionary
+            }else if(theValue is Dictionary<String, AnyObject>){//dictionary
                 theXML.appendChild(handleDictionary(theXML,theValue))
             }else {//array
                 //Swift.print("Found the array")
