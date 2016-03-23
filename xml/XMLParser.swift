@@ -58,6 +58,24 @@ public class XMLParser{
         return attributes
     }
     /**
+     *
+     */
+    class func attribs(child:NSXMLElement) -> Dictionary<String,String>{
+        var attributes:Dictionary<String,String> = [:]
+        if(child.attributes?.count > 0){
+            for node:NSXMLNode in child.attributes!{
+                var attribute:Dictionary<String,String> = [:]
+                let name:String = node.name!
+                let value:String = node.stringValue!
+                //print("name: " + name + " " + "value:"+value)
+                attribute["name"] = name
+                attribute["value"] = value
+                attributes.append(attribute)
+            }
+        }
+        return attributes
+    }
+    /**
      * Returns child from @param children at @param index
      * EXAMPLE: XMLParser.childAt(children, 0)
      */

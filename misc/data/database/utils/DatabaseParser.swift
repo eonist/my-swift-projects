@@ -11,7 +11,7 @@ class DatabaseParser {
      * Returns a key/value object with the attributes at the @param index in @param database
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
-    class func attributesAt(db:Database, _ index:Array<Int>) -> [[String:String]]?{// :TODO: rename to objAt?
+    class func attributesAt(db:Database, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
         let xml:NSXMLElement? = childAt(db,index)
         return xml != nil ? XMLParser.attributes(xml!) : nil
     }
@@ -19,7 +19,7 @@ class DatabaseParser {
      * Returns a value of an attribute at @param index in @param database by the key @param name
      * @Note: undefined is returned if attribute does not exist
      */
-    func attributeAt(database:Database, index:Array,name:String) ->  {
+    func attributeAt(database:Database, _ index:Array<Int>,_ key:String) ->  {
         return attributesAt(database, index)[name];
     }
 }
