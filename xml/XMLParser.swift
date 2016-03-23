@@ -150,7 +150,7 @@ public class XMLParser{
             children.append(toDictionary(child as! NSXMLElement))
         }
         if(xml.stringValue != nil){
-            root[xml.name!] = [xml.stringValue]
+            root[xml.name!] = [xml.stringValue] as? AnyObject//could possibly also use generics here
         }else{
             root[xml.name!] = children
         }
