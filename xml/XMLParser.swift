@@ -194,21 +194,11 @@ public class XMLParser{
     class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
         Swift.print("handleArray2")
         for item in (content as! Array<AnyObject>){
-            if(item is String){
-                handleString2(xml,item)
-            }else if(item is Dictionary<String, AnyObject>){
-                //handle dictionary here
-                xml.appendChild(toXML2(item))
-            }else{//array
-                //handle array here
-                //handleArray2(xml,item)
-                fatalError("this cant happen")
-            }
+            if(item is String){handleString2(xml,item)}    
+            else if(item is Dictionary<String, AnyObject>){xml.appendChild(toXML2(item))}//handle dictionary here
+            else{fatalError("this cant happen")}//array
         }
     }
-    
-    
-    
     class func handleString2(xml:NSXMLElement,_ content:AnyObject){
         Swift.print("handleString2")
         xml.stringValue = content as? String
