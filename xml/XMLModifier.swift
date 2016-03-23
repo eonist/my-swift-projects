@@ -7,7 +7,7 @@ public class XMLModifier {
      * worth a look (constructing html): https://gist.github.com/brentdax/caaaa134c500e00efd36
      */
     public class func test(){
-        
+        //xml.addChild(<#T##child: NSXMLNode##NSXMLNode#>)
     }
 }
 
