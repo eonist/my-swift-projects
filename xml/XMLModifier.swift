@@ -9,27 +9,27 @@ public class XMLModifier {
     public class func test(){
         //xml.addChild()
         
-        /**
-         * Adds @param child to @param xml at an array index @param index
-         * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
-         */
-        public static function addChildAt(xml:XML,index:Array,child:XML):XML {// :TODO: rename to addAt?
-            if(index.length == 1) xml = insertAt(xml, index[0], child);
-            else if(index.length > 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != null){
-                xml = addChildAt(xml.children()[index[0]],index.slice(1,index.length),child);
-            }
-            return xml;
+    }
+    
+    
+    /**
+     * Adds @param child to @param xml at an array index @param index
+     * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
+     */
+    class func addChildAt(xml:NSXMLElement,_ index:Array<Int>,_ child:NSXMLElement) -> NSXMLElement {// :TODO: rename to addAt?
+        if(index.length == 1) xml = insertAt(xml, index[0], child);
+        else if(index.length > 1 && xml.children().length() > 0 && (xml.children()[index[0]] as XML).toXMLString() != nil){
+            xml = addChildAt(xml.children()[index[0]],index.slice(1,index.length),child);
         }
-        /**
-         * Inserts @param child at @param index in @param xml
-         * @Note: works similarly to the sprite.addChildAt() function
-         */
-        public static function insertAt(xml:XML,index:int,child:XML):XML {
-            if(index == 0) xml.prependChild(child);
-            else if(xml.children().length() == index) xml.appendChild(child);//xml.insertChildAfter(xml.children()[index-1], child);//xml.appendChild(<item title="Test"/>);//;
-            else xml.insertChildBefore(xml.children()[index], child);
-            return xml;
-        }
+        return xml;
+    }
+    /**
+     * Inserts @param child at @param index in @param xml
+     * @Note: works similarly to the sprite.addChildAt() function
+     */
+    class func insertAt(xml:NSXMLElement,_ index:Int,_ child:NSXMLElement) -> NSXMLElement {
+        
+        return xml;
     }
 }
 
