@@ -135,8 +135,11 @@ public class XMLParser{
      *
      */
     class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
-        let root = [String:AnyObject]()
-        root[xml.name] = 
+        var root = [String:AnyObject]()
+        root[xml.name!] = []
+        for (key,value) in xml.attributes{
+            root[key]
+        }
         return root
     }
     /**
