@@ -134,21 +134,14 @@ public class XMLParser{
     /**
      * Converts a multi dimensional Dictionary to an XML
      *
-     * @example1:
-     * var test:Object = {someValue:"abc"}
-     * print(XmlModifier.convertObjectToXML(test,"user").toXMLString())
-     * @output:
-     * <user someValue="abc"/>
+     * EXAMPLE: toXML(["name":[]])//Output:<name></name>
+     * EXAMPLE: toXML(["name":["title":["some content"],"age":"16"],"color":"blue"])//Output: 
+     *
      *
      * @example2:
-     * var test:Object = {someValue:"abc", someObject:{name:"john", anotherObject:{cow:"power"}}}
-     * print(XmlModifier.convertObjectToXML(test,"user").toXMLString())
+     *
      * @output:
-     * <user someValue="abc">
-     *   <someObject name="john">
-     *     <anotherObject cow="power"/>
-     *   </someObject>
-     * </user>
+     * 
      */
     class func toXML2(content:AnyObject)->NSXMLElement{
         func nodeName(content:AnyObject)->String{
