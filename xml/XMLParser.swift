@@ -151,7 +151,7 @@ public class XMLParser{
      * </user>
      */
     class func toXML(content:AnyObject,_ name:String)->NSXMLElement{
-        //Swift.print("name: " + "\(name)")
+        Swift.print("name: " + "\(name)")
         //Swift.print("content: " + "\(content)")
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")//long-hand-xml:"<"+name+"></"+name+">"
         
@@ -162,10 +162,10 @@ public class XMLParser{
                     theXML.stringValue = item as? String
                 }else if(item is Array<AnyObject>){
                     //handle array here
-                    theXML.appendChild(toXML(item,name))
+                    theXML.appendChild(handleArray(theXML,theContent))
                 }else{
                     //handle dictionary here
-                    theXML.appendChild(handleArray(theXML,theContent))
+                    theXML.appendChild(handleDictionary(theXML,theContent))
                 }
             }
             return theXML
