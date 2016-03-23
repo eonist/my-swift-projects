@@ -141,17 +141,19 @@ public class XMLParser{
         for attr in attributes{
             root[attr["key"]!] = attr["value"]!
         }
-        var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
+        
         
         //assert if children.count == 0
         //then add array with stringValue instead
         
-        for child in xml.children!{
-            children.append(toDictionary(child as! NSXMLElement))
-        }
+        
         if(xml.stringValue != nil){
             root[xml.name!] = [xml.stringValue] as? AnyObject//could possibly also use generics here
-        }else{
+        }else if(xml.childCount > 0){
+            var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
+            for child in xml.children!{
+                children.append(toDictionary(child as! NSXMLElement))
+            }
             root[xml.name!] = children
         }
         return root
