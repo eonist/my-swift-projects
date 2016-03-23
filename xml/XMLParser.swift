@@ -159,9 +159,7 @@ public class XMLParser{
             root = [xml.name!:children]
         }else if(xml.stringValue != nil && xml.stringValue != ""){
             Swift.print("xml.stringValue: " + "\(xml.stringValue)")
-            let temp = [xml.stringValue] as? AnyObject//could possibly also use generics here
-            Swift.print("temp: " + "\(temp)")
-            root[xml.name!] = temp
+            root = [xml.name!:xml.stringValue!]
         }else{
             Swift.print("no value")
             //Swift.print("empty array")
