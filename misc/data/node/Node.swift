@@ -5,7 +5,25 @@ import Foundation
  * @example:
  * // :TODO: Node should have some core methods for easy access
  * // :TODO: add a method for setting the xml setXML that also dispatches an event
+ * NOTE: To store data as a child, you can just add another node and have the data in content variable
  */
+class Node{
+    var name:String
+    var attributes:Dictionary<String,AnyObject>
+    var value:AnyObject?
+    init(_ attributes:[String:AnyObject] = [String:AnyObject](), _ name:String = "", _ value:AnyObject? = nil){
+        self.name = name
+        self.attributes = attributes
+        self.value = value
+    }
+}
+extension Node{
+    var children:Array<Node> {get{if(value is Array<Node>){return value as! Array<Node>}else{return []} }set{value = newValue}}
+    var content:String {get{if(value is String){return value as! String}else{return ""}}set{value = newValue}}
+    var data:Dictionary<String,AnyObject> {get{return attributes}set{attributes = newValue}}
+}
+/*
+
 class Node2 {// :TODO: this should stricly be a DataClass, all none basic functions that are not excplicit get or set should be moved to Parser,Modifier, asserter classes, also make a not of thi sin the java doc
     var name:String
     var data:Dictionary<String,AnyObject>//this could be renamed to attributes, for clearity
@@ -26,25 +44,9 @@ class Node2 {// :TODO: this should stricly be a DataClass, all none basic functi
     //setAttributeAt
     //setXML
 }
-/**
- * To store data as a child, you can just add another node and have the data in content variable
- */
-class Node{
-    var name:String
-    var attributes:Dictionary<String,AnyObject>
-    var value:AnyObject?
-    init(_ attributes:[String:AnyObject] = [String:AnyObject](), _ name:String = "", _ value:AnyObject? = nil){
-        self.name = name
-        self.attributes = attributes
-        self.value = value
-    }
-}
-extension Node{
-    var children:Array<Node> {get{if(value is Array<Node>){return value as! Array<Node>}else{return []} }set{value = newValue}}
-    var content:String {if(value is String){return value as! String}else{return ""}}
-    var data:Dictionary<String,AnyObject> {return attributes}
-}
 
+
+*/
 
 /*
 In math terms:
