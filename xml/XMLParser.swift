@@ -170,15 +170,15 @@ public class XMLParser{
     /**
      *
      */
-    class func toXML2(content:AnyObject,_ name:String)->NSXMLElement{
-        return handleDictionary2(content,name)
+    class func toXML2(content:AnyObject)->NSXMLElement{
+        return handleDictionary2(content)
     }
     
     
     
-    class func handleDictionary2(content:AnyObject,_ name:String)->NSXMLElement{
+    class func handleDictionary2(content:AnyObject)->NSXMLElement{
         Swift.print("handleDictionary2")
-        //let name = nodeName(content)
+        let name = nodeName(content)!
         let xml:NSXMLElement = try! NSXMLElement("<"+name+"/>")
         
         //Swift.print("theContent: " + "\(theContent)")
@@ -189,7 +189,7 @@ public class XMLParser{
                 if(theValue is String) {//attributes
                     xml[theKey] = theValue as? String//TODO:outsource this method to handleAttribute(xml,string)
                 }else if(theValue is Dictionary<String, AnyObject>){//dictionary
-                    xml.appendChild(handleDictionary2(theValue,theKey))
+                    xml.appendChild(handleDictionary2(theValue))
                 }else {//array
                     //Swift.print("Found the array")
                     handleArray2(xml,theValue)
@@ -202,7 +202,6 @@ public class XMLParser{
     /**
      *
      */
-    /*
     class func nodeName(content:AnyObject)->String?{
         let dict = content as! Dictionary<String, AnyObject>
         for (theKey,theValue) in dict{
@@ -212,7 +211,7 @@ public class XMLParser{
         }
         return nil
     }
-    */
+    
     
     class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
         Swift.print("handleArray2")
