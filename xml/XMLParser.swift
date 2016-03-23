@@ -191,18 +191,15 @@ public class XMLParser{
         for (theKey,theValue) in dict{if((theValue is String) == false){return theKey}}
         fatalError("the node does not have a name")
     }
-    class func handleArray2(xml:NSXMLElement,_ content:AnyObject){
-        Swift.print("handleArray2")
-        for item in (content as! Array<AnyObject>){
-            if(item is String){handleString2(xml,item)}    
-            else if(item is Dictionary<String, AnyObject>){xml.appendChild(toXML2(item))}//handle dictionary here
+    class func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
+        //Swift.print("handleArray2")
+        for item in (theContent as! Array<AnyObject>){
+            if(item is String){theXML.stringValue = theContent as? String}
+            else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML2(item))}//handle dictionary here
             else{fatalError("this cant happen")}//array
         }
     }
-    class func handleString2(xml:NSXMLElement,_ content:AnyObject){
-        Swift.print("handleString2")
-        xml.stringValue = content as? String
-    }
+   
     
   
     /**
