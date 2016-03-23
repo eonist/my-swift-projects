@@ -141,7 +141,11 @@ public class XMLParser{
         for attr in attributes{
             root[attr["key"]!] = attr["value"]!
         }
-        root[xml.name!] = []
+        var children:Array<[String:AnyObject]> = [[String:AnyObject]()]
+        for child in xml.children!{
+            children.append(toDictionary(child as! NSXMLElement))
+        }
+        root[xml.name!] = children
         return root
     }
     /**
