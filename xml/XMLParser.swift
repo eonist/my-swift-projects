@@ -149,9 +149,11 @@ public class XMLParser{
         for child in xml.children!{
             children.append(toDictionary(child as! NSXMLElement))
         }
-        root[xml.name!] = xml.stringValue != nil ? [xml.stringValue] : children
-        
-        
+        if(xml.stringValue != nil){
+            root[xml.name!] = [xml.stringValue]
+        }else{
+            root[xml.name!] = children
+        }
         return root
     }
     /**
