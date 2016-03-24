@@ -1,6 +1,6 @@
 import Foundation
 
-class DatabaseEvent {
+class DatabaseEvent:Event {
     static var addAt:String = "databaseEventAddAt"//we mergeed add_at and add since its essentialy the same
     static var removeAt:String = "databaseEventRemoveAt"
     static var removeAll:String = "databaseEventRemoveAll"
