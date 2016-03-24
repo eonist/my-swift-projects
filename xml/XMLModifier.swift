@@ -18,9 +18,6 @@ public class XMLModifier {
         XMLParser.childAt(xml, index.slice2(0,index.count-1))?.addChildAt(child,index[index.count-1])
         return xml
     }
-    
-    
-    
     /**
      * Inserts @param child at @param index in @param xml
      * @Note: works similarly to the sprite.addChildAt() function
@@ -28,6 +25,14 @@ public class XMLModifier {
     class func insertAt(xml:NSXMLElement,_ index:Int,_ child:NSXMLElement) -> NSXMLElement {
         xml.insertChild(child, atIndex: index)
         return xml;
+    }
+    
+    /**
+     * @example XMLModifier.removeChildAt(xml, [0,0]);
+     */
+    class func removeChildAt(xml:NSXMLElement,_ index:Array<Int>) -> NSXMLElement {// :TODO: remove may need to be recursive, rename to removeAt?
+        XMLParser.childAt(xml, index.slice2(0,index.count-1))?.removeChildAtIndex(index[index.count-1])
+        return xml
     }
 }
 
