@@ -21,12 +21,10 @@ class Database : EventSender{
         onEvent(DatabaseEvent(DatabaseEvent.setAttributeAt,index,self))
     }
     /**
-     *
+     * Removes the item @param index in @param database
      */
-    func removeAt(index:Array<Int>){// :TODO: do we still need the event dispatching, cant the calling method do this?
-        XMLModifier.removeChildAt(<#T##xml: NSXMLElement##NSXMLElement#>, <#T##index: Array<Int>##Array<Int>#>)
+    func removeAt(index:Array<Int>){// :TODO: do we still need the event dispatching, can't the calling method do this?
+        XMLModifier.removeChildAt(xml, index)
         onEvent(DatabaseEvent(DatabaseEvent.removeAt,index,self))
-        dispatchEvent(new DatabaseEvent(DatabaseEvent.REMOVE_AT,index,removedXML));// :TODO: we could dispatch from the DatabaseModifier method
-
     }
 }
