@@ -56,8 +56,9 @@ public class XMLModifier {
     /**
      * @example XMLModifier.setAttributeAt(xml, [0,1], "title", "someTitle")
      */
-    class func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ key:String,_ value:String){
-    
+    class func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ key:String,_ value:String) -> NSXMLElement {
+        XMLParser.childAt(xml, index)?[key] = value
+        return xml
     }
 
     //setAttributesAt
