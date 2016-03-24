@@ -91,7 +91,7 @@ public class XMLParser{
             return xml!.childByIndex(index[0])
         }// :TODO: if index.length is 1 you can just ref index
         else if(index.count > 1 && xml!.children!.count > 0) {
-            return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice(1,index.count))
+            return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice2(1,index.count))
         }
         return nil
     }
