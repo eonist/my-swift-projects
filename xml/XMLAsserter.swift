@@ -17,9 +17,8 @@ public class XMLAsserter {
     /**
      *
      */
-    class func hasChildren(xml:XML) -> Bool {
-        if(xml.children().length() == 0) return false;
-        return true;
+    class func hasChildren(xml:NSXMLElement) -> Bool {
+        return xml.childCount > 0
     }
 }
 
