@@ -61,6 +61,7 @@ public class XMLModifier {
         return xml
     }
     /**
+     * EXAMPLE: setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])
      * NOTE: dictionaries are unordered by nature so the attributes may be randomly arranged. To mitigate this maybe implement setting arguments through an array aswell?
      */
     class func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> NSXMLElement {
@@ -74,6 +75,9 @@ public class XMLModifier {
         
         return xml
     }
+    /**
+     *
+     */
     class func replaceAt(xml:NSXMLElement,_ index:Int,_ replacement:NSXMLElement) -> NSXMLElement {
         xml.replaceChildAtIndex(index, withNode: replacement)
         return xml
