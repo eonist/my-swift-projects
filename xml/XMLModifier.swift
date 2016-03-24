@@ -40,6 +40,10 @@ public class XMLModifier {
         XMLParser.childAt(xml, index.slice2(0,index.count-1))?.removeChildAtIndex(index[index.count-1])
         return xml
     }
+    class func removeChildAt(xml:NSXMLElement,_ index:Int) -> NSXMLElement {
+        xml.removeChildAtIndex(index)
+        return xml
+    }
 }
 
 /**
