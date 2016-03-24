@@ -21,8 +21,8 @@ public class XMLModifier {
     /**
      *
      */
-    class func addChildAt(){
-        
+    class func addChildAt(xml:NSXMLElement,_ child:NSXMLElement,_ index:Int) -> NSXMLElement {
+        return insertAt(xml,index,child)
     }
     /**
      * Inserts @param child at @param index in @param xml
