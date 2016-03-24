@@ -7,6 +7,7 @@ extension NSXMLElement {
     convenience init(_ xmlString:String) throws{
         try self.init(XMLString:xmlString)
     }
+    
     /*
      * convenience
      */
