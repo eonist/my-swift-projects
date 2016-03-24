@@ -14,7 +14,7 @@ public class XMLParser{
         return rootElement
     }
     /**
-     * Returns all children of the root
+     * Returns all children of the root element
      * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
     public class func rootChildren(xmlStr:String)->Array<NSXMLElement>{
