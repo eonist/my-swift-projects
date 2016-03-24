@@ -20,7 +20,6 @@ public class XMLModifier {
     }
     
     
-    //do the same for removeChildAt
     
     /**
      * Inserts @param child at @param index in @param xml
