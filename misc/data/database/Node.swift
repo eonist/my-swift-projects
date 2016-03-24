@@ -10,7 +10,7 @@ import Foundation
 * // :TODO: possibly use child and children instead of item and items, since its db and not a list anymore?
 * // :TODO: add function: index(attribute:Object) which finds the first index that has an attribute that matches both attribute.key and attribute.value add this function to XMLParser and ref frmom this class
 */
-class Database : EventSender{
+class Node : EventSender{
     var xml : NSXMLElement
     init(xml:NSXMLElement) {
         self.xml = xml
