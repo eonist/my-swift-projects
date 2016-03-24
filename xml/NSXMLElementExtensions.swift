@@ -39,7 +39,7 @@ extension NSXMLElement {
     func addchildAt(child:NSXMLElement,_ index:Array<Int>)->NSXMLElement{//Convenience
         return XMLModifier.addChildAt(self, index, child)
     }
-    func childAt(child:NSXMLElement,_ index:Array<Int>)->NSXMLElement?{
+    func childAt(index:Array<Int>)->NSXMLElement?{
         return XMLParser.childAt(self, index)
     }
 }
