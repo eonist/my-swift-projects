@@ -64,13 +64,10 @@ public class XMLModifier {
      *
      */
     class func setAttributesAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> NSXMLElement {
-        
-        //[key] = attributes
+        XMLParser.childAt(xml, index)?.setAttributesWithDictionary(attributes)
         return xml
     }
     
-    
-    //setAttributesAt
     //setNameAt
     //stringValueAt
     //replaceChildrenAt
