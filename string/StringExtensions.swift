@@ -37,6 +37,10 @@ extension String {
         return StringParser.subString(self,beginning,end)
     }
     var bool:Bool {return StringParser.boolean(self)}
+    /**
+     * 
+     */
+    var xml:NSXMLElement {return NSXMLElement(self)}
 }
 /**
  * Multiplies a string

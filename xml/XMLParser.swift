@@ -38,7 +38,8 @@ public class XMLParser{
         return child.stringValue!
     }
     /**
-     *
+     * Returns string Content of an xml
+     * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
     class func valueAt(child:NSXMLElement,_ index:Array<Int>)->String?{
         return childAt(child, index)?.stringValue
