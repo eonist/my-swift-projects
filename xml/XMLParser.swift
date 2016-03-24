@@ -38,6 +38,12 @@ public class XMLParser{
         return child.stringValue!
     }
     /**
+     *
+     */
+    class func valueAt(child:NSXMLElement,_ index:Array<Int>)->String?{
+        return childAt(child, index)?.stringValue
+    }
+    /**
      * Returns all attributes in @param child
      * EXAMPLE: attributes.count// num of attributes
      * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
