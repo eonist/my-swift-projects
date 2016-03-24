@@ -51,4 +51,8 @@ extension NSXMLElement {
     func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ key:String,_ value:String) -> NSXMLElement {//Convenience
         return XMLModifier.setAttributeAt(self, index, key, value)
     }
+    func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> NSXMLElement {//Convenience
+        return XMLModifier.setAttributesAt(xml, index, attributes)
+    }
+
 }
