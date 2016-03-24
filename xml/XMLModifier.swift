@@ -61,7 +61,7 @@ public class XMLModifier {
         return xml
     }
     /**
-     *
+     * NOTE: dictionaries are unordered by nature so the attributes may be randomly arranged. To mitigate this maybe implement setting arguments through an array aswell?
      */
     class func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> NSXMLElement {
         XMLParser.childAt(xml, index)?.setAttributesWithDictionary(attributes)
@@ -69,7 +69,7 @@ public class XMLModifier {
     }
     
     
-    //setNameAt
+
     //stringValueAt
     //replaceChildrenAt
     //replaceChildAt
