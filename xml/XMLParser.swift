@@ -82,15 +82,15 @@ public class XMLParser{
      * @Note to find a child at an integer use the native code: xml.children[integer]
      * @Note to find the children of the root use an empty array as the index value
      */
-    class func childAt(xml:NSXMLElement,_ index:Array<Int>)->NSXMLElement? {
-        if(index.count == 0) {
+    class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->NSXMLElement? {
+        if(index.count == 0 && xml != nil) {
             return xml
         }
-        else if(index.count == 1 && XMLParser.childAt(xml.children!, index[0]) != nil) {
-            XMLParser.childAt(xml.children!, index[0])
+        else if(index.count == 1 && xml != nil && XMLParser.childAt(xml!.children!, index[0]) != nil) {
+            XMLParser.childAt(xml!.children!, index[0])
         }// :TODO: if index.length is 1 you can just ref index
-        else if(index.count > 1 && xml.children!.count > 0) {
-            return XMLParser.childAt(xml.children![index[0]] as! NSXMLElement,index.slice(1,index.count))
+        else if(index.count > 1 && xml!.children!.count > 0) {
+            return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice(1,index.count))
         }
         return nil
     }
