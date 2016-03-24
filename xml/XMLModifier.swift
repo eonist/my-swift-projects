@@ -49,7 +49,10 @@ public class XMLModifier {
         return xml
     }
     
-    
+    //setAttributeAt
+    //setAttributesAt
+    //setNameAt
+    //stringValueAt
 }
 
 /**
