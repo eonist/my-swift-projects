@@ -17,12 +17,7 @@ class NodeModifier {
         }
         return node
     }
-    /**
-     * Removes the item @param index in @param node
-     */
-    class func removeAt(/*inout*/ node:Node, _ index:Int)->Node{
-        return node.children.removeAtIndex(index)
-    }
+    
     /**
      * Removes every leaf in a tree-structure. Reverse recursive
      * EXAMPLE: removeAll(node).count//0
@@ -30,6 +25,12 @@ class NodeModifier {
     class func removeAll(/*inout*/node:Node,_ parent:Node? = nil){
         if(node.children.count > 0){while(node.children.count > 0){removeAll(node.children[0],node)}}//branch, we never remove branches
         else if(parent != nil){parent?.children.removeAtIndex(0)}//leaf, we only remove leafs
+    }
+    /**
+     * Removes the item @param index in @param node
+     */
+    class func removeAt(/*inout*/ node:Node, _ index:Int)->Node{
+        return node.children.removeAtIndex(index)
     }
     /**
      * Replaces the item at @param index in @param node with @param replacement
