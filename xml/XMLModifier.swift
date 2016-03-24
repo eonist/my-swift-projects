@@ -19,6 +19,12 @@ public class XMLModifier {
         return xml
     }
     /**
+     *
+     */
+    class func addChildAt(){
+        
+    }
+    /**
      * Inserts @param child at @param index in @param xml
      * @Note: works similarly to the sprite.addChildAt() function
      */
