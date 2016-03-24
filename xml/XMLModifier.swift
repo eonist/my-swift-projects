@@ -68,6 +68,12 @@ public class XMLModifier {
         return xml
     }
     
+    /**
+     *
+     */
+    class func replaceAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement){
+        
+    }
     
 
     //stringValueAt
