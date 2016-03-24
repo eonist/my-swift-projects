@@ -85,6 +85,20 @@ public class XMLParser{
         return childAt(child,index)?.attribs
     }
     /**
+    * Returns an array of Object instances containing key/value pairs of the xml properties at @param index from @param database
+    * @Note: returns an empty array if the index is out of bound
+    * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
+    */
+    class func siblingAttribs(child:NSXMLElement, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
+    var xml = childAt(child, index);
+    var children:[Dictionary<String,String>] = []
+        for c in (xml?.children )!{
+            children.append(c.at)
+        }
+    
+    return children
+    }
+    /**
      * Returns child from @param children at @param index
      * EXAMPLE: XMLParser.childAt(children, 0)
      */
@@ -132,6 +146,7 @@ public class XMLParser{
     public class func childByAttribute(child:NSXMLElement,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
     }
+    
     /**
      * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
      * You can use the returned nodes as the new context node for evaluating further XPath expressions.
