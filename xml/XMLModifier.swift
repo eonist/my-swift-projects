@@ -65,6 +65,8 @@ public class XMLModifier {
     //stringValueAt
     //replaceChildrenAt
     //replaceChildAt
+    //removeChildrenAt
+    //addChildrenAt
 }
 
 /**
