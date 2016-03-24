@@ -1,6 +1,6 @@
 import Foundation
 
-class Database :IEventSender{
+class Database : IEventSender{
     var xml : NSXMLElement
     init(xml:NSXMLElement) {
         self.xml = xml

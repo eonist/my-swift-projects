@@ -23,3 +23,11 @@ class EventSender:IEventSender {
         self.event!(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
     }
 }
+var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
+var eventCall:((Event) -> ())? {
+    return {
+        (event:Event) -> Void in if(self.superview is IEventSender){
+            (self.superview as! IEventSender).onEvent(event)
+        }
+    }
+}/**///returns closure that will take care of propagating the event to the parent
