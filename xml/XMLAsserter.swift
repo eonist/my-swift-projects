@@ -33,6 +33,10 @@ public class XMLAsserter {
         if(xmlDoc?.kind != NSXMLNodeKind.ElementKind){return false;}
         return true
     }
+    class func equals(a:NSXMLElement,b:NSXMLElement)->Bool {
+        Swift.print("UNTESTED")
+        return a.XMLString == b.XMLString
+    }
 }
 
 
