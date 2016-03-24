@@ -15,6 +15,7 @@ public class XMLParser{
     }
     /**
      * Returns all children of the root
+     * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
     public class func rootChildren(xmlStr:String)->Array<NSXMLElement>{
         let rootElement:NSXMLElement = root(xmlStr)!
@@ -23,14 +24,14 @@ public class XMLParser{
         return theChildren
     }
     /**
-    *
-    */
+     *
+     */
     class func children(){
-    
+        let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
     }
     /**
-    *
-    */
+     *
+     */
     public class func rootChildrenByFilePath(filePath:String)->Array<NSXMLElement>{
         let xmlStr:String = FileParser.content(filePath)!
         return rootChildren(xmlStr)
