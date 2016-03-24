@@ -13,8 +13,8 @@ class Database : EventSender{
         onEvent(DatabaseEvent(DatabaseEvent.addAt,index,self))
     }
     /**
-     *  @example setAttributeAt([0], ["title":"someTitle"]);
-     *  // :TODO: rename to changeAttribute? or editAttribute?
+     * @example setAttributeAt([0], ["title":"someTitle"]);
+     * // :TODO: rename to changeAttribute? or editAttribute?
      */
     func setAttributeAt(index:Array<Int>,_ attributes:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
         XMLModifier.setAttributeAt(xml, index, attributes)
