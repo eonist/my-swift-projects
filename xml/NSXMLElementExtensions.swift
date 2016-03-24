@@ -33,11 +33,11 @@ extension NSXMLElement {
     func hasComplexContent()->Bool{
         return self.childCount > 0 && self.children![0].localName != nil
     }
-    func valueAt(child:NSXMLElement,_ index:Array<Int>)->String?{//Convenience
-        return XMLParser.valueAt(child, index)
+    func valueAt(index:Array<Int>)->String?{//Convenience
+        return XMLParser.valueAt(self, index)
     }
-    func value(child:NSXMLElement)->String?{//Convenience
-        return XMLParser.value(child)
+    func value()->String?{//Convenience
+        return XMLParser.value(self)
     }
     func childAt(index:Array<Int>)->NSXMLElement?{//Convenience
         return XMLParser.childAt(self, index)
