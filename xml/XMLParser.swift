@@ -66,7 +66,7 @@ public class XMLParser{
         return attributes
     }
     /**
-     *
+     * New
      */
     class func attribs(child:NSXMLElement) -> Dictionary<String,String>{
         var attributes:Dictionary<String,String> = [:]
@@ -82,7 +82,7 @@ public class XMLParser{
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
     class func attributesAt(child:NSXMLElement, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
-        childAt(child,index)?.attributes
+        return childAt(child,index)?.attribs
     }
     /**
      * Returns child from @param children at @param index

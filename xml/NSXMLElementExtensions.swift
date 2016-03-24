@@ -45,7 +45,7 @@ extension NSXMLElement {
     func childByIndex(index:Int)->NSXMLElement?{//Convenience
         return self.childAtIndex(index) as? NSXMLElement
     }
-    func attribs()->Dictionary<String,String>{
+    var attribs:Dictionary<String,String> {//Convenience, the name attributes is occupied so attribs it is
        return XMLParser.attribs(self)
     }
     func addAt(child:NSXMLElement,_ index:Int)->NSXMLElement{//Convenience
