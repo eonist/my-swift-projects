@@ -71,7 +71,8 @@ public class XMLModifier {
      *
      */
     class func replaceAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {
-        
+        xml.replaceChildAtIndex(<#T##index: Int##Int#>, withNode: <#T##NSXMLNode#>)
+        return xml
     }
     
 
