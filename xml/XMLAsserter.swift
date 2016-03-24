@@ -28,9 +28,8 @@ public class XMLAsserter {
      */
     class func validXML(xmlStr:String)->Bool{
         let xmlDoc:NSXMLDocument? = try? NSXMLDocument(XMLString: xmlStr, options: 0)
-        
-
-        catch(e:Error){return false;}
+        if(xmlDoc == nil){return false}
+        xmlDoc?.kind
         if(xml.nodeKind() != XMLConstants.ELEMENT){return false;}
         return true;
     }
