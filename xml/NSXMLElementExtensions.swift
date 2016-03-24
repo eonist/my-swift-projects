@@ -57,4 +57,8 @@ extension NSXMLElement {
     func replaceAt(xml:NSXMLElement,_ index:Int,_ replacement:NSXMLElement) -> NSXMLElement {
         return XMLModifier.replaceAt(xml, index, replacement)
     }
+    func replaceAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {
+        XMLParser.childAt(xml, index.slice2(0,index.count-1))?.replaceAt(xml, index[index.count-1], replacement)
+        return xml
+    }
 }
