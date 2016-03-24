@@ -87,7 +87,7 @@ public class XMLParser{
             return xml
         }
         else if(index.count == 1 && xml != nil && xml?.childAtIndex(index[0]) != nil) {//XMLParser.childAt(xml!.children!, index[0])
-            return xml!.childAtIndex(index[0])
+            return xml!.at(index[0])
         }// :TODO: if index.length is 1 you can just ref index
         else if(index.count > 1 && xml!.children!.count > 0) {
             return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice(1,index.count))
