@@ -23,11 +23,8 @@ extension NSXMLElement {
     func appendChild(xml:NSXMLElement){//convenince
         self.addChild(xml)
     }
-    func removeChildAt(xml:NSXMLElement,_ index:Int){//convenince
-        self.removeChildAtIndex(index)
-    }
-    func removeChildAt(xml:NSXMLElement,_ index:Array<Int>){
-        XMLModifier.removeChildAt(xml, index)
+    func removeChildAt(index:Array<Int>){
+        XMLModifier.removeChildAt(self, index)
     }
     /**
      * Asserts if an NSXMLElement has complex content. Meaning something other than a stringValue. In particular another NSXMLElement
