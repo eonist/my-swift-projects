@@ -8,7 +8,6 @@ public class XMLModifier {
      */
     public class func test(){
         //xml.addChild()
-        
     }
     /**
      * Adds @param child to @param xml at an array index @param index
@@ -36,7 +35,6 @@ public class XMLModifier {
         xml.insertChild(child, atIndex: index)
         return xml;
     }
-    
     /**
      * @example XMLModifier.removeChildAt(xml, [0,0]);
      */
