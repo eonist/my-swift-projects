@@ -16,8 +16,9 @@ class Database : EventSender{
      *  @example setAttributeAt([0], {title:"someTitle"});
      *  // :TODO: rename to changeAttribute? or editAttribute?
      */
-    func setAttributeAt(index:Array<Int>,attribute:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
-        var xml:NSXMLElement = DatabaseModifier.setAttributeAt(this, index, attribute);
-        dispatchEvent(new DatabaseEvent(DatabaseEvent.SET_ATTRIBUTE_AT, index, xml));
+    func setAttributeAt(index:Array<Int>,_ attributes:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
+        var xml:NSXMLElement = XMLModifier.setAttributeAt(xml, index, attributes)
+        onEvent(DatabaseEvent(DatabaseEvent.addAt,index,self))
+        dispatchEvent(new DatabaseEvent(DatabaseEvent.SET_ATTRIBUTE_AT, index, xml))
     }
 }
