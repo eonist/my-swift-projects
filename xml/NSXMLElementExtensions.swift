@@ -37,10 +37,10 @@ extension NSXMLElement {
     func hasComplexContent()->Bool{
         return self.childCount > 0 && self.children![0].localName != nil
     }
-    func addChildAt(child:NSXMLElement,_ index:Int)->NSXMLElement{
+    func addAt(child:NSXMLElement,_ index:Int)->NSXMLElement{
         return XMLModifier.insertAt(self, index, child)
     }
-    func addAt(child:NSXMLElement,_ index:Array<Int>)->NSXMLElement{
+    func addchildAt(child:NSXMLElement,_ index:Array<Int>)->NSXMLElement{
         return XMLModifier.addChildAt(self, index, child)
     }
 }
