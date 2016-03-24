@@ -4,8 +4,8 @@ extension NSXMLElement {
     /**
      * convenience
      */
-    convenience init(_ xmlString:String) throws{
-        try self.init(XMLString:xmlString)
+    convenience init(_ xmlString:String){//<---recently removed the throw, and changed try to try!
+        try! self.init(XMLString:xmlString)
     }
     
     /*
