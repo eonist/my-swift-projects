@@ -1,6 +1,6 @@
 import Foundation
 
-class Database : IEventSender{
+class Database : EventSender{
     var xml : NSXMLElement
     init(xml:NSXMLElement) {
         self.xml = xml
@@ -10,6 +10,6 @@ class Database : IEventSender{
      */
     func addAt(index:Array<Int>,xml:NSXMLElement){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         XMLModifier.addChildAt(self.xml, index, xml);
-        DatabaseEvent(DatabaseEvent.addAt,index,self)
+        onEvent(DatabaseEvent(DatabaseEvent.addAt,index,self))
     }
 }
