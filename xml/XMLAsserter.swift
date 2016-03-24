@@ -27,11 +27,11 @@ public class XMLAsserter {
      * valid XML.
      */
     class func validXML(xmlStr:String)->Bool{
+        Swift.print("UNTESTED")
         let xmlDoc:NSXMLDocument? = try? NSXMLDocument(XMLString: xmlStr, options: 0)
         if(xmlDoc == nil){return false}
-        xmlDoc?.kind
-        if(xml.nodeKind() != XMLConstants.ELEMENT){return false;}
-        return true;
+        if(xmlDoc?.kind != NSXMLNodeKind.ElementKind){return false;}
+        return true
     }
 }
 
