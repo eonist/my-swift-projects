@@ -12,4 +12,12 @@ class Database : EventSender{
         XMLModifier.addChildAt(self.xml, index, xml);
         onEvent(DatabaseEvent(DatabaseEvent.addAt,index,self))
     }
+    /**
+     *  @example setAttributeAt([0], {title:"someTitle"});
+     *  // :TODO: rename to changeAttribute? or editAttribute?
+     */
+    func setAttributeAt(index:Array<Int>,attribute:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
+        var xml:NSXMLElement = DatabaseModifier.setAttributeAt(this, index, attribute);
+        dispatchEvent(new DatabaseEvent(DatabaseEvent.SET_ATTRIBUTE_AT, index, xml));
+    }
 }
