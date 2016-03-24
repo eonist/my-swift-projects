@@ -45,6 +45,9 @@ extension NSXMLElement {
     func childByIndex(index:Int)->NSXMLElement?{//Convenience
         return self.childAtIndex(index) as? NSXMLElement
     }
+    func attribs()->Dictionary<String,String>{
+       return XMLParser.attribs(self)
+    }
     func addAt(child:NSXMLElement,_ index:Int)->NSXMLElement{//Convenience
         return XMLModifier.insertAt(self, index, child)
     }

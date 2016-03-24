@@ -78,6 +78,13 @@ public class XMLParser{
         return attributes
     }
     /**
+     * Returns a key/value object with the attributes at the @param index in @param database
+     * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
+     */
+    class func attributesAt(child:NSXMLElement, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
+        childAt(child,index)?.attributes
+    }
+    /**
      * Returns child from @param children at @param index
      * EXAMPLE: XMLParser.childAt(children, 0)
      */
