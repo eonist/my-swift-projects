@@ -83,6 +83,7 @@ public class XMLParser{
      * @Note to find the children of the root use an empty array as the index value
      */
     class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->NSXMLElement? {
+        Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
         }
