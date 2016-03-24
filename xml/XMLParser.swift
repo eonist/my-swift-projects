@@ -90,13 +90,12 @@ public class XMLParser{
     * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
     */
     class func siblingAttribs(child:NSXMLElement, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
-    var xml = childAt(child, index);
-    var children:[Dictionary<String,String>] = []
-        for c in (xml?.children )!{
-            children.append(c.at)
+        let xml = childAt(child, index);
+        var result:[Dictionary<String,String>] = []
+        for c in xml?.children as! Array<NSXMLElement>{
+            result.append(c.attribs)
         }
-    
-    return children
+        return result
     }
     /**
      * Returns child from @param children at @param index
