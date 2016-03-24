@@ -2,14 +2,6 @@ import Foundation
 
 public class XMLModifier {
     /**
-     * Adding attributes to an element: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSXMLElement_Class/
-     * more here: https://gist.github.com/brentdax/caaaa134c500e00efd36
-     * worth a look (constructing html): https://gist.github.com/brentdax/caaaa134c500e00efd36
-     */
-    public class func test(){
-        //xml.addChild()
-    }
-    /**
      * Adds @param child to @param xml at an array index @param index
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
@@ -87,14 +79,16 @@ public class XMLModifier {
         return xml
     }
     
-
-    //stringValueAt
-    //replaceChildrenAt
-    //removeChildrenAt
-    //addChildrenAt
 }
 
 /**
+
+
+//stringValueAt
+//replaceChildrenAt
+//removeChildrenAt
+//addChildrenAt
+
 addXMLToXMLList,
 merge,
 setAttribute,
@@ -113,3 +107,9 @@ sortByName,
 sortByAttribute;
 
 */
+
+ /**
+ * Adding attributes to an element: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSXMLElement_Class/
+ * more here: https://gist.github.com/brentdax/caaaa134c500e00efd36
+ * worth a look (constructing html): https://gist.github.com/brentdax/caaaa134c500e00efd36
+ */
