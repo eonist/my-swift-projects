@@ -20,11 +20,11 @@ extension NSXMLElement {
     func hasAttribute(attrName:String)->Bool{
         return XMLAsserter.hasAttribute(self,attrName)
     }
-    /**
-     *
-     */
     func appendChild(xml:NSXMLElement){
         self.addChild(xml)
+    }
+    func removeChildAt(xml:NSXMLElement,){
+        
     }
     /**
      * Asserts if an NSXMLElement has complex content. Meaning something other than a stringValue. In particular another NSXMLElement
