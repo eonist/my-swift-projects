@@ -155,6 +155,7 @@ public class XMLParser{
     }
     /**
      * Parses through an xml and returns an array
+     * NOTE: this method does not seem to be recursive
      * @example
      * 	<items>
             <item title="orange" property="harry"/>
