@@ -60,7 +60,9 @@ public class XMLModifier {
         XMLParser.childAt(xml, index)?[key] = value
         return xml
     }
-
+    
+    //continue: make setAttributesAt
+    
     //setAttributesAt
     //setNameAt
     //stringValueAt
