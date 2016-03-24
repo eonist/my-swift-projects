@@ -26,8 +26,9 @@ public class XMLParser{
     /**
      *
      */
-    class func children(){
+    class func children(xmlStr:String)->Array<NSXMLElement>{
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
+        return xmlDoc.children as! [NSXMLElement]
     }
     /**
      *
