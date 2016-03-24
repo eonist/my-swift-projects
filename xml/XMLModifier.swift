@@ -67,11 +67,10 @@ public class XMLModifier {
         XMLParser.childAt(xml, index)?.setAttributesWithDictionary(attributes)
         return xml
     }
-    
     /**
      *
      */
-    class func replaceAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement){
+    class func replaceAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {
         
     }
     
