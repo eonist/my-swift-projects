@@ -54,10 +54,10 @@ extension NSXMLElement {
     func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> NSXMLElement {//Convenience
         return XMLModifier.setAttributeAt(xml, index, attributes)
     }
-    func replaceAt(xml:NSXMLElement,_ index:Int,_ replacement:NSXMLElement) -> NSXMLElement {
+    func replaceAt(xml:NSXMLElement,_ index:Int,_ replacement:NSXMLElement) -> NSXMLElement {//Convenience
         return XMLModifier.replaceAt(xml, index, replacement)
     }
-    func replaceChildAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {
+    func replaceChildAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {//Convenience
         return XMLModifier.replaceAt(xml, index, replacement)
     }
 }
