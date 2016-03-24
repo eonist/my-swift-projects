@@ -48,6 +48,8 @@ public class XMLModifier {
         xml.removeChildAtIndex(index)
         return xml
     }
+    
+    
 }
 
 /**
