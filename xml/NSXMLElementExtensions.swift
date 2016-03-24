@@ -26,6 +26,9 @@ extension NSXMLElement {
     func removeChildAt(index:Array<Int>){
         XMLModifier.removeChildAt(self, index)
     }
+    func removeAt(index:Int)->NSXMLElement{
+        return XMLModifier.removeChildAt(self, index)
+    }
     /**
      * Asserts if an NSXMLElement has complex content. Meaning something other than a stringValue. In particular another NSXMLElement
      * NOTE: To test if a child has string content: self.stringValue.count > 0
