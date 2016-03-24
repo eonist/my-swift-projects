@@ -32,7 +32,7 @@ public class XMLParser{
     /**
      * Returns the value of a child
      * NOTE: retuns "" if there is no value
-     * EXAMPLE: XMLParser.value(child)
+     * EXAMPLE: XMLParser.value("<p>text</p>".xml)//text
      */
     public class func value(child:NSXMLElement)->String{
         return child.stringValue!

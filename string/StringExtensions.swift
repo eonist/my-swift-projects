@@ -38,7 +38,7 @@ extension String {
     }
     var bool:Bool {return StringParser.boolean(self)}
     /**
-     * 
+     * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
     var xml:NSXMLElement {return NSXMLElement(self)}
 }
