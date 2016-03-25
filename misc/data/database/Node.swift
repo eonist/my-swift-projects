@@ -11,7 +11,7 @@ import Foundation
 */
 class Node : EventSender{//this should probably extend NSXMLElement, and just implement the eventsender as a method instead
     var xml : NSXMLElement
-    init(xml:NSXMLElement) {
+    init(_ xml:NSXMLElement) {
         self.xml = xml
     }
     /**
