@@ -51,6 +51,9 @@ public class XMLParser{
      * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
      */
     public class func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
+        
+        //you should probably not use this
+        
         var attributes:[Dictionary<String,String>] = []
         if(child.attributes?.count > 0){
             for node:NSXMLNode in child.attributes!{
