@@ -183,11 +183,13 @@ public class XMLParser{
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
      */
-    class func index(xml:NSXMLElement,_ key:String, _ value:String) -> Array<>? {
-        if(xml["@"+ObjectParser.key(attribute)] == ObjectParser.value(attribute)) {return []}
-        else if(xml.children().length() > 0){
-            for (var i : int = 0; i < xml.children().length(); i++) {
-                var child : XML = xml.children()[i];
+    class func index(xml:NSXMLElement,_ key:String, _ value:String) -> Array<NSXMLElement>? {
+        if(xml[key] == ObjectParser.value(attribute)) {
+            return []
+        }
+        else if(xml.childCount > 0){
+            for (var i : Int = 0; i < xml.childCount; i++) {
+                var child:NSXMLElement = xml.children()[i];
                 var match:Array = index(child,attribute);
                 if(match != null) return ([i] as Array).concat(match);
             }
