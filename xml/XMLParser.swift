@@ -181,6 +181,20 @@ public class XMLParser{
         return items;
     }
     /**
+     * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
+     */
+    class func index(xml:XML,attribute:Object):Array {
+        if(xml["@"+ObjectParser.key(attribute)] == ObjectParser.value(attribute)) return [];
+        else if(xml.children().length() > 0){
+            for (var i : int = 0; i < xml.children().length(); i++) {
+                var child : XML = xml.children()[i];
+                var match:Array = index(child,attribute);
+                if(match != null) return ([i] as Array).concat(match);
+            }
+        }
+        return null;
+    }
+    /**
      * Converts XML to Dictioinary and Array notation
      * NOTE: the format can then be converted back to xml and vis verca
      * EXAMPLE: toDictionary(try! NSXMLElement("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
