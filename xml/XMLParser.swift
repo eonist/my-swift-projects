@@ -52,7 +52,7 @@ public class XMLParser{
      */
     public class func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
         
-        //you should probably not use this
+        //you should probably not use this, use attribs instead
         
         var attributes:[Dictionary<String,String>] = []
         if(child.attributes?.count > 0){
