@@ -12,5 +12,5 @@ class NodeEvent:Event {
     }
 }
 extension NodeEvent{
-    var xml:NSXMLElement {return }
+    var xml:NSXMLElement? {return XMLParser.childAt((origin as! Node).xml, index)}
 }
