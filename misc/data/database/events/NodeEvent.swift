@@ -11,3 +11,6 @@ class NodeEvent:Event {
         super.init(type, origin)
     }
 }
+extension NodeEvent{
+    var xml:NSXMLElement {return }
+}
