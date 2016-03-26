@@ -32,7 +32,8 @@ public class XMLModifier {
      */
     class func removeChildAt(xml:NSXMLElement,_ index:Array<Int>) -> NSXMLElement {// :TODO: remove may need to be recursive, rename to removeAt?
         let match:NSXMLElement = XMLParser.childAt(xml, index.slice2(0,index.count-1))!
-        match.removeChildAtIndex(index[index.count-1])
+        
+        match.removeChildAt(index[index.count-1])
         return match
     }
     /**
