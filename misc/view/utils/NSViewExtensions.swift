@@ -82,7 +82,13 @@ extension NSView {
     func indexOf(subView:NSView)->Int{
         return NSViewParser.indexOf(self, subView)
     }
+    //DEPRECATED
     func getSubviewAt(i:Int)->NSView{
+        //favour getSubViewAt method instead, as its optional
         return NSViewParser.getSubviewAt(self, i)
     }
+    func getSubViewAt(i:Int)->NSView?{
+        return NSViewParser.getSubViewAt(self, i)
+    }
+    
 }
