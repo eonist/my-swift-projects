@@ -189,7 +189,7 @@ public class XMLParser{
         }
         else if(xml.childCount > 0){
             for (var i : Int = 0; i < xml.childCount; i++) {
-                let child:NSXMLElement = xml.children[i]
+                let child:NSXMLElement = xml.children![i]
                 var match:Array<Int>? = index(child,attribute)
                 if(match != nil) {return ([i] as Array<Int>) += (match)}
             }
