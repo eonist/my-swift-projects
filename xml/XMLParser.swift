@@ -183,8 +183,8 @@ public class XMLParser{
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
      */
-    class func index(xml:XML,attribute:Object):Array {
-        if(xml["@"+ObjectParser.key(attribute)] == ObjectParser.value(attribute)) return [];
+    class func index(xml:NSXMLElement,_ key:String, _ value:String) -> Array<>? {
+        if(xml["@"+ObjectParser.key(attribute)] == ObjectParser.value(attribute)) {return []}
         else if(xml.children().length() > 0){
             for (var i : int = 0; i < xml.children().length(); i++) {
                 var child : XML = xml.children()[i];
@@ -192,7 +192,7 @@ public class XMLParser{
                 if(match != null) return ([i] as Array).concat(match);
             }
         }
-        return null;
+        return nil;
     }
     /**
      * Converts XML to Dictioinary and Array notation
