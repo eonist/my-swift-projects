@@ -32,9 +32,10 @@ class Node : EventSender{//this should probably extend NSXMLElement, and just im
     /**
      * Removes the item @param index
      */
-    func removeAt(index:Array<Int>){// :TODO: do we still need the event dispatching, can't the calling method do this?
-        XMLModifier.removeChildAt(xml, index)
+    func removeAt(index:Array<Int>)->NSXMLElement{// :TODO: do we still need the event dispatching, can't the calling method do this?
+        let removedXML:NSXMLElement = XMLModifier.removeChildAt(xml, index)
         onEvent(NodeEvent(NodeEvent.removeAt,index,self))
+        return removedXML
     }
 }
 /*
