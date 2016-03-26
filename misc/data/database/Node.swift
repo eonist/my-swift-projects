@@ -17,7 +17,7 @@ class Node : EventSender{//this should probably extend NSXMLElement, and just im
     /**
      * // :TODO: consider renaming to appendAt
      */
-    func addAt(index:Array<Int>,xml:NSXMLElement){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func addAt(index:Array<Int>,_ xml:NSXMLElement){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         XMLModifier.addChildAt(self.xml, index, xml);
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
