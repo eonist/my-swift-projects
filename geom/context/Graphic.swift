@@ -78,7 +78,7 @@ class Graphic:InteractiveView2,IGraphic{
         
         var localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
         //Swift.print("localPoint: " + "\(localPoint)")
-        localPoint += fillShape.frame.origin
+        localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldnt but they do so this is a quick fix. Resolve this later and do it better
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
