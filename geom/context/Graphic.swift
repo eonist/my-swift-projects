@@ -76,8 +76,9 @@ class Graphic:InteractiveView2,IGraphic{
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
-        let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
+        var localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
         //Swift.print("localPoint: " + "\(localPoint)")
+        localPoint += fillShape.frame.origin
         
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
