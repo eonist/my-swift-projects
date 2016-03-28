@@ -5,9 +5,7 @@ class DictionaryModifier{
 	 * Returns the left dictionary for convenience purposes
 	 */
 	class func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, _ right: Dictionary<KeyType, ValueType>)-> Dictionary<KeyType, ValueType>{
-	    for (k, v) in right { 
-	        left.updateValue(v, forKey: k) 
-	    } 
+	    for (k, v) in right { left.updateValue(v, forKey: k)}
 	    return left
 	}
 	/**
@@ -22,12 +20,8 @@ class DictionaryModifier{
 	 */
 	class func combine<T>(a:Dictionary<String,T>, _ b:Dictionary<String,T>)->Dictionary<String,T>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
 		var c:Dictionary<String,T> = [:]//use generics in the future: T and <T>
-        for keyA in a.keys{
-            c[keyA] = a[keyA]//copies the items in a to the return object
-        }
+        for keyA in a.keys{c[keyA] = a[keyA]}//copies the items in a to the return object
         for keyB in b.keys {c[keyB] = b[keyB]}//assigns the items in b to the return object, if they already exist s they are overriden
-            
-        
 		return c
 	}
 }
