@@ -20,14 +20,14 @@ class DictionaryModifier{
 	 * var c:Object = ObjectModifier.merge(a, b);
 	 * ObjectDescriber.describe2(c)//Output:    [number] index => 2, [string] color => red, [string] name => john
 	 */
-	class func combine(a:Dictionary<String,String>, _ b:Dictionary<String,String>)->Dictionary<String,String>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
-		var c:Dictionary<String,String> = [:]//use generics in the future: T and <T>
+	class func combine<T>(a:Dictionary<String,T>, _ b:Dictionary<String,T>)->Dictionary<String,T>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
+		var c:Dictionary<String,T> = [:]//use generics in the future: T and <T>
         for keyA in a.keys{
             c[keyA] = a[keyA]//copies the items in a to the return object
         }
-        for keyB in b.keys {
-            c[keyB] = b[keyB]
-        }//assigns the items in b to the return object, if they already exist s they are overriden
-		return c;
+        for keyB in b.keys {c[keyB] = b[keyB]}//assigns the items in b to the return object, if they already exist s they are overriden
+            
+        
+		return c
 	}
 }
