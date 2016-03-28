@@ -7,8 +7,9 @@ extension NSXMLElement {
     convenience init(_ xmlString:String){//<---recently removed the throw, and changed try to try!
         try! self.init(XMLString:xmlString)
     }
-    /*
-     * convenience
+    /**
+     * NOTE: this method enables you to add add values to xml attributes
+     * EXAMPLE: xmlChild["color"] = "blue"
      */
     subscript(key: String) -> String? {
         get {return XMLParser.attribute(self, key)}
