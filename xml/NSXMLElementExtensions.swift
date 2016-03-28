@@ -12,10 +12,7 @@ extension NSXMLElement {
      */
     subscript(key: String) -> String? {
         get {return XMLParser.attribute(self, key)}
-        set {
-            let attribs = self.attribs
-            self.setAttributesWithDictionary(DictionaryModifier.combine(attribs,[key:newValue!]))
-        }
+        set {self.setAttributesWithDictionary(self.attribs.combine([key:newValue!]))}
     }
     func hasAttribute(attrName:String)->Bool{//Convenience
         return XMLAsserter.hasAttribute(self,attrName)
