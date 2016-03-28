@@ -23,9 +23,11 @@ class DictionaryModifier{
 	class func combine(a:Dictionary<String,String>, _ b:Dictionary<String,String>)->Dictionary<String,String>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
 		var c:Dictionary<String,String> = [:]//use generics in the future: T and <T>
         for keyA in a.keys{
-            c[keyA] = a[keyA];//copies the items in a to the return object
+            c[keyA] = a[keyA]//copies the items in a to the return object
         }
-		//for(keyB in b) c[keyB] = b[keyB];//assigns the items in b to the return object, if they already exist s they are overriden
+        for keyB in b.keys {
+            c[keyB] = b[keyB]
+        }//assigns the items in b to the return object, if they already exist s they are overriden
 		return c;
 	}
 }
