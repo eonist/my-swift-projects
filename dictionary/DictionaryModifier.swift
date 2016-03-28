@@ -4,7 +4,7 @@ class DictionaryModifier{
 	 * Merges 2 arrays, changes the left array, the right is untouched
 	 * Returns the left dictionary for convenience purposes
 	 */
-	class func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>)-> Dictionary<KeyType, ValueType>{ 
+	class func merge <KeyType, ValueType> (inout left: Dictionary<KeyType, ValueType>, _ right: Dictionary<KeyType, ValueType>)-> Dictionary<KeyType, ValueType>{
 	    for (k, v) in right { 
 	        left.updateValue(v, forKey: k) 
 	    } 
@@ -20,7 +20,7 @@ class DictionaryModifier{
 	 * var c:Object = ObjectModifier.merge(a, b);
 	 * ObjectDescriber.describe2(c)//Output:    [number] index => 2, [string] color => red, [string] name => john
 	 */
-	class func combine(a:Dictionary<String,String>, b:Dictionary<String,String>)->Dictionary<String,String>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
+	class func combine(a:Dictionary<String,String>, _ b:Dictionary<String,String>)->Dictionary<String,String>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
 		var c:Dictionary<String,String> = [:]//use generics in the future: T and <T>
         for keyA in a.keys{
             c[keyA] = a[keyA];//copies the items in a to the return object
