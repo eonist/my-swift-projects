@@ -24,6 +24,7 @@ extension String {
     }
     var count:Int{return self.characters.count}//Convenince
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
+    var double:Double{return Double(self)!}//TODO:you should also do the same for the Any type
     func encode()->String?{
         return StringParser.encode(self)
     }
