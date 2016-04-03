@@ -10,19 +10,19 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->UInt {
-        var r:CGFloat 
-        var g:CGFloat 
-        var b:CGFloat
+    class func rgb(hue:UInt, _ saturation:UInt, _ brightness:UInt)->UInt {
+        var r:UInt
+        var g:UInt
+        var b:UInt
         if (saturation == 0) {r = brightness; g = brightness;b = brightness}
         else {
             var h:CGFloat = (hue % 360) / 60
             var i:Int = Int(h)
-            var f:CGFloat = h - i
+            var f:CGFloat = h - i.cgFloat//<--this seems strange
             var p:CGFloat = brightness * (1 - saturation)
             var q:CGFloat = brightness * (1 - (saturation * f))
             var t:CGFloat = brightness * (1 - (saturation * (1 - f)))
-            switch (i) {
+            switch(i) {
                 case 0:
                     r = brightness
                     g = t
@@ -58,6 +58,7 @@ class RGBParser {
         r *= 255
         g *= 255
         b *= 255
-        return (r << 16 | g << 8 | b)
+        let rgb:CGFloat = (r << 16 | g << 8 | b)
+        return
     }
 }
