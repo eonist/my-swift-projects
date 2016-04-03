@@ -28,7 +28,6 @@ public func + (left: Double, right: CGFloat) -> CGFloat {
 public func * (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) * right
 }
-
 /**
  *
  */
