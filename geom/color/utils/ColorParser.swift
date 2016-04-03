@@ -24,16 +24,6 @@ class ColorParser {/*Covers returning hex colors etc*/
         bb = (bb.count == 1) ? "0" + bb : bb
         return (rr + gg + bb)/*.toUpperCase()*/
     }
-    /**
-     * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
-     */
-    class func rgba(nsColor:NSColor)->(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){
-        let ciColor:CIColor = CIColor(color: nsColor)!
-        return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
-    }
-    
-
-    
 }
 extension ColorParser{
     /**
@@ -42,6 +32,5 @@ extension ColorParser{
     class func hexColor(nsColor:NSColor)->String {
         let rgba = nsColor.rgba
         return ColorParser.hexColor(rgba.r,rgba.g,rgba.b)
-    }
-        
+    } 
 }
