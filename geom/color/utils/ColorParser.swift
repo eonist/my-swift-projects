@@ -85,9 +85,9 @@ class ColorParser {/*Covers returning hex colors etc*/
     /**
      * @return 
      */
-    class func hsv(rgb:uint)->HSV {
-        var rgbObj:Object = ColorParser.rgbByHex(rgb);
-        return ColorParser.hsv(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"]);
+    class func hsv(color:NSColor)->HSV {
+        let rgb = ColorParser.rgba(color)
+        return ColorParser.hsv(rgb.r,rgb.g,rgb.b)
     }
     /**
      *
