@@ -33,4 +33,11 @@ class ColorUtils {
     class func hexString(hex:UInt) -> String{
         return NSString(format: "%2X", hex) as String
     }
+    
+    /**
+     *
+     */
+    class func rgb(color:NSColor) -> UInt{
+        
+    }
 }
