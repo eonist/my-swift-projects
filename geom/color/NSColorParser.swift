@@ -38,7 +38,7 @@ class NSColorParser {
 extension NSColorParser{
     /**
      * Convenince implementation of nsColor with Int values
-     * NOTE: there is no need to make a convenince method for Double values, since Double values foes well with thte CGFLoat implementation of the same method
+     * NOTE: there is no need to make a convenince method for Double values, since Double values does well with thte CGFLoat implementation of the same method
      * r: 0 - 255
      */
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
