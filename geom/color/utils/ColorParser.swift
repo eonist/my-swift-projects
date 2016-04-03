@@ -67,9 +67,9 @@ class ColorParser {/*Covers returning hex colors etc*/
     /**
      *
      */
-    class func hls(rgb:UInt)->HLS{
-        var rgbObj:[String:CGFloat] = ColorParser.rgbByHex(rgb)
-        return ColorParser.hlsByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"])
+    class func hls(color:NSColor)->HLS{
+        let rgb = ColorParser.rgba(color)
+        return ColorParser.hls(rgb.r,rgb.g,rgb.b)
     }
     /**
      * This was created with references to a few anonymous calculations written in other languages, None of which were very accurate
@@ -85,7 +85,7 @@ class ColorParser {/*Covers returning hex colors etc*/
      * NOTE: We cant use UInt here because UInt doesnt support NaN
      */
     class func hls(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
-        var h:CGFloat
+        var h:CGFloat = 0//<<--this wasnt here before but its need to be able to compile. 
         var l:CGFloat
         var s:CGFloat
         let max:CGFloat = (Swift.max(Swift.max(r, g), b))/255
