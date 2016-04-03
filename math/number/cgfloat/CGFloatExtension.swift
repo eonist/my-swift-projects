@@ -6,6 +6,7 @@ extension CGFloat {
     func toFixed(places:Int)->CGFloat{
         return NumberModifier.toFixed(self, places)
     }
+    var uint:UInt{return UInt(self)}
 }
 /**
  * Support for addition of CGFLoat and Double
