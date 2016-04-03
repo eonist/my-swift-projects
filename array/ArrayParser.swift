@@ -45,7 +45,7 @@ class ArrayParser{
     }
     
     /**
-     * 
+     * New
      */
     class func indx<T>(arr: [T], _ item: T) -> Int{
         for var i = 0; i < arr.count; ++i{
