@@ -25,7 +25,7 @@ class HSBColor {
      *  @param saturation The saturation.
      *  @param brightness The brightness.
      */
-    init(hue:CGFloat = NaN, _ saturation:CGFloat = NaN, _ brightness:CGFloat = NaN) {
+    init(_ hue:CGFloat = NaN, _ saturation:CGFloat = NaN, _ brightness:CGFloat = NaN) {
         self.hueValue = hue
         self.saturation = saturation
         self.brightness = brightness

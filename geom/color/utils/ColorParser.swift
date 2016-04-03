@@ -60,7 +60,7 @@ class ColorParser {/*Covers returning hex colors etc*/
             }
             if(hue < 0) {hue += 360}
         }
-        return HSBColor(hue, saturation, brightness)
+        return HSBColor(hue.cgFloat, saturation.cgFloat, brightness.cgFloat)
     }
 }
 
