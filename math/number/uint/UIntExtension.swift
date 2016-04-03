@@ -1,5 +1,5 @@
 import Foundation
 
-class UIntExtension {
-
+extension UInt {
+    var cgFloat:CGFloat {return CGFloat(self)}//Convenince
 }
