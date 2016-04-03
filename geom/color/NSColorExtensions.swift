@@ -29,6 +29,7 @@ extension NSColor{
      * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
     var rgb:Double?{return Double("0x" + ColorParser.hexColor(self))}
+    var rgb:UInt{return }
     /**
      *
      */
