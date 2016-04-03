@@ -96,9 +96,9 @@ class ColorParser {/*Covers returning hex colors etc*/
         else if(g/255 == max) {h = 2+(b-r)/delta/255}
         else if(b/255 == max) {h = 4+(r-g)/delta/255}
         h *= 40
-        if(h < 0) h += 240
-        h = Swift.round(h)
-        return HLS(((h.isNaN) ? 0 : h), Swift.round(l*240), Swift.round(s*240))
+        if(h < 0) {h += 240}
+        h = round(h)
+        return HLS(((h.isNaN) ? 0 : h), round(l*240), round(s*240))
     }
 }
 
