@@ -10,53 +10,54 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgbByHsb(hue:Number, saturation:Number, brightness:Number):uint {
-        
-        var r:Number, g:Number, b:Number;
-        if (saturation == 0) r = g = b = brightness;
+    class func rgb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->UInt {
+        var r:CGFloat 
+        var g:CGFloat 
+        var b:CGFloat
+        if (saturation == 0) {r = brightness; g = brightness;b = brightness}
         else {
-            var h:Number = (hue % 360) / 60;
-            var i:int = int(h);
-            var f:Number = h - i;
-            var p:Number = brightness * (1 - saturation);
-            var q:Number = brightness * (1 - (saturation * f));
-            var t:Number = brightness * (1 - (saturation * (1 - f)));
+            var h:CGFloat = (hue % 360) / 60
+            var i:Int = Int(h)
+            var f:CGFloat = h - i
+            var p:CGFloat = brightness * (1 - saturation)
+            var q:CGFloat = brightness * (1 - (saturation * f))
+            var t:CGFloat = brightness * (1 - (saturation * (1 - f)))
             switch (i) {
                 case 0:
-                    r = brightness;
-                    g = t;
-                    b = p;
-                    break; 
+                    r = brightness
+                    g = t
+                    b = p
+                    break 
                 case 1:
-                    r = q;                    
-                    g = brightness;
-                    b = p;
-                    break; 
+                    r = q                    
+                    g = brightness
+                    b = p
+                    break 
                 case 2:
-                    r = p;
-                    g = brightness;
-                    b = t; 
-                    break;
+                    r = p
+                    g = brightness
+                    b = t 
+                    break
                 case 3:
-                    r = p;
-                    g = q;
-                    b = brightness;
-                    break; 
+                    r = p
+                    g = q
+                    b = brightness
+                    break 
                 case 4:
-                    r = t;
-                    g = p;
-                    b = brightness; 
-                    break;
+                    r = t
+                    g = p
+                    b = brightness 
+                    break
                 case 5: 
-                    r = brightness;
-                    g = p;
-                    b = q;
-                    break;
+                    r = brightness
+                    g = p
+                    b = q
+                    break
             }
         }
-        r *= 255;
-        g *= 255;
-        b *= 255;
-        return (r << 16 | g << 8 | b);
+        r *= 255
+        g *= 255
+        b *= 255
+        return (r << 16 | g << 8 | b)
     }
 }
