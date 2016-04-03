@@ -31,6 +31,34 @@ class ColorParser {/*Covers returning hex colors etc*/
         let ciColor:CIColor = CIColor(color: nsColor)!
         return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
+    
+    /**
+     *  Converts a color from RGB format into an HSBColor.
+     *  @param rgb The RGB color.
+     *  @return The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
+     */
+    class func hsbByRgb(rgb:uint):HSBColor {
+    var hue:Number, saturation:Number, brightness:Number;
+    var r:Number = ((rgb >> 16) & 0xff) / 255;
+    var g:Number = ((rgb >> 8) & 0xff) / 255;
+    var b:Number = (rgb & 0xff) / 255;
+    var max:Number = Math.max(r, Math.max(g, b));
+    var min:Number = Math.min(r, Math.min(g, b));
+    var delta:Number = max - min;
+    brightness = max;
+    saturation = max != 0 ? delta / max : 0;
+    if (saturation == 0) hue = 0; /*this was set to NaN, but 0 seemed more suitable*/
+    else {
+				if (r == max) hue = (g - b) / delta;
+    else if (g == max)
+    hue = 2 + (b - r) / delta;
+    else if (b == max)
+    hue = 4 + (r - g) / delta;
+				hue = hue * 60;
+				if (hue < 0) hue += 360;
+    }
+    return new HSBColor(hue, saturation, brightness);
+    }
 }
 
 extension ColorParser{
