@@ -9,6 +9,12 @@ class RGBParser {
         return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
     /**
+     *
+     */
+    class func rgbValueByRgb(r:UInt,g:UInt,b:UInt) -> NSColor {
+        return NSColorParser.nsColor(r, g, b)
+    }
+    /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.
      *  @param hue The hue. 0-360
      *  @param saturation The saturation. 0-1
