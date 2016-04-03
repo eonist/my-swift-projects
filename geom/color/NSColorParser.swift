@@ -44,7 +44,7 @@ extension NSColorParser{
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
         return NSColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
     }
-    /*
+    /**
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */
