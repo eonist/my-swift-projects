@@ -21,3 +21,6 @@ class Event{
         return self
     }
 }
+extension Event{
+    
+}
