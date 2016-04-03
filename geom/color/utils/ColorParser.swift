@@ -50,7 +50,9 @@ class ColorParser {/*Covers returning hex colors etc*/
      */
     class func hsbByRgb(rgb:UInt)->HSBColor {
         let someColor:NSColor = NSColor.redColor()
-        var hue:CGFloat, saturation:CGFloat, brightness:CGFloat;
+        var hue:UInt
+        var saturation:UInt
+        var brightness:UInt
         var r:UInt = ((rgb >> 16) & 0xff) / 255
         var g:UInt = ((rgb >> 8) & 0xff) / 255
         var b:UInt = (rgb & 0xff) / 255
@@ -59,6 +61,9 @@ class ColorParser {/*Covers returning hex colors etc*/
         var delta:UInt = max - min
         brightness = max
         saturation = max != 0 ? delta / max : 0
+        
+        //Continue here: fix the bellow
+        
         if (saturation == 0) hue = 0; /*this was set to NaN, but 0 seemed more suitable*/
         else {
     				if (r == max) hue = (g - b) / delta;
