@@ -84,13 +84,13 @@ class ColorParser {/*Covers returning hex colors etc*/
      * print(hls.s);   // outputs a scale of 0-240
      * NOTE: We cant use UInt here because UInt doesnt support NaN
      */
-    class func hlsByRgb(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
+    class func hls(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
         var h:CGFloat
         var l:CGFloat
         var s:CGFloat
-        var max:CGFloat = (Swift.max(Swift.max(r, g), b))/255
-        var min:CGFloat = (Swift.min(Swift.min(r, g), b))/255
-        var delta:CGFloat = max-min
+        let max:CGFloat = (Swift.max(Swift.max(r, g), b))/255
+        let min:CGFloat = (Swift.min(Swift.min(r, g), b))/255
+        let delta:CGFloat = max-min
         l = (max+min)/2
         s = (max == min) ? 0 : ((l <= 0.5) ? delta/l/2 : delta/(2-l*2))
         if(r/255 == max) {h = (g-b)/delta/255}
