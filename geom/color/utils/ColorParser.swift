@@ -36,8 +36,9 @@ class ColorParser {/*Covers returning hex colors etc*/
      *  @param rgb The RGB color.
      *  @return The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
      */
-    class func hsbByRgb(rgb:UInt)->HSBColor {
+    class func hsb(rgb:UInt)->HSBColor {
         //let someColor:NSColor = NSColor.redColor()
+        NSColorParser.
         var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:UInt
         var brightness:UInt
