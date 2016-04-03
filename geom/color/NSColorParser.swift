@@ -48,14 +48,14 @@ extension NSColorParser{
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */
-    class func nsColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->NSColor{
+    class func nsColor(hexColor:UInt, _ alpha:CGFloat = 1.0)->NSColor{
         //Swift.print("hexColor: " + "\(hexColor)")
         let rgb:UInt = hexColor
-        let r:UInt = rgb >> 16;
+        let r:UInt = rgb >> 16
         //Swift.print("r: " + "\(r)")
-        let g:UInt = (rgb ^ (r << 16)) >> 8;
+        let g:UInt = (rgb ^ (r << 16)) >> 8
         //Swift.print("g: " + "\(g)")
-        let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
+        let b:UInt = (rgb ^ (r << 16)) ^ (g << 8)
         //Swift.print("b: " + "\(b)")
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
