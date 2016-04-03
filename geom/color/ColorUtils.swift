@@ -35,9 +35,9 @@ class ColorUtils {
     }
     
     /**
-     *
+     * Convenience method (since extensions can only return one type of each var)
      */
     class func rgb(color:NSColor) -> UInt{
-        
+        return UInt(CGFloat(color.rgb!))
     }
 }
