@@ -12,13 +12,13 @@ class HSBColor {
      * 0 (black) and 1 (full saturation), which represents the distance
      * from the center in the HSB cone.
      */
-    private var saturation:CGFloat
+    var saturation:CGFloat
     /**
      * The brightness parameter for this HSB color. This is a value between
      * 0 (black) and 1 (full brightness), which represents the distance
      * from the apex of the HSB cone.
      */
-    private var brightness:CGFloat
+    var brightness:CGFloat
     /**
      *  Constructs an HSBColor with optional parameters.
      *  @param hue The hue.
