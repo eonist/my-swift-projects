@@ -60,7 +60,7 @@ class RGBParser {
         r *= 255
         g *= 255
         b *= 255
-        let rgb:UInt = (UInt(r) << 16 | UInt(g) << 8 | UInt(b))
+        let rgb:UInt = (r.uint << 16 | g.uint << 8 | b.uint)
         let color:NSColor = NSColorParser.nsColor(rgb)
         return color
     }
