@@ -78,4 +78,11 @@ class RGBParser {
         let color:NSColor = NSColorParser.nsColor(rgb)
         return color
     }
+    
+    
+    //Continue here: Implement the rgbByHsb() method
+    
+    
+    
+    
 }
