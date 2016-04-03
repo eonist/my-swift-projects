@@ -43,6 +43,16 @@ class ArrayParser{
         }
         return -1
     }
+    
+    /**
+     * 
+     */
+    class func indx<T>(arr: [T], _ item: T) -> Int{
+        for var i = 0; i < arr.count; ++i{
+            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
+        }
+        return -1
+    }
     /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
