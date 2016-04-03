@@ -61,7 +61,7 @@ class RGBParser {
                     b = q
                     break
                 default:
-                    
+                    fatalError("this can't happen")
                     break;
             }
         }
