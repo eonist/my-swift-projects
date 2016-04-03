@@ -37,7 +37,10 @@ class ColorParser {/*Covers returning hex colors etc*/
      *  @param rgb The RGB color.
      *  @return The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
      */
-    class func hsbByRgb(rgb:UInt):HSBColor {
+    class func hsbByRgb(rgb:UInt)->HSBColor {
+        
+        let someColor:NSColor = NSColor
+        
         var hue:CGFloat, saturation:CGFloat, brightness:CGFloat;
         var r:CGFloat = ((rgb >> 16) & 0xff) / 255;
         var g:CGFloat = ((rgb >> 8) & 0xff) / 255;
