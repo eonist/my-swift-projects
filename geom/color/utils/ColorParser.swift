@@ -31,37 +31,24 @@ class ColorParser {/*Covers returning hex colors etc*/
         let ciColor:CIColor = CIColor(color: nsColor)!
         return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
-    
     /**
      *  Converts a color from RGB format into an HSBColor.
      *  @param rgb The RGB color.
      *  @return The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
      */
-    
-     /*
-     
-     let r:UInt = rgb >> 16;
-     //Swift.print("r: " + "\(r)")
-     let g:UInt = (rgb ^ (r << 16)) >> 8;
-     //Swift.print("g: " + "\(g)")
-     let b:UInt = (rgb ^ (r << 16)) ^ (g << 8);
-     
-     
-     */
     class func hsbByRgb(rgb:UInt)->HSBColor {
-        let someColor:NSColor = NSColor.redColor()
+        //let someColor:NSColor = NSColor.redColor()
         var hue:UInt
         var saturation:UInt
         var brightness:UInt
-        var r:UInt = ((rgb >> 16) & 0xff) / 255
-        var g:UInt = ((rgb >> 8) & 0xff) / 255
-        var b:UInt = (rgb & 0xff) / 255
-        var max:UInt = Swift.max(r, Swift.max(g, b))
-        var min:UInt = Swift.min(r, Swift.min(g, b))
-        var delta:UInt = max - min
+        let r:UInt = ((rgb >> 16) & 0xff) / 255
+        let g:UInt = ((rgb >> 8) & 0xff) / 255
+        let b:UInt = (rgb & 0xff) / 255
+        let max:UInt = Swift.max(r, Swift.max(g, b))
+        let min:UInt = Swift.min(r, Swift.min(g, b))
+        let delta:UInt = max - min
         brightness = max
         saturation = max != 0 ? delta / max : 0
-        
         if (saturation == 0) {hue = 0} /*this was set to NaN, but 0 seemed more suitable*/
         else {
             if(r == max){hue = (g - b) / delta}
@@ -70,9 +57,10 @@ class ColorParser {/*Covers returning hex colors etc*/
             }else if(b == max){
                 hue = 4 + (r - g) / delta
                 hue = hue * 60
-            }if(hue < 0) {hue += 360}
+            }
+            if(hue < 0) {hue += 360}
         }
-        return new HSBColor(hue, saturation, brightness);
+        return HSBColor(hue, saturation, brightness)
     }
 }
 
