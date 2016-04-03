@@ -64,15 +64,15 @@ class ColorParser {/*Covers returning hex colors etc*/
         
         //Continue here: fix the bellow
         
-        if (saturation == 0) hue = 0; /*this was set to NaN, but 0 seemed more suitable*/
+        if (saturation == 0){ hue = 0} /*this was set to NaN, but 0 seemed more suitable*/
         else {
-    				if (r == max) hue = (g - b) / delta;
-        else if (g == max)
-        hue = 2 + (b - r) / delta;
-        else if (b == max)
-        hue = 4 + (r - g) / delta;
-    				hue = hue * 60;
-    				if (hue < 0) hue += 360;
+            if (r == max) {hue = (g - b) / delta}
+            else if (g == max){
+            hue = 2 + (b - r) / delta
+            else if {(b == max)}
+            hue = 4 + (r - g) / delta;
+            hue = hue * 60
+            if (hue < 0) {hue += 360}
         }
         return new HSBColor(hue, saturation, brightness);
     }
