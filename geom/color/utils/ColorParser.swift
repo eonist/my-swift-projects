@@ -64,6 +64,13 @@ class ColorParser {/*Covers returning hex colors etc*/
         }
         return HSBColor(hue.cgFloat, saturation.cgFloat, brightness.cgFloat)
     }
+    /**
+     *
+     */
+    class func hls(rgb:UInt)->HLS{
+        var rgbObj:[String:CGFloat] = ColorParser.rgbByHex(rgb);
+        return ColorParser.hlsByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"]);
+    }
 }
 
 extension ColorParser{
