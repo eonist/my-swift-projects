@@ -17,7 +17,7 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->NSColor {
+    class func rgbValueByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->NSColor {
         var r:CGFloat 
         var g:CGFloat 
         var b:CGFloat
