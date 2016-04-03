@@ -68,8 +68,8 @@ class ColorParser {/*Covers returning hex colors etc*/
      *
      */
     class func hls(rgb:UInt)->HLS{
-        var rgbObj:[String:CGFloat] = ColorParser.rgbByHex(rgb);
-        return ColorParser.hlsByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"]);
+        var rgbObj:[String:CGFloat] = ColorParser.rgbByHex(rgb)
+        return ColorParser.hlsByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"])
     }
 }
 
