@@ -38,7 +38,7 @@ class ColorParser {/*Covers returning hex colors etc*/
      */
     class func hsbByRgb(rgb:UInt)->HSBColor {
         //let someColor:NSColor = NSColor.redColor()
-        var hue:UInt
+        var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:UInt
         var brightness:UInt
         let r:UInt = ((rgb >> 16) & 0xff) / 255
