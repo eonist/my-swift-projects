@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class RGBParser {
     /**
@@ -10,18 +10,18 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgb(hue:UInt, _ saturation:UInt, _ brightness:UInt)->UInt {
-        var r:UInt
-        var g:UInt
-        var b:UInt
+    class func rgb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->UInt {
+        var r:CGFloat 
+        var g:CGFloat 
+        var b:CGFloat
         if (saturation == 0) {r = brightness; g = brightness;b = brightness}
         else {
-            var h:CGFloat = (hue % 360) / 60
-            var i:Int = Int(h)
-            var f:CGFloat = h - i.cgFloat//<--this seems strange
-            var p:CGFloat = brightness * (1 - saturation)
-            var q:CGFloat = brightness * (1 - (saturation * f))
-            var t:CGFloat = brightness * (1 - (saturation * (1 - f)))
+            let h:CGFloat = (hue % 360) / 60
+            let i:Int = Int(h)
+            let f:CGFloat = h - i.cgFloat//<--this seems strange
+            let p:CGFloat = brightness * (1 - saturation)
+            let q:CGFloat = brightness * (1 - (saturation * f))
+            let t:CGFloat = brightness * (1 - (saturation * (1 - f)))
             switch(i) {
                 case 0:
                     r = brightness
@@ -53,12 +53,15 @@ class RGBParser {
                     g = p
                     b = q
                     break
+                default:
+                    break;
             }
         }
         r *= 255
         g *= 255
         b *= 255
-        let rgb:CGFloat = (r << 16 | g << 8 | b)
-        return
+        let rgb:UInt = (UInt(r) << 16 | UInt(g) << 8 | UInt(b))
+        let color:NSColor = NSColorParser.nsColor(rgb)
+        return color
     }
 }
