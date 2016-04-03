@@ -51,14 +51,15 @@ class ColorParser {/*Covers returning hex colors etc*/
         saturation = max != 0 ? delta / max : 0
         if (saturation == 0) {hue = 0} /*this was set to NaN, but 0 seemed more suitable*/
         else {
-            if(r == max){hue = (g - b) / delta}
-            else if(g == max){
+            if(r == max){
+                hue = (g - b) / delta
+            }else if(g == max){
                 hue = 2 + (b - r) / delta
             }else if(b == max){
                 hue = 4 + (r - g) / delta
                 hue = hue * 60
-            }
-            if(hue < 0) {hue += 360}
+                if(hue < 0) {hue += 360}
+            } 
         }
         return HSBColor(hue.cgFloat, saturation.cgFloat, brightness.cgFloat)
     }
