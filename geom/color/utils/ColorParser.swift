@@ -65,6 +65,31 @@ class ColorParser {/*Covers returning hex colors etc*/
         return HSBColor(hue.cgFloat, saturation.cgFloat, brightness.cgFloat)
     }
     /**
+     * @Note flacky at some values like magenta
+     * @return h: 0-240, s: 0-1, v 0-1
+     */
+    class func hsvByRgb(r:UInt, _ g:UInt, _ b:UInt):HSV{
+        var max:UInt = Swift.max(r, g, b);
+        var min:UInt = Swift.min(r, g, b);
+        var hue:Number = 0;
+        var saturation:Number = 0;
+        var value:Number = 0;
+        if(max == min) hue = 0;/*get Hue*/
+        else if(max == r) hue = (60 * (g-b) / (max-min) + 360) % 360;
+        else if(max == g) hue = (60 * (b-r) / (max-min) + 120);
+        else if(max == b) hue = (60 * (r-g) / (max-min) + 240);
+        value = max;/*get Value*/
+        saturation = max == 0 ? 0 : saturation = (max - min) / max; /*get Saturation*/
+        return new HSV(hue, saturation, (value / 255));
+    }
+    /**
+     * @return 
+     */
+    class func hsvByNumericRgb(rgb:uint):HSV {
+        var rgbObj:Object = ColorParser.rgbByHex(rgb);
+        return ColorParser.hsvByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"]);
+    }
+    /**
      *
      */
     class func hls(color:NSColor)->HLS{
