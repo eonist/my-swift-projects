@@ -72,18 +72,18 @@ class ColorParser {/*Covers returning hex colors etc*/
         return ColorParser.hlsByRgb(rgbObj["rb"],rgbObj["gb"],rgbObj["bb"])
     }
     /**
-    * This was created with references to a few anonymous calculations written in other languages, None of which were very accurate
-    * @Note // You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
-    * @Example
-    * var r:uint = 145;
-    * var g:uint = 100;
-    * var b:uint = 120;
-    * var hls:Object = hlsByRgb(r,g,b);
-    * trace(hls.h);   // outputs a scale of 0-240
-    * trace(hls.l);   // outputs a scale of 0-240
-    * trace(hls.s);   // outputs a scale of 0-240
-    */
-    class func hlsByRgb(r:CGFloat,g:CGFloat,b:CGFloat)->HLS {
+     * This was created with references to a few anonymous calculations written in other languages, None of which were very accurate
+     * @Note // You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
+     * @Example
+     * var r:uint = 145;
+     * var g:uint = 100;
+     * var b:uint = 120;
+     * var hls:Object = hlsByRgb(r,g,b);
+     * print(hls.h);   // outputs a scale of 0-240
+     * print(hls.l);   // outputs a scale of 0-240
+     * print(hls.s);   // outputs a scale of 0-240
+     */
+    class func hlsByRgb(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
         var h:CGFloat
         var l:CGFloat
         var s:CGFloat
@@ -101,7 +101,6 @@ class ColorParser {/*Covers returning hex colors etc*/
         return HLS(((h.isNaN) ? 0 : h), round(l*240), round(s*240))
     }
 }
-
 extension ColorParser{
     /**
      * Support for NSColor
