@@ -61,6 +61,7 @@ class RGBParser {
                     b = q
                     break
                 default:
+                    
                     break;
             }
         }
