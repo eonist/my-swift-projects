@@ -11,8 +11,8 @@ class RGBParser {
     /**
      *
      */
-    class func rgbValueByRgb(r:UInt,g:UInt,b:UInt) -> NSColor {
-        return NSColorParser.nsColor(r, g, b)
+    class func rgbValueByRgb(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
+        return NSColorParser.nsColor(r.int, g.int, b.int)
     }
     /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.
