@@ -82,6 +82,7 @@ class ColorParser {/*Covers returning hex colors etc*/
      * print(hls.h);   // outputs a scale of 0-240
      * print(hls.l);   // outputs a scale of 0-240
      * print(hls.s);   // outputs a scale of 0-240
+     * NOTE: We cant use UInt here because UInt doesnt support NaN
      */
     class func hlsByRgb(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
         var h:CGFloat
