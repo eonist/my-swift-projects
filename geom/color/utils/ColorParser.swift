@@ -83,20 +83,6 @@ class ColorParser {/*Covers returning hex colors etc*/
         return HSV(hue, saturation, (value / 255))
     }
     /**
-     * @return 
-     */
-    class func hsv(color:NSColor)->HSV {
-        let rgb = ColorParser.rgba(color)
-        return ColorParser.hsv(rgb.r,rgb.g,rgb.b)
-    }
-    /**
-     *
-     */
-    class func hls(color:NSColor)->HLS{
-        let rgb = ColorParser.rgba(color)
-        return ColorParser.hls(rgb.r,rgb.g,rgb.b)
-    }
-    /**
      * This was created with references to a few anonymous calculations written in other languages, None of which were very accurate
      * @Note // You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
      * @Example
@@ -134,5 +120,19 @@ extension ColorParser{
     class func hexColor(nsColor:NSColor)->String {
         let rgba = nsColor.rgba
         return ColorParser.hexColor(rgba.r,rgba.g,rgba.b)
+    }
+    /**
+     * @return
+     */
+    class func hsv(color:NSColor)->HSV {
+        let rgb = ColorParser.rgba(color)
+        return ColorParser.hsv(rgb.r,rgb.g,rgb.b)
+    }
+    /**
+     *
+     */
+    class func hls(color:NSColor)->HLS{
+        let rgb = ColorParser.rgba(color)
+        return ColorParser.hls(rgb.r,rgb.g,rgb.b)
     }
 }
