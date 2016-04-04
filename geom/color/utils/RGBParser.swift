@@ -117,8 +117,12 @@ class RGBParser {
         }
         return RGB(r,g,b)
     }
-    
-    
-    //continue here: rgbValueByHls
-    
+    /**
+     *
+     */
+    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat):UInt {
+        var rgbObj:RGB = ColorParser.rgbByHls(h,l,s);
+        var colorString:String = ColorParser.hexByRgb(rgbObj["r"],rgbObj["g"],rgbObj["b"]);
+        return Number("0x"+colorString);
+    }
 }
