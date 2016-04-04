@@ -4,9 +4,9 @@ class RGBParser {
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
-    class func rgba(nsColor:NSColor)->(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){
+    class func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
-        return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
+        return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
     /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.
@@ -15,16 +15,8 @@ class RGBParser {
      *  @param brightness The brightness. 0-1
      *  @return An RGB color.
      *  @Example: rgbByHue(360,1,1);//0xFF0000
-     *  // :TODO: rename to rgbValueByHsb?!?
      */
-    
-     
-     
-    //continue here: Rename this to color, and argument to HSB
-    
-    
-    
-    class func rgbByHsb(hsb:HSB)->RGB {
+    class func color(hsb:HSB)->RGB {
         let hue:CGFloat = hsb.h.cgFloat; let saturation:CGFloat = hsb.s.cgFloat; let brightness:CGFloat = hsb.b.cgFloat;
         var r:CGFloat 
         var g:CGFloat 
