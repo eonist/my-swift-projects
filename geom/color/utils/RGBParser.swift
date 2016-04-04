@@ -138,7 +138,23 @@ class RGBParser {
         }
         return RGB(round(r * 255),round(g * 255),round(b * 255))
     }
-    
+    /**
+     * RGB from each of the CMYK values to determine a return as an array.
+     * CMYK values are as follows.
+     * C - a number between 0 to 255 representing cyan
+     * M - number between 0 to 255 representing magenta
+     * Y - number between 0 to 255 representing yellow
+     * K - number between 0 to 255 representing black
+     **/
+    class func rgbByCmyk( c:CGFLoat, m:CGFLoat, y:CGFLoat, k:CGFLoat ):RGB{
+        c = 255 - c;
+        m = 255 - m;
+        y = 255 - y;
+        k = 255 - k; 
+        {r:(255 - c) * (255 - k) / 255,g:(255 - m) * (255 - k) / 255,b:((255 - y) * (255 - k) / 255)};
+        
+        return 
+    }
 }
 extension RGBParser{
     /**
