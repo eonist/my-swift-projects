@@ -19,7 +19,7 @@ extension NSColor{
     /**
      * EXAMPLE: NSColor.redColor().rgba.r//Outputs 1.0
      */
-    var rgba:(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){return RGBParser.rgba(self)}
+    var rgba:RGBA{return RGBAParser.rgba(self)}
     /**
      * EXAMPLE: NSColor.redColor().hex//FF0000
      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
@@ -28,9 +28,9 @@ extension NSColor{
     /**
      * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
-    var rgb:Double?{return Double("0x" + ColorParser.hexColor(self))}
+    var rgb:Double?{return Double("0x" + HexParser.hexColor(self))}
     /**
      *
      */
-    static var random:NSColor{return ColorUtils.randomColor()}
+    static var random:NSColor{return NSColorParser.randomColor()}
 }
