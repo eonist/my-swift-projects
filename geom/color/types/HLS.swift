@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class HLS {
     var h:CGFloat/*0-240*/
@@ -12,5 +12,5 @@ class HLS {
 }
 extension HLS{
     var rgb:RGB{return RGBParser.rgb(self)}
-    var nsColor:NSColor{}
+    var nsColor:NSColor {return NSColorParser.nsColor(self)}
 }
