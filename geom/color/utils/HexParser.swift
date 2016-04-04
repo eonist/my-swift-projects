@@ -58,7 +58,7 @@ class HexParser {
      *
      */
     func hsb(hsb:HSB) -> UInt{
-        let rgb:RGB = RGBParser.rgbByHsb(hsb.h.cgFloat,hsb.s.cgFloat,hsb.b.cgFloat)
+        let rgb:RGB = RGBParser.rgb(hsb)
         let hex:UInt = (rgb.r << 16 | rgb.g << 8 | rgb.b)
         return hex
     }
