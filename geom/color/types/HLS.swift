@@ -10,3 +10,6 @@ class HLS {
         self.s = s
     }
 }
+extension HLS{
+    var rgb:RGB{return RGBParser.rgb(self)}
+}

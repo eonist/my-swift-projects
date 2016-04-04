@@ -9,3 +9,6 @@ class HSV {
 		self.v = v
 	}
 }
+extension HSVParser{
+    var rgb:RGB {return RGBParser.hsv}
+}
