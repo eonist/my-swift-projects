@@ -106,7 +106,8 @@ class RGBParser {
     /**
      * @Note untested
      */
-    class func rgbByHsv(h:CGFloat, _ s:CGFloat, _ v:CGFloat) -> RGB{
+    class func rgbByHsv(hsv:HSV) -> RGB{
+        let h:CGFloat = hsv.h; let s:CGFloat = hsv.s; let v:CGFloat = hsv.v;
         let hi:Int = Int(floor(h / 60) % 6)//the casting to int part is new
         let f:CGFloat = h / 60 - floor(h / 60)
         let r:CGFloat,g:CGFloat,b:CGFloat
