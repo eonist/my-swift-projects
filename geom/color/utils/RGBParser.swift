@@ -69,8 +69,11 @@ class RGBParser {
         g *= 255
         b *= 255
         let rgb:UInt = (r.uint << 16 | g.uint << 8 | b.uint)
-        let color:NSColor = NSColorParser.nsColor(rgb)
         return color
+    }
+    func nsColorByHls(rgb:RGB)->NSColor{
+        let color:NSColor = NSColorParser.nsColor(rgb)
+        return 
     }
     /**
      * You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
