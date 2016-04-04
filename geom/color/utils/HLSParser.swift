@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class HLSParser {
     /**
@@ -35,7 +35,7 @@ class HLSParser {
      *
      */
     class func hls(color:NSColor)->HLS{
-        let rgb = ColorParser.rgba(color)
-        return ColorParser.hls(rgb.r,rgb.g,rgb.b)
+        let rgb = RGBParser.rgba(color)
+        return HLSParser.hls(rgb.r,rgb.g,rgb.b)
     }
 }

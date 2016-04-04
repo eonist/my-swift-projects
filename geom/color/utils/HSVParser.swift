@@ -23,7 +23,7 @@ class HSVParser {
      * @return
      */
     class func hsv(color:NSColor)->HSV {
-        let rgb = ColorParser.rgba(color)
+        let rgb = RGBParser.rgba(color)
         return HSVParser.hsv(rgb.r,rgb.g,rgb.b)
     }
 }

@@ -23,7 +23,7 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgbValueByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->NSColor {
+    class func rgbByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->NSColor {
         var r:CGFloat 
         var g:CGFloat 
         var b:CGFloat
@@ -78,9 +78,47 @@ class RGBParser {
         let color:NSColor = NSColorParser.nsColor(rgb)
         return color
     }
+    /**
+     * You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
+     * @param h h = 145;   //  0-240
+     * @param l l = 100;   //  0-240
+     * @param s = 120;   //  0-240
+     * @example trace(rgbByHls(h,l,s)["r"])//0-255;
+     */
+    class func rgbByHls(h:CGFloat,l:CGFloat,s:CGFloat)->RGB {
+        var r:CGFloat;var g:CGFloat;var b:CGFloat;
+        if(s == 0) {
+            r = g = b = round(l/240*255)
+        }else {
+            h /= 240; l /= 240; s /= 240
+            var temp4:CGFloat;var temp3:CGFloat;
+            var temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
+            var temp1:CGFloat = l*2 - temp2
+            for(var i:uint=0; i<3; i++) {
+                switch(i) {
+                    case 0: temp3 = h+1/3
+                    case 1: temp3 = h
+                    case 2: temp3 = h-1/3
+                    default:break;
+                }
+                if(temp3 < 0) {temp3++}
+                else if(temp3 > 1) {temp3--}
+                if(temp3*6 < 1) {temp4 = temp1+(temp2-temp1)*6*temp3}
+                else if(temp3*2 < 1) {temp4 = temp2}
+                else if(temp3*3 < 2) {temp4 = temp1+(temp2-temp1)*((2/3)-temp3)*6}
+                else temp4 = temp1
+                switch(i) {
+                    case 0: r = round(temp4*255)
+                    case 1: g = round(temp4*255)
+                    case 2: b = round(temp4*255)
+                    default: break;
+                }
+            }
+        }
+        return RGB(r,g,b)
+    }
     
     
-    //Continue here: Implement the rgbByHsb() method
     
     
     
