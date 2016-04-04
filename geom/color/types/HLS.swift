@@ -12,4 +12,5 @@ class HLS {
 }
 extension HLS{
     var rgb:RGB{return RGBParser.rgb(self)}
+    var nsColor:NSColor{}
 }
