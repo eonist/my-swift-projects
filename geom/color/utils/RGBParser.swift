@@ -124,4 +124,5 @@ class RGBParser {
         let rgb:RGB = RGBParser.rgbByHls(h,l,s);
         return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }
+    
 }
