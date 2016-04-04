@@ -32,4 +32,6 @@ class HSB {
     }
 }
 extension HSB{
+    //continue here:
+    var nsColor:NSColor {return }
 }
