@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 class HSB {
     /**
      * The hue value for the HSB color. This represents an angle, in
@@ -32,6 +32,5 @@ class HSB {
     }
 }
 extension HSB{
-    //continue here:
-    var nsColor:NSColor {return }
+    var nsColor:NSColor {return NSColorParser.ns}
 }
