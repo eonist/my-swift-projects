@@ -128,12 +128,12 @@ class RGBParser {
      * @Note untested
      */
     class func rgbByHsv(h:CGFloat, _ s:CGFloat, _ v:CGFloat) -> RGB{
-        let hi:CGFloat = floor(h / 60) % 6;
-        let f:CGFloat = h / 60 - floor(h / 60);
-        let r:CGFloat,g:CGFloat,b:CGFloat;
-        let p:CGFloat = (v * (1 - s));
-        let q:CGFloat = (v * (1 - f * s));
-        let t:CGFloat = (v * (1 - (1 - f) * s));
+        let hi:Int = Int(floor(h / 60) % 6)//the casting to int part is new
+        let f:CGFloat = h / 60 - floor(h / 60)
+        let r:CGFloat,g:CGFloat,b:CGFloat
+        let p:CGFloat = (v * (1 - s))
+        let q:CGFloat = (v * (1 - f * s))
+        let t:CGFloat = (v * (1 - (1 - f) * s))
         switch(hi){
             case 0: r = v; g = t; b = p; break;
             case 1: r = q; g = v; b = p; break;
