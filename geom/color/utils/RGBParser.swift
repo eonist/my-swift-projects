@@ -167,24 +167,21 @@ class RGBParser {
         return RGB(r,g,b)
     }
     /**
-    Converts a 24-bit RGB color value into an RGB object.
-    
-    @param color: The 24-bit RGB color value.
-    @return Returns an object with the properties r, g, and b defined.
-    @example
-    <code>
-    var myRGB:Object = ColorUtil.getRGB(0xFF00FF);
-    trace("Red = " + myRGB.r);
-    trace("Green = " + myRGB.g);
-    trace("Blue = " + myRGB.b);
-    </code>
-    */
-    class func rbg24(color:uint):RGB {
-    var rgb:RBG = {};
-    c["r"] = color >> 16 & 0xFF;
-    c["g"] = color >> 8 & 0xFF;
-    c["b"] = color & 0xFF;
-    return c;
+     * Converts a 24-bit RGB color value into an RGB object.
+     * @param color: The 24-bit RGB color value.
+     * @return Returns an object with the properties r, g, and b defined.
+     * @example
+     * var myRGB:Object = rbg24(0xFF00FF);
+     * print("Red = " + myRGB.r);
+     * print("Green = " + myRGB.g);
+     * print("Blue = " + myRGB.b);
+     */
+    class func rbg24(color:UInt) -> RGB {
+        var rgb:RBG = {}
+        rgb.r = color >> 16 & 0xFF
+        rgb.g = color >> 8 & 0xFF
+        rgb.b = color & 0xFF
+        return c
     }
 }
 extension RGBParser{
