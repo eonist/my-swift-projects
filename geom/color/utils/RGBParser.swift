@@ -24,7 +24,8 @@ class RGBParser {
     
     
     
-    class func rgbByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->RGB {
+    class func rgbByHsb(hsb:HSB)->RGB {
+        let hue:CGFloat = hsb.h.cgFloat; let saturation:CGFloat = hsb.s.cgFloat; let brightness:CGFloat = hsb.b.cgFloat;
         var r:CGFloat 
         var g:CGFloat 
         var b:CGFloat
