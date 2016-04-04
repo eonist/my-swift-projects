@@ -5,7 +5,8 @@ class HSVParser {
      * @Note flacky at some values like magenta
      * @return h: 0-240, s: 0-1, v 0-1
      */
-    class func hsv(r:CGFloat, _ g:CGFloat, _ b:CGFloat)->HSV{
+    class func hsv(rgb:RGB)->HSV{
+        let r:CGFloat = rgb.r; let g:CGFloat = rgb.g; let b:CGFloat = rgb.b;
         let max:CGFloat = Swift.max(r, g, b)
         let min:CGFloat = Swift.min(r, g, b)
         var hue:CGFloat = 0
@@ -22,8 +23,8 @@ class HSVParser {
     /**
      * @return
      */
-    class func hsv(color:NSColor)->HSV {
-        let rgb = RGBParser.rgba(color)
-        return HSVParser.hsv(rgb.r,rgb.g,rgb.b)
+    class func hsv(nsColor:NSColor)->HSV {
+        let rgb:RGB = RGBParser.rgb(nsColor)
+        return HSVParser.hsv(rgb)
     }
 }

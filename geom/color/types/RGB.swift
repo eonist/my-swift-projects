@@ -19,4 +19,5 @@ extension RGB{
     }
     var nsColor:NSColor {return NSColorParser.nsColor(self.r, self.g, self.b)}
     var hls:HLS {return HLSParser.hls(self)}
+    var hsv:HSV {return HSVParser.hsv(self)}
 }
