@@ -120,8 +120,8 @@ class RGBParser {
     /**
      *
      */
-    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat)->NSColor {
+    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat)->NSColor {//rename to nsColorByHls ?
         let rgb:RGB = RGBParser.rgbByHls(h,l,s);
-        return NSColorParser.nsColor(rgb.r, rgb.g, rgb.b)
+        return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }
 }
