@@ -1,6 +1,7 @@
 import Cocoa
 
 class RGBParser {
+    
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
@@ -164,6 +165,26 @@ class RGBParser {
         if (g < 0) {g = 0}
         if (b < 0) {b = 0}
         return RGB(r,g,b)
+    }
+    /**
+    Converts a 24-bit RGB color value into an RGB object.
+    
+    @param color: The 24-bit RGB color value.
+    @return Returns an object with the properties r, g, and b defined.
+    @example
+    <code>
+    var myRGB:Object = ColorUtil.getRGB(0xFF00FF);
+    trace("Red = " + myRGB.r);
+    trace("Green = " + myRGB.g);
+    trace("Blue = " + myRGB.b);
+    </code>
+    */
+    class func rbg24(color:uint):RGB {
+    var rgb:RBG = {};
+    c["r"] = color >> 16 & 0xFF;
+    c["g"] = color >> 8 & 0xFF;
+    c["b"] = color & 0xFF;
+    return c;
     }
 }
 extension RGBParser{
