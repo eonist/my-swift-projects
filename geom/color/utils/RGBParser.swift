@@ -1,19 +1,12 @@
 import Cocoa
 
 class RGBParser {
-    
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
     class func rgba(nsColor:NSColor)->(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat){
         let ciColor:CIColor = CIColor(color: nsColor)!
         return (ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
-    }
-    /**
-     *
-     */
-    class func rgbValueByRgb(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
-        return NSColorParser.nsColor(r.int, g.int, b.int)
     }
     /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.

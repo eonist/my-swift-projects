@@ -32,6 +32,7 @@ class NSColorParser {
         let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
         return color
     }
+    
 }
 
 extension NSColorParser{
@@ -42,6 +43,12 @@ extension NSColorParser{
      */
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
         return NSColorParser.nsColor(CGFloat(r) / 255.0, CGFloat(b) / 255.0, CGFloat(g) / 255.0, CGFloat(a) / 100.0)
+    }
+    /**
+     * Convenince
+     */
+    class func nsColor(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
+        return NSColorParser.nsColor(r.int, g.int, b.int)
     }
     /**
      * Returns NSColor for hex int
