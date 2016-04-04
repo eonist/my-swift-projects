@@ -1,20 +1,8 @@
 import Cocoa
 class NSColorParser {
-    private class func index(){
-        cgColor(1, 0, 0, 1)//Output: red CGColor
-        nsColor(250.0, 0, 0,100)//output: red NSColor
-    }
-    /**
-     * r: from 0.0 to 1.0
-     * Note: research: CGColorCreateGenericGray(gray: CGFloat, _ alpha: CGFloat) -> CGColor
-     * Note: research: CGColorCreateGenericCMYK(cyan: CGFloat, _ magenta: CGFloat, _ yellow: CGFloat, _ black: CGFloat, _ alpha: CGFloat) -> CGCol
-     */
-    class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
-        return CGColorCreateGenericRGB(r,g,b,a)
-    }
-
     /**
      * Note: NSColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
+     * EXAMPLE: nsColor(250.0, 0, 0,100)//output: red NSColor
      */
     class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
