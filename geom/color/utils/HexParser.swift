@@ -54,7 +54,13 @@ class HexParser {
     class func rgba(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
         return (a << 24) | (r << 16) | (g << 8) | b
     }
-    
+    /**
+     *
+     */
+    func hsb(rgb:RGB) -> UInt{
+        let hex:UInt = (rgb.r << 16 | rgb.g << 8 | rgb.b)
+        return hex
+    }
 }
 extension HexParser{
     /**
