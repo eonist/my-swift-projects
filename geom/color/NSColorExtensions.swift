@@ -17,22 +17,14 @@ extension NSColor{
         return NSColor(self,alpha)
     }
     static var random:NSColor{return NSColorParser.randomColor()}
-    
     var rgb:RGB {return RGBParser.rgb(self)}
     var rgba:RGBA{return RGBAParser.rgba(self)}
-    
     var hex:String{return HexParser.hexColor(self)}
     /**
-     * EXAMPLE: NSColor.red.rgb//Output:255.0
+     * EXAMPLE: NSColor.red.hexVal//Output:255.0
      */
     var hexVal:Double?{return Double("0x" + HexParser.hexColor(self))}
-    /**
-     *
-     */
-    
-    /**
-     *
-     */
     var hls:HLS{return self.rgb.hls}
     var hsv:HLS{return self.rgb.hls}
+    var hsb:HSB{return self.rgb.hsb}
 }
