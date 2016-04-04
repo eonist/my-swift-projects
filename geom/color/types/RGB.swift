@@ -10,3 +10,8 @@ class RGB {
 		self.b = b
 	}
 }
+extension RGB{
+    convenience init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0){
+        self.init(r.uint,g.uint,b.uint)
+    }
+}

@@ -92,8 +92,8 @@ class RGBParser {
         }else {
             h /= 240; l /= 240; s /= 240;
             var temp4:CGFloat;var temp3:CGFloat;
-            var temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
-            var temp1:CGFloat = l*2 - temp2
+            let temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
+            let temp1:CGFloat = l*2 - temp2
             for(var i:uint=0; i<3; i++) {
                 switch(i) {
                     case 0: temp3 = h+1/3
@@ -106,7 +106,7 @@ class RGBParser {
                 if(temp3*6 < 1) {temp4 = temp1+(temp2-temp1)*6*temp3}
                 else if(temp3*2 < 1) {temp4 = temp2}
                 else if(temp3*3 < 2) {temp4 = temp1+(temp2-temp1)*((2/3)-temp3)*6}
-                else temp4 = temp1
+                else {temp4 = temp1}
                 switch(i) {
                     case 0: r = round(temp4*255)
                     case 1: g = round(temp4*255)
