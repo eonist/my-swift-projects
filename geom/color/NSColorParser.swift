@@ -82,4 +82,11 @@ extension NSColorParser{
         let rgb:RGB = RGBParser.rgbByHsv(color.h,color.s,color.v)
         return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }
+    /**
+     *
+     */
+    func nsColor(rgb:RGB) -> NSColor{
+        let color:NSColor = NSColorParser.nsColor(rgb.r,rgb.g,rgb.b)
+        return color
+    }
 }

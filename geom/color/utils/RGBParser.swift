@@ -71,11 +71,7 @@ class RGBParser {
         
         return RGB(r,g,b)
     }
-    func nsColorByHls(rgb:RGB) -> NSColor{
-        let rgb = 
-        let color:NSColor = NSColorParser.nsColor(rgb)
-        return
-    }
+    
     /**
      * You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
      * @param h h = 145;   //  0-240
