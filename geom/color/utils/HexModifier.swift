@@ -21,13 +21,25 @@ class HexModifier {
      * @param	modifier	The scalar to modify the brightness, 0 = no change, ie. 0.9, 1.1
      * @return	The modified color
      */
-    class func brighten(color:UInt, modifier:UInt) -> UInt {
-        // :TODO: rename?
-        var z:UInt = 0xff * modifier;
+    class func brighten(color:UInt, modifier:UInt) -> UInt {// :TODO: rename?
+        let z:UInt = 0xff * modifier;
         var a:UInt; var b:UInt; var c:UInt;
-        a = (a = (color & 0xff) + z) > 0xFF ? 0xFF : ( a < 0 ? 0 : a)
-        b = (b = ((color & 0xff00) >> 8) + z) > 0xFF ? 0xFF : ( b < 0 ? 0 : b)
-        c = (c = ((color & 0xff0000) >> 16) + z) > 0xFF ? 0xFF : ( c < 0 ? 0 : c)
+        a = ((color & 0xff) + z)
+        a = a > 0xFF ? 0xFF : ( a < 0 ? 0 : a)
+        b = ((color & 0xff00) >> 8) + z
+        b =  b > 0xFF ? 0xFF : ( b < 0 ? 0 : b)
+        c = ((color & 0xff0000) >> 16) + z
+        c =  c > 0xFF ? 0xFF : ( c < 0 ? 0 : c)
         return ((a) | (b << 8) | (c << 16))
+    }
+    /**
+     * Desaturate a color by a scalar amount. (0-1)
+     * This isn't a real desaturation, but blends the color with a neutral grey.
+     * @param	color	The color to desaturate
+     * @param	percent	The percentage of desaturation
+     * @return	The desaturated color
+     */
+    class func desaturate(color:UInt, modifier:UInt):UInt {
+        return blend(color, 0x808080, modifier)
     }
 }
