@@ -146,14 +146,12 @@ class RGBParser {
      * Y - number between 0 to 255 representing yellow
      * K - number between 0 to 255 representing black
      **/
-    class func rgbByCmyk( c:CGFLoat, m:CGFLoat, y:CGFLoat, k:CGFLoat ):RGB{
-        c = 255 - c;
-        m = 255 - m;
-        y = 255 - y;
-        k = 255 - k; 
-        {r:(255 - c) * (255 - k) / 255,g:(255 - m) * (255 - k) / 255,b:((255 - y) * (255 - k) / 255)};
-        
-        return 
+    class func rgbByCmyk(var c:CGFloat, var _ m:CGFloat, var _ y:CGFloat, var _ k:CGFloat ) -> RGB{
+        c = 255 - c
+        m = 255 - m
+        y = 255 - y
+        k = 255 - k
+        return RGB((255 - c) * (255 - k) / 255,(255 - m) * (255 - k) / 255,((255 - y) * (255 - k) / 255))
     }
 }
 extension RGBParser{
