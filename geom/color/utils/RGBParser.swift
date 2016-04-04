@@ -145,4 +145,16 @@ class RGBParser {
         }
         return RGB(round(r * 255),round(g * 255),round(b * 255))
     }
+    
+}
+extension RGBParser{
+    /**
+     * @param h 0 - 240
+     * @param s 0 - 1
+     * @param v 0 - 1
+     */
+    class func rgbByHsv(h:CGFloat, s:CGFloat, v:CGFloat)->NSColor {
+        let rgb:RGB = RGBParser.rgbByHsv(h,s,v)
+        return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
+    }
 }
