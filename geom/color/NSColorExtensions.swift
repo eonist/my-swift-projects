@@ -16,6 +16,7 @@ extension NSColor{
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
     }
+    var rgb:RGB {return RGBParser.rgb(self)}
     /**
      * EXAMPLE: NSColor.redColor().rgba.r//Outputs 1.0
      */
@@ -28,7 +29,8 @@ extension NSColor{
     /**
      * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
-    var rgb:Double?{return Double("0x" + HexParser.hexColor(self))}
+    var hexVal:Double?{return Double("0x" + HexParser.hexColor(self))}
+    
     /**
      *
      */
