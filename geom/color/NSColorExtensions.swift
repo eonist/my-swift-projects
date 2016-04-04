@@ -24,7 +24,7 @@ extension NSColor{
      * EXAMPLE: NSColor.redColor().hex//FF0000
      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
      */
-    var hex:String{return ColorParser.hexColor(self)}
+    var hex:String{return HexParser.hexColor(self)}
     /**
      * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
