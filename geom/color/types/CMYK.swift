@@ -11,3 +11,7 @@ class CMYK {
         self.k = k
     }
 }
+extension CMYK{
+    var rgb:RGB {return RGBParser.rgb(self)}
+    var rgb2:RGB {return RGBParser.rgb2(self)}
+}
