@@ -124,5 +124,24 @@ class RGBParser {
         let rgb:RGB = RGBParser.rgbByHls(h,l,s);
         return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }
-    
+    /**
+     * @Note untested
+     */
+    class func rgbByHsv(h:CGFloat, _ s:CGFloat, _ v:CGFloat) -> RGB{
+        var hi:Int = floor(h / 60) % 6;
+        var f:CGFloat = h / 60 - floor(h / 60);
+        var r:CGFloat,g:CGFloat,b:CGFloat;
+        var p:CGFloat = (v * (1 - s));
+        var q:CGFloat = (v * (1 - f * s));
+        var t:CGFloat = (v * (1 - (1 - f) * s));
+        switch(hi){
+            case 0: r = v; g = t; b = p; break;
+            case 1: r = q; g = v; b = p; break;
+            case 2: r = p; g = v; b = t; break;
+            case 3: r = p; g = q; b = v; break;
+            case 4: r = t; g = p; b = v; break;
+            case 5: r = v; g = p; b = q; break;
+        }
+        return RGB(round(r * 255),round(g * 255),round(b * 255))
+    }
 }
