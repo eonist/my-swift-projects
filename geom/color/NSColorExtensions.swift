@@ -30,7 +30,6 @@ extension NSColor{
      * EXAMPLE: NSColor.red.rgb//Output:255.0
      */
     var hexVal:Double?{return Double("0x" + HexParser.hexColor(self))}
-    
     /**
      *
      */
