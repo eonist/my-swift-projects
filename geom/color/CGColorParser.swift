@@ -38,4 +38,11 @@ class CGColorParser {
     class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
         return CGColorCreateGenericRGB(r,g,b,a)
     }
+    class func randomColor()-> NSColor{
+        let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
+        let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
+        let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
+        let nsColor:NSColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: 1)
+        return nsColor
+    }
 }

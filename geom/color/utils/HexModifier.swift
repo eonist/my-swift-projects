@@ -8,7 +8,7 @@ class HexModifier {
      * @param	ratio	The ratio of the second color to blend, .5 = equal ratio, .9 = 1:9, .2 = 8:2
      * @return	The color value as a uint.
      */
-    class func blend(first:UInt, second:UInt, ratio:UInt) -> UInt {// :TODO: rename?
+    class func blend(first:UInt, _ second:UInt, _ ratio:UInt) -> UInt {// :TODO: rename?
         var a:UInt; var b:UInt; var c:UInt;
         a = ((first & 0xff) * (1 - ratio) + (second & 0xff) * ratio);
         b = (((first & 0xff00) >> 8) * (1 - ratio) + ((second & 0xff00) >> 8) * ratio);
@@ -21,7 +21,7 @@ class HexModifier {
      * @param	modifier	The scalar to modify the brightness, 0 = no change, ie. 0.9, 1.1
      * @return	The modified color
      */
-    class func brighten(color:UInt, modifier:UInt) -> UInt {// :TODO: rename?
+    class func brighten(color:UInt, _ modifier:UInt) -> UInt {// :TODO: rename?
         let z:UInt = 0xff * modifier;
         var a:UInt; var b:UInt; var c:UInt;
         a = ((color & 0xff) + z)
@@ -39,7 +39,17 @@ class HexModifier {
      * @param	percent	The percentage of desaturation
      * @return	The desaturated color
      */
-    class func desaturate(color:UInt, modifier:UInt):UInt {
-        return blend(color, 0x808080, modifier)
+    class func desaturate(color:UInt, _ modifier:UInt)->UInt {
+        return HexModifier.blend(color, 0x808080, modifier)
+    }
+    /**
+     * Fades a color by a scalar amount. (0-1)
+     * Basically just blends the color with white.
+     * @param	color	The color to fade
+     * @param	percent	The percentage of fade
+     * @return	The faded color
+     */
+    class func fade(color:UInt, _ modifier:UInt) -> UInt {
+        return blend(color, 0xFFFFFF, modifier);
     }
 }
