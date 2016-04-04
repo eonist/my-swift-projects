@@ -17,6 +17,13 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
+    
+     
+     
+    //continue here: Rename this to color, and argument to HSB
+    
+    
+    
     class func rgbByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->RGB {
         var r:CGFloat 
         var g:CGFloat 
@@ -68,7 +75,6 @@ class RGBParser {
         r *= 255
         g *= 255
         b *= 255
-        
         return RGB(r,g,b)
     }
     
