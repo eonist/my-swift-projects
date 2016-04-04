@@ -11,8 +11,12 @@ class RGB {
 	}
 }
 extension RGB{
+    /**
+     * convenience initiater
+     */
     convenience init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0){
         self.init(r.uint,g.uint,b.uint)
     }
     var nsColor:NSColor {return NSColorParser.nsColor(self.r, self.g, self.b)}
+    var hls:HLS {return HLSParser.hls(self)}
 }
