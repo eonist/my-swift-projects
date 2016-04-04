@@ -86,7 +86,7 @@ class RGBParser {
      * @example trace(rgbByHls(h,l,s)["r"])//0-255;
      */
     class func rgbByHls(var h:CGFloat,var l:CGFloat,var s:CGFloat)->RGB {
-        var r:CGFloat;var g:CGFloat;var b:CGFloat;
+        var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
         if(s == 0) {
             r = round(l/240*255);g = r;b = r;
         }else {
@@ -117,4 +117,8 @@ class RGBParser {
         }
         return RGB(r,g,b)
     }
+    
+    
+    //continue here: 
+    
 }
