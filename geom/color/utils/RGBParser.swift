@@ -9,7 +9,7 @@ class RGBParser {
      *  @return An RGB color.
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      */
-    class func color(hsb:HSB)->RGB {
+    class func rgb(hsb:HSB)->RGB {
         let hue:CGFloat = hsb.h.cgFloat; let saturation:CGFloat = hsb.s.cgFloat; let brightness:CGFloat = hsb.b.cgFloat;
         var r:CGFloat 
         var g:CGFloat 
@@ -70,7 +70,7 @@ class RGBParser {
      * @param s = 120;   //  0-240
      * @example trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    class func color(hls:HLS)->RGB {
+    class func rgb(hls:HLS)->RGB {
         var h:CGFloat = hls.h; var l:CGFloat = hls.l; var s:CGFloat = hls.s;
         var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
         if(s == 0) {
@@ -106,7 +106,7 @@ class RGBParser {
     /**
      * @Note untested
      */
-    class func rgbByHsv(hsv:HSV) -> RGB{
+    class func rgb(hsv:HSV) -> RGB{
         let h:CGFloat = hsv.h; let s:CGFloat = hsv.s; let v:CGFloat = hsv.v;
         let hi:Int = Int(floor(h / 60) % 6)//the casting to int part is new
         let f:CGFloat = h / 60 - floor(h / 60)
@@ -133,7 +133,8 @@ class RGBParser {
      * Y - number between 0 to 255 representing yellow
      * K - number between 0 to 255 representing black
      **/
-    class func rgbByCmyk(var c:CGFloat, var _ m:CGFloat, var _ y:CGFloat, var _ k:CGFloat ) -> RGB{
+    class func rgbByCmyk() -> RGB{
+        
         c = 255 - c
         m = 255 - m
         y = 255 - y
