@@ -20,7 +20,7 @@ class CMYKParser {
       * @ Param b blue (B) shows the number (0x00 to 0xFF to)
       * @ Return CMYK values into an array of [H, S, V] 
       **/
-    class func cmykByRgb(r:CGFloat,_ g:CGFloat,_ b:CGFloat):Object {
+    class func cmykByRgb(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->CMYK {
         var c:CGFloat=0
         var m:CGFloat=0
         var y:CGFloat=0
@@ -29,9 +29,9 @@ class CMYKParser {
         m = 255 - g
         y = 255 - b
         k = 255
-        if (c < k) k=c
-        if (m < k) k=m
-        if (y < k) k=y
+        if (c < k){k=c}
+        if (m < k){k=m}
+        if (y < k){k=y}
         if (k == 255){
             c=0
             m=0
@@ -41,6 +41,6 @@ class CMYKParser {
             m=round(255*(m-k)/(255-k))
             y=round(255*(y-k)/(255-k))
         }
-        return {c:c,m:m,y:y,k:k}
+        return CMYK(c,m,y,k)
     }
 }
