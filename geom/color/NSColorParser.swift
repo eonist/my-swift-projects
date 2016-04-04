@@ -68,8 +68,8 @@ extension NSColorParser{
      * Convenince
      */
     class func nsColor(hls:HLS)->NSColor {//rename to nsColorByHls ?
-        let rgb:RGB = RGBParser.rgb(hls);
-        return NSColorParser.nsColor(rgb)
+        //let rgb:RGB = RGBParser.rgb();
+        return hls.rgb.nsColor
     }
     /**
      * Convenince
@@ -77,15 +77,15 @@ extension NSColorParser{
      * @param s 0 - 1
      * @param v 0 - 1
      */
-    class func nsColor(color:HSV)->NSColor {
-        let rgb:RGB = RGBParser.rgbByHsv(color.h,color.s,color.v)
-        return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
+    class func nsColor(hsv:HSV)->NSColor {
+        //let rgb:RGB = RGBParser.rgbByHsv(color.h,color.s,color.v)
+        //return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
+        return hsv.rgb.nsColor
     }
     /**
      *
      */
     func nsColor(rgb:RGB) -> NSColor{
-        let color:NSColor = NSColorParser.nsColor(rgb.r,rgb.g,rgb.b)
-        return color
+        return rgb.nsColor
     }
 }
