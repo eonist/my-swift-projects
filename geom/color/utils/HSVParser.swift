@@ -20,11 +20,4 @@ class HSVParser {
         saturation = max == 0 ? 0 : (max - min) / max /*get Saturation*/
         return HSV(hue, saturation, (value / 255))
     }
-    /**
-     * @return
-     */
-    class func hsv(nsColor:NSColor)->HSV {
-        let rgb:RGB = RGBParser.rgb(nsColor)
-        return HSVParser.hsv(rgb)
-    }
 }

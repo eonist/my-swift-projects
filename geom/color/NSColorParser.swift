@@ -21,17 +21,7 @@ class NSColorParser {
     class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
         return color.colorWithAlphaComponent(alpha)
     }
-    /**
-     *
-     */
-    class func randomColor()->CGColor{
-        let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        
-        let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
-        return color
-    }
+    
     
 }
 
