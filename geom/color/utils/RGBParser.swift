@@ -119,6 +119,6 @@ class RGBParser {
     }
     
     
-    //continue here: 
+    //continue here: rgbValueByHls
     
 }
