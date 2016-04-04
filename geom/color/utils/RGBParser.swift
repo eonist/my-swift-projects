@@ -177,11 +177,10 @@ class RGBParser {
      * print("Blue = " + myRGB.b);
      */
     class func rbg24(color:UInt) -> RGB {
-        var rgb:RBG = {}
-        rgb.r = color >> 16 & 0xFF
-        rgb.g = color >> 8 & 0xFF
-        rgb.b = color & 0xFF
-        return c
+        let r = color >> 16 & 0xFF
+        let g = color >> 8 & 0xFF
+        let b = color & 0xFF
+        return RGB(r,g,b)
     }
 }
 extension RGBParser{
