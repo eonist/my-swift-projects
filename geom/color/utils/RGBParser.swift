@@ -182,6 +182,7 @@ class RGBParser {
         let b = color & 0xFF
         return RGB(r,g,b)
     }
+    
 }
 extension RGBParser{
     /**
