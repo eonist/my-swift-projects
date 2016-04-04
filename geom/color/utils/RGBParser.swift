@@ -85,7 +85,7 @@ class RGBParser {
      * @param s = 120;   //  0-240
      * @example trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    class func rgbByHls(var h:CGFloat,var l:CGFloat,var s:CGFloat)->RGB {
+    class func rgbByHls(var h:CGFloat,var _ l:CGFloat,var _ s:CGFloat)->RGB {
         var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
         if(s == 0) {
             r = round(l/240*255);g = r;b = r;
@@ -120,9 +120,8 @@ class RGBParser {
     /**
      *
      */
-    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat):UInt {
-        var rgbObj:RGB = ColorParser.rgbByHls(h,l,s);
-        var colorString:String = ColorParser.hexByRgb(rgbObj["r"],rgbObj["g"],rgbObj["b"]);
-        return Number("0x"+colorString);
+    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat)->NSColor {
+        let rgb:RGB = RGBParser.rgbByHls(h,l,s);
+        return NSColorParser.nsColor(rgb.r, rgb.g, rgb.b)
     }
 }
