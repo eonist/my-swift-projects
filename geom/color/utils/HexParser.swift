@@ -40,7 +40,20 @@ class HexParser {
     class func rgb(color:NSColor) -> UInt{
         return UInt(CGFloat(color.rgb!))
     }
-    
+    /**
+     * Converts a series of individual RGB(A) values to a 32-bit RGBA color value.    
+     * @param r: A uint from 0 to 255 representing the red color value.
+     * @param g: A uint from 0 to 255 representing the green color value.
+     * @param b: A uint from 0 to 255 representing the blue color value.
+     * @param a: A uint from 0 to 255 representing the alpha value. Default is <code>255</code>.
+     * @return Returns a hexidecimal color as a String.
+     * EXAMPLE:
+     * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
+     * print(hexColor); // Traces 80FF00FF
+     */
+    class func rgba(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
+        return (a << 24) | (r << 16) | (g << 8) | b
+    }
 }
 extension HexParser{
     /**
