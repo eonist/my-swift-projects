@@ -34,4 +34,8 @@ extension NSColor{
      *
      */
     static var random:NSColor{return NSColorParser.randomColor()}
+    /**
+     *
+     */
+    var hls:HLS{return self.rgb.hls}
 }

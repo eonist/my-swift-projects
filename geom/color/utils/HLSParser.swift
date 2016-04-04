@@ -32,11 +32,4 @@ class HLSParser {
         h = round(h)
         return HLS(((h.isNaN) ? 0 : h), round(l*240), round(s*240))
     }
-    /**
-     *
-     */
-    class func hls(nsColor:NSColor)->HLS{
-        let rgb:RGB = RGBParser.rgb(nsColor)
-        return HLSParser.hls(rgb)
-    }
 }
