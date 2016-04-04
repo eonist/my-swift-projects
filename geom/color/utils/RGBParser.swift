@@ -17,7 +17,7 @@ class RGBParser {
      *  @Example: rgbByHue(360,1,1);//0xFF0000
      *  // :TODO: rename to rgbValueByHsb?!?
      */
-    class func rgbByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->UInt {
+    class func rgbByHsb(hue:CGFloat, _ saturation:CGFloat, _ brightness:CGFloat)->RGB {
         var r:CGFloat 
         var g:CGFloat 
         var b:CGFloat
@@ -68,11 +68,11 @@ class RGBParser {
         r *= 255
         g *= 255
         b *= 255
-        let rgb:UInt = (r.uint << 16 | g.uint << 8 | b.uint)
-        return rgb
+        
+        return RGB(r,g,b)
     }
     func nsColorByHls(rgb:RGB)->NSColor{
-        let rgb =
+        let rgb = 
         let color:NSColor = NSColorParser.nsColor(rgb)
         return
     }
