@@ -36,7 +36,7 @@ class HLSParser {
      *
      */
     class func hls(nsColor:NSColor)->HLS{
-        let rgb:RGB = RGBParser.rgb24(nsColor)
+        let rgb:RGB = RGBParser.rgb(nsColor)
         return HLSParser.hls(rgb)
     }
 }
