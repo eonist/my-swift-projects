@@ -153,6 +153,18 @@ class RGBParser {
         k = 255 - k
         return RGB((255 - c) * (255 - k) / 255,(255 - m) * (255 - k) / 255,((255 - y) * (255 - k) / 255))
     }
+    /**
+     * @Note this is approximate but close enough
+     */
+     class func rgbByCmyk2( c:CGFloat, _ m:CGFloat, _ y:CGFloat, _ k:CGFloat ) -> RGB {
+        var r:CGFloat = 255 - (round (2.55 * (c + k)))
+        var g:CGFloat = 255 - (round (2.55 * (m + k)))
+        var b:CGFloat = 255 - (round (2.55 * (y + k)))
+        if (r < 0) r = 0
+        if (g < 0) g = 0
+        if (b < 0) b = 0
+        return RGB(r,g,b)
+    }
 }
 extension RGBParser{
     /**
