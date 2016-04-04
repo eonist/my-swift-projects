@@ -38,7 +38,7 @@ class HexParser {
      * EXAMPLE: rgb(NSColor.redColor())//16711680
      */
     class func rgb(color:NSColor) -> UInt{
-        return UInt(CGFloat(color.rgb!))
+        return UInt(CGFloat(color.hex))
     }
     /**
      * Converts a series of individual RGB(A) values to a 32-bit RGBA color value.    
