@@ -71,7 +71,7 @@ class RGBParser {
         
         return RGB(r,g,b)
     }
-    func nsColorByHls(rgb:RGB)->NSColor{
+    func nsColorByHls(rgb:RGB) -> NSColor{
         let rgb = 
         let color:NSColor = NSColorParser.nsColor(rgb)
         return
