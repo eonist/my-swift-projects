@@ -64,9 +64,11 @@ class HexParser {
     }
 }
 extension HexParser{
-    /**
-     * Support for NSColor
-     */
+     /**
+      * Support for NSColor
+      * EXAMPLE: NSColor.redColor().hex//FF0000
+      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
+      */
     class func hexColor(nsColor:NSColor)->String {
         let rgba = nsColor.rgba
         return HexParser.hexColor(rgba.r,rgba.g,rgba.b)

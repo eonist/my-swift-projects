@@ -16,15 +16,11 @@ extension NSColor{
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
     }
+    static var random:NSColor{return NSColorParser.randomColor()}
+    
     var rgb:RGB {return RGBParser.rgb(self)}
-    /**
-     * EXAMPLE: NSColor.redColor().rgba.r//Outputs 1.0
-     */
     var rgba:RGBA{return RGBAParser.rgba(self)}
-    /**
-     * EXAMPLE: NSColor.redColor().hex//FF0000
-     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
-     */
+    
     var hex:String{return HexParser.hexColor(self)}
     /**
      * EXAMPLE: NSColor.red.rgb//Output:255.0
@@ -33,9 +29,10 @@ extension NSColor{
     /**
      *
      */
-    static var random:NSColor{return NSColorParser.randomColor()}
+    
     /**
      *
      */
     var hls:HLS{return self.rgb.hls}
+    var hsv:HLS{return self.rgb.hls}
 }
