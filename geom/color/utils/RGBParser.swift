@@ -133,8 +133,8 @@ class RGBParser {
      * Y - number between 0 to 255 representing yellow
      * K - number between 0 to 255 representing black
      **/
-    class func rgbByCmyk() -> RGB{
-        
+    class func rgb(cmyk:CMYK) -> RGB{
+        var c:CGFloat = cmyk.c; var m:CGFloat = cmyk.m; var y:CGFloat = cmyk.y; var k:CGFloat = cmyk.k;
         c = 255 - c
         m = 255 - m
         y = 255 - y
@@ -144,7 +144,8 @@ class RGBParser {
     /**
      * @Note this is approximate but close enough
      */
-     class func rgbByCmyk2(c:CGFloat, _ m:CGFloat, _ y:CGFloat, _ k:CGFloat ) -> RGB {
+     class func rgb2(cmyk:CMYK) -> RGB {
+        let c:CGFloat = cmyk.c; let m:CGFloat = cmyk.m; let y:CGFloat = cmyk.y; let k:CGFloat = cmyk.k;
         var r:CGFloat = 255 - (round (2.55 * (c + k)))
         var g:CGFloat = 255 - (round (2.55 * (m + k)))
         var b:CGFloat = 255 - (round (2.55 * (y + k)))
