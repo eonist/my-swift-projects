@@ -99,7 +99,7 @@ class RGBParser {
                     case 0: temp3 = h+1/3
                     case 1: temp3 = h
                     case 2: temp3 = h-1/3
-                    default:fatalError("can't happen")
+                    default:fatalError("can't happen");
                 }
                 if(temp3 < 0) {temp3++}
                 else if(temp3 > 1) {temp3--}
@@ -111,7 +111,7 @@ class RGBParser {
                     case 0: r = round(temp4*255)
                     case 1: g = round(temp4*255)
                     case 2: b = round(temp4*255)
-                    default: fatalError("can't happen")
+                    default: fatalError("can't happen");
                 }
             }
         }
@@ -128,12 +128,12 @@ class RGBParser {
      * @Note untested
      */
     class func rgbByHsv(h:CGFloat, _ s:CGFloat, _ v:CGFloat) -> RGB{
-        var hi:Int = floor(h / 60) % 6;
-        var f:CGFloat = h / 60 - floor(h / 60);
-        var r:CGFloat,g:CGFloat,b:CGFloat;
-        var p:CGFloat = (v * (1 - s));
-        var q:CGFloat = (v * (1 - f * s));
-        var t:CGFloat = (v * (1 - (1 - f) * s));
+        let hi:CGFloat = floor(h / 60) % 6;
+        let f:CGFloat = h / 60 - floor(h / 60);
+        let r:CGFloat,g:CGFloat,b:CGFloat;
+        let p:CGFloat = (v * (1 - s));
+        let q:CGFloat = (v * (1 - f * s));
+        let t:CGFloat = (v * (1 - (1 - f) * s));
         switch(hi){
             case 0: r = v; g = t; b = p; break;
             case 1: r = q; g = v; b = p; break;
@@ -141,6 +141,7 @@ class RGBParser {
             case 3: r = p; g = q; b = v; break;
             case 4: r = t; g = p; b = v; break;
             case 5: r = v; g = p; b = q; break;
+            default:fatalError("can't happen");
         }
         return RGB(round(r * 255),round(g * 255),round(b * 255))
     }
