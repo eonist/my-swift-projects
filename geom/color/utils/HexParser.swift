@@ -1,6 +1,6 @@
 import Cocoa
 
-class HEXParser {
+class HexParser {
     /**
      * EXAMPLE: hexNumber(FF0000)//Output:16711680
      */
