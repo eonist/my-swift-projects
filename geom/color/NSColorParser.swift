@@ -65,16 +65,10 @@ extension NSColorParser{
         //Swift.print("b: " + "\(b)")
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
-    /*
-     * hexColor -> cgColor
-     */
-    class func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
-        return nsColor(hexColor,alpha).CGColor
-    }
     /**
      * Convenince
      */
-    class func color(color:HLS)->NSColor {//rename to nsColorByHls ?
+    class func nsColor(color:HLS)->NSColor {//rename to nsColorByHls ?
         let rgb:RGB = RGBParser.rgbByHls(color.h,color.l,color.s);
         return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }
@@ -84,7 +78,7 @@ extension NSColorParser{
      * @param s 0 - 1
      * @param v 0 - 1
      */
-    class func color(color:HSV)->NSColor {
+    class func nsColor(color:HSV)->NSColor {
         let rgb:RGB = RGBParser.rgbByHsv(color.h,color.s,color.v)
         return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
     }

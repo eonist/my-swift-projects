@@ -45,4 +45,10 @@ class CGColorParser {
         let nsColor:NSColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: 1)
         return nsColor
     }
+    /*
+    * hexColor -> cgColor
+    */
+    class func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
+        return NSColorParser.nsColor(hexColor,alpha).CGColor
+    }
 }
