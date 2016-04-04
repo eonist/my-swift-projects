@@ -25,6 +25,6 @@ extension NSColor{
      */
     var hexVal:Double?{return Double("0x" + HexParser.hexColor(self))}
     var hls:HLS{return self.rgb.hls}
-    var hsv:HLS{return self.rgb.hls}
+    var hsv:HSV{return self.rgb.hsv}
     var hsb:HSB{return self.rgb.hsb}
 }
