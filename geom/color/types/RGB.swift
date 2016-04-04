@@ -17,8 +17,9 @@ extension RGB{
     convenience init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0){
         self.init(r.uint,g.uint,b.uint)
     }
-    var nsColor:NSColor {return NSColorParser.nsColor(self.r, self.g, self.b)}
+    var nsColor:NSColor {return NSColorParser.nsColor(self)}
     var hls:HLS {return HLSParser.hls(self)}
     var hsv:HSV {return HSVParser.hsv(self)}
     var hsb:HSB {return HSBParser.hsb(self)}
+    var cmyk:CMYK {return CMYKParser.cmyk(self)}
 }
