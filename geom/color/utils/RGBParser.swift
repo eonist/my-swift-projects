@@ -88,9 +88,9 @@ class RGBParser {
     class func rgbByHls(h:CGFloat,l:CGFloat,s:CGFloat)->RGB {
         var r:CGFloat;var g:CGFloat;var b:CGFloat;
         if(s == 0) {
-            r = g = b = round(l/240*255)
+            r = round(l/240*255);g = r;b = r;
         }else {
-            h /= 240; l /= 240; s /= 240
+            h /= 240; l /= 240; s /= 240;
             var temp4:CGFloat;var temp3:CGFloat;
             var temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
             var temp1:CGFloat = l*2 - temp2
@@ -116,11 +116,5 @@ class RGBParser {
             }
         }
         return RGB(r,g,b)
-    }
-    
-    
-    
-    
-    
-    
+    }  
 }
