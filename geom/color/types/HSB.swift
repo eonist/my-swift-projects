@@ -4,6 +4,7 @@ class HSB {
      * The hue value for the HSB color. This represents an angle, in
      * degrees, around the HSB cone. The supplied value will be modulated
      * by 360 so that the stored value of hue will be in the range [0,360).
+     * NOTE: If you set the h value: you should maybe use (newValue % 360)
      */
     var h : UInt;/*0-360*/
     /**
