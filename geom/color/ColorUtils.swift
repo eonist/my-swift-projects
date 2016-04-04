@@ -21,5 +21,4 @@ class ColorUtils {
         let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
         return color
     }
-    
 }

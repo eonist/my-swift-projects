@@ -43,12 +43,12 @@ class HexParser {
         return UInt(CGFloat(color.rgb!))
     }
 }
-extension ColorParser{
+extension HexParser{
     /**
      * Support for NSColor
      */
     class func hexColor(nsColor:NSColor)->String {
         let rgba = nsColor.rgba
-        return ColorParser.hexColor(rgba.r,rgba.g,rgba.b)
+        return HexParser.hexColor(rgba.r,rgba.g,rgba.b)
     }
 }
