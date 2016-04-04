@@ -2,13 +2,6 @@ import Cocoa
 
 class RGBParser {
     /**
-     * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
-     */
-    class func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
-        let ciColor:CIColor = CIColor(color: nsColor)!
-        return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
-    }
-    /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.
      *  @param hue The hue. 0-360
      *  @param saturation The saturation. 0-1
@@ -70,7 +63,6 @@ class RGBParser {
         b *= 255
         return RGB(r,g,b)
     }
-    
     /**
      * You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
      * @param h h = 145;   //  0-240
@@ -78,7 +70,8 @@ class RGBParser {
      * @param s = 120;   //  0-240
      * @example trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    class func rgbByHls(var h:CGFloat,var _ l:CGFloat,var _ s:CGFloat)->RGB {
+    class func color(hls:HLS)->RGB {
+        var h:CGFloat = hls.h; var l:CGFloat = hls.l; var s:CGFloat = hls.s;
         var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
         if(s == 0) {
             r = round(l/240*255);g = r;b = r;
