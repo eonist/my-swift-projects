@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 class HSV {
 	var h:CGFloat/*0-240*/
 	var s:CGFloat/*0-240*/
@@ -11,4 +11,5 @@ class HSV {
 }
 extension HSV{
     var rgb:RGB {return RGBParser.rgb(self)}
+    var nsColor:NSColor{return NSColorParser.nsColor(self)}
 }
