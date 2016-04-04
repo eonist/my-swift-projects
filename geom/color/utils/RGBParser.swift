@@ -85,7 +85,7 @@ class RGBParser {
      * @param s = 120;   //  0-240
      * @example trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    class func rgbByHls(h:CGFloat,l:CGFloat,s:CGFloat)->RGB {
+    class func rgbByHls(var h:CGFloat,var l:CGFloat,var s:CGFloat)->RGB {
         var r:CGFloat;var g:CGFloat;var b:CGFloat;
         if(s == 0) {
             r = round(l/240*255);g = r;b = r;
@@ -116,5 +116,5 @@ class RGBParser {
             }
         }
         return RGB(r,g,b)
-    }  
+    }
 }
