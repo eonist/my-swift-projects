@@ -40,6 +40,7 @@ class HexParser {
     class func rgb(color:NSColor) -> UInt{
         return UInt(CGFloat(color.rgb!))
     }
+    
 }
 extension HexParser{
     /**
