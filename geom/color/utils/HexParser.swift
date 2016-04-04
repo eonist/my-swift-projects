@@ -7,9 +7,7 @@ class HexParser {
      * @param g: A CGFloat from 0 to 1 representing the green color value.
      * @param b: A CGFloat from 0 to 1 representing the blue color value.
      * @return Returns a hexidecimal color as a String.
-     * @example
-     * var hexColor : String = ColorParser.hexByRgb(1, 0, 1);
-     * print(hexColor); // prints FF00FF
+     * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */
     class func hexColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{

@@ -8,7 +8,7 @@ class HSBParser {
      */
     class func hsb(color:NSColor)->HSBColor {
         //let someColor:NSColor = NSColor.redColor()
-        let rgb:UInt = ColorUtils.rgb(color)
+        let rgb:UInt = HexParser.rgb(color)
         var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:UInt
         var brightness:UInt
