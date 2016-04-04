@@ -32,6 +32,19 @@ class HexParser {
     class func hexString(hex:UInt) -> String{
         return NSString(format: "%2X", hex) as String
     }
+    /**
+     * Support for NSColor
+     * EXAMPLE: NSColor.redColor().hex//FF0000
+     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
+     */
+    class func hexString(nsColor:NSColor)->String {
+        let rgb:RGB = nsColor.rgb
+        return HexParser.hexColor(rgb.r.cgFloat,rgb.g.cgFloat,rgb.b.cgFloat)
+    }
+    
+    
+    //continue here: with the above and the bellow
+    
     
     /**
      * Convenience method (since extensions can only return one type of each var)
@@ -61,16 +74,5 @@ class HexParser {
         let rgb:RGB = RGBParser.rgb(hsb)
         let hex:UInt = (rgb.r << 16 | rgb.g << 8 | rgb.b)
         return hex
-    }
-}
-extension HexParser{
-     /**
-      * Support for NSColor
-      * EXAMPLE: NSColor.redColor().hex//FF0000
-      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
-      */
-    class func hexColor(nsColor:NSColor)->String {
-        let rgba:RGBA = nsColor.rgba
-        return HexParser.hexColor(rgba.r,rgba.g,rgba.b)
     }
 }

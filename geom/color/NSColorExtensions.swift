@@ -19,7 +19,7 @@ extension NSColor{
     static var random:NSColor{return NSColorParser.randomColor()}
     var rgb:RGB {return RGBParser.rgb(self)}
     var rgba:RGBA{return RGBAParser.rgba(self)}
-    var hex:String{return HexParser.hexColor(self)}
+    var hexString:String{return HexParser.hexString(self)}
     /**
      * EXAMPLE: NSColor.red.hexVal//Output:255.0
      */
