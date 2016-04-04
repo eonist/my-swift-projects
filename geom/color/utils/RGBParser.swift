@@ -118,13 +118,6 @@ class RGBParser {
         return RGB(r,g,b)
     }
     /**
-     *
-     */
-    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat)->NSColor {//rename to nsColorByHls ?
-        let rgb:RGB = RGBParser.rgbByHls(h,l,s);
-        return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
-    }
-    /**
      * @Note untested
      */
     class func rgbByHsv(h:CGFloat, _ s:CGFloat, _ v:CGFloat) -> RGB{
@@ -149,6 +142,14 @@ class RGBParser {
 }
 extension RGBParser{
     /**
+     * Convenince
+     */
+    class func rgbValueByHls(h:CGFloat,_ l:CGFloat,_ s:CGFloat)->NSColor {//rename to nsColorByHls ?
+        let rgb:RGB = RGBParser.rgbByHls(h,l,s);
+        return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
+    }
+    /**
+     * Convenince
      * @param h 0 - 240
      * @param s 0 - 1
      * @param v 0 - 1
