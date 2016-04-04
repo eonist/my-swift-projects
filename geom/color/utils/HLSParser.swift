@@ -14,7 +14,8 @@ class HLSParser {
      * print(hls.s);   // outputs a scale of 0-240
      * NOTE: We cant use UInt here because UInt doesnt support NaN
      */
-    class func hls(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->HLS {
+    class func hls()->HLS {
+        let r:CGFloat; let g:CGFloat; let b:CGFloat;
         var h:CGFloat = 0//<<--this wasnt here before but its need to be able to compile.
         var l:CGFloat
         var s:CGFloat
