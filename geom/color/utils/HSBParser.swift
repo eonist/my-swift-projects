@@ -39,33 +39,30 @@ class HSBParser {
     class func hsb2(rgb:RGB)->HSB{
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         
-        var hsb:HSB = HSB()
-        var _max:CGFloat = Swift.max(r,g,b)
-        var _min:CGFloat = Swift.min(r,g,b)
+        let hsb:HSB = HSB()
+        let _max:CGFloat = Swift.max(r,g,b)
+        let _min:CGFloat = Swift.min(r,g,b)
         
-        hsb.s = (_max != 0) ? (_max - _min) / _max * 100 : 0
-        hsb.b = _max / 255 * 100
+        hsb.s = ((_max != 0) ? (_max - _min) / _max * 100 : 0).uint
+        hsb.b = (_max / 255 * 100).uint
         
         if(hsb.s == 0){
             hsb.h = 0;
         }else{
-            switch(_max)
-            {
-            case r:
-                hsb.h = (g - b)/(_max - _min)*60 + 0;
-                break;
-            case g:
-                hsb.h = (b - r)/(_max - _min)*60 + 120;
-                break;
-            case b:
-                hsb.h = (r - g)/(_max - _min)*60 + 240;
-                break;
+            switch(_max){
+                case r:
+                    hsb.h = ((g - b)/(_max - _min)*60 + 0).uint
+                case g:
+                    hsb.h = ((b - r)/(_max - _min)*60 + 120).uint
+                case b:
+                    hsb.h = ((r - g)/(_max - _min)*60 + 240).uint
+                default:break;
             }
         }
         
-        hsb.h = Math.min(360, Math.max(0, Math.round(hsb.h)))
-        hsb.s = Math.min(100, Math.max(0, Math.round(hsb.s)))
-        hsb.b = Math.min(100, Math.max(0, Math.round(hsb.b)))
+        hsb.h = (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint
+        hsb.s = (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint
+        hsb.b = (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint
         
         return hsb;
         
