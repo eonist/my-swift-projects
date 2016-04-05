@@ -13,10 +13,6 @@ class HSBParser {
         
     }
     class func hsb(nsColor:NSColor)->HSB{
-        return HSB()
-        Swift.print("nsColor.hueComponent: " + "\(nsColor.hueComponent*360)")
-        Swift.print("nsColor.saturationComponent: " + "\(nsColor.saturationComponent*100)")
-        Swift.print("nsColor.brightnessComponent: " + "\(nsColor.brightnessComponent*100)")
-        
+        return HSB(nsColor.hueComponent,nsColor.saturationComponent,nsColor.brightnessComponent)
     }
 }
