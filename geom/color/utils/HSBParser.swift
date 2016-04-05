@@ -36,15 +36,15 @@ class HSBParser {
     /**
      *
      */
-    class func hsb2(){
-        let r:Int; let g:Int; let b:Int;
+    class func hsb2(rgb:RGB)->HSB{
+        let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         
-        var hsb:Object = new Object;
-        var _max:Number = Math.max(r,g,b);
-        var _min:Number = Math.min(r,g,b);
+        var h:CGFloat; var s:CGFloat; var b:CGFloat;
+        var _max:CGFloat = Swift.max(r,g,b)
+        var _min:CGFloat = Swift.min(r,g,b)
         
-        hsb.s = (_max != 0) ? (_max - _min) / _max * 100: 0;
-        hsb.b = _max / 255 * 100;
+        hsb.s = (_max != 0) ? (_max - _min) / _max * 100 : 0
+        hsb.b = _max / 255 * 100
         
         if(hsb.s == 0){
             hsb.h = 0;
