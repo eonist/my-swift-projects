@@ -10,6 +10,7 @@ class HSBParser {
         let r:UInt = rgb.r / 255;let g:UInt = rgb.g / 255;let b:UInt = rgb.b / 255;
         Swift.print("r: " + "\(r)")
         Swift.print("g: " + "\(g)")
+        Swift.print("b: " + "\(b)")
         var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:UInt
         var brightness:UInt
