@@ -86,7 +86,7 @@ extension NSColorParser{
      *
      */
     class func nsColor(rgb:RGB) -> NSColor{
-        return rgb.nsColor
+        return NSColorParser.nsColor(rgb.r,rgb.g,rgb.b)
     }
     class func nsColor(hsb:HSB) -> NSColor{
         return hsb.nsColor
