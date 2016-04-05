@@ -9,9 +9,9 @@ class HSBParser {
     class func hsb(rgb:RGB)->HSB{
         let r:UInt = rgb.r / 255;let g:UInt = rgb.g / 255;let b:UInt = rgb.b / 255;
         
-        var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
-        var saturation:UInt
-        var brightness:UInt
+        var hue:CGFloat = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
+        var saturation:CGFloat
+        var brightness:CGFloat
         let max:UInt = Swift.max(r, Swift.max(g, b))
         let min:UInt = Swift.min(r, Swift.min(g, b))
         let delta:UInt = max - min
@@ -24,7 +24,6 @@ class HSBParser {
                 Swift.print("g: " + "\(g)")
                 Swift.print("b: " + "\(b)")
                 Swift.print("delta: " + "\(delta)")
-                hue = -1
                 hue = (g - b) / delta
             }else if(g == max){
                 hue = 2 + (b - r) / delta
@@ -34,6 +33,6 @@ class HSBParser {
                 if(hue < 0) {hue += 360}
             }
         }
-        return HSB(hue, saturation, brightness)
+        return HSB(hue.uint, saturation.uint, brightness.uint)
     }
 }
