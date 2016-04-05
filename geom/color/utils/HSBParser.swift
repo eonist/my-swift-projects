@@ -7,14 +7,14 @@ class HSBParser {
      * @return The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
      */
     class func hsb(rgb:RGB)->HSB{
-        let r:UInt = rgb.r / 255;let g:UInt = rgb.g / 255;let b:UInt = rgb.b / 255;
+        let r:CGFloat = rgb.r.cgFloat / 255;let g:CGFloat = rgb.g.cgFloat / 255;let b:CGFloat = rgb.b.cgFloat / 255;
         
         var hue:CGFloat = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:CGFloat
         var brightness:CGFloat
-        let max:UInt = Swift.max(r, Swift.max(g, b))
-        let min:UInt = Swift.min(r, Swift.min(g, b))
-        let delta:UInt = max - min
+        let max:CGFloat = Swift.max(r, Swift.max(g, b))
+        let min:CGFloat = Swift.min(r, Swift.min(g, b))
+        let delta:CGFloat = max - min
         
         brightness = max
         saturation = max != 0 ? delta / max : 0
