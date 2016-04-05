@@ -31,44 +31,34 @@ class HSBParser {
         Swift.print("hue: " + "\(hue)")
         Swift.print("saturation: " + "\(saturation)")
         Swift.print("brightness: " + "\(brightness)")
-        return HSB(abs(hue).uint, abs(saturation).uint, abs(brightness).uint)
+        return HSB(abs(hue), abs(saturation), abs(brightness))
     }
     /**
      *
      */
     class func hsb2(rgb:RGB)->HSB{
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
-        
         let hsb:HSB = HSB()
-        let _max:CGFloat = Swift.max(r,g,b)
-        let _min:CGFloat = Swift.min(r,g,b)
-        
-        hsb.s = ((_max != 0) ? (_max - _min) / _max * 100 : 0).uint
-        hsb.b = (_max / 255 * 100).uint
-        
+        let max:CGFloat = Swift.max(r,g,b)
+        let min:CGFloat = Swift.min(r,g,b)
+        hsb.s = (max != 0) ? (max - min) / max * 100 : 0
+        hsb.b = max / 255 * 100
         if(hsb.s == 0){
             hsb.h = 0;
         }else{
-            switch(_max){
+            switch(max){
                 case r:
-                    hsb.h = abs((g - b)/(_max - _min)*60 + 0).uint
+                    hsb.h = ((g - b)/(max - min)*60 + 0)
                 case g:
-                    hsb.h = abs((b - r)/(_max - _min)*60 + 120).uint
+                    hsb.h = ((b - r)/(max - min)*60 + 120)
                 case b:
-                    hsb.h = abs((r - g)/(_max - _min)*60 + 240).uint
+                    hsb.h = abs((r - g)/(max - min)*60 + 240)
                 default:break;
             }
         }
-        
-        hsb.h = (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint
-        hsb.s = (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint
-        hsb.b = (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint
-        
-        return hsb;
-        
-        
-        // OUTPUT
-        // RGB: 51, 102, 0
-        // HSB: 90, 100, 40
+        hsb.h = Swift.min(360, Swift.max(0, round(hsb.h)))
+        hsb.s = Swift.min(100, Swift.max(0, round(hsb.s)))
+        hsb.b = Swift.min(100, Swift.max(0, round(hsb.b)))
+        return hsb
     }
 }
