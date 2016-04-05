@@ -61,9 +61,9 @@ class HexParser {
      * TODO: maybe make another method that takes int from 0-255?
      */
     class func hexString(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
-        var rr:String = String(format:"%X", Int(r * 255))
-        var gg:String = String(format:"%X", Int(g * 255))
-        var bb:String = String(format:"%X", Int(b * 255))
+        var rr:String = String(format:"%X", Int(r))
+        var gg:String = String(format:"%X", Int(g))
+        var bb:String = String(format:"%X", Int(b))
         rr = (rr.count == 1) ? "0" + rr : rr
         gg = (gg.count == 1) ? "0" + gg : gg
         bb = (bb.count == 1) ? "0" + bb : bb
