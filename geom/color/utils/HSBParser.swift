@@ -39,7 +39,7 @@ class HSBParser {
     class func hsb2(rgb:RGB)->HSB{
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         
-        var h:CGFloat; var s:CGFloat; var b:CGFloat;
+        var hsb:HSB = HSB()
         var _max:CGFloat = Swift.max(r,g,b)
         var _min:CGFloat = Swift.min(r,g,b)
         
