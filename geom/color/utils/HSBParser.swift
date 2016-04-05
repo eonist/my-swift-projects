@@ -8,21 +8,23 @@ class HSBParser {
      */
     class func hsb(rgb:RGB)->HSB{
         let r:UInt = rgb.r / 255;let g:UInt = rgb.g / 255;let b:UInt = rgb.b / 255;
-        Swift.print("r: " + "\(r)")
-        Swift.print("g: " + "\(g)")
-        Swift.print("b: " + "\(b)")
+        
         var hue:UInt = 0//<--the zero was recently added to get the code to compile. Shouldnt be there
         var saturation:UInt
         var brightness:UInt
         let max:UInt = Swift.max(r, Swift.max(g, b))
         let min:UInt = Swift.min(r, Swift.min(g, b))
         let delta:UInt = max - min
-        Swift.print("delta: " + "\(delta)")
+        
         brightness = max
         saturation = max != 0 ? delta / max : 0
         if (saturation == 0) {hue = 0} /*this was set to NaN, but 0 seemed more suitable*/
         else {
             if(r == max){
+                Swift.print("g: " + "\(g)")
+                Swift.print("b: " + "\(b)")
+                Swift.print("delta: " + "\(delta)")
+                hue = -1
                 hue = (g - b) / delta
             }else if(g == max){
                 hue = 2 + (b - r) / delta
