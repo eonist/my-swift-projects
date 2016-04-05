@@ -33,4 +33,5 @@ class HSB {
 }
 extension HSB{
     var nsColor:NSColor {return NSColorParser.nsColor(self)}
+    var rgb:RGB{return RGBParser.rgb(self)}
 }
