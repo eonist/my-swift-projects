@@ -33,4 +33,45 @@ class HSBParser {
         Swift.print("brightness: " + "\(brightness)")
         return HSB(abs(hue).uint, abs(saturation).uint, abs(brightness).uint)
     }
+    /**
+     *
+     */
+    class func hsb2(){
+        let r:Int; let g:Int; let b:Int;
+        
+        var hsb:Object = new Object;
+        var _max:Number = Math.max(r,g,b);
+        var _min:Number = Math.min(r,g,b);
+        
+        hsb.s = (_max != 0) ? (_max - _min) / _max * 100: 0;
+        hsb.b = _max / 255 * 100;
+        
+        if(hsb.s == 0){
+            hsb.h = 0;
+        }else{
+            switch(_max)
+            {
+            case r:
+                hsb.h = (g - b)/(_max - _min)*60 + 0;
+                break;
+            case g:
+                hsb.h = (b - r)/(_max - _min)*60 + 120;
+                break;
+            case b:
+                hsb.h = (r - g)/(_max - _min)*60 + 240;
+                break;
+            }
+        }
+        
+        hsb.h = Math.min(360, Math.max(0, Math.round(hsb.h)))
+        hsb.s = Math.min(100, Math.max(0, Math.round(hsb.s)))
+        hsb.b = Math.min(100, Math.max(0, Math.round(hsb.b)))
+        
+        return hsb;
+        
+        
+        // OUTPUT
+        // RGB: 51, 102, 0
+        // HSB: 90, 100, 40
+    }
 }
