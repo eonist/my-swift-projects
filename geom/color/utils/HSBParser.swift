@@ -60,9 +60,9 @@ class HSBParser {
             }
         }
         
-        hsb.h = 360 / (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint
-        hsb.s = 100 / (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint
-        hsb.b = 100 / (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint
+        hsb.h = (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint / 360
+        hsb.s = (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint / 100
+        hsb.b = (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint / 100
         
         return hsb;
         
