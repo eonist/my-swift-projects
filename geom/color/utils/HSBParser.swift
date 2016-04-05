@@ -60,9 +60,9 @@ class HSBParser {
                 default:break;
             }
         }
-        hsb.h = Swift.min(360, Swift.max(0, abs(hsb.h)))
-        hsb.s = Swift.min(100, Swift.max(0, abs(hsb.s)))
-        hsb.b = Swift.min(100, Swift.max(0, abs(hsb.b)))
+        hsb.h = Swift.min(360, Swift.max(0, (hsb.h)))
+        hsb.s = Swift.min(100, Swift.max(0, (hsb.s)))
+        hsb.b = Swift.min(100, Swift.max(0, (hsb.b)))
         return hsb
     }
 }
