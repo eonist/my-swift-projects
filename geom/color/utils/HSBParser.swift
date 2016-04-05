@@ -28,7 +28,9 @@ class HSBParser {
                 if(hue < 0) {hue += 360}
             }
         }
-        
+        Swift.print("hue: " + "\(hue)")
+        Swift.print("saturation: " + "\(saturation)")
+        Swift.print("brightness: " + "\(brightness)")
         return HSB(abs(hue).uint, abs(saturation).uint, abs(brightness).uint)
     }
 }
