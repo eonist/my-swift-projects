@@ -23,7 +23,7 @@ extension NSColor{
     /**
      * EXAMPLE: NSColor.red.hexVal//Output:255.0
      */
-    var hexVal:Double?{return Double("0x" + HexParser.hexString(self))}
+    var hexVal:Double?{return HexParser.hexValue(self)}
     var hls:HLS{return self.rgb.hls}
     var hsv:HSV{return self.rgb.hsv}
     var hsb:HSB{return self.rgb.hsb}

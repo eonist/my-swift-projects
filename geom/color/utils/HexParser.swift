@@ -14,8 +14,8 @@ class HexParser {
     class func hexValue(color:NSColor) -> UInt{
         return UInt(CGFloat(color.hexVal!))
     }
-    class func hexValue(color:NSColor) -> Double{
-        return Double("0x" + HexParser.hexString(color))!
+    class func hexValue(color:NSColor) -> Double?{
+        return Double("0x" + HexParser.hexString(color))
     }
     /**
      *
