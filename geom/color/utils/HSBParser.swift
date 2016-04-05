@@ -40,6 +40,7 @@ class HSBParser {
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         let hsb:HSB = HSB()
         let max:CGFloat = Swift.max(r,g,b)
+        Swift.print("max: " + "\(max)")
         let min:CGFloat = Swift.min(r,g,b)
         hsb.s = (max != 0) ? (max - min) / max * 100 : 0
         hsb.b = max / 255 * 100
@@ -48,11 +49,11 @@ class HSBParser {
         }else{
             switch(max){
                 case r:
-                    hsb.h = ((g - b)/(max - min)*60 + 0)
+                    hsb.h = (g - b)/(max - min)*60 + 0
                 case g:
-                    hsb.h = ((b - r)/(max - min)*60 + 120)
+                    hsb.h = (b - r)/(max - min)*60 + 120
                 case b:
-                    hsb.h = abs((r - g)/(max - min)*60 + 240)
+                    hsb.h = (r - g)/(max - min)*60 + 240
                 default:break;
             }
         }
