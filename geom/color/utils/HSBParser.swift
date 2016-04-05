@@ -17,16 +17,17 @@ class HSBParser {
         brightness = max
         saturation = max != 0 ? delta / max : 0
         if (saturation == 0) {hue = 0} /*this was set to NaN, but 0 seemed more suitable*/
-        else if(g == max){
+        else {
+            if(r == max){
+                hue = (g - b) / delta
+            }
+        }
+        if(g == max){
             hue = 2 + (b - r) / delta
         }else if(b == max){
             hue = 4 + (r - g) / delta
             hue = hue * 60
             if(hue < 0) {hue += 360}
-        }else {
-            if(r == max){
-                hue = (g - b) / delta
-            }
         }
         return HSB(abs(hue).uint, abs(saturation).uint, abs(brightness).uint)
     }
