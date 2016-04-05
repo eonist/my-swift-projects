@@ -14,6 +14,9 @@ class HexParser {
     class func hexValue(color:NSColor) -> UInt{
         return UInt(CGFloat(color.hexVal!))
     }
+    class func hexValue(color:NSColor) -> UInt{
+        return UInt(CGFloat(color.hexVal!))
+    }
     /**
      *
      */
@@ -36,6 +39,7 @@ class HexParser {
     class func hexValue(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
         return (a << 24) | (r << 16) | (g << 8) | b
     }
+    
     /**
      * EXAMPLE: hexString(16711680)//Output: FF0000
      */
