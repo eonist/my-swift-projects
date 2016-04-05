@@ -20,15 +20,15 @@ class HSBParser {
         else {
             if(r == max){
                 hue = (g - b) / delta
+            }else if(g == max){
+                hue = 2 + (b - r) / delta
+            }else if(b == max){
+                hue = 4 + (r - g) / delta
+                hue = hue * 60
+                if(hue < 0) {hue += 360}
             }
         }
-        if(g == max){
-            hue = 2 + (b - r) / delta
-        }else if(b == max){
-            hue = 4 + (r - g) / delta
-            hue = hue * 60
-            if(hue < 0) {hue += 360}
-        }
+        
         return HSB(abs(hue).uint, abs(saturation).uint, abs(brightness).uint)
     }
 }
