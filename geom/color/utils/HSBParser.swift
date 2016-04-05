@@ -51,18 +51,18 @@ class HSBParser {
         }else{
             switch(_max){
                 case r:
-                    hsb.h = ((g - b)/(_max - _min)*60 + 0).uint
+                    hsb.h = abs((g - b)/(_max - _min)*60 + 0).uint
                 case g:
-                    hsb.h = ((b - r)/(_max - _min)*60 + 120).uint
+                    hsb.h = abs((b - r)/(_max - _min)*60 + 120).uint
                 case b:
-                    hsb.h = ((r - g)/(_max - _min)*60 + 240).uint
+                    hsb.h = abs((r - g)/(_max - _min)*60 + 240).uint
                 default:break;
             }
         }
         
-        hsb.h = (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint
-        hsb.s = (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint
-        hsb.b = (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint
+        hsb.h = 360 / (Swift.min(360, Swift.max(0, round(hsb.h.cgFloat)))).uint
+        hsb.s = 100 / (Swift.min(100, Swift.max(0, round(hsb.s.cgFloat)))).uint
+        hsb.b = 100 / (Swift.min(100, Swift.max(0, round(hsb.b.cgFloat)))).uint
         
         return hsb;
         
