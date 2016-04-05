@@ -49,10 +49,13 @@ class HSBParser {
         }else{
             switch(max){
                 case r:
+                    Swift.print("case r")
                     hsb.h = (g - b)/(max - min)*60 + 0
                 case g:
+                    Swift.print("case g")
                     hsb.h = (b - r)/(max - min)*60 + 120
                 case b:
+                    Swift.print("case b")
                     hsb.h = (r - g)/(max - min)*60 + 240
                 default:break;
             }
