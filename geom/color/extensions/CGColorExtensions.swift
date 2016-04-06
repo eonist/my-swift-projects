@@ -1,6 +1,7 @@
-import Foundation
+import Cocoa
 
 extension CGColor {
+    var nsColor:NSColor {return NSColorParser.nsColor(self)}
     static func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
         return CGColorParser.cgColor(hexColor,alpha)
     }

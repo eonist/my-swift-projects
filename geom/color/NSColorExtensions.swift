@@ -17,7 +17,7 @@ extension NSColor{
         return NSColor(self,alpha)
     }
     static var random:NSColor{return ColorParser.randomColor()}
-    var cgColor:CGColor {return CGColorParser.cgColor(self)}
+    var cgColor:CGColorRef {return CGColorParser.cgColor(self)}
     var rgb:RGB {return RGBParser.rgb(self)}
     var rgba:RGBA{return RGBAParser.rgba(self)}
     var hexString:String{return HexParser.hexString(self)}
