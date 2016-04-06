@@ -3,23 +3,15 @@ import Cocoa
 
 class CGColorParser {
     /**
-     * Returns a random CGColor
+     *
      */
-    class func random()->CGColor{
-        let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
-        return color
+    class func cgColor(ciColor:CIColor)->CGColor{
+        let colorSpace:CGColorSpaceRef = ciColor.colorSpace
+        let components/*:CGFloat*/ = ciColor.components;
+        let cgColor:CGColorRef  = CGColorCreate(colorSpace, components)!;
+        return cgColor
     }
-    /**
-    * Returns an nsColor for @param cgColor
-    */
-    class func nsColor(cgColor:CGColorRef)->NSColor{
-        let ciColor = CIColor(CGColor: cgColor)//convert the cg to ci
-        let nsColor = NSColor(CIColor: ciColor)//convert the ci to ns
-        return nsColor
-    }
+    
     /**
      * NOTE: I think you can also just do: NSColor.redColor().CGColor, which renders this method obsolete
      * NOTE: This method is nice to have around for reference
@@ -37,13 +29,6 @@ class CGColorParser {
      */
     class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
         return CGColorCreateGenericRGB(r,g,b,a)
-    }
-    class func randomColor()-> NSColor{
-        let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let nsColor:NSColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: 1)
-        return nsColor
     }
     /*
     * hexColor -> cgColor
