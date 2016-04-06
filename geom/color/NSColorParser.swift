@@ -22,6 +22,14 @@ class NSColorParser {
         return color.colorWithAlphaComponent(alpha)
     }
     /**
+     * Returns an nsColor for @param cgColor
+     */
+    class func nsColor(cgColor:CGColorRef)->NSColor{
+        let ciColor = CIColor(CGColor: cgColor)//convert the cg to ci
+        let nsColor = NSColor(CIColor: ciColor)//convert the ci to ns
+        return nsColor
+    }
+    /**
      *
      */
     class func randomColor()-> NSColor{
