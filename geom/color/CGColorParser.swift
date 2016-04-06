@@ -18,7 +18,7 @@ class CGColorParser {
      */
     class func cgColor(nsColor:NSColor)->CGColor{
         let ciColor:CIColor = CIColor(color: nsColor)!
-        let cgColor = CIColorParser.cgColor(ciColor)
+        let cgColor = CGColorParser.cgColor(ciColor)
         return cgColor
     }
     /**
