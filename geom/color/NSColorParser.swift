@@ -16,20 +16,6 @@ class NSColorParser {
         return nsColor(uintColor,alpha);
     }
     /**
-     * EXAMPLE: :NSColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
-     */
-    class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
-        return color.colorWithAlphaComponent(alpha)
-    }
-    /**
-     * Returns an nsColor for @param cgColor
-     */
-    class func nsColor(cgColor:CGColorRef)->NSColor{
-        let ciColor = CIColor(CGColor: cgColor)//convert the cg to ci
-        let nsColor = NSColor(CIColor: ciColor)//convert the ci to ns
-        return nsColor
-    }
-    /**
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */
@@ -44,9 +30,21 @@ class NSColorParser {
         //Swift.print("b: " + "\(b)")
         return NSColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(alpha))
     }
-    
+    /**
+     * EXAMPLE: :NSColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
+     */
+    class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
+        return color.colorWithAlphaComponent(alpha)
+    }
+    /**
+     * Returns an nsColor for @param cgColor
+     */
+    class func nsColor(cgColor:CGColorRef)->NSColor{
+        let ciColor = CIColor(CGColor: cgColor)//convert the cg to ci
+        let nsColor = NSColor(CIColor: ciColor)//convert the ci to ns
+        return nsColor
+    }
 }
-
 extension NSColorParser{
     /**
      * Convenince implementation of nsColor with Int values
@@ -62,7 +60,6 @@ extension NSColorParser{
     class func nsColor(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
         return NSColorParser.nsColor(r.cgFloat, g.cgFloat, b.cgFloat)
     }
-    
     /**
      * Convenince
      */
