@@ -48,7 +48,7 @@ class Gradients{
     static var purplePinkEnd:UInt = 0xC643FC
 
 }
-extension Gradients{
+extension Gradients{/*Color ranges*/
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}
     
     static func red(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(redStart).alpha(alpha),CGColor.cgColor(redEnd).alpha(alpha)]}
