@@ -16,7 +16,6 @@ public class CGFloatParser{
             //Swift.print("i: " + "\(i)")
             curVal += increaseBy
             interpolatedRange.append(curVal)
-            
         }
         interpolatedRange.append(max)
         return interpolatedRange
