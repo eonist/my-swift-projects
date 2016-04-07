@@ -109,7 +109,6 @@ class Graphic:InteractiveView2,IGraphic{
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension Graphic{
