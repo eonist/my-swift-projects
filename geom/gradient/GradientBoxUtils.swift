@@ -7,7 +7,7 @@ class GradientBoxUtils{
      * @NOTE: there may be faster ways to calculate this so imporve it if its necassery
      */
     class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
-        //Swift.print("rect: " + "\(rect)")
+        Swift.print("rect: " + "\(rect)")
         //Swift.print("angle: " + "\(angle)")
         //let angle = Trig.normalize2(angle)/*normalizes the angle between between -π and π*/ //<----TODO: fix this problem in the cssPropertyparser not here,actually there may be other use cases for the graphics class so it needs to be here, you could throw an error?
         //Swift.print("GradientBoxUtils.angle: " + "\(angle)")
@@ -32,9 +32,9 @@ class GradientBoxUtils{
         //Swift.print("rect.center: " + "\(rect.center)")
         let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
         Swift.print("distPoint: " + String(distPoint))
-        let end:CGPoint = rect.center.polarPoint(distPoint.y, angle)
+        let end:CGPoint = rect.center.polarPoint(distPoint.x, angle)
         //Swift.print("end: " + String(end))
-        let start:CGPoint = rect.center.polarPoint(-distPoint.y, angle)
+        let start:CGPoint = rect.center.polarPoint(-distPoint.x, angle)
         //Swift.print("start: " + String(start))
         return (start,end)
     }
