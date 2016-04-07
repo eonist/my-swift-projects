@@ -23,30 +23,3 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
         self.rotation = rotation
     }
 }
-
-/*
-
-Solution:
-
-You need to operate in percentage values from left to right, and you need to do this in the coordinate system of the boundingbox of the path
-@NOTE: svg will need to operate in boundingbox and viewbox coordinatespace. when svg uses the viewbox coordinatespace you just use the boundingbox and offset the gradient points percentage wise.
-@NOTE: css needs a different approach, when using the radial gradient it uses the percentage from the center etc, this can be done in the css classes tht then set the gradient classes of the Graphics instance
-@NOTE: css also bases its persentage values from crossing between the normal and the edges. this can also be done in in the css classes
-@NOTE:
-@NOTE: The reason the Graphics class needs to operate with percentage values is because the Graphics may be scaled, actually that is not true, it wont be scaled, you scale in the Graphic class not in the Graphics class so you can hold absolute coordinates.
-@NOTE:
-@NOTE: Support Matrix transformation
-
-
-TODO: when you set the gradient points use absolute values, there is no need to use % values, you can doo all the GradientBox calculations in the Graphic instance etc, Keep Graphics simple. this is not true, you could update the path and not the gradient style and it should scale!
-TODO: setup gradient tests for css,graphic framework, svg. all different gradients and offsets, everything should work. also matrix transformations etc
-TODO: start by setting up a grid of Graphic framework gradients
-TODO: then do the css gradient tests
-TODO: then setup the svg gradients
-TODO: then start refactoring the Graphics class related to the Gradient config methods etc, and start moving them into GradientGraphic etc.
-
-*/
-
-//Continue here: in order to move forward we need to seperate radial and linear gradient types. this class should provide the common denominator of the two possible three (concial gradient)
-
-//Linear and Radial should support both absolute and relative values and also both boundingbox and ...or only bounding box? Think!
