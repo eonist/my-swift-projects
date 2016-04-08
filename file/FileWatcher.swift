@@ -76,7 +76,7 @@ extension FileWatcher{
     }
 }
 private class Flags{
-    static var dataChange:UInt32 = 128000
-    static var change:UInt32 = 67584
-    static var delete:UInt32 = 111872
+    static var dataChange:UInt32 = 128000//data in the file changed
+    static var change:UInt32 = 67584//add,rename, move?
+    static var delete:UInt32 = 111872//the file was deleted
 }
