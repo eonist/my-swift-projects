@@ -1,6 +1,6 @@
 import Foundation
 
-class FileWatcher {
+public class FileWatcher {
     let paths: [String]
     var hasStarted = false
     var streamRef:FSEventStreamRef?
@@ -14,12 +14,12 @@ class FileWatcher {
      */
     let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
-        let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
+        let fileWatcher:FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         for index in 0..<numEvents {
-            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
+            fileWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
         }
-        fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
+        fileWatcher.lastEventId = eventIds[numEvents - 1]
     }
     /**
      * NOTE: I think you need to create a switch to differentiate between eventFlags
