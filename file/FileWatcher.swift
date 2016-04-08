@@ -69,6 +69,10 @@ public class FileWatcher {
         streamRef = nil
         hasStarted = false
     }
+    /**
+     * Carefull with enabling this as we dont deinit things in swift
+     * NOTE: if you enable it the class will deint right after its init.
+     */
     deinit {
         //stop()
     }
