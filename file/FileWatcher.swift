@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Watches for file changes in a list of filePaths
+ */
 public class FileWatcher {
     let filePaths: [String]
     var hasStarted = false
