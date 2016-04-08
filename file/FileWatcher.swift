@@ -24,16 +24,16 @@ public class FileWatcher {
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
     /**
-     * NOTE: I think you need to create a switch to differentiate between eventFlags
+     * NOTE: The switch differentiates between eventFlags (aka file event types)
      */
     private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
         switch eventFlags{
-        case 128000:
-            Swift.print("modified")
-        case 67584:
-            Swift.print("rename,add,remove")
-        case 111872:
+        case Flags.dataChange:
+            Swift.print("data change")
+        case Flags.change:
+            Swift.print("file change")
+        case Flags.delete:
             Swift.print("delete")
         default:
             Swift.print("unsupported event: " + "\(eventFlags)")
@@ -74,4 +74,9 @@ extension FileWatcher{
     convenience public init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }
+}
+private class Flags{
+    static var dataChange:UInt32 = 128000
+    static var change:UInt32 = 67584
+    static var delete:UInt32 = 111872
 }
