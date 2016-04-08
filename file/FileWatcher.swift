@@ -74,10 +74,16 @@ public class FileWatcher {
     }
 }
 extension FileWatcher{
+    /**
+     * Convenince init
+     */
     convenience public init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }
 }
+/**
+ * Helper class to differentiate between the FSEvent flag types (aka file event types)
+ */
 private class Flags{
     static var dataChange:UInt32 = 128000//data in the file changed
     static var change:UInt32 = 67584//add,rename, move?
