@@ -25,7 +25,7 @@ public class FileWatcher {
     }
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
-     * PARAM: eventFlags: pertains to the file event type
+     * PARAM: eventFlags: pertains to the file event type. From Apples Docs: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags.
      * PARAM: eventId: is an id number that the os uses to differentiate between events. 
      * PARAM:
      */
