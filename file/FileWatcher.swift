@@ -1,5 +1,5 @@
 import Foundation
 
-class FileWatcher {
+private class FileWatcher {
 
 }
