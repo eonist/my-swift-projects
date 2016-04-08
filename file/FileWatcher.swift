@@ -31,6 +31,7 @@ public class FileWatcher {
      */
     private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
+
         switch eventFlags{
         case Flags.dataChange:
             Swift.print("data change")
