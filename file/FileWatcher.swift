@@ -1,30 +1,30 @@
 import Foundation
 
-public class FileWatcher {
-    private let paths: [String]
-    private var hasStarted = false
-    private var streamRef:FSEventStreamRef?
-    public private(set) var lastEventId:FSEventStreamEventId
-    public init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
+class FileWatcher {
+    let filePaths: [String]
+    var hasStarted = false
+    var streamRef:FSEventStreamRef?
+    var lastEventId:FSEventStreamEventId
+    init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
-        self.paths = paths
+        self.filePaths = paths
     }
     /**
      *
      */
-    private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
+    let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
-        let fileWatcher:FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
+        let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         for index in 0..<numEvents {
-            fileWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
+            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
         }
-        fileWatcher.lastEventId = eventIds[numEvents - 1]
+        fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
     /**
      * NOTE: I think you need to create a switch to differentiate between eventFlags
      */
-    public func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
+    func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
         switch eventFlags{
         case 128000:
@@ -47,7 +47,7 @@ public class FileWatcher {
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
-        streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, paths, lastEventId, 0, flags)
+        streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0, flags)
         FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), kCFRunLoopDefaultMode)
         FSEventStreamStart(streamRef!)
         hasStarted = true
@@ -69,7 +69,7 @@ public class FileWatcher {
     }
 }
 extension FileWatcher{
-    convenience public init(_ pathsToWatch: [String]) {
+    convenience init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }
 }
