@@ -1,10 +1,10 @@
 import Foundation
 
 public class FileWatcher {
-    private let filePaths: [String]
-    private var hasStarted = false
-    private var streamRef:FSEventStreamRef?
-    public private(set) var lastEventId:FSEventStreamEventId
+    let filePaths: [String]
+    var hasStarted = false
+    var streamRef:FSEventStreamRef?
+    public private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be public private or an error will happen when in use*/
     public init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
@@ -14,17 +14,17 @@ public class FileWatcher {
      */
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
-        let fileWatcher:FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
+        let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         for index in 0..<numEvents {
-            fileWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
+            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
         }
-        fileWatcher.lastEventId = eventIds[numEvents - 1]
+        fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
     /**
      * NOTE: I think you need to create a switch to differentiate between eventFlags
      */
-    public func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
+    private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
         switch eventFlags{
         case 128000:
@@ -41,7 +41,7 @@ public class FileWatcher {
     /**
      * Start listening for FSEvents
      */
-    func start() {
+    public func start() {
         Swift.print("start - has started: " + "\(hasStarted)")
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
@@ -55,7 +55,7 @@ public class FileWatcher {
     /**
      * Stop listening for FSEvents
      */
-    func stop() {
+    public func stop() {
         Swift.print("stop - has started: " + "\(hasStarted)")
         if(!hasStarted){return}/*<--only stop if it has been started*/
         FSEventStreamStop(streamRef!)
