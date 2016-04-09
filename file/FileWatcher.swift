@@ -6,7 +6,7 @@ import Foundation
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
-class FileWatcher:EventSender{
+class FileWatcher/*:EventSender*/{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
