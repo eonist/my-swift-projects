@@ -7,7 +7,6 @@ import Cocoa
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
 class FileWatcher/*:NSView*//*:EventSender*/{
-    static var temp:String = "works"
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
@@ -35,7 +34,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
-        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil,userInfo:[NSObject():"works as well"])
+        
         
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
@@ -44,15 +43,9 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
         
-        let newObj = NSObject()
-        newObj.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
+        
     }
-    /**
-     *
-     */
-    func onFrameOnMainThread(){
-        Swift.print("onFrameOnMainThread")
-    }
+    
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
      * PARAM: eventId: is an id number that the os uses to differentiate between events.
@@ -77,14 +70,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             
         }
         
-        //Swift.print(FileWatcher.temp)
-        
-        //Swift.print(test2)
-        
-        //Swift.print(test)
-        
-        
-        //Swift.print("self: " + "\(self)")
         
         //let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
         //super.onEvent(event)
