@@ -15,9 +15,13 @@ public class FileWatcher {
         self.filePaths = paths
     }
     /**
+     *
+     * PARAM: streamRef: The stream for which event(s) occurred.
+     * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created.
      * PARAM: numEvents: The number of events being reported in this callback. Each of the arrays (eventPaths, eventFlags, eventIds) will have this many elements.
      * PARAM: eventPaths: An array of paths to the directories in which event(s) occurred.The type of this parameter depends on the flags passed to FSEventStreamCreate...(). If kFSEventStreamCreateFlagUseCFTypes was set, then this will be a CFArrayRef containing CFStringRef objects (per CFStringCreateWithFileSystemRepresentation()). Ownership follows the Get rule, and they will be released by the framework after your callback returns. If kFSEventStreamCreateFlagUseCFTypes was not set, then the framework will pass your callback a raw C array of raw C strings that will be deallocated by the framework after your callback returns. A path might be "/" if ether of these flags is set for the event: kFSEventStreamEventFlagUserDropped, kFSEventStreamEventFlagKernelDropped.
-     * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created.
+     * PARAM: eventFlags: pertains to the file event type. From Apples Docs: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags.
+     *
      */
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
@@ -31,8 +35,8 @@ public class FileWatcher {
     }
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
-     * PARAM: eventFlags: pertains to the file event type. From Apples Docs: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags.
-     * PARAM: eventId: is an id number that the os uses to differentiate between events. 
+     *
+     * 
      *
      */
     private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
