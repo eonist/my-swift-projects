@@ -10,18 +10,45 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
+    var contextInfoCopy:UnsafeMutablePointer<Void>?//<---so we can differentiate the NSNotifications
     private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
-    //private var test:String = "works"
-    //var test2:String = "works"
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
-        //super.init(frame: NSRect())
     }
-    /*required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    /**
+     * Start listening for FSEvents
+     * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen).
+     * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
+     */
+    func start() {
+        Swift.print("start - has started: " + "\(hasStarted)")
+        if(hasStarted){return}/*<--only start if its not already started*/
+        var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+        //Swift.print("context: " + "\(context)")
+        context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
+        let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
+        streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
+        FSEventStreamScheduleWithRunLoop(streamRef!, NSRunLoop.currentRunLoop().getCFRunLoop()/*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
+        FSEventStreamStart(streamRef!)
+        hasStarted = true
+        
+        
+        contextInfoCopy = context.info//<---so we can differentiate the NSNotifications
     }
-    */
+    /**
+     * Stop listening for FSEvents
+     * NOTE: Stops the stream, ensuring the client's callback will not be called again for this stream. After stopping the stream, it can be restarted seamlessly via FSEventStreamStart() without missing any events.
+     */
+    func stop() {
+        Swift.print("stop - has started: " + "\(hasStarted)")
+        if(!hasStarted){return}/*<--only stop if it has been started*/
+        FSEventStreamStop(streamRef!)
+        FSEventStreamInvalidate(streamRef!)//Invalidates the stream, like CFRunLoopSourceInvalidate() does for a CFRunLoopSourcRef.
+        FSEventStreamRelease(streamRef!)//Decrements the refcount on the stream (initially one and incremented via FSEventStreamRetain()). If the refcount reaches zero, the stream is deallocated.
+        streamRef = nil
+        hasStarted = false
+    }
     /**
      * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created.
      * PARAM: streamRef: The stream for which event(s) occurred.
@@ -32,9 +59,9 @@ class FileWatcher/*:NSView*//*:EventSender*/{
      * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter. Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function.
      */
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
-        Swift.print("eventCallback()")
+        //Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil,userInfo: ["data":"\(contextInfo)"])
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
@@ -42,34 +69,13 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
         
-        
     }
-    
-    private static let StreamCallback: FSEventStreamCallback = {(streamRef: ConstFSEventStreamRef, clientCallBackInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) -> Void in
-        
-        let `self` = unsafeBitCast(clientCallBackInfo, FileWatcher.self)
-        
-        Swift.print("self: " + "\(self)")
-        
-        guard let eventPathArray = unsafeBitCast(eventPaths, NSArray.self) as? [String] else {
-            return
-        }
-        let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
-        var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
-        
-        
-        
-        for index in 0..<numEvents {
-            self.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
-        }
-    }
-    
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
      * PARAM: eventId: is an id number that the os uses to differentiate between events.
      * PARAM: eventFlag: pertains to the file event type.
      */
-    func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
+    private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
 
         switch eventFlags{
@@ -88,6 +94,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             
         }
         
+        
+            
         
         //let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
         //super.onEvent(event)
@@ -113,41 +121,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         */
        
     }
-    /**
-     *
-     */
-    func testing(){
-        Swift.print("testing")
-    }
-    /**
-     * Start listening for FSEvents
-     * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen).
-     * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
-     */
-    func start() {
-        Swift.print("start - has started: " + "\(hasStarted)")
-        if(hasStarted){return}/*<--only start if its not already started*/
-        var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-        context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
-        let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
-        streamRef = FSEventStreamCreate(kCFAllocatorDefault, FileWatcher.StreamCallback/*eventCallback*/, &context, filePaths, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
-        FSEventStreamScheduleWithRunLoop(streamRef!, NSRunLoop.currentRunLoop().getCFRunLoop()/*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
-        FSEventStreamStart(streamRef!)
-        hasStarted = true
-    }
-    /**
-     * Stop listening for FSEvents
-     * NOTE: Stops the stream, ensuring the client's callback will not be called again for this stream. After stopping the stream, it can be restarted seamlessly via FSEventStreamStart() without missing any events.
-     */
-    func stop() {
-        Swift.print("stop - has started: " + "\(hasStarted)")
-        if(!hasStarted){return}/*<--only stop if it has been started*/
-        FSEventStreamStop(streamRef!)
-        FSEventStreamInvalidate(streamRef!)//Invalidates the stream, like CFRunLoopSourceInvalidate() does for a CFRunLoopSourcRef.
-        FSEventStreamRelease(streamRef!)//Decrements the refcount on the stream (initially one and incremented via FSEventStreamRetain()). If the refcount reaches zero, the stream is deallocated.
-        streamRef = nil
-        hasStarted = false
-    }
+    
     /**
      * Carefull with enabling this as we dont deinit things in swift
      * NOTE: if you enable it the class will deint right after its init.
@@ -162,7 +136,7 @@ extension FileWatcher{
      */
     convenience init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
-    }
+    }/**/
 }
 /**
  * Helper class to differentiate between the FSEvent flag types (aka file event types)
