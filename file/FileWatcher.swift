@@ -45,6 +45,20 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         
     }
     
+    private static let StreamCallback: FSEventStreamCallback = {(streamRef: ConstFSEventStreamRef, clientCallBackInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) -> Void in
+        
+        let `self` = unsafeBitCast(clientCallBackInfo, FileWatcher.self)
+        guard let eventPathArray = unsafeBitCast(eventPaths, NSArray.self) as? [String] else {
+            return
+        }
+        let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
+        var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
+        
+        for index in 0..<numEvents {
+            self.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
+        }
+    }
+    
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
      * PARAM: eventId: is an id number that the os uses to differentiate between events.
