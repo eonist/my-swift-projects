@@ -30,7 +30,9 @@ class FileWatcher:EventSender{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
+            let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,fileSystemWatcher,eventIds[index], paths[index], eventFlagArray[index])
+            fileSystemWatcher.onEvent(event)
+            //fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
