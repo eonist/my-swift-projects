@@ -1,6 +1,7 @@
 import Foundation
 /**
  * Watches for file changes in a list of filePaths
+ * NOTE: You could stop and start to restart
  */
 public class FileWatcher {
     let filePaths: [String]
@@ -43,7 +44,7 @@ public class FileWatcher {
             Swift.print("unsupported event: " + "\(eventFlags)")
             break;
         }
-        
+        /*
         let flags:FSEventStreamEventFlags  = eventFlags[0]
         if (flags & kFSEventStreamEventFlagItemCreated) {
             NSLog(@"File Created!");
@@ -52,6 +53,7 @@ public class FileWatcher {
         } else if (flags & kFSEventStreamEventFlagItemRemoved) {
             NSLog(@"File Removed!");
         }
+        */
     }
     /**
      * Start listening for FSEvents
