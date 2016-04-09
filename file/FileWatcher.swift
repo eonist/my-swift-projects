@@ -6,7 +6,7 @@ import Cocoa
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
-class FileWatcher:NSView/*:EventSender*/{
+class FileWatcher/*:NSView*//*:EventSender*/{
     static var temp:String = "works"
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
@@ -15,12 +15,12 @@ class FileWatcher:NSView/*:EventSender*/{
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
-        super.init(frame: NSRect())
+        //super.init(frame: NSRect())
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    /*required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
     }
+    */
     /**
      * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created.
      * PARAM: streamRef: The stream for which event(s) occurred.
@@ -69,7 +69,7 @@ class FileWatcher:NSView/*:EventSender*/{
         
         Swift.print(FileWatcher.temp)
         
-        self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
+        //self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
         
         //Swift.print("self: " + "\(self)")
         
