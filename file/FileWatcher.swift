@@ -2,6 +2,7 @@ import Foundation
 /**
  * Watches for file changes in a list of filePaths
  * NOTE: You could stop and start to restart
+ * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
  */
 public class FileWatcher {
     let filePaths: [String]
