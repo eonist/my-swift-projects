@@ -50,7 +50,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
      * PARAM: eventId: is an id number that the os uses to differentiate between events.
      * PARAM: eventFlag: pertains to the file event type.
      */
-    private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
+    func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
 
         switch eventFlags{
