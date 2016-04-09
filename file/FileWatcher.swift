@@ -44,8 +44,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
         
-        
-        NSObject().performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
+        let newObj = NSObject()
+        newObj.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
     }
     /**
      *
