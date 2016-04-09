@@ -7,6 +7,7 @@ import Foundation
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
 class FileWatcher/*:EventSender*/{
+    static var temp:String = "works"
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
@@ -59,6 +60,8 @@ class FileWatcher/*:EventSender*/{
             
             
         }
+        
+        Swift.print(FileWatcher.temp)
         
         //Swift.print("self: " + "\(self)")
         
