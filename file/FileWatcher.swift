@@ -58,15 +58,15 @@ public class FileWatcher {
             
         }
         //let created:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)
-        let removed:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)
-        if(eventFlags == removed){
+        //let removed:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)
+        /*if(eventFlags == removed){
             Swift.print("works")
-        }
+        }*/
         //uint32 removed = kFSEventStreamEventFlagItemRemoved;
         
-        let ItemModified = FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)
+        //let ItemModified = FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)
         
-        if(eventFlags == UInt32(ItemModified.value)){Swift.print("bingo")}
+        //if(eventFlags == UInt32(ItemModified.value)){Swift.print("bingo")}
         /*
         let flags:FSEventStreamEventFlags  = eventFlags[0]
         if (flags & kFSEventStreamEventFlagItemCreated) {
@@ -77,6 +77,10 @@ public class FileWatcher {
             NSLog(@"File Removed!");
         }
         */
+        
+        
+        
+        
     }
     /**
      * Start listening for FSEvents
