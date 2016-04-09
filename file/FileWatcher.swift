@@ -69,7 +69,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         
         Swift.print(FileWatcher.temp)
         
-        self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
+        
         
         //Swift.print("self: " + "\(self)")
         
@@ -95,22 +95,13 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             NSLog(@"File Removed!");
         }
         */
-        
-        
-        
        
     }
-    
     /**
-     *
+     * 
      */
-    func onFrameOnMainThread(){
-        //Swift.print("it works")
-        //for animator in animators{animator.onFrame()}
-        /*while drawCalls.count > 0{
-        if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
-        }*/
-        //CATransaction.flush()/*if you dont flush your animation wont animate and you get this message: CoreAnimation: warning, deleted thread with uncommitted CATransaction; set CA_DEBUG_TRANSACTIONS=1 in environment to log backtraces.*/
+    func testing(){
+        Swift.print("testing")
     }
     /**
      * Start listening for FSEvents

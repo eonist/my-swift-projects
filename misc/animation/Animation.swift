@@ -5,6 +5,8 @@ import Cocoa
  * NOTE: Start and stop with CVDisplayLinkStart(displayLink) and CVDisplayLinkStop(displayLink) and CVDisplayLinkIsRunning(displayLink) to assert if the displayLink is running
  */
 
+//TODO: you can probably use NSObject instead of NSView. As NSObject has the performSelector method
+
 class Animation:NSView,IAnimatable{//apparently the class needs to be NSView in order for the performSelector to work//<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()
     lazy var displayLink: CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
