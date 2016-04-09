@@ -112,6 +112,7 @@ extension FileWatcher{
 }
 /**
  * Helper class to differentiate between the FSEvent flag types (aka file event types)
+ * When the .DS_STORE updates: it seems to throw the flag: 70656
  */
 private class Flags{
     static var dataChange:UInt32 = 128000//data in the file changed
