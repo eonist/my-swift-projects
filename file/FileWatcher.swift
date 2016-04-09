@@ -82,7 +82,7 @@ class FileWatcher:EventSender{
         
         
         
-        super.onEvent(<#T##event: Event##Event#>)
+       
     }
     /**
      * Start listening for FSEvents
