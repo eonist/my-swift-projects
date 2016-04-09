@@ -79,7 +79,7 @@ public class FileWatcher {
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
-        let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
+        let flags = UInt32(kFSEventStreamCreateFlagFileEvents)
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0, flags)//Creates an FSEventStream.
         FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef.
         FSEventStreamStart(streamRef!)
@@ -93,8 +93,8 @@ public class FileWatcher {
         Swift.print("stop - has started: " + "\(hasStarted)")
         if(!hasStarted){return}/*<--only stop if it has been started*/
         FSEventStreamStop(streamRef!)
-        FSEventStreamInvalidate(streamRef!)
-        FSEventStreamRelease(streamRef!)
+        FSEventStreamInvalidate(streamRef!)//Invalidates the stream, like CFRunLoopSourceInvalidate() does for a CFRunLoopSourcRef.
+        FSEventStreamRelease(streamRef!)//Decrements the refcount on the stream (initially one and incremented via FSEventStreamRetain()). If the refcount reaches zero, the stream is deallocated.
         streamRef = nil
         hasStarted = false
     }
