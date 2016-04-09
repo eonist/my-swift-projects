@@ -6,12 +6,12 @@ import Foundation
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
-public class FileWatcher {
+class FileWatcher :EventSender{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
-    public private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be public private or an error will happen when in use*/
-    public init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
+    private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
+    init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
     }
@@ -87,7 +87,7 @@ public class FileWatcher {
      * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen).
      * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
      */
-    public func start() {
+    func start() {
         Swift.print("start - has started: " + "\(hasStarted)")
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
@@ -102,7 +102,7 @@ public class FileWatcher {
      * Stop listening for FSEvents
      * NOTE: Stops the stream, ensuring the client's callback will not be called again for this stream. After stopping the stream, it can be restarted seamlessly via FSEventStreamStart() without missing any events.
      */
-    public func stop() {
+    func stop() {
         Swift.print("stop - has started: " + "\(hasStarted)")
         if(!hasStarted){return}/*<--only stop if it has been started*/
         FSEventStreamStop(streamRef!)
@@ -123,7 +123,7 @@ extension FileWatcher{
     /**
      * Convenince init
      */
-    convenience public init(_ pathsToWatch: [String]) {
+    convenience init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }
 }
