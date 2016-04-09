@@ -44,11 +44,14 @@ public class FileWatcher {
             break;
         }
         
-         FSEventStreamEventFlags flags = eventFlags[0];
+        let flags:FSEventStreamEventFlags  = eventFlags[0]
         if (flags & kFSEventStreamEventFlagItemCreated) {
             NSLog(@"File Created!");
         } else if (flags & kFSEventStreamEventFlagItemRenamed) {
-            NSLog(@"File Renamed!"); } else if (flags & kFSEventStreamEventFlagItemRemoved) { NSLog(@"File Removed!"); }
+            NSLog(@"File Renamed!");
+        } else if (flags & kFSEventStreamEventFlagItemRemoved) {
+            NSLog(@"File Removed!");
+        }
     }
     /**
      * Start listening for FSEvents
