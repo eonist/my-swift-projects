@@ -44,7 +44,11 @@ public class FileWatcher {
         default:
             Swift.print("unsupported event: " + "\(eventFlags)")
             break;
+            
+            
         }
+        
+        let ItemModified = FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)
         /*
         let flags:FSEventStreamEventFlags  = eventFlags[0]
         if (flags & kFSEventStreamEventFlagItemCreated) {
