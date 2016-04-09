@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * Watches for file changes in a list of filePaths
  * NOTE: You could stop and start to restart
@@ -6,7 +6,7 @@ import Foundation
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
-class FileWatcher/*:EventSender*/{
+class FileWatcher:NSView/*:EventSender*/{
     static var temp:String = "works"
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
@@ -15,6 +15,11 @@ class FileWatcher/*:EventSender*/{
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
+        super.init(frame: NSRect())
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     /**
      * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created.
@@ -25,9 +30,10 @@ class FileWatcher/*:EventSender*/{
      * PARAM: eventFlags: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags.
      * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter. Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function.
      */
-    let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
+    private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
+        
         
         
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
@@ -42,7 +48,7 @@ class FileWatcher/*:EventSender*/{
      * PARAM: eventId: is an id number that the os uses to differentiate between events.
      * PARAM: eventFlag: pertains to the file event type.
      */
-    func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
+    private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
 
         switch eventFlags{
@@ -62,6 +68,8 @@ class FileWatcher/*:EventSender*/{
         }
         
         Swift.print(FileWatcher.temp)
+        
+        self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
         
         //Swift.print("self: " + "\(self)")
         
@@ -91,6 +99,18 @@ class FileWatcher/*:EventSender*/{
         
         
        
+    }
+    
+    /**
+     *
+     */
+    func onFrameOnMainThread(){
+        //Swift.print("it works")
+        //for animator in animators{animator.onFrame()}
+        /*while drawCalls.count > 0{
+        if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
+        }*/
+        //CATransaction.flush()/*if you dont flush your animation wont animate and you get this message: CoreAnimation: warning, deleted thread with uncommitted CATransaction; set CA_DEBUG_TRANSACTIONS=1 in environment to log backtraces.*/
     }
     /**
      * Start listening for FSEvents
