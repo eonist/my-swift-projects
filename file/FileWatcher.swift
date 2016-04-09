@@ -12,6 +12,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     var hasStarted = false
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
+    private var test:String = "works"
+    var test2:String = "works"
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
@@ -33,7 +35,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
-        
         
         
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
@@ -69,7 +70,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         
         Swift.print(FileWatcher.temp)
         
-        
+        Swift.print(test)
+        Swift.print(test2)
         
         //Swift.print("self: " + "\(self)")
         
@@ -98,7 +100,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
        
     }
     /**
-     * 
+     *
      */
     func testing(){
         Swift.print("testing")
