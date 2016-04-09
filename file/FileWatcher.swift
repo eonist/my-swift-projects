@@ -12,7 +12,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     var hasStarted = false
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
-    private var test:String = "works"
+    //private var test:String = "works"
     //var test2:String = "works"
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
@@ -68,11 +68,11 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             
         }
         
-        Swift.print(FileWatcher.temp)
+        //Swift.print(FileWatcher.temp)
         
         //Swift.print(test2)
         
-        Swift.print(test)
+        //Swift.print(test)
         
         
         //Swift.print("self: " + "\(self)")
