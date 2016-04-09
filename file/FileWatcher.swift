@@ -19,8 +19,9 @@ public class FileWatcher {
         Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
+        var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlags[index])
+            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
