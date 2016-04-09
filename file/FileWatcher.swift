@@ -45,13 +45,13 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
         
         
-        
+        NSObject().performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
     }
     /**
      *
      */
-    func loadAlbums(){
-        Swift.print("loadAlbums")
+    func onFrameOnMainThread(){
+        Swift.print("onFrameOnMainThread")
     }
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
