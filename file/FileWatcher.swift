@@ -69,7 +69,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         
         Swift.print(FileWatcher.temp)
         
-        //self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
+        self.performSelectorOnMainThread(ObjectiveC.Selector("onFrameOnMainThread"), withObject: nil, waitUntilDone: false)
         
         //Swift.print("self: " + "\(self)")
         
