@@ -43,6 +43,19 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            
+            loadAlbums()
+            
+        })
+    }
+    /**
+     *
+     */
+    func loadAlbums(){
+        Swift.print("loadAlbums")
     }
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
