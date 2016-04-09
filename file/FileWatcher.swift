@@ -58,8 +58,10 @@ class FileWatcher:EventSender{
             
         }
         
-        let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
-        super.onEvent(event)
+        Swift.print("self: " + "\(self)")
+        
+        //let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
+        //super.onEvent(event)
         //let created:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)
         //let removed:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)
         /*if(eventFlags == removed){
