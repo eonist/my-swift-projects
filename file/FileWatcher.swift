@@ -30,9 +30,7 @@ class FileWatcher:EventSender{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,"",eventIds[index], paths[index], eventFlagArray[index])
-            fileSystemWatcher.onEvent(event)
-            //fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
+            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
@@ -59,6 +57,9 @@ class FileWatcher:EventSender{
             
             
         }
+        
+        let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
+        super.onEvent(event)
         //let created:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)
         //let removed:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)
         /*if(eventFlags == removed){
