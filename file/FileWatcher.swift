@@ -35,7 +35,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
-        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:fileSystemWatcher)
         
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
