@@ -47,10 +47,12 @@ public class FileWatcher {
             
             
         }
+        uint32 created = kFSEventStreamEventFlagItemCreated;
+        uint32 removed = kFSEventStreamEventFlagItemRemoved;
         
         let ItemModified = FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)
         
-        if(eventFlags == ItemModified){Swift.print("bingo")}
+        if(eventFlags == ItemModified.value){Swift.print("bingo")}
         /*
         let flags:FSEventStreamEventFlags  = eventFlags[0]
         if (flags & kFSEventStreamEventFlagItemCreated) {
