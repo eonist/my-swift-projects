@@ -39,3 +39,24 @@ extension FileWatcherEvent{
     var dirRenamed:Bool {return dirChange && renamed}
     var dirModified:Bool {return dirChange && modified}
 }
+extension FileWatcherEvent{
+    var description: String {
+        var output = "< \(self.eventPath)"
+        
+        if self.created {
+            output = output + " CREATED"
+        }
+        if self.removed {
+            output = output + " REMOVED"
+        }
+        if self.renamed {
+            output = output + " RENAMED"
+        }
+        if self.modified {
+            output = output + " MODIFIED"
+        }
+        
+        output = output + ">"//
+        return output
+    }
+}
