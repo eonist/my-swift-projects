@@ -6,7 +6,7 @@ import Cocoa
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
-class FileWatcher/*:NSView*//*:EventSender*/{
+class FileWatcher{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
@@ -33,9 +33,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         FSEventStreamScheduleWithRunLoop(streamRef!, NSRunLoop.currentRunLoop().getCFRunLoop()/*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
         FSEventStreamStart(streamRef!)
         hasStarted = true
-        
-        
-        
     }
     /**
      * Stop listening for FSEvents
@@ -62,7 +59,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     private let eventCallback: FSEventStreamCallback = { (stream: ConstFSEventStreamRef, contextInfo: UnsafeMutablePointer<Void>, numEvents: Int, eventPaths: UnsafeMutablePointer<Void>, eventFlags: UnsafePointer<FSEventStreamEventFlags>, eventIds: UnsafePointer<FSEventStreamEventId>) in
         //Swift.print("eventCallback()")
         let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, FileWatcher.self)
-        
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
@@ -70,7 +66,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
             fileSystemWatcher.event?(eventId: eventIds[index], eventPath: paths[index], eventFlags: eventFlags[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
-        
     }
     /**
      * NOTE: The switch differentiates between eventFlags (aka file event types)
@@ -92,8 +87,6 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         default:
             Swift.print("unsupported event: " + "\(eventFlags)")
             break;
-            
-            
         }
         
         
