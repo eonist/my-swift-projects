@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: You could stop and start to restart
  * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
- * NOTE: lots of infor on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
+ * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  */
 class FileWatcher{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
