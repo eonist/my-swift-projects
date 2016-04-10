@@ -6,3 +6,6 @@ class FileWatcherEvent:Event{
         super.init(type,origin)
     }
 }
+extension FileWatcherEvent{
+    
+}
