@@ -13,7 +13,6 @@ class FileWatcher{
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId: FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
     var event: ((fileWatcherEvent: FileWatcherEvent/*, eventPath: String, eventFlags: FSEventStreamEventFlags*/) -> Void)?
-    
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
@@ -66,7 +65,7 @@ class FileWatcher{
         for index in 0..<numEvents {
             fileSystemWatcher.event?(fileWatcherEvent: FileWatcherEvent(eventIds[index], paths[index], eventFlags[index]))
         }
-        fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
+        fileSystemWatcher.lastEventId = eventIds[numEvents - 1]//<--im not sure if this is needed anymore
     }
     /**
      * Carefull with enabling this as we dont deinit things in swift anymore? ARC and all that?
