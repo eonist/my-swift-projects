@@ -70,7 +70,7 @@ Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-
 A simple File watcher in swift. Example code: 
 
 ```swift
-let fileWatcher = FileWatcher(["~/Desktop/test/".tildePath])
+var fileWatcher = FileWatcher(["~/Desktop/test/".tildePath])/*the fileWatcher instance must be scoped to your class*/
         
 fileWatcher!.event = { [weak self] event in//<--The weak self part enables you to interact with your app
     Swift.print(self?.someVariable)//Outputs: a variable in your current class
