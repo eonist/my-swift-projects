@@ -64,4 +64,16 @@ ColorParser.nsColor(16711935,1)//red nsColor
 
 Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-system/  
 
+
+## FileWatcher
+
+```swift
+let fileWatcher = FileWatcher(["~/Desktop/test/".tildePath],FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
+        
+fileWatcher!.event = { [weak self] event in
+    Swift.print(self?.someVariable)//Outputs: a variable in your current class
+    Swift.print(event.description)//Outputs: a description of the file change
+}
+```
+
 [MIT License](http://opensource.org/licenses/MIT) 
