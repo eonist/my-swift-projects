@@ -5,10 +5,10 @@ Generic swift utilities
 - **GraphicsKit** (Makes working with Quartz and core data easier) [read more about the GraphicsKit here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)  
 - **XMLLib** (Makes parsing and modifying xml data easier)  
 - **RegExpLib** (Makes parsing and modifying with RegExp easier)  
-- **MathLib** (Contains alot of usefull math Utils, more to come)  
+- **MathLib** (Contains a lot of use full math Utils, more to come)  
 - **SQLLiteLib** - works by utilizing shell (Comming soon, see my applescript lib for now)  
-- **GitLib** - works by utilizing shell and git (Comming soon, see my applescript lib for now)  
-- **Utils** - Other basic programming utilites for working with array, dictionary, numbers, strings etc
+- **GitLib** - works by utilizing shell and git 
+- **Utils** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
 
 ## **GraphicsKit for OSX**
 
@@ -67,10 +67,12 @@ Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-
 
 ## FileWatcher
 
+A simple File watcher in swift. Example code: 
+
 ```swift
 let fileWatcher = FileWatcher(["~/Desktop/test/".tildePath],FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
         
-fileWatcher!.event = { [weak self] event in
+fileWatcher!.event = { [weak self] event in//<--The weak self part enables you to interact with your app
     Swift.print(self?.someVariable)//Outputs: a variable in your current class
     Swift.print(event.description)//Outputs: a description of the file change
 }
