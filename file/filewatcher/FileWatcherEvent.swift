@@ -39,9 +39,12 @@ extension FileWatcherEvent{
     var dirRenamed:Bool {return dirChange && renamed}
     var dirModified:Bool {return dirChange && modified}
 }
+/**
+ * Simplifies debugging
+ */
 extension FileWatcherEvent{
     var description: String {
-        var result = "< \(self.eventPath)"
+        var result = "The \(fileChange ? " file ":" directory ")  \(self.eventPath) was"
         if self.created {
             result += " created"
         }
@@ -54,7 +57,6 @@ extension FileWatcherEvent{
         if self.modified {
             result += " modified"
         }
-        result = result + ">"
         return result
     }
 }
