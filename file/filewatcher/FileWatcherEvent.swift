@@ -12,6 +12,10 @@ class FileWatcherEvent:Event{
         super.init(type,origin)
     }
 }
+/**
+ * The following code is to differentiate between the FSEvent flag types (aka file event types)
+ * NOTE: Be aware that .DS_STORE changes frequently when other files change
+ */
 extension FileWatcherEvent{
     var fileChange:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsFile)) != 0}
     var fileCreated:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
