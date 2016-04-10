@@ -30,7 +30,7 @@ class FileWatcher{
         context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
-        FSEventStreamScheduleWithRunLoop(streamRef!, NSRunLoop.currentRunLoop().getCFRunLoop()/*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
+        FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain()/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
         FSEventStreamStart(streamRef!)
         hasStarted = true
     }
@@ -75,46 +75,7 @@ class FileWatcher{
     private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
         Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
 
-        switch eventFlags{
-        case Flags.dataChange:
-            Swift.print("data change")
-        case Flags.change:
-            Swift.print("file change")
-        case Flags.delete:
-            Swift.print("delete")
-        case Flags.added:
-            Swift.print("added")
-        default:
-            Swift.print("unsupported event: " + "\(eventFlags)")
-            break;
-        }
         
-        
-            
-        
-        //let event:FileWatcherEvent = FileWatcherEvent(FileWatcherEvent.change,self,eventId, eventPath, eventFlags)
-        //super.onEvent(event)
-        //let created:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)
-        //let removed:UInt32  = FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)
-        /*if(eventFlags == removed){
-            Swift.print("works")
-        }*/
-        //uint32 removed = kFSEventStreamEventFlagItemRemoved;
-        
-        //let ItemModified = FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)
-        
-        //if(eventFlags == UInt32(ItemModified.value)){Swift.print("bingo")}
-        /*
-        let flags:FSEventStreamEventFlags  = eventFlags[0]
-        if (flags & kFSEventStreamEventFlagItemCreated) {
-            NSLog(@"File Created!");
-        } else if (flags & kFSEventStreamEventFlagItemRenamed) {
-            NSLog(@"File Renamed!");
-        } else if (flags & kFSEventStreamEventFlagItemRemoved) {
-            NSLog(@"File Removed!");
-        }
-        */
-       
     }
     
     /**
@@ -132,15 +93,4 @@ extension FileWatcher{
     convenience init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }/**/
-}
-/**
- * Helper class 
- * When the .DS_STORE updates: it seems to throw the flag: 70656
- */
-private class Flags{
-    static var dataChange:UInt32 = 128000//data in the file changed
-    static var change:UInt32 = 67584//add,rename, move? (2 events for rename one before and after)
-    static var delete:UInt32 = 111872//the file was deleted
-    static var added:UInt32 = 107776//the file was added
-    
 }
