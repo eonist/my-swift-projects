@@ -134,7 +134,7 @@ extension FileWatcher{
     }/**/
 }
 /**
- * Helper class to differentiate between the FSEvent flag types (aka file event types)
+ * Helper class 
  * When the .DS_STORE updates: it seems to throw the flag: 70656
  */
 private class Flags{
