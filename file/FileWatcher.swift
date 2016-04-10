@@ -11,7 +11,7 @@ class FileWatcher{
     var hasStarted = false/*Whether or not the watcher has started yet.*/
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId: FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
-    var event: ((eventId: FSEventStreamEventId, eventPath: String, eventFlags: FSEventStreamEventFlags) -> Void)?
+    var event: ((fileWatcherEvent: FileWatcherEvent/*, eventPath: String, eventFlags: FSEventStreamEventFlags*/) -> Void)?
     
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
@@ -63,7 +63,7 @@ class FileWatcher{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            fileSystemWatcher.event?(eventId: eventIds[index], eventPath: paths[index], eventFlags: eventFlags[index])
+            fileSystemWatcher.event?(fileWatcherEvent: FileWatcherEvent(FileWatcherEvent.change,"",eventIds[index], paths[index], eventFlags[index]))
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
