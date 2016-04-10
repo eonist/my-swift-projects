@@ -1,15 +1,13 @@
 import Foundation
 
-class FileWatcherEvent:Event{
-    static var change:String = "fileWatcherEventChange"
+class FileWatcherEvent{
     var eventId: FSEventStreamEventId
     var eventPath:String
     var eventFlags: FSEventStreamEventFlags
-    init(_ type:String = "", _ origin:AnyObject, _ eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
+    init(_ eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
         self.eventId = eventId
         self.eventPath = eventPath
         self.eventFlags = eventFlags
-        super.init(type,origin)
     }
 }
 /**

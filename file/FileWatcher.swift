@@ -31,7 +31,7 @@ class FileWatcher{
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutablePointer<Void>(unsafeAddressOf(self))
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
-        streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
+        streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 1.0/*<--latency*/, flags)//Creates an FSEventStream.
         FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain()/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
         FSEventStreamStart(streamRef!)
         hasStarted = true
@@ -63,13 +63,13 @@ class FileWatcher{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            fileSystemWatcher.event?(fileWatcherEvent: FileWatcherEvent(FileWatcherEvent.change,"",eventIds[index], paths[index], eventFlags[index]))
+            fileSystemWatcher.event?(fileWatcherEvent: FileWatcherEvent(eventIds[index], paths[index], eventFlags[index]))
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
     /**
-     * Carefull with enabling this as we dont deinit things in swift
-     * NOTE: if you enable it the class will deint right after its init.
+     * Carefull with enabling this as we dont deinit things in swift anymore? ARC and all that?
+     * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed.
      */
     deinit {
         //stop()
