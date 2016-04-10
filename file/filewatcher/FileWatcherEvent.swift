@@ -1,6 +1,9 @@
 import Foundation
 /**
- * let url = NSURL(fileURLWithPath: event.path)//<--formats paths to: file:///Users/John/Desktop/test/text.txt
+ * EXAMPLE: let url = NSURL(fileURLWithPath: event.path)//<--formats paths to: file:///Users/John/Desktop/test/text.txt
+ * EXAMPLE: Swift.print("fileWatcherEvent.fileChange: " + "\(event.fileChange)")
+ * EXAMPLE: Swift.print("fileWatcherEvent.fileModified: " + "\(event.fileModified)")
+ * EXAMPLE: Swift.print("\t eventId: \(event.id) - eventFlags:  \(event.flags) - eventPath:  \(event.path)")
  */
 class FileWatcherEvent{
     var id: FSEventStreamEventId
