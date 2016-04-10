@@ -1,13 +1,15 @@
 import Foundation
-
+/**
+ * let url = NSURL(fileURLWithPath: event.path)//<--formats paths to: file:///Users/John/Desktop/test/text.txt
+ */
 class FileWatcherEvent{
-    var eventId: FSEventStreamEventId
-    var eventPath:String
-    var eventFlags: FSEventStreamEventFlags
+    var id: FSEventStreamEventId
+    var path:String
+    var flags: FSEventStreamEventFlags
     init(_ eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
-        self.eventId = eventId
-        self.eventPath = eventPath
-        self.eventFlags = eventFlags
+        self.id = eventId
+        self.path = eventPath
+        self.flags = eventFlags
     }
 }
 /**
@@ -16,13 +18,13 @@ class FileWatcherEvent{
  */
 extension FileWatcherEvent{
     /*general*/
-    var fileChange:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsFile)) != 0}
-    var dirChange:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsDir)) != 0}
+    var fileChange:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsFile)) != 0}
+    var dirChange:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsDir)) != 0}
     /*crud*/
-    var created:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
-    var removed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0}
-    var renamed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0}
-    var modified:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0}
+    var created:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
+    var removed:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0}
+    var renamed:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0}
+    var modified:Bool {return (flags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0}
 }
 /**
  * Convenince
@@ -44,7 +46,7 @@ extension FileWatcherEvent{
  */
 extension FileWatcherEvent{
     var description: String {
-        var result = "The \(fileChange ? "file":"directory") \(self.eventPath) was"
+        var result = "The \(fileChange ? "file":"directory") \(self.path) was"
         if self.created {
             result += " created"
         }
