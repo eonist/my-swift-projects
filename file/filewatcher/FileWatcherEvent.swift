@@ -41,22 +41,20 @@ extension FileWatcherEvent{
 }
 extension FileWatcherEvent{
     var description: String {
-        var output = "< \(self.eventPath)"
-        
+        var result = "< \(self.eventPath)"
         if self.created {
-            output = output + " CREATED"
+            result += " created"
         }
         if self.removed {
-            output = output + " REMOVED"
+            result += " removed"
         }
         if self.renamed {
-            output = output + " RENAMED"
+            result += " renamed"
         }
         if self.modified {
-            output = output + " MODIFIED"
+            result += " modified"
         }
-        
-        output = output + ">"//
-        return output
+        result = result + ">"
+        return result
     }
 }
