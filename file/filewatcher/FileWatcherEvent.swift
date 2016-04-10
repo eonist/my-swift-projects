@@ -17,35 +17,27 @@ class FileWatcherEvent:Event{
  * NOTE: Be aware that .DS_STORE changes frequently when other files change
  */
 extension FileWatcherEvent{
-    /*File*/
+    /*general*/
     var fileChange:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsFile)) != 0}
-    var fileCreated:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
-    var fileRemoved:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0}
-    var fileRenamed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0}
-    var fileModified:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0}
-    /*Directory*/
     var dirChange:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsDir)) != 0}
-    var dirCreated:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
-    var dirRemoved:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0}
-    var dirRenamed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0}
-    var dirModified:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0}
+    /*crud*/
+    var created:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0}
+    var removed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0}
+    var renamed:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0}
+    var modified:Bool {return (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0}
 }
-
-
-/*
-if (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemIsDir)) != 0 {/*directory change*/
-Swift.print("directory change")
-if (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemCreated)) != 0 {/*directory created*/
-Swift.print("directory created: \(eventPath)")
+/**
+ * Convenince
+ */
+extension FileWatcherEvent{
+    /*File*/
+    var fileCreated:Bool {return fileChange && created}
+    var fileRemoved:Bool {return fileChange && removed}
+    var fileRenamed:Bool {return fileChange && renamed}
+    var fileModified:Bool {return fileChange && modified}
+    /*Directory*/
+    var dirCreated:Bool {return dirChange && created}
+    var dirRemoved:Bool {return dirChange && removed}
+    var dirRenamed:Bool {return dirChange && renamed}
+    var dirModified:Bool {return dirChange && modified}
 }
-if (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRemoved)) != 0 {/*directory removed*/
-Swift.print("directory removed: \(eventPath)")
-}
-if (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemRenamed)) != 0 {/*directory renamed*/
-Swift.print("directory renamed: \(eventPath)")
-}
-if (eventFlags & FSEventStreamEventFlags(kFSEventStreamEventFlagItemModified)) != 0 {/*directory modified*/
-Swift.print("directory modified: \(eventPath)")
-}
-
-}*/
