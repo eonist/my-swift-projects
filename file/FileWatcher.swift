@@ -10,7 +10,7 @@ class FileWatcher{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
     var hasStarted = false
     var streamRef:FSEventStreamRef?
-    private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
+    private(set) var lastEventId: FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
     var event: ((eventId: FSEventStreamEventId, eventPath: String, eventFlags: FSEventStreamEventFlags) -> Void)?
     
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
