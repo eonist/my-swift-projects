@@ -8,7 +8,7 @@ import Cocoa
  */
 class FileWatcher{
     let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
-    var hasStarted = false
+    var hasStarted = false/*Whether or not the watcher has started yet.*/
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId: FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
     var event: ((eventId: FSEventStreamEventId, eventPath: String, eventFlags: FSEventStreamEventFlags) -> Void)?
@@ -21,6 +21,7 @@ class FileWatcher{
      * Start listening for FSEvents
      * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen).
      * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
+     * How often the watcher updates.
      */
     func start() {
         Swift.print("start - has started: " + "\(hasStarted)")
