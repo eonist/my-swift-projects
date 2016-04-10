@@ -12,6 +12,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
     var streamRef:FSEventStreamRef?
     var contextInfoCopy:UnsafeMutablePointer<Void>?//<---so we can differentiate the NSNotifications
     private(set) var lastEventId: FSEventStreamEventId/*<- this needs to be private or an error will happen when in use*/
+    var onFileChange: ((eventId: FSEventStreamEventId, eventPath: String, eventFlags: FSEventStreamEventFlags) -> Void)?
+    
     init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
@@ -65,7 +67,8 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
+            //fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
+            fileSystemWatcher.onFileChange?(eventId: eventIds[index], eventPath: paths[index], eventFlags: eventFlags[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
         
