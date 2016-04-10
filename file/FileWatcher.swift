@@ -62,22 +62,10 @@ class FileWatcher{
         let paths = unsafeBitCast(eventPaths, NSArray.self) as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
-            //fileSystemWatcher.handleEvent(eventIds[index], paths[index], eventFlagArray[index])
             fileSystemWatcher.event?(eventId: eventIds[index], eventPath: paths[index], eventFlags: eventFlags[index])
         }
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]
     }
-    /**
-     * NOTE: The switch differentiates between eventFlags (aka file event types)
-     * PARAM: eventId: is an id number that the os uses to differentiate between events.
-     * PARAM: eventFlag: pertains to the file event type.
-     */
-    private func handleEvent(eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags) {
-        Swift.print("\t eventId: \(eventId) - eventFlags:  \(eventFlags) - eventPath:  \(eventPath)")
-
-        
-    }
-    
     /**
      * Carefull with enabling this as we dont deinit things in swift
      * NOTE: if you enable it the class will deint right after its init.
