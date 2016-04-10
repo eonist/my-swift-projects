@@ -44,7 +44,7 @@ extension FileWatcherEvent{
  */
 extension FileWatcherEvent{
     var description: String {
-        var result = "The \(fileChange ? " file ":" directory ")  \(self.eventPath) was"
+        var result = "The \(fileChange ? "file":"directory") \(self.eventPath) was"
         if self.created {
             result += " created"
         }
