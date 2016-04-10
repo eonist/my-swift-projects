@@ -49,6 +49,7 @@ extension FileWatcherEvent{
 }
 /**
  * Simplifies debugging
+ * EXAMPLE: Swift.print(event.description)//Outputs: The file /Users/John/Desktop/test/text.txt was modified
  */
 extension FileWatcherEvent{
     var description: String {
