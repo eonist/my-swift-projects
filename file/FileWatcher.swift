@@ -37,7 +37,7 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         
 
         
-        FSEventStreamSetDispatchQueue(streamRef, <#T##q: dispatch_queue_t?##dispatch_queue_t?#>)
+       
         
         hasStarted = true
         
