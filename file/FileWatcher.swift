@@ -31,6 +31,9 @@ class FileWatcher/*:NSView*//*:EventSender*/{
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
         FSEventStreamScheduleWithRunLoop(streamRef!, NSRunLoop.currentRunLoop().getCFRunLoop()/*CFRunLoopGetMain()*/, kCFRunLoopDefaultMode)// Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
         FSEventStreamStart(streamRef!)
+        
+        streamRef?.setDispatchQueue(nil)
+        
         hasStarted = true
         
         
