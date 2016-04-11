@@ -9,6 +9,7 @@ Generic swift utilities
 - **SQLLiteLib 📇** - works by utilizing shell (Comming soon, see my applescript lib for now)  
 - **GitLib 🐙** - works by utilizing shell and git 
 - **FileLib 🗄** - Open,Save,Delete,Create
+- **KeyChainLib 🔑** - Basic interaction with Apple KeyChain
 - **Utils 🛠** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
 
 ## **GraphicsKit ✏️**
