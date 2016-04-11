@@ -86,7 +86,7 @@ a.doSomething()//Output: something happened
 Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-system/  
 
 
-## FileWatcher
+## 👁FileWatcher👁
 
 A simple File watcher in swift. Example code: 
 
