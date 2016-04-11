@@ -47,7 +47,7 @@ The graphics framework is open source and can be found on github [here](https://
 
 
 
-## **Color Kit🎨**
+## **Color Kit 🎨**
 Supporting 7 Hex color types
 There are 7 hex color formats: ""#FF0000","0xFF0000", "FF0000", "F00", "red", 0x00FF00 , 16711935
 ```
