@@ -8,7 +8,7 @@ Generic swift utilities
 - **MathLib ğŸ“** (Contains a lot of use full math Utils, more to come)  
 - **SQLLiteLib ğŸ“‡** - works by utilizing shell (Comming soon, see my applescript lib for now)  
 - **GitLib** - works by utilizing shell and git 
-- **FileLib í ½ğŸ—„** - Open,Save,Delete,Create
+- **FileLib ğŸ—„** - Open,Save,Delete,Create
 - **Utils** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
 
 ## **GraphicsKit for OSX**
