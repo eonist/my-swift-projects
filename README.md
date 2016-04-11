@@ -3,7 +3,7 @@ Generic swift utilities
 ## Index:  
 - **SVGLib ğŸ–Œ** (Read and write svg syntax) [read more about the creation of the svgLib here](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  
 - **GraphicsKit** (Makes working with Quartz and core data easier) [read more about the GraphicsKit here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)  
-- **XMLLib ğŸ—‚** (Makes parsing and modifying xml data easier)  
+- **XMLLib í ½ğŸ·** (Makes parsing and modifying xml data easier)  
 - **RegExpLib** (Makes parsing and modifying with RegExp easier)  
 - **MathLib ğŸ“** (Contains a lot of use full math Utils, more to come)  
 - **SQLLiteLib ğŸ“‡** - works by utilizing shell (Comming soon, see my applescript lib for now)  
