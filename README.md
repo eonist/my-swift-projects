@@ -69,7 +69,7 @@ class A:EventSender{
     }
 }
 var a = A()
-func onSomeEvent(event:Event){
+func onSomeEvent(event:Event){/*<--Event handler*/
     if(event.type == Event.update && event.origin === a){
         print("something happened")
     } 
