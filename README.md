@@ -1,13 +1,14 @@
 # swift-utils
 Generic swift utilities
 ## Index:  
-- **SVGLib** (Read and write svg syntax) [read more about the creation of the svgLib here](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  
+- **SVGLib üñå** (Read and write svg syntax) [read more about the creation of the svgLib here](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  
 - **GraphicsKit** (Makes working with Quartz and core data easier) [read more about the GraphicsKit here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)  
 - **XMLLib** (Makes parsing and modifying xml data easier)  
 - **RegExpLib** (Makes parsing and modifying with RegExp easier)  
-- **MathLib** (Contains a lot of use full math Utils, more to come)  
-- **SQLLiteLib** - works by utilizing shell (Comming soon, see my applescript lib for now)  
+- **MathLib üìêÌ†Ω** (Contains a lot of use full math Utils, more to come)  
+- **SQLLiteLib üìá** - works by utilizing shell (Comming soon, see my applescript lib for now)  
 - **GitLib** - works by utilizing shell and git 
+- **FileLib üìÅ** - Open,Save,Delete,Create
 - **Utils** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
 
 ## **GraphicsKit for OSX**
