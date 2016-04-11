@@ -61,6 +61,22 @@ ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
 ## Event system:  
+Simple Example:  
+```swift
+class A:EventSender{
+    func doSomething(){
+        onEvent(Event(Event.update,self)) 
+    }
+}
+var a = A()
+func onSomeEvent(event:Event){
+    if(event.type == Event.update && event.origin === a){
+        print("something happened")
+    } 
+}
+a.event = onSomeEvent
+a.doSomething()//Output: something happened
+```
 
 Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-system/  
 
