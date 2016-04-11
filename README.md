@@ -61,6 +61,11 @@ ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
 ## Event system:  
+- Small footprint: Only 2 methods and a variable
+- Propagates up class hierarchies. That extend the EventSender
+- Basic event concept: EventHandler, Event, EventSender 
+- Determine where the event came from with origin and immediate
+ 
 Simple Example:  
 ```swift
 class A:EventSender{
