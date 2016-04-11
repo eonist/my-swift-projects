@@ -47,8 +47,8 @@ The graphics framework is open source and can be found on github [here](https://
 
 
 
-## **Supporting 7 Hex color types**
-
+## **Color Kit🎨**
+Supporting 7 Hex color types
 There are 7 hex color formats: ""#FF0000","0xFF0000", "FF0000", "F00", "red", 0x00FF00 , 16711935
 ```
 ColorParser.nsColor("#FF0000",1)//red nsColor
@@ -60,7 +60,7 @@ ColorParser.nsColor(0xFF0000,1)//red nsColor
 ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
-## Event system:  
+## Event system 🚀  
 - Small footprint: Only 2 methods and a variable
 - Propagates up class hierarchies. That extend the EventSender
 - Basic event concept: EventHandler, Event, EventSender 
