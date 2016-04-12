@@ -15,7 +15,7 @@ class TextFieldModifier {
         textField.font = Utils.font(textFormat.font,textFormat.size)
         textField.editable = textFormat.type == "input"
         textField.focusRingType = NSFocusRingType.None//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
-        textField.bordered = textFormat.border//<--maybe implement later
+        textField.bordered = textFormat.border//<--This doesnt work i Live Edit mode
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---cant get these to work yet, works now in multiline textfields
         //textField.lineBreakMode = .ByWordWrapping
