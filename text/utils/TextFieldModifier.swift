@@ -6,9 +6,10 @@ class TextFieldModifier {
      */
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         textField.selectable = textFormat.selectable
-        textField.drawsBackground = textFormat.background
+        
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.purpleColor().alpha(0)
-
+        textField.drawsBackground = true//textFormat.background
+        
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
         textField.font = Utils.font(textFormat.font,textFormat.size)
