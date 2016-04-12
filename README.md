@@ -10,6 +10,7 @@ Generic swift utilities
 - **GitLib 🐙** - works by utilizing shell and git 
 - **FileLib 🗄** - Open,Save,Delete,Create
 - **KeyChainLib 🔑** - Basic interaction with Apple KeyChain
+- **AnimationLib ���🎥** - 60FPS Animation library. Supports interaction
 - **Utils 🛠** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
 
 ## **GraphicsKit ✏️**
