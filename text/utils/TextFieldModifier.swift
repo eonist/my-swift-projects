@@ -24,8 +24,6 @@ class TextFieldModifier {
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
-        
-        
     }
     /**
      * Beta
