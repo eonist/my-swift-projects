@@ -7,8 +7,8 @@ class TextFieldModifier {
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         textField.selectable = textFormat.selectable
         
-        textField.drawsBackground = true//textFormat.background
-        textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.purpleColor().alpha(0)
+        textField.drawsBackground = textFormat.background
+        textField.backgroundColor = textFormat.backgroundColor//textFormat.background ? textFormat.backgroundColor : NSColor.purpleColor().alpha(0)
         
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
@@ -25,7 +25,8 @@ class TextFieldModifier {
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
-        textField.updateCell(textField.cell?)
+        textField.updateCell(textField.cell!)
+        textField.setNeedsDisplay()
         /*
         // Use formatters instead.  See -[NSControl formatter] and -[NSControl setFormatter:].
         
