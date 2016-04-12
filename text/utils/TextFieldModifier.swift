@@ -7,9 +7,8 @@ class TextFieldModifier {
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         textField.selectable = textFormat.selectable
         
-        
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clearColor()
-        textField.drawsBackground = true//textFormat.background
+        textField.drawsBackground = true//textFormat.background//<--this is a temp fix so that one can add or remove a background while the app is running, this should ideally be done automatically when the text is re-rendered, more research needed
         
         textField.alignment = Utils.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         textField.textColor = textFormat.color
