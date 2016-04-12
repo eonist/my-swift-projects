@@ -7,6 +7,7 @@ extension CGFloat {
         return NumberModifier.toFixed(self, places)
     }
     var uint:UInt{return UInt(self)}
+    var float:Float{return Float(self)}
 }
 /**
  * Support for addition of CGFLoat and Double
