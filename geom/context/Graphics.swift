@@ -232,14 +232,9 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func beginOuterShadow(path:CGPath){
-        Swift.print("Graphics.beginOuterShadow")
-        if(dropShadow != nil){Swift.print("dropShadow.description: " + "\(dropShadow!.description)")}
-        /**/
+        //Swift.print("Graphics.beginOuterShadow")
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
-            /*Swift.print("dropShadow?.blurRadius: " + "\(dropShadow?.blurRadius)")
-            Swift.print("dropShadow?.offset: " + "\(dropShadow?.offset)")
-            Swift.print("dropShadow?.color: " + "\(dropShadow?.color)")*/
-            
+            Swift.print("dropShadow.description: " + "\(dropShadow!.description)");
             CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
             dropShadow!.shadow.set()/*<- dont use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
@@ -248,7 +243,7 @@ extension Graphics{//private class ShadowUtils
      *
      */
     func endOuterShadow(){
-        Swift.print("endOuterShadow()")
+        //Swift.print("endOuterShadow()")
         if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
     }
     /**
