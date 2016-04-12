@@ -38,8 +38,4 @@ class TextField:NSTextField{
         }
         super.textDidChange(notification)
     }
-    override func controlTextDidChange(notification: NSNotification?) {
-        Swift.print("controlTextDidChange")
-        super.controlTextDidChange(notification!)
-    }
 }
