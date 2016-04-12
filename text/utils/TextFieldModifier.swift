@@ -25,6 +25,27 @@ class TextFieldModifier {
 
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
+        textField.updateCell(textField.cell?)
+        /*
+        // Use formatters instead.  See -[NSControl formatter] and -[NSControl setFormatter:].
+        
+        public class func setCellClass(factoryId: AnyClass?)
+        public class func cellClass() -> AnyClass?
+        
+        public var cell: NSCell?
+        
+        public func selectedCell() -> NSCell?
+        public func selectedTag() -> Int
+        
+        public func setNeedsDisplay() // Use setNeedsDisplay:YES instead.
+        public func calcSize()
+        
+        public func updateCell(aCell: NSCell)
+        public func updateCellInside(aCell: NSCell)
+        public func drawCellInside(aCell: NSCell)
+        public func drawCell(aCell: NSCell)
+        public func selectCell(aCell: NSCell)
+        */
         
     }
     /**
