@@ -12,6 +12,7 @@ Generic swift utilities
 - **KeyChainLib 🔑** - Basic interaction with Apple KeyChain
 - **AnimLib 🎥** - 60FPS Animation library. Supports interaction
 - **Utils 🛠** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
+- **Color Kit :art:** - ColorLib, RGB, CMYK, HSL, HSB, HSB, NSColor, CGColor, CLColor
 
 ## **GraphicsKit ✏️**
 
