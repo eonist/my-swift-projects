@@ -14,7 +14,9 @@ class DepthModifier {
     class func sortByIndices(container:NSView, indices:Array<Int>) {
         //			trace("sortByIndices");
         var indicesLen:Int = indices.count
-        var children:Array = DisplayObjectParser.children(container);
-        for(var i:int = 0;i < indicesLen;i++) container.setChildIndex(children[indices[i]], i);
+        
+        let children:Array<NSView> = NSViewParser.childrenOfType(list.lableContainer!, NSView.self)
+        
+        for(var i:int = 0;i < indicesLen;i++) {container.setChildIndex(children[indices[i]], i)}
     }
 }
