@@ -26,3 +26,5 @@ class DepthModifier {
 //sort
 //sortOn
 //sortByList
+//toFront<--if you set index to nil in the addSubView method
+//toBack
