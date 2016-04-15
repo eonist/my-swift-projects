@@ -17,14 +17,6 @@ class DepthModifier {
         
         let children:Array<NSView> = NSViewParser.childrenOfType(container, NSView.self)
         
-        sortSubviewsUsingFunction({ (v1, v2, context) -> NSComparisonResult in
-            let s = Unmanaged<MovieOverviewControl>.fromOpaque(COpaquePointer(context)).takeUnretainedValue()
-            switch (v1, v2) {
-            case (s.currentTimeLabel, _): return .OrderedDescending
-            default: return .OrderedSame
-            }
-            }, context: UnsafeMutablePointer<Void>(Unmanaged.passUnretained(self).toOpaque()))
-        
         //continue here: Figure out how to use sortSubviewsUsingFunction
         
         //for(var i:Int = 0;i < indicesLen;i++) {container.setChildIndex(children[indices[i]], i)}
