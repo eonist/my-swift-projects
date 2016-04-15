@@ -17,6 +17,6 @@ class DepthModifier {
         let children:Array<NSView> = NSViewParser.childrenOfType(container, NSView.self)
         
         let indicesLen:Int = indices.count
-        for(var i:Int = 0;i < indicesLen;i++) {container.addSubviewAt(children[indices[i]], i)}
+        for(var i:Int = 0;i < indicesLen;i++) {container.addSubviewAt(children[indices[i]], i)}//TODO: ideally we would use sortSubviewsUsingFunction. But there are no clear examples of anyone using this method in swift yet. It is possibe though, but will require some research
     }
 }
