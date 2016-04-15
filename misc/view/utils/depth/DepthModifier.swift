@@ -19,6 +19,6 @@ class DepthModifier {
         
         //continue here: Figure out how to use sortSubviewsUsingFunction
         
-        //for(var i:Int = 0;i < indicesLen;i++) {container.setChildIndex(children[indices[i]], i)}
+        for(var i:Int = 0;i < indicesLen;i++) {container.addSubviewAt(<#T##view: NSView##NSView#>, <#T##i: Int##Int#>)(children[indices[i]], i)}
     }
 }
