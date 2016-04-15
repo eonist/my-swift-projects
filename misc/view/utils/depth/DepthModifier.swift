@@ -17,6 +17,9 @@ class DepthModifier {
         
         let children:Array<NSView> = NSViewParser.childrenOfType(container, NSView.self)
         
-        for(var i:Int = 0;i < indicesLen;i++) {container.setChildIndex(children[indices[i]], i)}
+        
+        //continue here: Figure out how to use sortSubviewsUsingFunction
+        
+        //for(var i:Int = 0;i < indicesLen;i++) {container.setChildIndex(children[indices[i]], i)}
     }
 }
