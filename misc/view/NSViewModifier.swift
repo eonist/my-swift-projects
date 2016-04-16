@@ -47,6 +47,7 @@ class ViewModifier {//<----rename to NSViewModifier
         while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
     }
     /**
+     * NOTE: This can also be used as a setSubViewAt method. Apple will reuse the same View so no duplicates. Although apples own sort method is prefered, but it uses c-pointers which can be hard to implement in swift. 
      * NOTE: could also be named insertAt
      */
     class func addSubviewAt(view: NSView,_ subView:NSView, _ i:Int){
