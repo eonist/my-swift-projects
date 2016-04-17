@@ -27,7 +27,7 @@ class SVGPath :SVGGraphic{
      */
     override func draw()  {
         //Swift.print("SVGPath.draw()");
-        let path = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
+        let path:CGMutablePathRef = SVGPathUtils.drawPath(CGPathCreateMutable(), commands, parameters);/*draws the fill*/
         let boundingBox:CGRect = CGPathGetPathBoundingBox(path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         /*fill*/
         if(style!.fill != nil){/*Fill*/

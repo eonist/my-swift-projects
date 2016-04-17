@@ -65,7 +65,7 @@ class SVGPathParser {
 	}
 	/**
 	 * Returns all points in @param path
-	 * // :TODO: impliment native quad to (if you test the fdt free version on your mac mini first)
+	 * // :TODO: impliment native quad to 
 	 * // :TODO: add support for zZ ?!? do we need to?
 	 * // :TODO: cubic and quad curve may have more params and they may have t and s  impliment this
 	 */
