@@ -2,6 +2,7 @@ import Foundation
 /**
  * // :TODO: set the values to the actual int not a pointer, one les cycle to call
  * // :TODO: use uint?
+ * TODO: rename to noOp,moveTo,lineTo etc. 
  */
 class PathCommand {
     static var NO_OP:Int = 0/*0 Represents the default "do nothing" command.*/
