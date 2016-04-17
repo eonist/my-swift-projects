@@ -15,8 +15,8 @@ class SVGPathUtils {
         for (var e : Int = 0; e < commands.count; e++) {
             //Swift.print("commands.count: " + "\(commands.count)")
             //Swift.print("params.count: " + "\(params.count)")
-            let command:String = commands[e];
-            let isLowerCase:Bool = StringAsserter.lowerCase(command);
+            let command:String = commands[e]
+            let isLowerCase:Bool = StringAsserter.lowerCase(command)
             //Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint();/*the current end pos*/
             switch(command.lowercaseString){
@@ -30,21 +30,21 @@ class SVGPathUtils {
                 case SVGPathCommand.l: //lineTo
                     pos += CGPoint(params[i],params[i+1])
                     CGPathAddLineToPoint(path,nil,pos.x,pos.y)
-                    i += 2;
+                    i += 2
                     break;
                 case SVGPathCommand.h://horizontalLineTo
-                    pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y);
+                    pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     CGPathAddLineToPoint(path,nil,pos.x,pos.y)
                     i++;
                     break;
                 case SVGPathCommand.v://verticalLineTo
-                    pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i]);
+                    pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                     CGPathAddLineToPoint(path,nil,pos.x,pos.y)
-                    i++;
+                    i++
                     break;
                 case SVGPathCommand.c://curveTo
                     //Swift.print("curveTo: " + " i: \(i) params: " + "\(params)")
-                    pos += CGPoint(params[i+4],params[i+5]);
+                    pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
                     //Swift.print("controlP1: " + "\(controlP1)")
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
@@ -53,28 +53,28 @@ class SVGPathUtils {
                     i += 6;
                     break;
                 case SVGPathCommand.s://smoothCurveTo
-                    pos += CGPoint(params[i+2],params[i+3]);
+                    pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
                     CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
                     i += 4;//<---shouldnt this also be 6, maybe not actually, there is no i+4 or i+5!?!
                     break;
                 case SVGPathCommand.q: //quadCurveTo
-                    pos += CGPoint(params[i+2],params[i+3]);
-                    prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1]);
+                    pos += CGPoint(params[i+2],params[i+3])
+                    prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
-                    i += 4;
+                    i += 4
                     break;
                 case SVGPathCommand.t://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
-                    pos += CGPoint(params[i],params[i+1]);
-                    prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
+                    pos += CGPoint(params[i],params[i+1])
+                    prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                     i += 2;
                     break;
                 case SVGPathCommand.z:
                     //Swift.print("close path")
                     CGPathCloseSubpath(path);
-                    CGPathMoveToPoint(path, nil, prevM.x, prevM.y);/*<--unsure if this is needed?*/
+                    CGPathMoveToPoint(path, nil, prevM.x, prevM.y)/*<--unsure if this is needed?*/
                     break;/*closes it self to the prev MT pos*/
                     //					case PathCommand.ARC_TO:
                     //						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
