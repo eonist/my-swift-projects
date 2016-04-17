@@ -140,16 +140,16 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //im not sure if the bellow code is perfectly stable in all cases, more testing needed
         
         if(hasMouseEntered && isMouseOver){
-            hasMouseEntered = false/*optimization*/;
-            isMouseOver = false;
-            mouseOut(MouseEvent(event,self/*,self*/));
+            hasMouseEntered = false/*optimization*/
+            isMouseOver = false
+            mouseOut(MouseEvent(event,self))
         }
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
-    override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self/*,self*/))}
+    override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
     override func mouseUp(theEvent: NSEvent) {
-        viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self/*,self*/)) : mouseUpOutside(MouseEvent(theEvent,self/*,self*/));/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        mouseUp(MouseEvent(theEvent,self/*,self*/))
+        viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
+        mouseUp(MouseEvent(theEvent,self))
     }
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
