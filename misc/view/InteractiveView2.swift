@@ -7,6 +7,7 @@ import Cocoa
  * NOTE: Use mouseDragged method if you want to call a method while the mouse is dragged
  * NOTE: If you hi-jack the event handler variable then the parent will not recieve any events. Its better to override onEvent (one could us emany seletors but that would complicate the code. its simple enough to overide onEvent)
  * NOTE: its primary use-case is to wrap NSEvents into Event so that the view hierarchy can retrieve the view where the event came from which is not possible when using NSEvent. NSEvent cant be subclasses so this is the best solution I've found for this particular use-case.
+ * TODO: why arent the mouse methods calling a central method?
  */
 class InteractiveView2:FlippedView,IInteractiveView{
     var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
