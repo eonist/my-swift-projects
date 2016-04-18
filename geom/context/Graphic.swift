@@ -34,7 +34,6 @@ class Graphic:InteractiveView2,IGraphic{
         self.lineShape.delegate = self
         //self.setDelegate(self)
         
-        
         /*
         let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
         
