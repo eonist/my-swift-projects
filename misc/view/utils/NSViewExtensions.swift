@@ -69,9 +69,9 @@ extension NSView {
     //var width:CGFloat{return frame.width}//TODO:implement later
     //var height:CGFloat{return frame.height}
     /**
-    * Returns localPosition in a view (converts a global position to a local position)
-    * TODO: hopefully this method also works if the view is not 0,0 in the window
-    */
+     * Returns localPosition in a view (converts a global position to a local position)
+     * TODO: hopefully this method also works if the view is not 0,0 in the window
+     */
     /**
      * Returns the local mouse position in the views coordinate system 0,0
      */
