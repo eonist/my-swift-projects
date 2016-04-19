@@ -65,6 +65,7 @@ extension NSView {
     func contains(view:NSView)->Bool{
         return NSViewAsserter.contains(self, view)
     }
+    var position:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     //var width:CGFloat{return frame.width}//TODO:implement later
     //var height:CGFloat{return frame.height}
     /**
@@ -100,4 +101,5 @@ extension NSView {
         return NSViewParser.getSubViewAt(self, i)
     }
     var numSubViews:Int {return subviews.count}/*convenience*/
+    
 }
