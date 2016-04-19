@@ -1,4 +1,5 @@
 import Cocoa
+typealias NSViewModifier = ViewModifier
 /**
  * TODO: make a method with the NSView.sortSubviewsUsingFunction method. 
  */
