@@ -48,4 +48,12 @@ class NSViewParser {
     class func getSubViewAt(view:NSView, _ i:Int)->NSView?{
         return i < view.subviews.count ? view.subviews[i] : nil
     }
+    /**
+     * Returns the first parent of @param view that is of type @param classType
+     * @Note this method is recursive, and looks through parents of parents and so on until it finds a match for the classType
+     */
+    class func parentOfType<T>(view:NSView,classType:T.Type)->T {
+        if(view.superview != nil && !(view.superview as? T != nil)) {return parentOfType(view.superview,classType)}
+        return view.superview != nil ? view.superview : nil
+    }
 }
