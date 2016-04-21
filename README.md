@@ -1,3 +1,5 @@
+![mit](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-OSX-blue.svg) 
+
 ## Content of page:  
 
 - [SVGLib](#svglib) 
