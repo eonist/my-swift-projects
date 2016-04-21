@@ -95,7 +95,7 @@ XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets t
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GraphicsLib.svg">
 
-Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
+Read more about the GraphicsLib [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
 
