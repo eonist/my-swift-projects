@@ -42,6 +42,10 @@
 
 - works by utilizing shell and git (CRUD)
 
+```swift
+GitAsserter.isGitRepo("~/test/.git/")//Output: true or false
+```
+
 ## **XMLLib** 
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/XMLLib.svg">
