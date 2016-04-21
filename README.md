@@ -80,7 +80,7 @@ XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets t
 
 ## **AnimLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/AnimLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/AnimLib.svg">
 
 - Supports all common easing equations
 - Interactive spring dynamics. Friction, SpringStrength etc. 
@@ -93,7 +93,7 @@ XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets t
 
 ## **GraphicsLib**
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GraphicsLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GraphicsLib.svg">
 
 Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
 
