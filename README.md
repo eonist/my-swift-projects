@@ -15,7 +15,7 @@
 
 ## **SVGLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SvgLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SvgLib.svg">
 
 - Read and write svg syntax (CRUD)
 
@@ -24,44 +24,44 @@
 
 ## **MathLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/MathLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/MathLib.svg">
 
 - Contains a lot of use full math Utils, more to come)
 
 ## **SQLLiteLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SQLiteLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SQLiteLib.svg">
 
 - works by utilizing shell (CRUD)
 
 ## **GitLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GitLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GitLib.svg">
 
 - works by utilizing shell and git (CRUD)
 
 ## **XMLLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/XMLLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/XMLLib.svg">
 
 - Makes parsing and modifying xml data easier (CRUD)
 - Supports parsing and modifying at deep indices 
 
 ## **FileLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileLib.svg">
 
 - Open,Save,Delete,Create (CRUD)
 
 ## **KeyChainLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/KeyChainLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/KeyChainLib.svg">
 
 - Basic interaction with Apple KeyChain (Create, Read, Update, Delete)
 
 ## **RegExpLib** 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
 
 - Makes parsing and modifying with RegExp easier  
 
@@ -121,7 +121,7 @@ The graphics framework is open source and can be found on github [here](https://
 
 ## **ColorLib**
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/ColorLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/ColorLib.svg">
 
 - Easily convert between color types: ColorLib, RGB, CMYK, HSL, HSB, HSB, NSColor, CGColor, CLColor
 - Supporting 7 Hex color types:
@@ -138,7 +138,7 @@ ColorParser.nsColor(16711935,1)//red nsColor
 
 ## EventLib
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/EventLib.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/EventLib.svg">
  
 - Small footprint: Only 2 methods and a variable
 - Propagates up class hierarchies. That extend the EventSender
@@ -167,7 +167,7 @@ Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-
 
 ## FileWatcher
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileWatcher.svg">
+<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileWatcher.svg">
 
 A simple File watcher in swift. Example code: 
 
