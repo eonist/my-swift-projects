@@ -1,17 +1,17 @@
 ## Content of page:  
 
-- 1. [SVGLib](#SVGLib) 
-- 2. [GraphicsKit](#GraphicsKit) 
-- 3. [XMLLib](#XMLLib) 
-- 4. [RegExpLib](#RegExpLib) 
-- 5. [MathLib](#MathLib) 
-- 6. [SQLLiteLib](#SQLLiteLib) 
-- 7. [GitLib](#GitLib) 
-- 8. [FileLib](#FileLib) 
-- 9. [KeyChainLib](#KeyChainLib) 
-- 10. [AnimLib](#AnimLib) 
-- 11. [ColorLib](#ColorLib) 
-- 12. [Utils](#Utils)
+- 1. [SVGLib](#svglib) 
+- 2. [GraphicsKit](#graphicskit) 
+- 3. [XMLLib](#xmllib) 
+- 4. [RegExpLib](#regexplib) 
+- 5. [MathLib](#mathlib) 
+- 6. [SQLLiteLib](#sqllitelib) 
+- 7. [GitLib](#gitlib) 
+- 8. [FileLib](#filelib) 
+- 9. [KeyChainLib](#keychainlib) 
+- 10. [AnimLib](#animlib) 
+- 11. [ColorLib](#colorlib) 
+- 12. [Utils](#utils)
 
 ## **SVGLib** 
 
