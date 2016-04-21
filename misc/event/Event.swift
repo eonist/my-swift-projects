@@ -12,12 +12,21 @@ class Event{
         self.origin = origin
         self.immediate = origin
     }
+}
+extension Event{
     /**
      * The immediate previouse sender of event
      * NOTE: we return the event as its convenient when chaining method calls, great for attaching self to incoming events
      */
     func setImmediate(immediate:AnyObject)->Event{
         self.immediate = immediate
+        return self
+    }
+    /**
+     * NOTE: we return the event as its convenient when chaining method calls
+     */
+    func setType(type:String)->Event{
+        self.type = type
         return self
     }
 }

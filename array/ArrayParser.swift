@@ -54,6 +54,16 @@ class ArrayParser{
         return -1
     }
     /**
+     * Returns an array with itmes that are not the same in 2 arrays
+     * @example: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
+     */
+    class func difference<T>(a:Array<T>, _ b:Array<T> )->Array<T> {
+        var diff:Array<T> = []
+        for item in a { if (ArrayParser.indx(b,item) == -1) {diff.append(item)}}
+        for item in b { if (ArrayParser.indx(a,item) == -1) {diff.append(item)}}
+        return diff
+    }
+    /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
      */

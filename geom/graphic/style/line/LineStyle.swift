@@ -14,7 +14,7 @@ class LineStyle:ILineStyle {
         self.miterLimit = miterLimit
         
         
-        //see if you have some method in the old project for copying linestyles
+        //see if you have some method in legacy code for copying linestyles
     }
     
 }

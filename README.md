@@ -1,24 +1,92 @@
-# swift-utils
-Generic swift utilities
-## Index:  
-- **SVGLib** (Read and write svg syntax) [read more about the creation of the svgLib here](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  
-- **GraphicsKit** (Makes working with Quartz and core data easier) [read more about the GraphicsKit here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)  
-- **XMLLib** (Makes parsing and modifying xml data easier)  
-- **RegExpLib** (Makes parsing and modifying with RegExp easier)  
-- **MathLib** (Contains a lot of use full math Utils, more to come)  
-- **SQLLiteLib** - works by utilizing shell (Comming soon, see my applescript lib for now)  
-- **GitLib** - works by utilizing shell and git 
-- **FileLib** - Open,Save,Delete,Create
-- **KeyChainLib** - Basic interaction with Apple KeyChain
-- **AnimLib** - 60FPS Animation library. Supports interaction
-- **Utils** - Other basic programming utilities for working with array, dictionary, numbers, strings etc
-- **Color Kit** - ColorLib, RGB, CMYK, HSL, HSB, HSB, NSColor, CGColor, CLColor
+## Content of page:  
 
-## **GraphicsKit**
+- 1. [SVGLib](#SVGLib) 
+- 2. [GraphicsKit](#GraphicsKit) 
+- 3. [XMLLib](#XMLLib) 
+- 4. [RegExpLib](#RegExpLib) 
+- 5. [MathLib](#MathLib) 
+- 6. [SQLLiteLib](#SQLLiteLib) 
+- 7. [GitLib](#GitLib) 
+- 8. [FileLib](#FileLib) 
+- 9. [KeyChainLib](#KeyChainLib) 
+- 10. [AnimLib](#AnimLib) 
+- 11. [ColorLib](#ColorLib) 
+- 12. [Utils](#Utils)
+
+## **SVGLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SvgLib.svg">
+
+- Read and write svg syntax (CRUD)
+
+- [read more about the creation of the svgLib here](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  
+
+
+## **MathLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/MathLib.svg">
+
+- Contains a lot of use full math Utils, more to come)
+
+## **SQLLiteLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SQLiteLib.svg">
+
+- works by utilizing shell (CRUD)
+
+## **GitLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GitLib.svg">
+
+- works by utilizing shell and git (CRUD)
+
+## **XMLLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/XMLLib.svg">
+
+- Makes parsing and modifying xml data easier (CRUD)
+- Supports parsing and modifying at deep indices 
+
+## **FileLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileLib.svg">
+
+- Open,Save,Delete,Create (CRUD)
+
+## **KeyChainLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/KeyChainLib.svg">
+
+- Basic interaction with Apple KeyChain (Create, Read, Update, Delete)
+
+## **RegExpLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
+
+- Makes parsing and modifying with RegExp easier  
+
+## **AnimLib** 
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/AnimLib.svg">
+
+- Supports all common easing equations
+- Interactive spring dynamics. Friction, SpringStrength etc. 
+- The Spring solver has a small footprint and is easily customizable. 
+- 60FPS (CVDisplayLink)
+- Works with interaction (This is rare on apple platforms)
+- Small footprint (Just a few functions and classes)
+- Supports all the regular call-backs (onComplete etc)
+- CPU friendly. Stops when there is no animation etc
+
+## **GraphicsLib**
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GraphicsLib.svg">
+
+Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
 
-Read more about the GraphicKit [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
+
 The swift code for the above example:  
 
 ```swift
@@ -51,8 +119,12 @@ The graphics framework is open source and can be found on github [here](https://
 
 
 
-## **Color Kit**
-Supporting 7 Hex color types
+## **ColorLib**
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/ColorLib.svg">
+
+- Easily convert between color types: ColorLib, RGB, CMYK, HSL, HSB, HSB, NSColor, CGColor, CLColor
+- Supporting 7 Hex color types:
 There are 7 hex color formats: ""#FF0000","0xFF0000", "FF0000", "F00", "red", 0x00FF00 , 16711935
 ```
 ColorParser.nsColor("#FF0000",1)//red nsColor
@@ -64,7 +136,10 @@ ColorParser.nsColor(0xFF0000,1)//red nsColor
 ColorParser.nsColor(16711935,1)//red nsColor
 ```
 
-## Event system 
+## EventLib
+
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/EventLib.svg">
+ 
 - Small footprint: Only 2 methods and a variable
 - Propagates up class hierarchies. That extend the EventSender
 - Basic event concept: EventHandler, Event, EventSender 
@@ -92,6 +167,8 @@ Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-
 
 ## FileWatcher
 
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileWatcher.svg">
+
 A simple File watcher in swift. Example code: 
 
 ```swift
@@ -103,4 +180,10 @@ fileWatcher!.event = { [weak self] event in//<--The weak self part enables you t
 }
 ```
 
+## **Utils** 
+
+- Other basic programming utilities for working with array, dictionary, numbers, strings etc
+
+
 [MIT License](http://opensource.org/licenses/MIT) 
+
