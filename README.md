@@ -49,6 +49,11 @@
 - Makes parsing and modifying xml data easier (CRUD)
 - Supports parsing and modifying at deep indices 
 
+```swift
+XMLParser.childAt(xml,[0,2,1])//Output: the second item in the third item in root
+XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets the color and gradient attributes in the second item in root
+```
+
 ## **FileLib** 
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileLib.svg">
