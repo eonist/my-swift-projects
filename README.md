@@ -43,7 +43,8 @@
 - works by utilizing shell and git (CRUD)
 
 ```swift
-GitParser.commit("~/test/", "Bug fix", "Fixed the bug in the code")
+GitParser.status("~/test/","-s")//Outputs the status (compact version)
+GitModifier.commit("~/test/", "Bug fix", "Fixed the bug in the code")
 GitAsserter.isGitRepo("~/test/.git/")//Output: true or false
 ```
 
