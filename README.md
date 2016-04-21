@@ -1,4 +1,4 @@
-![mit](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-OSX-blue.svg) 
+![mit](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-OSX-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift-orange.svg) 
 
 ## Content of page:  
 
