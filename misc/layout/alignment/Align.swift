@@ -31,9 +31,9 @@ class Align {
         return alignmentPoint + offset
     }
     /**
-    * Returns the pivot point of an object according to what pivotAlignment it has
-    * @example // :TODO: write an example
-    */
+     * Returns the pivot point of an object according to what pivotAlignment it has
+     * @example // :TODO: write an example
+     */
     class func point(size:CGSize, _ alignment:String) -> CGPoint {
         switch alignment{
             case Alignment.topLeft:return CGPoint()
