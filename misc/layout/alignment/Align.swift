@@ -24,7 +24,9 @@ class Align {
     class func alignmentPoint(viewSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
         let viewAlignmentPoint:CGPoint = Align.point(viewSize, viewAlignment)
+        Swift.print("viewAlignmentPoint: " + "\(viewAlignmentPoint)")
         alignmentPoint = alignmentPoint - viewAlignmentPoint
+        Swift.print("alignmentPoint: " + "\(alignmentPoint)")
         return alignmentPoint + offset
     }
     /**
