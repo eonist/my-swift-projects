@@ -1,9 +1,6 @@
 import Cocoa
 
 class Align {
-    
-    //continue here: write the batch align method
-    
     /**
      * Aligns @param view to @param canvasAlignment and @param viewAlignment within @param canvasSize with a optional @param offset
      * @param view: Layout item you want to manipulate
@@ -47,5 +44,13 @@ class Align {
             case Alignment.bottomCenter: return CGPoint(round((size.width/2)),size.height);
             default:fatalError("No alignment matched the argument:" + "\(alignment)");
         }
+    }
+}
+extension Align{
+    /**
+     * Aligns an array of view instances (batch align)
+     */
+    class func align(views:Array<NSView>, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
+        for view in views{ Align.align(view, canvasSize,canvasAlignment,viewAlignment,offset)}
     }
 }
