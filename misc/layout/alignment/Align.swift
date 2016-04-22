@@ -13,7 +13,7 @@ class Align {
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER_RIGHT,Alignment.CENTER_RIGHT)//Output: aligns the circle to the y axis center and  to the right border of the rectangle but withinn the rectange
      */
     class func align(view:NSView, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
-        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(view.width,view.height), canvasSize,canvasAlignment,viewAlignment,offset)
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(view.w,view.h), canvasSize,canvasAlignment,viewAlignment,offset)
         NSViewModifier.position(view, alignmentPoint)
     }
     /**
