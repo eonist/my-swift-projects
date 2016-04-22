@@ -38,7 +38,7 @@ class Align {
             
             case Alignment.topRight:return CGPoint(size.x,0)
                 Swift.print("")
-            case Alignment.centerCenter:
+            case Alignment.centerCenter || Alignment.center:
                 Swift.print("")
             case Alignment.centerLeft:
                 Swift.print("")
