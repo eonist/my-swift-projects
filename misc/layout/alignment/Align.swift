@@ -49,6 +49,7 @@ class Align {
 extension Align{
     /**
      * Aligns an array of view instances (batch align)
+     * NOTE: alt names: alignMany? or alignAll?
      */
     class func align(views:Array<NSView>, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
         for view in views{ Align.align(view, canvasSize,canvasAlignment,viewAlignment,offset)}
