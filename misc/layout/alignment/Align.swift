@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * IMPORTANT: The align method only supports NSView. But use alignmentPoint instead if you have to work with different class types. As it does the same thing as the align method does
+ */
 class Align {
     /**
      * Aligns @param view to @param canvasAlignment and @param viewAlignment within @param canvasSize with a optional @param offset
