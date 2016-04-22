@@ -24,12 +24,9 @@ class Align {
      * @Note this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
     class func alignmentPoint(viewSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
-        Swift.print("viewSize: " + "\(viewSize)")
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
         let viewAlignmentPoint:CGPoint = Align.point(viewSize, viewAlignment)
-        Swift.print("viewAlignmentPoint: " + "\(viewAlignmentPoint)")
         alignmentPoint = alignmentPoint - viewAlignmentPoint
-        Swift.print("alignmentPoint: " + "\(alignmentPoint)")
         return alignmentPoint + offset
     }
     /**
