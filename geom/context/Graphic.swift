@@ -123,6 +123,3 @@ extension Graphic{
 }
 
 
-//Continue here: seems like the update trackingarea is being called twice. find the duoble caller and you may solve the problem
-
-
