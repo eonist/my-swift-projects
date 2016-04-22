@@ -1,6 +1,9 @@
 import Cocoa
 
 class Align {
+    
+    //continue here: write the batch align method
+    
     /**
      * Aligns @param view to @param canvasAlignment and @param viewAlignment within @param canvasSize with a optional @param offset
      * @param view: Layout item you want to manipulate
@@ -12,8 +15,8 @@ class Align {
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER,Alignment.TOP_LEFT)//Output: centers a circle within 400x300 rectangle
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER_RIGHT,Alignment.CENTER_RIGHT)//Output: aligns the circle to the y axis center and  to the right border of the rectangle but withinn the rectange
      */
-    class func align(view:NSView, _ canvasSize:CGPoint, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
-        let alignmentPoint:CGPoint = Align.alignmentPoint(CGPoint(view.width,view.height), canvasSize,canvasAlignment,viewAlignment,offset)
+    class func align(view:NSView, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(view.width,view.height), canvasSize,canvasAlignment,viewAlignment,offset)
         NSViewModifier.position(view, alignmentPoint)
     }
     /**
@@ -21,9 +24,9 @@ class Align {
      * @param viewSize the size of the displayObject
      * @Note this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
-    class func alignmentPoint(viewSize:CGPoint, _ canvasSize:CGPoint, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
+    class func alignmentPoint(viewSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
-        let viewAlignmentPoint:CGPoint = Align.point(CGPoint(viewSize.x, viewSize.y), viewAlignment)
+        let viewAlignmentPoint:CGPoint = Align.point(viewSize, viewAlignment)
         alignmentPoint = alignmentPoint - viewAlignmentPoint
         return alignmentPoint + offset
     }
@@ -31,17 +34,17 @@ class Align {
     * Returns the pivot point of an object according to what pivotAlignment it has
     * @example // :TODO: write an example
     */
-    class func point(size:CGPoint, _ alignment:String) -> CGPoint {
+    class func point(size:CGSize, _ alignment:String) -> CGPoint {
         switch alignment{
             case Alignment.topLeft:return CGPoint()
-            case Alignment.topRight:return CGPoint(size.x,0)
-            case Alignment.centerCenter, Alignment.center:return CGPoint(round((size.x/2)),round((size.y/2)))
-            case Alignment.centerLeft: return CGPoint(0,round((size.y/2)))
-            case Alignment.topCenter: return CGPoint(round((size.x/2)),0)
-            case Alignment.centerRight: return CGPoint(size.x,round((size.y/2)));
-            case Alignment.bottomRight: return CGPoint(size.x,size.y);
-            case Alignment.bottomLeft: return CGPoint(0,size.y);
-            case Alignment.bottomCenter: return CGPoint(round((size.x/2)),size.y);
+            case Alignment.topRight:return CGPoint(size.width,0)
+            case Alignment.centerCenter, Alignment.center:return CGPoint(round((size.width/2)),round((size.height/2)))
+            case Alignment.centerLeft: return CGPoint(0,round((size.height/2)))
+            case Alignment.topCenter: return CGPoint(round((size.width/2)),0)
+            case Alignment.centerRight: return CGPoint(size.width,round((size.height/2)));
+            case Alignment.bottomRight: return CGPoint(size.width,size.height);
+            case Alignment.bottomLeft: return CGPoint(0,size.height);
+            case Alignment.bottomCenter: return CGPoint(round((size.width/2)),size.height);
             default:fatalError("No alignment matched the argument:" + "\(alignment)");
         }
     }
