@@ -32,41 +32,17 @@ class Align {
     * @example // :TODO: write an example
     */
     class func point(size:CGPoint, _ alignment:String) -> CGPoint {
-        
         switch alignment{
             case Alignment.topLeft:return CGPoint()
-            
             case Alignment.topRight:return CGPoint(size.x,0)
-                Swift.print("")
-            case Alignment.centerCenter , Alignment.center:
-                Swift.print("")
-            case Alignment.centerLeft:
-                Swift.print("")
-            case Alignment.topCenter:
-                Swift.print("")
-            case Alignment.centerRight:
-                Swift.print("")
-            case Alignment.bottomRight:
-                Swift.print("")
-            case Alignment.bottomLeft:
-                Swift.print("")
-            case Alignment.bottomCenter:
-                Swift.print("")
-            default:
-                break;
+            case Alignment.centerCenter, Alignment.center:return CGPoint(round((size.x/2)),round((size.y/2)))
+            case Alignment.centerLeft: return CGPoint(0,round((size.y/2)))
+            case Alignment.topCenter: return CGPoint(round((size.x/2)),0)
+            case Alignment.centerRight: return CGPoint(size.x,round((size.y/2)));
+            case Alignment.bottomRight: return CGPoint(size.x,size.y);
+            case Alignment.bottomLeft: return CGPoint(0,size.y);
+            case Alignment.bottomCenter: return CGPoint(round((size.x/2)),size.y);
+            default:fatalError("No alignment matched the argument:" + "\(alignment)");
         }
-        
-        
-        if(alignment == Alignment.TOP_LEFT)
-        else if(alignment == Alignment.TOP_RIGHT) return  new ;
-        else if(alignment == Alignment.CENTER_CENTER || alignment == Alignment.CENTER) return new Point(Math.round((size.x/2)),Math.round((size.y/2)));
-        else if(alignment == Alignment.CENTER_LEFT) return new Point(0,Math.round((size.y/2)));
-        else if(alignment == Alignment.TOP_CENTER) return new Point(Math.round((size.x/2)),0);
-        else if(alignment == Alignment.CENTER_RIGHT) return new Point(size.x,Math.round((size.y/2)));
-        else if(alignment == Alignment.BOTTOM_RIGHT) return new Point(size.x,size.y);
-        else if(alignment == Alignment.BOTTOM_LEFT) return new Point(0,size.y);
-        else if(alignment == Alignment.BOTTOM_CENTER) return new Point(Math.round((size.x/2)),size.y);
-        else throw new IllegalOperationError("No alignment matched the argument: "+alignment);
-        return nil;
     }
 }
