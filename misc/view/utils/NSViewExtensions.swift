@@ -103,4 +103,6 @@ extension NSView {
     var numSubViews:Int {return subviews.count}/*convenience*/
     var w:CGFloat{return frame.width}//aperantly .width is occupied
     var h:CGFloat{return frame.height}//aperantly .height is occupied
+    var x:CGFloat{return frame.origin.x}//aperantly .width is occupied
+    var y:CGFloat{return frame.origin.y}//aperantly .height is occupied
 }
