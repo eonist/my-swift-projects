@@ -9,7 +9,7 @@ class SVGRectModifier {
         let position:CGPoint = PointModifier.scale(rect.position, pivot, scale);
         let size:CGSize = CGSize(rect.width * scale.x, rect.height * scale.y);//TODO:use CGRect scale method instead
         rect.xVal = position.x;
-        rect.yVAl = position.y;
+        rect.yVal = position.y;
         rect.width = size.width;
         rect.height = size.height;
     }

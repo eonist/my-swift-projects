@@ -5,8 +5,8 @@ import Foundation
  * // :TODO: possibly replace the subclassing with decoration!?!
  */
 class SVGRect:SVGGraphic {
-    var widthVal:CGFloat
-    var heightVal:CGFloat
+    var width:CGFloat
+    var height:CGFloat
     var xVal:CGFloat
     var yVal:CGFloat
     var rx:CGFloat/*for round rect, radius*/
@@ -18,8 +18,8 @@ class SVGRect:SVGGraphic {
         //Swift.print("SVGRect.init()" + "\(width)" + " height: " + "\(height)")
         //Swift.print("x: " + "\(x)")
         //Swift.print("y: " + "\(y)")
-        self.widthVal = width;
-        self.heightVal = height;
+        self.width = width;
+        self.height = height;
         self.xVal = x;
         self.yVal = y;
         self.rx = rx;
@@ -36,14 +36,14 @@ class SVGRect:SVGGraphic {
      */
     override func draw() {
         //Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
-        if(widthVal <= 0 && heightVal <= 0) {/*None*/
+        if(width <= 0 && height <= 0) {/*None*/
             return
         }else{
-            let rect:CGRect = CGRect(!self.xVal.isNaN ? self.xVal : 0, !self.yVal.isNaN ? self.yVal : 0, self.widthVal, self.heightVal);//we have to do this here since there is no hard ref to self in memory yet.
+            let rect:CGRect = CGRect(!self.xVal.isNaN ? self.xVal : 0, !self.yVal.isNaN ? self.yVal : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
             //Swift.print("rect: " + "\(rect)")
             //Swift.print("style!.fill: " + "\(style!.fill)")
             if(style!.fill != nil){/*Fill*/
-                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,widthVal,heightVal).path : CGPathParser.roundRect(CGRect(0,0,widthVal,heightVal), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
+                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(CGRect(0,0,width,height), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
                 let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || (style!.stroke != nil && style!.stroke! is SVGGradient) ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
                 //Swift.print("fillFrame: " + "\(fillFrame)")
                 //TODO: you can set the frame to the rect, no need for the fancy frame creation method
@@ -60,8 +60,8 @@ class SVGRect:SVGGraphic {
         
     }
     func setSize(width:CGFloat,height:CGFloat) {
-      self.widthVal = width;
-      self.heightVal = height;
+      self.width = width;
+      self.height = height;
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
@@ -70,7 +70,7 @@ class SVGRect:SVGGraphic {
  */
 extension SVGRect{
     var position:CGPoint {get{return CGPoint(xVal,yVal)}set {xVal = newValue.x;yVal = newValue.y}}
-    var size:CGSize {get{return CGSize(widthVal,heightVal)}set {widthVal = newValue.width;heightVal = newValue.height}}
+    var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
 }
 
 
