@@ -12,13 +12,13 @@ import Foundation
 class SVG : SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...something els)
     var version:CGFloat
     var nameSpace:String
-    var x:CGFloat
-    var y:CGFloat
+    var xVal:CGFloat
+    var yVal:CGFloat
     var width:CGFloat
     var height:CGFloat
     init(_ items:Array<ISVGElement>, _ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ version:CGFloat,_ nameSpace:String,_ id:String) {
-        self.x = x
-        self.y = y
+        self.xVal = x
+        self.yVal = y
         self.width = width
         self.height = height
         self.version = version
