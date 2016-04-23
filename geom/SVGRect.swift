@@ -5,12 +5,12 @@ import Foundation
  * // :TODO: possibly replace the subclassing with decoration!?!
  */
 class SVGRect:SVGGraphic {
-    var widthVal : CGFloat
-    var heightVal : CGFloat
+    var widthVal:CGFloat
+    var heightVal:CGFloat
     var xVal:CGFloat
-    var yVal : CGFloat
-    var rx : CGFloat/*for round rect, radius*/
-    var ry : CGFloat/*for round rect, radius*/
+    var yVal:CGFloat
+    var rx:CGFloat/*for round rect, radius*/
+    var ry:CGFloat/*for round rect, radius*/
     /**
      * @param fill (is of type Number so that we can test for NaN when parsing to svg xml)
      */
