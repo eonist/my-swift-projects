@@ -7,8 +7,8 @@ import Foundation
 class SVGRect : SVGGraphic {
     var width : CGFloat//TODO: rename to w
     var height : CGFloat
-    var x:CGFloat
-    var y : CGFloat
+    var xVal:CGFloat
+    var yVal : CGFloat
     var rx : CGFloat/*for round rect, radius*/
     var ry : CGFloat/*for round rect, radius*/
     /**
@@ -20,8 +20,8 @@ class SVGRect : SVGGraphic {
         //Swift.print("y: " + "\(y)")
         self.width = width;
         self.height = height;
-        self.x = x;
-        self.y = y;
+        self.xVal = x;
+        self.yVal = y;
         self.rx = rx;
         self.ry = ry;
         super.init(style,id);
