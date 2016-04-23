@@ -3,7 +3,7 @@
 ## Content of page:  
 
 - [SVGLib](#svglib) 
-- [GraphicsKit](#graphicskit) 
+- [GraphicsLib](#graphicslib) 
 - [XMLLib](#xmllib) 
 - [RegExpLib](#regexplib) 
 - [MathLib](#mathlib) 
