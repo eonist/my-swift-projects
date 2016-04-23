@@ -66,6 +66,7 @@ extension NSView {
         return NSViewAsserter.contains(self, view)
     }
     var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}/*you cant have setPoint() as  a method by having this variable here, something to keep in mind*/
+    var pos:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     //var width:CGFloat{return frame.width}//TODO:implement later
     //var height:CGFloat{return frame.height}
     /**
@@ -102,8 +103,8 @@ extension NSView {
     }
     var numSubViews:Int {return subviews.count}/*convenience*/
     
-    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is occupied
-    var h:CGFloat{get{return frame.height}set{frame.height = newValue}}//aperantly .height is occupied
+    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, yu need to refactor it out first, same with height
+    var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
     var x:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
     var y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
 }
