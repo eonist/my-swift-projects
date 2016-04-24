@@ -21,7 +21,7 @@ class Shape : CALayer{
     */
      
     /**
-     * NOTE: If you zoom this class in. you need to change the contensScale appropriatly. Zoom 2x on a retina screen: (2x2=4) Zoom 4x on a retina screen: (2x2=4) etc
+     * NOTE: If you zoom this class in. you need to change the contentScale appropriatly. Zoom 2x on a retina screen: (2x2=4) Zoom 4x on a retina screen: (2x2=4) etc
      */
     override init(){
         super.init()
