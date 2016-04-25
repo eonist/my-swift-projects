@@ -80,7 +80,7 @@ extension NSView {
         return self.convertPoint((window?.mouseLocationOutsideOfEventStream)!,fromView:nil)
     }
     /**
-     * You may need to y-flip this point
+     * IMPORTANT: You may need to y-flip this point
      */
     func globalPoint()->CGPoint{
         return (window?.mouseLocationOutsideOfEventStream)!
