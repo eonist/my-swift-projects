@@ -74,14 +74,11 @@ class Graphic:InteractiveView2,IGraphic{
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
-        
         var localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
         //Swift.print("localPoint: " + "\(localPoint)")
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldnt but they do so this is a quick fix. Resolve this later and do it better
-        
         let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
-        
         return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
     }
     /**
@@ -91,7 +88,7 @@ class Graphic:InteractiveView2,IGraphic{
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         //Swift.print("Graphic.drawLayer(layer,inContext)")
-        selector!(layer: layer,ctx: ctx)/*call the selector*/
+        selector!(layer:layer, ctx:ctx)/*call the selector*/
         //updateTrackingArea()
     }
     /**
