@@ -44,6 +44,7 @@ class Graphic:InteractiveView2,IGraphic{
         self.layer!.actions = actions;
         self.lineShape.actions = actions;
         */
+        
     }
     /**
      * Stops implicit animation from happening
