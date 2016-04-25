@@ -12,6 +12,7 @@ class PointModifier {
     }
     /**
      * Scales @Param p at @param pivot with @param scale
+     * EXAMPLE: PointModifier.scale(CGPoint(0,0), CGPoint(40,40), CGPoint(2,2))//Output: (-40.0, -40.0)
      */
     class func scale(p:CGPoint,_ pivot:CGPoint,_ scale:CGPoint/*0-1*/)->CGPoint{
         var transform = CGAffineTransformIdentity
