@@ -28,6 +28,7 @@ class Graphic:InteractiveView2,IGraphic{
         //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         //layer = CALayer()//TempCALayer(layer: layer!)
         //layer!.masksToBounds = false//this is needed!!!
+        layer!.contentsScale = 8
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
