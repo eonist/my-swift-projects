@@ -90,8 +90,7 @@ class Graphic:InteractiveView2,IGraphic{
      * NOTE: this is a delegate method for the shapes in Graphic
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Graphic.drawLayer(layer,inContext)" + "\(bounds)")
-        
+        //Swift.print("Graphic.drawLayer(layer,inContext)")
         selector!(layer: layer,ctx: ctx)/*call the selector*/
         //updateTrackingArea()
     }
