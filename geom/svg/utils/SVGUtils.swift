@@ -139,7 +139,7 @@ class SVGUtils {
 	  */
 	 class func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
         
-         //this method is missing support for gradient (Get ques from the old SVGPropertyParser)
+         //this method is missing support for gradient (Get ques from the legacy SVGPropertyParser)
         
          xml["fill"] = graphic.style!.fill is Double && !((graphic.style!.fill as! Double).isNaN) ? "#"+HexParser.hexString(UInt(graphic.style!.fill as! Double)):"none"
 		 xml["stroke"] = graphic.style!.stroke is Double && !(graphic.style!.stroke as! Double).isNaN ? "#"+HexParser.hexString(UInt(graphic.style!.stroke as! Double)):"none"
