@@ -10,6 +10,8 @@ class SVGGraphicModifier {
      */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         //Swift.print("SVGGraphicModifier.applyStrokeStyle()")
+        let lineStyle:ILineStyle = LineStyle()
+        
         let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
