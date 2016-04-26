@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
  * XML utility methods (Beta)
  * @Note: This class has methods that conver SVG elements into XML
@@ -152,19 +152,23 @@ class SVGUtils {
      */
     class func style(svgStyle:SVGStyle)->IGraphicStyle{
         
+        
+        //continue here: add support for Fill and LineStyle (remember to add Gradient support. and remember that you have all the code for this, just look at the actual drawing of the SVGGraphic. it converts to the format you need. )
+        
+        
+        return GraphicStyle()
     }
     /**
      *
      */
-    class func lineStyle(style:SVGStyle){
+    class func lineStyle(style:SVGStyle)->ILineStyle{
         var lineStyle:ILineStyle = LineStyle()
         lineStyle.thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
-        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
-        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
-        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
+        lineStyle.miterLimit = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
+        lineStyle.lineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
+        lineStyle.lineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         let strokeOpacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1/*<-- this line is new, used to be done inline*/
-        let color:NSColor = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
-        
-        graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+        lineStyle.color = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
+        return lineStyle
     }
 }
