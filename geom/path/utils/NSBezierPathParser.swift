@@ -2,16 +2,14 @@ import Cocoa
 
 class NSBezierPathParser {
     /**
-    * untest
-    */
+     * untest
+     */
     class func cgPath(nsBezierPath:NSBezierPath)->CGPath?{
         if nsBezierPath.elementCount == 0 {
             return nil
         }
-        
         let path = CGPathCreateMutable()
         var didClosePath = false
-        
         for i in 0...nsBezierPath.elementCount-1 {
             var points = [NSPoint](count: 3, repeatedValue: NSZeroPoint)
             
@@ -23,11 +21,9 @@ class NSBezierPathParser {
             didClosePath = true;
             }
         }
-        
         if !didClosePath {
             CGPathCloseSubpath(path)
         }
-        
         return CGPathCreateCopy(path)
     }
 }
