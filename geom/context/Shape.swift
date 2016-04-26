@@ -18,10 +18,6 @@ class Shape : CALayer{
     override func hitTest(p: CGPoint) -> CALayer? {
         return super.hitTest(p)
     }
-    override func setNeedsDisplay() {
-        Swift.print("setNeedsDisplay")
-        super.setNeedsDisplayInRect(CGRect(0,0,50,50))
-    }
     /*override func containsPoint(p: CGPoint) -> Bool {
         //add path inside code here
         return true
