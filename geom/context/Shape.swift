@@ -20,7 +20,7 @@ class Shape : CALayer{
     }
     override func setNeedsDisplay() {
         Swift.print("setNeedsDisplay")
-        super.setNeedsDisplay()
+        super.setNeedsDisplayInRect(CGRect(0,0,50,50))
     }
     /*override func containsPoint(p: CGPoint) -> Bool {
         //add path inside code here
