@@ -156,7 +156,7 @@ class SVGUtils {
     /**
      *
      */
-    class func lineStyle(){
+    class func lineStyle(style:SVGStyle){
         var lineStyle:ILineStyle = LineStyle()
         lineStyle.thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
         let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
