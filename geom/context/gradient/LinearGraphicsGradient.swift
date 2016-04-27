@@ -11,3 +11,8 @@ public class LinearGraphicsGradient:GraphicsGradient{
         super.init(colors,locations,transformation)
     }
 }
+extension LinearGraphicsGradient{
+    func linearGradient()->LinearGradient{
+        return LinearGradient(self.colors,self.locations,1.5707963267949,self.transformation)/*<--I dont like the rotation value here*/
+    }
+}
