@@ -18,9 +18,10 @@ class SVGGraphicModifier {
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
         //Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
-        
-        //shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
-        //shape.graphics.gradientLine(linearGraphicsGradient)
+        let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
+        shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
+        let graphicsGradient:IGraphicsGradient = SVGUtils.graphicsGradient(shape, style)
+        shape.graphics.gradientLine(graphicsGradient)
     }
     /**
      * Begins a gradient fill on @param graphics with @param gradient
