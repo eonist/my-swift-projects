@@ -8,7 +8,7 @@ class SVGGraphicModifier {
      * @NOTE: miterLength / stroke-width = 1 / sin ( theta / 2 ) The ratio of miter length (distance between the outer tip and the inner corner of the miter) to stroke-width is directly related to the angle (theta) between the segments in user space by the formula:
      * @NOTE: miterlimit The limit on the ratio of the miter length to the stroke-width. The value of <miterlimit> must be a <number> greater than or equal to 1.
      */
-    class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
+    class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle){
         //Swift.print("SVGGraphicModifier.applyStrokeStyle()")
         let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
         graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
@@ -26,10 +26,9 @@ class SVGGraphicModifier {
     /**
      * Begins a gradient fill on @param graphics with @param gradient
      */
-    class func beginGradientFill(shape:Shape,_ gradient:SVGGradient) {
+    class func beginGradientFill(shape:Shape,_ gradient:SVGGradient){
         //let graphics:Graphics = shape.graphics
         //Swift.print("SVGGraphicModifier.beginGradientFill");
-        
         let graphicsGradient:IGraphicsGradient = SVGUtils.fillGraphicGradient(shape, gradient)
         shape.graphics.gradientFill(graphicsGradient)
     }
