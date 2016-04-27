@@ -15,3 +15,8 @@ public class RadialGraphicsGradient:GraphicsGradient{
         super.init(colors,locations,transformation)
     }
 }
+extension RadialGraphicsGradient{
+    func radialGradient()->RadialGradient{
+        return RadialGradient(self.colors,self.locations,1.5707963267949,self.startCenter,self.endCenter,self.startRadius,self.endRadius,self.transformation)
+    }
+}
