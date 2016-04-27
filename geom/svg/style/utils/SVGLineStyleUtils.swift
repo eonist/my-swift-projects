@@ -1,6 +1,6 @@
 import Cocoa
 
-class SVGLineStyleConverter{
+class SVGLineStyleUtils{
     /**
      *
      */
