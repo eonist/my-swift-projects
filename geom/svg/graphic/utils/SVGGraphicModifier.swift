@@ -20,6 +20,7 @@ class SVGGraphicModifier {
         //Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
         
         //shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
+        //shape.graphics.gradientLine(linearGraphicsGradient)
     }
     /**
      * Begins a gradient fill on @param graphics with @param gradient
