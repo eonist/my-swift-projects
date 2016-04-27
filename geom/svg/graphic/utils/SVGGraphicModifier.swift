@@ -10,7 +10,7 @@ class SVGGraphicModifier {
      */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle){
         //Swift.print("SVGGraphicModifier.applyStrokeStyle()")
-        let lineStyle:ILineStyle = SVGLineStyleConverter.colorLineStyle(style)
+        let lineStyle:ILineStyle = SVGLineStyleUtils.colorLineStyle(style)
         graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
     }
     /**
@@ -18,9 +18,9 @@ class SVGGraphicModifier {
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
         //Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
-        let lineStyle:ILineStyle = SVGLineStyleConverter.colorLineStyle(style)
+        let lineStyle:ILineStyle = SVGLineStyleUtils.colorLineStyle(style)
         shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
-        let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, style)
+        let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, style)
         shape.graphics.gradientLine(graphicsGradient)
     }
     /**
@@ -29,7 +29,7 @@ class SVGGraphicModifier {
     class func beginGradientFill(shape:Shape,_ gradient:SVGGradient){
         //let graphics:Graphics = shape.graphics
         //Swift.print("SVGGraphicModifier.beginGradientFill");
-        let graphicsGradient:IGraphicsGradient = SVGUtils.fillGraphicGradient(shape, gradient)
+        let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, gradient)
         shape.graphics.gradientFill(graphicsGradient)
     }
 }
