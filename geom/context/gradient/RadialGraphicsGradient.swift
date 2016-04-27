@@ -16,6 +16,9 @@ public class RadialGraphicsGradient:GraphicsGradient{
     }
 }
 extension RadialGraphicsGradient{
+    /**
+     * Convert
+     */
     func radialGradient()->RadialGradient{
         return RadialGradient(self.colors,self.locations,1.5707963267949,self.startCenter,self.endCenter,CGSize(self.startRadius,self.startRadius),CGSize(self.endRadius,self.endRadius),self.transformation)
     }

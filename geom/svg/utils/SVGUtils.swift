@@ -159,6 +159,11 @@ class SVGUtils {
             //Swift.print("gradient")
             lineStyle = SVGUtils.lineStyle(svgStyle)
             let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, svgStyle)
+            
+            
+            //Continue here: convert graphicsGradient to Gradient
+            
+            
             lineStyle = GradientLineStyle()
         }else{/*clear*/
             //Swift.print("no stroke")

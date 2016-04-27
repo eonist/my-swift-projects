@@ -12,6 +12,9 @@ public class LinearGraphicsGradient:GraphicsGradient{
     }
 }
 extension LinearGraphicsGradient{
+    /**
+     * Convert
+     */
     func linearGradient()->LinearGradient{
         return LinearGradient(self.colors,self.locations,1.5707963267949,self.transformation)/*<--I dont like the rotation value here*/
     }

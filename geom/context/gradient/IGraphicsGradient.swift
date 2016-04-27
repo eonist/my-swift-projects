@@ -9,7 +9,7 @@ public protocol IGraphicsGradient {
 }
 extension IGraphicsGradient{
     /**
-     *
+     * Convert
      */
     func gradient()->IGradient{
         if(self is LinearGraphicsGradient){
