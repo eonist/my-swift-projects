@@ -275,7 +275,7 @@ class SVGUtils {
             let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
             //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
             //fatalError("implment the bellow first")
-            shape.graphics.gradientFill(linearGraphicsGradient)
+            return linearGraphicsGradient
         }
             /**
             * @NOTE: it seems you can do the offseting in the matrix transformation
@@ -326,7 +326,7 @@ class SVGUtils {
                 //Swift.print("startCenter: " + "\(startCenter)")
                 //Swift.print("endCenter: " + "\(endCenter)")
             }
-            let radialGraphicsGradient:IGraphicsGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
+            return RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
             
         }
     }
