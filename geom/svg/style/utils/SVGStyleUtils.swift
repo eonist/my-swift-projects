@@ -68,8 +68,8 @@ class SVGStyleUtils {
      * new
      */
     class func graphicStyle(graphic:ISVGGraphic)->IGraphicStyle{
-        let fillStyle:IFillStyle? = SVGFillStyleUtils.fillStyle(graphic.style, graphic.fillShape)
-        let lineStyle:ILineStyle? = SVGLineStyleUtils.lineStyle(graphic.style, graphic.lineShape)
+        let fillStyle:IFillStyle? = graphic.style != nil ? SVGFillStyleUtils.fillStyle(graphic.style!, graphic.fillShape) : nil
+        let lineStyle:ILineStyle? = graphic.style != nil ? SVGLineStyleUtils.lineStyle(graphic.style!, graphic.lineShape) : nil
         return GraphicStyle(fillStyle,lineStyle)
     }
 }
