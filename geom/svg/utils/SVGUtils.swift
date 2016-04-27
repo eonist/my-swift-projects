@@ -150,9 +150,20 @@ class SVGUtils {
     /**
      *
      */
-    class func style(svgStyle:SVGStyle)->IGraphicStyle{
+    class func style(svgStyle:SVGStyle,_ shape:Shape)->IGraphicStyle{
         
-        
+        var lineStyle:ILineStyle
+        if(svgStyle.stroke is Double) {/*updates only if lineStyle of class LineStyle*/
+            lineStyle = SVGUtils.lineStyle(svgStyle)
+        }else if(svgStyle.stroke is SVGGradient){
+            //Swift.print("gradient")
+            let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
+            let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, style)
+            lineStyle = GradientLineStyle()
+        }else{/*clear*/
+            //Swift.print("no stroke")
+            //fatalError("not implemented yet " + "\(style!.stroke)")
+        }
         //continue here: add support for Fill and LineStyle (remember to add Gradient support. and remember that you have all the code for this, just look at the actual drawing of the SVGGraphic. it converts to the format you need. )
         //this method should be made but the You have to merge IGradient and IGraphicsGradient somehow, you could create a third class named GraphicsStyle
         
