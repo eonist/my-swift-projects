@@ -72,7 +72,9 @@ class SVGGraphic : SVGView,ISVGGraphic{
     func beginFill(){
         //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
         if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/ && !(style!.fill as! Double).isNaN) {
-            SVGUtils
+            let color:NSColor = SVGUtils.fillColor(style!)
+            //Swift.print("color: " + "\(color)")
+            fillShape.graphics.fill(color)/*Stylize the fill*/
         }else if(style!.fill != nil && style!.fill! is SVGGradient){//<- may need to use dynamixtype to assert this?!?
             //Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
             SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
