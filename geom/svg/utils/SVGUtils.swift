@@ -153,12 +153,12 @@ class SVGUtils {
     class func style(svgStyle:SVGStyle,_ shape:Shape)->IGraphicStyle{
         
         var lineStyle:ILineStyle
-        if(svgStyle.stroke is Double) {/*updates only if lineStyle of class LineStyle*/
+        if(svgStyle.stroke is Double) {
             lineStyle = SVGUtils.lineStyle(svgStyle)
         }else if(svgStyle.stroke is SVGGradient){
             //Swift.print("gradient")
-            let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
-            let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, style)
+            lineStyle = SVGUtils.lineStyle(svgStyle)
+            let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, svgStyle)
             lineStyle = GradientLineStyle()
         }else{/*clear*/
             //Swift.print("no stroke")
