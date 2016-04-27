@@ -174,14 +174,13 @@ class SVGUtils {
     /**
      *
      */
-    class func graphicsGradient(shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
+    class func lineGraphicsGradient(shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         if(gradient is SVGLinearGradient){/*gradient is SVGRadialGradient */
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
-            
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 if(gradient.gradientTransform != nil){
                     p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)

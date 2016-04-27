@@ -20,7 +20,7 @@ class SVGGraphicModifier {
         //Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
         let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
         shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
-        let graphicsGradient:IGraphicsGradient = SVGUtils.graphicsGradient(shape, style)
+        let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, style)
         shape.graphics.gradientLine(graphicsGradient)
     }
     /**
