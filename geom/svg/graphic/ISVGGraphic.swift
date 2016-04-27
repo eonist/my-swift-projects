@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ISVGGraphic {
+protocol ISVGGraphic:ISVGView {
     var fillShape:Shape{get set}
     var lineShape:Shape{get set}
     func draw()
