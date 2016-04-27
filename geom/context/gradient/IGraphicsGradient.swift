@@ -13,9 +13,9 @@ extension IGraphicsGradient{
      */
     func gradient()->IGradient{
         if(self is LinearGraphicsGradient){
-            return LinearGradient()
+            return LinearGradient(self.colors,self.locations,1.5707963267949,self.transformation)/*<--I dont like the rotation value here*/
         }else if(self is RadialGraphicsGradient){
-            //return
+            return RadialGraphicsGradient()
         }else{
             fatalError("type not supported")
         }
