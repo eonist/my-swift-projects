@@ -4,7 +4,7 @@ class SVGFillStyleUtils{
     /**
      *
      */
-    class func fillStyle(style:SVGStyle,shape:Shape)-> IFillStyle?{
+    class func fillStyle(style:SVGStyle,_ shape:Shape)-> IFillStyle?{
         let fillStyle:IFillStyle?
         if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
@@ -12,10 +12,7 @@ class SVGFillStyleUtils{
             fillStyle = FillStyle(color)
         }else if(style.fill != nil && style.fill! is SVGGradient){//<- may need to use dynamixtype to assert this?!?
             //Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
-            let svgGradient:SVGGradient = style.fill as! SVGGradient
-            let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
-            let gradient:IGradient = graphicsGradient.gradient()
-            fillStyle = GradientFillStyle(gradient)
+           SVGFillStyleUtils.gradientFillStyle(style, shape)
 
         }else{
             //clear
@@ -23,6 +20,16 @@ class SVGFillStyleUtils{
             //fatalError("not implemented yet")
         }
         return fillStyle
+    }
+    /**
+     *
+     */
+    class func gradientFillStyle(style:SVGStyle,_ shape:Shape)->IGradientFillStyle{
+        let svgGradient:SVGGradient = style.fill as! SVGGradient
+        let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
+        let gradient:IGradient = graphicsGradient.gradient()
+        let gradientFillStyle:IGradientFillStyle = GradientFillStyle(gradient)
+        return gradientFillStyle
     }
     /**
      *
