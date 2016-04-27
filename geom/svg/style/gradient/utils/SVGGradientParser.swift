@@ -71,7 +71,6 @@ private class Utils{
 //				ObjectParser.describe(inlineStyle);
 				let stopColorProperty:String = inlineStyle["stop-color"]!;
 				// Swift.print("stopColorProperty: " + stopColorProperty);
-				
                 stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"]);
                 hexColor = StringParser.color(stopColorProperty)
 				// Swift.print("stopOpacity: " + stopOpacity);
@@ -91,16 +90,11 @@ private class Utils{
 		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!;
         //Swift.print("gradientUnits: " + "\(gradientUnits)")
 		/*userSpaceOnUse*/
-		
 		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? "";/*<--temp*/
 		let id:String = SVGPropertyParser.id(xml);
         //Swift.print("id: " + "\(id)")
 		let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml);
         //Swift.print("SVGGradientParser.gradient() gradientTransform: " + "\(gradientTransform)")
-        
-        
-        
-        
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits,gradientTransform)/**/
 	}
     /**
