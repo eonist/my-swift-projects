@@ -12,7 +12,7 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
     public var locations:Array<CGFloat>/*same as color stops between 0 & 1*/
     public var rotation:CGFloat;/*must be between -π and π or it will fail*/ /*<---this doesnt belong here, you apply rotations in the matrix*/
     public var transformation:CGAffineTransform?
-    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, transformation:CGAffineTransform? = nil){/*,*/
+    public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)
