@@ -10,15 +10,8 @@ class SVGGraphicModifier {
      */
     class func applyStrokeStyle(graphics:Graphics, _ style:SVGStyle) {
         //Swift.print("SVGGraphicModifier.applyStrokeStyle()")
-        let lineStyle:ILineStyle = LineStyle()
-        
-        let strokeWidth:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
-        let strokeMiterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
-        let strokeLineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
-        let strokeLineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
-        let strokeOpacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1/*<-- this line is new, used to be done inline*/
-        let color:NSColor = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
-        graphics.line(strokeWidth, color, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+        let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
+        graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
     }
     /**
      * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the SVGGradient.transformation, instead you have to scale the gradient that is attached to the indeviduel SVGGraphic, and you have to take into consideration that the strokeThickness is now different than the new relative size. Even though its the same, the relative difference between the strokeThickness and the size of the shape is different. So you have to recalculate the gradient.transformation matrix a little bit. Probably by insetting it by some relative value
