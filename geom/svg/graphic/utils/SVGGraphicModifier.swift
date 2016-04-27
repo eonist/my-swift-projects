@@ -14,7 +14,7 @@ class SVGGraphicModifier {
         graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
     }
     /**
-     *
+     * Applies a gradientStrokeStyle to the Graphics
      */
     class func applyGradientStrokeStyle(shape:Shape,_ style:SVGStyle){
         //Swift.print("applyGradientStrokeStyle: " + "\(applyGradientStrokeStyle)")
