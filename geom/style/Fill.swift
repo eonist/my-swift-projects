@@ -1,4 +1,7 @@
 import Cocoa
+/**
+ * I think this can be DEPRECATED
+ */
 protocol IFill {
     var color: NSColor { get set }
 }

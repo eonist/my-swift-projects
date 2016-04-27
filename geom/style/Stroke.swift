@@ -1,4 +1,7 @@
 import Cocoa
+/**
+ * I think this can be DEPRECATED
+ */
 protocol IStroke {
     var color: NSColor { get set }
     var width: CGFloat { get set }
