@@ -15,7 +15,7 @@ extension IGraphicsGradient{
         if(self is LinearGraphicsGradient){
             return LinearGradient(self.colors,self.locations,1.5707963267949,self.transformation)/*<--I dont like the rotation value here*/
         }else if(self is RadialGraphicsGradient){
-            return RadialGraphicsGradient()
+            return RadialGradient()
         }else{
             fatalError("type not supported")
         }
