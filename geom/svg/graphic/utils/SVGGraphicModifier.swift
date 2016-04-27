@@ -34,6 +34,3 @@ class SVGGraphicModifier {
         shape.graphics.gradientFill(graphicsGradient)
     }
 }
-private class Utils{
-    
-}
