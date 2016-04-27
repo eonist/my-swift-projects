@@ -6,15 +6,8 @@ class SVGStyleConverter {
      */
     class func graphicStyle(svgStyle:SVGStyle,_ shape:Shape)->IGraphicStyle{
         
-        var lineStyle:ILineStyle?
-        if(svgStyle.stroke is Double) {
-            lineStyle = SVGStyleConverter.colorLineStyle(svgStyle)
-        }else if(svgStyle.stroke is SVGGradient){
-            lineStyle = SVGStyleConverter.gradientLineStyle(svgStyle,shape)
-        }else{/*clear*/
-            //Swift.print("no stroke")
-            //fatalError("not implemented yet " + "\(style!.stroke)")
-        }
+        let lineStyle:ILineStyle = SVGLineStyleConverter.lineStyle(svgStyle, shape)
+        let fillStyle:IFillStyle = 
         //continue here: add support for Fill and LineStyle (remember to add Gradient support. and remember that you have all the code for this, just look at the actual drawing of the SVGGraphic. it converts to the format you need. )
         //this method should be made but the You have to merge IGradient and IGraphicsGradient somehow, you could create a third class named GraphicsStyle
         
@@ -32,10 +25,31 @@ class SVGStyleConverter {
         //Swift.print("color: " + "\(color)")
         return color
     }
+    
+}
+private class SVGFillStyleConverter{
+    
+}
+private class SVGLineStyleConverter{
     /**
      *
      */
-    class func colorLineStyle(style:SVGStyle)->ILineStyle{
+    class func lineStyle(svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
+        var lineStyle:ILineStyle?
+        if(svgStyle.stroke is Double) {
+            lineStyle = colorLineStyle(svgStyle)
+        }else if(svgStyle.stroke is SVGGradient){
+            lineStyle = gradientLineStyle(svgStyle,shape)
+        }else{/*clear*/
+            //Swift.print("no stroke")
+            //fatalError("not implemented yet " + "\(style!.stroke)")
+        }
+        return lineStyle
+    }
+    /**
+     *
+     */
+    private class func colorLineStyle(style:SVGStyle)->ILineStyle{
         var lineStyle:ILineStyle = LineStyle()
         lineStyle.thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
         lineStyle.miterLimit = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
@@ -48,9 +62,9 @@ class SVGStyleConverter {
     /**
      *
      */
-    class func gradientLineStyle(svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
+    private class func gradientLineStyle(svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
         //Swift.print("gradient")
-        let lineStyle:ILineStyle = SVGStyleConverter.colorLineStyle(svgStyle)
+        let lineStyle:ILineStyle = colorLineStyle(svgStyle)
         let graphicsGradient:IGraphicsGradient = SVGUtils.lineGraphicsGradient(shape, svgStyle)
         let gradient:IGradient = graphicsGradient.gradient()
         let gradientLineStyle = GradientLineStyle(gradient,lineStyle)
