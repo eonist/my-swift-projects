@@ -174,10 +174,7 @@ class SVGUtils {
     /**
      *
      */
-    class func gradientLineStyle(shape:Shape,_ style:SVGStyle)->IGradientLineStyle{
-        
-        
-        var graphicGradient:IGraphicsGradient
+    class func graphicsGradient(shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
@@ -201,8 +198,7 @@ class SVGUtils {
                 p2.y = boundingBox.height * (p2.y / 100)
                 //fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")
             }
-            graphicGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
-            
+            return LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
         }else{/*radial*/
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
@@ -216,10 +212,7 @@ class SVGUtils {
             }else{fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")}
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
-            graphicGradient = RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
-            
+            return RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
         }
-        let lineStyle:ILineStyle = SVGUtils.lineStyle(style)
-        return GradientLineStyle(graphicGradient,lineStyle)
     }
 }
