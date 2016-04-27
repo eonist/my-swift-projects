@@ -175,7 +175,8 @@ class SVGUtils {
      *
      */
     class func gradientLineStyle(shape:Shape,_ style:SVGStyle){
-        SVGGraphicModifier.applyStrokeStyle(shape.graphics,style)/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+        var lineStyle:ILineStyle = LineStyle()
+        
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
