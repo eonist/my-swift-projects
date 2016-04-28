@@ -13,9 +13,7 @@ class SVGFillStyleUtils{
             //Swift.print("color: " + "\(color)")
             fillStyle = FillStyle(color)
         }else if(style.fill != nil && style.fill is ISVGGradient){
-            Swift.print("WORKS")
             fillStyle = SVGFillStyleUtils.gradientFillStyle(style, shape)
-
         }else{
             //clear
             //Swift.print("no fill")
