@@ -1,5 +1,5 @@
 import Foundation
 
-class ISVGGradient {
-
+protocol ISVGGradient {
+    //continue here: fill in the variables etc,
 }
