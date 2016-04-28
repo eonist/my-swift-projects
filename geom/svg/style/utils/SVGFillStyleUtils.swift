@@ -12,7 +12,7 @@ class SVGFillStyleUtils{
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
             //Swift.print("color: " + "\(color)")
             fillStyle = FillStyle(color)
-        }else if(style.fill != nil && style.fill! is SVGGradient){//<- may need to use dynamixtype to assert this?!?
+        }else if(style.fill != nil && style.fill! is ISVGGradient){//<- may need to use dynamixtype to assert this?!?
             //Swift.print("trans: " + "\((style!.fill as! SVGGradient).gradientTransform)")
            SVGFillStyleUtils.gradientFillStyle(style, shape)
 

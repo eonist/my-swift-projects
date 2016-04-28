@@ -15,7 +15,7 @@ import Foundation
  *
  * @NOTE: there is also preserveAspectRatio in the SVG specs
  */
-class SVGGradient:SVGElement{
+class SVGGradient:SVGElement,ISVGGradient{
 	var offsets : Array<CGFloat>/*How far into the shape this color starts (if the first color of the gradient) or stops (if the last color of the gradient). Specified as percentages of the shape (really the gradient vector) the gradient is applied to. For instance, 10% means that the color should start / stop 10% into the shape.*/
 	var colors : Array<CGColor>/*The color of this stop-point. The color the gradient changes from / to.*/
 	//var opacities : Array<CGFloat>/*The opacity of the color of this stop-point. If opacity changes from one stop-point with 1 to another stop-point with opacity 0, then the color will gradually become more and more transparent.*/
