@@ -6,6 +6,7 @@ class SVGFillStyleUtils{
      */
     class func fillStyle(style:SVGStyle,_ shape:Shape)-> IFillStyle?{
         Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
+        Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
         var fillStyle:IFillStyle?
         if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
