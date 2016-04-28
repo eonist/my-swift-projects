@@ -35,7 +35,7 @@ class SVGLineStyleUtils{
     private class func gradientLineStyle(svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
         //Swift.print("gradient")
         let lineStyle:ILineStyle = colorLineStyle(svgStyle)
-        let graphicsGradient:IGraphicsGradient = SVGLineStyleConverter.lineGraphicsGradient(shape, svgStyle)
+        let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
         let gradient:IGradient = graphicsGradient.gradient()
         let gradientLineStyle = GradientLineStyle(gradient,lineStyle)
         return gradientLineStyle
