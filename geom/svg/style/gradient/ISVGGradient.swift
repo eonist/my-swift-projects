@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * NOTE: this isnt really needed, but its more futureproof to code against a protocol than a class (The negative side is that it adds more code to maintain)
+ */
 protocol ISVGGradient {
     var offsets : Array<CGFloat>{get set}/*How far into the shape this color starts (if the first color of the gradient) or stops (if the last color of the gradient). Specified as percentages of the shape (really the gradient vector) the gradient is applied to. For instance, 10% means that the color should start / stop 10% into the shape.*/
     var colors : Array<CGColor>{get set}/*The color of this stop-point. The color the gradient changes from / to.*/
