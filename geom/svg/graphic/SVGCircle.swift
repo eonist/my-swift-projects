@@ -30,7 +30,7 @@ class SVGCircle : SVGGraphic{
                 let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || style!.stroke != nil && style!.stroke! is SVGGradient  ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
                 //Swift.print("fillFrame: " + "\(fillFrame)")
                 fillShape.frame = fillFrame/*,position and set the size of the frame*/
-                fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remeber the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
+                fillShape.path = CGPathParser.circle(r,r,r)/*<--the path is positioned relative to the frame, remember the circle is drawn from the center not from 0,0 which is what we want when it concerns the SVGCircle*//*CGPathParser.ellipse(CGRect(0,0,rect.width,rect.height))*/
             }
             /*Line*/
             //Swift.print("style!.stroke: " + "\(style!.stroke)")
