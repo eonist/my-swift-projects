@@ -48,9 +48,25 @@ class TrigParser {
         return TrigParser.angleSpan2(a,b,isClockWise)
     }
     /**
+    * Returns the span in a clockwise or counterclockwise direction (radian between 0 and Math.PI*2)
+    * @param direction is of the Direction.CLOCK_WISE or Direction.COUNTER_CLOCK_WISE type
+    * @param a (-Math.PI to Math.PI)
+    * @param b (-Math.PI to Math.PI)
+    * @Note This method works great when finding angles in a triangle
+    * @Note Using NumberParser.distance(a,b) to find an angle span doesnt work
+    * @example:
+    * angleSpan(Math.PI*-0.5, Math.PI,Direction.COUNTER_CLOCK_WISE);//Math.PI*-0.5 to Math.PI = 4.71
+    * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
+    * // :TODO: replace direction with boolean: isClockWise
+    */
+    class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = "clockWise") -> CGFloat{
+        if(direction == Trig.clockWise) {return Trig.normalize(b + (Trig.pi*2-a))}
+        return Trig.normalize(a + (Trig.pi*2-b))/*Direction.COUNTER_CLOCK_WISE*/
+    }
+    /**
      * @Note this is the same as the above but works with a boolean which makes more sence, deprecate angleSpan1
      */
     class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {
-        return angleSpan(a, b, isClockWise ? Direction.CLOCK_WISE : Direction.COUNTER_CLOCK_WISE);
+        return angleSpan(a, b, isClockWise ? Trig.clockWise : Trig.counterClockWise)
     }
 }
