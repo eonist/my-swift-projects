@@ -23,7 +23,6 @@ class SVGEllipse:SVGGraphic{
 	override func draw() {
 		if(!(rx.isNaN) && !(ry.isNaN)) {
 			//fillShape.path = CGPathParser.ellipse(rx * 2, ry * 2, (!cx.isNaN ? cx : 0)- rx, (!cy.isNaN ? cy : 0)- ry)
-            
             /*Fill*/
             let x:CGFloat = (!cx.isNaN ? cx : 0) - rx
             let y:CGFloat = (!cy.isNaN ? cy : 0) - ry
