@@ -50,7 +50,7 @@ class TrigParser {
     /**
      * @Note this is the same as the above but works with a boolean which makes more sence, deprecate angleSpan1
      */
-    public static function angleSpan2(a:Number, b:Number, isClockWise:Boolean = true):Number {
+    class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {
         return angleSpan(a, b, isClockWise ? Direction.CLOCK_WISE : Direction.COUNTER_CLOCK_WISE);
     }
 }
