@@ -1,5 +1,32 @@
 import Foundation
 
 class TrigAsserter {
-
+    /**
+     * @Note be cautiouse when the difference == Trig.PI since it can be in both states at the same time, anti clockwise and clockwise
+     */
+    class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {
+    //			print("center: " + center);
+    //			print("p1: " + p1);
+    //			print("p2: " + p2);
+    var a:CGFloat = TrigParser.angle(center, p1);
+    //			print("a: " + b);
+    var b:CGFloat = TrigParser.angle(center, p2);
+    //			print("b: " + b);
+    return isClockWiseByAngle(a, b);
+    }
+    /**
+    * @Note if the difference is 0 then it can be arguably be clockwise and anti-clockwise at the same time, consider this in the calling method
+    * @Note if the diff is 0 then its currently considered not clockwise, or anti-clockwise
+    */
+    class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool {
+    var difference:CGFloat = difference(a, b);
+    print("  "+"  "+"  "+"  "+"difference: " + difference);
+    if(difference == Trig.PI || difference == -Trig.PI){
+				return true;
+    }else if(difference == 0) {
+				return false;
+    }else {
+				return difference > 0;
+    }
+    }
 }
