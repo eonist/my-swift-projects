@@ -39,4 +39,12 @@ class TrigParser {
     class func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {
         return atan2(sin(endAngle - startAngle), cos(endAngle - startAngle))
     }
+    /**
+     * @Note this is the same as the above but works with a boolean which makes more sence, deprecate pointSpan
+     */
+    class func pointSpan2(p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {
+        var a:CGFloat = Trig.angle(pivot,p1)
+        var b:CGFloat = Trig.angle(pivot,p2)
+        return TrigParser.angleSpan2(a,b,isClockWise)
+    }
 }
