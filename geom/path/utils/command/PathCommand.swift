@@ -15,3 +15,14 @@ class PathCommand {
     static var ARC_TO:Int = 7//7 (9 values)// :TODO: center can be generated cant it? then it should be 7 values /*startX,startY,xRadii,yRadii,rotation,largeArcFlag,sweepFlag,endX,endY,centerX,centerY*/
     static var CLOSE:Int = 8/*Similar to how Z works in svg, you need this to differenciate between 2 points in the same place and 2 points in the same place that is actually 1, when its moved etc*/
 }
+extension PathCommand{
+    static var noOp:Int = PathCommand.NO_OP
+    static var moveTo:Int = PathCommand.MOVE_TO
+    static var lineTo:Int = PathCommand.LINE_TO
+    static var curveTo:Int = PathCommand.CURVE_TO
+    static var wideMoveTo:Int = PathCommand.WIDE_MOVE_TO
+    static var wideLineTo:Int = PathCommand.WIDE_LINE_TO
+    static var cubicCurveTo:Int = PathCommand.CUBIC_CURVE_TO
+    static var arcTo:Int = PathCommand.ARC_TO
+    static var close:Int = PathCommand.CLOSE
+}
