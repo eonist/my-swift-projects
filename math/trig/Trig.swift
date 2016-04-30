@@ -4,8 +4,8 @@ var π2 = CGFloat(M_PI_2)/*Global variable,pi/2*/
 var π4 = CGFloat(M_PI_4)/*Global variable,pi/4*/
 var ㎭ = π/180/*Global variable*/
 class Trig{
-    public static const clockWise:String = "clockWise"
-    public static const counterClockWise:String = "counterClockWise"
+    static var clockWise:String = "clockWise"
+    static var counterClockWise:String = "counterClockWise"
     static var pi:CGFloat = π
     static var left:CGFloat = 180;
     static var right:CGFloat = 0;
