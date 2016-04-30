@@ -13,7 +13,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         fillShape = Shape()
         lineShape = Shape()
-        super.init(style!,id!);
+        super.init(style,id!);
         //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         //layer = CALayer()//TempCALayer(layer: layer!)
         //layer!.masksToBounds = false//this is needed!!!

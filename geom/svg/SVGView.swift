@@ -5,7 +5,7 @@ import Cocoa
 class SVGView : InteractiveView2,ISVGView{
     var style : SVGStyle?;
     var id : String;
-    init(_ style:SVGStyle, _ id:String) {
+    init(_ style:SVGStyle?, _ id:String) {
         self.style = style
         self.id = id
         super.init(frame: NSRect(0,0,0,0))//<--temp, you may need to set the frame size here if you want to draw some graphics,apperantly not!?
