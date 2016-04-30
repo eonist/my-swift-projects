@@ -15,9 +15,9 @@ class TrigAsserter {
     return isClockWiseByAngle(a, b);
     }
     /**
-    * @Note if the difference is 0 then it can be arguably be clockwise and anti-clockwise at the same time, consider this in the calling method
-    * @Note if the diff is 0 then its currently considered not clockwise, or anti-clockwise
-    */
+     * @Note if the difference is 0 then it can be arguably be clockwise and anti-clockwise at the same time, consider this in the calling method
+     * @Note if the diff is 0 then its currently considered not clockwise, or anti-clockwise
+     */
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool {
     var difference:CGFloat = difference(a, b)
         
