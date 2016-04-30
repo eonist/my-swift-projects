@@ -19,8 +19,7 @@ class TrigAsserter {
      * @Note if the diff is 0 then its currently considered not clockwise, or anti-clockwise
      */
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool {
-        var difference:CGFloat = difference(a, b)
-        
+        let difference:CGFloat = TrigParser.difference(a, b)
         //print("  "+"  "+"  "+"  "+"difference: " + "\(difference)");
         if(difference == Trig.pi || difference == -Trig.pi){
             return true;

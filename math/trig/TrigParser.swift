@@ -18,17 +18,25 @@ class TrigParser {
      * // :TODO: use modulo like normalize2 does, is that faster ? do an optimization test.
      */
     class func normalize(var angle:CGFloat)->CGFloat {
-        while (angle < 0) {angle += π*2};
-        while (angle >= π*2) {angle -= π*2};
-        return angle;
+        while (angle < 0) {angle += π*2}
+        while (angle >= π*2) {angle -= π*2}
+        return angle
     }
     /**
      * Returns an radian to be between -Math.PI(-3.14) and Math.PI(3.14)
      * @param theta: An radian in degrees typically 0 - Math.PI*2
      */
     class func normalize2(angle:CGFloat)->CGFloat {
-        if(angle < -π){ return π + (angle % π)};
-        if(angle > π){ return -π + (angle % π)};
-        return angle;
+        if(angle < -π){ return π + (angle % π)}
+        if(angle > π){ return -π + (angle % π)}
+        return angle
+    }
+    /**
+     * Returns the difference between two angles, positive or negative
+     * @param startAngle (in radian)
+     * @param endAngle (in radian)
+     */
+    class func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {
+        return atan2(sin(endAngle - startAngle), cos(endAngle - startAngle))
     }
 }
