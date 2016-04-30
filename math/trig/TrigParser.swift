@@ -47,4 +47,10 @@ class TrigParser {
         var b:CGFloat = Trig.angle(pivot,p2)
         return TrigParser.angleSpan2(a,b,isClockWise)
     }
+    /**
+     * @Note this is the same as the above but works with a boolean which makes more sence, deprecate angleSpan1
+     */
+    public static function angleSpan2(a:Number, b:Number, isClockWise:Boolean = true):Number {
+        return angleSpan(a, b, isClockWise ? Direction.CLOCK_WISE : Direction.COUNTER_CLOCK_WISE);
+    }
 }
