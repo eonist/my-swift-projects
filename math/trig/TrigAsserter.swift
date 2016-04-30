@@ -8,9 +8,9 @@ class TrigAsserter {
     //			print("center: " + center);
     //			print("p1: " + p1);
     //			print("p2: " + p2);
-    var a:CGFloat = TrigParser.angle(center, p1);
+    let a:CGFloat = TrigParser.angle(center, p1);
     //			print("a: " + b);
-    var b:CGFloat = TrigParser.angle(center, p2);
+    let b:CGFloat = TrigParser.angle(center, p2);
     //			print("b: " + b);
     return isClockWiseByAngle(a, b);
     }
@@ -19,9 +19,13 @@ class TrigAsserter {
     * @Note if the diff is 0 then its currently considered not clockwise, or anti-clockwise
     */
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool {
-    var difference:CGFloat = difference(a, b);
-    print("  "+"  "+"  "+"  "+"difference: " + difference);
-    if(difference == Trig.PI || difference == -Trig.PI){
+    var difference:CGFloat = difference(a, b)
+        
+        
+    //continue here: add the diff method
+        
+    //print("  "+"  "+"  "+"  "+"difference: " + "\(difference)");
+    if(difference == Trig.pi || difference == -Trig.pi){
 				return true;
     }else if(difference == 0) {
 				return false;
