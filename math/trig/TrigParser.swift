@@ -12,17 +12,6 @@ class TrigParser {
         return atan2(b.y - a.y, b.x - a.x);
     }
     /**
-     * Returns an angle in Degrees
-     * @param angleType A string describing an angle in numeric value
-     * @return angle in degrees (0-360)
-     */
-    class func angleType(angleType:String)->CGFloat {
-        if(angleType == "left") {return left}
-        else if(angleType == "right") {return right}
-        else if(angleType == "top") {return top}
-        else {/*bottom*/ return bottom}
-    }
-    /**
      * Returns a radian to be between 0 and Math.PI*2 Radian (0 - 6.28)
      * @param theta: An radian in degrees typically 0 - Math.PI*2
      * @Note: we use "while" function type here because angle could be very low at which point Math.PI*2 needs to be contrinuasly added until its above 0 )
@@ -42,20 +31,4 @@ class TrigParser {
         if(angle > π){ return -π + (angle % π)};
         return angle;
     }
-    /**
-     * Converts an angle in degrees to radians.
-     * NOTE: its easier to just do: 45*㎭
-     * NOTE: can also be defined: rad * (180 / π)
-     */
-    class func degrees(radians:CGFloat) -> CGFloat {
-        return π * radians / 180.0
-    }
-    /**
-     * Converts an angle in radians to degrees.
-     * NOTE: can also be defined degrees * (π / 180)
-     */
-    class func radians(degrees:CGFloat) -> CGFloat {
-        return degrees / 180.0 * π
-    }
-
 }

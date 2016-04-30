@@ -22,9 +22,9 @@ class Trig{
 }
 extension Trig{//Legacy support
     class func angle(a:CGPoint, _ b:CGPoint)->CGFloat {return TrigParser.angle(a, b)}
-    class func angleType(angleType:String)->CGFloat {return TrigParser.angleType(angleType)}
+    class func angleType(angleType:String)->CGFloat {return TrigUtils.angleType(angleType)}
     class func normalize(angle:CGFloat)->CGFloat {return TrigParser.normalize(angle)}
     class func normalize2(angle:CGFloat)->CGFloat {return TrigParser.normalize2(angle)}
-    class func degrees(radians:CGFloat) -> CGFloat {return TrigParser.degrees(radians)}
-    class func radians(degrees:CGFloat) -> CGFloat {return TrigParser.radians(degrees)}
+    class func degrees(radians:CGFloat) -> CGFloat {return TrigConverter.degrees(radians)}
+    class func radians(degrees:CGFloat) -> CGFloat {return TrigConverter.radians(degrees)}
 }
