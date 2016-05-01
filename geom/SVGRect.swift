@@ -70,6 +70,7 @@ class SVGRect:SVGGraphic {
 extension SVGRect{
     var position:CGPoint {get{return CGPoint(xVal,yVal)}set {xVal = newValue.x;yVal = newValue.y}}
     var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
+    var rect:CGRect = {get{return CGRect(xVal,yVal,width,height)}}
 }
 
 
