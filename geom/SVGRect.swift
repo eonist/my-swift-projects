@@ -1,6 +1,6 @@
 import Foundation
 /*
- *Creates a rectangle instance
+ * Creates a rectangle instance (with support for rounded corners)
  * @example <rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
  * // :TODO: possibly replace the subclassing with decoration!?!
  */
