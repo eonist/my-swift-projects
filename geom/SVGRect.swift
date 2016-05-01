@@ -57,7 +57,6 @@ class SVGRect:SVGGraphic {
                 lineShape.path = (rx.isNaN && ry.isNaN) ? lineOffsetRect.lineRect.path : CGPathParser.roundRect(lineOffsetRect.lineRect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
             }
         }
-        
     }
     func setSize(width:CGFloat,height:CGFloat) {
       self.width = width;
