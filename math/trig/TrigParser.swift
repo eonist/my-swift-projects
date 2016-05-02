@@ -59,7 +59,7 @@ class TrigParser {
     * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
     * // :TODO: replace direction with boolean: isClockWise
     */
-    class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = "clockWise") -> CGFloat{
+    class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{
         if(direction == Trig.clockWise) {return Trig.normalize(b + (Trig.pi*2-a))}
         return Trig.normalize(a + (Trig.pi*2-b))/*Direction.COUNTER_CLOCK_WISE*/
     }
