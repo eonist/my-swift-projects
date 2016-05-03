@@ -1,7 +1,7 @@
 import Foundation
 
 //reverse
-//concat
+//concat<--this can be used to clone things so maybe add it?
 //append
 class ArrayModifier{
 	/**
