@@ -33,9 +33,7 @@ class ViewModifier {//<----rename to NSViewModifier
      *
      */
     class func removeAll(view:NSView){
-        for subView in view.subviews {
-            subView.removeFromSuperview()
-        }
+        for subView in view.subviews {subView.removeFromSuperview()}
     }
     /**
      * Removes all children in an NSView
@@ -69,7 +67,9 @@ class ViewModifier {//<----rename to NSViewModifier
         let item = view.getSubviewAt(i)
         item.removeFromSuperview()
     }
-    
+    /**
+     * Rename to subViewsOfType
+     */
     class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
         var children:Array<T> = []
         for subView in view.subviews {
