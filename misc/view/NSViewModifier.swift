@@ -38,7 +38,7 @@ class ViewModifier {//<----rename to NSViewModifier
         }
     }
     /**
-     * Removes all children in a Sprite
+     * Removes all children in an NSView
      * // :TODO: rename to removeAll
      * // :TODO: it could actually be faster to define the number of children first and then just deleting index 0
      * view.subviews.forEach({ $0.removeFromSuperview() }) // this gets things done
