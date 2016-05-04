@@ -12,7 +12,7 @@ class Gradients{
     static var tealStart:UInt = 0x52EDC7
     static var tealEnd:UInt = 0x5AC8FB
     static var blueStart:UInt = 0x1AD6FD
-    static var blueEnd:UInt = 0x    
+    static var blueEnd:UInt = 0x1D62F0
     static var violetStart:UInt = 0xC644FC
     static var violetEnd:UInt = 0x5856D6
     static var magentaStart:UInt = 0xEF4DB6
