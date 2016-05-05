@@ -134,7 +134,7 @@ class SVGPathUtils {
                     prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3]);/*aka controlP2*/
                     path.commands.append(PathCommand.CUBIC_CURVE_TO);
                     path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
-                    i += 6;
+                    i += 6
                     break;
                 case SVGPathCommand.s://smoothCubicCurveTo
                     pos += CGPoint(params[i+2],params[i+3]);
@@ -142,7 +142,7 @@ class SVGPathUtils {
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1]);
                     path.commands.append(PathCommand.CUBIC_CURVE_TO);
                     path.pathData += [cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y]
-                    i += 4;
+                    i += 4
                     break;
                 case SVGPathCommand.q: //quadCurveTo
                     pos += CGPoint(params[i+2],params[i+3]);
