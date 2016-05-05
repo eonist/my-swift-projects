@@ -24,7 +24,6 @@ extension Array {
     mutating func concat(item:Element) -> Array<Element>{//Convenince
         return concat([item])
     }
-
     /**
      * Example: [1,2,3,4].splice(0, 1).count//3
      */
@@ -40,11 +39,9 @@ extension Array {
     func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
-
     func index<T : Equatable>(arr : [T], _ value:T)->Int{
         return ArrayParser.index(arr, value)
-    }
-    
+    } 
     /**
      * -1 equals, does not exist
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
@@ -61,12 +58,8 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
-
-
 /*
-
 TODO: Needs more research see similar case with AnyObject
-
 extension Array where Element:String{
 /**
 *
