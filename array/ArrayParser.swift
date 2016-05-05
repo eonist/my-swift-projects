@@ -42,8 +42,7 @@ class ArrayParser{
             if(arr[i] === item){return i}
         }
         return -1
-    }
-    
+    }   
     /**
      * New
      */
@@ -78,8 +77,7 @@ class ArrayParser{
             }
         }
         return similarList
-    }
-    
+    }  
     /**
      * Returns a list unique with all the unique int from @param ints
      * unique([1, 2, 3, 1, 2, 10, 100])
