@@ -2,7 +2,7 @@ import Cocoa
 
 class TextFieldModifier {
     /**
-     *
+     * TODO: Border color?
      */
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         textField.selectable = textFormat.selectable
