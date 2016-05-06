@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: //see if you have some method in legacy code for copying linestyles
+ */
 class LineStyle:ILineStyle {
     var color: NSColor
     var thickness: CGFloat
@@ -12,9 +14,5 @@ class LineStyle:ILineStyle {
         self.lineCap = lineCap
         self.lineJoin = lineJoin
         self.miterLimit = miterLimit
-        
-        
-        //see if you have some method in legacy code for copying linestyles
     }
-    
 }
