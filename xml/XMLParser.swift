@@ -148,7 +148,6 @@ public class XMLParser{
     public class func childByAttribute(child:NSXMLElement,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
     }
-    
     /**
      * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
      * You can use the returned nodes as the new context node for evaluating further XPath expressions.
@@ -251,5 +250,4 @@ public class XMLParser{
         }
         return xml
     }
-    
 }

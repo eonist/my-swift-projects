@@ -25,10 +25,10 @@ class XMLUtils {
         return nil
     }
     /*
-    * Returns a tree-structures dictionary populated with xml data from a file path (osx location for a .xml file)
-    * filePath:"//Users/<path>/someFile.xml"
-    * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
-    */
+     * Returns a tree-structures dictionary populated with xml data from a file path (osx location for a .xml file)
+     * filePath:"//Users/<path>/someFile.xml"
+     * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
+     */
     class func xmlByFilePath(filePath:String)->NSXMLDocument?{//# must use param naming
         //implement when you need it
         let xml:String = FileParser.content(filePath)!
@@ -36,9 +36,9 @@ class XMLUtils {
         return nil
     }
     /*
-    * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
-    * PARAM URL:"http://www.google.com/feeds/news.xml"
-    */
+     * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
+     * PARAM URL:"http://www.google.com/feeds/news.xml"
+     */
     class func xmlByURL(URL:String)->NSXMLDocument?{//# must use param naming
         let result:String = NetworkParser.string(URL)
         if(result == "success"){
@@ -49,9 +49,6 @@ class XMLUtils {
             return nil
         }
     }
-    
-    
-    
     /*
      * Compose xml syntax as a string derived from NSXMLelement or alike
      * NOTE: Out of order for now
