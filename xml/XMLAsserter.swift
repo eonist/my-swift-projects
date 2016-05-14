@@ -38,9 +38,5 @@ public class XMLAsserter {
         return a.XMLString == b.XMLString
     }
 }
-
-
-
 //validXML
-
 //equals

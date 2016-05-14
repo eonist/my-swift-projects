@@ -10,7 +10,6 @@ class StringParser{
     class func encode(str:String)->String?{
         return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())
     }
-    
     /**
      * Returns dencode text (unescaped)
      * Note this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us

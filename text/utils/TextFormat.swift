@@ -15,7 +15,6 @@ class TextFormat {
     var scrollable:Bool = true
     //autoSize can be implemented, check stackoverflow
     init(){
-        
     }
     subscript(key: String) -> Any {
         get {
