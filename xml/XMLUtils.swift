@@ -2,28 +2,26 @@ import Foundation
 
 class XMLUtils {
     /*
-    * Returns a tree-structures dictionary populated with xml data from an string with xml data
-    * PARAM: string:xml string data
-    * Note: this method is inspired by E4X (https://en.wikipedia.org/wiki/ECMAScript_for_XML)
-    * NOTE: here is how it works:
-    * 1. a dictionary stores two values under the keys "content" and "attributes"
-    * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
-    * 3. each array contains dictonaries that has 2 key/value pairs
-    * 4. if the content of a node is text then the content value will not be a dictonary but a string
-    * EXAMPLE: XMLParser.data("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
-    * EXAMPLE XML: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
-    * EXAMPLE XML: <categories><category>text goes here</category><!--if a sibling closes and moves to the next then did end elemnt is called--></category><category><item color:"blue" type:"car"></item><item>text goes here</item><item/><movie/><picture>img.jpg</picture><category/></categories><test></test>
-    * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
-    * NOTE: root["."]["categories"][0]["."]["category"][0]["@"]["color"]//"green" that is an attribute value of color
-    * NOTE: root["."]["categories"][0]["."]["category"][0]//{@:{color:green,name:"tinits"},.:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
-    * NOTE: root["."]["categories"][0]["."]["category"][0]["."]["item"][0]["."]//"well designed car" //i guess optional chaining would suit the bellow line well
-    * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
-    * TODO: may need to use infix operator and extensions to make the xml parser work.
-    */
+     * Returns a tree-structures dictionary populated with xml data from an string with xml data
+     * PARAM: string:xml string data
+     * Note: this method is inspired by E4X (https://en.wikipedia.org/wiki/ECMAScript_for_XML)
+     * NOTE: here is how it works:
+     * 1. a dictionary stores two values under the keys "content" and "attributes"
+     * 2. content is a dictonary that stores many arrays, the node name is used as key, the value is an array that stores nodes of the same name
+     * 3. each array contains dictonaries that has 2 key/value pairs
+     * 4. if the content of a node is text then the content value will not be a dictonary but a string
+     * EXAMPLE: XMLParser.data("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")["content"]["subCategories"][0]["comtent"] etc
+     * EXAMPLE XML: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
+     * EXAMPLE XML: <categories><category>text goes here</category><!--if a sibling closes and moves to the next then did end elemnt is called--></category><category><item color:"blue" type:"car"></item><item>text goes here</item><item/><movie/><picture>img.jpg</picture><category/></categories><test></test>
+     * NOTE: nsdelgate doc: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/NSXMLParserDelegate_Protocol/index.html#//apple_ref/occ/intfm/NSXMLParserDelegate/parser:foundCharacters:
+     * NOTE: root["."]["categories"][0]["."]["category"][0]["@"]["color"]//"green" that is an attribute value of color
+     * NOTE: root["."]["categories"][0]["."]["category"][0]//{@:{color:green,name:"tinits"},.:{item:[{attribute:{auther:john,age:2},content:"well designed car"},{},{}]}
+     * NOTE: root["."]["categories"][0]["."]["category"][0]["."]["item"][0]["."]//"well designed car" //i guess optional chaining would suit the bellow line well
+     * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
+     * TODO: may need to use infix operator and extensions to make the xml parser work.
+     */
     class func data(xml:String)->Dictionary<String,Any>?{
-        
         //in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
-        
         return nil
     }
     /*
