@@ -23,6 +23,27 @@ class TrigParser {
         return angle
     }
     /**
+     * Returns a x value on the circle circumference correlating to the intersecting x axis derrived from the @param y
+     * @Note Based on the Circle formula: (x-h)^2+(y-k)^2 = r^2 (where h and k are the center of the circle)
+     * @param y the y value
+     * @param r the radius of the sphere
+     * @param p the position of the sphere
+     */
+    class func x(y:CGFloat,r:CGFloat,p:CGPoint) -> CGFloat {
+        return sqrt(pow(r, 2)-pow(y-p.y, 2)) + p.x
+    }
+    /**
+     * Returns a y value on the circle circumference correlating to the intersecting x axis derrived from the @param x value
+     * @Note Based on the Circle formula: (x-h)^2+(y-k)^2 = r^2 (where h and k are the center of the circle)
+     * @Note this method works as it is suppose to
+     * @param x the x value
+     * @param r the radius of the sphere
+     * @param p the position of the sphere
+     */
+    class func y(x:CGFloat,_ r:CGFloat,_ p:CGPoint)->CGFloat {
+        return sqrt(pow(r, 2)-pow(x-p.x, 2)) + p.y
+    }
+    /**
      * Returns an radian to be between -Math.PI(-3.14) and Math.PI(3.14)
      * @param theta: An radian in degrees typically 0 - Math.PI*2
      */
