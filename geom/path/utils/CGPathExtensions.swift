@@ -16,13 +16,13 @@ extension CGMutablePath{
     /**
      *
      */
-    func moveTo(path: CGMutablePath?, _ x: CGFloat, _ y: CGFloat){
-        CGPathMoveToPoint(path, nil, x, y)
+    func moveTo(x: CGFloat, _ y: CGFloat){
+        CGPathMoveToPoint(self, nil, x, y)
     }
     /**
      *
      */
-    func moveTo(path: CGMutablePath?, _ point: CGPoint){
-        CGPathMoveToPoint(path, nil, point.x, point.y)
+    func moveTo(point: CGPoint){
+        CGPathMoveToPoint(self, nil, point.x, point.y)
     }
 }
