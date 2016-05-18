@@ -14,19 +14,19 @@ extension CGMutablePath{
         return CGPathCreateMutableCopy(self)!
     }
     /**
-     *
+     * Convenince
      */
     func moveTo(x: CGFloat, _ y: CGFloat){
         CGPathMoveToPoint(self, nil, x, y)
     }
     /**
-     *
+     * Convenince
      */
     func moveTo(point: CGPoint){
         CGPathMoveToPoint(self, nil, point.x, point.y)
     }
     /**
-     *
+     * Convenince
      */
     func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat, _ matrix: UnsafePointer<CGAffineTransform>){
         CGPathAddRelativeArc(self, matrix, center.x, center.y, xRadii, startAngle, delta)
