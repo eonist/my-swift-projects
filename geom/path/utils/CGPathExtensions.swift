@@ -28,7 +28,7 @@ extension CGMutablePath{
     /**
      *
      */
-    func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat, inout _ transform:CGAffineTransform?){
-        CGPathAddRelativeArc(self, transform != nil ? &transform! : nil, center.x, center.y, xRadii, startAngle, delta)
+    func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat, _ matrix: UnsafePointer<CGAffineTransform>){
+        CGPathAddRelativeArc(self, matrix, center.x, center.y, xRadii, startAngle, delta)
     }
 }
