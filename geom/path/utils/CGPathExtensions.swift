@@ -13,4 +13,16 @@ extension CGMutablePath{
     func copy()->CGMutablePathRef {//possibly return CGMutablePathRef
         return CGPathCreateMutableCopy(self)!
     }
+    /**
+     *
+     */
+    func moveTo(path: CGMutablePath?, _ x: CGFloat, _ y: CGFloat){
+        CGPathMoveToPoint(path, nil, x, y)
+    }
+    /**
+     *
+     */
+    func moveTo(path: CGMutablePath?, _ point: CGPoint){
+        CGPathMoveToPoint(path, nil, x, y)
+    }
 }
