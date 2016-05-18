@@ -23,6 +23,6 @@ extension CGMutablePath{
      *
      */
     func moveTo(path: CGMutablePath?, _ point: CGPoint){
-        CGPathMoveToPoint(path, nil, x, y)
+        CGPathMoveToPoint(path, nil, point.x, point.y)
     }
 }
