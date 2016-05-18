@@ -77,6 +77,8 @@ class SVGPathUtils {
                     CGPathMoveToPoint(path, nil, prevM.x, prevM.y)/*<--unsure if this is needed?*/
                     break;/*closes it self to the prev MT pos*/
                 case SVGPathCommand.a:
+                    let arc:IArc = PathParser.arcAt(path,i)
+                    DisplayArcUtils.arcTo(cgPath,arc)
                     DisplayArcUtils.arc(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
                     i += 7
                     break
