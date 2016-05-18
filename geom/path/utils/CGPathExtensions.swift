@@ -28,7 +28,7 @@ extension CGMutablePath{
     /**
      *
      */
-    func angleArcTo(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat){
+    func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat){
         CGPathAddRelativeArc(self, nil, center.x, center.y, xRadii, startAngle, delta)
     }
 }
