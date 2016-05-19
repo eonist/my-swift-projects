@@ -1,5 +1,16 @@
-import Foundation
+import Cocoa
 
-class MenuExtensions {
-
+extension NSMenu {
+    /**
+     *
+     */
+    func addMenuItem(){
+        
+    }
+    /**
+     *
+     */
+    func addSubMenu(){
+        
+    }
 }
