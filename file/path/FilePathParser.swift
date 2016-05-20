@@ -15,6 +15,13 @@ class FilePathParser {//TODO:rename to FilePathParser
         return url!
     }
     /**
+     * EXAMPLE: path(NSURL("file:///Users/Me/Desktop/Doc.txt"))//Users/Me/Desktop/Doc.txt
+     */
+    class func path(url:NSURL)->String{
+        let url = url.path
+        return url!
+    }
+    /**
      * EXAMPLE: stringPath(path("file:///Users/Me/Desktop/Doc.txt"))//"file:///Users/Me/Desktop/Doc.txt"
      */
     class func stringPath(path:NSURL)->String{
