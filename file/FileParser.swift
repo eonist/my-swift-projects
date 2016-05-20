@@ -24,7 +24,7 @@ class FileParser{
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml")//Output: NSXMLElement instance
      */
     class func xml(path:String)->NSXMLElement {
-        let content = FileParser.content(path.tildePath)
+        let content = FileParser.content(path)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         return rootElement
