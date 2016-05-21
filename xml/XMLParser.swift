@@ -24,7 +24,7 @@ public class XMLParser{
         return theChildren
     }
     /**
-     *
+     * new
      */
     class func children(xml:NSXMLElement)->Array<NSXMLElement>{
         return xml.children as! [NSXMLElement]
