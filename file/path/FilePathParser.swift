@@ -37,7 +37,7 @@ class FilePathParser {//TODO:rename to FilePathParser
      * fileName
      */
     class func fileName(fileURL:NSURL)->String{
-        return fileURL.absoluteURL.lastPathComponent!
+        return fileURL.absoluteURL.URLByDeletingPathExtension!.lastPathComponent!
     }
     /**
      * directory
