@@ -35,13 +35,11 @@ class FilePathParser {//TODO:rename to FilePathParser
     }
     /**
      * fileName
-     * NOTE: To remove the extension add:  to the fold
      * EXAMPLE: FilePathParser.fileName(fileURL)
      */
     class func fileName(fileURL:NSURL, _ withExtension:Bool = true)->String{
-        return fileURL.absoluteURL.(widthExtension ? lastPathComponent! : URLByDeletingPathExtension!.lastPathComponent!)
+        return withExtension ? fileURL.absoluteURL.lastPathComponent! : fileURL.absoluteURL.URLByDeletingPathExtension!.lastPathComponent!
     }
-    
     /**
      * directory
      * EXAMPLE: FilePathParser.directory(fileURL)
