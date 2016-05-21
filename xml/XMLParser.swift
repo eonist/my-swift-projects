@@ -73,11 +73,7 @@ public class XMLParser{
      */
     class func attribs(child:NSXMLElement) -> Dictionary<String,String>{
         var attributes:Dictionary<String,String> = [:]
-        if(child.attributes?.count > 0){
-            for node:NSXMLNode in child.attributes!{
-                attributes[node.name!] = node.stringValue!
-            }
-        }
+        if(child.attributes?.count > 0){for node:NSXMLNode in child.attributes!{attributes[node.name!] = node.stringValue!}}
         return attributes
     }
     /**
