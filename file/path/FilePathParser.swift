@@ -33,4 +33,17 @@ class FilePathParser {//TODO:rename to FilePathParser
     class func userHomePath()->String{
         return NSHomeDirectory()
     }
+    /**
+     *
+     */
+    class func fileName(fileURL:NSURL)->String{
+        return fileURL.absoluteURL.lastPathComponent!
+    }
+    /**
+     *
+     */
+    class func directory(fileURL:NSURL)->String{
+        return fileURL.absoluteURL.remove
+    }
+   
 }
