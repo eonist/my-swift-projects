@@ -71,6 +71,6 @@ extension NSXMLElement {
         return XMLModifier.replaceAt(xml, index, replacement)
     }
     func firstNode(nodeName:String) -> NSXMLElement {//Convenience
-        return self.elementsForName(nodeName)[0]
+        return XMLParser.firstNode(self, nodeName)
     }
 }

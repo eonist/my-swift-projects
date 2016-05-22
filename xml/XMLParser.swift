@@ -34,7 +34,7 @@ public class XMLParser{
      * XMLParser.firstNode(<p>text</p>,"p")
      * @output:text
      */
-    class func firstNode(xml:NSXMLElement, nodeName:String) -> NSXMLElement {
+    class func firstNode(xml:NSXMLElement, _ nodeName:String) -> NSXMLElement {
         return xml.elementsForName(nodeName)[0]
     }
     /**
