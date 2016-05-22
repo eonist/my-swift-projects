@@ -30,6 +30,14 @@ public class XMLParser{
         return xml.children as! [NSXMLElement]
     }
     /**
+     * Retuns the first xml node that has the name of the speccified nodename
+     * XMLParser.firstNodeWithName(<p>text</p>,"p")
+     * @output:text
+     */
+    class func firstNodeWithName(xml:NSXMLElement, nodeName:String) -> NSXMLElement {
+        return xml.elementsForName(nodeName)[0]
+    }
+    /**
      *
      */
     public class func rootChildrenByFilePath(filePath:String)->Array<NSXMLElement>{
