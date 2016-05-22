@@ -25,7 +25,7 @@ class WindowParser {
     /**
      * Returns the first window in NSApp of a spedific class ir protocol type
      */
-    class func firstWindowOfType<T>(type:T.Type)-> T? {
+    class func firstWindow<T>(type:T.Type)-> T? {
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
         return nil
     }
