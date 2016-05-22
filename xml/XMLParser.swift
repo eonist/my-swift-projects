@@ -35,7 +35,7 @@ public class XMLParser{
      * @output:text
      */
     class func firstNode(xml:NSXMLElement, _ nodeName:String) -> NSXMLElement? {
-        return xml.elementsForName(nodeName)[0]
+        return xml.elementsForName(nodeName).count > 0 ? xml.elementsForName(nodeName)[0] : nil
     }
     /**
      *
