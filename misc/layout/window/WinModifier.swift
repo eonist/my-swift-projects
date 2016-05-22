@@ -5,7 +5,7 @@ class WinUtils {
      * Positions a window to @param position
      */
     class func position(win:NSWindow, _ position:CGPoint){
-        window.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
+        win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
     }
     /**
      * Aligns a window to an alignment type

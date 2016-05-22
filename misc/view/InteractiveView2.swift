@@ -194,7 +194,7 @@ extension InteractiveView2{
      */
     var winMousePos:CGPoint {
         var pos = (window?.mouseLocationOutsideOfEventStream)!//convertPoint((window?.mouseLocationOutsideOfEventStream)!, fromView: nil)/*converts the p to local coordinates*/
-        pos.y = WindowParser.height(window!) - pos.y/*flips the window coordinates*/
+        pos.y = WinParser.height(window!) - pos.y/*flips the window coordinates*/
         return pos
     }
     var viewUnderMouse:NSView?{
