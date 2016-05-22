@@ -4,7 +4,8 @@ class WindowUtils {
     /**
      *
      */
-    class func test(){
-            
+    class func position(nativeWindow:NSWindow, position:CGPoint){
+           
     }
+ 
 }
