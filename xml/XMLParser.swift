@@ -31,10 +31,10 @@ public class XMLParser{
     }
     /**
      * Retuns the first xml node that has the name of the speccified nodename
-     * XMLParser.firstNodeWithName(<p>text</p>,"p")
+     * XMLParser.firstNode(<p>text</p>,"p")
      * @output:text
      */
-    class func firstNodeWithName(xml:NSXMLElement, nodeName:String) -> NSXMLElement {
+    class func firstNode(xml:NSXMLElement, nodeName:String) -> NSXMLElement {
         return xml.elementsForName(nodeName)[0]
     }
     /**

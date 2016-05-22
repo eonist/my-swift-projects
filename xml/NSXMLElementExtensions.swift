@@ -70,4 +70,7 @@ extension NSXMLElement {
     func replaceChildAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:NSXMLElement) -> NSXMLElement {//Convenience
         return XMLModifier.replaceAt(xml, index, replacement)
     }
+    func firstNode(nodeName:String) -> NSXMLElement {//Convenience
+        return self.elementsForName(nodeName)[0]
+    }
 }
