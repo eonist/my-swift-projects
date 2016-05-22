@@ -1,6 +1,6 @@
 import Cocoa
 
-class WindowParser {
+class WinParser {
     /**
      * NOTE: grab the from applicationDidFinishLaunching
      * EXAMPLE: let app:NSApplication = aNotification.object as! NSApplication//then use the app in this method
