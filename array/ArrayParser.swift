@@ -22,7 +22,7 @@ class ArrayParser{
         }
     }
     /**
-     * returns the index for item, -1 of none is found
+     * Returns the index for item, -1 of none is found
      * NOTE: keep this method around until the index method is tested
      */
     class func indexOfValue<T: Equatable>(array: [T], _ value: T) -> Int? {//the <T: Equatable> part ensures that the types can use the equal operator ==
@@ -45,6 +45,7 @@ class ArrayParser{
     }   
     /**
      * New
+     * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
      */
     class func indx<T>(arr: [T], _ item: T) -> Int{
         for var i = 0; i < arr.count; ++i{
