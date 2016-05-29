@@ -21,10 +21,12 @@ class FileParser{
 	}
     /**
      * Returns an xml instance comprised of the string content at location @param path
-     * EXAMPLE: xml("~/Desktop/assets/xml/table.xml")//Output: NSXMLElement instance
+     * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: NSXMLElement instance
+     * IMPORTANT: Remember to expand the "path" with the tildePath call
      */
     class func xml(path:String)->NSXMLElement {
         let content = FileParser.content(path)
+        //Swift.print("content: " + "\(content)")
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         return rootElement
