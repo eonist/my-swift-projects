@@ -32,7 +32,6 @@ class Graphic:InteractiveView2,IGraphic{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         
-        
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
@@ -44,7 +43,6 @@ class Graphic:InteractiveView2,IGraphic{
         self.layer!.actions = actions;
         self.lineShape.actions = actions;
         */
-        
     }
     /**
      * Stops implicit animation from happening
@@ -122,5 +120,3 @@ extension Graphic{
     }
     
 }
-
-

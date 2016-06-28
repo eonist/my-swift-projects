@@ -64,7 +64,6 @@ extension CGAffineTransform {
     static func translate(var transform:CGAffineTransform,_ x:CGFloat,_ y:CGFloat)->CGAffineTransform{
         transform.translate(x, y);
         return transform
-        
     }
     /**
      * NOTE: this method is used in conjunction with the radial gradient matrix transformation of context
@@ -76,7 +75,6 @@ extension CGAffineTransform {
         transform = CGAffineTransform.scaleFromPoint(transform, scale.y/**/,  scale.x/**/, pivot)
         return transform
     }
-    
     /**
      * NOTE: The result may vary if you change the order of how the translations are applied. This method does not work if you need to rotate and scale around a point for instance, then you need to change the order
      * NOTE: its prefreable to chain the methods bellow. so if yoou need other variations of this method. You may want to just chain some transform calls instead
