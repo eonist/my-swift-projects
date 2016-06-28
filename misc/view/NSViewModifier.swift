@@ -12,7 +12,6 @@ class ViewModifier {//<----rename to NSViewModifier
         if(nsFillColor != NSColor.clearColor()){/*clearColor: 0.0 white, 0.0 alpha */
             //Swift.print("fill")
             view.layer!.backgroundColor = cgFillColor
-            
         }
         let cgLineColor:CGColor = CGColorParser.cgColor(nsLineColor)
         //Swift.print(nsLineColor)

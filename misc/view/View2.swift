@@ -27,7 +27,6 @@ class View2:FlippedView {
         //layer?.backgroundColor = NSColor.redColor().CGColor
         /*
         
-        
         */
         let layerA = CALayer()
         //layerA.bounds = CGRectMake(0, 0, 100, 100);//this doesnt matter
@@ -54,9 +53,7 @@ class View2:FlippedView {
         layerC.shadowOffset = CGSizeMake(0, 3);
         //layerC.anchorPoint//this is the pivot for rotation and scaling, set it to the top left if needed
         
-        
         layer!.addSublayer(layerC)
-        
         
         let layerD = CustomLayer(NSColor.blueColor())
         layerD.frame = CGRect(120,120,50,50);
@@ -64,7 +61,6 @@ class View2:FlippedView {
         //layerD.masksToBounds = false
         layer!.addSublayer(layerD)
         //then try to refresh the underlaying sibling cgcontext graphic
-        
         
         //then figure out how you can make mouse over/out/down/up work with the CALayer scheme
     }
@@ -74,7 +70,6 @@ class View2:FlippedView {
      */
     override func updateLayer() {//
         Swift.print("View2.updateLayer()")
-
     }
     override func mouseDown(theEvent: NSEvent) {
         Swift.print("mouse down")

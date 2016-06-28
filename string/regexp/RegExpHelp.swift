@@ -3,8 +3,6 @@ import Foundation
 /*
 NOTE: example use of associative capturing groups: (this doesnt highlight repeating captuing groups, so make an example for this as well)
 
-
-
 let theString:NSString = "07-12-2014"
 let thePattern = "(\\d{2})\\-(\\d{2})\\-(\\d{4}|\\d{2})"
 let options:NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive

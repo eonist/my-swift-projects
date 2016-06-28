@@ -201,7 +201,6 @@ extension InteractiveView2{
         let theHitView = window!.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
         return theHitView
     }
-     
 }
 /**
  * Reasearch, these can be deprecated
