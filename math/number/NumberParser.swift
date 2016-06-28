@@ -133,7 +133,6 @@ class NumberParser{
         if(matches.count > 1) {return matches[1].count}
         else {return 0}
     }
-    
     /**
      * Retuns the highest number in a list of numbers
      * Note: Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function

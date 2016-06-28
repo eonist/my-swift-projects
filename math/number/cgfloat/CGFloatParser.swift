@@ -20,5 +20,4 @@ public class CGFloatParser{
         interpolatedRange.append(max)
         return interpolatedRange
     }
-    
 }

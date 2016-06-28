@@ -16,7 +16,7 @@ class Friction:Mover{
         checkForStop()/*assert if the movement is close to stopping, if it is then stop it*/
     }
     func applyFriction() {
-        //trace("apply friction")
+        //print("apply friction")
         velocity *= frictionStrength;
         velocity *= slowDownFriction;/*ad-hock way to slow things down outside normal friction*/
     }

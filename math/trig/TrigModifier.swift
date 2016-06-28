@@ -1,5 +1,2 @@
-import Foundation
-
 class TrigModifier {
-
 }
