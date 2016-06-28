@@ -1,5 +1,4 @@
 import Foundation
-
 //reverse
 //concat<--this can be used to clone things so maybe add it?
 //append
@@ -38,7 +37,7 @@ class ArrayModifier{
         }
         return nil
     }
-    /**
+     /**
 	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
       * NOTE: splice can also be used to remove item from array
       * IMPORTANT: the original array is modified, actually it isnt in this method but it should (remove the returnArray and it shall work)
