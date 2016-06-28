@@ -3,7 +3,6 @@ class CustomCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
         super.init()
-        
     }
     /*
     override func containsPoint(p: CGPoint) -> Bool {
@@ -19,11 +18,9 @@ class CustomCALayer:CALayer{
         fatalError("init(coder:) has not been implemented")
     }
     convenience init(_ color:NSColor){
-        
         self.init()
         self.color = color
     }
-    
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("CustomCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
@@ -49,10 +46,7 @@ class CustomCALayer:CALayer{
         
         CGContextSaveGState(context)
         /*offset,blur and color*/
-        
-        
-        
-        
+
         
         //CGContextSetShadowWithColor(context, CGSizeMake(-14, -14), 17.0, NSColor.grayColor().CGColor);//offset,bl
         
@@ -98,14 +92,12 @@ class CustomCALayer:CALayer{
     }
     */
     /**/
-    
     override func hitTest(p: CGPoint) -> CALayer? {
         //Swift.print("p: " + String(p))
         //self.hitTestFromViewRelativeToFrame(p,frame)//theEvent.locationInWindow
         let pos = convertPoint(p, fromLayer: nil)/*converts the p to local coordinates*/
         //Swift.print("pos: " + "\(pos)")
         //Swift.print("containsPoint(p): " + String(containsPoint(pos)))
-        
         return containsPoint(pos) ? self : nil
     }
 }

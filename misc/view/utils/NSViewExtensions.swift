@@ -25,7 +25,6 @@ extension NSView {
     }
     func hitTestFromViewRelativeToFrame(locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
         let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)/*converts the mouse pos from a wrongly flipped view to a correctly flipped view*/
-        
         Swift.print("hitTestFromView.locationInWindow: " + String(locationInWindow))
         Swift.print("hitTestFromView.mousePos(): " + String(mousePos))
         Swift.print("hitTestFromView.frame: " + String(frame))
@@ -102,7 +101,6 @@ extension NSView {
         return NSViewParser.getSubViewAt(self, i)
     }
     var numSubViews:Int {return subviews.count}/*convenience*/
-    
     var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, yu need to refactor it out first, same with height
     var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
     var x:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}

@@ -98,5 +98,3 @@ class TempNSView :FlippedView{/*Organizes your view from top to bottom*/
         Swift.print("theHitView: " + "\(theHitView)")
     }
 }
-
-
