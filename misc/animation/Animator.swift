@@ -6,7 +6,6 @@ import Cocoa
  * TODO: seek,reverse,repeate,autoRepeat
  * TODO: Implement a way so that the animator can be reused so that you can target it and disable it
  */
-
 class Animator:BaseAnimation{
     let fps:CGFloat = 60//this should be pulled from a device variable
     var duration:CGFloat/*in seconds*/

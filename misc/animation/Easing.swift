@@ -79,8 +79,7 @@ class Easing{
         if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
         return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
     }
-   
-    //Elastic
+    /*Elastic*/
     private class func easeInElastic(){
         /*var s:Number;
         if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
@@ -103,8 +102,7 @@ class Easing{
         if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*PI_M2/p )) + b;
         return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*PI_M2/p )*.5 + c + b;*/
     }
-    //Circular
-    //
+    /*Circular*/
     private class func easeInCircular(){
         //return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
     }
@@ -128,7 +126,7 @@ class Easing{
         /*if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
         return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;*/
     }
-    //Bounce
+    /*Bounce*/
     private class func easeInBounce(){
         //return c - easeOutBounce (d - t, 0, c, d) + b;
     }

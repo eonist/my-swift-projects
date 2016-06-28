@@ -42,7 +42,6 @@ class RubberBand:Mover{
         }
         //super.onFrame()
     }
-    
     func applyBoundries() {
         if(value > frame.y){applyTopBoundry()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + itemRect.height) < frame.height){applyBottomBoundry()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/

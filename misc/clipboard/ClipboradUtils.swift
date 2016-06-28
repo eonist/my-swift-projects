@@ -1,5 +1,3 @@
-
-
 import Cocoa
 
 class ClipboardUtils{

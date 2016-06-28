@@ -12,7 +12,6 @@ class Animation:NSView,IAnimatable{//apparently the class needs to be NSView in 
     lazy var displayLink: CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
     var animators:Array<BaseAnimation> = []
     //var drawCalls:Array<()->Void> = []
-    
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
      */

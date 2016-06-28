@@ -54,7 +54,6 @@ print(String(obj))
 print(classNameAsString(obj))
 print("My class is \((obj as! NSObject).className)")
 
-
 func classNameAsString(obj: Any) -> String {
 print(String(obj))
 return _stdlib_getDemangledTypeName(obj).componentsSeparatedByString(".").last!
