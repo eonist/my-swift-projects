@@ -1,6 +1,5 @@
 //this class can be removed
 
-
 /*import Foundation
 
 class SVGRectParser {

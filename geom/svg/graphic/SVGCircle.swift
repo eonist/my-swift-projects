@@ -14,11 +14,11 @@ class SVGCircle : SVGGraphic{
       super.init(style, id);
     }
     /**
-    * @Note If the radius is zero, no shape will be displayed; it is an error to provide a negative radius.
-    * @Note if the cx or cy is omitted (nan), it is presumed to be zero.
-    * @Note it is an error to provide a negative radius.
-    * @NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
-    */
+     * @Note If the radius is zero, no shape will be displayed; it is an error to provide a negative radius.
+     * @Note if the cx or cy is omitted (nan), it is presumed to be zero.
+     * @Note it is an error to provide a negative radius.
+     * @NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
+     */
     override func draw(){
         //Swift.print("SVGCircle.draw() + r: " + "\(r)")
         if(!r.isNaN) {

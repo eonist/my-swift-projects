@@ -1,7 +1,7 @@
 import Foundation
 /*
-* // :TODO: impliment graphics.drawGraphicsData
-*/
+ * // :TODO: impliment graphics.drawGraphicsData
+ */
 class SVGPathModifier {
     /**
      * Scales @param path at @param pivot with @param scalePoint
