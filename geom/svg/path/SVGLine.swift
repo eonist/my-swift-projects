@@ -1,9 +1,9 @@
 import Foundation
 /**
-* This class creates a straight line
-* // :TODO: a line can only have a stroke, since it cant be continued as a path would
-* @example <line x1="75" y1="95" x2="135" y2="85" style="stroke: black;" />
-*/
+ * This class creates a straight line
+ * // :TODO: a line can only have a stroke, since it cant be continued as a path would
+ * @example <line x1="75" y1="95" x2="135" y2="85" style="stroke: black;" />
+ */
 class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
     var x1:CGFloat
     var y1:CGFloat

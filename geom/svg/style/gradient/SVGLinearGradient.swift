@@ -23,5 +23,4 @@ extension SVGLinearGradient{
     var p2:CGPoint {get{return CGPoint(x2,y2)}set {x2 = newValue.x;y2 = newValue.y}}
 }
 
-
 //,x1:CGFloat = CGFloat.NaN, y1:CGFloat = CGFloat.NaN, x2:CGFloat = CGFloat.NaN, y2:CGFloat = CGFloat.NaN
