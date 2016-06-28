@@ -1,39 +1,51 @@
-//FANCY Gradients:
+/*
+ * FANCY Gradients
+ */
 import Cocoa
 class Gradients{
+    /*red*/
     static var redStart:UInt = 0xFF5E3A
     static var redEnd:UInt = 0xFF2A68
+    /*green*/
     static var greenStart:UInt = 0x87FC70
     static var greenEnd:UInt = 0x0BD318
+    /*orange*/
     static var orangeStart:UInt = 0xFF9500
     static var orangeEnd:UInt = 0xFF5E3A
+    /*yellow*/
     static var yellowStart:UInt = 0xFFDB4C
     static var yellowEnd:UInt = 0xFFCD02
+    /*teal*/
     static var tealStart:UInt = 0x52EDC7
     static var tealEnd:UInt = 0x5AC8FB
+    /*blue*/
     static var blueStart:UInt = 0x1AD6FD
     static var blueEnd:UInt = 0x1D62F0
+    /*violet*/
     static var violetStart:UInt = 0xC644FC
     static var violetEnd:UInt = 0x5856D6
+    /*magenta*/
     static var magentaStart:UInt = 0xEF4DB6
     static var magentaEnd:UInt = 0xC643FC
+    /*black*/
     static var blackStart:UInt = 0x4A4A4A
     static var blackEnd:UInt = 0x2B2B2B
+    /*silver*/
     static var silverStart:UInt = 0xDBDDDE
     static var silverEnd:UInt = 0x898C90
-    //
+    /*purple*/
     static var purpleStart:UInt = 0xC86EDF
     static var purpleEnd:UInt = 0xE4B7F0
- 
+    /*beige*/
     static var beigeStart:UInt = 0xD6CEC3
     static var beigeEnd:UInt = 0xE4DDCA
-    
+    /*lightBlue*/
     static var lightBlueStart:UInt = 0x55EFCB
     static var lightBlueEnd:UInt = 0x5BCAFF
-    
+    /*lightGray*/
     static var lightGrayStart:UInt = 0xF7F7F7
     static var lightGrayEnd:UInt = 0xD7D7D7
-    
+    /*redOrange*/
     static var redOrangeStart:UInt = 0xFB2B69
     static var redOrangeEnd:UInt = 0xFF5B37
     /*lightGreen*/
@@ -47,11 +59,10 @@ class Gradients{
     static var purplePinkEnd:UInt = 0xC643FC
 }
 /**
- * NOTE: we use methods, since methods can be method overloaded. (var can't method overload aka return dirfferent types with the same call)
+ * NOTE: we use methods, since methods can be method overloaded. (var's can't method overload aka return dirfferent types with the same call)
  */
 extension Gradients{/*Color ranges*/
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}
-    
     static func red(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(redStart).alpha(alpha),CGColor.cgColor(redEnd).alpha(alpha)]}
     static func green(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(greenStart).alpha(alpha),CGColor.cgColor(greenEnd).alpha(alpha)]}
     static func orange(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(orangeStart).alpha(alpha),CGColor.cgColor(orangeEnd).alpha(alpha)]}
