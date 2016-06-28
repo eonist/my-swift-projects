@@ -3,7 +3,6 @@ class ShellUtils{
     enum ShellError: ErrorType {
         case success,failure
     }
-    
 	/**
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
@@ -16,7 +15,6 @@ class ShellUtils{
         //if(output == "") { throw ShellError.failure }
         return output//output
         //throws ->
-        
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
@@ -47,6 +45,5 @@ class ShellUtils{
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output: String = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
         return (output, task.terminationStatus)
-
     }
 }

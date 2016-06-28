@@ -1,3 +1,2 @@
-class SQLLiteUtils{
-    
+class SQLLiteUtils{    
 }

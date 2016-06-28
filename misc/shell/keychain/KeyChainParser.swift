@@ -26,7 +26,6 @@ class KeyChainParser {
         return nil
     }
 }
-
 class KeyChainUtils {
     /**
      *
@@ -44,10 +43,6 @@ class KeyChainUtils {
 extension String {
     public var dataValue: NSData {return KeyChainUtils.dataValue(self)}
 }
-
 extension NSData {
     public var stringValue: String {return KeyChainUtils.stringValue(self)}
 }
-
-
-
