@@ -34,19 +34,17 @@ class Gradients{
     static var lightGrayStart:UInt = 0xF7F7F7
     static var lightGrayEnd:UInt = 0xD7D7D7
     
-    
     static var redOrangeStart:UInt = 0xFB2B69
     static var redOrangeEnd:UInt = 0xFF5B37
-    
+    /*lightGreen*/
     static var lightGreenStart:UInt = 0x5AD427
     static var lightGreenEnd:UInt = 0xA4E786
-    
+    /*deepPurple*/
     static var deepPurpleStart:UInt = 0xC644FC
     static var deepPurpleEnd:UInt = 0x5856D6
-    
+    /*purplePink*/
     static var purplePinkStart:UInt = 0xEF4DB6
     static var purplePinkEnd:UInt = 0xC643FC
-
 }
 /**
  * NOTE: we use methods, since methods can be method overloaded. (var can't method overload aka return dirfferent types with the same call)

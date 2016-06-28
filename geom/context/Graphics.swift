@@ -171,7 +171,6 @@ private class Utils{
         //let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
-        
         //CGContextSaveGState(context)//why is this here again?
         
         if(gradient is LinearGraphicsGradient) {/*Linear*/
@@ -290,9 +289,6 @@ values of the gradient's locations. The option flags control whether the
 gradient is drawn before the start point or after the end point. 
 */
 
-
-
-
 /*
 
 the code you need for the gradientStroke:
@@ -303,8 +299,3 @@ CGContextReplacePathWithStrokedPath(context);
 // Turn the fillable path in to a clipping region.
 CGContextClip(context);
 */
-
-
-
-
-

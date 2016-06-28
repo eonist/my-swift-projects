@@ -1,30 +1,25 @@
 import Cocoa
 
 class TempCALayer:CALayer{
-    
     override init() {
         Swift.print("TempCALayer.init()")
         super.init()
         //needsDisplay()
         //displayIfNeeded()
         //layoutIfNeeded()
-        
         //needsLayout()
     }
-    
     override init(layer: AnyObject) {
         Swift.print("TempCALayer.init(_layer_)")
         super.init(layer: layer)
     }
-    
-    required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        
+    required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}    
     /*
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("TempCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
     }
-*/
+    */
     /**/
     /*
      * NOTE: Remember to set self.frame to something, else this wont be called. You also need to call display() in order for this to be called
@@ -48,9 +43,6 @@ class TempCALayer:CALayer{
         
         CGContextSaveGState(context)
         /*offset,blur and color*/
-        
-        
-        
         
         
         //CGContextSetShadowWithColor(context, CGSizeMake(-14, -14), 17.0, NSColor.grayColor().CGColor);//offset,bl
