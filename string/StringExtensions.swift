@@ -27,8 +27,6 @@ extension String {
     var double:Double{return Double(self)!}
     var uint:UInt{return UInt(Float(self)!)}
     
-    
-    
     func encode()->String?{
         return StringParser.encode(self)
     }
