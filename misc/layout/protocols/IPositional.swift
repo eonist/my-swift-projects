@@ -23,5 +23,3 @@ extension IPositional{
     self.position.y = position.y
     }*/
 }
-
-
