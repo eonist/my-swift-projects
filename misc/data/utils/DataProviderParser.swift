@@ -21,10 +21,7 @@ class DataProviderParser {
         //fatalError("NO ITEM WITH THE PROPERTY OF: "+property);
         return nil
     }
-    
-    
     //getItemAtIndex
     //xml
     //childrenCount
-    
 }
