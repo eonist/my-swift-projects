@@ -38,5 +38,4 @@ class LineStyleParser {
             return "bevel"
         }
     }
-
 }

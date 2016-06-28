@@ -1,6 +1,4 @@
 import Cocoa
-
-
 class GradientUtils{
     /**
      * Returns a CGGradientRef instance for a Gradient instance

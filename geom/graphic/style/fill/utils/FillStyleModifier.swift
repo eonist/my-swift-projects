@@ -3,5 +3,3 @@ import Foundation
 class FillStyleModifier {
     
 }
-
-
