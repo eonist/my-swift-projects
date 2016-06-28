@@ -3,7 +3,7 @@ class CGRectParser{
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
      */
-    class func roundRect( rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
+    class func roundRect(rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
         CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius);
@@ -27,7 +27,6 @@ class CGRectParser{
         return path
     }
 }
-
 
 //math related to the rectangle
 //Examples of good candidates for structures include:

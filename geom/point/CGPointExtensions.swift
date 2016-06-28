@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension CGPoint{
     /**
      * Returns a point, in a polar cordinate system (from 0,0), for @param angle and @param length

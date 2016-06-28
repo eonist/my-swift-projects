@@ -37,7 +37,6 @@ class PointParser{
         }
         return CGPoint(x,y);
     }
-    
     /**
      * Returns the distance between two points
      * @Note: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
@@ -190,7 +189,6 @@ class PointParser{
         return CGRect(topLeft.x, topLeft.y, width, height);
     }
 }
-
 /*
  * Equivalence Operators
  * Custom classes and structures do not receive a default implementation of the equivalence operators, known as the “equal to” operator (==) and “not equal to” operator (!=). It is not possible for Swift to guess what would qualify as “equal” for your own custom types, because the meaning of “equal” depends on the roles that those types play in your code.
@@ -218,5 +216,3 @@ if twoThree == anotherTwoThree {
 }
 */
 // prints "These two vectors are equivalent."
-
-
