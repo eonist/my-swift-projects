@@ -81,5 +81,5 @@ extension FileWatcher{
      */
     convenience init(_ pathsToWatch: [String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
-    }/**/
+    }
 }

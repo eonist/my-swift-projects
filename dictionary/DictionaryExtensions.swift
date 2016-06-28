@@ -13,5 +13,4 @@ extension Dictionary where Key: String, Value: String{
     }
     //TODO: add merge aswell
 }
-
 */

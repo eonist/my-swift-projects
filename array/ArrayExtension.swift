@@ -1,5 +1,4 @@
 import Foundation
-
 extension Array {
     /**
      * Removes the first item in an array

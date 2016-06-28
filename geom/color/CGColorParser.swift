@@ -11,7 +11,6 @@ class CGColorParser {
         let cgColor:CGColorRef  = CGColorCreate(colorSpace, components)!;
         return cgColor
     }
-    
     /**
      * NOTE: I think you can also just do: NSColor.redColor().CGColor, which renders this method obsolete
      * NOTE: This method is nice to have around for reference

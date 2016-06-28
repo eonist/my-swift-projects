@@ -9,14 +9,12 @@ class DictionaryParser{
             //if(theValue is Dictionary) {describe(theValue)}
         }
     }
-    
     /**
      *
      */
     class func values(){
         //var valuesArray = [Double](toppings.values)
     }
-    
     /**
      *
      */
