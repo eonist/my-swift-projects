@@ -72,5 +72,3 @@ extension SVGRect{
     var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
     var rect:CGRect {return CGRect(xVal,yVal,width,height)}
 }
-
-

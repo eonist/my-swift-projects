@@ -50,7 +50,6 @@ class SVGModifier {
 		}
         if(element is ISVGGraphic) {SVGModifier.update(element as! SVGGraphic)}//<---this may need to not use a protocol for casting
 	}
-    
 	/**
 	 * Styles an @param element with @param style
 	 * // :TODO: rename to stylize?
@@ -80,5 +79,3 @@ class SVGModifier {
     }
     
 }
-
-
