@@ -50,7 +50,6 @@ class FileParser{
         }
     }
 }
-
 /*
 /*open modal panel*/
 let myFileDialog: NSOpenPanel = NSOpenPanel()
