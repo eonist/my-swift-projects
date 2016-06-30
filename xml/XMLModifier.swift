@@ -64,6 +64,13 @@ public class XMLModifier {
         return xml
     }
     /**
+     * TODO: Make similar method for multiple key, value pairs
+     */
+    class func setAttributeAt(xml:NSXMLElement,_ index:Int, key:String, value:String)->NSXMLElement{
+        xml[key] = value
+        return xml
+    }
+    /**
      * EXAMPLE: replaceChildAt(xml, [0,1], child)
      * NOTE: if the index is out of bound the replacment is appended to the parent index
      */
