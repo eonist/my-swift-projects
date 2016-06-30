@@ -29,7 +29,6 @@ class FileModifier{
         }
         return false
     }
-    
     /**
      * Append text to file
      */
