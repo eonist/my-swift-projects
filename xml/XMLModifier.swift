@@ -49,6 +49,7 @@ public class XMLModifier {
     }
     /**
      * @example XMLModifier.setAttributeAt(xml, [0,1], "title", "someTitle")
+     * NOTE: I think this method works with depth indecies
      */
     class func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ key:String,_ value:String) -> NSXMLElement {
         XMLParser.childAt(xml, index)?[key] = value
