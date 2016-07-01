@@ -74,3 +74,11 @@ extension NSXMLElement {
         return XMLParser.firstNode(self, nodeName)
     }
 }
+/**
+ * Multiplies a string
+ * EXAMPLE: NSXMLElement("<items><items/>") += "<coffe><coffe/>" //<items><coffe><coffe/><items/>
+ */
+public func += (left: NSXMLElement, right: NSXMLElement) -> NSXMLElement {//Convenience
+    left.appendChild(right)
+    return left
+}
