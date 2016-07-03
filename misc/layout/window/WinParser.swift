@@ -24,6 +24,7 @@ class WinParser {
     }
     /**
      * Returns the first window in NSApp of a spedific class ir protocol type
+     * NOTE: there is also window.isMemberOfClass which could work
      */
     class func firstWindow<T>(type:T.Type)-> T? {
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
