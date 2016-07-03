@@ -25,7 +25,7 @@ private class Utils{
     /**
      *
      */
-    static func performAction(app:NSApplication,_ action:()->Void)->NSWindow?{
+    static func performAction(app:NSApplication,_ action:(win:NSWindow)->Void)->NSWindow?{
         for win in app.windows{
             if(win.isAccessibilityFocused()){return win}
         }
