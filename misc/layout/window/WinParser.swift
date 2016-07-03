@@ -7,7 +7,6 @@ class WinParser {
      * NOTE: to manage the windows: app.windowWithWindowNumber(w.windowNumber)
      */
     class func describeWindows(app:NSApplication){
-        
         Swift.print("app.windows.count: " + "\(app.windows.count)")
         for win in app.windows{
             print("windowNumber: " + "\(win.windowNumber)")
