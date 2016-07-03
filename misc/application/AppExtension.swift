@@ -20,3 +20,12 @@ extension NSApplication{
         return nil
     }
 }
+
+private class Utils{
+    /**
+     *
+     */
+    static func performAction(app:NSApplication,_ action:()->Void){
+        
+    }
+}
