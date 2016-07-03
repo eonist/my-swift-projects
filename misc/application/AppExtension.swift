@@ -2,7 +2,7 @@ import Cocoa
 
 extension NSApplication{
     /**
-     *
+     * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
     var focusedWindow:NSWindow? {
         //(app.windows[0] as! )
@@ -11,14 +11,12 @@ extension NSApplication{
             //app.windowWithWindowNumber(win.windowNumber)//this is how you can manage windows
             if(win.isAccessibilityFocused()){return win}
             win.isAccessibilityFrontmost()
-            win.isAccessibilityHidden()
             win.isAccessibilityMain()
-            win.isAccessibilityMinimized()
-            win.isAccessibilityModal()
             win.isAccessibilitySelected()
-            win.isAccessibilityExpanded()
+            
+            //Continue here: Find the code for adding a method to a variable
+            
         }
         return nil
     }
-    
 }
