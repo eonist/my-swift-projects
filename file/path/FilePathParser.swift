@@ -48,3 +48,11 @@ class FilePathParser {//TODO:rename to FilePathParser
         return fileURL.absoluteURL.URLByDeletingLastPathComponent!.absoluteString
     }
 }
+extension FilePathParser{
+    /**
+     * Convenience
+     */
+    class func fileName(fileURL:String, _ withExtension:Bool = true) -> String{
+        return fileName(path(fileURL), withExtension)
+    }
+}
