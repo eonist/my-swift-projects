@@ -14,11 +14,13 @@ extension NSApplication{
             win.isAccessibilityMain()
             win.isAccessibilitySelected()
             
-            let completionHandler:(Float)->Void = {
-                (arg:Float) -> Void in
+            let completionHandler:(NSWindow)->NSWindow? = {
+                (arg:NSWindow) -> NSWindow? in
+                return nil
             }
             
-                
+            Utils.performAction(self,completionHandler)
+            
             //Continue here: Find the code for adding a method to a variable and executing it , so that you only have to write the for loop once
             
         }
@@ -30,7 +32,7 @@ private class Utils{
     /**
      *
      */
-    static func performAction(app:NSApplication,_ action:(win:NSWindow)->Void)->NSWindow?{
+    static func performAction(app:NSApplication,_ action:(win:NSWindow)->NSWindow?)->NSWindow?{
         for win in app.windows{
             if(win.isAccessibilityFocused()){return win}
         }
