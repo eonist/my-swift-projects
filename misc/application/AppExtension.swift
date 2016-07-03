@@ -14,7 +14,7 @@ extension NSApplication{
             win.isAccessibilityMain()
             win.isAccessibilitySelected()
             
-            //Continue here: Find the code for adding a method to a variable
+            //Continue here: Find the code for adding a method to a variable and executing it , so that you only have to write the for loop once
             
         }
         return nil
