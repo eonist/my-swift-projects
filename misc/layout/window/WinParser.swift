@@ -23,7 +23,7 @@ class WinParser {
         return NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
     }
     /**
-     * Returns the first window in NSApp of a spedific class ir protocol type
+     * Returns the first window in NSApp of a spedific class or protocol type
      * NOTE: there is also window.isMemberOfClass which could work
      */
     class func firstWindow<T>(type:T.Type)-> T? {
