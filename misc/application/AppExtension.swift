@@ -1,11 +1,14 @@
 import Cocoa
 
 extension NSApplication{
+    static func testing()->String{
+        return ""
+    }
     /**
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
-    public var focusedWindow:NSWindow? {
+    var focusedWindow:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilityFocused()})!
     }
     /**
