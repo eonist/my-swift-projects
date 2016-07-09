@@ -2,10 +2,17 @@ import Cocoa
 
 extension NSApplication{
     /**
+     * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
     var focusedWindow:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilityFocused()})!
+    }
+    /**
+     * Returns the front most window in the NSApplication.windows array
+     */
+    var frontMost:NSWindow? {
+        return Utils.performAction(self.windows, {$0.isAccessibilityFrontmost()})!
     }
 }
 
