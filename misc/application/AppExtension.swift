@@ -14,6 +14,13 @@ extension NSApplication{
     var frontMost:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilityFrontmost()})!
     }
+    /**
+     * Returns the front most window in the NSApplication.windows array
+     * NOTE: you can probably also use the NSApplication.mainWindow call instead of this method
+     */
+    var mainWin:NSWindow? {
+        return Utils.performAction(self.windows, {$0.isAccessibilityMain()})!
+    }
 }
 
 private class Utils{
