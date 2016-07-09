@@ -15,11 +15,18 @@ extension NSApplication{
         return Utils.performAction(self.windows, {$0.isAccessibilityFrontmost()})!
     }
     /**
-     * Returns the front most window in the NSApplication.windows array
+     * Returns the first window that is main in the NSApplication.windows array
      * NOTE: you can probably also use the NSApplication.mainWindow call instead of this method
      */
     var mainWin:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilityMain()})!
+    }
+    /**
+     * Returns the first window that is selected in the NSApplication.windows array
+     * NOTE: you can probably also use the NSApplication.mainWindow call instead of this method
+     */
+    var selected:NSWindow? {
+        return Utils.performAction(self.windows, {$0.isAccessibilitySelected()})!
     }
 }
 
@@ -29,6 +36,7 @@ private class Utils{
      */
     static func performAction(windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
         for window in windows{
+            //print("windowNumber: " + "\(win.windowNumber)")
             if(action(window)){
                 return window
             }
@@ -36,18 +44,3 @@ private class Utils{
         return nil
     }
 }
-
-/*
-//(app.windows[0] as! )
-for win in self.windows{
-//print("windowNumber: " + "\(win.windowNumber)")
-//app.windowWithWindowNumber(win.windowNumber)//this is how you can manage windows
-if(win.isAccessibilityFocused()){return win}
-win.isAccessibilityFrontmost()
-win.isAccessibilityMain()
-win.isAccessibilitySelected()
-
-
-}
-return nil
-*/

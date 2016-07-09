@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * NOTE: There are also methods related to the window in the AppExtension.swift clas
+ */
 class WinParser {
     /**
      * NOTE: grab the from applicationDidFinishLaunching
