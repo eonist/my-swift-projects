@@ -30,7 +30,7 @@ extension NSApplication{
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
-    class func focusedWindow()->NSWindow? {
+    class var focusedWindow:NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
     }
 

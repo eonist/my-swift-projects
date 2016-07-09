@@ -32,4 +32,26 @@ class WinParser {
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
         return nil
     }
+    /**
+     * Returns the first focusedWindow in the NSApplication.windows array
+     * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
+     */
+    class func focusedWindow()->NSWindow? {
+        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
+    }
+}
+
+private class Utils{
+    /**
+     * NOTE: Reducing for-loops is a great way to maintain readability and maintain code modularity. Here is a trick were we use closure blocks to encapsulate the method call. The for loop is the same but the method call is different. This approach is great when you need the code within the for-loop to be the same but you want to have the code within different methods to be different
+     */
+    static func performAction(windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
+        for window in windows{
+            //print("windowNumber: " + "\(win.windowNumber)")
+            if(action(window)){
+                return window
+            }
+        }
+        return nil
+    }
 }
