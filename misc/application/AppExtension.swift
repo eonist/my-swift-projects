@@ -18,11 +18,7 @@ extension NSApplication{
                 (arg:NSWindow) -> Bool in
                 arg.isAccessibilityFocused()
             }
-            
-            Utils.performAction(self,temp)
-            
-            //Continue here: Find the code for adding a method to a variable and executing it , so that you only have to write the for loop once
-            
+            Utils.performAction(self.windows,temp)
         }
         return nil
     }
@@ -32,9 +28,11 @@ private class Utils{
     /**
      *
      */
-    static func performAction(app:NSApplication,_ action:(win:NSWindow)->Bool)->NSWindow?{
-        for win in app.windows{
-            if(win.isAccessibilityFocused()){return win}
+    static func performAction(windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
+        for window in windows{
+            if(action(window)){
+                return window
+            }
         }
         return nil
     }
