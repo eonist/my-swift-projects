@@ -2,15 +2,10 @@ import Cocoa
 
 extension NSApplication{
     static func testing()->String{
+        
         return ""
     }
-    /**
-     * Returns the first focusedWindow in the NSApplication.windows array
-     * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
-     */
-    var focusedWindow:NSWindow? {
-        return Utils.performAction(self.windows, {$0.isAccessibilityFocused()})!
-    }
+
     /**
      * Returns the front most window in the NSApplication.windows array
      */
@@ -31,6 +26,14 @@ extension NSApplication{
     var selected:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilitySelected()})!
     }
+    /**
+     * Returns the first focusedWindow in the NSApplication.windows array
+     * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
+     */
+    class func focusedWindow()->NSWindow? {
+        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
+    }
+
 }
 
 private class Utils{
