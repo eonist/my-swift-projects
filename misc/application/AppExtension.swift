@@ -6,7 +6,6 @@ extension NSApplication{
      */
     var focusedWindow:NSWindow? {
         return Utils.performAction(self.windows, {$0.isAccessibilityFocused()})!
-        
     }
 }
 
