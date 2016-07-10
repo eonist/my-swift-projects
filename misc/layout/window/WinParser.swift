@@ -35,9 +35,10 @@ class WinParser {
     /**
      *
      */
-    class func windowsOfType<T>(type:T.Type)-> T? {
-        for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
-        return nil
+    class func windowsOfType<T>(type:T.Type)-> [T] {
+        var windows:Array<T> = []
+        for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
+        return windows
     }
     /**
      * Returns the first focusedWindow in the NSApplication.windows array
