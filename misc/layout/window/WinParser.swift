@@ -33,7 +33,7 @@ class WinParser {
         return nil
     }
     /**
-     *
+     * Returns an array of NSWindow of type T
      */
     class func windowsOfType<T>(type:T.Type)-> [T] {
         var windows:Array<T> = []
