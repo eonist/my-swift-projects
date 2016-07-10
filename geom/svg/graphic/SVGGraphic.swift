@@ -104,10 +104,7 @@ class SVGGraphic : SVGView,ISVGGraphic{
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
     func draw(){
-        
         //Swift.print("SVGGraphic.draw()")
-        
-        
         /*if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             drawLine()
             drawFill()
@@ -122,7 +119,6 @@ class SVGGraphic : SVGView,ISVGGraphic{
         Swift.print("SVGGraphic.drawLine()")
         //fatalError("must be overriden in subclass")
     }
-    
     func drawFill(){
         Swift.print("SVGGraphic.drawFill()")
         //fatalError("must be overriden in subclass")
