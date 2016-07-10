@@ -16,4 +16,17 @@ class WinModifier {
         //Swift.print("ScreenUtils.alignmentPoint: " + "\(alignmentPoint)")
         WinModifier.position(win, alignmentPoint)
     }
+    /**
+     *
+     */
+    class func show(win:NSWindow){
+        win.makeKeyAndOrderFront(nil)//<- should be self, but nil may work
+        NSApp.activateIgnoringOtherApps(true)
+    }
+    /**
+     *
+     */
+    class func hide(win:NSWindow){
+        win.orderOut(nil)//<- should be self, but nil may work
+    }
 }
