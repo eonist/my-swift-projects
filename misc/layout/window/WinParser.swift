@@ -33,12 +33,20 @@ class WinParser {
         return nil
     }
     /**
+     *
+     */
+    class func windowsOfType<T>(type:T.Type)-> T? {
+        for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
+        return nil
+    }
+    /**
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
     class func focusedWindow()->NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
     }
+    
 }
 
 private class Utils{
