@@ -40,11 +40,11 @@ class Align {
             case Alignment.centerCenter, Alignment.center:return CGPoint(round((size.width/2)),round((size.height/2)))
             case Alignment.centerLeft: return CGPoint(0,round((size.height/2)))
             case Alignment.topCenter: return CGPoint(round((size.width/2)),0)
-            case Alignment.centerRight: return CGPoint(size.width,round((size.height/2)));
-            case Alignment.bottomRight: return CGPoint(size.width,size.height);
-            case Alignment.bottomLeft: return CGPoint(0,size.height);
-            case Alignment.bottomCenter: return CGPoint(round((size.width/2)),size.height);
-            default:fatalError("No alignment matched the argument:" + "\(alignment)");
+            case Alignment.centerRight: return CGPoint(size.width,round((size.height/2)))
+            case Alignment.bottomRight: return CGPoint(size.width,size.height)
+            case Alignment.bottomLeft: return CGPoint(0,size.height)
+            case Alignment.bottomCenter: return CGPoint(round((size.width/2)),size.height)
+            default:fatalError("No alignment matched the argument:" + "\(alignment)")
         }
     }
 }
