@@ -126,7 +126,7 @@ class StringParser{
         let value:String = RegExp.value(string, match, 1)
         //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
         //Swift.print("value: " + value)
-        return CGFloat(Double(value)!)
+        return CGFloat(Double(value)!)//TODO: value.double.cgFloat or better value.cgFloat (//the extension methods take care of the conversion)
     }
     /**
      *
