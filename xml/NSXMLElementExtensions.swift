@@ -40,6 +40,9 @@ extension NSXMLElement {
     func value()->String?{//Convenience
         return XMLParser.value(self)
     }
+    var string:String{//Convenience
+        return XMLParser.string(self)
+    }
     func childAt(index:Array<Int>)->NSXMLElement?{//Convenience
         return XMLParser.childAt(self, index)
     }

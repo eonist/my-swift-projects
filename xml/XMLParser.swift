@@ -47,10 +47,18 @@ public class XMLParser{
     /**
      * Returns the value of a child
      * NOTE: retuns "" if there is no value
+     * NOTE: To return a string representation of an XML cast the NSXMLElement as a String: String("<p>text<p/>".xml)//<p>text<p/>
+     * CAUTION: This method can also return text values within nested children, use with caution
      * EXAMPLE: XMLParser.value("<p>text</p>".xml)//text
      */
     public class func value(child:NSXMLElement)->String{
         return child.stringValue!
+    }
+    /**
+     * Returns the the entire xml structure as a string
+     */
+    public class func string(child:NSXMLElement)->String{
+        return String(child)
     }
     /**
      * Returns string Content of an xml

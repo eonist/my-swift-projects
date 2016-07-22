@@ -19,13 +19,14 @@ class Align {
         NSViewModifier.position(view, alignmentPoint)
     }
     /**
-     * Returns the point from where to align target @param displayObjectSize within @param canvasSize at @param displayObjectAlignment and @param canvasAlignment and @param offset
-     * @param viewSize the size of the displayObject
+     * Returns the point from where to align target @param objectSize within @param canvasSize at @param objectAlignment and @param canvasAlignment and @param offset
+     * @param objectSize the size of the object that is being aligned
+     * @param canvasSize is the size of the canvas the object is beeing aligned to (Thinkn of the canvas as a painting and the object as an element in that painting, figurativly speaking)
      * @Note this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
-    class func alignmentPoint(viewSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
+    class func alignmentPoint(objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
-        let viewAlignmentPoint:CGPoint = Align.point(viewSize, viewAlignment)
+        let viewAlignmentPoint:CGPoint = Align.point(objectSize, objectAlignment)
         alignmentPoint = alignmentPoint - viewAlignmentPoint
         return alignmentPoint + offset
     }

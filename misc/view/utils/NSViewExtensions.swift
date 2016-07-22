@@ -101,7 +101,7 @@ extension NSView {
         return NSViewParser.getSubViewAt(self, i)
     }
     var numSubViews:Int {return subviews.count}/*convenience*/
-    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, yu need to refactor it out first, same with height
+    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
     var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
     var x:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
     var y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
