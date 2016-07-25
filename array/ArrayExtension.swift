@@ -59,6 +59,7 @@ extension Array where Element:AnyObject{
 }
 
 //TODO: Needs more research see similar case with AnyObject
+/*
 extension Array where Element:String{
     /**
      *
@@ -73,3 +74,4 @@ extension Array where Element:String{
         return ArrayParser.indexOfStr(self,str)
     }
 }
+*/
