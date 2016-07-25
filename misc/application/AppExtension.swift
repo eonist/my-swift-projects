@@ -6,7 +6,7 @@ extension NSApplication{
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
     class var focusedWin:NSWindow? {
-        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
+        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})
     }
     /**
      * Returns the front most window in the NSApplication.windows array

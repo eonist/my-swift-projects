@@ -43,7 +43,8 @@ extension String {
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
-    var xml:NSXMLElement {return NSXMLElement(self)}
+    var xml:NSXMLElement {return NSXMLElement(self)}//Convenince
+    var url:NSURL {return FilePathParser.path(self)}//Convenince
 }
 /**
  * Multiplies a string

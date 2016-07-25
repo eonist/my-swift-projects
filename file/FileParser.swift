@@ -31,13 +31,6 @@ class FileParser{
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         return rootElement
     }
-	/**
-	 * Returns the project resource folder
-	 * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
-	 */
-    class func resourcePath()->String{
-		return NSBundle.mainBundle().resourcePath!
-	}
     /**
      * resourceContent("example","txt")
      */

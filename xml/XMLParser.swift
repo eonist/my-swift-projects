@@ -56,6 +56,7 @@ public class XMLParser{
     }
     /**
      * Returns the the entire xml structure as a string
+     * NOTE: THere is also .XMLString and a few abrivations of that method
      */
     public class func string(child:NSXMLElement)->String{
         return String(child)

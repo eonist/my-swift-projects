@@ -47,6 +47,13 @@ class FilePathParser {
     class func directory(fileURL:NSURL)->String{
         return fileURL.absoluteURL.URLByDeletingLastPathComponent!.absoluteString
     }
+    /**
+     * Returns the project resource folder
+     * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
+     */
+    class func resourcePath()->String{
+        return NSBundle.mainBundle().resourcePath!
+    }
 }
 extension FilePathParser{
     /**

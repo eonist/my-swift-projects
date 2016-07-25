@@ -14,16 +14,21 @@ extension NSWindow {
     func hide(win:NSWindow){
         self.orderOut(self)//<- should be self, but nil may work
     }
+    var minimized:Bool{return self.isAccessibilityMinimized()}//Convenience
+    var hidden:Bool{return self.isAccessibilityHidden()}//Convenience
+    var expanded:Bool{return self.isAccessibilityExpanded()}//Convenience
+    var modal:Bool{return self.isAccessibilityModal()}//Convenience
 }
 extension NSSavePanel{
     /**
-     * Creates 
+     * Creates An NSSavePanel instance
+     * NOTE: the initialize word is used instead of init, as init requires much more code to get working
      */
-    func create(allowedFileTypes:Array<String> = ["xml"], _ title:String = "Save As", _ canCreateDirectories:Bool = true)->NSSavePanel{
+    class func initialize(allowedFileTypes:Array<String> = ["xml"], _ title:String = "Save As", _ canCreateDirectories:Bool = true)->NSSavePanel{
         let savePanel = NSSavePanel()
-        savePanel.canCreateDirectories = true
+        savePanel.canCreateDirectories = canCreateDirectories
         savePanel.allowedFileTypes = allowedFileTypes//["css","html","pdf","png"]
-        savePanel.title = "Save As"
+        savePanel.title = title
         return savePanel
     }
 }

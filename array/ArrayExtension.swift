@@ -40,7 +40,7 @@ extension Array {
     }
     func index<T : Equatable>(arr : [T], _ value:T)->Int{
         return ArrayParser.index(arr, value)
-    } 
+    }
     /**
      * -1 equals, does not exist
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
@@ -57,14 +57,19 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
-/*
-TODO: Needs more research see similar case with AnyObject
+
+//TODO: Needs more research see similar case with AnyObject
 extension Array where Element:String{
-/**
-*
-*/
-func join(seperator:String)->String{
-return StringModifier.combine(self as! Array<String>,seperator)
+    /**
+     *
+     */
+    func join(seperator:String)->String{
+        return StringModifier.combine(self as! Array<String>,seperator)
+    }
+    /**
+     *
+     */
+    func indexOfStr(str:String)->Int{
+        return ArrayParser.indexOfStr(self,str)
+    }
 }
-}
-*/

@@ -33,7 +33,7 @@ class WinParser {
         return nil
     }
     /**
-     * Returns an array of NSWindow of type T
+     * Returns an array of NSWindow of type T in the current app
      */
     class func windowsOfType<T>(type:T.Type)-> [T] {
         var windows:Array<T> = []
@@ -47,9 +47,7 @@ class WinParser {
     class func focusedWindow()->NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
     }
-    
 }
-
 private class Utils{
     /**
      * NOTE: Reducing for-loops is a great way to maintain readability and maintain code modularity. Here is a trick were we use closure blocks to encapsulate the method call. The for loop is the same but the method call is different. This approach is great when you need the code within the for-loop to be the same but you want to have the code within different methods to be different

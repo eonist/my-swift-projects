@@ -9,6 +9,7 @@ extension CGFloat {
     var uint:UInt{return UInt(self)}
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}
+    var string:String{return String(self)}
 }
 /**
  * Support for addition of CGFLoat and Double
