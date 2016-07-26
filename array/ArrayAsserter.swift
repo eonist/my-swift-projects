@@ -31,7 +31,9 @@ class ArrayAsserter {
         return ArrayParser.index(arr, value) != -1
     }
     /**
-     *
+     * New
      */
-    
+    class func has<T>(arr:[T],_ item:T) -> Bool{
+        return ArrayParser.indx(arr, item) != -1
+    }
 }
