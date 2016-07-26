@@ -28,7 +28,7 @@ class TextField:NSTextField{
         }
         return event
     }
-    override func textDidChange(notification: NSNotification) {
+    override func textDidChange(notification:NSNotification) {
         Swift.print("TextField.textDidChange()")
         if(self.superview is IEventSender){
             Swift.print("superview is IEventSender")
