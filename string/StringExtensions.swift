@@ -7,7 +7,7 @@ extension String {
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
-    func split(delimiter:String)->Array<String>{
+    func split(delimiter:String)->Array<String>{//convenience
         return StringParser.split(self, delimiter)
     }
     func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{//Convenince
@@ -27,10 +27,10 @@ extension String {
     var double:Double{return Double(self)!}
     var uint:UInt{return UInt(Float(self)!)}
     
-    func encode()->String?{
+    func encode()->String?{//convenience
         return StringParser.encode(self)
     }
-    func decode()->String?{
+    func decode()->String?{//convenience
         return StringParser.decode(self)
     }
     func subStr(i:Int,_ len:Int)->String{//convenience
@@ -39,7 +39,9 @@ extension String {
     func subString(beginning:Int,_ end:Int)->String{//convenience
         return StringParser.subString(self,beginning,end)
     }
-    func 
+    func indexOf(a:String, _ b:String)->Int{//convenience
+        return StringParser.indexOf(a, b)
+    }
     var bool:Bool {return StringParser.boolean(self)}
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
