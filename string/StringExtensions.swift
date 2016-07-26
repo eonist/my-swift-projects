@@ -39,8 +39,8 @@ extension String {
     func subString(beginning:Int,_ end:Int)->String{//convenience
         return StringParser.subString(self,beginning,end)
     }
-    func indexOf(a:String, _ b:String)->Int{//convenience
-        return StringParser.indexOf(a, b)
+    func indexOf(b:String)->Int{//convenience
+        return StringParser.indexOf(self, b)
     }
     var bool:Bool {return StringParser.boolean(self)}
     /**
