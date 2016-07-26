@@ -20,6 +20,7 @@ class ArrayAsserter {
     /**
      * Asserts if an array has an item
      * NOTE: Determines whether the specified array contains the specified value
+     * NOTE: Only works with Equatable types
      * @param arr The array that will be checked for the specified value.
      * @param value The object which will be searched for within the array
      * @return True if the array contains the value, False if it does not.
