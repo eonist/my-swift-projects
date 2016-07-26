@@ -33,10 +33,10 @@ extension String {
     func decode()->String?{
         return StringParser.decode(self)
     }
-    func subStr(i:Int,_ len:Int)->String{
+    func subStr(i:Int,_ len:Int)->String{//convenience
         return StringParser.subStr(self, i, len)
     }
-    func subString(beginning:Int,_ end:Int)->String{
+    func subString(beginning:Int,_ end:Int)->String{//convenience
         return StringParser.subString(self,beginning,end)
     }
     var bool:Bool {return StringParser.boolean(self)}
