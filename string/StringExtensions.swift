@@ -39,6 +39,7 @@ extension String {
     func subString(beginning:Int,_ end:Int)->String{//convenience
         return StringParser.subString(self,beginning,end)
     }
+    func 
     var bool:Bool {return StringParser.boolean(self)}
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
