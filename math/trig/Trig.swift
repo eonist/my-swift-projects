@@ -29,4 +29,5 @@ extension Trig{//Legacy support
     class func normalize2(angle:CGFloat)->CGFloat {return TrigParser.normalize2(angle)}
     class func degrees(radians:CGFloat) -> CGFloat {return TrigConverter.degrees(radians)}
     class func radians(degrees:CGFloat) -> CGFloat {return TrigConverter.radians(degrees)}
+    class func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {return TrigParser.difference(startAngle, endAngle)}
 }
