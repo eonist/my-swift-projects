@@ -33,9 +33,22 @@ class ArrayAsserter {
     /**
      * New
      * IMPORTANT: use none optional variables in the PARAM: arr and the PARAM: item
-     * NOTE: Works by comparing references, not values. Use the other has method if you want to compare value
+     * NOTE: Works by comparing references, not values. Use the other has method if you want to compare value.
      */
     class func has<T>(arr:[T],_ item:T) -> Bool{
         return ArrayParser.indx(arr, item) != -1
+    }
+    /**
+     * Asserts if two arrays are identical a boolean depending on the equality of two arrays (must be in the same order)
+     * @param a: Array to be compared with
+     * @param b: Array to be compared against
+     * @return a boolean indicating if the arrays are equal
+     * @Note: could also be named isEqual,isIdentical
+     */
+    class equals(a:Array, _ b:Array):Boolean{
+        var aLength:Number = a.length;
+        if(aLength != b.length) return false;
+        for(var i:Number = 0; i < aLength; i++) if(a[i] !== b[i]) return false;//Doesnt the !== only work on the same reference.
+        return true;
     }
 }
