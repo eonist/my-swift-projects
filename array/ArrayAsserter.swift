@@ -32,7 +32,7 @@ class ArrayAsserter {
     }
     /**
      * New
-     * NOTE: works 
+     * IMPORTANT: use none optional variables in the PARAM: arr and the PARAM: item
      */
     class func has<T>(arr:[T],_ item:T) -> Bool{
         return ArrayParser.indx(arr, item) != -1
