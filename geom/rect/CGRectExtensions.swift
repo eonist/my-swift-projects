@@ -88,6 +88,10 @@ extension CGRect{
     func offset(point:CGPoint)->CGRect{//Convenience
         return offset(point.x,point.y)
     }
+    func offset(point:CGPoint)->CGRect{//Convenience
+        return offset(point.x,point.y)
+    }
+    
     /**
      * Expands the size of the rect from its pivot
      */
