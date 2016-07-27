@@ -9,4 +9,13 @@ class CGRectModifier {
         let difference:CGPoint = PointParser.difference(rectangle.topLeft,position)
         return rectangle.offsetInPlace(difference)
     }
+    /**
+    * @param position this value is the new center-position
+    * // :TODO: the difference could be calculated before-hand
+    */
+    public static function centerPosition(rectangle:Rectangle,position:Point):Rectangle {
+    var difference:Point = PointParser.difference(RectangleParser.center(rectangle),position);
+    rectangle.offsetPoint(difference);
+    return rectangle;
+    }
 }
