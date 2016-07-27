@@ -1,17 +1,5 @@
 class ArrayParser{
     /**
-     * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")
-     * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
-     * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
-     */
-    class func indexOfStr(arr:Array<String>,_ str:String)->Int{
-        if let index = arr.indexOf(str) {
-            return index
-        }else{
-            return -1//-1 indicates non was found
-        }
-    }
-    /**
      * Returns the index of PARAM: val in PARAM: arr
      */
     class func index<T : Equatable>(arr : [T], _ val:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
@@ -22,7 +10,12 @@ class ArrayParser{
         }
     }
     /**
+     * NOTE: This method compares value not reference
+     * NOTE: String class works with Comparable and not Equatable, Use this method when dealing with Strings
      * EXAMPLE: ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
+     * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
+     * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
+     * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
      */
     class func index<T : Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         if let i = array.indexOf(value) {
