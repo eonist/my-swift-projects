@@ -24,21 +24,11 @@ class ArrayParser{
             return -1//-1 indicates non was found
         }
     }
+    
     /**
-     * Returns the index for item, -1 of none is found
-     * NOTE: keep this method around until the index method is tested
-     */
-    class func indexOfValue<T: Equatable>(array: [T], _ value: T) -> Int? {//the <T: Equatable> part ensures that the types can use the equal operator ==
-        for (index, item) in array.enumerate() {
-            if value == item {
-                return index
-            }
-        }
-        return -1
-    }
-    /**
-     * Returns the index of the first obj that matches the @param item in the @param arr, -1 of none is found
+     * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
+     * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
      */
     class func indexOf(arr:Array<AnyObject>,_ item:AnyObject)-> Int{
         for var i = 0; i < arr.count; ++i{
@@ -138,3 +128,16 @@ private class Utils{
         return -1;
     }
 }
+
+
+
+/**
+* Returns the index for item, -1 of none is found
+* NOTE: keep this method around until the index method is tested
+*/
+/*
+class func DEPRECATEDIndexOfValue<T: Equatable>(array: [T], _ value: T) -> Int? {//the <T: Equatable> part ensures that the types can use the equal operator ==
+    for (index, item) in array.enumerate() {if value == item {return index}}
+    return -1
+}
+*/
