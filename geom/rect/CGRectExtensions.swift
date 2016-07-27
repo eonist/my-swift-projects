@@ -79,19 +79,20 @@ extension CGRect{
     func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
     }
-    /**
-     * NOTE: There is also offsetInPlace, which seems to be mutating
-     */
-    func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{//Convenience
-        return offsetBy(dx: dx, dy: dy)
-    }
-    func offset(point:CGPoint)->CGRect{//Convenience
-        return offset(point.x,point.y)
-    }
-    func offset(point:CGPoint)->CGRect{//Convenience
-        return offset(point.x,point.y)
-    }
     
+    func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{//Convenience
+        return self.offsetBy(dx: dx, dy: dy)
+    }
+    func offset(point:CGPoint)->CGRect{//Convenience
+        return self.offsetBy(dx: point.x,dy: point.y)
+    }
+    /**
+     * NOTE: Alters the original CGRect instance
+     */
+    mutating func offsetInPlace(point:CGPoint)->CGRect{//Convenience
+        self.offsetInPlace(dx: point.x,dy: point.y)
+        return self
+    }
     /**
      * Expands the size of the rect from its pivot
      */
