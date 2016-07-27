@@ -88,8 +88,8 @@ class StringParser{
      * Returns the index of the first match of @param b in @param a
      */
     class func indexOf(a:String,_ b:String)->Int{
-        let range:Range<String.Index> = StringRangeParser.rangeOf(a,b)
-        return a.startIndex.distanceTo(range.startIndex)
+        let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
+        return range != nil ? a.startIndex.distanceTo(range!.startIndex) : -1/*New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found*/
     }
     /**
      * Returns str sans the first char
