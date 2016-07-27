@@ -2,8 +2,8 @@ class StringRangeParser {
     /**
      * Returns a Range of where the @param b is located in @param a
      */
-    class func rangeOf(a:String,_ b:String)->Range<String.Index>{
-        return a.rangeOfString(b)!
+    class func rangeOf(a:String,_ b:String)->Range<String.Index>?{/*<--New: add optional return */
+        return a.rangeOfString(b)
     }
     /**
      * Returns a Range instance for @param str from @param start to @param end
