@@ -1,5 +1,5 @@
 import Foundation
 
-class IClosable {
-
+protocol IClosable {
+    func close()
 }
