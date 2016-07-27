@@ -21,6 +21,9 @@ class ArrayParser{
             return -1//-1 indicates non was found
         }
     }
+    /**
+     * EXAMPLE: ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
+     */
     class func index<T : Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         if let i = array.indexOf(value) {
             return i
