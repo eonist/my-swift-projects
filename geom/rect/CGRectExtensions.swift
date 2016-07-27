@@ -80,10 +80,13 @@ extension CGRect{
         return insetBy(dx: dx, dy: dy)
     }
     /**
-     * Convenience
+     * NOTE: There is also offsetInPlace, which seems to be mutating
      */
-    func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{
+    func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{//Convenience
         return offsetBy(dx: dx, dy: dy)
+    }
+    func offset(point:CGPoint)->CGRect{//Convenience
+        return offset(point.x,point.y)
     }
     /**
      * Expands the size of the rect from its pivot
