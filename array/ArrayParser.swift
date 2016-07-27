@@ -12,7 +12,7 @@ class ArrayParser{
         }
     }
     /**
-     * Returns the index of @param value in @param arr
+     * Returns the index of PARAM: val in PARAM: arr
      */
     class func index<T : Equatable>(arr : [T], _ val:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
         if let i = arr.indexOf(val) {
@@ -22,7 +22,7 @@ class ArrayParser{
         }
     }
     class func index<T : Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
-        if let i = arr.indexOf(value) {
+        if let i = array.indexOf(value) {
             return i
         }else{
             return -1//-1 indicates non was found
