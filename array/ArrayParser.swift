@@ -14,22 +14,20 @@ class ArrayParser{
     /**
      * Returns the index of @param value in @param arr
      */
-    class func index<T : Equatable>(arr : [T], _ value:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
+    class func index<T : Equatable>(arr : [T], _ val:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
+        if let i = arr.indexOf(val) {
+            return i
+        }else{
+            return -1//-1 indicates non was found
+        }
+    }
+    class func index<T : Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         if let i = arr.indexOf(value) {
             return i
         }else{
             return -1//-1 indicates non was found
         }
     }
-    class func index<T : Comparable>(arr : [T], _ value:T)->Int{//the <T: Comparable> part ensures that the types can use the equal operator ==
-        if let i = arr.indexOf(value) {
-            return i
-        }else{
-            return -1//-1 indicates non was found
-        }
-    }
-    
-    
     /**
      * Returns the index for item, -1 of none is found
      * NOTE: keep this method around until the index method is tested
