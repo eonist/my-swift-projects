@@ -51,4 +51,10 @@ class ArrayAsserter {
         for(var i:Int = 0; i < aLength; i++) { if((a[i] as! AnyObject) !== (b[i] as! AnyObject)) {return false}}//Doesnt the !== only work on the same reference, yepp it does. To comapre value create another method
         return true
     }
+    class func equals<T:Equatable>(a:Array<T>, _ b:Array<T>) -> Bool{
+        let aLength:Int = a.count
+        if(aLength != b.count) { return false }
+        for(var i:Int = 0; i < aLength; i++) { if(a[i] != b[i]) {return false}}//Doesnt the !== only work on the same reference, yepp it does. To comapre value create another method
+        return true
+    }
 }
