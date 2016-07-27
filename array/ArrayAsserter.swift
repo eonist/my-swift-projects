@@ -33,6 +33,7 @@ class ArrayAsserter {
     /**
      * New
      * IMPORTANT: use none optional variables in the PARAM: arr and the PARAM: item
+     * NOTE: Works by comparing references, not values. Use the other has method if you want to compare value
      */
     class func has<T>(arr:[T],_ item:T) -> Bool{
         return ArrayParser.indx(arr, item) != -1
