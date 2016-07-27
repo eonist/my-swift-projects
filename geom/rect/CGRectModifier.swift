@@ -7,15 +7,16 @@ class CGRectModifier {
      */
     class func position(inout rectangle:CGRect,_ position:CGPoint) -> CGRect {
         let difference:CGPoint = PointParser.difference(rectangle.topLeft,position)
-        return rectangle.offsetInPlace(difference)
+        rectangle.offsetInPlace(difference)
+        return rectangle
     }
     /**
     * @param position this value is the new center-position
     * // :TODO: the difference could be calculated before-hand
     */
-    public static function centerPosition(rectangle:Rectangle,position:Point):Rectangle {
-    var difference:Point = PointParser.difference(RectangleParser.center(rectangle),position);
-    rectangle.offsetPoint(difference);
-    return rectangle;
+    class func centerPosition(inout rectangle:CGRect,_ position:CGPoint) -> CGRect {
+        var difference:CGPoint = PointParser.difference(CGRectParser.center(rectangle), position)
+        rectangle.offsetInPlace(difference)
+        return rectangle
     }
 }
