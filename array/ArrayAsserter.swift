@@ -45,10 +45,10 @@ class ArrayAsserter {
      * @return a boolean indicating if the arrays are equal
      * @Note: could also be named isEqual,isIdentical
      */
-    class equals(a:Array, _ b:Array):Boolean{
-        var aLength:Number = a.length;
-        if(aLength != b.length) return false;
-        for(var i:Number = 0; i < aLength; i++) if(a[i] !== b[i]) return false;//Doesnt the !== only work on the same reference.
-        return true;
+    class func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
+        var aLength:Int = a.count
+        if(aLength != b.count) { return false }
+        for(var i:CGFloat = 0; i < aLength; i++) { if(a[i] !== b[i]) {return false}}//Doesnt the !== only work on the same reference.
+        return true
     }
 }
