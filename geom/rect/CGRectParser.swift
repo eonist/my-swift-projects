@@ -1,4 +1,7 @@
 import Cocoa
+/**
+ * NOTE: CGRectExtension also has alot of methods for parsing the CGRect
+ */
 class CGRectParser{
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
