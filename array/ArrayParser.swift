@@ -24,7 +24,16 @@ class ArrayParser{
             return -1//-1 indicates non was found
         }
     }
-    
+    /**
+     * New
+     * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
+     */
+    class func indx<T>(arr: [T], _ item: T) -> Int{
+        for var i = 0; i < arr.count; ++i{
+            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
+        }
+        return -1
+    }
     /**
      * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
@@ -36,16 +45,7 @@ class ArrayParser{
         }
         return -1
     }   
-    /**
-     * New
-     * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
-     */
-    class func indx<T>(arr: [T], _ item: T) -> Int{
-        for var i = 0; i < arr.count; ++i{
-            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
-        }
-        return -1
-    }
+    
     /**
      * Returns an array with itmes that are not the same in 2 arrays
      * @example: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
