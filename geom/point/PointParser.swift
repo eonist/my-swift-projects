@@ -184,9 +184,28 @@ class PointParser{
      * @Note getting the points from an rectangle: _transformBox.boundingBox.getRect(_transformBox) output: (x=0, y=0, w=400, h=400)
      */
     class func cornersToRectangle(topLeft:CGPoint, _ bottomRight:CGPoint)->CGRect{
-        let width:CGFloat = NumberParser.distance(topLeft.x, bottomRight.x);
-        let height:CGFloat = NumberParser.distance(topLeft.y, bottomRight.y);
-        return CGRect(topLeft.x, topLeft.y, width, height);
+        let width:CGFloat = NumberParser.distance(topLeft.x, bottomRight.x)
+        let height:CGFloat = NumberParser.distance(topLeft.y, bottomRight.y)
+        return CGRect(topLeft.x, topLeft.y, width, height)
+    }
+    /**
+     * Returns the avarage point in an array of point
+     * @Note Centeroid definition: the center of mass of a geometric object of uniform
+     * @Note Median definition: the midpoint of a frequency distribution of observed values or quantities
+     * @Note could also be named avg for average
+     * TODO: rename to average?
+     * // :TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
+     */
+    class func median(points:Array<CGPoint>) -> CGPoint{
+        var median : CGPoint = CGPoint()
+        for point : CGPoint in points {
+            median.x += point.x;// :TODO: possibly use point.add?, you can also just do median += point here
+            median.y += point.y;
+        }
+        let numOfPoints:Int = points.count
+        median.x /= numOfPoints.cgFloat// :TODO: possibly use point.divide or similar utility function?
+        median.y /= numOfPoints.cgFloat
+        return median
     }
 }
 /*

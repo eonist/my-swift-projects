@@ -4,6 +4,12 @@ import Cocoa
  */
 class CGRectParser{
     /**
+     * NOTE: you can also use: someCGRect.center
+     */
+    class func center(rectangle:CGRect) -> CGPoint {
+        return CGPoint.interpolate(rectangle.topLeft, rectangle.bottomRight, 0.5);
+    }
+    /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
      */
     class func roundRect(rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{

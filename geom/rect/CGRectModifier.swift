@@ -13,6 +13,7 @@ class CGRectModifier {
     /**
      * @param position this value is the new center-position
      * // :TODO: the difference could be calculated before-hand
+     * NOTE: the rectangle is returned because it may be convenient when you chain methods together
      */
     class func centerPosition(inout rectangle:CGRect,_ position:CGPoint) -> CGRect {
         let difference:CGPoint = PointParser.difference(rectangle.center, position)

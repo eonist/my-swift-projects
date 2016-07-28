@@ -25,6 +25,38 @@ class PointModifier {
         return pivot + PointParser.safePolar(distance, rot)//use Point.polar
     }
     /**
+     * UNTESTED, but should work
+     * Returns a point rotated around a pivot point
+     * @Note does not modifify the @param point
+     * // :TODO: rename to matrixRot?
+     */
+    class func rotatePoint(point:CGPoint, _ pivot:CGPoint, _ rotation:CGFloat) -> CGPoint {
+        var transform = CGAffineTransformIdentity//var matrix:Matrix = new Matrix();
+        transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
+        return CGPointApplyAffineTransform(point, transform)//matrix.transformPoint(point)
+    }
+    /**
+     * Untested, but should work
+     */
+    class func matrixRot(point:CGPoint,  _ rotation:CGFloat) -> CGPoint {
+        var transform = CGAffineTransformIdentity//var matrix:Matrix = Matrix();
+        transform.rotate(rotation)//matrix.rotate(rotation);
+        return CGPointApplyAffineTransform(point, transform)//matrix.transformPoint(point);
+    }
+    /**
+     * Returns points rotated around a pivot point
+     * @Note does not modifiy the original points
+     * @param rotation: in radians (suppers radian values from -∞ to +∞)
+     * // :TODO: make a similar method that takes initPoints and points, this way you avoid recrating a new array everytime
+     */
+    class func rotatePoints(points:Array<CGPoint>, _ pivot:CGPoint, _ rotation:CGFloat) -> Array<CGPoint> {
+        var rotatedPoints:Array<CGPoint> = []
+        var transform = CGAffineTransformIdentity//var matrix:Matrix = new Matrix()
+        transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation)
+        for point : CGPoint in points { rotatedPoints.append(CGPointApplyAffineTransform(point, transform))}
+        return rotatedPoints
+    }
+    /**
      * Scales @Param p at @param pivot with @param scale
      * EXAMPLE: PointModifier.scale(CGPoint(0,0), CGPoint(40,40), CGPoint(2,2))//Output: (-40.0, -40.0)
      */

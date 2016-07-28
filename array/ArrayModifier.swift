@@ -12,8 +12,8 @@ class ArrayModifier{
 	 * a,b,c,d
      * _,a,b,c,d
 	 */
-	class func unshift<T>(inout array:[T],_ item:T)->Int{
-		array.insert(item,atIndex:0)
+    class func unshift<T>(inout array:Array<T>,_ item:T, _ index:Int = 0)->Int{
+		array.insert(item,atIndex:index)
 		return array.count
 	}
 	/**
@@ -123,8 +123,8 @@ class ArrayModifier{
      *	var array:Array = ["a","b","c"];
      *	var index:int = 1;
      *	var result:* = array.splice(index, 1, "x", array[index]);
-     *	trace("result: " + result);//b "the deleted item"
-     *	trace(array); //a,x,b,c
+     *	print("result: " + result);//b "the deleted item"
+     *	print(array); //a,x,b,c
      * TODO: return the array for method chaning purposes?
      */
     class func addAt<T>(inout array:[T], _ item:T, _ index:Int){
@@ -162,9 +162,21 @@ class ArrayModifier{
         array.append(item)
         return array
     }
+    /**
+     * Merges Array instance @param a into Array instance @param b at index @param i
+     * NOTE: alters the original arrays, and returns altered Array instance @param a
+     * var abc:Array = ["a","b","c"];
+     * var def:Array = ["d","e","f"];
+     * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
+     */
+    class func merge<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {/*an alternate name could be: mergeInPlaceAt*/
+        if(i == 0) {while(b.count > 0) {a.unshift(b.splice(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
+        else if(i == a.count) {while(b.count > 0) {a.splice(a.count,0,b.splice(0,1))}}
+        else {while(b.count > 0) {a.splice(i,0,b.splice(b.count-1,1))}}
+        return a
+    }
 }
 //combine
-//merge
 //bubblesort
 //swap
 private class Utils{
