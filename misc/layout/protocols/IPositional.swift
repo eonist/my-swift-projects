@@ -1,7 +1,6 @@
 import Foundation
 protocol IPositional:class {//<--new extends class
-    //pos was recently commented out because it isn't needed!?!?
-    
+    //pos was recently moved to the extension since it isnt needed as variable in the protocol
     func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
 }
