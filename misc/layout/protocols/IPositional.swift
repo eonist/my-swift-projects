@@ -1,5 +1,6 @@
 import Foundation
 protocol IPositional:class {//<--new extends class
+    //pos was recently commented out because it isn't needed!?!?
     //var pos:CGPoint{get set}/*<-- this is named pos, because the name position is effectivly blocked when using implicit getter and setter names*/
     func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
