@@ -230,6 +230,18 @@ class PointParser{
         return CGPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2)
     }
     /**
+     * Returns a new point comprised of the addition of two points
+     */
+    class func add(a:CGPoint,_ b:CGPoint) -> CGPoint {
+        return CGPoint(a.x+b.x, a.y+b.y)
+    }
+    /**
+     * Returns a new point comprised of the substraction of two points
+     */
+    class func substract(a:CGPoint,_ b:CGPoint) -> CGPoint {
+        return CGPoint(a.x-b.x, a.y-b.y)
+    }
+    /**
      * Returns a new point comprised of the division of two points
      */
     class func divide(a:CGPoint,_ b:CGPoint) -> CGPoint {
