@@ -1,6 +1,5 @@
 import Foundation
-typealias MatrixParser = CGAffineTransformParser
-
+typealias MatrixParser = CGAffineTransformParser/*Convenience*/
 class CGAffineTransformParser {
     /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
