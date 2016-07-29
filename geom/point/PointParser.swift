@@ -216,18 +216,18 @@ class PointParser{
      * var minY:Number = Math.min(p1.y,p2.y);
      * var maxX:Number = Math.max(p1.x,p2.x);
      * var maxY:Number = Math.max(p1.y,p2.y);
-     * var center:Point = new Point(minX+((maxX-minX)/2),(minY+((maxY-minY)/2)));
+     * var center:CGPoint = CGPoint(minX+((maxX-minX)/2),(minY+((maxY-minY)/2)));
      */
-    public static function center(p1:Point, p2:Point):Point {
-        return Point.interpolate(p1,p2,0.5);
+    class func center(p1:CGPoint, _ p2:CGPoint) -> CGPoint {
+        return CGPoint.interpolate(p1,p2,0.5)
     }
     /**
      * Returns a Point half way between @param p1 and @param p2
      * @Note formula: "(x1+x2)/2 , (y1,y2)/2"
      * @Note probably faster than using interpolation
      */
-    public static function midPoint(p1:Point,p2:Point):Point {
-        return new Point((p1.x+p2.x)/2,(p1.y+p2.y)/2);
+    class func midPoint(p1:CGPoint,_ p2:CGPoint) -> CGPoint {
+        return CGPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2)
     }
 }
 /*
