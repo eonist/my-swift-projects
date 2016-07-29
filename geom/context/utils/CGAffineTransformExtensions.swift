@@ -98,4 +98,10 @@ extension CGAffineTransform {
     static func concat(a:CGAffineTransform,_ b:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformConcat(a, b)
     }
+    /**
+     *
+     */
+    static func transformPoint(point:CGPoint){
+        
+    }
 }
