@@ -229,6 +229,7 @@ class PointParser{
     class func midPoint(p1:CGPoint,_ p2:CGPoint) -> CGPoint {
         return CGPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2)
     }
+    
 }
 /*
  * Equivalence Operators
