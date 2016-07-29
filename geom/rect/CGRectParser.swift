@@ -41,6 +41,13 @@ class CGRectParser{
     class func sides(rect:CGRect) -> Array<CGPoint> {/*<--Was previously named sidePoints*/
         return [rect.left,rect.right,rect.top,rect.bottom]
     }
+    /**
+     *
+     */
+    public static function corners(rectangle:Rectangle):Array {
+        return [topLeft(rectangle),topRight(rectangle),bottomLeft(rectangle),bottomRight(rectangle)];
+    }
+    return [self.topLeft,self.topRight,self.bottomLeft,self.bottomRight]
 }
 
 //math related to the rectangle
