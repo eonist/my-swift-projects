@@ -1,4 +1,5 @@
 import Foundation
+typealias MatrixParser = CGAffineTransformParser
 
 class CGAffineTransformParser {
     /**
