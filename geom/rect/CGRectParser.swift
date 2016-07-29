@@ -50,8 +50,8 @@ class CGRectParser{
     /**
      * // :TODO: maybe get the local rect with the pivot as center?? how does it work, hmmm
      */
-    class func localRectangle(topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGPoint {
-        var points:Array<CGPoint> = [topLeft, bottomRight];
+    class func localRectangle(topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
+        let points:Array<CGPoint> = [topLeft, bottomRight]
         var rotatedPoints:Array<CGPoint> = PointModifier.rotatePoints(points, CGPoint(), -rotation)
         return rectangle(rotatedPoints[0], rotatedPoints[1])
     }
@@ -59,9 +59,9 @@ class CGRectParser{
      *
      */
     class func rectangle(topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{
-        let width:CGFloat = NumberParser.difference(topLeft.x, bottomRight.x);
-        let height:CGFloat = NumberParser.difference(topLeft.y, bottomRight.y);
-        return CGRect(topLeft.x, topLeft.y, width, height);
+        let width:CGFloat = NumberParser.difference(topLeft.x, bottomRight.x)
+        let height:CGFloat = NumberParser.difference(topLeft.y, bottomRight.y)
+        return CGRect(topLeft.x, topLeft.y, width, height)
     }
 }
 
