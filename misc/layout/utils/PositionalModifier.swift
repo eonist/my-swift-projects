@@ -25,6 +25,6 @@ class PositionalModifier {
      */
     class func transform(positionals:Array<IPositional>, _ initPositions:Array<CGPoint>, _ matrix:CGAffineTransform) {
         let positionalCount:Int = positionals.count
-        for (var i : Int = 0; i < positionalCount; i++) { positionals[i].setPosition(CGPointApplyAffineTransform(initPositions[i], matrix)) }
+        for (var i : Int = 0; i < positionalCount; i++) { positionals[i].setPosition(matrix.transformPoint(initPositions[i])) }
     }
 }

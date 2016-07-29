@@ -99,9 +99,9 @@ extension CGAffineTransform {
         return CGAffineTransformConcat(a, b)
     }
     /**
-     *
+     * Applys a AffineTransformation on a point (This method is mostly for convenience)
      */
-    static func transformPoint(point:CGPoint){
-        
+    func transformPoint(point:CGPoint) -> CGPoint{
+        return CGPointApplyAffineTransform(point, self)
     }
 }
