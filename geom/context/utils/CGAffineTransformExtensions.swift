@@ -35,15 +35,9 @@ extension CGAffineTransform {
      * 
      */
     func copy()->CGAffineTransform{
-        return CGAffineTransform.copy(self)
+        return CGAffineTransformParser.copy(<#T##transform: CGAffineTransform##CGAffineTransform#>)
     }
-    /**
-     * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
-     * NOTE: The equivelent code in Matrix Trasform form: //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
-     * // :TODO: we could return the matrix for method chaining
-     * // :TODO: rename to just rotate? for simplicity?
-     */
-    static func rotateAroundPoint(var transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func rotateAroundPoint(transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         return CGAffineTransformParser.rotateAroundPoint(transform, rotation, pivot)
     }
     static func scaleFromPoint(transform:CGAffineTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
