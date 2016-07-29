@@ -12,4 +12,10 @@ class CGAffineTransformModifier {
         transform.rotate(rotation);
         transform.translate(-pivot.x+offset.x, -pivot.y+offset.y);/*globalToLocal*/
     }
+    /**
+     * Applys a AffineTransformation on a point (This method is mostly for convenience)
+     */
+    class func transformPoint(point:CGPoint, _ transform:CGAffineTransform) -> CGPoint{
+        return CGPointApplyAffineTransform(point, transform)
+    }
 }

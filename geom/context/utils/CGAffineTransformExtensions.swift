@@ -85,7 +85,7 @@ extension CGAffineTransform {
      *
      */
     static func concat(a:CGAffineTransform,_ b:CGAffineTransform)->CGAffineTransform{
-        return CGAffineTransformConcat(a, b)
+        return CGAffineTransformParser.concat(a, b)
     }
     /**
      * Applys a AffineTransformation on a point (This method is mostly for convenience)
