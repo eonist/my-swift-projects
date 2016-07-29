@@ -35,6 +35,12 @@ class CGRectParser{
         CGPathCloseSubpath(path);// ***** Segment 4 created by closing the path *****
         return path
     }
+    /**
+     * Returns the midPoint of each side in PARAM: rect
+     */
+    class func sidePoints(rect:CGRect) -> Array<CGPoint> {
+        return [rect.left,rect.right,rect.top,rect.bottom]
+    }
 }
 
 //math related to the rectangle
