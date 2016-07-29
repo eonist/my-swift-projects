@@ -48,8 +48,8 @@ extension CGRect{
     var left:CGPoint {get {return CGPoint(self.maxX, self.midY)}}
     var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
     var corners:Array<CGPoint> {return CGRectParser.corners(self)}
-    var nsRect:NSRect {return NSRectFromCGRect(self)} //NSRect(self.x,self.y,self.width,self.height)
     var sides:Array<CGPoint>{return CGRectParser.sides(self)}
+    var nsRect:NSRect {return NSRectFromCGRect(self)} //NSRect(self.x,self.y,self.width,self.height)
     /*Easy Access to corners*/
     subscript(key: String) -> CGPoint {
         get {

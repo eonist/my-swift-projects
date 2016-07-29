@@ -42,12 +42,12 @@ class CGRectParser{
         return [rect.left,rect.right,rect.top,rect.bottom]
     }
     /**
-     *
+     * Returns all the corners in PARAM: rect
      */
-    public static function corners(rectangle:Rectangle):Array {
-        return [topLeft(rectangle),topRight(rectangle),bottomLeft(rectangle),bottomRight(rectangle)];
+    class func corners(rect:CGRect) -> Array<CGPoint> {
+        return [rect.topLeft,rect.topRight,rect.bottomLeft,rect.bottomRight]
     }
-    return [self.topLeft,self.topRight,self.bottomLeft,self.bottomRight]
+    
 }
 
 //math related to the rectangle
