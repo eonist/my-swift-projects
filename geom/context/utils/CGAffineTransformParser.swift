@@ -2,6 +2,12 @@ import Foundation
 typealias MatrixParser = CGAffineTransformParser/*Convenience*/
 class CGAffineTransformParser {
     /**
+     * Convenience, See MatrixModifier.transformWithPivot for more detail
+     */
+    class func transformWithPivot(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) -> CGAffineTransform {
+        return MatrixModifier.transformWithPivot(&transform, scale, rotation, offset, pivot)
+    }
+    /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
      * NOTE: The equivelent code in Matrix Trasform form: //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
      * // :TODO: we could return the matrix for method chaining
