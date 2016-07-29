@@ -229,7 +229,12 @@ class PointParser{
     class func midPoint(p1:CGPoint,_ p2:CGPoint) -> CGPoint {
         return CGPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2)
     }
-    
+    /**
+     * Returns a new point comprised of the division of two points
+     */
+    class func divide(a:Point,_ b:Point) -> CGPoint {
+        return CGPoint(a.x/b.x, a.y/b.y)
+    }
 }
 /*
  * Equivalence Operators
