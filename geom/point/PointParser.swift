@@ -232,8 +232,15 @@ class PointParser{
     /**
      * Returns a new point comprised of the division of two points
      */
-    class func divide(a:Point,_ b:Point) -> CGPoint {
+    class func divide(a:CGPoint,_ b:CGPoint) -> CGPoint {
         return CGPoint(a.x/b.x, a.y/b.y)
+    }
+    /**
+     * Returns the multiplication of two points
+     * @Example: PointParser.multiply(CGPoint(20,20), CGPoint(2,2))//Output: (40,40)
+     */
+    class func multiply(a:CGPoint,_ b:CGPoint) -> CGPoint {
+        return CGPoint(a.x*b.x, a.y*b.y)
     }
 }
 /*
