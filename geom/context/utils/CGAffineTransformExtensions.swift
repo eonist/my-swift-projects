@@ -25,18 +25,7 @@ extension CGAffineTransform {
     mutating func skew(transform:CGAffineTransform, angle:CGFloat, skewSide:String = "right"){
         //see old code for this implementation
     }
-    /**
-     *
-     */
-    mutating func concat(transformation:CGAffineTransform){
-        self = CGAffineTransform.concat(self, transformation)
-    }
-    /**
-     * 
-     */
-    func copy()->CGAffineTransform{
-        return CGAffineTransformParser.copy(<#T##transform: CGAffineTransform##CGAffineTransform#>)
-    }
+    
     static func rotateAroundPoint(transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         return CGAffineTransformParser.rotateAroundPoint(transform, rotation, pivot)
     }
@@ -55,8 +44,23 @@ extension CGAffineTransform {
     static func copy(transform:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformParser.copy(transform)
     }
+    /**
+     *
+     */
+    mutating func concat(transformation:CGAffineTransform){
+        self = CGAffineTransformParser.concat(self, transformation)
+    }
+    /**
+     *
+     */
     static func concat(a:CGAffineTransform,_ b:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformParser.concat(a, b)
+    }
+    /**
+     *
+     */
+    func copy()->CGAffineTransform{
+        return CGAffineTransformParser.copy(self)
     }
     func transformPoint(point:CGPoint) -> CGPoint{
         return CGAffineTransformModifier.transformPoint(point, self)
