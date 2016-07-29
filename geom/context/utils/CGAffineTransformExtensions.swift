@@ -90,7 +90,7 @@ extension CGAffineTransform {
      *
      */
     static func copy(transform:CGAffineTransform)->CGAffineTransform{
-        return CGAffineTransformMake(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty)//radialGradient.gradientTransform
+        return CGAffineTransformParser.copy(transform)
     }
     /**
      *
