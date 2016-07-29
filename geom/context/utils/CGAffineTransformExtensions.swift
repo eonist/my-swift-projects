@@ -1,5 +1,5 @@
 import Foundation
-typealias Matrix = CGAffineTransform/*Convenience*/
+//typealias Matrix = CGAffineTransform/*Convenience*/
 extension CGAffineTransform {
     /**
      *
