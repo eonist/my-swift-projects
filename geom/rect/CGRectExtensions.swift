@@ -49,6 +49,7 @@ extension CGRect{
     var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
     var corners:Array<CGPoint> {return [self.topLeft,self.topRight,self.bottomLeft,self.bottomRight]}
     var nsRect:NSRect {return NSRectFromCGRect(self)} //NSRect(self.x,self.y,self.width,self.height)
+    var sides:Array<CGPoint>{return CGRectParser.sides(self)}
     /*Easy Access to corners*/
     subscript(key: String) -> CGPoint {
         get {

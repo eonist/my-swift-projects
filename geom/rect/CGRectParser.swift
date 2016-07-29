@@ -38,7 +38,7 @@ class CGRectParser{
     /**
      * Returns the midPoint of each side in PARAM: rect
      */
-    class func sidePoints(rect:CGRect) -> Array<CGPoint> {
+    class func sides(rect:CGRect) -> Array<CGPoint> {/*<--Was previously named sidePoints*/
         return [rect.left,rect.right,rect.top,rect.bottom]
     }
 }
