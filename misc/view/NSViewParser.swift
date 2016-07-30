@@ -65,9 +65,9 @@ class NSViewParser {
         if(parent === child) {return []}
         else if(parent.numSubViews > 0){
             for (var i : Int = 0; i < parent.numSubViews; i++) {
-                var child:NSView = parent.getSubViewAt(i)
-                var match:Array = child is DisplayObjectContainer ? index(child as DisplayObjectContainer,displayObject) : null;
-                if(match != null) {return ([i] as Array).concat(match)}
+                var child:NSView = parent.getSubViewAt(i)!
+                var match:Array = child is NSView ? index(child,displayObject) : null;
+                if(match != nil) {return ([i] as Array).concat(match)}
             }
         }
         return null;
