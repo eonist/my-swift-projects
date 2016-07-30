@@ -10,7 +10,7 @@ class SVGPathDataParser {
 	class func pathData(path:SVGPath, _ index:Int)->Array<CGFloat> {
 		let pathDataIndex:Int = SVGPathDataParser.index(path.commands, index);
 		let commandLength:Int = SVGCommandParser.commandLength(path.commands[index]);
-		return path.parameters.slice(pathDataIndex,pathDataIndex+commandLength);//slice does not modify the original array
+		return path.parameters.slice2(pathDataIndex,pathDataIndex+commandLength);//slice does not modify the original array, the slice method was recently changed to slice2
 	}
 	/**
 	 * Returns the pathDataIndex based on the @param commandIndex
