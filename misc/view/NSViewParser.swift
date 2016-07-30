@@ -56,4 +56,20 @@ class NSViewParser {
         if(view.superview != nil && !(view.superview as? T != nil)) {return parentOfType(view.superview!,classType)}
         return view.superview != nil ? view.superview as? T : nil
     }
+    /**
+     * Returns the array index of @param item from @param parent
+     * @Note this function is recursive
+      * // :TODO: rename to indexMap? or depth or map?, since index should be index of a DisplayObject
+    */
+    class func index(parent:NSView,_ child:NSView) -> Array<Int> {
+        if(parent === child) {return []}
+        else if(parent.numSubViews > 0){
+            for (var i : Int = 0; i < parent.numSubViews; i++) {
+                var child:NSView = parent.getSubViewAt(i)
+                var match:Array = child is DisplayObjectContainer ? index(child as DisplayObjectContainer,displayObject) : null;
+                if(match != null) {return ([i] as Array).concat(match)}
+            }
+        }
+        return null;
+    }
 }
