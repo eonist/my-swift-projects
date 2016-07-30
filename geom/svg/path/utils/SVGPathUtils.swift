@@ -100,7 +100,7 @@ class SVGPathUtils {
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {
-        var path:IPath = Path()
+        let path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         //var prevM:CGPoint/*previous MoveTo pos*/
