@@ -61,15 +61,15 @@ class NSViewParser {
      * @Note this function is recursive
       * // :TODO: rename to indexMap? or depth or map?, since index should be index of a DisplayObject
     */
-    class func index(parent:NSView,_ child:NSView) -> Array<Int> {
+    class func index(parent:NSView,_ child:NSView) -> Array<Int>? {
         if(parent === child) {return []}
         else if(parent.numSubViews > 0){
             for (var i : Int = 0; i < parent.numSubViews; i++) {
-                var child:NSView = parent.getSubViewAt(i)!
-                var match:Array = child is NSView ? index(child,displayObject) : null;
-                if(match != nil) {return ([i] as Array).concat(match)}
+                var view:NSView = parent.getSubViewAt(i)!
+                var match:Array<Int>? = view is NSView ? index(view,child) : nil
+                if(match != nil) {return [i] + match}
             }
         }
-        return null;
+        return nil;
     }
 }
