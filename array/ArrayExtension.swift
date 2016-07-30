@@ -32,8 +32,8 @@ extension Array {
     mutating func unshift(item:Element)->Int{
         return ArrayModifier.unshift(&self, item)
     }
-    func slice(startIndex:Int, _ endIndex:Int) ->Array<Element>{
-        return ArrayModifier.slice2(self,startIndex,endIndex)
+    func DEPRECATEDslice(startIndex:Int, _ endIndex:Int) ->Array<Element>{
+        return ArrayModifier.DEPRECATEDslice(self,startIndex,endIndex)
     }
     func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice2(self,startIndex,endIndex)

@@ -70,6 +70,7 @@ class ArrayModifier{
     /**
      * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing and faster, but this work for now
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
+     * NOTE: This method does not alter the original array (should probably be moved to ArrayParser?)
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let range = Utils.range(array, startIndex, endIndex)
