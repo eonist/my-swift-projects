@@ -33,7 +33,7 @@ extension Array {
         return ArrayModifier.unshift(&self, item)
     }
     func slice(startIndex:Int, _ endIndex:Int) ->Array<Element>{
-        return ArrayModifier.slice(self,startIndex,endIndex)
+        return ArrayModifier.slice2(self,startIndex,endIndex)
     }
     func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice2(self,startIndex,endIndex)

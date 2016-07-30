@@ -58,7 +58,7 @@ class ArrayModifier{
      * IMPORTANT: the original array is NOT modified
      * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
-    class func slice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
+    class func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         
         //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
         
