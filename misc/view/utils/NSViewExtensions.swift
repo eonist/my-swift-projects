@@ -90,6 +90,14 @@ extension NSView {
     func indexOf(subView:NSView)->Int{
         return NSViewParser.indexOf(self, subView)
     }
+    
+    func globalToLocal(p:CGPoint){
+        let localPoint = convertPoint(p, fromView: self.window?.contentView)
+    }
+    func localToGlobal(p:CGPoint){
+        let localPoint = convertPoint(p, fromView: self.window?.contentView)
+    }
+    
     /**
      * DEPRECATED
      */
