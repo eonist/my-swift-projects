@@ -30,6 +30,7 @@ extension CGPoint{
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
+    func add(p:CGPoint)->CGPoint{return}
 }
 /*Convenient operators*/
 public func +(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.add(a, b)}//Adds the coordinates of point p to the coordinates of this point to create a new point
