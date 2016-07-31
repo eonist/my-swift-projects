@@ -24,7 +24,7 @@ class AdvanceNSViewParser {
             Swift.print("b")
             return container?.getSubViewAt(index[0])!
         }
-        else if(index.count > 1 && container!.numSubViews > 0 && container!.getSubViewAt(index[0]) is NSView/*<--this last assert isn't needed*/) {
+        else if(index.count > 1 && container!.numSubViews > 0 && container!.getSubViewAt(index[0])?.numSubViews > 0/*<--this last assert isn't needed*/) {
             Swift.print("c")
             return getAt(displayObjectContainer.getChildAt(index[0]) as DisplayObjectContainer,index.slice(1,index.length));
         }
