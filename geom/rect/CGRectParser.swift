@@ -75,6 +75,17 @@ class CGRectParser{
         let height:CGFloat = NumberParser.difference(topLeft.y, bottomRight.y)
         return CGRect(topLeft.x, topLeft.y, width, height)
     }
+    /**
+     *
+     */
+    class func globalToLocal(var globalRectangle:CGRect,_ localView:NSView) -> CGRect {
+        var localRectangle:CGRect = CGRect(0,0,globalRectangle.width,globalRectangle.height)
+        let globalToLocalPoint:CGPoint = localView.globalToLocal(globalRectangle.topLeft)
+        localRectangle.offsetInPlace(globalToLocalPoint)
+        globalRectangle.x = localRectangle.x
+        globalRectangle.y = localRectangle.y
+        return globalRectangle
+    }
 }
 
 //math related to the rectangle
