@@ -19,7 +19,7 @@ class AdvanceArrayParser {
      * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex?
      * @example index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
-    class func index(index:Array<Int>,indices:Array<[Int]>) -> Int{
+    class func index(index:Array<Int>,_ indices:Array<[Int]>) -> Int{
         let lengthOfIndices:Int = indices.count/*Cpu optimiztion*/
         let lengthOfIndex:Int = index.count/*Cpu optimiztion*/
         for (var i : Int = 0; i < lengthOfIndices; i++) {
