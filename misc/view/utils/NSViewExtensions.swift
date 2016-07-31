@@ -103,6 +103,11 @@ extension NSView {
         return convertPoint(p, toView:self)
     }
     /**
+     *
+     */
+    var mouseX:CGFloat{return MouseUtils.point(self).x}
+    var mouseY:CGFloat{return MouseUtils.point(self).y}
+    /**
      * DEPRECATED
      */
     func getSubviewAt(i:Int)->NSView{
