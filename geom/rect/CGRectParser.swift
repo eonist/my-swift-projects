@@ -56,9 +56,35 @@ class CGRectParser{
     /**
      *
      */
-    class func sides(rectangle:CGRect) -> Array<<Line> {
+    class func sides(rectangle:CGRect) -> Array<Line> {
         return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)];
     }
+    /**
+     *
+     */
+    class func topSide(rectangle:CGRect):Line {
+        return Line(rectangle.topLeft, CGPoint(rectangle.right,rectangle.top));
+    }
+    /**
+     *
+     */
+    class func rightSide(rectangle:CGRect):Line {
+        return Line(CGPoint(rectangle.right,rectangle.top),rectangle.bottomRight);
+    }
+    /**
+     *
+     */
+    class func bottomSide(rectangle:CGRect):Line {
+        return Line(rectangle.bottomRight,CGPoint(rectangle.left,rectangle.bottom));
+    }
+    /**
+     *
+     */
+    class func leftSide(rectangle:CGRect):Line {
+        return Line(CGPoint(rectangle.left,rectangle.bottom),rectangle.topLeft);
+    }
+    
+    
     /**
      * Returns all the corners in PARAM: rect
      */
