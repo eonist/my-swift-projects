@@ -3,7 +3,7 @@ import Cocoa
 class AdvanceNSViewParser {
     /**
      * TODO: not optimized very well
-     * Returns depths of every DisplayObject instance in @param displayObject
+     * Returns depths of every NSView instance in @param views
      */
     class func indicesOfViews(container:NSView,_ views:Array<NSView>) -> Array<[Int]> {
         var indices:Array<[Int]> = []
