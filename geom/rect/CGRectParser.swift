@@ -76,7 +76,9 @@ class CGRectParser{
         return CGRect(topLeft.x, topLeft.y, width, height)
     }
     /**
-     *
+     * // :TODO: create a similar method for localToGlobal
+     * @example var localRectangle:CGRect = CGRectParaser.globalToLocal(rectangle1.clone(), view)
+     * NOTE: This method used to be a modifying method but was remade as a parser, as its easier to use this way (make a duplocate method if mutating is need in the future)
      */
     class func globalToLocal(var globalRectangle:CGRect,_ localView:NSView) -> CGRect {
         var localRectangle:CGRect = CGRect(0,0,globalRectangle.width,globalRectangle.height)
