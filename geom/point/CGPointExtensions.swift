@@ -1,5 +1,5 @@
 import Foundation
-
+/*Class methods:*/
 extension CGPoint{
     /**
      * Returns a point, in a polar cordinate system (from 0,0), for @param angle and @param length
@@ -22,18 +22,22 @@ extension CGPoint{
 }
 /*Convenient extensions*/
 extension CGPoint{
-    func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
-    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
-    func interpolate(p:CGPoint,_ scalar:CGFloat) -> CGPoint { return CGPoint.interpolate(self,p,scalar) }//interpolate from self to b by scalar
+    /*initiaters*/
     init(_ x: Double, _ y:Double) { self.x = CGFloat(x); self.y = CGFloat(y); }//Init a CGPoint with Double values
     init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }//Init a CGPoint with Int values
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}//Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)
+    /*parsers*/
+    func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
+    func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
+    func interpolate(p:CGPoint,_ scalar:CGFloat) -> CGPoint { return CGPoint.interpolate(self,p,scalar) }//interpolate from self to b by scalar
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
     func add(p:CGPoint)->CGPoint{return PointParser.add(self, p)}
     func substract(p:CGPoint) -> CGPoint {return PointParser.substract(self, p)}
     func multiply(p:CGPoint) -> CGPoint {return PointParser.multiply(self, p)}
     func divide(p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
+    /*asserters*/
+    func equals(p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
     
 }
 /*Convenient operators*/
