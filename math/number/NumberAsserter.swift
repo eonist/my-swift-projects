@@ -1,6 +1,7 @@
 import Foundation
 /**
  * Definition of Asserter: state a fact or belief confidently and forcefully
+ * TODO: Rename this to CGFloatAsserter, and then make a typeAlias to NumberAsserter -> to not break legacy code. (Do the same with PointAserter etc)
  */
 class NumberAsserter{
     /**
@@ -26,5 +27,11 @@ class NumberAsserter{
             //print("result: " + "\(result)");
             return result < epsilon//TODO: we could do <= here
         }
+    }
+    /**
+     * @Note unlike the native "==" method this method supports NaN values
+     */
+    class func equals(a:CGFloat,_ b:CGFloat) -> Bool {
+        return (a.isNaN && b.isNaN) || a == b
     }
 }
