@@ -37,11 +37,6 @@ class NSViewParser {
         }
         return -1
     }
-    //DEPRECATED
-    class func getSubviewAt(view:NSView, _ i:Int)->NSView{
-        //favour getSubViewAt method instead, as its optional
-        return view.subviews[i]
-    }
     /**
      * Returns the index of @param subView in @param view, -1 if no match is found
      */
@@ -71,5 +66,10 @@ class NSViewParser {
             }
         }
         return nil
+    }
+    //DEPRECATED
+    class func getSubviewAt(view:NSView, _ i:Int)->NSView{
+        //favour getSubViewAt method instead, as its optional
+        return view.subviews[i]
     }
 }

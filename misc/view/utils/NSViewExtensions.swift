@@ -102,11 +102,8 @@ extension NSView {
     func localToGlobal(p:CGPoint) -> CGPoint{
         return convertPoint(p, toView:self)
     }
-    /**
-     *
-     */
-    var mouseX:CGFloat{return MouseUtils.point(self).x}
-    var mouseY:CGFloat{return MouseUtils.point(self).y}
+    var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
+    var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
     /**
      * DEPRECATED
      */
