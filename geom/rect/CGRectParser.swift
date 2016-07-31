@@ -62,26 +62,26 @@ class CGRectParser{
     /**
      *
      */
-    class func topSide(rectangle:CGRect):Line {
-        return Line(rectangle.topLeft, CGPoint(rectangle.right,rectangle.top));
+    class func topSide(rectangle:CGRect) -> Line {
+        return Line(rectangle.topLeft, CGPoint(rectangle.right.x,rectangle.top.y))
     }
     /**
      *
      */
-    class func rightSide(rectangle:CGRect):Line {
-        return Line(CGPoint(rectangle.right,rectangle.top),rectangle.bottomRight);
+    class func rightSide(rectangle:CGRect) -> Line {
+        return Line(CGPoint(rectangle.right.x,rectangle.top.y),rectangle.bottomRight)
     }
     /**
      *
      */
-    class func bottomSide(rectangle:CGRect):Line {
-        return Line(rectangle.bottomRight,CGPoint(rectangle.left,rectangle.bottom));
+    class func bottomSide(rectangle:CGRect) -> Line {
+        return Line(rectangle.bottomRight,CGPoint(rectangle.left.x,rectangle.bottom.y))
     }
     /**
      *
      */
-    class func leftSide(rectangle:CGRect):Line {
-        return Line(CGPoint(rectangle.left,rectangle.bottom),rectangle.topLeft);
+    class func leftSide(rectangle:CGRect) -> Line {
+        return Line(CGPoint(rectangle.left.x,rectangle.bottom.y),rectangle.topLeft)
     }
     
     
