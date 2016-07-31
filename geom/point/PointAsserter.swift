@@ -16,14 +16,14 @@ class PointAsserter {
      * @Note if line a touches the start or end of line b then it intersects
      * @Note if the end of line a is equal to the end of line b then it returns false, this can in some cases be undesirable // :TODO: you could add a point check to mitigate this problem
      */
-    class func intersects(a1:Point ,  _ a2:Point,  _ b1:Point,  _ b2:Point) -> Bool {
-        var q:Number = (a1.y - b1.y) * (b2.x - b1.x) - (a1.x - b1.x) * (b2.y - b1.y);
-        var d:Number = (a2.x - a1.x) * (b2.y - b1.y) - (a2.y - a1.y) * (b2.x - b1.x);
-        if( d == 0 )  return false;
-        var r:Number = q / d;
-        q = (a1.y - b1.y) * (a2.x - a1.x) - (a1.x - b1.x) * (a2.y - a1.y);
-        var s:Number = q / d;
-        if( r < 0 || r > 1 || s < 0 || s > 1 ) return false;
-        return true;
+    class func intersects(a1:CGPoint ,  _ a2:CGPoint,  _ b1:CGPoint,  _ b2:CGPoint) -> Bool {
+        var q:CGFloat = (a1.y - b1.y) * (b2.x - b1.x) - (a1.x - b1.x) * (b2.y - b1.y)
+        let d:CGFloat = (a2.x - a1.x) * (b2.y - b1.y) - (a2.y - a1.y) * (b2.x - b1.x)
+        if( d == 0 )  {return false}
+        let r:CGFloat = q / d
+        q = (a1.y - b1.y) * (a2.x - a1.x) - (a1.x - b1.x) * (a2.y - a1.y)
+        let s:CGFloat = q / d
+        if( r < 0 || r > 1 || s < 0 || s > 1 ) {return false}
+        return true
     }
 }
