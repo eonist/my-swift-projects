@@ -18,8 +18,8 @@ class CGRectAsserter {
      * @Note the for loop does not call RectangleParser.sides more than once
      * @example RectangleAsserter.intersectsLine(new Rectangle(200,200,500,500),new PrimitiveLine(new Point(0,0), new Point(60,60)));//false
      */
-    class func intersectsLine(rectangle:CGRect,line:Line) -> Bool {
-        for side : Line in RectangleParser.sides(rectangle) {if(LineAsserter.intersects(side, line)) {return true}}
+    class func intersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
+        for side : Line in CGRectParser.sides(rectangle) {if(LineAsserter.intersects(side, line)) {return true}}
         return false;
     }
 }
