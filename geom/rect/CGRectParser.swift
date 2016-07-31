@@ -4,6 +4,18 @@ import Cocoa
  */
 class CGRectParser{
     /**
+     * Returns a Rectangle instance from any two points (does not have to be topLeft and bottomRight)
+     */
+    class func rectangleByPoints(p1:CGPoint,_ p2:CGPoint) -> CGRect {
+        let top:CGFloat = min(p1.y, p2.y)
+        let left:CGFloat = min(p1.x, p2.x)
+        let bottom:CGFloat = max(p1.y, p2.y)
+        let right:CGFloat = max(p1.x, p2.x)
+        let width:CGFloat = right - left
+        let height:CGFloat = bottom - top
+        return CGRect(left,top,width,height)
+    }
+    /**
      * NOTE: you can also use: someCGRect.center
      */
     class func center(rectangle:CGRect) -> CGPoint {
