@@ -48,6 +48,14 @@ extension Array {
     mutating func removeAt(i:Int){
         if(i != -1){self.splice(i, 1)}
     }
+    /**
+     * A neat way to cast Array's
+     * NOTE: figure out a way to make it work with inout methods aswell
+     */
+    func cast<T>(type:T.Type) -> [T]{
+        return self.map { $0 as! T }
+    }
+    
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
