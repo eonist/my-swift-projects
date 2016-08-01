@@ -63,30 +63,4 @@ class CGPathUtils {
         return cgPath
     }
 }
-private class Utils{
-    /**
-     * Very temp, remove if the other solution works
-     */
-    class func arcTo(path:IPath,cgPath:CGMutablePathRef,index:Int,prevEnd:CGPoint){
-        //CGPathAddArcToPoint(cgPath, nil, prevEnd.x, prevEnd.y, path.pathData[index+5], path.pathData[index+6], path.pathData[index+0])
-        let center:CGPoint = CGPoint(path.pathData[index+7],path.pathData[index+8])
-        let start:CGPoint = prevEnd.copy()
-        let end:CGPoint = CGPoint(path.pathData[index+5],path.pathData[index+6])
-        let startAngle:CGFloat = TrigParser.angle(center, start)
-        
-        Swift.print("DisplayPathUtils.compile() startAngle: " + "\(startAngle)")
-        let endAngle:CGFloat = TrigParser.angle(center, end)
-        
-        Swift.print("DisplayPathUtils.compile() endAngle: " + "\(endAngle)")
-        let clockwise:Bool =  path.pathData[index+4] == 1
-        Swift.print("DisplayPathUtils.compile() clockwise: " + "\(clockwise)")
-        let delta = TrigParser.angleSpan2(startAngle, endAngle, clockwise)//use angleSpan to find the diff between start and end angles
-        Swift.print("DisplayPathUtils.compile() delta: " + "\(delta)")
-        
-        //CGPathAddArc(cgPath, nil, center.x,center.y, path.pathData[index+0]/*<-radius*/, startAngle,endAngle ,clockwise/**//*<-clockwise*/)
-        cgPath.addRelativeArc(center, path.pathData[index+0], startAngle, delta, nil)
-        //CGPathAddLineToPoint(cgPath,nil,path.pathData[index+5],path.pathData[index+6])
-        
-    }
-}
 
