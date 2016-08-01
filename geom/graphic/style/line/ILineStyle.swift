@@ -11,4 +11,9 @@ extension ILineStyle{
     func copy() -> ILineStyle {
         return LineStyle(thickness,color,lineCap,lineJoin,miterLimit)
     }
+    func mix(color:NSColor)->ILineStyle{
+        var c = copy()
+        c.color = color
+        return c
+    }
 }
