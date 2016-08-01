@@ -69,9 +69,9 @@ private class BasicPathParser{
      *
      */
     class func arcAt(path:IPath,_ commandIndex:Int) -> IArc{
-        let pathDataIndex:Int = PathDataParser.index(path.commands, commandIndex)
-        let start:CGPoint = commandIndex > 0 ? PathDataParser.end(path, commandIndex-1) : CGPoint()
-        return PathDataParser.arcAt(path.pathData, pathDataIndex, start)
+        let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
+        let start:CGPoint = commandIndex > 0 ? BasicPathDataParser.end(path, commandIndex-1) : CGPoint()
+        return BasicPathDataParser.arcAt(path.pathData, pathDataIndex, start)
     }
 }
 private class BasicPathDataParser{
@@ -80,7 +80,7 @@ private class BasicPathDataParser{
      */
     class func index(commands:Array<Int>,_ commandIndex:Int) -> Int {
         var pathDataIndex:Int = 0;
-        for (var i : Int = 0; i < commandIndex; i++) {pathDataIndex += CommandParser.commandLength(commands[i])}
+        for (var i : Int = 0; i < commandIndex; i++) {pathDataIndex += BasicCommandParser.commandLength(commands[i])}
         return pathDataIndex;
     }
     /**
@@ -104,6 +104,43 @@ private class BasicPathDataParser{
         return null;//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
         }
         */
+    }
+    /**
+     * @Note: the CLOSE case should probably be dealt with by the caller
+     * // :TODO: for the close case we could also iterate backward to find the last MT???
+     */
+    class func endAt(pathData:Array<CGFloat>, _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
+        if(commandType == PathCommand.MOVE_TO || commandType == PathCommand.LINE_TO || commandType == PathCommand.WIDE_MOVE_TO || commandType == PathCommand.WIDE_LINE_TO) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
+        else if(commandType == PathCommand.ARC_TO) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
+        else if(commandType == PathCommand.CURVE_TO) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
+        else if(commandType == PathCommand.CLOSE) {return CGPoint(NaN,NaN)}/*used to be null*/
+        else {fatalError("PathCommand not yet supported")}//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
+    }
+    /**
+     * Returns a IArc5 instance derived from @param pathData at @param index
+     * @param pathDataIndex is the index in the pathData not the commandIndex
+     * @param start is the start position of the prev command
+     * @Note this function is used in the SelectPath4 draw functions
+     * @Note the Function PathParser.arcAt does the same thing but by looking at the commandIndex instead
+     * // :TODO: the start is the end of prev command
+     */
+    class func arcAt(pathData:Array<CGFloat>,_ pathDataIndex:Int,_ start:CGPoint)->IArc {
+        //Swift.print("START: " + start);
+        return Arc(start, pathData[pathDataIndex], pathData[pathDataIndex+1], pathData[pathDataIndex+2], Bool(pathData[pathDataIndex+3]), Bool(pathData[pathDataIndex+4]), CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6]), CGPoint(pathData[pathDataIndex+7],pathData[pathDataIndex+8]))
+    }
+}
+private class BasicCommandParser{
+    /**
+     * Returns the number of parameters for a specific command type
+     * // :TODO: include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
+     * // :TODO: isnt this function superflousouse since you can just trace the actual command and get the same value?
+     */
+    class func commandLength(command:Int)->Int {
+        if(command == PathCommand.CLOSE || command == PathCommand.NO_OP) {return 0}
+        else if(command == PathCommand.CURVE_TO) {return 4}
+        else if(command == PathCommand.ARC_TO) {return 9}
+        else if(command == PathCommand.CUBIC_CURVE_TO) {return 8}
+        else {return 2}/*MOVE_TO LINE_TO WIDE_MOVE_TO WIDE_LINE_TO*/
     }
 }
 private class Utils{
