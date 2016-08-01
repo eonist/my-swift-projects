@@ -52,7 +52,7 @@ class DisplayArcUtils {
             //Swift.print("sY: " + sY)
             let s:CGPoint = CGPoint(start.x,start.y-sY)
             //Swift.print("Angle.normalize2(Angle.angle(center, s)-rot): " + Angle.normalize2(Angle.angle(center, s)-rot))
-            let sAngle:CGFloat = EllipseMath.advanceEllipticalAngle(r.x*r.x, r.x*r.x, TrigParser.normalize2(Trig.angle(center, s)-rot))
+            let sAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(r.x*r.x, r.x*r.x, TrigParser.normalize2(Trig.angle(center, s)-rot))
             //Swift.print("sAngle: " + sAngle)
             //Swift.print("Angle.angle(center, end): " + Angle.angle(center, end))
             let leveledEnd:CGPoint = rot == 0 ? end : PointModifier.rot(end, center, rot)
@@ -101,9 +101,31 @@ class DisplayArcUtils {
         //Swift.print("axis.x: " + axis.x);
         //Swift.print("axis.y: " + axis.y);
         //Swift.print("Angle.normalize2(Angle.angle(c, start): " + Angle.normalize2(Angle.angle(c, start)));
-        let startAngle:CGFloat = EllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, start)-rot))/*<- new code (used to use normalize2)*/
-        let endAngle:CGFloat = EllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, end)-rot))/*<- new code (used to use normalize2)*/
+        let startAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, start)-rot))/*<- new code (used to use normalize2)*/
+        let endAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, end)-rot))/*<- new code (used to use normalize2)*/
         //return ["start":,"end":,"center":,"xRadii":,"yRadii":r.y]//return new Arc4(r.x, r.y, Angle.flip(startAngle, multiplier), Angle.flip(endAngle, multiplier), c,); // :TODO: why do we have to flip the angles?
         return AngleArc(startAngle/*Angle.flip(startAngle, multiplier)*/,endAngle/*Angle.flip(endAngle, multiplier)*/,r.x,r.y,c,rot)
+    }
+}
+
+private class BasicEllipseMath {
+    /**
+     * Returns a eliptical angle ( which is the angle of the elliptical arc prior to the stretch and rotate operations.)
+     * @param angle: an circular angle
+     * @Important: atan2 is when measured counterclockwise from a circle's x axis
+     * @Note: can also use atan(y/x); (atan returns funky rotatioin values, i guess clockwise from x axis, test this though)
+     * @Note: this is the same but just as a refrence: Angle.angle(new Point(0,0), new Point(Math.cos(angle) / xAxis,Math.sin(angle) / yAxis))
+     */
+    class func ellipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat)->CGFloat {// :TODO: rename to : something like counterClockwiseEllipticalAngle?
+        let x:CGFloat = cos(angle) / xAxis
+        let y:CGFloat = sin(angle) / yAxis
+        return atan2(y,x)
+    }
+    /**
+     * @Note use this if you only know the circular angle of a point on a rotated ellipse
+     * // :TODO: the angle should be the last argument
+     */
+    class func advanceEllipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat,_ rotation:CGFloat = 0) -> CGFloat {
+        return ellipticalAngle(xAxis,yAxis,angle-rotation);
     }
 }
