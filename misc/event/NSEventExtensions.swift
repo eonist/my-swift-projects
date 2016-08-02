@@ -8,4 +8,9 @@ extension NSEvent {
     func localPos(view:NSView)->CGPoint{
         return view.convertPoint(self.locationInWindow,fromView:nil)
     }
+    var shiftKey:Bool {return self.modifierFlags.contains(.ShiftKeyMask)}/*Convenience*/
+    var commandKey:Bool {return self.modifierFlags.contains(.CommandKeyMask)}/*Convenience*/
+    var altKey:Bool {return self.modifierFlags.contains(.AlternateKeyMask)}/*Convenience*/
+    var ctrlKey:Bool {return self.modifierFlags.contains(.ControlKeyMask)}/*Convenience*/
+    //There is also FunctionKeyMask
 }
