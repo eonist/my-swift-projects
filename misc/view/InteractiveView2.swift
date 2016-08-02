@@ -163,6 +163,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
+        Swift.print("hitTest")
         //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         //super.hitTest(aPoint)
         if(isInteractive){
