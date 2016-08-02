@@ -13,6 +13,7 @@ extension InteractiveView2{
         pos.y = WinParser.height(window!) - pos.y/*flips the window coordinates*/
         return pos
     }
+    //Debugging this at the moment 
     var viewUnderMouse:NSView?{
         Swift.print("window: " + "\(window)")
         Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
