@@ -150,6 +150,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
+    
+    //Continue here: the mouseUp isnt always called, look though old research papers and do new sweeps on the net for information, Possibly also make a eventMonitor to test the upstate along side the current solution
+    
     override func mouseUp(theEvent: NSEvent) {
         Swift.print("InteractiveView.mouseUp() NSEvent")
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, in the end the problem still presists so it must be something else*/
