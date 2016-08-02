@@ -99,6 +99,13 @@ class InteractiveView2:FlippedView,IInteractiveView{
         
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
+    
+    
+    
+    //Continue here: The problem is how multitouch trackpads behave: 
+    
+    
+    
     /**
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
