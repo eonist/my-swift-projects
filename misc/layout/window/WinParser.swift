@@ -41,6 +41,12 @@ class WinParser {
         return windows
     }
     /**
+     *
+     */
+    class func frontMostWin<T>(type:T.Type)-> T{
+        
+    }
+    /**
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
