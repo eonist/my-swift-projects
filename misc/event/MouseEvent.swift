@@ -26,9 +26,9 @@ class MouseEvent:Event{
  */
 extension MouseEvent{
     var loc:CGPoint{return event!.locationInWindow}
-    var shiftKey:Bool {return (self.event?.modifierFlags.contains(.ShiftKeyMask))!}/*Convenience*/
-    var commandKey:Bool {return (self.event?.modifierFlags.contains(.CommandKeyMask))!}/*Convenience*/
-    var altKey:Bool {return (self.event?.modifierFlags.contains(.AlternateKeyMask))!}/*Convenience*/
-    var ctrlKey:Bool {return (self.event?.modifierFlags.contains(.ControlKeyMask))!}/*Convenience*/
+    var shiftKey:Bool {return self.event!.shiftKey}/*Convenience*/
+    var commandKey:Bool {return self.event!.commandKey}/*Convenience*/
+    var altKey:Bool {return self.event!.altKey}/*Convenience*/
+    var ctrlKey:Bool {return self.event!.ctrlKey}/*Convenience*/
     //There is also FunctionKeyMask
 }
