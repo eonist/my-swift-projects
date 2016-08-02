@@ -44,7 +44,15 @@ class WinParser {
      *
      */
     class func frontMostWin<T>(type:T.Type)-> T?{
-        return nil
+        var windows:Array<T> = []
+        for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
+        
+        windows.sortInPlace { (a, b) -> Bool in
+            return (a as NSWindow).orderedIndex > (b as NSWindow).orderedIndex
+        }
+        //Swift.print("windows: " + "\(windows)")
+        
+        return windows[0]
     }
     /**
      * Returns the first focusedWindow in the NSApplication.windows array
