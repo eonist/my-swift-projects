@@ -58,7 +58,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
-     * Only fires if the mouse is "rolls" out of the visible part of this view
+     * Only fires if the mouse "rolls" out of the visible part of this view
      */
     func mouseOut(event:MouseEvent){
         //Swift.print("\(self.dynamicType)" + ".mouseOut() ")
@@ -77,6 +77,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUpInside(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUpInside() ")
+        Swift.print("InteractiveView.mouseUpInside() MouseEvent")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -85,6 +86,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUpOutside(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUpOutside() ")
+        Swift.print("InteractiveView.mouseUpOutside() MouseEvent")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -92,6 +94,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUp(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUp() ")
+        Swift.print("InteractiveView.mouseUp() MouseEvent")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
