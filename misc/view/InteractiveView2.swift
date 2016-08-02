@@ -149,7 +149,10 @@ class InteractiveView2:FlippedView,IInteractiveView{
         }
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
-    override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
+    override func mouseDown(theEvent: NSEvent) {
+        mouseDown(MouseEvent(theEvent,self))
+        super.mouseDown(theEvent)
+    }
     
     //Continue here: the mouseUp isnt always called, look though old research papers and do new sweeps on the net for information, Possibly also make a eventMonitor to test the upstate along side the current solution
     
