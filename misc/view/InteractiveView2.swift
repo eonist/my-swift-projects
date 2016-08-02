@@ -154,7 +154,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
     //Then if you can throw it off: Try to see if you can get any other up call, maybe rightClickUp, or maybe you have to forward some MouseDown event with super
     //Also see if there is a touch up call maybe....over and out for now
     
-    //It could actually be your trackpad that is brokern. Try to trigger this bug on your laptopo tomorrow
+    //It could actually be your trackpad that is brokern. Try to trigger this bug on your laptopo tomorrow, actually I think that was the problem. As the non-firing upEvent is also showing in safari etc
     
     override func touchesEndedWithEvent(event: NSEvent) {
         Swift.print("touchesEndedWithEvent")
