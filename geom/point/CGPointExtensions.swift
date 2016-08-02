@@ -33,7 +33,7 @@ extension CGPoint{
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
     func add(p:CGPoint)->CGPoint{return PointParser.add(self, p)}
-    func substract(p:CGPoint) -> CGPoint {return PointParser.substract(self, p)}
+    func subtract(p:CGPoint) -> CGPoint {return PointParser.subtract(self, p)}
     func multiply(p:CGPoint) -> CGPoint {return PointParser.multiply(self, p)}
     func divide(p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
     /*asserters*/
@@ -42,7 +42,7 @@ extension CGPoint{
 }
 /*Convenient operators*/
 public func +(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.add(a, b)}//Adds the coordinates of point p to the coordinates of this point to create a new point
-public func -(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.substract(a, b)}//Subtracts the coordinates of point p from the coordinates of this point to create a new point.
+public func -(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.subtract(a, b)}//Subtracts the coordinates of point p from the coordinates of this point to create a new point.
 public func +=(inout a: CGPoint, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b
 public func -=(inout a: CGPoint, b: CGPoint) {a.x -= b.x;a.y -= b.y;}//modifies a by substracting b
 public func * (left: CGPoint, right: CGPoint) -> CGPoint {return PointParser.multiply(left, right)}//Multiplies two CGPoint values and returns the result as a new CGPoint.
