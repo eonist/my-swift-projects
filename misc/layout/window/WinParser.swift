@@ -43,8 +43,8 @@ class WinParser {
     /**
      *
      */
-    class func frontMostWin<T>(type:T.Type)-> T{
-        
+    class func frontMostWin<T>(type:T.Type)-> T?{
+        return nil
     }
     /**
      * Returns the first focusedWindow in the NSApplication.windows array
