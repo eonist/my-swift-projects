@@ -150,6 +150,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
     
     
     //Continue here: The problem is how multitouch trackpads behave: YOu can trigger the problem by using two fingers and left clicking and then start moving your thumb while holding it down, after your index finger has been released. Then there is no mouseUp call. Fix this by researching multitouch behaviour and reading similar cases on the net
+    //To solve this problem: Start with an empty Window and Create a testView that extends NSView. Then test if you can throw the mouseUp of with the multitouch trick,
+    //Then if you can throw it off: Try to see if you can get any other up call, maybe rightClickUp, or maybe you have to forward some MouseDown event with super
+    //Also see if there is a touch up call maybe....over and out for now
     
     
     
