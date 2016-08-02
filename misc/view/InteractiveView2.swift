@@ -22,7 +22,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false
-    var leftMouseDownEventListener:AnyObject?
+    var leftMouseUpEventListener:AnyObject?
     /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -96,6 +96,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
     func mouseUp(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUp() ")
         Swift.print("InteractiveView.mouseUp() MouseEvent")
+        if(leftMouseUpEventListener != nil){
+            NSEvent.removeMonitor(leftMouseUpEventListener!)
+        }
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -151,9 +154,12 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(theEvent: NSEvent) {
-        leftMouseUpEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove )//we add a global mouse move event listener
+        leftMouseUpEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMouseUpHandler )//we add a global mouse move event listener
         mouseDown(MouseEvent(theEvent,self))
         //super.mouseDown(theEvent)
+    }
+    func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
+        return onButtonMove(event,plusButton!)
     }
     
     //Continue here: the mouseUp isnt always called, look though old research papers and do new sweeps on the net for information, Possibly also make a eventMonitor to test the upstate along side the current solution
