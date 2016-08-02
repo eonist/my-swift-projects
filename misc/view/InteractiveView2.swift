@@ -147,26 +147,13 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
-    
-    
-    //Continue here: The problem is how multitouch trackpads behave: YOu can trigger the problem by using two fingers and left clicking and then start moving your thumb while holding it down, after your index finger has been released. Then there is no mouseUp call. Fix this by researching multitouch behaviour and reading similar cases on the net
-    //To solve this problem: Start with an empty Window and Create a testView that extends NSView. Then test if you can throw the mouseUp of with the multitouch trick,
-    //Then if you can throw it off: Try to see if you can get any other up call, maybe rightClickUp, or maybe you have to forward some MouseDown event with super
-    //Also see if there is a touch up call maybe....over and out for now
-    
-    //It could actually be your trackpad that is brokern. Try to trigger this bug on your laptopo tomorrow, actually I think that was the problem. As the non-firing upEvent is also showing in safari etc
-    
-    override func touchesEndedWithEvent(event: NSEvent) {
-        Swift.print("touchesEndedWithEvent")
-    }
-    
+    /**
+     *
+     */
     override func mouseUp(theEvent: NSEvent) {
+        mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, lets keep it above for now as the LeverStepper problem was a broken track pad problem not this*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper*/
-        
     }
-    
-   
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
      * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
