@@ -157,6 +157,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
         Swift.print("InteractiveView.mouseUp() NSEvent")
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, in the end the problem still presists so it must be something else*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
+        super.mouseUp(theEvent)
     }
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
