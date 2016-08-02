@@ -153,13 +153,17 @@ class InteractiveView2:FlippedView,IInteractiveView{
     //To solve this problem: Start with an empty Window and Create a testView that extends NSView. Then test if you can throw the mouseUp of with the multitouch trick,
     //Then if you can throw it off: Try to see if you can get any other up call, maybe rightClickUp, or maybe you have to forward some MouseDown event with super
     //Also see if there is a touch up call maybe....over and out for now
-    
+    override func touchesEndedWithEvent(event: NSEvent) {
+        Swift.print("touchesEndedWithEvent")
+    }
     
     override func mouseUp(theEvent: NSEvent) {
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper*/
-        super.mouseDown(<#T##theEvent: NSEvent##NSEvent#>)
+        
     }
+    
+   
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
      * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
