@@ -15,6 +15,7 @@ extension InteractiveView2{
     }
     var viewUnderMouse:NSView?{
         Swift.print("window: " + "\(window)")
+        Swift.print("window?.mouseLocationOutsideOfEventStream: " + "\(window?.mouseLocationOutsideOfEventStream)")
         let theHitView:NSView? = window?.contentView?.hitTest((window?.mouseLocationOutsideOfEventStream)!)
         return theHitView
     }
