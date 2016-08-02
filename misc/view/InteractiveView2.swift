@@ -22,6 +22,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false
+    var leftMouseDownEventListener:AnyObject?
     /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -150,8 +151,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(theEvent: NSEvent) {
+        leftMouseUpEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove )//we add a global mouse move event listener
         mouseDown(MouseEvent(theEvent,self))
-        super.mouseDown(theEvent)
+        //super.mouseDown(theEvent)
     }
     
     //Continue here: the mouseUp isnt always called, look though old research papers and do new sweeps on the net for information, Possibly also make a eventMonitor to test the upstate along side the current solution
@@ -160,7 +162,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
         Swift.print("InteractiveView.mouseUp() NSEvent")
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, in the end the problem still presists so it must be something else*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        super.mouseUp(theEvent)
+        //super.mouseUp(theEvent)//<---this creates duplicate events and doesnt work
     }
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
