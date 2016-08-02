@@ -22,7 +22,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false
-    var leftMouseUpEventListener:AnyObject?
     /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -59,7 +58,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
-     * Only fires if the mouse "rolls" out of the visible part of this view
+     * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(event:MouseEvent){
         //Swift.print("\(self.dynamicType)" + ".mouseOut() ")
@@ -78,7 +77,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUpInside(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUpInside() ")
-        Swift.print("InteractiveView.mouseUpInside() MouseEvent")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -87,7 +85,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUpOutside(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUpOutside() ")
-        Swift.print("InteractiveView.mouseUpOutside() MouseEvent")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -95,17 +92,8 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     func mouseUp(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUp() ")
-        Swift.print("InteractiveView.mouseUp() MouseEvent")
-        
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
-    
-    
-    
-    //Continue here: The problem is how multitouch trackpads behave: 
-    
-    
-    
     /**
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
@@ -158,31 +146,11 @@ class InteractiveView2:FlippedView,IInteractiveView{
         }
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
-    override func mouseDown(theEvent: NSEvent) {
-        if(leftMouseUpEventListener == nil){leftMouseUpEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseUpMask], handler:self.onMouseUpHandler )}//we add a global mouse move event listener
-        mouseDown(MouseEvent(theEvent,self))
-        //super.mouseDown(theEvent)
-    }
-    func onMouseUpHandler(theEvent:NSEvent)-> NSEvent?{//wuic
-        Swift.print("onMouseUpHandler")
-        if(leftMouseUpEventListener != nil){
-            NSEvent.removeMonitor(leftMouseUpEventListener!)
-            leftMouseUpEventListener = nil
-        }
-        mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, in the end the problem still presists so it must be something else*/
-        viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        return theEvent
-    }
-    
-    //Continue here: the mouseUp isnt always called, look though old research papers and do new sweeps on the net for information, Possibly also make a eventMonitor to test the upstate along side the current solution
-    /*
+    override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
     override func mouseUp(theEvent: NSEvent) {
-        Swift.print("InteractiveView.mouseUp() NSEvent")
-        mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, in the end the problem still presists so it must be something else*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        //super.mouseUp(theEvent)//<---this creates duplicate events and doesnt work
+        mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper*/
     }
-*/
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
      * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
