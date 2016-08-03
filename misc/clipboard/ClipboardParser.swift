@@ -5,8 +5,10 @@ class ClipboardParser {
      * @Note remember to assert if the clipboard has the requested format first by using ClipboardAsserter.hasData etc
      * @param textFormat ClipboardFormats.TEXT_FORMAT etc
      */
-    class func data(textFormat:String) -> Any {
-        return Clipboard.generalClipboard.getData(textFormat);
+    class func data(dataType:String) -> Any {
+        let pasteboard = NSPasteboard.generalPasteboard()
+        let data:String = pasteboard.stringForType(dataType)!
+        return data
     }
     /**
      *
