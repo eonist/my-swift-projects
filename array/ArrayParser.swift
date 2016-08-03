@@ -110,9 +110,9 @@ class ArrayParser{
     class func conditionSort<T>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = []
         for (var i : Int = 0; i < array.count; i++) {
-            let index:Int = Utils.index(array[i], sortedArray, condition);/**/
+            let index:Int = Utils.index(array[i], sortedArray, condition)
             if(index > -1){ArrayModifier.splice2(&sortedArray,index, 1, [array[i],sortedArray[index]])}
-            else{sortedArray.append(array[i]);/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
+            else{sortedArray.append(array[i])/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
         }
         return sortedArray
     }
@@ -125,11 +125,9 @@ private class Utils{
         for (var i : Int = 0; i < sortedArray.count; i++) {
             if(condition(a: value,b: sortedArray[i])) {return i}
         }
-        return -1;
+        return -1
     }
 }
-
-
 
 /**
 * Returns the index for item, -1 of none is found
