@@ -34,8 +34,8 @@ extension Array {
     /**
      * Example: [1,2,3,4].splice(0, 1).count//3
      */
-    mutating func splice(startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
-        return ArrayModifier.splice(&self, startIndex, deleteCount, values)
+    mutating func splice2(startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
+        return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
     }
     mutating func unshift(item:Element)->Int{
         return ArrayModifier.unshift(&self, item)
