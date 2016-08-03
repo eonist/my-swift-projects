@@ -67,6 +67,16 @@ class ViewModifier {//<----rename to NSViewModifier
         item.removeFromSuperview()
     }
     /**
+     * @Note removes in the backward direction over the array
+     */
+    class func removeMany(views:Array<NSView>) {// :TODO: rename to removeAll(all) ? maybe?
+        let numOfDisplayObjects:Int = views.count
+        for (var i : Int = numOfDisplayObjects-1; i >= 0; i--) {
+            let view : NSView = views[i]
+            view.removeFromSuperview()
+        }
+    }
+    /**
      * Rename to subViewsOfType
      */
     class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
