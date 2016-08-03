@@ -133,7 +133,7 @@ class ArrayModifier{
     class func addAt<T>(inout array:[T], _ item:T, _ index:Int){
         if(index == 0) {array.unshift(item)}
         else if(array.count == index) {array.append(item)}
-        else {array.splice(index, 0, [item])}
+        else {array.splice2(index, 0, [item])}
     }
     /**
      * Removes the object from the array and return the index.
@@ -145,7 +145,7 @@ class ArrayModifier{
     class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
             if(array[i] === object){
-                array.splice(i, 1);
+                array.splice2(i, 1);
                 return i;
             }
         }
@@ -155,13 +155,13 @@ class ArrayModifier{
      * NOTE: I think you can also use: array.removeFirst(n: Int)
      */
     class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
-        return array.splice(i, 1)[0]
+        return array.splice2(i, 1)[0]
     }
     /**
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
      */
     class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
-        array.popLast()2
+        array.popLast()
         array.append(item)
         return array
     }

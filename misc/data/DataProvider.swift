@@ -63,18 +63,19 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
      */
     func removeItemAt(index:Int)->AnyObject {
         var removedItem:AnyObject
-        if (index <= self.items.count) {removedItem = self.items.splice(index,1)}
+        if (index <= self.items.count) {removedItem = self.items.splice2(index,1)}
         else {(fatalError("\(self.dynamicType)" + " no item at the index of " + "\(index)"))}
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, /*[removedItem],*/ index,index+1,self))
         return removedItem;
     }
     /**
      * Removes the item passed through the @param item
+     * RETURNS: the removed item
      */
     func removeItem(item:Dictionary<String, String>)->AnyObject {
         let index:Int = self.items.indexOf{$0 == item} ?? -1//-1 indicates no result found
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
-        return self.items.splice(index,1)
+        return self.items.splice2(index,1)
     }
     func removeAll(){
         //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
