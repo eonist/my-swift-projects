@@ -48,7 +48,7 @@ class ArrayModifier{
       * RETURNS: An array containing the elements that were removed from the original array.
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
 	  */
-    class func splice<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
+    class func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         let returnArray  = Utils.range(array, startIndex, startIndex + deleteCount)
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
