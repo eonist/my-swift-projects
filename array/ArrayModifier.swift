@@ -170,10 +170,17 @@ class ArrayModifier{
      * var def:Array = ["d","e","f"];
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
      */
-    class func merge<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {/*an alternate name could be: mergeInPlaceAt*/
+    class func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
         if(i == 0) {while(b.count > 0) {a.unshift(b.splice(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
         else if(i == a.count) {while(b.count > 0) {a.splice(a.count,0,b.splice(0,1))}}
         else {while(b.count > 0) {a.splice(i,0,b.splice(b.count-1,1))}}
+        return a
+    }
+    /**
+     *
+     */
+    class func merge(inout a:Array<T>, _ b:Array<T>, _ i:Int) -> Array<T>{
+        
         return a
     }
 }
