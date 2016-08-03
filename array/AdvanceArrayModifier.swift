@@ -21,4 +21,9 @@ class AdvanceArrayModifier {
         index[index.count-1] = index[index.count-1] + 1
         return index
     }
+    
+    
+    //Continue here: incrementLastBy
+    
+    
 }
