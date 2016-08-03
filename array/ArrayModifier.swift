@@ -177,11 +177,18 @@ class ArrayModifier{
         return a
     }
     /**
-     *
+     * Returns a new array that has merged arrayB onto arrayA at a spessific index on arrayA (keeps the original arrays intact)
+     * @param a:Target array
+     * @param b: array to merged onto Target array
+     * @param index: where on the targetArray should it merge on
+     * @Note For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
+     * @Note To merge two arrays directly you can use concat, some sort of split function and while(b.length > 0) a.unshift(b.splice(b.length-1,1));
+     * @example print(ArrayModifier.mergeAt(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
      */
-    class func merge(inout a:Array<T>, _ b:Array<T>, _ i:Int) -> Array<T>{
-        
-        return a
+    class func merge<T>(inout a:Array<T>, var _ b:Array<T>, _ index:Int) -> Array<T>{
+        if(index == 0) {return b.concat(a)}
+        else if(index == a.count) {return a.concat(b)}
+        else {return a.splice(0, index).concat(b,a)}// :TODO: test if this is correct?
     }
 }
 //combine
