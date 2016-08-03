@@ -10,7 +10,8 @@ extension CGFloat {
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}
     var string:String{return String(self)}
-    var isNegative:Bool{return CGFloatParser.negative(self)}
+    var isNegative:Bool{return NumberAsserter.negative(self)}
+    var isPositive:Bool{return NumberAsserter.positive(self)}
 }
 /**
  * Support for addition of CGFLoat and Double
