@@ -11,6 +11,8 @@ class ArrayModifier{
 	 * OUTPUT
 	 * a,b,c,d
      * _,a,b,c,d
+     * RETURNS: An integer representing the new length of the array
+
 	 */
     class func unshift<T>(inout array:Array<T>,_ item:T, _ index:Int = 0)->Int{
 		array.insert(item,atIndex:index)
@@ -70,6 +72,7 @@ class ArrayModifier{
      * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing and faster, but this work for now
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      * NOTE: This method does not alter the original array (should probably be moved to ArrayParser?)
+     * RETURNS: An array that consists of a range of elements from the original array
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let range = Utils.range(array, startIndex, endIndex)
