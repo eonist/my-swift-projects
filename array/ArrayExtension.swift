@@ -54,7 +54,7 @@ extension Array {
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
     mutating func removeAt(i:Int){
-        if(i != -1){self.splice(i, 1)}
+        if(i != -1){self.splice2(i, 1)}
     }
     /**
      * A neat way to cast Array's

@@ -87,13 +87,13 @@ class ArrayModifier{
      */
     class func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
         if(to < from) {
-            array.splice(to, 0, [array[from]])
+            array.splice2(to, 0, [array[from]])
             from++
-            array.splice(from, 1)
+            array.splice2(from, 1)
         }else{
             to++
-            array.splice(to, 0, [array[from]])
-            array.splice(from, 1)
+            array.splice2(to, 0, [array[from]])
+            array.splice2(from, 1)
         }
         return array
     }
@@ -161,7 +161,7 @@ class ArrayModifier{
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
      */
     class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
-        array.popLast()
+        array.popLast()2
         array.append(item)
         return array
     }
@@ -174,9 +174,9 @@ class ArrayModifier{
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
      */
     class func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
-        if(i == 0) {while(b.count > 0) {a.unshift(b.splice(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
-        else if(i == a.count) {while(b.count > 0) {a.splice(a.count,0,b.splice(0,1))}}
-        else {while(b.count > 0) {a.splice(i,0,b.splice(b.count-1,1))}}
+        if(i == 0) {while(b.count > 0) {a.unshift(b.splice2(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
+        else if(i == a.count) {while(b.count > 0) {a.splice2(a.count,0,b.splice2(0,1))}}
+        else {while(b.count > 0) {a.splice2(i,0,b.splice2(b.count-1,1))}}
         return a
     }
     /**
@@ -192,7 +192,7 @@ class ArrayModifier{
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
         else if(index == a.count) {return a.concat(b)}
-        else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
+        else {return a.splice2(0, index) + b + a}// :TODO: test if this is correct?
     }
     /**
      * Similar to mergeAt, but does not alter the original PARAM a
