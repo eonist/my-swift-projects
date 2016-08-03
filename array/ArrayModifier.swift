@@ -40,11 +40,11 @@ class ArrayModifier{
      /**
 	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
       * NOTE: splice can also be used to remove item from array
-      * IMPORTANT: the original array is modified, actually it isnt in this method but it should (remove the returnArray and it shall work)
+      * IMPORTANT: the original array is modified
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
       * RETURNS: An array containing the elements that were removed from the original array.
-
+      * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
 	  */
     class func splice<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         //var returnArray = array
@@ -52,7 +52,7 @@ class ArrayModifier{
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
         return array
         
-        //this method was recently edited, it now edits the original array and returns the resulting array. This may break legacy code. HopeFully it doesnt, I think this is the intended functionality.
+        
         
     }
     /**
