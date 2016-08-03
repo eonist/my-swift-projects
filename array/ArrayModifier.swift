@@ -167,7 +167,8 @@ class ArrayModifier{
     }
     /**
      * Merges Array instance @param a into Array instance @param b at index @param i
-     * NOTE: alters the original arrays, and returns altered Array instance @param a
+     * IMPORTANT: Alters PARAM: a and PARAM: b
+     * RETURNS: The altered Array instance @param a
      * var abc:Array = ["a","b","c"];
      * var def:Array = ["d","e","f"];
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
@@ -180,12 +181,13 @@ class ArrayModifier{
     }
     /**
      * Returns a new array that has merged arrayB onto arrayA at a spessific index on arrayA (keeps the original PARAM: a intact)
+     * IMPORTANT: Alters PARAM: a
      * @param a:Target array
      * @param b: array to merged onto Target array
      * @param index: where on the targetArray should it merge on
      * @Note For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      * @Note To merge two arrays directly you can use concat, some sort of split function and while(b.length > 0) a.unshift(b.splice(b.length-1,1));
-     * @example print(ArrayModifier.merge(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
+     * EXAMPLE: print(ArrayModifier.merge(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
@@ -193,7 +195,8 @@ class ArrayModifier{
         else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
     }
     /**
-     *
+     * Similar to mergeAt, but does not alter the original PARAM a
+     * EXAMPLE: Swift.print(ArrayModifier.combineAt(["a","b","c"], ["1","2","3"], 1))//["a", "1", "2", "3", "b", "c"]
      */
     class func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         return mergeAt(&a, b, index)
