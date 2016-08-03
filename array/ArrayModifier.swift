@@ -73,7 +73,7 @@ class ArrayModifier{
      */
     class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         let range = Utils.range(array, startIndex, endIndex)
-        let deleteCount = endIndex - startIndex
+        let deleteCount = endIndex - startIndex//<--This seems not to be needed, remove it
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return range
     }
