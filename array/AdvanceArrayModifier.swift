@@ -21,9 +21,11 @@ class AdvanceArrayModifier {
         index[index.count-1] = index[index.count-1] + 1
         return index
     }
-    
-    
-    //Continue here: incrementLastBy
-    
-    
+    /**
+     * @Note the index is returned for convenience
+     */
+    class func incrementLastBy(var index:Array<Int>,_ integer:Int) -> Array<Int> {
+        index[index.count-1] = index[index.count-1] + integer
+        return index
+    }
 }
