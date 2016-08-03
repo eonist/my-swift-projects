@@ -43,6 +43,8 @@ class ArrayModifier{
       * IMPORTANT: the original array is modified, actually it isnt in this method but it should (remove the returnArray and it shall work)
       * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,cilantro,onion,green pepper,avocado
+      * RETURNS: An array containing the elements that were removed from the original array.
+
 	  */
     class func splice<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         //var returnArray = array
