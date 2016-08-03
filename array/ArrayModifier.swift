@@ -190,12 +190,7 @@ class ArrayModifier{
     class func merge<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
         else if(index == a.count) {return a.concat(b)}
-        else {
-            var result = a.splice(0, index)
-            Swift.print("result: " + "\(result)")
-            result = result + b + a
-            return result
-        }// :TODO: test if this is correct?
+        else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
     }
 }
 //combine
