@@ -17,7 +17,7 @@ extension Array {
         return ArrayModifier.pushPop(&self, item)
     }
     /**
-     * Continue here
+     * NOTE: the concat 
      */
     func concat(array:Array<Element>) -> Array<Element>{
         return self + array
