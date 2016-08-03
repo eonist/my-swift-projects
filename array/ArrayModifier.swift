@@ -185,10 +185,10 @@ class ArrayModifier{
      * @Note To merge two arrays directly you can use concat, some sort of split function and while(b.length > 0) a.unshift(b.splice(b.length-1,1));
      * @example print(ArrayModifier.mergeAt(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
      */
-    class func merge<T>(inout a:Array<T>, var _ b:Array<T>, _ index:Int) -> Array<T>{
+    class func merge<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
         else if(index == a.count) {return a.concat(b)}
-        else {return a.splice(0, index) (b,a)}// :TODO: test if this is correct?
+        else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
     }
 }
 //combine
