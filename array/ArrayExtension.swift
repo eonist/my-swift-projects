@@ -16,9 +16,11 @@ extension Array {
     mutating func pushPop(item:Element) -> Array<Element>{
         return ArrayModifier.pushPop(&self, item)
     }
-    mutating func concat(array:Array<Element>) -> Array<Element>{
-        self += array
-        return self
+    /**
+     * Continue here
+     */
+    func concat(array:Array<Element>) -> Array<Element>{
+        return self + array
     }
     mutating func concat(item:Element) -> Array<Element>{//Convenince
         return concat([item])
