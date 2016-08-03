@@ -183,7 +183,7 @@ class ArrayModifier{
      * @param index: where on the targetArray should it merge on
      * @Note For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      * @Note To merge two arrays directly you can use concat, some sort of split function and while(b.length > 0) a.unshift(b.splice(b.length-1,1));
-     * @example print(ArrayModifier.mergeAt(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
+     * @example print(ArrayModifier.merge(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
      */
     class func merge<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
