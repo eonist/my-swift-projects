@@ -17,12 +17,16 @@ extension Array {
         return ArrayModifier.pushPop(&self, item)
     }
     /**
-     * NOTE: the concat 
+     * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
+     * IMPORTANT: this method was mutating before
      */
     func concat(array:Array<Element>) -> Array<Element>{
         return self + array
     }
-    mutating func concat(item:Element) -> Array<Element>{//Convenince
+    /**
+     * IMPORTANT: this method was mutating before
+     */
+    func concat(item:Element) -> Array<Element>{//Convenince
         return concat([item])
     }
     /**
