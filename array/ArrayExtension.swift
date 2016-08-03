@@ -59,6 +59,7 @@ extension Array {
     /**
      * A neat way to cast Array's
      * NOTE: figure out a way to make it work with inout methods aswell
+     * NOTE: You may also not provide a type and the type will be infered automatically
      */
     func cast<T>(type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
