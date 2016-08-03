@@ -192,6 +192,11 @@ class ArrayModifier{
         else if(index == a.count) {return a.concat(b)}
         else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
     }
+    class func merge<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
+        if(index == 0) {return b.concat(a)}
+        else if(index == a.count) {return a.concat(b)}
+        else {return a.splice(0, index) + b + a}// :TODO: test if this is correct?
+    }
 }
 //combine
 //bubblesort
