@@ -188,7 +188,7 @@ class ArrayModifier{
     class func merge<T>(inout a:Array<T>, var _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == 0) {return b.concat(a)}
         else if(index == a.count) {return a.concat(b)}
-        else {return a.splice(0, index).concat(b,a)}// :TODO: test if this is correct?
+        else {return a.splice(0, index) (b,a)}// :TODO: test if this is correct?
     }
 }
 //combine

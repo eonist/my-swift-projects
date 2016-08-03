@@ -18,13 +18,15 @@ extension Array {
     }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
-     * IMPORTANT: this method was mutating before
+     * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
+     * NOTE: If you need a mutating concatination behaviour use the += operator
      */
     func concat(array:Array<Element>) -> Array<Element>{
         return self + array
     }
     /**
-     * IMPORTANT: this method was mutating before
+     * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
+     * NOTE: If you need a mutating concatination behaviour use the += operator
      */
     func concat(item:Element) -> Array<Element>{//Convenince
         return concat([item])
