@@ -197,9 +197,27 @@ class ArrayModifier{
     /**
      * Similar to mergeAt, but does not alter the original PARAM a
      * EXAMPLE: Swift.print(ArrayModifier.combineAt(["a","b","c"], ["1","2","3"], 1))//["a", "1", "2", "3", "b", "c"]
+     * NOTE: Strictly speaking we should move this to ArrayParser, as it doesnt modify anything
      */
     class func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         return mergeAt(&a, b, index)
+    }
+    /**
+     * @Note modifies the original array
+     * @return (returns the original array for convenience, usefull for chaining methods)
+     * // :TODO: this can probably be written simpler and more optimized, or could it it looks pretty efficient if you think about it
+     */
+    class func move<T>(inout array:Array<T>, var _ from:Int, var _ to:Int) -> Array<T> {
+        if(to < from) {
+            array.splice((to), 0, array[from])
+            from++
+            array.splice(from, 1)
+        }else{
+            to++
+            array.splice((to), 0, array[from])
+            array.splice(from, 1)
+        };
+        return array;
     }
 }
 //combine
