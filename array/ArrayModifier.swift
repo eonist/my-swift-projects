@@ -81,8 +81,8 @@ class ArrayModifier{
         return range
     }
     /**
-     * @Note modifies the original array
-     * @return (returns the original array for convenience, usefull for chaining methods)
+     * NOTE: modifies the original array
+     * RETURNS: (returns the original array for convenience, usefull for chaining methods)
      * // :TODO: this can probably be written simpler and more optimized, or could it it looks pretty efficient if you think about it
      */
     class func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
@@ -97,6 +97,7 @@ class ArrayModifier{
         }
         return array
     }
+    
     /**
      * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
      * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
@@ -202,23 +203,7 @@ class ArrayModifier{
     class func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         return mergeAt(&a, b, index)
     }
-    /**
-     * @Note modifies the original array
-     * @return (returns the original array for convenience, usefull for chaining methods)
-     * // :TODO: this can probably be written simpler and more optimized, or could it it looks pretty efficient if you think about it
-     */
-    class func move<T>(inout array:Array<T>, var _ from:Int, var _ to:Int) -> Array<T> {
-        if(to < from) {
-            array.splice((to), 0, array[from])
-            from++
-            array.splice(from, 1)
-        }else{
-            to++
-            array.splice((to), 0, array[from])
-            array.splice(from, 1)
-        };
-        return array;
-    }
+
 }
 //combine
 //bubblesort
