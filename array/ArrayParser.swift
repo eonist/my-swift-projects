@@ -116,6 +116,21 @@ class ArrayParser{
         }
         return sortedArray
     }
+    /**
+     *
+     */
+    class func firstItemByType<T>(array:Array<Any?>, type:T.Type) -> T?{
+        for item in array{ if (item as? T != nil) {return item as? T}}
+        return nil
+    }
+    /**
+     * 
+     */
+    class func itemsByType(array:Array, classType:Class):Array{
+        var items:Array = []
+        for each (var item:* in array)if (item is classType) items.push(item);
+        return items;
+    }
 }
 private class Utils{
     /**
