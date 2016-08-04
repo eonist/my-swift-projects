@@ -12,8 +12,7 @@ class ArrayModifier{
 	 * a,b,c,d
      * _,a,b,c,d
      * RETURNS: An integer representing the new length of the array
-
-	 */
+     */
     class func unshift<T>(inout array:Array<T>,_ item:T, _ index:Int = 0)->Int{
 		array.insert(item,atIndex:index)
 		return array.count
@@ -159,11 +158,11 @@ class ArrayModifier{
         return array.splice2(i, 1)[0]
     }
     /**
-    * Returns @param array with out the items in @param these
-    * @Note only removed the first instance, if there are duplicates in the @param array then they will not be removed
-    * @example print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
-    * IMPORTANT: compares reference not value, create a similar method if you need to compare value
-    */
+     * Returns @param array with out the items in @param these
+     * @Note only removed the first instance, if there are duplicates in the @param array then they will not be removed
+     * @example print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
+     * IMPORTANT: compares reference not value, create a similar method if you need to compare value
+     */
     class func removeMany<T>(inout array:Array<T>,_ many:Array<T>) -> Array<T> {
         for (var i : Int = 0; i < many.count; i++) {
             let index:Int = ArrayParser.indx(array, many[i])
@@ -317,7 +316,6 @@ class ArrayModifier{
         let reversedVector:Array<T> = vector.reverse()
         return head.concat(reversedVector).concat(tail)
     }
-    
     /**
      * Removes a range of items from rangeStart to rangeEnd
      */
