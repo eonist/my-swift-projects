@@ -159,6 +159,27 @@ class ArrayModifier{
         return array.splice2(i, 1)[0]
     }
     /**
+    * Returns @param array with out the items in @param these
+    * @Note only removed the first instance, if there are duplicates in the @param array then they will not be removed
+    * @example print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
+    * IMPORTANT: compares reference not value, create a similar method if you need to compare value
+    */
+    class func removeMany<T>(inout array:Array<T>,_ many:Array<T>) -> Array<T> {
+        for (var i : Int = 0; i < many.count; i++) {
+            let index:Int = ArrayParser.indx(array, many[i])
+            if(index != -1) {array.splice2(index,1)}
+        }
+        return array
+    }
+    /**
+     * Returns @param array with out the items in @param these by the @param key
+     * @example trace("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
+     */
+    class func removeTheseByKey(array:Array,these:Array,key:String):Array {
+        for (var i : int = 0; i < array.length; i++) if(these.indexOf(array[i][key]) != -1) array.splice(i--,1);
+        return array;
+    }
+    /**
      * @description  randomnizes the order of an array
      * NOTE: Randomize vs randomise -> the later is the british spelling
      * NOTE: the array is returned for the sake of convenience
