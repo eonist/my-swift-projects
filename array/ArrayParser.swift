@@ -144,7 +144,9 @@ class ArrayParser{
         }
         return randomNumbers
     }
+    class func occurences(theList, theItem){
     
+    }
     //Continue here: create the method for occurences, then continue with other tasks
 }
 private class Utils{
