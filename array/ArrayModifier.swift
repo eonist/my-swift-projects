@@ -252,16 +252,16 @@ class ArrayModifier{
         }
     }
     /**
-    * swaps two items in @param vector at @param index1 @param index2
-    */
-    class func indexSwap<T>(vector:Array<T>,_ index1:Int,_ index2:Int) -> T {
+     * swaps two items in @param vector at @param index1 @param index2
+     */
+    class func indexSwap<T>(inout array:Array<T>,_ index1:Int,_ index2:Int) -> [T] {
         if(index1 != -1 && index2 != -1) {
-            var a:* = vector[index1];
-            var b:* = vector[index2];
-            vector[index1] = b;
-            vector[index2] = a;
+            let a:T = array[index1]
+            let b:T = array[index2]
+            array[index1] = b
+            array[index2] = a
         }
-        return vector;
+        return array
     }
 }
 //combine
