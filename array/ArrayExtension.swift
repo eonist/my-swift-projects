@@ -57,14 +57,13 @@ extension Array {
         if(i != -1){self.splice2(i, 1)}
     }
     /**
-     * A neat way to cast Array's
+     * A neat way to cast Array's (Since swift/obj-c has made casting array's cumbersome at times)
      * NOTE: figure out a way to make it work with inout methods aswell
      * NOTE: You may also not provide a type and the type will be infered automatically
      */
     func cast<T>(type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
     }
-    
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
