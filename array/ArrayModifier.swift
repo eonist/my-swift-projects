@@ -232,7 +232,7 @@ class ArrayModifier{
         var copy:Array<T> = array.concat([])
         var list:Array<T> = []
         every = max(every, 1)
-        for ( var i:Int = 0 , n:Int = ceil(copy.count / every) ;i < n ;i++ ) {
+        for ( var i:Int = 0 , n:Int = ceil((copy.count / every).float).int ;i < n ;i++ ) {
             var a:uint = i * every ;
             var b:uint = Math.min(a + every, copy.length) ;
             var split:Array = copy.slice(a, b) ;
