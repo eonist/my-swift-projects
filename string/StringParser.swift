@@ -78,6 +78,21 @@ class StringParser{
 		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
 	}
+    /**
+    * @param input
+    * @param delimiter
+    * @example
+    * Argument: ("admin, user, manager" , ",")
+    * Returns array of the strings seperated by comma
+    */
+    class func stringToArray(inputString:String, delimiter:String) -> Array<String> {
+        var roles:Array<String> = null;
+        if(inputString != nil) {
+            inputString = StringModifier.trimArrayElements(inputString, delimiter)
+            roles = inputString.split(',')
+        }
+        return roles;
+    }
     /*
      * Counts how many times a string appears in a string
      */
