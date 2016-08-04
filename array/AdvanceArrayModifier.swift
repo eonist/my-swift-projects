@@ -1,6 +1,9 @@
 import Foundation
 
 class AdvanceArrayModifier {
+    
+    //Continue here: Check if the bellow is correct, the bug is probably related to splice2, check legacy code
+    
     /**
      *
      */
