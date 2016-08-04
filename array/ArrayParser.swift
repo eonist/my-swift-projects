@@ -117,19 +117,19 @@ class ArrayParser{
         return sortedArray
     }
     /**
-     *
+     * Returns the first item in PARAM: array that is of PARAM: type
      */
     class func firstItemByType<T>(array:Array<Any?>, type:T.Type) -> T?{
         for item in array{ if (item as? T != nil) {return item as? T}}
         return nil
     }
     /**
-     * 
+     * Returns all items in PARAM: array that is of PARAM: type
      */
-    class func itemsByType(array:Array, classType:Class):Array{
-        var items:Array = []
-        for each (var item:* in array)if (item is classType) items.push(item);
-        return items;
+    class func itemsByType<T>(array:Array<Any?>, type:T.Type) -> Array<T>{
+        var items:Array<T> = []
+        for item in array{ if (item as? T != nil) {items.append(item as! T)}}
+        return items
     }
 }
 private class Utils{
