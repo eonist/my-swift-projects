@@ -107,7 +107,7 @@ class ArrayModifier{
     class func shuffle<T>(inout array:[T])->[T]{
         for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
-            swap(&array[i], &array[j])//the & sign indicates that you confirm that the values will be changed
+            ArrayModifier.swap(&array, array[i], array[j])//the & sign indicates that you confirm that the values will be changed
         }
         return array
     }
@@ -271,7 +271,7 @@ class ArrayModifier{
     /**
      * @description  swap item position in an array
      */
-    class func swap<T>(inout array:Array<T>, item1:T, item2:T) {
+    class func swap<T>(inout array:Array<T>, _ item1:T, _ item2:T) {
         let index1:Int = ArrayParser.indx(array, item1)
         let index2:Int = ArrayParser.indx(array, item2)
         if(index1 != -1 && index2 != -1) {
