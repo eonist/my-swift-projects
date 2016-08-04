@@ -290,7 +290,13 @@ class ArrayModifier{
         return head.concat(reversedVector).concat(tail)
     }
     
-    
+    /**
+     * Removes a range of items fromIndex toIndex in theArray
+     */
+    class func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
+        array.splice2(rangeStart, rangeEnd - rangeStart)
+        return array
+    }
 }
 //combine
 //bubblesort
