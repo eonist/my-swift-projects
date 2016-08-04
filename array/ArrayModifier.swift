@@ -243,12 +243,12 @@ class ArrayModifier{
     /**
     * @description  swap item position in an array
     */
-    class func swap<T where T:Equatable, T:Comparable>(array:Array<T>, item1:T, item2:T) {// :TODO: create indexSwap. see VectorModifier.as
-        var index1:Int = array.indexOf(item1)!
-        var index2:Int = array.indexOf(item2)!
+    class func swap<T>(inout array:Array<T>, item1:T, item2:T) {// :TODO: create indexSwap. see VectorModifier.as
+        let index1:Int = ArrayParser.indx(array, item1)
+        let index2:Int = ArrayParser.indx(array, item2)
         if(index1 != -1 && index2 != -1) {
-            array[index1] = item2;
-            array[index2] = item1;
+            array[index1] = item2
+            array[index2] = item1
         }
     }
 }
