@@ -263,6 +263,15 @@ class ArrayModifier{
         }
         return array
     }
+    /**
+     * Displaces the @param range in @param vector to @param index
+     * @Note alters the original vector
+     * @example VectorModifier.rangeDisplace(Vector.<String>(["a","b","c","d","e","f","g"]), new Range(2,4), 0);//c,d,a,b,e,f,g
+     */
+    class func rangeDisplace<T>(inout vector:Array<T>,_ rangeStart:Int,_ rangeEnd:Int,_ index:Int) -> [T] {
+        var splice:Array<T> = vector.splice2(rangeStart,rangeEnd-rangeStart)
+        return ArrayModifier.merge(vector, splice, index)
+    }
 }
 //combine
 //bubblesort
