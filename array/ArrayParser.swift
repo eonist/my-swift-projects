@@ -144,6 +144,8 @@ class ArrayParser{
         }
         return randomNumbers
     }
+    
+    //Continue here: create the method for occurences
 }
 private class Utils{
     /**
