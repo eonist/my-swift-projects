@@ -97,7 +97,6 @@ class ArrayModifier{
         }
         return array
     }
-    
     /**
      * NOTE: In iOS 9 and OS X 10.11, you don't have to write your own. There's an efficient, correct implementation of Fisher-Yates in GameplayKit (which, despite the name, is not just for games).
      * NOTE: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(array)
@@ -105,12 +104,12 @@ class ArrayModifier{
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
      * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
      */
-    class func shuffle<T>(inout array:[T])->T{
+    class func shuffle<T>(inout array:[T])->[T]{
         for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
             swap(&array[i], &array[j])//the & sign indicates that you confirm that the values will be changed
         }
-        return array as! T//<--does this work//this is a convenince return
+        return array
     }
     /**
      * Note: Usefull if you want to do inline appendation
