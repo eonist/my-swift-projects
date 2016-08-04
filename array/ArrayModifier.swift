@@ -226,19 +226,19 @@ class ArrayModifier{
         return [array, arrayB.reverse()]
     }
     /**
-     * @description Split an array a integer, retuns a new array with arrays in it of the split
+     * @description Split an array a integer, returns a new array with arrays in it of the split
      */
-    class func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<T> {
-        var copy:Array<T> = array.concat([])
-        var list:Array<T> = []
+    class func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
+        let copy:Array<T> = array.concat([])
+        var list:Array<[T]> = []
         every = max(every, 1)
         for ( var i:Int = 0 , n:Int = ceil((copy.count / every).float).int ;i < n ;i++ ) {
-            var a:uint = i * every ;
-            var b:uint = Math.min(a + every, copy.length) ;
-            var split:Array = copy.slice(a, b) ;
-            list.push(split) ;
+            let a:Int = i * every
+            let b:Int = min(a + every, copy.count)
+            let split:Array<T> = copy.slice2(a, b)
+            list.append(split)
         }
-        return list ;
+        return list
     }
 }
 //combine
