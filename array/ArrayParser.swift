@@ -132,6 +132,22 @@ class ArrayParser{
         for item in array{ if (item as? T != nil) {items.append(item as! T)}}
         return items
     }
+    /**
+     * @return random array with unique numbers (no duplicates)
+     * Random.uniqueRandomRange(0,22)?
+     */
+    class func uniqueRandom(start:Int, end:Int):Array {// :TODO: int not numbers?
+        var numbers:Array = [];//TODO: integers
+        for (var a:Number = start; a <= end; a++) numbers.push(a);
+        var randomNumbers:Array = [];
+        var len:Number = numbers.length;
+        for (var e:Number=0; e<len; e++) {
+            var randomNr:Number = Math.floor (Math.random() * (len-e));// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+            randomNumbers.push(numbers[randomNr]);
+            numbers.splice(randomNr, 1);
+        }
+        return randomNumbers;
+    }
 }
 private class Utils{
     /**
