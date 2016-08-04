@@ -241,15 +241,27 @@ class ArrayModifier{
         return list
     }
     /**
-    * @description  swap item position in an array
-    */
-    class func swap<T>(inout array:Array<T>, item1:T, item2:T) {// :TODO: create indexSwap. see VectorModifier.as
+     * @description  swap item position in an array
+     */
+    class func swap<T>(inout array:Array<T>, item1:T, item2:T) {
         let index1:Int = ArrayParser.indx(array, item1)
         let index2:Int = ArrayParser.indx(array, item2)
         if(index1 != -1 && index2 != -1) {
             array[index1] = item2
             array[index2] = item1
         }
+    }
+    /**
+    * swaps two items in @param vector at @param index1 @param index2
+    */
+    class func indexSwap<T>(vector:Array<T>,_ index1:Int,_ index2:Int) -> T {
+        if(index1 != -1 && index2 != -1) {
+            var a:* = vector[index1];
+            var b:* = vector[index2];
+            vector[index1] = b;
+            vector[index2] = a;
+        }
+        return vector;
     }
 }
 //combine
