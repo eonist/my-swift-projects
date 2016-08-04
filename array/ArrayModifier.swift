@@ -163,6 +163,8 @@ class ArrayModifier{
     * NOTE: Randomize vs randomise -> the later is the british spelling
     */
     class func randomise( array:Array ):Array {
+        guitarists.sortInPlace({$0.firstName > $1.firstName})
+        
         return array.sort(function ( ) : uint {
 				return ( Math.random() * 2 ) * 2 - 1 ;
         }) ;
