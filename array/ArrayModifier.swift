@@ -158,7 +158,15 @@ class ArrayModifier{
     class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
         return array.splice2(i, 1)[0]
     }
-    
+    /**
+    * @description  randomnizes the order of an array
+    * NOTE: Randomize vs randomise -> the later is the british spelling
+    */
+    class func randomise( array:Array ):Array {
+        return array.sort(function ( ) : uint {
+				return ( Math.random() * 2 ) * 2 - 1 ;
+        }) ;
+    }
     /**
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
      */
