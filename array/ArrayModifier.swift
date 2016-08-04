@@ -297,6 +297,8 @@ class ArrayModifier{
         array.splice2(rangeStart, rangeEnd - rangeStart)
         return array
     }
+    
+
 }
 //combine
 //bubblesort
