@@ -297,13 +297,12 @@ class ArrayModifier{
         array.splice2(rangeStart, rangeEnd - rangeStart)
         return array
     }
-    
     /**
-    * Removes duplicates
-    * // :TODO: the following two lines may be more efficient try to factor them and see if they are good
-    * var arr:Array = ["a","b","b","c","b","d","c"];
-    * NOTE: this could potentially do the same: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
-    */
+     * Removes duplicates
+     * NOTE: the following two lines may be more efficient try to factor them and see if they are good
+     * var arr:Array = ["a","b","b","c","b","d","c"];
+     * var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
+     */
     class func removeDuplicates<T>(array:Array<T>) -> Array<T>{
         var tempArray:Array<T> = []
         for (var i:Int = 0; i<array.count; i++){
