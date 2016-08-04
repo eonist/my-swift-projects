@@ -132,7 +132,7 @@ class ArrayModifier{
      */
     class func addAt<T>(inout array:[T], _ item:T, _ index:Int){
         if(index == 0) {array.unshift(item)}
-        else if(array.count == index) {array.append(item)}
+        else if(array.count >= index) {array.append(item)}//<--the >= was added for debugging, carefull
         else {array.splice2(index, 0, [item])}
     }
     /**
