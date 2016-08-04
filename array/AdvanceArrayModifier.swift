@@ -2,7 +2,7 @@ import Foundation
 
 class AdvanceArrayModifier {
     
-    //Continue here
+    //Continue here make a method that finds the highestDepth, Use 
     
     /**
      * I think this method sorts each node in an array-tree to highest index like [[1,0][0,1]] -> [[0,1],[1,0]]  (<---I'm not sure if this example is correct)
