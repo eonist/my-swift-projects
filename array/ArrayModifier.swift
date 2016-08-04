@@ -332,6 +332,16 @@ class ArrayModifier{
         }
         return array
     }
+    /**
+     * Replaces @param searchFor with @param replaceWith (the existing item is deleted)
+     * @Note on pretext is that the item to search for must already exist in the array or else this method doesnt work
+     * @Note this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
+     */
+    class func replace<T>(inout array:Array<T>, searchFor:T, replaceWith:T) -> Int {
+        var index:Int = array.indexOf(searchFor)
+        array[index] = replaceWith
+        return index
+    }
 }
 //combine
 //bubblesort
