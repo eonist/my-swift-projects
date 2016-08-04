@@ -105,6 +105,7 @@ class ArrayParser{
      * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,0,1,2,3,4,5,22
      */
     class func conditionSort<T>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
+        Swift.print("conditionSort")
         var sortedArray:Array<T> = []
         for (var i : Int = 0; i < array.count; i++) {
             let index:Int = Utils.index(array[i], sortedArray, condition)
