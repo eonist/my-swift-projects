@@ -2,7 +2,8 @@ import Foundation
 
 class AdvanceArrayModifier {
     
-    //Continue here make a method that finds the highestDepth, Use 
+    //Continue here make a method that finds the highestDepth, so in [[4,3],[6,1],[6,2],[0,0],] the [6,2] should be the highestDepth. This is much more efficient than sorting an entire array and picking the index:0 after
+    
     
     /**
      * I think this method sorts each node in an array-tree to highest index like [[1,0][0,1]] -> [[0,1],[1,0]]  (<---I'm not sure if this example is correct)
