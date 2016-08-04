@@ -60,6 +60,8 @@ extension Array {
      * A neat way to cast Array's (Since swift/obj-c has made casting array's cumbersome at times)
      * NOTE: figure out a way to make it work with inout methods aswell
      * NOTE: You may also not provide a type and the type will be infered automatically
+     * NOTE: You can cast arrays with protocol instances to class types like NSView. (Great way to maintain a protocol based design)
+     * CAUTION: using the map method isn't exactly the most optimized way to cast, but sometimes optimizing isnt needed, with small arrays etc, Also sometimes designing around using map can cause you to over design things in code
      */
     func cast<T>(type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
