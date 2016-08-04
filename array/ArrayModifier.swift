@@ -176,7 +176,12 @@ class ArrayModifier{
      * @example trace("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      */
     class func removeManyByKey<T>(inout array:[Dictionary<T,String>],_ many:Array<String>,_ key:String) -> [Dictionary<T,String>] {
-        for (var i : Int = 0; i < array.count; i++) {if(ArrayParser.index(many, "" + "") != -1) { array.splice2(i--,1) }}
+        for (var i : Int = 0; i < array.count; i++) {
+            let toMatch:String = array[i][key]
+            if(ArrayParser.index(many, "") != -1) {
+                array.splice2(i--,1)
+            }
+        }
         return array
     }
     /**
