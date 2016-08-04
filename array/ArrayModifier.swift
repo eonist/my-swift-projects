@@ -338,22 +338,20 @@ class ArrayModifier{
      * @Note this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
-    class func replace<T>(inout array:Array<T>, searchFor:T, replaceWith:T) -> Int {
+    class func replace<T>(inout array:Array<T>, _ searchFor:T, _ replaceWith:T) -> Int {
         let index:Int = ArrayParser.indx(array, searchFor)
         array[index] = replaceWith
         return index
     }
     /**
      * TODO: make it work even if the length of the array the_replacements is longer than thhe_matches
+     * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
-    class func replaceMany<T>(the_list:Array<T>, _ the_matches:Array<T>, _ the_replacments:Array<T>) -> Array<T>{
-        for item in the_matches{
-            
+    class func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
+        for var i = 0; i < array.count; ++i{
+            replace(&array, matches[i], replacments[i])
         }
-        repeat with i from 1 to (length of the_matches)
-        set the_list to replace(the_list, (item i of the_matches), (item i of the_replacments))
-        end repeat
-        return the_list
+        return array
     }
 }
 //combine
