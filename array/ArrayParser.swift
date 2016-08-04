@@ -19,6 +19,7 @@ class ArrayParser{
     /**
      * New
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
+     * IMPORTANT: compares reference not value
      */
     class func indx<T>(arr: [T], _ item: T) -> Int{
         for var i = 0; i < arr.count; ++i{
@@ -30,6 +31,7 @@ class ArrayParser{
      * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
      * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
+     * IMPORTANT: compares reference not value
      */
     class func indexOf(arr:Array<AnyObject>,_ item:AnyObject)-> Int{
         for var i = 0; i < arr.count; ++i{
@@ -41,6 +43,7 @@ class ArrayParser{
     /**
      * Returns an array with itmes that are not the same in 2 arrays
      * @example: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
+     * IMPORTANT: compares reference not value
      */
     class func difference<T>(a:Array<T>, _ b:Array<T> )->Array<T> {
         var diff:Array<T> = []
@@ -53,7 +56,7 @@ class ArrayParser{
      * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
      * IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
      */
-    class func similar<T:Equatable>(a:[T],_ b:[T])->[T]{
+    class func similar<T:Equatable>(a:[T],_ b:[T])->[T]{//TODO:Add support for COmparable to this method
         var similarList:[T] = []
         for x in b {
             for y in a {
