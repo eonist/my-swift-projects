@@ -158,6 +158,7 @@ class ArrayModifier{
     class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
         return array.splice2(i, 1)[0]
     }
+    
     /**
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
      */

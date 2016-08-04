@@ -17,6 +17,7 @@ class ArrayParser{
      * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
      * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
      * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
+     * NOTE: the multiple generig type could also be written like this: <T : protocol<Equatable, Comparable>>
      */
     class func index<T where T:Equatable, T:Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         if let i = array.indexOf(value) {
