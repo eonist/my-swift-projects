@@ -78,7 +78,7 @@ class StringParser{
 		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
 	}
-    /*
+    /**
      * Counts how many times a string appears in a string
      */
     class func occurrences(){
