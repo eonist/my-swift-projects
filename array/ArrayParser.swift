@@ -144,8 +144,14 @@ class ArrayParser{
         }
         return randomNumbers
     }
-    class func occurences(theList, theItem){
-    
+    /**
+     *
+     */
+    class func occurences<T>(theList:Array<T>, theItem:T){
+        var counter:Int = 0
+        for item in theList{
+            if(ArrayParser.indx(theList, theItem) != -1){counter++}
+        }
     }
     //Continue here: create the method for occurences, then continue with other tasks
 }
