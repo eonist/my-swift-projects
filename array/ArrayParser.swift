@@ -1,16 +1,6 @@
 import Darwin
 class ArrayParser{
     /**
-     * Returns the index of PARAM: val in PARAM: arr
-     */
-    class func index<T : Equatable>(arr : [T], _ val:T)->Int{//the <T: Equatable> part ensures that the types can use the equal operator ==
-        if let i = arr.indexOf(val) {
-            return i
-        }else{
-            return -1//-1 indicates non was found
-        }
-    }
-    /**
      * NOTE: This method compares value not reference
      * NOTE: String class works with Comparable and not Equatable, Use this method when dealing with Strings
      * EXAMPLE: ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
