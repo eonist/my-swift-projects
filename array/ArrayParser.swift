@@ -149,7 +149,7 @@ class ArrayParser{
      */
     class func occurences<T>(theList:Array<T>, theItem:T){
         var counter:Int = 0
-        for item in theList{
+        for var i = 0; i < theList.count; ++i{
             if(ArrayParser.indx(theList, theItem) != -1){counter++}
         }
     }
