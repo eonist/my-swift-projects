@@ -225,7 +225,21 @@ class ArrayModifier{
         for(var i:Int=index+1 ; i<arrayLength ; i++) {arrayB.append(array.pop()!)}
         return [array, arrayB.reverse()]
     }
-
+    /**
+     * @description Split an array a integer, retuns a new array with arrays in it of the split
+     */
+    class func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<T> {
+        var copy:Array<T> = array.concat([])
+        var list:Array<T> = []
+        every = max(every, 1)
+        for ( var i:Int = 0 , n:Int = ceil(copy.count / every) ;i < n ;i++ ) {
+            var a:uint = i * every ;
+            var b:uint = Math.min(a + every, copy.length) ;
+            var split:Array = copy.slice(a, b) ;
+            list.push(split) ;
+        }
+        return list ;
+    }
 }
 //combine
 //bubblesort
