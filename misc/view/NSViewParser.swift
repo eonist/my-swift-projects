@@ -54,7 +54,7 @@ class NSViewParser {
     /**
      * Returns the array index of @param item from @param parent
      * @Note this function is recursive
-     * // :TODO: rename to indexMap? or depth or map?, since index should be index of a DisplayObject
+     * // :TODO: rename to indexMap? or depth or map?, since index should be index of a NSView
      */
     class func index(parent:NSView,_ child:NSView) -> Array<Int>? {
         if(parent === child) {return []}
