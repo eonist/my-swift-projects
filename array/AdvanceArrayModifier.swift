@@ -3,6 +3,7 @@ import Foundation
 class AdvanceArrayModifier {
     
     //Continue here: Check if the bellow is correct, the bug is probably related to splice2, check legacy code
+    //write a description of what sortToHighestDepths does. Also make a note that it cant sort arrays which are uncomplete, well it can but then you need to alter addAt, and is it needed? fix the code that creates the array instead right?
     
     /**
      *
