@@ -302,8 +302,7 @@ class ArrayModifier{
     * Removes duplicates
     * // :TODO: the following two lines may be more efficient try to factor them and see if they are good
     * var arr:Array = ["a","b","b","c","b","d","c"];
-    * var z:Array = arr.filter(function (a:*,b:int,c:Array):Boolean { return ((z ? z : z = new Array()).indexOf(a) >= 0 ? false : (z.push(a) >= 0)); }, this);
-     
+    * NOTE: this could potentially do the same: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
     */
     class func removeDuplicates<T>(array:Array<T>) -> Array<T>{
         var tempArray:Array<T> = []
@@ -312,7 +311,7 @@ class ArrayModifier{
             var exists:Bool = false
             for (var j:Int = 0; j<tempArray.count; j++){
                 let obj2:T = tempArray[j]
-                if ((obj2 as! AnyObject) === (obj1 as! AnyObject)) {exists = true}//if this casting doesnt work, try the indexOf method that suports reference compaaring
+                if ((obj2 as! AnyObject) === (obj1 as! AnyObject)) {exists = true}//<--if this casting doesnt work, try the indexOf method that suports reference compaaring
             }
             if (!exists) {tempArray.append(obj1)}
         }
