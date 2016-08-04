@@ -145,15 +145,14 @@ class ArrayParser{
         return randomNumbers
     }
     /**
-     *
+     * IMPORTANT: compares reference not value, if value comparing is needed then create another method to support that
      */
     class func occurences<T>(theList:Array<T>, theItem:T){
         var counter:Int = 0
         for var i = 0; i < theList.count; ++i{
-            if(ArrayParser.indx(theList, theItem) != -1){counter++}
+            if((theList[i] as! AnyObject) === (theItem as! AnyObject)){counter++}
         }
     }
-    //Continue here: create the method for occurences, then continue with other tasks
 }
 private class Utils{
     /**
