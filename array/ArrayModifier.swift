@@ -163,10 +163,17 @@ class ArrayModifier{
     * NOTE: Randomize vs randomise -> the later is the british spelling
     */
     class func randomize<T>(inout array:Array<T> ) -> Array<T> {
-        array.sortInPlace({return false})
+        //array.sortInPlace({return false})
         
+        array.sortInPlace {  Bool in
+            //( Math.random() * 2 ) * 2 - 1
+            return false
+        }
+        return array
+        
+        //let randomNr:Int = Int(floor(Float(Int(arc4random()) * (len-e))))
         /*return array.sort(func ( ) -> Int {
-        return ( Math.random() * 2 ) * 2 - 1 ;
+        return  ;
         }) ;*/
     }
     /**
