@@ -338,7 +338,7 @@ class ArrayModifier{
      * @Note this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
      */
     class func replace<T>(inout array:Array<T>, searchFor:T, replaceWith:T) -> Int {
-        var index:Int = array.indexOf(searchFor)
+        var index:Int = ArrayParser.indexOf(array, searchFor)
         array[index] = replaceWith
         return index
     }
