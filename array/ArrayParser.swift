@@ -1,3 +1,4 @@
+import Cocoa
 class ArrayParser{
     /**
      * Returns the index of PARAM: val in PARAM: arr
@@ -141,7 +142,9 @@ class ArrayParser{
         var randomNumbers:Array<Int> = []
         var len:Int = numbers.count
         for (var e:Int=0; e<len; e++) {
-            var randomNr:Int = Math.floor(Math.random() * (len-e))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+            let t = ceil(1.0)
+            let b = floor(2.2)
+            var randomNr:Int = floor(arc4random() * (len-e))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
             randomNumbers.append(numbers[randomNr])
             numbers.splice2(randomNr, 1)
         }
