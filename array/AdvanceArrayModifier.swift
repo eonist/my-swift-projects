@@ -2,7 +2,7 @@ import Foundation
 
 class AdvanceArrayModifier {
     
-    //Continue here make a method that finds the highestDepth, so in [[4,3],[6,1],[6,2],[0,0],] the [6,2] should be the highestDepth. This is much more efficient than sorting an entire array and picking the index:0 after
+    //Continue here make a method that finds the highestDepth, so in [[4,3],[6,1],[6,2],[0,0],] the [6,2] should be the highestDepth. This is much more efficient than sorting an entire array and picking the index:0 after (The algo should use temp variables ) 
     
     
     /**
