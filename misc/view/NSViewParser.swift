@@ -12,7 +12,7 @@ class NSViewParser {
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! T)}
         }
-        return children;
+        return children
     }
     /**
      * Returns a list of parents (this works, tested)
