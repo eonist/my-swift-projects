@@ -173,12 +173,12 @@ class ArrayModifier{
     }
     /**
      * Returns @param array with out the items in @param these by the @param key
-     * @example trace("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
+     * @example print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      */
-    class func removeManyByKey(inout array:[Dictionary<String,T>],_ many:Array<String>,_ key:String) -> [Dictionary<String,T>] {
+    class func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
         for (var i : Int = 0; i < array.count; i++) {
-            let dict:Dictionary<String,String> = array[i]
-            let toMatch:String = dict[key]!
+            let dict:Dictionary<String,T> = array[i]
+            let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
                 array.splice2(i--,1)
             }

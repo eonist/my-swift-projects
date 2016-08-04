@@ -27,7 +27,7 @@ class ArrayAsserter {
      * @EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
      * @EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
      */
-    class func has<T : Equatable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
+    class func has<T where T:Equatable, T:Comparable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
         return ArrayParser.index(arr, value) != -1
     }
     /**
