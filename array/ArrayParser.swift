@@ -18,7 +18,7 @@ class ArrayParser{
      * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
      * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
      */
-    class func index<T : Comparable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
+    class func index<T : where T:Comparable, T:Equatable>(array : [T], _ value:T)->Int{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         if let i = array.indexOf(value) {
             return i
         }else{
