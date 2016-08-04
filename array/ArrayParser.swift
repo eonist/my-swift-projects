@@ -137,15 +137,15 @@ class ArrayParser{
      */
     class func uniqueRandom(start:Int, _ end:Int) -> Array<Int> {
         var numbers:Array<Int> = []
-        for (var a:Int = start; a <= end; a++) numbers.append(a)
-        var randomNumbers:Array = [];
-        var len:Number = numbers.length;
-        for (var e:Number=0; e<len; e++) {
-            var randomNr:Number = Math.floor (Math.random() * (len-e));// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
-            randomNumbers.push(numbers[randomNr]);
-            numbers.splice(randomNr, 1);
+        for (var a:Int = start; a <= end; a++) {numbers.append(a)}
+        var randomNumbers:Array<Int> = []
+        var len:Int = numbers.count
+        for (var e:Int=0; e<len; e++) {
+            var randomNr:Int = Math.floor(Math.random() * (len-e))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+            randomNumbers.append(numbers[randomNr])
+            numbers.splice2(randomNr, 1)
         }
-        return randomNumbers;
+        return randomNumbers
     }
 }
 private class Utils{
