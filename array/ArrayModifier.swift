@@ -163,7 +163,7 @@ class ArrayModifier{
     * NOTE: Randomize vs randomise -> the later is the british spelling
     */
     class func randomize<T>(inout array:Array<T> ) -> Array<T> {
-        array.sortInPlace({return 0})
+        array.sortInPlace({return false})
         
         /*return array.sort(func ( ) -> Int {
         return ( Math.random() * 2 ) * 2 - 1 ;
