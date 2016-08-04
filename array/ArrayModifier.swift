@@ -162,12 +162,12 @@ class ArrayModifier{
     * @description  randomnizes the order of an array
     * NOTE: Randomize vs randomise -> the later is the british spelling
     */
-    class func randomise( array:Array ):Array {
-        guitarists.sortInPlace({$0.firstName > $1.firstName})
+    class func randomize<T>(inout array:Array<T> ) -> Array<T> {
+        array.sortInPlace({return 0})
         
-        return array.sort(function ( ) : uint {
-				return ( Math.random() * 2 ) * 2 - 1 ;
-        }) ;
+        /*return array.sort(func ( ) -> Int {
+        return ( Math.random() * 2 ) * 2 - 1 ;
+        }) ;*/
     }
     /**
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
