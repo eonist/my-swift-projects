@@ -159,22 +159,15 @@ class ArrayModifier{
         return array.splice2(i, 1)[0]
     }
     /**
-    * @description  randomnizes the order of an array
-    * NOTE: Randomize vs randomise -> the later is the british spelling
-    */
+     * @description  randomnizes the order of an array
+     * NOTE: Randomize vs randomise -> the later is the british spelling
+     * NOTE: the array is returned for the sake of convenience
+     */
     class func randomize<T>(inout array:Array<T> ) -> Array<T> {
-        //array.sortInPlace({return false})
-        
-        array.sortInPlace {  Bool in
-            //( Math.random() * 2 ) * 2 - 1
-            return false
+        array.sortInPlace { Bool in
+            return ( Int(arc4random()) * 2 ) * 2 - 1 > 0
         }
         return array
-        
-        //let randomNr:Int = Int(floor(Float(Int(arc4random()) * (len-e))))
-        /*return array.sort(func ( ) -> Int {
-        return  ;
-        }) ;*/
     }
     /**
      * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
