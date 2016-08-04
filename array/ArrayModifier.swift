@@ -175,8 +175,8 @@ class ArrayModifier{
      * Returns @param array with out the items in @param these by the @param key
      * @example trace("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      */
-    class func removeManyByKey<T>(array:[Dictionary<T,T>],_ many:Array<String>,_ key:String) -> [Dictionary<T,T>] {
-        for (var i : Int = 0; i < array.count; i++) if(ArrayParser.indx(many.(array[i][key]) != -1) { array.splice2(i--,1) }
+    class func removeManyByKey<T>(inout array:[Dictionary<T,T>],_ many:Array<String>,_ key:String) -> [Dictionary<T,T>] {
+        for (var i : Int = 0; i < array.count; i++) {if(ArrayParser.index(many, "") != -1) { array.splice2(i--,1) }}
         return array
     }
     /**
