@@ -141,6 +141,7 @@ class ArrayModifier{
      * // :TODO: should return the array not the index?
      * // :TODO: can we use indexOf here?
      * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
+     * IMPORTANT: This compares reference not value
      */
     class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
