@@ -2,9 +2,9 @@ import Cocoa
 
 class WinAsserter {
     /**
-     *
+     * ASserts if a win of PARAM: type exists
      */
-    class func windowOfTypeExists() -> Bool{
-        return WinParser.windowsOfType(PositionWin).count > 0
+    class func hasWindowOfType<T>(type:T.Type) -> Bool{
+        return WinParser.windowsOfType(type).count > 0
     }
 }
