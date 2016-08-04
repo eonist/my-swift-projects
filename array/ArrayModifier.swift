@@ -316,6 +316,22 @@ class ArrayModifier{
         }
         return tempArray
     }
+    /**
+     * Very simple numeric sorter
+     * @Note you could also use some sort of bubble sort
+     * @Note modifies the original array
+     * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
+     */
+    class func numericSort(inout array:Array<Int>) -> Array<Int>{
+        for (var i : Int = 1; i < array.count; i++) {
+            var e:Int = i;
+            while(array[i] < array[e-1]){
+                e--;
+            }
+            ArrayModifier.move(&array, i, e);
+        }
+        return array
+    }
 }
 //combine
 //bubblesort
