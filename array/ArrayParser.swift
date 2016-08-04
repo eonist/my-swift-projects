@@ -135,6 +135,7 @@ class ArrayParser{
     }
     /**
      * @return random array with unique numbers (no duplicates)
+     * TODO: You can improve the random call with this: let diceRoll = Int(arc4random_uniform(6) + 1) // for a random integer between 0 and n-1
      */
     class func uniqueRandom(start:Int, _ end:Int) -> Array<Int> {
         var numbers:Array<Int> = []
@@ -142,7 +143,7 @@ class ArrayParser{
         var randomNumbers:Array<Int> = []
         let len:Int = numbers.count
         for (var e:Int=0; e<len; e++) {
-            let randomNr = Int(floor(Float(Int(arc4random()) * (len-e))))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+            let randomNr:Int = Int(floor(Float(Int(arc4random()) * (len-e))))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
             randomNumbers.append(numbers[randomNr])
             numbers.splice2(randomNr, 1)
         }
