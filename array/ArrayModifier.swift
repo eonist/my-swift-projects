@@ -343,6 +343,18 @@ class ArrayModifier{
         array[index] = replaceWith
         return index
     }
+    /**
+     * TODO: make it work even if the length of the array the_replacements is longer than thhe_matches
+     */
+    class func replaceMany<T>(the_list:Array<T>, _ the_matches:Array<T>, _ the_replacments:Array<T>) -> Array<T>{
+        for item in the_matches{
+            
+        }
+        repeat with i from 1 to (length of the_matches)
+        set the_list to replace(the_list, (item i of the_matches), (item i of the_replacments))
+        end repeat
+        return the_list
+    }
 }
 //combine
 //bubblesort
