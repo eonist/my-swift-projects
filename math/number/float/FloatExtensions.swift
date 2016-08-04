@@ -1,5 +1,5 @@
 import Foundation
 
-class FloatExtensions {
-
+class Float {
+    var int:Int{return Int(self)}
 }
