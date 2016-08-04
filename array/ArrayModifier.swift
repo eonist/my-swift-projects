@@ -274,22 +274,22 @@ class ArrayModifier{
     }
     
     /**
-    * Returns a Vector with a range that is reversed
-    * @Note the original vector is altered, and is now unusable as is, reasign the returned Vector instance in the calling method
-    * @Note the Vector method named splice,push and unshift doesnt support taking an Vector of items as argument only 1 by 1 so we need to resolve this with some concat trickery
-    * @Note this method could keep the original vector intact by using slice instead of splice, but splice should be faster so it is used this way in this method
-    * @example
-    * var v:Vector.<Number> = Vector.<Number>([1,2,3,4,5,6,7,8,9]);
-    * v = VectorModifier.reverseRange(v, new Range(2, 7));
-    * trace("v: " + v);//1,2,7,6,5,4,3,8,9
-    */
-    class func reverseRange<T>(vector:Array<T>,rangeStart:Int,rangeEnd:Int) {
-        var head:* = vector["splice"](0,range.start);
-        var tail:* = vector["splice"](range.end-range.start, vector["length"] - (range.end-range.start));
-        var reversedVector:* = vector["reverse"]();
-        return head["concat"](reversedVector)["concat"](tail);
+     * Returns a Vector with a range that is reversed
+     * @Note the original vector is altered, and is now unusable as is, reasign the returned Vector instance in the calling method
+     * @Note the Vector method named splice,push and unshift doesnt support taking an Vector of items as argument only 1 by 1 so we need to resolve this with some concat trickery
+     * @Note this method could keep the original vector intact by using slice instead of splice, but splice should be faster so it is used this way in this method
+     * EXAMPLE:
+     * var v:Array<Int> = [1,2,3,4,5,6,7,8,9]
+     * v = arrayModifier.reverseRange(v, 2,7)
+     * Swift.print("v: " + v);//1,2,7,6,5,4,3,8,9
+     */
+    class func reverseRange<T>(inout vector:Array<T>,_ rangeStart:Int,_ rangeEnd:Int) -> Array<T> {
+        let head:Array<T> = vector.splice2(0,rangeStart)
+        let tail:Array<T> = vector.splice2(rangeEnd-rangeStart, vector.count - (rangeEnd-rangeStart))
+        let reversedVector:Array<T> = vector.reverse()
+        return head.concat(reversedVector).concat(tail)
     }
-    //Continue here: make the reverse range method, also take a look in you appleScript lib for more methods
+    
     
 }
 //combine
