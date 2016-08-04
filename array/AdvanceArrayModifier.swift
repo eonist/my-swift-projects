@@ -6,8 +6,8 @@ class AdvanceArrayModifier {
     //write a description of what sortToHighestDepths does. Also make a note that 
     
     /**
+     * I think this method sorts each node in an array-tree to highest index like [1,[1,0],0,[0,1]] -> [0,[]]
      * NOTE: This method can't sort arrays which are partial, all indecies must exist from 0 to the end etc (It probably can sort partial arrays, but that requires the addAt method to support adding items to lengths that are beyond the length of the array, To add this support you need to make test to make sure its fail safe)
-     * NOTE:
      */
     class func sortToHighestDepths(indices:Array<[Int]>) -> Array<[Int]>{
         var sortedIndices:Array<[Int]> = []
