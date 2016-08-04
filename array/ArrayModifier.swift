@@ -273,7 +273,7 @@ class ArrayModifier{
         return ArrayModifier.mergeAt(&array, splice, index)
     }
     
-    //Continue here: make the reverse range method
+    //Continue here: make the reverse range method, also take a look in you appleScript lib for more methods
     
 }
 //combine
