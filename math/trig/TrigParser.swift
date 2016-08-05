@@ -69,17 +69,17 @@ class TrigParser {
         return TrigParser.angleSpan2(a,b,isClockWise)
     }
     /**
-    * Returns the span in a clockwise or counterclockwise direction (radian between 0 and Math.PI*2)
-    * @param direction is of the Direction.CLOCK_WISE or Direction.COUNTER_CLOCK_WISE type
-    * @param a (-Math.PI to Math.PI)
-    * @param b (-Math.PI to Math.PI)
-    * @Note This method works great when finding angles in a triangle
-    * @Note Using NumberParser.distance(a,b) to find an angle span doesnt work
-    * @example:
-    * angleSpan(Math.PI*-0.5, Math.PI,Direction.COUNTER_CLOCK_WISE);//Math.PI*-0.5 to Math.PI = 4.71
-    * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
-    * // :TODO: replace direction with boolean: isClockWise
-    */
+     * Returns the span in a clockwise or counterclockwise direction (radian between 0 and Math.PI*2)
+     * @param direction is of the Direction.CLOCK_WISE or Direction.COUNTER_CLOCK_WISE type
+     * @param a (-Math.PI to Math.PI)
+     * @param b (-Math.PI to Math.PI)
+     * @Note This method works great when finding angles in a triangle
+     * @Note Using NumberParser.distance(a,b) to find an angle span doesnt work
+     * @example:
+     * angleSpan(Math.PI*-0.5, Math.PI,Direction.COUNTER_CLOCK_WISE);//Math.PI*-0.5 to Math.PI = 4.71
+     * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
+     * // :TODO: replace direction with boolean: isClockWise
+     */
     class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{
         if(direction == Trig.clockWise) {return Trig.normalize(b + (Trig.pi*2-a))}
         return Trig.normalize(a + (Trig.pi*2-b))/*Direction.COUNTER_CLOCK_WISE*/
@@ -91,29 +91,29 @@ class TrigParser {
         return angleSpan(a, b, isClockWise ? Trig.clockWise : Trig.counterClockWise)
     }
     /**
-    * Returns a flipped angle between -3.14 and 3.14 (an angle that is flipped in the x or y axis)
-    * @param angle between -3.14 and +3.14 (if you want to use angles from 0 to 6.28 use Angle.normalize2 on the @param angle first)
-    * @param horizontalAxis: horizontal axis multiplier
-    * @param verticalAxis: vertical axis multiplier
-    * @Note if you want to flip an angle vertically you can also do this: angle *= -1;
-    * @Note if you want to flip an angle horizontally you can also do this: angle = (angle + Math.PI/2 * -1)-Math.PI/2;
-    * @Note if you want to flip an angle that is rotated, just rotate it back to 0 rotation and then flip the angle and then rotated it back to original rotation // :TODO: maybe make a funciton that does this?
-    * @Note To find xAxisMultiplier its smart to use if shorthand like so: (_arcMinor > 0)? 1 : -1
-    * @Note This function used to be named Angle.inverse but because of ambiguity it was renmaed to Angle.flip
-    * @example: Angle.flip(Angle.polarAngle(20, 20), 1, 1);//Output: 0.7853981633974483
-    * @example: Angle.flip(Angle.polarAngle(20, 20), -1, 1);//Output: 2.356194490192345 (the result is now flipped in the x axis)
-    * @example: Angle.flip(Angle.polarAngle(20, 20), -1, -1);//Output: -2.356194490192345 (the result is now flipped in the x and y axis)
-    * @example: Angle.flip(Angle.polarAngle(20, 20), 1, -1);//Output: -0.7853981633974483 (the result is now flipped in the y axis)
-    * @example: Angle.flip(Angle.polarAngle(20, -20), -1, 1);//Output: -2.356194490192345 (the result is now flipped in the x axis)
-    * // :TODO: this should ultimatly use yAxisMultplier and xAxisMultiplier as two seperate variables or?
-    * // :TODO: this can be optimized, see the proto site
-    * // :TODO: should use yMultiplier:int xMultiplier:int
-    * // :TODO: if you flip with -1,-1 you could also just do normalize2(angle - PI), this could be an optimization
-    */
+     * Returns a flipped angle between -3.14 and 3.14 (an angle that is flipped in the x or y axis)
+     * @param angle between -3.14 and +3.14 (if you want to use angles from 0 to 6.28 use Angle.normalize2 on the @param angle first)
+     * @param horizontalAxis: horizontal axis multiplier
+     * @param verticalAxis: vertical axis multiplier
+     * @Note if you want to flip an angle vertically you can also do this: angle *= -1;
+     * @Note if you want to flip an angle horizontally you can also do this: angle = (angle + Math.PI/2 * -1)-Math.PI/2;
+     * @Note if you want to flip an angle that is rotated, just rotate it back to 0 rotation and then flip the angle and then rotated it back to original rotation // :TODO: maybe make a funciton that does this?
+     * @Note To find xAxisMultiplier its smart to use if shorthand like so: (_arcMinor > 0)? 1 : -1
+     * @Note This function used to be named Angle.inverse but because of ambiguity it was renmaed to Angle.flip
+     * @example: Angle.flip(Angle.polarAngle(20, 20), 1, 1);//Output: 0.7853981633974483
+     * @example: Angle.flip(Angle.polarAngle(20, 20), -1, 1);//Output: 2.356194490192345 (the result is now flipped in the x axis)
+     * @example: Angle.flip(Angle.polarAngle(20, 20), -1, -1);//Output: -2.356194490192345 (the result is now flipped in the x and y axis)
+     * @example: Angle.flip(Angle.polarAngle(20, 20), 1, -1);//Output: -0.7853981633974483 (the result is now flipped in the y axis)
+     * @example: Angle.flip(Angle.polarAngle(20, -20), -1, 1);//Output: -2.356194490192345 (the result is now flipped in the x axis)
+     * // :TODO: this should ultimatly use yAxisMultplier and xAxisMultiplier as two seperate variables or?
+     * // :TODO: this can be optimized, see the proto site
+     * // :TODO: should use yMultiplier:int xMultiplier:int
+     * // :TODO: if you flip with -1,-1 you could also just do normalize2(angle - PI), this could be an optimization
+     */
     class func flip(angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {
-        var verticalAngle:CGFloat = angle * axisMultiplier.y
-        var horisontalAngle:CGFloat = Trig.normalize2(verticalAngle - Trig.HPI) * axisMultiplier.x//Rotate to vertical alignment
-        horisontalAngle = Trig.normalize2(horisontalAngle + Trig.HPI);//rotate back to original alignment
-        return horisontalAngle;
+        let verticalAngle:CGFloat = angle * axisMultiplier.y
+        var horisontalAngle:CGFloat = Trig.normalize2(verticalAngle - Trig.hpi) * axisMultiplier.x//Rotate to vertical alignment
+        horisontalAngle = Trig.normalize2(horisontalAngle + Trig.hpi)//rotate back to original alignment
+        return horisontalAngle
     }
 }
