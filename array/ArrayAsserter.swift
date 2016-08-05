@@ -44,6 +44,7 @@ class ArrayAsserter {
      * @param b: Array to be compared against
      * @return a boolean indicating if the arrays are equal
      * @Note: could also be named isEqual,isIdentical
+     * IMPORTANT: This method compares reference not value
      */
     class func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
         let aLength:Int = a.count
@@ -54,6 +55,8 @@ class ArrayAsserter {
     /**
      * NOTE: same as the other equals method but asserts value and not reference
      * TODO: create add this method to ArrayExtensions
+     * add support for Comparable aswell, similar to Array.index
+     * IMPORTANT: This method compares value not reference
      */
     class func equals<T:Equatable>(a:Array<T>, _ b:Array<T>) -> Bool{
         let aLength:Int = a.count
