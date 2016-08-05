@@ -16,8 +16,14 @@ extension Array {
     mutating func pushPop(item:Element) -> Array<Element>{
         return ArrayModifier.pushPop(&self, item)
     }
-    mutating func append(item:Element){
-        
+    /**
+     * Enables varadic 
+     * EXAMPLE:
+     * var arr:Array<Int> = [0,1,2]
+     * arr.append(3,4,5)
+     */
+    mutating func append(items: Element...){
+        self += items
     }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
