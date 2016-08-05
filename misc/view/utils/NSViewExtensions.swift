@@ -4,6 +4,7 @@ extension NSView {
     /**
      * Asserts if locationInWindow is within the NSView frame
      * NOTE: seem to work different if the view isnt flipped (which some arent) try the alternate method with the "fromView" param
+     * TODO: upgrade the type with a generic
      */
     func hitTestToView(locationInWindow:NSPoint, _ toView:NSView? = nil)->Bool{
         let mousePos:NSPoint = convertPoint(locationInWindow, toView: toView)
@@ -14,6 +15,9 @@ extension NSView {
         */
         return NSPointInRect(mousePos, frame)
     }
+    /**
+     * TODO: upgrade the type with a generic
+     */
     func hitTestFromView(locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
         let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)
         /*
@@ -23,6 +27,9 @@ extension NSView {
         */
         return NSPointInRect(mousePos, frame)
     }
+    /**
+     * TODO: upgrade the type with a generic
+     */
     func hitTestFromViewRelativeToFrame(locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
         let mousePos:NSPoint = convertPoint(locationInWindow, fromView: fromView)/*converts the mouse pos from a wrongly flipped view to a correctly flipped view*/
         Swift.print("hitTestFromView.locationInWindow: " + String(locationInWindow))
@@ -61,7 +68,7 @@ extension NSView {
     /**
      * Asserts if @param view is a subView of @param parent
      */
-    func contains(view:NSView)->Bool{
+    func contains<T:NSView>(view:T)->Bool{
         return NSViewAsserter.contains(self, view)
     }
     var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}/*you cant have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
@@ -87,7 +94,7 @@ extension NSView {
     /**
      *
      */
-    func indexOf(subView:NSView)->Int{
+    func indexOf<T:NSView>(subView:T)->Int{
         return NSViewParser.indexOf(self, subView)
     }
     /**
