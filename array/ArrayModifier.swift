@@ -84,6 +84,7 @@ class ArrayModifier{
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
      * // :TODO: this can probably be written simpler and more optimized, or could it?  It looks pretty efficient if you think about it
      * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
+     * There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing
      */
     class func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
         if(to < from) {
@@ -281,6 +282,7 @@ class ArrayModifier{
     }
     /**
      * swaps two items in @param vector at @param index1 @param index2
+     * NOTE: there is also the ArrayModifier.move method which is similar
      */
     class func indexSwap<T>(inout array:Array<T>,_ index1:Int,_ index2:Int) -> [T] {
         if(index1 != -1 && index2 != -1) {
