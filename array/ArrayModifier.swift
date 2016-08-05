@@ -82,7 +82,8 @@ class ArrayModifier{
     /**
      * NOTE: modifies the original array
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
-     * // :TODO: this can probably be written simpler and more optimized, or could it it looks pretty efficient if you think about it
+     * // :TODO: this can probably be written simpler and more optimized, or could it?  It looks pretty efficient if you think about it
+     * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
      */
     class func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
         if(to < from) {
