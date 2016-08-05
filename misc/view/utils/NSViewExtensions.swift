@@ -34,21 +34,21 @@ extension NSView {
     /**
      * Convenince method that returns the view aswell (by utilising generics)
      */
-    func addSubView<T>(view: T)->T{
-        self.addSubview(view as! NSView)
+    func addSubView<T:NSView>(view: T)->T{
+        self.addSubview(view)
         return view
     }
     /**
      *
      */
-    func addSubViewAt<T>(view:T, _ i:Int)->T{
-        ViewModifier.addSubviewAt(self, view as! NSView, i)
+    func addSubViewAt<T:NSView>(view:T, _ i:Int)->T{
+        ViewModifier.addSubviewAt(self, view, i)
         return view
     }
     /**
      * TODO: You can probably deprecated this
      */
-    func addSubviewAt(view: NSView,_ i:Int){
+    func addSubviewAt<T:NSView>(view: T,_ i:Int){
         //Swift.print("\(self.dynamicType)" + ".addSubviewAt() i: " + "\(i)")
         ViewModifier.addSubviewAt(self, view, i)
     }
