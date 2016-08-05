@@ -39,11 +39,11 @@ class ArrayAsserter {
         return ArrayParser.indx(arr, item) != -1
     }
     /**
-     * Asserts if two arrays are identical a boolean depending on the equality of two arrays (must be in the same order)
+     * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
      * @param a: Array to be compared with
      * @param b: Array to be compared against
      * @return a boolean indicating if the arrays are equal
-     * @Note: could also be named isEqual,isIdentical
+     * NOTE: could also be named isEqual,isIdentical
      * IMPORTANT: This method compares reference not value
      */
     class func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
@@ -53,9 +53,13 @@ class ArrayAsserter {
         return true
     }
     /**
+     * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
      * NOTE: same as the other equals method but asserts value and not reference
      * TODO: create add this method to ArrayExtensions
      * NOTE: This method has support for both Equatable and Comparable aswell, similar to Array.index, the equatable part enables support for numeric types and the comparable part enables support for string types
+     * NOTE: there are two methods named equals in this class, the correct one will be infered from the POV of the callee
+     * EXAMPLE: ArrayAsserter.equals(["",""], ["","",""])//false
+     * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
      * IMPORTANT: This method compares value not reference
      */
     class func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
