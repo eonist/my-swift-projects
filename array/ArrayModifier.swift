@@ -56,7 +56,7 @@ class ArrayModifier{
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end
      * IMPORTANT: the original array is NOT modified
-     * slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
+     * EXAMPLE: slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
     class func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         
