@@ -313,9 +313,9 @@ class ArrayModifier{
      * v = ArrayModifier.reverseRange(v, 2,7)
      * Swift.print("v: " + v);//1,2,7,6,5,4,3,8,9
      */
-    class func reverseRange<T>(inout vector:Array<T>,_range:Range<Int>) -> Array<T> {
-        let head:Array<T> = vector.splice2(0,rangeStart)
-        let tail:Array<T> = vector.splice2(rangeEnd-rangeStart, vector.count - (rangeEnd-rangeStart))
+    class func reverseRange<T>(inout vector:Array<T>,_ range:Range<Int>) -> Array<T> {
+        let head:Array<T> = vector.splice2(0,range.start)
+        let tail:Array<T> = vector.splice2(range.end-range.start, vector.count - (range.end-range.start))
         let reversedVector:Array<T> = vector.reverse()
         return head.concat(reversedVector).concat(tail)
     }
