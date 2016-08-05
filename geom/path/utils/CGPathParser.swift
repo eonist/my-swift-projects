@@ -108,6 +108,7 @@ public class CGPathParser{
         let boundingBox:CGRect = CGPathGetPathBoundingBox(outlinePath)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         return boundingBox
     }
+    
 }
 extension CGPathParser{
     /**
