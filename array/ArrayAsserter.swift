@@ -55,10 +55,10 @@ class ArrayAsserter {
     /**
      * NOTE: same as the other equals method but asserts value and not reference
      * TODO: create add this method to ArrayExtensions
-     * add support for Comparable aswell, similar to Array.index, this will enable support for Strings aswell
+     * NOTE: This method has support for both Equatable and Comparable aswell, similar to Array.index, the equatable part enables support for numeric types and the comparable part enables support for string types
      * IMPORTANT: This method compares value not reference
      */
-    class func equals<T:Equatable>(a:Array<T>, _ b:Array<T>) -> Bool{
+    class func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
         let aLength:Int = a.count
         if(aLength != b.count) { return false }
         for(var i:Int = 0; i < aLength; i++) { if(a[i] != b[i]) {return false}}//Doesnt the !== only work on the same reference, yepp it does. To comapre value create another method
