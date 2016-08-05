@@ -292,8 +292,8 @@ class ArrayModifier{
     }
     /**
      * Displaces the @param range in @param vector to @param index
-     * @Note alters the original vector
-     * @example ArrayModifier.rangeDisplace(Array.<String>(["a","b","c","d","e","f","g"]), 2,4, 0);//c,d,a,b,e,f,g
+     * NOTE: alters the original vector
+     * EXAMPLE: ArrayModifier.rangeDisplace(Array.<String>(["a","b","c","d","e","f","g"]), 2,4, 0);//c,d,a,b,e,f,g
      */
     class func rangeDisplace<T>(inout array:Array<T>,_ rangeStart:Int,_ rangeEnd:Int,_ index:Int) -> [T] {
         let splice:Array<T> = array.splice2(rangeStart,rangeEnd-rangeStart)
@@ -307,7 +307,7 @@ class ArrayModifier{
      * @Note this method could keep the original vector intact by using slice instead of splice, but splice should be faster so it is used this way in this method
      * EXAMPLE:
      * var v:Array<Int> = [1,2,3,4,5,6,7,8,9]
-     * v = arrayModifier.reverseRange(v, 2,7)
+     * v = ArrayModifier.reverseRange(v, 2,7)
      * Swift.print("v: " + v);//1,2,7,6,5,4,3,8,9
      */
     class func reverseRange<T>(inout vector:Array<T>,_ rangeStart:Int,_ rangeEnd:Int) -> Array<T> {
