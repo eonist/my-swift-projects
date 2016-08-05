@@ -22,7 +22,7 @@ class Trig{
     static var bl:(CGFloat,CGFloat) = (0,π/2)//(0,90*㎭)
     static var br:(CGFloat,CGFloat) = (π/2,π)//(90*㎭,180*㎭)
 }
-extension Trig{//Legacy support
+extension Trig{//Legacy support/convenience
     class func angle(a:CGPoint, _ b:CGPoint)->CGFloat {return TrigParser.angle(a, b)}
     class func angleType(angleType:String)->CGFloat {return TrigUtils.angleType(angleType)}
     class func normalize(angle:CGFloat)->CGFloat {return TrigParser.normalize(angle)}
