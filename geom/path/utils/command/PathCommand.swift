@@ -19,10 +19,10 @@ extension PathCommand{
     static var noOp:Int = PathCommand.NO_OP
     static var moveTo:Int = PathCommand.MOVE_TO
     static var lineTo:Int = PathCommand.LINE_TO
-    static var curveTo:Int = PathCommand.CURVE_TO
+    static var curveTo:Int = PathCommand.CURVE_TO/*Quad*/
     static var wideMoveTo:Int = PathCommand.WIDE_MOVE_TO
     static var wideLineTo:Int = PathCommand.WIDE_LINE_TO
-    static var cubicCurveTo:Int = PathCommand.CUBIC_CURVE_TO
+    static var cubicCurveTo:Int = PathCommand.CUBIC_CURVE_TO/*Cubic*/
     static var arcTo:Int = PathCommand.ARC_TO
     static var close:Int = PathCommand.CLOSE
 }
