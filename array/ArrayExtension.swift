@@ -17,10 +17,12 @@ extension Array {
         return ArrayModifier.pushPop(&self, item)
     }
     /**
-     * Enables varadic 
+     * Enables the Array as a varadic method: 
+     * NOTE: Variadic functions are functions that have a variable number of arguments (indicated by ... after the argument's type) that can be accessed into their body as an array.
      * EXAMPLE:
      * var arr:Array<Int> = [0,1,2]
      * arr.append(3,4,5)
+     * Swift.print(arr)//[0,1,2,3,4,5]
      */
     mutating func append(items: Element...){
         self += items
