@@ -55,7 +55,7 @@ class ArrayAsserter {
     /**
      * NOTE: same as the other equals method but asserts value and not reference
      * TODO: create add this method to ArrayExtensions
-     * add support for Comparable aswell, similar to Array.index
+     * add support for Comparable aswell, similar to Array.index, this will enable support for Strings aswell
      * IMPORTANT: This method compares value not reference
      */
     class func equals<T:Equatable>(a:Array<T>, _ b:Array<T>) -> Bool{
