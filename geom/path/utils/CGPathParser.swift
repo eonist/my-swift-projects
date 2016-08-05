@@ -102,6 +102,7 @@ public class CGPathParser{
     }
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
+     * TODO: Move this method somewhere else?
      */
     class func boundingBox(path:CGPath,_ lineStyle:ILineStyle)->CGRect{
         let outlinePath = CGPathCreateCopyByStrokingPath(path, nil, lineStyle.thickness, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
