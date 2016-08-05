@@ -32,3 +32,15 @@ extension CGMutablePath{
         CGPathAddRelativeArc(self, matrix, center.x, center.y, xRadii, startAngle, delta)
     }
 }
+extension CGPath {
+    func forEach(@noescape body: @convention(block) (CGPathElement) -> Void) {
+        typealias Body = @convention(block) (CGPathElement) -> Void
+        func callback(info: UnsafeMutablePointer<Void>, element: UnsafePointer<CGPathElement>) {
+            let body = unsafeBitCast(info, Body.self)
+            body(element.memory)
+        }
+        print(sizeofValue(body))
+        let unsafeBody = unsafeBitCast(body, UnsafeMutablePointer<Void>.self)
+        CGPathApply(self, unsafeBody, callback)
+    }
+}
