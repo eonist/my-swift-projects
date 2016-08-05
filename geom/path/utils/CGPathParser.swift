@@ -97,7 +97,7 @@ public class CGPathParser{
      * Untested
      */
     class func nsBezierPath(path:CGPath)->NSBezierPath?{
-        //see reseach for this CGPathTest.swift
+        //see examples for this on stackoverflow
         return nil
     }
     /**
