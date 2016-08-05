@@ -16,6 +16,9 @@ extension Array {
     mutating func pushPop(item:Element) -> Array<Element>{
         return ArrayModifier.pushPop(&self, item)
     }
+    mutating func append(item:Element){
+        
+    }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
