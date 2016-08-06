@@ -28,7 +28,7 @@ class WinParser {
      * Returns the first window in NSApp of a spedific class or protocol type
      * NOTE: there is also window.isMemberOfClass which could work
      */
-    class func firstWindow<T:AnyObject>(type:T.Type)-> T? {
+    class func firstWindow<T>(type:T.Type)-> T? {
         for window : NSWindow in NSApp.windows {
             Swift.print("window: " + "\(window)")
             Swift.print(window as? LineWin)
