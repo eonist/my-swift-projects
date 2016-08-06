@@ -18,7 +18,7 @@ class WinModifier {
     }
     
     /**
-     *
+     * NOTE: This method is great when you want to find the correct alignment for an NSWindow before is initiated
      */
     class func alignPoint(winSize:CGSize,_ canvasAlignment:String,_ viewAlignment:String,_ offset:CGPoint = CGPoint(0,0))->CGPoint{
         return Align.alignmentPoint(CGSize(winSize.width,winSize.height), CGSize(NSScreen.mainScreen()!.visibleFrame.width,NSScreen.mainScreen()!.visibleFrame.height),canvasAlignment,viewAlignment,offset)
