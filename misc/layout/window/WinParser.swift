@@ -32,7 +32,7 @@ class WinParser {
     class func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
         for window : NSWindow in NSApp.windows {
             if(window as? T != nil) {
-                if(!strict || (type is AnyClass && window.isMemberOfClass(type))){
+                if(!strict || (type is AnyClass && window.isMemberOfClass(type as! AnyClass))){
                    
                 
                 }
