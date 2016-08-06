@@ -12,7 +12,7 @@ class WinModifier {
      * IMPORTANT: The screen aligns from the bottom up (so use bottom for top and top for bottom) (you could fix this, it probably only requires a minus sign herer and there)
      */
     class func align(win:NSWindow,_ canvasAlignment:String,_ viewAlignment:String,_ offset:CGPoint = CGPoint(0,0)) {
-        let alignmentPoint:CGPoint = alignPoint(win,canvasAlignment,viewAlignment,offset)
+        let alignmentPoint:CGPoint = alignPoint(win.frame.size,canvasAlignment,viewAlignment,offset)
         //Swift.print("ScreenUtils.alignmentPoint: " + "\(alignmentPoint)")
         WinModifier.position(win, alignmentPoint)
     }
@@ -20,7 +20,7 @@ class WinModifier {
     /**
      *
      */
-    class func alignPoint(win:NSWindow,_ canvasAlignment:String,_ viewAlignment:String,_ offset:CGPoint = CGPoint(0,0))->CGPoint{
-        return Align.alignmentPoint(CGSize(win.frame.width,win.frame.height), CGSize(NSScreen.mainScreen()!.visibleFrame.width,NSScreen.mainScreen()!.visibleFrame.height),canvasAlignment,viewAlignment,offset)
+    class func alignPoint(winSize:CGSize,_ canvasAlignment:String,_ viewAlignment:String,_ offset:CGPoint = CGPoint(0,0))->CGPoint{
+        return Align.alignmentPoint(CGSize(winSize.width,winSize.height), CGSize(NSScreen.mainScreen()!.visibleFrame.width,NSScreen.mainScreen()!.visibleFrame.height),canvasAlignment,viewAlignment,offset)
     }
 }
