@@ -29,10 +29,14 @@ class WinParser {
      * NOTE: there is also window.isMemberOfClass which could work, but it wont work for protocols
      * CAUTION: The type provided must be absolute. Meaning storing a type and then using it here wont work, only direct access to the class type will work like: String.self
      */
-    class func firstWindow<T:NSWindow>(type:T.Type, _ strict:Bool)-> T? {
+    class func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
         for window : NSWindow in NSApp.windows {
             if(window as? T != nil) {
-                return window as? T
+                if(!strict || (type is AnyClass && window.isMemberOfClass(type))){
+                   
+                
+                }
+                else {return window as? T}
             }
         }
         return nil
