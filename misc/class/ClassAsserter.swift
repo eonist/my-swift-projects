@@ -58,4 +58,15 @@ class ClassAsserter{
     class func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)
     }
+    /**
+     * Asserts if type is a class
+     * EXAMPLE: 
+     * class A{}
+     * protocol I{}
+     * ClassAsserter(A.self)//true
+     * ClassAsserter(I.self)//false
+     */
+    class func isClass<T>(classType:T.Type)->Bool{
+        return classType is AnyClass
+    }
 }
