@@ -30,15 +30,7 @@ class WinParser {
      * CAUTION: The type provided must be absolute. Meaning storing a type and then using it here wont work, only direct access to the class type will work like: String.self
      */
     class func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
-        for window : NSWindow in NSApp.windows {
-            if(window as? T != nil) {
-                if(!strict || (type is AnyClass && window.isMemberOfClass(type as! AnyClass))){
-                   
-                
-                }
-                else {return window as? T}
-            }
-        }
+        for window : NSWindow in NSApp.windows {if((window as? T != nil && !strict) || (type is AnyClass && window.isMemberOfClass(type as! AnyClass))) {return window as? T}}
         return nil
     }
     /**
