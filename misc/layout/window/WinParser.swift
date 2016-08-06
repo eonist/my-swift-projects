@@ -33,6 +33,8 @@ class WinParser {
             Swift.print("window: " + "\(window)")
             Swift.print("window.dynamicType is T: " + "\(window.dynamicType is T)")
             
+            //continue here: try to run the code above, what is going wrong?
+            
             if(window as? T != nil) {
                 Swift.print("window is type: " + "\(window is T)")
                 return window as? T
