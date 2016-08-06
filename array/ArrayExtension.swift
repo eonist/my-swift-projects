@@ -24,7 +24,7 @@ extension Array {
      * arr.append(3,4,5)
      * Swift.print(arr)//[0,1,2,3,4,5]
      */
-    mutating func append(items: Element...){
+    mutating func appendMany(items: Element...){
         self += items
     }
     /**
