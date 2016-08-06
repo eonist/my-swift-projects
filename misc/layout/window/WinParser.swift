@@ -31,7 +31,8 @@ class WinParser {
     class func firstWindow<T>(type:T.Type)-> T? {
         for window : NSWindow in NSApp.windows {
             Swift.print("window: " + "\(window)")
-            
+            Swift.print(window as? LineWin)
+            Swift.print(window as? T)
             //continue here: try to run the code above, what is going wrong?
             
             if(window as? T != nil) {
