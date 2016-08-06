@@ -21,8 +21,9 @@ extension Array {
      * NOTE: Variadic functions are functions that have a variable number of arguments (indicated by ... after the argument's type) that can be accessed into their body as an array.
      * EXAMPLE:
      * var arr:Array<Int> = [0,1,2]
-     * arr.append(3,4,5)
+     * arr.appendMany(3,4,5)
      * Swift.print(arr)//[0,1,2,3,4,5]
+     * CAUTION: renaming appendMany to just append can cause problems with some array's so its probably better to leave it named something different than the native append name
      */
     mutating func appendMany(items: Element...){
         self += items
