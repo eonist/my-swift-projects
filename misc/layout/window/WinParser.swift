@@ -29,7 +29,13 @@ class WinParser {
      * NOTE: there is also window.isMemberOfClass which could work
      */
     class func firstWindow<T:NSWindow>(type:T.Type)-> T? {
-        for window : NSWindow in NSApp.windows { if(window as? T != nil) {return window as? T}}
+        for window : NSWindow in NSApp.windows {
+            Swift.print("window: " + "\(window)")
+            if(window as? T != nil) {
+                Swift.print("window is type: " + "\(window is T)")
+                return window as? T
+            }
+        }
         return nil
     }
     /**
