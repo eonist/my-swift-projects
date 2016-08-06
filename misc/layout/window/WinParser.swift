@@ -35,7 +35,7 @@ class WinParser {
             //continue here: try to run the code above, what is going wrong?
             
             if(window as? T != nil) {
-                Swift.print("window is type: " + "\(window is T)")
+                Swift.print("window is type: " + "\(type)" + " " + "\(window is T)")
                 return window as? T
             }
         }
@@ -52,7 +52,7 @@ class WinParser {
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
      */
-    class func frontMostWinOfType<T>(type:T.Type)-> T?{
+    class func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
