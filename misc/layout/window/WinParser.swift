@@ -28,10 +28,9 @@ class WinParser {
      * Returns the first window in NSApp of a spedific class or protocol type
      * NOTE: there is also window.isMemberOfClass which could work
      */
-    class func firstWindow<T:NSWindow>(type:T.Type)-> T? {
+    class func firstWindow<T>(type:T.Type)-> T? {
         for window : NSWindow in NSApp.windows {
             Swift.print("window: " + "\(window)")
-            Swift.print("window.dynamicType is T: " + "\(window.dynamicType is T)")
             
             //continue here: try to run the code above, what is going wrong?
             
@@ -45,7 +44,7 @@ class WinParser {
     /**
      * Returns an array of NSWindow of type T in the current app
      */
-    class func windowsOfType<T:NSWindow>(type:T.Type)-> [T] {
+    class func windowsOfType<T>(type:T.Type)-> [T] {
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         return windows
@@ -53,7 +52,7 @@ class WinParser {
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
      */
-    class func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
+    class func frontMostWinOfType<T>(type:T.Type)-> T?{
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
