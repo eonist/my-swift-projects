@@ -36,7 +36,7 @@ class WinParser {
     /**
      * Returns an array of NSWindow of type T in the current app
      */
-    class func windowsOfType<T:NSWindow>(type:T.Type)-> [T] {
+    class func windowsOfType<T>(type:T.Type)-> [T] {
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         return windows
