@@ -12,13 +12,10 @@ extension NSColor{
     }
     /**
      * EXAMPLE: NSColor.redColor().alpha(0.5)//Output: a black color with 50% transparancy
+     * NOTE: seems you cant Mutate self so dont bother trying to make a setAlpha method
      */
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
-    }
-    mutating func setAlpha(alpha:CGFloat)->NSColor{
-       self = NSColor(self,alpha)
-        return self
     }
     static var random:NSColor{return ColorParser.randomColor()}
     var cgColor:CGColorRef {return CGColorParser.cgColor(self)}
