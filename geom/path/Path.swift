@@ -1,6 +1,7 @@
 import Foundation
 /**
  * NOTE: Compound paths needs to be closed
+ * NOTE: NON-compound paths does not need to be closed
  */
 class Path:IPath {
     var commands:Array<Int>/* = Array<Int>();*/// :TODO: does this need to be created? isnt it passed through argument
