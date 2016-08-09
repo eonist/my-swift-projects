@@ -1,4 +1,7 @@
 import Foundation
+/**
+ * NOTE: Compound paths needs to be closed
+ */
 class Path:IPath {
     var commands:Array<Int>/* = Array<Int>();*/// :TODO: does this need to be created? isnt it passed through argument
     var pathData:Array<CGFloat>/* = Array<CGFloat>();*/// :TODO: does this need to be created? isnt it passed through argument
