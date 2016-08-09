@@ -34,8 +34,8 @@ extension CGMutablePath{
     /**
      *
      */
-    func nsBezierPath(){
-        return self.nsBezierPath()
+    func nsBezierPathRef(){
+        return self
     }
 }
 extension CGPath {
