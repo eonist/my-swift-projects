@@ -31,12 +31,6 @@ extension CGMutablePath{
     func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat, _ matrix: UnsafePointer<CGAffineTransform>){
         CGPathAddRelativeArc(self, matrix, center.x, center.y, xRadii, startAngle, delta)
     }
-    /**
-     *
-     */
-    func nsBezierPathRef(){
-        return self
-    }
 }
 extension CGPath {
     func forEach(@noescape body: @convention(block) (CGPathElement) -> Void) {
