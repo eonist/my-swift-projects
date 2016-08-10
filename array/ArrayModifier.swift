@@ -283,11 +283,10 @@ class ArrayModifier{
      * NOTE: alters the original vector
      * EXAMPLE: ArrayModifier.rangeDisplace(Array.<String>(["a","b","c","d","e","f","g"]), 2,4, 0);//c,d,a,b,e,f,g
      */
-    class func rangeDisplace<T>(inout array:Array<T>,_ rangeStart:Int,_ rangeEnd:Int,_ index:Int) -> [T] {
-        let splice:Array<T> = array.splice2(rangeStart,rangeEnd-rangeStart)
+    class func rangeDisplace<T>(inout array:Array<T>,_ range:Range<Int>,_ index:Int) -> [T] {
+        let splice:Array<T> = array.splice2(range.start,range.end-range.start)//<--You could probably use range.length here
         return ArrayModifier.mergeAt(&array, splice, index)
     }
-    
     /**
      * Returns a Vector with a range that is reversed
      * @Note the original vector is altered, and is now unusable as is, reasign the returned Vector instance in the calling method
