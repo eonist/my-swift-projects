@@ -232,7 +232,7 @@ class ArrayModifier{
      * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
-        if(index == a.count-1) {a += b}
+        if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
         else {a.splice2(index, 0)}// :TODO: test if this is correct?
         return a
     }
