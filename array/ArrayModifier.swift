@@ -73,10 +73,10 @@ class ArrayModifier{
      * IMPORTANT: This method does NOT alter the original array (should probably be moved to ArrayParser?)
      * RETURNS: The items from startIndex to endIndex
      */
-    class func slice2<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
+    class func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
         let range = Utils.range(array, startIndex, endIndex)
-        let deleteCount = endIndex - startIndex//<--This seems not to be needed, remove it
-        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        //let deleteCount = endIndex - startIndex//<--This seems not to be needed, remove it
+        //array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         return range
     }
     /**
