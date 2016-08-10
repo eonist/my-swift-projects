@@ -49,9 +49,14 @@ class ArrayModifier{
 	  */
     class func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         Swift.print("ArrayModifier.splice2() ")
+        Swift.print("startIndex: " + "\(startIndex)")
+        Swift.print("deleteCount: " + "\(deleteCount)")
+        Swift.print("values: " + "\(values)")
         let returnArray  = Utils.range(array, startIndex, startIndex + deleteCount)
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        Swift.print("array: " + "\(array)")
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
+        Swift.print("array: " + "\(array)")
         return returnArray
     }
     /**
@@ -234,7 +239,7 @@ class ArrayModifier{
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
-        else {a.splice2(index, 0)}// :TODO: test if this is correct?
+        else {a.splice2(index, 0,b)}// :TODO: test if this is correct?
         return a
     }
     /**
