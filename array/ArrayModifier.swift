@@ -231,6 +231,9 @@ class ArrayModifier{
      * EXAMPLE: print(ArrayModifier.merge(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
+        
+        //Continue here: test if += alters both sides when working with an array, use playground to test
+        
         if(index == 0) {return b.concat(a)}
         else if(index == a.count) {return a.concat(b)}
         else {return a.splice2(0, index) + b + a}// :TODO: test if this is correct?
