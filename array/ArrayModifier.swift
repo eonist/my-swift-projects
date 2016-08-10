@@ -48,30 +48,10 @@ class ArrayModifier{
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
 	  */
     class func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
-        Swift.print("ArrayModifier.splice2() ")
-        Swift.print("startIndex: " + "\(startIndex)")
-        Swift.print("deleteCount: " + "\(deleteCount)")
-        Swift.print("values: " + "\(values)")
-        let returnArray  = Utils.range(array, startIndex, startIndex + deleteCount)
+        let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        Swift.print("array: " + "\(array)")
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
-        Swift.print("array: " + "\(array)")
         return returnArray
-    }
-    /**
-     * Returns a new array derived from the @param array sans the items from @param start to @param end
-     * IMPORTANT: the original array is NOT modified
-     * EXAMPLE: slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
-     */
-    class func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
-        
-        //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
-        
-        let deleteCount = endIndex - startIndex
-        //Swift.print("deleteCount: " + "\(deleteCount)")
-        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        return array
     }
     /**
      * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing and faster, but this work for now
@@ -80,10 +60,9 @@ class ArrayModifier{
      * RETURNS: The items from startIndex to endIndex
      */
     class func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
-        let range = Utils.range(array, startIndex, endIndex)
-        //let deleteCount = endIndex - startIndex//<--This seems not to be needed, remove it
-        //array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        return range
+        var arr:Array<T> = []
+        for var i = startIndex; i < endIndex; ++i{arr.append(array[i])}
+        return arr
     }
     /**
      * NOTE: modifies the original array
@@ -387,16 +366,18 @@ class ArrayModifier{
         }
         return array
     }
-}
-//combine
-//bubblesort
-private class Utils{
     /**
-     *
+     * Returns a new array derived from the @param array sans the items from @param start to @param end
+     * IMPORTANT: the original array is NOT modified
+     * EXAMPLE: slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
-    class func range<T>(array:Array<T>, _ start:Int,_ end:Int) -> Array<T>{
-        var arr:Array<T> = []
-        for var i = start; i < end; ++i{arr.append(array[i])}
-        return arr
+    class func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
+        
+        //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
+        
+        let deleteCount = endIndex - startIndex
+        //Swift.print("deleteCount: " + "\(deleteCount)")
+        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
+        return array
     }
 }
