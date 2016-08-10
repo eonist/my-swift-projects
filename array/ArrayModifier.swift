@@ -215,39 +215,34 @@ class ArrayModifier{
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
      */
     class func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
+        
+        //test this method first
+        
         if(i == 0) {while(b.count > 0) {a.unshift(b.splice2(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
         else if(i == a.count) {while(b.count > 0) {a.splice2(a.count,0,b.splice2(0,1))}}
         else {while(b.count > 0) {a.splice2(i,0,b.splice2(b.count-1,1))}}
         return a
     }
     /**
-     * Returns a new array that has merged arrayB onto arrayA at a spessific index on arrayA (keeps the original PARAM: a intact)
+     * Merges b into a at index (returns a for convenience)
      * IMPORTANT: Alters PARAM: a
      * @param a:Target array
-     * @param b: array to merged onto Target array
+     * @param b: array to merged onto Target array (does not alter b)
      * @param index: where on the targetArray should it merge on
-     * @Note For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
-     * @Note To merge two arrays directly you can use concat, some sort of split function and while(b.length > 0) a.unshift(b.splice(b.length-1,1));
-     * EXAMPLE: print(ArrayModifier.merge(["a","b","c"], ["1","2","3"], 1));//a,1,2,3,b,c
+     * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
-        
-        //Continue here: test if += alters both sides when working with an array, use playground to test
-        
-        if(index == 0) {return b.concat(a)}
-        else if(index == a.count-1) {a += b}
-        else {return a.splice2(0, index)}// :TODO: test if this is correct?
+        if(index == a.count-1) {a += b}
+        else {a.splice2(index, 0)}// :TODO: test if this is correct?
         return a
     }
     /**
      * Similar to mergeAt, but does not alter the original PARAM a
-     * EXAMPLE: Swift.print(ArrayModifier.combineAt(["a","b","c"], ["1","2","3"], 1))//["a", "1", "2", "3", "b", "c"]
      * NOTE: Strictly speaking we should move this to ArrayParser, as it doesnt modify anything
      */
     class func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         return mergeAt(&a, b, index)
     }
-    
     /**
      * splits an array in two pieces
      * @return a new array with 2 arrays
