@@ -215,6 +215,7 @@ class ArrayModifier{
      * @param b: array to merged onto Target array (does not alter b)
      * @param index: where on the targetArray should it merge on
      * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
+     * EXAMPLE: ArrayModifier.mergeAt([1,2,3], [4,5,6], 1)//[1, 4, 5, 6, 2, 3]
      */
     class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
