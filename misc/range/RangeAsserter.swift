@@ -4,6 +4,7 @@
 class RangeAsserter{
     /**
      * Asserts if @param a equals @param b
+     * NOTE: you can also use the native: a == b (I think)
      */
     class func equals<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return a.start == b.start && a.end == b.end
