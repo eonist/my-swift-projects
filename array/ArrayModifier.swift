@@ -285,7 +285,7 @@ class ArrayModifier{
      */
     class func rangeDisplace<T>(inout array:Array<T>,_ range:Range<Int>,_ index:Int) -> [T] {
         let splice:Array<T> = array.splice2(range.start,range.end-range.start)//<--You could probably use range.length here
-        return ArrayModifier.mergeAt(&array, splice, index)
+        return ArrayModifier.mergeAt(&array, splice, index)//it could be more memory efficient to use mergeInPlaceAt here, tests is need to confirm
     }
     /**
      * Returns a Vector with a range that is reversed
