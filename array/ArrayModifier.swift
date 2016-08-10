@@ -197,7 +197,7 @@ class ArrayModifier{
      * RETURNS: The altered Array instance @param a
      * var abc:Array = ["a","b","c"];
      * var def:Array = ["d","e","f"];
-     * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c
+     * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c// and the def array should now be empty
      */
     class func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
         
