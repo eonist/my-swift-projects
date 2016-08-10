@@ -235,8 +235,9 @@ class ArrayModifier{
         //Continue here: test if += alters both sides when working with an array, use playground to test
         
         if(index == 0) {return b.concat(a)}
-        else if(index == a.count) {return a.concat(b)}
-        else {return a.splice2(0, index) + b + a}// :TODO: test if this is correct?
+        else if(index == a.count-1) {a += b}
+        else {return a.splice2(0, index)}// :TODO: test if this is correct?
+        return a
     }
     /**
      * Similar to mergeAt, but does not alter the original PARAM a
