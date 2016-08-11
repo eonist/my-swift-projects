@@ -13,6 +13,7 @@ extension Range {
      */
     var numOfIndecies:Int{ return (self.end as! Int) - (self.start as! Int) + 1 }
     init(_ start:Element,_ end:Element){/*Conveninence initializer*/
+        //TODO:  try ->return self.indices.count or self.underestimateCount()
         self.init(start:start,end:end)
     }
 }
