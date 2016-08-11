@@ -40,9 +40,11 @@ class ArrayModifier{
     }
      /**
 	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
+      * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
+      * EXAMPLE: splice2([a,b,c],2,1)//[c]
+      * EXAMPLE: splice2([a,b,c],0,1)//[a]
       * NOTE: splice can also be used to remove item from array
       * IMPORTANT: the original array is modified
-      * NOTE: values used to be: values:[Element], but didnt work
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
       * RETURNS: An array containing the elements that were removed from the original array.
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
