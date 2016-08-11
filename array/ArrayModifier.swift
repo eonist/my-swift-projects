@@ -135,7 +135,7 @@ class ArrayModifier{
     class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
             if(array[i] === object){
-                array.splice2(i, 1);
+                array.removeAtIndex(i)/*was --> array.splice2(i, 1);*/
                 return i;
             }
         }
@@ -310,8 +310,7 @@ class ArrayModifier{
      * Removes a range of items from rangeStart to rangeEnd
      */
     class func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
-        array.splice2(rangeStart, rangeEnd - rangeStart)
-        array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))
+        array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))/*was -> array.splice2(rangeStart, rangeEnd - rangeStart)*/
         return array
     }
     /**
