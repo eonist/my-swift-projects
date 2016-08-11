@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * EXAMPLE: Range(start:2,end:6).count//4
+ */
 extension Range {
     var start:Element {return self.startIndex}/*convenince*/
     var end:Element {return self.endIndex}/*convenince*/
