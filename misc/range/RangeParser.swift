@@ -28,4 +28,10 @@ class RangeParser {
     class func clone<T>(range:Range<T>) -> Range<T> {
         return Range(range.start, range.end)
     }
+    /**
+     * NOTE: only works with Range<Int>
+     */
+    class func difference(range:Range<Int>) -> Int{
+        return range.end - range.start 
+    }
 }
