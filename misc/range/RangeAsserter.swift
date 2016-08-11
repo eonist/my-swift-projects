@@ -36,7 +36,7 @@ class RangeAsserter{
         return a.start <= b.start && a.end >= b.end
     }
     /**
-     *
+     * Asserts if PARAM: index is on either edge of PARAM: range
      */
     class func edge<T:Comparable>(index:T, _ range:Range<T>)->Bool {
         return index == range.start || index == range.end
