@@ -36,8 +36,9 @@ class RangeParser {
     }
     /**
      * EXAMPLE: Range<Int>(0,3).numOfIndecies()//4 -> because [0,1,2,3].count// 4
+     * NOTE: only works with Range<Int> for now
      */
-    class func numOfElements(range:Range<Int>) -> Int{
+    class func numOfIndecies(range:Range<Int>) -> Int{
         return range.end - range.start + 1
     }
 }
