@@ -142,10 +142,10 @@ class ArrayModifier{
         return -1;
     }
     /**
-     * NOTE: I think you can also use: array.removeFirst(n: Int)
+     * TODO: I think you can also use: array.removeFirst(n: Int)
      */
     class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
-        return array.splice2(i, 1)[0]
+        return array.removeAtIndex(i)//was -> return array.splice2(i, 1)[0]
     }
     /**
      * Returns @param array with out the items in @param these
@@ -156,7 +156,7 @@ class ArrayModifier{
     class func removeMany<T>(inout array:Array<T>,_ many:Array<T>) -> Array<T> {
         for (var i : Int = 0; i < many.count; i++) {
             let index:Int = ArrayParser.indx(array, many[i])
-            if(index != -1) {array.splice2(index,1)}
+            if(index != -1) {array.removeAtIndex(index)/*was --> array.splice2(index,1)*/}
         }
         return array
     }
@@ -311,6 +311,7 @@ class ArrayModifier{
      */
     class func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
         array.splice2(rangeStart, rangeEnd - rangeStart)
+        array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))
         return array
     }
     /**
