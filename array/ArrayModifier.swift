@@ -308,6 +308,7 @@ class ArrayModifier{
     }
     /**
      * Removes a range of items from rangeStart to rangeEnd
+     * returns the newly altered array
      */
     class func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
         array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))/*was -> array.splice2(rangeStart, rangeEnd - rangeStart)*/
