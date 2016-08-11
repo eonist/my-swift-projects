@@ -32,6 +32,12 @@ class RangeParser {
      * NOTE: only works with Range<Int>
      */
     class func difference(range:Range<Int>) -> Int{
-        return range.end - range.start 
+        return range.end - range.start
+    }
+    /**
+     * EXAMPLE: Range<Int>(0,3).numOfElements()//
+     */
+    class func numOfElements(range:Range<Int>) -> Int{
+        return range.end - range.start + 1
     }
 }
