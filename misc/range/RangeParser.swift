@@ -22,4 +22,10 @@ class RangeParser {
     class func max<T:Comparable>(range:Range<T>)->T {
         return Swift.max(range.start, range.end);
     }
+    /**
+     * Returns a clone of the @param range instance
+     */
+    class func clone<T>(range:Range<T>) -> Range<T> {
+        return Range(range.start, range.end)
+    }
 }
