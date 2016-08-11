@@ -10,3 +10,8 @@ extension Range {
         self.init(start:start,end:end)
     }
 }
+extension Range where Element : Comparable {
+    func edge<T:Comparable>(index:T)->Bool{
+        return RangeAsserter.edge(index, self)
+    }
+}
