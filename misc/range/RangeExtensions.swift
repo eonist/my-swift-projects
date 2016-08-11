@@ -9,7 +9,4 @@ extension Range {
     init(_ start:Element,_ end:Element){/*Conveninence initializer*/
         self.init(start:start,end:end)
     }
-    func edge<T:Comparable>(index:T)->Bool{
-        return RangeAsserter.edge(index, self)
-    }
 }
