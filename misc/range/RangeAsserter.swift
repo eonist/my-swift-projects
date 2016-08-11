@@ -35,4 +35,10 @@ class RangeAsserter{
     class func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return a.start <= b.start && a.end >= b.end
     }
+    /**
+     *
+     */
+    class func edge<T:Comparable>(index:T, _ range:Range<T>)->Bool {
+        return index == range.start || index == range.end
+    }
 }
