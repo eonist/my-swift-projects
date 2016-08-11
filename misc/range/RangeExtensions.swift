@@ -1,6 +1,7 @@
 import Foundation
 /**
  * EXAMPLE: Range(start:2,end:6).count//4
+ * TODO: Figure out how to write extensions for Range that also works with RangeAsserter etc
  */
 extension Range {
     var start:Element {return self.startIndex}/*convenince*/
