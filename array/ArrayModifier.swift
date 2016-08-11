@@ -48,6 +48,7 @@ class ArrayModifier{
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
       * RETURNS: An array containing the elements that were removed from the original array.
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
+      * TODO: You could probably use the native: array.replaceRange instead
 	  */
     class func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
