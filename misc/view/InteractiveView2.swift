@@ -31,6 +31,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //event = onEvent/*assign method to selector*/
         event = eventCall
     }
+    override func keyDown(theEvent: NSEvent) {
+        Swift.print("interactiveView2.keyDown")
+    }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
      */
