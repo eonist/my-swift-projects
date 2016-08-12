@@ -26,7 +26,7 @@ class FileParser{
      */
     class func xml(path:String)->NSXMLElement {
         let content = FileParser.content(path)
-        Swift.print("content: " + "\(content)")
+        //Swift.print("content: " + "\(content)")
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         return rootElement
