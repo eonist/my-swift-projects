@@ -45,7 +45,14 @@ class CGPathUtils {
                 //Swift.print("prevEnd: " + "\(prevEnd)")
                 //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
                 //Swift.print("path.pathData[index+0]: " + "\(path.pathData[index+0])")
-                let arc:IArc = BasicPathParser.arcAt(path,index)
+                
+                //Continue here: the bug is the bellow line, 
+                //you need to use the index somehow, 
+                //try to improve the arcAt method, 
+                //why doesnt it use prevEnd as the start for instance. 
+                //see legacy code to figure this one out
+                
+                let arc:IArc = BasicPathParser.arcAt(path,0)
                 DisplayArcUtils.arcTo(cgPath,arc)
                 prevEnd = arc.end.copy()
                 index += 9
