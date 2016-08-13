@@ -9,7 +9,7 @@ protocol ILineStyle{
 }
 extension ILineStyle{
     func copy() -> ILineStyle {
-        return LineStyle(thickness,color,lineCap,lineJoin,miterLimit)
+        return LineStyleParser.clone(self)
     }
     func mix(color:NSColor)->ILineStyle{
         var c = copy()

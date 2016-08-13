@@ -30,4 +30,10 @@ class LineStyleParser {
         else if(lineJoin == CGLineJoin.Round){return "round"}
         else{return "bevel"}//Bevel
     }
+    /**
+     * Clones @param lineStyle
+     */
+    class func clone(lineStyle:ILineStyle) -> LineStyle {
+        return LineStyle(lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit)
+    }
 }
