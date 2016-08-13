@@ -26,4 +26,24 @@ class PointAsserter {
         if( r < 0 || r > 1 || s < 0 || s > 1 ) {return false}
         return true
     }
+    /**
+     * Asserts if p1, p2 and p3 are all colinear
+     * @Note Three or more points are said to be collinear if they all lie on a line (co-linear or contra-linear)
+     * @Note Another way to think of this is that despite there being more than two points, the affine space that they span is only one dimensional.
+     * @Note Collinearity of 3 points could be asserter if the area of the triangle that make up the 3 points is 0
+     * @Note if two of the points are equals, then this method may not work, better assert for equals before utilizing this method
+     * // :TODO: if two points are equal then the three are colliinear actually
+     */
+    class func collinear(p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {// :TODO: rename to is..., depricate and link, or not?!?!
+        //print("p1: " + p1)
+        //print("p2: " + p2)
+        //print("p3: " + p3)
+        var a:CGFloat = PointParser.slope(p2, p3)
+        //print("a: " + a)
+        var b:CGFloat = PointParser.slope(p2, p1)
+        //print("b: " + b)
+        var c:CGFloat = PointParser.slope(p3, p1)
+        //print("c: " + c)
+        return (a == b && b == c) || (NumberAsserter.isInfinity(a) && NumberAsserter.isInfinity(b) && NumberAsserter.isInfinity(c))
+    }
 }

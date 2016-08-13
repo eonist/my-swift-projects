@@ -34,4 +34,10 @@ class NumberAsserter{
     class func equals(a:CGFloat,_ b:CGFloat) -> Bool {
         return (a.isNaN && b.isNaN) || a == b
     }
+    /**
+     * @Note you can also use Number.NEGATIVE_INFINITY and Number.POSITIVE_INFINITY
+     */
+    class func isInfinity(number:CGFloat) -> Bool {
+        return number == CGFloat.infinity || number == -CGFloat.infinity
+    }
 }
