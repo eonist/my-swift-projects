@@ -9,4 +9,10 @@ class FillStyleParser {
         Swift.print("fillStyle.color.hex: " + "\(fillStyle.color.hexString)")
         Swift.print("fillStyle.color.alphaComponent: " + "\(fillStyle.color.alphaComponent)")
     }
+    /**
+     *
+     */
+    class func clone(fillStyle:IFillStyle) -> IFillStyle {
+        return FillStyle(fillStyle.color)
+    }
 }

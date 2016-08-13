@@ -8,9 +8,7 @@ protocol IFillStyle{
  */
 extension IFillStyle {
     var cgColor: CGColor {return CGColorParser.cgColor(color)}
-}
-extension IFillStyle{
     func copy() -> IFillStyle {
-        return FillStyle(self.color)
+        return FillStyleParser.clone(self)
     }
 }
