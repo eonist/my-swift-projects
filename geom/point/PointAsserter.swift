@@ -38,12 +38,12 @@ class PointAsserter {
         //print("p1: " + p1)
         //print("p2: " + p2)
         //print("p3: " + p3)
-        var a:CGFloat = PointParser.slope(p2, p3)
+        let a:CGFloat = PointParser.slope(p2, p3)
         //print("a: " + a)
-        var b:CGFloat = PointParser.slope(p2, p1)
+        let b:CGFloat = PointParser.slope(p2, p1)
         //print("b: " + b)
-        var c:CGFloat = PointParser.slope(p3, p1)
+        let c:CGFloat = PointParser.slope(p3, p1)
         //print("c: " + c)
-        return (a == b && b == c) || (NumberAsserter.isInfinity(a) && NumberAsserter.isInfinity(b) && NumberAsserter.isInfinity(c))
+        return (a == b && b == c) || (NumberAsserter.isInfinity(a) && NumberAsserter.isInfinity(b) && NumberAsserter.isInfinity(c))//why do we assert infinity again?
     }
 }
