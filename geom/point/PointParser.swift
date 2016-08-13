@@ -35,7 +35,7 @@ class PointParser{
             x = cos(angle) * len;
             y = sin(angle) * len;
         }
-        return CGPoint(x,y);
+        return CGPoint(x,y)
     }
     /**
      * Returns the distance between two points
@@ -43,9 +43,9 @@ class PointParser{
      * @Note: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
      */
     class func distance(a:CGPoint,_ b:CGPoint) -> CGFloat{
-        let xDifference:CGFloat = NumberParser.relativeDifference(a.x,b.x);
-        let yDifference:CGFloat = NumberParser.relativeDifference(a.y,b.y);
-        return sqrt(pow(xDifference, 2) + pow(yDifference, 2));
+        let xDifference:CGFloat = NumberParser.relativeDifference(a.x,b.x)
+        let yDifference:CGFloat = NumberParser.relativeDifference(a.y,b.y)
+        return sqrt(pow(xDifference, 2) + pow(yDifference, 2))
     }
     /**
      * Returns a point, in a polar cordinate system (from 0,0), for @param angle and @param length
@@ -58,9 +58,9 @@ class PointParser{
      * @Note: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      */
     class func polar(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
-        let x:CGFloat = /*radius + */(radius * cos(angle));
-        let y:CGFloat = /*radius + */(radius * sin(angle));
-        return CGPoint(x, y);
+        let x:CGFloat = /*radius + */(radius * cos(angle))
+        let y:CGFloat = /*radius + */(radius * sin(angle))
+        return CGPoint(x, y)
     }
     /**
      * Returns the slope of two points (the rate of change)
@@ -76,13 +76,13 @@ class PointParser{
      * Undefined line is vertical
      */
     class func slope(p1:CGPoint,_ p2:CGPoint)->CGFloat {
-        let a:CGFloat = (p2.y-p1.y);
-        //print("a: " + a);
-        let b:CGFloat = (p2.x-p1.x);
-        //print("b: " + b);
-        //var test:Number = Math.tan(Trig.angle(p1,p2));
-        //print("test: " + test);
-        return a/b;
+        let a:CGFloat = (p2.y-p1.y)
+        //print("a: " + a)
+        let b:CGFloat = (p2.x-p1.x)
+        //print("b: " + b)
+        //var test:Number = Math.tan(Trig.angle(p1,p2))
+        //print("test: " + test)
+        return a/b
     }
     /**
      * Returns the x position when a line passes through @param p1 and @param y2 and that line has a slope-value of @param slope
