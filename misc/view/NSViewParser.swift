@@ -27,7 +27,7 @@ class NSViewParser {
         return parents;
     }
     /**
-     * 
+     * TODO: should this return nil instead of -1? its easier to debug if it returns nil
      */
     class func indexOf(view:NSView,_ subView:NSView)->Int{
         for var i = 0; i < view.subviews.count; ++i{
