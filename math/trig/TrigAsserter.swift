@@ -22,11 +22,11 @@ class TrigAsserter {
         let difference:CGFloat = TrigParser.difference(a, b)
         //print("  "+"  "+"  "+"  "+"difference: " + "\(difference)");
         if(difference == Trig.pi || difference == -Trig.pi){
-            return true;
+            return true
         }else if(difference == 0) {
-            return false;
+            return false
         }else {
-            return difference > 0;
+            return difference > 0
         }
     }
 }
