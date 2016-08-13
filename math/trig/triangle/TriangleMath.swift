@@ -51,4 +51,12 @@ class TriangleMath {
     class func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
     }
+    /**
+     * Returns the Side b of an triangle
+     * Based on formula: b/SinB = a/SinA
+     * @Note google right angle triangle to see where the sides and angles lay
+     */
+    class func aABTob(a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
+        return sin(B*Trig.rad) * (a / sin(A*Trig.rad))
+    }
 }
