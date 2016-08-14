@@ -14,6 +14,7 @@ extension IArc{
     var x:CGFloat {get {return center!.x} set {center!.x = newValue}}/*convenience*/
     var y:CGFloat {get {return center!.y} set {center!.y = newValue}}/*convenience*/
     var pathData:Array<CGFloat> {return BasicArcParser.pathData(self)}
+    
 }
 private class BasicArcParser{
     /**

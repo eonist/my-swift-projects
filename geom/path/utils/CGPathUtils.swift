@@ -11,7 +11,9 @@ class CGPathUtils {
         var index:Int = 0/*pathDataIndex*/
         var prevMT:CGPoint = CGPoint()/*for the closed path support*/
         var prevEnd:CGPoint = CGPoint()
-        for command:Int in path.commands {
+        let cmdLen:Int = path.commands.count
+        for var i = 0; i < cmdLen; ++i{
+            let command:Int = path.commands[i]
             switch(command){
             case PathCommand.moveTo:
                 //Swift.print("CGPathUtils.compile() moveTo")
@@ -52,7 +54,10 @@ class CGPathUtils {
                 //why doesnt it use prevEnd as the start for instance. 
                 //see legacy code to figure this one out
                 
-                let arc:IArc = BasicPathParser.arcAt(path,0)
+                let arc:IArc = BasicPathParser.arcAt(path,i)
+                Swift.print("describeArc")
+                ArcParser.describe(arc)
+                Swift.print("")
                 DisplayArcUtils.arcTo(cgPath,arc)
                 prevEnd = arc.end.copy()
                 index += 9
