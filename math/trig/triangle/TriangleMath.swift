@@ -66,10 +66,10 @@ class TriangleMath {
         //Swift.print("A: " + A)
         var B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
         //Swift.print("B: " + B)
-        var C:CGFloat = Math.PI - B - A;/*Angle C*/
-        var c:CGFloat = Point.distance(p1, p2)/*The length of side c*/
-        if(A < B) return p1.add(Point.polar(cBCTob2(c, B, C), anglA))/*p3*/
-        else return p2.add(Point.polar(cACToa2(c, A, C), angleB))/*p3, a is The length of side a*/
+        var C:CGFloat = π - B - A;/*Angle C*/
+        var c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
+        if(A < B) { return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA)) }/*p3*/
+        else return { p2.add(Point.polar(cACToa2(c, A, C), angleB)) }/*p3, a is The length of side a*/
     }
     //----------------------------------
     //  Law of sin
