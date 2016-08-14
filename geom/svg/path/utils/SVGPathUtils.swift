@@ -81,7 +81,7 @@ class SVGPathUtils {
                     
                     //you need the ellipse from point and center formula to get this working
                     
-                    let arc:IArc = PathParser.arcAt(path,i)
+                    let arc:IArc = PathParser.arcAt(path,i)//you also need to convert the svg arc data of 7 pieces to an arc
                     DisplayArcUtils.arcTo(cgPath,arc)
                     DisplayArcUtils.arc(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
                     i += 7
