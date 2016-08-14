@@ -7,24 +7,15 @@ class NumberParser{
      * @Note the approx method works exactly as the aproximatly equal sign in real math except the part about rounding up and down, and by the way toFixed method does not handle the rounding correctly eigther as it rounds from futher then next to @param decimalCount
      * @example NumberParser.approx(Math.cos(Trig.RAD*90), 22)//6.12323e-17
      * @example NumberParser.approx(Math.cos(Trig.RAD*90), 3)//0
-     */
-    class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat {
-        var exactValue:String = number.toPrecision(21)
-        var excerpts:Array<String> = exactValue.split(".")
-        let retVal:String = excerpts[0] + "." + excerpts[1].subStr(0, decimalCount)
-        return retVal.cgFloat
-    }
-    /**
      * EXAMPLE: approx(40.126,2)//40.13
      * EXAMPLE: approx(40.124,2)//40.12
+     * CAUTION: the old approx method was a little different. try stackoverflow if this design doesn't work in every case
      */
     class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat{
         let format = NSString(format: "%%.%if", decimalCount)
         let string = NSString(format: format, number)
         return CGFloat(atof(string.UTF8String))
     }
-    
-    
    /**
     * Returns the floor and ceil of many numbers
     */
