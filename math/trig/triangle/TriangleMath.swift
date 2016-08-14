@@ -50,6 +50,27 @@ class TriangleMath {
         let y:CGFloat = ((a*p1.y)+(b*p2.y)+(c*p3.y))/(a+b+c)
         return CGPoint(x,y)
     }
+    /**
+    * Returns a point that 2 points and 2 directions converge at (think the third point in an triangle if you have 2 points and the angles)
+    * @param p1 is the equvilant to point A
+    * @param p2 is the equvilant to point B
+    * @param angleA is the angle from p1 to p3 (p3 == point C) "the outAngle of a point on a line"
+    * @param angleB is the angle from p2 to p3 "the outAngle of a point on a line"
+    * @Note the distance from p1 to p2 is the side c in a the triangle
+    * // :TODO: move to Trig.as or pointparser.as
+    * // :TODO: could we use more Vector math like formulas here? by using slopes etc
+    * // :TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
+    */
+    public static function convergingPoint(p1:Point,p2:Point,anglA:Number,angleB:Number):Point {
+    var A:Number = Trig.angleSpan(Trig.angle(p1, p2), anglA);
+    //			trace("A: " + A);
+    var B:Number = Trig.angleSpan(angleB,Trig.angle(p2, p1));
+    //			trace("B: " + B);
+    var C:Number = Math.PI - B - A;/*Angle C*/
+    var c:Number = Point.distance(p1, p2);/*The length of side c*/
+    if(A < B) return p1.add(Point.polar(cBCTob2(c, B, C), anglA));/*p3*/
+    else return p2.add(Point.polar(cACToa2(c, A, C), angleB));/*p3, a is The length of side a*/
+    }
     //----------------------------------
     //  Law of sin
     //----------------------------------
