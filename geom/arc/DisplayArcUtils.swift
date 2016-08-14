@@ -33,15 +33,15 @@ class DisplayArcUtils {
      }
      */
      /**
-     * Returns an object containing the start angle, end angle and center point
-     * @param r radii in the xAxis,yAxis (half of the ellipse xAxis,yAxis)
-     * @param rot rotation of the ellipse (in radians)
-     * @param largeArcFlag if the the angle span between @param start and @param end is more than 180 degrees then this is false else its true
-     * @param sweepFlag cw vs ccw
-     * @param start is the start point of the arc
-     * @param end is the end point of the arc
-     * @Note to decipher this code you can add many debugcrosshairs
-     */
+      * Returns an object containing the start angle, end angle and center point
+      * @param r radii in the xAxis,yAxis (half of the ellipse xAxis,yAxis)
+      * @param rot rotation of the ellipse (in radians)
+      * @param largeArcFlag if the the angle span between @param start and @param end is more than 180 degrees then this is false else its true
+      * @param sweepFlag cw vs ccw
+      * @param start is the start point of the arc
+      * @param end is the end point of the arc
+      * @Note to decipher this code you can add many debugcrosshairs
+      */
     class func arc(start:CGPoint,var _ r:CGPoint,_ rot:CGFloat,_ largeArcFlag:Bool,_ sweepFlag:Bool,_ end:CGPoint,_ center:CGPoint) -> AngleArc {// :TODO: move to AdvanceArc5Parser?!?
         if(r.y == 0){/*if the arc is flat*/
             //Swift.print("Angle.angle(center, start): " + Angle.angle(center, start))
