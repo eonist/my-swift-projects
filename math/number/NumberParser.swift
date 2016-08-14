@@ -14,6 +14,17 @@ class NumberParser{
         let retVal:String = excerpts[0] + "." + excerpts[1].subStr(0, decimalCount)
         return retVal.cgFloat
     }
+    /**
+     * EXAMPLE: approx(40.126,2)//40.13
+     * EXAMPLE: approx(40.124,2)//40.12
+     */
+    class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat{
+        let format = NSString(format: "%%.%if", decimalCount)
+        let string = NSString(format: format, number)
+        return CGFloat(atof(string.UTF8String))
+    }
+    
+    
    /**
     * Returns the floor and ceil of many numbers
     */
