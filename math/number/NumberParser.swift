@@ -9,9 +9,10 @@ class NumberParser{
      * @example NumberParser.approx(Math.cos(Trig.RAD*90), 3)//0
      */
     class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat {
-    var exactValue:String = number.toPrecision(21)
-    var excerpts:Array = exactValue.split(".");
-    return Number(excerpts[0] + "." + (excerpts[1] as String).substr(0, decimalCount))
+        var exactValue:String = number.toPrecision(21)
+        var excerpts:Array<String> = exactValue.split(".")
+        let retval = excerpts[0] + "." + (excerpts[1] as String).substr(0, decimalCount)
+        return Number()
     }
    /**
     * Returns the floor and ceil of many numbers
