@@ -1,5 +1,18 @@
 import Foundation
 class NumberParser{
+    /**
+     * Returns the number with a set number of @param decimalCount
+     * @Note unlike the tofixed method that returns this: Number(6.0001).toFixed(2)// 6.01, the aprox method returns a more clinical number
+     * @Note the approx method does not Round up or down by taking into account the decimal after the @param decimalCount, this could be usefull in the future
+     * @Note the approx method works exactly as the aproximatly equal sign in real math except the part about rounding up and down, and by the way toFixed method does not handle the rounding correctly eigther as it rounds from futher then next to @param decimalCount
+     * @example NumberParser.approx(Math.cos(Trig.RAD*90), 22)//6.12323e-17
+     * @example NumberParser.approx(Math.cos(Trig.RAD*90), 3)//0
+     */
+    class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat {
+    var exactValue:String = number.toPrecision(21)
+    var excerpts:Array = exactValue.split(".");
+    return Number(excerpts[0] + "." + (excerpts[1] as String).substr(0, decimalCount))
+    }
    /**
     * Returns the floor and ceil of many numbers
     */
