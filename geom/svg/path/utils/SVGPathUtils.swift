@@ -78,16 +78,16 @@ class SVGPathUtils {
                     break;/*closes it self to the prev MT pos*/
                 
                 case SVGPathCommand.a:
-                    
+                    fatalError("arc is not supported yet")
                     //you need the ellipse from point and center formula to get this working
-                    
+                    /*
                     let arc:IArc = PathParser.arcAt(path,i)//you also need to convert the svg arc data of 7 pieces to an arc
                     DisplayArcUtils.arcTo(cgPath,arc)
                     DisplayArcUtils.arc(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
                     i += 7
                     break
-
-                default: break
+                */
+                default: break;
             }
             if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
                 prevP = pos.copy();
