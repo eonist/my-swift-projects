@@ -62,17 +62,17 @@ class TriangleMath {
      * // :TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
      */
     class func convergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
-        var A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
+        let A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
         //Swift.print("A: " + A)
-        var B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
+        let B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
         //Swift.print("B: " + B)
-        var C:CGFloat = π - B - A;/*Angle C*/
-        var c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
+        let C:CGFloat = π - B - A;/*Angle C*/
+        let c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
         if(A < B) {
             return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA))
         }/*p3*/
         else {
-            return  p2.add(CGPoint.polar(cACToa2(c, A, C), angleB))
+            return  p2.add(CGPoint.polarPoint(cACToa2(c, A, C), angleB))
         }/*p3, a is The length of side a*/
     }
     //----------------------------------
@@ -99,6 +99,18 @@ class TriangleMath {
      */
     class func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
+    }
+    
+    //Continue here: add the other methods aswell
+    
+    
+    /**
+     * Returns the Side a of an triangle
+     * Based on formula: a/SinA = c/SinC
+     * @Note uses radian instead of degree
+     */
+    class func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {// :TODO: move to trianglemath2
+        return sin(A) * (c / sin(C))
     }
     /**
      * Returns the Side b of an triangle
