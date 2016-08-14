@@ -11,8 +11,8 @@ class NumberParser{
     class func approx(number:CGFloat,_ decimalCount:Int) -> CGFloat {
         var exactValue:String = number.toPrecision(21)
         var excerpts:Array<String> = exactValue.split(".")
-        let retval = excerpts[0] + "." + (excerpts[1] as String).substr(0, decimalCount)
-        return Number()
+        let retval:String = excerpts[0] + "." + excerpts[1].substr(0, decimalCount)
+        return CGFloat(retVal)
     }
    /**
     * Returns the floor and ceil of many numbers
