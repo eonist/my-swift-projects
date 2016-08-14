@@ -5,14 +5,14 @@ class TrigAsserter {
      * @Note be cautiouse when the difference == Trig.PI since it can be in both states at the same time, anti clockwise and clockwise
      */
     class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {
-    //print("center: " + center);
-    //print("p1: " + p1);
-    //print("p2: " + p2);
-    let a:CGFloat = TrigParser.angle(center, p1);
-    //			print("a: " + b);
-    let b:CGFloat = TrigParser.angle(center, p2);
-    //			print("b: " + b);
-    return isClockWiseByAngle(a, b);
+        //print("center: " + "\(center)")
+        //print("p1: " + "\(p1)")
+        //print("p2: " + "\(p2)")
+        let a:CGFloat = TrigParser.angle(center, p1)
+        //print("a: " + "\(b)")
+        let b:CGFloat = TrigParser.angle(center, p2)
+        //print("b: " + "\(b)")
+        return isClockWiseByAngle(a, b)
     }
     /**
      * @Note if the difference is 0 then it can be arguably be clockwise and anti-clockwise at the same time, consider this in the calling method
