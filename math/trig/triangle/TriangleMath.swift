@@ -66,13 +66,13 @@ class TriangleMath {
         //Swift.print("A: " + A)
         let B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
         //Swift.print("B: " + B)
-        let C:CGFloat = π - B - A;/*Angle C*/
+        let C:CGFloat = π - B - A/*Angle C*/
         let c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
         if(A < B) {
             return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA))
         }/*p3*/
         else {
-            return  p2.add(CGPoint.polarPoint(cACToa2(c, A, C), angleB))
+            return p2.add(CGPoint.polarPoint(cACToa2(c, A, C), angleB))
         }/*p3, a is The length of side a*/
     }
     //----------------------------------
