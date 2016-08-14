@@ -100,10 +100,6 @@ class TriangleMath {
     class func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
     }
-    
-    //Continue here: add the other methods aswell
-    
-    
     /**
      * Returns the Side a of an triangle
      * Based on formula: a/SinA = c/SinC
