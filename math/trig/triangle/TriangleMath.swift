@@ -68,8 +68,12 @@ class TriangleMath {
         //Swift.print("B: " + B)
         var C:CGFloat = π - B - A;/*Angle C*/
         var c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
-        if(A < B) { return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA)) }/*p3*/
-        else return { p2.add(Point.polar(cACToa2(c, A, C), angleB)) }/*p3, a is The length of side a*/
+        if(A < B) {
+            return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA))
+        }/*p3*/
+        else {
+            return  p2.add(CGPoint.polar(cACToa2(c, A, C), angleB))
+        }/*p3, a is The length of side a*/
     }
     //----------------------------------
     //  Law of sin
@@ -111,5 +115,12 @@ class TriangleMath {
      */
     class func aACToc(a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
         return sin(C*Trig.rad) * (a / sin(A*Trig.rad))
+    }
+    /**
+     * Returns the Side b of an triangle
+     * @Note Based on formula: b/SinB = c/SinC
+     */
+    class func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {// :TODO: move to trianglemath2
+        return sin(B) * (c / sin(C))
     }
 }
