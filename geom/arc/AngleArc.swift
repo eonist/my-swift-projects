@@ -25,8 +25,10 @@ extension AngleArc{
     var delta:CGFloat {
         let isClockWise:Bool = Trig.isClockWiseByAngle(start, end)
         Swift.print("isClockWise: " + "\(isClockWise)")
-        //you need a directional anglespan, that can return negative values
-        return TrigParser.angleSpan(start, end, isClockWise ? Trig.cw: Trig.ccw)
+        //you need a directional anglespan, that can return negative values!?!?
+        var angleSpan:CGFloat = TrigParser.angleSpan2(start, end, isClockWise)
+        angleSpan = isClockWise ? angleSpan : -angleSpan
+        return angleSpan
     }
     func describe(){
         Swift.print("start: " + "\(start)")
