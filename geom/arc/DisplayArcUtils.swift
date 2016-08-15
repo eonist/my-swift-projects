@@ -123,7 +123,9 @@ class DisplayArcUtils {
 }
 
 
-//the problem is here: we are not flipping the angles, check legacy code if its being done there
+//the problem is here: we are not flipping the angles, check legacy code if its being done there, also norm1 instead of norm2 on some of the variables is this the same in legacy?
+
+
 
 
 private class BasicEllipseMath {
