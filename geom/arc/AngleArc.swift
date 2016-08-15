@@ -23,8 +23,9 @@ extension AngleArc{
     var y:CGFloat {get {return center.y} set {center.y = newValue}}/*convenience*/
     var transform:CGAffineTransform {get {return CGAffineTransformMakeScale(xRadii/yRadii, yRadii/xRadii)} /*set{} */}
     var delta:CGFloat {
-        let direction:Bool = false
-        return TrigParser.angleSpan(start, end)
+        let isClockWise:Bool = Trig.isClockWiseByAngle(start, end)
+        Swift.print("isClockWise: " + "\(isClockWise)")
+        return TrigParser.angleSpan(start, end, isClockWise)
     }
     func describe(){
         Swift.print("start: " + "\(start)")
