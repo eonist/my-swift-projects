@@ -122,6 +122,10 @@ class DisplayArcUtils {
     }
 }
 
+
+//the problem is here: we are not flipping the angles, check legacy code if its being done there
+
+
 private class BasicEllipseMath {
     /**
      * Returns a eliptical angle ( which is the angle of the elliptical arc prior to the stretch and rotate operations.)
