@@ -111,7 +111,7 @@ class ArrayModifier{
      * Adds an item at an index while preserving the order of the array.
      * NOTE: Can be optimized a little bit more if array.length is known.
      * NOTE: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
-     * @example:
+     * EXAMPLE:
      *	var array:Array = ["a","b","c"];
      *	var index:int = 1;
      *	var result:* = array.splice(index, 1, "x", array[index]);
@@ -135,11 +135,11 @@ class ArrayModifier{
     class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
             if(array[i] === object){
-                array.removeAtIndex(i)/*was --> array.splice2(i, 1);*/
-                return i;
+                array.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
+                return i
             }
         }
-        return -1;
+        return -1
     }
     /**
      * TODO: I think you can also use: array.removeFirst(n: Int)
