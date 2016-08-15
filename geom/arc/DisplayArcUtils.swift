@@ -8,6 +8,9 @@ class DisplayArcUtils {
      */
     class func arcTo(path:CGMutablePathRef,_ arc:IArc) {
         let angleArc:AngleArc = DisplayArcUtils.arc(arc.start, CGPoint(arc.xRadii,arc.yRadii),arc.rotation,arc.largeArcFlag,arc.sweepFlag,arc.end,arc.center!)
+        
+        //Continue here: write a describe method for the AngleArc
+        
         //DisplayArcUtils.angleArcTo(graphics,arcObj["xRadii"],arcObj["yRadii"],arcObj["start"],arcObj["end"],arcObj["center"]["x"],arcObj["center"]["y"],arc.rotation)
         var transform:CGAffineTransform = angleArc.transform/*this must be its own variable to get the unsafePointer arg in the bellow call to work*/
         path.addRelativeArc(angleArc.center, angleArc.xRadii, angleArc.start, angleArc.delta, &transform)
