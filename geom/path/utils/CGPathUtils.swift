@@ -48,11 +48,11 @@ class CGPathUtils {
                 //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
                 //Swift.print("path.pathData[index+0]: " + "\(path.pathData[index+0])")
                 let arc:IArc = BasicPathParser.arcAt(path,i)
-                /*
+                
                 Swift.print("describeArc")
                 ArcParser.describe(arc)
                 Swift.print("")
-                */
+                /**/
                 DisplayArcUtils.arcTo(cgPath,arc)
                 prevEnd = arc.end.copy()
                 index += 9
