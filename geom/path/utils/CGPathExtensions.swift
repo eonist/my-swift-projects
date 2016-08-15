@@ -27,6 +27,7 @@ extension CGMutablePath{
     }
     /**
      * Convenince
+     * NOTE: If `delta' is positive, then the arc is drawn counter-clockwise; if negative, clockwise.
      */
     func addRelativeArc(center:CGPoint,_ xRadii:CGFloat,_ startAngle:CGFloat,_ delta:CGFloat, _ matrix: UnsafePointer<CGAffineTransform>){
         CGPathAddRelativeArc(self, matrix, center.x, center.y, xRadii, startAngle, delta)
