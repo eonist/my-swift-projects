@@ -9,6 +9,9 @@ class DisplayArcUtils {
     class func arcTo(path:CGMutablePathRef,_ arc:IArc) {
         let angleArc:AngleArc = DisplayArcUtils.arc(arc.start, CGPoint(arc.xRadii,arc.yRadii),arc.rotation,arc.largeArcFlag,arc.sweepFlag,arc.end,arc.center!)
         
+        Swift.print("describe: angleArc")
+        angleArc.describe()
+        Swift.print("")
         //Continue here: write a describe method for the AngleArc
         //The problem is that the angleArc parser doesnt utilize the sweepFlag correctly, probably!
         //before you tru to fix the arc method, rather try to render some old debug data were the sweepFlag is 0
