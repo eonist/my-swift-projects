@@ -129,6 +129,7 @@ private class BasicPathDataParser{
      * @param start is the start position of the prev command
      * @Note this function is used in the SelectPath4 draw functions
      * @Note the Function PathParser.arcAt does the same thing but by looking at the commandIndex instead
+     * NOTE: 
      * // :TODO: the start is the end of prev command
      */
     class func arcAt(pathData:Array<CGFloat>,_ pathDataIndex:Int,_ start:CGPoint)->IArc {
