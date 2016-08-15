@@ -16,14 +16,14 @@ class AdvanceArrayModifier {
         return sortedIndices
     }
     /**
-     * @Note the index is returned for convenience
+     * NOTE: the index is returned for convenience
      */
     class func incrementLast(/*inout */var index:Array<Int>) -> Array<Int> {
         index[index.count-1] = index[index.count-1] + 1
         return index
     }
     /**
-     * @Note the index is returned for convenience
+     * NOTE: the index is returned for convenience
      */
     class func incrementLastBy(var index:Array<Int>,_ integer:Int) -> Array<Int> {
         index[index.count-1] = index[index.count-1] + integer

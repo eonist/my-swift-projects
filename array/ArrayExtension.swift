@@ -25,7 +25,7 @@ extension Array {
      * Swift.print(arr)//[0,1,2,3,4,5]
      * CAUTION: renaming appendMany to just append can cause problems with some array's so its probably better to leave it named something different than the native append name
      */
-    mutating func appendMany(items: Element...){
+    mutating func appendMany(items:Element...){
         self += items
     }
     /**

@@ -3,8 +3,8 @@ import Foundation
 class AdvanceArrayParser {
     /**
      * Returns the branch at @param index
-     * @Note this function is recursive
-     * @Note to find the children of the root use an empty array as the index value
+     * NOTE: this function is recursive
+     * NOTE: to find the children of the root use an empty array as the index value
      * EXAMPLE: childAt([["red","green"],[["four","five"],[1,2,3]]],[1,0,1])//five?
      */
     class func childAt(children:Array<AnyObject>,_ index:Array<Int>)->AnyObject?{
@@ -17,7 +17,7 @@ class AdvanceArrayParser {
     /**
      * Returns the first index of @param index in @param indices
      * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex?
-     * @example index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
+     * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
     class func index(index:Array<Int>,_ indices:Array<[Int]>) -> Int{
         let lengthOfIndices:Int = indices.count/*Cpu optimiztion*/
