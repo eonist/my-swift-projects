@@ -10,6 +10,7 @@ class DisplayArcUtils {
         let angleArc:AngleArc = DisplayArcUtils.arc(arc.start, CGPoint(arc.xRadii,arc.yRadii),arc.rotation,arc.largeArcFlag,arc.sweepFlag,arc.end,arc.center!)
         
         //Continue here: write a describe method for the AngleArc
+        //The problem is that the angleArc parser doesnt utilize the sweepFlag
         
         //DisplayArcUtils.angleArcTo(graphics,arcObj["xRadii"],arcObj["yRadii"],arcObj["start"],arcObj["end"],arcObj["center"]["x"],arcObj["center"]["y"],arc.rotation)
         var transform:CGAffineTransform = angleArc.transform/*this must be its own variable to get the unsafePointer arg in the bellow call to work*/
