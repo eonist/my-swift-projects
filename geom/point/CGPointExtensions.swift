@@ -1,22 +1,13 @@
 import Foundation
 /*Class methods:*/
 extension CGPoint{
-    /**
-     * Returns a point, in a polar cordinate system (from 0,0), for @param angle and @param length
-     */
-    static func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {
+    static func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {/*convenience*/
         return PointParser.polar(radius, angle)
     }
-    /**
-     * Returns the distance between two points
-     */
-    static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{
+    static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{/*convenience*/
         return PointParser.distance(a,b)
     }
-    /**
-     *
-     */
-    static func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat) -> CGPoint{
+    static func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat) -> CGPoint{/*convenience*/
         return PointParser.interpolate(a,b, scalar)
     }
 }
