@@ -12,6 +12,7 @@ class DisplayArcUtils {
         Swift.print("describe: angleArc")
         angleArc.describe()
         Swift.print("")
+        angleArc.xRadii = 50
         //Continue here: write a describe method for the AngleArc
         //The problem is that the angleArc parser doesnt utilize the sweepFlag correctly, probably!
         //before you tru to fix the arc method, rather try to render some old debug data were the sweepFlag is 0
