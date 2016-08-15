@@ -20,10 +20,7 @@ class DisplayArcUtils {
         
         //DisplayArcUtils.angleArcTo(graphics,arcObj["xRadii"],arcObj["yRadii"],arcObj["start"],arcObj["end"],arcObj["center"]["x"],arcObj["center"]["y"],arc.rotation)
         var transform:CGAffineTransform = angleArc.transform/*this must be its own variable to get the unsafePointer arg in the bellow call to work*/
-        var tran = CGAffineTransformIdentity
-        Swift.print("tran: " + "\(tran)")
-        Swift.print("transform: " + "\(transform)")
-        path.addRelativeArc(angleArc.center, angleArc.xRadii, angleArc.start, angleArc.delta, nil/*&transform*/)
+        path.addRelativeArc(angleArc.center, angleArc.xRadii, angleArc.start, angleArc.delta, /*nil*/&transform)
     }
     /**
      * NOTE: (rx, ry, x-axis-rotation, large-arc-flag, sweep-flag, x, y)
