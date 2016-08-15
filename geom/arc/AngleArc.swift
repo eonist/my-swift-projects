@@ -27,7 +27,7 @@ extension AngleArc{
         Swift.print("isClockWise: " + "\(isClockWise)")
         //you need a directional anglespan, that can return negative values!?!?
         var angleSpan:CGFloat = TrigParser.angleSpan2(start, end, isClockWise)
-        angleSpan = isClockWise ? angleSpan : -angleSpan
+        angleSpan = isClockWise ? angleSpan : -angleSpan/*get the directional vaue*/
         return angleSpan
     }
     func describe(){
