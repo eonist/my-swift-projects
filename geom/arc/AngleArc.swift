@@ -23,4 +23,12 @@ extension AngleArc{
     var y:CGFloat {get {return center.y} set {center.y = newValue}}/*convenience*/
     var transform:CGAffineTransform {get {return CGAffineTransformMakeScale(xRadii/yRadii, yRadii/xRadii)} /*set{} */}
     var delta:CGFloat {return TrigParser.angleSpan(start, end)}
+    func describe(){
+        Swift.print("start: " + "\(start)")
+        Swift.print("end: " + "\(end)")
+        Swift.print("xRadii: " + "\(xRadii)")
+        Swift.print("yRadii: " + "\(yRadii)")
+        Swift.print("rotation: " + "\(rotation)")
+        Swift.print("center: " + "\(center)")
+    }
 }
