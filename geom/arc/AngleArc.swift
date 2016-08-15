@@ -26,6 +26,7 @@ extension AngleArc{
     func describe(){
         Swift.print("start: " + "\(start)")
         Swift.print("end: " + "\(end)")
+        Swift.print("delta: " + "\(delta)")
         Swift.print("xRadii: " + "\(xRadii)")
         Swift.print("yRadii: " + "\(yRadii)")
         Swift.print("rotation: " + "\(rotation)")
