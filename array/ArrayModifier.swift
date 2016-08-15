@@ -70,7 +70,7 @@ class ArrayModifier{
     /**
      * NOTE: modifies the original array
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
-     * // :TODO: this can probably be written simpler and more optimized, or could it?  It looks pretty efficient if you think about it
+     * TODO: this can probably be written simpler and more optimized, or could it?  It looks pretty efficient if you think about it
      * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
      * There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing the (indexSwap method may require more or less memory, testing is needed)
      */
@@ -109,8 +109,8 @@ class ArrayModifier{
     }
     /**
      * Adds an item at an index while preserving the order of the array.
-     * @Note: Can be optimized a little bit more if array.length is known.
-     * @Note: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
+     * NOTE: Can be optimized a little bit more if array.length is known.
+     * NOTE: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
      * @example:
      *	var array:Array = ["a","b","c"];
      *	var index:int = 1;
