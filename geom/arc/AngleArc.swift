@@ -25,7 +25,7 @@ extension AngleArc{
     var delta:CGFloat {
         let isClockWise:Bool = Trig.isClockWiseByAngle(start, end)
         Swift.print("isClockWise: " + "\(isClockWise)")
-        return TrigParser.angleSpan(start, end, isClockWise)
+        return TrigParser.angleSpan(start, end, isClockWise ? Trig.cw: Trig.ccw)
     }
     func describe(){
         Swift.print("start: " + "\(start)")
