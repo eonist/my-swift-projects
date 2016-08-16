@@ -1,5 +1,6 @@
 import Cocoa
-
+// text height is called line spacing in NsTextfield
+//
 class TextFieldModifier {
     /**
      * TODO: Border color?
