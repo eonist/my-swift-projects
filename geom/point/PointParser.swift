@@ -8,7 +8,7 @@ class PointParser{
      * // :TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
      */
     class func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat)->CGPoint {
-        return CGPoint(NumberParser.interpolate(a.x, b.x, scalar), NumberParser.interpolate(a.y, b.y, scalar));
+        return CGPoint(NumberParser.interpolate(a.x, b.x, scalar), NumberParser.interpolate(a.y, b.y, scalar))
     }
     /**
      * Returns a point in a polar cordinate system by @param len and @param angle (in a safe way)
@@ -17,23 +17,23 @@ class PointParser{
      * TODO: why is this safe and regular polar isnt
      */
     class func safePolar(len:CGFloat, _ angle:CGFloat)->CGPoint {
-        var x:CGFloat = cos(angle) * len;
-        var y:CGFloat = sin(angle) * len;
+        var x:CGFloat = cos(angle) * len
+        var y:CGFloat = sin(angle) * len
         if(angle == 0){
-            x = len;
-            y = 0;
+            x = len
+            y = 0
         }else if(angle == π || angle == -π){
-            x = -len;
-            y = 0;
+            x = -len
+            y = 0
         }else if(angle == -π/2){
-            x = 0;
-            y = -len;
+            x = 0
+            y = -len
         }else if(angle == π/2){
-            x = 0;
-            y = len;
+            x = 0
+            y = len
         }else{
-            x = cos(angle) * len;
-            y = sin(angle) * len;
+            x = cos(angle) * len
+            y = sin(angle) * len
         }
         return CGPoint(x,y)
     }
@@ -93,7 +93,7 @@ class PointParser{
      * @example PointParser.x(new Point(100,100), 200, 1);//Output: 200
      */
     class func x(p1:CGPoint,_ y2:CGFloat,_ slope:CGFloat)->CGFloat {
-        return ((y2-p1.y)/slope)+p1.x;
+        return ((y2-p1.y)/slope)+p1.x
     }
     /**
      * Returns the y position when a line passes through @param p1 and @param y2 and that line has a slope-value of @param slope
@@ -104,7 +104,7 @@ class PointParser{
      * @example PointParser.y(new Point(100,100), 200, 1);//Output: 200
      */
     class func y(p1:CGPoint,_ x2:CGFloat,_ slope:CGFloat)->CGFloat {
-        return (slope*(x2 - p1.x))+p1.y;
+        return (slope*(x2 - p1.x))+p1.y
     }
     /**
      * Returns the difference between two points
@@ -118,24 +118,24 @@ class PointParser{
      * // :TODO: is there a math formula ? write the formula you have atleast
      */
     class func difference(p1:CGPoint,_ p2:CGPoint)->CGPoint {
-        let x:CGFloat = NumberParser.difference(p1.x, p2.x);
-        let y:CGFloat = NumberParser.difference(p1.y, p2.y);
-        return CGPoint(x,y);
+        let x:CGFloat = NumberParser.difference(p1.x, p2.x)
+        let y:CGFloat = NumberParser.difference(p1.y, p2.y)
+        return CGPoint(x,y)
     }
     /**
      *
      */
     class func relativeDifference(a:CGPoint,_ b:CGPoint)->CGPoint{
-        let x:CGFloat = NumberParser.relativeDifference(a.x, b.x);
-        let y:CGFloat = NumberParser.relativeDifference(a.y, b.y);
-        return CGPoint(x,y);
+        let x:CGFloat = NumberParser.relativeDifference(a.x, b.x)
+        let y:CGFloat = NumberParser.relativeDifference(a.y, b.y)
+        return CGPoint(x,y)
     }
     /**
      * @Note works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
      */
     class func directionalAxisDistance(pivot:CGPoint,_ point:CGPoint, _ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return axisDistance(pivot, leveledPoint);
+        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return axisDistance(pivot, leveledPoint)
     }
     /**
      * Returns the distance between points in both the x and y axis. (unlike Point.distance which returns the diagonal distance between two points)
@@ -143,7 +143,7 @@ class PointParser{
      * @Note: think of this method as a way of finding the horizontal and vertical distance between two points
      */
     class func axisDistance(p1:CGPoint, _ p2:CGPoint)->CGPoint {
-        return CGPoint(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y));
+        return CGPoint(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y))
     }
     /**
      * Returns the distance (can be positive or negative) in x and y axis
@@ -154,30 +154,30 @@ class PointParser{
      * // :TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
      */
     class func directionalAxisDifference(pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return PointParser.difference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
+        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return PointParser.difference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
     /**
      * NOTE: same as directionalAxisDifference, but uses the NumerParser.relativeDifference() method
      */
     class func relativeDirectionalAxisDifference(pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation);/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return PointParser.relativeDifference(pivot, leveledPoint);/*use the x value and the Point.polar(x,axisangle) to find the p*/
+        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return PointParser.relativeDifference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
     
     /**
      * Returns a CGRect that makes derived from @param points (think bounding box of points)
      */
     class func rectangle(points:Array<CGPoint>)->CGRect{
-        var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint();
-        var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint();
+        var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
+        var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         for point : CGPoint in points {
             if(point.x > max.x) {max.x = point.x}
             else if(point.x < min.x){ min = CGPoint(point.x,min.y)}
             if(point.y > max.y){ max.y = point.y}
             else if(point.y < min.y){ min.y = point.y}
         }
-        return cornersToRectangle(min,max);
+        return cornersToRectangle(min,max)
     }
     /**
      * Returns an rectangle from a topLeft and bottomRight corners
@@ -199,8 +199,8 @@ class PointParser{
     class func median(points:Array<CGPoint>) -> CGPoint{
         var median : CGPoint = CGPoint()
         for point : CGPoint in points {
-            median.x += point.x;// :TODO: possibly use point.add?, you can also just do median += point here
-            median.y += point.y;
+            median.x += point.x// :TODO: possibly use point.add?, you can also just do median += point here
+            median.y += point.y
         }
         let numOfPoints:Int = points.count
         median.x /= numOfPoints.cgFloat// :TODO: possibly use point.divide or similar utility function?
