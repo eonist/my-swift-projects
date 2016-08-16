@@ -1,5 +1,30 @@
 import Cocoa
 // text height is called line spacing in NsTextfield
+
+
+// this has the most complete answer: http://stackoverflow.com/questions/8356904/cocoa-nstextfield-line-spacing
+/*
+
+
+NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+[myStyle setLineSpacing:10.0];
+[myTextView setDefaultParagraphStyle:myStyle];
+
+
+And
+
+NSFont *bold14 = [NSFont boldSystemFontOfSize:14.0];
+NSColor *textColor = [NSColor redColor];
+NSMutableParagraphStyle *textParagraph = [[NSMutableParagraphStyle alloc] init];
+[textParagraph setLineSpacing:10.0];
+
+NSDictionary *attrDic = [NSDictionary dictionaryWithObjectsAndKeys:bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil];
+NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:title attributes:attrDic]; 
+[self.titleField setAllowsEditingTextAttributes:YES];
+[self.titleField setAttributedStringValue:attrString];
+
+*/
+
 //
 class TextFieldModifier {
     /**
