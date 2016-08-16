@@ -24,13 +24,12 @@ class SVGGradient:SVGElement,ISVGGradient{
 	var gradientTransform:CGAffineTransform?/*You can transform (e.g. rotate) the gradient before it is applied. See SVG Transformation for more details.*/
 
     init(_ offsets:Array<CGFloat>,_ colors:Array<CGColor>,/*_ opacities:Array<CGFloat>,*/_ spreadMethod:String,_ id:String,_ gradientUnits:String,_ gradientTransform:CGAffineTransform? = nil/**/) {
-		self.offsets = offsets;
-		self.colors = colors;
-		//self.opacities = opacities;
-		self.spreadMethod = spreadMethod;
-		self.gradientUnits = gradientUnits;/*Sets whether you want to use the viewbox ('userSpaceOnUse') or the the shape the gradient is applied to, for the calculation of x1, y1 and x2,y2.*/
-		self.gradientTransform = gradientTransform;/**/
-
-		super.init(id);
+		self.offsets = offsets
+		self.colors = colors
+		//self.opacities = opacities
+		self.spreadMethod = spreadMethod
+		self.gradientUnits = gradientUnits/*Sets whether you want to use the viewbox ('userSpaceOnUse') or the the shape the gradient is applied to, for the calculation of x1, y1 and x2,y2.*/
+		self.gradientTransform = gradientTransform/**/
+		super.init(id)
 	}
 }
