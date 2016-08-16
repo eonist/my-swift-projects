@@ -1,5 +1,7 @@
 import Foundation
 
+typealias XML = NSXMLElement/*makes refering to NSXMLElement simpler, just use XML instead*/
+
 extension NSXMLElement {
     /**
      * convenience
