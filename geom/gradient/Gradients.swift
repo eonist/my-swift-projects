@@ -1,7 +1,7 @@
-/*
+import Cocoa
+/**
  * FANCY Gradients
  */
-import Cocoa
 class Gradients{
     /*red*/
     static var redStart:UInt = 0xFF5E3A
