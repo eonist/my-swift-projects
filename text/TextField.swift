@@ -1,5 +1,8 @@
 import Cocoa
-
+/*
+ * possible solution for the line-height problem: http://stackoverflow.com/questions/1958176/setting-the-line-height-line-spacing-in-an-nstextview
+ *
+ */
 class TextField:NSTextField{
     var globalMouseDownHandler:AnyObject?
     /**
