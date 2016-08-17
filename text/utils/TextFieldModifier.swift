@@ -35,7 +35,7 @@ class TextFieldModifier {
         
         
         //Swift.print("attrString: " + "\(attrString)")
-        textField.allowsEditingTextAttributes = true
+        textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         
         
         textField.selectable = textFormat.selectable
@@ -55,7 +55,7 @@ class TextFieldModifier {
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
-        //textField.attributedStringValue = attrString
+        //
     }
     /**
      * Beta
