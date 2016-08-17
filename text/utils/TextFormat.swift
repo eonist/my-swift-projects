@@ -67,7 +67,7 @@ extension TextFormat{
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         
-        if(self.leading == 5){
+        if(self.leading == 8){
             textParagraph.maximumLineHeight = self.leading/*this sets the MAXIMUM height of the lines to 12points*/
             textParagraph.minimumLineHeight = self.leading
             Swift.print("textParagraph.allowsDefaultTighteningForTruncation: " + "\(textParagraph.allowsDefaultTighteningForTruncation)")
@@ -80,7 +80,7 @@ extension TextFormat{
             //textParagraph.lineHeightMultiple = 2
             //textParagraph.headIndent = 20
             //textParagraph.
-                       Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
+            Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
             Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         }else{
             Swift.print("textParagraph.lineSpacing: " + "\(textParagraph.lineSpacing)")
