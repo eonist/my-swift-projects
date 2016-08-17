@@ -49,7 +49,7 @@ class TextFieldModifier {
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
         var tempBounds = textField.bounds
-        //tempBounds.origin += CGPoint(5,5)
+        tempBounds.origin += CGPoint(0,5)
         textField.bounds = tempBounds
         //textField.lineBreakMode = .ByWordWrapping
         //Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
