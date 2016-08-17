@@ -48,10 +48,12 @@ class TextFieldModifier {
         [self.titleField setAttributedStringValue:attrString];
         */
         
+        let bold14:NSFont = NSFont.boldSystemFontOfSize(14.0)
+        let textColor:NSColor = NSColor.redColor()
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = 10.0  // this sets the space BETWEEN lines to 10points
         textParagraph.maximumLineHeight = 12.0//this sets the MAXIMUM height of the lines to 12points
-        let attrDic:NSDictionary = NSDictionary.dictionaryWithValuesForKeys(<#T##keys: [String]##[String]#>)
+        let attrDic:NSDictionary = NSDictionary.dictionaryWithValuesForKeys([bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil])
         
         textField.selectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clearColor()
