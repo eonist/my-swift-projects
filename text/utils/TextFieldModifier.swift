@@ -1,6 +1,7 @@
 import Cocoa
 // text height is called line spacing in NsTextfield
 
+//possible solution for the line-height problem: http://stackoverflow.com/questions/1958176/setting-the-line-height-line-spacing-in-an-nstextview
 
 // this has the most complete answer: http://stackoverflow.com/questions/8356904/cocoa-nstextfield-line-spacing
 /*
