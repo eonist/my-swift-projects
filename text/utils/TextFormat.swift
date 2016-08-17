@@ -68,10 +68,10 @@ extension TextFormat{
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = 10//self.leading/*this sets the space BETWEEN lines to 10points*/
         if(self.leading == 5){
-            Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
-            Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
+            
         }
-       
+        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
+        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         /*
         
         textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
