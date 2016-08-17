@@ -52,7 +52,7 @@ class TextFieldModifier {
         //tempBounds.origin += CGPoint(0,5)
         textField.bounds = tempBounds
         var tempFrame = textField.frame
-        tempFrame.origin += CGPoint(0,5)
+        tempFrame.origin += CGPoint(0,-5)
         textField.frame = tempFrame
         //textField.lineBreakMode = .ByWordWrapping
         //Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
