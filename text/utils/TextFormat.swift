@@ -74,8 +74,8 @@ extension TextFormat{
             //textParagraph.lineHeightMultiple = -10
             //textParagraph.headIndent = 20
             //textParagraph.
-            //textParagraph.maximumLineHeight = 8/*this sets the MAXIMUM height of the lines to 12points*/
-            //textParagraph.minimumLineHeight = 20
+            textParagraph.maximumLineHeight = 6/*this sets the MAXIMUM height of the lines to 12points*/
+            textParagraph.minimumLineHeight = 2
             Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
             Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         }else{
