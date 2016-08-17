@@ -69,13 +69,13 @@ extension TextFormat{
         
         if(self.leading == 5){
             //textParagraph.lineSpacing = 0//self.leading/*this sets the space BETWEEN lines to 10points*/
-            textParagraph.paragraphSpacing = 25
-            textParagraph.paragraphSpacingBefore = 20
-            textParagraph.lineHeightMultiple = 0.5
+            //textParagraph.paragraphSpacing = 25
+            //textParagraph.paragraphSpacingBefore = 20
+            textParagraph.lineHeightMultiple = 2.5
             //textParagraph.headIndent = 20
             //textParagraph.
-            textParagraph.maximumLineHeight = 8/*this sets the MAXIMUM height of the lines to 12points*/
-            textParagraph.minimumLineHeight = 20
+            //textParagraph.maximumLineHeight = 8/*this sets the MAXIMUM height of the lines to 12points*/
+            //textParagraph.minimumLineHeight = 20
             Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
             Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         }else{
