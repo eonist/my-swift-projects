@@ -52,10 +52,10 @@ class TextFieldModifier {
         let bold14:NSFont = NSFont.boldSystemFontOfSize(14.0)
         let textColor:NSColor = NSColor.redColor()
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        textParagraph.lineSpacing = 10.0  // this sets the space BETWEEN lines to 10points
-        textParagraph.maximumLineHeight = 12.0//this sets the MAXIMUM height of the lines to 12points
+        textParagraph.lineSpacing = 10.0/*this sets the space BETWEEN lines to 10points*/
+        textParagraph.maximumLineHeight = 12.0/*this sets the MAXIMUM height of the lines to 12points*/
         let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
-        let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)//[[NSAttributedString alloc] initWithString:title attributes:attrDic];
+        let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)
         
         //Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true
