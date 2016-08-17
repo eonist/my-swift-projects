@@ -66,32 +66,9 @@ extension TextFormat{
         let font:NSFont = TextFieldParser.font(self.font,self.size)
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        
-        if(self.leading == 8){
-            textParagraph.maximumLineHeight = self.leading/*this sets the MAXIMUM height of the lines to 12points*/
-            textParagraph.minimumLineHeight = self.leading
-            Swift.print("textParagraph.allowsDefaultTighteningForTruncation: " + "\(textParagraph.allowsDefaultTighteningForTruncation)")
-            //textParagraph.allowsDefaultTighteningForTruncation = false
-            //textParagraph.lineBreakMode = NSLineBreakMode.
-            textParagraph.lineSpacing = 0//self.leading/*this sets the space BETWEEN lines to 10points*/
-            //textParagraph.paragraphSpacing = 25
-            //textParagraph.paragraphSpacingBefore = 20
-//            textParagraph.hyphenationFactor
-            //textParagraph.lineHeightMultiple = 2
-            //textParagraph.headIndent = 20
-            //textParagraph.
-            Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
-            Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
-        }else{
-            Swift.print("textParagraph.lineSpacing: " + "\(textParagraph.lineSpacing)")
-            Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
-            Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
-        }
-       
+        textParagraph.maximumLineHeight = self.leading.isNaN ? 0 : self.leading/*this sets the MAXIMUM height of the lines to 12points*/
+        textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
         textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
-        
-
-        //textParagraph.minimumLineHeight = 1.0
         let attribs = [NSFontAttributeName:font,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
         return attrString
