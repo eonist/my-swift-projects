@@ -13,6 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
+    var leading:CGFloat = 10
     //autoSize can be implemented, check stackoverflow
     init(){
     }
