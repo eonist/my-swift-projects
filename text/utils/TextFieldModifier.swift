@@ -48,8 +48,8 @@ class TextFieldModifier {
         textField.bordered = textFormat.border//<--This doesnt work i Live Edit mode
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
-        let leadingYOffset:CGFloat = textFormat.size - textFormat.leading
-        textField.bounds += CGPoint(0,5)
+        let leadingYOffset:CGFloat = textFormat.leading.isNaN ? 0 : textFormat.size - textFormat.leading
+        textField.bounds.origin += CGPoint(0,leadingYOffset)
         //textField.lineBreakMode = .ByWordWrapping
         //Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically, this could probably be set when setting the paragraphstyle

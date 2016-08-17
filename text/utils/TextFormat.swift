@@ -13,7 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
-    var leading:CGFloat = 12//this should be the same as the defailt font size value
+    var leading:CGFloat = NaN
     //autoSize can be implemented, check stackoverflow
     init(){}
     subscript(key: String) -> Any {
