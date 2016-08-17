@@ -66,10 +66,10 @@ extension TextFormat{
         let font:NSFont = TextFieldParser.font(self.font,self.size)
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        textParagraph.lineSpacing = self.leading/*this sets the space BETWEEN lines to 10points*/
+        textParagraph.lineSpacing = -5//self.leading/*this sets the space BETWEEN lines to 10points*/
         textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
-        textParagraph.maximumLineHeight = 0.0/*this sets the MAXIMUM height of the lines to 12points*/
-        
+        //textParagraph.maximumLineHeight = 0.0/*this sets the MAXIMUM height of the lines to 12points*/
+        //textParagraph.minimumLineHeight = 0.0
         let attribs = [NSFontAttributeName:font,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
         return attrString
