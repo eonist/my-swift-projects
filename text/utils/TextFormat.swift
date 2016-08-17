@@ -13,7 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
-    var leading:CGFloat = 10/*line-spacing*///TODO:find apples default value by tracing it, could be something else than 10
+    var leading:CGFloat = 5/*line-spacing*///TODO:find apples default value by tracing it, could be something else than 10
     //autoSize can be implemented, check stackoverflow
     init(){}
     subscript(key: String) -> Any {
@@ -67,6 +67,7 @@ extension TextFormat{
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = self.leading/*this sets the space BETWEEN lines to 10points*/
+        textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
         //textParagraph.maximumLineHeight = 12.0/*this sets the MAXIMUM height of the lines to 12points*/
         let attribs = [NSFontAttributeName:font,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
