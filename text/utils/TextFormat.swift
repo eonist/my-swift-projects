@@ -76,7 +76,7 @@ extension TextFormat{
             //textParagraph.lineSpacing = 10//self.leading/*this sets the space BETWEEN lines to 10points*/
             //textParagraph.paragraphSpacing = 25
             //textParagraph.paragraphSpacingBefore = 20
-            textParagraph.lineHeightMultiple = 2
+            //textParagraph.lineHeightMultiple = 2
             //textParagraph.headIndent = 20
             //textParagraph.
                        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
