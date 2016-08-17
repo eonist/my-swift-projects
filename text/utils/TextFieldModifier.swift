@@ -34,35 +34,9 @@ class TextFieldModifier {
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         
         
-        /*
-        NSString *title = @"title here";
-        NSFont *bold14 = [NSFont boldSystemFontOfSize:14.0];
-        NSColor *textColor = [NSColor redColor];
-        NSMutableParagraphStyle *textParagraph = [[NSMutableParagraphStyle alloc] init];
-        [textParagraph setLineSpacing:10.0];  // this sets the space BETWEEN lines to 10points
-        [textParagraph setMaximumLineHeight:12.0]; this sets the MAXIMUM height of the lines to 12points
-        
-        NSDictionary *attrDic = [NSDictionary dictionaryWithObjectsAndKeys:bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil];
-        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:title attributes:attrDic];
-        [self.titleField setAllowsEditingTextAttributes:YES];
-        [self.titleField setAttributedStringValue:attrString];
-        */
-        
-        let title:String = "title here"
-        let bold14:NSFont = Utils.font(textFormat.font,textFormat.size)
-        let textColor:NSColor = textFormat.color
-        let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        textParagraph.lineSpacing = textFormat.leading/*this sets the space BETWEEN lines to 10points*/
-        //textParagraph.maximumLineHeight = 12.0/*this sets the MAXIMUM height of the lines to 12points*/
-        //paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
-        let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
-        let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)
-        
         //Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true
-        //textField.attributedStringValue =
-        Swift.print("textField.attributedStringValue: " + "\(textField.attributedStringValue)")
-        Swift.print("textField.attributeKeys: " + "\(textField.attributeKeys)")
+        
         
         textField.selectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clearColor()
@@ -81,7 +55,7 @@ class TextFieldModifier {
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
         
-        textField.attributedStringValue = attrString
+        //textField.attributedStringValue = attrString
     }
     /**
      * Beta
