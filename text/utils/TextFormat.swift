@@ -62,9 +62,9 @@ extension TextFormat{
     /**
      *
      */
-    func attributedStringValue(stringValue:String){
+    func attributedStringValue(stringValue:String) -> NSAttributedString{
         let title:String = "title here"
-        let bold14:NSFont = Utils.font(textFormat.font,textFormat.size)
+        let bold14:NSFont = TextFieldParser.font(self.font,self.size)
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = self.leading/*this sets the space BETWEEN lines to 10points*/
@@ -72,6 +72,6 @@ extension TextFormat{
         //paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
         let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)
-        
+        return attrString
     }
 }
