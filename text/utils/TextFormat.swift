@@ -13,7 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
-    var leading:CGFloat = 10
+    var leading:CGFloat = 10//TODO:find apples default value by tracing it
     //autoSize can be implemented, check stackoverflow
     init(){
     }
