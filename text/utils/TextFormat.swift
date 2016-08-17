@@ -76,6 +76,7 @@ extension TextFormat{
             textParagraph.lineSpacing = 0//self.leading/*this sets the space BETWEEN lines to 10points*/
             textParagraph.paragraphSpacing = 25
             textParagraph.paragraphSpacingBefore = 20
+//            textParagraph.hyphenationFactor
             //textParagraph.lineHeightMultiple = 2
             //textParagraph.headIndent = 20
             //textParagraph.
