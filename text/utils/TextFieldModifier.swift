@@ -54,6 +54,7 @@ class TextFieldModifier {
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = 10.0/*this sets the space BETWEEN lines to 10points*/
         textParagraph.maximumLineHeight = 12.0/*this sets the MAXIMUM height of the lines to 12points*/
+        //paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
         let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)
         
