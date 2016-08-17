@@ -32,6 +32,27 @@ class TextFieldModifier {
      * TODO: Border color?
      */
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
+        
+        
+        /*
+        NSString *title = @"title here";
+        NSFont *bold14 = [NSFont boldSystemFontOfSize:14.0];
+        NSColor *textColor = [NSColor redColor];
+        NSMutableParagraphStyle *textParagraph = [[NSMutableParagraphStyle alloc] init];
+        [textParagraph setLineSpacing:10.0];  // this sets the space BETWEEN lines to 10points
+        [textParagraph setMaximumLineHeight:12.0]; this sets the MAXIMUM height of the lines to 12points
+        
+        NSDictionary *attrDic = [NSDictionary dictionaryWithObjectsAndKeys:bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil];
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:title attributes:attrDic];
+        [self.titleField setAllowsEditingTextAttributes:YES];
+        [self.titleField setAttributedStringValue:attrString];
+        */
+        
+        let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        textParagraph.lineSpacing = 10.0  // this sets the space BETWEEN lines to 10points
+        textParagraph.maximumLineHeight = 12.0//this sets the MAXIMUM height of the lines to 12points
+        let attrDic:NSDictionary = NSDictionary.dictionaryWithValuesForKeys(<#T##keys: [String]##[String]#>)
+        
         textField.selectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clearColor()
         textField.drawsBackground = true//textFormat.background//<--this is a temp fix so that one can add or remove a background while the app is running, this should ideally be done automatically when the text is re-rendered, more research needed
