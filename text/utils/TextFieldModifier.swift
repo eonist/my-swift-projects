@@ -48,14 +48,18 @@ class TextFieldModifier {
         [self.titleField setAttributedStringValue:attrString];
         */
         
+        let title:String = "title here"
         let bold14:NSFont = NSFont.boldSystemFontOfSize(14.0)
         let textColor:NSColor = NSColor.redColor()
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = 10.0  // this sets the space BETWEEN lines to 10points
         textParagraph.maximumLineHeight = 12.0//this sets the MAXIMUM height of the lines to 12points
-        let attrDic:NSDictionary = NSDictionary()
-        attrDic.setValuesForKeysWithDictionary([NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph])//(()bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil
-        let attrString:NSAttributedString = NSAttributedString.init()//[[NSAttributedString alloc] initWithString:title attributes:attrDic];
+        //let attrDic:NSDictionary = NSDictionary()
+        //attrDic.setValuesForKeysWithDictionary([NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph])//(()bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil
+        let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
+        let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)//[[NSAttributedString alloc] initWithString:title attributes:attrDic];
+        
+        Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true
         //textField.attributedStringValue =
         Swift.print("textField.attributedStringValue: " + "\(textField.attributedStringValue)")
@@ -77,6 +81,8 @@ class TextFieldModifier {
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
+        
+        textField.attributedStringValue = attrString
     }
     /**
      * Beta
