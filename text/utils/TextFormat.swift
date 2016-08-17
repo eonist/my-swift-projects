@@ -15,8 +15,7 @@ class TextFormat {
     var scrollable:Bool = true
     var leading:CGFloat = 10/*line-spacing*///TODO:find apples default value by tracing it, could be something else than 10
     //autoSize can be implemented, check stackoverflow
-    init(){
-    }
+    init(){}
     subscript(key: String) -> Any {
         get {
             switch key{
@@ -58,4 +57,21 @@ class TextFormat {
             }
         }
     }
+}
+extension TextFormat{
+    let title:String = "title here"
+    let bold14:NSFont = Utils.font(textFormat.font,textFormat.size)
+    let textColor:NSColor = textFormat.color
+    let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
+    textParagraph.lineSpacing = textFormat.leading/*this sets the space BETWEEN lines to 10points*/
+    //textParagraph.maximumLineHeight = 12.0/*this sets the MAXIMUM height of the lines to 12points*/
+    //paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
+    let attribs = [NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
+    let attrString:NSAttributedString = NSAttributedString.init(string: title, attributes: attribs)
+    
+    //Swift.print("attrString: " + "\(attrString)")
+    textField.allowsEditingTextAttributes = true
+    //textField.attributedStringValue =
+    Swift.print("textField.attributedStringValue: " + "\(textField.attributedStringValue)")
+    Swift.print("textField.attributeKeys: " + "\(textField.attributeKeys)")
 }
