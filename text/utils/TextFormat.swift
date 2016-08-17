@@ -13,7 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
-    var leading:CGFloat = 0/*line-spacing*///TODO:find apples default value by tracing it, could be something else than 10
+    var leading:CGFloat = 12//this should be the same as the defailt font size value
     //autoSize can be implemented, check stackoverflow
     init(){}
     subscript(key: String) -> Any {
