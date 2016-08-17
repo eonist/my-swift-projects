@@ -68,8 +68,8 @@ extension TextFormat{
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         
         if(self.leading == 5){
-            textParagraph.maximumLineHeight = 5/*this sets the MAXIMUM height of the lines to 12points*/
-            textParagraph.minimumLineHeight = 5
+            textParagraph.maximumLineHeight = 10/*this sets the MAXIMUM height of the lines to 12points*/
+            textParagraph.minimumLineHeight = 10
             Swift.print("textParagraph.allowsDefaultTighteningForTruncation: " + "\(textParagraph.allowsDefaultTighteningForTruncation)")
             //textParagraph.allowsDefaultTighteningForTruncation = false
             //textParagraph.lineBreakMode = NSLineBreakMode.
