@@ -53,9 +53,9 @@ class TextFieldModifier {
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.lineSpacing = 10.0  // this sets the space BETWEEN lines to 10points
         textParagraph.maximumLineHeight = 12.0//this sets the MAXIMUM height of the lines to 12points
-        let attrDic:NSDictionary = NSDictionary.dictionaryWithValuesForKeys(<#T##keys: [String]##[String]#>)
-        attrDic.
-        (()bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil
+        let attrDic:NSDictionary = NSDictionary()
+        attrDic.setValuesForKeysWithDictionary([NSFontAttributeName:bold14,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph])//(()bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil
+        let attrString:NSAttributedString = NSAttributedString.init()//[[NSAttributedString alloc] initWithString:title attributes:attrDic];
         textField.allowsEditingTextAttributes = true
         //textField.attributedStringValue =
         Swift.print("textField.attributedStringValue: " + "\(textField.attributedStringValue)")
