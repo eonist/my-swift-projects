@@ -13,7 +13,7 @@ class TextFormat {
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
-    var leading:CGFloat = 10//TODO:find apples default value by tracing it
+    var leading:CGFloat = 10/*line-spacing*///TODO:find apples default value by tracing it, could be something else than 10
     //autoSize can be implemented, check stackoverflow
     init(){
     }
@@ -32,6 +32,7 @@ class TextFormat {
                 case TextFormatConstants.multiline:return multiline
                 case TextFormatConstants.wordWrap:return wordWrap
                 case TextFormatConstants.scrollable:return scrollable
+                case TextFormatConstants.leading:return leading
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -52,6 +53,7 @@ class TextFormat {
                 case TextFormatConstants.multiline:multiline = newValue as! Bool
                 case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
                 case TextFormatConstants.scrollable:scrollable = newValue as! Bool
+                case TextFormatConstants.leading:leading = newValue as! CGFloat
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
