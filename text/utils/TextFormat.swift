@@ -68,13 +68,15 @@ extension TextFormat{
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         
         if(self.leading == 5){
-            textParagraph.maximumLineHeight = 10/*this sets the MAXIMUM height of the lines to 12points*/
-            textParagraph.minimumLineHeight = 1
+            //textParagraph.maximumLineHeight = 10/*this sets the MAXIMUM height of the lines to 12points*/
+            //textParagraph.minimumLineHeight = 1
+            Swift.print("textParagraph.allowsDefaultTighteningForTruncation: " + "\(textParagraph.allowsDefaultTighteningForTruncation)")
+            textParagraph.allowsDefaultTighteningForTruncation = false
 
             //textParagraph.lineSpacing = 10//self.leading/*this sets the space BETWEEN lines to 10points*/
             //textParagraph.paragraphSpacing = 25
             //textParagraph.paragraphSpacingBefore = 20
-            //textParagraph.lineHeightMultiple = 40
+            textParagraph.lineHeightMultiple = 2
             //textParagraph.headIndent = 20
             //textParagraph.
                        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
