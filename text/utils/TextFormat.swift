@@ -72,7 +72,7 @@ extension TextFormat{
             textParagraph.minimumLineHeight = 10
             Swift.print("textParagraph.allowsDefaultTighteningForTruncation: " + "\(textParagraph.allowsDefaultTighteningForTruncation)")
             //textParagraph.allowsDefaultTighteningForTruncation = false
-            textParagraph.lineBreakMode
+            textParagraph.lineBreakMode = NSLineBreakMode.ByWordWrapping
             textParagraph.lineSpacing = 0//self.leading/*this sets the space BETWEEN lines to 10points*/
             //textParagraph.paragraphSpacing = 25
             //textParagraph.paragraphSpacingBefore = 20
