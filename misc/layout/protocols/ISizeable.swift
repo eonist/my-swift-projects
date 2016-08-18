@@ -13,15 +13,21 @@ extension ISizeable{
     var width:CGFloat{
         get{
             if(self.size.width.isNaN){fatalError("width can't be NaN")}
-            if(self.size.width.isNaN){fatalError("height can't be NaN")}
             return self.size.width
         } set{
             if(newValue.isNaN){fatalError("width can't be NaN")}
-            if(newValue.isNaN){fatalError("height can't be NaN")}
             self.width = newValue
         }
     }
-    var height:CGFloat{get{return self.size.height} set{self.height = newValue}}
+    var height:CGFloat{
+        get{
+            if(self.size.width.isNaN){fatalError("height can't be NaN")}
+            return self.size.height
+        } set{
+            if(newValue.isNaN){fatalError("height can't be NaN")}
+            self.height = newValue
+        }
+    }
     /*mutating func setSize(width:CGFloat,height:CGFloat){
     self.width = width
     self.height = height
