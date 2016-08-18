@@ -12,12 +12,22 @@ extension IPositional{
     var pos:CGPoint{get{return self.getPosition()} set{self.setPosition(newValue)}}/*<-- this is named pos, because the name position is effectivly blocked when using implicit getter and setter names*/
     var x:CGFloat{
         get{
+            if(self.pos.x.isNaN){fatalError("x can't be NaN")}
             return self.pos.x
         } set{
+            if(newValue.isNaN){fatalError("x can't be NaN")}
             self.pos.x = newValue
         }
     }
-    var y:CGFloat{get{return self.pos.y} set{self.pos.y = newValue}}
+    var y:CGFloat{
+        get{
+            if(self.pos.y.isNaN){fatalError("y can't be NaN")}
+            return self.pos.y
+        } set{
+            if(newValue.isNaN){fatalError("y can't be NaN")}
+            self.pos.y = newValue
+        }
+    }
     /*func getPosition() -> CGPoint {
     return position
     }*/
