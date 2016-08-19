@@ -3,9 +3,11 @@ import Cocoa
 class WinModifier {
     /**
      * Positions a window to @param position
+     * CAUTION: the coordinate space of the y is flipped, so you have to substract the screen height etc before passing the position point
      */
     class func position(win:NSWindow, _ position:CGPoint){
-        win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
+        win.setFrameOrigin(CGPoint(position.x,position.y))
+        //win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
     }
     /**
      * Aligns a window to an alignment type
