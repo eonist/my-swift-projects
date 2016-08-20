@@ -20,7 +20,9 @@ extension NSWindow {
     var modal:Bool{return self.isAccessibilityModal()}//Convenience
     var flippedScreenPosition:CGPoint {return CGPoint(NSEvent.mouseLocation().x,abs(NSEvent.mouseLocation().y + -NSScreen.mainScreen()!.visibleFrame.height))/*flip the y coordianate:*/}/*Returns the topLeft postion of the win in relation to the screen*/
     var flippedScreenPos:CGPoint{
-        var p:CGPoint = self.frame.origin + CGPoint(0,frame.size.height)
+        var p:CGPoint = self.frame.origin + CGPoint(0,frame.size.height)//800
+        
+        
         
         return CGPoint()
     }
