@@ -1,7 +1,8 @@
 import Foundation
 //lots of great stuff here: https://github.com/nschum/SwiftCGRectExtensions/blob/master/CGRectExtensions/CGRectExtensions.swift
 /**
- * MOve the logic into CGRectModifier and CGRectParser and CGRectAsserter
+ * Move the logic into CGRectModifier and CGRectParser and CGRectAsserter
+ * For rect.isWithin(point) use: rect.contains(point)
  */
 extension CGRect {
     /**
