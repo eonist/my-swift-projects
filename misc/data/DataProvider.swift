@@ -118,6 +118,17 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         return self.items.indexOf{$0 == item} ?? -1
     }
     /**
+     *
+     */
+    func getIndex(title:String)->Int?{
+        let numOfItems = self.items.count
+        for var i = 0; i < numOfItems; ++i{
+            let item:Dictionary<String, String> = self.items[i]
+            if(item["title"] == title) {return i}
+        }
+        return nil
+    }
+    /**
      * Returns the count of the self.items
      */
     func count() -> Int{
