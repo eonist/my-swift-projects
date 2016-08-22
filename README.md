@@ -113,6 +113,10 @@ XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets t
 
 - Basic interaction with Apple KeyChain (Create, Read, Update, Delete)
 
+```swift
+EXAMPLE: KeyChainParser.load("user-name-here")!.stringValue//loads the password for this account
+```
+
 ## **RegExpLib** 
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
