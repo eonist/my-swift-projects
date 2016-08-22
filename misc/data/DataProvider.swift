@@ -96,13 +96,14 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         //self.items.sortOn(names, options,args);
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
-    func getItem(title:String)->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
+    func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
         for item in self.items {
-            if(item["title"] == title) {return item}
+            if(item[key] == value) {return item}
         }
-        Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE TITLE OF: " + "\(title)")
+        Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
         return nil
     }
+    
     /**
      * Returns an item at a spessific index
      */
