@@ -23,7 +23,7 @@ class LineStyleParser {
         else{return "square"}//Square
     }
     /**
-     *
+     * 
      */
     class func lineJoinType(lineJoin:CGLineJoin)->String{
         if(lineJoin == CGLineJoin.Miter){return "miter"}
