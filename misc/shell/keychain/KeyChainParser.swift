@@ -10,7 +10,7 @@ class KeyChainParser {
     }
 	/**
 	 * Returns a keychain item for key
-     * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//the password for this account
+     * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//loads the password for this account
 	 */	
     class func load(key: String) -> NSData? {
         let query = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String:kCFBooleanTrue, kSecMatchLimit as String:kSecMatchLimitOne ]
