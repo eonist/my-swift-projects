@@ -109,8 +109,12 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     /**
      *
      */
-    func index(key:String,){
-        
+    func index(key:String,_ value:String) -> Int?{
+        let count = items.count
+        for var i = 0; i < count; ++i{
+            if(items[i][key] == value) {return i}
+        }
+        return nil
     }
     /**
      * Returns an item at a spessific index
