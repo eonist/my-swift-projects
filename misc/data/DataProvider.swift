@@ -106,7 +106,12 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
         return nil
     }
-    
+    /**
+     *
+     */
+    func index(key:String,){
+        
+    }
     /**
      * Returns an item at a spessific index
      */
