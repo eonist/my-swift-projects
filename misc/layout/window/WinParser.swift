@@ -50,7 +50,7 @@ class WinParser {
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
-        return windows[0] ?? nil
+        return windows.count > 0 ? windows[0] : nil
     }
     /**
      * Returns the first focusedWindow in the NSApplication.windows array
