@@ -21,7 +21,7 @@ class SVGStyleUtils {
         let strokeLineJoin = lineJoin != nil && lineJoin != "" ? lineJoin : "miter";
         if(strokeLineJoin == "miter"){return CGLineJoin.Miter}
         else if(strokeLineJoin == "round"){return CGLineJoin.Round}
-        else if(strokeLineJoin == "Bevel"){return CGLineJoin.Bevel}
+        else if(strokeLineJoin == "bevel"){return CGLineJoin.Bevel}
         else{fatalError("this strokeLineJoin type is not supported")}
     }
     /**
