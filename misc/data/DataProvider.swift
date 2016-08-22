@@ -96,6 +96,9 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         //self.items.sortOn(names, options,args);
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
+    /**
+     * 
+     */
     func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
         for item in self.items {
             if(item[key] == value) {return item}
