@@ -76,7 +76,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * @Note: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(event: MouseEvent){
-        Swift.print("\(self.dynamicType)" + "mouseUpInside() ")
+        //Swift.print("\(self.dynamicType)" + "mouseUpInside() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -84,14 +84,14 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(event: MouseEvent){
-        Swift.print("\(self.dynamicType)" + "mouseUpOutside() ")
+        //Swift.print("\(self.dynamicType)" + "mouseUpOutside() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
      * this method exists for the sake of convenience
      */
     func mouseUp(event: MouseEvent){
-        Swift.print("\(self.dynamicType)" + "mouseUp() ")
+        //Swift.print("\(self.dynamicType)" + "mouseUp() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -151,7 +151,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      *
      */
     override func mouseUp(theEvent: NSEvent) {
-        Swift.print("mouseUp")
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, lets keep it above for now as the LeverStepper problem was a broken track pad problem not this*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
     }
