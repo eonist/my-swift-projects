@@ -38,7 +38,6 @@ class Graphic:InteractiveView2,IGraphic{
         
         /*
         let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
-        
         self.fillShape.actions = actions;
         self.layer!.actions = actions;
         self.lineShape.actions = actions;
