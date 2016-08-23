@@ -7,6 +7,8 @@ class GradientBoxUtils{
      * @NOTE: there may be faster ways to calculate this so imporve it if its necassery
      */
     
+     
+    //you could actually just try to feed it some rect, angle data!
     
     //Continue here: the problem is when the angle approches diagonal, the the points are wrong
     //try a diagonal gradient with the graphics lib test in explorer
