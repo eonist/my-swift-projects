@@ -17,7 +17,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
                 (self.superview as! IEventSender).onEvent(event)
             }
         }
-    }/**///returns closure that will take care of propagating the event to the parent
+    }/*returns closure that will take care of propagating the event to the parent*/
     var isInteractive:Bool = true//why is this here? I guess so that you can toggle the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well
     var isMouseOver:Bool = false;/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
@@ -29,7 +29,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
         //event = onEvent/*assign method to selector*/
-        event = eventCall
+        event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected*/
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
