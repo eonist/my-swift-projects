@@ -10,7 +10,7 @@ class FillStyleParser {
         Swift.print("fillStyle.color.alphaComponent: " + "\(fillStyle.color.alphaComponent)")
     }
     /**
-     *
+     * TODO: Doesn't support GradientFillStyle yet
      */
     class func clone(fillStyle:IFillStyle) -> IFillStyle {
         return FillStyle(fillStyle.color)
