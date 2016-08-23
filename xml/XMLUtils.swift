@@ -34,11 +34,12 @@ class XMLUtils {
         let xml:String = FileParser.content(filePath)!
         print(xml)
         fatalError("not implemented yet")
-        return nil
+        //return nil
     }
     /*
      * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
      * PARAM URL:"http://www.google.com/feeds/news.xml"
+     * NOTE: you can also use: FileParser.xml
      */
     class func xmlByURL(URL:String)->NSXMLDocument?{//# must use param naming
         let result:String = NetworkParser.string(URL)
@@ -64,7 +65,8 @@ class XMLUtils {
         }
         return xmlString
         */
-        return nil
+        fatalError("not implemented yet")
+        //return nil
     }
     /*
      * Returns xml like: <item color="blue" age="2">some text goes here<item/>
