@@ -32,9 +32,10 @@ class GradientBoxUtils{
         }
         Swift.print("cornerPoint: " + "\(cornerPoint)")
         Swift.print("rect.center: " + "\(rect.center)")
-        let normalizedAngle = Trig.normalize(angle)//clamps the angle between: 0 and Math.PI*2 Radian (0 - 6.28)
-        Swift.print("normalizedAngle: " + "\(normalizedAngle)")
-        let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, normalizedAngle)
+        //let normalizedAngle = Trig.normalize(angle)//clamps the angle between: 0 and Math.PI*2 Radian (0 - 6.28)
+        //Swift.print("normalizedAngle: " + "\(normalizedAngle)")
+        Swift.print("angle: " + "\(angle)")
+        let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
         Swift.print("distPoint: " + String(distPoint))
         let end:CGPoint = rect.center.polarPoint(distPoint.y, angle)
         //Swift.print("end: " + String(end))
