@@ -1,39 +1,10 @@
 import Cocoa
-// text height is called line spacing in NsTextfield
 
-//possible solution for the line-height problem: http://stackoverflow.com/questions/1958176/setting-the-line-height-line-spacing-in-an-nstextview
-
-// this has the most complete answer: http://stackoverflow.com/questions/8356904/cocoa-nstextfield-line-spacing
-/*
-
-
-NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
-[myStyle setLineSpacing:10.0];
-[myTextView setDefaultParagraphStyle:myStyle];
-
-
-And
-
-NSFont *bold14 = [NSFont boldSystemFontOfSize:14.0];
-NSColor *textColor = [NSColor redColor];
-NSMutableParagraphStyle *textParagraph = [[NSMutableParagraphStyle alloc] init];
-[textParagraph setLineSpacing:10.0];
-
-NSDictionary *attrDic = [NSDictionary dictionaryWithObjectsAndKeys:bold14, NSFontAttributeName, textColor, NSForegroundColorAttributeName, textParagraph, NSParagraphStyleAttributeName, nil];
-NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:title attributes:attrDic]; 
-[self.titleField setAllowsEditingTextAttributes:YES];
-[self.titleField setAttributedStringValue:attrString];
-
-*/
-
-//
 class TextFieldModifier {
     /**
      * TODO: Border color?
      */
     class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
-        
-        
         //Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.selectable = textFormat.selectable
@@ -55,7 +26,6 @@ class TextFieldModifier {
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically, this could probably be set when setting the paragraphstyle
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
         textField.cell?.scrollable = textFormat.scrollable//i guess this is connected to wordWrap
-        textField
     }
     /**
      * Beta
