@@ -30,10 +30,10 @@ class GradientBoxUtils{
                 fatalError("Angle is out of the allowed range (-π to π): " + "\(angle)")
                 break;
         }
-        //Swift.print("cornerPoint: " + "\(cornerPoint)")
-        //Swift.print("rect.center: " + "\(rect.center)")
+        Swift.print("cornerPoint: " + "\(cornerPoint)")
+        Swift.print("rect.center: " + "\(rect.center)")
         let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
-        //Swift.print("distPoint: " + String(distPoint))
+        Swift.print("distPoint: " + String(distPoint))
         let end:CGPoint = rect.center.polarPoint(distPoint.y, angle)
         //Swift.print("end: " + String(end))
         let start:CGPoint = rect.center.polarPoint(-distPoint.y, angle)
