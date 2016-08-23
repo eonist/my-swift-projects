@@ -10,7 +10,8 @@ class GradientBoxUtils{
     
     //Continue here: the problem is when the angle approches diagonal, the the points are wrong
     //try a diagonal gradient with the graphics lib test in explorer
-    //if you can't find a quick fix then maybe setup a leverSpinner and debug it with visual circles that align them selfs as you change the gradient rotation
+    //if you can't find a quick fix then maybe setup a leverSpinner and debug it with visual circles that align them selfs as you change the gradient rotation 
+    //(come to think of it, you might actually have this visual test already made and stored somewhere, try finding the blog post with this data and compare dates if you cant find it right away)
     
     
     class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
