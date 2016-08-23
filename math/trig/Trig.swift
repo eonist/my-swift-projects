@@ -28,8 +28,8 @@ class Trig{
     static var r:(CGFloat, CGFloat) = (-π/4, π/4);
     static var tl:(CGFloat,CGFloat) = (-π,-π/2)//(-180*㎭,-90*㎭)
     static var tr:(CGFloat,CGFloat) = (-π/2,0)//(-90*㎭,0)
-    static var bl:(CGFloat,CGFloat) = (0,π/2)//(0,90*㎭)
-    static var br:(CGFloat,CGFloat) = (π/2,π)//(90*㎭,180*㎭)
+    static var br:(CGFloat,CGFloat) = (0,π/2)//(0,90*㎭)
+    static var bl:(CGFloat,CGFloat) = (π/2,π)//(90*㎭,180*㎭)
 }
 extension Trig{/*Legacy-support/convenience*/
     /*Parsers*/
