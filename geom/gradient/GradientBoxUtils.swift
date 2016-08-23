@@ -24,24 +24,25 @@ class GradientBoxUtils{
         var cornerPoint:CGPoint = CGPoint()
         switch true{
             case CGFloatRangeAsserter.within(Trig.tl, angle):
-                //Swift.print("Q1")
+                Swift.print("Q1")
                 cornerPoint = rect.topLeft
             case CGFloatRangeAsserter.within(Trig.tr, angle):
-                //Swift.print("Q2")
+                Swift.print("Q2")
                 cornerPoint = rect.topRight
             case CGFloatRangeAsserter.within(Trig.br, angle):
-                //Swift.print("Q3")
+                Swift.print("Q3")
                 cornerPoint = rect.bottomRight
             case CGFloatRangeAsserter.within(Trig.bl, angle):
-                //Swift.print("Q4")
+                Swift.print("Q4")
                 cornerPoint = rect.bottomLeft
             default:
                 fatalError("Angle is out of the allowed range (-π to π): " + "\(angle)")
                 break;
         }
-        //Swift.print("rect.center: " + "\(rect.center)")
+        Swift.print("cornerPoint: " + "\(cornerPoint)")
+        Swift.print("rect.center: " + "\(rect.center)")
         let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
-        //Swift.print("distPoint: " + String(distPoint))
+        Swift.print("distPoint: " + String(distPoint))
         let end:CGPoint = rect.center.polarPoint(distPoint.x, angle)
         //Swift.print("end: " + String(end))
         let start:CGPoint = rect.center.polarPoint(-distPoint.x, angle)
