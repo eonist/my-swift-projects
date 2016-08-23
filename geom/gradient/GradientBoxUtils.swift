@@ -6,6 +6,11 @@ class GradientBoxUtils{
      * @NOTE: this is a really important method concerning gradients. And its pretty well coded and easy to understand. 
      * @NOTE: there may be faster ways to calculate this so imporve it if its necassery
      */
+    
+    
+    //Continue here: the problem is when the angle approches diagonal, the the points are wrong
+    
+    
     class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
         //Swift.print("rect: " + "\(rect)")
         //Swift.print("angle: " + "\(angle)")
