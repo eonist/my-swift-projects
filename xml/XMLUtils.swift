@@ -24,7 +24,7 @@ class XMLUtils {
         //in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
         return nil
     }
-    /*
+    /**
      * Returns a tree-structures dictionary populated with xml data from a file path (osx location for a .xml file)
      * filePath:"//Users/<path>/someFile.xml"
      * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
@@ -33,6 +33,7 @@ class XMLUtils {
         //implement when you need it
         let xml:String = FileParser.content(filePath)!
         print(xml)
+        fatalError("not implemented yet")
         return nil
     }
     /*
