@@ -34,20 +34,20 @@ class NumberModifier{
         return round(value * divisor) / divisor
     }
     /**
-    * Returns a number that is closest to the @param closest Number
-    * @param number: can be both positive and negative
-    * @param closest: must be a positive number
-    * print(NumberModifier.roundTo(46, 45));//45
-    * print(NumberModifier.roundTo(0, 1));//0
-    * print(NumberModifier.roundTo(100, 180));//180
-    * print(NumberModifier.roundTo(45, 90));//90
-    * print(NumberModifier.roundTo(0, 45));//0
-    */
+     * Returns a number that is closest to the @param closest Number
+     * @param number: can be both positive and negative
+     * @param closest: must be a positive number
+     * print(NumberModifier.roundTo(46, 45));//45
+     * print(NumberModifier.roundTo(0, 1));//0
+     * print(NumberModifier.roundTo(100, 180));//180
+     * print(NumberModifier.roundTo(45, 90));//90
+     * print(NumberModifier.roundTo(0, 45));//0
+     */
     class func roundTo(number:CGFloat, closest:CGFloat) -> CGFloat {
-        var remainder:CGFloat = number % closest
-        if(remainder == 0) return number
-        else if(Math.abs(remainder) < (closest/2)) return number - remainder
-        else if (NumberAsserter.negative(number)) return number - (closest+remainder)
-        else return number + (closest-remainder)
+        let remainder:CGFloat = number % closest
+        if(remainder == 0) {return number}
+        else if(abs(remainder) < (closest/2)){ return number - remainder}
+        else if (NumberAsserter.negative(number)){ return number - (closest+remainder)}
+        else {return number + (closest-remainder)}
     }
 }
