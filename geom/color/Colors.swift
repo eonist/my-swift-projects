@@ -212,5 +212,5 @@ extension Colors{
     static func pink()->NSColor{return NSColorParser.nsColor(Colors.pink())}
     static func darkGray()->NSColor{return NSColorParser.nsColor(Colors.darkGray())}
     static func lightGray()->NSColor{return NSColorParser.nsColor(Colors.lightGray())}
-    static func fancyColors() -> Array<NSColor> {return [red(),orange(),yellow(),green(),lightBlue(),darkBlue(),purple(),pink(),darkGray(),lightGray()]}
+    static func fancyColors() -> Array<[String:NSColor]> {return [["red":red()],["orange":orange()],["yellow":yellow()]]}//,,,green(),lightBlue(),darkBlue(),purple(),pink(),darkGray(),lightGray()
 }
