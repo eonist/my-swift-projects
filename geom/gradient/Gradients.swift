@@ -85,15 +85,15 @@ extension Gradients{/*Color ranges*/
     static func bw(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(0x000000).alpha(alpha),CGColor.cgColor(0xFFFFFF).alpha(alpha)]}
 }
 extension Gradients{
-    static func red()->IGradient{return Gradient(red())}
-    static func green()->IGradient{return Gradient(green())}
-    static func orange()->IGradient{return Gradient(orange())}
-    static func yellow()->IGradient{return Gradient(yellow())}
-    static func teal()->IGradient{return Gradient(teal())}
-    static func blue()->IGradient{return Gradient(blue())}
-    static func violet()->IGradient{return Gradient(violet())}
-    static func magenta()->IGradient{return Gradient(magenta())}
-    static func black()->IGradient{return Gradient(black())}
-    static func silver()->IGradient{return Gradient(silver())}
+    static func red()->IGradient{return LinearGradient(red())}
+    static func green()->IGradient{return LinearGradient(green())}
+    static func orange()->IGradient{return LinearGradient(orange())}
+    static func yellow()->IGradient{return LinearGradient(yellow())}
+    static func teal()->IGradient{return LinearGradient(teal())}
+    static func blue()->IGradient{return LinearGradient(blue())}
+    static func violet()->IGradient{return LinearGradient(violet())}
+    static func magenta()->IGradient{return LinearGradient(magenta())}
+    static func black()->IGradient{return LinearGradient(black())}
+    static func silver()->IGradient{return LinearGradient(silver())}
     static func fancyGradients()->Array<(name:String,gradient:IGradient)>{return [("red",red()),("green",green()),("orange",orange()),("yellow",yellow()),("teal",teal()),("blue",blue()),("violet",violet()),("magenta",magenta()),("black",black()),("silver",silver())]}
 }
