@@ -85,5 +85,15 @@ extension Gradients{/*Color ranges*/
     static func bw(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(0x000000).alpha(alpha),CGColor.cgColor(0xFFFFFF).alpha(alpha)]}
 }
 extension Gradients{
+    static func red()->IGradient{return Gradient(red())}
+    static func green()->IGradient{return Gradient(green())}
+    static func orange()->IGradient{return Gradient(orange())}
+    static func yellow()->IGradient{return Gradient(yellow())}
+    static func teal()->IGradient{return Gradient(teal())}
+    static func blue()->IGradient{return Gradient(blue())}
+    static func violet()->IGradient{return Gradient(violet())}
+    static func magenta()->IGradient{return Gradient(magenta())}
+    static func black()->IGradient{return Gradient(black())}
+    static func silver()->IGradient{return Gradient(silver())}
     
 }
