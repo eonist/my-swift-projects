@@ -95,5 +95,5 @@ extension Gradients{
     static func magenta()->IGradient{return Gradient(magenta())}
     static func black()->IGradient{return Gradient(black())}
     static func silver()->IGradient{return Gradient(silver())}
-    
+    static func fancyGradients()->Array<(name:String,gradient:IGradient)>{return [("red",red()),("green",green()),("orange",orange()),("yellow",yellow()),("teal",teal()),("blue",blue()),("violet",violet()),("magenta",magenta()),("black",black()),("silver",silver())]}
 }
