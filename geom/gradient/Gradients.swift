@@ -84,3 +84,6 @@ extension Gradients{/*Color ranges*/
     static func purple(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(purpleStart).alpha(alpha),CGColor.cgColor(purpleEnd).alpha(alpha)]}
     static func bw(alpha:CGFloat = 1.0)->Array<CGColor>{return [CGColor.cgColor(0x000000).alpha(alpha),CGColor.cgColor(0xFFFFFF).alpha(alpha)]}
 }
+extension Gradients{
+    
+}
