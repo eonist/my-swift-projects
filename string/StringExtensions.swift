@@ -49,6 +49,9 @@ extension String {
     var xml:NSXMLElement {return NSXMLElement(self)}//Convenince
     var url:NSURL {return FilePathParser.path(self)}//Convenince
 }
+extension NSString{
+    var string:String {return String(self)}/*Convenience*/
+}
 /**
  * Multiplies a string
  * EXAMPLE: "hello" * 3 //hellohellohello
