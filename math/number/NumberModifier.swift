@@ -43,7 +43,7 @@ class NumberModifier{
      * print(NumberModifier.roundTo(45, 90));//90
      * print(NumberModifier.roundTo(0, 45));//0
      */
-    class func roundTo(number:CGFloat, closest:CGFloat) -> CGFloat {
+    class func roundTo(number:CGFloat, _ closest:CGFloat) -> CGFloat {
         let remainder:CGFloat = number % closest
         if(remainder == 0) {return number}
         else if(abs(remainder) < (closest/2)){ return number - remainder}
