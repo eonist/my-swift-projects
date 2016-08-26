@@ -3,9 +3,9 @@ import Foundation
  * This class represents a regular svg path
  * // :TODO: you may want to add support for code like this: <path d="M30 100 Q 80 30, 100 100, 130 65, 200 80" /> but illustrator wont export this kind of syntax so not important right away
  */
-class SVGPath :SVGGraphic{
-   var commands : Array<String>//TODO:consider using Character rather than string, its faster!
-   var parameters : Array<CGFloat>
+class SVGPath:SVGGraphic{
+   var commands:Array<String>//TODO:consider using Character rather than string, its faster!
+   var parameters:Array<CGFloat>
    /**
     * @param commands (M/m, l/L, H/h, V/v, Z/z) (moveTo,lineTo,horizontalLineTo,verticalLineTo,closePath)
     * @param parameters (path data)
