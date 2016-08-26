@@ -2,7 +2,7 @@ import Cocoa
 
 class SVGFillStyleUtils{
     /**
-     *
+     * Converts SVGStyle to IFillStyle
      */
     class func fillStyle(style:SVGStyle,_ shape:Shape)-> IFillStyle?{
         Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
@@ -22,7 +22,7 @@ class SVGFillStyleUtils{
         return fillStyle
     }
     /**
-     *
+     * Converts SVGStyle to IGradientFillStyle
      */
     class func gradientFillStyle(style:SVGStyle,_ shape:Shape)->IGradientFillStyle{
         let svgGradient:SVGGradient = style.fill as! SVGGradient
