@@ -96,13 +96,13 @@ class SVGPathUtils {
         return path
     }
     /**
-     * Returns a SVGPath instance with data derived from commands and @param params (which contains numbers, as in pathData)
+     * Returns a Path instance with data derived from commands and @param params (which contains numbers, as in pathData)
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {
         let path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
-        var prevP:CGPoint = CGPoint();
+        var prevP:CGPoint = CGPoint()
         //var prevM:CGPoint/*previous MoveTo pos*/
         var prevC:CGPoint!/*previous ControlPoint*/
         for (var e : Int = 0; e < commands.count; e++) {
