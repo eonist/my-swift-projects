@@ -61,13 +61,13 @@ class PointAsserter {
     * @Note: converging is when the head of each trajectory converge
     * // :TODO: write the math formula for this method and explaine more verbosly
     */
-    public static function converging(p1:Point,p2:Point,angle1:Number,angle2:Number):Boolean {
-    var p1A:Point = Point.polar(100, angle1).add(p1);
-    var p1B:Point = Point.polar(100, angle1-Math.PI).add(p1);
-    var p2A:Point = Point.polar(100, angle2).add(p2);
-    var p2B:Point = Point.polar(100, angle2-Math.PI).add(p2);
-    var len:Number = Point.distance(p1A, p2A);
-    return len < Point.distance(p1B, p2A) && len < Point.distance(p2A, p2B);
+    class func converging(p1:CGPoint,p2:CGPoint,angle1:CGFloat,angle2:CGFloat) -> Bool {
+        var p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
+        var p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
+        var p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
+        var p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
+        var len:Number = Point.distance(p1A, p2A)
+        return len < Point.distance(p1B, p2A) && len < Point.distance(p2A, p2B)
     }
     /**
     * @Note doing !convering is not the same as the bellow, because !convering could mean isParallel
@@ -76,13 +76,13 @@ class PointAsserter {
     * // :TODO: collinearNormal is when both trajectories point onto each other
     * // :TODO: you need a term when 2 vectors are collinear but point in opposite direction, contraDirectional is the Antonym of coDirectional which is when 2 lines are paralell and pointing in the same direction
     */
-    public static function diverging(p1:Point,p2:Point,angle1:Number,angle2:Number):Boolean {
-    var p1A:Point = Point.polar(100, angle1).add(p1);
-    var p1B:Point = Point.polar(100, angle1-Math.PI).add(p1);
-    var p2A:Point = Point.polar(100, angle2).add(p2);
-    var p2B:Point = Point.polar(100, angle2-Math.PI).add(p2);
-    var len:Number = Point.distance(p1A, p2A);
-    return len > Point.distance(p1B, p2A) && len > Point.distance(p2A, p2B);
+    class func diverging(p1:CGPoint,p2:CGPoint,angle1:CGFloat,angle2:CGFloat) -> Bool {
+        var p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
+        var p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
+        var p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
+        var p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
+        var len:Number = Point.distance(p1A, p2A)
+        return len > Point.distance(p1B, p2A) && len > Point.distance(p2A, p2B)
     }
     /**
      * Asserts if two lines intersects (p1 and p2 is line1, p3 and p4 is line2)
