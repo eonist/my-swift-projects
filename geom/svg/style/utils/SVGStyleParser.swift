@@ -33,7 +33,7 @@ class SVGStyleParser {
             //Swift.print("name: >" + name+"<");
             let value = (style as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
             //Swift.print("value: >" + value+"<");
-            inlineStyles[name] = value;
+            inlineStyles[name] = value
         }
 		return inlineStyles;
 	}
