@@ -1,7 +1,7 @@
 import Cocoa
 /*
- * XML utility methods (Beta)
- * @Note: This class has methods that conver SVG elements into XML
+ * XML utility methods
+ * NOTE: This class has methods that convert SVG elements into XML
  */
 class SVGUtils {
 	/**
@@ -9,7 +9,7 @@ class SVGUtils {
 	 * @param svg (isntance of a custom SVG class that is easy to work with)
 	 * @Note for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
-	class func xml(svg:SVG)->NSXMLElement {// :TODO: refactor to one or loop?
+	class func xml(svg:SVG)->XML {// :TODO: refactor to one or loop?
 		let xml:NSXMLElement = SVGUtils.svg(svg)
 		for (var i : Int = 0; i < svg.items.count; i++) {
 			let svgElement:ISVGElement = svg.items[i]
@@ -71,7 +71,7 @@ class SVGUtils {
 	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
 	 */
 	class func line(line:SVGLine)->XML {
-		var xml:NSXMLElement = "<line></line>".xml
+		var xml:XML = "<line></line>".xml
 		xml = id(xml,line);
 		xml["x1"] = line.x1.string
 		xml["y1"] = line.y1.string
@@ -84,21 +84,21 @@ class SVGUtils {
 	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
 	 */
 	 class func rect(rect:SVGRect)->XML {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
-		var xml:NSXMLElement = "<rect></rect>".xml
+		var xml:XML = "<rect></rect>".xml
 		xml = id(xml,rect);
 		xml["x"] = rect.x.string
 		xml["y"] = rect.y.string
 		xml["width"] = rect.width.string
 		xml["height"] = rect.height.string
 		xml = style(xml,rect)
-		xml["stroke-miterlimit"] = rect.style!.strokeMiterLimit.string
+		xml["stroke-miterlimit"] = rect.style!.strokeMiterLimit!.string
 		return xml
 	 }
 	 /**
 	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
 	  */
-	 class func path(path:SVGPath)->NSXMLElement {
-         var xml:NSXMLElement = "<path></path>".xml
+	 class func path(path:SVGPath)->XML {
+         var xml:XML = "<path></path>".xml
 		 xml = id(xml,path)
 		 xml["d"] = SVGUtils.pathData(path)
 		 xml = style(xml,path)
@@ -109,8 +109,8 @@ class SVGUtils {
 	  * @Note: this method is recursive
 	  * // :TODO: remeber groups can have style applied inline cant they?
 	  */
-	 class func group(group:SVGGroup) -> NSXMLElement {
-		 var xml:NSXMLElement = NSXMLElement("<g></g>")
+	 class func group(group:SVGGroup) -> XML {
+		 var xml:XML = "<g></g>".xml
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
 		 for (var i : Int = 0; i < group.items.count; i++) {
@@ -145,6 +145,6 @@ class SVGUtils {
 		 xml["stroke"] = graphic.style!.stroke is Double && !(graphic.style!.stroke as! Double).isNaN ? "#"+HexParser.hexString(UInt(graphic.style!.stroke as! Double)):"none"
          if(graphic.style!.strokeWidth != nil && !graphic.style!.strokeWidth!.isNaN && graphic.style!.strokeWidth! != 1) {xml["stroke-width"] = "\(graphic.style!.strokeWidth!)"}/*if strokeWidth is 1 then you dont have to include it in the svg, this is considered a default value if stroke is avialbale*/
 		 // :TODO: add support for fillOpacity,fillRule,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit, (Get ques from the old SVGPropertyParser)
-		 return xml;
+		 return xml
 	 }
 }
