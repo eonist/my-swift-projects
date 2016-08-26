@@ -58,33 +58,33 @@ class SVGUtils {
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
-	class func svg(svg:SVG)->NSXMLElement {
-		let xml:NSXMLElement = NSXMLElement("<?xml version=“1.0”?><svg></svg>")
+	class func svg(svg:SVG)->XML {
+		let xml:NSXMLElement = "<?xml version=“1.0”?><svg></svg>".xml
 		xml["xmlns"] = "http://www.w3.org/2000/svg"
-		xml["x"] = String(svg.x)+"px"
-		xml["y"] = String(svg.y)+"px"
-		xml["width"] = String(svg.width)+"px"
-		xml["height"] = String(svg.height)+"px"
-		return xml;
+		xml["x"] = svg.x.string+"px"
+		xml["y"] = svg.y.string+"px"
+		xml["width"] = svg.width.string + "px"
+		xml["height"] = svg.height.string + "px"
+		return xml
 	}
 	/**
 	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
 	 */
-	class func line(line:SVGLine)->NSXMLElement {
-		var xml:NSXMLElement = NSXMLElement("<line></line>")
+	class func line(line:SVGLine)->XML {
+		var xml:NSXMLElement = "<line></line>".xml
 		xml = id(xml,line);
-		xml["x1"] = "\(line.x1)";
-		xml["y1"] = "\(line.y1)";
-		xml["x2"] = "\(line.x2)";
-		xml["y2"] = "\(line.y2)";
-		xml = style(xml,line);
-		return xml;
+		xml["x1"] = "\(line.x1)"
+		xml["y1"] = "\(line.y1)"
+		xml["x2"] = "\(line.x2)"
+		xml["y2"] = "\(line.y2)"
+		xml = style(xml,line)
+		return xml
 	}
 	/**
 	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
 	 */
-	 class func rect(rect:SVGRect)->NSXMLElement {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
-		var xml:NSXMLElement = NSXMLElement("<rect></rect>")
+	 class func rect(rect:SVGRect)->XML {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
+		var xml:NSXMLElement = "<rect></rect>".xml
 		xml = id(xml,rect);
 		xml["x"] = "\(rect.x)";
 		xml["y"] = "\(rect.y)";
@@ -98,7 +98,7 @@ class SVGUtils {
 	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
 	  */
 	 class func path(path:SVGPath)->NSXMLElement {
-         var xml:NSXMLElement = NSXMLElement("<path></path>")
+         var xml:NSXMLElement = "<path></path>".xml
 		 xml = id(xml,path);
 		 xml["d"] = SVGUtils.pathData(path);
 		 xml = style(xml,path);
