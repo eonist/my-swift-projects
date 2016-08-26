@@ -48,17 +48,17 @@ class SVGParser {
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
         let id:String = SVGPropertyParser.id(xml);
         switch(xml.localName!){
-            case SVGConstants.rect: element = rect(xml,style,id); break;
-            case SVGConstants.polyLine: element =  polyLine(xml,style,id)!; break;
-            case SVGConstants.polygon: element = polygon(xml,style,id)!; break;
-            case SVGConstants.path: element = path(xml,style,id)!; break;
-            case SVGConstants.line: element = line(xml,style,id); break;
-            case SVGConstants.circle: element = circle(xml,style,id); break;
-            case SVGConstants.ellipse: element = ellipse(xml,style,id); break;
-            case SVGConstants.group: element = group(xml,style,id); break;
-            case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml); break;
-            case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml); break;
-            default: fatalError("type not supported: " + xml.localName!);
+            case SVGConstants.rect: element = rect(xml,style,id)
+            case SVGConstants.polyLine: element =  polyLine(xml,style,id)!
+            case SVGConstants.polygon: element = polygon(xml,style,id)!
+            case SVGConstants.path: element = path(xml,style,id)!
+            case SVGConstants.line: element = line(xml,style,id)
+            case SVGConstants.circle: element = circle(xml,style,id)
+            case SVGConstants.ellipse: element = ellipse(xml,style,id)
+            case SVGConstants.group: element = group(xml,style,id)
+            case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml)
+            case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml)
+            default: fatalError("SVG Element type not supported: " + xml.localName!)
         }
         return element;
     }
