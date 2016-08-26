@@ -137,4 +137,10 @@ class PointAsserter {
         //print("c: " + c)
         return (a == b && b == c) || (NumberAsserter.isInfinity(a) && NumberAsserter.isInfinity(b) && NumberAsserter.isInfinity(c))//why do we assert infinity again?
     }
+    /**
+     * // :TODO: rename to isNearlyEqual, or isNearEqual
+     */
+    class func nearEquals(a:CGPoint, _ b:CGPoint, _ epsilon:CGFloat) -> Bool{
+        return NumberAsserter.isNear(a.x, b.x, epsilon) && NumberAsserter.isNear(a.y, b.y, epsilon)
+    }
 }
