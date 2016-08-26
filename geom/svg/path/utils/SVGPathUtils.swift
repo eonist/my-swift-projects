@@ -96,7 +96,7 @@ class SVGPathUtils {
         return path
     }
     /**
-     * Returns a SVGPath instance with data derived frompa commands and @param params (which contains numbers, as in pathData)
+     * Returns a SVGPath instance with data derived from commands and @param params (which contains numbers, as in pathData)
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {
