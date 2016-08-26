@@ -31,7 +31,7 @@ class SVGParser {
         let count = children.count/*or use rootElement.childCount TODO: test this*/
         for (var i = 0; i < count; i++) {
             let child:XML = XMLParser.childAt(children, i)!
-            doc.add(element(child,doc))//print("Import - child.toXMLString(): " + child.toXMLString());
+            if let elm = element(child,doc) {doc.add(elm)}//print("Import - child.toXMLString(): " + child.toXMLString());
         }
         return doc
     }
@@ -58,7 +58,7 @@ class SVGParser {
             case SVGConstants.group: element = group(xml,style,id)
             case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml)
             case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml)
-            default: Swift.print("SVG Element type not supported: " + xml.localName!)
+            default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export defs*/
         }
         return element
     }
@@ -71,7 +71,7 @@ class SVGParser {
         let group:SVGGroup = SVGGroup([],style,id);
         for (var i = 0; i < xml.childCount; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
-            group.add(element(child,group))
+            if let elm = element(child,group) {group.add(elm)}
         }
         return group;
     }
