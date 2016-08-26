@@ -42,8 +42,8 @@ class SVGParser {
      * // :TODO: add Radial gradient support
      * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
-    class func element(xml:XML,_ container:ISVGContainer)->ISVGElement {
-        var element:ISVGElement;
+    class func element(xml:XML,_ container:ISVGContainer)->ISVGElement? {
+        var element:ISVGElement?
         let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
         let id:String = SVGPropertyParser.id(xml);
@@ -58,9 +58,9 @@ class SVGParser {
             case SVGConstants.group: element = group(xml,style,id)
             case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml)
             case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml)
-            default: fatalError("SVG Element type not supported: " + xml.localName!)
+            default: Swift.print("SVG Element type not supported: " + xml.localName!)
         }
-        return element;
+        return element
     }
     /**
      * Returns a Group instance comprised of svg elements derived from @param xml
