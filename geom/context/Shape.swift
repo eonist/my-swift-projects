@@ -2,7 +2,7 @@ import Cocoa
 /**
  * NOTE: Shape is a convenient way to seperate drawing the stroke and the fill. (composite drawing) 
  */
-class Shape : CALayer{
+class Shape:CALayer{
     //override func containsPoint(p: CGPoint) -> Bool {return true}
     //override func hitTest(p: CGPoint) -> CALayer? {return self}
     lazy var graphics: Graphics = Graphics()//Delays the creation of graphics until it is needed, keep in mind that you cant create this instance before drawRect is called
