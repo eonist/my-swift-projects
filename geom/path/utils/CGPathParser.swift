@@ -107,14 +107,7 @@ public class CGPathParser{
     class func boundingBox(path:CGPath,_ lineStyle:ILineStyle)->CGRect{
         let outlinePath:CGPath? = CGPathCreateCopyByStrokingPath(path, nil, lineStyle.thickness, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
         var boundingBox:CGRect = CGPathGetPathBoundingBox(outlinePath)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        Swift.print("cur pt: " + "\(CGPathGetCurrentPoint(path))")
-        Swift.print("is empty: " + "\(CGPathIsEmpty(path))")
-        Swift.print("different bounding box: " + "\(CGPathGetBoundingBox(path))")
-        
-        if(boundingBox.x.isInfinite){
-            boundingBox = CGPathGetPathBoundingBox(path)
-            Swift.print("boundingBox: " + "\(boundingBox)")
-        }/*<--fix for paths that have zero width or height*/
+        if(boundingBox.x.isInfinite){boundingBox = CGRect(CGPathGetCurrentPoint(path),boundingBox.size)}/*<--fix for paths that have zero width or height*/
         return boundingBox
     }
 }
