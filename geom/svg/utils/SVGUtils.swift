@@ -59,7 +59,7 @@ class SVGUtils {
 	 * Returns the root node for the SVG XML document
 	 */
 	class func svg(svg:SVG)->XML {
-		let xml:NSXMLElement = "<?xml version=“1.0”?><svg></svg>".xml
+		let xml:XML = "<?xml version=“1.0”?><svg></svg>".xml
 		xml["xmlns"] = "http://www.w3.org/2000/svg"
 		xml["x"] = svg.x.string+"px"
 		xml["y"] = svg.y.string+"px"
@@ -73,10 +73,10 @@ class SVGUtils {
 	class func line(line:SVGLine)->XML {
 		var xml:NSXMLElement = "<line></line>".xml
 		xml = id(xml,line);
-		xml["x1"] = "\(line.x1)"
-		xml["y1"] = "\(line.y1)"
-		xml["x2"] = "\(line.x2)"
-		xml["y2"] = "\(line.y2)"
+		xml["x1"] = line.x1.string
+		xml["y1"] = line.y1.string
+		xml["x2"] = line.x2.string
+		xml["y2"] = line.y2.string
 		xml = style(xml,line)
 		return xml
 	}
@@ -86,23 +86,23 @@ class SVGUtils {
 	 class func rect(rect:SVGRect)->XML {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
 		var xml:NSXMLElement = "<rect></rect>".xml
 		xml = id(xml,rect);
-		xml["x"] = "\(rect.x)";
-		xml["y"] = "\(rect.y)";
-		xml["width"] = "\(rect.width)";
-		xml["height"] = "\(rect.height)";
-		xml = style(xml,rect);
-		xml["stroke-miterlimit"] = "\(rect.style!.strokeMiterLimit)";
-		return xml;
+		xml["x"] = rect.x.string
+		xml["y"] = rect.y.string
+		xml["width"] = rect.width.string
+		xml["height"] = rect.height.string
+		xml = style(xml,rect)
+		xml["stroke-miterlimit"] = rect.style!.strokeMiterLimit.string
+		return xml
 	 }
 	 /**
 	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
 	  */
 	 class func path(path:SVGPath)->NSXMLElement {
          var xml:NSXMLElement = "<path></path>".xml
-		 xml = id(xml,path);
-		 xml["d"] = SVGUtils.pathData(path);
-		 xml = style(xml,path);
-		 return xml;
+		 xml = id(xml,path)
+		 xml["d"] = SVGUtils.pathData(path)
+		 xml = style(xml,path)
+		 return xml
 	 }
 	 /**
 	  * Returns an XML instance with SVGGroup data derived from @param group
