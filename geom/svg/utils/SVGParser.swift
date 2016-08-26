@@ -94,24 +94,24 @@ class SVGParser {
      * Returns an SVGRect element derived from the rectangle data in @param xml with the @param style and @param id
      */
     class func rect(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
-        let x:CGFloat = SVGPropertyParser.digit(xml,"x");
-        let y:CGFloat = SVGPropertyParser.digit(xml,"y");
-        let width:CGFloat = SVGPropertyParser.digit(xml,"width");
-        let height:CGFloat = SVGPropertyParser.digit(xml,"height");
-        let rx:CGFloat = SVGPropertyParser.digit(xml,"rx");
-        let ry:CGFloat = SVGPropertyParser.digit(xml,"ry");
-        return SVGRect(width, height, x, y, rx, ry, style, id);
+        let x:CGFloat = SVGPropertyParser.digit(xml,"x")
+        let y:CGFloat = SVGPropertyParser.digit(xml,"y")
+        let width:CGFloat = SVGPropertyParser.digit(xml,"width")
+        let height:CGFloat = SVGPropertyParser.digit(xml,"height")
+        let rx:CGFloat = SVGPropertyParser.digit(xml,"rx")
+        let ry:CGFloat = SVGPropertyParser.digit(xml,"ry")
+        return SVGRect(width, height, x, y, rx, ry, style, id)
     }
     /**
      * Returns an SVGLine element derived from the line data in @param xml with the @param style and @param id
      */
     class func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
         // :TODO: should return nil if there is no def ?!?
-        let x1:CGFloat = SVGPropertyParser.digit(xml,"x1");
-        let y1:CGFloat = SVGPropertyParser.digit(xml,"y1");
-        let x2:CGFloat = SVGPropertyParser.digit(xml,"x2");
-        let y2:CGFloat = SVGPropertyParser.digit(xml,"y2");
-        return SVGLine(x1, y1, x2, y2,style,id);
+        let x1:CGFloat = SVGPropertyParser.digit(xml,"x1")
+        let y1:CGFloat = SVGPropertyParser.digit(xml,"y1")
+        let x2:CGFloat = SVGPropertyParser.digit(xml,"x2")
+        let y2:CGFloat = SVGPropertyParser.digit(xml,"y2")
+        return SVGLine(x1, y1, x2, y2,style,id)
     }
     /**
      * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
