@@ -30,7 +30,7 @@ class CGPathUtils {
                 prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
                 CGPathAddQuadCurveToPoint(cgPath, nil, path.pathData[index],path.pathData[index+1], path.pathData[index+2],path.pathData[index+3])
                 index += 4
-            case PathCommand.cubicCurveTo:
+            case PathCommand.cubicCurveTo:/*cubic*/
                 prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
                 //the bellow could be wrong
                 //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
