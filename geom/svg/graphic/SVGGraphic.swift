@@ -6,7 +6,7 @@ import Cocoa
  * 2. You add the path to the Graphics instance (through the draw methods)
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
-class SVGGraphic : SVGView,ISVGGraphic{
+class SVGGraphic:SVGView,ISVGGraphic{
     var fillShape:Shape
     var lineShape:Shape
     var trackingArea:NSTrackingArea?
@@ -25,8 +25,8 @@ class SVGGraphic : SVGView,ISVGGraphic{
         if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             //Swift.print("SVGGraphic.init() setNeedsDisplay()")
             draw()
-            fillShape.setNeedsDisplay();/*setup the fill geometry*//*draw the fileShape*/
-            lineShape.setNeedsDisplay();/*setup the line geometry*//*draw the fileShape*/
+            fillShape.setNeedsDisplay()/*setup the fill geometry*//*draw the fileShape*/
+            lineShape.setNeedsDisplay()/*setup the line geometry*//*draw the fileShape*/
         }
     }
     /**

@@ -15,7 +15,7 @@ class SVGParser {
      * Returns an SVGDoc instance derived from @param xml
      * @Note the regular expression removes the PX suffix
      */
-    class func svg(xml:NSXMLElement)->SVG {
+    class func svg(xml:XML)->SVG {
         let viewBox:CGRect = SVGPropertyParser.viewBox(xml)//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         let x:CGFloat = SVGPropertyParser.digit(xml,"x");
         let y:CGFloat = SVGPropertyParser.digit(xml,"y");
@@ -30,7 +30,7 @@ class SVGParser {
         let children:NSArray = xml.children!
         let count = children.count/*or use rootElement.childCount TODO: test this*/
         for (var i = 0; i < count; i++) {
-            let child:NSXMLElement = XMLParser.childAt(children, i)!
+            let child:XML = XMLParser.childAt(children, i)!
             doc.add(element(child,doc))//print("Import - child.toXMLString(): " + child.toXMLString());
         }
         return doc
@@ -42,7 +42,7 @@ class SVGParser {
      * // :TODO: add Radial gradient support
      * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
-    class func element(xml:NSXMLElement,_ container:ISVGContainer)->ISVGElement {
+    class func element(xml:XML,_ container:ISVGContainer)->ISVGElement {
         var element:ISVGElement;
         let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
