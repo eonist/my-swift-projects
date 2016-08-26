@@ -58,7 +58,7 @@ class SVGParser {
             case SVGConstants.group: element = group(xml,style,id)
             case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml)
             case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml)
-            default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export defs*/
+            default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export <defs></defs>*/
         }
         return element
     }
