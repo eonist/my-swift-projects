@@ -1,5 +1,22 @@
 import Foundation
-
+/*
+TODO: When needed add these:
+oppositeDirectional
+isContraDirectional
+isNearContraDir
+parallel
+coDirectional
+isCoDirectional
+isNearCoDir
+perpendicular
+intersects
+within
+absoluteWithin
+absolutleyWithin
+nearAbsolutleyWithin
+collinear
+nearEquals
+*/
 class PointAsserter {
     /**
      * Asserts if p1 is less than p2 (but eigther x OR y can be equal to the other x or y)
