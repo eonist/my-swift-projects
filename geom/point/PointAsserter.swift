@@ -2,6 +2,36 @@ import Foundation
 
 class PointAsserter {
     /**
+     * Asserts if p1 is less than p2 (but eigther x OR y can be equal to the other x or y)
+     * @Note: think @param p1 is eigther to the left of @param p2 or above @param p2
+     * @Note: but both x and y cant be the same in both points
+     */
+    class func less(p1:CGPoint, p2:CGPoint) -> Bool {
+        return (p1.x <= p2.x && p1.y < p2.y) || (p1.x < p2.x && p1.y <= p2.y)
+    }
+    /**
+     * Asserts if p1 is more than p2  (but eigther x OR y can be equal to the other x or y)
+     * @Note: think @param p1 is to the right of @param p2 or bellow @param p2
+     * @Note: but both x and y cant be the same in both points
+     */
+    class func more(p1:CGPoint, p2:CGPoint) -> Bool {
+        return (p1.x >= p2.x && p1.y > p2.y) || (p1.x > p2.x && p1.y >= p2.y);
+    }
+    /**
+     * Asserts if p1 is less than p2
+     * @Note: think @param p1 is eigther to the left of @param p2 AND above @param p2
+     */
+    class func absolutLess(p1:Point, p2:Point):Boolean {// :TODO: absolutleyLess
+        return p1.x < p2.x && p1.y < p2.y;
+    }
+    /**
+     * Asserts if p1 is more than p2
+     * @Note: think @param p1 is to the right of @param p2 AND bellow @param p2
+     */
+    class func absolutMore(p1:Point, p2:Point):Boolean {// :TODO: rename to absolutleyMore
+        return p1.x > p2.x && p1.y > p2.y;
+    }
+    /**
      * Asserts if p1 is in the same position as p2
      * @Note: You can also use the native function point1.equales(point2)
      * @Note: unlike the native point.equals method this method supports NaN values
