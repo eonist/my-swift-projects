@@ -21,7 +21,7 @@ class SVGStyleParser {
 	/**
 	 * @param style (fill: red; stroke:black; stroke-width: 2;)
 	 */
-	class func inlineStyle(style:String)->Dictionary<String, String> {
+	class func inlineStyle(style:String)->Dictionary<String, String> {//TODO: use tuples instead?
 		//Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
@@ -35,7 +35,7 @@ class SVGStyleParser {
             //Swift.print("value: >" + value+"<");
             inlineStyles[name] = value
         }
-		return inlineStyles;
+		return inlineStyles
 	}
 	/**
 	 * @param container the parent container of the svg element querried for
@@ -44,20 +44,17 @@ class SVGStyleParser {
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = nil
-        }
-        else if(property! is String && (property as! String) == "none") {
+        }else if(property! is String && (property as! String) == "none") {
             property = Double.NaN
-        }
-        else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
+        }else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
             property = Double(StringParser.color(property as! String))
-        }
-		else{/*url(#three_stops);*/
-			let url:String = String(property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0];
+        }else{/*url(#three_stops);*/
+			let url:String = String(property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
             //Swift.print("url: " + "\(url)")
-			property = container.getItem(url);/*SVGLinearGradient*/
+			property = container.getItem(url)/*SVGLinearGradient*/
             //Swift.print("property: " + "\(property)")
 		}
-		return property;
+		return property
 	}
 	/**
 	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
