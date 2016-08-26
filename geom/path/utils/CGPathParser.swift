@@ -105,7 +105,7 @@ public class CGPathParser{
      * TODO: Move this method somewhere else?
      */
     class func boundingBox(path:CGPath,_ lineStyle:ILineStyle)->CGRect{
-        let outlinePath = CGPathCreateCopyByStrokingPath(path, nil, lineStyle.thickness, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
+        let outlinePath:CGPath = CGPathCreateCopyByStrokingPath(path, nil, lineStyle.thickness, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
         let boundingBox:CGRect = CGPathGetPathBoundingBox(outlinePath)/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         return boundingBox
     }
