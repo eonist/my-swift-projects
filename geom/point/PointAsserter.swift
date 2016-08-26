@@ -57,32 +57,32 @@ class PointAsserter {
         return NumberAsserter.equals(p1.x, p2.x) && NumberAsserter.equals(p1.y, p2.y)
     }
     /**
-    * @Note: Converging is when a trajectory hits the the infinite head of the other point
-    * @Note: converging is when the head of each trajectory converge
-    * // :TODO: write the math formula for this method and explaine more verbosly
-    */
-    class func converging(p1:CGPoint,p2:CGPoint,angle1:CGFloat,angle2:CGFloat) -> Bool {
-        var p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
-        var p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
-        var p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
-        var p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
-        var len:Number = Point.distance(p1A, p2A)
-        return len < Point.distance(p1B, p2A) && len < Point.distance(p2A, p2B)
+     * @Note: Converging is when a trajectory hits the the infinite head of the other point
+     * @Note: converging is when the head of each trajectory converge
+     * // :TODO: write the math formula for this method and explaine more verbosly
+     */
+    class func converging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+        let p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
+        let p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
+        let p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
+        let p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
+        let len:CGFloat = CGPoint.distance(p1A, p2A)
+        return len < CGPoint.distance(p1B, p2A) && len < CGPoint.distance(p2A, p2B)
     }
     /**
-    * @Note doing !convering is not the same as the bellow, because !convering could mean isParallel
-    * // :TODO: diverging is when the tail of both trajectories converge, then shouldnt it be possible to test for the converging of said tails with the converging method
-    * // :TODO: oppositeDirection is when a trajectory hits the infinite tail of the other point,hmm im not so sure
-    * // :TODO: collinearNormal is when both trajectories point onto each other
-    * // :TODO: you need a term when 2 vectors are collinear but point in opposite direction, contraDirectional is the Antonym of coDirectional which is when 2 lines are paralell and pointing in the same direction
-    */
-    class func diverging(p1:CGPoint,p2:CGPoint,angle1:CGFloat,angle2:CGFloat) -> Bool {
-        var p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
-        var p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
-        var p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
-        var p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
-        var len:Number = Point.distance(p1A, p2A)
-        return len > Point.distance(p1B, p2A) && len > Point.distance(p2A, p2B)
+     * @Note doing !convering is not the same as the bellow, because !convering could mean isParallel
+     * // :TODO: diverging is when the tail of both trajectories converge, then shouldnt it be possible to test for the converging of said tails with the converging method
+     * // :TODO: oppositeDirection is when a trajectory hits the infinite tail of the other point,hmm im not so sure
+     * // :TODO: collinearNormal is when both trajectories point onto each other
+     * // :TODO: you need a term when 2 vectors are collinear but point in opposite direction, contraDirectional is the Antonym of coDirectional which is when 2 lines are paralell and pointing in the same direction
+     */
+    class func diverging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+        let p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
+        let p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
+        let p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
+        let p2B:CGPoint = CGPoint.polarPoint(100, angle2-π).add(p2)
+        let len:CGFloat = CGPoint.distance(p1A, p2A)
+        return len > CGPoint.distance(p1B, p2A) && len > CGPoint.distance(p2A, p2B)
     }
     /**
      * Asserts if two lines intersects (p1 and p2 is line1, p3 and p4 is line2)
