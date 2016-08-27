@@ -7,3 +7,6 @@ extension CGSize {
     init(_ width:Int,_ height:Int){self.width = CGFloat(width);self.height = CGFloat(height);}
 }
 public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,a.height + b.height)}
+public func -(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width - b.width,a.height - b.height)}
+public func +=(inout a: CGSize, b: CGSize) {a.width += b.width;a.height += b.height;}//modifies a by adding b
+public func -=(inout a: CGSize, b: CGSize) {a.width -= b.width;a.height -= b.height;}//modifies a by subtracting b
