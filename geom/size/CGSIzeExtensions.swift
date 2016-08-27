@@ -6,3 +6,4 @@ extension CGSize {
     init(_ width:Double,_ height:Double){self.width = CGFloat(width);self.height = CGFloat(height);}
     init(_ width:Int,_ height:Int){self.width = CGFloat(width);self.height = CGFloat(height);}
 }
+public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,a.height + b.height)}
