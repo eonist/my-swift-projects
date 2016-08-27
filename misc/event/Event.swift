@@ -29,4 +29,7 @@ extension Event{
         self.type = type
         return self
     }
+    func cast<T>() -> T{/*Convenience*/
+        return self as! T
+    }
 }
