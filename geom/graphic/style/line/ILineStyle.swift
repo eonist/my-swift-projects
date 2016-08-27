@@ -18,8 +18,12 @@ extension ILineStyle{
         c.color = color
         return c
     }
-    mutating func alpha(alpha:CGFloat)->ILineStyle{
+    mutating func alpha(alpha:CGFloat)->ILineStyle{/*Convenience*/
         self.color = self.color.alpha(alpha)
+        return self
+    }
+    mutating func color(color:NSColor)->ILineStyle{/*Convenience*/
+        self.color = color
         return self
     }
 }
