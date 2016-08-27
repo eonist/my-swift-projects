@@ -8,12 +8,15 @@ class LineStyle:ILineStyle {
     var lineCap: CGLineCap
     var lineJoin: CGLineJoin
     var miterLimit: CGFloat
-    
-    init(_ thickness:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10){
+    var phase: CGFloat/*start of the dash*/
+    var lengths: Array<CGFloat>/*gap,length,gap,length, etc*/
+    init(_ thickness:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat, _ lengths:Array<CGFloat>){
         self.thickness = thickness
         self.color = color
         self.lineCap = lineCap
         self.lineJoin = lineJoin
         self.miterLimit = miterLimit
+        self.phase = phase
+        self.lengths = lengths
     }
 }

@@ -34,6 +34,6 @@ class LineStyleParser {
      * Clones @param lineStyle
      */
     class func clone(lineStyle:ILineStyle) -> LineStyle {
-        return LineStyle(lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit)
+        return LineStyle(lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit,lineStyle.phase,lineStyle.lengths)
     }
 }
