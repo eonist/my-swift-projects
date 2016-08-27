@@ -74,7 +74,7 @@ public class Graphics{
         CGContextSetLineCap(context, lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
         CGContextSetLineJoin(context, lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
         CGContextSetMiterLimit(context, miterLimit)//The default Quartz miter limit is 10
-        CGContextSetLineDash(context, 0, [ 20, 10, 5.0, 6.0, 5.0, 6.0 ], 2)
+        //CGContextSetLineDash(context, 0, [2,2], 2)
     }
     /**
      * Set the current  gradient line style
