@@ -18,8 +18,8 @@ extension ILineStyle{
         c.color = color
         return c
     }
-    func alpha(alpha:CGFloat)->ILineStyle{
-        self.color.alpha(alpha)
+    mutating func alpha(alpha:CGFloat)->ILineStyle{
+        self.color = self.color.alpha(alpha)
         return self
     }
 }
