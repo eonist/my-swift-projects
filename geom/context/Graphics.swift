@@ -64,7 +64,7 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      * @NOTE this method can be called pre context
      */
-    public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10){
+    public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
         //Swift.print("context: " + "\(context)")
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
@@ -74,7 +74,7 @@ public class Graphics{
         CGContextSetLineCap(context, lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
         CGContextSetLineJoin(context, lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
         CGContextSetMiterLimit(context, miterLimit)//The default Quartz miter limit is 10
-        CGContextSetLineDash(context, 0, [2,2], 2)
+        if(lengths.count > 0) {CGContextSetLineDash(context, phase, lengths, lengths.count)}
     }
     /**
      * Set the current  gradient line style
