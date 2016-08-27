@@ -32,4 +32,7 @@ extension Event{
     func cast<T>() -> T{/*Convenience*/
         return self as! T
     }
+    func assert(event:Event, _ type:String,_ origin:AnyObject?) -> Bool{
+        return event.type == type && event.origin === origin
+    }
 }
