@@ -13,6 +13,8 @@ class LineStyleParser {
         Swift.print("lineStyle.lineCap: " + "\(lineStyle.lineCap)")
         Swift.print("lineStyle.lineJoin: " + "\(lineStyle.lineJoin)")
         Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+        Swift.print("lineStyle.phase: " + "\(lineStyle.phase)")
+        Swift.print("lineStyle.lengths: " + "\(lineStyle.lengths)")
     }
     /**
      *
