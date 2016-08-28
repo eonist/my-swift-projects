@@ -254,6 +254,54 @@ class PointParser{
     class func multiply(a:CGPoint,_ b:CGPoint) -> CGPoint {
         return CGPoint(a.x*b.x, a.y*b.y)
     }
+    /**
+    * Returns the point of intersection between two lines
+    * @param p1, p2 (Point) line 1 point struct
+    * @param p3, p4 (Point) line 2 point struct
+    * @Note you can use Trigonometry to accomplish this see the Traingle classes, its basically when you have 2 angles and 1 side, since you have 2 angles you have the third aswell, then you can use sin and cos to find the point
+    * @Note if eigther p1 or p2 is CoLinear and within with p3 and p4 then it will yield an intersection
+    * @Note if line a touches the start or end of line b then it intersects
+    * @Note if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
+    * // :TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
+    * // :TODO: comment this method
+    * // :TODO: do reasearch into vectors, slope and the intersection of vectrors
+    * // :TODO: this actually gave a bad result
+    * // :TODO: if the end of line a is equal to the end of line b then it returns a faulty result (x=0, y=NaN)
+    * // :TODO: doesnt handle parallel cases very well (x=0, y=NaN), do you mean paralellel or colinear?
+    * // :TODO: if you deal with finding the intersection on a case that makes a cross, then you can probably do a faster intersection that is also more correct, if y = y and x = x and y is within the length of b, and x is within the length of b then the intersection must be a.y and b.x etc
+    */
+    class func intersection(p1:CGPoint, _ p2:CGPoint, _ p3:CGPoint, _ p4:CGPoint) -> CGPoint {
+        let x1:CGFloat = p1.x
+        let y1:CGFloat = p1.y
+        let x4:CGFloat = p4.x
+        let y4:CGFloat = p4.y
+        let dx1:CGFloat = p2.x - x1
+        let dx2:CGFloat = p3.x - x4
+        var p:CGPoint = CGPoint()
+        if (!(dx1 == 0 || dx2 == 0)){// :TODO: not 0 or what?
+            //				print("case a");
+            p.x = 0
+            p.y = 0
+            /*return NaN;*/
+        }
+        let m1:CGFloat = (p2.y - y1) / dx1
+        let m2:CGFloat = (p3.y - y4) / dx2
+        if (!(dx1 == 0)){// :TODO: not 0 or what?
+            //				print("case b")
+            p.x = x1
+            p.y = m2 * (x1 - x4) + y4
+            return p
+        }
+        else if (!(dx2 == 0)){// :TODO: not 0 or what?
+            //				print("case c");
+            p.x = x4
+            p.y = m1 * (x4 - x1) + y1
+            return p
+        }
+        p.x = (-m2 * x4 + y4 + m1 * x1 - y1) / (m1 - m2)
+        p.y = m1 * (p.x - x1) + y1
+        return p
+    }
 }
 /*
  * Equivalence Operators
