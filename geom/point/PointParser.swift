@@ -280,7 +280,7 @@ class PointParser{
         let dx2:CGFloat = p3.x - x4
         Swift.print("dx2: " + "\(dx2)")
         var p:CGPoint = CGPoint()
-        if (!(dx1 == 0 || dx2 == 0)){// :TODO: not 0 or what?
+        if (dx1 == 0 || dx2 == 0){// :TODO: not 0 or what?
             print("case a");
             p.x = 0
             p.y = 0
@@ -288,12 +288,12 @@ class PointParser{
         }
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
-        if (!(dx1 == 0)){// :TODO: not 0 or what?
+        if (dx1 == 0){// :TODO: not 0 or what?
             print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
-        }else if (!(dx2 == 0)){// :TODO: not 0 or what?
+        }else if (dx2 == 0){// :TODO: not 0 or what?
             print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
