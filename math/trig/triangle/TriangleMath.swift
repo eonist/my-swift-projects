@@ -37,9 +37,9 @@ class TriangleMath {
     /**
      * PARAM: radius is the length of the extending vector (so to speak)
      */
-    class func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, radius:CGFloat = 100) -> CGPoint{
+    class func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
         let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
-        let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(100,bisectorAngle)
+        let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(radius,bisectorAngle)
         return bisectorPT
     }
     /**
