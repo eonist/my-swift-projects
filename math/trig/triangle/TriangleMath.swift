@@ -28,7 +28,7 @@ import Foundation
 class TriangleMath {
     /**
      * Returns the point that can be used to bisect an angle in an triangle
-     * // :TODO: i think this bisects an opposite line not the angle, indeed it does
+     * // :TODO: i think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
      */
     class func bisectorPoint(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
         let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
