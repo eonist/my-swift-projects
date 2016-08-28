@@ -27,6 +27,22 @@ import Foundation
  */
 class TriangleMath {
     /**
+     * Returns the point that can be used to bisect an angle in an triangle
+     * // :TODO: i think this bisects an opposite line not the angle, indeed it does
+     */
+    class func bisectorPoint(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
+        let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
+        return CGPoint.interpolate(p1, x, 0.5)
+    }
+    /**
+     * Returns the angle bisector from a triangle construction
+     */
+    class func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
+        let angle1:CGFloat = Trig.angle(anchor, pt1)
+        let angle2:CGFloat = Trig.angle(anchor, pt2)
+        return Trig.angleBisector(angle1, angle2)
+    }
+    /**
      * The incenter  is the center of the incircle for a polygon or insphere for a polyhedron (when they exist). (The corresponding radius of the incircle or insphere is known as the inradius)
      * @Note The incenter can be constructed as the intersection of angle bisectors. It is also the interior point for which distances to the sides of the triangle are equal.
      * @Note It has trilinear coordinates 1:1:1, i.e., triangle center function
