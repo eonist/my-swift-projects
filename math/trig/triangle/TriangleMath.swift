@@ -35,6 +35,13 @@ class TriangleMath {
         return CGPoint.interpolate(p1, x, 0.5)
     }
     /**
+     *
+     */
+    class func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint{
+        let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
+        let bisectorPT:CGPoint = 
+    }
+    /**
      * Returns the angle bisector from a triangle construction
      */
     class func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
