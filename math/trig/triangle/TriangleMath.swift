@@ -39,7 +39,8 @@ class TriangleMath {
      */
     class func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint{
         let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
-        let bisectorPT:CGPoint = 
+        let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(100,bisectorAngle)
+        return bisectorPT
     }
     /**
      * Returns the angle bisector from a triangle construction
