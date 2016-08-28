@@ -278,7 +278,7 @@ class PointParser{
         let dx1:CGFloat = p2.x - x1
         let dx2:CGFloat = p3.x - x4
         var p:CGPoint = CGPoint()
-        if (!(dx1 == 0 || dx2 == 0)){// :TODO: not 0 or what?
+        if (!(dx1. || dx2 == 0)){// :TODO: not 0 or what?
             				print("case a");
             p.x = 0
             p.y = 0
