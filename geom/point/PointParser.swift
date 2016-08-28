@@ -302,6 +302,21 @@ class PointParser{
         p.y = m1 * (p.x - x1) + y1
         return p
     }
+    /**
+    * beta
+    * @Note sometimes when 2 lines touch at the begining or ends they dont yeild the correct intersection
+    * @Note when line a touches the line part of line b, not line b end or beginning then 3 points are collinear and the line a point that is collinear with line b is returned
+    * @Note the lines cant be colinear or equal
+    */
+    class func normalizedIntersection(aP1:Point, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
+        if(aP1.equals(bP1) || aP1.equals(bP2)){ return aP1}
+        else if(aP2.equals(bP1) || aP2.equals(bP2)){ return aP2}
+        else if(PointAsserter.collinear(aP1, aP2, bP1)){ return bP1}
+        else if(PointAsserter.collinear(aP1, aP2, bP2)){ return bP2}
+        else if(PointAsserter.collinear(bP1, bP2, aP1)){ return aP1}
+        else if(PointAsserter.collinear(bP1, bP2, aP2)){ return aP2}
+        else {return PointParser.intersection(aP1, aP2, bP1, bP2)}
+    }
 }
 /*
  * Equivalence Operators
