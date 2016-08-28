@@ -279,7 +279,7 @@ class PointParser{
         let dx2:CGFloat = p3.x - x4
         var p:CGPoint = CGPoint()
         if (!(dx1 == 0 || dx2 == 0)){// :TODO: not 0 or what?
-            //				print("case a");
+            				print("case a");
             p.x = 0
             p.y = 0
             /*return NaN;*/
@@ -287,13 +287,13 @@ class PointParser{
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
         if (!(dx1 == 0)){// :TODO: not 0 or what?
-            //				print("case b")
+            				print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
         }
         else if (!(dx2 == 0)){// :TODO: not 0 or what?
-            //				print("case c");
+            				print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
             return p
@@ -308,7 +308,7 @@ class PointParser{
     * @Note when line a touches the line part of line b, not line b end or beginning then 3 points are collinear and the line a point that is collinear with line b is returned
     * @Note the lines cant be colinear or equal
     */
-    class func normalizedIntersection(aP1:Point, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
+    class func normalizedIntersection(aP1:CGPoint, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
         if(aP1.equals(bP1) || aP1.equals(bP2)){ return aP1}
         else if(aP2.equals(bP1) || aP2.equals(bP2)){ return aP2}
         else if(PointAsserter.collinear(aP1, aP2, bP1)){ return bP1}
