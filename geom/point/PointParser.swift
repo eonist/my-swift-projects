@@ -262,6 +262,7 @@ class PointParser{
     * @Note if eigther p1 or p2 is CoLinear and within with p3 and p4 then it will yield an intersection
     * @Note if line a touches the start or end of line b then it intersects
     * @Note if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
+    * NOTE: you can also use convergingPoint in TriangleMath instead of intersection 
     * // :TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
     * // :TODO: comment this method
     * // :TODO: do reasearch into vectors, slope and the intersection of vectrors
