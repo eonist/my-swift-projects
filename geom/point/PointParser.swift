@@ -293,8 +293,7 @@ class PointParser{
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
-        }
-        else if (!(dx2 == 0)){// :TODO: not 0 or what?
+        }else if (!(dx2 == 0)){// :TODO: not 0 or what?
             print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
