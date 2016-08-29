@@ -103,10 +103,10 @@ class TriangleMath {
     /**
      *
      */
-    class func orthogonalLength(p:CGPoint, p1:CGPoint,p2:CGPoint)->CGFloat{
-        let a = Trig.angle(p2, p)
-        let b = Trig.angle(p2, p1)
-        let angleSpan = abs(Trig.difference(a, b))
+    class func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
+        let angle1 = Trig.angle(p2, p)
+        let angle2 = Trig.angle(p2, p1)
+        let angleSpan = abs(Trig.difference(angle1, angle2))
         let a:CGFloat = TriangleMath.cACToa2(p1.distance(p2), angleSpan, π/2)
         return a
     }
