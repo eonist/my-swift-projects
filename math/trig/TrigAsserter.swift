@@ -30,6 +30,29 @@ class TrigAsserter {
         }
     }
     /**
+     * Asserts if angle @param a is parallel or anti-parallel to angle @param b
+     * @Note input must be normalized between -PI and +PI
+     * @Note this method treats both anti-Parallel and parallel as paralell
+     * @Note two nonzero vectors are called anti-parallel if they are parallel but have opposite directions
+     */
+    class func isParallel(a:CGFloat,_ b:CGFloat) -> Bool {
+        return isCodirectional(a, b) || isContraDirectional(a, b)
+    }
+    /**
+     *
+     */
+    class func isNormal(angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+        return isParallel(angle1, angle2 + (π/2))
+    }
+    /**
+     *  Vectors lay on the on a line that is normal to the paralell or anti-parallel angles of both vectors
+     *  @Note think the shape of the character "H" the two points connecting the bridge between the vertical lines are colliniear and normal
+     *  // :TODO:  colliniarNormal is probably not the correct term for this construction, try to find the correct name and construction later
+     */
+    class func isCollinearNormal(p1:CGPoint,_ p2:CGPoint, _ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+        return isParallel(angle1, angle2) && isNormal(angle1, angle(p1, p2))
+    }
+    /**
      * NOTE: can also be defined as: "is when a trajectory hits the infinite tail of the other line"
      * NOTE: THis method is simpler to use that the "trajectory-tail" method
      */
