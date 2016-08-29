@@ -1,6 +1,7 @@
 import Foundation
 /**
  * Triangle notes:
+ * IMPORTANT: C is always the right angle, A
  * - The widest angle is always opposite the longest side
  * - To solve a triangle you must have 1 side and two other parts (sides or angles)  a triangle has 6 parts
  * - Oblique angle: An angle, such as an acute or obtuse angle, that is not a right angle or a multiple of a right angle.
