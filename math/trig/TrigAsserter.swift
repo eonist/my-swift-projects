@@ -96,4 +96,12 @@ class TrigAsserter {
     class func isOppositeDirectional2(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat)  -> Bool {
        return (Trig.angleSpan2(angleA,bisectorAngle) < π && Trig.angleSpan2(angleB,bisectorAngle) > π) || (Trig.angleSpan2(angleA,bisectorAngle) > π && Trig.angleSpan2(angleB,bisectorAngle) < π)
     }
+    /**
+     * new
+     */
+    class func isCoDir(a:CGFloat,b:CGFloat) -> Bool {
+        let normalizedA:CGFloat = Trig.normalize(a)
+        let normalizedB:CGFloat = Trig.normalize(b)
+        return normalizedA == normalizedB
+    }
 }
