@@ -40,10 +40,10 @@ class TrigAsserter {
      * print(Trig.isContraDirectional(Trig.PI, -Trig.PI));//false, its co-dir
      * print(Trig.isContraDirectional(-Trig.PI, Trig.PI));//false, its co-dir
      */
-    class func isContraDirectional(a:CGFloat,b:CGFloat) -> Bool {
-        var normalizedA:CGFloat = Trig.normalize(a)
+    class func isContraDirectional(a:CGFloat,_ b:CGFloat) -> Bool {
+        let normalizedA:CGFloat = Trig.normalize(a)
         //print("normalizedA: " + normalizedA)
-        var inverseAngle:CGFloat = Trig.normalize(b-π)
+        let inverseAngle:CGFloat = Trig.normalize(b-π)
         //print("inverseAngle: " + inverseAngle)
         return normalizedA == inverseAngle
     }
@@ -57,6 +57,15 @@ class TrigAsserter {
         return isCodirectional(a, b) || isContraDirectional(a, b)
     }
     /**
+    * beta
+    * @Note make sure both angles have the same normilization applied
+    * @Note normalize between 0 and 2PI since -PI and PI is co-dir but not equal// :TODO: but 0 and 2PI is also co-dir but not equal, fix it some other way
+    */
+    class func isCodirectional(a:CGFloat,_ b:CGFloat) -> Bool {
+        if((a == π && b == -π) || (a == -π && b == π)) {return true}
+        else {return a == b}
+    }
+    /**
      *
      */
     class func isNormal(angle1:CGFloat,_ angle2:CGFloat) -> Bool {
@@ -68,7 +77,7 @@ class TrigAsserter {
      *  // :TODO:  colliniarNormal is probably not the correct term for this construction, try to find the correct name and construction later
      */
     class func isCollinearNormal(p1:CGPoint,_ p2:CGPoint, _ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
-        return isParallel(angle1, angle2) && isNormal(angle1, angle(p1, p2))
+        return isParallel(angle1, angle2) && isNormal(angle1, Trig.angle(p1, p2))
     }
     /**
      * NOTE: can also be defined as: "is when a trajectory hits the infinite tail of the other line"
