@@ -1,7 +1,7 @@
 import Foundation
 /**
  * Triangle notes:
- * IMPORTANT: C is always the right angle, B is always clockwise next to C and A is the one that is left
+ * IMPORTANT: C is always the right angle, B is always clockwise next to C and A is the one that is left (<--this is true)
  * - The widest angle is always opposite the longest side
  * - To solve a triangle you must have 1 side and two other parts (sides or angles)  a triangle has 6 parts
  * - Oblique angle: An angle, such as an acute or obtuse angle, that is not a right angle or a multiple of a right angle.
@@ -142,6 +142,7 @@ class TriangleMath {
      * Returns the Side a of an triangle
      * Based on formula: a/SinA = c/SinC
      * @Note uses radian instead of degree
+     * NOTE i think this also works on non-right-angle-triangles
      */
     class func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {// :TODO: move to trianglemath2
         return sin(A) * (c / sin(C))
