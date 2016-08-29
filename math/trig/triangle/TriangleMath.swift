@@ -100,6 +100,7 @@ class TriangleMath {
             return p2.add(CGPoint.polarPoint(cACToa2(c, A, C), angleB))
         }/*p3, a is The length of side a*/
     }
+    
     //----------------------------------
     //  Law of sin
     //----------------------------------
