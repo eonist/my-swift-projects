@@ -157,4 +157,15 @@ class PointAsserter {
     class func nearEquals(a:CGPoint, _ b:CGPoint, _ epsilon:CGFloat) -> Bool{
         return NumberAsserter.isNear(a.x, b.x, epsilon) && NumberAsserter.isNear(a.y, b.y, epsilon)
     }
+    /**
+    * // :TODO: what is the difference between contraDirectional and oppositeDirectional
+    * NOTE: isContraDirectional is like parallel but vectors must go in opposite directions
+    */
+    class func isContraDirectional(aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
+        let a:CGFloat = Trig.angle(aP1,aP2)
+        //			tprintrace("angleA: " + a)
+        let b:CGFloat = Trig.angle(bP1,bP2)
+        //			print("angleB: " + b)
+        return Trig.isContraDirectional(a, b)
+    }
 }
