@@ -30,7 +30,8 @@ class TrigAsserter {
         }
     }
     /**
-     *
+     * NOTE: can also be defined as: "is when a trajectory hits the infinite tail of the other line"
+     * NOTE: THis method is simpler to use that the "trajectory-tail" method
      */
     class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool {
         let angleADiff:CGFloat = Trig.difference(bisectorAngle, angleA)
