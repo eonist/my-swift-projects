@@ -88,4 +88,5 @@ class TrigAsserter {
         let angleBDiff:CGFloat = Trig.difference(bisectorAngle, angleB)
         return (angleADiff < 0 && angleBDiff > 0) || (angleADiff > 0 && angleBDiff < 0)
     }
+    
 }
