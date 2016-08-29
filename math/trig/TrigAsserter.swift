@@ -30,6 +30,24 @@ class TrigAsserter {
         }
     }
     /**
+     * Returns true if angles are contra directional
+     * @Note this method uses normalize internally to avoid problems when PI and 0 doesnt yield true
+     * @Note make sure you have normalized both angles between -PI and +PI
+     * @Note contra directinal can also be called inverse direction
+     * print(Trig.isContraDirectional(Trig.PI, 0));//true, contra-dir
+     * print(Trig.isContraDirectional(0, Trig.PI));//true, contra-dir
+     * print(Trig.isContraDirectional(Trig.HPI, -Trig.HPI));//true, contra-dir
+     * print(Trig.isContraDirectional(Trig.PI, -Trig.PI));//false, its co-dir
+     * print(Trig.isContraDirectional(-Trig.PI, Trig.PI));//false, its co-dir
+     */
+    class func isContraDirectional(a:CGFloat,b:CGFloat) -> Bool {
+        var normalizedA:CGFloat = Trig.normalize(a)
+        //print("normalizedA: " + normalizedA)
+        var inverseAngle:CGFloat = Trig.normalize(b-π)
+        //print("inverseAngle: " + inverseAngle)
+        return normalizedA == inverseAngle
+    }
+    /**
      * Asserts if angle @param a is parallel or anti-parallel to angle @param b
      * @Note input must be normalized between -PI and +PI
      * @Note this method treats both anti-Parallel and parallel as paralell
