@@ -123,6 +123,7 @@ class TrigParser {
      * @Note think of the angle bisector as a trajactory that splits two angle points, where this trajectory hits is the angleBisector
      * @Note the symbole for bisector is sometimes "s"
      * @Note you can use TriangleMath.bisectorPoint(pt1, pt2, pt3) and calc the angle between anchor and this point as an alternative to this method
+     * NOTE: you can also use: TriangleMath.bisectorPT() which uses this method but accepts points
      * @example Trig.angleBisector(Trig.QPI,  Trig.HPI+Trig.HPI));//1.9634954084936207
      * @param a The first angle (between 0 and 2PI)
      * @param b The second angle (between 0 and 2PI)
