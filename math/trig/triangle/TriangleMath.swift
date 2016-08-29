@@ -101,7 +101,8 @@ class TriangleMath {
         }/*p3, a is The length of side a*/
     }
     /**
-     *
+     * NOTE: Distance from a point to a line
+     * NOTE: also called "perpendicular distance"
      */
     class func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
         let angle1 = Trig.angle(p2, p)
