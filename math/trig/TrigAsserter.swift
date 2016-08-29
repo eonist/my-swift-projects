@@ -99,7 +99,7 @@ class TrigAsserter {
     /**
      * new
      */
-    class func isCoDir(a:CGFloat,b:CGFloat) -> Bool {
+    class func isCoDir(a:CGFloat,_ b:CGFloat) -> Bool {
         let normalizedA:CGFloat = Trig.normalize(a)
         let normalizedB:CGFloat = Trig.normalize(b)
         return normalizedA == normalizedB

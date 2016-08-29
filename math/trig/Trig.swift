@@ -55,5 +55,6 @@ extension Trig{/*Legacy-support/convenience*/
     class func isCodirectional(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCodirectional(a, b)}
     class func isNormal(angle1:CGFloat,_ angle2:CGFloat) -> Bool{return TrigAsserter.isNormal(angle1, angle2)}
     class func isCollinearNormal(p1:CGPoint,_ p2:CGPoint, _ angle1:CGFloat,_ angle2:CGFloat) -> Bool {return TrigAsserter.isCollinearNormal(p1,p2,angle1,angle2)}
+    class func isCoDir(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCoDir(a, b)}
     
 }

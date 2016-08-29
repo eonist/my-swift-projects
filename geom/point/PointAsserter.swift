@@ -174,9 +174,9 @@ class PointAsserter {
     * // :TODO: rename to isCoDir
     */
     class func isCoDirectional(a1:CGPoint,_ a2:CGPoint,_ b1:CGPoint,_ b2:CGPoint) -> Bool {
-        var a:CGFloat = Trig.angle(a1, a2)
+        let a:CGFloat = Trig.angle(a1, a2)
         //			print("a: " + a)
-        var b:CGFloat = Trig.angle(b1, b2)
+        let b:CGFloat = Trig.angle(b1, b2)
         //			print("b: " + b)
         return Trig.isCoDir(a, b)
     }
