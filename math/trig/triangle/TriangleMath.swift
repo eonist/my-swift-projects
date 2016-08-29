@@ -100,7 +100,12 @@ class TriangleMath {
             return p2.add(CGPoint.polarPoint(cACToa2(c, A, C), angleB))
         }/*p3, a is The length of side a*/
     }
-    
+    /**
+     *
+     */
+    class func orthogonalLength(p:CGPoint, p1:CGPoint,p2:CGPoint)->CGFloat{
+        let a:CGFloat = TriangleMath.cACToa2(p1.distance(p2), <#T##A: CGFloat##CGFloat#>, <#T##C: CGFloat##CGFloat#>)
+    }
     //----------------------------------
     //  Law of sin
     //----------------------------------
