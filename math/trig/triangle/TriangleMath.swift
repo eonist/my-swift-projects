@@ -110,9 +110,7 @@ class TriangleMath {
         let angleSpan = abs(Trig.difference(angle1, angle2))
         Swift.print("angleSpan: " + "\(angleSpan)")
         
-        let angleSpan2  = Trig.pointSpan2(p1, p, p2, true)
-        Swift.print("angleSpan2: " + "\(angleSpan2)")
-        let a:CGFloat = TriangleMath.cACToa2(p1.distance(p2), angleSpan, π/2)
+        let a:CGFloat = TriangleMath.cACToa2(p2.distance(p), angleSpan, π/2)
         return a
     }
     //----------------------------------

@@ -75,6 +75,7 @@ class TrigParser {
      * @param b (-Math.PI to Math.PI)
      * @Note This method works great when finding angles in a triangle
      * @Note Using NumberParser.distance(a,b) to find an angle span doesnt work
+     * NOTE: if you know that the anglespan is under π then you can also use: abs(Trig.difference(angle1, angle2))
      * @example:
      * angleSpan(Math.PI*-0.5, Math.PI,Direction.COUNTER_CLOCK_WISE);//Math.PI*-0.5 to Math.PI = 4.71
      * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
