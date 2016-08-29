@@ -94,6 +94,6 @@ class PointModifier {
      *
      */
     class func multiply(point:CGPoint,_ multiplier:CGFloat) -> CGPoint {
-        return CGPoint(point.x*multiplier)
+        return CGPoint(point.x * multiplier,point.y * multiplier)
     }
 }
