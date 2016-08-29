@@ -9,7 +9,7 @@ class TrigParser {
      * @Note formula in standard form: Tan Ɵ = y/x (then use inverse tan to find the angle)
      */
     class func angle(a:CGPoint, _ b:CGPoint)->CGFloat {
-        return atan2(b.y - a.y, b.x - a.x);
+        return atan2(b.y - a.y, b.x - a.x)
     }
     /**
      * Returns a radian to be between 0 and Math.PI*2 Radian (0 - 6.28)
