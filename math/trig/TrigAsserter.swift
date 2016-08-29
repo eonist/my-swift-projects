@@ -82,6 +82,7 @@ class TrigAsserter {
     /**
      * NOTE: can also be defined as: "is when a trajectory hits the infinite tail of the other line"
      * NOTE: This method is simpler to use that the "trajectory-tail" method
+     * PARAM bisectorAngle can be thought of as the level angle. Usually 0, but can be other things (think 3 conected lines where the bisectorAngle represents the angle of the line in the middle)
      */
     class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool {
         let angleADiff:CGFloat = Trig.difference(bisectorAngle, angleA)
@@ -89,11 +90,10 @@ class TrigAsserter {
         return (angleADiff < 0 && angleBDiff > 0) || (angleADiff > 0 && angleBDiff < 0)
     }
     /**
-     *
+     * NOTE: just an alternative to isOppositeDirectional (isOppositeDirectional should be faster than this one)
+     * PARAM bisectorAngle can be thought of as the level angle. Usually 0, but can be other things (think 3 conected lines where the bisectorAngle represents the angle of the line in the middle)
      */
     class func isOppositeDirectional2(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat)  -> Bool {
-        if (Trig.angleSpan2(angleA,bisectorAngle) < π && Trig.angleSpan2(angleB,bisectorAngle) > π) || (Trig.angleSpan2(angleA,bisectorAngle) > π && Trig.angleSpan2(angleB,bisectorAngle) < π){
-            
-        }
+       return (Trig.angleSpan2(angleA,bisectorAngle) < π && Trig.angleSpan2(angleB,bisectorAngle) > π) || (Trig.angleSpan2(angleA,bisectorAngle) > π && Trig.angleSpan2(angleB,bisectorAngle) < π)
     }
 }
