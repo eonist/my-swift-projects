@@ -90,4 +90,10 @@ class PointModifier {
     class func scalePoints(inout points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint) {
         for var i = 0; i < points.count; ++i{points[i] = PointModifier.scale(points[i],pivot,scale)}
     }
+    /**
+     *
+     */
+    class func multiply(point:CGPoint,_ multiplier:CGFloat) -> CGPoint {
+        return CGPoint(point.x*multiplier)
+    }
 }
