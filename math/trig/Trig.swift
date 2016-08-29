@@ -50,4 +50,9 @@ extension Trig{/*Legacy-support/convenience*/
     class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {return TrigAsserter.isClockWise(center, p1, p2)}
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool { return TrigAsserter.isClockWiseByAngle(a, b) }
     class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool{return TrigAsserter.isOppositeDirectional(bisectorAngle, angleA, angleB)}
+    class func isContraDirectional(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isContraDirectional(a, b)}
+    class func isParallel(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isParallel(a, b)}
+    class func isCodirectional(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCodirectional(a, b)}
+    
+    
 }
