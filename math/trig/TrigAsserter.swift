@@ -88,5 +88,12 @@ class TrigAsserter {
         let angleBDiff:CGFloat = Trig.difference(bisectorAngle, angleB)
         return (angleADiff < 0 && angleBDiff > 0) || (angleADiff > 0 && angleBDiff < 0)
     }
-    
+    /**
+     *
+     */
+    class func isOppositeDirectional2(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat)  -> Bool {
+        if (Trig.angleSpan2(angleA,bisectorAngle) < π && Trig.angleSpan2(angleB,bisectorAngle) > π) || (Trig.angleSpan2(angleA,bisectorAngle) > π && Trig.angleSpan2(angleB,bisectorAngle) < π){
+            
+        }
+    }
 }
