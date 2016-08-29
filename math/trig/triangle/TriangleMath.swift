@@ -107,10 +107,9 @@ class TriangleMath {
     class func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
         let angle1 = Trig.angle(p2, p)
         let angle2 = Trig.angle(p2, p1)
-        let angleSpan = abs(Trig.difference(angle1, angle2))
-        Swift.print("angleSpan: " + "\(angleSpan)")
-        
-        let a:CGFloat = TriangleMath.cACToa2(p2.distance(p), angleSpan, π/2)
+        let c = p2.distance(p)
+        let A = abs(Trig.difference(angle1, angle2))
+        let a:CGFloat = TriangleMath.cACToa2(c, A, π/2)
         return a
     }
     //----------------------------------
