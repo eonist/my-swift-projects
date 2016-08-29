@@ -11,7 +11,7 @@ import Foundation
  * // :TODO: add area of a triangle to this class
  * @Note You need 1 side and 2 other parts to define a Triangle
  * @Note The Centroid, Circumcenter, and Orthocenter Are Collinear, (meaning they will form a line)
- * @Note Angle "A" is the lower left corner, the opposit side is "a", Angle "B" is the top and opposite is side "b", Angle C is the lower right corner and oppistie is the side "c"
+ * @Note Angle "A" is the lower left corner, the opposit side is "a" ("hypothenus"), Angle "B" is the top and opposite is side "b" (second longest length), Angle C is the lower right corner and oppistie is the side "c" (shortest length)
  * @Note AC is the same as Angle B, AB = C, BC = A
  * @Note there are more formulas here RightTriangleMath.as
  * @Note Median - A median in a triangle is the line segment drawn from a vertex to the midpoint of its opposite side. Every triangle has three medians. In Figure 5 , E is the midpoint
