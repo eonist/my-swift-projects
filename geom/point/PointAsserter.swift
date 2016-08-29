@@ -88,7 +88,7 @@ class PointAsserter {
     }
     /**
      * @Note doing !convering is not the same as the bellow, because !convering could mean isParallel
-     * // :TODO: diverging is when the tail of both trajectories converge, then shouldnt it be possible to test for the converging of said tails with the converging method
+     * // :TODO: diverging is when the tail of both trajectories converge, then shouldnt it be possible to test for the converging of said tails with the converging method, it should
      * // :TODO: oppositeDirection is when a trajectory hits the infinite tail of the other point,hmm im not so sure
      * // :TODO: collinearNormal is when both trajectories point onto each other
      * // :TODO: you need a term when 2 vectors are collinear but point in opposite direction, contraDirectional is the Antonym of coDirectional which is when 2 lines are paralell and pointing in the same direction
