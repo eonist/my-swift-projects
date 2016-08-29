@@ -57,10 +57,10 @@ class TrigAsserter {
         return isCodirectional(a, b) || isContraDirectional(a, b)
     }
     /**
-    * beta
-    * @Note make sure both angles have the same normilization applied
-    * @Note normalize between 0 and 2PI since -PI and PI is co-dir but not equal// :TODO: but 0 and 2PI is also co-dir but not equal, fix it some other way
-    */
+     * beta
+     * @Note make sure both angles have the same normilization applied
+     * @Note normalize between 0 and 2PI since -PI and PI is co-dir but not equal// :TODO: but 0 and 2PI is also co-dir but not equal, fix it some other way
+     */
     class func isCodirectional(a:CGFloat,_ b:CGFloat) -> Bool {
         if((a == π && b == -π) || (a == -π && b == π)) {return true}
         else {return a == b}
@@ -81,7 +81,7 @@ class TrigAsserter {
     }
     /**
      * NOTE: can also be defined as: "is when a trajectory hits the infinite tail of the other line"
-     * NOTE: THis method is simpler to use that the "trajectory-tail" method
+     * NOTE: This method is simpler to use that the "trajectory-tail" method
      */
     class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool {
         let angleADiff:CGFloat = Trig.difference(bisectorAngle, angleA)
