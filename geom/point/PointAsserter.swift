@@ -106,11 +106,11 @@ class PointAsserter {
     * // :TODO: we could use slope() here too?, just consider infinity and -infinity and NaN as results of slope
     */
     class func oppositeDirectional(bisectorP1:CGPoint,_ bisectorP2:CGPoint,_ aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
-        var bisectorAngle:CGFloat = Trig.angle(bisectorP1, bisectorP2)
+        let bisectorAngle:CGFloat = Trig.angle(bisectorP1, bisectorP2)
         //print("bisectorAngle: " + bisectorAngle)
-        var angleA:CGFloat = Trig.angle(aP1,aP2)
+        let angleA:CGFloat = Trig.angle(aP1,aP2)
         //print("angleA: " + angleA)
-        var angleB:CGFloat = Trig.angle(bP1,bP2)
+        let angleB:CGFloat = Trig.angle(bP1,bP2)
         //print("angleB: " + angleB)
         return Trig.isOppositeDirectional(bisectorAngle, angleA, angleB)// :TODO: we could do the asserting with slope instead of trig, just consider infinity and -infinity and NaN as results of slope
     }

@@ -45,7 +45,9 @@ extension Trig{/*Legacy-support/convenience*/
     class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {return TrigParser.angleSpan2(a, b, isClockWise)}
     class func pointSpan2(p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {return TrigParser.pointSpan2(p1, p2, pivot, isClockWise)}
     class func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat{return TrigParser.angleBisector(a, b)}
+    
     /*Asserters*/
     class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {return TrigAsserter.isClockWise(center, p1, p2)}
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool { return TrigAsserter.isClockWiseByAngle(a, b) }
+    class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool{return TrigAsserter.isOppositeDirectional(bisectorAngle, angleA, angleB)}
 }
