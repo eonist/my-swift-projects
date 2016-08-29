@@ -104,6 +104,7 @@ class PointAsserter {
     /**
     * rayPoint:Point,pivot:Point,p1:Point,p2:Point
     * // :TODO: we could use slope() here too?, just consider infinity and -infinity and NaN as results of slope
+    * IMPORTANT: carefull when you add points, as you need to think from bisector points and outward. (outgoing angles)
     */
     class func oppositeDirectional(bisectorP1:CGPoint,_ bisectorP2:CGPoint,_ aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let bisectorAngle:CGFloat = Trig.angle(bisectorP1, bisectorP2)
