@@ -54,7 +54,7 @@ class CGPathUtils {
                 Swift.print("")
                 */
                 DisplayArcUtils.arcTo(cgPath,arc)
-                prevEnd = arc.start.copy()
+                prevEnd = arc.end.copy()/*<--I think this should be start*/
                 index += 9
             case PathCommand.close:/*for the closed path support*/
                 if(prevEnd != prevMT) {/*<--draw a line to the prevMT if end isnt above prevMT*/
