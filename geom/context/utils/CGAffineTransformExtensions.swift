@@ -4,19 +4,19 @@ extension CGAffineTransform {
     /**
      *
      */
-    mutating func rotate(rotation:CGFloat){
+    mutating func rotate(rotation:CGFloat){/*Convenience*/
         self = CGAffineTransformRotate(self, rotation)
     }
-    mutating func scale(xScale:CGFloat,_ yScale:CGFloat){
+    mutating func scale(xScale:CGFloat,_ yScale:CGFloat){/*Convenience*/
         self = CGAffineTransformScale(self, xScale, yScale)
     }
-    mutating func translate(x:CGFloat,_ y:CGFloat){
+    mutating func translate(x:CGFloat,_ y:CGFloat){/*Convenience*/
         self = CGAffineTransformTranslate(self, x, y)
     }
-    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint){
+    mutating func rotateAroundPoint(rotation:CGFloat, _ pivot:CGPoint){/*Convenience*/
         self = CGAffineTransform.rotateAroundPoint(self, rotation,pivot)
     }
-    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){
+    mutating func scaleFromPoint(xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint){/*Convenience*/
         self = CGAffineTransform.scaleFromPoint(self, xScale,yScale,pivot)
     }
     /**
