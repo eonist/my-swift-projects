@@ -24,7 +24,7 @@ extension AngleArc{
     var transform:CGAffineTransform {get {return CGAffineTransformMakeScale(xRadii/yRadii, yRadii/xRadii)} /*set{} */}
     var delta:CGFloat {
         let isClockWise:Bool = Trig.isClockWiseByAngle(start, end)
-        Swift.print("isClockWise: " + "\(isClockWise)")
+        //Swift.print("isClockWise: " + "\(isClockWise)")
         //you need a directional anglespan, that can return negative values!?!?
         var angleSpan:CGFloat = TrigParser.angleSpan2(start, end, isClockWise)
         angleSpan = isClockWise ? angleSpan : -angleSpan/*get the directional vaue*/
