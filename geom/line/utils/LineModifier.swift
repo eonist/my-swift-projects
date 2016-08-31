@@ -1,5 +1,5 @@
 import Foundation
 
-class LineModifier {
+class CGLineModifier {
 
 }
