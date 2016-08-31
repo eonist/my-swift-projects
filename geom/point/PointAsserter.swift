@@ -163,9 +163,9 @@ class PointAsserter {
     */
     class func isContraDirectional(aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let a:CGFloat = Trig.angle(aP1,aP2)
-        //			tprintrace("angleA: " + a)
+        //print("angleA: " + a)
         let b:CGFloat = Trig.angle(bP1,bP2)
-        //			print("angleB: " + b)
+        //print("angleB: " + b)
         return Trig.isContraDirectional(a, b)
     }
     /**
