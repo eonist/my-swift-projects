@@ -40,6 +40,7 @@ extension Trig{/*Legacy-support/convenience*/
     class func degrees(radians:CGFloat) -> CGFloat {return TrigConverter.degrees(radians)}
     class func radians(degrees:CGFloat) -> CGFloat {return TrigConverter.radians(degrees)}
     class func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {return TrigParser.difference(startAngle, endAngle)}
+    class func difference(pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat {return TrigParser.difference(pivot, p1,p2)}
     class func flip(angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {return TrigParser.flip(angle, axisMultiplier)}
     class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{return TrigParser.angleSpan(a, b, direction)}
     class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {return TrigParser.angleSpan2(a, b, isClockWise)}

@@ -61,10 +61,12 @@ class TrigParser {
         return atan2(sin(endAngle - startAngle), cos(endAngle - startAngle))
     }
     /**
-     *
+     * new
      */
-    class func difference(pivot:CGPoint,){
-        
+    class func difference(pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat{
+        let a:CGFloat = Trig.angle(pivot, p1)
+        let b:CGFloat = Trig.angle(pivot, p2)
+        return difference(a, b)
     }
     /**
      * @Note this is the same as the above but works with a boolean which makes more sence, deprecate pointSpan
