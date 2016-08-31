@@ -18,7 +18,13 @@ class LineAsserter {
     /**
      *
      */
-    class func isContraDirectional(a:CGLine,b:CGLine) -> Bool {
+    class func isContraDirectional(a:CGLine,_ b:CGLine) -> Bool {
         return PointAsserter.isContraDirectional(a.p1,a.p2,b.p1,b.p2)
+    }
+    /**
+     *
+     */
+    class func isCoDirectional(a:CGLine,_ b:CGLine) -> Bool {
+        return PointAsserter.isCoDirectional(a.p1, a.p2, b.p1, b.p2)
     }
 }
