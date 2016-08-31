@@ -62,6 +62,7 @@ class TrigParser {
     }
     /**
      * new
+     * NOTE: you need to abs() the result if you want only posetive angleSpan
      */
     class func difference(pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat{
         let a:CGFloat = Trig.angle(pivot, p1)
