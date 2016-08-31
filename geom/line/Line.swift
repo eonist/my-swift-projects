@@ -1,4 +1,7 @@
 import Foundation
+
+typealias CGLine = Line
+
 /**
  * NOTE: Used to be named: PrimitiveLine
  * TODO: rename to CGLine (Occupying the name Line for something so simple isnt needed)
