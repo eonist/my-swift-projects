@@ -137,22 +137,11 @@ class TrigParser {
      * @example Trig.angleBisector(Trig.QPI,  Trig.HPI+Trig.HPI));//1.9634954084936207
      * @param a The first angle (between 0 and 2PI)
      * @param b The second angle (between 0 and 2PI)
+     * NOTE: see TriangleMath for other bisector methods
      */
     class func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat {// :TODO: rename to just bisector, bisectorAngle
         return a + ((b - a)/2)
     }
-    /**
-     *
-     */
-    class func angleBisector(){
-        let angleA:CGFloat = Trig.angle(pt1, pt2)/*angle of the seocnd leg*/
-        //print("angleA: " + "\(angleA)")
-        let angleB:CGFloat = Trig.angle(pt1, pt3)/*angle of the first leg*/
-        //print("angleB: " + "\(angleB)")
-        //var bisectorPoint:Point = TriangleMath.bisectorPoint(pt1, pt2, pt3)
-        var angleBisector:CGFloat = Trig.angleBisector(Trig.normalize(angleA), Trig.normalize(angleB))/*find the bisector, the mid angle between two angles*///Trig.angle(pt1, bisectorPoint);//
-        angleBisector = Trig.normalize2(angleBisector)/*clamp the angle between -π and π*/
-
-    }
+    
     
 }
