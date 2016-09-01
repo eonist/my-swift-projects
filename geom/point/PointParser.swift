@@ -170,13 +170,14 @@ class PointParser{
      * Returns a CGRect that makes derived from @param points (think bounding box of points)
      */
     class func rectangle(points:Array<CGPoint>)->CGRect{
-        var max:CGPoint?
-        var min:CGPoint?
+        var maxX:CGFloat?
+        var minX:CGFloat?
+        var maxY:CGFloat?
+        var minY:CGFloat?
         for point : CGPoint in points {
-            if(max == nil || point.x > max.x) {max.x = point.x}
-            if(point.x < min.x){ min = CGPoint(point.x,min.y)}
-            if(point.y > max.y){ max.y = point.y}
-            else if(point.y < min.y){ min.y = point.y}
+            if(maxX == nil || point.x > maxX) {maxX = point.x}
+            if(minX == nil || point.x < minX) {minX = point.x}
+            
         }
         return cornersToRectangle(min,max)
     }
