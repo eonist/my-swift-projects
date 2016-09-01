@@ -174,7 +174,7 @@ class PointParser{
         var min:CGPoint?
         for point : CGPoint in points {
             if(max == nil || point.x > max.x) {max.x = point.x}
-            else if(point.x < min.x){ min = CGPoint(point.x,min.y)}
+            if(point.x < min.x){ min = CGPoint(point.x,min.y)}
             if(point.y > max.y){ max.y = point.y}
             else if(point.y < min.y){ min.y = point.y}
         }
