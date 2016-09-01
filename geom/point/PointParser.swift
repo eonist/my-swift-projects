@@ -147,6 +147,7 @@ class PointParser{
     }
     /**
      * Returns the distance (can be positive or negative) in x and y axis
+     * IMPORTANT: use the x value and the Point.polar(x,axisangle) to find the p
      * @Note: remember to rotate the axix after its been returned from this method
      * @param rotation: the angle you want to levle with
      * // :TODO: shouldnt the axis be found by Angle.angle(p1,p2) ?!?
