@@ -165,21 +165,21 @@ class PointParser{
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return PointParser.relativeDifference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
-    
     /**
      * Returns a CGRect that makes derived from @param points (think bounding box of points)
      */
-    class func rectangle(points:Array<CGPoint>)->CGRect{
+    class func rectangle(points:Array<CGPoint>)->CGRect{//this method could be optimized further
         var maxX:CGFloat?
         var minX:CGFloat?
         var maxY:CGFloat?
         var minY:CGFloat?
         for point : CGPoint in points {
-            if(maxX == nil || point.x > maxX) {maxX = point.x}
+            if(maxX == nil || point.x > maxX) {maxX = point.x}/*x*/
             if(minX == nil || point.x < minX) {minX = point.x}
-            
+            if(maxY == nil || point.y > maxX) {maxY = point.y}/*y*/
+            if(minY == nil || point.y < minX) {minY = point.y}
         }
-        return cornersToRectangle(min,max)
+        return cornersToRectangle(CGPoint(minX!,minY!),CGPoint(maxX!,maxY!))
     }
     /**
      * Returns an rectangle from a topLeft and bottomRight corners
