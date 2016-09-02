@@ -29,7 +29,13 @@ class NumberAsserter{
         }
     }
     /**
-     *
+     * UnLike isNear, this returns true for cases where the value is within epsilon and on epsiolon, see examples bellow:
+     * NOTE: The computation is also simpler and faster
+     * EXAMPLE: near(40,50,10)//true
+     * EXAMPLE: near(-40,-50,10)//true
+     * EXAMPLE: near(-10,0,10)//true
+     * EXAMPLE: near(10,0,10)//true
+     * EXAMPLE: near(-60,-50,10)//true
      */
     class func near(a:CGFloat,_ b:CGFloat,_ epsilon:CGFloat) -> Bool{
         return abs(a - b) <= epsilon
