@@ -29,6 +29,12 @@ class NumberAsserter{
         }
     }
     /**
+     *
+     */
+    class func near(a:CGFloat,_ b:CGFloat,_ epsilon:CGFloat) -> Bool{
+        return abs(a - b) <= epsilon
+    }
+    /**
      * @Note unlike the native "==" method this method supports NaN values
      */
     class func equals(a:CGFloat,_ b:CGFloat) -> Bool {
