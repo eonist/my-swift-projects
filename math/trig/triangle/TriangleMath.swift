@@ -45,6 +45,7 @@ class TriangleMath {
     }
     /**
      * Returns the angle bisector from a triangle construction
+     * NOTE: another way to find the bisector is: Trig.angle(pivot, p1) + (Trig.difference(pivot, p1, p2))/2
      */
     class func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
         let angle1:CGFloat = Trig.angle(anchor, pt1)
