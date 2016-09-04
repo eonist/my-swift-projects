@@ -102,6 +102,12 @@ class TriangleMath {
         }/*p3, a is The length of side a*/
     }
     /**
+     * @Note rotates the "out-angles" to be "in-angles"
+     */
+    static func divergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+        return convergingPoint(p1, p2, anglA + π, angleB + π)
+    }
+    /**
      * NOTE: Distance from a point to a line
      * NOTE: also called "perpendicular distance"
      */
