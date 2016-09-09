@@ -187,7 +187,7 @@ class ArrayModifier{
         return array
     }
     /**
-     * insert beginning remove last, this is new it could go in the AdvanceArrayModifier class
+     * remove last, insert last, this is new it could go in the AdvanceArrayModifier class
      */
     class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
         array.popLast()
