@@ -26,6 +26,7 @@ extension String {
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
     var uint:UInt{return UInt(Float(self)!)}
+    var int:Int{return Int(Float(self)!)}
     
     func encode()->String?{//convenience
         return StringParser.encode(self)
