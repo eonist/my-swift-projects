@@ -106,7 +106,8 @@ class ArrayParser{
      */
     class func conditionSort<T>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = []
-        for (var i : Int = 0; i < array.count; i++) {
+        let arrayCount:Int = array.count
+        for (var i : Int = 0; i < arrayCount; i++) {
             let index:Int = Utils.index(array[i], sortedArray, condition)
             if(index > -1){ArrayModifier.splice2(&sortedArray,index, 1, [array[i],sortedArray[index]])}
             else{sortedArray.append(array[i])/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
