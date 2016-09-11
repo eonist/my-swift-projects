@@ -23,7 +23,9 @@ extension Reflectable{
     //try to parse an instance into xml:
     
     //<Selectors>
-        //<Selector element="" id="">
+        //<Selector>
+            //<element>Button</element>
+            //<id>Button</id>
             //<states>
                 //<String>over</String>
             //</states>
