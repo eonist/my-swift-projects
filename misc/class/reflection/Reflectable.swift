@@ -53,6 +53,7 @@ extension Reflectable{
         //if instance is Reflectable
         if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
             //find name of property instance class
+            Swift.print("is reflectable")
             reflectable.properties().forEach{
                 if let reflectable = $0.value as? Reflectable{/*Reflectable*/
                     xml.name = $0.label
@@ -75,6 +76,6 @@ extension Reflectable{
         //if type of property is array
             //recursive
         
-        return XML()
+        return xml
     }
 }
