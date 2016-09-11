@@ -60,8 +60,10 @@ extension Reflectable{
                 }else if let array = $0.value as? NSArray{/*array*/
                     xml.name = $0.label
                     handleArray(xml,array)
-                }else {/*all other values*/
-                    xml[$0.label] = String($0.value)//<-- must be convertible to string i guess
+                }else if let string = String($0.value) ?? nil{/*all other values*/
+                    xml[$0.label] = string//<-- must be convertible to string i guess
+                }else{
+                    fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
             
