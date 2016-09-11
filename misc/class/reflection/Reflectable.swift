@@ -69,7 +69,7 @@ extension Reflectable{
                 }else if ($0.value is NSArray){/*array*/
                     Swift.print("found array")
                     /*xml.name = $0.label*/
-                    handleArray(&xml,$0.value)
+                    handleArray(&xml,$0.value as! Array<_>)
                 }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                     Swift.print("found value")
                     xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
