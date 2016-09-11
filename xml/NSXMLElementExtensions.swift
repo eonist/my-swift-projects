@@ -42,6 +42,9 @@ extension NSXMLElement {
     func value()->String?{//Convenience
         return XMLParser.value(self)
     }
+    /**
+     * NOTE: xml.XMLString does the same as this var
+     */
     var string:String{//Convenience
         return XMLParser.string(self)
     }
