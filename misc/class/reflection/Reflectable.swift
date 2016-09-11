@@ -33,6 +33,8 @@ extension Reflectable{
     func xml(instance:Any)->XML{
         //find name of instance class
         //find name of property instance class
+        //if instance is Reflectable
+            //recursive
         //if type of property is array
             //recursive
         
