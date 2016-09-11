@@ -30,7 +30,7 @@ extension Reflectable{
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
-    func toXML(instance:Any/*Reflectable*/)->XML{
+    static func toXML(instance:Any/*Reflectable*/)->XML{
         let xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
