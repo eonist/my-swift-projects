@@ -52,8 +52,10 @@ extension Reflectable{
                     xml.name = $0.label
                     //handleArray(xml,$0.value)
                 }/*array*/
-
             }
+            
+            
+            
             reflectable.properties().forEach{print(String($0.value.dynamicType))}
         }
         
