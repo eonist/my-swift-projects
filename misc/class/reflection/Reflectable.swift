@@ -43,7 +43,7 @@ extension Reflectable{
             reflectable.properties().forEach{
                 if($0.value is String) {/*attributes*/
                     xml[$0.label] = $0.value as? String
-                }else if($0.value is Dictionary<String, AnyObject>){/*dictionary*/
+                }else if($0.value is Reflectable){/*Reflectable*/
                     xml.name = $0.label
                     xml.appendChild(toXML($0.value))/*<--recursive*/
                 }else {
