@@ -59,7 +59,7 @@ extension Reflectable{
                     xml.name = $0.label
                     handleArray(xml,array)
                 }else if let string = String($0.value) ?? nil{/*all other values*/
-                    xml[$0.label] = string//<-- must be convertible to string i guess/*add value as an attribute*/
+                    xml[$0.label] = string//<-- must be convertible to string i guess/*add value as an attribute, because only one unique key,value can exist*/
                 }else{
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
