@@ -41,12 +41,14 @@ extension Reflectable{
             Swift.print("handleArray")
             for item in theContent{
                 Swift.print("item: " + "\(item)")
+                Swift.print("item.dynamicType: " + "\(item.dynamicType)")
                 if let reflectable = item as? Reflectable{/*Reflectable*/
                     theXML.appendChild(toXML(reflectable))/*<--recursive*/
                 }else if let string = String(item) ?? nil{
                     let child = XML()
                     child.name = String(item.dynamicType)
-                    theXML.stringValue = string/*add value */
+                    child.stringValue = string/*add value */
+                    theXML.appendChild(child)
                 }else if(item is NSArray){/*array*/
                     fatalError("multi-dimensional array's not supported yet")
                 }else{
