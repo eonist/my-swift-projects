@@ -255,8 +255,8 @@ public class XMLParser{
      * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
      */
     class func toXML(content:AnyObject)->NSXMLElement{
-        let xml:NSXMLElement = NSXMLElement()
-        func handleArray2(theXML:NSXMLElement,_ theContent:AnyObject){
+        let xml:XML = XML()
+        func handleArray2(theXML:XML,_ theContent:AnyObject){
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){theXML.stringValue = item as? String}
                 else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
