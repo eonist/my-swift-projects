@@ -35,7 +35,9 @@ extension Reflectable{
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         //find name of property instance class
-        instance.properties().forEach{print(String($0.value.dynamicType))}
+        if let reflectable = instance as? Reflectable{
+            reflectable.properties().forEach{print(String($0.value.dynamicType))}
+        }
         
         //if instance is Reflectable
         //recursive
