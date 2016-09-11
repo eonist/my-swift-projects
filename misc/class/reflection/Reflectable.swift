@@ -23,9 +23,7 @@ extension Reflectable{
     //try to parse an instance into xml:
     
     //<Selectors>
-        //<Selector>
-            //<element>Button</element>
-            //<id>Button</id>
+        //<Selector element="Button" id="custom">
             //<states>
                 //<String>over</String>
             //</states>
@@ -41,7 +39,7 @@ extension Reflectable{
         func handleArray(theXML:XML,_ theContent:NSArray){
             for item in theContent{
                 if(item is String){
-                    theXML.stringValue = item as? String
+                    theXML.stringValue = item as? String/*add value */
                 }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
                     theXML.appendChild(toXML(item))/*<--recursive*/
                 }else{/*array*/
@@ -61,7 +59,7 @@ extension Reflectable{
                     xml.name = $0.label
                     handleArray(xml,array)
                 }else if let string = String($0.value) ?? nil{/*all other values*/
-                    xml[$0.label] = string//<-- must be convertible to string i guess
+                    xml[$0.label] = string//<-- must be convertible to string i guess/*add value as an attribute*/
                 }else{
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
