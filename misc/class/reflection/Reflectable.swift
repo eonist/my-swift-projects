@@ -44,6 +44,8 @@ extension Reflectable{
                 if let reflectable = item as? Reflectable{/*Reflectable*/
                     theXML.appendChild(toXML(reflectable))/*<--recursive*/
                 }else if let string = String(item) ?? nil{
+                    let child = XML()
+                    child.name = 
                     theXML.stringValue = string/*add value */
                 }else if(item is NSArray){/*array*/
                     fatalError("multi-dimensional array's not supported yet")
