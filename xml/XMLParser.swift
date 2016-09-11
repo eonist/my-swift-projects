@@ -258,8 +258,11 @@ public class XMLParser{
         let xml:XML = XML()
         func handleArray2(theXML:XML,_ theContent:AnyObject){
             for item in (theContent as! Array<AnyObject>){
-                if(item is String){theXML.stringValue = item as? String}
-                else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
+                if(item is String){
+                    theXML.stringValue = item as? String
+                }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
+                    theXML.appendChild(toXML(item))
+                }
                 else{fatalError("this can't happen")}/*array*/
             }
         }
@@ -267,11 +270,13 @@ public class XMLParser{
             let dict = content as! Dictionary<String, AnyObject>
             for (key,value) in dict{
                 if(value is String) {xml[key] = value as? String}/*attributes*/
-                else if(value is Dictionary<String, AnyObject>){
+                else if(value is Dictionary<String, AnyObject>){/*dictionary*/
                     xml.name = key
-                    xml.appendChild(toXML(value))
-                }/*dictionary*/
-                else {xml.name = key;handleArray2(xml,value)}/*array*/
+                    xml.appendChild(toXML(value))/*<--recursive*/
+                }else {
+                    xml.name = key;
+                    handleArray2(xml,value)
+                }/*array*/
             }
         }
         return xml
