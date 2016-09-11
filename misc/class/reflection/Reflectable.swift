@@ -30,7 +30,8 @@ extension Reflectable{
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
-    func toXml(instance:Any/*Reflectable*/)->XML{
+    func toXML(instance:Any/*Reflectable*/)->XML{
+        let xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
@@ -41,13 +42,13 @@ extension Reflectable{
             
             reflectable.properties().forEach{
                 if($0.value is String) {/*attributes*/
-                    xml[key] = $0.value as? String
+                    xml[$0.label] = $0.value as? String
                 }else if($0.value is Dictionary<String, AnyObject>){/*dictionary*/
                     xml.name = $0.label
                     xml.appendChild(toXML($0.value))/*<--recursive*/
                 }else {
-                    xml.name = $0.label;
-                    handleArray(xml,$0.value)
+                    xml.name = $0.label
+                    //handleArray(xml,$0.value)
                 }/*array*/
 
             }

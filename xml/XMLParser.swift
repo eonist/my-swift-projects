@@ -269,7 +269,9 @@ public class XMLParser{
         }
         if let dict = content as? Dictionary<String, AnyObject>{/*content is a dictionary*/
             for (key,value) in dict{
-                if(value is String) {xml[key] = value as? String}/*attributes*/
+                if(value is String) {/*attributes*/
+                    xml[key] = value as? String
+                }
                 else if(value is Dictionary<String, AnyObject>){/*dictionary*/
                     xml.name = key
                     xml.appendChild(toXML(value))/*<--recursive*/
