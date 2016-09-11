@@ -38,12 +38,14 @@ extension Reflectable{
         
         func handleArray(theXML:XML,_ theContent:NSArray){
             for item in theContent{
-                if let reflectable = $0.value as? Reflectable{/*Reflectable*/
+                if let reflectable = item as? Reflectable{/*Reflectable*/
                     xml.appendChild(toXML(reflectable))/*<--recursive*/
-                }else if(item is String){
-                    theXML.stringValue = item as? String/*add value */
-                }else{/*array*/
-                    fatalError("this can't happen")
+                }else if let string = String(item) ?? nil{
+                    theXML.stringValue = string/*add value */
+                }else if(item is NSArray){/*array*/
+                    fatalError("multi-dimensional array's not supported yet")
+                }else{
+                    fatalError("unsuported type: " + "\(item.dynamicType)")
                 }
             }
         }
