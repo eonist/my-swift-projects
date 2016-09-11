@@ -37,7 +37,7 @@ extension Reflectable{
         print(instanceName)
         xml.name = instanceName
         
-        func handleArray(inout theXML:XML,_ theContent:NSArray){
+        func handleArray<T>(inout theXML:XML,_ theContent:Array<T>){
             Swift.print("handleArray")
             for item in theContent{
                 Swift.print("item: " + "\(item)")
@@ -66,10 +66,10 @@ extension Reflectable{
                     /*xml.name = $0.label*/
                     Swift.print("found Reflectable")
                     xml.appendChild(toXML(reflectable))/*<--recursive*/
-                }else if let array = $0.value as? NSArray{/*array*/
+                }else if ($0.value is NSArray){/*array*/
                     Swift.print("found array")
                     /*xml.name = $0.label*/
-                    handleArray(&xml,array)
+                    handleArray(&xml,$0.value)
                 }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                     Swift.print("found value")
                     xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
