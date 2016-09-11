@@ -14,7 +14,7 @@ class ClassParser {
      * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b
      * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
      */
-    func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+    static func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
         if(instance as? T != nil){return instance as? T}
         return nil
     }
@@ -26,7 +26,7 @@ class ClassParser {
      * NOTE: This also works: print(NSStringFromClass(someInstance.dynamicType))
      * Example: let someObj : typeof(anotheraObj) = typeof(anotheraObj)(arguments here)//this creates an instance from the class of another instance
      */
-    class func getClass(instance:Any!)->String{
+    static func getClass(instance:Any!)->String{
         return _stdlib_getDemangledTypeName(instance).componentsSeparatedByString(".").last!//This call is subjected to change in future versions of swift
         //return typeOf(instance)
     }
@@ -44,7 +44,7 @@ class ClassParser {
      * classType = B.self
      * instance = classType.init("abc")
      */
-   class func classType(instance:Any)->Any{
+   static func classType(instance:Any)->Any{
       return instance.dynamicType
    }
 }
