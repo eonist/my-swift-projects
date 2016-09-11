@@ -32,6 +32,8 @@ extension Reflectable{
     //</Selectors>
     func xml(instance:Any)->XML{
         //find name of instance class
+        let instanceName:String = String(instance)//if this doesnt work use generics
+        
         //find name of property instance class
         //if instance is Reflectable
             //recursive
