@@ -50,7 +50,7 @@ extension Reflectable{
                     xml.name = $0.label
                     //handleArray(xml,$0.value)
                 }else {/*attributes*/
-                    xml[$0.label] = String($0.value)//<-- must be convertible to string i guess
+                    xml[$0.label] = String($0.value)//<- must be convertible to string i guess
                 }
             }
             
