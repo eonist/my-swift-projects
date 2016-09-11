@@ -25,12 +25,17 @@ extension Reflectable{
     //<Selectors>
         //<Selector element="" id="">
             //<states>
-                //<state>over</state>
+                //<String>over</String>
             //</states>
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
     func xml(instance:Any)->XML{
+        //find name of instance class
+        //find name of property instance class
+        //if type of property is array
+            //recursive
+        
         return XML()
     }
 }
