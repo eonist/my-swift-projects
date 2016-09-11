@@ -67,7 +67,7 @@ extension Reflectable{
                 }
             }
             
-            reflectable.properties().forEach{print(String($0.value.dynamicType))}
+            //reflectable.properties().forEach{print(String($0.value.dynamicType))}
         }
         
         
