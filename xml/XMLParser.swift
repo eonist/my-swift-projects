@@ -260,15 +260,18 @@ public class XMLParser{
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){theXML.stringValue = item as? String}
                 else if(item is Dictionary<String, AnyObject>){theXML.appendChild(toXML(item))}//handle dictionary here
-                else{fatalError("this cant happen")}//array
+                else{fatalError("this can't happen")}/*array*/
             }
         }
-        if(content is Dictionary<String, AnyObject>){//content is a dictionary
+        if(content is Dictionary<String, AnyObject>){/*content is a dictionary*/
             let dict = content as! Dictionary<String, AnyObject>
-            for (theKey,theValue) in dict{
-                if(theValue is String) {xml[theKey] = theValue as? String}//attributes
-                else if(theValue is Dictionary<String, AnyObject>){xml.name = theKey;xml.appendChild(toXML(theValue))}//dictionary
-                else {xml.name = theKey;handleArray2(xml,theValue)}//array
+            for (key,value) in dict{
+                if(value is String) {xml[key] = value as? String}/*attributes*/
+                else if(value is Dictionary<String, AnyObject>){
+                    xml.name = key
+                    xml.appendChild(toXML(value))
+                }/*dictionary*/
+                else {xml.name = key;handleArray2(xml,value)}/*array*/
             }
         }
         return xml
