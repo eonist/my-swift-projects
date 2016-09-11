@@ -39,14 +39,15 @@ extension Reflectable{
         if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
             //find name of property instance class
             
-            for (key,value) in dict{
-                if(value is String) {xml[key] = value as? String}/*attributes*/
-                else if(value is Dictionary<String, AnyObject>){/*dictionary*/
-                    xml.name = key
-                    xml.appendChild(toXML(value))/*<--recursive*/
+            reflectable.properties().forEach{
+                if($0.value is String) {/*attributes*/
+                    xml[key] = $0.value as? String
+                }else if($0.value is Dictionary<String, AnyObject>){/*dictionary*/
+                    xml.name = $0.label
+                    xml.appendChild(toXML($0.value))/*<--recursive*/
                 }else {
-                    xml.name = key;
-                    handleArray(xml,value)
+                    xml.name = $0.label;
+                    handleArray(xml,$0.value)
                 }/*array*/
 
             }
