@@ -35,6 +35,7 @@ extension Reflectable{
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
+        xml.name = instanceName
         
         func handleArray(theXML:XML,_ theContent:NSArray){
             for item in theContent{
@@ -53,16 +54,19 @@ extension Reflectable{
         //if instance is Reflectable
         if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
             //find name of property instance class
-            Swift.print("is reflectable")
+            
             reflectable.properties().forEach{
                 if let reflectable = $0.value as? Reflectable{/*Reflectable*/
-                    xml.name = $0.label
+                    /*xml.name = $0.label*/
+                    Swift.print("found Reflectable")
                     xml.appendChild(toXML(reflectable))/*<--recursive*/
                 }else if let array = $0.value as? NSArray{/*array*/
-                    xml.name = $0.label
+                    Swift.print("found array")
+                    /*xml.name = $0.label*/
                     handleArray(xml,array)
-                }else if let string = String($0.value) ?? nil{/*all other values*/
-                    xml[$0.label] = string//<-- must be convertible to string i guess/*add value as an attribute, because only one unique key,value can exist*/
+                }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
+                    Swift.print("found value")
+                    xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
                 }else{
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
