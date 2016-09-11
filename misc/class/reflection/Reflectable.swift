@@ -38,10 +38,10 @@ extension Reflectable{
         
         func handleArray(theXML:XML,_ theContent:NSArray){
             for item in theContent{
-                if(item is String){
+                if let reflectable = $0.value as? Reflectable{/*Reflectable*/
+                    xml.appendChild(toXML(reflectable))/*<--recursive*/
+                }else if(item is String){
                     theXML.stringValue = item as? String/*add value */
-                }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
-                    theXML.appendChild(toXML(item))/*<--recursive*/
                 }else{/*array*/
                     fatalError("this can't happen")
                 }
