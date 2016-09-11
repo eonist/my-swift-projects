@@ -38,20 +38,28 @@ extension Reflectable{
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         
+        func handleArray(theXML:XML,_ theContent:AnyObject){
+            for item in (theContent as! Array<AnyObject>){
+                if(item is String){
+                    theXML.stringValue = item as? String
+                }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
+                    theXML.appendChild(toXML(item))/*<--recursive*/
+                }else{/*array*/
+                    fatalError("this can't happen")
+                }
+            }
+        }
+        
         //if instance is Reflectable
         if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
             //find name of property instance class
-            
             reflectable.properties().forEach{
-                
-
-                
                 if($0.value is Reflectable){/*Reflectable*/
                     xml.name = $0.label
                     xml.appendChild(toXML($0.value))/*<--recursive*/
-                }else if($0.value){/*array*/
+                }else if($0.value is NSArray){/*array*/
                     xml.name = $0.label
-                    //handleArray(xml,$0.value)
+                    handleArray(xml,$0.value)
                 }else {/*attributes*/
                     xml[$0.label] = String($0.value)//<-- must be convertible to string i guess
                 }
