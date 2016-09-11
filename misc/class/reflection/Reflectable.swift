@@ -32,13 +32,15 @@ extension Reflectable{
     //</Selectors>
     func xml(instance:Any)->XML{
         //find name of instance class
-        let instanceName:String = String(instance)//if this doesnt work use generics
-        
+        let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
+        print(instanceName)
         //find name of property instance class
+        instance.properties().forEach{print(String($0.value.dynamicType))}
+        
         //if instance is Reflectable
-            //recursive
+        //recursive
         //if type of property is array
-            //recursive
+        //recursive
         
         return XML()
     }
