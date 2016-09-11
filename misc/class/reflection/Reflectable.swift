@@ -36,13 +36,23 @@ extension Reflectable{
         print(instanceName)
         
         //if instance is Reflectable
-        if let reflectable = instance as? Reflectable{
+        if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
             //find name of property instance class
+            
+            for (key,value) in dict{
+                if(value is String) {xml[key] = value as? String}/*attributes*/
+                else if(value is Dictionary<String, AnyObject>){/*dictionary*/
+                    xml.name = key
+                    xml.appendChild(toXML(value))/*<--recursive*/
+                }else {
+                    xml.name = key;
+                    handleArray(xml,value)
+                }/*array*/
+
+            }
             reflectable.properties().forEach{print(String($0.value.dynamicType))}
         }
-        if(instance){
-            
-        }
+        
         
             //recursive
         //if type of property is array

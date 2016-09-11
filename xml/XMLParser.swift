@@ -267,8 +267,7 @@ public class XMLParser{
                 }
             }
         }
-        if(content is Dictionary<String, AnyObject>){/*content is a dictionary*/
-            let dict = content as! Dictionary<String, AnyObject>
+        if let dict = content as? Dictionary<String, AnyObject>{/*content is a dictionary*/
             for (key,value) in dict{
                 if(value is String) {xml[key] = value as? String}/*attributes*/
                 else if(value is Dictionary<String, AnyObject>){/*dictionary*/
