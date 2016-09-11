@@ -40,8 +40,9 @@ extension Reflectable{
         func handleArray(inout theXML:XML,_ theContent:NSArray){
             Swift.print("handleArray")
             for item in theContent{
+                Swift.print("item: " + "\(item)")
                 if let reflectable = item as? Reflectable{/*Reflectable*/
-                    //xml.appendChild(toXML(reflectable))/*<--recursive*/
+                    theXML.appendChild(toXML(reflectable))/*<--recursive*/
                 }else if let string = String(item) ?? nil{
                     theXML.stringValue = string/*add value */
                 }else if(item is NSArray){/*array*/
