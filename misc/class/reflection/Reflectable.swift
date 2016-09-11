@@ -31,16 +31,17 @@ extension Reflectable{
         //</Selector>
     //</Selectors>
     func toXML(instance:Any/*Reflectable*/)->XML{
-        let xml:XML = XML()
+        var xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         xml.name = instanceName
         
-        func handleArray(theXML:XML,_ theContent:NSArray){
+        func handleArray(inout theXML:XML,_ theContent:NSArray){
+            Swift.print("handleArray")
             for item in theContent{
                 if let reflectable = item as? Reflectable{/*Reflectable*/
-                    xml.appendChild(toXML(reflectable))/*<--recursive*/
+                    //xml.appendChild(toXML(reflectable))/*<--recursive*/
                 }else if let string = String(item) ?? nil{
                     theXML.stringValue = string/*add value */
                 }else if(item is NSArray){/*array*/
@@ -63,7 +64,7 @@ extension Reflectable{
                 }else if let array = $0.value as? NSArray{/*array*/
                     Swift.print("found array")
                     /*xml.name = $0.label*/
-                    handleArray(xml,array)
+                    handleArray(&xml,array)
                 }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                     Swift.print("found value")
                     xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
