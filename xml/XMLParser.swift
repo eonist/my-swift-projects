@@ -256,14 +256,15 @@ public class XMLParser{
      */
     class func toXML(content:AnyObject)->NSXMLElement{
         let xml:XML = XML()
-        func handleArray2(theXML:XML,_ theContent:AnyObject){
+        func handleArray(theXML:XML,_ theContent:AnyObject){
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){
                     theXML.stringValue = item as? String
                 }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
-                    theXML.appendChild(toXML(item))
+                    theXML.appendChild(toXML(item))/*<--recursive*/
+                }else{/*array*/
+                    fatalError("this can't happen")
                 }
-                else{fatalError("this can't happen")}/*array*/
             }
         }
         if(content is Dictionary<String, AnyObject>){/*content is a dictionary*/
@@ -275,7 +276,7 @@ public class XMLParser{
                     xml.appendChild(toXML(value))/*<--recursive*/
                 }else {
                     xml.name = key;
-                    handleArray2(xml,value)
+                    handleArray(xml,value)
                 }/*array*/
             }
         }
