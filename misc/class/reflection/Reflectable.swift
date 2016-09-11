@@ -43,12 +43,10 @@ extension Reflectable{
             //find name of property instance class
             
             reflectable.properties().forEach{
-                if($0.value is String) {/*attributes*/
-                    xml[$0.label] = $0.value as? String
-                }else if($0.value is Reflectable){/*Reflectable*/
+                if($0.value is Reflectable){/*Reflectable*/
                     xml.name = $0.label
                     xml.appendChild(toXML($0.value))/*<--recursive*/
-                }else {
+                }else if($0.value){
                     xml.name = $0.label
                     //handleArray(xml,$0.value)
                 }/*array*/
