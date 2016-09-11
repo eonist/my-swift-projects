@@ -30,7 +30,7 @@ extension Reflectable{
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
-    func toXml(instance:Reflectable)->XML{
+    func toXml(instance:Any/*Reflectable*/)->XML{
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
@@ -40,7 +40,9 @@ extension Reflectable{
             //find name of property instance class
             reflectable.properties().forEach{print(String($0.value.dynamicType))}
         }
-        
+        if(instance){
+            
+        }
         
             //recursive
         //if type of property is array
