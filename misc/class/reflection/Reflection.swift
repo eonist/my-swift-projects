@@ -28,14 +28,15 @@ class Reflection {
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
-    func toXML(instance:Any/*Reflectable*/)->XML{
+    func toXML(instance:Any)->XML{
         var xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         xml.name = instanceName
-        func handleArray<T>(inout theXML:XML,_ theContent:Any,_ type:T.Type){
+        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             Swift.print("handleArray")
+            let properties = Reflection.reflect(instance)
             for item in theContent as! Array<T>{
                 Swift.print("item: " + "\(item)")
                 Swift.print("item.dynamicType: " + "\(item.dynamicType)")
