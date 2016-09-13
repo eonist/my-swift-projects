@@ -56,9 +56,7 @@ class Reflection {
         properties.forEach{
             if ($0.value is NSArray){/*array*/
                 Swift.print("found array")
-                //let mirType:MirrorItem = $0.value.
-                /*xml.name = $0.label*/
-                //let arr:Array<_> = $0.value as! Array<_>
+                
                 //handleArray(&xml,$0.value,($0.value as! Array).dynamicType.Element().dynamicType)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                 Swift.print("found value")
