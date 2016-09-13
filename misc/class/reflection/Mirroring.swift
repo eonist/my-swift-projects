@@ -115,8 +115,8 @@ extension Mirror {
     }
     */
     /// Mirror types for every children property
-    public var children: [MirrorItem] {
-        return map(self) { $0 }
+    public var _children: [MirrorItem] {
+        return map(self.children) { $0 }
     }
 
 }
