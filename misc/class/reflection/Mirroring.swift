@@ -20,7 +20,7 @@ extension MirrorItem : CustomStringConvertible {
 
 //MARK: -
 
-public struct Mirror<T> {
+public struct Mirroring<T> {
     
     private let mirror: _MirrorType
     let instance: T
