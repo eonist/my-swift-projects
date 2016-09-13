@@ -35,10 +35,10 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         xml.name = instanceName
-        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
+        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String)->XML{
             Swift.print("handleArray")
             let arrayXML = XML()
-            child.name = name
+            arrayXML.name = name
             let properties = Reflection.reflect(instance)
             properties.forEach{
                if let string = String($0.value) ?? nil{
@@ -52,6 +52,7 @@ class Reflection {
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
+            return arrayXML
         }
         let properties = Reflection.reflect(instance)
         properties.forEach{
