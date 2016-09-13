@@ -5,7 +5,7 @@ public struct MirrorItem {
     public let type: Any.Type
     public let value: Any
     
-    init(_ tup: (String, MirrorType)) {
+    init(_ tup: (String, _MirrorType)) {
         self.name = tup.0
         self.type = tup.1.valueType
         self.value = tup.1.value
@@ -22,12 +22,12 @@ extension MirrorItem : CustomStringConvertible {
 
 public struct Mirror<T> {
     
-    private let mirror: MirrorType
+    private let mirror: _MirrorType
     let instance: T
     
     public init (_ x: T) {
         instance = x
-        mirror = reflect(x)
+        mirror = _reflect(x)
     }
     
     //MARK: - Type Info
