@@ -76,3 +76,17 @@ class Reflection {
         return xml
     }
 }
+
+
+/*
+can come in handY:
+
+public var isClass: Bool {
+return mirror.objectIdentifier != nil
+}
+
+public var isStruct: Bool {
+return mirror.objectIdentifier == nil
+}
+
+*/
