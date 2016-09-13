@@ -120,9 +120,10 @@ extension Mirror {
         children.forEach{
             let name = String($0.dynamicType)
             let mirrorType = _reflect($0)
-            let mirrorItem:MirrorItem = MirrorItem()
-            returnArray.append()
+            let mirrorItem:MirrorItem = MirrorItem((name,mirrorType))
+            returnArray.append(mirrorItem)
         }
+        return returnArray
         //return map(self) { $0 }
     }
 
@@ -176,7 +177,7 @@ extension Mirror {
 extension Mirror : CollectionType, SequenceType {
     
     public func generate() -> IndexingGenerator<[MirrorItem]> {
-        return children.generate()
+        return _children.generate()
     }
     
     public var startIndex: Int {
