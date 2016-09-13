@@ -47,7 +47,7 @@ public struct Mirroring<T> {
 
 // MARK: - Type detection
 extension Mirror {
-    
+    /*
     public var isClass: Bool {
         return mirror.objectIdentifier != nil
     }
@@ -71,11 +71,13 @@ extension Mirror {
     public var isSet: Bool {
         return name.hasPrefix("Swift.Set<")
     }
+    */
 }
 
 extension Mirror {
     
     /// Type properties count
+    /*
     public var childrenCount: Int {
         return mirror.count
     }
@@ -83,6 +85,7 @@ extension Mirror {
     public var memorySize: Int {
         return sizeofValue(instance)
     }
+    */
 }
 
 //MARK: - Children Inpection
