@@ -20,7 +20,7 @@ extension MirrorItem : CustomStringConvertible {
 
 //MARK: -
 
-public struct Mirror<T> {
+public struct Mirroring<T> {
     
     private let mirror: _MirrorType
     let instance: T
@@ -185,11 +185,11 @@ extension Mirror : CollectionType, SequenceType {
     }
     
     public var endIndex: Int {
-        return mirror.count
+        return Int(children.count)
     }
     
     public subscript (i: Int) -> MirrorItem {
-        return MirrorItem(mirror[i])
+        return _children[i]
     }
 }
 
