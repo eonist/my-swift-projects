@@ -35,9 +35,9 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         print(instanceName)
         xml.name = instanceName
-        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String)->XML{
+        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             Swift.print("handleArray")
-            let arrayXML = XML()
+            var arrayXML = XML()
             arrayXML.name = name
             let properties = Reflection.reflect(instance)
             properties.forEach{
@@ -47,19 +47,19 @@ class Reflection {
                     child.stringValue = string/*add value */
                     arrayXML.appendChild(child)
                 }else if($0.value is NSArray){/*array*/
-                    handleArray(&xml,$0.value,$0.label)
+                    handleArray(&arrayXML,$0.value,$0.label)
                 }else{
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
-            return arrayXML
+            theXML.appendChild(arrayXML)
         }
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is NSArray){/*array*/
                 Swift.print("found array")
                 
-                //handleArray(&xml,$0.value,$0.label)
+                handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                 Swift.print("found value")
                 xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
