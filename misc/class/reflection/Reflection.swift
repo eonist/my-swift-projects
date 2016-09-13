@@ -11,7 +11,6 @@ class Reflection {
     static func reflect(instance:Any)->[(label:String,value:Any)]{
         var properties = [(label:String,value:Any)]()
         let mirror = Mirror(reflecting: instance)
-        //mirror.
         mirror.children.forEach{
             if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
                 properties.append((name,$0.value))
@@ -19,7 +18,6 @@ class Reflection {
         }
         return properties
     }
-    
     //<Selectors>
         //<Selector element="Button" id="custom">
             //<states>
@@ -28,7 +26,10 @@ class Reflection {
             //<classIds></classIds>
         //</Selector>
     //</Selectors>
-    func toXML(instance:Any)->XML{
+    /**
+     *
+     */
+    static func toXML(instance:Any)->XML{
         var xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
@@ -65,5 +66,3 @@ class Reflection {
         return xml
     }
 }
-
-
