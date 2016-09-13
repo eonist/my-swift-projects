@@ -173,7 +173,7 @@ extension Mirror {
     }
 }
 
-//Continue here: 
+//Continue here: figure out how you can get the array item type
 
 // MARK: - CollectionType
 extension Mirror : CollectionType, SequenceType {
