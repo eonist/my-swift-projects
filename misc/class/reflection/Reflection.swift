@@ -37,13 +37,15 @@ class Reflection {
         xml.name = instanceName
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             Swift.print("handleArray")
+            let arrayXML = XML()
+            child.name = name
             let properties = Reflection.reflect(instance)
             properties.forEach{
                if let string = String($0.value) ?? nil{
                     let child = XML()
                     child.name = String($0.value.dynamicType)
                     child.stringValue = string/*add value */
-                    theXML.appendChild(child)
+                    arrayXML.appendChild(child)
                 }else if($0.value is NSArray){/*array*/
                     handleArray(&xml,$0.value,$0.label)
                 }else{
@@ -55,6 +57,7 @@ class Reflection {
         properties.forEach{
             if ($0.value is NSArray){/*array*/
                 Swift.print("found array")
+                
                 //handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                 Swift.print("found value")
