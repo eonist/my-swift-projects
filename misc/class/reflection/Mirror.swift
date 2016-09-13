@@ -1,15 +1,5 @@
 import Foundation
 
-//
-//  File.swift
-//  Mirror
-//
-//  Created by Kostiantyn Koval on 05/07/15.
-//
-//
-
-import Foundation
-
 public struct MirrorItem {
     public let name: String
     public let type: Any.Type
