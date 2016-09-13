@@ -87,7 +87,7 @@ extension Mirror {
 
 //MARK: - Children Inpection
 extension Mirror {
-    
+    /*
     /// Properties Names
     public var names: [String] {
         return map(self) { $0.name }
@@ -110,11 +110,12 @@ extension Mirror {
             return conv //.pathExtension
         }
     }
-    
+    */
     /// Mirror types for every children property
     public var children: [MirrorItem] {
         return map(self) { $0 }
     }
+
 }
 
 //MARK: - Quering
