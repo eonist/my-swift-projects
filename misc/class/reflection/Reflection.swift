@@ -10,7 +10,7 @@ class Reflection {
      */
     static func reflect(instance:Any)->[(label:String,value:Any)]{
         var properties = [(label:String,value:Any)]()
-        let mirror = Mirror(reflecting: instance)
+        let mirror = _reflect(instance)
         //mirror.
         mirror.children.forEach{
             if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
