@@ -42,6 +42,7 @@ class Reflection {
             let properties = Reflection.reflect(theContent)
             properties.forEach{
                if let string = String($0.value) ?? nil{
+                    Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
                     child.name = String($0.value.dynamicType)
                     child.stringValue = string/*add value */
