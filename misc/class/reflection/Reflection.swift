@@ -36,10 +36,10 @@ class Reflection {
         print(instanceName)
         xml.name = instanceName
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
-            Swift.print("handleArray")
+            Swift.print("handleArray: " + "\(name)")
             var arrayXML = XML()
             arrayXML.name = name
-            let properties = Reflection.reflect(instance)
+            let properties = Reflection.reflect(theContent)
             properties.forEach{
                if let string = String($0.value) ?? nil{
                     let child = XML()
