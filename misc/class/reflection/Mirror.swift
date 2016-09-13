@@ -12,7 +12,7 @@ public struct MirrorItem {
     }
 }
 
-extension MirrorItem : Printable {
+extension MirrorItem : CustomStringConvertible {
     public var description: String {
         return "\(name): \(type) = \(value)"
     }
