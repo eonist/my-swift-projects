@@ -89,7 +89,7 @@ extension Mirror {
 }
 
 //MARK: - Children Inpection
-extension Mirror {
+extension Mirroring {
     /*
     /// Properties Names
     public var names: [String] {
@@ -115,8 +115,8 @@ extension Mirror {
     }
     */
     /// Mirror types for every children property
-    public var _children: [MirrorItem] {
-        return map(self.children) { $0 }
+    public var children: [MirrorItem] {
+        return map(self) { $0 }
     }
 
 }
