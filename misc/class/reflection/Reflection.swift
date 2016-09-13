@@ -51,16 +51,9 @@ class Reflection {
             }
         }
         
-        //if instance is Reflectable
-        if let reflectable = instance as? Reflectable{/*content is a Reflectable*/
-            //find name of property instance class
-            
-            reflectable.properties().forEach{
-                if let reflectable = $0.value as? Reflectable{/*Reflectable*/
-                    /*xml.name = $0.label*/
-                    Swift.print("found Reflectable")
-                    xml.appendChild(toXML(reflectable))/*<--recursive*/
-                }else if ($0.value is NSArray){/*array*/
+            let properties = Reflection.reflect(instance)
+            properties.forEach{
+                if ($0.value is NSArray){/*array*/
                     Swift.print("found array")
                     /*xml.name = $0.label*/
                     let arr:Array<_> = $0.value as! Array<_>
@@ -73,9 +66,6 @@ class Reflection {
                 }
             }
             
-            //reflectable.properties().forEach{print(String($0.value.dynamicType))}
-        }
-        
         
         //recursive
         //if type of property is array
