@@ -18,14 +18,21 @@ class Reflection {
         }
         return properties
     }
-    //<Selectors>
-        //<Selector element="Button" id="custom">
-            //<states>
-                //<String>over</String>
-            //</states>
-            //<classIds></classIds>
-        //</Selector>
-    //</Selectors>
+    /*
+    
+    //final xml:
+    
+    <Selector>
+        <id type=String>custom</id>
+        <element type=String>Button</element>
+        <classIds type=Array></classIds>
+        <states type="Array">
+            <1 type=string>over</1>
+            <2 type=string>down</2>
+        </states>
+    </Selector>
+    
+    */
     /**
      *
      */
