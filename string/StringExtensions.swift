@@ -47,7 +47,7 @@ extension String {
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
-    var xml:NSXMLElement {return NSXMLElement(self)}//Convenince
+    var xml:XML {return XML(self)}//Convenince
     var url:NSURL {return FilePathParser.path(self)}//Convenince
 }
 extension NSString{
