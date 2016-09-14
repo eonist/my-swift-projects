@@ -75,8 +75,7 @@ class Reflection {
                 child.name = $0.label
                 child["type"] = String($0.value.dynamicType)
                 child.stringValue = string/*add value*/
-                arrayXML.appendChild(child)
-                //xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
+                xml.appendChild(child)
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
