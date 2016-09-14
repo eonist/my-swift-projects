@@ -49,10 +49,11 @@ class Reflection {
             arrayXML["type"] = "Array"
             let properties = Reflection.reflect(theContent)
             properties.forEach{
+               let test =  $0.value is StringConvertable
                if let string = String($0.value) ?? nil{
                     Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
-                    child.name = $0.label
+                    child.name = $0.label.subStr(1, $0.label.count-2)/*labels of items in arrays are wrapped with "[" and "]", we exclude these*/
                     child.stringValue = string/*add value */
                     child["type"] = String($0.value.dynamicType)
                     arrayXML.appendChild(child)
