@@ -80,7 +80,7 @@ extension NSXMLElement {
         return XMLParser.firstNode(self, nodeName)
     }
     //deprecated:
-    func value()->String?{return XMLParser.value(self)}//Convenience
+    //func value()->String?{return XMLParser.value(self)}//Convenience
 }
 /**
  * Multiplies a string
