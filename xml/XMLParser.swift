@@ -26,7 +26,7 @@ public class XMLParser{
     /**
      * new
      */
-    static func children(xml:NSXMLElement)->Array<XML>{
+    static func children(xml:XML)->Array<XML>{
         return xml.children as! [XML]
     }
     /**
