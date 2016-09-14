@@ -26,8 +26,8 @@ class Reflection {
      *     <element type=String>Button</element>
      *     <classIds type=Array></classIds>
      *     <states type="Array">
-     *         <1 type=string>over</1>
-     *         <2 type=string>down</2>
+     *         <item type=string>over</item>
+     *         <item type=string>down</item>
      *     </states>
      * </Selector>
      */
