@@ -17,7 +17,7 @@ public class XMLParser{
      * Returns all children of the root element
      * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
-    class func rootChildren(xmlStr:String)->Array<XML>{
+    static func rootChildren(xmlStr:String)->Array<XML>{
         let rootElement:XML = root(xmlStr)!
         let children:NSArray = rootElement.children!
         let theChildren:Array<XML> = children as! [XML]
@@ -26,7 +26,7 @@ public class XMLParser{
     /**
      * new
      */
-    class func children(xml:NSXMLElement)->Array<XML>{
+    static func children(xml:NSXMLElement)->Array<XML>{
         return xml.children as! [XML]
     }
     /**
@@ -34,13 +34,13 @@ public class XMLParser{
      * XMLParser.firstNode(<p>text</p>,"p")
      * @output:text
      */
-    class func firstNode(xml:NSXMLElement, _ nodeName:String) -> NSXMLElement? {
+    static func firstNode(xml:XML, _ nodeName:String) -> XML? {
         return xml.elementsForName(nodeName).count > 0 ? xml.elementsForName(nodeName)[0] : nil
     }
     /**
      *
      */
-    public class func rootChildrenByFilePath(filePath:String)->Array<NSXMLElement>{
+    static func rootChildrenByFilePath(filePath:String)->Array<XML>{
         let xmlStr:String = FileParser.content(filePath)!
         return rootChildren(xmlStr)
     }
@@ -51,21 +51,21 @@ public class XMLParser{
      * CAUTION: This method can also return text values within nested children, use with caution
      * EXAMPLE: XMLParser.value("<p>text</p>".xml)//text
      */
-    public class func value(child:NSXMLElement)->String{
+    static func value(child:XML)->String{
         return child.stringValue!
     }
     /**
      * Returns the the entire xml structure as a string
      * NOTE: There is also .XMLString and a few abrivations of that method
      */
-    public class func string(child:NSXMLElement)->String{
+    static func string(child:XML)->String{
         return String(child)
     }
     /**
      * Returns string Content of an xml
      * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
-    class func valueAt(child:NSXMLElement,_ index:Array<Int>)->String?{
+    class func valueAt(child:XML,_ index:Array<Int>)->String?{
         return childAt(child, index)?.stringValue
     }
     /**
@@ -73,7 +73,7 @@ public class XMLParser{
      * EXAMPLE: attributes.count// num of attributes
      * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
      */
-    public class func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
+    static func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
         
         //you should probably not use this, use attribs instead
         
@@ -115,10 +115,10 @@ public class XMLParser{
      * @Note: returns an empty array if the index is out of bound
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    class func siblingAttributes(child:NSXMLElement, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
+    class func siblingAttributes(child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
         let xml = childAt(child, index);
         var result:[Dictionary<String,String>] = []
-        for c in xml?.children as! Array<NSXMLElement>{
+        for c in xml?.children as! Array<XML>{
             result.append(c.attribs)
         }
         return result
@@ -127,8 +127,8 @@ public class XMLParser{
      * Returns child from @param children at @param index
      * EXAMPLE: XMLParser.childAt(children, 0)
      */
-    public class func childAt(children:NSArray, _ index:Int)->NSXMLElement?{
-        return children[index] as? NSXMLElement
+    static func childAt(children:NSArray, _ index:Int)->XML?{
+        return children[index] as? XML
     }
     /**
      * Returns an an XML instance at @param index (Array index)
@@ -136,7 +136,7 @@ public class XMLParser{
      * @Note to find a child at an integer use the native code: xml.children[integer]
      * @Note to find the children of the root use an empty array as the index value
      */
-    class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->NSXMLElement? {
+    class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
@@ -145,7 +145,7 @@ public class XMLParser{
             return xml!.childByIndex(index[0])
         }// :TODO: if index.length is 1 you can just ref index
         else if(index.count > 1 && xml!.children!.count > 0) {
-            return XMLParser.childAt(xml!.children![index[0]] as? NSXMLElement,index.slice2(1,index.count))
+            return XMLParser.childAt(xml!.children![index[0]] as? XML,index.slice2(1,index.count))
         }
         return nil
     }
