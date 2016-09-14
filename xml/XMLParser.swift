@@ -8,26 +8,26 @@ public class XMLParser{
      * EXAMPLE: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
-    public class func root(xmlStr:String)->NSXMLElement?{
+    class func root(xmlStr:String)->XML?{
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
-        let rootElement:NSXMLElement = xmlDoc.rootElement()!
+        let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
     }
     /**
      * Returns all children of the root element
      * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
-    public class func rootChildren(xmlStr:String)->Array<NSXMLElement>{
-        let rootElement:NSXMLElement = root(xmlStr)!
+    class func rootChildren(xmlStr:String)->Array<XML>{
+        let rootElement:XML = root(xmlStr)!
         let children:NSArray = rootElement.children!
-        let theChildren:Array<NSXMLElement> = children as! [NSXMLElement]
+        let theChildren:Array<XML> = children as! [XML]
         return theChildren
     }
     /**
      * new
      */
-    class func children(xml:NSXMLElement)->Array<NSXMLElement>{
-        return xml.children as! [NSXMLElement]
+    class func children(xml:NSXMLElement)->Array<XML>{
+        return xml.children as! [XML]
     }
     /**
      * Retuns the first xml node that has the name of the speccified nodename
