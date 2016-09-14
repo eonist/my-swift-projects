@@ -39,9 +39,7 @@ extension NSXMLElement {
     func valueAt(index:Array<Int>)->String?{//Convenience
         return XMLParser.valueAt(self, index)
     }
-    func value()->String?{//Convenience
-        return XMLParser.value(self)
-    }
+    var value:String {return XMLParser.value(self)}/*Convenience*/
     /**
      * NOTE: xml.XMLString does the same as this var
      */
@@ -81,6 +79,8 @@ extension NSXMLElement {
     func firstNode(nodeName:String) -> NSXMLElement? {//Convenience
         return XMLParser.firstNode(self, nodeName)
     }
+    //deprecated:
+    func value()->String?{return XMLParser.value(self)}//Convenience
 }
 /**
  * Multiplies a string
