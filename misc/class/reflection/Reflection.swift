@@ -52,8 +52,9 @@ class Reflection {
                if let string = String($0.value) ?? nil{
                     Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
-                    child.name = $0.la
+                    child.name = $0.label
                     child.stringValue = string/*add value */
+                    child["type"] = String($0.value.dynamicType)
                     arrayXML.appendChild(child)
                 }else if($0.value is NSArray){/*array*/
                     handleArray(&arrayXML,$0.value,$0.label)
