@@ -69,6 +69,10 @@ class Reflection {
                 handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
                 Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
+                let child = XML()
+                child.name = $0.label
+                xml["type"] = String($0.value.dynamicType)
+                child.stringValue = string/*add value*/
                 xml[$0.label] = string/*add value as an attribute, because only one unique key,value can exist*/
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
