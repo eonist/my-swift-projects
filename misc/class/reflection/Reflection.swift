@@ -18,23 +18,18 @@ class Reflection {
         }
         return properties
     }
-    /*
-    
-    //final xml:
-    
-    <Selector>
-        <id type=String>custom</id>
-        <element type=String>Button</element>
-        <classIds type=Array></classIds>
-        <states type="Array">
-            <1 type=string>over</1>
-            <2 type=string>down</2>
-        </states>
-    </Selector>
-    
-    */
     /**
-     *
+     * Converts an instance to XML
+     * EXAMPLE output:
+     * <Selector>
+     *     <id type=String>custom</id>
+     *     <element type=String>Button</element>
+     *     <classIds type=Array></classIds>
+     *     <states type="Array">
+     *         <1 type=string>over</1>
+     *         <2 type=string>down</2>
+     *     </states>
+     * </Selector>
      */
     static func toXML(instance:Any)->XML{
         var xml:XML = XML()
@@ -43,14 +38,14 @@ class Reflection {
         print(instanceName)
         xml.name = instanceName
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
-            Swift.print("handleArray: " + "\(name)")
+            //Swift.print("handleArray: " + "\(name)")
             var arrayXML = XML()
             arrayXML.name = name
             arrayXML["type"] = "Array"
             let properties = Reflection.reflect(theContent)
             properties.forEach{
                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
-                    Swift.print("$0.label: " + "\($0.label)")
+                    //Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
                     child.name = $0.label.subStr(1, $0.label.count-2)/*labels of items in arrays are wrapped with "[" and "]", we exclude these*/
                     child.stringValue = string/*add value */
@@ -67,10 +62,10 @@ class Reflection {
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is NSArray){/*array*/
-                Swift.print("found array: " + "\($0.value)" + " $0.label " + "\($0.label)")
+                //Swift.print("found array: " + "\($0.value)" + " $0.label " + "\($0.label)")
                 handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
-                Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
+                //Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
                 let child = XML()
                 child.name = $0.label
                 child["type"] = String($0.value.dynamicType)
