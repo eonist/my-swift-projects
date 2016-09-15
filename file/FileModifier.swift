@@ -19,6 +19,7 @@ class FileModifier{
 	}
     /**
      * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
+     * NOTE: this method over-writes data to files that already exists aswell 
      */
     class func write(path:String,_ content:String)->Bool{
         do {
