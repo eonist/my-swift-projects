@@ -20,6 +20,7 @@ class Reflection {
     }
     /**
      * Converts an instance to XML
+     * NOTE: This is a general solution for saving the state of a class/struct instance
      * EXAMPLE output:
      * <Selector>
      *     <id type=String>custom</id>
@@ -47,7 +48,7 @@ class Reflection {
                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
                     //Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
-                    child.name = $0.label.subStr(1, $0.label.count-2)/*labels of items in arrays are wrapped with "[" and "]", we exclude these*/
+                    child.name = item//$0.label.subStr(1, $0.label.count-2)/*labels of items in arrays are wrapped with "[" and "]", we exclude these*/
                     child.stringValue = string/*add value */
                     child["type"] = String($0.value.dynamicType)
                     arrayXML.appendChild(child)
