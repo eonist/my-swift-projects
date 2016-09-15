@@ -36,7 +36,7 @@ class Reflection {
         var xml:XML = XML()
         //find name of instance class
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
-        print(instanceName)
+        //print(instanceName)
         xml.name = instanceName
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             //Swift.print("handleArray: " + "\(name)")
