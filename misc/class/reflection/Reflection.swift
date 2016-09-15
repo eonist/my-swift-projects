@@ -48,7 +48,7 @@ class Reflection {
                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
                     //Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
-                    child.name = item//$0.label.subStr(1, $0.label.count-2)/*labels of items in arrays are wrapped with "[" and "]", we exclude these*/
+                    child.name = "item"
                     child.stringValue = string/*add value */
                     child["type"] = String($0.value.dynamicType)
                     arrayXML.appendChild(child)
