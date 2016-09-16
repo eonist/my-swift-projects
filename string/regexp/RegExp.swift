@@ -68,8 +68,8 @@ public class RegExp{
     * @param range: The range of the string to search.
     * @param replacement: The substitution template used when replacing matching instances.
     * Returns Value A string with matching regular expressions replaced by the template string.
-    * EXAMPLE: RegExpModifier.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
-    * EXAMPLE: RegExpModifier.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
+    * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
+    * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
     * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
     * TODO: The @param text should be inout
     * TODO: move to RegExpModifer, or just create RegExpUtils for all?
