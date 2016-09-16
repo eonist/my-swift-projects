@@ -142,6 +142,4 @@ class TrigParser {
     class func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat {// :TODO: rename to just bisector, bisectorAngle
         return a + ((b - a)/2)
     }
-    
-    
 }
