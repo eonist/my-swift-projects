@@ -107,6 +107,12 @@ XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets t
 
 - Open,Save,Delete,Create (CRUD)
 
+```swift
+FileModifier.write("~/Desktop/temp.txt".tildePath, "test")
+FileAsserter.exists("~/Desktop/temp.txt".tildePath)//Output: true
+FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
+```
+
 ## **KeyChainLib** 
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/KeyChainLib.svg">

@@ -26,7 +26,7 @@ class FileModifier{
             try content.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
             return true
         } catch {
-            // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+            print("failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding")
         }
         return false
     }
