@@ -8,7 +8,7 @@ class FileParser{
      * let path = "//Users/<path>/someFile.xml"
      * var err: NSError?
      * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
-     * EXAMPLE: FileParser.content("~/Desktop/del.txt".tildePath)//
+     * EXAMPLE: FileParser.content("~/Desktop/temp.txt".tildePath)//
      */
 	class func content(path:String)->String?{
         do {
@@ -27,7 +27,7 @@ class FileParser{
     class func xml(path:String)->XML {
         let content = FileParser.content(path)
         //Swift.print("content: " + "\(content)")
-        let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
+        let xmlDoc:XMLDoc = try! XMLDoc(XMLString: content!, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
     }
