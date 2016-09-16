@@ -32,6 +32,7 @@ public class RegExp{
         return matches(text, pattern).map { (text as NSString).substringWithRange($0.range)}
     }
     /**
+     * Similar to Exec in other languages
      * NOTE: NSRegExp uses the ICU regexp syntax: http://userguide.icu-project.org/strings/regexp
      * NOTE: Use this method when doing named capturing group or location of matches
      * Note: use this call to get the capturing group: (str as NSString).substringWithRange(match.rangeAtIndex(1))  capturing groups from index (1 - n)
