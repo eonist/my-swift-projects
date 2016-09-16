@@ -86,7 +86,7 @@ public class RegExp{
         }
     }
     /**
-     * Extracts associate capture groups from the RegExp.matches result
+     * Extracts associated capture groups from the RegExp.matches result
      * TODO: Would be great if .rawValue was done inside this method, can be done with <T> possibly look at the apple docs about enumerations
      * EXAMPLE: RegExp.value(fullString,match,StatusParts.second.rawValue)
      */
