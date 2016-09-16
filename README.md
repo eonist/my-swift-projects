@@ -125,6 +125,10 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 
 - Makes parsing and modifying with RegExp easier  
 
+```swift
+RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
+```
+
 ## **AnimLib** 
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/AnimLib.svg">

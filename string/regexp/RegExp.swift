@@ -13,7 +13,7 @@ public class RegExp{
      * Asserts if a match exists
      * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      * NOTE: for simple implimentations:  str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
-     * EXAMPLE: RegExpAsserter.test("hello world","o.*o")//true
+     * EXAMPLE: RegExp.test("hello world","o.*o")//true
      */
     public class func test(str:String,_ pattern:String)->Bool{
         //or do something like this: return RegExpParser.match(pattern,options).count > 0
@@ -21,8 +21,8 @@ public class RegExp{
     }
     /*
     * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-    * EXAMPLE: match("My name is Taylor Swift","My name is (.*)")//Swift
-    * EXAMPLE: RegExpParser.match("hello world","(\\b\\w+\\b)")//hello, world
+    * EXAMPLE: RegExp.match("My name is Taylor Swift","My name is (.*)")//Swift
+    * EXAMPLE: RegExp.match("hello world","(\\b\\w+\\b)")//hello, world
     * NOTE: NSRegularExpressionOptions: DotMatchesLineSeparators,CaseInsensitive,AnchorsMatchLines
     * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
     */
