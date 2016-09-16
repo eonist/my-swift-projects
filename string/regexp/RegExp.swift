@@ -18,13 +18,13 @@ public class RegExp{
     public class func test(str:String,_ pattern:String)->Bool{
         return str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil//or do something like this: return RegExpParser.match(pattern,options).count > 0
     }
-    /*
-    * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-    * EXAMPLE: RegExp.match("My name is Taylor Swift","My name is (.*)")//Swift
-    * EXAMPLE: RegExp.match("hello world","(\\b\\w+\\b)")//hello, world
-    * NOTE: NSRegularExpressionOptions: DotMatchesLineSeparators,CaseInsensitive,AnchorsMatchLines
-    * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
-    */
+    /**
+     * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
+     * EXAMPLE: RegExp.match("My name is Taylor Swift","My name is (.*)")//Swift
+     * EXAMPLE: RegExp.match("hello world","(\\b\\w+\\b)")//hello, world
+     * NOTE: NSRegularExpressionOptions: DotMatchesLineSeparators,CaseInsensitive,AnchorsMatchLines
+     * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
+     */
     public class func match(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
         //todo: figure out how map works
         //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
@@ -40,14 +40,14 @@ public class RegExp{
      * TODO: Figure out how to do numbered capturing groups ($n - n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than ) maybe with \$2 \$3 etc?
      * TODO: Research how to deal with swift unicode chars, emojis etc: see this: http://stackoverflow.com/questions/25882503/how-can-i-use-nsregularexpression-on-swift-strings-with-variable-width-unicode-c
      * NOTE: its also possible to find number of matches this way: regex.numberOfMatchesInString(text options:[] NSMakeRange(0, nsString.length))
-     * EXAMPLE: (find a better example)
-     * let matches = RegExp.matches("abc def ghij", "\\w{3}")
-     * for match:NSTextCheckingResult in matches {
-     *    Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-     *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))/*the entire match*/
-     *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*/
-     *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*/
-     * }
+     * EXAMPLE: 
+     * let str = "blue:0000FF green:00FF00 red:FF0000"
+     * RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
+     *     Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
+     *     let content = (str as NSString).substringWithRange($0.rangeAtIndex(0))/*the entire match*/
+     *     let name = RegExp.value(str, $0, 1)/*capturing group 1*/
+     *     let value = RegExp.value(str, $0, 2)/*capturing group 2*/
+     * }//Outputs: name: green, value: 00FF00...and so on
      */
     public class func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
         do {
@@ -60,20 +60,20 @@ public class RegExp{
             return []
         }
     }
-    /*
-    * Replaces all matches with the replacment string
-    * NOTE: you can use this call replaceMatchesInString to modify the original string, must use nsmutablestring to do this
-    * @param string The string to search for values within.
-    * @param options: The matching options to use. See NSMatchingOptions for possible values.
-    * @param range: The range of the string to search.
-    * @param replacement: The substitution template used when replacing matching instances.
-    * Returns Value A string with matching regular expressions replaced by the template string.
-    * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
-    * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
-    * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-    * TODO: The @param text should be inout
-    * TODO: move to RegExpModifer, or just create RegExpUtils for all?
-    */
+    /**
+     * Replaces all matches with the replacment string
+     * NOTE: you can use this call replaceMatchesInString to modify the original string, must use nsmutablestring to do this
+     * @param string The string to search for values within.
+     * @param options: The matching options to use. See NSMatchingOptions for possible values.
+     * @param range: The range of the string to search.
+     * @param replacement: The substitution template used when replacing matching instances.
+     * Returns Value A string with matching regular expressions replaced by the template string.
+     * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
+     * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
+     * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
+     * TODO: The @param text should be inout
+     * TODO: move to RegExpModifer, or just create RegExpUtils for all?
+     */
     public class func replace(str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive)->String{
         do {
             let stringlength = str.characters.count
