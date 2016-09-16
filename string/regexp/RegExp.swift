@@ -39,13 +39,13 @@ public class RegExp{
      * TODO: Figure out how to do numbered capturing groups ($n - n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than ) maybe with \$2 \$3 etc?
      * TODO: Research how to deal with swift unicode chars, emojis etc: see this: http://stackoverflow.com/questions/25882503/how-can-i-use-nsregularexpression-on-swift-strings-with-variable-width-unicode-c
      * NOTE: its also possible to find number of matches this way: regex.numberOfMatchesInString(text options:[] NSMakeRange(0, nsString.length))
-     * EXAMPLE:
+     * EXAMPLE: (find a better example)
      * let matches = RegExp.matches("abc def ghij", "\\w{3}")
      * for match:NSTextCheckingResult in matches {
-     *    match.numberOfRanges
-     *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-     *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-     *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+     *    Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+     *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))/*the entire match*/
+     *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*/
+     *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*/
      * }
      */
     public class func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
