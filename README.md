@@ -126,7 +126,9 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 - Makes parsing and modifying with RegExp easier  
 
 ```swift
+RegExp.match("My name is Taylor Swift","My name is (.*)")//Swift
 RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
+RegExp.test("hello world","o.*o")//true
 ```
 
 ## **AnimLib** 

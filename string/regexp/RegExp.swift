@@ -16,8 +16,7 @@ public class RegExp{
      * EXAMPLE: RegExp.test("hello world","o.*o")//true
      */
     public class func test(str:String,_ pattern:String)->Bool{
-        //or do something like this: return RegExpParser.match(pattern,options).count > 0
-        return str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
+        return str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil//or do something like this: return RegExpParser.match(pattern,options).count > 0
     }
     /*
     * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
