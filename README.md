@@ -129,6 +129,14 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 RegExp.match("My name is Taylor Swift","My name is (.*)")//Swift
 RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
 RegExp.test("hello world","o.*o")//true
+/*RegExp Exec:*/
+let str = "blue:0000FF green:00FF00 red:FF0000"
+RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
+    Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
+    let content = (str as NSString).substringWithRange($0.rangeAtIndex(0))/*the entire match*/
+    let name = RegExp.value(str, $0, 1)/*capturing group 1*/
+    let value = RegExp.value(str, $0, 2)/*capturing group 2*/
+}//Outputs: name: green, value: 00FF00...and so on
 ```
 
 ## **AnimLib** 
