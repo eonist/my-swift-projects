@@ -39,7 +39,7 @@ class Reflection {
         //print(instanceName)
         xml.name = instanceName
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
-            //Swift.print("handleArray: " + "\(name)")
+            Swift.print("handleArray: " + "\(name)")
             var arrayXML = XML()
             arrayXML.name = name
             arrayXML["type"] = "Array"
