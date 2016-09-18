@@ -87,6 +87,12 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
+protocol AnyArray{
+    
+}
+extension Array:AnyArray{
+    
+}
 
 //TODO: Needs more research see similar case with AnyObject
 /*
