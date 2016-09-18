@@ -45,7 +45,7 @@ class Reflection {
             arrayXML["type"] = "Array"
             let properties = Reflection.reflect(theContent)
             properties.forEach{
-               if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
+                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
                     Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
                     child.name = "item"
