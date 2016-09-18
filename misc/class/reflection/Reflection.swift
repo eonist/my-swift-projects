@@ -62,7 +62,7 @@ class Reflection {
         }
         let properties = Reflection.reflect(instance)
         properties.forEach{
-            if ($0.value is NSArray){/*array*/
+            if ($0.value is AnyArray){/*array*/
                 Swift.print("found array: " + "\($0.value)" + " $0.label " + "\($0.label)")
                 handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
