@@ -52,7 +52,7 @@ class Reflection {
                     child.stringValue = string/*add value */
                     child["type"] = String($0.value.dynamicType)
                     arrayXML.appendChild(child)
-                }else if($0.value is NSArray){/*array*/
+                }else if($0.value is AnyArray){/*array*/
                     handleArray(&arrayXML,$0.value,$0.label)
                 }else{
                     fatalError("unsuported type: " + "\($0.value.dynamicType)")

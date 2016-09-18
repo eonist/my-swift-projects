@@ -87,12 +87,9 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
-protocol AnyArray{
-}
-extension Array:AnyArray{
-}
-extension NSArray:AnyArray{
-}
+protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
+extension Array:AnyArray{}
+extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
 
 //TODO: Needs more research see similar case with AnyObject
 /*
