@@ -47,6 +47,7 @@ class Reflection {
             properties.forEach{
                 
                 //continue here: figure out how to assert if a value is convertable to a string
+                //also make a handleValue method, as it stands now, the same code is in two places. The name should be an argument since its the only thing that is different
                 
                 if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
                     Swift.print("$0.label: " + "\($0.label)")
