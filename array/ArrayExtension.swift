@@ -88,10 +88,10 @@ extension Array where Element:AnyObject{
     }
 }
 protocol AnyArray{
-    
 }
 extension Array:AnyArray{
-    
+}
+extension NSArray:AnyArray{
 }
 
 //TODO: Needs more research see similar case with AnyObject
