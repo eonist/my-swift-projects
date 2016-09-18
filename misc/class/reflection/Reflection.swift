@@ -46,7 +46,7 @@ class Reflection {
             let properties = Reflection.reflect(theContent)
             properties.forEach{
                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
-                    //Swift.print("$0.label: " + "\($0.label)")
+                    Swift.print("$0.label: " + "\($0.label)")
                     let child = XML()
                     child.name = "item"
                     child.stringValue = string/*add value */
@@ -63,10 +63,10 @@ class Reflection {
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is NSArray){/*array*/
-                //Swift.print("found array: " + "\($0.value)" + " $0.label " + "\($0.label)")
+                Swift.print("found array: " + "\($0.value)" + " $0.label " + "\($0.label)")
                 handleArray(&xml,$0.value,$0.label)
             }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
-                //Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
+                Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
                 let child = XML()
                 child.name = $0.label
                 child["type"] = String($0.value.dynamicType)
