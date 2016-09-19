@@ -38,6 +38,10 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         //print(instanceName)
         xml.name = instanceName
+     
+        func stringConvertiable(value:Any)->Bool{
+            return value is Int || value is CGFloat || value is String || value is Double
+        }
         func handleValue(inout theXML:XML,_ value:Any,_ name:String){
             Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
             let child = XML()
@@ -54,7 +58,7 @@ class Reflection {
             arrayXML["type"] = "Array"
             let properties = Reflection.reflect(value)
             properties.forEach{
-                if ($0.value is Int || $0.value is CGFloat || $0.value is String || $0.value is Double){/*<--asserts if the value can be converted to a string*/
+                if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                     handleValue(&arrayXML,$0.value,"item")
                 }else if($0.value is AnyArray){/*array*/
                     handleArray(&arrayXML,$0.value,$0.label)
