@@ -39,45 +39,48 @@ class Reflection {
         //print(instanceName)
         xml.name = instanceName
      
-        func stringConvertiable(value:Any)->Bool{
-            return value is Int || value is CGFloat || value is String || value is Double
-        }
-        func handleValue(inout theXML:XML,_ value:Any,_ name:String){
-            Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
-            let child = XML()
-            child.name = name
-            child["type"] = String(value.dynamicType)
-            let string:String = String(value)
-            child.stringValue = string/*add value*/
-            theXML.appendChild(child)
-        }
-        func handleArray(inout theXML:XML,_ value:Any,_ name:String){
-            Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
-            var arrayXML = XML()
-            arrayXML.name = name
-            arrayXML["type"] = "Array"
-            let properties = Reflection.reflect(value)
-            properties.forEach{
-                if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
-                    handleValue(&arrayXML,$0.value,"item")
-                }else if($0.value is AnyArray){/*array*/
-                    handleArray(&arrayXML,$0.value,$0.label)
-                }else{
-                    fatalError("unsuported type: " + "\($0.value.dynamicType)")
-                }
-            }
-            theXML.appendChild(arrayXML)
-        }
+        
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
-                handleArray(&xml,$0.value,$0.label)
-            }else if (String($0.value) != nil){/*all other values*///<-- must be convertible to string i guess
-                handleValue(&xml,$0.value,$0.label)
+                Utils.handleArray(&xml,$0.value,$0.label)
+            }else if (Utils.stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
+                Utils.handleValue(&xml,$0.value,$0.label)
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
         return xml
+    }
+}
+private class Utils{
+    static func stringConvertiable(value:Any)->Bool{
+        return value is Int || value is CGFloat || value is String || value is Double
+    }
+    static func handleValue(inout theXML:XML,_ value:Any,_ name:String){
+        Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
+        let child = XML()
+        child.name = name
+        child["type"] = String(value.dynamicType)
+        let string:String = String(value)
+        child.stringValue = string/*add value*/
+        theXML.appendChild(child)
+    }
+    static func handleArray(inout theXML:XML,_ value:Any,_ name:String){
+        Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
+        var arrayXML = XML()
+        arrayXML.name = name
+        arrayXML["type"] = "Array"
+        let properties = Reflection.reflect(value)
+        properties.forEach{
+            if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
+                handleValue(&arrayXML,$0.value,"item")
+            }else if($0.value is AnyArray){/*array*/
+                handleArray(&arrayXML,$0.value,$0.label)
+            }else{
+                fatalError("unsuported type: " + "\($0.value.dynamicType)")
+            }
+        }
+        theXML.appendChild(arrayXML)
     }
 }
