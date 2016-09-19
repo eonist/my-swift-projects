@@ -38,6 +38,17 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         //print(instanceName)
         xml.name = instanceName
+        /**
+         *
+         */
+        func handleValue(inout theXML:XML,_ theContent:Any,_ name:String){
+            Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
+            let child = XML()
+            child.name = name
+            child["type"] = String($0.value.dynamicType)
+            child.stringValue = string/*add value*/
+            xml.appendChild(child)
+        }
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             Swift.print("handleArray: " + "\(name)")
             var arrayXML = XML()
@@ -69,13 +80,8 @@ class Reflection {
             if ($0.value is AnyArray){/*array*/
                 Swift.print("found array: " + "$0.label \($0.label)" + "$0.value: \($0.value)" )
                 handleArray(&xml,$0.value,$0.label)
-            }else if let string = String($0.value) ?? nil{/*all other values*///<-- must be convertible to string i guess
-                Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
-                let child = XML()
-                child.name = $0.label
-                child["type"] = String($0.value.dynamicType)
-                child.stringValue = string/*add value*/
-                xml.appendChild(child)
+            }else if (String($0.value) ?? nil){/*all other values*///<-- must be convertible to string i guess
+                handleValue(&xml,string,$0.label)
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
