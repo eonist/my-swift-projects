@@ -38,9 +38,6 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         //print(instanceName)
         xml.name = instanceName
-        /**
-         *
-         */
         func handleValue(inout theXML:XML,_ value:Any,_ name:String){
             Swift.print("found value: " + "\(value)" + " name " + "\(name)")
             let child = XML()
@@ -48,7 +45,7 @@ class Reflection {
             child["type"] = String(value.dynamicType)
             let string:String = String(value)
             child.stringValue = string/*add value*/
-            xml.appendChild(child)
+            theXML.appendChild(child)
         }
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
             Swift.print("handleArray: " + "\(name)")
