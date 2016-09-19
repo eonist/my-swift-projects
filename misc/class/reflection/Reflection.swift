@@ -34,14 +34,15 @@ class Reflection {
      */
     static func toXML(value:Any)->XML{
         var xml:XML = XML()
-        handleValue(xml,value)
+        Utils.handleValue(&xml,value)
+        return xml
     }
 }
 private class Utils{
     /**
      *
      */
-    class func handleValue(inout xml:XML, _ value:Any)->XML{
+    class func handleValue(inout xml:XML, _ value:Any){
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
         //print(instanceName)
         xml.name = instanceName//the name of instance class
@@ -55,7 +56,6 @@ private class Utils{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
-        return xml
     }
     /**
      * Basic value types
