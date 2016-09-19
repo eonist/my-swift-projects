@@ -43,7 +43,7 @@ class Reflection {
             if ($0.value is AnyArray){/*array*/
                 Utils.handleArray(&xml,$0.value,$0.label)
             }else if (Utils.stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
-                Utils.handleValue(&xml,$0.value,$0.label)
+                Utils.handleBasicValue(&xml,$0.value,$0.label)
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
@@ -56,13 +56,13 @@ private class Utils{
      * Asserts if the PARAM value is a basic type
      */
     static func stringConvertiable(val:Any)->Bool{
-        return val is Int || val is CGFloat || val is String || val is Double || val is Float || val is Bool
+        return val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool
     }
     /**
      * Basic value types
      */
-    static func handleValue(inout theXML:XML,_ value:Any,_ name:String){
-        Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
+    static func handleBasicValue(inout theXML:XML,_ value:Any,_ name:String){
+        Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value)" )
         let child = XML()
         child.name = name
         child["type"] = String(value.dynamicType)
@@ -81,7 +81,7 @@ private class Utils{
         let properties = Reflection.reflect(value)
         properties.forEach{
             if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
-                handleValue(&arrayXML,$0.value,"item")
+                handleBasicValue(&arrayXML,$0.value,"item")
             }else if($0.value is AnyArray){/*array*/
                 handleArray(&arrayXML,$0.value,$0.label)
             }else{
