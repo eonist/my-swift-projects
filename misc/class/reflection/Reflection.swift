@@ -22,6 +22,7 @@ class Reflection {
      * Converts an instance to XML
      * NOTE: This is a general solution for saving the state of a class/struct instance
      * NOTE: Supports infinitly deep class structures
+     * CAUTION: make sure the class doesnt ref it self etc, infinte loops
      * EXAMPLE output:
      * <Selector>
      *     <id type=String>custom</id>
