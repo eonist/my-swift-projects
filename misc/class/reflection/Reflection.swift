@@ -49,11 +49,11 @@ private class Utils{
         let properties = Reflection.reflect(value)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
-                Utils.handleArray(&xml,$0.value,$0.label)
+                handleArray(&xml,$0.value,$0.label)
             }else if (Utils.stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
-                Utils.handleBasicValue(&xml,$0.value,$0.label)
+                xml += handleBasicValue($0.value,$0.label)
             }else{
-                xml.appendChild(handleValue($0.value))
+                xml += handleValue($0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
@@ -62,14 +62,14 @@ private class Utils{
     /**
      * Basic value types
      */
-    static func handleBasicValue(inout xml:XML,_ value:Any,_ name:String){
+    static func handleBasicValue(value:Any,_ name:String)->XML{
         Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value)" )
-        let child = XML()
-        child.name = name
-        child["type"] = String(value.dynamicType)
+        let xml = XML()
+        xml.name = name
+        xml["type"] = String(value.dynamicType)
         let string:String = String(value)
-        child.stringValue = string/*add value*/
-        xml.appendChild(child)
+        xml.stringValue = string/*add value*/
+        return xml
     }
     /**
      * Array types
