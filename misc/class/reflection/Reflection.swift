@@ -47,24 +47,19 @@ class Reflection {
             child.stringValue = string/*add value*/
             theXML.appendChild(child)
         }
-        func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
-            Swift.print("handleArray: " + "name \(name)" + "$0.value: \(theContent)" )
+        func handleArray(inout theXML:XML,_ value:Any,_ name:String){
+            Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
             var arrayXML = XML()
             arrayXML.name = name
             arrayXML["type"] = "Array"
-            let properties = Reflection.reflect(theContent)
+            let properties = Reflection.reflect(value)
             properties.forEach{
                 
                 //continue here: figure out how to assert if a value is convertable to a string
                 //also make a handleValue method, as it stands now, the same code is in two places. The name should be an argument since its the only thing that is different
                 
-                if let string = String($0.value) ?? nil{/*<--asserts if the value can be converted to a string*/
-                    Swift.print("$0.label: " + "\($0.label)")
-                    let child = XML()
-                    child.name = "item"
-                    child.stringValue = string/*add value */
-                    child["type"] = String($0.value.dynamicType)
-                    arrayXML.appendChild(child)
+                if (String($0.value) != nil){/*<--asserts if the value can be converted to a string*/
+                    handleValue(&arrayXML,$0.value,"item")
                 }else if($0.value is AnyArray){/*array*/
                     handleArray(&arrayXML,$0.value,$0.label)
                 }else{
@@ -76,7 +71,6 @@ class Reflection {
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
-                
                 handleArray(&xml,$0.value,$0.label)
             }else if (String($0.value) != nil){/*all other values*///<-- must be convertible to string i guess
                 handleValue(&xml,$0.value,$0.label)
