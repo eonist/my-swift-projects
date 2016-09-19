@@ -33,15 +33,14 @@ class Reflection {
      * </Selector>
      */
     static func toXML(value:Any)->XML{
-        Utils.handleValue(value)
-        return xml
+        return Utils.handleValue(value)
     }
 }
 private class Utils{
     /**
      * Custom types like StyleProperty or Selector
      */
-    class func handleValue(value:Any){
+    class func handleValue(value:Any)->XML{
         var xml = XML()
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue:" + " instanceName \(instanceName)" + "value: \(value)" )
@@ -58,6 +57,7 @@ private class Utils{
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
+        return xml
     }
     /**
      * Basic value types
@@ -86,9 +86,7 @@ private class Utils{
             }else if($0.value is AnyArray){/*array*/
                 handleArray(&arrayXML,$0.value,$0.label)
             }else{
-                var child = XML()
-                handleValue(&child,$0.value)
-                arrayXML.appendChild(child)
+                arrayXML += handleValue($0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
