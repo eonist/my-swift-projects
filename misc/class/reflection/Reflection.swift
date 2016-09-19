@@ -41,11 +41,12 @@ class Reflection {
         /**
          *
          */
-        func handleValue(inout theXML:XML,_ theContent:Any,_ name:String){
-            Swift.print("found value: " + "\($0.value)" + " $0.label " + "\($0.label)")
+        func handleValue(inout theXML:XML,_ value:Any,_ name:String){
+            Swift.print("found value: " + "\(value)" + " name " + "\(name)")
             let child = XML()
             child.name = name
-            child["type"] = String($0.value.dynamicType)
+            child["type"] = String(value.dynamicType)
+            let string:String = String(value)
             child.stringValue = string/*add value*/
             xml.appendChild(child)
         }
@@ -80,8 +81,8 @@ class Reflection {
             if ($0.value is AnyArray){/*array*/
                 Swift.print("found array: " + "$0.label \($0.label)" + "$0.value: \($0.value)" )
                 handleArray(&xml,$0.value,$0.label)
-            }else if (String($0.value) ?? nil){/*all other values*///<-- must be convertible to string i guess
-                handleValue(&xml,string,$0.label)
+            }else if (String($0.value) != nil){/*all other values*///<-- must be convertible to string i guess
+                handleValue(&xml,$0.value,$0.label)
             }else{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
