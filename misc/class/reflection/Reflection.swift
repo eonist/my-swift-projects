@@ -77,7 +77,7 @@ private class Utils{
      * Array types
      */
     static func handleArray(inout xml:XML,_ value:Any,_ name:String){
-        Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
+        Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
         var arrayXML = XML()
         arrayXML.name = name
         arrayXML["type"] = "Array"
@@ -89,7 +89,7 @@ private class Utils{
                 handleArray(&arrayXML,$0.value,$0.label)
             }else{
                 var child = XML()
-                xml.appendChild(child)
+                arrayXML.appendChild(child)
                 handleValue(&child,$0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
