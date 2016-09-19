@@ -32,13 +32,20 @@ class Reflection {
      *     </states>
      * </Selector>
      */
-    static func toXML(instance:Any)->XML{
+    static func toXML(value:Any)->XML{
         var xml:XML = XML()
-        //find name of instance class
-        let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
+        handleValue(xml,value)
+    }
+}
+private class Utils{
+    /**
+     *
+     */
+    class func handleValue(inout xml:XML, _ value:Any)->XML{
+        let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
         //print(instanceName)
-        xml.name = instanceName
-        let properties = Reflection.reflect(instance)
+        xml.name = instanceName//the name of instance class
+        let properties = Reflection.reflect(value)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
                 Utils.handleArray(&xml,$0.value,$0.label)
@@ -50,36 +57,22 @@ class Reflection {
         }
         return xml
     }
-}
-private class Utils{
-    /**
-     * Asserts if the PARAM value is a basic type
-     */
-    static func stringConvertiable(val:Any)->Bool{
-        return val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool
-    }
     /**
      * Basic value types
      */
-    static func handleBasicValue(inout theXML:XML,_ value:Any,_ name:String){
+    static func handleBasicValue(inout xml:XML,_ value:Any,_ name:String){
         Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value)" )
         let child = XML()
         child.name = name
         child["type"] = String(value.dynamicType)
         let string:String = String(value)
         child.stringValue = string/*add value*/
-        theXML.appendChild(child)
-    }
-    /**
-     *
-     */
-    class func handleValue(inout theXML:XML, _ value:Any){
-        
+        xml.appendChild(child)
     }
     /**
      * Array types
      */
-    static func handleArray(inout theXML:XML,_ value:Any,_ name:String){
+    static func handleArray(inout xml:XML,_ value:Any,_ name:String){
         Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
         var arrayXML = XML()
         arrayXML.name = name
@@ -94,6 +87,12 @@ private class Utils{
                 fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
-        theXML.appendChild(arrayXML)
+        xml.appendChild(arrayXML)
+    }
+    /**
+     * Asserts if the PARAM value is a basic type
+     */
+    static func stringConvertiable(val:Any)->Bool{
+        return val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool
     }
 }
