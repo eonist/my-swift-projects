@@ -39,7 +39,7 @@ class Reflection {
         //print(instanceName)
         xml.name = instanceName
         func handleValue(inout theXML:XML,_ value:Any,_ name:String){
-            Swift.print("found value: " + "\(value)" + " name " + "\(name)")
+            Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
             let child = XML()
             child.name = name
             child["type"] = String(value.dynamicType)
@@ -48,7 +48,7 @@ class Reflection {
             theXML.appendChild(child)
         }
         func handleArray(inout theXML:XML,_ theContent:Any,_ name:String){
-            Swift.print("handleArray: " + "\(name)")
+            Swift.print("handleArray: " + "name \(name)" + "$0.value: \(theContent)" )
             var arrayXML = XML()
             arrayXML.name = name
             arrayXML["type"] = "Array"
@@ -76,7 +76,7 @@ class Reflection {
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
-                Swift.print("found array: " + "$0.label \($0.label)" + "$0.value: \($0.value)" )
+                
                 handleArray(&xml,$0.value,$0.label)
             }else if (String($0.value) != nil){/*all other values*///<-- must be convertible to string i guess
                 handleValue(&xml,$0.value,$0.label)
