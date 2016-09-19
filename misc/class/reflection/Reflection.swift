@@ -21,6 +21,7 @@ class Reflection {
     /**
      * Converts an instance to XML
      * NOTE: This is a general solution for saving the state of a class/struct instance
+     * NOTE: Supports infinitly deep class structures
      * EXAMPLE output:
      * <Selector>
      *     <id type=String>custom</id>
@@ -41,7 +42,7 @@ private class Utils{
      * Custom types like StyleProperty or Selector
      */
     class func handleValue(value:Any)->XML{
-        var xml = XML()
+        let xml = XML()
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue:" + " instanceName \(instanceName)" + "value: \(value)" )
         //print(instanceName)
@@ -49,8 +50,8 @@ private class Utils{
         let properties = Reflection.reflect(value)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
-                handleArray(&xml,$0.value,$0.label)
-            }else if (Utils.stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
+                xml += handleArray($0.value,$0.label)
+            }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
                 xml += handleBasicValue($0.value,$0.label)
             }else{
                 xml += handleValue($0.value)
@@ -74,23 +75,23 @@ private class Utils{
     /**
      * Array types
      */
-    static func handleArray(inout xml:XML,_ value:Any,_ name:String){
+    static func handleArray(value:Any,_ name:String)->XML{
         Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
-        var arrayXML = XML()
-        arrayXML.name = name
-        arrayXML["type"] = "Array"
+        let xml = XML()
+        xml.name = name
+        xml["type"] = "Array"
         let properties = Reflection.reflect(value)
         properties.forEach{
             if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
-                handleBasicValue(&arrayXML,$0.value,"item")
+                xml += handleBasicValue($0.value,"item")
             }else if($0.value is AnyArray){/*array*/
-                handleArray(&arrayXML,$0.value,$0.label)
+                xml += handleArray($0.value,$0.label)
             }else{
-                arrayXML += handleValue($0.value)
+                xml += handleValue($0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
-        xml.appendChild(arrayXML)
+        return xml
     }
     /**
      * Asserts if the PARAM value is a basic type
