@@ -54,11 +54,7 @@ class Reflection {
             arrayXML["type"] = "Array"
             let properties = Reflection.reflect(value)
             properties.forEach{
-                
-                //continue here: figure out how to assert if a value is convertable to a string
-                //also make a handleValue method, as it stands now, the same code is in two places. The name should be an argument since its the only thing that is different
-                
-                if (String($0.value) != nil){/*<--asserts if the value can be converted to a string*/
+                if ($0.value is Int || $0.value is CGFloat || $0.value is String || $0.value is Double){/*<--asserts if the value can be converted to a string*/
                     handleValue(&arrayXML,$0.value,"item")
                 }else if($0.value is AnyArray){/*array*/
                     handleArray(&arrayXML,$0.value,$0.label)
