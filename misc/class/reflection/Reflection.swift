@@ -38,8 +38,6 @@ class Reflection {
         let instanceName:String = String(instance.dynamicType)//if this doesnt work use generics
         //print(instanceName)
         xml.name = instanceName
-     
-        
         let properties = Reflection.reflect(instance)
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
@@ -54,9 +52,15 @@ class Reflection {
     }
 }
 private class Utils{
-    static func stringConvertiable(value:Any)->Bool{
-        return value is Int || value is CGFloat || value is String || value is Double
+    /**
+     * Asserts if the PARAM value is a basic type
+     */
+    static func stringConvertiable(val:Any)->Bool{
+        return val is Int || val is CGFloat || val is String || val is Double || val is Float || val is Bool
     }
+    /**
+     * Basic value types
+     */
     static func handleValue(inout theXML:XML,_ value:Any,_ name:String){
         Swift.print("handleValue:" + " name \(name)" + "value: \(value)" )
         let child = XML()
@@ -66,6 +70,9 @@ private class Utils{
         child.stringValue = string/*add value*/
         theXML.appendChild(child)
     }
+    /**
+     * Array types
+     */
     static func handleArray(inout theXML:XML,_ value:Any,_ name:String){
         Swift.print("handleArray: " + "name \(name)" + "$0.value: \(value)" )
         var arrayXML = XML()
