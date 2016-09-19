@@ -55,8 +55,8 @@ private class Utils{
                 Utils.handleBasicValue(&xml,$0.value,$0.label)
             }else{
                 var child = XML()
-                xml.appendChild(child)
                 handleValue(&child,$0.value)
+                xml.appendChild(child)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
@@ -89,8 +89,8 @@ private class Utils{
                 handleArray(&arrayXML,$0.value,$0.label)
             }else{
                 var child = XML()
-                arrayXML.appendChild(child)
                 handleValue(&child,$0.value)
+                arrayXML.appendChild(child)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
