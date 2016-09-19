@@ -71,6 +71,12 @@ private class Utils{
         theXML.appendChild(child)
     }
     /**
+     *
+     */
+    class func handleValue(inout theXML:XML, _ value:Any){
+        
+    }
+    /**
      * Array types
      */
     static func handleArray(inout theXML:XML,_ value:Any,_ name:String){
