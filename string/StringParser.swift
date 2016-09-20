@@ -153,10 +153,11 @@ class StringParser{
         }
     }
     /**
-     *
+     * 
      */
-    class func nsColor(hexColor:String)->NSColor{
-        return NSColor()
+    class func color(hexColor:String)->NSColor{
+        let hex:UInt = StringParser.color(hexColor)
+        return NSColorParser.nsColor(hex)
     }
     /**
      * Returns a file path, excluding the file name and file-suffix
