@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 class StringParser{
     /**
      * Returns encode text (escaped)
@@ -145,12 +145,18 @@ class StringParser{
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
             //Swift.print("StringParser.hexColor() hex: " + "\(hex)")
-            return UInt(Float("0x"+hex)!)//<- added the 0x recently
+            return ("0x"+hex).uint//<- added the 0x recently
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
             //Swift.print("uintColor: " + "\(uintColor)")
             return uintColor//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
+    }
+    /**
+     *
+     */
+    class func nsColor(hexColor:String)->NSColor{
+        return NSColor(hexColor)
     }
     /**
      * Returns a file path, excluding the file name and file-suffix
