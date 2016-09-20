@@ -135,7 +135,7 @@ class StringParser{
         return string == "true";
     }
     /**
-     * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
+     * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
      */
     class func color(hexColor:String) -> UInt{
@@ -153,9 +153,9 @@ class StringParser{
         }
     }
     /**
-     * 
+     * Returns NSColor for variouse literal color formats 
      */
-    class func color(hexColor:String)->NSColor{
+    class func nsColor(hexColor:String)->NSColor{
         let hex:UInt = StringParser.color(hexColor)
         return NSColorParser.nsColor(hex)
     }
