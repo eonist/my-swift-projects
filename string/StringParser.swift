@@ -149,7 +149,7 @@ class StringParser{
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
             //Swift.print("uintColor: " + "\(uintColor)")
-            return uintColor;//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            return uintColor//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
         }
     }
     /**
