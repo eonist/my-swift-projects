@@ -17,6 +17,7 @@ extension NSColor{
     func alpha(alpha:CGFloat)->NSColor{
         return NSColor(self,alpha)
     }
+    
     static var random:NSColor{return ColorParser.randomColor()}
     var cgColor:CGColorRef {return CGColorParser.cgColor(self)}
     var rgb:RGB {return RGBParser.rgb(self)}
