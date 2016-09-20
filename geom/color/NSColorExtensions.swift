@@ -21,7 +21,7 @@ extension NSColor{
     var cgColor:CGColorRef {return CGColorParser.cgColor(self)}
     var rgb:RGB {return RGBParser.rgb(self)}
     var rgba:RGBA{return RGBAParser.rgba(self)}
-    var hexString:String{return HexParser.hexString(self)}
+    var hexString:String{return HexParser.hexString(self)}/*EXAMPLE: NSColor.redColor().hexString//FF0000*/
     /**
      * EXAMPLE: NSColor.red.hexVal//Output:255.0
      */

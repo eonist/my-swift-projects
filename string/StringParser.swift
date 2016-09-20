@@ -156,7 +156,7 @@ class StringParser{
      *
      */
     class func nsColor(hexColor:String)->NSColor{
-        return NSColor(hexColor)
+        return NSColor()
     }
     /**
      * Returns a file path, excluding the file name and file-suffix
