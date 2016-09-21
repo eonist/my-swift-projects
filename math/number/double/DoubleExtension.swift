@@ -1,5 +1,5 @@
 import Foundation
 
-class DoubleExtension {
-
+extension Double {
+    var cgFloat:CGFloat {return CGFloat(self)}//Convenince
 }
