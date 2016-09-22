@@ -44,9 +44,17 @@ class ClassParser {
      * classType = B.self
      * instance = classType.init("abc")
      */
-   static func classType(instance:Any)->Any{
-      return instance.dynamicType
-   }
+    static func classType(instance:Any)->Any{
+        return instance.dynamicType
+    }
+    /**
+     * Untested
+     */
+    static func instanceByClassType<T>(instances:Array<Any?>,_ classType:T.Type)->Any? {
+        for (var i : Int = 0; i < instances.count; i++){ if(instances[i] as? T != nil) {return instances[i]}}
+        return nil
+    }
+
 }
 /*
 print("press")

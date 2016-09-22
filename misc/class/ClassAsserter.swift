@@ -7,6 +7,12 @@ import Foundation
 
 class ClassAsserter{
     /**
+     * Returns true if any of @param instances is of class @param classType
+     */
+    static func hasInstanceOfClassType<T>(instances:Array<Any?>,_ classType:T.Type) -> Bool {
+        return ClassParser.instanceByClassType(instances, classType) != nil
+    }
+    /**
      * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
      * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
      */

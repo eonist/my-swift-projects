@@ -1,19 +1,29 @@
-import Foundation
+import Cocoa
 
 class Reflection {
     /**
      * NOTE: does not work with computed properties like: var something:String{return ""}
      * NOTE: does not work with methods
      * NOTE: only works with regular variables
-     * NOTE: some limitations with inheritance
+     * NOTE: some limitations with inheritance (basially i doesnt work with inheritance, it won't grab the variables of subClasses, it works for variables in the super type)
+     * NOTE: inheritance can be supported , by traversing down the hirarchy via: mirror.superclassMirror() see: http://stackoverflow.com/a/36721639/5389500
      * NOTE: works with struct and class
      */
     static func reflect(instance:Any)->[(label:String,value:Any)]{
-        var properties = [(label:String,value:Any)]()
+        var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
+        Swift.print("mirror: " + "\(mirror)")
         mirror.children.forEach{
             if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
                 properties.append((name,$0.value))
+            }
+        }
+        
+        if let parent = mirror.superclassMirror(){
+            parent.children.forEach{
+                if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
+                    properties.append((name,$0.value))
+                }
             }
         }
         return properties
@@ -45,10 +55,12 @@ private class Utils{
     class func handleValue(value:Any)->XML{
         let xml = XML()
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
-        Swift.print("handleValue:" + " instanceName \(instanceName)" + "value: \(value)" )
+        Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
         //print(instanceName)
         xml.name = instanceName//the name of instance class
         let properties = Reflection.reflect(value)
+        //Swift.print("properties.count: " + "\(properties.count)")
+        
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
@@ -59,6 +71,7 @@ private class Utils{
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
+        
         return xml
     }
     /**
@@ -96,8 +109,19 @@ private class Utils{
     }
     /**
      * Asserts if the PARAM value is a basic type
+     * TODO: Write an assert utility method that takes types and asserts true pr false for an instance
      */
     static func stringConvertiable(val:Any)->Bool{
-        return val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool
+        //if(val is CGColor){return true}
+        if( val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool || val is NSColor){
+            return true
+        }
+        else if(String(val.dynamicType) == "__NSCFType" ){
+            Swift.print("val: " + "\(val)")
+            //fatalError("bug")
+            return true
+        }else{
+            return false
+        }
     }
 }
