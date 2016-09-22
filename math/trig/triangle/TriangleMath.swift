@@ -24,7 +24,7 @@ import Foundation
  * @Note R: circumradius (radius of circle passing through all three vertices)
  * @Note r: inradius (radius of circle tangent to all three sides)
  * @Note Cg: center of gravity (intersection of the medians) V1 + V2 + V3 / 3
- * @Note Calt : intersection of the altitudes
+ * @Note Calt: intersection of the altitudes
  */
 class TriangleMath {
     /**
