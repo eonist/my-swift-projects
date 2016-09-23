@@ -63,10 +63,12 @@ private class Utils{
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
-            }else if($0.value is Reflectable || ($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+            }else if($0.value is Reflectable){
                 xml += handleReflectable($0.value as! Reflectable,$0.label)
             }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
                 xml += handleBasicValue($0.value,$0.label)
+            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                xml += handleReflectable($0.value as! CGColorRef,$0.label)
             }else{
                 xml += handleValue($0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
