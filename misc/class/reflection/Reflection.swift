@@ -109,13 +109,15 @@ private class Utils{
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
         properties.forEach{
-            if($0.value is Reflectable || ($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+            if($0.value is Reflectable){
                 Swift.print("$0.value: " + "\($0.value)")
                 xml += handleReflectable($0.value as! Reflectable,$0.label)
             }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                 xml += handleBasicValue($0.value,"item")
             }else if($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
+            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                xml += handleReflectable($0.value as! CGColorRef,$0.label)
             }else{
                 xml += handleValue($0.value)
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
