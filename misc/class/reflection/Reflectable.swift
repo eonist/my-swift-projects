@@ -13,17 +13,8 @@ extension NSColor:Reflectable{
         return (type:"NSColor",value:self.hexString)
     }
 }
-extension CGAffineTransform{
-    /*
-    public var a: CGFloat
-    public var b: CGFloat
-    public var c: CGFloat
-    public var d: CGFloat
-    public var tx: CGFloat
-    public var ty: CGFloat
-    */
+extension CGTransform:Reflectable{
     var reflection:(type:String,value:String) {
-        let transformIdentity:String =  //a,b,c,d,tx,ty
-        return (type:"CGTransform",value:"")
+        return (type:"CGTransform",value:self.identity)
     }
 }
