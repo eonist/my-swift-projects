@@ -18,7 +18,6 @@ class Reflection {
                 properties.append((name,$0.value))
             }
         }
-        
         if let parent = mirror.superclassMirror(){
             parent.children.forEach{
                 if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
@@ -73,7 +72,6 @@ private class Utils{
                 //fatalError("unsuported type: " + "\($0.value.dynamicType)")
             }
         }
-        
         return xml
     }
     /**
