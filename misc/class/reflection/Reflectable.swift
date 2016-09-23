@@ -23,6 +23,7 @@ extension CGAffineTransform{
     public var ty: CGFloat
     */
     var reflection:(type:String,value:String) {
-        return (type:"CGTransform",value:self.hexString)
+        let transformIdentity:String =  //a,b,c,d,tx,ty
+        return (type:"CGTransform",value:"")
     }
 }
