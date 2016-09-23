@@ -110,6 +110,7 @@ private class Utils{
         let properties = Reflection.reflect(value)
         properties.forEach{
             if($0.value is Reflectable || ($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                Swift.print("$0.value: " + "\($0.value)")
                 xml += handleReflectable($0.value as! Reflectable,$0.label)
             }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                 xml += handleBasicValue($0.value,"item")
