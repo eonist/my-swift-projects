@@ -64,6 +64,8 @@ private class Utils{
         properties.forEach{
             if ($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
+            }else if($0.value is Reflectable){
+                
             }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
                 xml += handleBasicValue($0.value,$0.label)
             }else{
