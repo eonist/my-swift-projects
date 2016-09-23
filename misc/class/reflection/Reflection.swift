@@ -111,7 +111,9 @@ private class Utils{
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
         properties.forEach{
-            if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
+            if($0.value is Reflectable){
+                xml += handleReflectable($0.value as! Reflectable,$0.label)
+            }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                 xml += handleBasicValue($0.value,"item")
             }else if($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
@@ -128,12 +130,7 @@ private class Utils{
      */
     static func stringConvertiable(val:Any)->Bool{
         //if(val is CGColor){return true}
-        if( val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool || val is NSColor){
-            return true
-        }
-        else if(String(val.dynamicType) == "__NSCFType" ){
-            Swift.print("val: " + "\(val)")
-            //fatalError("bug")
+        if( val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool){
             return true
         }else{
             return false
