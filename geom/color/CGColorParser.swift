@@ -7,8 +7,8 @@ class CGColorParser {
      */
     class func cgColor(ciColor:CIColor)->CGColor{
         let colorSpace:CGColorSpaceRef = ciColor.colorSpace
-        let components/*:CGFloat*/ = ciColor.components;
-        let cgColor:CGColorRef  = CGColorCreate(colorSpace, components)!;
+        let components/*:CGFloat*/ = ciColor.components
+        let cgColor:CGColorRef  = CGColorCreate(colorSpace, components)!
         return cgColor
     }
     /**
