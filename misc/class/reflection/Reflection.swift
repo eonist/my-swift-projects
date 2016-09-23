@@ -65,7 +65,7 @@ private class Utils{
             if ($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
             }else if($0.value is Reflectable){
-                
+                xml += handleReflectable($0.value as! Reflectable,$0.label)
             }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
                 xml += handleBasicValue($0.value,$0.label)
             }else{
@@ -77,9 +77,11 @@ private class Utils{
         return xml
     }
     /**
-     *
+     * Reflectable values
      */
-    static func handleReflectable(value:String,_ name:String, _ type:String)->XML{
+    static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
+        let value:String = reflectable.reflection.value
+        let type:String = reflectable.reflection.type
         Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
         let xml = XML()
         xml.name = name
