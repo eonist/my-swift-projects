@@ -77,6 +77,17 @@ private class Utils{
         return xml
     }
     /**
+     *
+     */
+    static func handleReflectable(value:String,_ name:String, _ type:String)->XML{
+        Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
+        let xml = XML()
+        xml.name = name
+        xml["type"] = type
+        xml.stringValue = value/*add value*/
+        return xml
+    }
+    /**
      * Basic value types
      */
     static func handleBasicValue(value:Any,_ name:String)->XML{
