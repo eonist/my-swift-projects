@@ -82,12 +82,7 @@ private class Utils{
                 }
             }
         }else{//nil
-            //Extracts CGAffineTransform from: Optional<CGAffineTransform>
-            let typeArr = String(value!.dynamicType).characters.split{$0 == "<"}.map(String.init)
-            let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
-            
-            print(typeArr2[0])
-            xml["type"] = typeArr2[0]
+            xml["type"] = extractClassType(value!)
         }
         return xml
     }
@@ -141,6 +136,14 @@ private class Utils{
             }
         }
         return xml
+    }
+    /**
+     * Extracts CGAffineTransform from: Optional<CGAffineTransform>
+     */
+    static func extractClassType(value:Any)->String{
+        let arr1 = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
+        let arr2 = arr1[1].characters.split{$0 == ">"}.map(String.init)
+        return arr2[0]
     }
     /**
      * Asserts if the PARAM value is a basic type
