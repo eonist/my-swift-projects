@@ -12,7 +12,7 @@ class ReflectionUtils {
             case type == "Int":return value.int
             case type == "UInt":return value.uint
             case type == "Bool":return value.bool
-            case type == "DropShaodw":return value
+            case type == "DropShadow":return value
             default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
         }
         
