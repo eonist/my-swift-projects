@@ -56,7 +56,7 @@ private class Utils{
         let xml = XML()
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
       
-        Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
+        Swift.print("handleValue(): instanceName \(instanceName) name: \(name) value: \(value)")
         //print(instanceName)
         xml.name = name != nil ? name : instanceName//the name of instance class
         if(String(value) != "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
