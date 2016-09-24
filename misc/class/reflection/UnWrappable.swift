@@ -33,3 +33,8 @@ extension UnWrappable{
         }
     }
 }
+func unWrap<T>(xml:XML) -> T? {
+    
+    return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
+}
+
