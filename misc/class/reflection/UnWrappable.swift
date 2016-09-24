@@ -8,6 +8,7 @@ import Foundation
 protocol UnWrappable {
     func unWrap<T>(xml:XML) -> T?//add to custom classes
     func unWrap<T>(xml:XML,_ key:String) -> T?//used to unWrap values
+    func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
     /**
@@ -33,8 +34,10 @@ extension UnWrappable{
         }
     }
 }
-func unWrap<T>(xml:XML) -> T? {
-    
-    return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
+extension CGFloat:UnWrappable{
+    func unWrap<T>(value:String) -> T? {
+        return value.cgFloat as? T
+    }
 }
+
 
