@@ -4,7 +4,13 @@ class ReflectionUtils {
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    class func toType(value:String, _ type:String) -> Any{
+    class func toType(xml:XML) -> Any?{
+        let type:String = xml["type"]!
+        
+        if(xml.childCount > 0){xml.children}
+        
+        let value:String = xml.value
+        strVal.count != 0 ?
         switch(true) {
             case type == "String":return value
             case type == "CGFloat":return value.cgFloat
