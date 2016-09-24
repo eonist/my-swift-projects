@@ -4,7 +4,7 @@ import Foundation
 //For more complex types see if they them selfs are UnWrappable. NICE!
 protocol UnWrappable {
     //use init instead
-    func unWrap<T>(xml:XML) -> T?
+    func unWrap<T>(xml:XML,_ key:String) -> T?
     
 }
 extension UnWrappable{
