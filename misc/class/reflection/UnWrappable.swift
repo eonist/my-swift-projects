@@ -11,6 +11,12 @@ protocol UnWrappable {
     func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
+    func unWrap<T>(xml:XML) -> T?{
+        return nil//override in subClass
+    }
+    func unWrap<T>(value:String) -> T? {
+        return nil//override in subClass
+    }
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
