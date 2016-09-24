@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 //Continue here: what you do is that you extend the Types you want to unWrap.
 //And use inference similar to the way you made that cast method.
 //For more complex types see if they them selfs are UnWrappable. NICE!
@@ -34,6 +34,18 @@ extension CGFloat:UnWrappable{
         return value.cgFloat as? T
     }
 }
+extension Bool:UnWrappable{
+    func unWrap<T>(value:String) -> T? {
+        return value.bool as? T
+    }
+}
+extension NSColor:UnWrappable{
+    func unWrap<T>(value:String) -> T? {
+        return NSColorParser.nsColor(value) as? T
+    }
+}
+
+
 
 /*
 old code:
