@@ -51,29 +51,32 @@ private class Utils{
     /**
      * Custom types like StyleProperty or Selector
      */
-    class func handleValue(value:Any)->XML{
+    class func handleValue(value:Any?,_ name:String? = nil)->XML{
         let xml = XML()
         let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
         //print(instanceName)
-        xml.name = instanceName//the name of instance class
-        let properties = Reflection.reflect(value)
-        //Swift.print("properties.count: " + "\(properties.count)")
-        
-        properties.forEach{
-            if ($0.value is AnyArray){/*array*/
-                xml += handleArray($0.value,$0.label)
-            }else if($0.value is Reflectable){
-                xml += handleReflectable($0.value as! Reflectable,$0.label)
-            }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
-                xml += handleBasicValue($0.value,$0.label)
-            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
-                xml += handleReflectable($0.value as! CGColorRef,$0.label)
-            }else{
-                xml += handleValue($0.value)
-                //fatalError("unsuported type: " + "\($0.value.dynamicType)")
+        xml.name = name != nil ? name : instanceName//the name of instance class
+        if(value != nil){
+            let properties = Reflection.reflect(value)
+            //Swift.print("properties.count: " + "\(properties.count)")
+            
+            properties.forEach{
+                if ($0.value is AnyArray){/*array*/
+                    xml += handleArray($0.value,$0.label)
+                }else if($0.value is Reflectable){
+                    xml += handleReflectable($0.value as! Reflectable,$0.label)
+                }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
+                    xml += handleBasicValue($0.value,$0.label)
+                }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                    xml += handleReflectable($0.value as! CGColorRef,$0.label)
+                }else{
+                    xml += handleValue($0.value)
+                    //fatalError("unsuported type: " + "\($0.value.dynamicType)")
+                }
             }
         }
+        
         return xml
     }
     /**
