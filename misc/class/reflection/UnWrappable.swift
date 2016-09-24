@@ -3,6 +3,7 @@ import Foundation
 //And use inference similar to the way you made that cast method.
 //For more complex types see if they them selfs are UnWrappable. NICE!
 protocol UnWrappable {
+    //use init instead
     func unWrap<T>(xml:XML) -> T?
 }
 
