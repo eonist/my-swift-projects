@@ -25,6 +25,8 @@ extension UnWrappable{
         case type == "UInt":return value.uint as? T
         case type == "Bool":return value.bool as? T
         case type == "DropShadow":return value as? T
+            //if T is UNWrappable then (T as unwrappaple).unwrap(xml)
+            //TODO: add the types above to extensions instead
         default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
         }
     }
