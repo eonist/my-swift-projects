@@ -61,9 +61,9 @@ private class Utils{
         Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
         //print(instanceName)
         xml.name = name != nil ? name : instanceName!//the name of instance class
-        let test = value!
-        if(test == nil){Swift.print("FOUND A NIL!!!!!!")}
-        if(value != nil){
+
+
+        if(String(value) != "Optional(nil)"){
             let properties = Reflection.reflect(value!)
             //Swift.print("properties.count: " + "\(properties.count)")
             
@@ -83,7 +83,7 @@ private class Utils{
             }
         }else{//nil
             Swift.print("VALUE IS NIL!!!!")
-            let typeArr = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
+            let typeArr = String(value!.dynamicType).characters.split{$0 == "<"}.map(String.init)
             let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
             
             print(typeArr2[0])
