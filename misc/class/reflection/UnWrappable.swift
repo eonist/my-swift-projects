@@ -9,9 +9,7 @@ protocol UnWrappable {
 }
 
 extension UnWrappable{
-    init(xml:XML){
-        self.
-    }
+    
     func unWrap<T>(xml:XML,_ key:String) -> T?{
         
         return nil
