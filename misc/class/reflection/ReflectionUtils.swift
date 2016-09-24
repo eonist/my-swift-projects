@@ -2,7 +2,7 @@ import Foundation
 
 class ReflectionUtils {
     /**
-     *
+     * NOTE: looks at the type and converts that the value into a type
      */
     class func toType(value:String, _ type:String) -> Any{
         switch(true) {
