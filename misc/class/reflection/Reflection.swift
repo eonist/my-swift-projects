@@ -53,8 +53,12 @@ private class Utils{
      */
     class func handleValue(value:Any?)->XML{
         let xml = XML()
-        let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
-        Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
+        let instanceName:String?
+        if(value != nil){
+            instanceName = String(value.dynamicType)//if this doesnt work use generics
+            Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
+        }
+        
         //print(instanceName)
         xml.name = instanceName//the name of instance class
         if(value != nil){
