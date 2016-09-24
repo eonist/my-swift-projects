@@ -6,3 +6,9 @@ protocol UnWrappable {
     //For more complex types see if they them selfs are UnWrappable. NICE!
 }
 
+extension UnWrappable{
+    func unWrap(xml:XML) -> Any?{
+     
+        return nil
+    }
+}
