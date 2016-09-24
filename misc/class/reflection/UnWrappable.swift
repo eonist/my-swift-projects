@@ -7,12 +7,25 @@ protocol UnWrappable {
     func unWrap<T>(xml:XML) -> T?
     
 }
-
 extension UnWrappable{
-    
+    /**
+     * NOTE: looks at the type and converts that the value into a type
+     */
     func unWrap<T>(xml:XML,_ key:String) -> T?{
-        
-        return nil
+        if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
+            return nil
+        }
+        let type:String = xml["type"]!
+        let value:String = xml.value
+        switch(true) {
+        case type == "String":return value as? T
+        case type == "CGFloat":return value.cgFloat as? T
+        case type == "Double":return value.double as? T
+        case type == "Int":return value.int as? T
+        case type == "UInt":return value.uint as? T
+        case type == "Bool":return value.bool as? T
+        case type == "DropShadow":return value as? T
+        default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
+        }
     }
-   
 }
