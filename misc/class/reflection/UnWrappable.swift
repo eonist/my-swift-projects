@@ -45,7 +45,7 @@ extension NSColor:UnWrappable{
     }
 }
 
-//add UInt,Float,Double,Int
+//Continue here: test If you can UnWrap DropShadow, then add UInt,Float,Double,Int etc
 
 /*
 old code:
