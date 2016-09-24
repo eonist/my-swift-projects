@@ -53,12 +53,12 @@ private class Utils{
      */
     static func handleValue(value:Any?,_ name:String? = nil)->XML{
         let xml = XML()
-        let instanceName:String?
+        var instanceName:String?
         if(value != nil){
-            instanceName = String(value.dynamicType)//if this doesnt work use generics
-            Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
+            instanceName = String(value!.dynamicType)//if this doesnt work use generics
+            
         }
-        
+        Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
         //print(instanceName)
         xml.name = name != nil ? name : instanceName!//the name of instance class
         if(value != nil){
@@ -75,7 +75,7 @@ private class Utils{
                 }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
                     xml += handleReflectable($0.value as! CGColorRef,$0.label)
                 }else{
-                    xml += handleValue($0.value)
+                    xml += handleValue($0.value,$0.label)
                     //fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
