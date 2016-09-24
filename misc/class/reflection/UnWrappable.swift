@@ -2,16 +2,18 @@ import Foundation
 //Continue here: what you do is that you extend the Types you want to unWrap.
 //And use inference similar to the way you made that cast method.
 //For more complex types see if they them selfs are UnWrappable. NICE!
+/**
+ * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
+ */
 protocol UnWrappable {
-    //use init instead
+    func unWrap<T>(xml:XML) -> T?
     func unWrap<T>(xml:XML,_ key:String) -> T?
-    func unWrapValue<T>(xml:XML,_ key:String) -> T?
 }
 extension UnWrappable{
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    func unWrapValue<T>(xml:XML,_ key:String) -> T?{
+    func unWrap<T>(xml:XML,_ key:String) -> T?{
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
