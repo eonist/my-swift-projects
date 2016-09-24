@@ -138,6 +138,7 @@ private class Utils{
      * NOTE: only use this for Optional values that are nil
      */
     static func extractClassType(value:Any)->String{
+        Swift.print("extractClassType")
         let arr1 = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
         let arr2 = arr1[1].characters.split{$0 == ">"}.map(String.init)
         return arr2[0]
