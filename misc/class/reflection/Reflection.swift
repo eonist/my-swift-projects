@@ -82,7 +82,6 @@ private class Utils{
                 }
             }
         }else{//nil
-            Swift.print("VALUE IS NIL!!!!")
             //Extracts CGAffineTransform from: Optional<CGAffineTransform>
             let typeArr = String(value!.dynamicType).characters.split{$0 == "<"}.map(String.init)
             let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
