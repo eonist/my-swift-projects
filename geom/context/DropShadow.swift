@@ -32,12 +32,13 @@ extension DropShadow:CustomStringConvertible{
     var offset:CGSize{return CGSize(offsetX,offsetY)}
 }
 extension DropShadow:UnWrappable{
-    init(xml:XML){
-        self.color = unWrap(xml, "color")!
-        self.offsetX = unWrap(xml, "offsetX")!
-        self.offsetY = unWrap(xml, "offsetY")!
-        self.blurRadius = unWrap(xml, "blurRadius")!
-        self.inner = unWrap(xml, "inner")!
+    convenience init(xml:XML){
+        let color = unWrap(xml, "color")!
+        let offsetX = unWrap(xml, "offsetX")!
+        let offsetY = unWrap(xml, "offsetY")!
+        let blurRadius = unWrap(xml, "blurRadius")!
+        let inner = unWrap(xml, "inner")!
+        super.init()
     }
 }
 private class Utils{
