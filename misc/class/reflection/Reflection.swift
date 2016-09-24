@@ -133,6 +133,7 @@ private class Utils{
     }
     /**
      * Extracts CGAffineTransform from: Optional<CGAffineTransform>
+     * NOTE: only use this for Optional values that are nil
      */
     static func extractClassType(value:Any)->String{
         let arr1 = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
