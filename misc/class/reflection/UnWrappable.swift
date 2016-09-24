@@ -7,7 +7,7 @@ import Foundation
  */
 protocol UnWrappable {
     func unWrap<T>(xml:XML) -> T?//add to custom classes
-    func unWrap<T>(xml:XML,_ key:String) -> T?//used to unWrap values
+    func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?//used to unWrap values
     func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
@@ -20,7 +20,8 @@ extension UnWrappable{
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    func unWrap<T>(xml:XML,_ key:String) -> T?{
+    func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
+        /*
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
@@ -38,6 +39,9 @@ extension UnWrappable{
             //TODO: add the types above to extensions instead
         default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
         }
+
+        */
+        return nil
     }
 }
 extension CGFloat:UnWrappable{
