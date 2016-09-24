@@ -80,6 +80,7 @@ private class Utils{
                 }
             }
         }else{//nil
+            Swift.print("VALUE IS NIL!!!!")
             let typeArr = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
             let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
             
