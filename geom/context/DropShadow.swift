@@ -31,6 +31,15 @@ extension DropShadow:CustomStringConvertible{
     var opaqueColor:NSColor{return color.alpha(1.0)}
     var offset:CGSize{return CGSize(offsetX,offsetY)}
 }
+extension DropShadow:UnWrappable{
+    /**
+     *
+     */
+    func unWrap<T>(xml:XML)->T?{
+        var dropShadow:DropShadow = DropShadow()
+        return nil
+    }
+}
 private class Utils{
     /**
      * We need a copy of the shadow color as CGColor with alpha set to 1.0
