@@ -71,15 +71,16 @@ private class Utils{
                 }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
                     xml += handleReflectable($0.value as! CGColorRef,$0.label)
                 }else{
-                    xml += handleValue($0.value)
+                    xml += handleValue($0.value,$0.label)
                     //fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
         }else{//nil
-            let typeArr = String($0.value.dynamicType).characters.split{$0 == "<"}.map{String.init}
+            let typeArr = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
             let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
             
-            print(typeArr2[0]) // print: Int
+            print(typeArr2[0])
+            xml["type"] = typeArr2[0]
         }
         
         return xml
