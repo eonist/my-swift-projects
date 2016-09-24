@@ -52,7 +52,7 @@ private class Utils{
      * Custom types like StyleProperty or Selector
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
-    static func handleValue(value:Any?,_ name:String? = nil)->XML{
+    static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
@@ -61,7 +61,9 @@ private class Utils{
         }
         //print(instanceName)
         xml.name = name != nil ? name : objectType//the name of instance class
-        if(String(value) != "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
+        if(String(value) == "nil" || String(value) == "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
+            xml["type"] = extractClassType(value)
+        }else{
             let properties = Reflection.reflect(value)
             properties.forEach{
                 if ($0.value is AnyArray){/*array*/
@@ -77,8 +79,6 @@ private class Utils{
                     //fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
-        }else{//nil
-            xml["type"] = extractClassType(value)
         }
         return xml
     }
