@@ -6,8 +6,8 @@ import Foundation
  * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
  */
 protocol UnWrappable {
-    func unWrap<T>(xml:XML) -> T?
-    func unWrap<T>(xml:XML,_ key:String) -> T?
+    func unWrap<T>(xml:XML) -> T?//add to custom classes
+    func unWrap<T>(xml:XML,_ key:String) -> T?//used to unWrap values
 }
 extension UnWrappable{
     /**
