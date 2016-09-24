@@ -54,11 +54,13 @@ private class Utils{
      */
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
-        let instanceName:String = String(value.dynamicType)//if this doesnt work use generics
-      
-        Swift.print("handleValue(): instanceName \(instanceName) name: \(name) value: \(value)")
+        let objectType:String = String(value.dynamicType)//if this doesnt work use generics
+        Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
+        if(name != nil){
+            xml["type"] = objectType
+        }
         //print(instanceName)
-        xml.name = name != nil ? name : instanceName//the name of instance class
+        xml.name = name != nil ? name : objectType//the name of instance class
         if(String(value) != "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
             let properties = Reflection.reflect(value)
             properties.forEach{
