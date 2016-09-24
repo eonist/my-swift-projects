@@ -5,8 +5,6 @@ import Foundation
 protocol UnWrappable {
     //use init instead
     func unWrap<T>(xml:XML,_ key:String) -> T?
-    init(xml:XML)
-    
 }
 extension UnWrappable{
     /**
