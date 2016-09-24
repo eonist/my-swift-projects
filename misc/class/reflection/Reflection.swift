@@ -61,6 +61,7 @@ private class Utils{
         Swift.print("handleValue:" + " instanceName \(instanceName)" + " value: \(value)" )
         //print(instanceName)
         xml.name = name != nil ? name : instanceName!//the name of instance class
+        if(value == nil){Swift.print("FOUND A NIL!!!!!!")}
         if(value != nil){
             let properties = Reflection.reflect(value!)
             //Swift.print("properties.count: " + "\(properties.count)")
