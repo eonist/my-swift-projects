@@ -4,7 +4,7 @@ class ReflectionUtils {
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    class func toType(xml:XML) -> Any?{
+    static func toType(xml:XML) -> Any?{
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
@@ -20,5 +20,13 @@ class ReflectionUtils {
             case type == "DropShadow":return value
             default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
         }
+    }
+    /**
+     *
+     */
+    static func populateType(){
+        //DropShadow
+        
+        //
     }
 }
