@@ -33,12 +33,12 @@ extension DropShadow:CustomStringConvertible{
 }
 extension DropShadow:UnWrappable{
     func unWrap<T>(xml: XML, _ key: String) -> T? {
-        let color = unWrap(xml, "color")!
-        let offsetX = unWrap(xml, "offsetX")!
-        let offsetY = unWrap(xml, "offsetY")!
-        let blurRadius = unWrap(xml, "blurRadius")!
-        let inner = unWrap(xml, "inner")!
-        return DropShadow(color, offsetX,offsetY, blurRadius, inner)
+        let color:NSColor = unWrapValue(xml, "color")!
+        let offsetX:CGFloat = unWrapValue(xml, "offsetX")!
+        let offsetY:CGFloat = unWrapValue(xml, "offsetY")!
+        let blurRadius:CGFloat = unWrapValue(xml, "blurRadius")!
+        let inner:Bool = unWrapValue(xml, "inner")!
+        return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
     }
 }
 private class Utils{

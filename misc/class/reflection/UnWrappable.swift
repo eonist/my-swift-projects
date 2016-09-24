@@ -5,12 +5,13 @@ import Foundation
 protocol UnWrappable {
     //use init instead
     func unWrap<T>(xml:XML,_ key:String) -> T?
+    func unWrapValue<T>(xml:XML,_ key:String) -> T?
 }
 extension UnWrappable{
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    func unWrap<T>(xml:XML,_ key:String) -> T?{
+    func unWrapValue<T>(xml:XML,_ key:String) -> T?{
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
