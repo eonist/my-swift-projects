@@ -7,7 +7,9 @@ class ReflectionUtils {
     class func toType(xml:XML) -> Any?{
         let type:String = xml["type"]!
         
-        if(xml.childCount > 0){xml.children}
+        if(xml.childCount == 0){//xml.children
+        
+        }
         
         let value:String = xml.value
         strVal.count != 0 ?
