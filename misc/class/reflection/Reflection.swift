@@ -75,8 +75,11 @@ private class Utils{
                     //fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
             }
-        }else{
+        }else{//nil
+            let typeArr = String($0.value.dynamicType).characters.split{$0 == "<"}.map{String.init}
+            let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
             
+            print(typeArr2[0]) // print: Int
         }
         
         return xml
