@@ -50,8 +50,7 @@ class Reflection {
 private class Utils{
     /**
      * Custom types like StyleProperty or Selector
-     
-     * PARAM: value (will never be nil directly)
+     * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
