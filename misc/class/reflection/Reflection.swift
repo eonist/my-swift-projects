@@ -51,7 +51,7 @@ private class Utils{
     /**
      * Custom types like StyleProperty or Selector
      */
-    class func handleValue(value:Any?)->XML{
+    static func handleValue(value:Any?,_ name:String? = nil)->XML{
         let xml = XML()
         let instanceName:String?
         if(value != nil){
@@ -60,7 +60,7 @@ private class Utils{
         }
         
         //print(instanceName)
-        xml.name = instanceName//the name of instance class
+        xml.name = name != nil ? name : instanceName!//the name of instance class
         if(value != nil){
             let properties = Reflection.reflect(value!)
             //Swift.print("properties.count: " + "\(properties.count)")
