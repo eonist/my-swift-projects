@@ -21,12 +21,16 @@ extension UnWrappable{
      * NOTE: looks at the type and converts that the value into a type
      */
     func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
-        /*
+        
+        
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
+        let value:String = xml.firstNode(key)!.value
+        
+        /*
         let type:String = xml["type"]!
-        let value:String = xml.value
+        
         switch(true) {
         case type == "String":return value as? T
         case type == "CGFloat":return value.cgFloat as? T
