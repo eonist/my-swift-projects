@@ -63,7 +63,7 @@ private class Utils{
         xml.name = name != nil ? name : instanceName!//the name of instance class
 
 
-        if(String(value) != "Optional(nil)"){
+        if(String(value) != "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
             let properties = Reflection.reflect(value!)
             //Swift.print("properties.count: " + "\(properties.count)")
             
@@ -83,6 +83,7 @@ private class Utils{
             }
         }else{//nil
             Swift.print("VALUE IS NIL!!!!")
+            //Extracts CGAffineTransform from: Optional<CGAffineTransform>
             let typeArr = String(value!.dynamicType).characters.split{$0 == "<"}.map(String.init)
             let typeArr2 = typeArr[1].characters.split{$0 == ">"}.map(String.init)
             
