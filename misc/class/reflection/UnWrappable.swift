@@ -1,16 +1,18 @@
 import Cocoa
-//Continue here: what you do is that you extend the Types you want to unWrap.
-//And use inference similar to the way you made that cast method.
-//For more complex types see if they them selfs are UnWrappable. NICE!
 /**
+ * NOTE: you extend the Types you want to unWrap. And use inference similar to the way you made that cast method.
  * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
  * NOTE: We are accessing the classtype and casting it as UNWrappable and then calling unwrap on the correct type (this requires usage of static methods, but its the most elegant)
+ * NOTE: For more complex types see if they them selfs are UnWrappable.
  */
 protocol UnWrappable {
     static func unWrap<T>(xml:XML) -> T?
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?
     static func unWrap<T>(value:String) -> T?
 }
+/**
+ * TODO: Contemplace: Renaming everything to Fold/UnFold ? Wrap/UnWrap ? 
+ */
 extension UnWrappable{
     /**
      * This would be similar to an init method (add to custom classes)
