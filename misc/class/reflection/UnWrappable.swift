@@ -8,7 +8,7 @@ import Cocoa
 protocol UnWrappable {
     func unWrap<T>(xml:XML) -> T?//add to custom classes
     func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?//used to unWrap values
-    func unWrap<T>(value:String) -> T?
+    static func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
     
@@ -19,7 +19,7 @@ extension UnWrappable{
     func unWrap<T>(xml:XML) -> T?{
         fatalError("override in subClass")
     }
-    func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
         fatalError("override in subClass")
     }
     /**
@@ -42,16 +42,17 @@ extension UnWrappable{
     }
 }
 extension CGFloat:UnWrappable{
-    func unWrap<T>(value:String) -> T? {
+    /*func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
-    }
+    }*/
 }
 extension Bool:UnWrappable{
-    func unWrap<T>(value:String) -> T? {
+    /*func unWrap<T>(value:String) -> T? {
         return value.bool as? T
-    }
+    }*/
 }
-extension NSColor:UnWrappable{
+
+static extension NSColor:UnWrappable{
     func unWrap<T>(value:String) -> T? {
         Swift.print("NSColor.unWrap()")
         return NSColorParser.nsColor(value) as? T
