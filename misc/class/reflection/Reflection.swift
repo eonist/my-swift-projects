@@ -9,7 +9,7 @@ class Reflection {
      * NOTE: inheritance can be supported , by traversing down the hirarchy via: mirror.superclassMirror() see: http://stackoverflow.com/a/36721639/5389500
      * NOTE: works with struct and class
      */
-    static func reflect(instance:Any)->[(label:String,value:Any)]{
+    static func reflect(instance:Any)->[(label:String,value:Any)]{//<---Should this method be private? as toXML is the primary method in this class
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
         Swift.print("mirror: " + "\(mirror)")
