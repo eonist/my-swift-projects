@@ -31,7 +31,7 @@ extension UnWrappable{
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
        
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
-        if(xml.childCount > 0){
+        if(xml.childCount > 0 && xml.value.count == 0){
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
         }else if(xml.value.count > 0){
             let value:String = xml.firstNode(key)!.value
@@ -40,6 +40,8 @@ extension UnWrappable{
         }else{
             return nil//return nil if the node has no value and no subNodes
         }
+        
+        //TODO: Try to find an xml method that can assert complex value or simple value of a node
         
     }
 }
