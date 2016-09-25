@@ -11,7 +11,7 @@ protocol UnWrappable {
     static func unWrap<T>(value:String) -> T?
 }
 /**
- * TODO: Contemplace: Renaming everything to Fold/UnFold ? Wrap/UnWrap ? 
+ * TODO: Contemplace: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
  */
 extension UnWrappable{
     /**
@@ -44,10 +44,7 @@ extension UnWrappable{
             return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
         }else{
             return nil//return nil if the node has no value and no subNodes
-        }
-        
-        
-        
+        }  
     }
 }
 extension CGFloat:UnWrappable{
@@ -60,15 +57,12 @@ extension Bool:UnWrappable{
         return value.bool as? T
     }
 }
-
 extension NSColor:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         Swift.print("NSColor.unWrap()")
         return NSColorParser.nsColor(value) as? T
     }
 }
-
-
 
 /*
 old code:
