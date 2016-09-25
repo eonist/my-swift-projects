@@ -12,15 +12,11 @@ protocol UnWrappable {
 }
 extension UnWrappable{
     
-    
-    
-    
-    
     func unWrap<T>(xml:XML) -> T?{
-        fatalError("override in subClass")
+        fatalError("must be overridden in subClass")
     }
     static func unWrap<T>(value:String) -> T? {
-        fatalError("override in subClass")
+        fatalError("must be overridden in subClass")
     }
     /**
      * NOTE: looks at the type and converts that the value into a type
@@ -33,23 +29,18 @@ extension UnWrappable{
         let value:String = xml.firstNode(key)!.value
         Swift.print("value: " + "\(value)")
         
-        //Continue here: roll back to the static approch, then figure out how to unwrap with the NSColor type, from the line bellow
-        // you can probably use method overloading to achive that, or some clever way of accessing the classtype and casting it as UNWrappable and then calling unwrap on the correct type (this requires usage of static methods, but its the most elegant, try it in playground first)
-        
-        let returnVal:T? = T.unWrap(value)
-        Swift.print("returnVal: " + "\(returnVal)")
-        return returnVal //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+        return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
     }
 }
 extension CGFloat:UnWrappable{
-    /*func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
-    }*/
+    }
 }
 extension Bool:UnWrappable{
-    /*func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
         return value.bool as? T
-    }*/
+    }
 }
 
 extension NSColor:UnWrappable{
