@@ -8,13 +8,13 @@ import Cocoa
 protocol UnWrappable {
     static func unWrap<T>(xml:XML) -> T?//add to custom classes
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?//used to unWrap values
-    static func unWrap<T>(value:String) -> T?
+    func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
     static func unWrap<T>(xml:XML) -> T?{
         return nil//override in subClass
     }
-    static func unWrap<T>(value:String) -> T? {
+    func unWrap<T>(value:String) -> T? {
         return nil//override in subClass
     }
     /**
@@ -27,23 +27,23 @@ extension UnWrappable{
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
         let value:String = xml.firstNode(key)!.value
         Swift.print("value: " + "\(value)")
-        let returnVal:T? = unWrap(value)
+        let returnVal:T? = unWrap("")
         Swift.print("returnVal: " + "\(returnVal)")
         return returnVal //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
     }
 }
 extension CGFloat:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
     }
 }
 extension Bool:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    func unWrap<T>(value:String) -> T? {
         return value.bool as? T
     }
 }
 extension NSColor:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    func unWrap<T>(value:String) -> T? {
         Swift.print("NSColor.unWrap()")
         return NSColorParser.nsColor(value) as? T
     }
