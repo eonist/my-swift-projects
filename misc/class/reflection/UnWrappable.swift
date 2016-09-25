@@ -6,13 +6,13 @@ import Cocoa
  * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
  */
 protocol UnWrappable {
-    func unWrap<T>(xml:XML) -> T?//add to custom classes
-    func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?//used to unWrap values
+    static func unWrap<T>(xml:XML) -> T?//add to custom classes
+    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?//used to unWrap values
     static func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
     
-    func unWrap<T>(xml:XML) -> T?{
+    static func unWrap<T>(xml:XML) -> T?{
         fatalError("must be overridden in subClass")
     }
     static func unWrap<T>(value:String) -> T? {
@@ -21,7 +21,7 @@ extension UnWrappable{
     /**
      * NOTE: looks at the type and converts that the value into a type
      */
-    func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
+    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
             return nil
         }
