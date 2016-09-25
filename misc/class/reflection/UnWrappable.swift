@@ -34,6 +34,7 @@ extension UnWrappable{
         Swift.print("value: " + "\(value)")
         
         //Continue here: roll back to the static approch, then figure out how to unwrap with the NSColor type, from the line bellow
+        // you can probably use method overloading to achive that, or some clever way of accessing the classtype and casting it as UNWrappable and then calling unwrap on the correct type (this requires usage of static methods, but its the most elegant, try it in playground first)
         
         let returnVal:T? = unWrap("")
         Swift.print("returnVal: " + "\(returnVal)")
