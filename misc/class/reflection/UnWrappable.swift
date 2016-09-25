@@ -26,6 +26,7 @@ extension UnWrappable{
         }
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
         let value:String = xml.firstNode(key)!.value
+        Swift.print("value: " + "\(value)")
         return unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
     }
 }
