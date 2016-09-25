@@ -11,11 +11,16 @@ protocol UnWrappable {
     func unWrap<T>(value:String) -> T?
 }
 extension UnWrappable{
+    
+    
+    
+    
+    
     func unWrap<T>(xml:XML) -> T?{
-        return nil//override in subClass
+        fatalError("override in subClass")
     }
     func unWrap<T>(value:String) -> T? {
-        return nil//override in subClass
+        fatalError("override in subClass")
     }
     /**
      * NOTE: looks at the type and converts that the value into a type
@@ -27,6 +32,9 @@ extension UnWrappable{
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
         let value:String = xml.firstNode(key)!.value
         Swift.print("value: " + "\(value)")
+        
+        //Continue here: roll back to the static approch, then figure out how to unwrap with the NSColor type, from the line bellow
+        
         let returnVal:T? = unWrap("")
         Swift.print("returnVal: " + "\(returnVal)")
         return returnVal //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
