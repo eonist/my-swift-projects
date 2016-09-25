@@ -31,17 +31,18 @@ extension UnWrappable{
     }
 }
 extension CGFloat:UnWrappable{
-    func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
     }
 }
 extension Bool:UnWrappable{
-    func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
         return value.bool as? T
     }
 }
 extension NSColor:UnWrappable{
-    func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(value:String) -> T? {
+        Swift.print("NSColor.unWrap()")
         return NSColorParser.nsColor(value) as? T
     }
 }
