@@ -29,15 +29,18 @@ extension UnWrappable{
      * NOTE: looks at the type and converts that the value into a type
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
-        if(xml.childCount == 0 || xml.value.count == 0){//return nil if the node has no value and no subNodes
-            return nil
-        }
+       
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
-        let value:String = xml.firstNode(key)!.value
-        Swift.print("value: " + "\(value)")
+        if(xml.childCount > 0){
+            return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
+        }else if(xml.value.count > 0){
+            let value:String = xml.firstNode(key)!.value
+            Swift.print("value: " + "\(value)")
+            return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+        }else{
+            return nil//return nil if the node has no value and no subNodes
+        }
         
-        
-        return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
     }
 }
 extension CGFloat:UnWrappable{
