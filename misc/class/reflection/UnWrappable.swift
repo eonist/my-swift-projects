@@ -17,9 +17,9 @@ extension UnWrappable{
     /**
      * This would be similar to an init method (add to custom classes)
      */
-    static func unWrap<T>(xml:XML) -> T?{
+    /*static func unWrap<T>(xml:XML) -> T?{
         fatalError("must be overridden in subClass")
-    }
+    }*/
     /**
      * non-nested values (NSColor,Int,CGFloat etc)
      */
