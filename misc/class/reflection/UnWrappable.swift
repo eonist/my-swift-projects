@@ -29,13 +29,10 @@ extension UnWrappable{
     /**
      * NOTE: used to unWrap nested values (DropShadow)
      * NOTE: looks at the type and converts that the value into a type
+     * //TODO: Try to find an xml method that can assert complex value or simple value of a node
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
-       
-        //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T
-        
-        //TODO: Try to find an xml method that can assert complex value or simple value of a node
-        
+        //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
         if(xml.childCount > 0 && xml.value.count == 0){//
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
         }else if(xml.value.count > 0){
