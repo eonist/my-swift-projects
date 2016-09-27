@@ -59,7 +59,7 @@ class Gradients{
     static var purplePinkEnd:UInt = 0xC643FC
 }
 /**
- * NOTE: we use methods, since methods can be method overloaded. (var's can't method overload aka return dirfferent types with the same call)
+ * NOTE: we use methods, since methods can be method overloaded. (var's can't method overload aka return dirfferent types with the same call) its also nice to be able to add an alpha value
  */
 extension Gradients{/*Color ranges*/
     //static func red()->(start:NSColor,end:NSColor){return (NSColorParser.nsColor(redStart),NSColorParser.nsColor(redEnd))}
