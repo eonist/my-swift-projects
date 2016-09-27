@@ -33,7 +33,8 @@ extension DropShadow:CustomStringConvertible{
 }
 extension DropShadow:UnWrappable{
     
-    //wait a minute: If you store the type in the Reflection xml, then why can't you 
+    //wait a minute: If you store the type in the Reflection xml, then why can't you make the bellow more dynamic?
+    //If the type is CGFloat then 
     
     static func unWrap<T>(xml:XML) -> T? {
         let color:NSColor = unWrap(xml, "color")!
