@@ -31,6 +31,6 @@ extension Gradient:UnWrappable{
         let colors:Array<CGColor?> = unWrap(xml, "colors")
         let locations:Array<CGFloat?> = unWrap(xml, "locations")
         let rotation:CGFloat = unWrap(xml, "rotation")!
-        return Gradient(colors, locations, rotation) as? T
+        return Gradient(colors.flatMap{}, locations, rotation) as? T
     }
 }
