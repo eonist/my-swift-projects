@@ -10,7 +10,7 @@ import Foundation
 public class Gradient:IGradient {/*<---its public so that it works in playground*/
     public var colors:Array<CGColor>
     public var locations:Array<CGFloat>/*same as color stops between 0 & 1*/
-    public var rotation:CGFloat;/*must be between -π and π or it will fail*/ /*<---this doesnt belong here, you apply rotations in the matrix*/
+    public var rotation:CGFloat/*must be between -π and π or it will fail*/ /*<---this doesnt belong here, you apply rotations in the matrix*/
     public var transformation:CGAffineTransform?
     public init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
@@ -28,9 +28,9 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
 
 extension Gradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
-        var colors:Array<CGColor?> = unWrap(xml, "colors")
-        var locations:Array<CGFloat?> = unWrap(xml, "locations")
-        var rotation:CGFloat = unWrap(xml, "rotation")!
-        return Gradient(colors, locations,rotation) as? T
+        let colors:Array<CGColor?> = unWrap(xml, "colors")
+        let locations:Array<CGFloat?> = unWrap(xml, "locations")
+        let rotation:CGFloat = unWrap(xml, "rotation")!
+        return Gradient(colors, locations, rotation) as? T
     }
 }

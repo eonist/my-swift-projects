@@ -75,6 +75,13 @@ extension NSColor:UnWrappable{
         return NSColorParser.nsColor(value) as? T
     }
 }
+extension CGColorRef:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        Swift.print("CGColor.unWrap()")
+        return NSColorParser.nsColor(value).CGColor as? T
+    }
+    
+}
 
 /*
 old code:
