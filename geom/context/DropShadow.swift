@@ -32,11 +32,6 @@ extension DropShadow:CustomStringConvertible{
     var offset:CGSize{return CGSize(offsetX,offsetY)}
 }
 extension DropShadow:UnWrappable{
-    
-    //wait a minute: If you store the type in the Reflection xml, then why can't you make the bellow more dynamic?
-    //If the type is CGFloat then thats a basic type so just us the extension for it
-    //if the type is complex like the bellow, then use reflection to get the variables, thats it, you cant access variables in swift dynamically
-    
     static func unWrap<T>(xml:XML) -> T? {
         let color:NSColor = unWrap(xml, "color")!
         let offsetX:CGFloat = unWrap(xml, "offsetX")!
