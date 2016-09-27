@@ -46,6 +46,14 @@ extension UnWrappable{
             return nil//return nil if the node has no value and no subNodes
         }  
     }
+    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T]{
+        if(xml.childCount > 0){
+            xml.children?.forEach{
+                unWrap($0! as XML, <#T##key: String##String#>)
+            }
+        }
+        return
+    }
 }
 extension CGFloat:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
