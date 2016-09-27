@@ -36,10 +36,10 @@ extension UnWrappable{
         
         //TODO: Try to find an xml method that can assert complex value or simple value of a node
         
-        if(xml.childCount > 0 && xml.value.count == 0){
+        if(xml.childCount > 0 && xml.value.count == 0){//
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
         }else if(xml.value.count > 0){
-            let value:String = xml.firstNode(key)!.value
+            let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
         }else{
