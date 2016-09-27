@@ -72,7 +72,7 @@ private class Utils{
                     xml += handleReflectable($0.value as! Reflectable,$0.label)
                 }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
                     xml += handleBasicValue($0.value,$0.label)
-                }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
                     xml += handleReflectable($0.value as! CGColorRef,$0.label)
                 }else{
                     xml += handleValue($0.value,$0.label)
