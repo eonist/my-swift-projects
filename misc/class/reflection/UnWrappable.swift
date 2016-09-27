@@ -46,7 +46,7 @@ extension UnWrappable{
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T]{
         if(xml.childCount > 0){
             xml.children?.forEach{
-                unWrap($0! as XML, <#T##key: String##String#>)
+                unWrap($0 as! XML, <#T##key: String##String#>)
             }
         }
         return
