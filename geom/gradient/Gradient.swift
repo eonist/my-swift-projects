@@ -25,12 +25,3 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
         self.transformation = transformation
     }
 }
-
-extension Gradient:UnWrappable{
-    static func unWrap<T>(xml:XML) -> T? {
-        let colors:Array<CGColor?> = unWrap(xml, "colors")
-        let locations:Array<CGFloat?> = unWrap(xml, "locations")
-        let rotation:CGFloat = unWrap(xml, "rotation")!
-        return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation) as? T
-    }
-}

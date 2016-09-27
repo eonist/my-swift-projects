@@ -59,6 +59,7 @@ extension UnWrappable{
         return array
     }
 }
+//Simple types:
 extension CGFloat:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
@@ -82,7 +83,25 @@ extension CGColorRef:UnWrappable{
     }
     
 }
-
+//Complex types: 
+extension Gradient:UnWrappable{
+    static func unWrap<T>(xml:XML) -> T? {
+        let colors:Array<CGColor?> = unWrap(xml, "colors")
+        let locations:Array<CGFloat?> = unWrap(xml, "locations")
+        let rotation:CGFloat = unWrap(xml, "rotation")!
+        return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation) as? T
+    }
+}
+extension DropShadow:UnWrappable{
+    static func unWrap<T>(xml:XML) -> T? {
+        let color:NSColor = unWrap(xml, "color")!
+        let offsetX:CGFloat = unWrap(xml, "offsetX")!
+        let offsetY:CGFloat = unWrap(xml, "offsetY")!
+        let blurRadius:CGFloat = unWrap(xml, "blurRadius")!
+        let inner:Bool = unWrap(xml, "inner")!
+        return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
+    }
+}
 /*
 old code:
 
