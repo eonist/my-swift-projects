@@ -46,13 +46,17 @@ extension UnWrappable{
             return nil//return nil if the node has no value and no subNodes
         }  
     }
-    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T]{
+    /**
+     * For arrays
+     */
+    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
+        var array:[T?] = [T?]()
         if(xml.childCount > 0){
             XMLParser.children(xml).forEach{
-                unWrap($0, "")
+                array.append(unWrap($0, ""))
             }
         }
-        return
+        return array
     }
 }
 extension CGFloat:UnWrappable{
