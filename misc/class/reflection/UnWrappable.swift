@@ -33,12 +33,14 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
-        if(xml.childCount > 0 && xml.value.count == 0){//
+        if(xml.childCount > 0 && xml.value.count == 0){//complex node:Has child nodes
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
-        }else if(xml.value.count > 0){
+        }else if(xml.value.count > 0 && key.count > 0){//simple node content: Text
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+        }else if(){
+            
         }else{
             return nil//return nil if the node has no value and no subNodes
         }  
