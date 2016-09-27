@@ -28,8 +28,8 @@ public class Gradient:IGradient {/*<---its public so that it works in playground
 
 extension Gradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
-        var colors:Array<CGColor> = unWrap(xml, "colors")!
-        var locations:Array<CGFloat> = unWrap(xml, "locations")!
+        var colors:Array<CGColor?> = unWrap(xml, "colors")
+        var locations:Array<CGFloat?> = unWrap(xml, "locations")
         var rotation:CGFloat = unWrap(xml, "rotation")!
         return Gradient(colors, locations,rotation) as? T
     }
