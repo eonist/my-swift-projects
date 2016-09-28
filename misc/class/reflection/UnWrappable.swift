@@ -106,8 +106,7 @@ extension RadialGradient:UnWrappable{
         let endCenter:CGPoint = unWrap(xml, "endCenter")!/*y = focalRatio (-1 to +1) */
         let startRadius:CGSize = unWrap(xml, "startRadius")!
         let endRadius:CGSize = unWrap(xml, "endRadius")!/*should be 0,0 to mimic the focal ratio radial gradient system*/
-        
-        return RadialGradient(linearGradient.colors, linearGradient.locations, linearGradient.rotation,startCenter,endCenter,startRadius,endRadius, linearGradient.transformation) as? T
+        return RadialGradient(linearGradient!.colors, linearGradient!.locations, linearGradient!.rotation,startCenter,endCenter,startRadius,endRadius, linearGradient!.transformation) as? T
     }
 }
 extension LinearGradient:UnWrappable{
