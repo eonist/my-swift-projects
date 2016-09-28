@@ -132,7 +132,7 @@ extension Selector:UnWrappable{
      * Converts xml to a Selector instance
      */
     static func unWrap<T>(xml:XML) -> T? {
-        //Swift.print("xml.string: " + "\(xml.string)")
+        Swift.print("xml.XMLString: " + "\(xml.XMLString)")
         let element:String = unWrap(xml, "element") ?? ""
         //Swift.print("element: " + "\(element)")
         let id:String = unWrap(xml, "id") ?? ""
