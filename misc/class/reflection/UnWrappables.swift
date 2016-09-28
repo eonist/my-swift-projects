@@ -100,9 +100,14 @@ extension StyleProperty:UnWrappable{
         }else if(type == String(NSColor)){
             let val:NSColor = unWrap(xml, "value")!
             value = val
-        }else if(type == String(DropShadow){
+        }else if(type == String(DropShadow)){
             let val:DropShadow = unWrap(xml, "value")!
             value = val
+        }else if(type == String(DropShadow)){
+            let val:DropShadow = unWrap(xml, "value")!
+            value = val
+        }else{
+            fatalError("type not supported: " + "\(type)")
         }
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
