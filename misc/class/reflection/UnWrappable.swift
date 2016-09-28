@@ -85,6 +85,9 @@ extension CGColorRef:UnWrappable{
         return NSColorParser.nsColor(value).CGColor as? T
     }
 }
+
+//continue here: implement CGPoint
+
 extension CGPoint:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
