@@ -84,9 +84,25 @@ extension CGColorRef:UnWrappable{
         Swift.print("CGColor.unWrap() value: " + "\(value)")
         return NSColorParser.nsColor(value).CGColor as? T
     }
-    
+}
+extension CGPoint:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        return value.cgFloat as? T
+    }
 }
 //Complex types:
+extension RadialGradient:UnWrappable{
+    static func unWrap<T>(xml:XML) -> T? {
+        Swift.print("Gradient.unWrap()")
+        let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
+        let startCenter:CGPoint = unWrap(xml, "startCenter")!/*should be 0.5,0.5 to mimic the focal ratio radial system*/
+        let endCenter:CGPoint = unWrap(xml, "endCenter")!/*y = focalRatio (-1 to +1) */
+        let startRadius:CGSize = unWrap(xml, "startRadius")!
+        let endRadius:CGSize = unWrap(xml, "endRadius")!/*should be 0,0 to mimic the focal ratio radial gradient system*/
+        
+        return RadialGradient(linearGradient.colors, linearGradient.locations, linearGradient.rotation,startCenter,endCenter,startRadius,endRadius, linearGradient.transformation) as? T
+    }
+}
 extension LinearGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         Swift.print("Gradient.unWrap()")
