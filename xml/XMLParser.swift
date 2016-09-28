@@ -151,13 +151,13 @@ public class XMLParser{
     }
     /**
      * Returns the attribute value of @param child by key @param name
-     * @pram name: name of the attribute
+     * @pram attrKey: name of the attribute
      * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
      * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
      * NOTE: returns nil if there is no attr by that name
      */
-    public class func attribute(child:NSXMLElement,_ name:String)->String?{
-        return child.attributeForName(name)?.stringValue
+    public class func attribute(child:NSXMLElement,_ attrKey:String)->String?{
+        return child.attributeForName(attrKey)?.stringValue
     }
     /**
      * Returns the name of the @param child
