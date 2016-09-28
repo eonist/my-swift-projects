@@ -124,6 +124,15 @@ extension StyleProperty:UnWrappable{
     }
 }
 
+extension StyleProperty:UnWrappable{
+    /**
+     *
+     */
+    static func unWrap<T>(xml:XML) -> T? {
+        
+    }
+}
+
 /*
 old code:
 
