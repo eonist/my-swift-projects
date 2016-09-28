@@ -83,14 +83,15 @@ extension CGColorRef:UnWrappable{
     }
     
 }
+//Complex types:
 extension CGTransform{
     static func unWrap<T>(value:String) -> T? {
         Swift.print("CGTransform.unWrap()")
-        
-        return NSColorParser.nsColor(value).CGColor as? T
+        let identities:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
+        let transformation:CGTransform = CGAffineTransformMake(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])
+        return transformation as? T
     }
 }
-//Complex types:
 extension Gradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let colors:Array<CGColor?> = unWrap(xml, "colors")
