@@ -89,11 +89,11 @@ extension Gradient:UnWrappable{
         let colors:Array<CGColor?> = unWrap(xml, "colors")
         let locations:Array<CGFloat?> = unWrap(xml, "locations")
         let rotation:CGFloat = unWrap(xml, "rotation")!
-        let transformation:CGTransform = unWrap(xml, "transformation")
-        return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation) as? T
+        let transformation:CGTransform? = unWrap(xml, "transformation")
+        return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }
-extension CGTransform{
+extension CGTransform:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         Swift.print("CGTransform.unWrap()")
         let identities:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
