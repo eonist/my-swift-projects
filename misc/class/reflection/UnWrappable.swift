@@ -40,7 +40,8 @@ extension UnWrappable{
             Swift.print("value: " + "\(value)")
             return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
         }else if(xml.value.count > 0 && key.count == 0){//<--array items with simple content aka text
-            let value:String = xml.value
+            Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+            let value:String = xml.stringValue!
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)
         }else{
