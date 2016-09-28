@@ -93,21 +93,27 @@ extension StyleProperty:UnWrappable{
         let name:String = unWrap(xml, "name")!
         //continue here: make Any UnWrappable? and then look at the type attribute in the xml ?
         let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-        let value:Any
+        let value:Any//<- variables that are Of type Any are a bit tricky because swift is a type safe language
         if(type == String(CGFloat)){
             let val:CGFloat = unWrap(xml, "value")!
             value = val
         }else if(type == String(NSColor)){
             let val:NSColor = unWrap(xml, "value")!
             value = val
-        }else if(type == String(DropShadow)){
-            let val:DropShadow = unWrap(xml, "value")!
+        }else if(type == String(String)){
+            let val:String = unWrap(xml, "value")!
             value = val
         }else if(type == String(DropShadow)){
             let val:DropShadow = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(RadialGradient)){
+            let val:RadialGradient = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(LinearGradient)){
+            let val:LinearGradient = unWrap(xml, "value")!
             value = val
         }else{
-            fatalError("type not supported: " + "\(type)")
+            fatalError("type not supported yet: " + "\(type)")
         }
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
