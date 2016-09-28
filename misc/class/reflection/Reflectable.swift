@@ -25,3 +25,8 @@ extension CGPoint:Reflectable{
         return (type:"CGPoint",value:self.x.string + "," + y.string)
     }
 }
+extension CGSize:Reflectable{
+    var reflection:(type:String,value:String) {
+        return (type:"CGPoint",value:self.x.string + "," + y.string)
+    }
+}

@@ -85,12 +85,10 @@ extension CGColorRef:UnWrappable{
         return NSColorParser.nsColor(value).CGColor as? T
     }
 }
-
-//continue here: implement CGPoint
-
 extension CGPoint:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        return value.cgFloat as? T
+        let values:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
+        return CGPoint(values[0],values[1]) as? T
     }
 }
 //Complex types:
