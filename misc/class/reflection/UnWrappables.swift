@@ -144,6 +144,19 @@ extension Selector:UnWrappable{
     }
 }
 
+extension Style:UnWrappable{
+    /**
+     * Converts xml to a Style instance
+     */
+    static func unWrap<T>(xml:XML) -> T? {
+        let name:String = unWrap(xml, "name")!
+        let styleProperties:Array<IStyleProperty?> = unWrap(xml, "styleProperties")
+        let selectors:Array<ISelector?> = unWrap(xml, "selectors")
+
+        return Style(name,styleProperties,selectors) as? T
+    }
+}
+
 /*
 old code:
 
