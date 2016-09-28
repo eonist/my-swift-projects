@@ -126,10 +126,18 @@ extension StyleProperty:UnWrappable{
 
 extension Selector:UnWrappable{
     /**
-     *
+     * Converts xml to a Selector instance
      */
     static func unWrap<T>(xml:XML) -> T? {
-        
+        //Swift.print("xml.string: " + "\(xml.string)")
+        let element:String = unWrap(xml, "element")!
+        //Swift.print("element: " + "\(element)")
+        let id:String = unWrap(xml, "id")!
+        //Swift.print("id: " + "\(id)")
+        let classIds:[String?] = unWrap(xml, "classIds")
+        let states:[String?] = unWrap(xml, "states")
+        //Swift.print("states.count: " + "\(states.count)")
+        return Selector(element,classIds,id,states)
     }
 }
 
