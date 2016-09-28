@@ -1,8 +1,18 @@
 import Cocoa
 //Simple types:
+extension String:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        return value as? T
+    }
+}
 extension CGFloat:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
+    }
+}
+extension Int:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        return value.int as? T
     }
 }
 extension Bool:UnWrappable{
@@ -80,7 +90,7 @@ extension DropShadow:UnWrappable{
 }
 extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
-        let name = unWrap(xml, "name")!
+        let name:String = unWrap(xml, "name")!
         let value:Any = unWrap(xml, "value")!
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
