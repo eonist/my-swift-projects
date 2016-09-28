@@ -53,8 +53,9 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
         var array:[T?] = [T?]()
-        if(xml.childCount > 0){
-            XMLParser.children(xml).forEach{
+        let child:XML = xml.firstNode(key)!
+        if(child.childCount > 0){
+            XMLParser.children(child).forEach{
                 array.append(unWrap($0, ""))
             }
         }
