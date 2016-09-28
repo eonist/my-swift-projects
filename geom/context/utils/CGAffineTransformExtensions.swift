@@ -65,5 +65,5 @@ extension CGAffineTransform {
     func transformPoint(point:CGPoint) -> CGPoint{
         return CGAffineTransformModifier.transformPoint(point, self)
     }
-    var identity:String{return a.string + b.string + c.string + d.string + tx.string + ty.string }////a,b,c,d,tx,ty
+    var identity:String{return a.string + "," + b.string + "," + c.string + "," + d.string + "," + tx.string + "," + ty.string }////a,b,c,d,tx,ty
 }
