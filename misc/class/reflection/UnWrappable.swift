@@ -38,8 +38,7 @@ extension UnWrappable{
         }else if(xml.value.count > 0 && key.count > 0){//simple node content: Text
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
-            Swift.print("xml.value.count: " + "\(xml.stringValue?.count)")
-            return T.unWrap(value) //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+            return value.count > 0 ? T.unWrap(value) : nil //use T to your advantage when converting the value (A protocol extension switch, polymorphism)
         }else if(xml.value.count > 0 && key.count == 0){//<--array items with simple content aka text
             Swift.print("xml.XMLString: " + "\(xml.XMLString)")
             let value:String = xml.stringValue!
