@@ -35,7 +35,7 @@ extension UnWrappable{
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
         Swift.print("xml.childCount: " + "\(xml.childCount)")
         Swift.print("xml.value.count: " + "\(xml.value.count)")
-        if(xml.childCount > 0 && xml.value.count == 0){//complex node:Has child nodes
+        if(xml.childCount > 0/* && xml.value.count == 0*/){//complex node:Has child nodes
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
         }else if(xml.value.count > 0 && key.count > 0){//simple node content: Text
             let value:String = xml.firstNode(key)!.value//first child node that has the key
