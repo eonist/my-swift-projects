@@ -97,8 +97,8 @@ extension StyleProperty:UnWrappable{
         if(type == String(CGFloat)){
             let val:CGFloat = unWrap(xml, "value")!
             value = val
-        }else{
-            let val: = unWrap(xml, "value")!
+        }else if(String()){
+            let val:String = unWrap(xml, "value")!
             value = val
         }
         
