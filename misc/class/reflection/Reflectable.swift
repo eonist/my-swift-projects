@@ -22,11 +22,11 @@ extension CGTransform:Reflectable{
 }
 extension CGPoint:Reflectable{
     var reflection:(type:String,value:String) {
-        return (type:"CGPoint",value:self.x.string + "," + y.string)
+        return (type:"CGPoint",value:self.x.string + "," + self.y.string)
     }
 }
 extension CGSize:Reflectable{
     var reflection:(type:String,value:String) {
-        return (type:"CGPoint",value:self.x.string + "," + y.string)
+        return (type:"CGSize",value:self.width.string + "," + self.height.string)
     }
 }

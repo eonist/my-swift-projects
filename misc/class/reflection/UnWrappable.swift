@@ -91,6 +91,12 @@ extension CGPoint:UnWrappable{
         return CGPoint(values[0],values[1]) as? T
     }
 }
+extension CGSize:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        let values:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
+        return CGSize(values[0],values[1]) as? T
+    }
+}
 //Complex types:
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
