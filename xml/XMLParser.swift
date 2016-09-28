@@ -8,7 +8,7 @@ public class XMLParser{
      * EXAMPLE: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
-    class func root(xmlStr:String)->XML?{
+    static func root(xmlStr:String)->XML?{
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
@@ -156,19 +156,19 @@ public class XMLParser{
      * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
      * NOTE: returns nil if there is no attr by that name
      */
-    public class func attribute(child:NSXMLElement,_ attrKey:String)->String?{
+    static func attribute(child:XML,_ attrKey:String)->String?{
         return child.attributeForName(attrKey)?.stringValue
     }
     /**
      * Returns the name of the @param child
      */
-    public class func name(child:NSXMLElement)->String{
+    static func name(child:XML)->String{
         return child.name!//child.localName also works
     }
     /**
      * Returns the first attribute that contains the attribute by the @param name and with the @param value
      */
-    public class func childByAttribute(child:NSXMLElement,_ attributeName:String,_ attributeValue:String){
+    static func childByAttribute(child:XML,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
     }
     /**
@@ -189,7 +189,7 @@ public class XMLParser{
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      * TODO: Does it support xml string value? 
      */
-    class func toArray(xml:NSXMLElement)->[Dictionary<String,String>] {
+    static func toArray(xml:XML)->[Dictionary<String,String>] {
         var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
@@ -208,13 +208,13 @@ public class XMLParser{
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
      */
-    class func index(xml:NSXMLElement,_ key:String, _ value:String) -> Array<Int>? {
+    static func index(xml:XML,_ key:String, _ value:String) -> Array<Int>? {
         if(xml[key] == value) {
             return []
         }
         else if(xml.childCount > 0){
             for (var i : Int = 0; i < xml.childCount; i++) {
-                let child:NSXMLElement = xml.children![i] as! NSXMLElement
+                let child:XML = xml.children![i] as! NSXMLElement
                 let match:Array<Int>? = index(child,key,value)
                 if(match != nil) {return [i] + match!}
             }
@@ -226,7 +226,7 @@ public class XMLParser{
      * NOTE: the format can then be converted back to xml and vis verca
      * EXAMPLE: toDictionary(try! NSXMLElement("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
      */
-    class func toDictionary(xml:NSXMLElement)->[String:AnyObject]{
+    static func toDictionary(xml:XML)->[String:AnyObject]{
         var root = [String:AnyObject]()
         let attributes = XMLParser.attributes(xml)
         for attr in attributes{root[attr["key"]!] = attr["value"]!}
@@ -254,7 +254,7 @@ public class XMLParser{
      * nameDict["color"] = "blue"
      * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
      */
-    class func toXML(content:AnyObject)->NSXMLElement{
+    static func toXML(content:AnyObject)->XML{
         let xml:XML = XML()
         func handleArray(theXML:XML,_ theContent:AnyObject){
             for item in (theContent as! Array<AnyObject>){
