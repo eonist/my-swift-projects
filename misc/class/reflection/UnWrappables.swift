@@ -150,10 +150,9 @@ extension Style:UnWrappable{
      */
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        let styleProperties:Array<IStyleProperty?> = unWrap(xml, "styleProperties")
-        let selectors:Array<ISelector?> = unWrap(xml, "selectors")
-
-        return Style(name,styleProperties,selectors) as? T
+        let styleProperties:[StyleProperty?] = unWrap(xml, "styleProperties")
+        let selectors:[Selector?] = unWrap(xml, "selectors")
+        return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
     }
 }
 
