@@ -97,11 +97,13 @@ extension StyleProperty:UnWrappable{
         if(type == String(CGFloat)){
             let val:CGFloat = unWrap(xml, "value")!
             value = val
-        }else if(String()){
-            let val:String = unWrap(xml, "value")!
+        }else if(type == String(NSColor)){
+            let val:NSColor = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(DropShadow){
+            let val:DropShadow = unWrap(xml, "value")!
             value = val
         }
-        
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
