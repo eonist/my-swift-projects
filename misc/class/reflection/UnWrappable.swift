@@ -87,13 +87,18 @@ extension CGColorRef:UnWrappable{
     
 }
 //Complex types:
-extension Gradient:UnWrappable{
+extension LinearGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
+        Swift.print("Gradient.unWrap()")
         let colors:Array<CGColor?> = unWrap(xml, "colors")
+        Swift.print("colors: " + "\(colors)")
         let locations:Array<CGFloat?> = unWrap(xml, "locations")
+        Swift.print("locations: " + "\(locations)")
         let rotation:CGFloat = unWrap(xml, "rotation")!
+        Swift.print("rotation: " + "\(rotation)")
         let transformation:CGTransform? = unWrap(xml, "transformation")
-        return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
+        Swift.print("transformation: " + "\(transformation)")
+        return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }
 extension CGTransform:UnWrappable{
