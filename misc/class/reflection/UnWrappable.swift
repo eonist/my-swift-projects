@@ -21,7 +21,7 @@ extension UnWrappable{
         fatalError("must be overridden in subClass")
     }
     /**
-     * non-nested values (NSColor,Int,CGFloat etc)
+     * Non-nested values (NSColor,Int,CGFloat etc)
      */
     static func unWrap<T>(value:String) -> T? {
         fatalError("must be overridden in subClass")
