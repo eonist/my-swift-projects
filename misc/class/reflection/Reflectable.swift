@@ -20,3 +20,8 @@ extension CGTransform:Reflectable{
         return (type:"CGTransform",value:self.identity)
     }
 }
+extension CGPoint:Reflectable{
+    var reflection:(type:String,value:String) {
+        return (type:"CGPoint",value:self.x.string + "," + y.string)
+    }
+}
