@@ -89,7 +89,7 @@ extension Gradient:UnWrappable{
         let colors:Array<CGColor?> = unWrap(xml, "colors")
         let locations:Array<CGFloat?> = unWrap(xml, "locations")
         let rotation:CGFloat = unWrap(xml, "rotation")!
-        let transformation:CGTransform? = unWrap(xml, "transformation")
+        let transformation:CGTransform = unWrap(xml, "transformation")
         return Gradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation) as? T
     }
 }
