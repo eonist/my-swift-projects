@@ -124,7 +124,7 @@ extension StyleProperty:UnWrappable{
     }
 }
 
-extension StyleProperty:UnWrappable{
+extension Selector:UnWrappable{
     /**
      *
      */
