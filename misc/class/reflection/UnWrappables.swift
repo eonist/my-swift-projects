@@ -78,6 +78,14 @@ extension DropShadow:UnWrappable{
         return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
     }
 }
+extension StyleProperty:UnWrappable{
+    static func unWrap<T>(xml:XML) -> T? {
+        let name:String
+        let value:Any
+        let depth:Int
+        return StyleProperty(color, offsetX,offsetY, blurRadius, inner) as? T
+    }
+}
 
 /*
 old code:
