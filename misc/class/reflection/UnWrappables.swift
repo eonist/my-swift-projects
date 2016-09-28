@@ -93,10 +93,13 @@ extension StyleProperty:UnWrappable{
         let name:String = unWrap(xml, "name")!
         //continue here: make Any UnWrappable? and then look at the type attribute in the xml ?
         let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
+        let value:Any
         if(type == String(CGFloat)){
-            let value:CGFloat = unWrap(xml, "value")!
+            let val:CGFloat = unWrap(xml, "value")!
+            value = val
         }else{
-            let value:CGFloat = unWrap(xml, "value")!
+            let val: = unWrap(xml, "value")!
+            value = val
         }
         
         let depth:Int = unWrap(xml, "depth")!
