@@ -36,7 +36,7 @@ extension UnWrappable{
         Swift.print("xml.childCount: " + "\(xml.childCount)")
         Swift.print("xml.value.count: " + "\(xml.value.count)")
         
-        //figure out how to differentiate between simple and complex xml node content and the bellow will work
+        //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
         
         if(xml.childCount > 0 && xml.value.count == 0){//complex node:Has child nodes
             return T.unWrap(xml)//<--this could be an infinte loop, be cautiouse
