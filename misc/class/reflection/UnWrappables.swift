@@ -104,6 +104,9 @@ extension StyleProperty:UnWrappable{
         }else if(type == String(NSColor)){
             let val:NSColor = unWrap(xml, "value")!
             value = val
+        }else if(type == String(Bool)){
+            let val:Bool = unWrap(xml, "value")!
+            value = val
         }else if(type == String(String)){
             let val:String = unWrap(xml, "value")!
             value = val
