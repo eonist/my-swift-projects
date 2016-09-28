@@ -84,7 +84,7 @@ class ColorTypes{
         case "white9":
             color = Colors.WHITE_9;
         default:
-            fatalError("COLORTYPE:" + colorType + " IS NOT SUPORTED YET")
+            fatalError("COLORTYPE: " + colorType + " IS NOT SUPORTED YET")
         }
         return color;
     }
