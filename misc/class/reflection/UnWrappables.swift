@@ -137,7 +137,7 @@ extension Selector:UnWrappable{
         let classIds:[String?] = unWrap(xml, "classIds")
         let states:[String?] = unWrap(xml, "states")
         //Swift.print("states.count: " + "\(states.count)")
-        return Selector(element,classIds,id,states)
+        return Selector(element,classIds.flatMap{$0},id,states.flatMap{$0}) as? T
     }
 }
 
