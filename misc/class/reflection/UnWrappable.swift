@@ -32,6 +32,7 @@ extension UnWrappable{
      * //TODO: Try to find an xml method that can assert complex value or simple value of a node
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
+        Swift.print("Unwrappable.unWrap() key: " + "\(key)")
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
         //Swift.print("xml.childCount: " + "\(xml.childCount)")
         //Swift.print("xml.value.count: " + "\(xml.value.count)")
@@ -58,7 +59,7 @@ extension UnWrappable{
      * For arrays
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
-        Swift.print("Wrappable.unWrap for arrays")
+        Swift.print("Wrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!
         Swift.print("child.childCount: " + "\(child.childCount)")
