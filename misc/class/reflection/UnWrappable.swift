@@ -53,11 +53,10 @@ extension UnWrappable{
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)
         }else if(xml.hasComplexContent && key.count == 0){//<--array items with simple content aka text
-            let child = xml.firstNode(key)!
-            return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
+            return T.unWrap(xml)
         }else{//node has no content (nore simple or complex)
             return nil//return nil if the node has no value and no subNodes
-        }  
+        }
     }
     /**
      * For arrays
