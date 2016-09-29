@@ -150,7 +150,7 @@ extension Style:UnWrappable{
      */
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        Swift.print("name: " + "\(name)")
+        Swift.print("UnWrap.name: " + "\(name)")
         let styleProperties:[StyleProperty?] = unWrap(xml, "styleProperties")
         Swift.print("styleProperties.count: " + "\(styleProperties.count)")
         let selectors:[Selector?] = unWrap(xml, "selectors")

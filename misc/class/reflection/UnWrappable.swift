@@ -58,8 +58,10 @@ extension UnWrappable{
      * For arrays
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
+        Swift.print("Wrappable.unWrap for arrays")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!
+        Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
                 array.append(unWrap($0, ""))
