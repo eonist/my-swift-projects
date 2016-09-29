@@ -33,8 +33,8 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
-        Swift.print("xml.childCount: " + "\(xml.childCount)")
-        Swift.print("xml.value.count: " + "\(xml.value.count)")
+        //Swift.print("xml.childCount: " + "\(xml.childCount)")
+        //Swift.print("xml.value.count: " + "\(xml.value.count)")
         
         //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
         //also test styleproperty with gradient, since that is what fails the current test
