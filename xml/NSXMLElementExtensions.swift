@@ -55,25 +55,25 @@ extension NSXMLElement {
     var attribs:Dictionary<String,String> {//Convenience, the name attributes is occupied so attribs it is
        return XMLParser.attribs(self)
     }
-    func addAt(child:NSXMLElement,_ index:Int)->XML{//Convenience
+    func addAt(child:XML,_ index:Int)->XML{//Convenience
         return XMLModifier.insertAt(self, index, child)
     }
-    func addchildAt(child:NSXMLElement,_ index:Array<Int>)->XML{//Convenience
+    func addchildAt(child:XML,_ index:Array<Int>)->XML{//Convenience
         return XMLModifier.addChildAt(self, index, child)
     }
     func setNameAt(index:Array<Int>, _ name:String) -> XML {//Convenience
         return XMLModifier.setNameAt(self, index, name)
     }
-    func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ key:String,_ value:String) -> XML {//Convenience
+    func setAttributeAt(xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XML {//Convenience
         return XMLModifier.setAttributeAt(self, index, key, value)
     }
-    func setAttributeAt(xml:NSXMLElement,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> XML {//Convenience
+    func setAttributeAt(xml:XML,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> XML {//Convenience
         return XMLModifier.setAttributeAt(xml, index, attributes)
     }
-    func replaceAt(xml:NSXMLElement,_ index:Int,_ replacement:XML) -> XML {//Convenience
+    func replaceAt(xml:XML,_ index:Int,_ replacement:XML) -> XML {//Convenience
         return XMLModifier.replaceAt(xml, index, replacement)
     }
-    func replaceChildAt(xml:NSXMLElement,_ index:Array<Int>,_ replacement:XML) -> XML {//Convenience
+    func replaceChildAt(xml:XML,_ index:Array<Int>,_ replacement:XML) -> XML {//Convenience
         return XMLModifier.replaceAt(xml, index, replacement)
     }
     func firstNode(nodeName:String) -> XML? {//Convenience
