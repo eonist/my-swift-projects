@@ -43,6 +43,7 @@ public class XMLAsserter {
     }
     /**
      * Asserts if there is a text value in a node
+     * EXAMPLE: "<a><one>text</one></a>".xml.firstNode("one")!.child.hasSimpleContent//true
      */
     class func hasSimpleContent(node:XML)->Bool{
         if(node.childCount == 1){
