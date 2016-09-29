@@ -2,7 +2,7 @@ import Cocoa
 //Simple types:
 extension String:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        return value as? T
+        return String(value) as? T
     }
 }
 extension CGFloat:UnWrappable{
@@ -152,7 +152,9 @@ extension Style:UnWrappable{
         let name:String = unWrap(xml, "name")!
         Swift.print("name: " + "\(name)")
         let styleProperties:[StyleProperty?] = unWrap(xml, "styleProperties")
+        Swift.print("styleProperties.count: " + "\(styleProperties.count)")
         let selectors:[Selector?] = unWrap(xml, "selectors")
+        Swift.print("selectors.count: " + "\(selectors.count)")
         return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
     }
 }
