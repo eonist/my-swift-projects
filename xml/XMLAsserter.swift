@@ -42,7 +42,7 @@ public class XMLAsserter {
         return a.XMLString == b.XMLString
     }
     /**
-     * 
+     * Asserts if there is a text value in a node
      */
     class func hasSimpleContent(node:XML)->Bool{
         if(node.childCount == 1){
@@ -51,7 +51,7 @@ public class XMLAsserter {
         return false
     }
     /**
-     *
+     * Asserts if there is a Node value in a node
      */
     class func hasComplexContent(node:XML)->Bool{
         if(node.childCount > 1){
@@ -59,7 +59,6 @@ public class XMLAsserter {
         }
         return false
     }
-    
 }
 //validXML
 //equals
