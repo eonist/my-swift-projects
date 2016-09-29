@@ -42,18 +42,22 @@ public class XMLAsserter {
         return a.XMLString == b.XMLString
     }
     /**
-     *
+     * 
      */
     class func hasSimpleContent(node:XML)->Bool{
         if(node.childCount == 1){
-            node.kind.rawValue == NSXMLNodeKind.TextKind
+            return node.children![0].kind == NSXMLNodeKind.TextKind
         }
+        return false
     }
     /**
      *
      */
     class func hasComplexContent(node:XML)->Bool{
-        
+        if(node.childCount > 1){
+            return node.children![0].kind == NSXMLNodeKind.ElementKind
+        }
+        return false
     }
     
 }
