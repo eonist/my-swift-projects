@@ -224,7 +224,7 @@ public class XMLParser{
     /**
      * Converts XML to Dictioinary and Array notation
      * NOTE: the format can then be converted back to xml and vis verca
-     * EXAMPLE: toDictionary(try! NSXMLElement("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
+     * EXAMPLE: toDictionary(try! XML("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
      */
     static func toDictionary(xml:XML)->[String:AnyObject]{
         var root = [String:AnyObject]()
