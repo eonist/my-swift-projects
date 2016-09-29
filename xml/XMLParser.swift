@@ -230,7 +230,7 @@ public class XMLParser{
         var root = [String:AnyObject]()
         let attributes = XMLParser.attributes(xml)
         for attr in attributes{root[attr["key"]!] = attr["value"]!}
-        if(xml.hasComplexContent()){
+        if(xml.hasComplexContent){
             var children:[[String:AnyObject]] = []
             for child in xml.children!{children.append(toDictionary(child as! NSXMLElement))}
             root[xml.name!] = children

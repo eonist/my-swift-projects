@@ -32,10 +32,10 @@ extension NSXMLElement {
     /**
      * Asserts if an XML has complex content. Meaning something other than a stringValue. In particular another NSXMLElement
      */
-    func hasComplexContent()->Bool{
+    var hasComplexContent:Bool{
         return XMLAsserter.hasComplexContent(self)
     }
-    func hasSimpleContent()->Bool{
+    var hasSimpleContent:Bool{
         return XMLAsserter.hasSimpleContent(self)
     }
     func valueAt(index:Array<Int>)->String?{//Convenience
