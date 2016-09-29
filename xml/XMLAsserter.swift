@@ -52,6 +52,7 @@ public class XMLAsserter {
     }
     /**
      * Asserts if there is a Node value in a node
+     * NOTE: an alternate way of doing this is: self.childCount > 0 && self.children![0].localName != nil
      */
     class func hasComplexContent(node:XML)->Bool{
         if(node.childCount > 1){
