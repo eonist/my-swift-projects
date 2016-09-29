@@ -97,6 +97,11 @@ GitAsserter.isGitRepo("~/test/.git/")//Output: true or false
 - Supports parsing and modifying at deep indices 
 
 ```swift
+/*Simple example:*/
+let xml = "<a><one>text</one></a>".xml
+let child = xml.firstNode("one")!
+Swift.print(child.value)//Output: text
+/*Advance examples:*/
 XMLParser.childAt(xml,[0,2,1])//Output: the second item in the third item in root
 XMLModifier.setAttributeAt(xml,[0,1],["color":"blue","gradient":"teal"])//Sets the color and gradient attributes in the second item in root
 ```
