@@ -38,7 +38,10 @@ extension UnWrappable{
         
         //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
         //also test styleproperty with gradient, since that is what fails the current test
-        if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
+        if(xml.hasComplexContent && xml.firstNode(key) != nil && key.count > 0){//complex node:Has child nodes
+            let child = xml.firstNode(key)!
+            return T.unWrap(child)
+        }else if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
