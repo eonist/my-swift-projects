@@ -41,6 +41,13 @@ public class XMLAsserter {
         Swift.print(b.XMLString)/**/
         return a.XMLString == b.XMLString
     }
+    /**
+     *
+     */
+    class func hasTextValue(node:XML)->Bool{
+        node.kind.rawValue == NSXMLNodeKind.TextKind
+    }
+    
 }
 //validXML
 //equals
