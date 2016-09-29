@@ -44,8 +44,16 @@ public class XMLAsserter {
     /**
      *
      */
-    class func hasTextValue(node:XML)->Bool{
-        node.kind.rawValue == NSXMLNodeKind.TextKind
+    class func hasSimpleContent(node:XML)->Bool{
+        if(node.childCount == 1){
+            node.kind.rawValue == NSXMLNodeKind.TextKind
+        }
+    }
+    /**
+     *
+     */
+    class func hasComplexContent(node:XML)->Bool{
+        
     }
     
 }
