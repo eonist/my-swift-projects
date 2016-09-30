@@ -43,6 +43,7 @@ extension UnWrappable{
         //also test styleproperty with gradient, since that is what fails the current test
         if(key.count > 0 && xml.hasComplexContent && xml.firstNode(key) != nil){//complex node:Has child nodes
             Swift.print("CASE: a")
+            Swift.print("key: " + "\(key)")
             let child = xml.firstNode(key)!
             return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
         }else if(key.count > 0 && xml.hasSimpleContent){//simple node content: Text
