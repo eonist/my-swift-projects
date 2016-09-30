@@ -72,7 +72,7 @@ extension LinearGradient:UnWrappable{
 }
 extension CGTransform:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        Swift.print("CGTransform.unWrap()")
+        //Swift.print("CGTransform.unWrap()")
         let identities:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
         let transformation:CGTransform = CGAffineTransformMake(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])
         return transformation as? T
