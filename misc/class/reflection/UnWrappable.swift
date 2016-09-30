@@ -41,37 +41,43 @@ extension UnWrappable{
         //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
         //also test styleproperty with gradient, since that is what fails the current test
         if(xml.hasComplexContent && xml.firstNode(key) != nil && key.count > 0){//complex node:Has child nodes
+            Swift.print("CASE: a")
             let child = xml.firstNode(key)!
             return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
         }else if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
+            Swift.print("CASE: b")
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
         }else if(xml.hasSimpleContent && key.count == 0){//<--array items with simple content aka text
+            Swift.print("CASE: c")
             Swift.print("xml.XMLString: " + "\(xml.XMLString)")
             let value:String = xml.value
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)
         }else if(xml.hasComplexContent && key.count == 0){//<--array items with simple content aka text
+            Swift.print("CASE: d")
             Swift.print("should work")
             return T.unWrap(xml)
         }else{//node has no content (nore simple or complex)
+            Swift.print("CASE: e")
             return nil//return nil if the node has no value and no subNodes
         }
         
-        //Continue here: try to figure out the bug. print each case in the above if else
+        
     }
     /**
      * For arrays
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
-        Swift.print("Wrappable.unWrap for arrays, key: " + "\(key)")
+        Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!
         Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append(unWrap($0, ""))
+                let item:T? = unWrap($0, "")
+                array.append(item)
             }
         }
         return array
