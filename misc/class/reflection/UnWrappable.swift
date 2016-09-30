@@ -29,44 +29,30 @@ extension UnWrappable{
     /**
      * NOTE: used to unWrap nested values (DropShadow)
      * NOTE: looks at the type and converts that the value into a type
-     * //TODO: Try to find an xml method that can assert complex value or simple value of a node
+     * IMPORTANT: type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         Swift.print("Unwrappable.unWrap() key: " + "\(key)")
         Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
         Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        //let type:String = xml.firstNode(key)!["type"]!//<-- type not important anymore since we use T, actually, what if the type is Any
-        //Swift.print("xml.childCount: " + "\(xml.childCount)")
-        //Swift.print("xml.value.count: " + "\(xml.value.count)")
-        
-        //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
-        //also test styleproperty with gradient, since that is what fails the current test
-        if(key.count > 0 && xml.hasComplexContent && xml.firstNode(key) != nil){//complex node:Has child nodes
-            Swift.print("CASE: a")
-            Swift.print("key: " + "\(key)")
-            let child = xml.firstNode(key)!
-            return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
-        }else if(key.count > 0 && xml.hasSimpleContent){//simple node content: Text
-            Swift.print("CASE: b")
-            let value:String = xml.firstNode(key)!.value//first child node that has the key
-            Swift.print("value: " + "\(value)")
-            return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
-        }else if(key.count == 0 && xml.hasSimpleContent){//<--array items with simple content aka text
-            Swift.print("CASE: c")
-            Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-            let value:String = xml.value
-            Swift.print("value: " + "\(value)")
-            return T.unWrap(value)
-        }else if(key.count == 0 && xml.hasComplexContent){//<--array items with simple content aka text
-            Swift.print("CASE: d")
-            Swift.print("should work")
-            return T.unWrap(xml)
-        }else{//node has no content (nore simple or complex)
-            Swift.print("CASE: e")
-            return nil//return nil if the node has no value and no subNodes
+        //let type:String = xml.firstNode(key)!["type"]!//<--
+        if(key.count > 0){
+            if(xml.hasComplexContent && xml.firstNode(key) != nil){//complex node:Has child nodes
+                let child = xml.firstNode(key)!
+                return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
+            }else if(xml.hasSimpleContent){//simple node content: Text
+                let value:String = xml.firstNode(key)!.value//first child node that has the key
+                return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+            }
+        }else{/*key.count == 0*/
+            if(xml.hasSimpleContent){//<--array items with simple content aka text
+                let value:String = xml.value
+                return T.unWrap(value)
+            }else if(xml.hasComplexContent){//<--array items with simple content aka text
+                return T.unWrap(xml)
+            }
         }
-        
-        
+        return nil/*type not important anymore since we use T, actually, what if the type is Any*/
     }
     /**
      * For arrays
