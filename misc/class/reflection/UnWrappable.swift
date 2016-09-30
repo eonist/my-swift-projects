@@ -45,7 +45,7 @@ extension UnWrappable{
             Swift.print("CASE: a")
             Swift.print("key: " + "\(key)")
             let child = xml.firstNode(key)!
-            return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
+            return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
         }else if(key.count > 0 && xml.hasSimpleContent){//simple node content: Text
             Swift.print("CASE: b")
             let value:String = xml.firstNode(key)!.value//first child node that has the key
