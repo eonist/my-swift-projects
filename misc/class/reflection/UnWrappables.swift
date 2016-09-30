@@ -22,13 +22,13 @@ extension Bool:UnWrappable{
 }
 extension NSColor:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        Swift.print("NSColor.unWrap()")
+        //Swift.print("NSColor.unWrap()")
         return NSColorParser.nsColor(value) as? T
     }
 }
 extension CGColorRef:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        Swift.print("CGColor.unWrap() value: " + "\(value)")
+        //Swift.print("CGColor.unWrap() value: " + "\(value)")
         return NSColorParser.nsColor(value).CGColor as? T
     }
 }
@@ -47,7 +47,7 @@ extension CGSize:UnWrappable{
 //Complex types:
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
-        Swift.print("RadialGradient.unWrap()")
+        //Swift.print("RadialGradient.unWrap()")
         let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
         let startCenter:CGPoint? = unWrap(xml, "startCenter")
         let endCenter:CGPoint? = unWrap(xml, "endCenter")
@@ -58,15 +58,15 @@ extension RadialGradient:UnWrappable{
 }
 extension LinearGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
-        Swift.print("LinearGradient.unWrap()")
+        //Swift.print("LinearGradient.unWrap()")
         let colors:Array<CGColor?> = unWrap(xml, "colors")
-        Swift.print("colors: " + "\(colors)")
+        //Swift.print("colors: " + "\(colors)")
         let locations:Array<CGFloat?> = unWrap(xml, "locations")
-        Swift.print("locations: " + "\(locations)")
+        //Swift.print("locations: " + "\(locations)")
         let rotation:CGFloat = unWrap(xml, "rotation")!
-        Swift.print("rotation: " + "\(rotation)")
+        //Swift.print("rotation: " + "\(rotation)")
         let transformation:CGTransform? = unWrap(xml, "transformation")
-        Swift.print("transformation: " + "\(transformation)")
+        //Swift.print("transformation: " + "\(transformation)")
         return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }
@@ -150,11 +150,11 @@ extension Style:UnWrappable{
      */
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        Swift.print("UnWrap.name: " + "\(name)")
+        //Swift.print("UnWrap.name: " + "\(name)")
         let styleProperties:[StyleProperty?] = unWrap(xml, "styleProperties")
-        Swift.print("styleProperties.count: " + "\(styleProperties.count)")
+        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
         let selectors:[Selector?] = unWrap(xml, "selectors")
-        Swift.print("selectors.count: " + "\(selectors.count)")
+        //Swift.print("selectors.count: " + "\(selectors.count)")
         return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
     }
 }
