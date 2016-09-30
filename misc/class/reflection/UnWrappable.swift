@@ -61,12 +61,9 @@ extension UnWrappable{
             XMLParser.children(child).forEach{
                 if($0.hasSimpleContent){/*<--array items with simple content aka text*/
                     let value:String = $0.value
-                    let item:T? = unWrap(value)
-                    array.append(item)
+                    array.append(unWrap(value))
                 }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
-                    Swift.print("T: " + "\(T.dynamicType)")
-                    let item:T? = unWrap($0)
-                    array.append(item)
+                    array.append(unWrap($0))
                 }else{
                     array.append(nil)
                 }
