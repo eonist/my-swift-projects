@@ -68,7 +68,7 @@ extension UnWrappable{
                     let value:String = xml.value
                     array.append(unWrap(value))
                 }else if($0.hasComplexContent){
-                    
+                    array.append(unWrap($0))
                 }else{
                     
                 }
