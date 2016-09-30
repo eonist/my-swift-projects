@@ -53,7 +53,7 @@ extension UnWrappable{
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
         //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
-        let child:XML = xml.firstNode(key)!
+        let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
