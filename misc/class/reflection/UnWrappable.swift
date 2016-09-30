@@ -45,12 +45,20 @@ extension UnWrappable{
             Swift.print("CASE: a")
             let child = xml.firstNode(key)!
             return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
-        }else if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
+        }
+        
+        Swift.print("past a")
+        
+        if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
             Swift.print("CASE: b")
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
-        }else if(xml.hasSimpleContent && key.count == 0){//<--array items with simple content aka text
+        }
+        
+        Swift.print("past b")
+        
+        if(xml.hasSimpleContent && key.count == 0){//<--array items with simple content aka text
             Swift.print("CASE: c")
             Swift.print("xml.XMLString: " + "\(xml.XMLString)")
             let value:String = xml.value
