@@ -64,6 +64,7 @@ extension UnWrappable{
                     let item:T? = unWrap(value)
                     array.append(item)
                 }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
+                    Swift.print("T: " + "\(T.dynamicType)")
                     let item:T? = unWrap($0)
                     array.append(item)
                 }else{
