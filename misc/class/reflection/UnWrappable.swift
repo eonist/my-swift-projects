@@ -41,30 +41,22 @@ extension UnWrappable{
         
         //Continue here: figure out how to differentiate between simple and complex xml node content and the bellow will work:
         //also test styleproperty with gradient, since that is what fails the current test
-        if(xml.hasComplexContent && xml.firstNode(key) != nil && key.count > 0){//complex node:Has child nodes
+        if(key.count > 0 && xml.hasComplexContent && xml.firstNode(key) != nil){//complex node:Has child nodes
             Swift.print("CASE: a")
             let child = xml.firstNode(key)!
             return child.hasComplexContent ? T.unWrap(child) : T.unWrap(child.value)
-        }
-        
-        Swift.print("past a")
-        
-        if(xml.hasSimpleContent && key.count > 0){//simple node content: Text
+        }else if(key.count > 0 && xml.hasSimpleContent){//simple node content: Text
             Swift.print("CASE: b")
             let value:String = xml.firstNode(key)!.value//first child node that has the key
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)//use T to your advantage when converting the value (A protocol extension switch, polymorphism)
-        }
-        
-        Swift.print("past b")
-        
-        if(xml.hasSimpleContent && key.count == 0){//<--array items with simple content aka text
+        }else if(key.count == 0 && xml.hasSimpleContent){//<--array items with simple content aka text
             Swift.print("CASE: c")
             Swift.print("xml.XMLString: " + "\(xml.XMLString)")
             let value:String = xml.value
             Swift.print("value: " + "\(value)")
             return T.unWrap(value)
-        }else if(xml.hasComplexContent && key.count == 0){//<--array items with simple content aka text
+        }else if(key.count == 0 && xml.hasComplexContent){//<--array items with simple content aka text
             Swift.print("CASE: d")
             Swift.print("should work")
             return T.unWrap(xml)
