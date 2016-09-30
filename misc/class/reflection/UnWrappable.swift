@@ -53,7 +53,7 @@ extension UnWrappable{
      * For arrays
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
-        Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
+        //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!
         //Swift.print("child.childCount: " + "\(child.childCount)")
@@ -61,13 +61,10 @@ extension UnWrappable{
             XMLParser.children(child).forEach{
                 if($0.hasSimpleContent){/*<--array items with simple content aka text*/
                     let value:String = $0.value
-                    array.append( T.unWrap(value))
+                    array.append(T.unWrap(value))
                 }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
-                    array.append( T.unWrap($0))
+                    array.append(T.unWrap($0))
                 }
-                
-                //let item:T? = unWrap($0, "")
-                //array.append(item)
             }
         }
         return array
