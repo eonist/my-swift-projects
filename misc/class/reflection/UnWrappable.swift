@@ -45,12 +45,7 @@ extension UnWrappable{
                 return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
             }
         }else{/*key.count == 0*/
-            if(xml.hasSimpleContent){/*<--array items with simple content aka text*/
-                let value:String = xml.value
-                return T.unWrap(value)
-            }else if(xml.hasComplexContent){/*<--array items with complex content aka nodes*/
-                return T.unWrap(xml)
-            }
+            fatalError("cant happen")
         }
         return nil
     }
@@ -64,8 +59,15 @@ extension UnWrappable{
         //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                let item:T? = unWrap($0, "")
-                array.append(item)
+                if(xml.hasSimpleContent){/*<--array items with simple content aka text*/
+                    let value:String = $0.value
+                    array.append( T.unWrap(value))
+                }else if(xml.hasComplexContent){/*<--array items with complex content aka nodes*/
+                    array.append( T.unWrap($0))
+                }
+                
+                //let item:T? = unWrap($0, "")
+                //array.append(item)
             }
         }
         return array
