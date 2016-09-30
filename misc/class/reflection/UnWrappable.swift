@@ -44,6 +44,13 @@ extension UnWrappable{
                 let child = xml.firstNode(key)!
                 return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
             }
+        }else{/*key.count == 0*/
+            if(xml.hasSimpleContent){/*<--array items with simple content aka text*/
+                let value:String = xml.value
+                return T.unWrap(value)
+            }else if(xml.hasComplexContent){/*<--array items with complex content aka nodes*/
+                return T.unWrap(xml)
+            }
         }
         return nil
     }
@@ -53,20 +60,12 @@ extension UnWrappable{
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
         //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
-        Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        Swift.print("key: " + "\(key)")
         let child:XML = xml.firstNode(key)!
         //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                if($0.hasSimpleContent){/*<--array items with simple content aka text*/
-                    let value:String = $0.value
-                    array.append(unWrap(value))
-                }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
-                    array.append(unWrap($0))
-                }else{
-                    array.append(nil)
-                }
+                let item:T? = unWrap($0, "")
+                array.append(item)
             }
         }
         return array
