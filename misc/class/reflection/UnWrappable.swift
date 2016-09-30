@@ -70,9 +70,8 @@ extension UnWrappable{
                 }else if($0.hasComplexContent){
                     array.append(unWrap($0))
                 }else{
-                    
+                    array.append(nil)
                 }
-                
             }
         }
         return array
