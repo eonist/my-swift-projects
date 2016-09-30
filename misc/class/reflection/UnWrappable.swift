@@ -60,7 +60,7 @@ extension UnWrappable{
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
                 if($0.hasSimpleContent){/*<--array items with simple content aka text*/
-                    let value:String = xml.value
+                    let value:String = $0.value
                     let item:T? = unWrap(value)
                     array.append(item)
                 }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
