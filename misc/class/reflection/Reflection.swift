@@ -12,7 +12,7 @@ class Reflection {
     static func reflect(instance:Any)->[(label:String,value:Any)]{//<---Should this method be private? as toXML is the primary method in this class
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
-        Swift.print("mirror: " + "\(mirror)")
+        //Swift.print("mirror: " + "\(mirror)")
         mirror.children.forEach{
             if let name = $0.label{/*label is actually optional comming from mirror, belive it or not*/
                 properties.append((name,$0.value))
@@ -55,7 +55,7 @@ private class Utils{
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
-        Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
+        //Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
             xml["type"] = objectType
         }
@@ -88,7 +88,7 @@ private class Utils{
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
         let value:String = reflectable.reflection.value
         let type:String = reflectable.reflection.type
-        Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
+        //Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
         let xml = XML()
         xml.name = name
         xml["type"] = type
@@ -99,7 +99,7 @@ private class Utils{
      * Basic value types
      */
     static func handleBasicValue(value:Any,_ name:String)->XML{
-        Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value)" )
+        //Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value)" )
         let xml = XML()
         xml.name = name
         xml["type"] = String(value.dynamicType)
@@ -111,14 +111,14 @@ private class Utils{
      * Array types
      */
     static func handleArray(value:Any,_ name:String)->XML{
-        Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
+        //Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
         let xml = XML()
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
         properties.forEach{
             if($0.value is Reflectable){
-                Swift.print("$0.value: " + "\($0.value)")
+                //Swift.print("$0.value: " + "\($0.value)")
                 xml += handleReflectable($0.value as! Reflectable,$0.label)
             }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                 xml += handleBasicValue($0.value,"item")
@@ -138,7 +138,7 @@ private class Utils{
      * NOTE: only use this for Optional values that are nil
      */
     static func extractClassType(value:Any)->String{
-        Swift.print("extractClassType")
+        //Swift.print("extractClassType")
         let arr1 = String(value.dynamicType).characters.split{$0 == "<"}.map(String.init)
         let arr2 = arr1[1].characters.split{$0 == ">"}.map(String.init)
         return arr2[0]
