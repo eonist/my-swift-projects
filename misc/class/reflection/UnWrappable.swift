@@ -32,10 +32,10 @@ extension UnWrappable{
      * IMPORTANT: type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
-        Swift.print("Unwrappable.unWrap() key: " + "\(key)")
-        Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
-        Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        //let type:String = xml.firstNode(key)!["type"]!//<--
+        //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
+        //Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
+        //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+        //let type:String = xml.firstNode(key)!["type"]!/*<--type not important anymore since we use T, actually, what if the type is Any*/
         if(key.count > 0 && xml.firstNode(key) != nil){
             if(xml.hasSimpleContent){/*<--simple node content: Text*/
                 let value:String = xml.firstNode(key)!.value/*<--first child node that has the key*/
@@ -58,10 +58,10 @@ extension UnWrappable{
      * For arrays
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
-        Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
+        //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!
-        Swift.print("child.childCount: " + "\(child.childCount)")
+        //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
                 let item:T? = unWrap($0, "")
