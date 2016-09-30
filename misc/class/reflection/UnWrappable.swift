@@ -59,10 +59,10 @@ extension UnWrappable{
         //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                if(child.hasSimpleContent){/*<--array items with simple content aka text*/
+                if($0.hasSimpleContent){/*<--array items with simple content aka text*/
                     let value:String = $0.value
                     array.append( T.unWrap(value))
-                }else if(child.hasComplexContent){/*<--array items with complex content aka nodes*/
+                }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
                     array.append( T.unWrap($0))
                 }
                 
