@@ -38,21 +38,21 @@ extension UnWrappable{
         //let type:String = xml.firstNode(key)!["type"]!//<--
         if(key.count > 0 && xml.firstNode(key) != nil){
             if(xml.hasSimpleContent){/*<--simple node content: Text*/
-                let value:String = xml.firstNode(key)!.value//first child node that has the key
+                let value:String = xml.firstNode(key)!.value/*<--first child node that has the key*/
                 return T.unWrap(value)//<--use T to your advantage when converting the value (A protocol extension switch, polymorphism)
             }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
                 let child = xml.firstNode(key)!
                 return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
             }
         }else{/*key.count == 0*/
-            if(xml.hasSimpleContent){//<--array items with simple content aka text
+            if(xml.hasSimpleContent){/*<--array items with simple content aka text*/
                 let value:String = xml.value
                 return T.unWrap(value)
-            }else if(xml.hasComplexContent){//<--array items with simple content aka text
+            }else if(xml.hasComplexContent){/*<--array items with complex content aka nodes*/
                 return T.unWrap(xml)
             }
         }
-        return nil/*type not important anymore since we use T, actually, what if the type is Any*/
+        return nil
     }
     /**
      * For arrays
