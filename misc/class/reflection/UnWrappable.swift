@@ -92,7 +92,7 @@ class UnWrapUtils{
     /**
      *
      */
-    func complexAny(){
+    func complexAny(xml:XML,_ key:String,_ type:String){
         
         //Continue here: complete this method, also maybe return the type from a general type parser type:String->T hmm, try this in playground first maybe?
         
@@ -116,10 +116,10 @@ class UnWrapUtils{
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
     static func any(xml:XML,_ key:String,_ type:String)-> Any?{
-        let value:Any
+        var value:Any
         if(xml.hasSimpleContent){
-            let value:String = xml.firstNode(key)!.value
-            value = simpleAny(value)
+            let strVal:String = xml.firstNode(key)!.value
+            value = simpleAny(strVal,type)
         }else if(xml.hasComplexContent){
             
         }
