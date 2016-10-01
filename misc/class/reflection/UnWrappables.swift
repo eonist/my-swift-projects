@@ -49,56 +49,6 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
-//Complex types:
-class AnyType{
-    var value:Any?
-    init(_ value:Any?){
-        self.value = value
-    }
-}
-
-//Continue here: try to experiment in playground with just extending any and then downcasting: since a container class wont work in an array, well you will need to iterate over the entire array and unwrap etc.
-//or else you will have to roll back to static utlitity methods for any and Array<Any>
-extension AnyType:UnWrappable{
-    /**
-     * Making an extension for "Any" doesn't seem to work, so this is the solution:
-     */
-    static func unWrap<T>(xml:XML) -> T? {
-        let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-        let value:Any
-        if(type == String(CGFloat)){
-            let val:CGFloat = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(Double)){
-            let val:Double = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(NSColor)){
-            let val:NSColor = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(Bool)){
-            let val:Bool = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(String)){
-            let val:String = unWrap(xml, "value")!
-            value = val
-        }else if(type == "Array"){
-            let val:[String?] = unWrap(xml, "value")
-            value = val
-        }else if(type == String(DropShadow)){
-            let val:DropShadow = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(RadialGradient)){
-            let val:RadialGradient = unWrap(xml, "value")!
-            value = val
-        }else if(type == String(LinearGradient)){
-            let val:LinearGradient = unWrap(xml, "value")!
-            value = val
-        }else{
-            fatalError("type not supported yet: " + "\(type)")
-        }
-        return AnyType(value) as? T
-    }
-}
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         //Swift.print("RadialGradient.unWrap()")
