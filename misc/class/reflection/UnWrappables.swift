@@ -49,6 +49,14 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
+class AnyType{
+}
+extension AnyType:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        let values:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
+        return CGSize(values[0],values[1]) as? T
+    }
+}
 //Complex types:
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
