@@ -65,10 +65,9 @@ extension UnWrappable{
 
 class UnWrapUtils{
     /**
-     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
+     *
      */
-    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
-        let value:Any
+    static func simpleAny(value:String,_ type:String){
         if(type == String(CGFloat)){
             let val:CGFloat = CGFloat.unWrap(xml, key)!
             value = val
@@ -84,7 +83,18 @@ class UnWrapUtils{
         }else if(type == String(String)){
             let val:String = String.unWrap(xml, key)!
             value = val
-        }else if(type == "Array"){
+        }
+    }
+    /**
+     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
+     */
+    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
+        let value:Any
+        if(xml.hasSimpleContent){
+            let value:String = xml.firstNode(key)!.value
+            simpleAny(value)
+        }
+        if(type == "Array"){
             let val:[Any?] = anyArray(xml,key)
             value = val
         }else if(type == String(DropShadow)){
