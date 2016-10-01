@@ -51,8 +51,11 @@ extension CGSize:UnWrappable{
 }
 
 //Complex types:
-class AnyType:Any{
-    
+class AnyType{
+    var value:Any?
+    init(_ value:Any?){
+        self.value = value
+    }
 }
 extension AnyType:UnWrappable{
     /**
@@ -91,7 +94,7 @@ extension AnyType:UnWrappable{
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
-        return value as? T
+        return AnyType(value) as? T
     }
 }
 extension RadialGradient:UnWrappable{
