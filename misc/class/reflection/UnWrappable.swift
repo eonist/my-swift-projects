@@ -65,7 +65,7 @@ extension UnWrappable{
 
 class UnWrapUtils{
     /**
-     * Making an extension for "Any" doesn't seem to work, so this is the solution:
+     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
     static func any(xml:XML,_ key:String,_ type:String)-> Any?{
         let value:Any

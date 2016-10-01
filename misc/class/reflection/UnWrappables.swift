@@ -102,7 +102,7 @@ extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
         let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-        let value:Any = UnWrapUtils.unWrapAny(xml,type)
+        let value:Any = UnWrapUtils.any(xml,"value", type)
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
