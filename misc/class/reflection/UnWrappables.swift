@@ -147,9 +147,8 @@ extension DropShadow:UnWrappable{
 extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        //continue here: make Any UnWrappable? and then look at the type attribute in the xml ?
-       
-        let value:AnyType? = unWrap(xml,"value")
+        let val:AnyType? = unWrap(xml,"value")
+        let value:Any? = val?.value
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
