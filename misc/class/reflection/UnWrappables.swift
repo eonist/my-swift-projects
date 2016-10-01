@@ -51,14 +51,14 @@ extension CGSize:UnWrappable{
 }
 
 //Complex types:
-class AnyType{
+class AnyType:Any{
+    
 }
 extension AnyType:UnWrappable{
     /**
      * Making an extension for "Any" doesn't seem to work, so this is the solution:
      */
     static func unWrap<T>(xml:XML) -> T? {
-        
         let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
         let value:Any
         if(type == String(CGFloat)){
@@ -91,8 +91,7 @@ extension AnyType:UnWrappable{
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
-        return value
-        
+        return value as? T
     }
 }
 extension RadialGradient:UnWrappable{
@@ -146,8 +145,8 @@ extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
         //continue here: make Any UnWrappable? and then look at the type attribute in the xml ?
-        let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-        let value:Any? = UnWrapUtils.unWrapAny(xml, type)
+       
+        let value:AnyType? = unWrap(xml,"value")
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
