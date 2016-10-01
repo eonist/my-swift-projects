@@ -119,11 +119,11 @@ private class Utils{
         properties.forEach{
             if($0.value is Reflectable){
                 //Swift.print("$0.value: " + "\($0.value)")
-                xml += handleReflectable($0.value as! Reflectable,$0.label)
+                xml += handleReflectable($0.value as! Reflectable,"item"/*$0.label*/)
             }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
                 xml += handleBasicValue($0.value,"item")
             }else if($0.value is AnyArray){/*array*/
-                xml += handleArray($0.value,$0.label)
+                xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
             }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
                 xml += handleReflectable($0.value as! CGColorRef,"item")
             }else{
