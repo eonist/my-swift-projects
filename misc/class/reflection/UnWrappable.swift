@@ -95,7 +95,7 @@ class UnWrapUtils{
     func complexAny(xml:XML,_ key:String,_ type:String){
         
         //Continue here: complete this method, also maybe return the type from a general type parser type:String->T hmm, try this in playground first maybe?
-        
+        let value:Any
         if(type == "Array"){
             let val:[Any?] = anyArray(xml,key)
             value = val
@@ -131,7 +131,7 @@ class UnWrapUtils{
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append($0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
+                array.append($0.hasSimpleContent ? simpleAny($0.value, <#T##type: String##String#>) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
             }
         }
         return array
