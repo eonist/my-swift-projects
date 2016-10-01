@@ -57,8 +57,8 @@ class AnyType{
     }
 }
 
-//Continue here: try to experiment in playground with just extending any and then downcasting: since a container class wont work in an array, well you will need to iterate over the entire array and unwrap etc. 
-
+//Continue here: try to experiment in playground with just extending any and then downcasting: since a container class wont work in an array, well you will need to iterate over the entire array and unwrap etc.
+//or else you will have to roll back to static utlitity methods for any and Array<Any>
 extension AnyType:UnWrappable{
     /**
      * Making an extension for "Any" doesn't seem to work, so this is the solution:
