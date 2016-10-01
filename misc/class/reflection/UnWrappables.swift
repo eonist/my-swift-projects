@@ -118,6 +118,9 @@ extension StyleProperty:UnWrappable{
         }else if(type == String(String)){
             let val:String = unWrap(xml, "value")!
             value = val
+        }else if(type == "Array"){
+            let val:String = unWrap(xml, "value")!
+            value = val
         }else if(type == String(DropShadow)){
             let val:DropShadow = unWrap(xml, "value")!
             value = val
