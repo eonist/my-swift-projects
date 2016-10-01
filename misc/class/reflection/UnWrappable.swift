@@ -94,7 +94,7 @@ class UnWrapUtils{
      */
     func complexAny(){
         
-        //Continue here: complete this method
+        //Continue here: complete this method, also maybe return the type from a general type parser type:String->T hmm, try this in playground first maybe?
         
         if(type == "Array"){
             let val:[Any?] = anyArray(xml,key)
