@@ -71,5 +71,41 @@ extension UnWrappable{
 
 
 class UnWrapUtils{
-    
+    /**
+     * Making an extension for "Any" doesn't seem to work, so this is the solution:
+     */
+    static func unWrapAny(xml:XML,_ type:String)-> Any?{
+        let value:Any
+        if(type == String(CGFloat)){
+            let val:CGFloat = CGFloat.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(Double)){
+            let val:Double = Double.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(NSColor)){
+            let val:NSColor = NSColor.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(Bool)){
+            let val:Bool = Bool.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(String)){
+            let val:String = String.unWrap(xml, "value")!
+            value = val
+        }else if(type == "Array"){
+            let val:[String?] = String.unWrap(xml, "value")
+            value = val
+        }else if(type == String(DropShadow)){
+            let val:DropShadow = DropShadow.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(RadialGradient)){
+            let val:RadialGradient = RadialGradient.unWrap(xml, "value")!
+            value = val
+        }else if(type == String(LinearGradient)){
+            let val:LinearGradient = LinearGradient.unWrap(xml, "value")!
+            value = val
+        }else{
+            fatalError("type not supported yet: " + "\(type)")
+        }
+        return value
+    }
 }

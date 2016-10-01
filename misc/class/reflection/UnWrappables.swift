@@ -49,6 +49,8 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
+
+
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         //Swift.print("RadialGradient.unWrap()")
@@ -99,8 +101,8 @@ extension DropShadow:UnWrappable{
 extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        let val:AnyType? = unWrap(xml,"value")
-        let value:Any? = val?.value
+        let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
+        let value:Any = UnWrapUtils.unWrapAny(xml,type)
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
