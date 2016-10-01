@@ -134,7 +134,8 @@ class UnWrapUtils{
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append(ANY(XML))//$0.hasComplexContent ? .. : nil
+                let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
+                array.append(any(XML))//$0.hasComplexContent ? .. : nil
             }
         }
         return array
