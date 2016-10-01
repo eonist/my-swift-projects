@@ -114,9 +114,9 @@ extension Selector:UnWrappable{
      */
     static func unWrap<T>(xml:XML) -> T? {
         Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        let element:String = unWrap(xml, "element")!
+        let element:String = unWrap(xml, "element") ?? ""
         //Swift.print("element: " + "\(element)")
-        let id:String = unWrap(xml, "id")!
+        let id:String = unWrap(xml, "id") ?? ""
         //Swift.print("id: " + "\(id)")
         let classIds:[String?] = unWrap(xml, "classIds")
         let states:[String?] = unWrap(xml, "states")

@@ -48,7 +48,7 @@ extension UnWrappable{
         return nil
     }
     /**
-     * For arrays
+     * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
         //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
@@ -70,7 +70,7 @@ extension UnWrappable{
 }
 class UnWrapUtils{
     /**
-     * Making an extension for "Any" doesn't seem to work
+     * Making an extension for "Any" doesn't seem to work, so this is the solution:
      */
     static func unWrapAny(xml:XML,_ type:String)-> Any?{
         let value:Any
