@@ -49,7 +49,6 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
-
 //Complex types:
 class AnyType{
     var value:Any?
@@ -57,6 +56,9 @@ class AnyType{
         self.value = value
     }
 }
+
+//Continue here: try to experiment in playground with just extending any and then downcasting: since a container class wont work in an array, well you will need to iterate over the entire array and unwrap etc. 
+
 extension AnyType:UnWrappable{
     /**
      * Making an extension for "Any" doesn't seem to work, so this is the solution:
