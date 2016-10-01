@@ -92,9 +92,7 @@ class UnWrapUtils{
     /**
      *
      */
-    static func complexAny(xml:XML,_ type:String){
-        
-        //Continue here: complete this method, also maybe return the type from a general type parser type:String->T hmm, try this in playground first maybe?
+    static func complexAny(xml:XML,_ type:String)->Any{
         let value:Any
         if(type == "Array"){
             let val:[Any?] = anyArray(xml)
@@ -111,6 +109,7 @@ class UnWrapUtils{
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
+        return value
     }
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
