@@ -92,21 +92,21 @@ class UnWrapUtils{
     /**
      *
      */
-    func complexAny(xml:XML,_ key:String,_ type:String){
+    static func complexAny(xml:XML,_ type:String){
         
         //Continue here: complete this method, also maybe return the type from a general type parser type:String->T hmm, try this in playground first maybe?
         let value:Any
         if(type == "Array"){
-            let val:[Any?] = anyArray(xml,key)
+            let val:[Any?] = anyArray(xml)
             value = val
         }else if(type == String(DropShadow)){
-            let val:DropShadow = DropShadow.unWrap(xml, key)!
+            let val:DropShadow = DropShadow.unWrap(xml)!
             value = val
         }else if(type == String(RadialGradient)){
-            let val:RadialGradient = RadialGradient.unWrap(xml, key)!
+            let val:RadialGradient = RadialGradient.unWrap(xml)!
             value = val
         }else if(type == String(LinearGradient)){
-            let val:LinearGradient = LinearGradient.unWrap(xml, "value")!
+            let val:LinearGradient = LinearGradient.unWrap(xml)!
             value = val
         }else{
             fatalError("type not supported yet: " + "\(type)")
