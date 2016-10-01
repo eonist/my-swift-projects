@@ -26,6 +26,9 @@ extension UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         fatalError("must be overridden in subClass")
     }
+    
+    
+    
     /**
      * NOTE: used to unWrap nested values (DropShadow)
      * NOTE: looks at the type and converts that the value into a type
@@ -66,5 +69,43 @@ extension UnWrappable{
             }
         }
         return array
+    }
+    
+    /**
+     * Making an extension for "Any" doesn't seem to work
+     */
+    static func unWrapAny(xml:XML,_ type:String)-> Any?{
+        let value:Any
+        if(type == String(CGFloat)){
+            let val:CGFloat = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(Double)){
+            let val:Double = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(NSColor)){
+            let val:NSColor = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(Bool)){
+            let val:Bool = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(String)){
+            let val:String = unWrap(xml, "value")!
+            value = val
+        }else if(type == "Array"){
+            let val:[String?] = unWrap(xml, "value")
+            value = val
+        }else if(type == String(DropShadow)){
+            let val:DropShadow = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(RadialGradient)){
+            let val:RadialGradient = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(LinearGradient)){
+            let val:LinearGradient = unWrap(xml, "value")!
+            value = val
+        }else{
+            fatalError("type not supported yet: " + "\(type)")
+        }
+        return value
     }
 }
