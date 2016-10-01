@@ -5,6 +5,11 @@ extension String:UnWrappable{
         return String(value) as? T
     }
 }
+extension Double:UnWrappable{
+    static func unWrap<T>(value:String) -> T? {
+        return value.double as? T
+    }
+}
 extension CGFloat:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         return value.cgFloat as? T
@@ -100,6 +105,9 @@ extension StyleProperty:UnWrappable{
         let value:Any
         if(type == String(CGFloat)){
             let val:CGFloat = unWrap(xml, "value")!
+            value = val
+        }else if(type == String(Double)){
+            let val:Double = unWrap(xml, "value")!
             value = val
         }else if(type == String(NSColor)){
             let val:NSColor = unWrap(xml, "value")!
