@@ -115,7 +115,8 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
-    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
+    static func any(xml:XML,_ key:String/*,_ type:String*/)-> Any?{
+        let type:String = XMLParser.attribute(xml.firstNode(key)!, "type")!
         var value:Any
         if(xml.hasSimpleContent){
             let strVal:String = xml.firstNode(key)!.value
