@@ -67,31 +67,31 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" doesn't seem to work, so this is the solution:
      */
-    static func any(xml:XML,_ type:String)-> Any?{
+    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
         let value:Any
         if(type == String(CGFloat)){
-            let val:CGFloat = CGFloat.unWrap(xml, "value")!
+            let val:CGFloat = CGFloat.unWrap(xml, key)!
             value = val
         }else if(type == String(Double)){
-            let val:Double = Double.unWrap(xml, "value")!
+            let val:Double = Double.unWrap(xml, key)!
             value = val
         }else if(type == String(NSColor)){
-            let val:NSColor = NSColor.unWrap(xml, "value")!
+            let val:NSColor = NSColor.unWrap(xml, key)!
             value = val
         }else if(type == String(Bool)){
-            let val:Bool = Bool.unWrap(xml, "value")!
+            let val:Bool = Bool.unWrap(xml, key)!
             value = val
         }else if(type == String(String)){
-            let val:String = String.unWrap(xml, "value")!
+            let val:String = String.unWrap(xml, key)!
             value = val
         }else if(type == "Array"){
-            let val:[String?] = String.unWrap(xml, "value")
+            let val:[Any?] = anyArray(xml,key)
             value = val
         }else if(type == String(DropShadow)){
-            let val:DropShadow = DropShadow.unWrap(xml, "value")!
+            let val:DropShadow = DropShadow.unWrap(xml, key)!
             value = val
         }else if(type == String(RadialGradient)){
-            let val:RadialGradient = RadialGradient.unWrap(xml, "value")!
+            let val:RadialGradient = RadialGradient.unWrap(xml, key)!
             value = val
         }else if(type == String(LinearGradient)){
             let val:LinearGradient = LinearGradient.unWrap(xml, "value")!
@@ -101,7 +101,7 @@ class UnWrapUtils{
         }
         return value
     }
-    static func anyArray(xml:XML) -> [Any?]{
+    static func anyArray(xml:XML,_ key:String) -> [Any?]{
         var array:[Any?] = [Any?]()
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
