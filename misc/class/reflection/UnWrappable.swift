@@ -126,12 +126,15 @@ class UnWrapUtils{
         
         return value
     }
+    
+    //let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
+    
     static func anyArray(xml:XML,_ key:String) -> [Any?]{
         var array:[Any?] = [Any?]()
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append($0.hasSimpleContent ? simpleAny($0.value, <#T##type: String##String#>) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
+                array.append(ANY(XML))//$0.hasComplexContent ? .. : nil
             }
         }
         return array
