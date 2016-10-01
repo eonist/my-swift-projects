@@ -51,18 +51,11 @@ extension UnWrappable{
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
-        //Swift.print("UnWrappable.unWrap for arrays, key: " + "\(key)")
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
-        //Swift.print("child.childCount: " + "\(child.childCount)")
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                if($0.hasSimpleContent){/*<--array items with simple content aka text*/
-                    let value:String = $0.value
-                    array.append(T.unWrap(value))
-                }else if($0.hasComplexContent){/*<--array items with complex content aka nodes*/
-                    array.append(T.unWrap($0))
-                }
+                array.append($0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
             }
         }
         return array
