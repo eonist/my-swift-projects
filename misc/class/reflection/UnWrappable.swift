@@ -67,7 +67,7 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" doesn't seem to work, so this is the solution:
      */
-    static func unWrapAny(xml:XML,_ type:String)-> Any?{
+    static func any(xml:XML,_ type:String)-> Any?{
         let value:Any
         if(type == String(CGFloat)){
             let val:CGFloat = CGFloat.unWrap(xml, "value")!
@@ -100,5 +100,15 @@ class UnWrapUtils{
             fatalError("type not supported yet: " + "\(type)")
         }
         return value
+    }
+    static func anyArray(xml:XML) -> [Any?]{
+        var array:[Any?] = [Any?]()
+        let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
+        if(child.childCount > 0){
+            XMLParser.children(child).forEach{
+                array.append($0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
+            }
+        }
+        return array
     }
 }
