@@ -117,15 +117,17 @@ class UnWrapUtils{
      */
     static func any(xml:XML,_ key:String/*,_ type:String*/)-> Any?{
         let child:XML = xml.firstNode(key)!
-        let type:String = XMLParser.attribute(child, "type")!
-        var value:Any
-        if(child.hasSimpleContent){
-            let strVal:String = child.value
+        return any(child)
+    }
+    static func any(xml:XML)-> Any?{
+        let type:String = XMLParser.attribute(xml, "type")!
+        var value:Any? = nil
+        if(xml.hasSimpleContent){
+            let strVal:String = xml.value
             value = simpleAny(strVal,type)
-        }else if(child.hasComplexContent){
-            value = complexAny(child,type)
+        }else if(xml.hasComplexContent){
+            value = complexAny(xml,type)
         }
-        
         return value
     }
     
