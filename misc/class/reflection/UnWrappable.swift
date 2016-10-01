@@ -67,33 +67,35 @@ class UnWrapUtils{
     /**
      *
      */
-    static func simpleAny(value:String,_ type:String){
+    static func simpleAny(strVal:String,_ type:String)->Any{
+        let value:Any
         if(type == String(CGFloat)){
-            let val:CGFloat = CGFloat.unWrap(xml, key)!
+            let val:CGFloat = CGFloat.unWrap(strVal)!
             value = val
         }else if(type == String(Double)){
-            let val:Double = Double.unWrap(xml, key)!
+            let val:Double = Double.unWrap(strVal)!
             value = val
         }else if(type == String(NSColor)){
-            let val:NSColor = NSColor.unWrap(xml, key)!
+            let val:NSColor = NSColor.unWrap(strVal)!
             value = val
         }else if(type == String(Bool)){
-            let val:Bool = Bool.unWrap(xml, key)!
+            let val:Bool = Bool.unWrap(strVal)!
             value = val
         }else if(type == String(String)){
-            let val:String = String.unWrap(xml, key)!
+            let val:String = String.unWrap(strVal)!
             value = val
+        }else{
+            fatalError("type not supported yet: " + "\(type)")
         }
+        return value
     }
     /**
-     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
+     *
      */
-    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
-        let value:Any
-        if(xml.hasSimpleContent){
-            let value:String = xml.firstNode(key)!.value
-            simpleAny(value)
-        }
+    func complexAny(){
+        
+        //Continue here: complete this method
+        
         if(type == "Array"){
             let val:[Any?] = anyArray(xml,key)
             value = val
@@ -109,6 +111,19 @@ class UnWrapUtils{
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
+    }
+    /**
+     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
+     */
+    static func any(xml:XML,_ key:String,_ type:String)-> Any?{
+        let value:Any
+        if(xml.hasSimpleContent){
+            let value:String = xml.firstNode(key)!.value
+            value = simpleAny(value)
+        }else if(xml.hasComplexContent){
+            
+        }
+        
         return value
     }
     static func anyArray(xml:XML,_ key:String) -> [Any?]{
