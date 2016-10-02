@@ -6,37 +6,23 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
-    static func any(xml:XML,_ key:String/*,_ type:String*/)-> Any?{
+    static func any(xml:XML,_ key:String/*,_ type:String*/) -> Any?{
         let child:XML = xml.firstNode(key)!
         return any(child)
     }
     /**
      *
      */
-    private static func any(xml:XML)-> Any?{
+    private static func any(xml:XML) -> Any{
         let type:String = XMLParser.attribute(xml, "type")!
-        var value:Any? = nil
         if(xml.hasSimpleContent){
             let strVal:String = xml.value
-            value = simpleAny(strVal,type)
+            return simpleAny(strVal,type)
         }else if(xml.hasComplexContent){
-            value = complexAny(xml,type)
+            return complexAny(xml,type)
+        }else{
+            fatalError("type not supported: " + "\(type)")
         }
-        return value
-    }
-    /**
-     * Support for Array<Any?>
-     */
-    static func anyArray(xml:XML/*,_ key:String*/) -> [Any?]{
-        var array:[Any?] = [Any?]()
-        //let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
-        if(xml.childCount > 0){
-            XMLParser.children(xml).forEach{
-                //let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-                array.append(any($0))//$0.hasComplexContent ? .. : nil
-            }
-        }
-        return array
     }
     /**
      *
@@ -59,23 +45,32 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func complexAny(xml:XML,_ type:String)->Any?{
-        let value:Any?
+    private static func complexAny(xml:XML,_ type:String)->Any{
         if(type == "Array"){
             let val:[Any?] = anyArray(xml)
-            value = val
+            return val
         }else if(type == String(DropShadow)){
-            let val:DropShadow = DropShadow.unWrap(xml)!
-            value = val
+            return DropShadow.unWrap(xml)!
         }else if(type == String(RadialGradient)){
-            let val:RadialGradient = RadialGradient.unWrap(xml)!
-            value = val
+            return RadialGradient.unWrap(xml)!
         }else if(type == String(LinearGradient)){
-            let val:LinearGradient = LinearGradient.unWrap(xml)!
-            value = val
+            return LinearGradient.unWrap(xml)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
-        return value
+    }
+    /**
+     * Support for Array<Any?>
+     */
+    static func anyArray(xml:XML/*,_ key:String*/) -> [Any?]{
+        var array:[Any?] = [Any?]()
+        //let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
+        if(xml.childCount > 0){
+            XMLParser.children(xml).forEach{
+                //let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
+                array.append(any($0))//$0.hasComplexContent ? .. : nil
+            }
+        }
+        return array
     }
 }
