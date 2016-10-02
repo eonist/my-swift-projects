@@ -27,10 +27,8 @@ extension Bool:UnWrappable{
 }
 extension NSColor:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        Swift.print("NSColor.unWrap()")
-        let color:NSColor = NSColorParser.nsColor(value)
-        Swift.print("color: " + "\(color)")
-        return color as? T
+        //Swift.print("NSColor.unWrap()")
+        return NSColorParser.nsColor(value) as? T
     }
 }
 extension CGColorRef:UnWrappable{
@@ -103,7 +101,7 @@ extension DropShadow:UnWrappable{
 extension StyleProperty:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        let value = UnWrapUtils.any(xml,"value")
+        let value:Any = UnWrapUtils.any(xml,"value")
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }
