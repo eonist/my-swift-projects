@@ -6,7 +6,7 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
-    static func any(xml:XML,_ key:String/*,_ type:String*/) -> Any?{
+    static func any(xml:XML,_ key:String/*,_ type:String*/) -> Any{//<--if you make this optional, it will cause problems unwrapping the value later, could be because Any is optional by nature?!?
         let child:XML = xml.firstNode(key)!
         return any(child)
     }
