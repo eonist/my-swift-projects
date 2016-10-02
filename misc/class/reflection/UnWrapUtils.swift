@@ -50,7 +50,7 @@ class UnWrapUtils{
             let val:Double = Double.unWrap(strVal)!
             value = val
         }else if(type == String(NSColor)){
-            let val:NSColor = NSColor.unWrap(strVal)!
+            let val:NSColor? = unWrap(strVal)
             value = val
         }else if(type == String(Bool)){
             let val:Bool = Bool.unWrap(strVal)!
