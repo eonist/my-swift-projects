@@ -47,7 +47,7 @@ class UnWrapUtils{
      */
     private static func complexAny(xml:XML,_ type:String)->Any{
         if(type == "Array"){
-            let val:[Any?] = anyArray(xml)
+            let val:[Any] = anyArray(xml)
             return val
         }else if(type == String(DropShadow)){
             return DropShadow.unWrap(xml)!
@@ -62,8 +62,8 @@ class UnWrapUtils{
     /**
      * Support for Array<Any?>
      */
-    static func anyArray(xml:XML/*,_ key:String*/) -> [Any?]{
-        var array:[Any?] = [Any?]()
+    static func anyArray(xml:XML/*,_ key:String*/) -> [Any]{
+        var array:[Any] = [Any]()
         //let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(xml.childCount > 0){
             XMLParser.children(xml).forEach{
