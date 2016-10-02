@@ -41,8 +41,8 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func simpleAny(strVal:String,_ type:String)->Any{
-        let value:Any
+    private static func simpleAny(strVal:String,_ type:String)->Any?{
+        let value:Any?
         if(type == String(CGFloat)){
             let val:CGFloat = CGFloat.unWrap(strVal)!
             value = val
@@ -66,8 +66,8 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func complexAny(xml:XML,_ type:String)->Any{
-        let value:Any
+    private static func complexAny(xml:XML,_ type:String)->Any?{
+        let value:Any?
         if(type == "Array"){
             let val:[Any?] = anyArray(xml)
             value = val
