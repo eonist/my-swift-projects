@@ -27,8 +27,10 @@ extension Bool:UnWrappable{
 }
 extension NSColor:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        //Swift.print("NSColor.unWrap()")
-        return NSColorParser.nsColor(value) as? T
+        Swift.print("NSColor.unWrap()")
+        let color:NSColor = NSColorParser.nsColor(value)
+        Swift.print("color: " + "\(color)")
+        return color as? T
     }
 }
 extension CGColorRef:UnWrappable{
