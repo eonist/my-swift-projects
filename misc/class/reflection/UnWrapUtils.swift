@@ -41,27 +41,20 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func simpleAny(strVal:String,_ type:String)->Any?{
-        let value:Any?
+    private static func simpleAny(strVal:String,_ type:String)->Any{
         if(type == String(CGFloat)){
-            let val:CGFloat = CGFloat.unWrap(strVal)!
-            value = val
+            return  CGFloat.unWrap(strVal)!
         }else if(type == String(Double)){
-            let val:Double = Double.unWrap(strVal)!
-            value = val
+            return Double.unWrap(strVal)!
         }else if(type == String(NSColor)){
-            let val:NSColor? = unWrap(strVal)
-            value = val
+            return NSColor.unWrap(strVal)!
         }else if(type == String(Bool)){
-            let val:Bool = Bool.unWrap(strVal)!
-            value = val
+            return Bool.unWrap(strVal)!
         }else if(type == String(String)){
-            let val:String = String.unWrap(strVal)!
-            value = val
+            return String.unWrap(strVal)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
         }
-        return value
     }
     /**
      *
