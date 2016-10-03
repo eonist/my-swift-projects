@@ -55,7 +55,7 @@ private class Utils{
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
-        Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
+        //Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
             xml["type"] = objectType
         }
@@ -88,7 +88,7 @@ private class Utils{
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
         let value:String = reflectable.reflection.value
         let type:String = reflectable.reflection.type
-        Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
+        //Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
         let xml = XML()
         xml.name = name
         xml["type"] = type
@@ -99,7 +99,7 @@ private class Utils{
      * Basic value types
      */
     static func handleBasicValue(value:Any,_ name:String)->XML{
-        Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value) value-type: \(value.dynamicType)" )
+        //Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value) value-type: \(value.dynamicType)" )
         let xml = XML()
         xml.name = name
         let type:String = String(value.dynamicType)
