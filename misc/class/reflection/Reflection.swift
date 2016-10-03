@@ -102,7 +102,8 @@ private class Utils{
         Swift.print("handleBasicValue:" + " name \(name)" + "value: \(value) value-type: \(value.dynamicType)" )
         let xml = XML()
         xml.name = name
-        xml["type"] = String(value.dynamicType)
+        let type:String = String(value.dynamicType)
+        xml["type"] = type == String(Double) ? String(CGFloat) : type
         let string:String = String(value)
         xml.stringValue = string/*add value*/
         return xml
