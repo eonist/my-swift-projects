@@ -34,7 +34,7 @@ class HexParser {
      * @return Returns a hexidecimal color as a String.
      * EXAMPLE:
      * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
-     * print(hexColor); // Traces 80FF00FF
+     * print(hexColor); // prints 80FF00FF
      */
     class func hexValue(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
         return (a << 24) | (r << 16) | (g << 8) | b
