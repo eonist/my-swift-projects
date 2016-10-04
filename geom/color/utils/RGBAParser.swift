@@ -9,11 +9,12 @@ class RGBAParser {
         return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
     /**
-     *
+     * Returns values like: 00FF00FF
      */
-    class func hex(color:NSColor)->String{
+    static func hex(color:NSColor)->String{
         let rgba:RGBA = RGBAParser.rgba(color)
-        HexParser.hexString(rgba, r: <#T##UInt#>, g: <#T##UInt#>, b: <#T##UInt#>)
+        let alpha:UInt = (rgba.a / 100) * 255/*we need alpha value to be between 0 and 255*/
+        return HexParser.hexString(alpha,rgba.r,rgba.g,rgba.b)
     }
     /**
      * Converts a 32-bit ARGB color value into an ARGB object.
