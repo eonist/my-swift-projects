@@ -47,19 +47,19 @@ class HexParser {
         return NSString(format: "%2X", hex) as String
     }
     /**
-    Converts a 32-bit ARGB color value into a hexidecimal String representation.
-    
-    @param a: A uint from 0 to 255 representing the alpha value.
-    @param r: A uint from 0 to 255 representing the red color value.
-    @param g: A uint from 0 to 255 representing the green color value.
-    @param b: A uint from 0 to 255 representing the blue color value.
-    @return Returns a hexidecimal color as a String.
-    @example
-    <code>
-    var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
-    trace(hexColor); // Prints 80FF00FF
-    </code>
-    */
+     * Converts a 32-bit ARGB color value into a hexidecimal String representation.
+     * 
+     * @param a: A uint from 0 to 255 representing the alpha value.
+     * @param r: A uint from 0 to 255 representing the red color value.
+     * @param g: A uint from 0 to 255 representing the green color value.
+     * @param b: A uint from 0 to 255 representing the blue color value.
+     * @return Returns a hexidecimal color as a String.
+     * @example
+     * <code>
+     * var hexColor : String = hexString(128, 255, 0, 255);
+     * print(hexColor) // Prints 80FF00FF
+     * </code>
+     */
     static func hexString(a:UInt, r:UInt, g:UInt, b:UInt) -> String {
         let hex:UInt = HexParser.hexValue(a,r,g,b)
         return HexParser.hexString(hex)
