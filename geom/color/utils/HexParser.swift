@@ -4,17 +4,17 @@ class HexParser {
     /**
      * EXAMPLE: hexNumber(FF0000)//Output:16711680
      */
-    class func hexValue(hex:String) -> UInt{
+    static func hexValue(hex:String) -> UInt{
         return UInt(Float(hex)!)
     }
     /**
      * Convenience method (since extensions can only return one type of each var)
      * EXAMPLE: rgb(NSColor.redColor())//16711680
      */
-    class func hexValue(color:NSColor) -> UInt{
+    static func hexValue(color:NSColor) -> UInt{
         return UInt(CGFloat(color.hexVal!))
     }
-    class func hexValue(color:NSColor) -> Double?{
+    static func hexValue(color:NSColor) -> Double?{
         return Double("0x" + HexParser.hexString(color))
     }
     /**
@@ -36,14 +36,14 @@ class HexParser {
      * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
      * print(hexColor); // prints 80FF00FF
      */
-    class func hexValue(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
+    static func hexValue(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
         return (a << 24) | (r << 16) | (g << 8) | b
     }
     
     /**
      * EXAMPLE: hexString(16711680)//Output: FF0000
      */
-    class func hexString(hex:UInt) -> String{
+    static func hexString(hex:UInt) -> String{
         return NSString(format: "%2X", hex) as String
     }
     /**
@@ -51,7 +51,7 @@ class HexParser {
      * EXAMPLE: NSColor.redColor().hex//FF0000
      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
      */
-    class func hexString(nsColor:NSColor)->String {
+    static func hexString(nsColor:NSColor)->String {
         let rgb:RGB = nsColor.rgb
         return HexParser.hexString(rgb.r.cgFloat,rgb.g.cgFloat,rgb.b.cgFloat)
     }
@@ -64,7 +64,7 @@ class HexParser {
      * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */
-    class func hexString(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
+    static func hexString(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
         var rr:String = String(format:"%X", Int(r))
         var gg:String = String(format:"%X", Int(g))
         var bb:String = String(format:"%X", Int(b))
