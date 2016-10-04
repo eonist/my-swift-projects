@@ -61,8 +61,15 @@ class HexParser {
      * </code>
      */
     static func hexString(a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
+        
+        
+        //Continue here: 
+        
         let hex:UInt = HexParser.hexValue(a,r,g,b)
-        return HexParser.hexString(hex)
+        Swift.print("hex: " + "\(hex)")
+        let hexString:String = HexParser.hexString(hex)
+        Swift.print("hexString: " + "\(hexString)")
+        return hexString
     }
     /**
      * Support for NSColor
