@@ -12,7 +12,8 @@ class RGBAParser {
      *
      */
     class func hex(color:NSColor)->String{
-        HexParser.hexString(color.redComponent, r: <#T##UInt#>, g: <#T##UInt#>, b: <#T##UInt#>)
+        let rgba:RGBA = RGBAParser.rgba(color)
+        HexParser.hexString(rgba, r: <#T##UInt#>, g: <#T##UInt#>, b: <#T##UInt#>)
     }
     /**
      * Converts a 32-bit ARGB color value into an ARGB object.

@@ -60,7 +60,7 @@ class HexParser {
      * print(hexColor) // Prints 80FF00FF
      * </code>
      */
-    static func hexString(a:UInt, r:UInt, g:UInt, b:UInt) -> String {
+    static func hexString(a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
         let hex:UInt = HexParser.hexValue(a,r,g,b)
         return HexParser.hexString(hex)
     }
