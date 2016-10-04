@@ -9,6 +9,12 @@ class RGBAParser {
         return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
     /**
+     *
+     */
+    class func hex(color:NSColor)->String{
+        HexParser.hexString(color.redComponent, r: <#T##UInt#>, g: <#T##UInt#>, b: <#T##UInt#>)
+    }
+    /**
      * Converts a 32-bit ARGB color value into an ARGB object.
      * @param color: The 32-bit ARGB color value.
      * @return Returns an object with the properties a, r, g, and b defined.
