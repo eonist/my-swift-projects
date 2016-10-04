@@ -14,7 +14,7 @@ class RGBAParser {
     static func hex(color:NSColor)->String{
         let rgba:RGBA = RGBAParser.rgba(color)
         let alpha:UInt = (rgba.a / 100) * 255/*we need alpha value to be between 0 and 255*/
-        let hex:String = HexParser.hexString(alpha,rgba.r,rgba.g,rgba.b)
+        let hex:String = HexParser.hexString(alpha/255,rgba.r/255,rgba.g/255,rgba.b/255)
         Swift.print("hex: " + "\(hex)")
         return hex
     }
