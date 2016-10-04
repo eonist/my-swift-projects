@@ -62,31 +62,17 @@ class HexParser {
      */
     static func hexString(a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
         
-        var aa:String = a.toString(16);
-        var rr:String = r.toString(16);
-        var gg:String = g.toString(16);
-        var bb:String = b.toString(16);
-        aa = (aa.length == 1) ? '0' + aa : aa;
-        rr = (rr.length == 1) ? '0' + rr : rr;
-        gg = (gg.length == 1) ? '0' + gg : gg;
-        bb = (bb.length == 1) ? '0' + bb : bb;
-        return (aa + rr + gg + bb).toUpperCase();
-        
+        var aa:String = String(format:"%X", Int(a))
         var rr:String = String(format:"%X", Int(r))
         var gg:String = String(format:"%X", Int(g))
         var bb:String = String(format:"%X", Int(b))
+        
+        aa = (rr.count == 1) ? "0" + aa : aa
         rr = (rr.count == 1) ? "0" + rr : rr
         gg = (gg.count == 1) ? "0" + gg : gg
         bb = (bb.count == 1) ? "0" + bb : bb
-        return (rr + gg + bb)/*.toUpperCase()*/
-        
-        //Continue here:
-        
-        let hex:UInt = HexParser.hexValue(a,r,g,b)
-        Swift.print("hex: " + "\(hex)")
-        let hexString:String = HexParser.hexString(hex)
-        Swift.print("hexString: " + "\(hexString)")
-        return hexString
+        return (aa + rr + gg + bb).uppercaseString
+   
     }
     /**
      * Support for NSColor
