@@ -171,7 +171,7 @@ class RGBParser {
      * print("Green = " + myRGB.g);
      * print("Blue = " + myRGB.b);
      */
-    class func rbg24(hexColor:UInt) -> RGB {
+    class func rbg24(hexColor:UInt) -> RGB{
         let r = hexColor >> 16 & 0xFF
         let g = hexColor >> 8 & 0xFF
         let b = hexColor & 0xFF
