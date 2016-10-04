@@ -1,6 +1,6 @@
 import Foundation
 
-class RGBA {
+class RGBA {//<--TODO: could be a struct
     var r:UInt/*0-255*/
     var g:UInt/*0-255*/
     var b:UInt/*0-255*/

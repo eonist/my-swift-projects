@@ -4,7 +4,7 @@ class RGBAParser {
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      */
-    class func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
+    static func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
         return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)
     }
@@ -19,7 +19,7 @@ class RGBAParser {
      * print("Green = " + myRGB.g)
      * print("Blue = " + myRGB.b)
      */
-    class func rgba32(color:UInt) -> RGBA {
+    static func rgba32(color:UInt) -> RGBA{
         let r = color >> 16 & 0xFF
         let g = color >> 8 & 0xFF
         let b = color & 0xFF
