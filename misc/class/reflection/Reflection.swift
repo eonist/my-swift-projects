@@ -66,21 +66,15 @@ private class Utils{
         }else{
             let properties = Reflection.reflect(value)
             properties.forEach{
-                Swift.print("$0: " + "\($0)")
                 if ($0.value is AnyArray){/*array*/
-                    Swift.print("a")
                     xml += handleArray($0.value,$0.label)
                 }else if($0.value is Reflectable){
-                    Swift.print("b")
                     xml += handleReflectable($0.value as! Reflectable,$0.label)
                 }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
-                    Swift.print("c")
                     xml += handleBasicValue($0.value,$0.label)
                 }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
-                    Swift.print("d")
                     xml += handleReflectable($0.value as! CGColorRef,$0.label)
                 }else{
-                    Swift.print("e")
                     xml += handleValue($0.value,$0.label)
                     //fatalError("unsuported type: " + "\($0.value.dynamicType)")
                 }
