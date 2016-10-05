@@ -11,9 +11,21 @@ extension NSColor:Reflectable{
         Swift.print("self: " + "\(self)")
         
         //Continue here: it seems to not want to
-        let nsColor:NSColor = self
-        Swift.print("nsColor: " + "\(nsColor)")
-        let hexString:String = RGBAParser.hex(nsColor)
+        let color:NSColor = self
+        Swift.print("nsColor: " + "\(color)")
+        let r:UInt = color.redComponent.uint * 255
+        Swift.print("r: " + "\(r)")
+        let g:UInt = color.greenComponent.uint*255
+        Swift.print("g: " + "\(g)")
+        let b:UInt = color.blueComponent.uint*255
+        Swift.print("b: " + "\(b)")
+        let a:UInt = color.alphaComponent.uint*255
+        Swift.print("a: " + "\(a)")
+        let hex:String = HexParser.hexString(a,r,g,b)
+        Swift.print("hex: " + "\(hex)")
+        
+        let hexString:String = RGBAParser.hex(color)
+        
         Swift.print("hexString: " + "\(hexString)")
         return (type:"NSColor",value:hexString)//we store 0xFF0000FF values, which includes rgb and alpha
     }
