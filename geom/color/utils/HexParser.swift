@@ -48,7 +48,6 @@ class HexParser {
     }
     /**
      * Converts a 32-bit ARGB color value into a hexidecimal String representation.
-     * 
      * @param a: A uint from 0 to 255 representing the alpha value.
      * @param r: A uint from 0 to 255 representing the red color value.
      * @param g: A uint from 0 to 255 representing the green color value.
@@ -61,22 +60,19 @@ class HexParser {
      * </code>
      */
     static func hexString(a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
-        
         var aa:String = String(format:"%X", Int(a))
-        Swift.print("aa: " + "\(aa)")
+        //Swift.print("aa: " + "\(aa)")
         var rr:String = String(format:"%X", Int(r))
-        Swift.print("rr: " + "\(rr)")
+        //Swift.print("rr: " + "\(rr)")
         var gg:String = String(format:"%X", Int(g))
-        Swift.print("gg: " + "\(gg)")
+        //Swift.print("gg: " + "\(gg)")
         var bb:String = String(format:"%X", Int(b))
-        Swift.print("bb: " + "\(bb)")
-        
+        //Swift.print("bb: " + "\(bb)")
         aa = (rr.count == 1) ? "0" + aa : aa
         rr = (rr.count == 1) ? "0" + rr : rr
         gg = (gg.count == 1) ? "0" + gg : gg
         bb = (bb.count == 1) ? "0" + bb : bb
         return (aa + rr + gg + bb)
-   
     }
     /**
      * Support for NSColor
