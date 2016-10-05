@@ -47,4 +47,11 @@ class RGBAParser {
         //Swift.print("a: " + "\(a)")
         return RGBA(r,g,b,a)
     }
+    /**
+     * FF0000FF//outputs blue
+     */
+    static func rgba32(color:String) -> RGBA{
+        let uint:UInt = UInt(Double("0x" + color)!)
+        return rgba32(uint)
+    }
 }

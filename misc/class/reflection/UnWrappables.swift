@@ -49,8 +49,6 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
-
-
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(xml:XML) -> T? {
         //Swift.print("RadialGradient.unWrap()")
