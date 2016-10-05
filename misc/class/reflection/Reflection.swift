@@ -55,19 +55,16 @@ private class Utils{
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
-        Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
+        //Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
             xml["type"] = objectType
         }
         //print(instanceName)
-        Swift.print("Set name")
         xml.name = name != nil ? name! : objectType//the name of instance class
-        Swift.print("Set name.after")
         if(String(value) == "nil" || String(value) == "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
-            Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
                 Swift.print("$0: " + "\($0)")
                 if ($0.value is AnyArray){/*array*/
@@ -95,15 +92,12 @@ private class Utils{
      * Reflectable values
      */
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
-        Swift.print("handleReflectable")
-        let reflection = reflectable.reflection
-        Swift.print("reflection: " + "\(reflection)")
+        //Swift.print("handleReflectable")
         let type:String = reflectable.reflection.type
-        Swift.print("type: " + "\(type)")
+        //Swift.print("type: " + "\(type)")
         let value:String = reflectable.reflection.value
-        Swift.print("value: " + "\(value)")
-        
-        Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
+        //Swift.print("value: " + "\(value)")
+        //Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
         let xml = XML()
         xml.name = name
         xml["type"] = type
@@ -114,7 +108,7 @@ private class Utils{
      * Basic value types
      */
     static func handleBasicValue(value:Any,_ name:String)->XML{
-        Swift.print("handleBasicValue:  name \(name) value-type: \(value.dynamicType) value: \(value) " )
+        //Swift.print("handleBasicValue:  name \(name) value-type: \(value.dynamicType) value: \(value) " )
         let xml = XML()
         //Swift.print("create xml")
         xml.name = name 

@@ -7,19 +7,7 @@ extension CGColorRef:Reflectable{
 }
 extension NSColor:Reflectable{
     var reflection:(type:String,value:String) {
-        Swift.print("reflection")
-        Swift.print("self: " + "\(self)")
-        
-        
-        let color:NSColor = self
-        Swift.print("nsColor: " + "\(color)")
-        Swift.print("self.redComponent: " + "\(self.redComponent)")
-        //Continue here: it seems to not want to read values from ns color at all
-        
-        let hexString:String = RGBAParser.hex(color)
-        
-        Swift.print("hexString: " + "\(hexString)")
-        return (type:"NSColor",value:hexString)//we store 0xFF0000FF values, which includes rgb and alpha
+        return (type:"NSColor",value:RGBAParser.hex(self))//we store 0xFF0000FF values, which includes rgb and alpha
     }
 }
 extension CGTransform:Reflectable{
