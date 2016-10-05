@@ -16,6 +16,13 @@ class NSColorParser {
         return nsColor(uintColor,alpha)
     }
     /**
+     * color("FF0000FF")//outputs blue with 100% opacity
+     */
+    class func color(hexColor:String)->NSColor{
+        let rgba:RGBA = RGBAParser.rgba32(hexColor)
+        return rgba.nsColor
+    }
+    /**
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */

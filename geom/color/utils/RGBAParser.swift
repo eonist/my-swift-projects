@@ -48,7 +48,7 @@ class RGBAParser {
         return RGBA(r,g,b,a)
     }
     /**
-     * rgba32("FF0000FF")//outputs blue
+     * rgba32("FF0000FF")//outputs blue with 100% opacity
      */
     static func rgba32(color:String) -> RGBA{
         let uint:UInt = UInt(Double("0x" + color)!)

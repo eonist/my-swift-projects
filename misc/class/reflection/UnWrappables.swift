@@ -28,13 +28,13 @@ extension Bool:UnWrappable{
 extension NSColor:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         //Swift.print("NSColor.unWrap()")
-        return NSColorParser.nsColor(value) as? T
+        return NSColorParser.color(value) as? T//turns string values like: FF0000FF into NSColor blue
     }
 }
 extension CGColorRef:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         //Swift.print("CGColor.unWrap() value: " + "\(value)")
-        return NSColorParser.nsColor(value).CGColor as? T
+        return NSColorParser.color(value).CGColor as? T//turns string values like: FF0000FF into CGColor blue
     }
 }
 extension CGPoint:UnWrappable{
