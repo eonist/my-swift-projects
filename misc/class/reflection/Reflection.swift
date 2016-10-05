@@ -95,8 +95,11 @@ private class Utils{
      * Reflectable values
      */
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
+        Swift.print("handleReflectable")
         let value:String = reflectable.reflection.value
+        Swift.print("value: " + "\(value)")
         let type:String = reflectable.reflection.type
+        Swift.print("type: " + "\(type)")
         Swift.print("handleReflectable:" + " name \(name)" + "value: \(value)" + " Type: \(type)" )
         let xml = XML()
         xml.name = name
