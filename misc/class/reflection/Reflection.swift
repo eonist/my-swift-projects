@@ -60,12 +60,16 @@ private class Utils{
             xml["type"] = objectType
         }
         //print(instanceName)
+        Swift.print("Set name")
         xml.name = name != nil ? name! : objectType//the name of instance class
+        Swift.print("Set name.after")
         if(String(value) == "nil" || String(value) == "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
+            Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
+                Swift.print("$0: " + "\($0)")
                 if ($0.value is AnyArray){/*array*/
                     xml += handleArray($0.value,$0.label)
                 }else if($0.value is Reflectable){
