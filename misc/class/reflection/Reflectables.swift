@@ -2,12 +2,12 @@ import Cocoa
 
 extension CGColorRef:Reflectable{
     var reflection:(type:String,value:String) {
-        return (type:"CGColor",value:self.nsColor.hexString)
+        return (type:"CGColor",value:RGBAParser.hex(self.nsColor))//we store 0xFF0000FF values, which includes rgb and alpha
     }
 }
 extension NSColor:Reflectable{
     var reflection:(type:String,value:String) {
-        return (type:"NSColor",value:self.hexString)
+        return (type:"NSColor",value:RGBAParser.hex(self))//we store 0xFF0000FF values, which includes rgb and alpha
     }
 }
 extension CGTransform:Reflectable{
