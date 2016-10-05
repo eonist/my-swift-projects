@@ -3,6 +3,7 @@ import Cocoa
 class RGBAParser {
     /**
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
+     * TODO: does this return 0-1.0 values or 0-255 values. clearify!
      */
     static func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
@@ -12,9 +13,16 @@ class RGBAParser {
      * Returns values like: 00FF00FF
      */
     static func hex(color:NSColor)->String{
-        let rgba:RGBA = RGBAParser.rgba(color)
-        let alpha:UInt = (rgba.a / 100) * 255/*we need alpha value to be between 0 and 255*/
-        let hex:String = HexParser.hexString(alpha,rgba.r,rgba.g,rgba.b)
+        let r:UInt = color.redComponent.uint
+        Swift.print("r: " + "\(r)")
+        let g:UInt = color.redComponent.uint
+        Swift.print("g: " + "\(g)")
+        let b:UInt = color.redComponent.uint
+        Swift.print("b: " + "\(b)")
+        let a:UInt = color.alphaComponent.uint
+        Swift.print("a: " + "\(a)")
+        //let alpha:UInt = (rgba.a / 100) * 255/*we need alpha value to be between 0 and 255*/
+        let hex:String = HexParser.hexString(a,r,g,b)
         Swift.print("hex: " + "\(hex)")
         return hex
     }
