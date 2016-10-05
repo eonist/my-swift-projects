@@ -25,6 +25,9 @@ extension String {
     var count:Int{return self.characters.count}//Convenince
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
+    /**
+     * CAUTION: if you do "0xFF0000FF".uint it will give the wrong value, use UInt(Double("")!) instead for cases like that
+     */
     var uint:UInt{return UInt(Float(self)!)}
     var int:Int{return Int(Float(self)!)}
     
