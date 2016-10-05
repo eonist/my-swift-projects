@@ -10,7 +10,7 @@ class RGBAParser {
         return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)//<--you could just do: color.redComponent.uint etc
     }
     /**
-     * Returns values like: 00FF00FF
+     * Returns values like: FF0000FF (which is blue with 100% opacity)
      */
     static func hex(color:NSColor)->String{
         let r:UInt = color.redComponent.uint*255
@@ -36,15 +36,15 @@ class RGBAParser {
      * print("Blue = " + myRGB.b)
      */
     static func rgba32(color:UInt) -> RGBA{
-        Swift.print("rgba32: " + "\(color)")
+        //Swift.print("rgba32: " + "\(color)")
         let r = color >> 16 & 0xFF
-        Swift.print("r: " + "\(r)")
+        //Swift.print("r: " + "\(r)")
         let g = color >> 8 & 0xFF
-        Swift.print("g: " + "\(g)")
+        //Swift.print("g: " + "\(g)")
         let b = color & 0xFF
-        Swift.print("b: " + "\(b)")
+        //Swift.print("b: " + "\(b)")
         let a = color >> 24 & 0xFF
-        Swift.print("a: " + "\(a)")
+        //Swift.print("a: " + "\(a)")
         return RGBA(r,g,b,a)
     }
 }
