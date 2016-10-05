@@ -68,7 +68,7 @@ class HexParser {
         Swift.print("gg: " + "\(gg)")
         var bb:String = String(format:"%X", Int(b))
         Swift.print("bb: " + "\(bb)")
-        aa = (rr.count == 1) ? "0" + aa : aa
+        aa = (aa.count == 1) ? "0" + aa : aa
         rr = (rr.count == 1) ? "0" + rr : rr
         gg = (gg.count == 1) ? "0" + gg : gg
         bb = (bb.count == 1) ? "0" + bb : bb
