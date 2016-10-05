@@ -13,7 +13,7 @@ class NSColorParser {
      */
     class func nsColor(hexColor:String, _ alpha: CGFloat = 1.0) -> NSColor{
         let uintColor:UInt = StringParser.color(hexColor)
-        return nsColor(uintColor,alpha);
+        return nsColor(uintColor,alpha)
     }
     /**
      * Returns NSColor for hex int
