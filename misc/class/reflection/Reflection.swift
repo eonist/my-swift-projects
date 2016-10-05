@@ -99,7 +99,7 @@ private class Utils{
      * Basic value types
      */
     static func handleBasicValue(value:Any,_ name:String)->XML{
-        Swift.print("handleBasicValue:" + " name \(name)" + " value: \(value) value-type: \(value.dynamicType)" )
+        Swift.print("handleBasicValue:  name \(name) value-type: \(value.dynamicType) value: \(value) " )
         let xml = XML()
         xml.name = name
         let type:String = String(value.dynamicType)
