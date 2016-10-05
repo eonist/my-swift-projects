@@ -14,7 +14,7 @@ extension NSColor:Reflectable{
         let color:NSColor = self
         Swift.print("nsColor: " + "\(color)")
         Swift.print("self.redComponent: " + "\(self.redComponent)")
-        //Continue here: it seems to not want to read values from 
+        //Continue here: it seems to not want to read values from ns color at all
         
         let r:UInt = color.redComponent.uint * 255
         Swift.print("r: " + "\(r)")
