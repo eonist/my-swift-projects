@@ -60,7 +60,7 @@ private class Utils{
             xml["type"] = objectType
         }
         //print(instanceName)
-        xml.name = name != nil ? name : objectType//the name of instance class
+        xml.name = name != nil ? name! : objectType//the name of instance class
         if(String(value) == "nil" || String(value) == "Optional(nil)"){//Nil is not nil when mirroring. So you cant do value != nil
             xml["type"] = extractClassType(value)
         }else{
@@ -101,7 +101,8 @@ private class Utils{
     static func handleBasicValue(value:Any,_ name:String)->XML{
         Swift.print("handleBasicValue:  name \(name) value-type: \(value.dynamicType) value: \(value) " )
         let xml = XML()
-        xml.name = name
+        //Swift.print("create xml")
+        xml.name = name 
         let type:String = String(value.dynamicType)
         xml["type"] = type == String(Double) ? String(CGFloat) : type//<-temp fix, seems mirror cant get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
         let string:String = String(value)
