@@ -10,9 +10,12 @@ extension NSColor:Reflectable{
         Swift.print("reflection")
         Swift.print("self: " + "\(self)")
         
-        //Continue here: it seems to not want to
+        
         let color:NSColor = self
         Swift.print("nsColor: " + "\(color)")
+        Swift.print("self.redComponent: " + "\(self.redComponent)")
+        //Continue here: it seems to not want to read values from 
+        
         let r:UInt = color.redComponent.uint * 255
         Swift.print("r: " + "\(r)")
         let g:UInt = color.greenComponent.uint*255
