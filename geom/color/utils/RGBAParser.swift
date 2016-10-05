@@ -33,9 +33,13 @@ class RGBAParser {
      */
     static func rgba32(color:UInt) -> RGBA{
         let r = color >> 16 & 0xFF
+        Swift.print("r: " + "\(r)")
         let g = color >> 8 & 0xFF
+        Swift.print("g: " + "\(g)")
         let b = color & 0xFF
+        Swift.print("b: " + "\(b)")
         let a = color >> 24 & 0xFF
+        Swift.print("a: " + "\(a)")
         return RGBA(r,g,b,a)
     }
 }
