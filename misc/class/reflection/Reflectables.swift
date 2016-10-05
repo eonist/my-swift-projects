@@ -7,6 +7,8 @@ extension CGColorRef:Reflectable{
 }
 extension NSColor:Reflectable{
     var reflection:(type:String,value:String) {
+        Swift.print("reflection")
+        Swift.print("self: " + "\(self)")
         let hexString:String = RGBAParser.hex(self)
         Swift.print("hexString: " + "\(hexString)")
         return (type:"NSColor",value:hexString)//we store 0xFF0000FF values, which includes rgb and alpha
