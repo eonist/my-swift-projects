@@ -18,7 +18,7 @@ extension DropShadow:CustomStringConvertible{
     /**
      * For easier printing of the class variables
      */
-    var description: String { get{return "Color: " + color.hexString + "\n" + "offsetX: " + String(offsetX) + "\n" + "offsetY: " + String(offsetY)} }
+    var description: String { get{return "Color: " + color.hexString + "\n" + "offsetX: " + String(offsetX) + "\n" + "offsetY: " + String(offsetY)} }//missing blur
     /**
      * NSShadow(NSColor.blackColor().alpha(1.0),0.1,0.1,15)
      * NOTE: The class should extend NSShadow instead but we do this for now
