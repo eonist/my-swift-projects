@@ -33,7 +33,7 @@ extension NSColor:UnWrappable{
 }
 extension CGColorRef:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
-        Swift.print("CGColor.unWrap() value: " + "\(value)")
+        //Swift.print("CGColor.unWrap() value: " + "\(value)")
         return NSColorParser.color(value).CGColor as? T//turns string values like: FF0000FF into CGColor blue
     }
 }
