@@ -45,7 +45,7 @@ class RGBAParser {
         let b = color & 0xFF
         //Swift.print("b: " + "\(b)")
         let a = color >> 24 & 0xFF
-        //Swift.print("a: " + "\(a)")
+        Swift.print("a: " + "\(a)")
         return RGBA(r,g,b,a)
     }
     /**
