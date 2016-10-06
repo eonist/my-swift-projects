@@ -7,18 +7,14 @@ class RGBAParser {
      */
     static func rgba(nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
-        Swift.print("ciColor.red: " + "\(ciColor.red)")
-        Swift.print("ciColor.green: " + "\(ciColor.green)")
-        Swift.print("ciColor.blue: " + "\(ciColor.blue)")
-        Swift.print("ciColor.alpha: " + "\(ciColor.alpha)")
-        return RGBA(ciColor.red,ciColor.green,ciColor.blue,ciColor.alpha)//<--you could just do: color.redComponent.uint etc, nopp you can't, redComponent requires colorspace etc see: http://stackoverflow.com/questions/15682923/convert-nscolor-to-rgb/34115587#34115587
+        return RGBA(ciColor.red * 255,ciColor.green * 255,ciColor.blue * 255,ciColor.alpha * 255)//<--you could just do: color.redComponent.uint etc, nopp you can't, redComponent requires colorspace etc see: http://stackoverflow.com/questions/15682923/convert-nscolor-to-rgb/34115587#34115587
     }
     /**
      * Returns values like: FF0000FF (which is blue with 100% opacity)
      */
     static func hex(color:NSColor)->String{
         let rgba:RGBA = RGBAParser.rgba(color)
-        let r:UInt = rgba.r * 255
+        let r:UInt = rgba.r
         Swift.print("r: " + "\(r)")
         let g:UInt = rgba.g * 255
         Swift.print("g: " + "\(g)")

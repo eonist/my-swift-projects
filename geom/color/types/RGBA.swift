@@ -1,11 +1,13 @@
 import Cocoa
-
+/**
+ * IMPORTANT: you cant use values like 0.5 etc
+ */
 class RGBA {//<--TODO: could be a struct
-    var r:CGFloat/*0-255*/
-    var g:CGFloat/*0-255*/
-    var b:CGFloat/*0-255*/
-    var a:CGFloat/*0-100*/
-    init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0,_ a:CGFloat) {
+    var r:UInt/*0-255*/
+    var g:UInt/*0-255*/
+    var b:UInt/*0-255*/
+    var a:UInt/*0-100*/
+    init(_ r:UInt = 0,_ g:UInt = 0,_ b:UInt = 0,_ a:UInt) {
         self.r = r
         self.g = g
         self.b = b
@@ -13,5 +15,12 @@ class RGBA {//<--TODO: could be a struct
     }
 }
 extension RGBA{
-    var nsColor:NSColor{return NSColorParser.nsColor(r,g,b,a)}
+    convenience init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0, _ a:CGFloat = 0){
+        Swift.print("r.uint: " + "\(r.uint)")
+        Swift.print("g.uint: " + "\(g.uint)")
+        Swift.print("b.uint: " + "\(b.uint)")
+        Swift.print("a.uint: " + "\(a.uint)")
+        self.init(r.uint,g.uint,b.uint,a.uint)
+    }
+    var nsColor:NSColor{return NSColorParser.nsColor(r.cgFloat,g.cgFloat,b.cgFloat,a.cgFloat)}
 }
