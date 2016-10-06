@@ -14,14 +14,14 @@ class RGBAParser {
      */
     static func hex(color:NSColor)->String{
         let rgba:RGBA = RGBAParser.rgba(color)
-        let r:UInt = rgba.r*255
-        //Swift.print("r: " + "\(r)")
-        let g:UInt = rgba.g*255
-        //Swift.print("g: " + "\(g)")
-        let b:UInt = rgba.b*255
-        //Swift.print("b: " + "\(b)")
-        let a:UInt = rgba.a*255
-        //Swift.print("a: " + "\(a)")
+        let r:UInt = rgba.r * 255
+        Swift.print("r: " + "\(r)")
+        let g:UInt = rgba.g * 255
+        Swift.print("g: " + "\(g)")
+        let b:UInt = rgba.b * 255
+        Swift.print("b: " + "\(b)")
+        let a:UInt = rgba.a * 255
+        Swift.print("a: " + "\(a)")
         let hex:String = HexParser.hexString(a,r,g,b)
         return hex
     }
