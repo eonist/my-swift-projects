@@ -16,10 +16,6 @@ class RGBA {//<--TODO: could be a struct
 }
 extension RGBA{
     convenience init(_ r:CGFloat = 0,_ g:CGFloat = 0,_ b:CGFloat = 0, _ a:CGFloat = 0){
-        Swift.print("r.uint: " + "\(r.uint)")
-        Swift.print("g.uint: " + "\(g.uint)")
-        Swift.print("b.uint: " + "\(b.uint)")
-        Swift.print("a.uint: " + "\(a.uint)")
         self.init(r.uint,g.uint,b.uint,a.uint)
     }
     var nsColor:NSColor{return NSColorParser.nsColor(r.cgFloat,g.cgFloat,b.cgFloat,a.cgFloat)}
