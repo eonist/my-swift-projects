@@ -59,7 +59,7 @@ extension NSColorParser{
      * r: 0 - 255
      */
     class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
-        return NSColorParser.nsColor(CGFloat(r) /*/ 255.0*/, CGFloat(b) /*/ 255.0*/, CGFloat(g)/* / 255.0*/, CGFloat(a) /*/ 100.0*/)
+        return NSColorParser.nsColor(CGFloat(r) /*/ 255.0*/, CGFloat(b) /*/ 255.0*/, CGFloat(g)/* / 255.0*/, CGFloat(a)/100 /*/ 100.0*/)
     }
     /**
      * Convenince
