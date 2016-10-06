@@ -25,6 +25,7 @@ extension CGSize:Reflectable{
         return (type:"CGSize",value:self.width.string + "," + self.height.string)
     }
 }
+/*
 extension IStyleProperty{
     /**
      * Converts xml to a Selector
@@ -47,3 +48,4 @@ extension IStyleProperty{
         //return StyleProperty(name,value,depth)
     }
 }
+*/
