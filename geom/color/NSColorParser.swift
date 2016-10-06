@@ -2,10 +2,10 @@ import Cocoa
 class NSColorParser {
     /**
      * Note: NSColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
-     * EXAMPLE: nsColor(250.0, 0, 0,100)//output: red NSColor
+     * EXAMPLE: nsColor(250.0, 0, 255)//output: red NSColor
      */
-    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 100) -> NSColor{
-        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a)
+    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 255) -> NSColor{//alpha was 0-100 but is now 0-255 this works better with hex values
+        return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a/255)
     }
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
