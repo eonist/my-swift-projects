@@ -56,7 +56,7 @@ public class XMLAsserter {
      * NOTE: an alternate way of doing this is: self.childCount > 0 && self.children![0].localName != nil
      */
     class func hasComplexContent(node:XML)->Bool{
-        if(node.childCount > 1){
+        if(node.childCount > 0){
             return node.children![0].kind == NSXMLNodeKind.ElementKind
         }
         return false

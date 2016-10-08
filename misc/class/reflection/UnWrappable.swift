@@ -33,9 +33,6 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
-        Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
-        Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        Swift.print("xml.firstNode(key)!: " + "\(xml.firstNode(key)!)")
         //let type:String = xml.firstNode(key)!["type"]!/*<--type not important anymore since we use T, actually, what if the type is Any*/
         if(xml.firstNode(key) != nil){
             if(xml.hasSimpleContent){/*<--simple node content: Text*/
@@ -43,7 +40,6 @@ extension UnWrappable{
                 return T.unWrap(value)//<--use T to your advantage when converting the value (A protocol extension switch, polymorphism)
             }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
                 let child = xml.firstNode(key)!
-                Swift.print("child.hasSimpleContent: " + "\(child.hasSimpleContent)")
                 return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
             }
         }
