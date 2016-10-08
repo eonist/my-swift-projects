@@ -6,6 +6,7 @@ class FileUtils{
      * TODO: what format is the filePath in?
 	 */
 	class func openFile(filePath:String){
+        fatalError("out of order")
 		//log file_path
 		//NSWorkspace.openFile(filePath)
 	}
