@@ -43,6 +43,7 @@ extension UnWrappable{
                 return T.unWrap(value)//<--use T to your advantage when converting the value (A protocol extension switch, polymorphism)
             }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
                 let child = xml.firstNode(key)!
+                Swift.print("child.hasSimpleContent: " + "\(child.hasSimpleContent)")
                 return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
             }
         }
