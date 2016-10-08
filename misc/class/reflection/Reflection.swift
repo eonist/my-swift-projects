@@ -1,5 +1,8 @@
 import Cocoa
-
+/**
+ * NOTE: XML is used as the storage syntax. JSON could be used but there was no apparent benefit so XML it is
+ * NOTE: JSON can be implimented with not to much effort, but supporting both XML and JSON is more work than its worth at the moment
+ */
 class Reflection {
     /**
      * NOTE: does not work with computed properties like: var something:String{return ""}
