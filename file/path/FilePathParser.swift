@@ -36,6 +36,9 @@ class FilePathParser {
     /**
      * fileName
      * EXAMPLE: FilePathParser.fileName(fileURL)
+     * NOTE: you can also use: 
+     * let attributes = try! NSURL(fileURLWithPath:"~/Desktop/temp.xml".tildePath).resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
+     * let filename = attributes[NSURLNameKey] as! String
      */
     class func fileName(fileURL:NSURL, _ withExtension:Bool = true)->String{
         return withExtension ? fileURL.absoluteURL.lastPathComponent! : fileURL.absoluteURL.URLByDeletingPathExtension!.lastPathComponent!
