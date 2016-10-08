@@ -74,6 +74,13 @@ extension LinearGradient:UnWrappable{
         return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }
+extension Temp:UnWrappable{
+    static func unWrap<T>(xml:XML) -> T? {
+        let color:NSColor? = unWrap(xml,"color")
+        Swift.print("color: " + "\(color)")
+        return Temp(color!) as? T
+    }
+}
 extension CGTransform:UnWrappable{
     static func unWrap<T>(value:String) -> T? {
         //Swift.print("CGTransform.unWrap()")
