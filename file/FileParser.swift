@@ -31,7 +31,7 @@ class FileParser{
         }
     }
     /**
-     * 
+     *
      */
     static func modificationDate(){
         let filePath:String = "~/Desktop/ElCapitan/explorer.css".tildePath
@@ -41,6 +41,7 @@ class FileParser{
         Swift.print("filename: " + "\(filename)")
         let modificationDate = attributes[NSURLContentModificationDateKey] as! NSDate
         Swift.print("modificationDate: " + "\(modificationDate)")
+        modificationDate.timeIntervalSince1970
     }
 }
 extension FileParser{
