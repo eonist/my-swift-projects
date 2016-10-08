@@ -30,16 +30,18 @@ class FileParser{
             return ""
         }
     }
+    sp
     /**
      *
      */
-    static func modificationDate(){
+    static func modificationDate()->NSDate{
         let filePath:String = "~/Desktop/ElCapitan/explorer.css".tildePath
         let fileURL:NSURL = NSURL(fileURLWithPath:filePath)
         let attributes = try! fileURL.resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
         let filename = attributes[NSURLNameKey] as! String
         Swift.print("filename: " + "\(filename)")
         let modificationDate = attributes[NSURLContentModificationDateKey] as! NSDate
+        return modificationDate
         Swift.print("modificationDate: " + "\(modificationDate)")
         modificationDate.timeIntervalSince1970
     }
