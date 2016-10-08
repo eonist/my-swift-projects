@@ -95,6 +95,11 @@ public class RegExp{
         return (str as NSString).substringWithRange(result.rangeAtIndex(key))
     }
 }
+extension NSTextCheckingResult{
+    func value(str:String, _ key:Int)->String{//Convenience
+        return RegExp.value(str, self, key)
+    }
+}
 /*
 Research:
 
