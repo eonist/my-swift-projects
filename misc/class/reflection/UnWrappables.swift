@@ -25,7 +25,7 @@ extension Bool:UnWrappable{
         return value.bool as? T
     }
 }
-extension NSColor:UnWrappable{
+extension NSColor:UnWrappable{/* we use 32 bit RGBA values when storing color data (This also stores the alpha value)*/
     static func unWrap<T>(value:String) -> T? {
         //Swift.print("NSColor.unWrap()")
         return NSColorParser.color(value) as? T//turns string values like: FF0000FF into NSColor blue
