@@ -33,8 +33,9 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
         //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
-        //Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
-        //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+        Swift.print("xml.hasComplexContent: " + "\(xml.hasComplexContent)")
+        Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+        Swift.print("xml.firstNode(key)!: " + "\(xml.firstNode(key)!)")
         //let type:String = xml.firstNode(key)!["type"]!/*<--type not important anymore since we use T, actually, what if the type is Any*/
         if(xml.firstNode(key) != nil){
             if(xml.hasSimpleContent){/*<--simple node content: Text*/
