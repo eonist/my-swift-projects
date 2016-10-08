@@ -65,6 +65,7 @@ private class Utils{
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
+            Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
                 if ($0.value is AnyArray){/*array*/
                     xml += handleArray($0.value,$0.label)
