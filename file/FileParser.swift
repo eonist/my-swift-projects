@@ -1,6 +1,6 @@
 import Foundation
 class FileParser{
-	/*
+	/**
 	 * Returns string content from a file at file location "path"
      * PARAM path is the file path to the file
      * NOTE: remember to expand the path with the .tilde call, if its a tilde path
@@ -10,7 +10,7 @@ class FileParser{
      * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
      * EXAMPLE: FileParser.content("~/Desktop/temp.txt".tildePath)//
      */
-	class func content(path:String)->String?{
+	static func content(path:String)->String?{
         do {
             let content = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
             return content
@@ -24,7 +24,7 @@ class FileParser{
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
      * IMPORTANT: Remember to expand the "path" with the tildePath call
      */
-    class func xml(path:String)->XML {
+    static func xml(path:String)->XML {
         let content = FileParser.content(path)
         //Swift.print("content: " + "\(content)")
         let xmlDoc:XMLDoc = try! XMLDoc(XMLString: content!, options: 0)
@@ -34,7 +34,7 @@ class FileParser{
     /**
      * resourceContent("example","txt")
      */
-    class func resourceContent(fileName:String, _ fileExtension:String)->String?{
+    static func resourceContent(fileName:String, _ fileExtension:String)->String?{
         if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
             return content(filepath)
         } else {
