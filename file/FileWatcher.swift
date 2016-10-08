@@ -68,7 +68,7 @@ class FileWatcher{
         fileSystemWatcher.lastEventId = eventIds[numEvents - 1]//<--im not sure if this is needed anymore
     }
     /**
-     * Carefull with enabling this as we dont deinit things in swift anymore? ARC and all that?
+     * Carefull with enabling this as we don't deinit things in swift anymore? ARC and all that?
      * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed.
      */
     deinit {
@@ -79,7 +79,7 @@ extension FileWatcher{
     /**
      * Convenince init
      */
-    convenience init(_ pathsToWatch: [String]) {
+    convenience init(_ pathsToWatch:[String]) {
         self.init(pathsToWatch, FSEventStreamEventId(kFSEventStreamEventIdSinceNow))
     }
 }

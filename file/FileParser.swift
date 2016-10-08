@@ -20,6 +20,19 @@ class FileParser{
         }
 	}
     /**
+     * resourceContent("example","txt")
+     */
+    static func resourceContent(fileName:String, _ fileExtension:String)->String?{
+        if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
+            return content(filepath)
+        } else {
+            // example.txt not found!
+            return ""
+        }
+    }
+}
+extension FileParser{
+    /**
      * Returns an xml instance comprised of the string content at location @param path
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
      * IMPORTANT: Remember to expand the "path" with the tildePath call
@@ -30,17 +43,6 @@ class FileParser{
         let xmlDoc:XMLDoc = try! XMLDoc(XMLString: content!, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
-    }
-    /**
-     * resourceContent("example","txt")
-     */
-    static func resourceContent(fileName:String, _ fileExtension:String)->String?{
-        if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
-            return content(filepath)
-        } else {
-            // example.txt not found!
-            return ""
-        }
     }
 }
 /*
