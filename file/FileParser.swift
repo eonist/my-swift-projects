@@ -30,20 +30,15 @@ class FileParser{
             return ""
         }
     }
-    sp
+
     /**
-     *
+     * NOTE: make sure the file exists with: FileAsserter.exists("some path here")
      */
-    static func modificationDate()->NSDate{
-        let filePath:String = "~/Desktop/ElCapitan/explorer.css".tildePath
+    static func modificationDate(filePath:String)->NSDate{
         let fileURL:NSURL = NSURL(fileURLWithPath:filePath)
         let attributes = try! fileURL.resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
-        let filename = attributes[NSURLNameKey] as! String
-        Swift.print("filename: " + "\(filename)")
         let modificationDate = attributes[NSURLContentModificationDateKey] as! NSDate
         return modificationDate
-        Swift.print("modificationDate: " + "\(modificationDate)")
-        modificationDate.timeIntervalSince1970
     }
 }
 extension FileParser{
