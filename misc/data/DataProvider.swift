@@ -143,6 +143,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     }
     /**
      * Returns the count of the self.items
+     * TODO: convert to a var
      */
     func count() -> Int{
         return self.items.count
