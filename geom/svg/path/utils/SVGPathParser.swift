@@ -18,18 +18,18 @@ class SVGPathParser {
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            let cmnd = match(data,1)//capturing group 1
             //Swift.print("cmnd: >" + cmnd+"<");
             commands.append(cmnd);//command()
-            let params = (data as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            let params = match(data,2)//capturing group 2
             //Swift.print("params: >" + params+"<");
-            let array:Array<CGFloat> = SVGPathParser.parameters(params);
+            let array:Array<CGFloat> = SVGPathParser.parameters(params)
             //Swift.print("pathData.parameters: " + array);
             parameters += array//<---this is the same as concat
         }
 //		Swift.print("pathData.commands: " + commands);
 //		Swift.print("pathData.parameters: " + parameters);
-		return SVGPathData(commands,parameters);
+		return SVGPathData(commands,parameters)
 	}
     /**
 	 * Returns an array comprised of values "sans" its prefix and or suffix
