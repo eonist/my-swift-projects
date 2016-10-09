@@ -18,10 +18,10 @@ class SVGPathParser {
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let cmnd = match(data,1)//capturing group 1
+            let cmnd = match.value(data,1)//capturing group 1
             //Swift.print("cmnd: >" + cmnd+"<");
             commands.append(cmnd);//command()
-            let params = match(data,2)//capturing group 2
+            let params = match.value(data,2)//capturing group 2
             //Swift.print("params: >" + params+"<");
             let array:Array<CGFloat> = SVGPathParser.parameters(params)
             //Swift.print("pathData.parameters: " + array);
