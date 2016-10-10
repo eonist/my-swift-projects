@@ -54,7 +54,6 @@ class ClassParser {
         for (var i : Int = 0; i < instances.count; i++){ if(instances[i] as? T != nil) {return instances[i]}}
         return nil
     }
-
 }
 /*
 print("press")
