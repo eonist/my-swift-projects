@@ -28,15 +28,12 @@ class InteractiveView2:FlippedView,IInteractiveView{
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
-        //event = onEvent/*assign method to selector*/
         event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
      */
     func onEvent(event:Event){
-        //Swift.print("InteractiveView2.onEvent: " + "\(onEvent)")
-        //if(self.superview is IEventSender){(self.superview as! IEventSender).event!(event.setImmediate(self))}
         self.event!(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
     }
     /**
@@ -46,7 +43,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     func mouseMoved(event:MouseEvent){
-        //Swift.print("\(self.dynamicType)" + "mouseMoved() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -54,21 +50,18 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(event:MouseEvent){
-        //Swift.print("\(NSViewParser.parents(self))" + "\(self.dynamicType)" + ".mouseOver() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(event:MouseEvent){
-        //Swift.print("\(self.dynamicType)" + ".mouseOut() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
      * Same as regular mouseDown event except this also includes the origin
      */
     func mouseDown(event:MouseEvent){
-        //Swift.print("\(NSViewParser.parents(self))" + "mouseDown() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -76,7 +69,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * @Note: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(event: MouseEvent){
-        //Swift.print("\(self.dynamicType)" + "mouseUpInside() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
@@ -84,11 +76,10 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(event: MouseEvent){
-        //Swift.print("\(self.dynamicType)" + "mouseUpOutside() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
-     * this method exists for the sake of convenience
+     * This method exists for the sake of convenience
      */
     func mouseUp(event: MouseEvent){
         //Swift.print("\(self.dynamicType)" + "mouseUp() ")
