@@ -32,6 +32,9 @@ extension Event{
     func cast<T>() -> T{/*Convenience*/
         return self as! T
     }
+    /**
+     * TODO: It would be cool if you could also add a call-back method as an argument, also if it could cary arguments, maybe asking too much
+     */
     func assert(type:String,_ origin:AnyObject?) -> Bool{
         return self.type == type && self.origin === origin
     }
