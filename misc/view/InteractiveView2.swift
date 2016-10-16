@@ -82,15 +82,8 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * This method exists for the sake of convenience
      */
     func mouseUp(event: MouseEvent){
-        //Swift.print("\(self.dynamicType)" + "mouseUp() ")
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
-    /**
-     * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
-     */
-     /*func mouseUp(event:MouseEvent){
-     if(self.superview is InteractiveView2){(self.superview as! InteractiveView2).mouseDown(event)}/*informs the parent that an event occured*/
-     }*/
     /**
      * MouseMoved
      * NOTE: there is also mouseDragged, you could forward it to a generic method, and do the same with mouseMoved. so that there wouldnt be duplicate code. since they have the same functionality. you could then use: if(NSEvent.pressedMouseButtons() == 1 << 0){"left is pressed"} to detect if mouse was dragged. or not. Maybe keeping these methods seperatly improves readbility, optimization etc
@@ -111,9 +104,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     override func mouseEntered( event: NSEvent){
         //Swift.print("\(self.dynamicType)" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
-        
         //im not sure if the bellow code is perfectly stable in all cases, more testing needed
-        
         if(!hasMouseEntered && viewUnderMouse === self){
             hasMouseEntered = true;/*optimization*/
             isMouseOver = true;
@@ -138,9 +129,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(theEvent: NSEvent) {mouseDown(MouseEvent(theEvent,self))}
-    /**
-     *
-     */
     override func mouseUp(theEvent: NSEvent) {
         mouseUp(MouseEvent(theEvent,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, lets keep it above for now as the LeverStepper problem was a broken track pad problem not this*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(theEvent,self)) : mouseUpOutside(MouseEvent(theEvent,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
@@ -151,7 +139,6 @@ class InteractiveView2:FlippedView,IInteractiveView{
      */
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
-        //super.hitTest(aPoint)
         if(isInteractive){
             for var i = self.subviews.count-1; i > -1; --i{//<--you could store the count outside the loop for optimization, i dont know if this is imp in swift
                 let view = self.subviews[i]
