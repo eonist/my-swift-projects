@@ -1,4 +1,5 @@
 import Cocoa
+//seems old, delete?
 class CustomCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
