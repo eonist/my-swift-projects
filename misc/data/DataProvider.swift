@@ -1,5 +1,6 @@
 import Foundation
 /**
+ * // :TODO: Is dataprovider a candidat for struct?
  * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
  * // :TODO: replaceItem
