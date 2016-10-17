@@ -33,6 +33,17 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         self.items = items/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
         super.init()
     }
+}
+/**
+ * TODO: Implement suppert for xmlString as an init argument
+ */
+extension DataProvider{
+    /**
+     *
+     */
+    convenience init(_ xml:NSXMLElement?){
+        self.init(xml != nil ? XMLParser.toArray(xml!) : [])
+    }
     /**
      * Adds an array to the exisiting items array
      * @param items is an Array comprised of objects
@@ -96,7 +107,7 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
     /**
-     * 
+     *
      */
     func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
         for item in self.items {
@@ -142,20 +153,6 @@ class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers as
     }
     /**
      * Returns the count of the self.items
-     * TODO: convert to a var
      */
-    func count() -> Int{
-        return self.items.count
-    }
-}
-/**
- * TODO: Implement suppert for xmlString as an init argument
- */
-extension DataProvider{
-    /**
-     *
-     */
-    convenience init(_ xml:NSXMLElement?){
-        self.init(xml != nil ? XMLParser.toArray(xml!) : [])
-    }
+    var count:Int{return self.items.count}
 }
