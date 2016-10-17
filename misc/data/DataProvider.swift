@@ -8,11 +8,10 @@ import Foundation
  * // :TODO: removeAll()
  * // :TODO: removeDuplicates
  * // :TODO: sortOn
- * // :TODO: outsource static pricate functions
  * // :TODO: Do we need a DataProviderItem?
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  *
- * @example
+ * EXAMPLE:
  * let orange:Dictionary<String,String> = ["name":"orange", "title":"harry"]
  * let blue = ["name":"blue", "url":"na"]
  * let red = ["name":"red", "headline":"spring"]
