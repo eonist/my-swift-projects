@@ -21,16 +21,15 @@ class DataProviderParser {
         //fatalError("NO ITEM WITH THE PROPERTY OF: "+property);
         return nil
     }
-    //getItemAtIndex
     /**
      * Returns an XML instance from @param dataProvider
-     * NOTE: the is the reverse algorithm as XMLParser.parseXMLToArray(xml);
+     * NOTE: the is the reverse algorithm as XMLParser.parseXMLToArray(xml)
      */
-    static func xml(dataProvider:DataProvider,_ rootName:String = "items") -> XML {
-        let xml:XML = "<\(rootName)></\(rootName)>".xml
+    static func xml(dataProvider:DataProvider) -> XML {
+        let xml = "<items></items>".xml
         for (var i:Int = 0; i < dataProvider.items.count; i++) {
             let item = dataProvider.items[i]
-            let child:XML = "<item></item>".xml
+            let child = "<item></item>".xml
             for attr:(key:String,value:String) in item{
                 child[attr.key] = attr.value//add all attributes to the item
             }
@@ -38,5 +37,6 @@ class DataProviderParser {
         }
         return xml
     }
-    //childrenCount
 }
+//getItemAtIndex
+//childrenCount
