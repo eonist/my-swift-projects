@@ -32,6 +32,9 @@ class DataProviderParser {
             var item = dataProvider.items[i]
             
             var child:XML = "<item></item>".xml
+            item.forEach{
+                XMLModifier.setAttributeAt(<#T##xml: NSXMLElement##NSXMLElement#>, <#T##index: Array<Int>##Array<Int>#>, <#T##attributes: Dictionary<String, String>##Dictionary<String, String>#>)
+            }
             
             //Continue here: add all attributes to the item, look at the repolist.xml first
             
