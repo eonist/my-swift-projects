@@ -29,17 +29,11 @@ class DataProviderParser {
     static func xml(dataProvider:DataProvider,_ rootName:String = "items") -> XML {
         let xml:XML = "<\(rootName)></\(rootName)>".xml
         for (var i:Int = 0; i < dataProvider.items.count; i++) {
-            var item = dataProvider.items[i]
-            
-            var child:XML = "<item></item>".xml
-            item.forEach{
-                XMLModifier.setAttributeAt(<#T##xml: NSXMLElement##NSXMLElement#>, <#T##index: Array<Int>##Array<Int>#>, <#T##attributes: Dictionary<String, String>##Dictionary<String, String>#>)
+            let item = dataProvider.items[i]
+            let child:XML = "<item></item>".xml
+            for attr:(key:String,value:String) in item{
+                child[attr.key] = attr.value//add all attributes to the item
             }
-            
-            //Continue here: add all attributes to the item, look at the repolist.xml first
-            
-            //if(typeof(item["xml"]) == "xml") child = DataProviderParser.xml(DataProvider(item["xml"]))
-            //for (var val:* in item) if(typeof(item[val]) == "string") {child["@"+val] = item[val]}
             xml.appendChild(child)
         }
         return xml
