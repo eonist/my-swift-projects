@@ -73,7 +73,7 @@ public class XMLParser{
      * EXAMPLE: attributes.count// num of attributes
      * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
      */
-    static func attributes(child:NSXMLElement) -> [Dictionary<String,String>]{
+    static func attributes(child:XML) -> [Dictionary<String,String>]{
         
         //you should probably not use this, use attribs instead
         
@@ -94,7 +94,7 @@ public class XMLParser{
     /**
      * New
      */
-    class func attribs(child:NSXMLElement) -> Dictionary<String,String>{
+    class func attribs(child:XML) -> Dictionary<String,String>{
         var attributes:Dictionary<String,String> = [:]
         if(child.attributes?.count > 0){
             for node:NSXMLNode in child.attributes!{
@@ -107,7 +107,7 @@ public class XMLParser{
      * Returns a key/value object with the attributes at the @param index in @param database
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
-    class func attributesAt(child:NSXMLElement, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
+    class func attributesAt(child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
     }
     /**
@@ -136,7 +136,7 @@ public class XMLParser{
      * @Note to find a child at an integer use the native code: xml.children[integer]
      * @Note to find the children of the root use an empty array as the index value
      */
-    class func childAt(xml:NSXMLElement?,_ index:Array<Int>)->XML? {
+    class func childAt(xml:XML?,_ index:Array<Int>)->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
