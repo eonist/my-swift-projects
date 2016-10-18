@@ -77,7 +77,7 @@ extension DataProvider{
         if (index <= self.items.count) {removedItem = self.items.splice2(index,1)}
         else {(fatalError("\(self.dynamicType)" + " no item at the index of " + "\(index)"))}
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, /*[removedItem],*/ index,index+1,self))
-        return removedItem;
+        return removedItem
     }
     /**
      * Removes the item passed through the @param item
