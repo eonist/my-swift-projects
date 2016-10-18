@@ -9,15 +9,15 @@ import Foundation
 * // :TODO: possibly use child and children instead of item and items, since its db and not a list anymore?
 * // :TODO: add function: index(attribute:Object) which finds the first index that has an attribute that matches both attribute.key and attribute.value add this function to XMLParser and ref frmom this class
 */
-class Node : EventSender{//this should probably extend NSXMLElement, and just implement the eventsender as a method instead
-    var xml : NSXMLElement
-    init(_ xml:NSXMLElement = NSXMLElement()) {
+class Node:EventSender{//this should probably extend NSXMLElement, and just implement the eventsender as a method instead
+    var xml:XML
+    init(_ xml:XML = XML()) {
         self.xml = xml
     }
     /**
      * // :TODO: consider renaming to appendAt 
      */
-    func addAt(index:Array<Int>,_ xml:NSXMLElement){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func addAt(index:Array<Int>,_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         XMLModifier.addChildAt(self.xml, index, xml)
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
@@ -32,8 +32,8 @@ class Node : EventSender{//this should probably extend NSXMLElement, and just im
     /**
      * Removes the item @param index
      */
-    func removeAt(index:Array<Int>)->NSXMLElement{// :TODO: do we still need the event dispatching, can't the calling method do this?
-        let removedXML:NSXMLElement = XMLModifier.removeChildAt(xml, index)
+    func removeAt(index:Array<Int>)->XML{// :TODO: do we still need the event dispatching, can't the calling method do this?
+        let removedXML:XML = XMLModifier.removeChildAt(xml, index)
         onEvent(NodeEvent(NodeEvent.removeAt,index,self))
         return removedXML
     }
