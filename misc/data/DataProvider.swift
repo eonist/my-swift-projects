@@ -92,6 +92,15 @@ extension DataProvider{
      * Returns the count of the self.items
      */
     var count:Int{return self.items.count}
+    /**
+     *
+     */
+    func getValue(index:Int,_ key:String)->String?{
+        if let value = self.items[index][key]{
+            return value
+        }
+        return nil
+    }
 }
 /**
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
