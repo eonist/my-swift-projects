@@ -15,12 +15,12 @@ class TextField:NSTextField{
         return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print("TextField.mouseDown() theEvent: " + "\(theEvent)")
+        //Swift.print("TextField.mouseDown() theEvent: " + "\(theEvent)")
         if(globalMouseDownHandler == nil){globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:onMouseDownOutside)}//we add an eventListener that takes care of resigning the edit mode of the textField
         super.mouseDown(theEvent)
     }
     func onMouseDownOutside(event:NSEvent)-> NSEvent?{
-        Swift.print("onMouseDownOutside " + "localPos: " + "\(event.localPos(self))")
+        //Swift.print("onMouseDownOutside " + "localPos: " + "\(event.localPos(self))")
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
             //Swift.print("resign")
             if(globalMouseDownHandler != nil) {NSEvent.removeMonitor(globalMouseDownHandler!)}//we remove the evenListener as its done its job
@@ -29,12 +29,12 @@ class TextField:NSTextField{
         return event
     }
     override func textDidChange(notification:NSNotification) {
-        Swift.print("TextField.textDidChange()")
+        //Swift.print("TextField.textDidChange()")
         if(self.superview is IEventSender){
-            Swift.print("superview is IEventSender")
+            //Swift.print("superview is IEventSender")
             (self.superview as! IEventSender).event!(TextFieldEvent(Event.update,self/*,self*/))
         }else{
-            Swift.print("superview is NOT IEventSender")
+            //Swift.print("superview is NOT IEventSender")
         }
         super.textDidChange(notification)
     }
