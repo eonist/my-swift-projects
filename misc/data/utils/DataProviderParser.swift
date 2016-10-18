@@ -33,7 +33,7 @@ class DataProviderParser {
             
             var child:XML = "<item></item>".xml
             
-            //Continue here: add all attributes to the item
+            //Continue here: add all attributes to the item, look at the repolist.xml first
             
             //if(typeof(item["xml"]) == "xml") child = DataProviderParser.xml(DataProvider(item["xml"]))
             //for (var val:* in item) if(typeof(item[val]) == "string") {child["@"+val] = item[val]}
