@@ -1,6 +1,7 @@
 import Foundation
 /*
  * TODO: Implement the immediate variable if its needed (it would be a way to get assert the 1-level down immediate child an event came from, rather than the origin child which can be many levels deeper in the hierarchy)
+ * NOTE: Event could be a struct, most Event classes are really simple and could easily 
  */
 class Event{
     static var update:String = "eventUpdate"/*Ideally I would name this change but apparently then subclasses can name their const the same*/
