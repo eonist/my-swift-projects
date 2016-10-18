@@ -1,6 +1,6 @@
 import Foundation
 /**
- * // :TODO: Is dataprovider a candidat for struct?
+ * // :TODO: Is dataprovider a candidat for struct? No, as it extends EventSender
  * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
  * // :TODO: replaceItem
@@ -22,7 +22,7 @@ import Foundation
  * dp.removeItemAt(dp.getItemIndex(orange))
  * Swift.print(dp.count())
  */
-class DataProvider :EventSender{// :TODO: move methods intp parsers,modifiers asserters
+class DataProvider:EventSender{// :TODO: move methods intp parsers,modifiers asserters
     var items:[Dictionary<String, String>]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
