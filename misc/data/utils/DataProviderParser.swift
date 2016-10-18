@@ -22,6 +22,20 @@ class DataProviderParser {
         return nil
     }
     //getItemAtIndex
-    //xml
+    /**
+     * Returns an XML instance from @param dataProvider
+     * NOTE: the is the reverse algorithm as XMLParser.parseXMLToArray(xml);
+     */
+    static func xml(dataProvider:DataProvider) -> XML {
+        var xml:XML = "<item></item>".xml
+        for (var i:Int = 0; i < dataProvider.items.count; i++) {
+            var child:XML = "<item></item>".xml
+            var item = dataProvider.items[i]
+            if(typeof(item["xml"]) == "xml") child = DataProviderParser.xml(DataProvider(item["xml"]))
+            for (var val:* in item) if(typeof(item[val]) == "string") {child["@"+val] = item[val]}
+            xml.appendChild(child);
+        }
+        return xml;
+    }
     //childrenCount
 }
