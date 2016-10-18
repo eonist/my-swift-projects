@@ -35,16 +35,70 @@ class DataProvider:EventSender{// :TODO: move methods intp parsers,modifiers ass
         super.init()
     }
 }
-/**
- * TODO: Implement suppert for xmlString as an init argument
- */
+/*parser*/
 extension DataProvider{
     /**
      *
      */
-    convenience init(_ xml:NSXMLElement?){
+    convenience init(_ xml:XML?){
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
+    /**
+     *
+     */
+    func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
+        for item in self.items {
+            if(item[key] == value) {return item}
+        }
+        Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
+        return nil
+    }
+    /**
+     *
+     */
+    func index(key:String,_ value:String) -> Int?{
+        let count = items.count
+        for var i = 0; i < count; ++i{
+            if(items[i][key] == value) {return i}
+        }
+        return nil
+    }
+    /**
+     * Returns an item at a spessific index
+     */
+    func getItemAt(index:Int) -> Dictionary<String, String>? {
+        if(index < self.items.count) {return self.items[index]}
+        Swift.print("\(self)" + "no item at the index of " + "\(index)")
+        return nil
+    }
+    /**
+     * Returns the item index passed through the @param item
+     */
+    func getItemIndex(item:Dictionary<String, String>)->Int{// :TODO: rename to indexToItem?!?
+        return self.items.indexOf{$0 == item} ?? -1
+    }
+    /**
+     *
+     */
+    func getIndex(title:String)->Int?{
+        let numOfItems = self.items.count
+        for var i = 0; i < numOfItems; ++i{
+            let item:Dictionary<String, String> = self.items[i]
+            if(item["title"] == title) {return i}
+        }
+        return nil
+    }
+    /**
+     * Returns the count of the self.items
+     */
+    var count:Int{return self.items.count}
+}
+/**
+ * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
+ */
+//Modifier
+extension DataProvider{
+    
     /**
      * Adds an array to the exisiting items array
      * @param items is an Array comprised of objects
@@ -107,53 +161,4 @@ extension DataProvider{
         //self.items.sortOn(names, options,args);
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
-    /**
-     *
-     */
-    func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
-        for item in self.items {
-            if(item[key] == value) {return item}
-        }
-        Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
-        return nil
-    }
-    /**
-     *
-     */
-    func index(key:String,_ value:String) -> Int?{
-        let count = items.count
-        for var i = 0; i < count; ++i{
-            if(items[i][key] == value) {return i}
-        }
-        return nil
-    }
-    /**
-     * Returns an item at a spessific index
-     */
-    func getItemAt(index:Int) -> Dictionary<String, String>? {
-        if(index < self.items.count) {return self.items[index]}
-        Swift.print("\(self)" + "no item at the index of " + "\(index)")
-        return nil
-    }
-    /**
-     * Returns the item index passed through the @param item
-     */
-    func getItemIndex(item:Dictionary<String, String>)->Int{// :TODO: rename to indexToItem?!?
-        return self.items.indexOf{$0 == item} ?? -1
-    }
-    /**
-     *
-     */
-    func getIndex(title:String)->Int?{
-        let numOfItems = self.items.count
-        for var i = 0; i < numOfItems; ++i{
-            let item:Dictionary<String, String> = self.items[i]
-            if(item["title"] == title) {return i}
-        }
-        return nil
-    }
-    /**
-     * Returns the count of the self.items
-     */
-    var count:Int{return self.items.count}
 }
