@@ -161,5 +161,10 @@ extension DataProvider{
         //self.items.sortOn(names, options,args);
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
     }
-    
+    /**
+     *
+     */
+    func setValue(index:Int,_ key:String, _ value:String){
+        self.items[index][key] = value
+    }
 }
