@@ -19,7 +19,7 @@ class TextField:NSTextField{
         if(globalMouseDownHandler == nil){globalMouseDownHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:onMouseDownOutside)}//we add an eventListener that takes care of resigning the edit mode of the textField
         super.mouseDown(theEvent)
     }
-    func onMouseDownOutside(event:NSEvent)-> NSEvent?{
+    func onMouseDownOutside(event:NSEvent) -> NSEvent?{
         //Swift.print("onMouseDownOutside " + "localPos: " + "\(event.localPos(self))")
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
             //Swift.print("resign")
