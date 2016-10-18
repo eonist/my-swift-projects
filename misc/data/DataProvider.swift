@@ -165,6 +165,8 @@ extension DataProvider{
      *
      */
     func setValue(index:Int,_ key:String, _ value:String){
-        self.items[index][key] = value
+        if(index < self.items.count){
+            self.items[index][key] = value
+        }
     }
 }
