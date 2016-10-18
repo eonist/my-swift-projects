@@ -39,4 +39,10 @@ extension Event{
     func assert(type:String,_ origin:AnyObject?) -> Bool{
         return self.type == type && self.origin === origin
     }
+    /**
+     * New
+     */
+    func assert(type:String, immediate:AnyObject?) -> Bool{
+        return self.type == type && self.immediate === immediate
+    }
 }
