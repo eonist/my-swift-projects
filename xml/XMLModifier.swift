@@ -66,7 +66,15 @@ public class XMLModifier {
     /**
      * TODO: Make similar method for multiple key, value pairs
      */
-    class func setAttributeAt(xml:XML,_ index:Int, key:String, value:String)->XML{
+    class func setAttributeAt(xml:XML,_ index:Int, _ key:String, _ value:String)->XML{
+        let child = XMLParser.childAt(xml.children!, index)
+        child![key] = value
+        return xml
+    }
+    /**
+     * TODO: Make similar method for multiple key, value pairs
+     */
+    class func setAttribute(xml:XML, _ key:String, _ value:String)->XML{
         xml[key] = value
         return xml
     }
