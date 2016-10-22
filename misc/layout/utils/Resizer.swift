@@ -1,19 +1,29 @@
 import Foundation
 
 class Resizer {
-    func fit(size:CGSize, ratio:CGFloat){
+    /**
+     * Fits inside a frame
+     */
+    func fit(size:CGSize, _ ratio:CGFloat)->CGSize{
         //Scale to ratio:
-        let ratio:CGFloat = 4/3
-        Swift.print("ratio: " + "\(ratio)")
-        Swift.print("(w/h): " + "\((w/h))")
+        let w:CGFloat = size.width
+        let h:CGFloat = size.height
+        //Swift.print("ratio: " + "\(ratio)")
+        //Swift.print("(w/h): " + "\((w/h))")
         if((w/h) > ratio){
-            Swift.print("w is wider than ratio allows")
-            graphArea!.setSize(h*ratio,h)
+            //Swift.print("w is wider than ratio allows")
+            return CGSize(h*ratio,h)
         }else if((w/h) < ratio){
-            Swift.print("h is taller than ratio allows")
-            graphArea!.setSize(w,w*ratio)
+            //Swift.print("h is taller than ratio allows")
+            return CGSize(w,w*ratio)
         }else{
-            graphArea!.setSize(w,h)
+            return CGSize(w,h)
         }
+    }
+    /**
+     * Allways fills a frame
+     */
+    func zoom(){
+        //Implement later, its almost the same as fir
     }
 }
