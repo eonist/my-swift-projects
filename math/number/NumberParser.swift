@@ -1,21 +1,12 @@
 import Foundation
 class NumberParser{
     /**
-    * @return a  Random number within a min max value
-    * @example range(0,4);
-    * @Note includes the min Number and the max number in the pool of numbers
-    * // :TODO: move this to the Random.as class?
-    */
+     * Return a  Random number within a min max value
+     */
     static func random(min:Int, max:Int)->Int{//returns an integer between 0 - x
-        //untested
-        let randomNr:Int = Int(floor(Float(Int(arc4random()) * (max-min))))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+        let randomNr:Int = Int(arc4random_uniform(UInt32(max)) + UInt32(min))
         return randomNr
     }
-    /**
-     *
-     */
-     
-     
     /**
      * Returns the number with a set number of @param decimalCount
      * @Note unlike the tofixed method that returns this: Number(6.0001).toFixed(2)// 6.01, the aprox method returns a more clinical number
