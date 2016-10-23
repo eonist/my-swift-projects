@@ -1,6 +1,11 @@
 import Foundation
 class NumberParser{
     /**
+     *
+     */
+     
+     let randomNr:Int = Int(floor(Float(Int(arc4random()) * (len-e))))// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+    /**
      * Returns the number with a set number of @param decimalCount
      * @Note unlike the tofixed method that returns this: Number(6.0001).toFixed(2)// 6.01, the aprox method returns a more clinical number
      * @Note the approx method does not Round up or down by taking into account the decimal after the @param decimalCount, this could be usefull in the future
