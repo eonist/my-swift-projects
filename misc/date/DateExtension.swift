@@ -26,4 +26,17 @@ extension NSDate {
         //Swift.print("days.length: " + "\(days.length)")
         return days.length
     }
+    
+    
+    var dayOfWeek:String? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    var monthName: String? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.stringFromDate(self)
+    }
 }
