@@ -38,8 +38,8 @@ extension NSDate {
     /**
      *
      */
-    var shortNameDayOfWeek:String?{
-        return dayOfWeek != nil ? String(dayOfWeek!.characters.first) : nil
+    var shortNameDayOfWeek:String{
+        return dayOfWeek != nil ? String(dayOfWeek!.characters.first) : ""
     }
     
     var monthName: String? {
