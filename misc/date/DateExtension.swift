@@ -36,10 +36,10 @@ extension NSDate {
         return dateFormatter.stringFromDate(self)
     }
     /**
-     * Continue here
+     *
      */
     var shortNameDayOfWeek:String?{
-        return String(dayOfWeek?.characters.first)
+        return dayOfWeek != nil ? String(dayOfWeek!.characters.first) : nil
     }
     
     var monthName: String? {
