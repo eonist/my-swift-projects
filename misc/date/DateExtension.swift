@@ -27,11 +27,19 @@ extension NSDate {
         return days.length
     }
     
-    
+    /**
+     *
+     */
     var dayOfWeek:String? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.stringFromDate(self)
+    }
+    /**
+     * Continue here
+     */
+    var shortNameDayOfWeek:String?{
+        return nil
     }
     
     var monthName: String? {
