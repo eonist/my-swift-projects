@@ -39,7 +39,7 @@ extension NSDate {
      * Continue here
      */
     var shortNameDayOfWeek:String?{
-        return nil
+        return String(dayOfWeek?.characters.first)
     }
     
     var monthName: String? {
