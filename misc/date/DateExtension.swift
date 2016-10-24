@@ -39,7 +39,7 @@ extension NSDate {
      *
      */
     var shortDayName:String{
-        return String(dayName?.characters.first!)
+        return dayName != nil ? String(dayName!.characters.first!) : ""
     }
     
     var monthName: String? {
