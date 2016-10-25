@@ -1,5 +1,8 @@
 import Foundation
-
+/**
+ * Makes it possible to create looping animations, n-loops or infinite-loops
+ * NOTE: use stop() to stop the animation if the animation is infinite, with n-loops the animation stops when the last repeat has run
+ */
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
     var curCount:Int = 0
@@ -25,18 +28,4 @@ class LoopingAnimator:Animator{
         }
         self.currentFrameCount++
     }
-    //Continue here:
-    
-    //extends Animator
-    
-    //overide onFrame
-    
-    //reset currentFrame when at endFrame
-    
-    //stop it manually if repearCount is 0
-    
-    //repeatCount var in init
-    
-    
-    
 }
