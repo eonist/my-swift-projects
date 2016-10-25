@@ -2,18 +2,18 @@ import Foundation
 
 class LoopingAnimator {
     
+    //Continue here:
+    
     //extends Animator
     
     //overide onFrame
     
     //reset currentFrame when at endFrame
     
-    //duration
+    //stop it manually if repearCount is 0
     
-    //easing
+    //repeatCount var in init
     
-    //
-    
-    //onFrame
+    //Grab that linear easing from your blog post about that
     
 }
