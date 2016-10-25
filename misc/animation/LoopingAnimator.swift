@@ -2,6 +2,7 @@ import Foundation
 
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
+    var loopCount:Int = 0
     init(_ view:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.repeatCount = repeatCount
         super.init(view, duration, from, to, method, easing)
@@ -16,6 +17,9 @@ class LoopingAnimator:Animator{
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
+            self.currentFrameCount = 0//<--reset
+            if(loopCount)
+            loopCount++
             stop()
         }
         self.currentFrameCount++
