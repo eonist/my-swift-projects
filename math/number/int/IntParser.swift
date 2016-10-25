@@ -11,7 +11,7 @@ class IntParser{
     * print(IntParser.normalize(8, 7));//1
     * print(IntParser.normalize(12, 7));//5
     */
-    static func normalize(index:Int,len:Int/*UInt*/) -> Int/*UInt*/ {
+    static func normalize(index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
         return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
     }
 	/**
