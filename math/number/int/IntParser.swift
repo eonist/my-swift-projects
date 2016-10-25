@@ -1,4 +1,19 @@
 class IntParser{
+    /**
+    * Returns a normalized integer value
+    * @Note great for iterating int arrays
+    * @Note can be used for looping items in an array
+    * @example
+    * print(IntParser.normalize(3, 7));//3
+    * print(IntParser.normalize(-3, 7));//4
+    * print(IntParser.normalize(0, 7));//0
+    * print(IntParser.normalize(7, 7));//0
+    * print(IntParser.normalize(8, 7));//1
+    * print(IntParser.normalize(12, 7));//5
+    */
+    static func normalize(index:Int,len:Int/*UInt*/) -> Int/*UInt*/ {
+        return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
+    }
 	/**
 	 * 
 	 */
