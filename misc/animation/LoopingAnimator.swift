@@ -1,5 +1,7 @@
 import Foundation
 
-class LoopingAnimator {
-
+class LoopingAnimator:BaseAnimation {
+    init(_ animatable: IAnimatable) {
+        <#code#>
+    }
 }
