@@ -7,7 +7,7 @@ import Cocoa
  */
 class Animation:NSView,IAnimatable{//apparently the class needs to be NSView in order for the performSelector to work//<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()
-    lazy var displayLink: CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
+    lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
     var animators:Array<BaseAnimation> = []
     //var drawCalls:Array<()->Void> = []
     /**
