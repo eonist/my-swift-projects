@@ -2,6 +2,7 @@ import Foundation
 /**
  * Makes it possible to create looping animations, n-loops or infinite-loops
  * NOTE: use stop() to stop the animation if the animation is infinite, with n-loops the animation stops when the last repeat has run
+ * PARAM: duration: in seconds
  */
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
