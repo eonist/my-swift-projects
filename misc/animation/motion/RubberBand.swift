@@ -15,7 +15,7 @@ class RubberBand:Mover{
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle*/
-    var view:RBSliderList/*<--this should not be here, you need to disjoint this ref from this class*/
+    var view:RBSliderList/*<--this should not be here, you need to uncouple this ref from this class*/
     init(_ view:RBSliderList, _ frame:CGRect, _ itemRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.frame = frame
         self.itemRect = itemRect
@@ -33,7 +33,6 @@ class RubberBand:Mover{
         //Swift.print("RBSliderList.onFrame")
         if(hasStopped){//stop the frameTicker here
             //CVDisplayLinkStop(displayLink)
-            
             (view).slider?.thumb?.fadeOut()
             stop()//<---never stop the CVDisplayLink before you start another. Since you cant start a CVDisplayLink within a CVDisplayLinkStart block
         }else{//only move the view if the mover is not stopped
