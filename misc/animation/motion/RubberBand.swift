@@ -29,9 +29,6 @@ class RubberBand:Mover{
     override func updatePosition() {
         applyBoundries()/*assert if the movement is close to stopping, if it is then stop it*/
     }
-    
-    //Continue here: figure out how to set a new springTo target
-    
     override func onFrame(){
         //Swift.print("RBSliderList.onFrame")
         if(hasStopped){//stop the frameTicker here
