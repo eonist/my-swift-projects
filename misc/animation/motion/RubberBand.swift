@@ -29,15 +29,18 @@ class RubberBand:Mover{
     override func updatePosition() {
         applyBoundries()/*assert if the movement is close to stopping, if it is then stop it*/
     }
+    
+    //Continue here: figure out how to set a new springTo target
+    
     override func onFrame(){
         //Swift.print("RBSliderList.onFrame")
         if(hasStopped){//stop the frameTicker here
             //CVDisplayLinkStop(displayLink)
-            (view).slider?.thumb?.fadeOut()
+            view.slider?.thumb?.fadeOut()
             stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
         }else{//only move the view if the mover is not stopped
             updatePosition()/*tick the mover*/
-            (view).setProgress(result)/*indirect manipulation aka momentum*/
+            view.setProgress(result)/*indirect manipulation aka momentum*/
         }
         //super.onFrame()
     }
