@@ -6,6 +6,9 @@ extension CGFloat {
     func toFixed(places:Int)->CGFloat{
         return NumberModifier.toFixed(self, places)
     }
+    func isNear(value:CGFloat,_ epsilon:CGFloat)->Bool{
+        return NumberAsserter.isNear(self, value, epsilon)
+    }
     var uint:UInt{return UInt(self)}
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}

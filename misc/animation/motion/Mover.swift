@@ -10,7 +10,7 @@ class Mover:BaseAnimation {
     }
     func updatePosition() {
         //Swift.print("\(self.dynamicType)" + "updatePosition")
-        value += velocity;
+        value += velocity
     }
     override func onFrame(){
         //not implemented yet
