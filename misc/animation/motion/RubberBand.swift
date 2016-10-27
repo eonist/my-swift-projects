@@ -16,7 +16,7 @@ class RubberBand:Mover{
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     var view:RBSliderList/*<--this should not be here, you need to uncouple this ref from this class,rather use a callback method*/
-    var topMargin:CGFloat = 0
+    //var topMargin:CGFloat = 0
     init(_ view:RBSliderList, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.frame = frame
         self.itemsRect = itemRects
@@ -32,8 +32,8 @@ class RubberBand:Mover{
      * When in inderect motion: Springs back to its limit
      */
     override func updatePosition() {
-        Swift.print("frame.y + topMargin: " + "\((frame.y + topMargin))")
-        if(value > frame.y + topMargin){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        //Swift.print("frame.y + topMargin: " + "\((frame.y + topMargin))")
+        if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + itemsRect.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
@@ -57,16 +57,16 @@ class RubberBand:Mover{
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
         Swift.print("applyTopBoundary() value: " + "\(value)")
-        let distToGoal:CGFloat = value
+        let distToGoal:CGFloat = value - frame.y
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
-            result = topMargin + CustomFriction.constraintValueWithLog(distToGoal - topMargin,limit - topMargin)//<--Creates the illusion that the surface under the thumb is slipping
+            result = frame.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - frame.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            velocity -= ((distToGoal - topMargin) * spring)
+            velocity -= ((distToGoal /*- topMargin*/) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(topMargin, 1)){checkForStop()}
+            if(value.isNear(frame.y, 1)){checkForStop()}
             result = value
         }
     }
