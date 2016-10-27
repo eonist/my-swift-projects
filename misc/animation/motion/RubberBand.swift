@@ -27,8 +27,21 @@ class RubberBand:Mover{
         self.view = view
         super.init(Animation.sharedInstance, value, velocity)
     }
+    /**
+     * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
+     * When in inderect motion: Springs back to its limit
+     */
     override func updatePosition() {
-        applyBoundaries()/*assert if the movement is close to stopping, if it is then stop it*/
+        if(value > frame.y + topMargin){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        else if((value + itemsRect.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        else{/*within the Boundaries*/
+            if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
+                velocity *= friction
+                value += velocity
+            }
+            checkForStop()/*assert if the movement is close to stopping, if it is then stop it*/
+            result = value
+        }
     }
     override func onFrame(){
         //Swift.print("RBSliderList.onFrame")
@@ -41,25 +54,6 @@ class RubberBand:Mover{
             view.setProgress(result)/*indirect manipulation aka momentum*/
         }
     }
-    /**
-     * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
-     * When in inderect motion: Springs back to its limit
-     */
-    func applyBoundaries() {
-        if(value > frame.y + topMargin){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + itemsRect.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
-        else{/*within the Boundaries*/
-            if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
-                velocity *= friction
-                value += velocity
-            }
-            checkForStop()
-            result = value
-        }
-    }
-    
-    //Continue here: add topMargin to frame.y
-    
     func applyTopBoundary(){/*surface is slipping the further you pull*/
         Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value
