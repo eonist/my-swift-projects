@@ -12,7 +12,7 @@ class BaseAnimation {
      * Start the animation
      */
     func start(){
-        Swift.print("\(self.dynamicType)" + " start")
+        //Swift.print("\(self.dynamicType)" + " start")
         animatable.animators.append(self)//add your self to the list of animators that gets the onFrame call
         if(!CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStart(animatable.displayLink)}//start the displayLink if it isnt already running
     }
@@ -20,7 +20,7 @@ class BaseAnimation {
      * Stop the animation
      */
     func stop(){
-        Swift.print("\(self.dynamicType)" + " stop")
+        //Swift.print("\(self.dynamicType)" + " stop")
         animatable.animators.removeAt(animatable.animators.indexOf(self))
         if(animatable.animators.count == 0 && CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStop(animatable.displayLink)}//stops the frame ticker if there is not active running animators
     }
