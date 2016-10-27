@@ -56,7 +56,7 @@ class RubberBand:Mover{
         }
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
-        Swift.print("applyTopBoundary() value: " + "\(value)")
+        //Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value - frame.y
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
@@ -71,7 +71,7 @@ class RubberBand:Mover{
         }
     }
     func applyBottomBoundary(){
-        Swift.print("applyBottomBoundary()")
+        Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             let totHeight = (itemsRect.height - frame.height)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
