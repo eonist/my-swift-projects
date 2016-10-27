@@ -63,7 +63,7 @@ class RubberBand:Mover{
             //to where the list is located when in refresh mode
             result = topMargin + CustomFriction.constraintValueWithLog(distToGoal - topMargin,limit - topMargin)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            velocity -= ((distToGoal-topMargin) * spring)
+            velocity -= ((distToGoal - topMargin) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
             if(value.isNear(topMargin, 1)){checkForStop()}
