@@ -1,6 +1,6 @@
 import Cocoa
 
-class BaseAnimation {
+class BaseAnimation:EventSender {
     var animatable:IAnimatable/*ref to where the displayLink recides*/
     init(_ animatable:IAnimatable){
         self.animatable = animatable
