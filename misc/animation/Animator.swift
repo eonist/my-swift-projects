@@ -36,12 +36,12 @@ class Animator:BaseAnimation{
         if(currentFrameCount == framesToEnd){
             //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             stop()
-            super.onEvent(AnimationEvent(AnimationEvent.completed,self))
+            super.onEvent(AnimEvent(AnimEvent.completed,self))
         }
         self.currentFrameCount++
     }
 }
-class AnimationEvent:Event{
+class AnimaEvent:Event{
     static let completed:String = "animationCompleted"
     static let stopped:String = "animationStopped"
 }
