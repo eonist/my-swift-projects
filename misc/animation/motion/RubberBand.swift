@@ -27,6 +27,16 @@ class RubberBand:Mover{
         self.callBack = callBack
         super.init(animatable, value, velocity)
     }
+    override func onFrame(){
+        //Swift.print("RBSliderList.onFrame")
+        if(hasStopped){//stop the frameTicker here
+            //CVDisplayLinkStop(displayLink)
+            stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
+        }else{//only move the view if the mover is not stopped
+            updatePosition()/*tick the mover*/
+            callBack(result)/*indirect manipulation aka momentum*/
+        }
+    }
     /**
      * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
      * When in inderect motion: Springs back to its limit
@@ -42,16 +52,6 @@ class RubberBand:Mover{
             }
             checkForStop()/*assert if the movement is close to stopping, if it is then stop it*/
             result = value
-        }
-    }
-    override func onFrame(){
-        //Swift.print("RBSliderList.onFrame")
-        if(hasStopped){//stop the frameTicker here
-            //CVDisplayLinkStop(displayLink)
-            stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
-        }else{//only move the view if the mover is not stopped
-            updatePosition()/*tick the mover*/
-            callBack(result)/*indirect manipulation aka momentum*/
         }
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
