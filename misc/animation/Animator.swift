@@ -41,7 +41,3 @@ class Animator:BaseAnimation{
         self.currentFrameCount++
     }
 }
-class AnimEvent:Event{
-    static let completed:String = "animationCompleted"
-    static let stopped:String = "animationStopped"
-}
