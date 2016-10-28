@@ -1,6 +1,6 @@
 import Foundation
 
 class AnimEvent:Event{
-    static let completed:String = "animationCompleted"
-    static let stopped:String = "animationStopped"
+    static let completed:String = "animCompleted"
+    static let stopped:String = "animStopped"
 }

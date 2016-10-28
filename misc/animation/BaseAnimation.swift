@@ -1,7 +1,7 @@
 import Cocoa
 
 class BaseAnimation:EventSender {
-    var animatable:IAnimatable/*ref to where the displayLink recides*/
+    var animatable:IAnimatable/*ref to where the displayLink resides*/
     init(_ animatable:IAnimatable){
         self.animatable = animatable
     }
@@ -23,6 +23,6 @@ class BaseAnimation:EventSender {
         //Swift.print("\(self.dynamicType)" + " stop")
         animatable.animators.removeAt(animatable.animators.indexOf(self))
         if(animatable.animators.count == 0 && CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStop(animatable.displayLink)}//stops the frame ticker if there is no active running animators
-        super.onEvent(AnimEvent.stopped,self)
+        super.onEvent(AnimEvent(AnimEvent.stopped,self))
     }
 }
