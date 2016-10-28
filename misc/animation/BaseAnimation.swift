@@ -25,6 +25,3 @@ class BaseAnimation:EventSender {
         if(animatable.animators.count == 0 && CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStop(animatable.displayLink)}//stops the frame ticker if there is not active running animators
     }
 }
-class AnimationEvent:Event{
-    static let completed:String = "animationCompleted"
-}
