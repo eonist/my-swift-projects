@@ -9,8 +9,8 @@ import Cocoa
 class Animator:BaseAnimation{
     let fps:CGFloat = 60//<--TODO: this should be pulled from a device variable
     var duration:CGFloat/*in seconds*/
-    var from:CGFloat//from this value
-    var to:CGFloat//to this value
+    var from:CGFloat/*from this value*/
+    var to:CGFloat/*to this value*/
     var method:(CGFloat)->Void//the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure
     var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
