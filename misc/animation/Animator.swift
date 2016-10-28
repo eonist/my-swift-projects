@@ -11,16 +11,16 @@ class Animator:BaseAnimation{
     var duration:CGFloat/*in seconds*/
     var from:CGFloat/*from this value*/
     var to:CGFloat/*to this value*/
-    var method:(CGFloat)->Void//the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure
+    var callBack:(CGFloat)->Void//the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure
     var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
     var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat//variable for holding the easing method
     //isActive used by the AnimatiableView to assert if an animator is active or not
-    init(_ animatable:IAnimatable, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
+    init(_ animatable:IAnimatable, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.duration = duration
         self.from = from
         self.to = to
-        self.method = method
+        self.callBack = callBack
         self.easing = easing
         framesToEnd = fps * duration
         super.init(animatable)
@@ -32,7 +32,7 @@ class Animator:BaseAnimation{
         //Swift.print("onFrame()")
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
         //Swift.print("val: " + "\(val)")
-        method(val)//call the property method
+        callBack(val)//call the property method
         if(currentFrameCount == framesToEnd){
             //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             stop()

@@ -3,14 +3,14 @@ import Foundation
  * Makes it possible to create looping animations, n-loops or infinite-loops
  * NOTE: use stop() to stop the animation if the animation is infinite, with n-loops the animation stops when the last repeat has run
  * PARAM: duration: in seconds
- * PARAM: method: is the callback ref for every "frame tick"
+ * PARAM: callBack: is the callback ref that is called on every "frame tick"
  */
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
     var curCount:Int = 0
-    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
+    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.repeatCount = repeatCount
-        super.init(animatable, duration, from, to, method, easing)
+        super.init(animatable, duration, from, to, callBack, easing)
     }
     /**
      * Fires on every frame tick
