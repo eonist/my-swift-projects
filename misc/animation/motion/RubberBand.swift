@@ -90,7 +90,7 @@ class RubberBand:Mover{
      * NOTE: Basically stops listening for the onFrame event
      */
     func checkForStop() {
-        //Swift.print( "\(value.toFixed(3))" + " checkForStop " + "\((lastValue).toFixed(3))")
+        Swift.print( "\(value.toFixed(3))" + " checkForStop ")
         if(!isDirectlyManipulating && NumberAsserter.isNear(velocity, 0, epsilon)) {
             //Swift.print("stop velocity: " + "\(velocity)")
             hasStopped = true
