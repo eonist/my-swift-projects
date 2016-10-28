@@ -25,7 +25,7 @@ class LoopingAnimator:Animator{
             self.currentFrameCount = 0//<--reset
             if(curCount == repeatCount){/*The loop ended*/
                 stop()//<--stop animation
-                super.onEvent(AnimationEvent(AnimationEvent.completed,self))
+                super.onEvent(AnimEvent(AnimEvent.completed,self))
             }
             curCount++
         }
