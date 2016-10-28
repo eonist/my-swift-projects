@@ -16,19 +16,20 @@ class RubberBand:Mover{
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     var view:RBSliderList/*<--this should not be here, you need to uncouple this ref from this class,rather use a callback method*/
+    var callBack:(CGFloat)->Void/*the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     //var topMargin:CGFloat = 0
-    init(_ view:RBSliderList, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    init(_ animatable:IAnimatable,_ callBack:(CGFloat)->Void, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.frame = frame
         self.itemsRect = itemRects
         self.friction = friction
         self.springEasing = springEasing
         self.spring = spring
         self.limit = limit
-        self.view = view
-        _ callBack:(CGFloat)->Void
+        self.callBack = callBack
+        
         //Contiue here: add callback method like that other class then remove view or replace with animation.sharedInstance
         
-        super.init(Animation.sharedInstance, value, velocity)
+        super.init(animatable, value, velocity)
     }
     /**
      * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
