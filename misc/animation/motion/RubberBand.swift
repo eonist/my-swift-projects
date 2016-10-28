@@ -26,9 +26,6 @@ class RubberBand:Mover{
         self.spring = spring
         self.limit = limit
         self.callBack = callBack
-        
-        //Contiue here: add callback method like that other class then remove view or replace with animation.sharedInstance
-        
         super.init(animatable, value, velocity)
     }
     /**
