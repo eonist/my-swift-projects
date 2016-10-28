@@ -42,7 +42,7 @@ class RubberBand:Mover{
      * When in inderect motion: Springs back to its limit
      */
     override func updatePosition() {
-        Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
+        //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
         if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + itemsRect.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
@@ -55,9 +55,9 @@ class RubberBand:Mover{
         }
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
-        Swift.print("applyTopBoundary() value: " + "\(value)")
+        //Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value - frame.y
-        Swift.print("distToGoal: " + "\(distToGoal)")
+        //Swift.print("distToGoal: " + "\(distToGoal)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
@@ -90,7 +90,7 @@ class RubberBand:Mover{
      * NOTE: Basically stops listening for the onFrame event
      */
     func checkForStop() {
-        Swift.print("checkForStop() " + "\(value.toFixed(3))")
+        //Swift.print("checkForStop() " + "\(value.toFixed(3))")
         if(!isDirectlyManipulating && NumberAsserter.isNear(velocity, 0, epsilon)) {
             //Swift.print("stop velocity: " + "\(velocity)")
             hasStopped = true
