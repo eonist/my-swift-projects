@@ -7,7 +7,7 @@ import Foundation
 class EventSender:IEventSender {
     var eventCall:((Event) -> ())? {
         return {
-            (event:Event) -> Void in Swift.print("\(self.dynamicType)" + " event handler missing, " + " event.type: " + "\(event.type)" )//Empty call so that if no event handler is attached it doesnt throw an error
+            (event:Event) -> Void in Swift.print("\(self.dynamicType)  event handler missing,  event.type: \(event.type) event.origin: \(event.origin)" )//Empty call so that if no event handler is attached it doesnt throw an error
         }
     }/**///returns closure that will take care of propagating the event to the parent
     var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
