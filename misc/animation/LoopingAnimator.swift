@@ -8,9 +8,9 @@ import Foundation
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
     var curCount:Int = 0
-    init(_ view:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
+    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.repeatCount = repeatCount
-        super.init(view, duration, from, to, method, easing)
+        super.init(animatable, duration, from, to, method, easing)
     }
     /**
      * Fires on every frame tick
@@ -23,7 +23,7 @@ class LoopingAnimator:Animator{
         if(currentFrameCount == framesToEnd){
             //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             self.currentFrameCount = 0//<--reset
-            if(curCount == repeatCount){
+            if(curCount == repeatCount){/*The loop ended*/
                 stop()//<--stop animation
                 super.onEvent(AnimationEvent(AnimationEvent.completed,self))
             }
