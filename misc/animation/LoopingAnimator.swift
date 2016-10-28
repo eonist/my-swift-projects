@@ -3,6 +3,7 @@ import Foundation
  * Makes it possible to create looping animations, n-loops or infinite-loops
  * NOTE: use stop() to stop the animation if the animation is infinite, with n-loops the animation stops when the last repeat has run
  * PARAM: duration: in seconds
+ * PARAM: method: is the callback ref for every "frame tick"
  */
 class LoopingAnimator:Animator{
     var repeatCount:Int//<--zero means infinite
@@ -24,6 +25,7 @@ class LoopingAnimator:Animator{
             self.currentFrameCount = 0//<--reset
             if(curCount == repeatCount){
                 stop()//<--stop animation
+                super.onEvent(AnimationEvent(AnimationEvent.completed,self))
             }
             curCount++
         }
