@@ -11,7 +11,7 @@ class Animator:BaseAnimation{
     var duration:CGFloat/*in seconds*/
     var from:CGFloat/*from this value*/
     var to:CGFloat/*to this value*/
-    var callBack:(CGFloat)->Void/*the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    var callBack:(CGFloat)->Void/*the closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var framesToEnd:CGFloat/*totFrameCount*/
     var currentFrameCount:CGFloat = 0/*curFrameCount*/
     var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat/*variable for holding the easing method*/
