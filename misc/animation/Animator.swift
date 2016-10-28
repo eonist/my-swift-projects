@@ -43,4 +43,5 @@ class Animator:BaseAnimation{
 }
 class AnimationEvent:Event{
     static let completed:String = "animationCompleted"
+    static let stopped:String = "animationStopped"
 }
