@@ -55,7 +55,7 @@ class RubberBand:Mover{
         }
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
-        //Swift.print("applyTopBoundary() value: " + "\(value)")
+        Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value - frame.y
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
