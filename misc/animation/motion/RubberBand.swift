@@ -15,7 +15,6 @@ class RubberBand:Mover{
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
-    var view:RBSliderList/*<--this should not be here, you need to uncouple this ref from this class,rather use a callback method*/
     var callBack:(CGFloat)->Void/*the closure method that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     //var topMargin:CGFloat = 0
     init(_ animatable:IAnimatable,_ callBack:(CGFloat)->Void, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
@@ -52,7 +51,7 @@ class RubberBand:Mover{
             stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
         }else{//only move the view if the mover is not stopped
             updatePosition()/*tick the mover*/
-            view.setProgress(result)/*indirect manipulation aka momentum*/
+            callBack(result)/*indirect manipulation aka momentum*/
         }
     }
     func applyTopBoundary(){/*surface is slipping the further you pull*/
