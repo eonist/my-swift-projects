@@ -13,7 +13,7 @@ class ArrayModifier{
      * _,a,b,c,d
      * RETURNS: An integer representing the new length of the array
      */
-    class func unshift<T>(inout array:Array<T>,_ item:T, _ index:Int = 0)->Int{
+    static func unshift<T>(inout array:Array<T>,_ item:T, _ index:Int = 0)->Int{
 		array.insert(item,atIndex:index)
 		return array.count
 	}
@@ -23,14 +23,14 @@ class ArrayModifier{
 	 * The remaining array elements are moved from their original position, i, to i-1.
      * TODO: Write an example
 	 */
-	class func shift<T>(inout array:[T])->T{
+	static func shift<T>(inout array:[T])->T{
         return array.removeFirst()
 	}
 	/**
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
 	 */
-	class func pop<T>(inout array:[T])->T? {
+	static func pop<T>(inout array:[T])->T? {
         let last = array.last
         if let last = last {
             array.removeLast()
@@ -50,7 +50,7 @@ class ArrayModifier{
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
       * TODO: You could probably use the native: array.replaceRange instead
 	  */
-    class func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
+    static func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
         array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
         if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
@@ -62,7 +62,7 @@ class ArrayModifier{
      * IMPORTANT: This method does NOT alter the original array (should probably be moved to ArrayParser?)
      * RETURNS: The items from startIndex to endIndex
      */
-    class func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
+    static func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
         var arr:Array<T> = []
         for var i = startIndex; i < endIndex; ++i{arr.append(array[i])}
         return arr
@@ -74,7 +74,7 @@ class ArrayModifier{
      * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
      * There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing the (indexSwap method may require more or less memory, testing is needed)
      */
-    class func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
+    static func move<T>(inout array:[T], var _ from:Int, var _ to:Int) -> Array<T> {
         if(to < from) {
             array.splice2(to, 0, [array[from]])
             from++
@@ -93,7 +93,7 @@ class ArrayModifier{
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
      * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
      */
-    class func shuffle<T>(inout array:[T])->[T]{
+    static func shuffle<T>(inout array:[T])->[T]{
         for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
             ArrayModifier.swap(&array, array[i], array[j])//the & sign indicates that you confirm that the values will be changed
@@ -103,7 +103,7 @@ class ArrayModifier{
     /**
      * Note: Usefull if you want to do inline appendation
      */
-    class func append<T>(var array:[T],_ item:T)->Array<T>{
+    static func append<T>(var array:[T],_ item:T)->Array<T>{
         array.append(item)
         return array
     }
@@ -119,7 +119,7 @@ class ArrayModifier{
      *	print(array); //a,x,b,c
      * TODO: return the array for method chaning purposes?
      */
-    class func addAt<T>(inout array:[T], _ item:T, _ index:Int){
+    static func addAt<T>(inout array:[T], _ item:T, _ index:Int){
         if(index == 0) {array.unshift(item)}
         else if(array.count == index) {array.append(item)}
         else {array.splice2(index, 0, [item])}
@@ -132,7 +132,7 @@ class ArrayModifier{
      * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
      * IMPORTANT: This compares reference not value
      */
-    class func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
+    static func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
             if(array[i] === object){
                 array.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
@@ -144,7 +144,7 @@ class ArrayModifier{
     /**
      * TODO: I think you can also use: array.removeFirst(n: Int)
      */
-    class func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
+    static func removeAt<T>(inout array:[T],_ i:Int)->T{//<--the return statement was recently added
         return array.removeAtIndex(i)//was -> return array.splice2(i, 1)[0]
     }
     /**
@@ -153,7 +153,7 @@ class ArrayModifier{
      * @example print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
      * IMPORTANT: compares reference not value, create a similar method if you need to compare value
      */
-    class func removeMany<T>(inout array:Array<T>,_ many:Array<T>) -> Array<T> {
+    static func removeMany<T>(inout array:Array<T>,_ many:Array<T>) -> Array<T> {
         for (var i : Int = 0; i < many.count; i++) {
             let index:Int = ArrayParser.indx(array, many[i])
             if(index != -1) {array.removeAtIndex(index)/*was --> array.splice2(index,1)*/}
@@ -165,7 +165,7 @@ class ArrayModifier{
      * @example print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
      */
-    class func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
+    static func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
         for (var i : Int = 0; i < array.count; i++) {
             let dict:Dictionary<String,T> = array[i]
             let toMatch:T = dict[key]!
@@ -180,7 +180,7 @@ class ArrayModifier{
      * NOTE: Randomize vs randomise -> the later is the british spelling
      * NOTE: the array is returned for the sake of convenience
      */
-    class func randomize<T>(inout array:Array<T> ) -> Array<T> {
+    static func randomize<T>(inout array:Array<T> ) -> Array<T> {
         array.sortInPlace { Bool in
             return ( Int(arc4random()) * 2 ) * 2 - 1 > 0
         }
@@ -189,7 +189,7 @@ class ArrayModifier{
     /**
      * remove last, insert last, this is new it could go in the AdvanceArrayModifier class
      */
-    class func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
+    static func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
         array.popLast()
         array.append(item)
         return array
@@ -202,7 +202,7 @@ class ArrayModifier{
      * var def:Array = ["d","e","f"];
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c// and the def array should now be empty
      */
-    class func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
+    static func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
         
         //test this method first
         
@@ -220,7 +220,7 @@ class ArrayModifier{
      * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      * EXAMPLE: ArrayModifier.mergeAt([1,2,3], [4,5,6], 1)//[1, 4, 5, 6, 2, 3]
      */
-    class func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
+    static func mergeAt<T>(inout a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
         else {a.splice2(index, 0,b)}// :TODO: test if this is correct?
         return a
@@ -229,14 +229,14 @@ class ArrayModifier{
      * Similar to mergeAt, but does not alter the original PARAM a
      * NOTE: Strictly speaking we should move this to ArrayParser, as it doesnt modify anything
      */
-    class func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
+    static func combineAt<T>(var a:Array<T>, _ b:Array<T>, _ index:Int) -> Array<T>{
         return mergeAt(&a, b, index)
     }
     /**
      * splits an array in two pieces
      * @return a new array with 2 arrays
      */
-    class func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {// :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
+    static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {// :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
         var arrayB:Array<T> = []
         let arrayLength:Int = array.count
         for(var i:Int=index+1 ; i<arrayLength ; i++) {arrayB.append(array.pop()!)}
@@ -245,7 +245,7 @@ class ArrayModifier{
     /**
      * @description Split an array a integer, returns a new array with arrays in it of the split
      */
-    class func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
+    static func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
         let copy:Array<T> = array.concat([])
         var list:Array<[T]> = []
         every = max(every, 1)
@@ -260,7 +260,7 @@ class ArrayModifier{
     /**
      * @description  swap item position in an array
      */
-    class func swap<T>(inout array:Array<T>, _ item1:T, _ item2:T) {
+    static func swap<T>(inout array:Array<T>, _ item1:T, _ item2:T) {
         let index1:Int = ArrayParser.indx(array, item1)
         let index2:Int = ArrayParser.indx(array, item2)
         if(index1 != -1 && index2 != -1) {
@@ -272,7 +272,7 @@ class ArrayModifier{
      * swaps two items in @param vector at @param index1 @param index2
      * NOTE: there is also the ArrayModifier.move method which is similar
      */
-    class func indexSwap<T>(inout array:Array<T>,_ index1:Int,_ index2:Int) -> [T] {
+    static func indexSwap<T>(inout array:Array<T>,_ index1:Int,_ index2:Int) -> [T] {
         if(index1 != -1 && index2 != -1) {
             let a:T = array[index1]
             let b:T = array[index2]
@@ -286,7 +286,7 @@ class ArrayModifier{
      * NOTE: alters the original vector
      * EXAMPLE: ArrayModifier.rangeDisplace(Array.<String>(["a","b","c","d","e","f","g"]), 2,4, 0);//c,d,a,b,e,f,g
      */
-    class func rangeDisplace<T>(inout array:Array<T>,_ range:Range<Int>,_ index:Int) -> [T] {
+    static func rangeDisplace<T>(inout array:Array<T>,_ range:Range<Int>,_ index:Int) -> [T] {
         let splice:Array<T> = array.splice2(range.start,range.end-range.start)//<--You could probably use range.length here
         return ArrayModifier.mergeAt(&array, splice, index)//it could be more memory efficient to use mergeInPlaceAt here, tests is need to confirm
     }
@@ -300,7 +300,7 @@ class ArrayModifier{
      * v = ArrayModifier.reverseRange(v, 2,7)
      * Swift.print("v: " + v);//1,2,7,6,5,4,3,8,9
      */
-    class func reverseRange<T>(inout vector:Array<T>,_ range:Range<Int>) -> Array<T> {
+    static func reverseRange<T>(inout vector:Array<T>,_ range:Range<Int>) -> Array<T> {
         let head:Array<T> = vector.splice2(0,range.start)
         let tail:Array<T> = vector.splice2(range.end-range.start, vector.count - (range.end-range.start))
         let reversedVector:Array<T> = vector.reverse()
@@ -310,7 +310,7 @@ class ArrayModifier{
      * Removes a range of items from rangeStart to rangeEnd
      * returns the newly altered array
      */
-    class func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
+    static func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
         array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))/*was -> array.splice2(rangeStart, rangeEnd - rangeStart)*/
         return array
     }
@@ -320,7 +320,7 @@ class ArrayModifier{
      * var arr:Array = ["a","b","b","c","b","d","c"];
      * var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
      */
-    class func removeDuplicates<T>(array:Array<T>) -> Array<T>{
+    static func removeDuplicates<T>(array:Array<T>) -> Array<T>{
         var tempArray:Array<T> = []
         for (var i:Int = 0; i<array.count; i++){
             let obj1:T = array[i]
@@ -339,7 +339,7 @@ class ArrayModifier{
      * @Note modifies the original array
      * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
      */
-    class func numericSort(inout array:Array<Int>) -> Array<Int>{
+    static func numericSort(inout array:Array<Int>) -> Array<Int>{
         for (var i : Int = 1; i < array.count; i++) {
             var e:Int = i;
             while(array[i] < array[e-1]){
@@ -355,7 +355,7 @@ class ArrayModifier{
      * @Note this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
-    class func replace<T>(inout array:Array<T>, _ searchFor:T, _ replaceWith:T) -> Int {
+    static func replace<T>(inout array:Array<T>, _ searchFor:T, _ replaceWith:T) -> Int {
         let index:Int = ArrayParser.indx(array, searchFor)
         array[index] = replaceWith
         return index
@@ -364,7 +364,7 @@ class ArrayModifier{
      * TODO: make it work even if the length of the array the_replacements is longer than thhe_matches
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
-    class func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
+    static func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
         for var i = 0; i < array.count; ++i{
             replace(&array, matches[i], replacments[i])
         }
@@ -375,7 +375,7 @@ class ArrayModifier{
      * IMPORTANT: the original array is NOT modified
      * EXAMPLE: slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
-    class func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
+    static func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
         
         //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
         
