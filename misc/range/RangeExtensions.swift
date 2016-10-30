@@ -4,8 +4,8 @@ import Foundation
  * TODO: Figure out how to write extensions for Range that also works with RangeAsserter etc
  */
 extension Range {
-    var start:Element {return self.startIndex}/*convenince*/
-    var end:Element {return self.endIndex}/*convenince*/
+    var start:Element {get{return self.startIndex}set{self.startIndex = newValue}}/*convenince*/
+    var end:Element {get{return self.endIndex}set{}}/*convenince*/
     var length:Int {return (self.endIndex as! Int) - (self.startIndex as! Int)}/*convenince*/
     /**
      * EXAMPLE: Range<Int>(0,3).numOfIndecies()//4 -> because [0,1,2,3].count// 4
