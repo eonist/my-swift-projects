@@ -29,6 +29,16 @@ class ArrayParser{
         return -1
     }
     /**
+     * new
+     */
+    static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
+        for var i = 0; i < arr.count; ++i{
+            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
+        }
+        return -1
+    }
+    
+    /**
      * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
      * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
