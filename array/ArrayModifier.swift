@@ -141,6 +141,17 @@ class ArrayModifier{
         }
         return -1
     }
+    static func delete<T>(inout arr:Array<T>,inout _ obj:T)->Int{
+        var array:Array<AnyObject> = arr.cast()
+        let object:AnyObject = obj as! AnyObject
+        for(var i:Int=0; i<arr.count; i++){
+            if(array[i] === object){
+                arr.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
+                return i
+            }
+        }
+        return -1
+    }
     /**
      * TODO: I think you can also use: array.removeFirst(n: Int)
      */
