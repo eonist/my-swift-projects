@@ -22,7 +22,7 @@ class ArrayParser{
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
      * IMPORTANT: compares reference not value
      */
-    class func indx<T>(arr: [T], _ item: T) -> Int{
+    class func indx<T>(arr: [T], _ item: T) -> Int{//<--use inout for both args?
         for var i = 0; i < arr.count; ++i{
             if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
         }

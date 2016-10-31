@@ -141,6 +141,9 @@ class ArrayModifier{
         }
         return -1
     }
+    /**
+     * beta, not tested, you should probably do something else
+     */
     static func delete<T>(inout arr:Array<T>,inout _ obj:T)->Int{
         var array:Array<AnyObject> = arr.cast()
         let object:AnyObject = obj as! AnyObject
