@@ -132,7 +132,7 @@ class ArrayModifier{
      * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
      * IMPORTANT: This compares reference not value
      */
-    static func remove(inout array:Array<AnyObject>, object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
+    static func remove(inout array:Array<AnyObject>, _ object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for(var i:Int=0; i<array.count; i++){
             if(array[i] === object){
                 array.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
