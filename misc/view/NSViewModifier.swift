@@ -47,8 +47,9 @@ class ViewModifier {//<----rename to NSViewModifier
     /**
      * NOTE: This can also be used as a setSubViewAt method. Apple will reuse the same View so no duplicates. Although apples own sort method is prefered, but it uses c-pointers which can be hard to implement in swift. 
      * NOTE: could also be named insertAt
+     * TODO: add a method named prepend that inserts NSView items at the top of the stack
      */
-    class func addSubviewAt<T:NSView>(view: T,_ subView:T, _ i:Int){
+    class func addSubviewAt<T:NSView>(view: T,_ subView:T, _ i:Int)->NSView{
         if(view.subviews.count == 0){
             view.addSubview(subView)
         }else if(i == 0){/*the view.subviews.count > 0*/
@@ -58,6 +59,7 @@ class ViewModifier {//<----rename to NSViewModifier
             //Swift.print("relativeView: " + "\(relativeView)")
             view.addSubview(subView, positioned: NSWindowOrderingMode.Above, relativeTo: relativeView)
         }
+        return subView
     }
     /**
      *
