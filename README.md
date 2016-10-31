@@ -165,6 +165,18 @@ RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
 - Supports all the regular call-backs (onComplete etc)
 - CPU friendly. Stops when there is no animation etc
 
+In the example bellow, a clock pointer rotates 3 times: 
+
+```swift
+let line:LineGraphic = addSubView(LineGraphic())
+let animator = LoopingAnimator(Animation.sharedInstance,3,1,0,1,progress,Easing.easeLinear)
+func progress(value:CGFloat){
+   let angle = π * 2  * value
+   line.p2 = line.p1.polarPoint(50,angle)
+   line.draw()
+}
+animator.start()
+```
 
 ## **ColorLib**
 
