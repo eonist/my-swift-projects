@@ -49,7 +49,7 @@ class ViewModifier {//<----rename to NSViewModifier
      * NOTE: could also be named insertAt
      * TODO: add a method named prepend that inserts NSView items at the top of the stack
      */
-    class func addSubviewAt<T:NSView>(view: T,_ subView:T, _ i:Int)->NSView{
+    static func addSubviewAt<T:NSView>(view: T,_ subView:T, _ i:Int)->NSView{//Returns the subview for convenience
         if(view.subviews.count == 0){
             view.addSubview(subView)
         }else if(i == 0){/*the view.subviews.count > 0*/
