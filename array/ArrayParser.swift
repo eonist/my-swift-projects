@@ -34,7 +34,7 @@ class ArrayParser{
      */
     static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
         for var i = 0; i < arr.count; ++i{
-            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
+            if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}//we cast to AnyObject because generics can't ref compare, but AnyObject can
         }
         return -1
     }
