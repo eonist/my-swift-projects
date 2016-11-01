@@ -68,6 +68,7 @@ extension Array {
     mutating func removeAt(i:Int){
         if(i != -1){self.splice2(i, 1)}
     }
+    
     /**
      * A neat way to cast Array's (Since swift/obj-c has made casting array's cumbersome at times)
      * NOTE: figure out a way to make it work with inout methods aswell
