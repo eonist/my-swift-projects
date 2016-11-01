@@ -92,6 +92,23 @@ protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in
 extension Array:AnyArray{}//Maybe rename to ArrayType
 extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
 
+
+/**
+* Support for addition of CGFLoat and Double
+* TODO: probably use T or Generics or similar
+* TODO: add support for returning Double aswell
+* TODO: add support for Int and Float aswell
+*/
+public func + (left:[T], right: T) -> [T] {
+    return left + CGFloat(right)
+}
+/**
+ * Support for addition of CGFLoat and Double
+ */
+/*public func + (left: Double, right: CGFloat) -> CGFloat {
+    return CGFloat(left) + right
+}*/
+
 //TODO: Needs more research see similar case with AnyObject
 /*
 extension Array where Element:String{
