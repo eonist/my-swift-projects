@@ -94,9 +94,11 @@ extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is neede
 
 
 /**
- * 
+ * var arr = [1,2,3] 
+ * arr += 4
+ * print(arr)//1,2,3,4
  */
-public func +=<T> (inout left:[T], right: T) -> [T] {
+public func +=<T> (inout left:[T], right: T) -> [T] {/*convenience*/
     left.append(right)
     return left
 }
