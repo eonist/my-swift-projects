@@ -94,21 +94,13 @@ extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is neede
 
 
 /**
-* Support for addition of CGFLoat and Double
-* TODO: probably use T or Generics or similar
-* TODO: add support for returning Double aswell
-* TODO: add support for Int and Float aswell
-*/
-public func +<T> (inout left:[T], right: T) -> [T] {
+ * 
+ */
+public func +=<T> (inout left:[T], right: T) -> [T] {
     left.append(right)
     return left
 }
-/**
- * Support for addition of CGFLoat and Double
- */
-/*public func + (left: Double, right: CGFloat) -> CGFloat {
-    return CGFloat(left) + right
-}*/
+
 
 //TODO: Needs more research see similar case with AnyObject
 /*
