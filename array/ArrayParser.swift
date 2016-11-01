@@ -30,7 +30,8 @@ class ArrayParser{
     }
     /**
      * new
-     * NOTE: I feel this is the best implementation as it doesnt copy anything, "direct comparison" with the inout args
+     * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
+     * NOTE: dupplets doesn't seem to be castable to AnyObject
      */
     static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
         for var i = 0; i < arr.count; ++i{
