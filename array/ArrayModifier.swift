@@ -4,7 +4,7 @@ import Foundation
 //append
 class ArrayModifier{
 	/**
-	 * UNSHIFT
+	 * UNSHIFT (prepend)
 	 * Adds one or more elements to the beginning of an array and returns the new
 	 * length of the array. The other elements in the array are moved from their 
 	 * original position, i, to i+1.
