@@ -98,11 +98,19 @@ extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is neede
  * arr += 4
  * print(arr)//1,2,3,4
  */
-public func +=<T> (inout left:[T], right: T) -> [T] {/*convenience*/
+public func +=<T> (inout left:[T], right: T) -> [T] {/*returns array for the sake of convenience*/
     left.append(right)
     return left
 }
-
+/**
+ * var arr = [2,3,4]
+ * 1 += arr
+ * print(arr)//1,2,3,4
+ */
+public func +=<T> (left: T,inout right:[T]) -> [T] {/*returns array for the sake of convenience*/
+    right.unshift(left)/*<--this is like prepend*/
+    return right
+}
 
 //TODO: Needs more research see similar case with AnyObject
 /*
