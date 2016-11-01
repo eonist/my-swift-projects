@@ -143,6 +143,7 @@ class ArrayModifier{
     }
     /**
      * New, seems to work
+     * NOTE: comapres and deletes reference "===" not "=="
      */
     static func delete<T>(inout arr:Array<T>,inout _ obj:T)->T{
         return arr.removeAtIndex(ArrayParser.idx(&arr, &obj))
