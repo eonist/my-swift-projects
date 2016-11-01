@@ -30,6 +30,7 @@ class ArrayParser{
     }
     /**
      * new
+     * NOTE: I feel this is the best implementation as it doesnt copy anything, "direct comparison" with the inout args
      */
     static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
         for var i = 0; i < arr.count; ++i{
