@@ -10,7 +10,8 @@ class DataProviderModifier {
     /**
      *
      */
-    class func select(){
-        
+    class func select(dataProvider:DataProvider, _ index:Int, _ isSelected:Bool){
+        let item = dataProvider.getItemAt(index)
+        item["selected"] = isSelected
     }
 }
