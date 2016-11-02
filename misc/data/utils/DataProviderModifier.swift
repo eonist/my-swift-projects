@@ -7,11 +7,4 @@ class DataProviderModifier {
         //see legacy code for instructions on how to inplement this
         return DataProvider()
     }
-    /**
-     *
-     */
-    class func select(dataProvider:DataProvider, _ index:Int, _ isSelected:Bool){
-        dataProvider.setValue(index,"selected",String(isSelected))
-        
-    }
 }

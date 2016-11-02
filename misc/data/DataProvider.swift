@@ -177,7 +177,7 @@ extension DataProvider{
         }
     }
     /**
-     * Unselects all in @param items except @param target
+     * Sets all values except at PARAM: exceptionIndex
      */
     func setValuesExceptAt(exceptionIndex:Int, _ key:String, _ value:String) {
         for i in 0..<self.items.count{
