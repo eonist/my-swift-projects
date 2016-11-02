@@ -181,6 +181,7 @@ public class XMLParser{
     /**
      * Parses through an xml and returns an array
      * NOTE: this method does not seem to be recursive
+     * NOTE: also adds other attributes and value pairs if they exist in the xml
      * @example
      * 	<items>
             <item title="orange" property="harry"/>
