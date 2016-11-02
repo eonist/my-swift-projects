@@ -7,4 +7,10 @@ class DataProviderModifier {
         //see legacy code for instructions on how to inplement this
         return DataProvider()
     }
+    /**
+     *
+     */
+    class func select(){
+        
+    }
 }
