@@ -37,6 +37,8 @@ class DataProvider:EventSender{// :TODO: move methods intp parsers,modifiers ass
 }
 /*parser*/
 extension DataProvider{
+    var count:Int{return self.items.count}/*convenience*/
+    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      *
      */
@@ -58,7 +60,7 @@ extension DataProvider{
      */
     func index(key:String,_ value:String) -> Int?{
         let count = items.count
-        for var i = 0; i < count; ++i{
+        for i in 0..<count{
             if(items[i][key] == value) {return i}
         }
         return nil
@@ -81,8 +83,8 @@ extension DataProvider{
      *
      */
     func getIndex(title:String)->Int?{
-        let numOfItems = self.items.count
-        for var i = 0; i < numOfItems; ++i{
+        let count = self.items.count
+        for i in 0..<count{
             let item:Dictionary<String, String> = self.items[i]
             if(item["title"] == title) {return i}
         }
@@ -91,14 +93,14 @@ extension DataProvider{
     /**
      * Returns the count of the self.items
      */
-    var count:Int{return self.items.count}
+    
     func getValue(index:Int,_ key:String)->String?{
         if let value = self.items[index][key]{
             return value
         }
         return nil
     }
-    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
+    
 }
 /**
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
