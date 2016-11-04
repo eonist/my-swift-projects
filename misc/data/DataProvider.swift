@@ -47,8 +47,8 @@ extension DataProvider{
      *
      */
     func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
-        items.forEach {
-            if($0[key] == value) {return $0}
+        for item in self.items {
+            if(item[key] == value) {return item}
         }
         Swift.print("\(self.dynamicType)" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
         return nil
