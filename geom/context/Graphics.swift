@@ -19,10 +19,9 @@ import Cocoa
  * graphics.draw(path)//draw everything
  */
 public class Graphics{
-    enum FillMode: Int {case None = 0, Color, Gradient}
-    enum StrokeMode: Int {case None = 0, Color, Gradient}
-    public var context:CGContextRef?
-    //let graphicsContext:NSGraphicsContext
+    enum FillMode:Int {case None = 0, Color, Gradient}
+    enum StrokeMode:Int {case None = 0, Color, Gradient}
+    public var context:CGContextRef?//let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
