@@ -61,7 +61,7 @@ private class Utils{
 			// Swift.print("offset: " + offset);
 			let hexColor:UInt
             var stopOpacity:CGFloat
-			//var stopOpacity:CGFloat;
+			//var stopOpacity:CGFloat
 			/*0-1*/
 			let style:String? = SVGPropertyParser.property(child,"style")
 			// :TODO: if style is present then dont check for color etc
