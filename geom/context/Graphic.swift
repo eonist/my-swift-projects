@@ -14,7 +14,6 @@ class Graphic:InteractiveView2,IGraphic{
     var lineOffsetType:OffsetType;
     var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
     var trackingArea:NSTrackingArea?
-
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
@@ -35,13 +34,6 @@ class Graphic:InteractiveView2,IGraphic{
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
-        
-        /*
-        let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
-        self.fillShape.actions = actions;
-        self.layer!.actions = actions;
-        self.lineShape.actions = actions;
-        */
     }
     /**
      * Stops implicit animation from happening
@@ -113,3 +105,9 @@ override func animationDidStart(anim: CAAnimation) {
 override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
     Swift.print("animationDidStop: " + "\(anim)")
 }*/
+/*
+let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
+self.fillShape.actions = actions;
+self.layer!.actions = actions;
+self.lineShape.actions = actions;
+*/
