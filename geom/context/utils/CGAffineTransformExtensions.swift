@@ -25,7 +25,6 @@ extension CGAffineTransform {
     mutating func skew(transform:CGAffineTransform, angle:CGFloat, skewSide:String = "right"){
         //see old code for this implementation
     }
-    
     static func rotateAroundPoint(transform:CGTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         return CGAffineTransformParser.rotateAroundPoint(transform, rotation, pivot)
     }
