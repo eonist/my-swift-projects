@@ -3,10 +3,10 @@ import Foundation
  * this is basically Polygon without the fill part
  */
 class SVGPolyLine : SVGGraphic,ISVGPolyLine{
-    var points : Array<CGPoint>;
-    init(_ points:Array<CGPoint>, _ style : SVGStyle? = nil, _ id : String? = nil) {
-        self.points = points;
-        super.init(style, id);
+    var points:Array<CGPoint>
+    init(_ points:Array<CGPoint>, _ style:SVGStyle? = nil, _ id : String? = nil) {
+        self.points = points
+        super.init(style, id)
     }
     override func beginFill() {
         //we override this method to avoid drawing a path in the fill shape
@@ -15,7 +15,7 @@ class SVGPolyLine : SVGGraphic,ISVGPolyLine{
      * NOTE: we dont call fill because we only need to draw a stroke
      */
     override func draw()  {
-        Swift.print("SVGPolyline.draw" + "\(points)");
+        Swift.print("SVGPolyline.draw" + "\(points)")
         //Continue here: you do not close the polyline,
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         Swift.print("boundingBox: " + "\(boundingBox)")

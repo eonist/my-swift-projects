@@ -14,7 +14,7 @@ class SVGLine:SVGGraphic{ // :TODO: simplify by using points , and add id{
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-        super.init(style,id);
+        super.init(style,id)
     }
     override func beginFill() {
         //we override this method to avoid drawing a path in the fill shape
