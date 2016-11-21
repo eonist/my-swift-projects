@@ -53,21 +53,6 @@ class Graphic:InteractiveView2,IGraphic{
         //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
         return NSNull()//super.actionForLayer(layer, forKey: event)//
     }
-    /*override func animationForKey(key: String) -> AnyObject? {
-    Swift.print("animationForKey")
-    return super.animationForKey(key)
-    }
-    override func animationDidStart(anim: CAAnimation) {
-    Swift.print("animationDidStart: " + "\(anim)")
-    }
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    Swift.print("animationDidStop: " + "\(anim)")
-    }*/
-    
-    /*override func mouseDown(theEvent: NSEvent) {
-        Swift.print("Graphic.down")
-        super.mouseDown(theEvent)
-    }*/
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
@@ -114,8 +99,17 @@ extension Graphic{
      */
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         //self.fillShape.fillStyle = fillStyle;
-        self.fillStyle = fillStyle;
-        self.lineStyle = lineStyle;
+        self.fillStyle = fillStyle
+        self.lineStyle = lineStyle
     }
-    
 }
+/*override func animationForKey(key: String) -> AnyObject? {
+    Swift.print("animationForKey")
+    return super.animationForKey(key)
+}
+override func animationDidStart(anim: CAAnimation) {
+    Swift.print("animationDidStart: " + "\(anim)")
+}
+override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    Swift.print("animationDidStop: " + "\(anim)")
+}*/
