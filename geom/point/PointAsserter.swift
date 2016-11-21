@@ -102,10 +102,10 @@ class PointAsserter {
         return len > CGPoint.distance(p1B, p2A) && len > CGPoint.distance(p2A, p2B)
     }
     /**
-    * rayPoint:Point,pivot:Point,p1:Point,p2:Point
-    * // :TODO: we could use slope() here too?, just consider infinity and -infinity and NaN as results of slope
-    * IMPORTANT: carefull when you add points, as you need to think from bisector points and outward. (outgoing angles)
-    */
+     * rayPoint:Point,pivot:Point,p1:Point,p2:Point
+     * // :TODO: we could use slope() here too?, just consider infinity and -infinity and NaN as results of slope
+     * IMPORTANT: carefull when you add points, as you need to think from bisector points and outward. (outgoing angles)
+     */
     class func oppositeDirectional(bisectorP1:CGPoint,_ bisectorP2:CGPoint,_ aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let bisectorAngle:CGFloat = Trig.angle(bisectorP1, bisectorP2)
         //print("bisectorAngle: " + bisectorAngle)
@@ -133,7 +133,7 @@ class PointAsserter {
     }
     /**
      * Asserts if p1, p2 and p3 are all colinear
-     * @Note Three or more points are said to be collinear if they all lie on a line (co-linear or contra-linear)
+     * @Note Three or more points are said to be collinear if they all lay on a line (co-linear or contra-linear)
      * @Note Another way to think of this is that despite there being more than two points, the affine space that they span is only one dimensional.
      * @Note Collinearity of 3 points could be asserter if the area of the triangle that make up the 3 points is 0
      * @Note if two of the points are equals, then this method may not work, better assert for equals before utilizing this method
@@ -158,9 +158,9 @@ class PointAsserter {
         return NumberAsserter.isNear(a.x, b.x, epsilon) && NumberAsserter.isNear(a.y, b.y, epsilon)
     }
     /**
-    * // :TODO: what is the difference between contraDirectional and oppositeDirectional
-    * NOTE: isContraDirectional is like parallel but vectors must go in opposite directions
-    */
+     * // :TODO: what is the difference between contraDirectional and oppositeDirectional
+     * NOTE: isContraDirectional is like parallel but vectors must go in opposite directions
+     */
     class func isContraDirectional(aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let a:CGFloat = Trig.angle(aP1,aP2)
         //print("angleA: " + a)
@@ -169,10 +169,10 @@ class PointAsserter {
         return Trig.isContraDirectional(a, b)
     }
     /**
-    * new
-    * // :TODO: describe whats different
-    * // :TODO: rename to isCoDir
-    */
+     * new
+     * // :TODO: describe whats different
+     * // :TODO: rename to isCoDir
+     */
     class func isCoDirectional(a1:CGPoint,_ a2:CGPoint,_ b1:CGPoint,_ b2:CGPoint) -> Bool {
         let a:CGFloat = Trig.angle(a1, a2)
         //			print("a: " + a)

@@ -30,7 +30,6 @@ extension CGPoint{
     func divide(p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
     /*asserters*/
     func equals(p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
-    
 }
 /*Convenient operators*/
 public func +(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.add(a, b)}//Adds the coordinates of point p to the coordinates of this point to create a new point
