@@ -27,12 +27,12 @@ class CGRectParser{
     class func roundRect(rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), radius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), radius);
-        CGPathCloseSubpath(path);
-        return path;
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius)
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius)
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), radius)
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), radius)
+        CGPathCloseSubpath(path)
+        return path
     }
     /**
      * Create a path using the coordinates of the rect passed in
@@ -41,10 +41,10 @@ class CGRectParser{
         let path:CGMutablePath = CGPathCreateMutable()
         //Swift.print(CGRectParser.path() + String(path))
         CGPathMoveToPoint(path, nil, rect.origin.x, rect.origin.y)
-        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width, rect.origin.y);// ***** Segment 1 *****
-        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width,rect.origin.y + rect.size.height);// ***** Segment 2 *****
-        CGPathAddLineToPoint(path, nil, rect.origin.x, rect.origin.y + rect.size.height);// ***** Segment 3 *****
-        CGPathCloseSubpath(path);// ***** Segment 4 created by closing the path *****
+        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width, rect.origin.y)// ***** Segment 1 *****
+        CGPathAddLineToPoint(path, nil, rect.origin.x + rect.size.width,rect.origin.y + rect.size.height)// ***** Segment 2 *****
+        CGPathAddLineToPoint(path, nil, rect.origin.x, rect.origin.y + rect.size.height)// ***** Segment 3 *****
+        CGPathCloseSubpath(path)// ***** Segment 4 created by closing the path *****
         return path
     }
     /**
@@ -57,7 +57,7 @@ class CGRectParser{
      * Returns an array with Line instances of all sides of a rectangle
      */
     class func sides(rectangle:CGRect) -> Array<Line> {
-        return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)];
+        return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)]
     }
     /**
      *

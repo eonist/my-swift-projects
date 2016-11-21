@@ -37,9 +37,9 @@ class RectGraphicUtils {
         /*Right*/
         if(offsetType.right == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(lineThickness, 0)
-            lineRect = lineRect.expand(lineThickness , 0)
+            lineRect = lineRect.expand(lineThickness, 0)
         }else if(offsetType.right == OffsetType.inside){//inside
-            lineRect = lineRect.expand(lineThickness , 0)
+            lineRect = lineRect.expand(lineThickness, 0)
         }else{//center
             lineFrameRect = lineFrameRect.expand(lineThickness/2, 0)
         }
