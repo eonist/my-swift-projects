@@ -32,7 +32,7 @@ class CGAffineTransformParser {
      *
      */
     class func translate(var transform:CGAffineTransform,_ x:CGFloat,_ y:CGFloat)->CGAffineTransform{
-        transform.translate(x, y);
+        transform.translate(x, y)
         return transform
     }
     /**
@@ -42,7 +42,7 @@ class CGAffineTransformParser {
     class func transformAroundPoint(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint)->CGAffineTransform{
         transform = CGAffineTransform.translate(transform,offset.x,offset.y)//transform,minRadius*gradient.relativeStartCenter!.x,minRadius*gradient.relativeStartCenter!.y
         transform = CGAffineTransform.rotateAroundPoint(transform, rotation, pivot)
-        transform = CGAffineTransform.scaleFromPoint(transform, scale.y/**/,  scale.x/**/, pivot)
+        transform = CGAffineTransform.scaleFromPoint(transform, scale.y, scale.x, pivot)
         return transform
     }
     /**
