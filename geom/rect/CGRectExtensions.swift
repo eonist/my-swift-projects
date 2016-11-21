@@ -84,7 +84,6 @@ extension CGRect{
     func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
     }
-    
     func offset(dx:CGFloat,_ dy:CGFloat)->CGRect{//Convenience
         return self.offsetBy(dx: dx, dy: dy)
     }

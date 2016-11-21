@@ -198,8 +198,8 @@ class PointParser{
      * // :TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
      */
     class func median(points:Array<CGPoint>) -> CGPoint{
-        var median : CGPoint = CGPoint()
-        for point : CGPoint in points {
+        var median:CGPoint = CGPoint()
+        for point:CGPoint in points {
             median.x += point.x// :TODO: possibly use point.add?, you can also just do median += point here
             median.y += point.y
         }
@@ -306,11 +306,11 @@ class PointParser{
         return p
     }
     /**
-    * beta
-    * @Note sometimes when 2 lines touch at the begining or ends they dont yeild the correct intersection
-    * @Note when line a touches the line part of line b, not line b end or beginning then 3 points are collinear and the line a point that is collinear with line b is returned
-    * @Note the lines cant be colinear or equal
-    */
+     * beta
+     * @Note sometimes when 2 lines touch at the begining or ends they dont yeild the correct intersection
+     * @Note when line a touches the line part of line b, not line b end or beginning then 3 points are collinear and the line a point that is collinear with line b is returned
+     * @Note the lines cant be colinear or equal
+     */
     class func normalizedIntersection(aP1:CGPoint, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
         if(aP1.equals(bP1) || aP1.equals(bP2)){ return aP1}
         else if(aP2.equals(bP1) || aP2.equals(bP2)){ return aP2}
@@ -321,7 +321,7 @@ class PointParser{
         else {return PointParser.intersection(aP1, aP2, bP1, bP2)}
     }
 }
-/*
+/**
  * Equivalence Operators
  * Custom classes and structures do not receive a default implementation of the equivalence operators, known as the “equal to” operator (==) and “not equal to” operator (!=). It is not possible for Swift to guess what would qualify as “equal” for your own custom types, because the meaning of “equal” depends on the roles that those types play in your code.
  * To use the equivalence operators to check for equivalence of your own custom type, provide an implementation of the operators in the same way as for other infix operators:

@@ -4,13 +4,13 @@ class CGRectAsserter {
      *
      */
     class func containsOrIntersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
-        return containsLine(rectangle, line) || intersectsLine(rectangle, line);
+        return containsLine(rectangle, line) || intersectsLine(rectangle, line)
     }
     /**
      * Asserts if @param rectangle contains the line @param p1 to @param p2
      */
     class func containsLine(rectangle:CGRect,_ line:Line) -> Bool {
-        return rectangle.contains(line.p1) && rectangle.contains(line.p2);
+        return rectangle.contains(line.p1) && rectangle.contains(line.p2)
     }
     /**
      * Asserts if @param rectangle intersects the line @param p1 to @param p2
@@ -19,7 +19,7 @@ class CGRectAsserter {
      * @example RectangleAsserter.intersectsLine(new Rectangle(200,200,500,500),new PrimitiveLine(new Point(0,0), new Point(60,60)));//false
      */
     class func intersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
-        for side : Line in CGRectParser.sides(rectangle) {if(LineAsserter.intersects(side, line)) {return true}}
-        return false;
+        for side:Line in CGRectParser.sides(rectangle) {if(LineAsserter.intersects(side, line)) {return true}}
+        return false
     }
 }
