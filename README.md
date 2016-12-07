@@ -14,6 +14,7 @@
 - [AnimLib](#animlib) 
 - [ColorLib](#colorlib) 
 - [Utils](#utils)
+- [FileWatcher](#filewatcher)
 
 
 ## **GraphicsLib**
