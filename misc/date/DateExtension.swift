@@ -48,14 +48,14 @@ extension NSDate {
         return dateFormatter.stringFromDate(self)
     }
     /**
-     * MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle
+     * NOTE: there are also other date styles aviable: MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle
      */
-    func shortDate(date:NSDate){
+    func shortDate(date:NSDate) -> String{
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         let convertedDate = dateFormatter.stringFromDate(date)
-        
         Swift.print("convertedDate: " + "\(convertedDate)")
+        return convertedDate
     }
 }
