@@ -50,13 +50,13 @@ extension NSDate {
     /**
      * NOTE: there are also other date styles aviable: MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle, "EEEE"
      * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
-     * EXAMPLE: 08/12/2016
+     * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
      */
-    func shortDate(date:NSDate) -> String{
+    var shortDate: String{
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        let convertedDate = dateFormatter.stringFromDate(date)
+        let convertedDate = dateFormatter.stringFromDate(self)
         //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
