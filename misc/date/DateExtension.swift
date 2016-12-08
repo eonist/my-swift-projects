@@ -47,4 +47,15 @@ extension NSDate {
         dateFormatter.dateFormat = "MMMM"
         return dateFormatter.stringFromDate(self)
     }
+    /**
+     * MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle
+     */
+    func shortDate(date:NSDate){
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let convertedDate = dateFormatter.stringFromDate(date)
+        
+        Swift.print("convertedDate: " + "\(convertedDate)")
+    }
 }
