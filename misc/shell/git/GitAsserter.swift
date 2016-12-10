@@ -27,7 +27,7 @@ class GitAsserter{
 		let isAhead:Bool = logList.count > 0
 		return isAhead
 	}
-	/*
+	/**
 	 * you could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
 	class func hasLocalCommits(localRepoPath:String, _ branch:String)->Bool{
@@ -39,7 +39,7 @@ class GitAsserter{
 		let hasCommits:Bool = (cherryResult.characters.count > 0)
 		return hasCommits
 	}
-	/*
+	/**
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
 	class func hasUnMergedPaths(localPath:String)->Bool{
