@@ -64,7 +64,7 @@ class GitModifier{
    	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
    	Swift.print("remoteLoc: " + "\(remoteLoc)")
     let shellScript:String = /*"cd " + localRepoPath + ";" + */gitPath + "git push" + " " + remoteLoc + " " + branch
-   	//Swift.print("shellScript: " + "\(shellScript)")
+   	Swift.print("shellScript: " + "\(shellScript)")
    	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
