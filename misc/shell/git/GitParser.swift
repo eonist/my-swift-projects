@@ -16,9 +16,9 @@ class GitParser{
 	}
 	/*
 	 * Retruns a log of what is new (less verbose with pretty oneline)
-	 * NOTE: "git log --pretty=oneline" get a log of what is new, less verbose with pretty oneline
-     * NOTE: "git log --oneline" 
 	 * NOTE: the cmd is: "git log"
+     * NOTE: "git log --pretty=oneline" get a log of what is new, less verbose with pretty oneline
+     * NOTE: "git log --oneline" (even cleaner than pretty=online)
 	 * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
 	 * NOTE: "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
