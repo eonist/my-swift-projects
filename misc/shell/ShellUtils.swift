@@ -46,7 +46,7 @@ class ShellUtils{
         task.launch()
         task.waitUntilExit()
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output: String = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
+        let output:String = NSString(data:data, encoding:NSUTF8StringEncoding) as! String
         return (output, task.terminationStatus)
     }
 }
