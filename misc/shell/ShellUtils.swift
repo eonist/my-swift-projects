@@ -29,6 +29,7 @@ class ShellUtils{
         
         var arguments = input.componentsSeparatedByString(" ")
         Swift.print("arguments.count: " + "\(arguments.count)")
+        Swift.print("arguments: " + "\(arguments)")
         arguments = arguments.map {$0.decode()!}
         
         let task = NSTask()
