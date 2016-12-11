@@ -1,5 +1,4 @@
 class GitUtils{
-	static var gitPath :String = "/usr/local/git/bin/"/*to execute git commands we need to call the git commands from this path*/
 	/**
 	 * Manual pull
 	 * CAUTION: It's best practice to always commit any uncommited files before you attempt to pull.
