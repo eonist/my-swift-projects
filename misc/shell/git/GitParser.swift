@@ -14,7 +14,7 @@ class GitParser{
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git status" + " " + option
 		return ShellUtils.run(shellScript,localPath)
 	}
-	/*
+	/**
 	 * Retruns a log of what is new (less verbose with pretty oneline)
 	 * NOTE: the cmd is: "git log"
      * NOTE: "git log --pretty=oneline" get a log of what is new, less verbose with pretty oneline
@@ -27,7 +27,7 @@ class GitParser{
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
 	}
-	/*
+	/**
 	 * Returns https://github.com/user/repository.git
 	 */
 	class func originUrl(localPath:String)->String{
@@ -35,7 +35,7 @@ class GitParser{
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
 	}
-	/*
+	/**
 	 * Cherry
 	 * NOTE: git cherry -v origin/master
 	 * TODO: impliment user and pass when this is needed, use "" if not
