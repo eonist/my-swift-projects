@@ -1,9 +1,9 @@
 class GitUtils{
-	static var gitPath :String = "/usr/local/git/bin/" //to execute git commands we need to call the git commands from this path
-	/*
+	static var gitPath :String = "/usr/local/git/bin/"/*to execute git commands we need to call the git commands from this path*/
+	/**
 	 * Manual pull
-	 * CAUTION: its best practice to always commit any uncommited files before you attempt to pull. 
-	 * CAUTION: remember to wrap this method in a try error clause, so that you can handle merge conflicts
+	 * CAUTION: It's best practice to always commit any uncommited files before you attempt to pull.
+	 * CAUTION: Remember to wrap this method in a try error clause, so that you can handle merge conflicts
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
@@ -19,7 +19,7 @@ class GitUtils{
 			Swift.print("nothing to merge, local branch is up-to-date")
 		}
 	}
-	/*
+	/**
 	 * Manually clone a git to a local folder
 	 * NOTE:  same as clone but differs in that it clones into an existing folder
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com

@@ -1,6 +1,6 @@
 import Foundation
 class GitParser{
-	static var gitPath : String = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
+	static var gitPath : String = "/usr/local/git/bin/"/*to execute git commands we need to call the git commands from this path*/
 	/*
 	 * Returns current git status
 	 * @param: localPath is the path to the target repository on your local machine (posix path)
