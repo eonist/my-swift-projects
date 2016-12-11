@@ -1,7 +1,6 @@
 import Foundation
 class GitParser{
-	static var gitPath : String = "/usr/local/git/bin/"/*to execute git commands we need to call the git commands from this path*/
-	/*
+	/**
 	 * Returns current git status
 	 * @param: localPath is the path to the target repository on your local machine (posix path)
 	 * NOTE: ~/someProject/someProject.git (use the ~ char if you want to access the users homve folder in OSX)
@@ -12,7 +11,7 @@ class GitParser{
 	 */
 	class func status(localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
-		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git status" + " " + option
+		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git status" + " " + option
 		return ShellUtils.run(shellScript,localPath)
 	}
 	/*
@@ -25,7 +24,7 @@ class GitParser{
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
 	class func doLog(localPath:String, _ cmd:String)->String{
-		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git log " + cmd
+		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git log " + cmd
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
 	}
@@ -33,7 +32,7 @@ class GitParser{
 	 * Returns https://github.com/user/repository.git
 	 */
 	class func originUrl(localPath:String)->String{
-		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git config --get remote.origin.url"
+		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git config --get remote.origin.url"
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
 	}
@@ -47,7 +46,7 @@ class GitParser{
 	 */
 	class func cherry(localPath:String, _ branch:String)->String{
 		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
-		let shellScript:String = /*"cd " + localPath + ";" + */gitPath + "git cherry" + " -v " + loc + "/" + branch
+		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git cherry" + " -v " + loc + "/" + branch
 		return ShellUtils.run(shellScript,localPath)//--TODO: whats the -v, verbose?
 	}
 	/* 
@@ -67,7 +66,7 @@ class GitParser{
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
     class func diff(localRepoPath:String, _ cmd:String)->String{
-		let shellScript:String =  /*"cd " + localRepoPath + ";" + */gitPath + "git diff " + cmd
+		let shellScript:String =  /*"cd " + localRepoPath + ";" + */Git.path + "git diff " + cmd
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
 }
