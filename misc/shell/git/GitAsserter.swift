@@ -1,6 +1,6 @@
 import Foundation
 class GitAsserter{
-	/*
+	/**
 	 * Asserts if a folder has a git repository
 	 * Example: is_git_repo("~/test/.git/")--true/false
 	 * Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
@@ -9,20 +9,19 @@ class GitAsserter{
 	class func isGitRepo(filePath:String)->Bool{
 		return GitParser.status(filePath, "") != ""
 	}
-	/*
+	/**
 	 * 
 	 */
 	class func hasRemoteRepoAttached(filePath:String, _ branch:String)->Bool{
 		return GitParser.status(filePath, "origin" + "/" + branch) != ""
 	}
-	/*
+	/**
 	 * Asserts if a remote branch is ahead of a local branch
 	 */
 	class func isRemoteBranchAhead(localPath:String, _ branch:String)->Bool{
 		//Swift.print("GitAsserter's is_remote_branch_ahead()")
-		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" + branch) //--move this to the gitparser as a ref
+		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" + branch) //TODO: move this to the gitparser as a ref
 		//Swift.print("theLog: " + "\(theLog)")
-        
 		let logList:Array<String> = StringParser.paragraphs(theLog)
 		let isAhead:Bool = logList.count > 0
 		return isAhead

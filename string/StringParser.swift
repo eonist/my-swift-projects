@@ -19,12 +19,12 @@ class StringParser{
     class func decode(str:String)->String?{
         return str.stringByRemovingPercentEncoding
     }
-    /*
+    /**
      * Returns an array for every line in a string
      */
     class func paragraphs(string:String)->Array<String>{
         var result = split(string,"\n")
-        result.removeLast()//if the string is empty it still returns a result as [""] and if the string is not empty it returns plus one empty string. so we pop the last one of the array
+        result.removeLast()/*if the string is empty it still returns a result as [""] and if the string is not empty it returns plus one empty string. so we pop the last one of the array*/
         return result
     }
 	/**
@@ -36,13 +36,13 @@ class StringParser{
 	class func split(string:String,_ delimiter:String)->Array<String>{
 		return string.componentsSeparatedByString(delimiter)
 	}
-    /*
+    /**
      *
      */
 	class func firstWord(string:String)->String {
        return string.componentsSeparatedByString(" ")[0]
     }
-    /*
+    /**
      * Returns the
      */
    class func lastChar(string:String)->String {
@@ -68,7 +68,7 @@ class StringParser{
         let range:Range = Range(start:startIndex,end:endIndex)
         return str.substringWithRange(range)
     }
-    /*
+    /**
      * Returns an array comprised of two strings that is the result of splitting the @param str
      * splitAt("Hello, playground",5)//["hello"," playground"]
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
