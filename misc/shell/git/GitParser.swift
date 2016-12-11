@@ -24,7 +24,7 @@ class GitParser{
 	 */
 	class func log(localPath:String, _ cmd:String)->String{
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git log " + cmd
-		//--log "shellScript: " + shellScript
+		//Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(shellScript,localPath)
 	}
 	/**

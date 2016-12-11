@@ -10,7 +10,7 @@ class ShellUtils{
 	 * Example: ShellUtils.run("git log --oneline")
 	 */
     class func run(input: String, _ cd:String = "") /*throws*/ -> String {
-        let (output, terminationStatus) = exc(input,cd)
+        let (output, terminationStatus) = ShellUtils.exc(input,cd)
         Swift.print("terminationStatus: " + "\(terminationStatus)")
         //if(output == "") { throw ShellError.failure }
         return output//output
