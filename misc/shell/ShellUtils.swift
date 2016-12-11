@@ -29,7 +29,7 @@ class ShellUtils{
         
         var arguments = input.componentsSeparatedByString(" ")
         Swift.print("arguments.count: " + "\(arguments.count)")
-        arguments = arguments.map {$0.encode()!.decode()!}
+        arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was neccesary*/
         arguments.forEach{
             Swift.print("$0: " + "\($0)")
         }
