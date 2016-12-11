@@ -21,7 +21,7 @@ class ShellUtils{
      */
     class func exc(input: String, _ cd:String = "") -> (output: String, exitCode: Int32){
         /*
-        Was this: (but Swift doesnt use spit anymore, may need further research)
+        Was this: (but Swift doesn't use split anymore, may need further research)
         let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
         $0 == " "
         }
