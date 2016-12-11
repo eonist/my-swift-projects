@@ -1,6 +1,6 @@
 //import "text:TextAsserter.applescript"
 class GitModifier{
-   static var gitPath = "/usr/local/git/bin/" //--to execute git commands we need to call the git commands from this path
+   static var gitPath = "/usr/local/git/bin/"/*to execute git commands we need to call the git commands from this path*/
    /*
     * Add a file or many files to a commit
     * @param fileName is the file name you want to add, use * if you want to add all files
