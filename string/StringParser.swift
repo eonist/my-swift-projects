@@ -12,6 +12,7 @@ class StringParser{
     }
     /**
      * Returns dencode text (unescaped)
+     * CAUTION: if your text has 
      * NOTE: this could also be done by creating a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
      * Example: decode(%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg)--<image location:files/img/image.jpg
      * EXAMPLE: "testing%20this%20stuff.121".decode//testing this stuff.121
