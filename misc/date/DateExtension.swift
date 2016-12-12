@@ -61,7 +61,8 @@ extension NSDate {
         return convertedDate
     }
     /**
-     * 2y, 11m, 3w, 4h, 2d, 5m,  3sec
+     * Returns relative time like: 2y, 11m, 3w, 4h, 2d, 5m,  3sec (aka: time ago)
+     * NOTE: the approche bellow is Naive. There are more elegant ways of doing this. But this offers more customization in the future. 
      */
     func relativeTime(a:NSDate,_ b:NSDate)->[(value:Int,type:String)]{
         let calendar = NSCalendar.currentCalendar()
