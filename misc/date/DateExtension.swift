@@ -65,19 +65,14 @@ extension NSDate {
      */
     func relative(a:NSDate,_ b:NSDate){
         
-        let components = NSDate.
-        if(year != nil){components.year = year!}
-        if(month != nil){components.month = month!}
-        if(day != nil){components.day = day!}
-        if(hour != nil){components.hour = hour!}
-        if(second != nil){components.second = second!}
+        let calendar = NSCalendar.currentCalendar()
         
-        
-        //make the  logic
-        
-        //basically:
+        let aComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: a)
+        let bComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: b)
         
         //cur time - time
+        
+        aComponents.year -
         
         //cur year - year = 0
         
