@@ -78,6 +78,13 @@ class GitParser{
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
     /**
+     * Returns the commit count
+     */
+    static func commitCount(localRepoPath:String) -> String{
+        let shellScript:String = Git.path + "git rev-list HEAD --count"
+        return ShellUtils.run(shellScript,localRepoPath)
+    }
+    /**
      * DEPRECATED: Use GitParser.log instead
      * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
      */
