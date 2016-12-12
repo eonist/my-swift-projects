@@ -72,15 +72,25 @@ extension NSDate {
         
         //cur time - time
         
-        aComponents.year - aComponents.year
-        
         //cur year - year = 0
+        
+        let yearsAgo:Int = aComponents.year - aComponents.year
         
         //cur month - month = 0
         
+        let monthsAgo:Int = aComponents.month - aComponents.month
+        
         //cur day - day = 0
         
+        let daysAgo:Int = aComponents.day - aComponents.day
+        
+        if(){
+            
+        }
+        
         //cur hour - hour = 0
+        
+        let daysAgo:Int = aComponents.day - aComponents.day
         
         //cur min - min = 0
         
