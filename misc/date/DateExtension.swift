@@ -79,6 +79,6 @@ extension NSDate {
         let secondsAgo:Int = aComponents.second - bComponents.second//cur sec - sec = 4
         //result: 4s ago
         
-        
+        return [yearsAgo,monthsAgo,weeksAgo,daysAgo,hoursAgo]
     }
 }
