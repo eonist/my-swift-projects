@@ -64,39 +64,21 @@ extension NSDate {
      * 2y, 11m, 3w, 4h, 2d, 5m,  3sec
      */
     func relative(a:NSDate,_ b:NSDate){
-        
         let calendar = NSCalendar.currentCalendar()
-        
         let aComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: a)
         let bComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: b)
-        
-        //cur time - time
-        
-        //cur year - year = 0
-        
-        let yearsAgo:Int = aComponents.year - aComponents.year
-        
-        //cur month - month = 0
-        
-        let monthsAgo:Int = aComponents.month - aComponents.month
-        
-        //cur day - day = 0
-        
-        let daysAgo:Int = aComponents.day - aComponents.day
-        
+        let yearsAgo:Int = aComponents.year - bComponents.year//cur year - year = 0
+        let monthsAgo:Int = aComponents.month - bComponents.month//cur month - month = 0
+        let daysAgo:Int = aComponents.day - bComponents.day//cur day - day = 0
         var weeksAgo:Int = 0
         if(daysAgo >= 7){
-            weeksAgo = floor(daysAgo / 7)
+            weeksAgo = daysAgo / 7
         }
-        
-        //cur hour - hour = 0
-        
-        let daysAgo:Int = aComponents.day - aComponents.day
-        
-        //cur min - min = 0
-        
-        //cur sec - sec = 4
-        
+        let hoursAgo:Int = aComponents.hour - bComponents.hour//cur hour - hour = 0
+        let minutesAgo:Int = aComponents.minute - bComponents.minute//cur min - min = 0
+        let secondsAgo:Int = aComponents.second - bComponents.second//cur sec - sec = 4
         //result: 4s ago
+        
+        
     }
 }
