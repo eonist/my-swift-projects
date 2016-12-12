@@ -84,7 +84,8 @@ extension NSDate {
         
         let daysAgo:Int = aComponents.day - aComponents.day
         
-        if(){
+        
+        if(daysAgo >= 7){
             
         }
         
