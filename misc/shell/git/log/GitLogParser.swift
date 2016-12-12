@@ -31,9 +31,9 @@ class GitLogParser {
      * EXAMPLE: parts("Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output:
      */
 
-    typealias commitParts = (Int) -> String
+    typealias CommitData = (author:String,date:String,subject:String,body:String)/*convenience*/
     
-    static func parts(testString:String) -> (author:String,date:String,subject:String,body:String){
+    static func parts(testString:String) -> CommitData{
         let firstIdx:Int = testString.indexOf("\n")
         Swift.print("firstIdx: " + "\(firstIdx)")
         let firstPart:String = testString.subString(0,firstIdx)
@@ -55,7 +55,7 @@ class GitLogParser {
         let fourthPart:String = testString.subString(thirdIdx+1,testString.count)
         Swift.print("fourthPart: " + "\(fourthPart)")
         
-        var commitData = (author:firstPart,date:secondPart,subject:thirdPart,body:fourthPart)
+        var commitData:CommitData = (firstPart,secondPart,thirdPart,fourthPart)
         commitData.author = commitData.author.subString("Author:".count, commitData.author.count)
         commitData.date = commitData.date.subString("Date:".count, commitData.date.count)
         commitData.subject = commitData.subject.subString("Subject:".count, commitData.subject.count)
@@ -64,5 +64,6 @@ class GitLogParser {
         Swift.print("commitData.date: " + "\(commitData.date)")
         Swift.print("commitData.subject: " + "\(commitData.subject)")
         Swift.print("commitData.body: " + "\(commitData.body)")
+        return commitData
     }
 }
