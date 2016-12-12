@@ -63,7 +63,7 @@ extension NSDate {
     /**
      * 2y, 11m, 3w, 4h, 2d, 5m,  3sec
      */
-    func relativeTime(a:NSDate,_ b:NSDate)->[Int]{
+    func relativeTime(a:NSDate,_ b:NSDate)->[(value:Int,type:String)]{
         let calendar = NSCalendar.currentCalendar()
         let aComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: a)
         let bComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: b)
@@ -78,12 +78,10 @@ extension NSDate {
         let minutesAgo:Int = aComponents.minute - bComponents.minute//cur min - min = 0
         let secondsAgo:Int = aComponents.second - bComponents.second//cur sec - sec = 4
         //result: 4s ago
-        let timeUnits:[Int] = [yearsAgo,monthsAgo,weeksAgo,daysAgo,hoursAgo,minutesAgo,secondsAgo]
-        let relativeTime:[Int] = []
+        let timeUnits:[(value:Int,type:String)] = [(yearsAgo,"y"),(monthsAgo,"m"),(weeksAgo,"w"),(daysAgo,"d"),(hoursAgo,"h"),(minutesAgo,"m"),(secondsAgo,"s")]
+        var relativeTime:[(value:Int,type:String)] = []
         timeUnits.forEach{
-            if($0 > 0){
-                relativeTime.append($0)
-            }
+            if($0.value > 0){relativeTime.append($0)}
         }
         return relativeTime
     }
