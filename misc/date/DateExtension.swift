@@ -65,7 +65,7 @@ extension NSDate {
      */
     func relative(a:NSDate,_ b:NSDate){
         
-        let components = a.
+        let components = NSDate.
         if(year != nil){components.year = year!}
         if(month != nil){components.month = month!}
         if(day != nil){components.day = day!}
