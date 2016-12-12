@@ -2,7 +2,7 @@ import Foundation
 
 extension NSDate {
     /**
-     * beta
+     * Returns a date instance for time components like: 2016,11,03,15,49,59
      */
     static func createDate(year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->NSDate?{
         let calendar = NSCalendar.currentCalendar()
@@ -52,7 +52,7 @@ extension NSDate {
      * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
      * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
      */
-    var shortDate: String{
+    var shortDate:String{
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -60,4 +60,5 @@ extension NSDate {
         //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
+    
 }
