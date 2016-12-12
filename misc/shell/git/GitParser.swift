@@ -27,6 +27,12 @@ class GitParser{
 		//Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(shellScript,localPath)
 	}
+    /**
+     * NEW
+     */
+    static func show(){
+        
+    }
 	/**
 	 * Returns https://github.com/user/repository.git
 	 */
