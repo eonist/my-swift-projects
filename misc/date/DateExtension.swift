@@ -60,5 +60,37 @@ extension NSDate {
         //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
-    
+    /**
+     * 2y, 11m, 3w, 4h, 2d, 5m,  3sec
+     */
+    func relative(a:NSDate,_ b:NSDate){
+        
+        let components = a.
+        if(year != nil){components.year = year!}
+        if(month != nil){components.month = month!}
+        if(day != nil){components.day = day!}
+        if(hour != nil){components.hour = hour!}
+        if(second != nil){components.second = second!}
+        
+        
+        //make the  logic
+        
+        //basically:
+        
+        //cur time - time
+        
+        //cur year - year = 0
+        
+        //cur month - month = 0
+        
+        //cur day - day = 0
+        
+        //cur hour - hour = 0
+        
+        //cur min - min = 0
+        
+        //cur sec - sec = 4
+        
+        //result: 4s ago
+    }
 }
