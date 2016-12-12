@@ -30,16 +30,9 @@ class GitLogParser {
     /**
      * EXAMPLE: parts("Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output:
      */
-    
-    "Author:Eonist" + "\n"
-    testString += "Date:2015-12-03 16:59:09 +0100" + "\n"
-    testString += "Subject:'Files modified: 1'" + "\n"
-    testString += "Body:'" + "\n"
-    testString += "" + "\n"
-    testString += "Modified 1 file:" + "\n"
-    testString += "README.md" + "\n"
-    testString += "'"
 
+    typealias commitParts = (Int) -> String
+    
     static func parts(testString:String) -> (author:String,date:String,subject:String,body:String){
         let firstIdx:Int = testString.indexOf("\n")
         Swift.print("firstIdx: " + "\(firstIdx)")
