@@ -72,7 +72,7 @@ extension NSDate {
         
         //cur time - time
         
-        aComponents.year -
+        aComponents.year - aComponents.year
         
         //cur year - year = 0
         
