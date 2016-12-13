@@ -21,7 +21,7 @@ class DateParser {
         let minutesAgo:Int = aComponents.minute - bComponents.minute//cur min - min = 0
         let secondsAgo:Int = aComponents.second - bComponents.second//cur sec - sec = 4
         //result: 4s ago
-        let timeUnits:[(value:Int,type:String)] = [(yearsAgo,"y"),(monthsAgo,"m"),(weeksAgo,"w"),(daysAgo,"d"),(hoursAgo,"h"),(minutesAgo,"m"),(secondsAgo,"s")]
+        let timeUnits:[(value:Int,type:String)] = [(yearsAgo,"y"),(monthsAgo,"M"),(weeksAgo,"w"),(daysAgo,"d"),(hoursAgo,"h"),(minutesAgo,"m"),(secondsAgo,"s")]
         var relativeTime:[(value:Int,type:String)] = []
         timeUnits.forEach{
             if($0.value > 0){relativeTime.append($0)}
