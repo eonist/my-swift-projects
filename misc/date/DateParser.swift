@@ -30,6 +30,7 @@ class DateParser {
     }
     /**
      * Returns a date formated like: 201612035959 aka YYYYMMDDHHMMSS
+     * NOTE: ODBC canonical
      */
     static func decendingDate(date:NSDate) -> String{
         let formatter:NSDateFormatter = NSDateFormatter()
