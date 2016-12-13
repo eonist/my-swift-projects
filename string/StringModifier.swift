@@ -6,11 +6,25 @@ class StringModifier{
     class func split(str:String, _ delimiter:String)->[String]{
         return str.componentsSeparatedByString(delimiter)
     }
-    
+    /**
+     * Removes the first occurence of the PARAM: match
+     */
+    class func removeFirst(input:String, _ match:String) -> String{
+        return StringModifier.replaceFirst(input, match, "")
+    }
+    /**
+     *	Removes all instances of the remove string in the input string.
+     *	PARAM: input: The string that will be checked for instances of remove string
+     *	PARAM: remove: The string that will be removed from the input string.
+     *	RETURN: A String with the remove string removed.
+     */
+    static func removeEvery(input:String, _ match:String) -> String{// :TODO: test if this works when nothing is removed because replace was changed
+        return StringModifier.replaceEvery(input, match, "")
+    }
     /**
      * replaceEvery("abc 123 abc 123","123","abc")
      */
-    class func replaceEvery(str:String,match:String,replacment:String)->String{
+    class func replaceEvery(str:String,_ match:String,_ replacment:String)->String{
         let replaced = str.stringByReplacingOccurrencesOfString(match, withString: replacment)
         return replaced
     }
