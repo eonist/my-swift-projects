@@ -107,7 +107,7 @@ class StringParser{
         return String(str.characters.dropLast())
     }
     /**
-     * NOTE: 
+     * NOTE: only works with Character (make one that supports longer strings later)
      */
     static func trim(var str:String,_ left:Character,_ right:Character)->String{
         if(str.characters.first == left){str = String(str.characters.dropFirst())}
