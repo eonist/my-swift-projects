@@ -22,7 +22,7 @@ import Foundation
  * dp.removeItemAt(dp.getItemIndex(orange))
  * Swift.print(dp.count())
  */
-class DataProvider:EventSender{// :TODO: move methods intp parsers,modifiers asserters
+class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers asserters
     var items:[Dictionary<String, String>]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
@@ -107,7 +107,6 @@ extension DataProvider{
  */
 //Modifier
 extension DataProvider{
-    
     /**
      * Adds an array to the exisiting items array
      * @param items is an Array comprised of objects

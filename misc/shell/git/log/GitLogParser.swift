@@ -27,39 +27,47 @@ class GitLogParser {
         let date:NSDate = NSDate.createDate(year.int, month.int, day.int, hour.int, min.int, sec.int)!
         return date
     }
+    typealias CommitData = (hash:String,author:String,date:String,subject:String,body:String)/*convenience*/
     /**
-     * EXAMPLE: parts("Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output:
+     * Returns a ComitData instance that is populated with auther, date, subject, body
+     * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
+     * NOTE: the log data is formated using --pretty=format
      */
-
-    typealias CommitData = (author:String,date:String,subject:String,body:String)/*convenience*/
-    
-    static func parts(testString:String) -> CommitData{
-        let firstIdx:Int = testString.indexOf("\n")
+    static func commitData(input:String) -> CommitData{
+        let firstIdx:Int = input.indexOf("\n")
         Swift.print("firstIdx: " + "\(firstIdx)")
-        let firstPart:String = testString.subString(0,firstIdx)
+        let firstPart:String = input.subString(0,firstIdx)
         Swift.print("firstPart: " + "\(firstPart)")
         //Swift.print("firstPart: " + "\(firstPart)")
         
-        let secondIdx:Int = firstIdx+1 + testString.subString(firstIdx+1,testString.count).indexOf("\n")
+        let secondIdx:Int = firstIdx+1 + input.subString(firstIdx+1,input.count).indexOf("\n")
         Swift.print("secondIdx: " + "\(secondIdx)")
         
-        let secondPart:String = testString.subString(firstIdx+1,secondIdx)
+        let secondPart:String = input.subString(firstIdx+1,secondIdx)
         Swift.print("secondPart: " + "\(secondPart)")
         
-        let thirdIdx:Int = secondIdx+1 + testString.subString(secondIdx+1,testString.count).indexOf("\n")
+        let thirdIdx:Int = secondIdx+1 + input.subString(secondIdx+1,input.count).indexOf("\n")
         Swift.print("thirdIdx: " + "\(thirdIdx)")
         
-        let thirdPart:String = testString.subString(secondIdx+1,thirdIdx)
+        let thirdPart:String = input.subString(secondIdx+1,thirdIdx)
         Swift.print("thirdPart: " + "\(thirdPart)")
         
-        let fourthPart:String = testString.subString(thirdIdx+1,testString.count)
+        let fourthIdx:Int = thirdIdx+1 + input.subString(thirdIdx+1,input.count).indexOf("\n")
+        Swift.print("fourthIdx: " + "\(fourthIdx)")
+        
+        let fourthPart:String = input.subString(thirdIdx+1,fourthIdx)
         Swift.print("fourthPart: " + "\(fourthPart)")
         
-        var commitData:CommitData = (firstPart,secondPart,thirdPart,fourthPart)
+        let fifthPart:String = input.subString(fourthIdx+1,input.count)
+        Swift.print("fifthPart: " + "\(fifthPart)")
+        
+        var commitData:CommitData = (firstPart,secondPart,thirdPart,fourthPart,fifthPart)
+        commitData.hash = commitData.hash.subString("Hash:".count, commitData.hash.count)
         commitData.author = commitData.author.subString("Author:".count, commitData.author.count)
         commitData.date = commitData.date.subString("Date:".count, commitData.date.count)
         commitData.subject = commitData.subject.subString("Subject:".count, commitData.subject.count)
         commitData.body = commitData.body.subString("Body:".count, commitData.body.count)
+        Swift.print("commitData.hash: " + "\(commitData.hash)")
         Swift.print("commitData.author: " + "\(commitData.author)")
         Swift.print("commitData.date: " + "\(commitData.date)")
         Swift.print("commitData.subject: " + "\(commitData.subject)")
