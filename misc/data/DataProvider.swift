@@ -164,7 +164,7 @@ extension DataProvider{
     /**
      *
      */
-    func sortOn(names:AnyObject, _ options:Int = 0,_ args:AnyObject...){
+    func sortOn(key:String,_ ascending:Bool = true){/*names:AnyObject, _ options:Int = 0,_ args:AnyObject...*/
         fatalError("not implemented yet")
         //self.items.sortOn(names, options,args);
         //onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
