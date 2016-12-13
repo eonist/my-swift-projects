@@ -28,4 +28,14 @@ class DateParser {
         }
         return relativeTime
     }
+    /**
+     * 201612035959 aka YYYYMMDDHHMMSS
+     */
+    static func dateTest(date:NSDate) -> String{
+        let formatter:NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let dateStr:String = formatter.stringFromDate(NSDate())
+        //Swift.print("dateTimePrefix: " + "\(dateTimePrefix)")
+        return dateStr
+    }
 }
