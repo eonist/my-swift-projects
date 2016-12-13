@@ -107,6 +107,14 @@ class StringParser{
         return String(str.characters.dropLast())
     }
     /**
+     * NOTE: 
+     */
+    static func trim(var str:String,_ left:Character,_ right:Character)->String{
+        if(str.characters.first == left){str = String(str.characters.dropFirst())}
+        if(str.characters.last == right){str = String(str.characters.dropLast())}
+        return str
+    }
+    /**
      * Returns the percentage as a CGFloat
      */
     class func percentage(value:String)->CGFloat{
