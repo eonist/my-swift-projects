@@ -86,6 +86,7 @@ class GitLogParser {
     }
 }
 private class Utils{
+    
     /**
      * PreProcess the body string
      */
@@ -94,8 +95,30 @@ private class Utils{
         //remove the ' char from the beginng and end
         //strip linebreaks from the beginning and end of bodyStr
 
+        
         if(str.count > 5) {str = str.subString(3, str.count-2)}
+
+        
+        str = trim(str)
         return str
+    }
+    /**
+     * NOTE: trims away astray characters from left and right of the body
+     */
+    static func trim(str:String){
+        str.matches("(?:^[',\n]*)(.*?)(?:\n+?|$)").forEach{
+            if($0.numberOfRanges > 1){
+                let body = $0.value(str, 1)/*capturing group 1*/
+                //Swift.print(">")
+                //Swift.print(body)
+                //Swift.print("<")
+                return body
+            }else{
+                Swift.print(str)
+                fatalError("something is wrong")
+            }
+        }
+        
     }
     /**
      * Compacts the body string
