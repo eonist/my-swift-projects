@@ -6,6 +6,7 @@ class StringModifier{
     class func split(str:String, _ delimiter:String)->[String]{
         return str.componentsSeparatedByString(delimiter)
     }
+    
     /**
      * replaceEvery("abc 123 abc 123","123","abc")
      */
