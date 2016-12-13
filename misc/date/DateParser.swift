@@ -29,9 +29,9 @@ class DateParser {
         return relativeTime
     }
     /**
-     * 201612035959 aka YYYYMMDDHHMMSS
+     * Returns a date formated like: 201612035959 aka YYYYMMDDHHMMSS
      */
-    static func dateTest(date:NSDate) -> String{
+    static func decendingDate(date:NSDate) -> String{
         let formatter:NSDateFormatter = NSDateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
         let dateStr:String = formatter.stringFromDate(NSDate())
