@@ -74,4 +74,49 @@ class GitLogParser {
         Swift.print("commitData.body: " + "\(commitData.body)")
         return commitData
     }
+    /**
+     *
+     */
+    static func compactBody(var bodyStr:String) -> String{
+        bodyStr = Utils.preProcess(bodyStr)
+        let compactBody:String = Utils.compact(bodyStr)
+        //Swift.print("compactBody: " )
+        //Swift.print(compactBody)
+        return compactBody
+    }
+}
+private class Utils{
+    /**
+     * PreProcess the body string
+     */
+    static func preProcess(var str:String)->String{
+        //Swift.print("preProcess")
+        //remove the ' char from the beginng and end
+        //strip linebreaks from the beginning and end of bodyStr
+        str = str.subString(2, str.count-2)
+        return str
+    }
+    /**
+     * Compacts the body string
+     */
+    static func compact(str:String) -> String{
+        //Swift.print("compact")
+        let parts = str.split("\n")//split at linebreaks
+        //Swift.print("parts.count: " + "\(parts.count)")
+        let firstPart = parts[0]
+        //Swift.print("firstPart.count: " + "\(firstPart.count)")
+        if(firstPart.count > 100){/*the first string is longer than allowed*/
+            let a:String = firstPart.subStr(0, 100)
+            var b:String = firstPart.subStr(100, firstPart.count)
+            b = b.count > 100 ? b.subStr(0, 100) + "..." : b
+            return a + "\n" + b
+        }else{/*First part is within allowed length*/
+            var secondPart:String = ""
+            if(parts.count > 1){
+                secondPart = parts[1]
+                secondPart = secondPart.count > 100 ? secondPart.subStr(0, 100) + "..." : secondPart
+            }
+            return firstPart + "\n" + secondPart
+        }
+    }
 }
