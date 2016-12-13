@@ -30,8 +30,9 @@ class DateParser {
     }
     /**
      * Returns a date formated like: 201612035959 aka YYYYMMDDHHMMSS
-     * NOTE: The name of this time format: ODBC canonical (some argue it's the ISO 8601 format)
-     * NOTE: The name descendingDate is a name that describes what the format does. It is not the official name
+     * NOTE: The purpouse of this method is to provide an easy way to sort dates (as this format is as sortable as it gets)
+     * TRIVIA: The name of this time format: ODBC canonical (some argue it's the ISO 8601 format)
+     * TRIVIA: The name descendingDate is a name that describes what the format does. It is not the official name
      */
     static func descendingDate(date:NSDate) -> String{
         let formatter:NSDateFormatter = NSDateFormatter()
