@@ -26,7 +26,7 @@ class ShellUtils{
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
-        task.arguments = arguments
+        task.arguments = ["ls","ls"]
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = NSPipe()
         task.standardOutput = pipe
