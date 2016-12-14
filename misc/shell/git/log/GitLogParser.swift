@@ -94,11 +94,7 @@ private class Utils{
         //Swift.print("preProcess")
         //remove the ' char from the beginng and end
         //strip linebreaks from the beginning and end of bodyStr
-
-        
-        if(str.count > 5) {str = str.subString(3, str.count-2)}
-
-        
+        //if(str.count > 5) {str = str.subString(3, str.count-2)}
         str = trim(str)
         return str
     }
