@@ -46,8 +46,8 @@ extension String {
     func indexOf(b:String)->Int{//convenience
         return StringParser.indexOf(self, b)
     }
-    func trim(str:String,_ leftAndRight:Character)->String{//convenience
-        return StringParser.trim(str, leftAndRight)
+    func trim(leftAndRight:Character)->String{//convenience
+        return StringParser.trim(self, leftAndRight)
     }
     var bool:Bool {return StringParser.boolean(self)}
     /**

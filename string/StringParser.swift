@@ -116,6 +116,7 @@ class StringParser{
     }
     /**
      * Convenience
+     * EXAMPLE:  "32\n".trim("\n").int//32
      */
     static func trim(str:String,_ leftAndRight:Character)->String{
         return trim(str, leftAndRight, leftAndRight)
