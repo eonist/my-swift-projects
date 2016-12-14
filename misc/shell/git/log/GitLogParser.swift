@@ -103,12 +103,10 @@ private class Utils{
      */
     static func trim(str:String)->String{
         var retVal:String = ""
-        str.matches("(?:^[',\n]*)(.*?)(?:\n+?|$)").forEach{
+        str.matches("(?:^'?\n*)(.*?)(?:(\n+?'?)|('$)|$)").forEach{
             if($0.numberOfRanges > 1){
                 let body:String = $0.value(str, 1)/*capturing group 1*/
-                //Swift.print(">")
-                //Swift.print(body)
-                //Swift.print("<")
+                //Swift.print(">"+body+"<")
                 retVal = body
             }else{
                 Swift.print(str)
