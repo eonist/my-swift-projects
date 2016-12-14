@@ -18,7 +18,7 @@ class ShellUtils{
     /**
      * Example: ShellUtils.exc("git log --oneline").output
      */
-    class func exc(input: String, _ cd:String = "") -> (output: String, exitCode: Int32){
+    class func exc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
         var arguments = input.componentsSeparatedByString(" ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
