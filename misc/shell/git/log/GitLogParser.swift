@@ -104,7 +104,9 @@ private class Utils{
      */
     static func trim(str:String)->String{
         var retVal:String = ""
-        str.matches("(?:^'?\n*)(.*?)(?:(\n+?'?)|('$)|$)").forEach{
+        let pattern = "^(?:'?\n*)(.*?)(?:\n*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
+        let options:NSRegularExpressionOptions = [.CaseInsensitive, .DotMatchesLineSeparators]//we need the S-flag (.DotMatches....) to allow for capturing line-breaks with >.*?<
+        str.matches(pattern,options).forEach{//its not pretty but it works
             if($0.numberOfRanges > 1){
                 let body:String = $0.value(str, 1)/*capturing group 1*/
                 //Swift.print(">"+body+"<")
