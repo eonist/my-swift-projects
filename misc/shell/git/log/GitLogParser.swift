@@ -35,32 +35,24 @@ class GitLogParser {
      */
     static func commitData(input:String) -> CommitData{
         let firstIdx:Int = input.indexOf("\n")
-        Swift.print("firstIdx: " + "\(firstIdx)")
+        //Swift.print("firstIdx: " + "\(firstIdx)")
         let firstPart:String = input.subString(0,firstIdx)
-        Swift.print("firstPart: " + "\(firstPart)")
         //Swift.print("firstPart: " + "\(firstPart)")
-        
+        //Swift.print("firstPart: " + "\(firstPart)")
         let secondIdx:Int = firstIdx+1 + input.subString(firstIdx+1,input.count).indexOf("\n")
-        Swift.print("secondIdx: " + "\(secondIdx)")
-        
+        //Swift.print("secondIdx: " + "\(secondIdx)")
         let secondPart:String = input.subString(firstIdx+1,secondIdx)
-        Swift.print("secondPart: " + "\(secondPart)")
-        
+        //Swift.print("secondPart: " + "\(secondPart)")
         let thirdIdx:Int = secondIdx+1 + input.subString(secondIdx+1,input.count).indexOf("\n")
-        Swift.print("thirdIdx: " + "\(thirdIdx)")
-        
+        //Swift.print("thirdIdx: " + "\(thirdIdx)")
         let thirdPart:String = input.subString(secondIdx+1,thirdIdx)
-        Swift.print("thirdPart: " + "\(thirdPart)")
-        
+        //Swift.print("thirdPart: " + "\(thirdPart)")
         let fourthIdx:Int = thirdIdx+1 + input.subString(thirdIdx+1,input.count).indexOf("\n")
-        Swift.print("fourthIdx: " + "\(fourthIdx)")
-        
+        //Swift.print("fourthIdx: " + "\(fourthIdx)")
         let fourthPart:String = input.subString(thirdIdx+1,fourthIdx)
-        Swift.print("fourthPart: " + "\(fourthPart)")
-        
+        //Swift.print("fourthPart: " + "\(fourthPart)")
         let fifthPart:String = input.subString(fourthIdx+1,input.count)
-        Swift.print("fifthPart: " + "\(fifthPart)")
-        
+        //Swift.print("fifthPart: " + "\(fifthPart)")
         var commitData:CommitData = (firstPart,secondPart,thirdPart,fourthPart,fifthPart)
         commitData.hash = commitData.hash.subString("Hash:".count, commitData.hash.count)
         commitData.author = commitData.author.subString("Author:".count, commitData.author.count)
