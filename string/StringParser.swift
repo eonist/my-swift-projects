@@ -115,6 +115,12 @@ class StringParser{
         return str
     }
     /**
+     * Convenience
+     */
+    static func trim(str:String,_ leftAndRight:Character)->String{
+        return trim(str, leftAndRight, leftAndRight)
+    }
+    /**
      * Returns the percentage as a CGFloat
      */
     class func percentage(value:String)->CGFloat{

@@ -46,6 +46,9 @@ extension String {
     func indexOf(b:String)->Int{//convenience
         return StringParser.indexOf(self, b)
     }
+    func trim(str:String,_ leftAndRight:Character)->String{//convenience
+        return StringParser.trim(String, leftAndRight)
+    }
     var bool:Bool {return StringParser.boolean(self)}
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
