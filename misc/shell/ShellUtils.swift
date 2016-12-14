@@ -21,17 +21,10 @@ class ShellUtils{
      * Example: ShellUtils.exc("git log --oneline").output
      */
     class func exc(input: String, _ cd:String = "") -> (output: String, exitCode: Int32){
-        /*
-        Was this: (but Swift doesn't use split anymore, may need further research)
-        let arguments = split(input, maxSplit: Int.max, allowEmptySlices: true) {
-        $0 == " "
-        }
-        */
-        var arguments = input.componentsSeparatedByString(" ")
+        var arguments = input.componentsSeparatedByString(" ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
         //arguments.forEach{Swift.print("$0: " + "\($0)")}
-            
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
