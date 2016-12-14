@@ -77,9 +77,10 @@ class GitLogParser {
     /**
      *
      */
-    static func compactBody(var bodyStr:String) -> String{
-        bodyStr = Utils.preProcess(bodyStr)
-        let compactBody:String = Utils.compact(bodyStr)
+    static func compactBody(bodyStr:String) -> String{
+        let preprocessedBody = Utils.preProcess(bodyStr)
+        Swift.print("preprocessedBody: " + "\(preprocessedBody)")
+        let compactBody:String = Utils.compact(preprocessedBody)
         //Swift.print("compactBody: " )
         //Swift.print(compactBody)
         return compactBody
