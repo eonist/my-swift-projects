@@ -82,7 +82,9 @@ class GitParser{
      */
     static func commitCount(localRepoPath:String) -> String{
         let shellScript:String = Git.path + "git rev-list HEAD --count"
-        return ShellUtils.run(shellScript,localRepoPath)
+        var result:String = ShellUtils.run(shellScript,localRepoPath)
+        result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
+        return result
     }
     /**
      * DEPRECATED: Use GitParser.log instead
