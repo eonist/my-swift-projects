@@ -107,7 +107,7 @@ private class Utils{
                 retVal = body
             }else{
                 Swift.print(str)
-                fatalError("something is wrong")
+                fatalError("woops something is wrong")
             }
         }
         return retVal
