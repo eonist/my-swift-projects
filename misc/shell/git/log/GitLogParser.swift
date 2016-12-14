@@ -67,11 +67,13 @@ class GitLogParser {
         commitData.date = commitData.date.subString("Date:".count, commitData.date.count)
         commitData.subject = commitData.subject.subString("Subject:".count, commitData.subject.count)
         commitData.body = commitData.body.subString("Body:".count, commitData.body.count)
+        /*
         Swift.print("commitData.hash: " + "\(commitData.hash)")
         Swift.print("commitData.author: " + "\(commitData.author)")
         Swift.print("commitData.date: " + "\(commitData.date)")
         Swift.print("commitData.subject: " + "\(commitData.subject)")
         Swift.print("commitData.body: " + "\(commitData.body)")
+        */
         return commitData
     }
     /**
@@ -79,7 +81,7 @@ class GitLogParser {
      */
     static func compactBody(bodyStr:String) -> String{
         let preprocessedBody = Utils.preProcess(bodyStr)
-        Swift.print("preprocessedBody: " + "\(preprocessedBody)")
+        //Swift.print("preprocessedBody: " + "\(preprocessedBody)")
         let compactBody:String = Utils.compact(preprocessedBody)
         //Swift.print("compactBody: " )
         //Swift.print(compactBody)
