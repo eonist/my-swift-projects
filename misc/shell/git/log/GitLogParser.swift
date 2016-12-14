@@ -9,17 +9,15 @@ class GitLogParser {
     static func date(date:String)->NSDate{
         let dateParts:[String] = date.split(" ")
         let yearMonthDayParts:[String] = dateParts[0].split("-")
-        Swift.print("yearMonthDayParts: " + "\(yearMonthDayParts)")
+        //Swift.print("yearMonthDayParts: " + "\(yearMonthDayParts)")
         let year:String = yearMonthDayParts[0]
-        
-        
         let month:String = yearMonthDayParts[1]
         let day:String = yearMonthDayParts[2]
-        Swift.print("year.int: " + "\(year.int)")
-        Swift.print("month.int: " + "\(month.int)")
-        Swift.print("day.int: " + "\(day.int)")
+        //Swift.print("year.int: " + "\(year.int)")
+        //Swift.print("month.int: " + "\(month.int)")
+        //Swift.print("day.int: " + "\(day.int)")
         let hourMinSecParts:[String] = dateParts[1].split(":")
-        Swift.print("hourMinSecParts: " + "\(hourMinSecParts)")
+        //Swift.print("hourMinSecParts: " + "\(hourMinSecParts)")
         let hour:String = hourMinSecParts[0]
         let min:String = hourMinSecParts[1]
         let sec:String = hourMinSecParts[2]

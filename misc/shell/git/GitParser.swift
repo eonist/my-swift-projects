@@ -33,7 +33,7 @@ class GitParser{
      */
     static func show(localPath:String, _ cmd:String)->String{
         let shellScript:String = Git.path + "git show " + cmd
-        Swift.print("shellScript: " + "\(shellScript)")
+        //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localPath)
     }
 	/**

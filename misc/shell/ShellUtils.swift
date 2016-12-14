@@ -11,7 +11,8 @@ class ShellUtils{
 	 */
     class func run(input: String, _ cd:String = "") /*throws*/ -> String {
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
-        Swift.print("terminationStatus: " + "\(terminationStatus)")
+        terminationStatus
+        //Swift.print("terminationStatus: " + "\(terminationStatus)")
         //if(output == "") { throw ShellError.failure }
         return output//output
         //throws ->
@@ -26,11 +27,10 @@ class ShellUtils{
         $0 == " "
         }
         */
-        
         var arguments = input.componentsSeparatedByString(" ")
-        Swift.print("arguments.count: " + "\(arguments.count)")
+        //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
-        arguments.forEach{Swift.print("$0: " + "\($0)")}
+        //arguments.forEach{Swift.print("$0: " + "\($0)")}
             
         let task = NSTask()
         task.currentDirectoryPath = cd
