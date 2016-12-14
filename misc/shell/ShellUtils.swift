@@ -13,9 +13,7 @@ class ShellUtils{
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
         terminationStatus
         //Swift.print("terminationStatus: " + "\(terminationStatus)")
-        //if(output == "") { throw ShellError.failure }
-        return output//output
-        //throws ->
+        return output
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
@@ -29,10 +27,7 @@ class ShellUtils{
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
         task.arguments = arguments
-        task.environment = [
-            "LC_ALL" : "en_US.UTF-8",
-            "HOME" : NSHomeDirectory()
-        ]
+        task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()
