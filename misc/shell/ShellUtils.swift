@@ -31,7 +31,7 @@ class ShellUtils{
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()
-        task.waitUntilExit()
+        task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*/
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output:String = NSString(data:data, encoding:NSUTF8StringEncoding) as! String
         return (output, task.terminationStatus)
