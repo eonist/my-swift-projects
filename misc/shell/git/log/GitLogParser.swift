@@ -1,5 +1,5 @@
 import Foundation
-
+typealias CommitData = (hash:String,author:String,date:String,subject:String,body:String)/*convenience*/
 class GitLogParser {
     /**
      * Returns an NSDate instance for a date that is derived from a commit log item with pretty format and %ci
@@ -25,7 +25,6 @@ class GitLogParser {
         let date:NSDate = NSDate.createDate(year.int, month.int, day.int, hour.int, min.int, sec.int)!
         return date
     }
-    typealias CommitData = (hash:String,author:String,date:String,subject:String,body:String)/*convenience*/
     /**
      * Returns a ComitData instance that is populated with auther, date, subject, body
      * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
