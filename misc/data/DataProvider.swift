@@ -164,11 +164,12 @@ extension DataProvider{
     /**
      * Sorts items by the key provided in ascending or descending order
      */
-    func sort(key:String,_ ascending:Bool = true){/*names:AnyObject, _ options:Int = 0,_ args:AnyObject...*/
+    func sort(key:String,_ ascending:Bool = true)->DataProvider{/*names:AnyObject, _ options:Int = 0,_ args:AnyObject...*/
         self.items.sortInPlace { (a, b) -> Bool in
             return ascending ? a[key] < b[key] : a[key] > b[key]//Toggles ascending and descending
         }//self.items.sortOn(names, options,args);
-        onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self));
+        onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self))
+        return self/*For chaining purpouse*/
     }
     /**
      *
