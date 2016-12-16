@@ -52,7 +52,7 @@ extension NSDate {
      * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
      * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
      */
-    var shortDate:String{
+    var shortDate:String{//TODO: move the content bellow into DateParser
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle

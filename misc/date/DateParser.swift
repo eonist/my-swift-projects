@@ -37,7 +37,7 @@ class DateParser {
     static func descendingDate(date:NSDate) -> String{
         let formatter:NSDateFormatter = NSDateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
-        let dateStr:String = formatter.stringFromDate(NSDate())
+        let dateStr:String = formatter.stringFromDate(date)
         //Swift.print("dateTimePrefix: " + "\(dateTimePrefix)")
         return dateStr
     }
