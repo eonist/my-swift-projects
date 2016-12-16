@@ -120,6 +120,7 @@ private class Utils{
         //Swift.print("firstPart.count: " + "\(firstPart.count)")
         if(firstPart.count > 100){/*the first string is longer than allowed*/
             let a:String = firstPart.subStr(0, 100)
+            Swift.print("firstPart.count: " + "\(firstPart.count)")
             var b:String = firstPart.subStr(100, firstPart.count)
             b = b.count > 100 ? b.subStr(0, 100) + "..." : b
             return a + "\n" + b
