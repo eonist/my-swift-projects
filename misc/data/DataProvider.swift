@@ -163,6 +163,7 @@ extension DataProvider{
     }
     /**
      * Sorts items by the key provided in ascending or descending order
+     * EXAMPLE: DataProvider([["date":"0214","title":"a"],["date":"0216","title":"b"],["date":"0114","title":"c"]]).sort("date").items.forEach{Swift.print($0["title"])}//c,a,b
      */
     func sort(key:String,_ ascending:Bool = true)->DataProvider{/*names:AnyObject, _ options:Int = 0,_ args:AnyObject...*/
         self.items.sortInPlace { (a, b) -> Bool in
