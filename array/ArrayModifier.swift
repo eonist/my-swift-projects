@@ -52,8 +52,8 @@ class ArrayModifier{
 	  */
     static func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
-        array.removeRange(Range<Int>(start:Int(startIndex),end:Int(startIndex + deleteCount)))
-        if(values.count > 0 ){array.insertContentsOf(values, at: Int(startIndex))}
+        array.removeRange(Range<Int>(start:startIndex,end:startIndex + deleteCount))
+        if(values.count > 0 ){array.insertContentsOf(values, at: startIndex)}
         return returnArray
     }
     /**
@@ -115,13 +115,13 @@ class ArrayModifier{
      *	var array:Array = ["a","b","c"];
      *	var index:int = 1;
      *	var result:* = array.splice(index, 1, "x", array[index]);
-     *	print("result: " + result);//b "the deleted item"
+     *	print("result: " + result)//b "the deleted item"
      *	print(array); //a,x,b,c
      * TODO: return the array for method chaning purposes?
      */
     static func addAt<T>(inout array:[T], _ item:T, _ index:Int){
-        if(index == 0) {array.unshift(item)}
-        else if(array.count == index) {array.append(item)}
+        if(index == 0) {array.unshift(item)}/*add item at the begining of an array*/
+        else if(array.count == index) {array.append(item)}/*add item at the end of an array*/
         else {array.splice2(index, 0, [item])}
     }
     /**
@@ -376,6 +376,18 @@ class ArrayModifier{
             replace(&array, matches[i], replacments[i])
         }
         return array
+    }
+    /**
+     * Inserts "before" PARAM index (see examples bellow)
+     * EXAMPLE: ["a","b","c"].insert("x", 0)//x,a,b,c
+     * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
+     * EXAMPLE: ["a","b","c"].insert("x", 2)//q,b,x,c
+     * EXAMPLE: ["a","b","c"].insert("x", 3)//a,b,c,x
+     * RETURN: the mutated PARAM arr
+     */
+    static func insertAt<T>(inout arr:[T], _ item:T, _ index:Int) -> [T]{
+        arr.insert(item, atIndex: index)
+        return arr
     }
     /**
      * Returns a new array derived from the @param array sans the items from @param start to @param end

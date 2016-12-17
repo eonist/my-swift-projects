@@ -82,6 +82,9 @@ extension Array {
     func cast<T>(type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
     }
+    mutating func insertAt(item:Element, _ index:Int) -> [Element]{//convenience
+        return ArrayModifier.insertAt(&self, item, index)
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
