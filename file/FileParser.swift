@@ -39,6 +39,12 @@ class FileParser{
         let modificationDate = attributes[NSURLContentModificationDateKey] as! NSDate
         return modificationDate
     }
+    /**
+     *
+     */
+    class func contentOfDir(){
+        
+    }
 }
 extension FileParser{
     /**
