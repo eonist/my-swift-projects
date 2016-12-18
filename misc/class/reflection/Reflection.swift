@@ -1,14 +1,14 @@
 import Cocoa
 /**
  * NOTE: XML is used as the storage syntax. JSON could be used but there was no apparent benefit so XML it is
- * NOTE: JSON can be implimented with not to much effort, but supporting both XML and JSON is more work than its worth at the moment
+ * NOTE: JSON can be implimented with not to much effort, but supporting both XML and JSON is more work than it's worth at the moment
  */
 class Reflection {
     /**
-     * NOTE: does not work with computed properties like: var something:String{return ""}
-     * NOTE: does not work with methods
-     * NOTE: only works with regular variables
-     * NOTE: some limitations with inheritance (basially i doesnt work with inheritance, it won't grab the variables of subClasses, it works for variables in the super type)
+     * IMPORTANT: Does not work with computed properties like: var something:String{return ""}
+     * IMPORTANT: Does not work with methods
+     * IMPORTANT: only works with regular variables
+     * NOTE: some limitations with inheritance (basially it doesn't work with inheritance, it won't grab the variables of subClasses, it works for variables in the super type)
      * NOTE: inheritance can be supported , by traversing down the hirarchy via: mirror.superclassMirror() see: http://stackoverflow.com/a/36721639/5389500
      * NOTE: works with struct and class
      */
