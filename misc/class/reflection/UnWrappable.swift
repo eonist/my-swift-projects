@@ -11,7 +11,7 @@ protocol UnWrappable {
     static func unWrap<T>(value:String) -> T?
 }
 /**
- * TODO: Contemplace: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
+ * TODO: Contemplate: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
  */
 extension UnWrappable{
     /**
