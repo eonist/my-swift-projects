@@ -1,4 +1,4 @@
-import Darwin
+import Foundation
 class ArrayParser{
     /**
      * NOTE: This method compares value not reference
@@ -39,7 +39,6 @@ class ArrayParser{
         }
         return -1
     }
-    
     /**
      * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
@@ -51,8 +50,7 @@ class ArrayParser{
             if(arr[i] === item){return i}
         }
         return -1
-    }   
-    
+    }
     /**
      * Returns an array with itmes that are not the same in 2 arrays
      * @example: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
@@ -178,7 +176,6 @@ private class Utils{
         return -1
     }
 }
-
 /**
 * Returns the index for item, -1 of none is found
 * NOTE: keep this method around until the index method is tested
