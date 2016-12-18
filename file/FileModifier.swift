@@ -45,7 +45,7 @@ class FileModifier{
         return false
     }
     /**
-     *
+     * Deletes a file at PARAM: path
      */
     class func delete(path:String){
         let fileManager = NSFileManager.defaultManager()

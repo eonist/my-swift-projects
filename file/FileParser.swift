@@ -30,7 +30,6 @@ class FileParser{
             return ""
         }
     }
-
     /**
      * NOTE: make sure the file exists with: FileAsserter.exists("some path here")
      */
