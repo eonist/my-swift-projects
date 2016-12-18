@@ -55,10 +55,20 @@ class FileModifier{
         catch let error as NSError {
             print("Error: \(error)")
         }
-        
     }
     /**
-     * creates a folder at PARAM path
+     *
+     */
+    static func rename(){
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            try fileManager.moveItemAtPath("hello.swift", toPath: "goodbye.swift")
+        }catch let error as NSError {
+            print("Error: \(error)")
+        }
+    }
+    /**
+     * Creates a folder at PARAM path
      */
     class func createFolder(path:String){
         let fileManager = NSFileManager.defaultManager()
