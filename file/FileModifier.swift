@@ -7,10 +7,10 @@ class FileModifier{
      * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
      * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
 	 */
-	static func move(fromURL:String,toURL:String){
+	static func move(fromURL:String,_ toURL:String){
 		let fileManager = NSFileManager.defaultManager()
-		let fromURL = NSURL(fileURLWithPath: "/path/to/old")
-		let toURL = NSURL(fileURLWithPath: "/path/to/new")
+		let fromURL = NSURL(fileURLWithPath: fromURL)
+		let toURL = NSURL(fileURLWithPath: toURL)
 		do {
 		    try fileManager.moveItemAtURL(fromURL, toURL: toURL)
 		} catch let error as NSError {
@@ -20,18 +20,15 @@ class FileModifier{
     /**
      *
      */
-    class func copy(){
-        // Create a FileManager instance
-        
+    class func copy(fromURL:String,_ toURL:String){
         let fileManager = NSFileManager.defaultManager()
-        
-        // Copy 'hello.swift' to 'subfolder/hello.swift'
-        
+        let fromURL = NSURL(fileURLWithPath: fromURL)
+        let toURL = NSURL(fileURLWithPath: toURL)
         do {
-            try fileManager.copyItemAtPath("hello.swift", toPath: "subfolder/hello.swift")
+            try fileManager.copyItemAtURL(fromURL, toURL: toURL)
         }
         catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
+            print("Error: \(error)")
         }
     }
     /**
