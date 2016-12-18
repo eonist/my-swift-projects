@@ -45,6 +45,30 @@ class FileModifier{
         return false
     }
     /**
+     *
+     */
+    class func delete(path:String){
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            try fileManager.removeItemAtPath(path)
+        }
+        catch let error as NSError {
+            print("Error: \(error)")
+        }
+        
+    }
+    /**
+     * creates a folder at PARAM path
+     */
+    class func createFolder(path:String){
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            try fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        }catch let error as NSError {
+            print("Error: \(error)")
+        }
+    }
+    /**
      * Append text to file
      */
     static func append(path:String,_ text:String ){
