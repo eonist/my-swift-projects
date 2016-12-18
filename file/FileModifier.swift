@@ -57,12 +57,12 @@ class FileModifier{
         }
     }
     /**
-     *
+     * Renames a file
      */
-    static func rename(){
+    static func rename(fromURL:String,_ toURL:String){
         let fileManager = NSFileManager.defaultManager()
         do {
-            try fileManager.moveItemAtPath("hello.swift", toPath: "goodbye.swift")
+            try fileManager.moveItemAtPath(fromURL, toPath: toURL)
         }catch let error as NSError {
             print("Error: \(error)")
         }
