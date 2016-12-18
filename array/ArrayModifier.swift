@@ -386,6 +386,7 @@ class ArrayModifier{
      * RETURN: the mutated PARAM arr
      */
     static func insertAt<T>(inout arr:[T], _ item:T, _ index:Int) -> [T]{
+        Swift.print("arr.count: " + "\(arr.count)")
         arr.insert(item, atIndex: index)
         return arr
     }
