@@ -20,7 +20,7 @@ class FileModifier{
     /**
      *
      */
-    class func copy(fromURL:String,_ toURL:String){
+    static func copy(fromURL:String,_ toURL:String){
         let fileManager = NSFileManager.defaultManager()
         let fromURL = NSURL(fileURLWithPath: fromURL)
         let toURL = NSURL(fileURLWithPath: toURL)
@@ -47,7 +47,7 @@ class FileModifier{
     /**
      * Deletes a file at PARAM: path
      */
-    class func delete(path:String){
+    static func delete(path:String){
         let fileManager = NSFileManager.defaultManager()
         do {
             try fileManager.removeItemAtPath(path)
@@ -70,7 +70,7 @@ class FileModifier{
     /**
      * Creates a folder at PARAM path
      */
-    class func createFolder(path:String){
+    static func createFolder(path:String){
         let fileManager = NSFileManager.defaultManager()
         do {
             try fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
