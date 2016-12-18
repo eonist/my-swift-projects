@@ -40,10 +40,25 @@ class FileParser{
         return modificationDate
     }
     /**
-     *
+     * Returns paths of content in a dir
      */
-    class func contentOfDir(){
-        
+    static func contentOfDir()->[String]?{
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            let files = try fileManager.contentsOfDirectoryAtPath(".")
+            //print(files)
+            return files
+        }catch let error as NSError {
+            print("Error: \(error)")
+            return nil
+        }
+    }
+    /**
+     * Returns temporary directory path
+     */
+    class func tempPath()->String{
+        let path = NSTemporaryDirectory() as String
+        return path
     }
 }
 extension FileParser{
