@@ -56,8 +56,16 @@ class FileParser{
     /**
      * Returns temporary directory path
      */
-    class func tempPath()->String{
+    static var tempPath:String{
         let path = NSTemporaryDirectory() as String
+        return path
+    }
+    /**
+     * Returns the current directory path
+     */
+    static var curDir:String{
+        let fileManager = NSFileManager.defaultManager()
+        let path = fileManager.currentDirectoryPath
         return path
     }
 }
