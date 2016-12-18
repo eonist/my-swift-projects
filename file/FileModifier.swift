@@ -18,6 +18,23 @@ class FileModifier{
 		}
 	}
     /**
+     *
+     */
+    class func copy(){
+        // Create a FileManager instance
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        // Copy 'hello.swift' to 'subfolder/hello.swift'
+        
+        do {
+            try fileManager.copyItemAtPath("hello.swift", toPath: "subfolder/hello.swift")
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+    }
+    /**
      * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
      * NOTE: this method over-writes data to files that already exists aswell 
      */
