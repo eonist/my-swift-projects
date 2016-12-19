@@ -186,7 +186,7 @@ private class Utils{
         return xml
     }
     /**
-     * 
+     *
      */
     class func dictItem(value:Any) -> XML{
         let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
@@ -194,19 +194,11 @@ private class Utils{
         Swift.print("key: " + "\(key)")
         let val = dictKeyValuePair[1].value
         Swift.print("val: " + "\(val)")
-        
-        if (stringConvertiable(val) && stringConvertiable(key)){/*<--asserts if the value can be converted to a string*/
-            let xml = XML()
-            //Swift.print("create xml")
-            xml.name = "item"
-            xml["key"] = basicValue(key)
-            xml["key"] = basicValue(key)
-            xml["type"] = basicValueType(val)
-            xml.stringValue = basicValue(val)/*add value*/
-            return xml
-        }else{
-            fatalError("Dictionary type not supported must be: Dictionary<StringConvertible,StringConvertible>")//all dictionary types can be supported in the future, organice the value and type handeling to be more reusable and it will work
-        }
+        var xml = XML()
+        //Swift.print("create xml")
+        xml.name = "item"
+        handleProperty(&xml, <#T##label: String##String#>, <#T##value: Any##Any#>)
+        return xml
     }
     /**
      * Extracts CGAffineTransform from: Optional<CGAffineTransform>
