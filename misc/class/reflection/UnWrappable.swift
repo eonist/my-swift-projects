@@ -69,7 +69,7 @@ extension UnWrappable{
             XMLParser.children(child).forEach{
                 //let arr:[T] = T.unWrap($0)!
                 
-                //Continue here: Test unwrapping Dictionary
+                //Continue here: Test unwrapping Dictionary should possibly work
 
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
