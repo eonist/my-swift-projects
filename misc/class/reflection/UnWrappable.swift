@@ -67,8 +67,9 @@ extension UnWrappable{
         let child:XML = xml.firstNode(key)!
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                dictionary[]
-                    .append($0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
+                dictionary[""]
+                T.unWrap($0)
+                    //.append($0.hasSimpleContent ? T.unWrap($0.value) :  )//$0.hasComplexContent ? .. : nil
             }
         }
         return dictionary
