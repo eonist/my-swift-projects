@@ -169,15 +169,17 @@ private class Utils{
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
+        /*
         properties.forEach{
             handleProperty(&xml,$0.label,$0.value)
         }
+        */
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
             //let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            let keyVal:(Any,Any) = $0.value as! (Any,Any)
-            
+            let keyVal:(key:Any,value:Any) = $0.value as! (Any,Any)
+            Swift.print("keyVal.key: " + "\(keyVal.key)")
             /*for (key,val) in keyValuePair{
             Swift.print("Val: \(val) Key: \(key)")
             }*/
