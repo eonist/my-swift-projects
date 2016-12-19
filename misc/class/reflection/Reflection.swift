@@ -75,8 +75,9 @@ private class Utils{
     /**
      *
      */
-    class func handleProperties(inout xml:XML, _ properties:[(label:String,value:Any)]){
+    class func handleProperties(inout xml:XML, _ properties:[(label:String,value:Any)], _ isArray:Bool = false){
         properties.forEach{
+            let lable:String = isArray ? $0.label : "item"
             if ($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)
             }else if ($0.value is AnyDictionary){/*dictionary*/
