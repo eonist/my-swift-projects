@@ -180,7 +180,7 @@ private class Utils{
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            xml += dictItem($0)
+            xml += dictItem($0.value)
         }
         return xml
     }
