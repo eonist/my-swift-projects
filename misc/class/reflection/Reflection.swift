@@ -172,7 +172,6 @@ private class Utils{
      * <someDict>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
-        
         Swift.print("handleDictionary()")
         let xml = XML()
         xml.name = name
