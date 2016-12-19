@@ -164,41 +164,40 @@ private class Utils{
      * Dictionary keys must be Hashable, but are in most cases Int or String
      * EXAMPLE:
      * <someDict type=Dictionary>
-     *    <Item key:"3" type:"String">value goes here</Item>
+     *    <item key:"3" type:"String">value goes here</item>
      * <someDict>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
-        
-        //Continue here: implement the example in the comentary
         
         Swift.print("handleDictionary()")
         var xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
-        /*
-        properties.forEach{
-        
-        }
-        */
-        
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            let key = dictKeyValuePair[0].value
-            Swift.print("key: " + "\(key)")
-            let val = dictKeyValuePair[1].value
-            Swift.print("val: " + "\(val)")
-            handleProperty(&xml,$0.label,$0.value)
-            if (stringConvertiable(value)){/*<--asserts if the value can be converted to a string*/
-                xml += handleBasicValue(value,label)
-            }
-            /*for (key,val) in keyValuePair{
-            Swift.print("Val: \(val) Key: \(key)")
-            }*/
+            dictItem()
         }
         return xml
+    }
+    /**
+     *
+     */
+    class func dictItem(value:Any) -> XML{
+        let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
+        let key = dictKeyValuePair[0].value
+        Swift.print("key: " + "\(key)")
+        let val = dictKeyValuePair[1].value
+        Swift.print("val: " + "\(val)")
+        
+        if (stringConvertiable(val) && stringConvertiable(key)){/*<--asserts if the value can be converted to a string*/
+            let xml = XML()
+            //Swift.print("create xml")
+            xml.name = "item"
+            xml["type"] = basicValueType(val)
+            xml.stringValue = basicValue(val)/*add value*/
+        }
     }
     /**
      * Extracts CGAffineTransform from: Optional<CGAffineTransform>
