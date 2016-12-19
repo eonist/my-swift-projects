@@ -154,13 +154,9 @@ private class Utils{
     }
     /**
      * Dictionary types
-     * Dictionary keys must be Hashable
+     * Dictionary keys must be Hashable, but are in most cases Int or String
      * <Dictionary type:(Int,String)>
-     *    <Item key:"0" key-type:"Int" value-type:"String">value of type<Item>
-     *    <Item>
-     *       <key>3</key>
-     *       <value>3</value>
-     *    </Item>
+     *    <Item key:"3" type:"String">value goes here</Item>
      * <Dictionary>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
