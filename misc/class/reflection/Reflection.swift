@@ -88,6 +88,12 @@ private class Utils{
         return xml
     }
     /**
+     *
+     */
+    class func handleProperties(){
+        
+    }
+    /**
      * Reflectable values
      */
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
@@ -155,6 +161,7 @@ private class Utils{
             Swift.print("$0.value: " + "\($0.value)")
             Swift.print("$0.label: " + "\($0.label)")
         }
+        return XML()
     }
     /**
      * Extracts CGAffineTransform from: Optional<CGAffineTransform>
