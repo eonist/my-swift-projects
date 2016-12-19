@@ -56,7 +56,7 @@ private class Utils{
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(value:Any,_ name:String? = nil)->XML{
-        var xml = XML()
+        let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
@@ -68,46 +68,24 @@ private class Utils{
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
-            handleProperties(&xml,properties)
+            properties.forEach{
+                if ($0.value is AnyArray){/*array*/
+                    xml += handleArray($0.value,$0.label)
+                }else if ($0.value is AnyDictionary){/*dictionary*/
+                    xml += handleDictionary($0.value,$0.label)
+                }else if($0.value is Reflectable){
+                    xml += handleReflectable($0.value as! Reflectable,$0.label)
+                }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
+                    xml += handleBasicValue($0.value,$0.label)
+                }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
+                    xml += handleReflectable($0.value as! CGColorRef,$0.label)
+                }else{
+                    xml += handleValue($0.value,$0.label)
+                    //fatalError("unsuported type: " + "\($0.value.dynamicType)")
+                }
+            }
         }
         return xml
-    }
-    /**
-     *
-     */
-    class func handleProperties(inout xml:XML, _ properties:[(label:String,value:Any)], _ isArray:Bool = false){
-        properties.forEach{
-            let lable:String = isArray ? $0.label : "item"
-            if ($0.value is AnyArray){/*array*/
-                xml += handleArray($0.value,$0.label)
-            }else if ($0.value is AnyDictionary){/*dictionary*/
-                xml += handleDictionary($0.value,$0.label)
-            }else if($0.value is Reflectable){/*The type implements custom reflection*/
-                xml += handleReflectable($0.value as! Reflectable,$0.label)
-            }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
-                xml += handleBasicValue($0.value,$0.label)
-            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
-                xml += handleReflectable($0.value as! CGColorRef,$0.label)
-            }else{
-                xml += handleValue($0.value,$0.label)
-                //fatalError("unsuported type: " + "\($0.value.dynamicType)")
-            }
-        }
-        properties.forEach{
-            if($0.value is Reflectable){
-                //Swift.print("$0.value: " + "\($0.value)")
-                xml += handleReflectable($0.value as! Reflectable,"item"/*$0.label*/)
-            }else if (stringConvertiable($0.value)){
-                xml += handleBasicValue($0.value,"item")
-            }else if($0.value is AnyArray){/*array*/
-                xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
-            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
-                xml += handleReflectable($0.value as! CGColorRef,"item")
-            }else{/*all other cases*/
-                xml += handleValue($0.value)
-                //fatalError("unsuported type: " + "\($0.value.dynamicType)")
-            }
-        }
     }
     /**
      * Reflectable values
@@ -148,7 +126,23 @@ private class Utils{
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
-        
+        properties.forEach{
+            if($0.value is Reflectable){/*The type implements custom reflection*/
+                //Swift.print("$0.value: " + "\($0.value)")
+                xml += handleReflectable($0.value as! Reflectable,"item"/*$0.label*/)
+            }else if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
+                xml += handleBasicValue($0.value,"item")
+            }else if($0.value is AnyArray){/*array*/
+                xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
+            }else if ($0.value is AnyDictionary){/*dictionary*/
+                xml += handleDictionary($0.value,$0.label)//<--should this also be: "item" as label
+            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){
+                xml += handleReflectable($0.value as! CGColorRef,"item")
+            }else{/*all other cases*/
+                xml += handleValue($0.value)
+                //fatalError("unsuported type: " + "\($0.value.dynamicType)")
+            }
+        }
         return xml
     }
     /**
