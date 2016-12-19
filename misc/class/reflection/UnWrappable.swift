@@ -73,9 +73,9 @@ extension UnWrappable{
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
                 let last:XML = $0.children!.last! as! XML
-                let value:T? = last.hasSimpleContent ? T.unWrap(last.stringValue!) : T.unWrap(last)
+                let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
                 
-                dictionary[""]
+                dictionary[key]
                 
                 /*$0.children?.last
                 
