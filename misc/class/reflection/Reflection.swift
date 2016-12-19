@@ -94,6 +94,12 @@ private class Utils{
         }
     }
     /**
+     *
+     */
+    class func handleProperty(lable:String, _ value:Any){
+        //Continue here: this may actually work
+    }
+    /**
      * Reflectable values
      */
     static func handleReflectable(reflectable:Reflectable,_ name:String)->XML{
