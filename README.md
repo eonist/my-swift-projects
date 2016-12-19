@@ -241,7 +241,13 @@ fileWatcher!.event = { [weak self] event in//<--The weak self part enables you t
 ```
 
 ## Reflection and unwrapping
-Supports class and struct:  
+Features:  
+- Reflection (to XML)
+- UnWrapping (from XML)
+- Class and StructSupport
+- Array and Dictionary Support
+- Inheritance support (OOP)
+
 ```swift
 /**
  * NOTE: we use 32 bit RGBA values when storing color data (This also stores the alpha value)
