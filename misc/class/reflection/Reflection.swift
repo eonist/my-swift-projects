@@ -178,7 +178,7 @@ private class Utils{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
             //let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            let keyVal:(key:Any,value:Any) = $0.value as! (Any,Any)
+            let keyVal:(key:AnyObject,value:AnyObject) = $0.value
             Swift.print("keyVal.key: " + "\(keyVal.key)")
             Swift.print("keyVal.value: " + "\(keyVal.value)")
             /*for (key,val) in keyValuePair{
