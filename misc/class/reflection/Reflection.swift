@@ -144,7 +144,7 @@ private class Utils{
     /**
      * Dictionary types
      */
-    class func handleDictionary(value:Any,_ name:String){
+    static func handleDictionary(value:Any,_ name:String){
         let xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
