@@ -60,9 +60,9 @@ extension UnWrappable{
         return array
     }
     /**
-     *
+     * Dictionary
      */
-    static func unWrap<T:UnWrappable>(){
-        
+    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T:T?]{
+        var dictionary:[T:T?]
     }
 }
