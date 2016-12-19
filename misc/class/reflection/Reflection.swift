@@ -63,7 +63,7 @@ private class Utils{
             xml["type"] = objectType
         }
         //print(instanceName)
-        xml.name = name != nil ? name! : objectType//the name of instance class
+        xml.name = name != nil ? name! : objectType/*the name of instance class*/
         if(String(value) == "nil" || String(value) == "Optional(nil)"){//Nil is not nil when mirroring. So you can't do value != nil. Casting to string is a workaround for this
             xml["type"] = extractClassType(value)
         }else{
