@@ -155,7 +155,10 @@ private class Utils{
     /**
      * Dictionary types
      * <Dictionary type:(Int,String)>
-     *    <Item><Item>
+     *    <Item key:"0" key-type:"Int" value-type:"String">value of type<Item>
+     *    <Item>
+     *    <Item>
+     * <Dictionary>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
         Swift.print("handleDictionary()")
