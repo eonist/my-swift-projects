@@ -71,6 +71,8 @@ private class Utils{
             properties.forEach{
                 if ($0.value is AnyArray){/*array*/
                     xml += handleArray($0.value,$0.label)
+                }else if ($0.value is AnyDictionary){/*dictionary*/
+                    xml += handleDictionary($0.value,$0.label)
                 }else if($0.value is Reflectable){
                     xml += handleReflectable($0.value as! Reflectable,$0.label)
                 }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
@@ -144,7 +146,7 @@ private class Utils{
     /**
      * Dictionary types
      */
-    static func handleDictionary(value:Any,_ name:String){
+    static func handleDictionary(value:Any,_ name:String) -> XML{
         let xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
