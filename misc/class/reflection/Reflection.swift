@@ -155,6 +155,7 @@ private class Utils{
      * Dictionary types
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
+        Swift.print("handleDictionary()")
         var xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
