@@ -113,13 +113,13 @@ private class Utils{
     /**
      * Basic value types
      */
-    static func handleBasicValue(value:Any,_ name:String)->XML{
+    static func handleBasicValue(value:Any,_ name:String)->XML{/*handleStringConvertibleValue*/
         //Swift.print("handleBasicValue:  name \(name) value-type: \(value.dynamicType) value: \(value) " )
         let xml = XML()
         //Swift.print("create xml")
         xml.name = name 
         let type:String = String(value.dynamicType)
-        xml["type"] = type == String(Double) ? String(CGFloat) : type//<-temp fix, seems mirror cant get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
+        xml["type"] = type == String(Double) ? String(CGFloat) : type//<-temp fix, seems mirror can't get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
         let string:String = String(value)
         xml.stringValue = string/*add value*/
         return xml
@@ -184,6 +184,9 @@ private class Utils{
             let val = dictKeyValuePair[1].value
             Swift.print("val: " + "\(val)")
             handleProperty(&xml,$0.label,$0.value)
+            if (stringConvertiable(value)){/*<--asserts if the value can be converted to a string*/
+                xml += handleBasicValue(value,label)
+            }
             /*for (key,val) in keyValuePair{
             Swift.print("Val: \(val) Key: \(key)")
             }*/
