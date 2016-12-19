@@ -70,16 +70,17 @@ extension UnWrappable{
                 //let arr:[T] = T.unWrap($0)!
                 
 
-                
-                let key:K = K.unWrap($0.children!.first!.stringValue!)!
-                let value:T? = T.unWrap($0.children!.last!.stringValue!)
+                let first = $0.children!.first!
+                let key:K = K.unWrap(first.stringValue!)!
+                let last:XML = $0.children!.last! as! XML
+                let value:T? = last.hasSimpleContent ? T.unWrap(last.stringValue!) : T.unWrap(last)
                 
                 dictionary[""]
                 
                 /*$0.children?.last
                 
                 T.unWrap($0)*/
-                    //.append($0.hasSimpleContent ? T.unWrap($0.value) :  )//$0.hasComplexContent ? .. : nil
+                    //.append($0. :  )//$0.hasComplexContent ? .. : nil
             }
         }
         return dictionary
