@@ -73,7 +73,7 @@ extension FileParser{
     /**
      * Returns an xml instance comprised of the string content at location @param path
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
-     * IMPORTANT: Remember to expand the "path" with the tildePath call
+     * IMPORTANT: Remember to expand the "path" with the tildePath call before you call xml(path)
      */
     static func xml(path:String)->XML {
         let content = FileParser.content(path)
