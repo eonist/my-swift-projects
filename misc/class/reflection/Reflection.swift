@@ -191,12 +191,12 @@ private class Utils{
         let val = dictKeyValuePair[1].value
         Swift.print("val: " + "\(val)")
         
-        //Continue here: Bring key in to the fold bellow:
-        
         if (stringConvertiable(val) && stringConvertiable(key)){/*<--asserts if the value can be converted to a string*/
             let xml = XML()
             //Swift.print("create xml")
             xml.name = "item"
+            xml["key"] = basicValue(key)
+            xml["key"] = basicValue(key)
             xml["type"] = basicValueType(val)
             xml.stringValue = basicValue(val)/*add value*/
             return xml
