@@ -56,7 +56,7 @@ private class Utils{
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(value:Any,_ name:String? = nil)->XML{
-        let xml = XML()
+        var xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
         Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
@@ -68,30 +68,30 @@ private class Utils{
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
-            properties.forEach{
-                if ($0.value is AnyArray){/*array*/
-                    xml += handleArray($0.value,$0.label)
-                }else if ($0.value is AnyDictionary){/*dictionary*/
-                    xml += handleDictionary($0.value,$0.label)
-                }else if($0.value is Reflectable){
-                    xml += handleReflectable($0.value as! Reflectable,$0.label)
-                }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
-                    xml += handleBasicValue($0.value,$0.label)
-                }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
-                    xml += handleReflectable($0.value as! CGColorRef,$0.label)
-                }else{
-                    xml += handleValue($0.value,$0.label)
-                    //fatalError("unsuported type: " + "\($0.value.dynamicType)")
-                }
-            }
+            handleProperties(&xml,properties)
         }
         return xml
     }
     /**
      *
      */
-    class func handleProperties(){
-        
+    class func handleProperties(inout xml:XML, _ properties:[(label:String,value:Any)]){
+        properties.forEach{
+            if ($0.value is AnyArray){/*array*/
+                xml += handleArray($0.value,$0.label)
+            }else if ($0.value is AnyDictionary){/*dictionary*/
+                xml += handleDictionary($0.value,$0.label)
+            }else if($0.value is Reflectable){
+                xml += handleReflectable($0.value as! Reflectable,$0.label)
+            }else if (stringConvertiable($0.value)){/*all other values*///<-- must be convertible to string i guess
+                xml += handleBasicValue($0.value,$0.label)
+            }else if(($0.value as? AnyObject != nil && CFGetTypeID($0.value as! AnyObject) == CGColorGetTypeID())){//CGColor isnt easily assertable as a type, this is a workaround for this problem
+                xml += handleReflectable($0.value as! CGColorRef,$0.label)
+            }else{
+                xml += handleValue($0.value,$0.label)
+                //fatalError("unsuported type: " + "\($0.value.dynamicType)")
+            }
+        }
     }
     /**
      * Reflectable values
