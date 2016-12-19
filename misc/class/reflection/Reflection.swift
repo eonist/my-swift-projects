@@ -142,6 +142,19 @@ private class Utils{
         return xml
     }
     /**
+     * Dictionary types
+     */
+    class func handleDictionary(value:Any,_ name:String){
+        let xml = XML()
+        xml.name = name
+        xml["type"] = "Dictionary"
+        let properties = Reflection.reflect(value)
+        properties.forEach{
+            Swift.print("$0.value: " + "\($0.value)")
+            Swift.print("$0.label: " + "\($0.label)")
+        }
+    }
+    /**
      * Extracts CGAffineTransform from: Optional<CGAffineTransform>
      * NOTE: only use this for Optional values that are nil
      */
