@@ -73,7 +73,7 @@ extension UnWrappable{
 
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
-                let last:XML = $0.children!.last! as! XML
+                let last:XML = $0.children!.last! as! XML//casting like this may not work, look into it 
                 let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
                 
                 dictionary[key] = value
