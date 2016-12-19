@@ -174,13 +174,16 @@ private class Utils{
             handleProperty(&xml,$0.label,$0.value)
         }
         */
+        
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            //let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            let keyVal:(key:AnyObject,value:AnyObject) = $0.value
-            Swift.print("keyVal.key: " + "\(keyVal.key)")
-            Swift.print("keyVal.value: " + "\(keyVal.value)")
+            let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
+            let key = keyValuePair[0].value
+            Swift.print("key: " + "\(key)")
+            let val = keyValuePair[1].value
+            Swift.print("val: " + "\(val)")
+            
             /*for (key,val) in keyValuePair{
             Swift.print("Val: \(val) Key: \(key)")
             }*/
