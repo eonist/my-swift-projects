@@ -178,10 +178,10 @@ private class Utils{
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            let key = keyValuePair[0].value
+            let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
+            let key = dictKeyValuePair[0].value
             Swift.print("key: " + "\(key)")
-            let val = keyValuePair[1].value
+            let val = dictKeyValuePair[1].value
             Swift.print("val: " + "\(val)")
             
             /*for (key,val) in keyValuePair{
