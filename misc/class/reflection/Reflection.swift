@@ -170,14 +170,14 @@ private class Utils{
     static func handleDictionary(value:Any,_ name:String) -> XML{
         
         Swift.print("handleDictionary()")
-        var xml = XML()
+        let xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            dictItem()
+            xml += dictItem($0)
         }
         return xml
     }
@@ -185,11 +185,13 @@ private class Utils{
      *
      */
     class func dictItem(value:Any) -> XML{
-        let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
+        let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
         let key = dictKeyValuePair[0].value
         Swift.print("key: " + "\(key)")
         let val = dictKeyValuePair[1].value
         Swift.print("val: " + "\(val)")
+        
+        //Continue here: Bring key in to the fold bellow:
         
         if (stringConvertiable(val) && stringConvertiable(key)){/*<--asserts if the value can be converted to a string*/
             let xml = XML()
@@ -197,6 +199,9 @@ private class Utils{
             xml.name = "item"
             xml["type"] = basicValueType(val)
             xml.stringValue = basicValue(val)/*add value*/
+            return xml
+        }else{
+            fatalError("Dictionary type not supported must be: Dictionary<StringConvertible,StringConvertible>")//all dictionary types can be supported in the future, organice the value and type handeling to be more reusable and it will work
         }
     }
     /**
