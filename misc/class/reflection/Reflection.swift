@@ -161,10 +161,14 @@ private class Utils{
     }
     /**
      * Dictionary types
-     * Dictionary keys must be Hashable, but are in most cases Int or String
+     * NOTE: Dictionary keys must be Hashable, but are in most cases Int or String
+     * NOTE: since Dictionary<Hashable,Any> can be many different types we must keep value and key in seperate nodes, see example bellow:
      * EXAMPLE:
      * <someDict type=Dictionary>
-     *    <item key:"3" type:"String">value goes here</item>
+     *    <item>
+     *       <value type="String">some value<value>
+     *       <key type="Int">3<key>
+     *    </item>
      * <someDict>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
