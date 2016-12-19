@@ -155,11 +155,15 @@ private class Utils{
     /**
      * Dictionary types
      * Dictionary keys must be Hashable, but are in most cases Int or String
+     * EXAMPLE:
      * <someDict type=Dictionary>
      *    <Item key:"3" type:"String">value goes here</Item>
      * <someDict>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
+        
+        //Continue here: implement the example in the comentary
+        
         Swift.print("handleDictionary()")
         var xml = XML()
         xml.name = name
