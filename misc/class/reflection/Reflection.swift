@@ -156,15 +156,17 @@ private class Utils{
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
         Swift.print("handleDictionary()")
-        var xml = XML()
+        let xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
         properties.forEach{
             Swift.print("$0.value: " + "\($0.value)")
             Swift.print("$0.label: " + "\($0.label)")
+            if (stringConvertiable($0.value)){/*<--asserts if the value can be converted to a string*/
+                xml += handleBasicValue($0.value,"item")
+            }
         }
-        handleProperties(&xml, properties)
         return xml
     }
     /**
