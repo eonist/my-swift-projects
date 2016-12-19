@@ -189,15 +189,16 @@ private class Utils{
      *
      */
     class func dictItem(value:Any) -> XML{
+        var xml = XML()
+        //Swift.print("create xml")
+        xml.name = "item"
         let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
         let key = dictKeyValuePair[0].value
         Swift.print("key: " + "\(key)")
         let val = dictKeyValuePair[1].value
         Swift.print("val: " + "\(val)")
-        var xml = XML()
-        //Swift.print("create xml")
-        xml.name = "item"
-        handleProperty(&xml, <#T##label: String##String#>, <#T##value: Any##Any#>)
+        handleProperty(&xml, "key", key)
+        handleProperty(&xml, "value", val)
         return xml
     }
     /**
