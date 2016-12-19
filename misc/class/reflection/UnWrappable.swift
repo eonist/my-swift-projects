@@ -63,6 +63,8 @@ extension UnWrappable{
      * Dictionary
      */
     static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T:T?]{
-        var dictionary:[T:T?]
+        var dictionary:[T:T?] = [:]
+        let child:XML = xml.firstNode(key)!
+        
     }
 }
