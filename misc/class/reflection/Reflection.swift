@@ -157,7 +157,9 @@ private class Utils{
      * <Dictionary type:(Int,String)>
      *    <Item key:"0" key-type:"Int" value-type:"String">value of type<Item>
      *    <Item>
-     *    <Item>
+     *       <key>3</key>
+     *       <key>3</key>
+     *    </Item>
      * <Dictionary>
      */
     static func handleDictionary(value:Any,_ name:String) -> XML{
