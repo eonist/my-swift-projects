@@ -63,26 +63,22 @@ extension UnWrappable{
      * Dictionary
      */
     
-    //where T:SomeProtocol, T:SomeOtherProtocol
-    static func unWrap<K:UnWrappable,Hashable,T:UnWrappable>(xml:XML,_ key:String) -> [K:T?]{
+    static func unWrap<T:UnWrappable, K where K:UnWrappable, K:Hashable>(xml:XML,_ key:String) -> [K:T?]{
         var dictionary:[K:T?] = [:]
         let child:XML = xml.firstNode(key)!
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
                 //let arr:[T] = T.unWrap($0)!
                 
+                //Continue here:
 
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
                 let last:XML = $0.children!.last! as! XML
                 let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
                 
-                dictionary[key as Hashable]
-                
-                /*$0.children?.last
-                
-                T.unWrap($0)*/
-                    //.append($0. :  )//$0.hasComplexContent ? .. : nil
+                dictionary[key] = value
+
             }
         }
         return dictionary
