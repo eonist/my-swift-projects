@@ -59,4 +59,10 @@ extension UnWrappable{
         }
         return array
     }
+    /**
+     *
+     */
+    class func unWrap(){
+        
+    }
 }
