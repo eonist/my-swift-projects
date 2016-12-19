@@ -154,11 +154,12 @@ private class Utils{
     }
     /**
      * Dictionary types
+     * Dictionary keys must be Hashable
      * <Dictionary type:(Int,String)>
      *    <Item key:"0" key-type:"Int" value-type:"String">value of type<Item>
      *    <Item>
      *       <key>3</key>
-     *       <key>3</key>
+     *       <value>3</value>
      *    </Item>
      * <Dictionary>
      */
