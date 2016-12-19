@@ -58,7 +58,7 @@ private class Utils{
     static func handleValue(value:Any,_ name:String? = nil)->XML{
         let xml = XML()
         let objectType:String = String(value.dynamicType)//if this doesnt work use generics
-        //Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
+        Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
             xml["type"] = objectType
         }
