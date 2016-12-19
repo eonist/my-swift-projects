@@ -160,7 +160,7 @@ private class Utils{
         return xml
     }
     /**
-     * Dictionary types
+     * Handles Dictionary types
      * NOTE: Dictionary keys are always Hashable, but are in most cases Int or String
      * NOTE: since Dictionary<Hashable,Any> can be many different types we must keep value and key in seperate nodes, see example bellow:
      * EXAMPLE:
@@ -180,14 +180,14 @@ private class Utils{
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            xml += dictItem($0.value)
+            xml += dictionaryItem($0.value)
         }
         return xml
     }
     /**
      * Handles individual Dictionary items
      */
-    class func dictItem(value:Any) -> XML{
+    class func dictionaryItem(value:Any) -> XML{
         var xml = XML()
         //Swift.print("create xml")
         xml.name = "item"
