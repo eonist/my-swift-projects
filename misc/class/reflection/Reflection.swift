@@ -165,13 +165,13 @@ private class Utils{
         //Continue here: implement the example in the comentary
         
         Swift.print("handleDictionary()")
-        let xml = XML()
+        var xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
         /*
         properties.forEach{
-            handleProperty(&xml,$0.label,$0.value)
+        
         }
         */
         
@@ -183,7 +183,7 @@ private class Utils{
             Swift.print("key: " + "\(key)")
             let val = dictKeyValuePair[1].value
             Swift.print("val: " + "\(val)")
-            
+            handleProperty(&xml,$0.label,$0.value)
             /*for (key,val) in keyValuePair{
             Swift.print("Val: \(val) Key: \(key)")
             }*/
