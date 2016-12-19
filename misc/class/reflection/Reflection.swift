@@ -118,11 +118,18 @@ private class Utils{
         let xml = XML()
         //Swift.print("create xml")
         xml.name = name 
-        let type:String = String(value.dynamicType)
-        xml["type"] = type == String(Double) ? String(CGFloat) : type//<-temp fix, seems mirror can't get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
-        let string:String = String(value)
-        xml.stringValue = string/*add value*/
+        xml["type"] = basicValueType(value)
+        xml.stringValue = basicValue(value)/*add value*/
         return xml
+    }
+    static func basicValue(value:Any)->String{
+        let string:String = String(value)
+        return string
+    }
+    static func basicValueType(value:Any)->String{
+        var type:String = String(value.dynamicType)
+        type = type == String(Double) ? String(CGFloat) : type//<-temp fix, seems mirror can't get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
+        return type
     }
     /**
      * Array types
