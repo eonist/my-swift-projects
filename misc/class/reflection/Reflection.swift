@@ -68,24 +68,17 @@ private class Utils{
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
-            handleProperties(&xml, properties)
+            properties.forEach{
+                handleProperty(&xml,$0.label,$0.value)
+            }
         }
         return xml
     }
     /**
-     * new
-     */
-    static func handleProperties(inout xml:XML, _ properties:[(label:String,value:Any)]){
-        properties.forEach{
-            handleProperty(&xml,$0.label,$0.value)
-        }
-    }
-    /**
-     * new
+     * NOTE: We keep the common code here, for array you pass "item", don't implement it yet until its tested
+     * NOTE: handleDict and handleValue should use this method, handleArray will use it in the future
      */
     class func handleProperty(inout xml:XML, _ label:String, _ value:Any){
-        //Continue here: this may actually work: keep the common code here, for array you pass "item", don't implement it yet but make a note
-            //handleDict and handleValue should use this method, handleArray will use it in the future
         if (value is AnyArray){/*array*/
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
@@ -168,7 +161,9 @@ private class Utils{
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
-        handleProperties(&xml, properties)
+        properties.forEach{
+            handleProperty(&xml,$0.label,$0.value)
+        }
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
