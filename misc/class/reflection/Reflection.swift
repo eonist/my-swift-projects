@@ -97,7 +97,8 @@ private class Utils{
      *
      */
     class func handleProperty(lable:String, _ value:Any){
-        //Continue here: this may actually work
+        //Continue here: this may actually work: keey the common code here, for array you pass "item", don't implement it yet but make a note
+            //handleDict and handleValue should use this method, handleArray will use it in the future
     }
     /**
      * Reflectable values
