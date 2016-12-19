@@ -62,7 +62,7 @@ extension UnWrappable{
     /**
      *
      */
-    class func unWrap(){
+    static func unWrap<T:UnWrappable>(){
         
     }
 }
