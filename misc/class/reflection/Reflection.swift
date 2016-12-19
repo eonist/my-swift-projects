@@ -164,10 +164,12 @@ private class Utils{
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
-            let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
-            for (key,val) in keyValuePair{
-                Swift.print("Val: \(val) Key: \(key)")
-            }
+            //let keyValuePair:[(label:String,value:Any)] = Reflection.reflect($0.value)
+            let keyVal:(Any,Any) = $0.value as! (Any,Any)
+            
+            /*for (key,val) in keyValuePair{
+            Swift.print("Val: \(val) Key: \(key)")
+            }*/
         }
         return xml
     }
