@@ -69,8 +69,10 @@ extension UnWrappable{
             XMLParser.children(child).forEach{
                 //let arr:[T] = T.unWrap($0)!
                 
-                let key:K = K.unWrap($0.children!.first)
-                let value:T? = T.unWrap()
+                $0.children!.first.value
+                
+                //let key:K = K.unWrap()
+                //let value:T? = T.unWrap()
                 /*$0.children?.last
                 dictionary[""]
                 T.unWrap($0)*/
