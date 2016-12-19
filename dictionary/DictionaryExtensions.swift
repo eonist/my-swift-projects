@@ -1,4 +1,10 @@
 import Foundation
+
+protocol AnyDictionary{}//see ArrayExtensions for comentary
+extension Dictionary:AnyDictionary{}
+extension NSDictionary:AnyDictionary{}
+
+
 /**
  * TODO: Try to make this extension Generic, currently its only working with String key value pairs
  */
