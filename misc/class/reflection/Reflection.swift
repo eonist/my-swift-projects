@@ -161,7 +161,7 @@ private class Utils{
     }
     /**
      * Dictionary types
-     * NOTE: Dictionary keys must be Hashable, but are in most cases Int or String
+     * NOTE: Dictionary keys are always Hashable, but are in most cases Int or String
      * NOTE: since Dictionary<Hashable,Any> can be many different types we must keep value and key in seperate nodes, see example bellow:
      * EXAMPLE:
      * <someDict type=Dictionary>
@@ -186,7 +186,7 @@ private class Utils{
         return xml
     }
     /**
-     *
+     * 
      */
     class func dictItem(value:Any) -> XML{
         let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
