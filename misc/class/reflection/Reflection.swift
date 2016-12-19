@@ -185,7 +185,7 @@ private class Utils{
         return xml
     }
     /**
-     *
+     * Handles individual Dictionary items
      */
     class func dictItem(value:Any) -> XML{
         var xml = XML()
@@ -193,9 +193,9 @@ private class Utils{
         xml.name = "item"
         let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
         let key = dictKeyValuePair[0].value
-        Swift.print("key: " + "\(key)")
+        //Swift.print("key: " + "\(key)")
         let val = dictKeyValuePair[1].value
-        Swift.print("val: " + "\(val)")
+        //Swift.print("val: " + "\(val)")
         handleProperty(&xml, "key", key)
         handleProperty(&xml, "value", val)
         return xml
