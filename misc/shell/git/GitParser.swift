@@ -87,7 +87,7 @@ class GitParser{
         return result
     }
     /**
-     * NOTE: to find the first 
+     * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H"
      * NOTE: Short hash and long hash works (for more precision use long hash)
      */
     class func commitCount(localRepoPath:String,_ hash1:String,_ hash2:String)->String{
