@@ -49,8 +49,8 @@ extension String {
     func trim(leftAndRight:Character)->String{//convenience
         return StringParser.trim(self, leftAndRight)
     }
-    mutating func insertCharsAt(charsAndIndicies:[(char:Character,index:Int)])->String{
-        return StringModifier.insertCharsAt(&self, charsAndIndicies)
+    func insertCharsAt(charsAndIndicies:[(char:Character,index:Int)])->String{
+        return StringModifier.insertCharsAt(self, charsAndIndicies)
     }
     var bool:Bool {return StringParser.boolean(self)}
     /**
