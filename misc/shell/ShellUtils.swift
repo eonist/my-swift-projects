@@ -8,6 +8,7 @@ class ShellUtils{
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
 	 * TODO: add some explination about what happens here, line for line
 	 * Example: ShellUtils.run("git log --oneline")
+     * IMPORTANT: spaces that is not intended to split arguments must be encoded before use (blank space -> %20)
 	 */
     class func run(input: String, _ cd:String = "") /*throws*/ -> String {
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
