@@ -111,13 +111,15 @@ class StringModifier{
     /**
      * new
      */
-    static func insertCharsAt(inout str:String, _ charsAndIndicies:[(char:Character,index:Int)])->String{
-        let count:Int = charsAndIndicies.count
-        for i in (1...count).reverse() {//we loop backwards because looping forward and you would lose the indecies
-            //print(i)
-            let strIndex = str.startIndex.advancedBy(charsAndIndicies[i].index)
-            str.insert(charsAndIndicies[i].char, atIndex: strIndex)
+    static func insertCharsAt(inout str:String, var _ charsAndIndicies:[(char:Character,index:Int)])->String{
+        
+        charsAndIndicies.sortInPlace({$0.index > $1.index})//sort from highest index to lowest
+        //we loop backwards because looping forward and you would lose the indecies
+        charsAndIndicies.forEach{
+            let strIndex = str.startIndex.advancedBy($0.index)
+            str.insert($0.char, atIndex: strIndex)
         }
+        
         return str
     }
     /**
