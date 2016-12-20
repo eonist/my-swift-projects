@@ -111,8 +111,11 @@ class StringModifier{
     /**
      *
      */
-    class func insertCharsAt(var str:String, _ chars:[Character],_ induces:[Int])->String{
-        
+    class func insertCharsAt(var str:String, _ charsAndIndicies:[(Character,Int)])->String{
+        charsAndIndicies.count
+            $0.0
+            $0.1
+        }
         return
     }
     /**
