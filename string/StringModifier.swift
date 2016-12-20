@@ -109,22 +109,16 @@ class StringModifier{
         return str
     }
     /**
-     *
+     * new
      */
-    class func insertCharsAt(var str:String, _ charsAndIndicies:[(Character,Int)])->String{
+    static func insertCharsAt(inout str:String, _ charsAndIndicies:[(char:Character,index:Int)])->String{
         let count:Int = charsAndIndicies.count
         for i in (1...count).reverse() {//we loop backwards because looping forward and you would lose the indecies
             //print(i)
-            let strIndex = str.startIndex.advancedBy(index)
-            str.insert(char, atIndex: strIndex)
+            let strIndex = str.startIndex.advancedBy(charsAndIndicies[i].index)
+            str.insert(charsAndIndicies[i].char, atIndex: strIndex)
         }
-        
-        
-        charsAndIndicies.count
-            $0.0
-            $0.1
-        }
-        return
+        return str
     }
     /**
      * Returns @param a with the content of @param b inserted at @param i
