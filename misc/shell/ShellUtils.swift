@@ -26,8 +26,11 @@ class ShellUtils{
         arguments.forEach{Swift.print("$0: " + "\($0)")}
         let task = NSTask()
         task.currentDirectoryPath = cd
-        task.launchPath = "/usr/bin/env"
-        task.arguments = arguments
+        task.launchPath = "/bin/sh"//"/usr/bin/env"
+
+
+        
+        task.arguments = ["-c"] + arguments
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = NSPipe()
         task.standardOutput = pipe
