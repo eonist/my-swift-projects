@@ -99,12 +99,13 @@ class GitParser{
      * Returns the count from now until the date speccifed in PARAM: after
      * PARAM: after: "2016-10-12 00:00:00"  (git date format)
      */
-    static func commitCount(localRepoPath:String, after:String)->String{
+    static func commitCount(localRepoPath:String, after:String)->Int{
         let cmd = "git log --after=\""+after+"\" --format=oneline"// | wc -l
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = Git.path + cmd
         let result:String = ShellUtils.run(shellScript,localRepoPath)
-        return result
+        let count = result.lineCount
+        return count
     }
     /**
      * DEPRECATED: Use GitParser.log instead

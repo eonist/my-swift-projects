@@ -58,6 +58,7 @@ extension String {
      */
     var xml:XML {return XML(self)}//Convenince
     var url:NSURL {return FilePathParser.path(self)}//Convenince
+    var lineCount:Int{return StringParser.lineCount(self)}
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
