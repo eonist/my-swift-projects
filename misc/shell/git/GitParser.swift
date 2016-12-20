@@ -102,7 +102,7 @@ class GitParser{
     static func commitCount(localRepoPath:String, after:String)->Int{
         let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"// | wc -l
         //Swift.print("cmd: " + "\(cmd)")
-        let shellScript:String = Git.path + cmd
+        let shellScript:String = /*Git.path + */"log"
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         Swift.print("result: " + "\(result)")
         let count = result.lineCount
