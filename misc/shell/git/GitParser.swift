@@ -90,8 +90,17 @@ class GitParser{
      * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H"
      * NOTE: Short hash and long hash works (for more precision use long hash)
      */
-    class func commitCount(localRepoPath:String,_ hash1:String,_ hash2:String)->String{
+    static func commitCount(localRepoPath:String,_ hash1:String,_ hash2:String)->String{
         let shellScript:String = Git.path + "git rev-list "+hash1+" ^"+hash2+" --count"
+        let result:String = ShellUtils.run(shellScript,localRepoPath)
+        return result
+    }
+    /**
+     * PARAM: after: 2016-10-12 00:00:00
+     */
+    static func commitCount(localRepoPath:String, after:String)->String{
+        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"
+        let shellScript:String = Git.path + cmd
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         return result
     }
