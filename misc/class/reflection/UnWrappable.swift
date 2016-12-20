@@ -61,6 +61,7 @@ extension UnWrappable{
     }
     /**
      * Dictionary
+     * Returns a Dictionary (key is UnWrappable and Hashable) (value is Unwrappable)
      */
     static func unWrap<T:UnWrappable, K where K:UnWrappable, K:Hashable>(xml:XML,_ key:String) -> [K:T]{
         var dictionary:[K:T] = [:]
