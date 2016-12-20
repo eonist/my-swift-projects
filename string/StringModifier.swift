@@ -100,13 +100,20 @@ class StringModifier{
         let theRest:String = StringParser.subString(str,1,str.characters.count)
         return String(firstChar) + theRest
     }
-    /*
+    /**
      * Returns a new string from @param str with a new @param char inserted at @param index
      */
     static func insertCharAt(var str:String, _ char:Character,_ index:Int)->String{
         let strIndex = str.startIndex.advancedBy(index)
         str.insert(char, atIndex: strIndex)
         return str
+    }
+    /**
+     *
+     */
+    class func insertCharsAt(var str:String, _ chars:[Character],_ induces:[Int])->String{
+        
+        return
     }
     /**
      * Returns @param a with the content of @param b inserted at @param i
