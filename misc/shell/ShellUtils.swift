@@ -22,7 +22,7 @@ class ShellUtils{
         var arguments = input.componentsSeparatedByString(" ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
-        arguments.forEach{Swift.print("$0: " + "\($0)")}
+        //arguments.forEach{Swift.print("$0: " + "\($0)")}
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
