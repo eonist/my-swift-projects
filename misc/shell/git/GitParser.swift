@@ -96,7 +96,7 @@ class GitParser{
         return result
     }
     /**
-     * PARAM: after: 2016-10-12 00:00:00
+     * PARAM: after: 2016-10-12 00:00:00  ()
      */
     static func commitCount(localRepoPath:String, after:String)->String{
         let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"
