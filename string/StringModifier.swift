@@ -112,6 +112,12 @@ class StringModifier{
      *
      */
     class func insertCharsAt(var str:String, _ charsAndIndicies:[(Character,Int)])->String{
+        let count:Int = charsAndIndicies.count
+        for i in (1...count).reverse() {
+            print(i)
+        }
+        
+        
         charsAndIndicies.count
             $0.0
             $0.1
