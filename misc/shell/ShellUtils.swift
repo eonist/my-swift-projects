@@ -27,8 +27,8 @@ class ShellUtils{
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/bin/sh"//setthing shell as launchPath enables piping support, was -> "/usr/bin/env"
-        task.arguments = ["-c"] + arguments
-        task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
+        task.arguments = ["-c","git status"]// + arguments
+        //task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()
