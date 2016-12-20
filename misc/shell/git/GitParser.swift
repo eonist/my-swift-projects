@@ -87,6 +87,12 @@ class GitParser{
         return result
     }
     /**
+     *
+     */
+    class func commitCount(localRepoPath:String,_ hash1:String,_ hash2:String){
+        
+    }
+    /**
      * DEPRECATED: Use GitParser.log instead
      * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
      */
