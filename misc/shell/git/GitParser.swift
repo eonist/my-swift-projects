@@ -104,6 +104,7 @@ class GitParser{
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = Git.path + cmd
         let result:String = ShellUtils.run(shellScript,localRepoPath)
+        Swift.print("result: " + "\(result)")
         let count = result.lineCount
         return count
     }
