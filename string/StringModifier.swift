@@ -109,7 +109,8 @@ class StringModifier{
         return str
     }
     /**
-     * new
+     * Inserts multiple chars at multiple indecies
+     * NOTE: the order of the charsAndIndicies doesnt matter, its sorted in this method
      */
     static func insertCharsAt(inout str:String, var _ charsAndIndicies:[(char:Character,index:Int)])->String{
         charsAndIndicies.sortInPlace({$0.index > $1.index})//sort from highest index to lowest
