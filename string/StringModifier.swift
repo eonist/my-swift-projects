@@ -113,8 +113,10 @@ class StringModifier{
      */
     class func insertCharsAt(var str:String, _ charsAndIndicies:[(Character,Int)])->String{
         let count:Int = charsAndIndicies.count
-        for i in (1...count).reverse() {
-            print(i)
+        for i in (1...count).reverse() {//we loop backwards because looping forward and you would lose the indecies
+            //print(i)
+            let strIndex = str.startIndex.advancedBy(index)
+            str.insert(char, atIndex: strIndex)
         }
         
         
