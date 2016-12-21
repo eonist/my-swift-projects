@@ -23,12 +23,28 @@ class ShellUtils{
         var arguments = input.componentsSeparatedByString(" ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
-        arguments.forEach{Swift.print("$0: " + "\($0)")}
+        //arguments.forEach{Swift.print("$0: " + "\($0)")}
+        let task = NSTask()
+        task.currentDirectoryPath = cd
+        task.launchPath = "/usr/bin/env"
+        task.arguments = arguments
+        task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
+        let pipe = NSPipe()
+        task.standardOutput = pipe
+        task.launch()
+        task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*/
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output:String = NSString(data:data, encoding:NSUTF8StringEncoding) as! String
+        return (output, task.terminationStatus)
+    }
+    /**
+     * new
+     */
+    class func unsafeExc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/bin/sh"//setthing shell as launchPath enables piping support, was -> "/usr/bin/env"
         task.arguments = ["-c",input]// + arguments
-        //task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()
