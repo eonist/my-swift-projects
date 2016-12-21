@@ -31,6 +31,7 @@ class GitLogParser {
      * NOTE: the log data is formated using --pretty=format
      */
     static func commitData(input:String) -> CommitData{
+        Swift.print("input: " + "\(input)")
         let firstIdx:Int = input.indexOf("\n")
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let firstPart:String = input.subString(0,firstIdx)
