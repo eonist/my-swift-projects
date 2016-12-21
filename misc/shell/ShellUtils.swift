@@ -39,12 +39,22 @@ class ShellUtils{
     }
     /**
      * new
+     * NOTE: supports piping
+     */
+    class func unsafeRun(input: String, _ cd:String = "") -> String {
+        let (output, terminationStatus) = ShellUtils.unsafeExc(input,cd)
+        terminationStatus
+        return output
+    }
+    /**
+     * new
+     * NOTE: supports piping
      */
     class func unsafeExc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
         let task = NSTask()
         task.currentDirectoryPath = cd
-        task.launchPath = "/bin/sh"//setthing shell as launchPath enables piping support, was -> "/usr/bin/env"
-        task.arguments = ["-c",input]// + arguments
+        task.launchPath = "/bin/sh"/*setting shell as launchPath enables piping support*/
+        task.arguments = ["-c",input]
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()

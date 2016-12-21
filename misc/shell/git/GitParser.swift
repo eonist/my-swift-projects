@@ -104,7 +104,7 @@ class GitParser{
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         
-        //Continue here: Roll back .run() 🏀
+        //Continue here: Roll back .run() 
             //create a seperate run method that supports piping (unsafe) <- use it for count, but not for user inputtable stuff
             //check the web for piping info
         
