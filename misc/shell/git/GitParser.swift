@@ -100,7 +100,7 @@ class GitParser{
      * PARAM: after: "2016-10-12 00:00:00"  (git date format)
      */
     static func commitCount(localRepoPath:String, after:String)->Int{
-        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"// | wc -l
+        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         
@@ -108,7 +108,7 @@ class GitParser{
             //create a seperate run method that supports piping (unsafe) <- use it for count, but not for user inputtable stuff
             //check the web for piping info
         
-        let result:String = ShellUtils.run(shellScript,localRepoPath)
+        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         Swift.print("result: " + "\(result)")
         let count = result.lineCount
         return count

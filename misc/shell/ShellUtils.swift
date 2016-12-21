@@ -40,6 +40,7 @@ class ShellUtils{
     /**
      * new
      * NOTE: supports piping
+     * CAUTION: use this method for hard coded commands, not for commands that the user can insert data
      */
     class func unsafeRun(input: String, _ cd:String = "") -> String {
         let (output, terminationStatus) = ShellUtils.unsafeExc(input,cd)
