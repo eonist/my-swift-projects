@@ -103,7 +103,7 @@ class GitParser{
         let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l"
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
-        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
+        var result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
         Swift.print("result: " + "\(result)")
         return result
