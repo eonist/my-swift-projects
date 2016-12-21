@@ -54,7 +54,7 @@ class ShellUtils{
         let task = NSTask()
         task.currentDirectoryPath = cd
         task.launchPath = "/bin/sh"/*setting shell as launchPath enables piping support*/
-        task.arguments = ["-c",input]
+        task.arguments = ["-c",input]/*I think the -c part enables auto path resolvment and support for piping etc*/
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.launch()
