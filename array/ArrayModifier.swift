@@ -29,6 +29,7 @@ class ArrayModifier{
 	/**
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
+     * Note: try using the native: .popLast()
 	 */
 	static func pop<T>(inout array:[T])->T? {
         let last = array.last

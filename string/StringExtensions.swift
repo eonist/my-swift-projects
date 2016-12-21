@@ -29,7 +29,7 @@ extension String {
      * CAUTION: if you do "0xFF0000FF".uint it will give the wrong value, use UInt(Double("")!) instead for cases like that
      */
     var uint:UInt{return UInt(Float(self)!)}
-    var int:Int{return Int(Float(self)!)}
+    var int:Int{return Int(self)!}
     
     func encode()->String?{//convenience
         return StringParser.encode(self)
