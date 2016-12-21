@@ -79,6 +79,8 @@ class GitParser{
 	}
     /**
      * Returns the commit count
+     * CAUTION: returns count +1 
+     * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
      */
     static func commitCount(localRepoPath:String) -> String{
         let shellScript:String = Git.path + "git rev-list HEAD --count"
