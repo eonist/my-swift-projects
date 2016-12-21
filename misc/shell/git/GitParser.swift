@@ -100,7 +100,7 @@ class GitParser{
      * PARAM: after: "2016-10-12 00:00:00"  (git date format)
      */
     static func commitCount(localRepoPath:String, after:String)->String{
-        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l | awk '{$1=$1};1' | tr -d '\n'"//the two last pipes remove wrapping-whitespace and newLine chars
+        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove wrapping-whitespace and newLine chars
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
