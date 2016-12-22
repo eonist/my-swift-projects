@@ -30,6 +30,7 @@ class GitParser{
     /**
      * NEW
      * NOTE: can be used to show single commits
+     * EXAMPLE: git show head~9 --pretty=format:"%ci" --no-patch (output: 2015-12-03 16:59:09 +0100)
      */
     static func show(localPath:String, _ cmd:String)->String{
         let shellScript:String = Git.path + "git show " + cmd
