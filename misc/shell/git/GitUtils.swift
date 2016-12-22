@@ -31,4 +31,37 @@ class GitUtils{
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
 	}
+    /**
+     * Returns the commit count
+     * CAUTION: returns count +1
+     * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
+     */
+    static func commitCount(localRepoPath:String) -> String{
+        let shellScript:String = Git.path + "git rev-list HEAD --count"
+        var result:String = ShellUtils.run(shellScript,localRepoPath)
+        result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
+        return result
+    }
+    /**
+     * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H"
+     * NOTE: Short hash and long hash works (for more precision use long hash)
+     */
+    static func commitCount(localRepoPath:String,_ hash1:String,_ hash2:String)->String{
+        let shellScript:String = Git.path + "git rev-list "+hash1+" ^"+hash2+" --count"
+        let result:String = ShellUtils.run(shellScript,localRepoPath)
+        return result
+    }
+    /**
+     * Returns the count from now until the date speccifed in PARAM: after
+     * PARAM: after: "2016-10-12 00:00:00"  (git date format)
+     */
+    static func commitCount(localRepoPath:String, after:String)->String{
+        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
+        //Swift.print("cmd: " + "\(cmd)")
+        let shellScript:String = cmd
+        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
+        //result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
+        //Swift.print("result: " + "\(result)")
+        return result
+    }
 }
