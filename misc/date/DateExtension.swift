@@ -26,7 +26,6 @@ extension NSDate {
         //Swift.print("days.length: " + "\(days.length)")
         return days.length
     }
-    
     /**
      *
      */
