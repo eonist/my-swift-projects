@@ -190,7 +190,7 @@ public class XMLParser{
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      * TODO: Does it support xml string value? 
      */
-    static func toArray(xml:XML)->[Dictionary<String,String>] {
+    static func toArray(xml:XML)->[[String:String]] {
         var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for (var i = 0; i < count; i++) {
