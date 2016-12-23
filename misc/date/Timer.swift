@@ -2,7 +2,12 @@ import CoreFoundation
 import CoreGraphics
 import Darwin
 import Foundation
-
+/**
+ * EXAMPLE: var timer = Timer(0.5,true,self,"update")
+ * timer!.start()
+ * func update() {Swift.print("tick")}//method must be in the public or scope
+ * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow) 
+ */
 class Timer {
     var timer:NSTimer?
     var interval:NSTimeInterval
@@ -20,7 +25,7 @@ class Timer {
      *
      */
     func start(){
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: selector, userInfo: nil, repeats: repeats)
+        timer = NSTimer.scheduledTimerWithTimeInterval(interval/*0.01*/, target: target, selector: selector, userInfo: nil, repeats: repeats)
     }
     /**
      *
