@@ -25,19 +25,13 @@ class Timer {
      *
      */
     func start(){
-        timer = NSTimer.scheduledTimerWithTimeInterval(interval/*0.01*/, target: self, selector: "update", userInfo: nil, repeats: repeats)
+        timer = NSTimer.scheduledTimerWithTimeInterval(interval/*0.01*/, target: target, selector: selector, userInfo: nil, repeats: repeats)
     }
     /**
      *
      */
     func stop(){
         if(timer != nil){timer!.invalidate()}
-    }
-    /**
-     *
-     */
-    func update(){
-        Swift.print("tick")
     }
 }
 
