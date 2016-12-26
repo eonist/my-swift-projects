@@ -33,8 +33,8 @@ class ShellUtils{
         task.standardOutput = pipe
         task.launch()
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output:String = NSString(data:data, encoding:NSUTF8StringEncoding) as! String
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
+        let output:String = NSString(data:data, encoding:NSUTF8StringEncoding) as! String/*decode the date to a string*/
         return (output, task.terminationStatus)
     }
     /**
