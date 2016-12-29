@@ -40,9 +40,15 @@ extension DataProvider{
     var count:Int{return self.items.count}/*convenience*/
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
-     *
+     * Creates a DP from an XML isntance
      */
     convenience init(_ xml:XML?){
+        self.init(xml != nil ? XMLParser.toArray(xml!) : [])
+    }
+    /**
+     * Creates a DP from an file url string
+     */
+    convenience init(_ fileURLStr:String){
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
     /**
