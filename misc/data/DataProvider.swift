@@ -46,10 +46,11 @@ extension DataProvider{
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
     /**
-     * Creates a DP from an file url string
+     * Creates a DP from an file url string (Remember to tildeExpand the string)
      */
     convenience init(_ fileURLStr:String){
-        self.init(xml != nil ? XMLParser.toArray(xml!) : [])
+        let xml = FileParser.xml(fileURLStr)
+        self.init(XMLParser.toArray(xml))
     }
     /**
      *
