@@ -174,35 +174,4 @@ class NumberParser{
         for number:CGFloat in numbers{ if(number < min) {min = number}}
         return min
     }
-    /**
-    * Returns a constant looping number, really great when making looping slideshows
-    * @param index: the current cursor of an infinite loop
-    * @param start: the start of the loop
-    * @param end: end of the loop
-    * @return a number between @param start number and the @param end of the loop
-    * @Note take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
-    * @Note UintParser.normalize alos works well for uint values
-    * // :TODO: Could be refactor to be simpler and more efficient
-    * // :TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
-    * @example
-    * trace("test "+(NumberParser.loop(20, 0, 10)));//0
-    * trace("test "+(NumberParser.loop(-2, -5, 10)));//8
-    */
-    static func loop(index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
-        var r:Int;
-        var direction:Int
-        if(start < end) {direction = +1}/*Analyse the relationship between start and end*/
-        else if(start > end) {direction = -1}
-        if(NumberAsserter.positive(index)){r = start - (index * direction)}//Analyse the index direction
-        else r = start + (index * direction)
-        var resultEndDist:Number = NumberParser.distance(r, end);
-        var startEndDist:Number = NumberParser.distance(start,end);
-        var remainder:Number = resultEndDist % startEndDist;//Modulo returns the remainder
-        var increment:int;
-        if(remainder == 0)increment = 0;
-        else if(index > 0 && resultEndDist > startEndDist)increment = remainder;//Fix the check after && is ugly
-        else increment = (startEndDist - remainder);
-        r = start + (direction * increment);
-        return r;
-    }
 }
