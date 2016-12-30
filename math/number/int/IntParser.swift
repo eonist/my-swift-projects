@@ -75,14 +75,14 @@ class IntParser{
         else if(start > end) {direction = -1}
         if(index.positive){r = start - (index * direction)}//Analyse the index direction
         else{r = start + (index * direction)}
-        var resultEndDist:CGFloat = NumberParser.distance(r, end);
-        var startEndDist:CGFloat = NumberParser.distance(start,end);
-        var remainder:Number = resultEndDist % startEndDist;//Modulo returns the remainder
-        var increment:int;
-        if(remainder == 0)increment = 0;
-        else if(index > 0 && resultEndDist > startEndDist)increment = remainder;//Fix the check after && is ugly
-        else increment = (startEndDist - remainder);
-        r = start + (direction * increment);
-        return r;
+        var resultEndDist:Int = NumberParser.distance(r, end)
+        var startEndDist:Int = NumberParser.distance(start,end)
+        var remainder:Int = resultEndDist % startEndDist//Modulo returns the remainder
+        var increment:Int
+        if(remainder == 0){increment = 0}
+        else if(index > 0 && resultEndDist > startEndDist)increment = remainder//Fix the check after && is ugly
+        else increment = (startEndDist - remainder)
+        r = start + (direction * increment)
+        return r
     }
 }
