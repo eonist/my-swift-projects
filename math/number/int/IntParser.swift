@@ -17,7 +17,7 @@ class IntParser{
 	/**
 	 * 
 	 */
-    class func kind(theInt:Int)->String{
+    static func kind(theInt:Int)->String{
         switch theInt {
             case 0:
                 return "Zero"
@@ -32,7 +32,7 @@ class IntParser{
      * example: minMax([8, -6, 2, 109, 3, 71]).min //-6
      * example: minMax([8, -6, 2, 109, 3, 71]).max //109
      */
-    class func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    static func minMax(array: [Int]) -> (min: Int, max: Int)? {
         if array.isEmpty { return nil }
         var currentMin = array[0]
         var currentMax = array[0]
@@ -49,7 +49,7 @@ class IntParser{
      * Returns the max int value in @param ints
      * EXAMPLE: max([1, 2, 3, 10, 100])
      */
-    class func max(ints:Array<Int>)->Int{
+    static func max(ints:Array<Int>)->Int{
         var maxInt = ints[0]
         for int in ints {if maxInt < int {maxInt = int}}
         return maxInt

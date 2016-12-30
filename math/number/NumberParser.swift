@@ -185,8 +185,8 @@ class NumberParser{
      * // :TODO: Could be refactor to be simpler and more efficient
      * // :TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
      * @example
-     * trace("test "+(NumberParser.loop(20, 0, 10)));//0
-     * trace("test "+(NumberParser.loop(-2, -5, 10)));//8
+     * print("test "+(NumberParser.loop(20, 0, 10)));//0
+     * print("test "+(NumberParser.loop(-2, -5, 10)));//8
      */
     static func loop(index:CGFloat, _ start:CGFloat, _ end:CGFloat) -> CGFloat{// :TODO: start,end,index is easier to understand
         var r:CGFloat
