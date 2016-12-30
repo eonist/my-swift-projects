@@ -120,7 +120,7 @@ class NumberParser{
      * print(distance(5,-2));//7
      */
     class func distance(a:CGFloat,_ b:CGFloat)->CGFloat {
-        if(NumberAsserter.negative(a) && NumberAsserter.negative(b)) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
+        if(a.isNegative && b.isNegative) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
         else if(NumberAsserter.positive(a) && NumberAsserter.positive(b)) {return Swift.max(a, b) - Swift.min(a,b)}
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
