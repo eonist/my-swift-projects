@@ -17,6 +17,7 @@ extension Range {
         self.init(start:start,end:end)
     }
     func equals<T:Comparable>(range:Range<T>)->Bool {
-        return RangeAsserter.equals(self ,range)
+
+        return RangeAsserter.equals(self as Range<T> ,range)
     }
 }
