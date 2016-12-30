@@ -58,6 +58,6 @@ class IntParser{
      * See comment in the forward call
      */
     static func loop(index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
-        NumberParser.loop()
+        return NumberParser.loop(index.cgFloat,start.cgFloat,end.cgFloat).int
     }
 }

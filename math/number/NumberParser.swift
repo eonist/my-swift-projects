@@ -193,6 +193,7 @@ class NumberParser{
         var direction:CGFloat
         if(start < end) {direction = +1}/*Analyse the relationship between start and end*/
         else if(start > end) {direction = -1}
+        else{fatalError("condition not supported")}
         if(index.isPositive){r = start - (index * direction)}//Analyse the index direction
         else{r = start + (index * direction)}
         let resultEndDist:CGFloat = NumberParser.distance(r, end)
