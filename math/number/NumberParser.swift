@@ -188,13 +188,13 @@ class NumberParser{
     * trace("test "+(NumberParser.loop(20, 0, 10)));//0
     * trace("test "+(NumberParser.loop(-2, -5, 10)));//8
     */
-    static func loop(index:int, start:int, end:int) -> Int{// :TODO: start,end,index is easier to understand
-        var r:int;
-        var direction:int;
-        if(start < end)direction = +1;/*Analyse the relationship between start and end*/
-        else if(start > end) direction = -1;
-        if(NumberAsserter.positive(index))r = start - (index * direction);//Analyse the index direction
-        else r = start + (index * direction);
+    static func loop(index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
+        var r:Int;
+        var direction:Int
+        if(start < end) {direction = +1}/*Analyse the relationship between start and end*/
+        else if(start > end) {direction = -1}
+        if(NumberAsserter.positive(index)){r = start - (index * direction)}//Analyse the index direction
+        else r = start + (index * direction)
         var resultEndDist:Number = NumberParser.distance(r, end);
         var startEndDist:Number = NumberParser.distance(start,end);
         var remainder:Number = resultEndDist % startEndDist;//Modulo returns the remainder

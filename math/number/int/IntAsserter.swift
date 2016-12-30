@@ -1,2 +1,8 @@
 class IntAsserter {
+    /**
+     * @Note: In most cases you will want to write if(someNumber < 0)
+     */
+    static func negative(number:Int) -> Bool{
+        return number < 0
+    }
 }
