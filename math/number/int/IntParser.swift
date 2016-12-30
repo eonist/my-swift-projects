@@ -80,7 +80,7 @@ class IntParser{
         var remainder:Int = resultEndDist % startEndDist//Modulo returns the remainder
         var increment:Int
         if(remainder == 0){increment = 0}
-        else if(index > 0 && resultEndDist > startEndDist)increment = remainder//Fix the check after && is ugly
+        else if(index > 0 && resultEndDist > startEndDist){increment = remainder}//Fix the check after && is ugly
         else increment = (startEndDist - remainder)
         r = start + (direction * increment)
         return r
