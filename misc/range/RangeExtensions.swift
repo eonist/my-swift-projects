@@ -16,8 +16,12 @@ extension Range {
         //TODO:  try ->return self.indices.count or self.underestimateCount()
         self.init(start:start,end:end)
     }
-    func equals<T:Comparable>(range:Range<T>)->Bool {
-
-        return RangeAsserter.equals(self as Range<T> ,range)
+}
+extension Range where Element : Comparable {
+    /**
+     * Untested but should work
+     */
+    func equals(range:Range<Element>)->Bool {
+        return RangeAsserter.equals(self ,range)
     }
 }
