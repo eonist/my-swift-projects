@@ -25,3 +25,9 @@ extension Range where Element : Comparable {
         return RangeAsserter.equals(self ,range)
     }
 }
+
+/*
+//seems to be native already
+public func ==<T: Comparable> (a: Range<T>, b:Range<T>) -> Bool{/*convenience*/
+return a.equals(b)
+}*/
