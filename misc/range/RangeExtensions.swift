@@ -16,4 +16,7 @@ extension Range {
         //TODO:  try ->return self.indices.count or self.underestimateCount()
         self.init(start:start,end:end)
     }
+    var equals<T:Comparable>(range:Range<T>):Bool {
+        return RangeAsserter.equal(self,range)
+    }
 }

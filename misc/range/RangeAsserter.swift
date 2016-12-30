@@ -6,7 +6,7 @@ class RangeAsserter{
      * Asserts if @param a equals @param b
      * NOTE: you can also use the native: a == b (I think)
      */
-    class func equals<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
+    static func equals<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return a.start == b.start && a.end == b.end
     }
     /**
@@ -14,32 +14,32 @@ class RangeAsserter{
      * TODO: Add some examples
      * // :TODO: a potential bug is that <= max isn't correct, if it is max then its not within, if you think about how integers work, but this may also be correct since if a number range is asserted it may need to also include the max, for now use contained if you deal with integers
      */
-    class func within<T:Comparable>(range:Range<T>,_ number:T)->Bool {
+    static func within<T:Comparable>(range:Range<T>,_ number:T)->Bool {
         return (number <= RangeParser.max(range) && number >= RangeParser.min(range))
     }
     /**
      * @Note this method is supplimentary to the within method, concerning the "max" problem
      * @Note another name for this could be absolutlyWithin
      */
-    class func contained<T:Comparable>(range:Range<T>,_ number:T)->Bool {
+    static func contained<T:Comparable>(range:Range<T>,_ number:T)->Bool {
         return (number < RangeParser.max(range) && number >= RangeParser.min(range))
     }
     /**
      * Asserts if @param a overlaps @param b
      */
-    class func overlaps<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
+    static func overlaps<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return (RangeAsserter.equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end))
     }
     /**
      * Asserts if @param a contains @param a or @param b contains @param a
      */
-    class func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
+    static func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return a.start <= b.start && a.end >= b.end
     }
     /**
      * Asserts if PARAM: index is on either edge of PARAM: range
      */
-    class func edge<T:Comparable>(index:T, _ range:Range<T>)->Bool {
+    static func edge<T:Comparable>(index:T, _ range:Range<T>)->Bool {
         return index == range.start || index == range.end
     }
 }
