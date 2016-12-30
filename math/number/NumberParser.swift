@@ -55,7 +55,7 @@ class NumberParser{
         for number in numbers {
             sum += number
         }
-        return sum;
+        return sum
     }
     /**
      * Returns the number you can add to start that becomes end (start + x = end)
@@ -162,7 +162,7 @@ class NumberParser{
      */
     class func max(numbers:Array<CGFloat>)->CGFloat {
         var max:CGFloat = numbers.count > 0 ? numbers[0] : 0
-        for  number : CGFloat in numbers {if(number > max) {max = number}}
+        for number:CGFloat in numbers {if(number > max) {max = number}}
         return max
     }
     /**
@@ -171,7 +171,7 @@ class NumberParser{
      */
     class func min(numbers:Array<CGFloat>)->CGFloat {
         var min:CGFloat = numbers.count > 0 ? numbers[0] : 0
-        for number : CGFloat in numbers{ if(number < min) {min = number}}
-        return min;
+        for number:CGFloat in numbers{ if(number < min) {min = number}}
+        return min
     }
 }
