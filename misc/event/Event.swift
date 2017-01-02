@@ -40,7 +40,7 @@ extension Event{
         return self.type == type && self.origin === origin
     }
     /**
-     * New
+     * Convenience method for asserting event target
      */
     func assert(type:String, immediate:AnyObject?) -> Bool{
         return self.type == type && self.immediate === immediate
