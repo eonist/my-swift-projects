@@ -1,14 +1,14 @@
 class GitUtils{
 	/**
 	 * Manual pull
-	 * CAUTION: It's best practice to always commit any uncommited files before you attempt to pull.
+	 * CAUTION: It's best practice to always commit any uncommited files before you attempt to pull
 	 * CAUTION: Remember to wrap this method in a try error clause, so that you can handle merge conflicts
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
 	class func manualPull(localPath:String, _ remotePath:String, _ branch:String){
 		//Swift.print("GitUtils.manualPull()")
-		GitModifier.fetch(localPath, remotePath, branch) //--git fetch origin master, retrive the latest repo info
+		GitModifier.fetch(localPath, remotePath, branch)//--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded

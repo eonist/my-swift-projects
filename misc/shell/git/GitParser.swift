@@ -2,7 +2,7 @@ import Foundation
 class GitParser{
 	/**
 	 * Returns current git status
-	 * @param: localPath is the path to the target repository on your local machine (posix path)
+	 * PARAM: localPath is the path to the target repository on your local machine (posix path)
 	 * NOTE: ~/someProject/someProject.git (use the ~ char if you want to access the users homve folder in OSX)
 	 * NOTE: the cd is to move manouver into the local repository path, the ; char ends the call so you can make another call
 	 * NOTE: To obtaine a more meaningfull list of items, create a metod that compiles a multidim accociative array derived from the text based staus
@@ -28,7 +28,6 @@ class GitParser{
 		return ShellUtils.run(shellScript,localPath)
 	}
     /**
-     * NEW
      * NOTE: can be used to show single commits
      * EXAMPLE: git show head~9 --pretty=format:"%ci" --no-patch (output: 2015-12-03 16:59:09 +0100)
      */
