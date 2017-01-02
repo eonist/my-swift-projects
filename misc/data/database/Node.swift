@@ -1,28 +1,28 @@
 import Foundation
 /**
-* NOTE: index:Array = [0,2,1,0] //means node at 0, node at 2, node at 1, node at 0
-* NOTE: a benefit of not using Node and instead using XML is that you then can access things deply nested inside xml, with ease. Which i guess you can if you convert the xml to NOde aswell. But then its 3 conversions which may not be great.
-* // :TODO: Node should have some core methods for easy access
-* // :TODO: add a method for setting the xml setXML that also dispatches an event
-* NOTE: To store data as a child, you can just add another node and have the data in content variable
-* // :TODO: range() could be usefull but it is an complex function one cant solve all range functionality
-* // :TODO: possibly use child and children instead of item and items, since its db and not a list anymore?
-* // :TODO: add function: index(attribute:Object) which finds the first index that has an attribute that matches both attribute.key and attribute.value add this function to XMLParser and ref frmom this class
-*/
+ * NOTE: index:Array = [0,2,1,0] //means node at 0, node at 2, node at 1, node at 0
+ * NOTE: a benefit of not using Node and instead using XML is that you then can access things deply nested inside xml, with ease. Which i guess you can if you convert the xml to NOde aswell. But then its 3 conversions which may not be great.
+ * TODO: Node should have some core methods for easy access
+ * TODO: add a method for setting the xml setXML that also dispatches an event
+ * NOTE: To store data as a child, you can just add another node and have the data in content variable
+ * TODO: range() could be usefull but it is an complex function one cant solve all range functionality
+ * TODO: possibly use child and children instead of item and items, since its db and not a list anymore?
+ * TODO: add function: index(attribute:Object) which finds the first index that has an attribute that matches both attribute.key and attribute.value add this function to XMLParser and ref frmom this class
+ */
 class Node:EventSender{//this should probably extend NSXMLElement, and just implement the eventsender as a method instead
     var xml:XML
     init(_ xml:XML = XML()) {
         self.xml = xml
     }
     /**
-     * // :TODO: consider renaming to appendAt 
+     * TODO: consider renaming to appendAt
      */
     func addAt(index:Array<Int>,_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         XMLModifier.addChildAt(self.xml, index, xml)
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
     /**
-     * @example setAttributeAt([0], ["title":"someTitle"]);
+     * EXAMPLE: setAttributeAt([0], ["title":"someTitle"]);
      * // :TODO: rename to changeAttribute? or editAttribute?
      */
     func setAttributeAt(index:Array<Int>,_ attributes:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?

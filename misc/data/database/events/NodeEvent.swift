@@ -1,7 +1,7 @@
 import Foundation
 
 class NodeEvent:Event {
-    static var addAt:String = "nodeEventAddAt"//we mergeed add_at and add since its essentialy the same
+    static var addAt:String = "nodeEventAddAt"/*we mergeed add_at and add since its essentialy the same*/
     static var removeAt:String = "nodeEventRemoveAt"
     static var removeAll:String = "nodeEventRemoveAll"
     static var setAttributeAt:String = "nodeEventSetAttributeAt"

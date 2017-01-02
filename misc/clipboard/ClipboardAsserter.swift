@@ -2,7 +2,7 @@ import Cocoa
 
 class ClipboardAsserter {
     /**
-     * @param clipboardFormat ClipboardFormats.TEXT_FORMAT , ClipboardFormats.HTML_FORMAT, etc
+     * PARAM: clipboardFormat ClipboardFormats.TEXT_FORMAT , ClipboardFormats.HTML_FORMAT, etc
      */
     class func hasData(clipboardFormat:String) -> Bool {//Untested
         let pasteboard = NSPasteboard.generalPasteboard()
