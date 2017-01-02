@@ -1,8 +1,8 @@
 import Foundation
 /*
-* // :TODO: redesign this class like TRBL
-* TODO: this should probably use GEnerics, to get rid of the casting
-*/
+ * TODO: redesign this class like TRBL
+ * TODO: this should probably use GEnerics, to get rid of the casting
+ */
 class OffsetType:Equatable,ILayout{
     static var center:String = "center";// :TODO: move this to a class called OffsetType
     static var outside:String = "outside";
@@ -22,7 +22,7 @@ class OffsetType:Equatable,ILayout{
     }
 }
 /**
- * Equality
+ * Equality operator
  */
 func == (lhs: OffsetType, rhs: OffsetType) -> Bool {
     return lhs.left == rhs.left && lhs.right == rhs.right && lhs.top == rhs.top && lhs.bottom == rhs.bottom

@@ -5,12 +5,12 @@ import Cocoa
 class Align {
     /**
      * Aligns @param view to @param canvasAlignment and @param viewAlignment within @param canvasSize with a optional @param offset
-     * @param view: Layout item you want to manipulate
-     * @param canvasSize: Area size  on which you want to align the target to (usually the parent size)
-     * @param canvasAlignment: alignment of the target on the canvas
-     * @param viewAlignment: alignment of the target within its own canvas
-     * @param offset: add additional offset in the x,y axis
-     * @example
+     * PARAM: view: Layout item you want to manipulate
+     * PARAM: canvasSize: Area size  on which you want to align the target to (usually the parent size)
+     * PARAM: canvasAlignment: alignment of the target on the canvas
+     * PARAM: viewAlignment: alignment of the target within its own canvas
+     * PARAM: offset: add additional offset in the x,y axis
+     * EXAMPLE:
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER,Alignment.TOP_LEFT)//Output: centers a circle within 400x300 rectangle
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER_RIGHT,Alignment.CENTER_RIGHT)//Output: aligns the circle to the y axis center and  to the right border of the rectangle but withinn the rectange
      */
@@ -20,9 +20,9 @@ class Align {
     }
     /**
      * Returns the point from where to align target @param objectSize within @param canvasSize at @param objectAlignment and @param canvasAlignment and @param offset
-     * @param objectSize the size of the object that is being aligned
-     * @param canvasSize is the size of the canvas the object is beeing aligned to (Thinkn of the canvas as a painting and the object as an element in that painting, figurativly speaking)
-     * @Note this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
+     * PARAM: objectSize the size of the object that is being aligned
+     * PARAM: canvasSize is the size of the canvas the object is beeing aligned to (Thinkn of the canvas as a painting and the object as an element in that painting, figurativly speaking)
+     * NOTE: this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
     class func alignmentPoint(objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
@@ -32,7 +32,7 @@ class Align {
     }
     /**
      * Returns the pivot point of an object according to what pivotAlignment it has
-     * @example // :TODO: write an example
+     * EXAMPLE: // :TODO: write an example
      */
     class func point(size:CGSize, _ alignment:String) -> CGPoint {
         switch alignment{

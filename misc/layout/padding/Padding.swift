@@ -1,5 +1,5 @@
 import Foundation
-/*
+/**
  * TopRightBottomLeft (TRBL aka Trouble)
  */
 class Padding {
