@@ -19,11 +19,10 @@ extension NSWindow {
     var expanded:Bool{return self.isAccessibilityExpanded()}//Convenience
     var modal:Bool{return self.isAccessibilityModal()}//Convenience
     var flippedScreenPosition:CGPoint {return CGPoint(NSEvent.mouseLocation().x,abs(NSEvent.mouseLocation().y + -NSScreen.mainScreen()!.visibleFrame.height))/*flip the y coordianate:*/}/*Returns the topLeft postion of the win in relation to the screen*/
-    var topLeft:CGPoint{return CGPoint(frame.origin.x,NSScreen.mainScreen()!.visibleFrame.height - self.frame.origin.y - self.frame.size.height)}//returns the topLeft pos (in a flipped coordinate space aka 0,0 coordinate space)
+    var topLeft:CGPoint{return CGPoint(frame.origin.x,NSScreen.mainScreen()!.visibleFrame.height - self.frame.origin.y - self.frame.size.height)}/*returns the topLeft pos (in a flipped coordinate space aka 0,0 coordinate space)*/
         
-    
     func unFlipScreenPosition(pos:CGPoint)->CGPoint{
-        return CGPoint(pos.x, abs(pos.y + -NSScreen.mainScreen()!.visibleFrame.height) - self.frame.size.height)//flip the y coordinate back
+        return CGPoint(pos.x, abs(pos.y + -NSScreen.mainScreen()!.visibleFrame.height) - self.frame.size.height)/*flip the y coordinate back*/
     }
 }
 extension NSSavePanel{
