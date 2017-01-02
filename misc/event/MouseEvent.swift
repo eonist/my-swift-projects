@@ -30,5 +30,5 @@ extension MouseEvent{
     var commandKey:Bool {return self.event!.commandKey}/*Convenience*/
     var altKey:Bool {return self.event!.altKey}/*Convenience*/
     var ctrlKey:Bool {return self.event!.ctrlKey}/*Convenience*/
-    //There is also FunctionKeyMask
+    //Bonus: There is also FunctionKeyMask
 }
