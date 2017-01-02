@@ -28,7 +28,7 @@ class GitAsserter{
 		return isAhead
 	}
 	/**
-	 * you could also maybe use log to assert this, see is_remote_branch_ahead but opposite
+	 * You could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
 	class func hasLocalCommits(localRepoPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's has_local_commits()"
