@@ -63,7 +63,7 @@ extension DataProvider{
         return nil
     }
     /**
-     *
+     * Returns the first item that has the PARAM: value at PARAM: key
      */
     func index(key:String,_ value:String) -> Int?{
         let count = items.count
@@ -100,14 +100,12 @@ extension DataProvider{
     /**
      * Returns the count of the self.items
      */
-    
     func getValue(index:Int,_ key:String)->String?{
         if let value = self.items[index][key]{
             return value
         }
         return nil
     }
-    
 }
 /**
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
@@ -116,7 +114,7 @@ extension DataProvider{
 extension DataProvider{
     /**
      * Adds an array to the exisiting items array
-     * @param items is an Array comprised of objects
+     * PARAM: items is an Array comprised of objects
      */
     func addItems(items:[Dictionary<String, String>]) {
         self.items += items//concats
@@ -124,7 +122,7 @@ extension DataProvider{
     }
     /**
      * Adds an item to the end of the Items Array
-     * @param item is an Object instance as {title:"title"}
+     * PARAM: item is an Object instance as {title:"title"}
      */
     func addItem(item:Dictionary<String, String>) {
         self.items.append(item)
@@ -132,7 +130,7 @@ extension DataProvider{
     }
     /**
      * Adds an item to a spesific index
-     * @param item is an Object instance as {title:"title"}
+     * PARAM: item is an Object instance as {title:"title"}
      */
     func addItemAt(item:Dictionary<String, String>, _ index:Int/*<--was UInt*/){
         ArrayModifier.addAt(&self.items, item, index)
