@@ -27,8 +27,8 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
-     * @param object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
-     * // :TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
+     * PARAM object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
+     * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
     init(_ items:[Dictionary<String, String>] = []){
         self.items = items/*Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional*/
@@ -40,13 +40,14 @@ extension DataProvider{
     var count:Int{return self.items.count}/*convenience*/
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
-     * Creates a DP from an XML isntance
+     * Creates a DataProvider instance from an XML instance
      */
     convenience init(_ xml:XML?){
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
     /**
-     * Creates a DP from an file url string (Remember to tildeExpand the string)
+     * Creates a DP from an file url string 
+     * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
     convenience init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
