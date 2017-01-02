@@ -53,7 +53,7 @@ extension DataProvider{
         self.init(XMLParser.toArray(xml))
     }
     /**
-     *
+     * Returns the first item that has the PARAM: value at PARAM key
      */
     func getItem(value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
         for item in self.items {
@@ -63,7 +63,7 @@ extension DataProvider{
         return nil
     }
     /**
-     * Returns the first item that has the PARAM: value at PARAM: key
+     * Returns the index of the first item that has the PARAM: value at PARAM: key
      */
     func index(key:String,_ value:String) -> Int?{
         let count = items.count
