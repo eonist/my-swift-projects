@@ -38,7 +38,7 @@ class ShellUtils{
         return (output, task.terminationStatus)
     }
     /**
-     * new
+     * BETA
      * NOTE: supports piping
      * CAUTION: use this method for hard coded commands, not for commands that the user can insert data
      */
@@ -48,7 +48,7 @@ class ShellUtils{
         return output
     }
     /**
-     * new
+     * BETA
      * NOTE: supports piping
      */
     class func unsafeExc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){

@@ -1,5 +1,5 @@
 import Cocoa
-//seems old, delete?
+//seems old, delete?, add to dump
 class CustomCALayer:CALayer{
     var color:NSColor = NSColor.magentaColor()
     override init() {
@@ -26,7 +26,6 @@ class CustomCALayer:CALayer{
         Swift.print("CustomCALayer.drawLayer")
         super.drawLayer(layer,inContext: ctx)
     }
-    /**/
     override func drawInContext(ctx: CGContext) {
         Swift.print("CustomCALayer.drawInContext()")
         let context = ctx
