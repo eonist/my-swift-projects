@@ -1,5 +1,8 @@
 import Foundation
 /**
+ * DataProvider is a class that stores information in a list. Basically an aray that has dictionaries. (DataProvider was inspired by .Net etc)
+ * NOTE: DataProvider has usefull methods for adding/removing and sorting a list
+ * NOTE: DataProvider sends Events when it changes so that a GUI presenter class can be updated accordingly
  * // :TODO: Is dataprovider a candidat for struct? No, as it extends EventSender, unless you make an EventSender that is an extension, maybe with protocol and mixin?
  * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
@@ -11,7 +14,6 @@ import Foundation
  * // :TODO: sortOn
  * // :TODO: Do we need a DataProviderItem?
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
- *
  * EXAMPLE:
  * let orange:Dictionary<String,String> = ["name":"orange", "title":"harry"]
  * let blue = ["name":"blue", "url":"na"]
