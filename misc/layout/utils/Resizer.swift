@@ -21,7 +21,7 @@ class Resizer {
         }
     }
     /**
-     * Allways fills a frame
+     * Always fills a frame
      */
     static func zoom(){
         //Implement later when needed, its almost the same as fir

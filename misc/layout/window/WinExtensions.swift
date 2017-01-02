@@ -9,7 +9,7 @@ extension NSWindow {
         NSApp.activateIgnoringOtherApps(true)
     }
     /**
-     * Hides @param: win
+     * Hides PARAM: win
      */
     func hide(win:NSWindow){
         self.orderOut(self)//<- should be self, but nil may work

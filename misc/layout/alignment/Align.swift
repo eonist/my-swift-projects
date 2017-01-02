@@ -4,7 +4,7 @@ import Cocoa
  */
 class Align {
     /**
-     * Aligns @param view to @param canvasAlignment and @param viewAlignment within @param canvasSize with a optional @param offset
+     * Aligns PARAM: view to PARAM: canvasAlignment and PARAM: viewAlignment within PARAM: canvasSize with a optional PARAM offset
      * PARAM: view: Layout item you want to manipulate
      * PARAM: canvasSize: Area size  on which you want to align the target to (usually the parent size)
      * PARAM: canvasAlignment: alignment of the target on the canvas
