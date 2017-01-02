@@ -40,7 +40,6 @@ extension NSDate {
     var shortDayName:String{
         return dayName != nil ? String(dayName!.characters.first!) : ""
     }
-    
     var monthName: String? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MMMM"
