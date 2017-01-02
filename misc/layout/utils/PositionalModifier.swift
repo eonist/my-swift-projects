@@ -24,7 +24,8 @@ class PositionalModifier {
      *
      */
     static func transform(positionals:Array<IPositional>, _ initPositions:Array<CGPoint>, _ matrix:CGAffineTransform) {
-        let positionalCount:Int = positionals.count
-        for (var i : Int = 0; i < positionalCount; i++) { positionals[i].setPosition(matrix.transformPoint(initPositions[i])) }
+        for i in 0..<positionals.count{//<-recently updated to swift 3 style for loop syntax
+            positionals[i].setPosition(matrix.transformPoint(initPositions[i])) 
+        }
     }
 }
