@@ -1,11 +1,11 @@
 import Foundation
 protocol IPositional:class {//<--new extends class
-    //pos was recently moved to the extension since it isnt needed as variable in the protocol
+    /*pos was recently moved to the extension since it isn't needed as a variable in the protocol*/
     func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
 }
 /**
- * CAUTION: These extensions can only be used if you dont need to cast the instance to ISizeable
+ * CAUTION: These extensions can only be used if you don't need to cast the instance to ISizeable
  */
 extension IPositional{
     //var positional:IPositional {get{return self as IPositional}set{}}/*This method provides support for returning a direct pointer when casting to protocol, which swift doesnt do, it only provides an immutable reference, which is unusable when setting mutating variables via extensions*/
