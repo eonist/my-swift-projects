@@ -3,6 +3,7 @@ import Foundation
  * DataProvider is a class that stores information in a list. Basically an aray that has dictionaries. (DataProvider was inspired by .Net etc)
  * NOTE: DataProvider has usefull methods for adding/removing and sorting a list
  * NOTE: DataProvider sends Events when it changes so that a GUI presenter class can be updated accordingly
+ * NOTE: there is also the Node.swift class that can organize tables of data rather than just a list
  * // :TODO: Is dataprovider a candidat for struct? No, as it extends EventSender, unless you make an EventSender that is an extension, maybe with protocol and mixin?
  * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
