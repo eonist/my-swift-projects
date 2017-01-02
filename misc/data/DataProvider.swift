@@ -180,11 +180,12 @@ extension DataProvider{
         return self/*For chaining purpouse*/
     }
     /**
-     *
+     * Update data in dataProvider item at PARAM index
      */
     func setValue(index:Int,_ key:String, _ value:String){
-        if(index < self.items.count){
+        if(index < self.items.count){/*make sure index is within range*/
             self.items[index][key] = value
+            super.onEvent(DataProviderEvent(DataProviderEvent.dataChange/*,[item]*/,index,index,self))//<-new
         }
     }
     /**
