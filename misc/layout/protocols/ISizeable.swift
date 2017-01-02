@@ -14,7 +14,7 @@ extension ISizeable{
         get{
             if(self.size.width.isNaN){fatalError("width can't be NaN")}
             return self.size.width
-        } set{
+        }set{
             if(newValue.isNaN){fatalError("width can't be NaN")}
             self.width = newValue
         }
@@ -28,12 +28,12 @@ extension ISizeable{
             self.height = newValue
         }
     }
-    /*mutating func setSize(width:CGFloat,height:CGFloat){
-    self.width = width
-    self.height = height
-    }*/
-    /*mutating func setSize(size:CGSize){
-    self.width = size.width
-    self.height = size.height
-    }*/
 }
+/*mutating func setSize(width:CGFloat,height:CGFloat){
+self.width = width
+self.height = height
+}*/
+/*mutating func setSize(size:CGSize){
+self.width = size.width
+self.height = size.height
+}*/

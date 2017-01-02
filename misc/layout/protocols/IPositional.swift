@@ -9,7 +9,13 @@ protocol IPositional:class {//<--new extends class
  */
 extension IPositional{
     //var positional:IPositional {get{return self as IPositional}set{}}/*This method provides support for returning a direct pointer when casting to protocol, which swift doesnt do, it only provides an immutable reference, which is unusable when setting mutating variables via extensions*/
-    var pos:CGPoint{get{return self.getPosition()} set{self.setPosition(newValue)}}/*<-- this is named pos, because the name position is effectivly blocked when using implicit getter and setter names*/
+    var pos:CGPoint{/*<-- this is named pos, because the name position is effectivly blocked when using implicit getter and setter names*/
+        get{
+            return self.getPosition()
+        }set{
+            self.setPosition(newValue)
+        }
+    }
     var x:CGFloat{
         get{
             if(self.pos.x.isNaN){fatalError("x can't be NaN")}
@@ -28,15 +34,15 @@ extension IPositional{
             self.pos.y = newValue
         }
     }
-    /*func getPosition() -> CGPoint {
-    return position
-    }*/
-    /*mutating func setPosition(x:CGFloat,y:CGFloat){
-    self.x = x
-    self.y = y
-    }*/
-    /*mutating func setPosition(position:CGPoint){
-    self.position.x = position.x
-    self.position.y = position.y
-    }*/
 }
+/*func getPosition() -> CGPoint {
+return position
+}*/
+/*mutating func setPosition(x:CGFloat,y:CGFloat){
+self.x = x
+self.y = y
+}*/
+/*mutating func setPosition(position:CGPoint){
+self.position.x = position.x
+self.position.y = position.y
+}*/
