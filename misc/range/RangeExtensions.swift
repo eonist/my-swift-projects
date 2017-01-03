@@ -4,6 +4,7 @@ import Foundation
  */
 extension Range {
     var start:Element {get{return self.startIndex}set{self.startIndex = newValue}}/*convenince*/
+    /*.last is the same as: .end-1*/
     var end:Element {get{return self.endIndex}set{self.endIndex = newValue}}/*convenince*/
     var length:Int {return (self.endIndex as! Int) - (self.startIndex as! Int)}/*convenince*/
     /**
