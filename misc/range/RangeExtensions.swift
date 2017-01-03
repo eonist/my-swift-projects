@@ -18,11 +18,20 @@ extension Range {
     }
 }
 extension Range where Element : Comparable {
-    /**
-     * Untested but should work
-     */
-    func equals(range:Range<Element>)->Bool {
+    func equals(range:Range<Element>)->Bool {/*Convenience*/
         return RangeAsserter.equals(self ,range)
+    }
+    func within(number:Element)->Bool{/*Convenience*/
+        return RangeAsserter.within(self, number)
+    }
+    func contained(number:Element)->Bool{
+        return RangeAsserter.contained(self, number)
+    }
+    func overlaps(range:Range<Element>)->Bool{
+        return RangeAsserter.overlaps(self, range)
+    }
+    func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool{
+        return RangeAsserter.contains(<#T##a: Range<T>##Range<T>#>, <#T##b: Range<T>##Range<T>#>)
     }
 }
 
