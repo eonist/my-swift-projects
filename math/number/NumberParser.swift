@@ -151,8 +151,8 @@ class NumberParser{
      * Returns the number of decimals in a number
      * EXAMPLE: NumberParser.decimals(4.433)//Output: 3
      */
-    static func decimals(number:CGFloat)->Int {//could also be named decimalPLaces
-        var matches:Array<String> = String(number).split(".");
+    static func decimals<T:Comparable>(number:T)->Int {//could also be named decimalPLaces
+        var matches:Array<String> = String(number).split(".")
         if(matches.count > 1) {return matches[1].count}
         else {return 0}
     }
@@ -160,9 +160,9 @@ class NumberParser{
      * Retuns the highest number in a list of numbers
      * Note: Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function
      */
-    static func max(numbers:Array<CGFloat>)->CGFloat {
-        var max:CGFloat = numbers.count > 0 ? numbers[0] : 0
-        for number:CGFloat in numbers {if(number > max) {max = number}}
+    static func max<T:Comparable>(numbers:Array<T>)->T {
+        var max = numbers.count > 0 ? numbers[0] : 0 as! T
+        for number in numbers {if(number > max) {max = number}}
         return max
     }
     /**
