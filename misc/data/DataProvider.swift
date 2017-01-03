@@ -130,7 +130,6 @@ extension DataProvider{
      * PARAM: item is an Object instance as {title:"title"}
      */
     func addItem(item:Dictionary<String, String>) {
-        Swift.print("DataProvider.addItem()")
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,self.items.count-1,self.items.count,self))
     }
@@ -139,6 +138,7 @@ extension DataProvider{
      * PARAM: item is an Object instance as {title:"title"}
      */
     func addItemAt(item:Dictionary<String, String>, _ index:Int/*<--was UInt*/){
+        Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
     }
