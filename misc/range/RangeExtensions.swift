@@ -1,7 +1,6 @@
 import Foundation
 /**
  * EXAMPLE: Range(start:2,end:6).count//4
- * TODO: Figure out how to write extensions for Range that also works with RangeAsserter etc
  */
 extension Range {
     var start:Element {get{return self.startIndex}set{self.startIndex = newValue}}/*convenince*/
@@ -24,14 +23,17 @@ extension Range where Element : Comparable {
     func within(number:Element)->Bool{/*Convenience*/
         return RangeAsserter.within(self, number)
     }
-    func contained(number:Element)->Bool{
+    func contained(number:Element)->Bool{/*Convenience*/
         return RangeAsserter.contained(self, number)
     }
-    func overlaps(range:Range<Element>)->Bool{
+    func overlaps(range:Range<Element>)->Bool{/*Convenience*/
         return RangeAsserter.overlaps(self, range)
     }
-    func contains<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool{
-        return RangeAsserter.contains(<#T##a: Range<T>##Range<T>#>, <#T##b: Range<T>##Range<T>#>)
+    func contains(range:Range<Element>)->Bool{/*Convenience*/
+        return RangeAsserter.contains(self, range)
+    }
+    func edge(index:Element)->Bool{/*Convenience*/
+        return RangeAsserter.edge(index, self)
     }
 }
 
