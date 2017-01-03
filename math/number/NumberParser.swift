@@ -134,7 +134,7 @@ class NumberParser{
      * Returns the number if its within min-max returns min if its lower and max if its higher
      * TODO: write examples for this
      */
-    static func clip<T: Comparable>(value: T, min minValue: T, max maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
+    static func clip<T:Comparable>(value: T, min minValue: T, max maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
         return Swift.max(Swift.min(value, maxValue), minValue)
     }
     /**
@@ -144,7 +144,7 @@ class NumberParser{
      * @example: minMax(300, 200, 400)//Output: 300
      * NOTE: a better name for this is clip(2,1,5)
      */
-    static func minMax<T: Comparable>(num:T , _ min : T , _ max : T) -> T{
+    static func minMax<T:Comparable>(num:T , _ min : T , _ max : T) -> T{
         return Swift.max(min, Swift.min(max, num));
     }
     /**
