@@ -169,9 +169,9 @@ class NumberParser{
      * Retuns the lowest number in a list of numbers
      * Note: Swift.min can be used, but this function supports arrays Swift.Min doesnt
      */
-    static func min(numbers:Array<CGFloat>)->CGFloat {
-        var min:CGFloat = numbers.count > 0 ? numbers[0] : 0
-        for number:CGFloat in numbers{ if(number < min) {min = number}}
+    static func min<T:Comparable>(numbers:Array<T>)->T {
+        var min = numbers.count > 0 ? numbers[0] : 0 as! T
+        for number in numbers{ if(number < min) {min = number}}
         return min
     }
     /**
