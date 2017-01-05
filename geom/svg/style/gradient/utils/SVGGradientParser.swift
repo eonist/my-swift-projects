@@ -45,7 +45,7 @@ class SVGGradientParser {
 private class Utils{
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
-     * TODO: If the offset value is: 4.566173e-02, the percentage parser wont understand it. Add support for this?
+     * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
 	 */
 	static func gradient(xml:NSXMLElement)->SVGGradient{
 		var offsets:Array<CGFloat> = []
