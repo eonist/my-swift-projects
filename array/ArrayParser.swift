@@ -53,7 +53,7 @@ class ArrayParser{
     }
     /**
      * Returns an array with itmes that are not the same in 2 arrays
-     * @example: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
+     * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares reference not value
      */
     static func difference<T>(a:Array<T>, _ b:Array<T> )->Array<T> {
@@ -80,11 +80,11 @@ class ArrayParser{
         return similarList
     }  
     /**
-     * Returns a list unique with all the unique int from @param ints
-     * unique([1, 2, 3, 1, 2, 10, 100])
+     * Returns a list unique with all the unique Int from PARAM: ints
+     * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
      */
-    static func unique(ints:Array<Int>)->Array<Int>{
-        var uniqueList: [Int] = []
+    static func unique(ints:Array<Int>)->Array<Int>{//use comparable instead of int, see RangeAsserter for example for how to implement that
+        var uniqueList:[Int] = []
         for number in ints {
             var numberIsNew = true
             for otherNumber in uniqueList {
