@@ -220,9 +220,9 @@ class ArrayModifier{
     /**
      * Merges b into a at index (returns a for convenience)
      * IMPORTANT: Alters PARAM: a
-     * @param a:Target array
-     * @param b: array to merged onto Target array (does not alter b)
-     * @param index: where on the targetArray should it merge on
+     * PARAM: a:Target array
+     * PARAM: b: array to merged onto Target array (does not alter b)
+     * PARAM: index: where on the targetArray should it merge on
      * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      * EXAMPLE: ArrayModifier.mergeAt([1,2,3], [4,5,6], 1)//[1, 4, 5, 6, 2, 3]
      */
@@ -239,8 +239,8 @@ class ArrayModifier{
         return mergeAt(&a, b, index)
     }
     /**
-     * splits an array in two pieces
-     * @return a new array with 2 arrays
+     * Splits an array in two pieces
+     * RETURN: a new array with 2 arrays
      */
     static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {// :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
         var arrayB:Array<T> = []
@@ -249,7 +249,7 @@ class ArrayModifier{
         return [array, arrayB.reverse()]
     }
     /**
-     * @description Split an array a integer, returns a new array with arrays in it of the split
+     * Split an array a integer, returns a new array with arrays in it of the split
      */
     static func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
         let copy:Array<T> = array.concat([])
@@ -264,7 +264,7 @@ class ArrayModifier{
         return list
     }
     /**
-     * @description  swap item position in an array
+     * Swap item position in an array
      */
     static func swap<T>(inout array:Array<T>, _ item1:T, _ item2:T) {
         let index1:Int = ArrayParser.indx(array, item1)
@@ -275,7 +275,7 @@ class ArrayModifier{
         }
     }
     /**
-     * swaps two items in @param vector at @param index1 @param index2
+     * Swaps two items in @param vector at @param index1 @param index2
      * NOTE: there is also the ArrayModifier.move method which is similar
      */
     static func indexSwap<T>(inout array:Array<T>,_ index1:Int,_ index2:Int) -> [T] {
@@ -288,7 +288,7 @@ class ArrayModifier{
         return array
     }
     /**
-     * Displaces the @param range in @param vector to @param index
+     * Displaces the PARAM: range in PARAM: vector to PARAM: index
      * NOTE: alters the original vector
      * EXAMPLE: ArrayModifier.rangeDisplace(Array.<String>(["a","b","c","d","e","f","g"]), 2,4, 0);//c,d,a,b,e,f,g
      */
@@ -298,9 +298,9 @@ class ArrayModifier{
     }
     /**
      * Returns a Vector with a range that is reversed
-     * @Note the original vector is altered, and is now unusable as is, reasign the returned Vector instance in the calling method
-     * @Note the Vector method named splice,push and unshift doesnt support taking an Vector of items as argument only 1 by 1 so we need to resolve this with some concat trickery
-     * @Note this method could keep the original vector intact by using slice instead of splice, but splice should be faster so it is used this way in this method
+     * NOTE: the original vector is altered, and is now unusable as is, reasign the returned Vector instance in the calling method
+     * NOTE: the Vector method named splice,push and unshift doesnt support taking an Vector of items as argument only 1 by 1 so we need to resolve this with some concat trickery
+     * NOTE: this method could keep the original vector intact by using slice instead of splice, but splice should be faster so it is used this way in this method
      * EXAMPLE:
      * var v:Array<Int> = [1,2,3,4,5,6,7,8,9]
      * v = ArrayModifier.reverseRange(v, 2,7)
@@ -314,7 +314,7 @@ class ArrayModifier{
     }
     /**
      * Removes a range of items from rangeStart to rangeEnd
-     * returns the newly altered array
+     * RETURN: the newly altered array
      */
     static func removeRange<T>(inout array:Array<T>, _ rangeStart:Int, _ rangeEnd:Int) -> [T]{
         array.removeRange(Range<Int>(start:rangeStart,end:rangeEnd))/*was -> array.splice2(rangeStart, rangeEnd - rangeStart)*/
@@ -323,8 +323,8 @@ class ArrayModifier{
     /**
      * Removes duplicates
      * NOTE: the following two lines may be more efficient try to factor them and see if they are good
-     * var arr:Array = ["a","b","b","c","b","d","c"];
-     * var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
+     * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"];
+     * EXAMPLE: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
      */
     static func removeDuplicates<T>(array:Array<T>) -> Array<T>{
         var tempArray:Array<T> = []
@@ -341,8 +341,8 @@ class ArrayModifier{
     }
     /**
      * Very simple numeric sorter
-     * @Note you could also use some sort of bubble sort
-     * @Note modifies the original array
+     * NOTE: you could also use some sort of bubble sort
+     * NOTE: modifies the original array
      * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
      */
     static func numericSort(inout array:Array<Int>) -> Array<Int>{
