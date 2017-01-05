@@ -3,23 +3,23 @@ import Foundation
 class SVGModifier {
 	/**
 	 * Offsets each item in a svg by @param offset (Point)
-	 * // :TODO: add support for other SVG elements as well, use switch method instead of if
-     * @NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
+	 * TODO: add support for other SVG elements as well, use switch method instead of if
+     * NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
 	static func offsetItems(svg:SVG, _ offset:CGPoint) {
-		for (var i : Int = 0; i < svg.items.count; i++) {
-			let svgGraphic = svg.items[i];
+		for i in 0..<svg.items.count{
+			let svgGraphic = svg.items[i]
 			if(svgGraphic is SVGLine){
-				(svgGraphic as! SVGLine).x1 += offset.x;
-				(svgGraphic as! SVGLine).x2 += offset.x;
-				(svgGraphic as! SVGLine).y1 += offset.y;
-				(svgGraphic as! SVGLine).y2 += offset.y;
+				(svgGraphic as! SVGLine).x1 += offset.x
+				(svgGraphic as! SVGLine).x2 += offset.x
+				(svgGraphic as! SVGLine).y1 += offset.y
+				(svgGraphic as! SVGLine).y2 += offset.y
 			}else if(svgGraphic is SVGRect){
-				(svgGraphic as! SVGRect).x += offset.x;
-				(svgGraphic as! SVGRect).y += offset.y;
+				(svgGraphic as! SVGRect).x += offset.x
+				(svgGraphic as! SVGRect).y += offset.y
             }else if(svgGraphic is SVGCircle){
-                (svgGraphic as! SVGCircle).cx += offset.x;
-                (svgGraphic as! SVGCircle).cy += offset.y;
+                (svgGraphic as! SVGCircle).cx += offset.x
+                (svgGraphic as! SVGCircle).cy += offset.y
             }else{
                 fatalError("type not supported yet")
                 //type not supported yet
@@ -28,11 +28,11 @@ class SVGModifier {
 	}
 	/**
 	 * Scales SVG elements at @param pivot to @param scale (0-1) 
-	 * @param scalePoint (0 - 1)
-	 * @Note this method is recursive
-	 * @example SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
-     * @NOTE: The stroke thickness isnt scaled, is this correct or?
-     * @NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
+	 * PARAM: scalePoint (0 - 1)
+	 * NOTE: this method is recursive
+     * NOTE: The stroke thickness isnt scaled, is this correct or?
+     * NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
+	 * EXAMPLE SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
 	 */
 	static func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		//Swift.print("SVGModifier.scale() element: " + "\(element)")
@@ -51,9 +51,9 @@ class SVGModifier {
         if(element is ISVGGraphic) {SVGModifier.update(element as! SVGGraphic)}//<---this may need to not use a protocol for casting
 	}
 	/**
-	 * Styles an @param element with @param style
-	 * // :TODO: rename to stylize?
-	 * @Note this method is recursive
+	 * Styles an PARAM: element with PARAM: style
+	 * TODO: rename to stylize?
+	 * NOTE: this method is recursive
 	 */
 	static func style(element:ISVGElement,_ style:SVGStyle) {
         //Swift.print("SVGModifier.style() ")
@@ -66,7 +66,7 @@ class SVGModifier {
         }
 	}
     /**
-     * updates an SVGGraphic
+     * Updates an SVGGraphic
      */
     static func update(graphic:SVGGraphic) {
         //Swift.print("SVGModifier.update()")
@@ -77,5 +77,4 @@ class SVGModifier {
         graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
         graphic.lineShape.setNeedsDisplay()
     }
-    
 }

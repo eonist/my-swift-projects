@@ -15,7 +15,7 @@ class SVGParser {
      * Returns an SVGDoc instance derived from @param xml
      * @Note the regular expression removes the PX suffix
      */
-    class func svg(xml:XML)->SVG {
+    static func svg(xml:XML)->SVG {
         let viewBox:CGRect = SVGPropertyParser.viewBox(xml)//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         let x:CGFloat = SVGPropertyParser.digit(xml,"x");
         let y:CGFloat = SVGPropertyParser.digit(xml,"y");
@@ -42,7 +42,7 @@ class SVGParser {
      * // :TODO: add Radial gradient support
      * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
-    class func element(xml:XML,_ container:ISVGContainer)->ISVGElement? {
+    static func element(xml:XML,_ container:ISVGContainer)->ISVGElement? {
         var element:ISVGElement?
         let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
@@ -67,7 +67,7 @@ class SVGParser {
      * @param xml (<g id="whiskers"></g>)
      * // :TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
-    class func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
+    static func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id);
         for (var i = 0; i < xml.childCount; i++) {
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
@@ -83,7 +83,7 @@ class SVGParser {
      * @example <path d="M 12 24 h 15 v 25 h -15 z"/> //
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
-    class func path(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPath? {
+    static func path(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPath? {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
         let pathDefinition:String = xml[String(SVGConstants.data)]!
 		//print("SVGParser.path() pathDefinition: " + pathDefinition);
@@ -93,7 +93,7 @@ class SVGParser {
     /**
      * Returns an SVGRect element derived from the rectangle data in @param xml with the @param style and @param id
      */
-    class func rect(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
+    static func rect(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
         let x:CGFloat = SVGPropertyParser.digit(xml,"x")
         let y:CGFloat = SVGPropertyParser.digit(xml,"y")
         let width:CGFloat = SVGPropertyParser.digit(xml,"width")
@@ -105,7 +105,7 @@ class SVGParser {
     /**
      * Returns an SVGLine element derived from the line data in @param xml with the @param style and @param id
      */
-    class func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
+    static func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
         // :TODO: should return nil if there is no def ?!?
         let x1:CGFloat = SVGPropertyParser.digit(xml,"x1")
         let y1:CGFloat = SVGPropertyParser.digit(xml,"y1")
@@ -116,7 +116,7 @@ class SVGParser {
     /**
      * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
      */
-    class func polyLine(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
+    static func polyLine(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
 //		print("polyLine");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
@@ -129,7 +129,7 @@ class SVGParser {
     /**
      * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
      */
-    class func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
+    static func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
 		//print("SVGParser.polygon()");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
@@ -146,7 +146,7 @@ class SVGParser {
      * @param xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
      * // :TODO: if cx or cy isnt there it should defualt to 0
      */
-    class func circle(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
+    static func circle(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
         let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
         let cy:CGFloat = SVGPropertyParser.digit(xml,"cy")
         let r:CGFloat = SVGPropertyParser.digit(xml,"r")
@@ -155,7 +155,7 @@ class SVGParser {
     /**
      * Returns an SVGEllipse element derived from the ellipse data in @param xml with the @param style and @param id
      */
-    class func ellipse(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGEllipse {
+    static func ellipse(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGEllipse {
         let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
         let cy:CGFloat = SVGPropertyParser.digit(xml,"cy")
         let rx:CGFloat = SVGPropertyParser.digit(xml,"rx")
@@ -166,7 +166,7 @@ class SVGParser {
      * Describes all svg elements in a SVG instance, is not recursive yet
      * // :TODO: impliment SVGGroup
      */
-    class func describeAll(svg:SVGContainer){
+    static func describeAll(svg:SVGContainer){
         Swift.print("SVGParser.describeAll()")
         for var i = 0; i < svg.items.count; ++i{
             let svgElement:ISVGElement = svg.items[i]
