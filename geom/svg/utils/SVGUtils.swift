@@ -11,7 +11,7 @@ class SVGUtils {
 	 */
 	static func xml(svg:SVG)->XML {// :TODO: refactor to one or loop?
 		let xml:NSXMLElement = SVGUtils.svg(svg)
-		for (var i : Int = 0; i < svg.items.count; i++) {
+		for i in 0..<svg.items.count{
 			let svgElement:ISVGElement = svg.items[i]
 			var child:NSXMLElement
             if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
@@ -106,16 +106,16 @@ class SVGUtils {
 	 }
 	 /**
 	  * Returns an XML instance with SVGGroup data derived from PARAM: group
-	  * NOTE:: this method is recursive
-	  * // :TODO: remeber groups can have style applied inline cant they?
+	  * NOTE: this method is recursive
+	  * TODO: remeber groups can have style applied inline cant they?
 	  */
 	 static func group(group:SVGGroup) -> XML {
 		 var xml:XML = "<g></g>".xml
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
-		 for (var i : Int = 0; i < group.items.count; i++) {
-			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement;
-			 var child:NSXMLElement;
+		 for i in 0..<group.items.count{
+			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement
+			 var child:NSXMLElement
              if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
              else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
              else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
@@ -127,19 +127,19 @@ class SVGUtils {
 	 }
 	 /**
 	  * Returns the id from a ISVG instance
-	  * // :TODO: move to an internal class
+	  * TODO: move to an internal class
 	  */
 	 static func id(xml:NSXMLElement,_ svg:ISVGElement)->NSXMLElement {
          if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
-		 return xml;
+		 return xml
 	 }
 	 /**
 	  * Returns an XML instance with style properties derived from PARAM: xml
-	  * // :TODO: move to an internal class
+	  * TODO: move to an internal class
 	  */
 	 static func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
         
-         //this method is missing support for gradient (Get ques from the legacy SVGPropertyParser)
+         //this method is missing support for gradient (Get clues from the legacy SVGPropertyParser)
         
          xml["fill"] = graphic.style!.fill is Double && !((graphic.style!.fill as! Double).isNaN) ? "#"+HexParser.hexString(UInt(graphic.style!.fill as! Double)):"none"
 		 xml["stroke"] = graphic.style!.stroke is Double && !(graphic.style!.stroke as! Double).isNaN ? "#"+HexParser.hexString(UInt(graphic.style!.stroke as! Double)):"none"

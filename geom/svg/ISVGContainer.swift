@@ -1,6 +1,6 @@
 import Foundation
 /**
- * interface for SVGContainer
+ * Interface for SVGContainer
  */
 protocol ISVGContainer : ISVGElement{
     func add(element:ISVGElement)
