@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * TODO: see if you have some method in legacy code for copying linestyles
+ * TODO: See if you have some method in legacy code for copying linestyles
  */
 class LineStyle:ILineStyle {
     var color:NSColor
