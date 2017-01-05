@@ -1,7 +1,7 @@
 import Foundation
 /**
  * This class creates an arc
- * @example <path id="instance4200" d="M300 340 a80 80 0 0 1 160 0" stroke="#0000FF" fill="none"/>
+ * EXAMPLE: <path id="instance4200" d="M300 340 a80 80 0 0 1 160 0" stroke="#0000FF" fill="none"/>
  */
 class SVGArc:SVGGraphic {
     var start : CGPoint;/*absolute*/

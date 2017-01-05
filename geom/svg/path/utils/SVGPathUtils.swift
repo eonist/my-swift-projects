@@ -117,59 +117,59 @@ class SVGPathUtils {
                     path.pathData += [pos.x,pos.y]/*<-- used to be path.pathData.append(pos.x,pos.y);*/
                     i += 2
                     break;
-                case SVGPathCommand.l: //lineTo
+                case SVGPathCommand.l:/*lineTo*/
                     pos += CGPoint(params[i],params[i+1])
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
                     i += 2
                     break;
-                case SVGPathCommand.h://horizontalLineTo
+                case SVGPathCommand.h:/*horizontalLineTo*/
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
                     i++
                     break;
-                case SVGPathCommand.v://verticalLineTo
+                case SVGPathCommand.v:/*verticalLineTo*/
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
                     i++
                     break;
-                case SVGPathCommand.c://cubicCurveTo
-                    pos += CGPoint(params[i+4],params[i+5]);
+                case SVGPathCommand.c:/*cubicCurveTo*/
+                    pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1])
                     prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
                     path.commands.append(PathCommand.CUBIC_CURVE_TO)
                     path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
                     i += 6
                     break;
-                case SVGPathCommand.s://smoothCubicCurveTo
+                case SVGPathCommand.s:/*smoothCubicCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
-                    path.commands.append(PathCommand.CUBIC_CURVE_TO)
+                    path.commands.append(PathCommand.cubicCurveTo)
                     path.pathData += [cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y]
                     i += 4
                     break;
-                case SVGPathCommand.q: //quadCurveTo
+                case SVGPathCommand.q:/*quadCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
-                    path.commands.append(PathCommand.CURVE_TO)
+                    path.commands.append(PathCommand.curveTo)
                     path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                     i += 4
                     break;
                 case SVGPathCommand.t://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
-                    path.commands.append(PathCommand.CURVE_TO)
+                    path.commands.append(PathCommand.curveTo)
                     path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                     i += 2
                     break;
-                case SVGPathCommand.z: path.commands.append(PathCommand.CLOSE); break;/*closes it self to the prev MT pos*/
-//					case PathCommand.ARC_TO:
-//						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
-//						i += 7;
-//						break;
+                case SVGPathCommand.z: path.commands.append(PathCommand.close); break;/*closes it self to the prev MT pos*/
+					/*case PathCommand.ARC_TO:
+						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
+						i += 7;
+						break;*/
                 default: fatalError("type not supported: " + "\(command)")
             }
             if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
@@ -180,9 +180,9 @@ class SVGPathUtils {
     }
     /**
      * Returns an Rectangle instance with data derived from a svgRect
-     * @Note: if the svgRect x and or y is of the value NaN, then these are transfered as 0
+     * NOTE: if the svgRect x and or y is of the value NaN, then these are transfered as 0
      */
-    class func rectangle(svgRect:SVGRect) -> CGRect {
+    static func rectangle(svgRect:SVGRect) -> CGRect {
         return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
     }
 }
