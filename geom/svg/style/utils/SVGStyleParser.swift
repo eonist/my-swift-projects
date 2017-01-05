@@ -2,9 +2,9 @@ import Foundation
 
 class SVGStyleParser {
 	/**
-	 * // :TODO: why do we need the @param container here?
+	 * TODO: why do we need the @param container here?
 	 */
-	class func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
+	static func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
 		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(String(prop));
 		//ObjectDescriber.describe(inlineStyle);
 		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
@@ -19,9 +19,9 @@ class SVGStyleParser {
 		return  SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
 	}
 	/**
-	 * @param style (fill: red; stroke:black; stroke-width: 2;)
+	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
-	class func inlineStyle(style:String)->Dictionary<String, String> {//TODO: use tuples instead?
+	static func inlineStyle(style:String)->Dictionary<String, String> {//TODO: use tuples instead?
 		//Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
@@ -38,9 +38,9 @@ class SVGStyleParser {
 		return inlineStyles
 	}
 	/**
-	 * @param container the parent container of the svg element querried for
+	 * PARAM: container the parent container of the svg element querried for
 	 */
-	class func fill(var property:Any?,_ container:ISVGContainer)->Any?/*<-this makes the value non optional can also be achived by creating a temp var*/ {//TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
+	static func fill(var property:Any?,_ container:ISVGContainer)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
         if(property == nil) {
             property = nil
@@ -57,15 +57,15 @@ class SVGStyleParser {
 		return property
 	}
 	/**
-	 * // :TODO: needs support for 3 letter hex color, you have code for this, find it
+	 * TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	class func stroke(property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesnt have to be Any! it can be Any?
+	static func stroke(property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesn't have to be Any! it can be Any?
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
     /**
-     * // :TODO: doesn't this method also exist in the a parser class?
+     * TODO: doesn't this method also exist in the a parser class?
      */
-    class func describe(style:SVGStyle) {
+    static func describe(style:SVGStyle) {
         Swift.print("SVGParser.describe() ");
         if(style.fill is Double) {
             Swift.print("style.fill: " + "\(style.fill)")
