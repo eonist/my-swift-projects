@@ -5,7 +5,7 @@ public class CGFloatParser{
      * Returns an a array of interpoated numbers between min and max
      * EXAMPLE: CGFloatParser.interpolatedRange(0,  1,  3)//[0.0, 0.5, 1.0]
      */
-    public class func interpolatedRange(min:CGFloat ,_ max:CGFloat,_ length:Int)->Array<CGFloat>{
+     static func interpolatedRange(min:CGFloat ,_ max:CGFloat,_ length:Int)->Array<CGFloat>{
         var interpolatedRange:Array<CGFloat> = []
         if(length == 0){return interpolatedRange}//only populate the array with values if the length is more than zero
         let increaseBy:CGFloat = max/CGFloat(length-1)

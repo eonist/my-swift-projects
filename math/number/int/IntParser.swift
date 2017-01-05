@@ -1,9 +1,9 @@
 class IntParser{
     /**
      * Returns a normalized integer value
-     * @Note great for iterating int arrays
-     * @Note can be used for looping items in an array
-     * @example
+     * NOTE: great for iterating int arrays
+     * NOTE: can be used for looping items in an array
+     * EXAMPLE:
      * print(IntParser.normalize(3, 7));//3
      * print(IntParser.normalize(-3, 7));//4
      * print(IntParser.normalize(0, 7));//0
