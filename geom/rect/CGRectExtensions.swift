@@ -71,7 +71,7 @@ extension CGRect{
             fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(newValue))
         }
     }
-    //TODO:  support for double and int aswell, also for x,y
+    //TODO: Support for double and int aswell, also for x,y
     /**
      * negative inset equals outset
      */
@@ -79,7 +79,7 @@ extension CGRect{
         return insetBy(dx: -dx, dy: -dy)
     }
     /**
-     * NOTE:Same as insetBy, but this method is simpler to call, similar to Outset (Convenience)
+     * NOTE: Same as insetBy, but this method is simpler to call, similar to Outset (Convenience)
      */
     func inset(dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
