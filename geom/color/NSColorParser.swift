@@ -4,21 +4,21 @@ class NSColorParser {
      * Note: NSColorParser.nsColor(255, 0.0,  0.0) is the same thing as: NSColor.redColor()
      * EXAMPLE: nsColor(250.0, 0, 255)//output: red NSColor
      */
-    class func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 255) -> NSColor{//alpha was 0-100 but is now 0-255 this works better with hex values
+    static func nsColor(r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat = 255) -> NSColor{//alpha was 0-100 but is now 0-255 this works better with hex values
         return NSColor.init(calibratedRed: r/255, green: g/255, blue: b/255, alpha: a/255)
     }
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,red
      * NOTE: hex to cg color: https://github.com/pketh/NSColor-fromHex-Swift/blob/master/NSColor%2BfromHex.swift
      */
-    class func nsColor(hexColor:String, _ alpha: CGFloat = 1.0) -> NSColor{
+    static func nsColor(hexColor:String, _ alpha: CGFloat = 1.0) -> NSColor{
         let uintColor:UInt = StringParser.color(hexColor)
         return nsColor(uintColor,alpha)
     }
     /**
      * color("FF0000FF")//outputs blue with 100% opacity
      */
-    class func color(hexColor:String)->NSColor{
+    static func color(hexColor:String)->NSColor{
         let rgba:RGBA = RGBAParser.rgba32(hexColor)
         return rgba.nsColor
     }
@@ -26,7 +26,7 @@ class NSColorParser {
      * Returns NSColor for hex int
      * NOTE: Convenience method
      */
-    class func nsColor(hexColor:UInt, _ alpha:CGFloat = 1.0)->NSColor{
+    static func nsColor(hexColor:UInt, _ alpha:CGFloat = 1.0)->NSColor{
         //Swift.print("hexColor: " + "\(hexColor)")
         let rgb:UInt = hexColor
         let r:UInt = rgb >> 16
@@ -40,13 +40,13 @@ class NSColorParser {
     /**
      * EXAMPLE: :NSColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
      */
-    class func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
+ static func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
         return color.colorWithAlphaComponent(alpha)
     }
     /**
      * Returns an nsColor for @param cgColor
      */
-    class func nsColor(cgColor:CGColorRef)->NSColor{
+    static func nsColor(cgColor:CGColorRef)->NSColor{
         let ciColor = CIColor(CGColor: cgColor)//convert the cg to ci
         let nsColor = NSColor(CIColor: ciColor)//convert the ci to ns
         return nsColor
