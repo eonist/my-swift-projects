@@ -1,12 +1,12 @@
 import Foundation
 /**
+ * PARAM: id: is an id number that the os uses to differentiate between events.
+ * PARAM: path: is the path the change took place. its formated like so: Users/John/Desktop/test/text.txt
+ * PARAM: flag: pertains to the file event type.
  * EXAMPLE: let url = NSURL(fileURLWithPath: event.path)//<--formats paths to: file:///Users/John/Desktop/test/text.txt
  * EXAMPLE: Swift.print("fileWatcherEvent.fileChange: " + "\(event.fileChange)")
  * EXAMPLE: Swift.print("fileWatcherEvent.fileModified: " + "\(event.fileModified)")
  * EXAMPLE: Swift.print("\t eventId: \(event.id) - eventFlags:  \(event.flags) - eventPath:  \(event.path)")
- * PARAM: id: is an id number that the os uses to differentiate between events.
- * PARAM: path: is the path the change took place. its formated like so: Users/John/Desktop/test/text.txt
- * PARAM: flag: pertains to the file event type.
  */
 class FileWatcherEvent{
     var id: FSEventStreamEventId
