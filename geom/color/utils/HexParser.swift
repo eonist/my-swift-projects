@@ -31,7 +31,7 @@ class HexParser {
      * PARAM: g: A uint from 0 to 255 representing the green color value.
      * PARAM: b: A uint from 0 to 255 representing the blue color value.
      * PARAM: a: A uint from 0 to 255 representing the alpha value. Default is <code>255</code>.
-     * @return Returns a hexidecimal color as a String.
+     * RETURN: a hexidecimal color as a String.
      * EXAMPLE:
      * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
      * print(hexColor); // prints 80FF00FF
@@ -52,8 +52,8 @@ class HexParser {
      * PARAM: r: A uint from 0 to 255 representing the red color value.
      * PARAM: g: A uint from 0 to 255 representing the green color value.
      * PARAM: b: A uint from 0 to 255 representing the blue color value.
-     * @return Returns a hexidecimal color as a String.
-     * @example
+     * RETURN: a hexidecimal color as a String.
+     * EXAMPLE:
      * <code>
      * var hexColor : String = hexString(128, 255, 0, 255);
      * print(hexColor) // Prints 80FF00FF
@@ -88,7 +88,7 @@ class HexParser {
      * PARAM: r: A CGFloat from 0 to 1 representing the red color value.
      * PARAM: g: A CGFloat from 0 to 1 representing the green color value.
      * PARAM: b: A CGFloat from 0 to 1 representing the blue color value.
-     * @return Returns a hexidecimal color as a String.
+     * RETURN: a hexidecimal color as a String.
      * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */

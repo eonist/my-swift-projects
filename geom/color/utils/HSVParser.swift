@@ -2,10 +2,10 @@ import Cocoa
 
 class HSVParser {
     /**
-     * @Note flacky at some values like magenta
-     * @return h: 0-240, s: 0-1, v 0-1
+     * NOTE: flacky at some values like magenta
+     * RETURN: h: 0-240, s: 0-1, v 0-1
      */
-    class func hsv(rgb:RGB)->HSV{
+    static func hsv(rgb:RGB)->HSV{
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         let max:CGFloat = Swift.max(r, g, b)
         let min:CGFloat = Swift.min(r, g, b)

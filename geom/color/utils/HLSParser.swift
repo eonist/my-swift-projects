@@ -3,8 +3,9 @@ import Cocoa
 class HLSParser {
     /**
      * This was created with references to a few anonymous calculations written in other languages, None of which were very accurate
-     * @Note // You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
-     * @Example
+     * NOTE: You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
+     * NOTE: We can't use UInt here because UInt doesnt support NaN
+     * EXAMPLE:
      * var r:uint = 145;
      * var g:uint = 100;
      * var b:uint = 120;
@@ -12,11 +13,10 @@ class HLSParser {
      * print(hls.h);   // outputs a scale of 0-240
      * print(hls.l);   // outputs a scale of 0-240
      * print(hls.s);   // outputs a scale of 0-240
-     * NOTE: We cant use UInt here because UInt doesnt support NaN
      */
-    class func hls(rgb:RGB)->HLS {
+    static func hls(rgb:RGB)->HLS {
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
-        var h:CGFloat = 0//<<--this wasnt here before but its need to be able to compile.
+        var h:CGFloat = 0//<<--this wasn't here before but its need to be able to compile.
         var l:CGFloat
         var s:CGFloat
         let max:CGFloat = (Swift.max(Swift.max(r, g), b))/255
