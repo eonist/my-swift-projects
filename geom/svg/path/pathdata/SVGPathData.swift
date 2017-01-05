@@ -1,6 +1,6 @@
 import Foundation
-/*
- * this class serves as a data holder of SVGPath data, other SVGPath types extends this class to get access to its methods
+/**
+ * This class serves as a data holder of SVGPath data, other SVGPath types extends this class to get access to it's methods
  */
 class SVGPathData {
 	var commands:Array<String>//TODO:this could be Character and Not String
