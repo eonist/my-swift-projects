@@ -29,7 +29,7 @@ class ArrayModifier{
 	/**
 	 * POP
 	 * Removes the last element from an array and returns the value of that element.
-     * Note: try using the native: .popLast()
+     * NOTE: try using the native: .popLast()
 	 */
 	static func pop<T>(inout array:[T])->T? {
         let last = array.last
@@ -127,10 +127,10 @@ class ArrayModifier{
     }
     /**
      * Removes the object from the array and return the index.
-     * @return the index of the object, -1 if the object is not in the array
-     * // :TODO: should return the array not the index?
-     * // :TODO: can we use indexOf here?
-     * // :TODO: should we use obj:AnyObject and arr[i] === obj ???
+     * RETURN: the index of the object, -1 if the object is not in the array
+     * TODO: should return the array not the index?
+     * TODO: can we use indexOf here?
+     * TODO: should we use obj:AnyObject and arr[i] === obj ???
      * IMPORTANT: This compares reference not value
      */
     static func remove(inout array:Array<AnyObject>, _ object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
@@ -184,7 +184,7 @@ class ArrayModifier{
         return array
     }
     /**
-     * @description  randomnizes the order of an array
+     * Randomnizes the order of an array
      * NOTE: Randomize vs randomise -> the later is the british spelling
      * NOTE: the array is returned for the sake of convenience
      */
@@ -195,7 +195,7 @@ class ArrayModifier{
         return array
     }
     /**
-     * remove last, insert last, this is new it could go in the AdvanceArrayModifier class
+     * Remove last, insert last, this is new it could go in the AdvanceArrayModifier class
      */
     static func pushPop<T>(inout array:[T],_ item:T)->Array<T>{
         array.popLast()
@@ -211,9 +211,7 @@ class ArrayModifier{
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c// and the def array should now be empty
      */
     static func mergeInPlaceAt<T>(inout a:Array<T>, inout _ b:Array<T>, _ i:Int) -> Array<T> {
-        
-        //test this method first
-        
+        //TODO: test this method first
         if(i == 0) {while(b.count > 0) {a.unshift(b.splice2(b.count-1,1)[0])}}// :TODO: if splice is faster than unshift then use splice
         else if(i == a.count) {while(b.count > 0) {a.splice2(a.count,0,b.splice2(0,1))}}
         else {while(b.count > 0) {a.splice2(i,0,b.splice2(b.count-1,1))}}
