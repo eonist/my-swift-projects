@@ -4,7 +4,7 @@ class ColorParser {
     /**
      *
      */
-    class func randomColor()-> NSColor{
+    static func randomColor()-> NSColor{
         let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
@@ -14,7 +14,7 @@ class ColorParser {
     /**
      * Returns a random CGColor
      */
-    class func random()->CGColor{
+    static func random()->CGColor{
         let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
         let b:CGFloat  = CGFloat(rand() % 255) / 255.0;

@@ -1,5 +1,5 @@
 import Cocoa
 
 class CIColorParser {
-  /*to come when its needed*/
+  /*implement this when it's needed*/
 }

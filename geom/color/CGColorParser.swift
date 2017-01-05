@@ -3,9 +3,9 @@ import Cocoa
 
 class CGColorParser {
     /**
-     *
+     * Converts CIColor to CGColor
      */
-    class func cgColor(ciColor:CIColor)->CGColor{
+    static func cgColor(ciColor:CIColor)->CGColor{
         let colorSpace:CGColorSpaceRef = ciColor.colorSpace
         let components/*:CGFloat*/ = ciColor.components
         let cgColor:CGColorRef  = CGColorCreate(colorSpace, components)!
@@ -15,7 +15,7 @@ class CGColorParser {
      * NOTE: I think you can also just do: NSColor.redColor().CGColor, which renders this method obsolete
      * NOTE: This method is nice to have around for reference
      */
-    class func cgColor(nsColor:NSColor)->CGColor{
+    static func cgColor(nsColor:NSColor)->CGColor{
         let ciColor:CIColor = CIColor(color: nsColor)!
         let cgColor = CGColorParser.cgColor(ciColor)
         return cgColor
@@ -26,13 +26,13 @@ class CGColorParser {
      * Note: research: CGColorCreateGenericGray(gray: CGFloat, _ alpha: CGFloat) -> CGColor
      * Note: research: CGColorCreateGenericCMYK(cyan: CGFloat, _ magenta: CGFloat, _ yellow: CGFloat, _ black: CGFloat, _ alpha: CGFloat) -> CGCol
      */
-    class func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
+    static func cgColor(r:CGFloat = 0.0, _ g:CGFloat = 0.0, _ b:CGFloat = 0.0, _ a:CGFloat = 1.0)->CGColor{
         return CGColorCreateGenericRGB(r,g,b,a)
     }
     /*
     * hexColor -> cgColor
     */
-    class func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
+    static func cgColor(hexColor:UInt, _ alpha: CGFloat = 1.0)->CGColor{
         return NSColorParser.nsColor(hexColor,alpha).CGColor
     }
 }
