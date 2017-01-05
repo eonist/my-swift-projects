@@ -15,13 +15,13 @@ class SVGPathParser {
 		let pattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
         //Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
-        for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
+        for match:NSTextCheckingResult in matches {/*Loops through the pattern*///TODO: ise marches.forEach instead
             //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*///TODO: Use the RegExp util method to extract the result
             //Swift.print("cmnd: >" + cmnd+"<");
-            commands.append(cmnd);//command()
-            let params = (data as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            commands.append(cmnd)//command()
+            let params = (data as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*///TODO: Use the RegExp util method to extract the result
             //Swift.print("params: >" + params+"<");
             let array:Array<CGFloat> = SVGPathParser.parameters(params)
             //Swift.print("pathData.parameters: " + array);
@@ -33,10 +33,10 @@ class SVGPathParser {
 	}
     /**
 	 * Returns an array comprised of values "sans" its prefix and or suffix
-	 * TODO: write more examples in this comment section
 	 * NOTE: cant make this private since polyline and polygon uses this method
      * EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
+	 * TODO: write more examples in this comment section
 	 */
 	static func parameters(parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
