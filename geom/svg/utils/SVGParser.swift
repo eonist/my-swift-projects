@@ -137,11 +137,7 @@ class SVGParser {
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         //print("SVGPArser.polygon() parameters: " + "\(parameters)");
-        
-         
-        
-        
-        for i in 0.stride(to: parameters.count, by: 2) {/*this line was upgraded to wift 3.0, should work in all cases*/
+        for i in 0.stride(to: parameters.count, by: 2) {/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
             points.append(CGPoint(parameters[i],parameters[i+1]))
         }
 		//print("SVGPArser.polygon() points: " + "\(points)");
@@ -150,7 +146,7 @@ class SVGParser {
     /**
      * Returns an SVGCircle element derived from the circle data in PARAM: xml with the PARAM: style and PARAM: id
      * PARAM: xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
-     * // :TODO: if cx or cy isnt there it should defualt to 0
+     * TODO: if cx or cy isnt there it should defualt to 0
      */
     static func circle(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
         let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
@@ -170,7 +166,7 @@ class SVGParser {
     }
     /**
      * Describes all svg elements in a SVG instance, is not recursive yet
-     * // :TODO: impliment SVGGroup
+     * TODO: impliment SVGGroup
      */
     static func describeAll(svg:SVGContainer){
         Swift.print("SVGParser.describeAll()")
