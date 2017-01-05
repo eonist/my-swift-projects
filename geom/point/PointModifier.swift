@@ -69,11 +69,11 @@ class PointModifier {
     }
     /**
      * Scales an array of points from PARAM: pivotPoint to PARAM: xScale and PARAM: yScale 
+     * NOTE: Does not modify the original array
      * PARAM: points reoresents the points to be scaled
      * PARAM: pivot represents the origin point where the PARAM: points are scaled from 
      * PARAM: scale represents the x and y axis scale ratio
-     * NOTE: Does not modify the original array
-     * @example: 
+     * EXAMPLE: 
      * circle.setPosition(100,100)
      * var pivotPoint:Point = new Point(50,50)
      * var scaledPoints:Array = PointModifier.scalePoints([new Point(circle.x,circle.y)], pivotPoint,1, 1.5)
@@ -91,7 +91,7 @@ class PointModifier {
         for var i = 0; i < points.count; ++i{points[i] = PointModifier.scale(points[i],pivot,scale)}
     }
     /**
-     *
+     * Multiplies x and y in PARAM: point with PARAM: multiplier
      */
     static func multiply(point:CGPoint,_ multiplier:CGFloat) -> CGPoint {
         return CGPoint(point.x * multiplier,point.y * multiplier)
