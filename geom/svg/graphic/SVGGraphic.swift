@@ -13,7 +13,7 @@ class SVGGraphic:SVGView,ISVGGraphic{
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
         fillShape = Shape()
         lineShape = Shape()
-        super.init(style,id!);
+        super.init(style,id!)
         //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
         //layer = CALayer()//TempCALayer(layer: layer!)
         //layer!.masksToBounds = false//this is needed!!!
@@ -65,9 +65,9 @@ class SVGGraphic:SVGView,ISVGGraphic{
         stylizeLine()
     }
     /**
-     * @Note the default is to fill the graphic with black and draw no outline unless you specify some other combination of fill and stroke.
-     * @Note Updates only if style exists and fill is a number
-     * @NOTE we dont check to se if style is not nil, since that is being done by the caller of this method
+     * NOTE: the default is to fill the graphic with black and draw no outline unless you specify some other combination of fill and stroke.
+     * NOTE: Updates only if style exists and fill is a number
+     * NOTE: we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
         //Swift.print("SVGGraphic.beginFill()" + "\(style!.fill))")
@@ -85,7 +85,7 @@ class SVGGraphic:SVGView,ISVGGraphic{
         }
     }
     /**
-     * @NOTE we dont check to see if style is not nil, since that is being done by the caller of this method
+     * NOTE: we dont check to see if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
         //Swift.print("SVGGraphic.applyLineStyle() style stroke: " + "\(style!.stroke)")
