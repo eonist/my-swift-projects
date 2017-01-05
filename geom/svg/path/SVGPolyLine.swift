@@ -9,14 +9,14 @@ class SVGPolyLine:SVGGraphic,ISVGPolyLine{
         super.init(style, id)
     }
     override func beginFill() {
-        //we override this method to avoid drawing a path in the fill shape
+        /*we override this method to avoid drawing a path in the fill shape*/
     }
     /**
-     * NOTE: we dont call fill because we only need to draw a stroke
+     * NOTE: we don't call fill because we only need to draw a stroke
      */
     override func draw()  {
         Swift.print("SVGPolyline.draw" + "\(points)")
-        //Continue here: you do not close the polyline,
+        //Continue here: you do not close the polyline?!?!?
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         Swift.print("boundingBox: " + "\(boundingBox)")
         let path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/

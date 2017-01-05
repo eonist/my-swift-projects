@@ -2,10 +2,10 @@ import Foundation
 
 class SVGGradientModifier {
 	/**
-	 * Scales @param gradient at @param pivot with @param scalar (0-1)
-	 * @Note works for SVGRadialGradient and SVGLinearGradient
+	 * Scales PARAM: gradient at PARAM: pivot with PARAM: scalar (0-1)
+	 * NOTE: works for SVGRadialGradient and SVGLinearGradient
 	 */
-	class func scale(gradient:SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
+	static func scale(gradient:SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
         //Swift.print("SVGGradientModifier.scale()" + "\(gradient.gradientTransform)")
         //fatalError("not implemented yet")
         scaleGradient(&gradient.gradientTransform,pivot,scale)
@@ -14,7 +14,7 @@ class SVGGradientModifier {
     /**
      *
      */
-    class func scaleGradient(inout gradientTransform:CGAffineTransform?,_ pivot:CGPoint,_ scale:CGPoint){
+    static func scaleGradient(inout gradientTransform:CGAffineTransform?,_ pivot:CGPoint,_ scale:CGPoint){
         //Swift.print("SVGGradientModifier.scaleGradient")
         if(gradientTransform != nil) {
             var transform:CGAffineTransform = CGAffineTransformIdentity

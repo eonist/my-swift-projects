@@ -4,12 +4,12 @@ import Foundation
  */
 class SVGGradientParser {
 	/**
-	 * Returns an gradient instance with data derived from @param xml 
-	 * @param xml (<linearGradient id="skyline"><stop offset="0" style="stop-color:blue"/><stop offset="1" style="stop-color:red"/></linearGradient>)
+	 * Returns an gradient instance with data derived from PARAM: xml 
+	 * PARAM: xml (<linearGradient id="skyline"><stop offset="0" style="stop-color:blue"/><stop offset="1" style="stop-color:red"/></linearGradient>)
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
      * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
-	class func linearGradient(xml:NSXMLElement)->SVGLinearGradient{
+	static func linearGradient(xml:NSXMLElement)->SVGLinearGradient{
 		// print("linearGradient ");
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!
 		// print("x1: " + x1);
@@ -25,9 +25,9 @@ class SVGGradientParser {
 		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors/*svgGradient.opacities*/,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,svgGradient.gradientTransform)
 	}
 	/**
-	 * Returns an gradient instance with data derived from @param xml 
+	 * Returns an gradient instance with data derived from PARAM: xml 
 	 */
-	class func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
+	static func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
 		let cxStr:String = SVGPropertyParser.property(xml,"cx")!
         let cx:CGFloat = StringAsserter.percentage(cxStr) ? StringParser.percentage(cxStr) : SVGPropertyParser.value(cxStr)
 		let cyStr:String = SVGPropertyParser.property(xml,"cy")!
@@ -44,10 +44,10 @@ class SVGGradientParser {
 }
 private class Utils{
 	/**
-	 * Returns an gradient instance with data derived from @param xml 
+	 * Returns an gradient instance with data derived from PARAM: xml 
      * TODO: If the offset value is: 4.566173e-02, the percentage parser wont understand it. Add support for this?
 	 */
-	class func gradient(xml:NSXMLElement)->SVGGradient{
+	static func gradient(xml:NSXMLElement)->SVGGradient{
 		var offsets:Array<CGFloat> = []
 		var colors:Array<CGColor> = []
 		var opacities:Array<CGFloat> = []
@@ -98,9 +98,9 @@ private class Utils{
 		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits,gradientTransform)/**/
 	}
     /**
-     * Returns an Matrix instance with GradientTransform data derived from @param xml
+     * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
      */
-    class func gradientTransform(xml:NSXMLElement)->CGAffineTransform? {
+    static func gradientTransform(xml:NSXMLElement)->CGAffineTransform? {
         var gradientTransform:CGAffineTransform? = nil
         let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform")
         if(gradientTransformString != nil){
