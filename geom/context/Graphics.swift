@@ -1,16 +1,16 @@
 import Cocoa
 /*
  * What the Graphics class does:
- * 1. clear the graphics
- * 2. beginFill or beginStroke or both (save the Graphics State of the context)
- * 3. draw your path (universal draw method, knows when to use gradient draw, and clip correctly etc)
- * 4. end fill (i guess resets the fill, stroke, clipping etc etc. ready for new graphics) and restore the graphic state of the context
- * Why Graphics class exists: basically because Quartz is dificult to use and complex when dealing with gradients and  gradientStrokes and also so that one can seperate content and style better
- * Note: the reason we need a class like Graphics to manage the above process is because we need to know about what type of fill was applied in order to draw using one universal draw method. Also an easy way to store and restore the Graphic state of the context
- * Note: in the future Graphics may be able to extend CGContext or even employ a extension  scheme of sorts
- * Note: this class also simplifies the use of gradient as fill type, since that always involves clipping etc. Esspecially for gradient strokes. Since this isnt really supported in quartz directly.
- * @NOTE: if you ever need the use the BoundingBox in this class then: you could add a bounds:CGRect to the Graphics class as a way to optimize it
- * Example: (add this to a subClass of NSView drawRect() method)
+ * 1. Clear the graphics
+ * 2. BeginFill or beginStroke or both (save the Graphics State of the context)
+ * 3. Draw your path (universal draw method, knows when to use gradient draw, and clip correctly etc)
+ * 4. End fill (i guess resets the fill, stroke, clipping etc etc. ready for new graphics) and restore the graphic state of the context
+ * NOTE: Why Graphics class exists: basically because Quartz is dificult to use and complex when dealing with gradients and gradientStrokes and also so that one can seperate content and style better
+ * NOTE: The reason we need a class like Graphics to manage the above process is because we need to know about what type of fill was applied in order to draw using one universal draw method. Also an easy way to store and restore the Graphic state of the context
+ * NOTE: In the future Graphics may be able to extend CGContext or even employ a extension  scheme of sorts
+ * NOTE: This class also simplifies the use of gradient as fill type, since that always involves clipping etc. Esspecially for gradient strokes. Since this isnt really supported in quartz directly.
+ * NOTE: If you ever need the use the BoundingBox in this class then: you could add a bounds:CGRect to the Graphics class as a way to optimize it
+ * EXAMPLE: (add this to a subClass of NSView drawRect() method)
  * let graphics:Graphics = Graphics()
  * var path:CGPath = CGPathParser.rect(200,200)//Shapes
  * CGPathModifier.translate(&path,20,20)//Transformations
@@ -40,8 +40,8 @@ public class Graphics{
      * Initiate filling
      * EXAMPLE: fill(context,NSColor.greenColor())
      * TODO: add support for CGContextSetRGBFillColor in the future
-     * Note: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
-     * @NOTE this method can be called pre context
+     * NOTE: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
+     * NOTE: this method can be called pre context
      */
     public func fill(color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
@@ -50,7 +50,7 @@ public class Graphics{
     }
     /*
      * Initiate gradient filling
-     * @NOTE this method can be called pre context
+     * NOTE: this method can be called pre context
      */
     public func gradientFill(gradient:IGraphicsGradient/*IGradient*/){
         fillMode = FillMode.Gradient
@@ -61,7 +61,7 @@ public class Graphics{
      * Set the current line style
      * NOTE: there is also a CGContextStrokePath(context) method availbale
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
-     * @NOTE this method can be called pre context
+     * NOTE: this method can be called pre context
      */
     public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
         //Swift.print("context: " + "\(context)")
