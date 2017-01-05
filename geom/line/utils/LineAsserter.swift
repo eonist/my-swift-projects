@@ -1,7 +1,9 @@
 import Foundation
 
 typealias CGLineAsserter = LineAsserter
-
+/*
+ * There is about 20 other lineAssert methods in legacy code
+ */
 class LineAsserter {
     /**
      *
