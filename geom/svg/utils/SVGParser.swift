@@ -12,7 +12,7 @@ import Foundation
  */
 class SVGParser {
     /**
-     * Returns an SVGDoc instance derived from @param xml
+     * Returns an SVGDoc instance derived from PARAM: xml
      * NOTE: the regular expression removes the PX suffix
      */
     static func svg(xml:XML)->SVG {
@@ -29,7 +29,7 @@ class SVGParser {
         let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id);
         let children:NSArray = xml.children!
         let count = children.count/*or use rootElement.childCount TODO: test this*/
-        for (var i = 0; i < count; i++) {
+        for i in 0..<count{
             let child:XML = XMLParser.childAt(children, i)!
             if let elm = element(child,doc) {doc.add(elm)}//print("Import - child.toXMLString(): " + child.toXMLString());
         }
@@ -63,24 +63,24 @@ class SVGParser {
         return element
     }
     /**
-     * Returns a Group instance comprised of svg elements derived from @param xml
+     * Returns a Group instance comprised of svg elements derived from PARAM: xml
      * PARAM: xml (<g id="whiskers"></g>)
      * TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
     static func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id);
-        for (var i = 0; i < xml.childCount; i++) {
+        for i in 0..<xml.childCount{
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
             if let elm = element(child,group) {group.add(elm)}
         }
-        return group;
+        return group
     }
     /**
-     * Returns an SVGPath element derived from the path data in @param xml with the @param style and @param id
-     * @example <path d="M 10 10, L 40 10, L 40 30, L 10 30, L 10 10" />//rectangle; all four lines
-     * @example <path d="M 60 10, L 90 10, L 90 30, L 60 30, Z" /> //rectangle with closepath
-     * @example <path d="M 30 30 L 55 5 L 80 30 L 55 55 Z" />
-     * @example <path d="M 12 24 h 15 v 25 h -15 z"/> //
+     * Returns an SVGPath element derived from the path data in PARAM: xml with the PARAM: style and PARAM: id
+     * EXAMPLE: <path d="M 10 10, L 40 10, L 40 30, L 10 30, L 10 10" />//rectangle; all four lines
+     * EXAMPLE: <path d="M 60 10, L 90 10, L 90 30, L 60 30, Z" /> //rectangle with closepath
+     * EXAMPLE: <path d="M 30 30 L 55 5 L 80 30 L 55 55 Z" />
+     * EXAMPLE: <path d="M 12 24 h 15 v 25 h -15 z"/> //
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
     static func path(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPath? {
@@ -91,7 +91,7 @@ class SVGParser {
         return SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
     }
     /**
-     * Returns an SVGRect element derived from the rectangle data in @param xml with the @param style and @param id
+     * Returns an SVGRect element derived from the rectangle data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func rect(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
         let x:CGFloat = SVGPropertyParser.digit(xml,"x")
@@ -103,7 +103,7 @@ class SVGParser {
         return SVGRect(width, height, x, y, rx, ry, style, id)
     }
     /**
-     * Returns an SVGLine element derived from the line data in @param xml with the @param style and @param id
+     * Returns an SVGLine element derived from the line data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func line(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
         // :TODO: should return nil if there is no def ?!?
@@ -114,20 +114,20 @@ class SVGParser {
         return SVGLine(x1, y1, x2, y2,style,id)
     }
     /**
-     * Returns an SVGPolyLine element derived from the polyline data in @param xml with the @param style and @param id
+     * Returns an SVGPolyLine element derived from the polyline data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polyLine(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
-//		print("polyLine");
+//		Swift.print("polyLine")
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-//		print("pointsString: " + pointsString);
+//		Swift.print("pointsString: " + pointsString);
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         for (var i : Int = 0; i < parameters.count; i+=2) {points.append(CGPoint(parameters[i],parameters[i+1]))}
         return SVGPolyLine(points,style,id)
     }
     /**
-     * Returns an SVGPolygon element derived from the polygon data in @param xml with the @param style and @param id
+     * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polygon(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
 		//print("SVGParser.polygon()");
@@ -142,8 +142,8 @@ class SVGParser {
         return SVGPolygon(points,style,id)
     }
     /**
-     * Returns an SVGCircle element derived from the circle data in @param xml with the @param style and @param id
-     * @param xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
+     * Returns an SVGCircle element derived from the circle data in PARAM: xml with the PARAM: style and PARAM: id
+     * PARAM: xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
      * // :TODO: if cx or cy isnt there it should defualt to 0
      */
     static func circle(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
@@ -153,7 +153,7 @@ class SVGParser {
         return SVGCircle(cx, cy, r,style,id)
     }
     /**
-     * Returns an SVGEllipse element derived from the ellipse data in @param xml with the @param style and @param id
+     * Returns an SVGEllipse element derived from the ellipse data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func ellipse(xml:NSXMLElement,_ style:SVGStyle,_ id:String)->SVGEllipse {
         let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
