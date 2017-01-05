@@ -4,12 +4,12 @@ import Foundation
  */
 class SVGPathModifier {
     /**
-     * Scales @param path at @param pivot with @param scalePoint
-     * @Note: I guess the reason to use scalePoint and not a scalar value (0-1) is because scalePoint is more precise
-     * // :TODO: discuss why you use scalePoint and not scalar value in more detail.
-     * // :TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
+     * Scales PARAM: path at PARAM: pivot with PARAM: scalePoint
+     * NOTE: I guess the reason to use scalePoint and not a scalar value (0-1) is because scalePoint is more precise
+     * TODO: discuss why you use scalePoint and not scalar value in more detail.
+     * TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
-    class func scale(path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
+    static func scale(path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
         var i:Int = 0;/*parameterIndex*/
         var commands:Array<String> = path.commands
         var params:Array<CGFloat> = path.parameters
@@ -17,7 +17,7 @@ class SVGPathModifier {
         var c1:CGPoint
         var c2:CGPoint
         var a2:CGPoint
-        for (var e : Int = 0; e < commands.count; e++) {
+        for e in 0..<commands.count{
             let command:String = commands[e];
             switch(command.lowercaseString){
             case SVGPathCommand.l,SVGPathCommand.m://<-this may need testing since it may be || instead of ,

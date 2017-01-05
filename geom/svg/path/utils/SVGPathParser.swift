@@ -4,11 +4,11 @@ import Foundation
  */
 class SVGPathParser {
 	/**
-	 * Returns an SVGPathData instance from @param data (which is derived directly from the SVG XML formated data
-	 * @param data ( M-60-45 L   25.00px,20)
-	 * @example SVGPathDataUtils.pathData("M10,10pxH110");//commands: M,H parameters: 10,10,110
+	 * Returns an SVGPathData instance from PARAM: data (which is derived directly from the SVG XML formated data
+	 * PARAM: data ( M-60-45 L   25.00px,20)
+	 * EXAMPLE: SVGPathDataUtils.pathData("M10,10pxH110");//commands: M,H parameters: 10,10,110
 	 */
-	class func pathData(data:String)->SVGPathData {
+	static func pathData(data:String)->SVGPathData {
 		var parameters:Array<CGFloat> = []
 		var commands:Array<String> = []
         ///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
@@ -33,12 +33,12 @@ class SVGPathParser {
 	}
     /**
 	 * Returns an array comprised of values "sans" its prefix and or suffix
-	 * // :TODO: write more examples in this comment section
-	 * @Note cant make this private since polyline and polygon uses this method
-     * @EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
-     * @EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
+	 * TODO: write more examples in this comment section
+	 * NOTE: cant make this private since polyline and polygon uses this method
+     * EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
+     * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
 	 */
-	class func parameters(parameters:String)->Array<CGFloat> {
+	static func parameters(parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
         let beginning:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
         let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
@@ -52,10 +52,10 @@ class SVGPathParser {
         return array
 	}
 	/**
-	 * Returns the destination end position of a given command at @param commandIndex in @param commands
-	 * @param index the index of the command
+	 * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
+	 * PARAM: index the index of the command
 	 */
-	class func end(path:SVGPath, index:Int)->CGPoint? {// :TODO: rename to position?!?
+	static func end(path:SVGPath, index:Int)->CGPoint? {// :TODO: rename to position?!?
 		let command:String = path.commands[index].lowercaseString
 		var parameters:Array = SVGPathDataParser.pathData(path, index)
         if(command == "m" || command == "l") {return CGPoint(parameters[0],parameters[1])}
@@ -63,7 +63,7 @@ class SVGPathParser {
         else { return nil}//Arc4Parser.end(PathDataParser.arc(pathData));/*PathCommand.ARC_TO*/
 	}
 	/**
-	 * Returns all points in @param path
+	 * Returns all points in PARAM: path
 	 * // :TODO: impliment native quad to 
 	 * // :TODO: add support for zZ ?!? do we need to?
 	 * // :TODO: cubic and quad curve may have more params and they may have t and s  impliment this
@@ -118,7 +118,7 @@ class SVGPathParser {
 		return positions
 	}
 	/**
-	 * Returns an Rectangle instance with points derived from @param path
+	 * Returns an Rectangle instance with points derived from PARAM: path
 	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
 	class func rectangle(path:SVGPath) -> CGRect {
