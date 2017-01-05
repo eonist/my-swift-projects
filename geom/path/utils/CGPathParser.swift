@@ -10,13 +10,13 @@ class CGPathParser{
     static func lines(points:Array<CGPoint>,_ close:Bool = false,_ offset:CGPoint = CGPoint(0,0))->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable()
         if(points.count > 0) { CGPathMoveToPoint(path, nil, points[0].x+offset.x, points[0].y+offset.y)}
-        for (var i : Int = 1; i < points.count; i++) {
+        for i in 1..<points.count{
             //Swift.print("LineTo: x: " + "\(points[i].x+offset.x)" + " y: " + "\(points[i].y+offset.y)")
             CGPathAddLineToPoint(path,nil,points[i].x+offset.x, points[i].y+offset.y)
         }
         if(close){
             //Swift.print("close")
-            CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y);/*closes it self to the start position*/
+            CGPathAddLineToPoint(path,nil,points[0].x+offset.x, points[0].y+offset.y)/*closes it self to the start position*/
             CGPathCloseSubpath(path)/*it may not be necessary to have the above line when you call this method*/
         }
         return path
@@ -39,12 +39,12 @@ class CGPathParser{
      */
     static func circle(radius:CGFloat, _ cx:CGFloat = 0, _ cy:CGFloat = 0)->CGMutablePathRef{
         let circlePath:CGMutablePathRef = CGPathCreateMutable()
-        let circleCenter:CGPoint = CGPoint(x: cx, y: cy);
-        let circleRadius:CGFloat  = radius;
-        let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI);
+        let circleCenter:CGPoint = CGPoint(x: cx, y: cy)
+        let circleRadius:CGFloat  = radius
+        let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI)
         // Construct the circle path counterclockwise.
         CGPathAddArc(circlePath,nil,circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, false)
-        CGPathCloseSubpath(circlePath);
+        CGPathCloseSubpath(circlePath)
         return circlePath
     }
     /**
@@ -57,9 +57,9 @@ class CGPathParser{
      *
      */
     static func rect(w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0)->CGMutablePathRef{
-        let rectPath:CGMutablePathRef  = CGPathCreateMutable();
-        let rectangle:CGRect = CGRectMake(x, y,w, h);/* Here are our rectangle boundaries */
-        CGPathAddRect(rectPath, nil/*<-Transformation*/, rectangle);/* Add the rectangle to the path */
+        let rectPath:CGMutablePathRef  = CGPathCreateMutable()
+        let rectangle:CGRect = CGRectMake(x, y,w, h)/* Here are our rectangle boundaries */
+        CGPathAddRect(rectPath, nil/*<-Transformation*/, rectangle)/* Add the rectangle to the path */
         //CGPathCloseSubpath(rectPath)
         return rectPath
     }
@@ -71,7 +71,7 @@ class CGPathParser{
      * TODO: add support for transformation
      */
     static func ellipse(w:CGFloat = 100,_ h:CGFloat = 100,_ x:CGFloat = 0,_ y:CGFloat = 0, _ transformation:CGAffineTransform? = nil)->CGMutablePathRef{
-        let ellipsePath:CGMutablePathRef  = CGPathCreateMutable();
+        let ellipsePath:CGMutablePathRef  = CGPathCreateMutable()
         let rect:CGRect = CGRectMake(x, y,w, h)
         CGPathAddEllipseInRect(ellipsePath, nil/*transformation*/, rect)
         return ellipsePath
@@ -84,12 +84,12 @@ class CGPathParser{
      */
     static func roundRect(x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat, _ topLeftRadius:CGFloat, _ topRightRadius:CGFloat, _ bottomLeftRadius:CGFloat, _ bottomRightRadius:CGFloat) -> CGMutablePathRef{
         let rect:CGRect = CGRectMake(x,y,w,h)
-        let path:CGMutablePathRef = CGPathCreateMutable();
+        let path:CGMutablePathRef = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), topRightRadius);//TR
-        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), bottomRightRadius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), bottomLeftRadius);
-        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), topLeftRadius);
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), topRightRadius)//TR
+        CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), bottomRightRadius)
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMinY(rect), bottomLeftRadius)
+        CGPathAddArcToPoint(path, nil, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect), topLeftRadius)
         CGPathCloseSubpath(path)
         return path
     }

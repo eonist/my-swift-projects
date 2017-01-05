@@ -12,7 +12,7 @@ class CGPathUtils {
         var prevMT:CGPoint = CGPoint()/*for the closed path support*/
         var prevEnd:CGPoint = CGPoint()
         let cmdLen:Int = path.commands.count
-        for var i = 0; i < cmdLen; ++i{
+        for i in 0..<cmdLen{
             let command:Int = path.commands[i]
             switch(command){
             case PathCommand.moveTo:
@@ -40,9 +40,9 @@ class CGPathUtils {
                 CGPathAddCurveToPoint(cgPath, nil, path.pathData[index],path.pathData[index+1], path.pathData[index+2],path.pathData[index+3], path.pathData[index+4], path.pathData[index+5])
                 index += 6
                 /**
-                * NOTE: At the moment i dont think this takes largeFlag into account
-                * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
-                */
+                 * NOTE: At the moment i dont think this takes largeFlag into account
+                 * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
+                 */
             case PathCommand.arcTo:
                 //Swift.print("prevEnd: " + "\(prevEnd)")
                 //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
