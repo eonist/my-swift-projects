@@ -2,12 +2,12 @@ import Foundation
 
 class SVGPathUtils {
     /**
-     * Draws a path on @param graphics with data from @param parameters
-     * @Note: this method also handles the uppercase and lowercase difference in the SVG syntax
-     * // :TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
-     * // :TODO: impliment quadTo
+     * Draws a path on PARAM: graphics with data from PARAM: parameters
+     * NOTE: this method also handles the uppercase and lowercase difference in the SVG syntax
+     * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
+     * TODO: impliment quadTo
      */
-    class func drawPath(/*inout*/ path:CGMutablePathRef, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef{//TODO: rename to compilePath?
+    static func drawPath(/*inout*/ path:CGMutablePathRef, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef{//TODO: rename to compilePath?
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint();
         var prevM:CGPoint!;/*previous MoveTo pos*/
@@ -96,7 +96,7 @@ class SVGPathUtils {
         return path
     }
     /**
-     * Returns a Path instance with data derived from commands and @param params (which contains numbers, as in pathData)
+     * Returns a Path instance with data derived from commands and PARAM: params (which contains numbers, as in pathData)
      * // :TODO: may not work 100%
      */
     class func path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {

@@ -55,7 +55,7 @@ class SVGPathParser {
 	 * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
 	 * PARAM: index the index of the command
 	 */
-	static func end(path:SVGPath, index:Int)->CGPoint? {// :TODO: rename to position?!?
+	static func end(path:SVGPath, _ index:Int)->CGPoint? {// :TODO: rename to position?!?
 		let command:String = path.commands[index].lowercaseString
 		var parameters:Array = SVGPathDataParser.pathData(path, index)
         if(command == "m" || command == "l") {return CGPoint(parameters[0],parameters[1])}
@@ -64,17 +64,17 @@ class SVGPathParser {
 	}
 	/**
 	 * Returns all points in PARAM: path
-	 * // :TODO: impliment native quad to 
-	 * // :TODO: add support for zZ ?!? do we need to?
-	 * // :TODO: cubic and quad curve may have more params and they may have t and s  impliment this
+	 * TODO: impliment native quad to 
+	 * TODO: add support for zZ ?!? do we need to?
+	 * TODO: cubic and quad curve may have more params and they may have t and s  impliment this
 	 */
-	class func points(path:SVGPath)->Array<CGPoint> {
+	static func points(path:SVGPath)->Array<CGPoint> {
 		var commands:Array = path.commands
 		var params:Array = path.parameters
 		var positions:Array<CGPoint> = []
 		var i:Int = 0;/*parameterIndex*/
 		var prevP:CGPoint = CGPoint()
-		for (var e : Int = 0; e < commands.count; e++) {
+		for i in 0..<commands.count{
 			let command:String = commands[e]
 			let isLowerCase:Bool = StringAsserter.lowerCase(command)
 			var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
@@ -119,9 +119,9 @@ class SVGPathParser {
 	}
 	/**
 	 * Returns an Rectangle instance with points derived from PARAM: path
-	 * // :TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
+	 * TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
-	class func rectangle(path:SVGPath) -> CGRect {
+	static func rectangle(path:SVGPath) -> CGRect {
 		let points:Array<CGPoint> = SVGPathParser.points(path)
 		return PointParser.rectangle(points)
 	}
