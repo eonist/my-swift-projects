@@ -7,7 +7,7 @@ class AdvanceArrayParser {
      * NOTE: to find the children of the root use an empty array as the index value
      * EXAMPLE: childAt([["red","green"],[["four","five"],[1,2,3]]],[1,0,1])//five?
      */
-    class func childAt(children:Array<AnyObject>,_ index:Array<Int>)->AnyObject?{
+    static func childAt(children:Array<AnyObject>,_ index:Array<Int>)->AnyObject?{
         //Swift.print("children: " + "\(children)")
         if(index.count == 0 && children.count >= 1){return children}/*returns the root*/
         else if(index.count == 1 && children.count >= index[0]){return children[index[0]]}/*the index is at its end point, cut of the branch*/
@@ -19,7 +19,7 @@ class AdvanceArrayParser {
      * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex?
      * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
-    class func index(index:Array<Int>,_ indices:Array<[Int]>) -> Int{
+    static func index(index:Array<Int>,_ indices:Array<[Int]>) -> Int{
         let lengthOfIndices:Int = indices.count/*Cpu optimiztion*/
         let lengthOfIndex:Int = index.count/*Cpu optimiztion*/
         for (var i : Int = 0; i < lengthOfIndices; i++) {
