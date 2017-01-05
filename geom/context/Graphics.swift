@@ -77,9 +77,9 @@ public class Graphics{
     }
     /**
      * Set the current  gradient line style
-     * Note: width is set by the method line
+     * NOTE: width is set by the method line
+     * NOTE: this method can be called pre context
      * TODO: Contemplate including lineWidth etc in this call
-     * @NOTE this method can be called pre context
      */
     public func gradientLine(gradient:IGraphicsGradient){
         strokeMode = StrokeMode.Gradient
@@ -88,7 +88,7 @@ public class Graphics{
     }
     /**
      * Stop all subsequent filling
-     * @NOTE this method can be called pre context
+     * NOTE: this method can be called pre context
      */
     public func stopFill(){
         //set the fill mode to void
@@ -96,8 +96,8 @@ public class Graphics{
     }
     /**
      * Stop all subsequent stroking
-     * Note could also potentially be called resetStroke, clearStroke etc or be omitted see old code
-     * @NOTE this method can be called pre context
+     * NOTE: could also potentially be called resetStroke, clearStroke etc or be omitted see old code
+     * NOTE: this method can be called pre context
      */
     public func stopStroke(){
         strokeMode = StrokeMode.None
@@ -106,7 +106,7 @@ public class Graphics{
     }
     /**
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
-     * @NOTE this method can only be called indirectly, the systm must init the call, and you must request a call from the system
+     * NOTE: this method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
     public func draw(path:CGPath){
         //Swift.print("Grpahics.draw() ")
@@ -125,7 +125,6 @@ public class Graphics{
                 break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
-
                 CGContextDrawPath(context, CGPathDrawingMode.Fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
@@ -141,7 +140,7 @@ public class Graphics{
         applyInnerShadow(path)/*init inner shadow*/
     }
     /**
-     * NOTE:apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
+     * NOTE: apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
     public func drawLine(path:CGPath){
         //the change to the bellow line is need in order to get the fill and line working together
@@ -159,7 +158,7 @@ public class Graphics{
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
                 break;
-            }
+        }
     }
 }
 private class Utils{
@@ -183,7 +182,7 @@ private class Utils{
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
-    class func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
+    static func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
         //var boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
         //boundingBox = boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
         CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
@@ -200,7 +199,7 @@ private class Utils{
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    class func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
+    static func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
         //Swift.print("Graphics.drawAxialGradient()")
         //Swift.print("gradient.p1: " + "\(gradient.p1)")
         //Swift.print("gradient.p2: " + "\(gradient.p2)")
@@ -216,7 +215,7 @@ private class Utils{
      * TODO: You may consider drawing the elliptical shape from the top left to get better edge rendering. 
      * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
-    class func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
+    static func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         /*begin drawing the radial gradient*/
         CGContextSaveGState(context)/*save the current context*/
