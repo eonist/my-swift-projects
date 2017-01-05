@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * IMPORTANT: you cant use values like 0.5 etc
+ * IMPORTANT: you can't use values like 0.5 etc
  */
 class RGBA {//<--TODO: could be a struct
     var r:UInt/*0-255*/

@@ -3,9 +3,9 @@ import Foundation
 class HexModifier {
     /**
      * Blend two colors with a scalar ratio.
-     * @param	first	The first color
-     * @param	second	The second color
-     * @param	ratio	The ratio of the second color to blend, .5 = equal ratio, .9 = 1:9, .2 = 8:2
+     * PARAM: first: The first color
+     * PARAM: second: The second color
+     * PARAM: ratio: The ratio of the second color to blend, .5 = equal ratio, .9 = 1:9, .2 = 8:2
      * @return	The color value as a uint.
      */
     class func blend(first:UInt, _ second:UInt, _ ratio:UInt) -> UInt {// :TODO: rename?
