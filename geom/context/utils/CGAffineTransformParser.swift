@@ -4,7 +4,7 @@ class CGAffineTransformParser {
     /**
      * Convenience, See MatrixModifier.transformWithPivot for more detail
      */
-    class func transformWithPivot(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) -> CGAffineTransform {
+    static func transformWithPivot(var transform:CGAffineTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) -> CGAffineTransform {
         return MatrixModifier.transformWithPivot(&transform, scale, rotation, offset, pivot)
     }
     /**
@@ -13,7 +13,7 @@ class CGAffineTransformParser {
      * TODO: we could return the matrix for method chaining
      * TODO: rename to just rotate? for simplicity?
      */
-    class func rotateAroundPoint(var transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func rotateAroundPoint(var transform:CGAffineTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
         transform.translate(pivot.x, pivot.y)/*<-this looks strage, but you sort of set the point here*/
         transform.rotate(rotation)// = CGAffineTransformRotate(transform, rotation);
         transform.translate(-pivot.x,-pivot.y)/*then you reset the offset to the original position*/
@@ -45,15 +45,9 @@ class CGAffineTransformParser {
         transform = CGAffineTransform.scaleFromPoint(transform, scale.y, scale.x, pivot)
         return transform
     }
-    /**
-     *
-     */
     static func copy(transform:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformMake(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty)//radialGradient.gradientTransform
     }
-    /**
-     *
-     */
     static func concat(a:CGAffineTransform,_ b:CGAffineTransform)->CGAffineTransform{
         return CGAffineTransformParser.concat(a, b)
     }

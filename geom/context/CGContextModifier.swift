@@ -8,9 +8,9 @@ public class CGContextModifier{
     /**
      * Clears the CGContext
      * NOTE: it makes a black hole right through the window
-     * Note: setting the blendmode to CGBlendMode.Clear has the same effect as: CGContextClearRect
+     * NOTE: setting the blendmode to CGBlendMode.Clear has the same effect as: CGContextClearRect
+     * NOTE: there is also: CGTextDrawingMode.Invisible
      * EXAMPLE: CGContextModifier.clear(context,self.bounds)
-     * Note: there is also: CGTextDrawingMode.Invisible
      * self.view.clearsContextBeforeDrawing = YES;
      * a call to setNeedsDisplay may work
      * creating a zero width and height rect and clipping it, then drawing on to of that and then making a new clip. try chaing clip a few times to see this idea in effect

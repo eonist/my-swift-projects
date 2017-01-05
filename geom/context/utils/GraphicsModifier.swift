@@ -9,7 +9,7 @@ class GraphicsModifier {
         //Swift.print("GraphicModifier.stylize()")
         //path.fill()
         //path.stroke()
-        graphics.draw(path)//draw everything
+        graphics.draw(path)/*draw everything*/
         graphics.stopFill()
     }
     /**
