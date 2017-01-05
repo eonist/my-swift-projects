@@ -1,6 +1,6 @@
 import Foundation
 
-var NaN:CGFloat = CGFloat.NaN
+var NaN:CGFloat = CGFloat.NaN/*Global variable for the sake of convenience*/
 
 extension CGFloat {
     func toFixed(places:Int)->CGFloat{

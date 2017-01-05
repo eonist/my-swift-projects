@@ -1,10 +1,11 @@
+import Cocoa
 class Algebra{
 	/**
 	 * Returns a fraction in a quadratic equation
 	 * PARAM: a x^2
 	 * PARAM: b x
 	 * PARAM: c the number
-	 * EXAMPLE: Algebra.quadratic(0.5, 6, -68));//7.114877048604001
+	 * EXAMPLE: Algebra.quadratic(0.5, 6, -68))//7.114877048604001
 	 */
 	static func quadratic(a:CGFloat,_ b:CGFloat,_ c:CGFloat)->CGFloat {
 		var numerator:CGFloat = -b+sqrt(b*b-4*a*c)
