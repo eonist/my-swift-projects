@@ -19,19 +19,19 @@ extension Array {
     /**
      * Enables the Array as a varadic method: 
      * NOTE: Variadic functions are functions that have a variable number of arguments (indicated by ... after the argument's type) that can be accessed into their body as an array.
+     * CAUTION: renaming appendMany to just append can cause problems with some array's so its probably better to leave it named something different than the native append name
      * EXAMPLE:
      * var arr:Array<Int> = [0,1,2]
      * arr.appendMany(3,4,5)
      * Swift.print(arr)//[0,1,2,3,4,5]
-     * CAUTION: renaming appendMany to just append can cause problems with some array's so its probably better to leave it named something different than the native append name
      */
     mutating func appendMany(items:Element...){
         self += items
     }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
-     * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      * NOTE: If you need a mutating concatination behaviour use the += operator
+     * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      */
     func concat(array:Array<Element>) -> Array<Element>{
         return self + array
@@ -40,7 +40,7 @@ extension Array {
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      * NOTE: If you need a mutating concatination behaviour use the += operator
      */
-    func concat(item:Element) -> Array<Element>{//Convenince
+    func concat(item:Element) -> Array<Element>{/*Convenince*/
         return concat([item])
     }
     /**

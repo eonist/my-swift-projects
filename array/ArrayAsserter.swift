@@ -24,8 +24,8 @@ class ArrayAsserter {
      * @param arr The array that will be checked for the specified value.
      * @param value The object which will be searched for within the array
      * @return True if the array contains the value, False if it does not.
-     * @EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
-     * @EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
+     * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
+     * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
      */
     static func has<T where T:Equatable, T:Comparable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
         return ArrayParser.index(arr, value) != -1
@@ -40,9 +40,9 @@ class ArrayAsserter {
     }
     /**
      * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
-     * @param a: Array to be compared with
-     * @param b: Array to be compared against
-     * @return a boolean indicating if the arrays are equal
+     * PARAM a: Array to be compared with
+     * PARAM b: Array to be compared against
+     * RETURN: a boolean indicating if the arrays are equal
      * NOTE: could also be named isEqual,isIdentical
      * IMPORTANT: This method compares reference not value
      */
