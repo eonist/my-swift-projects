@@ -6,7 +6,7 @@ class DisplayArcUtils {
      * TODO: To support rotation you need to work that in to the transformation probaby
      * NOTE: The CGPathAddArc method doesnt seem to support drawing from negative area to positive area. The CGPathAddRelativeArc method supports this
      */
-    class func arcTo(path:CGMutablePathRef,_ arc:IArc) {
+    static func arcTo(path:CGMutablePathRef,_ arc:IArc) {
         let angleArc:AngleArc = DisplayArcUtils.arc(arc.start, CGPoint(arc.xRadii,arc.yRadii),arc.rotation,arc.largeArcFlag,arc.sweepFlag,arc.end,arc.center!)
         /*
         Swift.print("describe: angleArc")
@@ -21,15 +21,15 @@ class DisplayArcUtils {
     /**
      * NOTE: (rx, ry, x-axis-rotation, large-arc-flag, sweep-flag, x, y)
      */
-    class func arcTo(startX:CGFloat,_ startY:CGFloat,_ centerX:CGFloat,_ centerY:CGFloat,_ xAxisRot:CGFloat,_ largeArcFlag:Bool,_ sweepFlag:Bool, _ endX:CGFloat, _ endY:CGFloat){
+    static func arcTo(startX:CGFloat,_ startY:CGFloat,_ centerX:CGFloat,_ centerY:CGFloat,_ xAxisRot:CGFloat,_ largeArcFlag:Bool,_ sweepFlag:Bool, _ endX:CGFloat, _ endY:CGFloat){
         //You need to derive the xRadii and yRadii from start and end points (there is a formula that can create an ellipse from 2 points and a center and a rotation etc)
         //then you can convert to an angled arc
         //then you use the angledArc to draw the arc with the native CGPath arc method that supports this
     }
     /**
      * Draws an arc on @param graphics
-     * @Note SEGMENT_COUNT:uint = 32//32;//a fixed Arc interpolation number (Higher number means higher arc resolution, Lower means higher performance)
-     * @Note var points:Vector.<CurvePoint> = ArcParser.curvePoints(this, SEGMENT_COUNT);Computes and returns curve points needed to draw the curve
+     * NOTE: SEGMENT_COUNT:uint = 32//32;//a fixed Arc interpolation number (Higher number means higher arc resolution, Lower means higher performance)
+     * NOTE: var points:Vector.<CurvePoint> = ArcParser.curvePoints(this, SEGMENT_COUNT);Computes and returns curve points needed to draw the curve
      */
      /*
      class func angleArcTo(graphics:Any, _ xRadii:CGFloat, _ yRadii:CGFloat, _ start:CGFloat,_ end:CGFloat,_ centerX:CGFloat,_ centerY:CGFloat,_ rotation:CGFloat) {
@@ -40,15 +40,15 @@ class DisplayArcUtils {
      */
      /**
       * Returns an object containing the start angle, end angle and center point
-      * @param r radii in the xAxis,yAxis (half of the ellipse xAxis,yAxis)
-      * @param rot rotation of the ellipse (in radians)
-      * @param largeArcFlag if the the angle span between @param start and @param end is more than 180 degrees then this is false else its true
-      * @param sweepFlag cw vs ccw
-      * @param start is the start point of the arc
-      * @param end is the end point of the arc
+      * PARAM: r radii in the xAxis,yAxis (half of the ellipse xAxis,yAxis)
+      * PARAM: rot rotation of the ellipse (in radians)
+      * PARAM: largeArcFlag if the the angle span between @param start and @param end is more than 180 degrees then this is false else its true
+      * PARAM: sweepFlag cw vs ccw
+      * PARAM: start is the start point of the arc
+      * PARAM: end is the end point of the arc
       * @Note to decipher this code you can add many debugcrosshairs
       */
-    class func arc(start:CGPoint,var _ r:CGPoint,_ rot:CGFloat,_ largeArcFlag:Bool,_ sweepFlag:Bool,_ end:CGPoint,_ center:CGPoint) -> AngleArc {// :TODO: move to AdvanceArc5Parser?!?
+    static func arc(start:CGPoint,var _ r:CGPoint,_ rot:CGFloat,_ largeArcFlag:Bool,_ sweepFlag:Bool,_ end:CGPoint,_ center:CGPoint) -> AngleArc {// :TODO: move to AdvanceArc5Parser?!?
         if(r.y == 0){/*if the arc is flat*/
             //Swift.print("Angle.angle(center, start): " + Angle.angle(center, start))
             //Swift.print("r.x: " + r.x)
@@ -118,27 +118,24 @@ class DisplayArcUtils {
 
 //the problem is here: we are not flipping the angles, check legacy code if its being done there, also norm1 instead of norm2 on some of the variables is this the same in legacy?
 
-
-
-
 private class BasicEllipseMath {
     /**
      * Returns a eliptical angle ( which is the angle of the elliptical arc prior to the stretch and rotate operations.)
-     * @param angle: an circular angle
-     * @Important: atan2 is when measured counterclockwise from a circle's x axis
-     * @Note: can also use atan(y/x); (atan returns funky rotatioin values, i guess clockwise from x axis, test this though)
-     * @Note: this is the same but just as a refrence: Angle.angle(new Point(0,0), new Point(Math.cos(angle) / xAxis,Math.sin(angle) / yAxis))
+     * PARAM: angle: an circular angle
+     * IMPORTANT: atan2 is when measured counterclockwise from a circle's x axis
+     * NOTE: can also use atan(y/x); (atan returns funky rotatioin values, i guess clockwise from x axis, test this though)
+     * NOTE: this is the same but just as a refrence: Angle.angle(new Point(0,0), new Point(Math.cos(angle) / xAxis,Math.sin(angle) / yAxis))
      */
-    class func ellipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat)->CGFloat {// :TODO: rename to : something like counterClockwiseEllipticalAngle?
+    static func ellipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat)->CGFloat {// :TODO: rename to : something like counterClockwiseEllipticalAngle?
         let x:CGFloat = cos(angle) / xAxis
         let y:CGFloat = sin(angle) / yAxis
         return atan2(y,x)
     }
     /**
-     * @Note use this if you only know the circular angle of a point on a rotated ellipse
+     * NOTE: use this if you only know the circular angle of a point on a rotated ellipse
      * // :TODO: the angle should be the last argument
      */
-    class func advanceEllipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat,_ rotation:CGFloat = 0) -> CGFloat {
+    static func advanceEllipticalAngle(xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat,_ rotation:CGFloat = 0) -> CGFloat {
         return ellipticalAngle(xAxis,yAxis,angle-rotation);
     }
 }
