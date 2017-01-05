@@ -27,10 +27,10 @@ class HexParser {
     }
     /**
      * Converts a series of individual RGB(A) values to a 32-bit RGBA color value.
-     * @param r: A uint from 0 to 255 representing the red color value.
-     * @param g: A uint from 0 to 255 representing the green color value.
-     * @param b: A uint from 0 to 255 representing the blue color value.
-     * @param a: A uint from 0 to 255 representing the alpha value. Default is <code>255</code>.
+     * PARAM: r: A uint from 0 to 255 representing the red color value.
+     * PARAM: g: A uint from 0 to 255 representing the green color value.
+     * PARAM: b: A uint from 0 to 255 representing the blue color value.
+     * PARAM: a: A uint from 0 to 255 representing the alpha value. Default is <code>255</code>.
      * @return Returns a hexidecimal color as a String.
      * EXAMPLE:
      * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
@@ -48,10 +48,10 @@ class HexParser {
     }
     /**
      * Converts a 32-bit ARGB color value into a hexidecimal String representation.
-     * @param a: A uint from 0 to 255 representing the alpha value.
-     * @param r: A uint from 0 to 255 representing the red color value.
-     * @param g: A uint from 0 to 255 representing the green color value.
-     * @param b: A uint from 0 to 255 representing the blue color value.
+     * PARAM: a: A uint from 0 to 255 representing the alpha value.
+     * PARAM: r: A uint from 0 to 255 representing the red color value.
+     * PARAM: g: A uint from 0 to 255 representing the green color value.
+     * PARAM: b: A uint from 0 to 255 representing the blue color value.
      * @return Returns a hexidecimal color as a String.
      * @example
      * <code>
@@ -85,9 +85,9 @@ class HexParser {
     }
     /**
      * Converts an RGB color value into a hexidecimal String representation.
-     * @param r: A CGFloat from 0 to 1 representing the red color value.
-     * @param g: A CGFloat from 0 to 1 representing the green color value.
-     * @param b: A CGFloat from 0 to 1 representing the blue color value.
+     * PARAM: r: A CGFloat from 0 to 1 representing the red color value.
+     * PARAM: g: A CGFloat from 0 to 1 representing the green color value.
+     * PARAM: b: A CGFloat from 0 to 1 representing the blue color value.
      * @return Returns a hexidecimal color as a String.
      * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
