@@ -1,9 +1,9 @@
 import Foundation
 class FileModifier{
 	/**
-	 * fromURL: "/path/to/old"
-	 * toURL: "/path/to/new"
-	 * Todo: additional catch clauses:
+	 * PARAM: fromURL: "/path/to/old"
+	 * PARAM: toURL: "/path/to/new"
+	 * TODO: additional catch clauses:
      * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
      * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
 	 */
