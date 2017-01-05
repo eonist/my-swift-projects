@@ -4,7 +4,7 @@ class LineStyleParser {
     /**
      * NOTE: You could also add this as a Descrieable extension on the ILineStyle protocol but, its convenient enough to have it here. 
      */
-    class func describe(lineStyle:ILineStyle){
+    static func describe(lineStyle:ILineStyle){
         Swift.print("LineStyleParser.describe()")
         Swift.print("lineStyle: " + "\(lineStyle)")
         Swift.print("lineStyle.color.hex: " + "\(lineStyle.color.hexString)")
@@ -17,25 +17,25 @@ class LineStyleParser {
         Swift.print("lineStyle.lengths: " + "\(lineStyle.lengths)")
     }
     /**
-     *
+     * CapType
      */
-    class func lineCapType(lineCap:CGLineCap)->String{
+    static func lineCapType(lineCap:CGLineCap)->String{
         if(lineCap == CGLineCap.Butt){return "butt"}
         else if(lineCap == CGLineCap.Round){return "round"}
-        else{return "square"}//Square
+        else{return "square"}/*Square*/
     }
     /**
-     * 
+     * JoinType
      */
-    class func lineJoinType(lineJoin:CGLineJoin)->String{
+    static func lineJoinType(lineJoin:CGLineJoin)->String{
         if(lineJoin == CGLineJoin.Miter){return "miter"}
         else if(lineJoin == CGLineJoin.Round){return "round"}
-        else{return "bevel"}//Bevel
+        else{return "bevel"}/*Bevel*/
     }
     /**
-     * Clones @param lineStyle
+     * Clones PARAM: lineStyle
      */
-    class func clone(lineStyle:ILineStyle) -> LineStyle {
+    static func clone(lineStyle:ILineStyle) -> LineStyle {
         return LineStyle(lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit,lineStyle.phase,lineStyle.lengths)
     }
 }
