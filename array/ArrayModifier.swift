@@ -6,7 +6,7 @@ class ArrayModifier{
 	/**
 	 * UNSHIFT (prepend)
 	 * Adds one or more elements to the beginning of an array and returns the new
-	 * length of the array. The other elements in the array are moved from their 
+	 * PARAM: length of the array. The other elements in the array are moved from their 
 	 * original position, i, to i+1.
 	 * OUTPUT
 	 * a,b,c,d
@@ -20,7 +20,7 @@ class ArrayModifier{
 	/**
 	 * SHIFT
 	 * Removes the first element from an array and returns that element.
-	 * The remaining array elements are moved from their original position, i, to i-1.
+	 * NOTE: The remaining array elements are moved from their original position, i, to i-1.
      * TODO: Write an example
 	 */
 	static func shift<T>(inout array:[T])->T{

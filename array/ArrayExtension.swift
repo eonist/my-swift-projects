@@ -65,11 +65,10 @@ extension Array {
         return ArrayParser.index(arr, value)
     }
     /**
-     * -1 equals, does not exist
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
     mutating func removeAt(i:Int){
-        if(i != -1){self.splice2(i, 1)}
+        if(i != -1){self.splice2(i, 1)}/*1 equals, does not exist*/
     }
     
     /**
