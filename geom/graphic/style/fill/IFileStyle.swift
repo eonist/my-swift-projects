@@ -1,7 +1,7 @@
 import Cocoa
 
 protocol IFillStyle{
-    var color: NSColor { get set }
+    var color: NSColor {get set}
 }
 /**
  * Convenience method for the Graphics class
