@@ -3,14 +3,14 @@ import Foundation
  * Draws a polygon based on points, closes it self to the first point
  */
 class SVGPolygon:SVGGraphic,ISVGPolyLine{
-    var points : Array<CGPoint>;
+    var points:Array<CGPoint>
     init(_ points:Array<CGPoint>, _ style : SVGStyle? = nil, _ id : String? = nil) {
-        self.points = points;
-        super.init(style, id);
+        self.points = points
+        super.init(style, id)
     }
     /**
      * NOTE: Miter-limit is hard: you have the complete set of math tools to solve this in the reserach-paper named: BodySegment with acompaning file called BodySegment Tail Head etc. The code works.
-     * @NOTE: this method calls two sub methods so that SVGPolyLine can use this class as a base method
+     * NOTE: this method calls two sub methods so that SVGPolyLine can use this class as a base method
      */
     override func draw() {
         //Swift.print("SVGPolygon.draw()")

@@ -1,7 +1,7 @@
 import Foundation
 /*
  * Creates a rectangle instance (with support for rounded corners)
- * @example <rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
+ * EXAMPLE: <rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
  * // :TODO: possibly replace the subclassing with decoration!?!
  */
 class SVGRect:SVGGraphic {
@@ -12,7 +12,7 @@ class SVGRect:SVGGraphic {
     var rx:CGFloat/*for round rect, radius*/
     var ry:CGFloat/*for round rect, radius*/
     /**
-     * @param fill (is of type Number so that we can test for NaN when parsing to svg xml)
+     * PARAM: fill (is of type Number so that we can test for NaN when parsing to svg xml)
      */
     init(_ width:CGFloat,_ height:CGFloat,_ x:CGFloat,_ y:CGFloat,_ rx:CGFloat,_ ry:CGFloat, _ style:SVGStyle,_ id:String) {
         //Swift.print("SVGRect.init()" + "\(width)" + " height: " + "\(height)")
@@ -27,12 +27,12 @@ class SVGRect:SVGGraphic {
         super.init(style,id);
     }
     /**
-     * @Note If you do not specify a starting x or y value, it is presumed to be zero. 
-     * @Note If you specify a width or height of zero, then the rectangle is not displayed. 
-     * @Note It is an error to provide negative values for either width or height.
-     * @Note If you specify only one of rx or ry, they are presumed to be equal.
-     * @Note The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
-     * // :TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
+     * NOTE: If you do not specify a starting x or y value, it is presumed to be zero. 
+     * NOTE: If you specify a width or height of zero, then the rectangle is not displayed. 
+     * NOTE: It is an error to provide negative values for either width or height.
+     * NOTE: If you specify only one of rx or ry, they are presumed to be equal.
+     * NOTE: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
+     * TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
      */
     override func draw() {
         //Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
