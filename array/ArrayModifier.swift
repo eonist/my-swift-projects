@@ -356,9 +356,9 @@ class ArrayModifier{
         return array
     }
     /**
-     * Replaces @param searchFor with @param replaceWith (the existing item is deleted)
-     * @Note on pretext is that the item to search for must already exist in the array or else this method doesnt work
-     * @Note this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
+     * Replaces PARAM: searchFor with PARAM: replaceWith (the existing item is deleted)
+     * NOTE: on pretext is that the item to search for must already exist in the array or else this method doesnt work
+     * NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
     static func replace<T>(inout array:Array<T>, _ searchFor:T, _ replaceWith:T) -> Int {
@@ -395,7 +395,7 @@ class ArrayModifier{
      * EXAMPLE: slice(["spinach","green pepper","cilantro","onion","avocado"],1, 3)// "spinach","onion","avocado"
      */
     static func DEPRECATEDslice<T>(var array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{
-        
+        Swift.print("use slice2 instead")
         //try not to use this method, use slice2 since that is the correct implementation of slice. Also look in to splice. I think its currently not implemented correctly
         
         let deleteCount = endIndex - startIndex
