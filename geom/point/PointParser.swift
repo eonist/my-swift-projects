@@ -5,7 +5,7 @@ class PointParser{
      * PARAM: scalar: the scalar is between 0 and 1
      * NOTE: PointParser.interpolate() is different form the Adobe flash native Point.interpolate, the later multiplies from p2 to p1,
      * the former multiplies form p1 tp p2 which i think is more logical
-     * // :TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
+     * TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
      */
     static func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat)->CGPoint {
         return CGPoint(NumberParser.interpolate(a.x, b.x, scalar), NumberParser.interpolate(a.y, b.y, scalar))
@@ -108,14 +108,15 @@ class PointParser{
     }
     /**
      * Returns the difference between two points
+     * NOTE: Great when finding polar points when the pivot isnt at point 0,0
+     * EXAMPLE:
      * print(new Point(20,20),new Point(-40,-40))//Output: (-60,-60)
      * print(new Point(20,20),new Point(40,-40))//Output: (20,-60)
      * print(difference(new Point(2,2), new Point(4,4)))//Outputs: (2,2)
      * print(difference(new Point(2,2), new Point(-4,-4)))//Outputs: (-6,-6)
      * print(difference(new Point(-2,-2), new Point(-4,-4)))//Outputs: (-2,-2)
      * print(difference(new Point(-2,-2), new Point(4,4)))//Outputs: (6,6)
-     * NOTE: great at finding polar points when the pivot isnt at point 0,0
-     * // :TODO: is there a math formula ? write the formula you have atleast
+     * TODO: is there a math formula ? write the formula you have atleast
      */
     static func difference(p1:CGPoint,_ p2:CGPoint)->CGPoint {
         let x:CGFloat = NumberParser.difference(p1.x, p2.x)
@@ -123,7 +124,7 @@ class PointParser{
         return CGPoint(x,y)
     }
     /**
-     *
+     * 
      */
     static func relativeDifference(a:CGPoint,_ b:CGPoint)->CGPoint{
         let x:CGFloat = NumberParser.relativeDifference(a.x, b.x)
@@ -139,7 +140,7 @@ class PointParser{
     }
     /**
      * Returns the distance between points in both the x and y axis. (unlike Point.distance which returns the diagonal distance between two points)
-     * // :TODO: potentially make polarAxisDistance which would potentially support any angled axis
+     * TODO: potentially make polarAxisDistance which would potentially support any angled axis
      * NOTE: think of this method as a way of finding the horizontal and vertical distance between two points
      */
     static func axisDistance(p1:CGPoint, _ p2:CGPoint)->CGPoint {
@@ -150,9 +151,9 @@ class PointParser{
      * IMPORTANT: use the x value and the Point.polar(x,axisangle) to find the p
      * NOTE: remember to rotate the axix after its been returned from this method
      * PARAM: rotation: the angle you want to levle with
-     * // :TODO: shouldnt the axis be found by Angle.angle(p1,p2) ?!?
-     * // :TODO: you may not need to use rotation with pivot, the pivot may not be needed
-     * // :TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
+     * TODO: shouldnt the axis be found by Angle.angle(p1,p2) ?!?
+     * TODO: you may not need to use rotation with pivot, the pivot may not be needed
+     * TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
      */
     static func directionalAxisDifference(pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
@@ -195,23 +196,23 @@ class PointParser{
      * NOTE: Median definition: the midpoint of a frequency distribution of observed values or quantities
      * NOTE: could also be named avg for average
      * TODO: rename to average?
-     * // :TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
+     * TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
      */
     static func median(points:Array<CGPoint>) -> CGPoint{
         var median:CGPoint = CGPoint()
         for point:CGPoint in points {
-            median.x += point.x// :TODO: possibly use point.add?, you can also just do median += point here
+            median.x += point.xTODO: possibly use point.add?, you can also just do median += point here
             median.y += point.y
         }
         let numOfPoints:Int = points.count
-        median.x /= numOfPoints.cgFloat// :TODO: possibly use point.divide or similar utility function?
+        median.x /= numOfPoints.cgFloatTODO: possibly use point.divide or similar utility function?
         median.y /= numOfPoints.cgFloat
         return median
     }
     /**
      * Returns a Point half way between PARAM: p1 and p2
      * Note: can also use Point.interpolate(p1,p2,0.5)
-     * // :TODO: can you write an example just with substraction, this might be usefull and more optimized
+     * TODO: can you write an example just with substraction, this might be usefull and more optimized
      * EXAMPLE (how to do it with substraction and addition)
      * var minX:Number = Math.min(p1.x,p2.x);
      * var minY:Number = Math.min(p1.y,p2.y);
@@ -264,13 +265,13 @@ class PointParser{
     * NOTE: if line a touches the start or end of line b then it intersects
     * NOTE: if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
     * NOTE: you can also use convergingPoint in TriangleMath instead of intersection 
-    * // :TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
-    * // :TODO: comment this method
-    * // :TODO: do reasearch into vectors, slope and the intersection of vectrors
-    * // :TODO: this actually gave a bad result
-    * // :TODO: if the end of line a is equal to the end of line b then it returns a faulty result (x=0, y=NaN)
-    * // :TODO: doesnt handle parallel cases very well (x=0, y=NaN), do you mean paralellel or colinear?
-    * // :TODO: if you deal with finding the intersection on a case that makes a cross, then you can probably do a faster intersection that is also more correct, if y = y and x = x and y is within the length of b, and x is within the length of b then the intersection must be a.y and b.x etc
+    * TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
+    * TODO: comment this method
+    * TODO: do reasearch into vectors, slope and the intersection of vectrors
+    * TODO: this actually gave a bad result
+    * TODO: if the end of line a is equal to the end of line b then it returns a faulty result (x=0, y=NaN)
+    * TODO: doesnt handle parallel cases very well (x=0, y=NaN), do you mean paralellel or colinear?
+    * TODO: if you deal with finding the intersection on a case that makes a cross, then you can probably do a faster intersection that is also more correct, if y = y and x = x and y is within the length of b, and x is within the length of b then the intersection must be a.y and b.x etc
     */
     static func intersection(p1:CGPoint, _ p2:CGPoint, _ p3:CGPoint, _ p4:CGPoint) -> CGPoint {
         let x1:CGFloat = p1.x
@@ -282,7 +283,7 @@ class PointParser{
         let dx2:CGFloat = p3.x - x4
         Swift.print("dx2: " + "\(dx2)")
         var p:CGPoint = CGPoint()
-        if (dx1 == 0 || dx2 == 0){// :TODO: not 0 or what?
+        if (dx1 == 0 || dx2 == 0){TODO: not 0 or what?
             print("case a");
             p.x = 0
             p.y = 0
@@ -290,12 +291,12 @@ class PointParser{
         }
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
-        if (dx1 == 0){// :TODO: not 0 or what?
+        if (dx1 == 0){TODO: not 0 or what?
             print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
-        }else if (dx2 == 0){// :TODO: not 0 or what?
+        }else if (dx2 == 0){TODO: not 0 or what?
             print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
