@@ -1,10 +1,10 @@
 import Cocoa
 /**
- * Watches for file changes in a list of filePaths
+ * Watches for file changes in a list of filePath(s)
  * NOTE: You could stop and start to restart
  * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
- * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
+ * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * EXAMPLE: fileWatcher!.event = { [weak self] event in Swift.print(self?.temp); Swift.print(event.description)}//<--this is the closure that would print the fileChange event and also be able to interact with the app. The temp var is a temp var in the calling class to demonstrate that the closure is able to interact with the app as well. the unknown self part avoids strong reference cycles.
  */
 class FileWatcher{
