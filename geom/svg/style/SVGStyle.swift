@@ -3,7 +3,7 @@ import Foundation
   * NOTE: Double.NaN represents stroke:"none" and nil represents no value for stroke, this is important when you export
   * NOTE: Same logic goes for Fill
   * NOTE: why do we use Double and not CGFloat for the color? I dont know, either works, why not use UInt? because UInt doesnt support NaN, May revert to using CGFloat in the future
-  * // :TODO: impliment stroke-dasharray
+  * TODO: impliment stroke-dasharray
   */
 class SVGStyle {
     var fill:Any?/*The fill color or SVGLinearGradient instance*/
@@ -15,9 +15,9 @@ class SVGStyle {
     var strokeLineCap:String?
     var strokeLineJoin:String?
     var strokeMiterLimit:CGFloat?
-    
-    //TODO: all values should be nil, since we dont want none values by default as these may get exported, and if they didnt exist on the import they should exist on export. nil means no value, none or NaN means variable with none value
-    
+    /**
+     * NOTE: all values should be nil, since we don't want "none" values by default as these may get exported, and if they didnt exist on the import they should exist on export. nil means no value, none or NaN means variable with none value
+     */
     init(_ fill:Any? = nil,_ fillOpacity:CGFloat? = nil,_ fillRule:String? = nil,_ strokeWidth:CGFloat? = nil,_ stroke:Any? = nil ,_ strokeOpacity:CGFloat? = nil,_ strokeLineCap:String? = nil,_ strokeLineJoin:String? = nil, _ strokeMiterLimit:CGFloat? = nil) {
         self.fill = fill
         self.fillOpacity = fillOpacity

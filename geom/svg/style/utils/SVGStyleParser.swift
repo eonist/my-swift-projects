@@ -29,9 +29,9 @@ class SVGStyleParser {
         for match:NSTextCheckingResult in matches {//Loops through the pattern
             match.numberOfRanges
             //let content = (style as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let name = (style as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            let name = (style as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*///TODO: use RegExp util method to extract results
             //Swift.print("name: >" + name+"<");
-            let value = (style as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            let value = (style as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*///TODO: use RegExp util method to extract results
             //Swift.print("value: >" + value+"<");
             inlineStyles[name] = value
         }
@@ -63,7 +63,7 @@ class SVGStyleParser {
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
     /**
-     * TODO: doesn't this method also exist in the a parser class?
+     * TODO: Doesn't this method also exist in the a parser class?
      */
     static func describe(style:SVGStyle) {
         Swift.print("SVGParser.describe() ");
