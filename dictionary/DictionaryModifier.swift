@@ -8,10 +8,10 @@ class DictionaryModifier{
 	    return left
 	}
 	/**
-	 * Combines the key and property pairs of object @param a and @param b 
-	 * @Note: if key and property pairs have the same key the key from @param b takes precedence
-	 * @Note: If the @param a and @param b both specify arrays, the elements of that array are concatenated // :TODO: test if they also merge?
-	 * @Example:
+	 * Combines the key and property pairs of object PARAM: a and PARAM: b 
+	 * NOTE: if key and property pairs have the same key the key from PARAM: b takes precedence
+	 * NOTE: If the PARAM: a and PARAM: b both specify arrays, the elements of that array are concatenated // :TODO: test if they also merge?
+	 * EXAMPLE:
 	 * var a:Object = {name:"john", color:"blue",index:0};
 	 * var b:Object = {name:"john", color:"red",index:2};
 	 * var c:Object = ObjectModifier.merge(a, b);

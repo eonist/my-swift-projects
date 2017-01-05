@@ -99,20 +99,22 @@ class ArrayParser{
     }
     /**
      * Returns the first item in an array
+     * NOTE: there is also the native: [1,2,3].first//1
      */
     static func first<T>(arr:[T])->T{
         return arr[0]
     }
     /**
      * Returns the last item in an array
+     * NOTE: there is also the native: [1,2,3].last//3
      */
     static func last<T>(arr:[T])->T{
         return arr[arr.count-1]
     }
     /**
      * Returns a new array with every item in @param array sorted according a custom method provided in @param contition
-     * @Note: leaves the original array intact
-     * @example: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,0,1,2,3,4,5,22
+     * NOTE: leaves the original array intact
+     * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,0,1,2,3,4,5,22
      */
     static func conditionSort<T>(array:[T],_ condition: (a: T, b: T)->Bool)->Array<T>{
         var sortedArray:Array<T> = []
@@ -140,7 +142,7 @@ class ArrayParser{
         return items
     }
     /**
-     * @return random array with unique numbers (no duplicates)
+     * Returns a random array with unique numbers (no duplicates)
      * TODO: You can improve the random call with this: let diceRoll = Int(arc4random_uniform(6) + 1) // for a random integer between 0 and n-1
      */
     static func uniqueRandom(start:Int, _ end:Int) -> Array<Int> {
