@@ -6,7 +6,7 @@ class CGRectParser{
     /**
      * Returns a Rectangle instance from any two points (does not have to be topLeft and bottomRight)
      */
-    class func rectangleByPoints(p1:CGPoint,_ p2:CGPoint) -> CGRect {
+    static func rectangleByPoints(p1:CGPoint,_ p2:CGPoint) -> CGRect {
         let top:CGFloat = min(p1.y, p2.y)
         let left:CGFloat = min(p1.x, p2.x)
         let bottom:CGFloat = max(p1.y, p2.y)
@@ -18,13 +18,13 @@ class CGRectParser{
     /**
      * NOTE: you can also use: someCGRect.center
      */
-    class func center(rectangle:CGRect) -> CGPoint {
+    static func center(rectangle:CGRect) -> CGPoint {
         return CGPoint.interpolate(rectangle.topLeft, rectangle.bottomRight, 0.5);
     }
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
      */
-    class func roundRect(rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
+    static func roundRect(rect:CGRect,  _ radius:CGFloat) ->CGMutablePathRef{
         let path:CGMutablePathRef = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, CGRectGetMidX(rect), CGRectGetMinY(rect));
         CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMaxY(rect), radius)
@@ -37,7 +37,7 @@ class CGRectParser{
     /**
      * Create a path using the coordinates of the rect passed in
      */
-    class func path(rect:CGRect)->CGMutablePath{
+    static func path(rect:CGRect)->CGMutablePath{
         let path:CGMutablePath = CGPathCreateMutable()
         //Swift.print(CGRectParser.path() + String(path))
         CGPathMoveToPoint(path, nil, rect.origin.x, rect.origin.y)
@@ -50,49 +50,49 @@ class CGRectParser{
     /**
      * Returns the midPoint of each side in PARAM: rect
      */
-    class func sides(rect:CGRect) -> Array<CGPoint> {/*<--Was previously named sidePoints*/
+    static func sides(rect:CGRect) -> Array<CGPoint> {/*<--Was previously named sidePoints*/
         return [rect.left,rect.right,rect.top,rect.bottom]
     }
     /**
      * Returns an array with Line instances of all sides of a rectangle
      */
-    class func sides(rectangle:CGRect) -> Array<Line> {
+    static func sides(rectangle:CGRect) -> Array<Line> {
         return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)]
     }
     /**
      *
      */
-    class func topSide(rectangle:CGRect) -> Line {
+    static func topSide(rectangle:CGRect) -> Line {
         return Line(rectangle.topLeft, CGPoint(rectangle.right.x,rectangle.top.y))
     }
     /**
      *
      */
-    class func rightSide(rectangle:CGRect) -> Line {
+    static func rightSide(rectangle:CGRect) -> Line {
         return Line(CGPoint(rectangle.right.x,rectangle.top.y),rectangle.bottomRight)
     }
     /**
      *
      */
-    class func bottomSide(rectangle:CGRect) -> Line {
+    static func bottomSide(rectangle:CGRect) -> Line {
         return Line(rectangle.bottomRight,CGPoint(rectangle.left.x,rectangle.bottom.y))
     }
     /**
      *
      */
-    class func leftSide(rectangle:CGRect) -> Line {
+    static func leftSide(rectangle:CGRect) -> Line {
         return Line(CGPoint(rectangle.left.x,rectangle.bottom.y),rectangle.topLeft)
     }
     /**
      * Returns all the corners in PARAM: rect
      */
-    class func corners(rect:CGRect) -> Array<CGPoint> {
+    static func corners(rect:CGRect) -> Array<CGPoint> {
         return [rect.topLeft,rect.topRight,rect.bottomLeft,rect.bottomRight]
     }
     /**
-     * // :TODO: maybe get the local rect with the pivot as center?? how does it work, hmmm
+     * TODO: maybe get the local rect with the pivot as center?? how does it work, hmmm
      */
-    class func localRectangle(topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
+    static func localRectangle(topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
         let points:Array<CGPoint> = [topLeft, bottomRight]
         var rotatedPoints:Array<CGPoint> = PointModifier.rotatePoints(points, CGPoint(), -rotation)
         return rectangle(rotatedPoints[0], rotatedPoints[1])
@@ -100,17 +100,17 @@ class CGRectParser{
     /**
      *
      */
-    class func rectangle(topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{
+    static func rectangle(topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{
         let width:CGFloat = NumberParser.difference(topLeft.x, bottomRight.x)
         let height:CGFloat = NumberParser.difference(topLeft.y, bottomRight.y)
         return CGRect(topLeft.x, topLeft.y, width, height)
     }
     /**
-     * // :TODO: create a similar method for localToGlobal
-     * @example var localRectangle:CGRect = CGRectParaser.globalToLocal(rectangle1.clone(), view)
+     * TODO: create a similar method for localToGlobal
      * NOTE: This method used to be a modifying method but was remade as a parser, as its easier to use this way (make a duplocate method if mutating is need in the future)
+     * EXAMPLE: var localRectangle:CGRect = CGRectParaser.globalToLocal(rectangle1.clone(), view)
      */
-    class func globalToLocal(var globalRectangle:CGRect,_ localView:NSView) -> CGRect {
+    static func globalToLocal(var globalRectangle:CGRect,_ localView:NSView) -> CGRect {
         var localRectangle:CGRect = CGRect(0,0,globalRectangle.width,globalRectangle.height)
         let globalToLocalPoint:CGPoint = localView.globalToLocal(globalRectangle.topLeft)
         localRectangle.offsetInPlace(globalToLocalPoint)
