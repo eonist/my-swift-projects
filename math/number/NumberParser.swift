@@ -8,12 +8,12 @@ class NumberParser{
         return randomNr
     }
     /**
-     * Returns the number with a set number of @param decimalCount
-     * @Note unlike the tofixed method that returns this: Number(6.0001).toFixed(2)// 6.01, the aprox method returns a more clinical number
-     * @Note the approx method does not Round up or down by taking into account the decimal after the @param decimalCount, this could be usefull in the future
-     * @Note the approx method works exactly as the aproximatly equal sign in real math except the part about rounding up and down, and by the way toFixed method does not handle the rounding correctly eigther as it rounds from futher then next to @param decimalCount
-     * @example NumberParser.approx(Math.cos(Trig.RAD*90), 22)//6.12323e-17
-     * @example NumberParser.approx(Math.cos(Trig.RAD*90), 3)//0
+     * Returns the number with a set number of PARAM: decimalCount
+     * NOTE: unlike the tofixed method that returns this: Number(6.0001).toFixed(2)// 6.01, the aprox method returns a more clinical number
+     * NOTE: the approx method does not Round up or down by taking into account the decimal after the PARAM: decimalCount, this could be usefull in the future
+     * NOTE: the approx method works exactly as the aproximatly equal sign in real math except the part about rounding up and down, and by the way toFixed method does not handle the rounding correctly eigther as it rounds from futher then next to PARAM: decimalCount
+     * EXAMPLE: NumberParser.approx(Math.cos(Trig.RAD*90), 22)//6.12323e-17
+     * EXAMPLE: NumberParser.approx(Math.cos(Trig.RAD*90), 3)//0
      * EXAMPLE: approx(40.126,2)//40.13
      * EXAMPLE: approx(40.124,2)//40.12
      * CAUTION: the old approx method was a little different. try stackoverflow if this design doesn't work in every case
@@ -59,9 +59,10 @@ class NumberParser{
     }
     /**
      * Returns the number you can add to start that becomes end (start + x = end)
-     * @Note unlike the distance method this can return negative and positive values
-     * @Note suppliments the distance function in that it returns the directional correct distance
-     * // :TODO: couldnt you just do b - a ? there is no difference, this method is a waste of cpu
+     * NOTE: unlike the distance method this can return negative and positive values
+     * NOTE: suppliments the distance function in that it returns the directional correct distance
+     * TODO: couldnt you just do b - a ? there is no difference, this method is a waste of cpu
+     * EXAMPLE:
      * print(difference(3,7))//4
      * print(difference(3,-2))//-5
      * print(difference(-3,-7))//-4
@@ -75,9 +76,9 @@ class NumberParser{
     }
     /** 
      * Linearly interpolation (lerp)
-     * @param a: start number
-     * @param b: end number
-     * @param fraction: interpolation value (between 0 - 1) could also be named scalar
+     * PARAM: a: start number
+     * PARAM: b: end number
+     * PARAM: fraction: interpolation value (between 0 - 1) could also be named scalar
      * EXAMPLE: interpolate(5, 15, 0.5) //10
      */
     static func interpolate( a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {//<--was Double, cgfloat makes more sense
@@ -85,12 +86,12 @@ class NumberParser{
     }
     /**
      * Returns the scalar value from the real progress between two polar numbers
-     * @param start: start number
-     * @param end: end number
-     * @param progress progress between a and b
+     * PARAM: start: start number
+     * PARAM: end: end number
+     * PARAM: progress progress between a and b
      * @return interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
-     * @Note to find a scalar value i.e 50/100 = 0.5
-     * @example scalar(0,8,4) //Output: 0.5
+     * NOTE: to find a scalar value i.e 50/100 = 0.5
+     * EXAMPLE: scalar(0,8,4) //Output: 0.5
      * print("q: " + NumberParser.scalar(0, -100, -25));//0.25
      * print("q: " + NumberParser.scalar(-200, -100, -150));//0.5
      * print("q: " + NumberParser.scalar(5, 10, 7.5));//0.5
@@ -111,8 +112,8 @@ class NumberParser{
     }
     /**
      * Returns the numeric distance between two values (always positive)
-     * @example
-     * @Note doing Math.abs(b-a) instead of this method may be faster
+     * EXAMPLE:
+     * NOTE: doing Math.abs(b-a) instead of this method may be faster
      * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
      * print(distance(-5,-2));//3
      * print(distance(-5,2));//7
@@ -139,9 +140,9 @@ class NumberParser{
     }
     /**
      * Returns the number if its within min-max returns min if its lower and max if its higher
-     * @example: minMax(100, 200, 400)//Output: 200
-     * @example: minMax(500, 200, 400)//Output: 400
-     * @example: minMax(300, 200, 400)//Output: 300
+     * EXAMPLE:: minMax(100, 200, 400)//Output: 200
+     * EXAMPLE:: minMax(500, 200, 400)//Output: 400
+     * EXAMPLE:: minMax(300, 200, 400)//Output: 300
      * NOTE: a better name for this is clip(2,1,5)
      */
     static func minMax<T:Comparable>(num:T , _ min : T , _ max : T) -> T{
@@ -176,15 +177,15 @@ class NumberParser{
     }
     /**
      * Returns a constant looping number, really great when making looping slideshows
-     * @param index: the current cursor of an infinite loop
-     * @param start: the start of the loop
-     * @param end: end of the loop
-     * @return a number between @param start number and the @param end of the loop
-     * @Note take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
-     * @Note UintParser.normalize alos works well for uint values
+     * PARAM: index: the current cursor of an infinite loop
+     * PARAM: start: the start of the loop
+     * PARAM: end: end of the loop
+     * @return a number between PARAM: start number and the PARAM: end of the loop
+     * NOTE: take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
+     * NOTE: UintParser.normalize alos works well for uint values
      * // :TODO: Could be refactor to be simpler and more efficient
      * // :TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
-     * @example
+     * EXAMPLE:
      * print("test "+(NumberParser.loop(20, 0, 10)));//0
      * print("test "+(NumberParser.loop(-2, -5, 10)));//8
      */

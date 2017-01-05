@@ -61,7 +61,7 @@ class NumberAsserter{
         return abs(a - b) <= epsilon
     }
     /**
-     * @Note unlike the native "==" method this method supports NaN values
+     * NOTE: unlike the native "==" method this method supports NaN values
      */
     static func equals(a:CGFloat,_ b:CGFloat) -> Bool {
         return (a.isNaN && b.isNaN) || a == b
