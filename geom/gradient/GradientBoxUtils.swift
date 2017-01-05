@@ -3,11 +3,11 @@ import Foundation
 class GradientBoxUtils{
     /**
      * Returns the start and end of a linear gradient (that fills an exact rectangle at any angle) (aka GradientBox)
-     * @NOTE: this is a really important method concerning gradients. And its pretty well coded and easy to understand. 
-     * @NOTE: there may be faster ways to calculate this so imporve it if its necassery
+     * NOTE: this is a really important method concerning gradients. And its pretty well coded and easy to understand.
+     * NOTE: there may be faster ways to calculate this so imporve it if its necassery
      * EXAMPLE: GradientBoxUtils.points(CGRect(0,0,100,100), 45*Trig.rad) //Ouputs: 0,0 and 100,100
      */
-    class func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
+    static func points(rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
         //Swift.print("rect: " + "\(rect)")
         //Swift.print("angle: " + "\(angle)")
         //Swift.print("GradientBoxUtils.angle: " + "\(angle)")

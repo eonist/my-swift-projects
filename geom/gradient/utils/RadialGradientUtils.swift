@@ -15,12 +15,12 @@ gradient is drawn before the start circle or after the end circle.
 
 class RadialGradientUtils{
     /**
-     * @NOTE: needs better explinations
-     * @NOTE: in order to get a squashed radial gradient we need to use the transform.
-     * @NOTE: the matrix that is provided needs to be applied inorder to keep the init ratio (this matrix should be calulated when from the graphic point of view not here)
-     * @NOTE: a custom matrix is the only way to squeez the gradient.
+     * NOTE: needs better explinations
+     * NOTE: in order to get a squashed radial gradient we need to use the transform.
+     * NOTE: the matrix that is provided needs to be applied inorder to keep the init ratio (this matrix should be calulated when from the graphic point of view not here)
+     * NOTE: a custom matrix is the only way to squeez the gradient.
      */
-    class func radialGradient(boundingBox:CGRect,_ gradient:RadialGradient)->(startCenter:CGPoint,endCenter:CGPoint,startRadius:CGFloat,endRadius:CGFloat,transform:CGAffineTransform){
+    static func radialGradient(boundingBox:CGRect,_ gradient:RadialGradient)->(startCenter:CGPoint,endCenter:CGPoint,startRadius:CGFloat,endRadius:CGFloat,transform:CGAffineTransform){
         let endCenter = CGPoint(boundingBox.width/2 ,boundingBox.height/2)/*Find the center of the boundingbox, the pivot*/
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
