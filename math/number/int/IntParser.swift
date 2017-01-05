@@ -4,12 +4,12 @@ class IntParser{
      * NOTE: great for iterating int arrays
      * NOTE: can be used for looping items in an array
      * EXAMPLE:
-     * print(IntParser.normalize(3, 7));//3
-     * print(IntParser.normalize(-3, 7));//4
-     * print(IntParser.normalize(0, 7));//0
-     * print(IntParser.normalize(7, 7));//0
-     * print(IntParser.normalize(8, 7));//1
-     * print(IntParser.normalize(12, 7));//5
+     * print(IntParser.normalize(3, 7))//3
+     * print(IntParser.normalize(-3, 7))//4
+     * print(IntParser.normalize(0, 7))//0
+     * print(IntParser.normalize(7, 7))//0
+     * print(IntParser.normalize(8, 7))//1
+     * print(IntParser.normalize(12, 7))//5
      */
     static func normalize(index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
         return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
@@ -28,9 +28,9 @@ class IntParser{
         }
     }
     /**
-     * example: minMax([8, -6, 2, 109, 3, 71])//(-6,109)
-     * example: minMax([8, -6, 2, 109, 3, 71]).min //-6
-     * example: minMax([8, -6, 2, 109, 3, 71]).max //109
+     * EXAMPLE: minMax([8, -6, 2, 109, 3, 71])//(-6,109)
+     * EXAMPLE: minMax([8, -6, 2, 109, 3, 71]).min //-6
+     * EXAMPLE: minMax([8, -6, 2, 109, 3, 71]).max //109
      */
     static func minMax(array: [Int]) -> (min: Int, max: Int)? {
         if array.isEmpty { return nil }

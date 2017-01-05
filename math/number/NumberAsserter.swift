@@ -5,17 +5,18 @@ import Foundation
  */
 class NumberAsserter{
     /**
-     * @return true if number is odd
-     * 	print(NumberAsserter.odd(0));//false
-     * 	print(NumberAsserter.odd(1));//true
-     * 	print(NumberAsserter.odd(2));//false
-     * 	print(NumberAsserter.odd(3));//true
-     * 	print(NumberAsserter.odd(4));//false
+     * RETURN: true if number is odd
+     * EXAMPLE:
+     * print(NumberAsserter.odd(0));//false
+     * print(NumberAsserter.odd(1));//true
+     * print(NumberAsserter.odd(2));//false
+     * print(NumberAsserter.odd(3));//true
+     * print(NumberAsserter.odd(4));//false
      */
     static func odd(number:CGFloat)->Bool {
         return number % 2 != 0
-    //			if((number % Math.sqrt(number) == 0) || (number % 2 == 0)) return false;
-    //			else return true;
+        //if((number % Math.sqrt(number) == 0) || (number % 2 == 0)) return false;
+        //else return true;
     }
     /**
      *

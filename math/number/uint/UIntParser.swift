@@ -3,10 +3,10 @@ import Foundation
 class UIntParser {
     /**
     * Returns a normalized unsigned integer value
-    * @Note great for iterating uint arrays
-    * @Note if the @param index is the same as the @param len then 0 is returned
-    * @Note can be used for looping items in an array
-    * @example
+    * NOTE: great for iterating uint arrays
+    * NOTE: if the PARAM: index is the same as the PARAM: len then 0 is returned
+    * NOTE: can be used for looping items in an array
+    * EXAMPLE:
     * trace(UintParser.normalize(0, 4));//0
     * trace(UintParser.normalize(1, 4));//1
     * trace(UintParser.normalize(2, 4));//2
