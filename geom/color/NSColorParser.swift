@@ -40,7 +40,7 @@ class NSColorParser {
     /**
      * EXAMPLE: :NSColorParser.nsColor(NSColor.blackColor(),0.5)//outputs a black color with 50% transperancy
      */
- static func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
+    static func nsColor(color:NSColor,_ alpha:CGFloat/*from 0 to 1*/)->NSColor{
         return color.colorWithAlphaComponent(alpha)
     }
     /**
@@ -58,29 +58,29 @@ extension NSColorParser{
      * NOTE: there is no need to make a convenince method for Double values, since Double values does well with thte CGFLoat implementation of the same method
      * r: 0 - 255
      */
-    class func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
+    static func nsColor(r:Int,_ g:Int,_ b:Int,_ a:Int = 100) -> NSColor{
         return NSColorParser.nsColor(CGFloat(r) /*/ 255.0*/, CGFloat(b) /*/ 255.0*/, CGFloat(g)/* / 255.0*/, CGFloat(a)/100 /*/ 100.0*/)
     }
     /**
      * Convenince
      */
-    class func nsColor(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
+    static func nsColor(r:UInt,_ g:UInt,_ b:UInt) -> NSColor {
         return NSColorParser.nsColor(r.cgFloat, g.cgFloat, b.cgFloat)
     }
     /**
      * Convenince
      */
-    class func nsColor(hls:HLS)->NSColor {//rename to nsColorByHls ?
+    static func nsColor(hls:HLS)->NSColor {//rename to nsColorByHls ?
         //let rgb:RGB = RGBParser.rgb();
         return hls.rgb.nsColor
     }
     /**
      * Convenince
-     * @param h 0 - 240
-     * @param s 0 - 1
-     * @param v 0 - 1
+     * PARAM: h 0 - 240
+     * PARAM: s 0 - 1
+     * PARAM: v 0 - 1
      */
-    class func nsColor(hsv:HSV)->NSColor {
+    static func nsColor(hsv:HSV)->NSColor {
         //let rgb:RGB = RGBParser.rgbByHsv(color.h,color.s,color.v)
         //return NSColorParser.nsColor(rgb.r.cgFloat, rgb.g.cgFloat, rgb.b.cgFloat)
         return hsv.rgb.nsColor
