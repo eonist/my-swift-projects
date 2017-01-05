@@ -1,8 +1,8 @@
 import Foundation
 /**
- * this is basically Polygon without the fill part
+ * This is basically Polygon without the fill part
  */
-class SVGPolyLine : SVGGraphic,ISVGPolyLine{
+class SVGPolyLine:SVGGraphic,ISVGPolyLine{
     var points:Array<CGPoint>
     init(_ points:Array<CGPoint>, _ style:SVGStyle? = nil, _ id : String? = nil) {
         self.points = points
