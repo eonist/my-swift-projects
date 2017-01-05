@@ -52,7 +52,7 @@ private class Utils{
 		var colors:Array<CGColor> = []
 		var opacities:Array<CGFloat> = []
         let children:NSArray = xml.children!
-        for (var i = 0; i < xml.childCount; i++) {
+        for i in 0..<xml.childCount{
             let child:NSXMLElement = XMLParser.childAt(children, i)!
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
