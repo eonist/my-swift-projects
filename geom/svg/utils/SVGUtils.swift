@@ -5,11 +5,11 @@ import Cocoa
  */
 class SVGUtils {
 	/**
-	 * Returns svg syntax in an XML instance derived from @param svg 
-	 * @param svg (isntance of a custom SVG class that is easy to work with)
-	 * @Note for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
+	 * Returns svg syntax in an XML instance derived from PARAM: svg 
+	 * PARAM: svg (isntance of a custom SVG class that is easy to work with)
+	 * NOTE: for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
-	class func xml(svg:SVG)->XML {// :TODO: refactor to one or loop?
+	static func xml(svg:SVG)->XML {// :TODO: refactor to one or loop?
 		let xml:NSXMLElement = SVGUtils.svg(svg)
 		for (var i : Int = 0; i < svg.items.count; i++) {
 			let svgElement:ISVGElement = svg.items[i]
@@ -24,14 +24,14 @@ class SVGUtils {
 		return xml
 	}
 	/**
-	 * Returns pathData from @param path (SVGPath instance)
+	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
-	class func pathData(path:SVGPath)->String {
+	static func pathData(path:SVGPath)->String {
 		var pathData:String = ""
 		let commands:Array<String> = path.commands
 		var parameters:Array<CGFloat> = path.parameters
 		var index:Int = 0
-		for command : String in commands {
+		for command:String in commands {
 			if(command.test("[m,M,l,L,t,T]")) {
 				pathData += command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 				index += 2
@@ -58,7 +58,7 @@ class SVGUtils {
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
-	class func svg(svg:SVG)->XML {
+	static func svg(svg:SVG)->XML {
 		let xml:XML = "<?xml version=“1.0”?><svg></svg>".xml
 		xml["xmlns"] = "http://www.w3.org/2000/svg"
 		xml["x"] = svg.x.string+"px"
@@ -68,9 +68,9 @@ class SVGUtils {
 		return xml
 	}
 	/**
-	 * Returns a svg line in SVG XML notation from @param line (SVGLine)
+	 * Returns a svg line in SVG XML notation from PARAM: line (SVGLine)
 	 */
-	class func line(line:SVGLine)->XML {
+	static func line(line:SVGLine)->XML {
 		var xml:XML = "<line></line>".xml
 		xml = id(xml,line);
 		xml["x1"] = line.x1.string
@@ -81,9 +81,9 @@ class SVGUtils {
 		return xml
 	}
 	/**
-	 * Returns a svg rect in SVG XML notation from @param rect (SVGRect)
+	 * Returns a svg rect in SVG XML notation from PARAM: rect (SVGRect)
 	 */
-	 class func rect(rect:SVGRect)->XML {//@Note: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
+	 static func rect(rect:SVGRect)->XML {//NOTE:: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
 		var xml:XML = "<rect></rect>".xml
 		xml = id(xml,rect);
 		xml["x"] = rect.x.string
@@ -95,9 +95,9 @@ class SVGUtils {
 		return xml
 	 }
 	 /**
-	  * Returns an SVGPath instance in SVG XML notation from @param path (SVGPath)
+	  * Returns an SVGPath instance in SVG XML notation from PARAM: path (SVGPath)
 	  */
-	 class func path(path:SVGPath)->XML {
+	 static func path(path:SVGPath)->XML {
          var xml:XML = "<path></path>".xml
 		 xml = id(xml,path)
 		 xml["d"] = SVGUtils.pathData(path)
@@ -105,11 +105,11 @@ class SVGUtils {
 		 return xml
 	 }
 	 /**
-	  * Returns an XML instance with SVGGroup data derived from @param group
-	  * @Note: this method is recursive
+	  * Returns an XML instance with SVGGroup data derived from PARAM: group
+	  * NOTE:: this method is recursive
 	  * // :TODO: remeber groups can have style applied inline cant they?
 	  */
-	 class func group(group:SVGGroup) -> XML {
+	 static func group(group:SVGGroup) -> XML {
 		 var xml:XML = "<g></g>".xml
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
@@ -129,15 +129,15 @@ class SVGUtils {
 	  * Returns the id from a ISVG instance
 	  * // :TODO: move to an internal class
 	  */
-	 class func id(xml:NSXMLElement,_ svg:ISVGElement)->NSXMLElement {
+	 static func id(xml:NSXMLElement,_ svg:ISVGElement)->NSXMLElement {
          if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
 		 return xml;
 	 }
 	 /**
-	  * Returns an XML instance with style properties derived from @param xml
+	  * Returns an XML instance with style properties derived from PARAM: xml
 	  * // :TODO: move to an internal class
 	  */
-	 class func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
+	 static func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
         
          //this method is missing support for gradient (Get ques from the legacy SVGPropertyParser)
         

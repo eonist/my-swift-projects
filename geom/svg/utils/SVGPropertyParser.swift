@@ -17,23 +17,23 @@ class SVGPropertyParser {
 	}
 	/**
 	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
-	 * // :TODO: needs a re-write that doesnt include returning an associative array
+	 * TODO: needs a re-write that doesnt include returning an associative array
 	 */
 	static func digit(xml:NSXMLElement,_ key:String)->CGFloat{
 		let prop:Any? = property(xml, key)
-        if(prop == nil) {return CGFloat.NaN}
+        if(prop == nil) {return NaN}
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
 	}
     /**
      * NEW
      */
     static func viewBox(xml:NSXMLElement)->CGRect{
-        let prop:String? = property(xml,"viewBox");
+        let prop:String? = property(xml,"viewBox")
         if(prop != nil){
             let values:Array<CGFloat> = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
             return CGRect(values[0],values[1],values[2],values[3])
         }
-        return CGRect(CGFloat.NaN,CGFloat.NaN,CGFloat.NaN,CGFloat.NaN)
+        return CGRect(NaN,NaN,NaN,NaN)
     }
 	/**
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
@@ -43,7 +43,7 @@ class SVGPropertyParser {
 	}
 	/**
 	 * Returns an SVGStyle instance comprised of values derived from PARAM: xml and or PARAM: container, if no style data is available then default values are applied, NaN, empty string, null etc 
-	 * @Note svg styles can have fill-opacity and also opacity, opacity applies to both stroke and fill
+	 * NOTE: svg styles can have fill-opacity and also opacity, opacity applies to both stroke and fill
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	static func style(xml:NSXMLElement,_ container:ISVGContainer)->SVGStyle {
@@ -70,6 +70,6 @@ class SVGPropertyParser {
 			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
             //Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
         }
-		return style;
+		return style
 	}
 }
