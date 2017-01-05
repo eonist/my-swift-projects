@@ -1,6 +1,6 @@
 import Foundation
 /**
- * @param: transformation: we need transformation as this is the only way to achieve the squashed gradient look
+ * PARAM: transformation: we need transformation as this is the only way to achieve the squashed gradient look
  */
 public class GraphicsGradient:IGraphicsGradient{
     public var colors:Array<CGColor>

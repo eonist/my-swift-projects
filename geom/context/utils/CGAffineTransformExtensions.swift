@@ -1,9 +1,6 @@
 import Foundation
 typealias CGTransform = CGAffineTransform/*Convenience*/
 extension CGAffineTransform {
-    /**
-     *
-     */
     mutating func rotate(rotation:CGFloat){/*Convenience*/
         self = CGAffineTransformRotate(self, rotation)
     }
@@ -43,21 +40,12 @@ extension CGAffineTransform {
     static func copy(transform:CGTransform)->CGTransform{
         return CGAffineTransformParser.copy(transform)
     }
-    /**
-     *
-     */
     mutating func concat(transformation:CGTransform){
         self = CGAffineTransformParser.concat(self, transformation)
     }
-    /**
-     *
-     */
     static func concat(a:CGTransform,_ b:CGTransform)->CGTransform{
         return CGAffineTransformParser.concat(a, b)
     }
-    /**
-     *
-     */
     func copy()->CGTransform{
         return CGAffineTransformParser.copy(self)
     }

@@ -1,7 +1,5 @@
 import Foundation
-/**
- *
- */
+
 public class RadialGraphicsGradient:GraphicsGradient{
     public var startCenter:CGPoint
     public var endCenter:CGPoint
