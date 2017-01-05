@@ -48,7 +48,7 @@ class NumberParser{
     }
     /**
      * sums numbers with addition
-     * // :TODO: add an option for multiplication minus and dividens
+     * TODO: add an option for multiplication minus and dividens
      */
     static func sum(numbers:Array<Double>)->Double {
         var sum:Double = 0;
@@ -89,7 +89,7 @@ class NumberParser{
      * PARAM: start: start number
      * PARAM: end: end number
      * PARAM: progress progress between a and b
-     * @return interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
+     * Return: interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
      * NOTE: to find a scalar value i.e 50/100 = 0.5
      * EXAMPLE: scalar(0,8,4) //Output: 0.5
      * print("q: " + NumberParser.scalar(0, -100, -25));//0.25
@@ -112,9 +112,9 @@ class NumberParser{
     }
     /**
      * Returns the numeric distance between two values (always positive)
-     * EXAMPLE:
      * NOTE: doing Math.abs(b-a) instead of this method may be faster
-     * // :TODO: do a bulk test to see which is faster, then maybe deprecate this method
+     * TODO: do a bulk test to see which is faster, then maybe deprecate this method
+     * EXAMPLE:
      * print(distance(-5,-2));//3
      * print(distance(-5,2));//7
      * print(distance(5,2));//3
@@ -180,11 +180,11 @@ class NumberParser{
      * PARAM: index: the current cursor of an infinite loop
      * PARAM: start: the start of the loop
      * PARAM: end: end of the loop
-     * @return a number between PARAM: start number and the PARAM: end of the loop
+     * Return a number between PARAM: start number and the PARAM: end of the loop
      * NOTE: take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
      * NOTE: UintParser.normalize alos works well for uint values
-     * // :TODO: Could be refactor to be simpler and more efficient
-     * // :TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
+     * TODO: Could be refactor to be simpler and more efficient
+     * TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
      * EXAMPLE:
      * print("test "+(NumberParser.loop(20, 0, 10)));//0
      * print("test "+(NumberParser.loop(-2, -5, 10)));//8
