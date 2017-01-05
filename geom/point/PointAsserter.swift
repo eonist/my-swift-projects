@@ -31,21 +31,21 @@ class PointAsserter {
      * NOTE: think PARAM: p1 is to the right of PARAM: p2 or bellow PARAM: p2
      * NOTE: but both x and y cant be the same in both points
      */
-    class func more(p1:CGPoint, p2:CGPoint) -> Bool {
+static func more(p1:CGPoint, p2:CGPoint) -> Bool {
         return (p1.x >= p2.x && p1.y > p2.y) || (p1.x > p2.x && p1.y >= p2.y)
     }
     /**
      * Asserts if p1 is less than p2
      * NOTE: think PARAM: p1 is eigther to the left of PARAM: p2 AND above PARAM: p2
      */
-    class func absolutLess(p1:CGPoint, p2:CGPoint)->Bool {TODO: absolutleyLess
+    static func absolutLess(p1:CGPoint, p2:CGPoint)->Bool {TODO: absolutleyLess
         return p1.x < p2.x && p1.y < p2.y
     }
     /**
      * Asserts if p1 is more than p2
      * NOTE: think PARAM: p1 is to the right of PARAM: p2 AND bellow PARAM: p2
      */
-    class func absolutMore(p1:CGPoint, p2:CGPoint)->Bool {TODO: rename to absolutleyMore
+    static func absolutMore(p1:CGPoint, p2:CGPoint)->Bool {TODO: rename to absolutleyMore
         return p1.x > p2.x && p1.y > p2.y
     }
     /**
@@ -53,7 +53,7 @@ class PointAsserter {
      * NOTE: think PARAM: p1 is eaual or above PARAM: p2
      * NOTE: both x and y can be the same in both points
      */
-    class func lessOrEqual(p1:CGPoint, p2:CGPoint)->Bool {
+    static func lessOrEqual(p1:CGPoint, p2:CGPoint)->Bool {
         return p1.x <= p2.x && p1.y <= p2.y
     }
     /**
@@ -61,7 +61,7 @@ class PointAsserter {
      * NOTE: think PARAM: p1 is eaual or bellow PARAM: p2
      * NOTE: both x and y can be the same in both points
      */
-    class func moreOrEqual(p1:CGPoint, p2:CGPoint)->Bool {
+    static func moreOrEqual(p1:CGPoint, p2:CGPoint)->Bool {
         return p1.x >= p2.x && p1.y >= p2.y
     }
     /**
@@ -70,7 +70,7 @@ class PointAsserter {
      * NOTE: unlike the native point.equals method this method supports NaN values
      * TODO: does NaN equal NaN and what is its native behaviour
      */
-    class func equals(p1:CGPoint, _ p2:CGPoint) -> Bool {
+    static func equals(p1:CGPoint, _ p2:CGPoint) -> Bool {
         return NumberAsserter.equals(p1.x, p2.x) && NumberAsserter.equals(p1.y, p2.y)
     }
     /**
@@ -78,7 +78,7 @@ class PointAsserter {
      * NOTE: converging is when the head of each trajectory converge
      * TODO: write the math formula for this method and explaine more verbosly
      */
-    class func converging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+    static func converging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
         let p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
         let p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
         let p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
@@ -93,7 +93,7 @@ class PointAsserter {
      * TODO: collinearNormal is when both trajectories point onto each other
      * TODO: you need a term when 2 vectors are collinear but point in opposite direction, contraDirectional is the Antonym of coDirectional which is when 2 lines are paralell and pointing in the same direction
      */
-    class func diverging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
+    static func diverging(p1:CGPoint,_ p2:CGPoint,_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
         let p1A:CGPoint = CGPoint.polarPoint(100, angle1).add(p1)
         let p1B:CGPoint = CGPoint.polarPoint(100, angle1-π).add(p1)
         let p2A:CGPoint = CGPoint.polarPoint(100, angle2).add(p2)
