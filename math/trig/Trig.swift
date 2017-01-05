@@ -8,10 +8,10 @@ class Trig{
     static var cw:String = Trig.clockWise
     static var counterClockWise:String = "counterClockWise"
     static var ccw:String = Trig.counterClockWise
-    static var left:CGFloat = 180;
-    static var right:CGFloat = 0;
-    static var bottom:CGFloat = 90;
-    static var top:CGFloat = 270;//-90
+    static var left:CGFloat = 180
+    static var right:CGFloat = 0
+    static var bottom:CGFloat = 90
+    static var top:CGFloat = 270//-90
     static var rad:CGFloat = π / 180//㎭, EXAMPLE: 90*Trig.rad//Output:π/4
     static var deg:CGFloat = 180 / π//°, EXAMPLE: Trig.pi/4*Trig.deg//Output: 90
     static var qpi:CGFloat = π / 4//quarter pi (0.785)
@@ -22,10 +22,10 @@ class Trig{
     static var pi:CGFloat = π// pi (3.14)
     static var tpi:CGFloat = π / 6// 30 deg in radians, twelft
     static var dtpi:CGFloat = π / 3// 60 deg in radians, dubble twelft
-    static var t:(CGFloat, CGFloat) = (-π/4,-π*0.75);
-    static var b:(CGFloat, CGFloat) = (π/4,π*0.75);
-    static var l:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75));/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
-    static var r:(CGFloat, CGFloat) = (-π/4, π/4);
+    static var t:(CGFloat, CGFloat) = (-π/4,-π*0.75)
+    static var b:(CGFloat, CGFloat) = (π/4,π*0.75)
+    static var l:(CGFloat, CGFloat) = (Trig.normalize(π*0.75), Trig.normalize(-π*0.75))/*remember to normalize the angle to test against this value to be between 0 - PI*2*/
+    static var r:(CGFloat, CGFloat) = (-π/4, π/4)
     static var tl:(CGFloat,CGFloat) = (-π,-π/2)//(-180*㎭,-90*㎭)
     static var tr:(CGFloat,CGFloat) = (-π/2,0)//(-90*㎭,0)
     static var br:(CGFloat,CGFloat) = (0,π/2)//(0,90*㎭)
@@ -46,7 +46,6 @@ extension Trig{/*Legacy-support/convenience*/
     class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {return TrigParser.angleSpan2(a, b, isClockWise)}
     class func pointSpan2(p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {return TrigParser.pointSpan2(p1, p2, pivot, isClockWise)}
     class func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat{return TrigParser.angleBisector(a, b)}
-    
     /*Asserters*/
     class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {return TrigAsserter.isClockWise(center, p1, p2)}
     class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool { return TrigAsserter.isClockWiseByAngle(a, b) }

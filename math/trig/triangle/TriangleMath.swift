@@ -7,38 +7,38 @@ import Foundation
  * - Oblique angle: An angle, such as an acute or obtuse angle, that is not a right angle or a multiple of a right angle.
  * - A triangle can only have 1 obtuse angle angle more than 90degrees
  * - AcuteTriangle = no angle is more than 90
- * // :TODO: possibly Create TanMath, SinMath, CosMath.as classes
- * // :TODO: gte rid of the AngleMath.to_radian stuff makes the calculations look harder. do the radian conversion when testing
- * // :TODO: add area of a triangle to this class
- * @Note You need 1 side and 2 other parts to define a Triangle
- * @Note The Centroid, Circumcenter, and Orthocenter Are Collinear, (meaning they will form a line)
- * @Note Angle "A" is the lower left corner, the opposit side is "a" ("hypothenus"), Angle "B" is the top and opposite is side "b" (second longest length), Angle C is the lower right corner and oppistie is the side "c" (shortest length)
- * @Note AC is the same as Angle B, AB = C, BC = A
- * @Note there are more formulas here RightTriangleMath.as
- * @Note Median - A median in a triangle is the line segment drawn from a vertex to the midpoint of its opposite side. Every triangle has three medians. In Figure 5 , E is the midpoint
- * @Note Angle bisector - An angle bisector in a triangle is a segment drawn from a vertex that bisects (cuts in half) that vertex angle. Every triangle has three angle bisectors. In Figure 7 , is an angle bisector in Δ ABC.
- * @Note Isoceles triangle, two sides are equal, if you have the vertext angle you can find the two other angles by solving for x:  vertex-angle + 2x = 180
- * @Note cos(60deg) = 0.5
- * @Note cos(90deg) = 1
- * @Note If the three vertices of a triangle are collinear, then we have a degenerate triangle
- * @Note R: circumradius (radius of circle passing through all three vertices)
- * @Note r: inradius (radius of circle tangent to all three sides)
- * @Note Cg: center of gravity (intersection of the medians) V1 + V2 + V3 / 3
- * @Note Calt: intersection of the altitudes
+ * TODO: possibly Create TanMath, SinMath, CosMath.as classes
+ * TODO: gte rid of the AngleMath.to_radian stuff makes the calculations look harder. do the radian conversion when testing
+ * TODO: add area of a triangle to this class
+ * NOTE: You need 1 side and 2 other parts to define a Triangle
+ * NOTE: The Centroid, Circumcenter, and Orthocenter Are Collinear, (meaning they will form a line)
+ * NOTE: Angle "A" is the lower left corner, the opposit side is "a" ("hypothenus"), Angle "B" is the top and opposite is side "b" (second longest length), Angle C is the lower right corner and oppistie is the side "c" (shortest length)
+ * NOTE: AC is the same as Angle B, AB = C, BC = A
+ * NOTE: there are more formulas here RightTriangleMath.as
+ * NOTE: Median - A median in a triangle is the line segment drawn from a vertex to the midpoint of its opposite side. Every triangle has three medians. In Figure 5 , E is the midpoint
+ * NOTE: Angle bisector - An angle bisector in a triangle is a segment drawn from a vertex that bisects (cuts in half) that vertex angle. Every triangle has three angle bisectors. In Figure 7 , is an angle bisector in Δ ABC.
+ * NOTE: Isoceles triangle, two sides are equal, if you have the vertext angle you can find the two other angles by solving for x:  vertex-angle + 2x = 180
+ * NOTE: cos(60deg) = 0.5
+ * NOTE: cos(90deg) = 1
+ * NOTE: If the three vertices of a triangle are collinear, then we have a degenerate triangle
+ * NOTE: R: circumradius (radius of circle passing through all three vertices)
+ * NOTE: r: inradius (radius of circle tangent to all three sides)
+ * NOTE: Cg: center of gravity (intersection of the medians) V1 + V2 + V3 / 3
+ * NOTE: Calt: intersection of the altitudes
  */
 class TriangleMath {
     /**
      * Returns the point that can be used to bisect an angle in an triangle
-     * // :TODO: i think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
+     * TODO: i think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
      */
-    class func bisectorPoint(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
+    static func bisectorPoint(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
         let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
         return CGPoint.interpolate(p1, x, 0.5)
     }
     /**
      * PARAM: radius is the length of the extending vector (so to speak)
      */
-    class func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
+    static func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
         let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
         let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(radius,bisectorAngle)
         return bisectorPT
@@ -47,47 +47,47 @@ class TriangleMath {
      * Returns the angle bisector from a triangle construction
      * NOTE: another way to find the bisector is: Trig.angle(pivot, p1) + (Trig.difference(pivot, p1, p2))/2
      */
-    class func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
+    static func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
         let angle1:CGFloat = Trig.angle(anchor, pt1)
         let angle2:CGFloat = Trig.angle(anchor, pt2)
         return Trig.angleBisector(angle1, angle2)
     }
     /**
-     * The incenter  is the center of the incircle for a polygon or insphere for a polyhedron (when they exist). (The corresponding radius of the incircle or insphere is known as the inradius)
-     * @Note The incenter can be constructed as the intersection of angle bisectors. It is also the interior point for which distances to the sides of the triangle are equal.
-     * @Note It has trilinear coordinates 1:1:1, i.e., triangle center function
-     * @Note a characteristic is that the normal from each line to the center of the circle is the same
-     * @Note the circle will fit exactly inside the triangle
-     * @Note each line from p1,p2,p3 will hit the center of the circle (these lines are called angle bisectors)
-     * @Note Cr : incenter (center of circle tangent to all three sides)
+     * The 'in-center' is the center of the incircle for a polygon or insphere for a polyhedron (when they exist). (The corresponding radius of the incircle or insphere is known as the inradius)
+     * NOTE: The incenter can be constructed as the intersection of angle bisectors. It is also the interior point for which distances to the sides of the triangle are equal.
+     * NOTE: It has trilinear coordinates 1:1:1, i.e., triangle center function
+     * NOTE: a characteristic is that the normal from each line to the center of the circle is the same
+     * NOTE: the circle will fit exactly inside the triangle
+     * NOTE: each line from p1,p2,p3 will hit the center of the circle (these lines are called angle bisectors)
+     * NOTE: Cr : incenter (center of circle tangent to all three sides)
      * For a triangle with Cartesian vertices , , , the Cartesian coordinates of the incenter are given by:
      * Equation:
      * x = ((a*x1)+(b*x2)+(c*x3))/(a+b+c)
      * y = ((a*y1)+(b*y2)+(c*y3))/(a+b+c)
-     * @param a: side a in the triangle (Side can also be defined as AB, or the side opposite of angle BAC)
-     * @param b: side b in the triangle (Side can also be defined as AC, or the side opposite of angle ABC)
-     * @param c: side c in the triangle (Side can also be defined as BC, or the side opposite of angle ACB)
-     * @param p1: the A point in the triangle (Angle can also be defined as BAC)
-     * @param p2: The B point in the triangle (Angle can also be defined as ABC)
-     * @param p3: The C point in the triangle (Angle can also be defined as ACB)
+     * PARAM: a: side a in the triangle (Side can also be defined as AB, or the side opposite of angle BAC)
+     * PARAM: b: side b in the triangle (Side can also be defined as AC, or the side opposite of angle ABC)
+     * PARAM: c: side c in the triangle (Side can also be defined as BC, or the side opposite of angle ACB)
+     * PARAM: p1: the A point in the triangle (Angle can also be defined as BAC)
+     * PARAM: p2: The B point in the triangle (Angle can also be defined as ABC)
+     * PARAM: p3: The C point in the triangle (Angle can also be defined as ACB)
      */
-    class func inCenter(a:CGFloat, _ b:CGFloat, _ c:CGFloat,_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> CGPoint {
+    static func inCenter(a:CGFloat, _ b:CGFloat, _ c:CGFloat,_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> CGPoint {
         let x:CGFloat = ((a*p1.x)+(b*p2.x)+(c*p3.x))/(a+b+c)
         let y:CGFloat = ((a*p1.y)+(b*p2.y)+(c*p3.y))/(a+b+c)
         return CGPoint(x,y)
     }
     /**
      * Returns a point that 2 points and 2 directions converge at (think the third point in an triangle if you have 2 points and the angles)
-     * @param p1 is the equvilant to point A
-     * @param p2 is the equvilant to point B
-     * @param angleA is the angle from p1 to p3 (p3 == point C) "the outAngle of a point on a line"
-     * @param angleB is the angle from p2 to p3 "the outAngle of a point on a line"
-     * @Note the distance from p1 to p2 is the side c in a the triangle
-     * // :TODO: move to Trig.as or pointparser.as
-     * // :TODO: could we use more Vector math like formulas here? by using slopes etc
-     * // :TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
+     * PARAM: p1 is the equvilant to point A
+     * PARAM: p2 is the equvilant to point B
+     * PARAM: angleA is the angle from p1 to p3 (p3 == point C) "the outAngle of a point on a line"
+     * PARAM: angleB is the angle from p2 to p3 "the outAngle of a point on a line"
+     * NOTE: the distance from p1 to p2 is the side c in a the triangle
+     * TODO: move to Trig.as or pointparser.as
+     * TODO: could we use more Vector math like formulas here? by using slopes etc
+     * TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
      */
-    class func convergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+    static func convergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
         let A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
         //Swift.print("A: " + A)
         let B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
@@ -102,7 +102,7 @@ class TriangleMath {
         }/*p3, a is The length of side a*/
     }
     /**
-     * @Note rotates the "out-angles" to be "in-angles"
+     * NOTE: rotates the "out-angles" to be "in-angles"
      */
     static func divergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
         return convergingPoint(p1, p2, anglA + π, angleB + π)
@@ -111,7 +111,7 @@ class TriangleMath {
      * NOTE: Distance from a point to a line
      * NOTE: also called "perpendicular distance"
      */
-    class func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
+    static func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
         let angle1 = Trig.angle(p2, p)
         let angle2 = Trig.angle(p2, p1)
         let c = p2.distance(p)
@@ -139,41 +139,44 @@ class TriangleMath {
      */
     /**
      * Returns the Side a of an triangle
-     * @Note Based on formula: b/SinB = c/SinC
+     * NOTE: Based on formula: b/SinB = c/SinC
      */
-    class func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
+    static func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
     }
     /**
      * Returns the Side a of an triangle
      * Based on formula: a/SinA = c/SinC
-     * @Note uses radian instead of degree
+     * NOTE: uses radian instead of degree
      * NOTE i think this also works on non-right-angle-triangles
      */
-    class func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {// :TODO: move to trianglemath2
+    static func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {TODO: move to trianglemath2
         return sin(A) * (c / sin(C))
     }
     /**
      * Returns the Side b of an triangle
      * Based on formula: b/SinB = a/SinA
-     * @Note google right angle triangle to see where the sides and angles lay
+     * NOTE: google right angle triangle to see where the sides and angles lay
      */
-    class func aABTob(a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
+    static func aABTob(a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(B*Trig.rad) * (a / sin(A*Trig.rad))
     }
     /**
      * Returns the Side c of an triangle
      * Based on formula: c/SinC = a/SinA
-     * @Note google right angle triangle to see where the sides and angles lay
+     * NOTE: google right angle triangle to see where the sides and angles lay
      */
-    class func aACToc(a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
+    static func aACToc(a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
         return sin(C*Trig.rad) * (a / sin(A*Trig.rad))
     }
     /**
      * Returns the Side b of an triangle
-     * @Note Based on formula: b/SinB = c/SinC
+     * NOTE: Based on formula: b/SinB = c/SinC
      */
-    class func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {// :TODO: move to trianglemath2
+    static func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {TODO: move to trianglemath2
         return sin(B) * (c / sin(C))
     }
 }
+
+
+//TODO: Implement the missting methods above, see legacy code
