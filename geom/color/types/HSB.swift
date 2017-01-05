@@ -21,9 +21,9 @@ class HSB {
     var b : CGFloat;/*0-1 in reality its: 0-100*/
     /**
      *  Constructs an HSBColor with optional parameters.
-     *  @param hue The hue.
-     *  @param saturation The saturation.
-     *  @param brightness The brightness.
+     *  PARAM: hue: The hue.
+     *  PARAM: saturation: The saturation.
+     *  PARAM: brightness: The brightness.
      */
     init(_ h:CGFloat = 0,_ s:CGFloat = 0,_ b:CGFloat = 0) {
         self.h = h;
