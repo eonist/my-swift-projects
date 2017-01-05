@@ -140,8 +140,8 @@ class PointParser{
     }
     /**
      * Returns the distance between points in both the x and y axis. (unlike Point.distance which returns the diagonal distance between two points)
-     * TODO: potentially make polarAxisDistance which would potentially support any angled axis
      * NOTE: think of this method as a way of finding the horizontal and vertical distance between two points
+     * TODO: potentially make polarAxisDistance which would potentially support any angled axis
      */
     static func axisDistance(p1:CGPoint, _ p2:CGPoint)->CGPoint {
         return CGPoint(NumberParser.distance(p1.x, p2.x), NumberParser.distance(p1.y, p2.y))
@@ -213,7 +213,7 @@ class PointParser{
      * Returns a Point half way between PARAM: p1 and p2
      * Note: can also use Point.interpolate(p1,p2,0.5)
      * TODO: can you write an example just with substraction, this might be usefull and more optimized
-     * EXAMPLE (how to do it with substraction and addition)
+     * EXAMPLE: (how to do it with substraction and addition)
      * var minX:Number = Math.min(p1.x,p2.x);
      * var minY:Number = Math.min(p1.y,p2.y);
      * var maxX:Number = Math.max(p1.x,p2.x);
@@ -257,22 +257,22 @@ class PointParser{
         return CGPoint(a.x*b.x, a.y*b.y)
     }
     /**
-    * Returns the point of intersection between two lines
-    * PARAM: p1, p2 (Point) line 1 point struct
-    * PARAM: p3, p4 (Point) line 2 point struct
-    * NOTE: you can use Trigonometry to accomplish this see the Traingle classes, its basically when you have 2 angles and 1 side, since you have 2 angles you have the third aswell, then you can use sin and cos to find the point
-    * NOTE: if eigther p1 or p2 is CoLinear and within with p3 and p4 then it will yield an intersection
-    * NOTE: if line a touches the start or end of line b then it intersects
-    * NOTE: if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
-    * NOTE: you can also use convergingPoint in TriangleMath instead of intersection 
-    * TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
-    * TODO: comment this method
-    * TODO: do reasearch into vectors, slope and the intersection of vectrors
-    * TODO: this actually gave a bad result
-    * TODO: if the end of line a is equal to the end of line b then it returns a faulty result (x=0, y=NaN)
-    * TODO: doesnt handle parallel cases very well (x=0, y=NaN), do you mean paralellel or colinear?
-    * TODO: if you deal with finding the intersection on a case that makes a cross, then you can probably do a faster intersection that is also more correct, if y = y and x = x and y is within the length of b, and x is within the length of b then the intersection must be a.y and b.x etc
-    */
+     * Returns the point of intersection between two lines
+     * PARAM: p1, p2 (Point) line 1 point struct
+     * PARAM: p3, p4 (Point) line 2 point struct
+     * NOTE: you can use Trigonometry to accomplish this see the Traingle classes, its basically when you have 2 angles and 1 side, since you have 2 angles you have the third aswell, then you can use sin and cos to find the point
+     * NOTE: if eigther p1 or p2 is CoLinear and within with p3 and p4 then it will yield an intersection
+     * NOTE: if line a touches the start or end of line b then it intersects
+     * NOTE: if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
+     * NOTE: you can also use convergingPoint in TriangleMath instead of intersection 
+     * TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
+     * TODO: comment this method
+     * TODO: do reasearch into vectors, slope and the intersection of vectrors
+     * TODO: this actually gave a bad result
+     * TODO: if the end of line a is equal to the end of line b then it returns a faulty result (x=0, y=NaN)
+     * TODO: doesnt handle parallel cases very well (x=0, y=NaN), do you mean paralellel or colinear?
+     * TODO: if you deal with finding the intersection on a case that makes a cross, then you can probably do a faster intersection that is also more correct, if y = y and x = x and y is within the length of b, and x is within the length of b then the intersection must be a.y and b.x etc
+     */
     static func intersection(p1:CGPoint, _ p2:CGPoint, _ p3:CGPoint, _ p4:CGPoint) -> CGPoint {
         let x1:CGFloat = p1.x
         let y1:CGFloat = p1.y
