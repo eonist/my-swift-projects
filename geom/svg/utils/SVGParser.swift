@@ -4,7 +4,7 @@ import Foundation
  * // :TODO: impliment xmlns:xlink,viewBox,enable-background,xml:space,
  * //preserveAspectRatio="xMinYMin meet"
  * //viewBox="0 0 90 90"
- * @example
+ * EXAMPLE:
  * <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="768px" height="768px">
  * 		<rect x="64" y="64" fill="#0000FF" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
  * </svg>
@@ -13,7 +13,7 @@ import Foundation
 class SVGParser {
     /**
      * Returns an SVGDoc instance derived from @param xml
-     * @Note the regular expression removes the PX suffix
+     * NOTE: the regular expression removes the PX suffix
      */
     static func svg(xml:XML)->SVG {
         let viewBox:CGRect = SVGPropertyParser.viewBox(xml)//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
@@ -37,16 +37,16 @@ class SVGParser {
     }
     /**
      * Returns An ISVG instance or SVGLinearGradient instance (For now, in the future other types will be added)
-     * @Note: SVGParser.group uses this method to create elements from xml, and adds the group style to its decendants
-     * // :TODO: Not sure what the purpose of this method is
-     * // :TODO: add Radial gradient support
-     * // :TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
+     * NOTE: SVGParser.group uses this method to create elements from xml, and adds the group style to its decendants
+     * TODO: Not sure what the purpose of this method is
+     * TODO: add Radial gradient support
+     * TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
     static func element(xml:XML,_ container:ISVGContainer)->ISVGElement? {
         var element:ISVGElement?
         let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if(container is SVGGroup && (container as! SVGGroup).style != nil) {SVGStyleModifier.merge(style, (container as! SVGGroup).style!)}/*parent style is inherited down to sub elements*/
-        let id:String = SVGPropertyParser.id(xml);
+        let id:String = SVGPropertyParser.id(xml)
         switch(xml.localName!){
             case SVGConstants.rect: element = rect(xml,style,id)
             case SVGConstants.polyLine: element =  polyLine(xml,style,id)!
@@ -64,8 +64,8 @@ class SVGParser {
     }
     /**
      * Returns a Group instance comprised of svg elements derived from @param xml
-     * @param xml (<g id="whiskers"></g>)
-     * // :TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
+     * PARAM: xml (<g id="whiskers"></g>)
+     * TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
     static func group(xml:NSXMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id);
