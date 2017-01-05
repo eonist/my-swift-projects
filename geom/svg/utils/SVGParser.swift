@@ -137,7 +137,11 @@ class SVGParser {
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
         //print("SVGPArser.polygon() parameters: " + "\(parameters)");
-        for (var i:Int = 0; i < parameters.count; i+=2) {//TODO: to upgrade this line to wift 3.0 requires some research, stride comes to mind
+        
+         
+        
+        
+        for i in 0.stride(to: parameters.count, by: 2) {/*this line was upgraded to wift 3.0, should work in all cases*/
             points.append(CGPoint(parameters[i],parameters[i+1]))
         }
 		//print("SVGPArser.polygon() points: " + "\(points)");
