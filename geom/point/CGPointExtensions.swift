@@ -1,23 +1,23 @@
 import Foundation
 /*Class methods:*/
 extension CGPoint{
-    static func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {/*convenience*/
+    static func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint {/*Convenience*/
         return PointParser.polar(radius, angle)
     }
-    static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{/*convenience*/
+    static func distance(a:CGPoint, _ b:CGPoint) -> CGFloat{/*Convenience*/
         return PointParser.distance(a,b)
     }
-    static func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat) -> CGPoint{/*convenience*/
+    static func interpolate(a:CGPoint, _ b:CGPoint, _ scalar:CGFloat) -> CGPoint{/*Convenience*/
         return PointParser.interpolate(a,b, scalar)
     }
 }
 /*Convenient extensions*/
 extension CGPoint{
-    /*initiaters*/
+    /*Initiaters*/
     init(_ x: Double, _ y:Double) { self.x = CGFloat(x); self.y = CGFloat(y); }/*Init a CGPoint with Double values*/
     init(_ x: Int, _ y:Int) {self.x = CGFloat(x);self.y = CGFloat(y); }/*Init a CGPoint with Int values*/
     init(_ x: CGFloat, _ y:CGFloat) { self.x = x;self.y = y;}/*Init a CGPoint with CGFloat values (this method differes from the default by omitting the required argument names)*/
-    /*parsers*/
+    /*Parsers*/
     func distance(p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
     func polarPoint(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
     //func polar(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return polarPoint(radius, angle) }//convenience and legacy support
@@ -28,7 +28,7 @@ extension CGPoint{
     func subtract(p:CGPoint) -> CGPoint {return PointParser.subtract(self, p)}
     func multiply(p:CGPoint) -> CGPoint {return PointParser.multiply(self, p)}
     func divide(p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
-    /*asserters*/
+    /*Asserters*/
     func equals(p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
 }
 /*Convenient operators*/
