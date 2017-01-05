@@ -7,7 +7,7 @@ class Algebra{
 	 * EXAMPLE: Algebra.quadratic(0.5, 6, -68));//7.114877048604001
 	 */
 	static func quadratic(a:CGFloat,_ b:CGFloat,_ c:CGFloat)->CGFloat {
-		var numerator:CGFloat = -b+Math.sqrt(b*b-4*a*c)
+		var numerator:CGFloat = -b+sqrt(b*b-4*a*c)
 		var denominator:CGFloat = 2*a
 		return numerator/denominator/*fraction*/
 	}
