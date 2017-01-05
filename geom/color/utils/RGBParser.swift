@@ -4,19 +4,19 @@ class RGBParser {
     /**
      * EXAMPLE: rgb(NSColor.redColor()).r//Outputs //255.0
      */
-    class func rgb(nsColor:NSColor)->RGB{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
+    static func rgb(nsColor:NSColor)->RGB{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
         return RGB(ciColor.red*255,ciColor.green*255,ciColor.blue*255)
     }
     /**
      *  Converts an HSB color specified by the parameters to a uint RGB color.
-     *  @param hue The hue. 0-360
-     *  @param saturation The saturation. 0-1
-     *  @param brightness The brightness. 0-1
-     *  @return An RGB color.
-     *  @Example: rgbByHue(360,1,1);//0xFF0000
+     *  PARAM: hue The hue. 0-360
+     *  PARAM: saturation The saturation. 0-1
+     *  PARAM: brightness The brightness. 0-1
+     *  RETURN: An RGB color.
+     *  EXAMPLE: rgbByHue(360,1,1);//0xFF0000
      */
-    class func rgb(hsb:HSB)->RGB {
+    static func rgb(hsb:HSB)->RGB {
         let hue:CGFloat = hsb.h*360; let saturation:CGFloat = hsb.s; let brightness:CGFloat = hsb.b;
         var r:CGFloat 
         var g:CGFloat 
@@ -72,12 +72,12 @@ class RGBParser {
     }
     /**
      * You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
-     * @param h h = 145;   //  0-240
-     * @param l l = 100;   //  0-240
-     * @param s = 120;   //  0-240
-     * @example trace(rgbByHls(h,l,s)["r"])//0-255;
+     * PARAM: h h = 145;   //  0-240
+     * PARAM: l l = 100;   //  0-240
+     * PARAM: s = 120;   //  0-240
+     * EXAMPLE: trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    class func rgb(hls:HLS)->RGB {
+    static func rgb(hls:HLS)->RGB {
         var h:CGFloat = hls.h; var l:CGFloat = hls.l; var s:CGFloat = hls.s;
         var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
         if(s == 0) {
@@ -111,9 +111,9 @@ class RGBParser {
         return RGB(r,g,b)
     }
     /**
-     * @Note untested
+     * NOTE: untested
      */
-    class func rgb(hsv:HSV) -> RGB{
+    static func rgb(hsv:HSV) -> RGB{
         let h:CGFloat = hsv.h; let s:CGFloat = hsv.s; let v:CGFloat = hsv.v;
         let hi:Int = Int(floor(h / 60) % 6)//the casting to int part is new
         let f:CGFloat = h / 60 - floor(h / 60)
@@ -140,7 +140,7 @@ class RGBParser {
      * Y - number between 0 to 255 representing yellow
      * K - number between 0 to 255 representing black
      **/
-    class func rgb(cmyk:CMYK) -> RGB{
+    static func rgb(cmyk:CMYK) -> RGB{
         var c:CGFloat = cmyk.c; var m:CGFloat = cmyk.m; var y:CGFloat = cmyk.y; var k:CGFloat = cmyk.k;
         c = 255 - c
         m = 255 - m
@@ -149,9 +149,9 @@ class RGBParser {
         return RGB((255 - c) * (255 - k) / 255,(255 - m) * (255 - k) / 255,((255 - y) * (255 - k) / 255))
     }
     /**
-     * @Note this is approximate but close enough
+     * NOTE: this is approximate but close enough
      */
-     class func rgb2(cmyk:CMYK) -> RGB {
+     static func rgb2(cmyk:CMYK) -> RGB {
         let c:CGFloat = cmyk.c; let m:CGFloat = cmyk.m; let y:CGFloat = cmyk.y; let k:CGFloat = cmyk.k;
         var r:CGFloat = 255 - (round (2.55 * (c + k)))
         var g:CGFloat = 255 - (round (2.55 * (m + k)))
@@ -163,15 +163,15 @@ class RGBParser {
     }
     /**
      * Converts a 24-bit RGB color value into an RGB object.
-     * @param color: The 24-bit RGB color value.
-     * @return Returns an object with the properties r, g, and b defined.
-     * @example
+     * PARAM: color: The 24-bit RGB color value.
+     * RETURN: an object with the properties r, g, and b defined.
+     * EXAMPLE:
      * var myRGB:Object = rbg24(0xFF00FF);
      * print("Red = " + myRGB.r);
      * print("Green = " + myRGB.g);
      * print("Blue = " + myRGB.b);
      */
-    class func rbg24(hexColor:UInt) -> RGB{
+    static func rbg24(hexColor:UInt) -> RGB{
         let r = hexColor >> 16 & 0xFF
         let g = hexColor >> 8 & 0xFF
         let b = hexColor & 0xFF

@@ -27,9 +27,9 @@ class RGBAParser {
     }
     /**
      * Converts a 32-bit ARGB color value into an ARGB object.
-     * @param color: The 32-bit ARGB color value.
-     * @return Returns an object with the properties a, r, g, and b defined.
-     * @example
+     * PARAM: color: The 32-bit ARGB color value.
+     * RETURN: an object with the properties a, r, g, and b defined.
+     * EXAMPLE:
      * var rgb:RGB = rgba(0xFF00FFCC)
      * print("Alpha = " + myRGB.a)
      * print("Red = " + myRGB.r)
