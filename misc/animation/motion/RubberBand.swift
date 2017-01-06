@@ -103,7 +103,7 @@ private class CustomFriction{//creates the displacement friction effect. Like yo
      * NOTE: the vertical limit is the point where the value almost doesn't move at all
      * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
      */
-    class func constraintValueWithLog(value : CGFloat, _ limit:CGFloat) -> CGFloat {
+    static func constraintValueWithLog(value : CGFloat, _ limit:CGFloat) -> CGFloat {
         let multiplier = log10(1.0 + value/limit)
         //Swift.print("multiplier: " + "\(multiplier)" + " yPosition: " + "\(yPosition)")
         return limit * multiplier
@@ -111,7 +111,7 @@ private class CustomFriction{//creates the displacement friction effect. Like yo
     /**
      * NOTE: If you decrease the decimal variable you increase the friction effect
      */
-    class func constraintValue(value : CGFloat, _ limit:CGFloat) -> CGFloat {
+    static func constraintValue(value : CGFloat, _ limit:CGFloat) -> CGFloat {
         let multiplier = 0.2 * (value/limit)
         return limit * multiplier
     }
