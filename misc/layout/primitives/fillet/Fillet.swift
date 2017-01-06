@@ -1,6 +1,6 @@
 import Foundation
 /**
- * Fillet is a class that represents the curved corners of a rectangle (DataContainer, Bean style class)
+ * Fillet is a class that represents the curved corners of a rectangle (DataContainer, Bean style class, candidate for struct?->do pro/con research first)
  * TODO: refactor to be TRBL or?
  * TODO: this should probably use GEnerics, to get rid of the casting, research this
  * NOTE: the double init setup was needed in order to support passig in int values and then have them be converted to CGFloat
