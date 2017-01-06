@@ -32,7 +32,7 @@ class ClassParser {
     }
     /**
      * Not tested
-     * Note: there is a good example of this in LayoutUtils.swift
+     * NOTE: there is a good example of this in LayoutUtils.swift
      * EXAMPLE: 
      * protocol ILayout{ init(_ a:String)}
      * class A:ILayout{required init(_ a:String)}
