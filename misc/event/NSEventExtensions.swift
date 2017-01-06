@@ -13,7 +13,7 @@ extension NSEvent {
     var altKey:Bool {return self.modifierFlags.contains(.AlternateKeyMask)}/*Convenience*/
     var ctrlKey:Bool {return self.modifierFlags.contains(.ControlKeyMask)}/*Convenience*/
     //Bonus: There is also FunctionKeyMask
-    class func cmdKey()->Bool{/*Convenience*/
+    static func cmdKey()->Bool{/*Convenience*/
         return NSEvent.modifierFlags().contains(.ShiftKeyMask)
     }
 }

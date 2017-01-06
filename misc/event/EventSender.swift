@@ -1,6 +1,6 @@
 import Foundation
 /**
- * NOTE: if you hi-jack an event its possible to forward the original event to the instance onEvent so that it may continue its propegation
+ * NOTE: if you "hi-jack" an event its possible to forward the original event to the instance onEvent so that it may continue its propegation
  * NOTE: you can also create eventHandelers inside nested methods. (unlike postEvent which cant do this)
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
  */

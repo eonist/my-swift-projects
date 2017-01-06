@@ -14,7 +14,6 @@ class MouseEvent:Event{
     static var exit:String = "mouseEventExit"
     weak var event:NSEvent?
     /*var pos:CGPoint*/
-    
     init(_ event:NSEvent/*_ type:String, *//*_ pos:CGPoint, */, _ origin:NSView/*, _ immediate:AnyObject*/){
         /*self.pos = pos*/
         self.event = event
