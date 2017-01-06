@@ -20,7 +20,7 @@ class Friction:Mover{
         velocity *= frictionStrength;
         velocity *= slowDownFriction;/*ad-hock way to slow things down outside normal friction*/
     }
-    /*
+    /**
      * Basically stops listening for the onFrame event
      */
     func checkForStop() {
@@ -29,6 +29,6 @@ class Friction:Mover{
             Swift.print("stop")
             hasStopped = true
         }
-        lastValue = value;
+        lastValue = value
     }
 }
