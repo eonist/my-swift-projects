@@ -201,11 +201,11 @@ class PointParser{
     static func median(points:Array<CGPoint>) -> CGPoint{
         var median:CGPoint = CGPoint()
         for point:CGPoint in points {
-            median.x += point.xTODO: possibly use point.add?, you can also just do median += point here
+            median.x += point.x//TODO: possibly use point.add?, you can also just do median += point here
             median.y += point.y
         }
         let numOfPoints:Int = points.count
-        median.x /= numOfPoints.cgFloatTODO: possibly use point.divide or similar utility function?
+        median.x /= numOfPoints.cgFloat//TODO: possibly use point.divide or similar utility function?
         median.y /= numOfPoints.cgFloat
         return median
     }
@@ -283,7 +283,7 @@ class PointParser{
         let dx2:CGFloat = p3.x - x4
         Swift.print("dx2: " + "\(dx2)")
         var p:CGPoint = CGPoint()
-        if (dx1 == 0 || dx2 == 0){TODO: not 0 or what?
+        if (dx1 == 0 || dx2 == 0){//TODO: not 0 or what?
             print("case a");
             p.x = 0
             p.y = 0
@@ -291,7 +291,7 @@ class PointParser{
         }
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
-        if (dx1 == 0){TODO: not 0 or what?
+        if (dx1 == 0){//TODO: not 0 or what?
             print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
