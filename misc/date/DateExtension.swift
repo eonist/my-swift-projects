@@ -17,7 +17,7 @@ extension NSDate {
     /**
      * beta
      */
-    var numOfDaysInMonth : Int{
+    var numOfDaysInMonth:Int{
         //parts to NSDate:
         let cal = NSCalendar.currentCalendar()
         let days:NSRange = cal.rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: self)

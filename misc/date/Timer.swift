@@ -3,10 +3,10 @@ import CoreGraphics
 import Darwin
 import Foundation
 /**
+ * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow) 
  * EXAMPLE: var timer = Timer(0.5,true,self,"update")
  * timer!.start()
  * func update() {Swift.print("tick")}//method must be in the public or scope
- * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow) 
  */
 class Timer {
     var timer:NSTimer?
@@ -35,6 +35,8 @@ class Timer {
     }
 }
 
-/*init(_ timeInterval:NSTimeInterval,_ target:AnyObject,_ aSelector:ObjectiveC.Selector,_ userInfo:AnyObject?,_ repeats:Bool ){
-super.init(timeInterval: timeInterval, target: target, selector: aSelector, userInfo: userInfo, repeats: repeats)
-}*/
+/*
+init(_ timeInterval:NSTimeInterval,_ target:AnyObject,_ aSelector:ObjectiveC.Selector,_ userInfo:AnyObject?,_ repeats:Bool ){
+    super.init(timeInterval: timeInterval, target: target, selector: aSelector, userInfo: userInfo, repeats: repeats)
+}
+*/
