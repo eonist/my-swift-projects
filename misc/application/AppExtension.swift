@@ -5,27 +5,27 @@ extension NSApplication{
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
-    class var focusedWin:NSWindow? {
+    static var focusedWin:NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})
     }
     /**
      * Returns the front most window in the NSApplication.windows array
      */
-    class var frontMostWin:NSWindow? {
+    static var frontMostWin:NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFrontmost()})!
     }
     /**
      * Returns the first window that is main in the NSApplication.windows array
      * NOTE: you can probably also use the NSApplication.mainWindow call instead of this method
      */
-    class var mainWin:NSWindow? {
+    static var mainWin:NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityMain()})!
     }
     /**
      * Returns the first window that is selected in the NSApplication.windows array
      * NOTE: you can probably also use the NSApplication.mainWindow call instead of this method
      */
-    class var selectedWin:NSWindow? {
+    static var selectedWin:NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilitySelected()})!
     }
 }

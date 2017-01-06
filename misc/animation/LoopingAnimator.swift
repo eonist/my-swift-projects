@@ -6,7 +6,7 @@ import Foundation
  * PARAM: callBack: is the callback ref that is called on every "frame tick"
  */
 class LoopingAnimator:Animator{
-    var repeatCount:Int//<--zero means infinite
+    var repeatCount:Int/*<--zero means infinite*/
     var curRepeatCount:Int = 0
     init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.repeatCount = repeatCount
