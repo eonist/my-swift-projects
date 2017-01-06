@@ -3,13 +3,13 @@ class CGRectAsserter {
     /**
      *
      */
-    struct func containsOrIntersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
+    static func containsOrIntersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
         return containsLine(rectangle, line) || intersectsLine(rectangle, line)
     }
     /**
      * Asserts if PARAM: rectangle contains the line PARAM: p1 to PARAM: p2
      */
-    struct func containsLine(rectangle:CGRect,_ line:Line) -> Bool {
+    static func containsLine(rectangle:CGRect,_ line:Line) -> Bool {
         return rectangle.contains(line.p1) && rectangle.contains(line.p2)
     }
     /**
@@ -18,7 +18,7 @@ class CGRectAsserter {
      * NOTE: the for loop does not call RectangleParser.sides more than once
      * EXAMPLE: RectangleAsserter.intersectsLine(CGRect(200,200,500,500),PrimitiveLine(CGPoint(0,0), CGPoint(60,60)));//false
      */
-    struct func intersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
+    static func intersectsLine(rectangle:CGRect,_ line:Line) -> Bool {
         for side:Line in CGRectParser.sides(rectangle) {if(LineAsserter.intersects(side, line)) {return true}}
         return false
     }

@@ -38,14 +38,14 @@ static func more(p1:CGPoint, p2:CGPoint) -> Bool {
      * Asserts if p1 is less than p2
      * NOTE: think PARAM: p1 is eigther to the left of PARAM: p2 AND above PARAM: p2
      */
-    static func absolutLess(p1:CGPoint, p2:CGPoint)->Bool {TODO: absolutleyLess
+    static func absolutLess(p1:CGPoint, p2:CGPoint)->Bool {//TODO: absolutleyLess
         return p1.x < p2.x && p1.y < p2.y
     }
     /**
      * Asserts if p1 is more than p2
      * NOTE: think PARAM: p1 is to the right of PARAM: p2 AND bellow PARAM: p2
      */
-    static func absolutMore(p1:CGPoint, p2:CGPoint)->Bool {TODO: rename to absolutleyMore
+    static func absolutMore(p1:CGPoint, p2:CGPoint)->Bool {//TODO: rename to absolutleyMore
         return p1.x > p2.x && p1.y > p2.y
     }
     /**
@@ -113,7 +113,7 @@ static func more(p1:CGPoint, p2:CGPoint) -> Bool {
         //print("angleA: " + angleA)
         let angleB:CGFloat = Trig.angle(bP1,bP2)
         //print("angleB: " + angleB)
-        return Trig.isOppositeDirectional(bisectorAngle, angleA, angleB)TODO: we could do the asserting with slope instead of trig, just consider infinity and -infinity and NaN as results of slope
+        return Trig.isOppositeDirectional(bisectorAngle, angleA, angleB)//TODO: we could do the asserting with slope instead of trig, just consider infinity and -infinity and NaN as results of slope
     }
     /**
      * Asserts if two lines intersects (p1 and p2 is line1, p3 and p4 is line2)
@@ -139,7 +139,7 @@ static func more(p1:CGPoint, p2:CGPoint) -> Bool {
      * NOTE: if two of the points are equals, then this method may not work, better assert for equals before utilizing this method
      * TODO: if two points are equal then the three are colliinear actually
      */
-    static func collinear(p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {TODO: rename to is..., depricate and link, or not?!?!
+    static func collinear(p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {//TODO: rename to is..., depricate and link, or not?!?!
         //print("p1: " + p1)
         //print("p2: " + p2)
         //print("p3: " + p3)

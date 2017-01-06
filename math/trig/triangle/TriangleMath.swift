@@ -150,7 +150,7 @@ class TriangleMath {
      * NOTE: uses radian instead of degree
      * NOTE i think this also works on non-right-angle-triangles
      */
-    static func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {TODO: move to trianglemath2
+    static func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {//TODO: move to trianglemath2
         return sin(A) * (c / sin(C))
     }
     /**
@@ -173,7 +173,7 @@ class TriangleMath {
      * Returns the Side b of an triangle
      * NOTE: Based on formula: b/SinB = c/SinC
      */
-    static func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {TODO: move to trianglemath2
+    static func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {//TODO: move to trianglemath2
         return sin(B) * (c / sin(C))
     }
 }
