@@ -1,7 +1,5 @@
 import Cocoa
 
-//Continue here: all is working, now fix the bug in reflection where Array<Any> isn't parsed correctly.
-
 class UnWrapUtils{
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:

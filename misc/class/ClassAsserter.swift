@@ -1,10 +1,7 @@
 import Foundation
-
-
-
-/*If you write this in xcode: object_isClass and then cmd click it, you will find alot more methods like it*/
-
-
+/**
+ * NOTE: If you write this in xcode: object_isClass and then cmd click it, you will find alot more methods like it
+ */
 class ClassAsserter{
     /**
      * Returns true if any of @param instances is of class @param classType
@@ -16,11 +13,13 @@ class ClassAsserter{
      * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
      * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
      */
-    class func ofType<T>(instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
+    static func ofType<T>(instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
         return instance as? T != nil
     }
 	/**
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
+     * NOTE: beware of isKindOfClass vs isMemberOfClass
+     * NOTE: this works: layer.isKindOfClass(CALayer.self)//true /*Remeber that the instance must extend NSObject*/
      * CAUTION: doesnt work well with Double,String etc
      * IMPORTANT: doesnt work with protocols yet, do protocols as the example bellow:
      * EXAMPLE: 
@@ -31,16 +30,14 @@ class ClassAsserter{
      * object.dynamicType is A.Type//true
      * object.dynamicType is B.Type//false
      * object.dynamicType is Decoratable.Type//true
-     * NOTE: beware of isKindOfClass vs isMemberOfClass
-     * NOTE: this works: layer.isKindOfClass(CALayer.self)//true /*Remeber that the instance must extend NSObject*/
 	 */
-    class func isOfClassType(obj:AnyObject,_ classType:AnyClass)->Bool{
+    static func isOfClassType(obj:AnyObject,_ classType:AnyClass)->Bool{
         return obj.isMemberOfClass(classType)
     }
     /**
      * Alternative to the above
      */
-    class func isOfClassType2(obj:AnyObject, _ classType:AnyClass?, _ protocolType:AnyObject? = nil/**/)->Bool? {
+    static func isOfClassType2(obj:AnyObject, _ classType:AnyClass?, _ protocolType:AnyObject? = nil/**/)->Bool? {
         return object_getClass(obj) == classType!
     }
     /**
@@ -52,16 +49,16 @@ class ClassAsserter{
      * EXAMPLE: isOfSame(SomeClass.self,SomeClass())//true
      * CAUTION: currently checking against protocols isnt supported
      */
-    class func isOfSame(a: AnyObject, _ b: AnyObject) -> Bool {
+    static func isOfSame(a: AnyObject, _ b: AnyObject) -> Bool {
         return object_getClassName(a) == object_getClassName(b)
     }
     /**
      * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true (this does not work if you add that line of text inside a method)
-     * Note: protocol_conformsToProtocol(a,b) also exist
+     * NOTE: protocol_conformsToProtocol(a,b) also exist
      * NOTE: // Works, but seems hackish as it reverts to string comparison NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
      * TODO: needs example, cant get this to work easily
      */
-    class func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
+    static func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)
     }
     /**
@@ -72,7 +69,7 @@ class ClassAsserter{
      * ClassAsserter(A.self)//true
      * ClassAsserter(I.self)//false
      */
-    class func isClass<T>(classType:T.Type)->Bool{
+    static func isClass<T>(classType:T.Type)->Bool{
         return classType is AnyClass
     }
 }

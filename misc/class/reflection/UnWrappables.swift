@@ -104,7 +104,6 @@ extension StyleProperty:UnWrappable{
         return StyleProperty(name,value,depth) as? T
     }
 }
-
 extension Selector:UnWrappable{
     /**
      * Converts xml to a Selector instance
@@ -121,7 +120,6 @@ extension Selector:UnWrappable{
         return Selector(element,classIds.flatMap{$0},id,states.flatMap{$0}) as? T
     }
 }
-
 extension Style:UnWrappable{
     /**
      * Converts xml to a Style instance
@@ -136,7 +134,6 @@ extension Style:UnWrappable{
         return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
     }
 }
-
 /*
 old code:
 
@@ -154,4 +151,3 @@ default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)
 }
 
 */
-
