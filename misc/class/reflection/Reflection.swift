@@ -78,7 +78,7 @@ private class Utils{
      * NOTE: We keep the common code here, for array you pass "item", don't implement it yet until its tested
      * NOTE: handleDict and handleValue should use this method, handleArray will use it in the future
      */
-    class func handleProperty(inout xml:XML, _ label:String, _ value:Any){
+    static func handleProperty(inout xml:XML, _ label:String, _ value:Any){
         if (value is AnyArray){/*array*/
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
@@ -187,7 +187,7 @@ private class Utils{
     /**
      * Handles individual Dictionary items
      */
-    class func dictionaryItem(value:Any) -> XML{
+    static func dictionaryItem(value:Any) -> XML{
         var xml = XML()
         //Swift.print("create xml")
         xml.name = "item"
