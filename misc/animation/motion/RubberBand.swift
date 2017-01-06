@@ -1,8 +1,7 @@
 import Cocoa
 /**
  * NOTE: this rubberBand tween is cheating a bit. The perfect way to implement this would be to add a half circle easing curve
- * NOTE: I think essentialy this is a SpringSolver. YOu can find an example of the SpringSolver in books and also in facebook pop
- * TODO: move these classes into the motion folder in swift-utils
+ * NOTE: I think essentialy this is a SpringSolver. You can find an example of the SpringSolver in books and also in facebook pop
  * PARAM: frame: represents the visible part of the content //TODO: could be ranmed to maskRect
  * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
  */
