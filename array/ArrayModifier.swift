@@ -169,6 +169,17 @@ class ArrayModifier{
         return array
     }
     /**
+     * NOTE: apple provides a native method aswell: [1,2,3].removeAll().count//0
+     * EXAMPLE:
+     * var arr = ["a","b","c","d","e","f","g","h","i","j"]
+     * ArrayModifier.removeAll(arr).count//0
+     */
+    static func removeAll<T>(inout arr:Array<T>)->Array<T>{
+        arr.forEach{_ in
+            arr.removeLast()//removeFirst() also works
+        }
+    }
+    /**
      * Returns @param array with out the items in @param these by the @param key
      * @example print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
