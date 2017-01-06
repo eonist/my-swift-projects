@@ -30,7 +30,7 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
-     * PARAM object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
+     * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
      * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
      * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
@@ -39,7 +39,7 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
         super.init()
     }
 }
-/*parser*/
+/*Parser*/
 extension DataProvider{
     var count:Int{return self.items.count}/*convenience*/
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/

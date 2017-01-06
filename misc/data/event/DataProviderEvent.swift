@@ -1,6 +1,6 @@
 import Foundation
 /**
- * NOTE: we don't add items here, we get access to items from the DataProvider instance instead.
+ * NOTE: We don't add items here, we get access to items from the DataProvider instance instead
  */
 class DataProviderEvent:Event{
     static var add:String = "add"
