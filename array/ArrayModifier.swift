@@ -178,6 +178,7 @@ class ArrayModifier{
         arr.forEach{_ in
             arr.removeLast()//removeFirst() also works
         }
+        return arr
     }
     /**
      * Returns @param array with out the items in @param these by the @param key
