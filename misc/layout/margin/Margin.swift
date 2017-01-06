@@ -1,5 +1,4 @@
 import Foundation
-
 /**
  * EXAMPLE: Margin(CGFloat(2)).top//2
  * EXAMPLE: Margin([CGFloat(3)]).top//3
