@@ -1,5 +1,5 @@
 import Foundation
-protocol IPositional:class {//<--new extends class
+protocol IPositional:class {//<--new extends class makes it castable w/o creating a copy -> struct has issues with casting etc...
     /*pos was recently moved to the extension since it isn't needed as a variable in the protocol*/
     func setPosition(position:CGPoint)
     func getPosition() -> CGPoint
