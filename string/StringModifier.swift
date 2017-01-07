@@ -92,7 +92,7 @@ class StringModifier{
         return string.uppercaseString
     }
     /*
-     * Returns @param string with the first character capitalizesed, 
+     * Returns PARAM: string with the first character capitalizesed, 
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      */
     static func capFirstChar(str:String)->String{
@@ -132,7 +132,7 @@ class StringModifier{
         return a
     }
     /**
-     * Returns a new string that has that has a section of its text replaced with @param b, the section is from @param start to @param end
+     * Returns a new string that has that has a section of its text replaced with PARAM: b, the section is from PARAM: start to PARAM: end
      * EXAMPLE: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
      * TODO: probably use inout
      */
@@ -149,10 +149,10 @@ class StringModifier{
         ObjectModifier.swapObjects(&a, &b)
     }
     /**
-     * Trims all whitespace from left and right of @param str
-     * @NOTE: the original string is not modified
-     * Example: trimWhiteSpace("    Let's trim the whitespace    ")//"Let's trim the whitespace"
-     * @NOTE: you can also use: NSCharacterSet.whitespaceAndNewlineCharacterSet()
+     * Trims all whitespace from left and right of PARAM: str
+     * NOTE: the original string is not modified
+     * NOTE: you can also use: NSCharacterSet.whitespaceAndNewlineCharacterSet()
+     * EXAMPLE: trimWhiteSpace("    Let's trim the whitespace    ")//"Let's trim the whitespace"
      */
     static func trimWhiteSpace(str:String)->String{
         return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())

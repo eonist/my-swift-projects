@@ -12,8 +12,8 @@ class StringParser{
     }
     /**
      * Returns dencode text (unescaped)
-     * CAUTION: if your string has the % sign. Then a suggestion is to encode it first
      * NOTE: this could also be done by creating a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
+     * CAUTION: if your string has the % sign. Then a suggestion is to encode it first
      * Example: decode(%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg)--<image location:files/img/image.jpg
      * EXAMPLE: "testing%20this%20stuff.121".decode//testing this stuff.121
      */
@@ -71,7 +71,7 @@ class StringParser{
     }
     /**
      * Returns an array comprised of two strings that is the result of splitting the @param str
-     * splitAt("Hello, playground",5)//["hello"," playground"]
+     * EXAMPLE: splitAt("Hello, playground",5)//["hello"," playground"]
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
 	static func splitAt(str:String, _ index:Int)->Array<String> {
@@ -94,7 +94,7 @@ class StringParser{
     }
     /**
      * Returns str sans the first char
-     * @Note does not modify the original string
+     * NOTE: does not modify the original string
      */
     static func sansPrefix(str:String)->String{
         return String(str.characters.dropFirst())
