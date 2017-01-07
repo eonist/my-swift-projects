@@ -53,7 +53,7 @@ class GitUtils{
     }
     /**
      * Returns the count from now until the date speccifed in PARAM: after
-     * PARAM: after: "2016-10-12 00:00:00"  (git date format)
+     * PARAM: after: "2016-10-12 00:00:00" (git date format)
      */
     static func commitCount(localRepoPath:String, after:String)->String{
         let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
