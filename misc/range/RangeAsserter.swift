@@ -25,7 +25,7 @@ class RangeAsserter{
         return number >= RangeParser.min(range) && number < RangeParser.max(range)
     }
     /**
-     * Asserts if @param a overlaps @param b
+     * Asserts if PARAM: a overlaps PARAM: b
      */
     static func overlaps<T:Comparable>(a:Range<T>,_ b:Range<T>)->Bool {
         return RangeAsserter.equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end)
