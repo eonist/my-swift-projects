@@ -30,7 +30,7 @@ class StringModifier{
     }
     /**
      * Replaces first match
-     * Replaces @param match in @param input with @param replacement
+     * Replaces PARAM: match in PARAM: input with PARAM: replacement
      * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈") // Hello 🐈
      */
     static func replaceFirst(var input:String,_ match:String,_ replacement:String)->String{
@@ -51,7 +51,7 @@ class StringModifier{
 	   return wrapper + string + wrapper
 	}
 	/**
-	 * returns a reversed strin
+	 * Returns a reversed strin
 	 * NOTE: does not modify the original string
 	 * NOTE: shorter version of this method: 		return string.sort( { (s1: String, s2: String) -> Bool in return s1 > s2 } )//closure expression syntax
 	 * NOTE: even shorter string.sort( { s1, s2 in return s1 > s2 } )//infered version of the bellow: 
@@ -122,7 +122,7 @@ class StringModifier{
         return str
     }
     /**
-     * Returns @param a with the content of @param b inserted at @param i
+     * Returns PARAM: a with the content of PARAM: b inserted at PARAM: i
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      * NOTE: Does not alter the original strings
      */
@@ -133,7 +133,7 @@ class StringModifier{
     }
     /**
      * Returns a new string that has that has a section of its text replaced with @param b, the section is from @param start to @param end
-     * @Example: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
+     * EXAMPLE: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
      * TODO: probably use inout
      */
     static func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
