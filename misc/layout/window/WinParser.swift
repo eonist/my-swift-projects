@@ -48,7 +48,8 @@ class WinParser {
      */
     static func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
         var windows:Array<T> = []
-        for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
+        //TODO: for clearity use .forEach on the bellow line
+        for window:NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
         return windows.count > 0 ? windows[0] : nil
     }
