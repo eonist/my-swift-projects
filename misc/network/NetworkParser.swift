@@ -3,8 +3,8 @@ class NetworkParser{
 	/**
 	 * Returns a string for a URL
 	 */
-	class func string(URL:String)->String{
-        //needs research
+	static func string(URL:String)->String{
+        //TODO: needs research
 		/*
         let theURL = NSURL(string: URL)
 		let rssUrlRequest:NSURLRequest = NSURLRequest(URL:theURL!)
@@ -16,10 +16,10 @@ class NetworkParser{
         return ""
 	}
     /**
-     * @param url: "https://www.google.com"
+     * PARAM: url: "https://www.google.com"
      */
-    class func stringContent(url:String)->String{
-        //needs research
+    static func stringContent(url:String)->String{
+        //TODO: needs research
         if let urlObj = NSURL(string: url) {
             do {
                 let contents = try NSString(contentsOfURL: urlObj, usedEncoding: nil)

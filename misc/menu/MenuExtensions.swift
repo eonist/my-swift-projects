@@ -12,6 +12,6 @@ extension NSMenu {
      *
      */
     func addSubMenu(){
-        //add later
+        //TODO: add later
     }
 }
