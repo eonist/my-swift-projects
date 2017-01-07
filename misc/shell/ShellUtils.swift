@@ -10,7 +10,7 @@ class ShellUtils{
 	 * Example: ShellUtils.run("git log --oneline")
      * IMPORTANT: spaces that is not intended to split arguments must be encoded before use (blank space -> %20)
 	 */
-    class func run(input: String, _ cd:String = "") /*throws*/ -> String {
+    static func run(input: String, _ cd:String = "") /*throws*/ -> String {
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
         terminationStatus
         //Swift.print("terminationStatus: " + "\(terminationStatus)")
@@ -19,7 +19,7 @@ class ShellUtils{
     /**
      * Example: ShellUtils.exc("git log --oneline").output
      */
-    class func exc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
+    static func exc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
         var arguments = input.componentsSeparatedByString(" ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
@@ -42,7 +42,7 @@ class ShellUtils{
      * NOTE: supports piping
      * CAUTION: use this method for hard coded commands, not for commands that the user can insert data
      */
-    class func unsafeRun(input: String, _ cd:String = "") -> String {
+    static func unsafeRun(input: String, _ cd:String = "") -> String {
         let (output, terminationStatus) = ShellUtils.unsafeExc(input,cd)
         terminationStatus
         return output
@@ -51,10 +51,10 @@ class ShellUtils{
      * BETA
      * NOTE: supports piping
      */
-    class func unsafeExc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
+    static func unsafeExc(input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
         let task = NSTask()
         task.currentDirectoryPath = cd
-        task.launchPath = "/bin/sh"/*setting shell as launchPath enables piping support*/ //--> /bin/bash should also work
+        task.launchPath = "/bin/sh"/*Setting shell as launchPath enables piping support*/ //--> /bin/bash should also work
         task.arguments = ["-c",input]/*I think the -c part enables auto path resolvment and support for piping etc*/
         let pipe = NSPipe()
         task.standardOutput = pipe

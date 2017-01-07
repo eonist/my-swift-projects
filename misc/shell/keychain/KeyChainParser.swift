@@ -1,6 +1,8 @@
 import Security
 import Foundation
-//examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
+/**
+ * Examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
+ */
 class KeyChainParser {
     /**
      *
