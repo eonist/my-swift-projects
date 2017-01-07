@@ -1,16 +1,16 @@
 import Cocoa
 /**
  * IMPORTANT: To understand the relatioship between NSEvent and hitTest: think of NSEvent as going upStream in an inverted pyramid hirarachy and hitTest going downStream in the same hirarachy
- * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
- * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
  * NOTE: Remember to override the mouseDown method in subclasses if you want to add functionality to the mouseDown action
  * NOTE: Use mouseDragged method if you want to call a method while the mouse is dragged
  * NOTE: If you hi-jack the event handler variable then the parent will not recieve any events. Its better to override onEvent (one could us emany seletors but that would complicate the code. its simple enough to overide onEvent)
  * NOTE: its primary use-case is to wrap NSEvents into Event so that the view hierarchy can retrieve the view where the event came from which is not possible when using NSEvent. NSEvent cant be subclasses so this is the best solution I've found for this particular use-case.
+ * CAUTION: seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
+ * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * TODO: why arent the mouse methods calling a central method?
  */
 class InteractiveView2:FlippedView,IInteractiveView{
-    var event: ((Event) -> ())?/*this holds any method assigned to it that has its type*/
+    var event: ((Event) -> ())?/*This holds any method assigned to it that has its type*/
     var eventCall:((Event) -> ())? {
         return {
             (event:Event) -> Void in if(self.superview is IEventSender){
@@ -18,7 +18,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
             }
         }
     }/*returns closure that will take care of propagating the event to the parent*/
-    var isInteractive:Bool = true//Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well
+    var isInteractive:Bool = true/*Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well*/
     var isMouseOver:Bool = false/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false
@@ -39,8 +39,8 @@ class InteractiveView2:FlippedView,IInteractiveView{
     /**
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
      * NOTE: It could be possible to only call this method if a bool value was true. Optimization
-     * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
+     * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(event:MouseEvent){
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
@@ -66,14 +66,14 @@ class InteractiveView2:FlippedView,IInteractiveView{
     }
     /**
      * Handles actions and drawing states for the release event.
-     * @Note: bubbling=true was added to make Stepper class dragable
+     * NOTE: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(event: MouseEvent){
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
-     * @Note: bubbling = true was added to make Stepper class dragable
+     * NOTE: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(event: MouseEvent){
         if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/

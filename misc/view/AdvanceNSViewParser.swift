@@ -3,19 +3,19 @@ import Cocoa
 class AdvanceNSViewParser {
     /**
      * TODO: not optimized very well
-     * Returns depths of every NSView instance in @param views
+     * Returns depths of every NSView instance in PARAM: views
      */
-    class func indicesOfViews(container:NSView,_ views:Array<NSView>) -> Array<[Int]> {
+    static func indicesOfViews(container:NSView,_ views:Array<NSView>) -> Array<[Int]> {
         var indices:Array<[Int]> = []
         for view : NSView in views {indices.append(NSViewParser.index(container, view)!)}/*<--This should be correct*/
         return indices
     }
     /**
-     * Returns an NSView instance at @param index in @param container
-     * @Note this function is recursive
+     * Returns an NSView instance at @param index in PARAM: container
+     * NOTE: this function is recursive
      * TODO: rename index to map?, move to AdvanceDisplayObjectParser?
      */
-    class func getAt(container:NSView?, _ index:Array<Int>) -> NSView? {
+    static func getAt(container:NSView?, _ index:Array<Int>) -> NSView? {
         if(index.count == 0 && container != nil) {
             Swift.print("a")
             return container!
