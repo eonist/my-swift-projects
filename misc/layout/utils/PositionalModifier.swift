@@ -17,7 +17,7 @@ class PositionalModifier {
      * Position instances of IPositional
      */
     static func position(positionals:Array<IPositional>,_ positions:Array<CGPoint>) {
-        for i in 0..<positionals.count {//<-recently updated to swift 3 style for loop syntax
+        for i in 0..<.count {//<-recently updated to swift 3 style for loop syntax
             positionals[i].setPosition(positions[i])
         }
     }
