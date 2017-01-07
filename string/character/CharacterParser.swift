@@ -1,47 +1,47 @@
 class CharacterParser {
     /**
-     * Returns the char after @param index
+     * Returns the char after PARAM: index
      */
-    class func successorAt(str:String,_ index:Int)->Character{
+    static func successorAt(str:String,_ index:Int)->Character{
         let strIndex = str.startIndex.advancedBy(index)
         return str.characters[strIndex.successor()]
     }
     /**
-     * Returns the char before @param index
+     * Returns the char before PARAM: index
      */
-    class func predecessorAt(str:String,_ index:Int)->Character{
+    static func predecessorAt(str:String,_ index:Int)->Character{
         let strIndex = str.startIndex.advancedBy(index)
         return str.characters[strIndex.predecessor()]
     }
     /**
-     * Returns the first occurence of @param char in @param str
+     * Returns the first occurence of PARAM: char in PARAM: str
      */
-    class func indexOf(str:String,_ char:Character)->Int{
+    static func indexOf(str:String,_ char:Character)->Int{
         if let strIndex = str.characters.indexOf(char) {
             return str.startIndex.distanceTo(strIndex)
         }
         else {
-            return -1//indicates that the char doesnt exist
+            return -1//indicates that the char doesn't exist
         }
     }
     /**
-     * Returns a Character instance at @param index
+     * Returns a Character instance at PARAM: index
      */
-    class func charAt(str:String,_ index:Int)->Character{
+    static func charAt(str:String,_ index:Int)->Character{
         let index = str.startIndex.advancedBy(index) //will call succ n times until index
         let char:Character = str[index] //you can also do: text.characters[index2]
         return char
     }
     /**
-     * // retrieve last letter
+     * Retrieve last letter
      */
-    class func last(str:String)->Character{
+    static func last(str:String)->Character{
         return str.characters.last!
     }
     /**
-     * // retrieve first letter
+     * Retrieve first letter
      */
-    class func first(str:String)->Character{
+    static func first(str:String)->Character{
         return str.characters.first!
     }
 }

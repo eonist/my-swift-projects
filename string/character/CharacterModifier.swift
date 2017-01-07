@@ -8,17 +8,17 @@ class CharacterModifier {
         return str
     }
     /**
-     *
+     * Removes last letter
      */
     static func removeFirst(var str:String)->String{
-        str.removeAtIndex(str.characters.indices.first!)/*remove last letter*/
+        str.removeAtIndex(str.characters.indices.first!)
         return str
     }
     /**
-     *
+     * Removes last letter
      */
     static func removeLast(var str:String)->String{
-        str.removeAtIndex(str.characters.indices.last!)/*remove last letter*/
+        str.removeAtIndex(str.characters.indices.last!)
         return str
     }
     /**
