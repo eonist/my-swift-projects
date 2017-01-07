@@ -62,17 +62,17 @@ public class RegExp{
     }
     /**
      * Replaces all matches with the replacment string
+     * Returns Value A string with matching regular expressions replaced by the template string.
      * NOTE: you can use this call replaceMatchesInString to modify the original string, must use nsmutablestring to do this
+     * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      * PARAM: string The string to search for values within.
      * PARAM: options: The matching options to use. See NSMatchingOptions for possible values.
      * PARAM: range: The range of the string to search.
      * PARAM: replacement: The substitution template used when replacing matching instances.
-     * Returns Value A string with matching regular expressions replaced by the template string.
+     * TODO: The PARAM: text should be inout
+     * TODO: move to RegExpModifer, or just create RegExpUtils for all?
      * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
      * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
-     * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-     * TODO: The @param text should be inout
-     * TODO: move to RegExpModifer, or just create RegExpUtils for all?
      */
     static func replace(str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive)->String{
         do {

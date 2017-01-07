@@ -7,7 +7,6 @@ let theString:NSString = "07-12-2014"
 let thePattern = "(\\d{2})\\-(\\d{2})\\-(\\d{4}|\\d{2})"
 let options:NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive
 
-
 enum DateGroupsSequence:Int{
 case kDayGroup = 1, kMonthGroup, kYearGroup
 }
