@@ -20,7 +20,7 @@ class XMLUtils {
      * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
      * TODO: may need to use infix operator and extensions to make the xml parser work.
      */
-    class func data(xml:String)->Dictionary<String,Any>?{
+    static func data(xml:String)->Dictionary<String,Any>?{
         //in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
         return nil
     }
@@ -29,7 +29,7 @@ class XMLUtils {
      * filePath:"//Users/<path>/someFile.xml"
      * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
      */
-    class func xmlByFilePath(filePath:String)->NSXMLDocument?{//# must use param naming
+    static func xmlByFilePath(filePath:String)->NSXMLDocument?{//# must use param naming
         //implement when you need it
         let xml:String = FileParser.content(filePath)!
         print(xml)
@@ -38,10 +38,10 @@ class XMLUtils {
     }
     /*
      * Returns a tree-structures dictionary populated with xml data from an URL (http url for a .xml file)
-     * PARAM URL:"http://www.google.com/feeds/news.xml"
+     * PARAM: URL:"http://www.google.com/feeds/news.xml"
      * NOTE: you can also use: FileParser.xml
      */
-    class func xmlByURL(URL:String)->NSXMLDocument?{//# must use param naming
+    static func xmlByURL(URL:String)->NSXMLDocument?{//# must use param naming
         let result:String = NetworkParser.string(URL)
         if(result == "success"){
             let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: result, options: 0)
@@ -55,7 +55,7 @@ class XMLUtils {
      * Compose xml syntax as a string derived from NSXMLelement or alike
      * NOTE: Out of order for now
      */
-    class func xmlString(data:Dictionary<String,Any>)->String?{
+    static func xmlString(data:Dictionary<String,Any>)->String?{
         /*
         var xmlString:String = ""
         for (nodeName, nodes) in data["."]{
@@ -70,12 +70,12 @@ class XMLUtils {
     }
     /*
      * Returns xml like: <item color="blue" age="2">some text goes here<item/>
-     * PARAM content: text
-     * PARAM attributes: ["color":"blue","age":"2"]
-     * PARAM name: the name of the xml node: "item"
+     * PARAM: content: text
+     * PARAM: attributes: ["color":"blue","age":"2"]
+     * PARAM: name: the name of the xml node: "item"
      * TODO: move to internal util class?
      */
-    func element(name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
+    static func element(name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
         var attributeText = ""
         for (key,value) in attributes{
             var attributeText  = (key + "=" + "\"" + value + "\"")
@@ -109,7 +109,7 @@ class XMLUtils {
     case NotationDeclarationKind
     }
      */
-    class func types(){
+    static func types(){
         
     }
 }
