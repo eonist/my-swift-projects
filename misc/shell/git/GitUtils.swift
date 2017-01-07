@@ -6,7 +6,7 @@ class GitUtils{
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
-	class func manualPull(localPath:String, _ remotePath:String, _ branch:String){
+	static func manualPull(localPath:String, _ remotePath:String, _ branch:String){
 		//Swift.print("GitUtils.manualPull()")
 		GitModifier.fetch(localPath, remotePath, branch)//--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
@@ -23,7 +23,7 @@ class GitUtils{
 	 * NOTE:  same as clone but differs in that it clones into an existing folder
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com
 	 */
-	class func manualClone(locaPath:String, _ remotePath:String){
+	static func manualClone(locaPath:String, _ remotePath:String){
 		//--"git init" <--Installs the invisible .git folder
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
 		//--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
