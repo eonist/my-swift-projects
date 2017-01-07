@@ -205,26 +205,28 @@ class GitModifier{
        //--log "shellScript: " + shellScript
        return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * branch
-    * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
     * NOTE: to delete a branch do: "git branch -d some-branch" (if you just merged the branch in, if not use -D)
     * NOTE: to delete a branch from a remote repo: "git push origin --delete some_branch" Delete the specified branch. This is a �safe� operation in that Git prevents you from deleting the branch if it has unmerged changes.
     * NOTE: you can check which branches you have open by doing "git branch"
     * NOTE: Remote branches are just like local branches, except they represent commits from somebody else�s repository. You can check out a remote branch just like a local one, but this puts you in a detached HEAD state (just like checking out an old commit). You can think of them as read-only branches. 
     * NOTE: you can inspect these branches with the usual git checkout and git log commands. If you approve the changes a remote branch contains, you can merge it into a local branch with a normal git merge.
     * NOTE: git branch -r
+    * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
     * NOTE: Delete your local feature branch: "git branch --delete <branch-name>"
     * # origin/master
     * # origin/develop
     * # origin/some-feature
-    * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
+    * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
     */
    static func branch(targetBranch:String, _ deleteFlag:String){
-   	//--complete this method
+       //--complete this method
    }
-   /*
+   /**
     * Merging is Git's way of putting a forked history back together again
+    * PARAM: fromBranch the branch you want to apply to the PARAM: into_branch
+    * PARAM: into_branch is the branch you usually checkout before doing the merge
     * NOTE: If the two branches your trying to merge both changed the same part of the same file, Git wont be able to figure out which version to use. When such a situation occurs, it stops right before the merge commit so 
     * NOTE: Note that merge conflicts will only occur in the event of a 3-way merge. It�s not possible to have conflicting changes in a fast-forward merge.
     * NOTE: The current branch will be updated to reflect the merge, but the target branch will be completely unaffected. 
@@ -236,17 +238,15 @@ class GitModifier{
     * NOTE: To merge a branch into another branch: first switch to the branch you want to merge into by doing "git checkout master", then do "git merge some_branch"
     * NOTE: To check out and merge a branch inn one-line: "git merge targetBranch new_branch" (aka: targetBranch <-- new_branch)
     * NOTE: To merge a remote branch into your local branch do: "git fetch origin master", "git checkout master", "git merge origin/master", if you get conflicts and you just want to keep all your or their updates you do "git checkout --thiers *" or "git checkout --ours *" and then add and commit and push. Now you have merged perfectly
-    * PARAM: fromBranch the branch you want to apply to the PARAM: into_branch
-    * PARAM: into_branch is the branch you usually checkout before doing the merge
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
-   	//log ("GitModifier's merge()")
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git merge " + intoBranch + " " + fromBranch
-   	//Swift.print("shellScript: " + "\(shellScript)")
-   	return ShellUtils.run(shellScript,localRepoPath)
+       //log ("GitModifier's merge()")
+       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git merge " + intoBranch + " " + fromBranch
+       //Swift.print("shellScript: " + "\(shellScript)")
+       return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * rebase
     * NOTE: it seems rebasing is almost the same as merging, but with rebasing you also get the opertunity to squash commits into fewer commits, so when the rebasing is complete, the commit history looks will look simpler than with merging.
     * NOTE: The golden rule of git rebase is to never use it on public branches.
@@ -259,7 +259,7 @@ class GitModifier{
    static func rebase(){
         //--complete this method
    }
-   /*
+   /**
     * stash
     * NOTE: plain old `git stash` won't touch files that are untracked. For this, you need to use `git stash -u`
     * NOTE: stash vs branch merge: branch merge creates an extra commit, use stash when your in the middle of some unfinished feature and you need to pause it where it is
@@ -278,8 +278,11 @@ class GitModifier{
         //--TODO: if no title is provided store the stash without title: by not including the save syntax
         //--"git stash -u save " + title
     }
-   /*
+   /**
     * Checkout
+    * PARAM: localRepoPath: path to the repository to operate on, must be absolute not relative
+    * PARAM: loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
+    * PARAM: filePath: can be a relative file path, or the astrix sign for every file "*"
     * NOTE: When you switch between branches, the local files change accordingly
     * NOTE: to base a new branch of another branch do: "git checkout -b <new-branch> <existing-branch>"
     * NOTE: to create a new branch and switch to it do:"git checkout -b new-branch-name-here"
@@ -293,9 +296,6 @@ class GitModifier{
     * NOTE: git checkout master hello.py (checks out a spessific file in a spessific branch)
     * NOTE: you can switch to a newly fetched branch with: "git checkout origin/master"
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
-    * PARAM: localRepoPath: path to the repository to operate on, must be absolute not relative
-    * PARAM: loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
-    * PARAM: filePath: can be a relative file path, or the astrix sign for every file "*"
     */
 	static func checkOut(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
