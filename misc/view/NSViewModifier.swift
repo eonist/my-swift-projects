@@ -70,7 +70,7 @@ class NSViewModifier {
         item.removeFromSuperview()
     }
     /**
-     * @Note removes in the backward direction over the array
+     * NOTE: removes in the backward direction over the array
      */
     static func removeMany(views:Array<NSView>) {// :TODO: rename to removeAll(all) ? maybe?
         let numOfDisplayObjects:Int = views.count
