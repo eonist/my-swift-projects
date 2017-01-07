@@ -55,7 +55,6 @@ class GitLogParser {
     }
 }
 private class Utils{
-    
     /**
      * PreProcess the body string
      */
