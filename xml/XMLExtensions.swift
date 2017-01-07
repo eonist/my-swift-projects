@@ -81,7 +81,7 @@ extension NSXMLElement {
     func firstNode(nodeName:String) -> XML? {/*Convenience*/
         return XMLParser.firstNode(self, nodeName)
     }
-    //deprecated:
+    //DEPRECATED:
     //func value()->String?{return XMLParser.value(self)}/*Convenience*/
 }
 /**

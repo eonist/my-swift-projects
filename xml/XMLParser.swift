@@ -24,7 +24,7 @@ public class XMLParser{
         return theChildren
     }
     /**
-     * new
+     * New
      */
     static func children(xml:XML)->Array<XML>{
         return xml.children as! [XML]
@@ -65,7 +65,7 @@ public class XMLParser{
      * Returns string Content of an xml
      * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
-    class func valueAt(child:XML,_ index:Array<Int>)->String?{
+    static func valueAt(child:XML,_ index:Array<Int>)->String?{
         return childAt(child, index)?.stringValue
     }
     /**
@@ -75,7 +75,7 @@ public class XMLParser{
      */
     static func attributes(child:XML) -> [Dictionary<String,String>]{
         
-        //you should probably not use this, use attribs instead
+        print("you should probably not use this, use attribs instead")
         
         var attributes:[Dictionary<String,String>] = []
         if(child.attributes?.count > 0){
@@ -94,7 +94,7 @@ public class XMLParser{
     /**
      * New
      */
-    class func attribs(child:XML) -> Dictionary<String,String>{
+    static func attribs(child:XML) -> Dictionary<String,String>{
         var attributes:Dictionary<String,String> = [:]
         if(child.attributes?.count > 0){
             for node:NSXMLNode in child.attributes!{
@@ -107,7 +107,7 @@ public class XMLParser{
      * Returns a key/value object with the attributes at the @param index in @param database
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
-    class func attributesAt(child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
+    static func attributesAt(child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
     }
     /**
@@ -115,7 +115,7 @@ public class XMLParser{
      * @Note: returns an empty array if the index is out of bound
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    class func siblingAttributes(child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
+    static func siblingAttributes(child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
         let xml = childAt(child, index);
         var result:[Dictionary<String,String>] = []
         for c in xml?.children as! Array<XML>{
@@ -136,7 +136,7 @@ public class XMLParser{
      * @Note to find a child at an integer use the native code: xml.children[integer]
      * @Note to find the children of the root use an empty array as the index value
      */
-    class func childAt(xml:XML?,_ index:Array<Int>)->XML? {
+    static func childAt(xml:XML?,_ index:Array<Int>)->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
@@ -175,7 +175,7 @@ public class XMLParser{
      * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
      * You can use the returned nodes as the new context node for evaluating further XPath expressions.
      */
-    class func xPath(){
+    static func xPath(){
         
     }
     /**
