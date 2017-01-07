@@ -3,11 +3,11 @@ import Foundation
  * Convenince extensions for often used string methods
  */
 extension String {
-    var tildePath:String /*{get*/{return NSString(string: self).stringByExpandingTildeInPath}/*}*///Convenince
+    var tildePath:String /*{get*/{return NSString(string: self).stringByExpandingTildeInPath}/*}*//*Convenince*/
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
-    func split(delimiter:String)->Array<String>{//convenience
+    func split(delimiter:String)->Array<String>{/*Convenince*/
         return StringParser.split(self, delimiter)
     }
     func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{//Convenince
@@ -16,13 +16,13 @@ extension String {
     func matches(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {//Convenince
         return RegExp.matches(self,pattern,options)
     }
-    func test(pattern:String)->Bool{//Convenince
+    func test(pattern:String)->Bool{/*Convenince*/
         return RegExp.test(self, pattern)
     }
-    func replace(pattern:String,_ replacement:String)->String{//Convenince
+    func replace(pattern:String,_ replacement:String)->String{/*Convenince*/
         return RegExp.replace(self,pattern, replacement)
     }
-    var count:Int{return self.characters.count}//Convenince
+    var count:Int{return self.characters.count}/*Convenince*/
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
     /**
@@ -31,22 +31,22 @@ extension String {
     var uint:UInt{return UInt(Float(self)!)}
     var int:Int{return Int(self)!}
     
-    func encode()->String?{//convenience
+    func encode()->String?{/*Convenince*/
         return StringParser.encode(self)
     }
-    func decode()->String?{//convenience
+    func decode()->String?{/*Convenince*/
         return StringParser.decode(self)
     }
-    func subStr(i:Int,_ len:Int)->String{//convenience
+    func subStr(i:Int,_ len:Int)->String{/*Convenince*/
         return StringParser.subStr(self, i, len)
     }
-    func subString(beginning:Int,_ end:Int)->String{//convenience
+    func subString(beginning:Int,_ end:Int)->String{/*Convenince*/
         return StringParser.subString(self,beginning,end)
     }
-    func indexOf(b:String)->Int{//convenience
+    func indexOf(b:String)->Int{/*Convenince*/
         return StringParser.indexOf(self, b)
     }
-    func trim(leftAndRight:Character)->String{//convenience
+    func trim(leftAndRight:Character)->String{/*Convenince*/
         return StringParser.trim(self, leftAndRight)
     }
     func insertCharsAt(charsAndIndicies:[(char:Character,index:Int)])->String{
@@ -56,8 +56,8 @@ extension String {
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
-    var xml:XML {return XML(self)}//Convenince
-    var url:NSURL {return FilePathParser.path(self)}//Convenince
+    var xml:XML {return XML(self)}/*Convenince*/
+    var url:NSURL {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
 }
 extension NSString{

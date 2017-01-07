@@ -13,10 +13,10 @@ class StringModifier{
         return StringModifier.replaceFirst(input, match, "")
     }
     /**
-     *	Removes all instances of the remove string in the input string.
+     *	Removes all instances of the remove string in the input string
+     *	RETURN: A String with the remove string removed
      *	PARAM: input: The string that will be checked for instances of remove string
-     *	PARAM: remove: The string that will be removed from the input string.
-     *	RETURN: A String with the remove string removed.
+     *	PARAM: remove: The string that will be removed from the input string
      */
     static func removeEvery(input:String, _ match:String) -> String{// :TODO: test if this works when nothing is removed because replace was changed
         return StringModifier.replaceEvery(input, match, "")
