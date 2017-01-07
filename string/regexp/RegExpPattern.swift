@@ -3,7 +3,7 @@ import Foundation
 class RegExpPattern {
     /**
      * NOTE: Used in the svg path parameter parser for instance
-     * NOTE: swift doesnt do conditionals in regex like this: \-?\d*?(\.?)((?1)\d+?)  so the bellow code was madeto do the same thing
+     * NOTE: swift doesn't do conditionals in regex like this: \-?\d*?(\.?)((?1)\d+?)  so the bellow code was madeto do the same thing
      * NOTE: you may need to add more
      */
     static var digitAssertPattern:String{
