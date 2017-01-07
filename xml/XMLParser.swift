@@ -151,10 +151,10 @@ public class XMLParser{
     }
     /**
      * Returns the attribute value of @param child by key @param name
-     * @pram attrKey: name of the attribute
+     * PARAM: attrKey: name of the attribute
+     * NOTE: returns nil if there is no attr by that name
      * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
      * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
-     * NOTE: returns nil if there is no attr by that name
      */
     static func attribute(child:XML,_ attrKey:String)->String?{
         return child.attributeForName(attrKey)?.stringValue
@@ -182,7 +182,7 @@ public class XMLParser{
      * Parses through an xml and returns an array
      * NOTE: this method does not seem to be recursive
      * NOTE: also adds other attributes and value pairs if they exist in the xml
-     * @example
+     * EXAMPLE:
      * 	<items>
             <item title="orange" property="harry"/>
             <item title="blue" property="na"/>
@@ -202,9 +202,9 @@ public class XMLParser{
                 item[attribute["name"]!] = attribute["value"]!
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
-            items.append(item);
+            items.append(item)
         }
-        return items;
+        return items
     }
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
@@ -233,7 +233,7 @@ public class XMLParser{
         for attr in attributes{root[attr["key"]!] = attr["value"]!}
         if(xml.hasComplexContent){
             var children:[[String:AnyObject]] = []
-            for child in xml.children!{children.append(toDictionary(child as! NSXMLElement))}
+            for child in xml.children!{children.append(toDictionary(child as! XML))}
             root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){root[xml.name!] = [xml.stringValue!]}
         else{root[xml.name!] = []}
