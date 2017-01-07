@@ -24,3 +24,21 @@ public class RegExpModifier{
         return RegExp.match(input, pattern)[0];
     }
 }
+
+/*
+Add these from legacy:
+
+replace,
+replacePunctuation,
+emailLink,
+conformUsTeleNr,
+replaceUrl,
+replaceEmail,
+obscureEmail,
+singleQuotation,
+removeWrappingWhitespace,
+removeWrappingSpaces,
+singularWhitespace,
+replaceContentBetweenHTags;
+
+*/
