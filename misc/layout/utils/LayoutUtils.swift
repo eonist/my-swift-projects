@@ -8,7 +8,7 @@ class LayoutUtils {
      * NOTE: remember to pass in the layoutClasstype as this: Fillet.self
      * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
-    class func instance(value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
+    static func instance(value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
         let params:Array<Any> = value is Array<Any> ? value as! Array<Any> : [value]
         //Swift.print(params[0])
         let classType:ILayout.Type = layoutClassType
@@ -25,7 +25,7 @@ class LayoutUtils {
     /**
      * This should be done through generics etc
      */
-    class func describe(offsetType:OffsetType){
+    static func describe(offsetType:OffsetType){
         Swift.print("LayoutUtils.describe()")
         Swift.print("offsetType.top: " + "\(offsetType.top)")
         Swift.print("offsetType.bottom: " + "\(offsetType.bottom)")
