@@ -101,7 +101,7 @@ class StringParser{
     }
     /**
      * Returns str sans the last char
-     * @Note does not modify the original string
+     * NOTE: does not modify the original string
      */
     static func sansSuffix(str:String)->String{
         return String(str.characters.dropLast())
@@ -129,9 +129,9 @@ class StringParser{
     }
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
-     * @param string can be 10, 20px, -20px, 0.2px, -.2, 20%, 0.2
-     * @return a Numberor a String type
-     * @Note if the digit has a trailing % character it is returned as a String
+     * RETURN: a Numberor a String type
+     * PARAM: string can be 10, 20px, -20px, 0.2px, -.2, 20%, 0.2
+     * NOTE: if the digit has a trailing % character it is returned as a String
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
     static func digit(string:String)->CGFloat{
@@ -177,10 +177,10 @@ class StringParser{
     }
     /**
      * Returns a file path, excluding the file name and file-suffix
-     * @param input: usually formated like: /Users/James/Downloads/PanelView.png
-     * @return a string formatted like: /Users/James/Downloads/
-     * @Example path(file://Users/User/Desktop/main.css);//file://Users/User/Desktop/
-     * @Note you can also do this another way:
+     * PARAM: input: usually formated like: /Users/James/Downloads/PanelView.png
+     * RETURN: a string formatted like: /Users/James/Downloads/
+     * EXAMPLE: path(file://Users/User/Desktop/main.css);//file://Users/User/Desktop/
+     * NOTE: you can also do this another way:
      * var match : Array = input.split(".");
      * var path:String = String(match[0]).substring(0, String(match[0]).lastIndexOf("/"));
      */
