@@ -4,7 +4,7 @@ class GitDateUtils {
     /**
      * Formats chronological date to git time-> "2016-11-12 00:00:00"
      * NOTE: YYYYMMDDHHmmss -> YYYY-MM-DD HH:mm:ss
-     * Alt name: chronologicalTime2GitTime
+     * Alternative name: chronologicalTime2GitTime
      * EXAMPLE: gitTime("20161111205959")//Output2016-11-11 20:59:59
      */
     static func gitTime(chronoTime:String)->String{

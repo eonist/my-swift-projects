@@ -2,7 +2,7 @@
 class GitModifier{
    /**
     * Add a file or many files to a commit
-    * @param fileName is the file name you want to add, use * if you want to add all files
+    * PARAM: fileName is the file name you want to add, use * if you want to add all files
     * Caution: when a file is removed, the * char wont work, you have to add the file manually
     * Example: GitUtils's add(localRepoPath, "*")
     * Note: the opposite of add is reset, see the reset method for more info
@@ -19,43 +19,42 @@ class GitModifier{
    }
    /*
     * Commits current changes
-    * NOTE: Commit , usually doesnt return anything
-    * @Param: msg example: "created index.html file"
     * Return example: [master af86d55] added
+    * PARAM: msg example: "created index.html file"
     * 1 file changed, 0 insertions(+), 0 deletions(-)
     * create mode 100644 error.html
+    * NOTE: Commit , usually doesnt return anything
     * NOTE: its important that the message is betweentwo single quates
-    * Example: GitUtils's commit(localRepoPath, "changes made")
+    * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: can we also add desscription to a commit?
     * TODO: what does commit -a do? -all?
-    * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: git commit -m "Title" -m "Description .........." <--this works
+    * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
    static func commit(localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
-   	//log ("GitModifier's commit(" + message_title + ")")
-    
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
-    Swift.print("shellScript: " + "\(shellScript)")
-   	return ShellUtils.run(shellScript,localRepoPath)
+    	//log ("GitModifier's commit(" + message_title + ")")
+    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
+        Swift.print("shellScript: " + "\(shellScript)")
+    	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * Uploads the current from the local git commits to the remote git
     * NOTE: if the remote history has diverged from your history, you need to pull the remote branch and merge it into your local one,
-    * @param from_where: "master"
-    * @param to_where: "origin"
     * NOTE: git push <remote> <branch> (Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won�t let you push when it results in a non-fast-forward merge in the destination repository.)
-    * @param remotePath: github.com/user-name/repo-name.git
     * NOTE: you may mitigate using username and pass by researching how to use SSH key in github from trusted maschines
     * TODO: maybe add try error when doing the shell part
     * TODO: add branch as a param
-    * Example: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
     * NOTE: Original gti cmd: git push https://github.com/user/test.git master
     * NOTE: ssh-example: ssh://user@host/path/to/repo.git
     * NOTE: Only Push to Bare Repositories In addition, you should only push to repositories that have been created with the --bare flag. Since pushing messes with the remote branch structure, it's important to never push to another developers repository. But because bare repos don't have a working directory, it's impossible to interrupt anybodys developments.
     * NOTE: The only time you should ever need to force push is when you realize that the commits you just shared were not quite right and you fixed them with a git commit --amend or an interactive rebase. However, you must be absolutely certain that none of your teammates have pulled those commits before using the --force option.
     * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
-    * @PARAM: branch: usually "master"
+    * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
+    * PARAM: from_where: "master"
+    * PARAM: to_where: "origin"
+    * PARAM: remotePath: github.com/user-name/repo-name.git
+    * PARAM: branch: usually "master"
     */
    static func push(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
@@ -238,8 +237,8 @@ class GitModifier{
     * NOTE: To merge a branch into another branch: first switch to the branch you want to merge into by doing "git checkout master", then do "git merge some_branch"
     * NOTE: To check out and merge a branch inn one-line: "git merge targetBranch new_branch" (aka: targetBranch <-- new_branch)
     * NOTE: To merge a remote branch into your local branch do: "git fetch origin master", "git checkout master", "git merge origin/master", if you get conflicts and you just want to keep all your or their updates you do "git checkout --thiers *" or "git checkout --ours *" and then add and commit and push. Now you have merged perfectly
-    * @param fromBranch the branch you want to apply to the @param into_branch
-    * @param into_branch is the branch you usually checkout before doing the merge
+    * PARAM: fromBranch the branch you want to apply to the PARAM: into_branch
+    * PARAM: into_branch is the branch you usually checkout before doing the merge
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
@@ -295,9 +294,9 @@ class GitModifier{
     * NOTE: git checkout master hello.py (checks out a spessific file in a spessific branch)
     * NOTE: you can switch to a newly fetched branch with: "git checkout origin/master"
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
-    * @param localRepoPath: path to the repository to operate on, must be absolute not relative
-    * @param loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
-    * @param filePath: can be a relative file path, or the astrix sign for every file "*"
+    * PARAM: localRepoPath: path to the repository to operate on, must be absolute not relative
+    * PARAM: loc: can be branch like: origin/master or master or some_feature, or --ours, --theirs can also be an commit id
+    * PARAM: filePath: can be a relative file path, or the astrix sign for every file "*"
     */
 	static func checkOut(localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
