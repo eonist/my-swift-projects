@@ -1,7 +1,7 @@
 import Cocoa
 
 /**
- * Reasearch, these can be deprecated
+ * Research, these can be deprecated
  */
 class InteractiveViewUtils{
     /**
@@ -12,12 +12,12 @@ class InteractiveViewUtils{
         while(view.superview != current) {
             view = view.superview!
         }
-        return view;
+        return view
     }
     /**
-     * origin equals target or origin descendes from target
-     * @param origin: the result of hitTest()
-     * @param target: i.e button1 or slider or some other UI component.
+     * Origin equals target or origin descendes from target
+     * PARAM: origin: the result of hitTest()
+     * PARAM: target: i.e button1 or slider or some other UI component.
      */
     func withinScope(origin:NSView,_ target:NSView)->Bool{
         return origin === target || origin.isDescendantOf(target)

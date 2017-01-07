@@ -4,14 +4,14 @@ class DepthModifier {
     /**
      *
      */
-    class func sortByList(container:NSView, _ containerFieldName:String, _ sortListFieldName:String, _ sortList:[Dictionary<String,String>]){
+    static func sortByList(container:NSView, _ containerFieldName:String, _ sortListFieldName:String, _ sortList:[Dictionary<String,String>]){
         fatalError("not implemented yet")
     }
     /**
-     * Arranges children in @param container according to @param indices
-     * @Note indices contain an array of indec values that is in a spessific order, so if the first index is 6 that means the instance at depth 6 will now have depth 0
+     * Arranges children in PARAM: container according to PARAM: indices
+     * NOTE: indices contain an array of indec values that is in a spessific order, so if the first index is 6 that means the instance at depth 6 will now have depth 0
      */
-    class func sortByIndices(container:NSView, _ indices:Array<Int>) {
+    static func sortByIndices(container:NSView, _ indices:Array<Int>) {
         Swift.print("DepthModifier.sortByIndices()");
         
         let children:Array<NSView> = NSViewParser.childrenOfType(container, NSView.self)
