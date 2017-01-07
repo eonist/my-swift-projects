@@ -5,10 +5,10 @@ import Cocoa
 class WinParser {
     /**
      * NOTE: grab the from applicationDidFinishLaunching
-     * EXAMPLE: let app:NSApplication = aNotification.object as! NSApplication//then use the app in this method
      * NOTE: to manage the windows: app.windowWithWindowNumber(w.windowNumber)
+     * EXAMPLE: let app:NSApplication = aNotification.object as! NSApplication//then use the app in this method
      */
-    class func describeWindows(app:NSApplication){
+    static func describeWindows(app:NSApplication){
         Swift.print("app.windows.count: " + "\(app.windows.count)")
         for win in app.windows{
             print("windowNumber: " + "\(win.windowNumber)")
@@ -21,7 +21,7 @@ class WinParser {
      * NOTE: this method can also be used if you diff this method and the frame.height to get the titlebar height
      * NOTE: to get the width of a window yu can use: window!.frame.width
      */
-    class func height(window:NSWindow)->CGFloat{
+    static func height(window:NSWindow)->CGFloat{
         return NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
     }
     /**
@@ -31,14 +31,14 @@ class WinParser {
      * PARAM:strict is a Boolean flag that allows an absolute assert of the class, say if you store the class type in a variable ebfore calling this method and the generic is a subType then the strict flag works well to assert absolutness. (It does not work with protocols, research into protocol supoprt for the strict flag is out of scope for now)
      * NOTE: you only need to use the strict flag if you work with stored class types.
      */
-    class func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
+    static func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
         for window : NSWindow in NSApp.windows {if((window as? T != nil && !strict) || (type is AnyClass && window.isMemberOfClass(type as! AnyClass))) {return window as? T}}
         return nil
     }
     /**
      * Returns an array of NSWindow of type T in the current app
      */
-    class func windowsOfType<T>(type:T.Type)-> [T] {
+    static func windowsOfType<T>(type:T.Type)-> [T] {
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         return windows
@@ -46,7 +46,7 @@ class WinParser {
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
      */
-    class func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
+    static func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
@@ -56,7 +56,7 @@ class WinParser {
      * Returns the first focusedWindow in the NSApplication.windows array
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
-    class func focusedWindow()->NSWindow? {
+    static func focusedWindow()->NSWindow? {
         return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
     }
 }
