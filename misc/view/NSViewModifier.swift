@@ -1,13 +1,13 @@
 import Cocoa
-typealias NSViewModifier = ViewModifier
+typealias ViewModifier = NSViewModifier//<---Legacy support
 /**
  * TODO: make a method with the NSView.sortSubviewsUsingFunction method. 
  */
-class ViewModifier {//<----rename to NSViewModifier
+class NSViewModifier {
     /**
      *
      */
-    class func applyColor(view:NSView,_ nsFillColor:NSColor = NSColor.clearColor(),_ nsLineColor:NSColor = NSColor.clearColor(),_ lineWidth:Int = 0){
+    static func applyColor(view:NSView,_ nsFillColor:NSColor = NSColor.clearColor(),_ nsLineColor:NSColor = NSColor.clearColor(),_ lineWidth:Int = 0){
         let cgFillColor:CGColor = CGColorParser.cgColor(nsFillColor)
         if(nsFillColor != NSColor.clearColor()){/*clearColor: 0.0 white, 0.0 alpha */
             //Swift.print("fill")
@@ -25,23 +25,24 @@ class ViewModifier {//<----rename to NSViewModifier
      * Sets the position of an NSView instance
      * TODO: make the same method for size
      */
-    class func position(view:NSView,_ point:CGPoint){
+    static func position(view:NSView,_ point:CGPoint){
         view.frame.origin = point
     }
     /**
      *
      */
-    class func removeAll(view:NSView){
+    static func removeAll(view:NSView){
         for subView in view.subviews {subView.removeFromSuperview()}
     }
     /**
      * Removes all children in an NSView
-     * // :TODO: rename to removeAll
-     * // :TODO: it could actually be faster to define the number of children first and then just deleting index 0
+     * TODO: rename to removeAll
+     * TODO: it could actually be faster to define the number of children first and then just deleting index 0
+     * EXAMPLE:
      * view.subviews.forEach({ $0.removeFromSuperview() }) // this gets things done
      * view.subviews.map({ $0.removeFromSuperview() }) // this returns modified array
      */
-    class func removeAllChildren(view:NSView){
+    static func removeAllChildren(view:NSView){
         while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
     }
     /**
@@ -64,14 +65,14 @@ class ViewModifier {//<----rename to NSViewModifier
     /**
      *
      */
-    class func removeSubviewAt(view: NSView, _ i:Int){
+    static func removeSubviewAt(view: NSView, _ i:Int){
         let item = view.getSubviewAt(i)
         item.removeFromSuperview()
     }
     /**
      * @Note removes in the backward direction over the array
      */
-    class func removeMany(views:Array<NSView>) {// :TODO: rename to removeAll(all) ? maybe?
+    static func removeMany(views:Array<NSView>) {// :TODO: rename to removeAll(all) ? maybe?
         let numOfDisplayObjects:Int = views.count
         for (var i : Int = numOfDisplayObjects-1; i >= 0; i--) {
             let view : NSView = views[i]
@@ -81,7 +82,7 @@ class ViewModifier {//<----rename to NSViewModifier
     /**
      * Rename to subViewsOfType
      */
-    class func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
+    static func childrenOfType<T>(view:NSView, _ type:T.Type)->Array<T> {
         var children:Array<T> = []
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! T)}
@@ -92,7 +93,7 @@ class ViewModifier {//<----rename to NSViewModifier
      * Beta (not tested, but similar code will work, use pen and paper if it doesnt)
      * @Note: remove children in a backward direction over the array
      */
-    class func removeAllOfType<T>(view:NSView, _ type:T.Type) {
+    static func removeAllOfType<T>(view:NSView, _ type:T.Type) {
         let childrenLength:Int = view.subviews.count
         for (var i : Int = childrenLength-1; i >= 0; i--) {
             if(view.subviews[i] as? T != nil) {
