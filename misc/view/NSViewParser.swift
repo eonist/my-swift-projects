@@ -24,7 +24,7 @@ class NSViewParser {
             ArrayModifier.unshift(&parents,parent!)
             parent = parent!.superview
         }
-        return parents;
+        return parents
     }
     /**
      * TODO: should this return nil instead of -1? its easier to debug if it returns nil
