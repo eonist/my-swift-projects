@@ -2,7 +2,7 @@ import Cocoa
 /**
  * Now you can use all the methods provided by IPositional
  */
-extension NSText : IPositional{
+extension NSText:IPositional{
     var pos:CGPoint{get{return frame.origin} set{frame.origin = newValue}}
     func setPosition(position:CGPoint) {
         frame.origin = position

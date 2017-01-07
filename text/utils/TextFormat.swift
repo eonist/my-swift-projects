@@ -8,13 +8,13 @@ class TextFormat {
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
-    var type:String = "dynamic"//input and static
+    var type:String = "dynamic"/*input and static*/
     var border:Bool = false
     var multiline:Bool = false
     var wordWrap:Bool = true
     var scrollable:Bool = true
     var leading:CGFloat = NaN
-    //autoSize can be implemented, check stackoverflow
+    //TODO: autoSize can be implemented, check stackoverflow
     init(){}
     subscript(key: String) -> Any {
         get {

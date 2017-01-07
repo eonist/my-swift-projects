@@ -4,7 +4,7 @@ class TextFieldModifier {
     /**
      * TODO: Border color?
      */
-    class func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
+    static func applyTextFormat(textField:TextField,_ textFormat:TextFormat){
         //Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.selectable = textFormat.selectable
@@ -31,9 +31,9 @@ class TextFieldModifier {
     /**
      * Beta
      */
-    class func size(textField:TextField,_ width:CGFloat,_ height:CGFloat) {
-        textField.frame.width = width;/*SkinParser.width(this);*/
-        textField.frame.height = height;/*SkinParser.height(this);*/
+    static func size(textField:TextField,_ width:CGFloat,_ height:CGFloat) {
+        textField.frame.width = width/*SkinParser.width(this);*/
+        textField.frame.height = height/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
     }
 }

@@ -8,7 +8,7 @@ class TextFormatConstants {
     static var align:String = "align"
     static var font:String = "font"
     static var size:String = "size"
-    static var type:String = "type"//static and input
+    static var type:String = "type"/*static and input*/
     static var border:String = "border"
     static var multiline:String = "multiline"
     static var wordWrap:String = "wordWrap"
