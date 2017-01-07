@@ -137,58 +137,57 @@ class GitModifier{
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
    static func attachRemoteRepo(localRepoPath:String, _ remoteRepoPath:String)->String{
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
-   	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript,localRepoPath)
+       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
+       //log "shellScript: " + shellScript
+       return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * Detach a remote repo of a local repo
     * NOTE: the reverse of attach_remote_repo method
     * NOTE: git remote rm origin
     */
    static func detachRemoteRepo(localRepoPath:String)->String{
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote rm origin"
-   	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript,localRepoPath)
+       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote rm origin"
+       //log "shellScript: " + shellScript
+       return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * Clone
     * NOTE: Cloning automatically creates a remote connection called "origin" pointing back to the original repository.
     * NOTE: git clone <repo> <directory>
-    * NOTE: 
     */
    static func clone(remotePath:String, _ localPath:String)->String{
-   	let shellScript:String = Git.path + "git clone " + remotePath + " " + localPath
-   	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript)
+       let shellScript:String = Git.path + "git clone " + remotePath + " " + localPath
+       //log "shellScript: " + shellScript
+       return ShellUtils.run(shellScript)
    }
-   /*
+   /**
     * Config
     * NOTE: set your name: git config --global user.name "your-user-name"
     * NOTE: set your email: git config --global user.email you@example.com
     * NOTE: git config --global core.editor "vi", or use nano or atom, see gitsync on github in the wiki: dev tips
     */
    static func config(){
-   	//--complete this method
+       //--complete this method
    }
-   /*
+   /**
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
    static func gitRemoteUpdate(localRepoPath:String)->String{
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote update"
-   	return ShellUtils.run(shellScript,localRepoPath)
+       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote update"
+       return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * NOTE: git remote -v (List the remote connections you have to other repositories. include the URL of each connection.)
     * NOTE: git remote add <name> <url> (Create a new connection to a remote repository. After adding a remote, you�ll be able to use <name> as a shortcut)
     * NOTE: git remote rm <name> (Remove the connection to the remote repository called <name>.)
     * NOTE: git remote rename <old-name> <new-name> (Rename a remote connection from <old-name> to <new-name>.)
     */
    static func remote(){
-   	//--complete this method
+       //--complete this method
    }
-   /*
+   /**
     * Fetch
     * NOTE: Fetching is what you do when you want to see what everybody else has been working on. Since fetched content is represented as a remote branch, it has absolutely no effect on your local development work. This makes fetching a safe way to review commits before integrating them with your local repository.
     * NOTE: The git fetch command downloads commits from a remote repository into your local repo, does not download the actual files
@@ -198,13 +197,13 @@ class GitModifier{
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
    static func fetch(localRepoPath:String, _ remotePath:String, _ branch:String)->String{
-   	//--log "fetch()"
-   	//log ("GitModifier's fetch(" + branch + ")")
-   	//--condition
-   	var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git fetch " + "origin"
-   	if (branch != " ") { shellScript += " " + branch}
-   	//--log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript,localRepoPath)
+       //--log "fetch()"
+       //log ("GitModifier's fetch(" + branch + ")")
+       //--condition
+       var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git fetch " + "origin"
+       if(branch != " "){ shellScript += " " + branch}
+       //--log "shellScript: " + shellScript
+       return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * branch
