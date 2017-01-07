@@ -3,9 +3,9 @@ class GitModifier{
    /**
     * Add a file or many files to a commit
     * PARAM: fileName is the file name you want to add, use * if you want to add all files
-    * Caution: when a file is removed, the * char wont work, you have to add the file manually
-    * Example: GitUtils's add(localRepoPath, "*")
-    * Note: the opposite of add is reset, see the reset method for more info
+    * NOTE: the opposite of add is reset, see the reset method for more info
+    * CAUTION: when a file is removed, the * char wont work, you have to add the file manually
+    * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(localRepoPath:String, _ fileName:String)->String{
         //log ("GitModifier's add(" + localRepoPath + fileName + ")")
@@ -39,11 +39,13 @@ class GitModifier{
    }
    /*
     * Uploads the current from the local git commits to the remote git
+    * PARAM: from_where: "master"
+    * PARAM: to_where: "origin"
+    * PARAM: remotePath: github.com/user-name/repo-name.git
+    * PARAM: branch: usually "master"
     * NOTE: if the remote history has diverged from your history, you need to pull the remote branch and merge it into your local one,
     * NOTE: git push <remote> <branch> (Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won�t let you push when it results in a non-fast-forward merge in the destination repository.)
     * NOTE: you may mitigate using username and pass by researching how to use SSH key in github from trusted maschines
-    * TODO: maybe add try error when doing the shell part
-    * TODO: add branch as a param
     * NOTE: Original gti cmd: git push https://github.com/user/test.git master
     * NOTE: ssh-example: ssh://user@host/path/to/repo.git
     * NOTE: Only Push to Bare Repositories In addition, you should only push to repositories that have been created with the --bare flag. Since pushing messes with the remote branch structure, it's important to never push to another developers repository. But because bare repos don't have a working directory, it's impossible to interrupt anybodys developments.
@@ -51,10 +53,8 @@ class GitModifier{
     * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
     * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
-    * PARAM: from_where: "master"
-    * PARAM: to_where: "origin"
-    * PARAM: remotePath: github.com/user-name/repo-name.git
-    * PARAM: branch: usually "master"
+    * TODO: maybe add try error when doing the shell part
+    * TODO: add branch as a param
     */
    static func push(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
@@ -90,9 +90,9 @@ class GitModifier{
     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
     */
    static func clean(){
-   	//--condition 
+       //--complete this method
    }
-   /*
+   /**
     * Downloads the current from the remote git to the local git (git pull = git fetch + git merge)
     * NOTE: the original git cmd is "git pull origin master"
     * NOTE: "https://user:pass@github.com/user/repo.git"
@@ -103,34 +103,34 @@ class GitModifier{
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
    static func pull(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
-   	let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
-   	let targetBranch:String = "master" //--master branch
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
-   	return ShellUtils.run(shellScript,localRepoPath)
+       let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
+       let targetBranch:String = "master" //--master branch
+       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
+       return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * The opposite of the add action
     * "git reset"
     */
    static func revert(){
-   	//--complete this method
+       //--complete this method
    }
    /*
     * --rm --remove files, research this
     */
    static func remove(){
-   	//--complete this method
+       //--complete this method
    }
-   /*
-    * initialize
+   /**
+    * Initialize
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
-   static func initialize(localRepoPath:String)->String{
-   	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git init"
-   	//log "shellScript: " + shellScript
-   	return ShellUtils.run(shellScript,localRepoPath)
+    static func initialize(localRepoPath:String)->String{
+        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git init"
+        //log "shellScript: " + shellScript
+        return ShellUtils.run(shellScript,localRepoPath)
     }
-   /*
+   /**
     * Attach a remote repo to a local repo
     * NOTE: git remote add origin https://github.com/user/test.git
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
