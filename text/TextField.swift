@@ -1,7 +1,5 @@
 import Cocoa
-/**
- *
- */
+
 class TextField:NSTextField{
     var globalMouseDownHandler:AnyObject?
     /**

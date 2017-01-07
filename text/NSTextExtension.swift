@@ -11,7 +11,7 @@ extension NSText:IPositional{
         return frame.origin
     }
 }
-extension NSTextField : IPositional{
+extension NSTextField:IPositional{
     var pos:CGPoint{get{return frame.origin} set{frame.origin = newValue}}
     func setPosition(position:CGPoint) {
         frame.origin = position
