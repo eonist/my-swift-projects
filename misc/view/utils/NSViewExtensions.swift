@@ -114,13 +114,8 @@ extension NSView {
     /**
      * DEPRECATED
      */
-    func getSubviewAt(i:Int)->NSView{
-        //favour getSubViewAt method instead, as its optional
-        return NSViewParser.getSubviewAt(self, i)
-    }
-    func getSubViewAt(i:Int)->NSView?{
-        return NSViewParser.getSubViewAt(self, i)
-    }
+    func getSubviewAt(i:Int)->NSView{return NSViewParser.getSubviewAt(self, i)}//favour getSubViewAt method instead, as its optional
+    func getSubViewAt(i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
     var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
     var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
