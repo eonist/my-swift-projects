@@ -5,7 +5,7 @@ import Foundation
 class ArrayModifier{
 	/**
 	 * UNSHIFT (prepend)
-	 * Adds one or more elements to the beginning of an array and returns the new
+	 * Adds one or more elements to the beginning of an array and returns the new array count
 	 * PARAM: length of the array. The other elements in the array are moved from their 
 	 * original position, i, to i+1.
 	 * OUTPUT
@@ -257,7 +257,7 @@ class ArrayModifier{
      * Splits an array in two pieces
      * RETURN: a new array with 2 arrays
      */
-    static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {
+    static func split<T>(inout array:Array<T> ,_ index:Int) -> (a:[T],b:[T]) {
         // :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
         //it cant work look at the .pop and .count
         var arrayB:Array<T> = []
@@ -265,7 +265,9 @@ class ArrayModifier{
         for(var i:Int=index+1 ; i<arrayLength ; i++) {
             arrayB.append(array.pop()!)//pop removes last and returns it
         }
-        return [array, arrayB.reverse()]
+        let retVal:([T],[T]) = (array,arrayB.reverse())
+        return retVal
+        //return [array, arrayB.reverse()]
     }
     /**
      * Split an array a integer, returns a new array with arrays in it of the split
