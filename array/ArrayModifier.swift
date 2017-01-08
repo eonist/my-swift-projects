@@ -265,7 +265,7 @@ class ArrayModifier{
         var i:Int = index+1
         while(i < array.count){
         //for(var i:Int=index+1 ; i<arrayLength ; i++) {
-            arrayB.unshift(array.pop()!)//pop removes last and returns it
+            arrayB.unshift(array.pop()!)//pop removes last and returns it, unshift adds an item to beginning of an array
             i += 1
         }
         let retVal:([T],[T]) = (array,arrayB.reverse())
