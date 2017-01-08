@@ -272,7 +272,7 @@ class ArrayModifier{
             arrayB.unshift(array.pop()!)//pop removes last and returns it, unshift adds an item to beginning of an array
             i += 1
         }
-        let retVal:([T],[T]) = (array,arrayB.reverse())
+        let retVal:([T],[T]) = (array,arrayB/*.reverse()*/)
         return retVal
         //return [array, arrayB.reverse()]
     }
