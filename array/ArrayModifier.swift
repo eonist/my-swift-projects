@@ -260,7 +260,9 @@ class ArrayModifier{
     static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {// :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
         var arrayB:Array<T> = []
         let arrayLength:Int = array.count
-        for(var i:Int=index+1 ; i<arrayLength ; i++) {arrayB.append(array.pop()!)}
+        for(var i:Int=index+1 ; i<arrayLength ; i++) {
+            arrayB.append(array.pop()!)
+        }
         return [array, arrayB.reverse()]
     }
     /**
