@@ -272,8 +272,10 @@ class ArrayModifier{
     static func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
         let copy:Array<T> = array//Create a copy
         var list:Array<[T]> = []
-        every = max(every, 1)
-        for ( var i:Int = 0 , n:Int = ceil((copy.count / every).float).int ;i < n ;i++ ) {
+        every = max(every, 1)//force value to be 1 or more
+        let len:Int = ceil((copy.count / every).float).int
+        while (i < n){
+        for ( var i:Int = 0 ,  ; ;i++ ) {
             let a:Int = i * every
             let b:Int = min(a + every, copy.count)
             let split:Array<T> = copy.slice2(a, b)
