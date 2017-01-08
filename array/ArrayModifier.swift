@@ -134,8 +134,7 @@ class ArrayModifier{
      * IMPORTANT: This compares reference not value
      */
     static func remove(inout array:Array<AnyObject>, _ object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
-        for i in 0..<array.count{
-        for(var i:Int=0; i<array.count; i++){
+        for i in 0..<array.count{//swift 3
             if(array[i] === object){
                 array.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
                 return i
