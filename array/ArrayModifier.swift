@@ -59,13 +59,15 @@ class ArrayModifier{
     }
     /**
      * NOTE: I think you can also use array.removeFirst(n: Int) on a backwards while loop, to achive the same thing and faster, but this work for now
-     * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      * IMPORTANT: This method does NOT alter the original array (should probably be moved to ArrayParser?)
      * RETURNS: The items from startIndex to endIndex
+     * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      */
     static func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
         var arr:Array<T> = []
-        for var i = startIndex; i < endIndex; ++i{arr.append(array[i])}
+        for var i = startIndex; i < endIndex; ++i{
+            arr.append(array[i])
+        }
         return arr
     }
     /**
