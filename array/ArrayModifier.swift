@@ -267,10 +267,10 @@ class ArrayModifier{
         return retVal
     }
     /**
-     * Split an array a integer, returns a new array with arrays in it of the split
+     * Split an array at integer, returns a new array with arrays in it of the split
      */
     static func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
-        let copy:Array<T> = array.concat([])
+        let copy:Array<T> = array//Create a copy
         var list:Array<[T]> = []
         every = max(every, 1)
         for ( var i:Int = 0 , n:Int = ceil((copy.count / every).float).int ;i < n ;i++ ) {
