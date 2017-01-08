@@ -182,8 +182,12 @@ class ArrayModifier{
     }
     /**
      * Returns PARAM: array with out the items in PARAM: these by the PARAM: key
-     * EXAMPLE: print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
+     * EXAMPLE:
+     * var arr = [["name":"Alf"],["name":"Bert"],["name":"Bill"],["name":"John"],["name":"James"],["name":"Chuck"]]
+     * let match = ["Bert","James","Chuck"]
+     * let result = ArrayModifier.removeManyByKey(&arr, match, "name")
+     * print("result: " + "\(result)")//Alf,Bill,John
      */
     static func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
         var i:Int = 0
