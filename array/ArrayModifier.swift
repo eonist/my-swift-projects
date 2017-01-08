@@ -71,7 +71,8 @@ class ArrayModifier{
         }
         return arr
         
-        //continue here: make the bellow line work: 🏀
+        //continue here: make the bellow line work: 🏀 
+            //check array.md for tips like arr.range(start:0,end:2) or something
         
         /*return array[startIndex..<endIndex]*/
     }
