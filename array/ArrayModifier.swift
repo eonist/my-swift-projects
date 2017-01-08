@@ -190,7 +190,7 @@ class ArrayModifier{
             let dict:[String:T] = array[i]
             let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
-                array.splice2(i-1,1)
+                array.splice2(i,1)
             }
         }
         return array
