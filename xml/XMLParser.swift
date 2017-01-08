@@ -75,7 +75,7 @@ public class XMLParser{
      */
     static func attributes(child:XML) -> [Dictionary<String,String>]{
         
-        print("you should probably not use this, use attribs instead")
+        //print("you should probably not use this, use attribs instead")
         
         var attributes:[Dictionary<String,String>] = []
         if(child.attributes?.count > 0){
@@ -197,7 +197,7 @@ public class XMLParser{
             let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
             var item:Dictionary<String,String> = Dictionary<String,String>()
-            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)
+            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
             }
