@@ -278,7 +278,8 @@ class ArrayModifier{
         var list:Array<[T]> = []
         every = max(every, 1)//force value to be 1 or more
         let len:Int = ceil((copy.count / every).float).int
-        while (i < n){
+        var i:Int = 0
+        while (i < len){
         //for ( var i:Int = 0 ,  ; ;i++ ) {
             let a:Int = i * every
             let b:Int = min(a + every, copy.count)
