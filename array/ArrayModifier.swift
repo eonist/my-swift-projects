@@ -181,17 +181,22 @@ class ArrayModifier{
         return arr
     }
     /**
-     * Returns @param array with out the items in @param these by the @param key
-     * @example print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
+     * Returns PARAM: array with out the items in PARAM: these by the PARAM: key
+     * EXAMPLE: print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
      */
     static func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
-        for (var i : Int = 0; i < array.count; i++) {
-            let dict:Dictionary<String,T> = array[i]
+        //for var i = 0; i < array.count; ++i{
+        
+        var i:Int = 0
+        while (i < array.count){
+        //for (var i,_) in array.enumerate(){
+            let dict:[String:T] = array[i]
             let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
                 array.splice2(i--,1)
             }
+            //i++
         }
         return array
     }
