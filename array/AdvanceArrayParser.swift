@@ -2,7 +2,7 @@ import Foundation
 
 class AdvanceArrayParser {
     /**
-     * Returns the branch at @param index
+     * Returns the branch at PARAM: index
      * NOTE: this function is recursive
      * NOTE: to find the children of the root use an empty array as the index value
      * EXAMPLE: childAt([["red","green"],[["four","five"],[1,2,3]]],[1,0,1])//five?
@@ -15,7 +15,7 @@ class AdvanceArrayParser {
         return nil
     }
     /**
-     * Returns the first index of @param index in @param indices
+     * Returns the first index of PARAM: index in PARAM: indices
      * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex?
      * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
