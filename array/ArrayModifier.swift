@@ -257,11 +257,13 @@ class ArrayModifier{
      * Splits an array in two pieces
      * RETURN: a new array with 2 arrays
      */
-    static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {// :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
+    static func split<T>(inout array:Array<T> ,_ index:Int) -> Array<[T]> {
+        // :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
+        //it cant work look at the .pop and .count
         var arrayB:Array<T> = []
         let arrayLength:Int = array.count
         for(var i:Int=index+1 ; i<arrayLength ; i++) {
-            arrayB.append(array.pop()!)
+            arrayB.append(array.pop()!)//pop removes last and returns it
         }
         return [array, arrayB.reverse()]
     }
