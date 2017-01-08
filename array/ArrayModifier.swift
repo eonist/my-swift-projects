@@ -40,7 +40,7 @@ class ArrayModifier{
         return nil
     }
      /**
-	  * Removes items from @param array from @param start until @param delCount, and optionally inserts @param values
+	  * Removes items from PARAM: array from PARAM: start until PARAM: delCount, and optionally inserts PARAM: values
       * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
       * EXAMPLE: splice2([a,b,c],2,1)//[c]
       * EXAMPLE: splice2([a,b,c],0,1)//[a]
@@ -266,12 +266,13 @@ class ArrayModifier{
         //it cant work look at the .pop and .count
         var arrayB:Array<T> = []
         //let arrayLength:Int = array.count
-        var i:Int = index+1
+        /*var i:Int = index+1
         while(i < array.count){
         //for(var i:Int=index+1 ; i<arrayLength ; i++) {
-            arrayB.unshift(array.pop()!)//pop removes last and returns it, unshift adds an item to beginning of an array
-            i += 1
-        }
+        arrayB.unshift(array.pop()!)//pop removes last and returns it, unshift adds an item to beginning of an array
+        i += 1
+        }*/
+        //ArrayModifier.splice2
         let retVal:([T],[T]) = (array,arrayB/*.reverse()*/)
         return retVal
         //return [array, arrayB.reverse()]
