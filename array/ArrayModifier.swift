@@ -71,7 +71,7 @@ class ArrayModifier{
         }
         return arr
         */
-        return arr[startIndex..<endIndex]
+        return array[startIndex..<endIndex]
     }
     /**
      * NOTE: modifies the original array
