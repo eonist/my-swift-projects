@@ -186,17 +186,15 @@ class ArrayModifier{
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
      */
     static func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
-        //for var i = 0; i < array.count; ++i{
-        
         var i:Int = 0
-        while (i < array.count){
-        //for (var i,_) in array.enumerate(){
+        while (i < array.count){//<--swift 3 support -> was simple c-style for loop
             let dict:[String:T] = array[i]
             let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
-                array.splice2(i--,1)
+                array.splice2(i,1)
+                i -= 1
             }
-            //i++
+            i++
         }
         return array
     }
