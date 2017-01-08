@@ -33,7 +33,7 @@ class PointModifier {
      * TODO: rename to matrixRot?
      */
     static func rotatePoint(point:CGPoint, _ pivot:CGPoint, _ rotation:CGFloat) -> CGPoint {
-        var transform = CGAffineTransformIdentity//var matrix:Matrix = new Matrix();
+        var transform:CGAffineTransform = CGAffineTransformIdentity//var matrix:Matrix = new Matrix();
         transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
         return CGPointApplyAffineTransform(point, transform)//matrix.transformPoint(point)
     }
@@ -41,7 +41,7 @@ class PointModifier {
      * Untested, but should work
      */
     static func matrixRot(point:CGPoint,  _ rotation:CGFloat) -> CGPoint {
-        var transform = CGAffineTransformIdentity//var matrix:Matrix = Matrix();
+        var transform:CGAffineTransform = CGAffineTransformIdentity//var matrix:Matrix = Matrix();
         transform.rotate(rotation)//matrix.rotate(rotation);
         return CGPointApplyAffineTransform(point, transform)//matrix.transformPoint(point);
     }
