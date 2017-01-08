@@ -64,14 +64,16 @@ class ArrayModifier{
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      */
     static func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
-        /*
+        
         var arr:Array<T> = []
         for var i = startIndex; i < endIndex; ++i{
             arr.append(array[i])
         }
         return arr
-        */
-        return array[startIndex..<endIndex]
+        
+        //continue here: make the bellow line work: 🏀
+        
+        /*return array[startIndex..<endIndex]*/
     }
     /**
      * NOTE: modifies the original array
