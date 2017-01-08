@@ -259,10 +259,10 @@ class ArrayModifier{
     }
     /**
      * Splits an array in two pieces
-     * RETURN: a new array with 2 arrays
+     * RETURN: a Tuple with 2 arrays
      */
     static func split<T>(inout array:Array<T> ,_ index:Int) -> (a:[T],b:[T]) {
-        var arrayB:Array<T> = array.splice2(index, array.count-index)
+        var arrayB:Array<T> = array.splice2(index, array.count-index)//you can also do this with pop and unshift etc. But I think splice is faster, simpler
         let retVal:([T],[T]) = (array,arrayB)
         return retVal
     }
