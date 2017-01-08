@@ -29,9 +29,9 @@ class SVGStyleParser {
         for match:NSTextCheckingResult in matches {//Loops through the pattern
             match.numberOfRanges
             //let content = (style as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let name = (style as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*///TODO: use RegExp util method to extract results
+            let name = match.value(style,1)/*capturing group 1*/
             //Swift.print("name: >" + name+"<");
-            let value = (style as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*///TODO: use RegExp util method to extract results
+            let value = match.value(style,2)/*capturing group 2*/
             //Swift.print("value: >" + value+"<");
             inlineStyles[name] = value
         }

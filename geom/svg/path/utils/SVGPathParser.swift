@@ -15,13 +15,13 @@ class SVGPathParser {
 		let pattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
         //Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
-        for match:NSTextCheckingResult in matches {/*Loops through the pattern*///TODO: ise marches.forEach instead
+        for match:NSTextCheckingResult in matches {/*Loops through the pattern*///TODO: use marches.forEach instead
             //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
             //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let cmnd = (data as NSString).substringWithRange(match.rangeAtIndex(1))/*capturing group 1*///TODO: Use the RegExp util method to extract the result
+            let cmnd = match.value(data,1)/*capturing group 1*/
             //Swift.print("cmnd: >" + cmnd+"<");
             commands.append(cmnd)//command()
-            let params = (data as NSString).substringWithRange(match.rangeAtIndex(2))/*capturing group 2*///TODO: Use the RegExp util method to extract the result
+            let params = match.value(data,2)/*capturing group 2*/
             //Swift.print("params: >" + params+"<");
             let array:Array<CGFloat> = SVGPathParser.parameters(params)
             //Swift.print("pathData.parameters: " + array);
