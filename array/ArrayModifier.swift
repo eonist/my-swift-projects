@@ -261,9 +261,12 @@ class ArrayModifier{
         // :TODO: this doesnt work , you need to use a combination of splice, concat and unshift also make this function not return anything, it seem to work actually
         //it cant work look at the .pop and .count
         var arrayB:Array<T> = []
-        let arrayLength:Int = array.count
-        for(var i:Int=index+1 ; i<arrayLength ; i++) {
-            arrayB.append(array.pop()!)//pop removes last and returns it
+        //let arrayLength:Int = array.count
+        var i:Int = index+1
+        while(i < array.count){
+        //for(var i:Int=index+1 ; i<arrayLength ; i++) {
+            arrayB.unshift(array.pop()!)//pop removes last and returns it
+            i += 1
         }
         let retVal:([T],[T]) = (array,arrayB.reverse())
         return retVal
