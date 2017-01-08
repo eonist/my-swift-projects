@@ -81,14 +81,18 @@ class PointModifier {
      */
     static func scalePoints(points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint)->Array<CGPoint>{
         var scaledPoints:Array<CGPoint> = []
-        for p : CGPoint in points{ scaledPoints.append(PointModifier.scale(p,pivot,scale))}
+        for p:CGPoint in points{
+            scaledPoints.append(PointModifier.scale(p,pivot,scale))
+        }
         return scaledPoints
     }
     /**
      * Use this when you want to scale the points directly
      */
     static func scalePoints(inout points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint) {
-        for var i = 0; i < points.count; ++i{points[i] = PointModifier.scale(points[i],pivot,scale)}
+        for i in 0..<points.count{
+            points[i] = PointModifier.scale(points[i],pivot,scale)
+        }
     }
     /**
      * Multiplies x and y in PARAM: point with PARAM: multiplier
