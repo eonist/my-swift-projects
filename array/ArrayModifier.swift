@@ -260,9 +260,13 @@ class ArrayModifier{
     /**
      * Splits an array in two pieces
      * RETURN: a Tuple with 2 arrays
+     * EXAMPLE: 
+     * var arr = [1,2,3,4,5,6]
+     * let newArr = ArrayModifier.split(&arr, 3)
+     * Swift.print(newArr)//([1, 2, 3], [4, 5, 6])
      */
     static func split<T>(inout array:Array<T> ,_ index:Int) -> (a:[T],b:[T]) {
-        var arrayB:Array<T> = array.splice2(index, array.count-index)//you can also do this with pop and unshift etc. But I think splice is faster, simpler
+        let arrayB:Array<T> = array.splice2(index, array.count-index)//you can also do this with pop and unshift etc. But I think splice is faster, simpler
         let retVal:([T],[T]) = (array,arrayB)
         return retVal
     }
@@ -275,11 +279,12 @@ class ArrayModifier{
         every = max(every, 1)//force value to be 1 or more
         let len:Int = ceil((copy.count / every).float).int
         while (i < n){
-        for ( var i:Int = 0 ,  ; ;i++ ) {
+        //for ( var i:Int = 0 ,  ; ;i++ ) {
             let a:Int = i * every
             let b:Int = min(a + every, copy.count)
             let split:Array<T> = copy.slice2(a, b)
             list.append(split)
+            i++
         }
         return list
     }
