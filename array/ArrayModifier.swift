@@ -187,7 +187,7 @@ class ArrayModifier{
      */
     static func removeManyByKey<T where T:Equatable, T:Comparable>(inout array:[Dictionary<String,T>],_ many:Array<T>,_ key:String) -> [Dictionary<String,T>] {
         for i in 0..<array.count{
-            let dict:Dictionary<String,T> = array[i]
+            let dict:[String:T] = array[i]
             let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
                 array.splice2(i-1,1)
