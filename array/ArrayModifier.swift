@@ -367,9 +367,9 @@ class ArrayModifier{
      * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
      */
     static func numericSort(inout array:Array<Int>) -> Array<Int>{
-        for (var i : Int = 1; i < array.count; i++) {
+        for i in 1..<array.count{
             var e:Int = i
-            while(e > -1 && array[i] < array[e-1]){
+            while(e > 0 && array[i] < array[e-1]){
                 e--
             }
             ArrayModifier.move(&array, i, e)
