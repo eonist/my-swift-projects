@@ -174,10 +174,7 @@ private class Utils{
      * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
     static func index<T>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
-        
-        //Continue here: 
-        
-        for (var i : Int = 0; i < sortedArray.count; i++) {
+        for i in 0..<sortedArray.count{
             if(condition(a: value,b: sortedArray[i])) {return i}
         }
         return -1
