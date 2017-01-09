@@ -102,7 +102,7 @@ extension NSArray:AnyArray{}/*<--Empty arrays are always NSArray so this is need
 /**
  * var arr = [1,2,3] 
  * arr += 4
- * print(arr)// 1,2,3,4
+ * print(arr)//1,2,3,4
  */
 public func +=<T> (inout left:[T], right: T) -> [T] {/*returns array for the sake of convenience*/
     left.append(right)
@@ -117,7 +117,6 @@ public func +=<T> (left: T,inout right:[T]) -> [T] {/*returns array for the sake
     right.unshift(left)/*<--this is like prepend*/
     return right
 }
-
 //TODO: Needs more research see similar case with AnyObject
 /*
 extension Array where Element:String{
