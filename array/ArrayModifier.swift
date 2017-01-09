@@ -368,11 +368,11 @@ class ArrayModifier{
      */
     static func numericSort(inout array:Array<Int>) -> Array<Int>{
         for (var i : Int = 1; i < array.count; i++) {
-            var e:Int = i;
+            var e:Int = i
             while(array[i] < array[e-1]){
-                e--;
+                e--
             }
-            ArrayModifier.move(&array, i, e);
+            ArrayModifier.move(&array, i, e)
         }
         return array
     }
