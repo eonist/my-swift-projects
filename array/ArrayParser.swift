@@ -174,19 +174,12 @@ private class Utils{
      * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
     static func index<T>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
+        
+        //Continue here: 
+        
         for (var i : Int = 0; i < sortedArray.count; i++) {
             if(condition(a: value,b: sortedArray[i])) {return i}
         }
         return -1
     }
 }
-/**
-* Returns the index for item, -1 of none is found
-* NOTE: keep this method around until the index method is tested
-*/
-/*
-class func DEPRECATEDIndexOfValue<T: Equatable>(array: [T], _ value: T) -> Int? {//the <T: Equatable> part ensures that the types can use the equal operator ==
-    for (index, item) in array.enumerate() {if value == item {return index}}
-    return -1
-}
-*/
