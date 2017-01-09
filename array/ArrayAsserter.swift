@@ -53,18 +53,18 @@ class ArrayAsserter {
     static func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
         let aLength:Int = a.count
         if(aLength != b.count) { return false }
-        for(var i:Int = 0; i < aLength; i++) { if((a[i] as! AnyObject) !== (b[i] as! AnyObject)) {return false}}//Doesnt the !== only work on the same reference, yepp it does. To comapre value create another method
+        for(var i:Int = 0; i < aLength; i++) { if((a[i] as! AnyObject) !== (b[i] as! AnyObject)) {return false}}//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
         return true
     }
     /**
      * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
      * NOTE: same as the other equals method but asserts value and not reference
-     * TODO: create add this method to ArrayExtensions
      * NOTE: This method has support for both Equatable and Comparable aswell, similar to Array.index, the equatable part enables support for numeric types and the comparable part enables support for string types
      * NOTE: there are two methods named equals in this class, the correct one will be infered from the POV of the callee
+     * TODO: create add this method to ArrayExtensions
+     * IMPORTANT: This method compares value not reference
      * EXAMPLE: ArrayAsserter.equals(["",""], ["","",""])//false
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
-     * IMPORTANT: This method compares value not reference
      */
     static func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
         let aLength:Int = a.count
