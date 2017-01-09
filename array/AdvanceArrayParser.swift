@@ -20,11 +20,9 @@ class AdvanceArrayParser {
      * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
     static func index(index:Array<Int>,_ indices:Array<[Int]>) -> Int{
-        let lengthOfIndices:Int = indices.count/*Cpu optimiztion*/
-        let lengthOfIndex:Int = index.count/*Cpu optimiztion*/
-        for (var i : Int = 0; i < lengthOfIndices; i++) {
+        for i in 0..<indices.count{
             var indicesIndex:Array<Int> = indices[i]
-            for (var e : Int = 0; e < lengthOfIndex; e++) {
+            for e in 0..<index.count{
                 if(/*indicesIndex[e].isNaN || */index[e] < indicesIndex[e]) {break;}
                 else if((/*!isNaN(indicesIndex[e]) && */index[e] > indicesIndex[e]) || (index.count < indicesIndex.count && index[e] == indicesIndex[e])) {return i}
             }
