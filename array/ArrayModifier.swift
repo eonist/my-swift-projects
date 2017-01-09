@@ -272,11 +272,15 @@ class ArrayModifier{
     }
     /**
      * Split an array at integer, returns a new array with arrays in it of the split
+     * EXAMPLE:
+     * let arr = ["1","2","3","4","5","6"]
+     * let newArr = ArrayModifier.splitAtEvery(arr,3)
+     * Swift.print(newArr)//[["1", "2", "3"], ["4", "5", "6"]]
      */
     static func splitAtEvery<T>( array:Array<T> , var _ every:Int = 1 ) -> Array<[T]> {
         let copy:Array<T> = array//Create a copy
         var list:Array<[T]> = []
-        every = max(every, 1)//force value to be 1 or more
+        every = max(every, 1)//Force value to be 1 or more
         let len:Int = ceil((copy.count / every).float).int
         var i:Int = 0
         while (i < len){
