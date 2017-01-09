@@ -80,8 +80,9 @@ class ArrayModifier{
         if range.location > array.count {
             return []
         }
-        //return Array(array[range.location..<min(range.length, array.count)])
-        return array[0..<4]
+        let result = array[0..<4]
+        return Array(array[range.location..<min(range.length, array.count)])
+
     }
     /**
      * NOTE: modifies the original array
