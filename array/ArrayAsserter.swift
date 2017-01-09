@@ -19,7 +19,8 @@ class ArrayAsserter {
                 score++
             }
         }
-        return score == (strict ? b.count:a.count)
+        Swift.print("score: " + "\(score)")
+        return score == (strict ? b.count : a.count)
     }
     /**
      * Asserts if an array has an item
