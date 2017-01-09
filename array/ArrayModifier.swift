@@ -350,11 +350,11 @@ class ArrayModifier{
      * Removes duplicates
      * NOTE: the following two lines may be more efficient try to factor them and see if they are good
      * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"]
-     * EXAMPLE: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
+     * EXAMPLE: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);  (more functional, maybe faster?)
      */
     static func removeDuplicates<T where T:Equatable, T:Comparable>(array:Array<T>) -> Array<T>{
         var tempArray:Array<T> = []
-        for (var i:Int = 0; i<array.count; i++){
+        for i in 0..<array.count{
             let item:T = array[i]
             if (ArrayParser.index(tempArray, item) == -1) {//append if doesn't exists
                 tempArray.append(item)
