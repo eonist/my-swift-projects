@@ -402,6 +402,12 @@ class ArrayModifier{
         return array
     }
     /**
+     *
+     */
+    static func replaceMultiple<T where T:Equatable, T:Comparable>()-> Array<T>{
+        
+    }
+    /**
      * Inserts "before" PARAM index (see examples bellow)
      * EXAMPLE: ["a","b","c"].insert("x", 0)//x,a,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
