@@ -148,10 +148,10 @@ class ArrayParser{
         var numbers:Array<Int> = []
         for (var a:Int = start; a <= end; a++) {numbers.append(a)}
         var randomNumbers:Array<Int> = []
-        let len:Int = numbers.count
+        let len:Int = numbers.count-1
         Swift.print("len: " + "\(len)")
         for (var e:Int=0; e<len; e++) {
-            let randomNr:Int = Int(arc4random_uniform(UInt32(len)) + 1)// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
+            let randomNr:Int = Int(arc4random_uniform(UInt32(len-e)) + 1)// possibly use this line instead: Math.floor(Math.random()*(array.length-0.1));
             Swift.print("randomNr: " + "\(randomNr)")
             randomNumbers.append(numbers[randomNr])
             numbers.splice2(randomNr, 1)
