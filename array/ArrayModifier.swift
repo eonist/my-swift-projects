@@ -358,11 +358,7 @@ class ArrayModifier{
         var tempArray:Array<T> = []
         for (var i:Int = 0; i<array.count; i++){
             let obj1:T = array[i]
-            var exists:Bool = false
-            for (var j:Int = 0; j<tempArray.count; j++){
-                let obj2:T = tempArray[j]
-                if ((obj2 as! AnyObject) === (obj1 as! AnyObject)) {exists = true}//<--if this casting doesnt work, try the indexOf method that suports reference compaaring
-            }
+            var exists:Bool = ArrayParser.index(tempArray, obj1) != -1
             if (!exists) {tempArray.append(obj1)}
         }
         return tempArray
