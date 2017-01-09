@@ -46,7 +46,9 @@ class ArrayModifier{
       * EXAMPLE: splice2([a,b,c],0,1)//[a]
       * NOTE: splice can also be used to remove item from array
       * IMPORTANT: the original array is modified
-      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
+      * EXAMPLE: 
+      * let arr = ["spinach","green pepper","cilantro","onion","avocado"]
+      * splice(arr,0, 1, ["tomato"])// tomato,green,pepper,cilantro,onion,avocado
       * RETURNS: An array containing the elements that were removed from the original array.
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
       * TODO: You could probably use the native: array.replaceRange instead
