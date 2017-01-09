@@ -55,8 +55,8 @@ class ArrayModifier{
 	  */
     static func splice2<T>(inout array:[T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{
         let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
-        array.removeRange(Range<Int>(start:startIndex,end:startIndex + deleteCount))
-        if(values.count > 0 ){array.insertContentsOf(values, at: startIndex)}
+        array.removeRange(startIndex..<startIndex + deleteCount)
+        if(values.count > 0){array.insertContentsOf(values, at: startIndex)}
         return returnArray
     }
     /**
