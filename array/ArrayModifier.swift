@@ -383,7 +383,7 @@ class ArrayModifier{
     /**
      * Replaces PARAM: searchFor with PARAM: replaceWith (the existing item is deleted)
      * NOTE: on pretext is that the item to search for must already exist in the array or else this method doesnt work
-     * NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
+     * NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function doesnt work
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
      */
     static func replace<T>(inout array:Array<T>, _ searchFor:T, _ replaceWith:T) -> Int {
@@ -397,7 +397,9 @@ class ArrayModifier{
      */
     static func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
         for i in 0..<array.count{//Swift 3 support
-            replace(&array, matches[i], replacments[i])
+
+            let index:Int = ArrayParser.indx(array, matches)//finds index of reference
+            if(index != -1){array[index] = replacments[i]}
         }
         return array
     }
