@@ -405,6 +405,10 @@ class ArrayModifier{
     /**
      * IMPORTANT: Matches.count and replacments.count must be equal
      * IMPORTANT: Compares value not reference
+     * EXAMPLE: 
+     * var arr = ["1","2","3","4","5"]
+     * ArrayModifier.replaceMultiple(&arr, ["2","3"], ["a","b"])
+     * Swift.print(arr)//1,a,b,4,5
      */
     static func replaceMultiple<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
         for i in 0..<matches.count{//Swift 3 support
