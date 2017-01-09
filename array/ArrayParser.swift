@@ -32,6 +32,7 @@ class ArrayParser{
      * new
      * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
      * NOTE: dupplets doesn't seem to be castable to AnyObject
+     * TODO: What is the diff between idx and indx?
      */
     static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
         for i in 0 ..< arr.count{
@@ -40,7 +41,7 @@ class ArrayParser{
         return -1
     }
     /**
-     * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
+     * Returns the index of the first instance that matches the PARAM: item in the PARAM: arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
      * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
      * IMPORTANT: compares reference not value
