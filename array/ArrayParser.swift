@@ -148,7 +148,7 @@ class ArrayParser{
      */
     static func uniqueRandom(start:Int, _ end:Int) -> Array<Int> {
         var numbers:Array<Int> = []
-        for (var a:Int = start; a <= end; a++) {numbers.append(a)}
+        for a in start...end{numbers.append(a)}
         var randomNumbers:Array<Int> = []
         let len:Int = numbers.count
         for e in 0..<len{
