@@ -23,7 +23,7 @@ class ArrayParser{
      * IMPORTANT: compares reference not value
      */
     static func indx<T>(arr: [T], _ item: T) -> Int{//<--use inout for both args?
-        for var i = 0; i < arr.count; ++i{
+        for i in 0 ..< arr.count{
             if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}
         }
         return -1
@@ -34,7 +34,7 @@ class ArrayParser{
      * NOTE: dupplets doesn't seem to be castable to AnyObject
      */
     static func idx<T>(inout arr:[T], inout _ item:T) -> Int{
-        for var i = 0; i < arr.count; ++i{
+        for i in 0 ..< arr.count{
             if((arr[i] as! AnyObject) === (item as! AnyObject)){return i}//we cast to AnyObject because generics can't ref compare, but AnyObject can
         }
         return -1
@@ -46,7 +46,7 @@ class ArrayParser{
      * IMPORTANT: compares reference not value
      */
     static func indexOf(arr:Array<AnyObject>,_ item:AnyObject)-> Int{
-        for var i = 0; i < arr.count; ++i{
+        for i in 0 ..< arr.count{
             if(arr[i] === item){return i}
         }
         return -1
