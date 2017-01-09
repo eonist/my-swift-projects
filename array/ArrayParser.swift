@@ -159,20 +159,20 @@ class ArrayParser{
         return randomNumbers
     }
     /**
-     * IMPORTANT: compares reference not value, if value comparing is needed then create another method to support that
+     * IMPORTANT: Compares reference not value, if value comparing is needed then create another method to support that
      */
     static func occurences<T>(theList:Array<T>, theItem:T){
         var counter:Int = 0
-        for var i = 0; i < theList.count; ++i{
-            if((theList[i] as! AnyObject) === (theItem as! AnyObject)){counter++}
+        for i in 0..<theList.count{
+            if((theList[i] as! AnyObject) === (theItem as! AnyObject)){counter += 1}
         }
     }
 }
 private class Utils{
     /**
-     * Returns the index of the item in @param sortedArray that meets the @param condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
+     * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
-    class func index<T>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
+    static func index<T>(value:T, _ sortedArray:[T],_ condition:(a: T, b: T)->Bool)->Int{
         for (var i : Int = 0; i < sortedArray.count; i++) {
             if(condition(a: value,b: sortedArray[i])) {return i}
         }
