@@ -407,8 +407,9 @@ class ArrayModifier{
     static func replaceMultiple<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
         for i in 0..<array.count{
             let index:Int = ArrayParser.index(array, replacments[i])
-            array[index] = replaceWith
+            array[index] = replacments[i]
         }
+        return array
     }
     /**
      * Inserts "before" PARAM index (see examples bellow)
