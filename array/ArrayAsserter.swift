@@ -70,9 +70,10 @@ class ArrayAsserter {
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
      */
     static func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
-        let aLength:Int = a.count
-        if(aLength != b.count) { return false }
-        for(var i:Int = 0; i < aLength; i++) { if(a[i] != b[i]) {return false}}//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
+        if(a.count != b.count) { return false }
+        for i in 0..<a.count{
+            if(a[i] != b[i]) {return false}
+        }
         return true
     }
 }
