@@ -369,7 +369,7 @@ class ArrayModifier{
     static func numericSort(inout array:Array<Int>) -> Array<Int>{
         for (var i : Int = 1; i < array.count; i++) {
             var e:Int = i
-            while(array[i] < array[e-1]){
+            while(e > -1 && array[i] < array[e-1]){
                 e--
             }
             ArrayModifier.move(&array, i, e)
