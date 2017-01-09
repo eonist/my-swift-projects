@@ -76,6 +76,13 @@ class ArrayModifier{
         
         /*return array[startIndex..<endIndex]*/
     }
+    static func subArray<T>(array: [T], range: NSRange) -> [T] {
+        if range.location > array.count {
+            return []
+        }
+        //return Array(array[range.location..<min(range.length, array.count)])
+        return array[0..<4]
+    }
     /**
      * NOTE: modifies the original array
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
