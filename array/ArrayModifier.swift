@@ -66,7 +66,6 @@ class ArrayModifier{
     static func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
         return Array(array[startIndex..<endIndex])
     }
-    
     /**
      * NOTE: modifies the original array
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
@@ -134,7 +133,7 @@ class ArrayModifier{
      */
     static func remove(inout array:Array<AnyObject>, _ object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
         for i in 0..<array.count{//swift 3
-            if(array[i] === object){
+            if(array[i] === object){//finds a matching reference
                 array.removeAtIndex(i)/*was --> array.splice2(i, 1)*/
                 return i
             }
