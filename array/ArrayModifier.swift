@@ -363,8 +363,12 @@ class ArrayModifier{
     /**
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
-     * NOTE: modifies the original array
+     * NOTE: modifies the original array,returns the array (convenient)
      * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
+     * EXAMPLE:
+     * var arr:Array = [5,4,1,2,0]
+     * ArrayModifier.numericSort(&arr)
+     * Swift.print(arr)//0, 1, 2, 4, 5
      */
     static func numericSort(inout array:Array<Int>) -> Array<Int>{
         for i in 1..<array.count{
