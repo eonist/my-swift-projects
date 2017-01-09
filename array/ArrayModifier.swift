@@ -396,16 +396,19 @@ class ArrayModifier{
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is needed
      */
     static func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
-        for var i = 0; i < array.count; ++i{
+        for i in 0..<array.count{//swift 3 support
             replace(&array, matches[i], replacments[i])
         }
         return array
     }
     /**
-     *
+     * IMPORTANT: matches.count and replacments.count must be equal
      */
-    static func replaceMultiple<T where T:Equatable, T:Comparable>()-> Array<T>{
-        
+    static func replaceMultiple<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
+        for i in 0..<array.count{
+            let index:Int = ArrayParser.index(array, replacments[i])
+            array[index] = replaceWith
+        }
     }
     /**
      * Inserts "before" PARAM index (see examples bellow)
