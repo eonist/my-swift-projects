@@ -405,7 +405,7 @@ class ArrayModifier{
      * IMPORTANT: Matches.count and replacments.count must be equal
      * IMPORTANT: Compares value not reference
      */
-    static func replaceMany<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
+    static func replaceMultiple<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
         for i in 0..<array.count{
             let index:Int = ArrayParser.index(array, replacments[i])
             array[index] = replacments[i]
