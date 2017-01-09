@@ -392,8 +392,8 @@ class ArrayModifier{
         return index
     }
     /**
-     * TODO: make it work even if the length of the array the_replacements is longer than thhe_matches
-     * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
+     * TODO: make it work even if the length of the array the_replacements is longer than the matches
+     * IMPORTANT: Compares reference not value, create a similar method if value comparing is needed
      */
     static func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
         for var i = 0; i < array.count; ++i{
