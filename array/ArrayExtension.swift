@@ -61,9 +61,7 @@ extension Array {
     func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
-    func index<T where T:Equatable, T:Comparable>(arr : [T], _ value:T)->Int{
-        return ArrayParser.index(arr, value)
-    }
+    
     /**
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
@@ -93,6 +91,13 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
+extension Array where Element:Equatable, Element:Comparable{
+    func index(value:Element)->Int{
+        return ArrayParser.index(self, value)
+    }
+}
+
+
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
 extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
