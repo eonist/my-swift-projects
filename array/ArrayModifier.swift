@@ -396,9 +396,8 @@ class ArrayModifier{
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is needed
      */
     static func replaceMany<T>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>) -> Array<T>{
-        for i in 0..<array.count{//Swift 3 support
-
-            let index:Int = ArrayParser.indx(array, matches)//finds index of reference
+        for i in 0..<matches.count{//Swift 3 support
+            let index:Int = ArrayParser.indx(array, matches[i])//finds index of reference
             if(index != -1){array[index] = replacments[i]}
         }
         return array
@@ -408,9 +407,9 @@ class ArrayModifier{
      * IMPORTANT: Compares value not reference
      */
     static func replaceMultiple<T where T:Equatable, T:Comparable>(inout array:Array<T>, _ matches:Array<T>, _ replacments:Array<T>)-> Array<T>{
-        for i in 0..<array.count{
-            let index:Int = ArrayParser.index(array, replacments[i])
-            array[index] = replacments[i]
+        for i in 0..<matches.count{//Swift 3 support
+            let index:Int = ArrayParser.index(array, matches[i])//finds index of a value
+            if(index != -1){array[index] = replacments[i]}
         }
         return array
     }
