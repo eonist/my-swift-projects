@@ -356,9 +356,7 @@ class ArrayModifier{
         var tempArray:Array<T> = []
         for i in 0..<array.count{
             let item:T = array[i]
-            if (tempArray.index(item) == -1) {//append if doesn't exists
-                tempArray.append(item)
-            }
+            if (tempArray.index(item) == -1) {tempArray.append(item)}//append if doesn't exists
         }
         return tempArray
     }
