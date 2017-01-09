@@ -65,18 +65,17 @@ class ArrayModifier{
      */
     static func slice2<T>(array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
         
-        var arr:Array<T> = []
+        /*var arr:Array<T> = []
         for var i = startIndex; i < endIndex; ++i{
-            arr.append(array[i])
-        }
+        arr.append(array[i])
+        }*/
         //return arr
         
         //continue here: make the bellow line work: 🏀 
             //check array.md for tips like arr.range(start:0,end:2) or something
         
         /*return array[startIndex..<endIndex]*/
-        return array[startIndex..<endIndex] as! [T]
-        //return Array(array[startIndex..<endIndex])
+        return Array(array[startIndex..<endIndex])
     }
     
     /**
