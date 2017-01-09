@@ -353,13 +353,12 @@ class ArrayModifier{
      * EXAMPLE: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);
      */
     static func removeDuplicates<T where T:Equatable, T:Comparable>(array:Array<T>) -> Array<T>{
-        
-        
         var tempArray:Array<T> = []
         for (var i:Int = 0; i<array.count; i++){
-            let obj1:T = array[i]
-            var exists:Bool = ArrayParser.index(tempArray, obj1) != -1
-            if (!exists) {tempArray.append(obj1)}
+            let item:T = array[i]
+            if (ArrayParser.index(tempArray, item) == -1) {//append if doesn't exists
+                tempArray.append(item)
+            }
         }
         return tempArray
     }
