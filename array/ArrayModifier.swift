@@ -378,7 +378,7 @@ class ArrayModifier{
         for i in 1..<array.count{
             var e:Int = i
             while(e > 0 && array[i] < array[e-1]){
-                e--
+                e -= 1
             }
             ArrayModifier.move(&array, i, e)
         }
