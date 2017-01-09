@@ -52,7 +52,7 @@ class ArrayAsserter {
      */
     static func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
         if(a.count != b.count) { return false }
-        for i in 0..<a.count{
+        for i in 0..<a.count{//swift 3
             if((a[i] as! AnyObject) !== (b[i] as! AnyObject)) {//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
                 return false
             }
@@ -71,7 +71,7 @@ class ArrayAsserter {
      */
     static func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
         if(a.count != b.count) { return false }
-        for i in 0..<a.count{
+        for i in 0..<a.count{//swift 3
             if(a[i] != b[i]) {return false}
         }
         return true
