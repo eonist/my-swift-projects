@@ -142,7 +142,9 @@ class ArrayParser{
     }
     /**
      * Returns a random array with unique numbers (no duplicates)
-     * TODO: You can improve the random call with this: let diceRoll = Int(arc4random_uniform(6) + 1) // for a random integer between 0 and n-1
+     * EXAMPLE: 
+     * let ranArr = ArrayParser.uniqueRandom(0, 4)
+     * Swift.print(ranArr)//[3, 1, 0, 4, 2]
      */
     static func uniqueRandom(start:Int, _ end:Int) -> Array<Int> {
         var numbers:Array<Int> = []
