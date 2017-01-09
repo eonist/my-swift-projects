@@ -96,13 +96,9 @@ extension Array where Element:Equatable, Element:Comparable{
         return ArrayParser.index(self, value)
     }
 }
-
-
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
-extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
-
-
+extension NSArray:AnyArray{}/*<--Empty arrays are always NSArray so this is needed*/
 /**
  * var arr = [1,2,3] 
  * arr += 4
