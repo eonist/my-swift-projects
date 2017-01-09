@@ -69,21 +69,16 @@ class ArrayModifier{
         for var i = startIndex; i < endIndex; ++i{
             arr.append(array[i])
         }
-        return arr
+        //return arr
         
         //continue here: make the bellow line work: 🏀 
             //check array.md for tips like arr.range(start:0,end:2) or something
         
         /*return array[startIndex..<endIndex]*/
+        return array[startIndex..<endIndex] as! [T]
+        //return Array(array[startIndex..<endIndex])
     }
-    static func subArray<T>(array: [T], range: NSRange) -> [T] {
-        if range.location > array.count {
-            return []
-        }
-        let result = array[0..<4]
-        return Array(array[range.location..<min(range.length, array.count)])
-
-    }
+    
     /**
      * NOTE: modifies the original array
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
