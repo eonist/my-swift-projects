@@ -104,7 +104,7 @@ extension NSArray:AnyArray{}/*<--Empty arrays are always NSArray so this is need
  * arr += 4
  * print(arr)//1,2,3,4
  */
-public func +=<T> (inout left:[T], right: T) -> [T] {/*returns array for the sake of convenience*/
+public func +=<T> (inout left:[T], right: T) -> [T] {/*Returns array for the sake of convenience*/
     left.append(right)
     return left
 }
@@ -113,7 +113,7 @@ public func +=<T> (inout left:[T], right: T) -> [T] {/*returns array for the sak
  * 1 += arr
  * print(arr)//1,2,3,4
  */
-public func +=<T> (left: T,inout right:[T]) -> [T] {/*returns array for the sake of convenience*/
+public func +=<T> (left: T,inout right:[T]) -> [T] {/*Returns array for the sake of convenience*/
     right.unshift(left)/*<--this is like prepend*/
     return right
 }
