@@ -14,12 +14,11 @@ class ArrayAsserter {
      */
     static func contains<T:Equatable>(a:[T], _ b:[T], _ strict:Bool = false)->Bool {
         var score:Int = 0
-        for (var i:Int = 0 ; i < a.count ;i++) {
+        for i in 0..<a.count{
             if (b.indexOf(a[i]) >= 0 ){
                 score++
             }
         }
-        Swift.print("score: " + "\(score)")
         return score == (strict ? a.count : b.count)
     }
     /**
