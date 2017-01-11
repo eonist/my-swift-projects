@@ -92,18 +92,6 @@ extension DropShadow:UnWrappable{
         return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
     }
 }
-/**
- * NOTE: variables that are Of type Any are a bit tricky because swift is a type safe language
- * NOTE: The commonly used types could be reused and then only have the custom "one of" classes in this method
- */
-extension StyleProperty:UnWrappable{
-    static func unWrap<T>(xml:XML) -> T? {
-        let name:String = unWrap(xml, "name")!
-        let value:Any = UnWrapUtils.any(xml,"value")
-        let depth:Int = unWrap(xml, "depth")!
-        return StyleProperty(name,value,depth) as? T
-    }
-}
 extension Selector:UnWrappable{
     /**
      * Converts xml to a Selector instance
