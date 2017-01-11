@@ -92,36 +92,8 @@ extension DropShadow:UnWrappable{
         return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
     }
 }
-extension Selector:UnWrappable{
-    /**
-     * Converts xml to a Selector instance
-     */
-    static func unWrap<T>(xml:XML) -> T? {
-        //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        let element:String = unWrap(xml, "element") ?? ""
-        //Swift.print("element: " + "\(element)")
-        let id:String = unWrap(xml, "id") ?? ""
-        //Swift.print("id: " + "\(id)")
-        let classIds:[String?] = unWrap(xml, "classIds")
-        let states:[String?] = unWrap(xml, "states")
-        //Swift.print("states.count: " + "\(states.count)")
-        return Selector(element,classIds.flatMap{$0},id,states.flatMap{$0}) as? T
-    }
-}
-extension Style:UnWrappable{
-    /**
-     * Converts xml to a Style instance
-     */
-    static func unWrap<T>(xml:XML) -> T? {
-        let name:String = unWrap(xml, "name")!
-        //Swift.print("UnWrap.name: " + "\(name)")
-        let styleProperties:[StyleProperty?] = unWrap(xml, "styleProperties")
-        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
-        let selectors:[Selector?] = unWrap(xml, "selectors")
-        //Swift.print("selectors.count: " + "\(selectors.count)")
-        return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
-    }
-}
+
+
 /*
 old code:
 
