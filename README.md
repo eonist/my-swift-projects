@@ -112,7 +112,7 @@ let file = "<file></file>".xml
 file["date"] = "2022-10-02"
 file.stringValue = "/Desktop/temp.jpg"
 xml.firstNode("files").appendChild(file)
-print(xml.XMLString)//Output: <data><files><file></file date="2022-10-02">/Desktop/temp.jpg</files></data>
+print(xml.XMLString)//Output: "<data><files><file date=\"2022-10-02\">/Desktop/temp.jpg</file></files></data>"
 ```
 
 ## **FileLib** 
