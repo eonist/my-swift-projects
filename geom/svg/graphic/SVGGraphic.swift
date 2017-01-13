@@ -47,6 +47,7 @@ class SVGGraphic:SVGView,ISVGGraphic{
             lineShape.graphics.context = ctx
             if(style != nil){line()}
         }
+        super.drawLayer
     }
     /**
      *
