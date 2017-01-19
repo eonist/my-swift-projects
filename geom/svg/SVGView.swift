@@ -10,5 +10,5 @@ class SVGView:InteractiveView2,ISVGView{
         self.id = id
         super.init(frame: NSRect(0,0,0,0))//<--temp, you may need to set the frame size here if you want to draw some graphics,apperantly not!?
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

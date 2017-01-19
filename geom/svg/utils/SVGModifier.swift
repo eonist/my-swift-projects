@@ -6,7 +6,7 @@ class SVGModifier {
 	 * TODO: add support for other SVG elements as well, use switch method instead of if
      * NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
-	static func offsetItems(svg:SVG, _ offset:CGPoint) {
+	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
 		for i in 0..<svg.items.count{
 			let svgGraphic = svg.items[i]
 			if(svgGraphic is SVGLine){
@@ -15,8 +15,8 @@ class SVGModifier {
 				(svgGraphic as! SVGLine).y1 += offset.y
 				(svgGraphic as! SVGLine).y2 += offset.y
 			}else if(svgGraphic is SVGRect){
-				(svgGraphic as! SVGRect).x += offset.x
-				(svgGraphic as! SVGRect).y += offset.y
+				(svgGraphic as! SVGRect).frame.x += offset.x
+				(svgGraphic as! SVGRect).frame.y += offset.y
             }else if(svgGraphic is SVGCircle){
                 (svgGraphic as! SVGCircle).cx += offset.x
                 (svgGraphic as! SVGCircle).cy += offset.y
@@ -34,7 +34,7 @@ class SVGModifier {
      * NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
 	 * EXAMPLE SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
 	 */
-	static func scale(element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
+	static func scale(_ element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
 		//Swift.print("SVGModifier.scale() element: " + "\(element)")
         switch(true){
 			case element is SVGPolyLine:PointModifier.scalePoints(&(element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
@@ -55,12 +55,12 @@ class SVGModifier {
 	 * TODO: rename to stylize?
 	 * NOTE: this method is recursive
 	 */
-	static func style(element:ISVGElement,_ style:SVGStyle) {
+	static func style(_ element:ISVGElement,_ style:SVGStyle) {
         //Swift.print("SVGModifier.style() ")
         if(element is SVGView) {(element as! SVGView).style = style}
         if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
         if(element is SVGContainer) {
-            for (var i : Int = 0; i < (element as! SVGContainer).items.count; i++){
+            for i in 0..<(element as! SVGContainer).items.count{//swift3 upgrade
                 if((element as! SVGContainer).items[i] is ISVGView) {SVGModifier.style((element as! SVGContainer).items[i], style)}
             }
         }
@@ -68,7 +68,7 @@ class SVGModifier {
     /**
      * Updates an SVGGraphic
      */
-    static func update(graphic:SVGGraphic) {
+    static func update(_ graphic:SVGGraphic) {
         //Swift.print("SVGModifier.update()")
         //WARNING: this method is incomplete, needs correct order of calls etc
         graphic.draw();/*<--draws the path with the new params*/

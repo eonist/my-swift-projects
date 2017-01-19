@@ -8,8 +8,8 @@ public class XMLParser{
      * EXAMPLE: <media><book><novel/><biography/></book><music><cd/><cassette/></music><film><dvd/><vhs/><blueray/><dvd>movie.mkv</dvd></film><media>
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
-    static func root(xmlStr:String)->XML?{
-        let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: xmlStr, options: 0)
+    static func root(_ xmlStr:String)->XML?{
+        let xmlDoc:XMLDocument = try! XMLDocument(xmlString: xmlStr, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
     }
@@ -17,16 +17,16 @@ public class XMLParser{
      * Returns all children of the root element
      * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
-    static func rootChildren(xmlStr:String)->Array<XML>{
+    static func rootChildren(_ xmlStr:String)->Array<XML>{
         let rootElement:XML = root(xmlStr)!
-        let children:NSArray = rootElement.children!
+        let children:[XMLNode] = rootElement.children!
         let theChildren:Array<XML> = children as! [XML]
         return theChildren
     }
     /**
      * New
      */
-    static func children(xml:XML)->Array<XML>{
+    static func children(_ xml:XML)->Array<XML>{
         return xml.children as! [XML]
     }
     /**
@@ -34,13 +34,13 @@ public class XMLParser{
      * XMLParser.firstNode(<p>text</p>,"p")
      * @output:text
      */
-    static func firstNode(xml:XML, _ nodeName:String) -> XML? {
-        return xml.elementsForName(nodeName).count > 0 ? xml.elementsForName(nodeName)[0] : nil
+    static func firstNode(_ xml:XML, _ nodeName:String) -> XML? {
+        return xml.elements(forName: nodeName).count > 0 ? xml.elements(forName: nodeName)[0] : nil//Swift 3 updated
     }
     /**
      *
      */
-    static func rootChildrenByFilePath(filePath:String)->Array<XML>{
+    static func rootChildrenByFilePath(_ filePath:String)->Array<XML>{
         let xmlStr:String = FileParser.content(filePath)!
         return rootChildren(xmlStr)
     }
@@ -51,21 +51,21 @@ public class XMLParser{
      * CAUTION: This method can also return text values within nested children, use with caution
      * EXAMPLE: XMLParser.value("<p>text</p>".xml)//text
      */
-    static func value(child:XML)->String{
+    static func value(_ child:XML)->String{
         return child.stringValue!
     }
     /**
      * Returns the the entire xml structure as a string
      * NOTE: There is also .XMLString and a few abrivations of that method
      */
-    static func string(child:XML)->String{
-        return String(child)
+    static func string(_ child:XML)->String{
+        return String(describing: child)
     }
     /**
      * Returns string Content of an xml
      * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
-    static func valueAt(child:XML,_ index:Array<Int>)->String?{
+    static func valueAt(_ child:XML,_ index:Array<Int>)->String?{
         return childAt(child, index)?.stringValue
     }
     /**
@@ -73,13 +73,13 @@ public class XMLParser{
      * EXAMPLE: attributes.count// num of attributes
      * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
      */
-    static func attributes(child:XML) -> [Dictionary<String,String>]{
+    static func attributes(_ child:XML) -> [[String:String]]{
         
         //print("you should probably not use this, use attribs instead")
         
-        var attributes:[Dictionary<String,String>] = []
-        if(child.attributes?.count > 0){
-            for node:NSXMLNode in child.attributes!{
+        var attributes = [[String:String]]()
+        if(child.attributes != nil && child.attributes!.count > 0){
+            for node:XMLNode in child.attributes!{
                 var attribute:Dictionary<String,String> = [:]
                 let name:String = node.name!
                 let value:String = node.stringValue!
@@ -94,10 +94,10 @@ public class XMLParser{
     /**
      * New
      */
-    static func attribs(child:XML) -> Dictionary<String,String>{
+    static func attribs(_ child:XML) -> Dictionary<String,String>{
         var attributes:Dictionary<String,String> = [:]
-        if(child.attributes?.count > 0){
-            for node:NSXMLNode in child.attributes!{
+        if(child.attributes != nil && child.attributes!.count > 0){
+            for node:XMLNode in child.attributes!{
                 attributes[node.name!] = node.stringValue!
             }
         }
@@ -107,7 +107,7 @@ public class XMLParser{
      * Returns a key/value object with the attributes at the @param index in @param database
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
-    static func attributesAt(child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
+    static func attributesAt(_ child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
     }
     /**
@@ -115,8 +115,8 @@ public class XMLParser{
      * @Note: returns an empty array if the index is out of bound
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    static func siblingAttributes(child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
-        let xml = childAt(child, index);
+    static func siblingAttributes(_ child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
+        let xml = childAt(child, index)
         var result:[Dictionary<String,String>] = []
         for c in xml?.children as! Array<XML>{
             result.append(c.attribs)
@@ -124,10 +124,10 @@ public class XMLParser{
         return result
     }
     /**
-     * Returns child from @param children at @param index
+     * Returns child from PARAM: children at PARAM: index
      * EXAMPLE: XMLParser.childAt(children, 0)
      */
-    static func childAt(children:NSArray, _ index:Int)->XML?{
+    static func childAt(_ children:[XMLNode], _ index:Int)->XML?{//swift 3 upgrade, was -> children:NSArray
         return children[index] as? XML
     }
     /**
@@ -136,12 +136,12 @@ public class XMLParser{
      * @Note to find a child at an integer use the native code: xml.children[integer]
      * @Note to find the children of the root use an empty array as the index value
      */
-    static func childAt(xml:XML?,_ index:Array<Int>)->XML? {
+    static func childAt(_ xml:XML?,_ index:Array<Int>)->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
         }
-        else if(index.count == 1 && xml != nil && xml?.childAtIndex(index[0]) != nil) {//XMLParser.childAt(xml!.children!, index[0])
+        else if(index.count == 1 && xml != nil && xml?.child(at: index[0]) != nil) {//XMLParser.childAt(xml!.children!, index[0])
             return xml!.childByIndex(index[0])
         }// :TODO: if index.length is 1 you can just ref index
         else if(index.count > 1 && xml!.children!.count > 0) {
@@ -156,19 +156,19 @@ public class XMLParser{
      * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
      * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
      */
-    static func attribute(child:XML,_ attrKey:String)->String?{
-        return child.attributeForName(attrKey)?.stringValue
+    static func attribute(_ child:XML,_ attrKey:String)->String?{
+        return child.attribute(forName: attrKey)?.stringValue
     }
     /**
      * Returns the name of the @param child
      */
-    static func name(child:XML)->String{
+    static func name(_ child:XML)->String{
         return child.name!//child.localName also works
     }
     /**
      * Returns the first attribute that contains the attribute by the @param name and with the @param value
      */
-    static func childByAttribute(child:XML,_ attributeName:String,_ attributeValue:String){
+    static func childByAttribute(_ child:XML,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
     }
     /**
@@ -190,11 +190,11 @@ public class XMLParser{
      * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
      * TODO: Does it support xml string value? 
      */
-    static func toArray(xml:XML)->[[String:String]] {
+    static func toArray(_ xml:XML)->[[String:String]] {
         var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
-        for (var i = 0; i < count; i++) {
-            let child:NSXMLElement = XMLParser.childAt(xml.children!, i)!
+        for i in 0..<count{
+            let child:XMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
             var item:Dictionary<String,String> = Dictionary<String,String>()
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
@@ -209,13 +209,12 @@ public class XMLParser{
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
      */
-    static func index(xml:XML,_ key:String, _ value:String) -> Array<Int>? {
+    static func index(_ xml:XML,_ key:String, _ value:String) -> Array<Int>? {
         if(xml[key] == value) {
             return []
-        }
-        else if(xml.childCount > 0){
-            for (var i : Int = 0; i < xml.childCount; i++) {
-                let child:XML = xml.children![i] as! NSXMLElement
+        }else if(xml.childCount > 0){
+            for i in 0..<xml.childCount{
+                let child:XML = xml.children![i] as! XMLElement
                 let match:Array<Int>? = index(child,key,value)
                 if(match != nil) {return [i] + match!}
             }
@@ -227,12 +226,15 @@ public class XMLParser{
      * NOTE: the format can then be converted back to xml and vis verca
      * EXAMPLE: toDictionary(try! XML("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
      */
-    static func toDictionary(xml:XML)->[String:AnyObject]{
-        var root = [String:AnyObject]()
+    
+    //Swift 3 update: This method was changed from using AnyObject to Any
+    
+    static func toDictionary(_ xml:XML)->[String:Any]{
+        var root = [String:Any]()
         let attributes = XMLParser.attributes(xml)
         for attr in attributes{root[attr["key"]!] = attr["value"]!}
         if(xml.hasComplexContent){
-            var children:[[String:AnyObject]] = []
+            var children:[[String:Any]] = []
             for child in xml.children!{children.append(toDictionary(child as! XML))}
             root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){root[xml.name!] = [xml.stringValue!]}
@@ -255,9 +257,9 @@ public class XMLParser{
      * nameDict["color"] = "blue"
      * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
      */
-    static func toXML(content:AnyObject)->XML{
+    static func toXML(_ content:AnyObject)->XML{
         let xml:XML = XML()
-        func handleArray(theXML:XML,_ theContent:AnyObject){
+        func handleArray(_ theXML:XML,_ theContent:AnyObject){
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){
                     theXML.stringValue = item as? String

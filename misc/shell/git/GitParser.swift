@@ -9,7 +9,7 @@ class GitParser{
 	 * NOTE: Appending -s simplifies the ret msg or you can also use --porcelain which does the same
 	 * NOTE: make the option param optional with an if clause
 	 */
-	static func status(localPath:String, _ option:String)->String{
+	static func status(_ localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git status" + " " + option
 		return ShellUtils.run(shellScript,localPath)
@@ -22,7 +22,7 @@ class GitParser{
 	 * NOTE: "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
-	static func log(localPath:String, _ cmd:String)->String{
+	static func log(_ localPath:String, _ cmd:String)->String{
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git log " + cmd
 		//Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(shellScript,localPath)
@@ -31,7 +31,7 @@ class GitParser{
      * NOTE: can be used to show single commits
      * EXAMPLE: git show head~9 --pretty=format:"%ci" --no-patch (output: 2015-12-03 16:59:09 +0100)
      */
-    static func show(localPath:String, _ cmd:String)->String{
+    static func show(_ localPath:String, _ cmd:String)->String{
         let shellScript:String = Git.path + "git show " + cmd
         //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localPath)
@@ -39,7 +39,7 @@ class GitParser{
 	/**
 	 * Returns https://github.com/user/repository.git
 	 */
-	static func originUrl(localPath:String)->String{
+	static func originUrl(_ localPath:String)->String{
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git config --get remote.origin.url"
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
@@ -52,7 +52,7 @@ class GitParser{
 	 * CAUTION: if you use git add with https login and pass, you need to run "git remote update" in order for the above note to work
 	 * TODO: impliment user and pass when this is needed, use "" if not
 	 */
-	static func cherry(localPath:String, _ branch:String)->String{
+	static func cherry(_ localPath:String, _ branch:String)->String{
 		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
 		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git cherry" + " -v " + loc + "/" + branch
 		return ShellUtils.run(shellScript,localPath)//--TODO: whats the -v, verbose?
@@ -61,7 +61,7 @@ class GitParser{
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
 	 */
-	static func unMergedFiles(localPath:String)->Array<String>{
+	static func unMergedFiles(_ localPath:String)->Array<String>{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
         Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
 		return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
@@ -73,7 +73,7 @@ class GitParser{
 	 * NOTE: git diff does not reurn a result if a file is added
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
-    static func diff(localRepoPath:String, _ cmd:String)->String{
+    static func diff(_ localRepoPath:String, _ cmd:String)->String{
 		let shellScript:String =  /*"cd " + localRepoPath + ";" + */Git.path + "git diff " + cmd
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
@@ -81,5 +81,5 @@ class GitParser{
      * DEPRECATED: Use GitParser.log instead
      * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
      */
-    static func doLog(localPath:String, _ cmd:String)->String{return log(localPath, cmd)}
+    static func doLog(_ localPath:String, _ cmd:String)->String{return log(localPath, cmd)}
 }

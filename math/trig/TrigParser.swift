@@ -8,7 +8,7 @@ class TrigParser {
      * NOTE: use this formula to find the angle in a (0,0) point-space Math.atan2(pointB.y, pointB.x)
      * NOTE: formula in standard form: Tan Ɵ = y/x (then use inverse tan to find the angle)
      */
-    static func angle(a:CGPoint, _ b:CGPoint)->CGFloat {
+    static func angle(_ a:CGPoint, _ b:CGPoint)->CGFloat {
         return atan2(b.y - a.y, b.x - a.x)
     }
     /**
@@ -17,7 +17,8 @@ class TrigParser {
      * NOTE: we use "while" function type here because angle could be very low at which point Math.PI*2 needs to be contrinuasly added until its above 0 )
      * TODO: use modulo like normalize2 does, is that faster ? do an optimization test.
      */
-    static func normalize(var angle:CGFloat)->CGFloat {
+    static func normalize(_ angle:CGFloat)->CGFloat {
+        var angle = angle
         while (angle < 0) {angle += π*2}
         while (angle >= π*2) {angle -= π*2}
         return angle
@@ -29,7 +30,7 @@ class TrigParser {
      * PARAM: r the radius of the sphere
      * PARAM: p the position of the sphere
      */
-    static func x(y:CGFloat,r:CGFloat,p:CGPoint) -> CGFloat {
+    static func x(_ y:CGFloat,_ r:CGFloat,_ p:CGPoint) -> CGFloat {
         return sqrt(pow(r, 2)-pow(y-p.y, 2)) + p.x
     }
     /**
@@ -40,16 +41,16 @@ class TrigParser {
      * PARAM: r the radius of the sphere
      * PARAM: p the position of the sphere
      */
-    static func y(x:CGFloat,_ r:CGFloat,_ p:CGPoint)->CGFloat {
+    static func y(_ x:CGFloat,_ r:CGFloat,_ p:CGPoint)->CGFloat {
         return sqrt(pow(r, 2)-pow(x-p.x, 2)) + p.y
     }
     /**
      * Returns an radian to be between -Math.PI(-3.14) and Math.PI(3.14)
      * PARAM: theta: An radian in degrees typically 0 - Math.PI*2
      */
-    static func normalize2(angle:CGFloat)->CGFloat {
-        if(angle < -π){ return π + (angle % π)}
-        if(angle > π){ return -π + (angle % π)}
+    static func normalize2(_ angle:CGFloat)->CGFloat {
+        if(angle < -π){ return π + (angle %% π)}
+        if(angle > π){ return -π + (angle %% π)}
         return angle
     }
     /**
@@ -57,14 +58,14 @@ class TrigParser {
      * PARAM: startAngle (in radian)
      * PARAM: endAngle (in radian)
      */
-    static func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {
+    static func difference(_ startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {
         return atan2(sin(endAngle - startAngle), cos(endAngle - startAngle))
     }
     /**
      * new
      * NOTE: you need to abs() the result if you want only posetive angleSpan
      */
-    static func difference(pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat{
+    static func difference(_ pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat{
         let a:CGFloat = Trig.angle(pivot, p1)
         let b:CGFloat = Trig.angle(pivot, p2)
         return difference(a, b)
@@ -72,7 +73,7 @@ class TrigParser {
     /**
      * NOTE: this is the same as the above but works with a boolean which makes more sence, deprecate pointSpan
      */
-    static func pointSpan2(p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {
+    static func pointSpan2(_ p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {
         let a:CGFloat = Trig.angle(pivot,p1)
         let b:CGFloat = Trig.angle(pivot,p2)
         return TrigParser.angleSpan2(a,b,isClockWise)
@@ -90,14 +91,14 @@ class TrigParser {
      * angleSpan(Math.PI, Math.PI*0.5,Direction.COUNTER_CLOCK_WISE);//Math.PI to Math.PI*0.5 = 4.71
      * TODO: replace direction with boolean: isClockWise
      */
-    static func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{
+    static func angleSpan(_ a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{
         if(direction == Trig.clockWise) {return Trig.normalize(b + (Trig.pi*2-a))}
         return Trig.normalize(a + (Trig.pi*2-b))/*Direction.COUNTER_CLOCK_WISE*/
     }
     /**
      * NOTE: this is the same as the above but works with a boolean which makes more sence, deprecate angleSpan1
      */
-    static func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {
+    static func angleSpan2(_ a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {
         return angleSpan(a, b, isClockWise ? Trig.clockWise : Trig.counterClockWise)
     }
     /**
@@ -120,7 +121,7 @@ class TrigParser {
      * TODO: should use yMultiplier:int xMultiplier:int
      * TODO: if you flip with -1,-1 you could also just do normalize2(angle - PI), this could be an optimization
      */
-    static func flip(angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {
+    static func flip(_ angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {
         let verticalAngle:CGFloat = angle * axisMultiplier.y
         var horisontalAngle:CGFloat = Trig.normalize2(verticalAngle - Trig.hpi) * axisMultiplier.x//Rotate to vertical alignment
         horisontalAngle = Trig.normalize2(horisontalAngle + Trig.hpi)//rotate back to original alignment
@@ -139,7 +140,7 @@ class TrigParser {
      * PARAM: b The second angle (between 0 and 2PI)
      * NOTE: see TriangleMath for other bisector methods
      */
-    static func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat {// TODO: rename to just bisector, bisectorAngle
+    static func angleBisector(_ a:CGFloat,_ b:CGFloat) -> CGFloat {// TODO: rename to just bisector, bisectorAngle
         return a + ((b - a)/2)
     }
 }

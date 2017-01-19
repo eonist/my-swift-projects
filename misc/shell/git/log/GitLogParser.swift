@@ -6,7 +6,7 @@ class GitLogParser {
      * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
      * NOTE: the log data is formated using --pretty=format
      */
-    static func commitData(input:String) -> CommitData{
+    static func commitData(_ input:String) -> CommitData{
         //Swift.print("input: " + "\(input)")
         let firstIdx:Int = input.indexOf("\n")
         //Swift.print("firstIdx: " + "\(firstIdx)")
@@ -45,7 +45,7 @@ class GitLogParser {
     /**
      *
      */
-    static func compactBody(bodyStr:String) -> String{
+    static func compactBody(_ bodyStr:String) -> String{
         let preprocessedBody = Utils.preProcess(bodyStr)
         //Swift.print("preprocessedBody: " + "\(preprocessedBody)")
         let compactBody:String = Utils.compact(preprocessedBody)
@@ -58,7 +58,8 @@ private class Utils{
     /**
      * PreProcess the body string
      */
-    static func preProcess(var str:String)->String{
+    static func preProcess(_ str:String)->String{
+        var str = str//swift 3
         //Swift.print("preProcess")
         //remove the ' char from the beginng and end
         //strip linebreaks from the beginning and end of bodyStr
@@ -69,10 +70,10 @@ private class Utils{
     /**
      * NOTE: trims away astray characters from left and right of the body
      */
-    static func trim(str:String)->String{
+    static func trim(_ str:String)->String{
         var retVal:String = ""
         let pattern = "^(?:'?\n*)(.*?)(?:\n*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
-        let options:NSRegularExpressionOptions = [.CaseInsensitive, .DotMatchesLineSeparators]//we need the S-flag (.DotMatches....) to allow for capturing line-breaks with >.*?<
+        let options:NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]//we need the S-flag (.DotMatches....) to allow for capturing line-breaks with >.*?<
         str.matches(pattern,options).forEach{//its not pretty but it works
             if($0.numberOfRanges > 1){
                 let body:String = $0.value(str, 1)/*capturing group 1*/
@@ -88,7 +89,7 @@ private class Utils{
     /**
      * Compacts the body string
      */
-    static func compact(str:String) -> String{
+    static func compact(_ str:String) -> String{
         //Swift.print("compact")
         let parts = str.split("\n")//split at linebreaks
         //Swift.print("parts.count: " + "\(parts.count)")

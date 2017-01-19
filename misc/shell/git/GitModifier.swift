@@ -7,7 +7,7 @@ class GitModifier{
     * CAUTION: when a file is removed, the * char wont work, you have to add the file manually
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
-   static func add(localRepoPath:String, _ fileName:String)->String{
+   static func add(_ localRepoPath:String, _ fileName:String)->String{
         //log ("GitModifier's add(" + localRepoPath + fileName + ")")
         //if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
         //fileName = StringModifier.wrapWith(fileName,"'")
@@ -31,7 +31,7 @@ class GitModifier{
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
-   static func commit(localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
+   static func commit(_ localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
     	//log ("GitModifier's commit(" + message_title + ")")
     	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
         Swift.print("shellScript: " + "\(shellScript)")
@@ -56,7 +56,7 @@ class GitModifier{
     * TODO: maybe add try error when doing the shell part
     * TODO: add branch as a param
     */
-   static func push(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
+   static func push(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
    	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
    	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
    	Swift.print("remoteLoc: " + "\(remoteLoc)")
@@ -77,7 +77,7 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   static func reset(localRepoPath:String, _ fileName:String)->String{
+   static func reset(_ localRepoPath:String, _ fileName:String)->String{
     let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript,localRepoPath)
    }
@@ -102,7 +102,7 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   static func pull(localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
+   static func pull(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
        let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
        let targetBranch:String = "master" //--master branch
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
@@ -125,7 +125,7 @@ class GitModifier{
     * Initialize
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
-    static func initialize(localRepoPath:String)->String{
+    static func initialize(_ localRepoPath:String)->String{
         let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git init"
         //log "shellScript: " + shellScript
         return ShellUtils.run(shellScript,localRepoPath)
@@ -136,7 +136,7 @@ class GitModifier{
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
-   static func attachRemoteRepo(localRepoPath:String, _ remoteRepoPath:String)->String{
+   static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
        //log "shellScript: " + shellScript
        return ShellUtils.run(shellScript,localRepoPath)
@@ -146,7 +146,7 @@ class GitModifier{
     * NOTE: the reverse of attach_remote_repo method
     * NOTE: git remote rm origin
     */
-   static func detachRemoteRepo(localRepoPath:String)->String{
+   static func detachRemoteRepo(_ localRepoPath:String)->String{
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote rm origin"
        //log "shellScript: " + shellScript
        return ShellUtils.run(shellScript,localRepoPath)
@@ -156,7 +156,7 @@ class GitModifier{
     * NOTE: Cloning automatically creates a remote connection called "origin" pointing back to the original repository.
     * NOTE: git clone <repo> <directory>
     */
-   static func clone(remotePath:String, _ localPath:String)->String{
+   static func clone(_ remotePath:String, _ localPath:String)->String{
        let shellScript:String = Git.path + "git clone " + remotePath + " " + localPath
        //log "shellScript: " + shellScript
        return ShellUtils.run(shellScript)
@@ -174,7 +174,7 @@ class GitModifier{
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
-   static func gitRemoteUpdate(localRepoPath:String)->String{
+   static func gitRemoteUpdate(_ localRepoPath:String)->String{
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote update"
        return ShellUtils.run(shellScript,localRepoPath)
    }
@@ -196,7 +196,7 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   static func fetch(localRepoPath:String, _ remotePath:String, _ branch:String)->String{
+   static func fetch(_ localRepoPath:String, _ remotePath:String, _ branch:String)->String{
        //--log "fetch()"
        //log ("GitModifier's fetch(" + branch + ")")
        //--condition
@@ -220,7 +220,7 @@ class GitModifier{
     * # origin/some-feature
     * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
     */
-   static func branch(targetBranch:String, _ deleteFlag:String){
+   static func branch(_ targetBranch:String, _ deleteFlag:String){
        //--complete this method
    }
    /**
@@ -240,7 +240,7 @@ class GitModifier{
     * NOTE: To merge a remote branch into your local branch do: "git fetch origin master", "git checkout master", "git merge origin/master", if you get conflicts and you just want to keep all your or their updates you do "git checkout --thiers *" or "git checkout --ours *" and then add and commit and push. Now you have merged perfectly
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
-   static func merge(localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
+   static func merge(_ localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
        //log ("GitModifier's merge()")
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git merge " + intoBranch + " " + fromBranch
        //Swift.print("shellScript: " + "\(shellScript)")
@@ -274,7 +274,7 @@ class GitModifier{
     * TODO: test if you can use theirs and ours as you would in a regular merge
     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
     */
-    static func stash(title:String){
+    static func stash(_ title:String){
         //--TODO: if no title is provided store the stash without title: by not including the save syntax
         //--"git stash -u save " + title
     }
@@ -297,7 +297,7 @@ class GitModifier{
     * NOTE: you can switch to a newly fetched branch with: "git checkout origin/master"
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
     */
-	static func checkOut(localRepoPath:String, _ loc:String, _ filePath:String)->String{
+	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
 		var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git checkout " + loc
         if (filePath != " "){ shellScript  += " " + filePath }

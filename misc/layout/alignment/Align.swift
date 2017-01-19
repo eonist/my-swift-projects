@@ -14,7 +14,7 @@ class Align {
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER,Alignment.TOP_LEFT)//Output: centers a circle within 400x300 rectangle
      * Align.align(someCircle,CGPoint(400,300),Alignment.CENTER_RIGHT,Alignment.CENTER_RIGHT)//Output: aligns the circle to the y axis center and  to the right border of the rectangle but withinn the rectange
      */
-    static func align(view:NSView, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
+    static func align(_ view:NSView, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
         let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(view.w, view.h), canvasSize, canvasAlignment, viewAlignment, offset)
         NSViewModifier.position(view, alignmentPoint)
     }
@@ -24,7 +24,7 @@ class Align {
      * PARAM: canvasSize is the size of the canvas the object is beeing aligned to (Thinkn of the canvas as a painting and the object as an element in that painting, figurativly speaking)
      * NOTE: this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
-    static func alignmentPoint(objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
+    static func alignmentPoint(_ objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
         let viewAlignmentPoint:CGPoint = Align.point(objectSize, objectAlignment)
         alignmentPoint = alignmentPoint - viewAlignmentPoint
@@ -34,7 +34,7 @@ class Align {
      * Returns the pivot point of an object according to what pivotAlignment it has
      * EXAMPLE: // :TODO: write an example
      */
-    static func point(size:CGSize, _ alignment:String) -> CGPoint {
+    static func point(_ size:CGSize, _ alignment:String) -> CGPoint {
         switch alignment{
             case Alignment.topLeft:return CGPoint()
             case Alignment.topRight:return CGPoint(size.width,0)
@@ -54,7 +54,7 @@ extension Align{
      * Aligns an array of view instances (batch align)
      * NOTE: alt names: alignMany? or alignAll?
      */
-    static func align(views:Array<NSView>, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
+    static func align(_ views:Array<NSView>, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
         for view in views{ Align.align(view, canvasSize,canvasAlignment,viewAlignment,offset)}
     }
 }

@@ -3,13 +3,13 @@ class StringModifier{
     /**
      * Returns an array with many strings
      */
-    static func split(str:String, _ delimiter:String)->[String]{
-        return str.componentsSeparatedByString(delimiter)
+    static func split(_ str:String, _ delimiter:String)->[String]{
+        return str.components(separatedBy:delimiter)
     }
     /**
      * Removes the first occurence of the PARAM: match
      */
-    static func removeFirst(input:String, _ match:String) -> String{
+    static func removeFirst(_ input:String, _ match:String) -> String{
         return StringModifier.replaceFirst(input, match, "")
     }
     /**
@@ -18,14 +18,14 @@ class StringModifier{
      *	PARAM: input: The string that will be checked for instances of remove string
      *	PARAM: remove: The string that will be removed from the input string
      */
-    static func removeEvery(input:String, _ match:String) -> String{// :TODO: test if this works when nothing is removed because replace was changed
+    static func removeEvery(_ input:String, _ match:String) -> String{// :TODO: test if this works when nothing is removed because replace was changed
         return StringModifier.replaceEvery(input, match, "")
     }
     /**
      * replaceEvery("abc 123 abc 123","123","abc")
      */
-    static func replaceEvery(str:String,_ match:String,_ replacment:String)->String{
-        let replaced = str.stringByReplacingOccurrencesOfString(match, withString: replacment)
+    static func replaceEvery(_ str:String,_ match:String,_ replacment:String)->String{
+        let replaced = str.replacingOccurrences(of: match, with: replacment)
         return replaced
     }
     /**
@@ -33,21 +33,22 @@ class StringModifier{
      * Replaces PARAM: match in PARAM: input with PARAM: replacement
      * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈") // Hello 🐈
      */
-    static func replaceFirst(var input:String,_ match:String,_ replacement:String)->String{
-        input.insertContentsOf(replacement.characters, at: input.rangeOfString(match)!.startIndex)
-        input.removeRange(input.rangeOfString(match)!)
+    static func replaceFirst(_ input:String,_ match:String,_ replacement:String)->String{
+        var input = input
+        input.insert(contentsOf: replacement.characters, at: input.range(of:match)!.lowerBound)
+        input.removeSubrange(input.range(of:match)!)
         return input
     }
     /**
      * EXAMPLE: combine(["Andrew", "Ben", "John", "Paul", "Peter", "Laura"]," ")//"Andrew Ben John Paul Peter Laura"
      */
-    static func combine(strings:Array<String>, _ seperator:String)->String{
-        return strings.joinWithSeparator(seperator)
+    static func combine(_ strings:Array<String>, _ seperator:String)->String{
+        return strings.joined(separator: seperator)
     }
 	/**
 	 *
 	 */
-	static func wrapWith(string:String, _ wrapper:String)->String{
+	static func wrapWith(_ string:String, _ wrapper:String)->String{
 	   return wrapper + string + wrapper
 	}
 	/**
@@ -61,51 +62,43 @@ class StringModifier{
 	 * NOTE: keep the long version around so that its easier to understand
      * Example: reverse("hello")//"olleh"
 	 */		
-	static func reverse(str:String)->String{
-        /*
-        //Nice to have: you may need similar code in the future
-        var revStr = ""
-        for _ in str.characters {//loop n times
-            revStr.append(str.characters.last!)
-            str = String(str.characters.dropLast())
-        }
-        return revStr
-        */
-        return String(str.characters.reverse())//new in swift 2
+	static func reverse(_ str:String)->String{
+        return String(str.characters.reversed())//new in swift 2
 	}
 	/**
 	 * 
 	 */
-	static func capitalize(string:String)->String{
-		return string.capitalizedString
+	static func capitalize(_ string:String)->String{
+		return string.capitalized//swift 3 upgrade
 	}
     /*
      * Returns a lowercase string
      */
-    static func lowerCase(string:String)->String{
-       return string.lowercaseString
+    static func lowerCase(_ string:String)->String{
+       return string.lowercased()
     }
     /*
      * Returns an uppercase string
      */
-    static func upperCase(string:String)->String{
-        return string.uppercaseString
+    static func upperCase(_ string:String)->String{
+        return string.uppercased()
     }
     /*
      * Returns PARAM: string with the first character capitalizesed, 
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      */
-    static func capFirstChar(str:String)->String{
+    static func capFirstChar(_ str:String)->String{
         let firstChar:Character = CharacterParser.charAt(str, 0)
-        let theRest:String = StringParser.subString(str,1,str.characters.count)
+        let theRest:String = StringParser.subString(str,str.characters.count,1)
         return String(firstChar) + theRest
     }
     /**
      * Returns a new string from @param str with a new @param char inserted at @param index
      */
-    static func insertCharAt(var str:String, _ char:Character,_ index:Int)->String{
-        let strIndex = str.startIndex.advancedBy(index)
-        str.insert(char, atIndex: strIndex)
+    static func insertCharAt(_ str:String, _ char:Character,_ index:Int)->String{
+        var str = str
+        let strIndex = str.idx(index)
+        str.insert(char, at: strIndex)
         return str
     }
     /**
@@ -113,11 +106,13 @@ class StringModifier{
      * NOTE: the order of the charsAndIndicies doesnt matter, its sorted in this method
      * NOTE: We could make this method inout, but then we cant do things like "test".insertCharsAt (for longer strings that would benefit from inout we could make a custom method)
      */
-    static func insertCharsAt(var str:String, var _ charsAndIndicies:[(char:Character,index:Int)])->String{
-        charsAndIndicies.sortInPlace({$0.index > $1.index})//sort from highest index to lowest
+    static func insertCharsAt(_ str:String, _ charsAndIndicies:[(char:Character,index:Int)])->String{
+        var charsAndIndicies = charsAndIndicies
+        var str = str
+        charsAndIndicies.sort(by: {$0.index > $1.index})//sort from highest index to lowest
         charsAndIndicies.forEach{//we loop backwards because looping forward and you would lose the indecies
-            let strIndex = str.startIndex.advancedBy($0.index)
-            str.insert($0.char, atIndex: strIndex)
+            let strIndex = str.idx($0.index)
+            str.insert($0.char, at: strIndex)
         }
         return str
     }
@@ -126,9 +121,10 @@ class StringModifier{
      * NOTE: Can also be done through replaceRange: string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString) //we use replaceRange in combination with the .capitalizedString method // string[string.start.index] returns a Character instance. then we cast this as a string
      * NOTE: Does not alter the original strings
      */
-    static func insertAt(var a:String,_ b:String,_ i:Int)->String{
-        let index = a.startIndex.advancedBy(i)
-        a.insertContentsOf(b.characters, at: index)
+    static func insertAt(_ a:String,_ b:String,_ i:Int)->String{
+        var a = a
+        let index = a.idx(i)
+        a.insert(contentsOf: b.characters, at: index)
         return a
     }
     /**
@@ -136,16 +132,17 @@ class StringModifier{
      * EXAMPLE: replaceRange("Finland", 2,3,"NLA")//fiNLAnd
      * TODO: probably use inout
      */
-    static func replaceRange(var str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
+    static func replaceRange( str:String,_ replacement:String,_ start:Int, _ end:Int)->String{
+        var str = str
         let range:Range<String.Index> = StringRangeParser.stringRange(str, start, end)
-        str.replaceRange(range, with: replacement)
+        str.replaceSubrange(range, with: replacement)
         return str
     }
     /**
      * Directly replaces a with b, and b with a
      * NOTE: Modifies the original a and b strings
      */
-    static func swap(inout a: String, inout _ b: String){
+    static func swap(_ a: inout String, _ b: inout String){
         ObjectModifier.swapObjects(&a, &b)
     }
     /**
@@ -154,7 +151,9 @@ class StringModifier{
      * NOTE: you can also use: NSCharacterSet.whitespaceAndNewlineCharacterSet()
      * EXAMPLE: trimWhiteSpace("    Let's trim the whitespace    ")//"Let's trim the whitespace"
      */
-    static func trimWhiteSpace(str:String)->String{
-        return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    static func trimWhiteSpace(_ str:String)->String{
+        //hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).
+        return str.trimmingCharacters(in: .whitespaces)
+        //NSCharacterSet.whitespaceCharacterSet()
     }
 }

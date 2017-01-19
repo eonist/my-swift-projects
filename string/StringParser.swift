@@ -7,8 +7,8 @@ class StringParser{
      * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
      * EXAMPLE: "testing this stuff.121".encode//testing%20this%20stuff.121
      */
-    static func encode(str:String)->String?{
-        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())
+    static func encode(_ str:String)->String?{
+        return str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
     /**
      * Returns dencode text (unescaped)
@@ -17,13 +17,13 @@ class StringParser{
      * Example: decode(%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg)--<image location:files/img/image.jpg
      * EXAMPLE: "testing%20this%20stuff.121".decode//testing this stuff.121
      */
-    static func decode(str:String)->String?{
-        return str.stringByRemovingPercentEncoding
+    static func decode(_ str:String)->String?{
+        return str.removingPercentEncoding//swift 3 upgrade was -> stringByRemovingPercentEncoding
     }
     /**
      * Returns an array for every line in a string
      */
-    static func paragraphs(string:String)->Array<String>{
+    static func paragraphs(_ string:String)->Array<String>{
         var result = split(string,"\n")
         result.removeLast()/*if the string is empty it still returns a result as [""] and if the string is not empty it returns plus one empty string. so we pop the last one of the array*/
         return result
@@ -34,47 +34,47 @@ class StringParser{
 	 * NOTE: use "\n" to retrive paragraphs
      * NOTE: the opposit of this method is StringModifier.combine(array," ")
      */
-	static func split(string:String,_ delimiter:String)->Array<String>{
-		return string.componentsSeparatedByString(delimiter)
+	static func split(_ string:String,_ delimiter:String)->Array<String>{
+		return string.components(separatedBy:delimiter)
 	}
     /**
      *
      */
-	static func firstWord(string:String)->String {
-       return string.componentsSeparatedByString(" ")[0]
+	static func firstWord(_ string:String)->String {
+       return string.components(separatedBy: " ")[0]
     }
     /**
      * Returns the
      */
-   static func lastChar(string:String)->String {
+   static func lastChar(_ string:String)->String {
         let lastCharIndex:Int = string.characters.count - 1
         print(lastCharIndex)
-        return String(string.characters.last)
+        return String(describing: string.characters.last)//swift 3 upgrade -> was: String()
     }
     /**
 	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
 	 */
-    static func subString(str:String,_ beginning:Int,_ end:Int)->String{
-        let startIndex = str.startIndex.advancedBy(beginning)
-        let endIndex = str.startIndex.advancedBy(end/*-beginning*/)//<--this was a bug
-        let range:Range = Range(start:startIndex,end:endIndex)
-        return str.substringWithRange(range)
+    static func subString(_ str:String,_ beginning:Int,_ end:Int)->String{
+        let startIndex = str.idx(beginning)
+        let endIndex = str.idx(end/*-beginning*/)//<--this was a bug
+        let range = startIndex..<endIndex//Range(start:startIndex,end:endIndex)
+        return str.substring(with:range)
     }
     /**
      * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
      */
-    static func subStr(str:String, _ beginning:Int,_ len:Int)->String{
-        let startIndex = str.startIndex.advancedBy(beginning)
-        let endIndex = str.startIndex.advancedBy(beginning+len)
-        let range:Range = Range(start:startIndex,end:endIndex)
-        return str.substringWithRange(range)
+    static func subStr(_ str:String, _ beginning:Int,_ len:Int)->String{
+        let startIndex = str.idx(beginning)
+        let endIndex = str.idx(beginning+len)
+        let range = startIndex..<endIndex//swift 3 upgrade, was->Range(start:startIndex,end:endIndex)
+        return str.substring(with:range)
     }
     /**
      * Returns an array comprised of two strings that is the result of splitting the @param str
      * EXAMPLE: splitAt("Hello, playground",5)//["hello"," playground"]
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
-	static func splitAt(str:String, _ index:Int)->Array<String> {
+	static func splitAt(_ str:String, _ index:Int)->Array<String> {
 		let a:String =  subStr(str,0,index)
 		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
@@ -88,28 +88,30 @@ class StringParser{
     /**
      * Returns the index of the first match of @param b in @param a
      */
-    static func indexOf(a:String,_ b:String)->Int{
+    static func indexOf(_ a:String,_ b:String)->Int{
         let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
-        return range != nil ? a.startIndex.distanceTo(range!.startIndex) : -1/*New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found*/
+        //bellow line was upgraded to swift 3 was-> a.startIndex.distanceTo(range!.startIndex)
+        return range != nil ? a.distance(from:a.startIndex,to:range!.lowerBound) : -1/*New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found*/
     }
     /**
      * Returns str sans the first char
      * NOTE: does not modify the original string
      */
-    static func sansPrefix(str:String)->String{
+    static func sansPrefix(_ str:String)->String{
         return String(str.characters.dropFirst())
     }
     /**
      * Returns str sans the last char
      * NOTE: does not modify the original string
      */
-    static func sansSuffix(str:String)->String{
+    static func sansSuffix(_ str:String)->String{
         return String(str.characters.dropLast())
     }
     /**
      * NOTE: only works with Character (make one that supports longer strings later)
      */
-    static func trim(var str:String,_ left:Character,_ right:Character)->String{
+    static func trim(_ str:String,_ left:Character,_ right:Character)->String{
+        var str = str
         if(str.characters.first == left){str = String(str.characters.dropFirst())}
         if(str.characters.last == right){str = String(str.characters.dropLast())}
         return str
@@ -118,13 +120,13 @@ class StringParser{
      * Convenience
      * EXAMPLE:  "32\n".trim("\n").int//32
      */
-    static func trim(str:String,_ leftAndRight:Character)->String{
+    static func trim(_ str:String,_ leftAndRight:Character)->String{
         return trim(str, leftAndRight, leftAndRight)
     }
     /**
      * Returns the percentage as a CGFloat
      */
-    static func percentage(value:String)->CGFloat{
+    static func percentage(_ value:String)->CGFloat{
         return CGFloat(Double(value.match(".*?(?=%)")[0])!)
     }
     /**
@@ -134,7 +136,7 @@ class StringParser{
      * NOTE: if the digit has a trailing % character it is returned as a String
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
-    static func digit(string:String)->CGFloat{
+    static func digit(_ string:String)->CGFloat{
         //Swift.print("string: " + string)
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
@@ -147,19 +149,21 @@ class StringParser{
     /**
      *
      */
-    static func boolean(string:String) -> Bool {
+    static func boolean(_ string:String) -> Bool {
         return string == "true";
     }
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
      */
-    static func color(hexColor:String) -> UInt{
+    static func color(_ hexColor:String) -> UInt{
         //Swift.print("StringParser.hexColor: " + "\(hexColor)")
         let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
         if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
-            if hex.characters.count == 3 { hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.startIndex.advancedBy(1)],hex.characters[hex.startIndex.advancedBy(1)],hex.characters.last!,hex.characters.last!]) } //convert shorthand hex to hex
+            if hex.characters.count == 3 {
+                hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters.last!,hex.characters.last!])//upgraded to swift 3
+            } //convert shorthand hex to hex
             //Swift.print("StringParser.hexColor() hex: " + "\(hex)")
             return ("0x"+hex).uint//<- added the 0x recently
         }else{
@@ -171,7 +175,7 @@ class StringParser{
     /**
      * Returns NSColor for variouse literal color formats 
      */
-    static func nsColor(hexColor:String)->NSColor{
+    static func nsColor(_ hexColor:String)->NSColor{
         let hex:UInt = StringParser.color(hexColor)
         return NSColorParser.nsColor(hex)
     }
@@ -184,22 +188,29 @@ class StringParser{
      * var match : Array = input.split(".");
      * var path:String = String(match[0]).substring(0, String(match[0]).lastIndexOf("/"));
      */
-    static func path(url:String)->String {
+    static func path(_ url:String)->String {
         return url.match("^.*?\\/(?=\\w*?\\.\\w*?$)")[0]
     }
     /**
      *
      */
-    static func fileName(url:String)->String {
+    static func fileName(_ url:String)->String {
         return url.match("^.*?\\/(\\w*?\\.\\w*?$)")[1]
     }
     /**
      * Works with \n and \r
      */
-    static func lineCount(str:String)->Int{
-        let newLineSet = NSCharacterSet.newlineCharacterSet()
-        let arr = str.componentsSeparatedByCharactersInSet(newLineSet)
+    static func lineCount(_ str:String)->Int{
+        let newLineSet = NSCharacterSet.newlines
+        let arr = str.components(separatedBy:newLineSet)
         let count = arr.count
         return count
+    }
+    /**
+     * Returns the cooresponding String.Index for PARAM: index:Int
+     * Example: "🚀ship".idx(1)//the String.Index between 🚀 and ship
+     */
+    static func idx(_ str:String,_ index:Int) -> String.Index {
+        return str.index(str.startIndex, offsetBy: index)/*Upgraded to swift 3-> was: startIndex.advancedBy*/
     }
 }

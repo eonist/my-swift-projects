@@ -8,7 +8,7 @@ class SVGPathParser {
 	 * PARAM: data ( M-60-45 L   25.00px,20)
 	 * EXAMPLE: SVGPathDataUtils.pathData("M10,10pxH110");//commands: M,H parameters: 10,10,110
 	 */
-	static func pathData(data:String)->SVGPathData {
+	static func pathData(_ data:String)->SVGPathData {
 		var parameters:Array<CGFloat> = []
 		var commands:Array<String> = []
         ///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
@@ -38,7 +38,7 @@ class SVGPathParser {
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
 	 * TODO: write more examples in this comment section
 	 */
-	static func parameters(parameters:String)->Array<CGFloat> {
+	static func parameters(_ parameters:String)->Array<CGFloat> {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
         let beginning:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
         let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
@@ -55,8 +55,8 @@ class SVGPathParser {
 	 * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
 	 * PARAM: index the index of the command
 	 */
-	static func end(path:SVGPath, _ index:Int)->CGPoint? {// :TODO: rename to position?!?
-		let command:String = path.commands[index].lowercaseString
+	static func end(_ path:SVGPath, _ index:Int)->CGPoint? {// :TODO: rename to position?!?
+		let command:String = path.commands[index].lowercased()
 		var parameters:Array = SVGPathDataParser.pathData(path, index)
         if(command == "m" || command == "l") {return CGPoint(parameters[0],parameters[1])}
         else if(command == "c") {return CGPoint(parameters[2],parameters[3])}
@@ -68,7 +68,7 @@ class SVGPathParser {
 	 * TODO: add support for zZ ?!? do we need to?
 	 * TODO: cubic and quad curve may have more params and they may have t and s  impliment this
 	 */
-	static func points(path:SVGPath)->Array<CGPoint> {
+	static func points(_ path:SVGPath)->Array<CGPoint> {
 		var commands:Array = path.commands
 		var params:Array = path.parameters
 		var positions:Array<CGPoint> = []
@@ -78,18 +78,18 @@ class SVGPathParser {
 			let command:String = commands[e]
 			let isLowerCase:Bool = StringAsserter.lowerCase(command)
 			var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
-			switch(command.lowercaseString){
+			switch(command.lowercased()){
 				case SVGPathCommand.m,SVGPathCommand.l: //lineTo,moveTo
 					pos += CGPoint(params[i+0],params[i+1])
 					i += 2
 					break;
 				case SVGPathCommand.h:/*horizontalLineTo*/
 					pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
-					i++
+					i += 1
 					break;
 				case SVGPathCommand.v:/*verticalLineTo*/
 					pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
-					i++
+					i += 1
 					break;
 				case SVGPathCommand.c:/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
 					pos += CGPoint(params[i+4],params[i+5])
@@ -121,7 +121,7 @@ class SVGPathParser {
 	 * Returns an Rectangle instance with points derived from PARAM: path
 	 * TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
-	static func rectangle(path:SVGPath) -> CGRect {
+	static func rectangle(_ path:SVGPath) -> CGRect {
 		let points:Array<CGPoint> = SVGPathParser.points(path)
 		return PointParser.rectangle(points)
 	}

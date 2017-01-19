@@ -1,2 +1,1 @@
-class DictionaryAsserter{
-}
+public class DictionaryAsserter{}

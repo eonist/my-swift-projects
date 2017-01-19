@@ -1,3 +1,1 @@
-class SQLLiteAsserter{
-	//add legacy code when needed	
-}
+class SQLLiteAsserter{}//add legacy code when needed

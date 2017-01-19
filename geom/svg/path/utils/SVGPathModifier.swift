@@ -9,7 +9,7 @@ class SVGPathModifier {
      * TODO: discuss why you use scalePoint and not scalar value in more detail.
      * TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
-    static func scale(path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
+    static func scale(_ path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
         var i:Int = 0;/*parameterIndex*/
         var commands:Array<String> = path.commands
         var params:Array<CGFloat> = path.parameters
@@ -19,22 +19,22 @@ class SVGPathModifier {
         var a2:CGPoint
         for e in 0..<commands.count{
             let command:String = commands[e];
-            switch(command.lowercaseString){
+            switch(command.lowercased()){
             case SVGPathCommand.l,SVGPathCommand.m://<-this may need testing since it may be || instead of ,
                 p = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint)
                 path.parameters[i] = p.x
                 path.parameters[i+1] = p.y
-                i += 2;
+                i += 2
                 break;
             case SVGPathCommand.h:
                 p = PointModifier.scale(CGPoint(params[i],0), pivot, scalePoint)
                 path.parameters[i] = p.x
-                i++;
+                i += 1
                 break;
             case SVGPathCommand.v:
                 p = PointModifier.scale(CGPoint(0,params[i]), pivot, scalePoint)
                 path.parameters[i] = p.y
-                i++;
+                i += 1
                 break;
             case SVGPathCommand.c:
                 c1 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint)

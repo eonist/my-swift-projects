@@ -21,7 +21,7 @@ class AngleArc {
 extension AngleArc{
     var x:CGFloat {get {return center.x} set {center.x = newValue}}/*convenience*/
     var y:CGFloat {get {return center.y} set {center.y = newValue}}/*convenience*/
-    var transform:CGAffineTransform {get {return CGAffineTransformMakeScale(xRadii/yRadii, yRadii/xRadii)} /*set{} */}
+    var transform:CGAffineTransform {get {return CGAffineTransform(scaleX: xRadii/yRadii, y: yRadii/xRadii)} /*set{} */}
     var delta:CGFloat {
         let isClockWise:Bool = Trig.isClockWiseByAngle(start, end)
         //Swift.print("isClockWise: " + "\(isClockWise)")

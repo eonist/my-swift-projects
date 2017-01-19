@@ -14,7 +14,7 @@ class ClassParser {
      * EXAMPLE: Swift.print(ofType(b,B.self)!.text)//I am b
      * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
      */
-    static func ofType<T>(instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
+    static func ofType<T>(_ instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
         if(instance as? T != nil){return instance as? T}
         return nil
     }
@@ -26,8 +26,9 @@ class ClassParser {
      * NOTE: This also works: print(NSStringFromClass(someInstance.dynamicType))
      * Example: let someObj : typeof(anotheraObj) = typeof(anotheraObj)(arguments here)//this creates an instance from the class of another instance
      */
-    static func getClass(instance:Any!)->String{
-        return _stdlib_getDemangledTypeName(instance).componentsSeparatedByString(".").last!//This call is subjected to change in future versions of swift
+    static func getClass(_ instance:Any!)->String{
+        return String(describing:type(of: self)).components(separatedBy:".").last!//swift 3 update, could work!?!?
+        //return _stdlib_getDemangledTypeName(instance).componentsSeparatedByString(".").last!//This call is subjected to change in future versions of swift
         //return typeOf(instance)
     }
     /**
@@ -44,15 +45,26 @@ class ClassParser {
      * classType = B.self
      * instance = classType.init("abc")
      */
-    static func classType(instance:Any)->Any{
-        return instance.dynamicType
+    static func type(_ instance:Any)->Any.Type{//was: -> any
+        return type(of: instance)
     }
     /**
      * Untested
      */
-    static func instanceByClassType<T>(instances:Array<Any?>,_ classType:T.Type)->Any? {
-        for (var i : Int = 0; i < instances.count; i++){ if(instances[i] as? T != nil) {return instances[i]}}
+    static func instanceByClassType<T>(_ instances:Array<Any?>,_ classType:T.Type)->Any? {
+        for i in 0..<instances.count{
+            if(instances[i] as? T != nil) {
+                return instances[i]
+            }
+        }
         return nil
+    }
+    //DEPRECATED:
+    static func classType(_ instance:Any)->Any.Type{return ClassParser.type(instance)}
+}
+extension ClassParser{
+    static func type(_ instance:Any)->String{/*Convenience*/
+        return String(describing: ClassParser.classType(instance))
     }
 }
 /*

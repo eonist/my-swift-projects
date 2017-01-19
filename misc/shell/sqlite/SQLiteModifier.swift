@@ -1,3 +1,1 @@
-class SQLLiteModifier{
-	//add legacy code when needed
-}
+class SQLLiteModifier{}//add legacy code when needed

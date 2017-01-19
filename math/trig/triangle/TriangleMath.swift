@@ -31,14 +31,14 @@ class TriangleMath {
      * Returns the point that can be used to bisect an angle in an triangle
      * TODO: i think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
      */
-    static func bisectorPoint(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
+    static func bisectorPoint(_ anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
         let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
         return CGPoint.interpolate(p1, x, 0.5)
     }
     /**
      * PARAM: radius is the length of the extending vector (so to speak)
      */
-    static func bisectorPT(anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
+    static func bisectorPT(_ anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
         let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
         let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(radius,bisectorAngle)
         return bisectorPT
@@ -47,7 +47,7 @@ class TriangleMath {
      * Returns the angle bisector from a triangle construction
      * NOTE: another way to find the bisector is: Trig.angle(pivot, p1) + (Trig.difference(pivot, p1, p2))/2
      */
-    static func bisectorAngle(anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
+    static func bisectorAngle(_ anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
         let angle1:CGFloat = Trig.angle(anchor, pt1)
         let angle2:CGFloat = Trig.angle(anchor, pt2)
         return Trig.angleBisector(angle1, angle2)
@@ -71,7 +71,7 @@ class TriangleMath {
      * PARAM: p2: The B point in the triangle (Angle can also be defined as ABC)
      * PARAM: p3: The C point in the triangle (Angle can also be defined as ACB)
      */
-    static func inCenter(a:CGFloat, _ b:CGFloat, _ c:CGFloat,_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> CGPoint {
+    static func inCenter(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat,_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> CGPoint {
         let x:CGFloat = ((a*p1.x)+(b*p2.x)+(c*p3.x))/(a+b+c)
         let y:CGFloat = ((a*p1.y)+(b*p2.y)+(c*p3.y))/(a+b+c)
         return CGPoint(x,y)
@@ -87,7 +87,7 @@ class TriangleMath {
      * TODO: could we use more Vector math like formulas here? by using slopes etc
      * TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
      */
-    static func convergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+    static func convergingPoint(_ p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
         let A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
         //Swift.print("A: " + A)
         let B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
@@ -104,14 +104,14 @@ class TriangleMath {
     /**
      * NOTE: rotates the "out-angles" to be "in-angles"
      */
-    static func divergingPoint(p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+    static func divergingPoint(_ p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
         return convergingPoint(p1, p2, anglA + π, angleB + π)
     }
     /**
      * NOTE: Distance from a point to a line
      * NOTE: also called "perpendicular distance"
      */
-    static func orthogonalDist(p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
+    static func orthogonalDist(_ p:CGPoint, _ p1:CGPoint,_ p2:CGPoint)->CGFloat{
         let angle1 = Trig.angle(p2, p)
         let angle2 = Trig.angle(p2, p1)
         let c = p2.distance(p)
@@ -141,7 +141,7 @@ class TriangleMath {
      * Returns the Side a of an triangle
      * NOTE: Based on formula: b/SinB = c/SinC
      */
-    static func bABToa(b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
+    static func bABToa(_ b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
     }
     /**
@@ -150,7 +150,7 @@ class TriangleMath {
      * NOTE: uses radian instead of degree
      * NOTE i think this also works on non-right-angle-triangles
      */
-    static func cACToa2(c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat { // TODO: move to trianglemath2
+    static func cACToa2(_ c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat { // TODO: move to trianglemath2
         return sin(A) * (c / sin(C))
     }
     /**
@@ -158,7 +158,7 @@ class TriangleMath {
      * Based on formula: b/SinB = a/SinA
      * NOTE: google right angle triangle to see where the sides and angles lay
      */
-    static func aABTob(a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
+    static func aABTob(_ a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
         return sin(B*Trig.rad) * (a / sin(A*Trig.rad))
     }
     /**
@@ -166,14 +166,14 @@ class TriangleMath {
      * Based on formula: c/SinC = a/SinA
      * NOTE: google right angle triangle to see where the sides and angles lay
      */
-    static func aACToc(a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
+    static func aACToc(_ a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
         return sin(C*Trig.rad) * (a / sin(A*Trig.rad))
     }
     /**
      * Returns the Side b of an triangle
      * NOTE: Based on formula: b/SinB = c/SinC
      */
-    static func cBCTob2(c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {//TODO: move to trianglemath2
+    static func cBCTob2(_ c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {//TODO: move to trianglemath2
         return sin(B) * (c / sin(C))
     }
 }

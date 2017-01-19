@@ -4,7 +4,7 @@ class Resizer {
     /**
      * Fits inside a frame
      */
-    static func fit(size:CGSize, _ ratio:CGFloat)->CGSize{
+    static func fit(_ size:CGSize, _ ratio:CGFloat)->CGSize{
         //Scale to ratio:
         let w:CGFloat = size.width
         let h:CGFloat = size.height

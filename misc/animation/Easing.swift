@@ -9,68 +9,77 @@ import Cocoa
  */
 class Easing{
     //No easing, linear animation
-    static func easeLinear (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
+    static func easeLinear(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
         return c*t/d + b
     }
     //Sine SINUSOIDAL EASING: sin(t)
-    static func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π2) + c + b
     }
-    static func easeOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return c * sin(t/d * π2) + b
     }
-    static func easeInOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c/2 * (cos(π*t/d) - 1) + b
     }
     //Quintic - QUINTIC EASING: t^5
-    static func easeInQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
         t = t/d
         return c*t*t*t*t*t + b
     }
-	static func easeOutQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-		t = t/d-1
+    static func easeOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
+        t = t/d-1
 		return c*(t*t*t*t*t + 1) + b
 	}
-	static func easeInOutQuint(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
+    static func easeInOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
+        var t = t
         t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t*t*t*t + b}
         t = t-2
 		return c/2*(t*t*t*t*t + 2) + b
 	}
     //Quartic
-    static func easeInQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
         t = t/d
         return c*t*t*t*t + b
     }
-    static func easeOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-		t = (t/d)-1//<--the brackets are important
+    static func easeOutQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
+        t = (t/d)-1//<--the brackets are important
 		return -c * (t*t*t*t - 1) + b
 	}
-    static func easeInOutQuart(var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
-		t = t/(d/2)//<--the brackets are important
+    static func easeInOutQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+        var t = t
+        t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t*t*t + b}
 		t = t-2
 		return -c/2 * (t*t*t*t - 2) + b;
 	}
 	//Quadratic
-	static func easeInQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-		t = t/d
+    static func easeInQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        var t = t
+        t = t/d
 		return c*t*t + b;
 	}
-	static func easeOutQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-		t = t/d
+    static func easeOutQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        var t = t
+        t = t/d
 		return -c*t*(t-2) + b;
 	}
-	static func easeInOutQuad (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-		t = t/(d/2)//<--the brackets are important
+    static func easeInOutQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        var t = t
+        t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t + b}
-		return -c/2 * ((--t)*(t-2) - 1) + b;
+		return -c/2 * (-1*t*(t-2) - 1) + b /*swift 3 upgrade: was (--t), is now: -t, could break the equation*/
 	}
     //Exponential
-    static func easeInExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+    static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
        return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
     }
-    static func easeOutExpo(t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+    static func easeOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
     }
     private static func easeInOutExpo(){

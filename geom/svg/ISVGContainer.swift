@@ -2,8 +2,8 @@ import Foundation
 /**
  * Interface for SVGContainer
  */
-protocol ISVGContainer : ISVGElement{
-    func add(element:ISVGElement)
-    var items : Array<ISVGElement> {get}
-    func getItem(id:String)->ISVGElement?
+protocol ISVGContainer:ISVGElement{
+    func add(_ element:ISVGElement)
+    var items:Array<ISVGElement> {get}
+    func getItem(_ id:String)->ISVGElement?
 }

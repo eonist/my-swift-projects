@@ -9,7 +9,7 @@ class SVGGradientParser {
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
      * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
-	static func linearGradient(xml:NSXMLElement)->SVGLinearGradient{
+	static func linearGradient(_ xml:XMLElement)->SVGLinearGradient{
 		// print("linearGradient ");
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!
 		// print("x1: " + x1);
@@ -27,7 +27,7 @@ class SVGGradientParser {
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
 	 */
-	static func radialGradient(xml:NSXMLElement)->SVGRadialGradient{
+	static func radialGradient(_ xml:XMLElement)->SVGRadialGradient{
 		let cxStr:String = SVGPropertyParser.property(xml,"cx")!
         let cx:CGFloat = StringAsserter.percentage(cxStr) ? StringParser.percentage(cxStr) : SVGPropertyParser.value(cxStr)
 		let cyStr:String = SVGPropertyParser.property(xml,"cy")!
@@ -47,13 +47,13 @@ private class Utils{
 	 * Returns an gradient instance with data derived from PARAM: xml 
      * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
 	 */
-	static func gradient(xml:NSXMLElement)->SVGGradient{
+	static func gradient(_ xml:XMLElement)->SVGGradient{
 		var offsets:Array<CGFloat> = []
 		var colors:Array<CGColor> = []
 		var opacities:Array<CGFloat> = []
-        let children:NSArray = xml.children!
+        let children:[XMLNode] = xml.children!
         for i in 0..<xml.childCount{
-            let child:NSXMLElement = XMLParser.childAt(children, i)!
+            let child:XMLElement = XMLParser.childAt(children, i)!
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -100,7 +100,7 @@ private class Utils{
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
      */
-    static func gradientTransform(xml:NSXMLElement)->CGAffineTransform? {
+    static func gradientTransform(_ xml:XMLElement)->CGAffineTransform? {
         var gradientTransform:CGAffineTransform? = nil
         let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform")
         if(gradientTransformString != nil){
@@ -110,7 +110,7 @@ private class Utils{
             let matrixStringArray:Array<String> = matrixString.split(" ")
             let matrixArray:Array<CGFloat> = matrixStringArray.map {CGFloat(Double($0)!)}
             //print("matrixArray: " + matrixArray);
-            gradientTransform = CGAffineTransformMake(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])
+            gradientTransform = CGAffineTransform(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])//Swift 3 was->CGAffineTransformMake
         }
         return gradientTransform
     }

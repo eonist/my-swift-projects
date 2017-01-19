@@ -21,19 +21,19 @@ import Cocoa
 public class Graphics{
     enum FillMode:Int {case None = 0, Color, Gradient}
     enum StrokeMode:Int {case None = 0, Color, Gradient}
-    public var context:CGContextRef?//let graphicsContext:NSGraphicsContext
+    public var context:CGContext?//let graphicsContext:NSGraphicsContext
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
-    var cgGradient:CGGradientRef?/*This value exists because of performance*/
+    var cgGradient:CGGradient?/*This value exists because of performance*/
     var lineGradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
-    var cgLineGradient:CGGradientRef?/*This value exists because of performance*/
+    var cgLineGradient:CGGradient?/*This value exists because of performance*/
     var dropShadow:DropShadow?
     var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
     public init(){
-        if(NSGraphicsContext.currentContext() != nil){
-            let graphicsContext = NSGraphicsContext.currentContext()!
-            self.context = graphicsContext.CGContext/* Get the handle to the current context */
+        if(NSGraphicsContext.current() != nil){
+            let graphicsContext = NSGraphicsContext.current()!
+            self.context = graphicsContext.cgContext/* Get the handle to the current context */
         }
     }
     /**
@@ -43,16 +43,16 @@ public class Graphics{
      * NOTE: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
      * NOTE: this method can be called pre context
      */
-    public func fill(color:NSColor){
+    public func fill(_ color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
         fillMode = FillMode.Color
-        CGContextSetFillColorWithColor(context,color.CGColor)
+        context!.setFillColor(color.cgColor)//swift 3 upgrade
     }
     /*
      * Initiate gradient filling
      * NOTE: this method can be called pre context
      */
-    public func gradientFill(gradient:IGraphicsGradient/*IGradient*/){
+    public func gradientFill(_ gradient:IGraphicsGradient/*IGradient*/){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
@@ -63,17 +63,17 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      * NOTE: this method can be called pre context
      */
-    public func line(lineWidth:CGFloat = 1,_ color:NSColor = NSColor.blackColor(), _ lineCap:CGLineCap = CGLineCap.Butt, _ lineJoin:CGLineJoin =  CGLineJoin.Miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
+    public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = NSColor.black, _ lineCap:CGLineCap = CGLineCap.butt, _ lineJoin:CGLineJoin =  CGLineJoin.miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
         //Swift.print("context: " + "\(context)")
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
-        CGContextSetStrokeColorWithColor(context, color.CGColor)
+        context!.setStrokeColor(color.cgColor)
         //set the stroke width!
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetLineCap(context, lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
-        CGContextSetLineJoin(context, lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
-        CGContextSetMiterLimit(context, miterLimit)//The default Quartz miter limit is 10
-        if(lengths.count > 0) {CGContextSetLineDash(context, phase, lengths, lengths.count)}/*Add dash if lengths are specified*/
+        context!.setLineWidth(lineWidth)
+        context!.setLineCap(lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
+        context!.setLineJoin(lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
+        context!.setMiterLimit(miterLimit)//The default Quartz miter limit is 10
+        if(lengths.count > 0) {context!.setLineDash(phase: phase, lengths: lengths)}/*Add dash if lengths are specified*/
     }
     /**
      * Set the current  gradient line style
@@ -81,7 +81,7 @@ public class Graphics{
      * NOTE: this method can be called pre context
      * TODO: Contemplate including lineWidth etc in this call
      */
-    public func gradientLine(gradient:IGraphicsGradient){
+    public func gradientLine(_ gradient:IGraphicsGradient){
         strokeMode = StrokeMode.Gradient
         lineGradient = gradient
         cgLineGradient = GradientUtils.cgGradient(gradient)
@@ -108,7 +108,7 @@ public class Graphics{
      * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
      * NOTE: this method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
-    public func draw(path:CGPath){
+    public func draw(_ path:CGPath){
         //Swift.print("Grpahics.draw() ")
         drawFill(path)
         drawLine(path)
@@ -116,8 +116,8 @@ public class Graphics{
     /**
      * NOTE: You can also use CGPathDrawingMode.FillStroke, but since we need to seperate stroking and filling because of we want to add dropshadow if applicaple we dont use it
      */
-    public func drawFill(path:CGPath){
-        CGContextAddPath(context,path)//Adds the path to the context
+    public func drawFill(_ path:CGPath){
+        context!.addPath(path)//Adds the path to the context
         beginOuterShadow(path)
         switch true{
             case (fillMode == FillMode.None)://no fill
@@ -125,33 +125,33 @@ public class Graphics{
                 break;
             case (fillMode == FillMode.Color)://fill
                 //Swift.print("color fill ")
-                CGContextDrawPath(context, CGPathDrawingMode.Fill)
+                context!.drawPath(using: CGPathDrawingMode.fill)
             case (fillMode == FillMode.Gradient)://gradientFill
                 //Swift.print("gradient fill")
-                CGContextSaveGState(context)/*we only want to apply a temporary clip*/
-                CGContextClip(context) /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
+                context!.saveGState()/*we only want to apply a temporary clip*/
+                context!.clip() /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
-                CGContextRestoreGState(context)/*we only want to apply a temporary clip*/
+                context!.restoreGState()/*we only want to apply a temporary clip*/
             default:
                 fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
                 break;
         }
         endOuterShadow()
-        applyInnerShadow(path)/*init inner shadow*/
+        applyInnerShadow(path: path)/*init inner shadow*/
     }
     /**
      * NOTE: apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
-    public func drawLine(path:CGPath){
+    public func drawLine(_ path:CGPath){
         //the change to the bellow line is need in order to get the fill and line working together
-        /*if(dropShadow != nil) {*/CGContextAddPath(context,path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
+        /*if(dropShadow != nil) {*/context!.addPath(path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
         switch true {
             case (strokeMode == StrokeMode.None)://no stroke
                 //Swift.print("no stroke")
                 break
             case (strokeMode == StrokeMode.Color)://color stroke
                 //Swift.print("color stroke")
-                CGContextDrawPath(context, CGPathDrawingMode.Stroke)
+                context!.drawPath(using: CGPathDrawingMode.stroke)
             case (strokeMode == StrokeMode.Gradient)://gradient stroke
                 //Swift.print("gradient stroke")
                 Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient, lineWidth)
@@ -166,7 +166,7 @@ private class Utils{
      * Draws a gradient into the current path in the context
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
-    class func drawGradientFill(path:CGPath,_ context:CGContextRef,_ gradient:IGraphicsGradient, _ cgGradient:CGGradientRef?){
+    class func drawGradientFill(_ path:CGPath,_ context:CGContext,_ gradient:IGraphicsGradient, _ cgGradient:CGGradient?){
         //let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
         //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
         
@@ -182,31 +182,31 @@ private class Utils{
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
-    static func drawGradientStroke(path:CGPath,_ context:CGContextRef,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradientRef?, _ lineWidth:CGFloat){
+    static func drawGradientStroke(_ path:CGPath,_ context:CGContext,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradient?, _ lineWidth:CGFloat){
         //var boundingBox:CGRect = CGPathGetBoundingBox(path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
         //boundingBox = boundingBox.outset(lineWidth/2, lineWidth/2)/*Outset the boundingbox to cover the entire stroke*/
-        CGContextSaveGState(context)//store the graphic state so that the mask call bellow doesnt become the permanant mask
-        CGContextReplacePathWithStrokedPath(context)//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
-        CGContextClip(context) //create a mask for the gradient to be drawn into
+        context.saveGState()//store the graphic state so that the mask call bellow doesnt become the permanant mask
+        context.replacePathWithStrokedPath()//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
+        context.clip() //create a mask for the gradient to be drawn into
         if(lineGradient is LinearGraphicsGradient) {
             drawAxialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
             drawRadialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! RadialGraphicsGradient)
         }else{fatalError("this type is not supported: " + "\(lineGradient)")}
-        CGContextRestoreGState(context)//restore the graphic mask
+        context.restoreGState()//restore the graphic mask
     }
     /**
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    static func drawAxialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
+    static func drawAxialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
         //Swift.print("Graphics.drawAxialGradient()")
         //Swift.print("gradient.p1: " + "\(gradient.p1)")
         //Swift.print("gradient.p2: " + "\(gradient.p2)")
         //Swift.print("gradient.transformation: " + "\(gradient.transformation)")
         
         //Swift.print("points: " + "\(points)")
-        CGContextDrawLinearGradient(context, cgGradient, gradient.p1, gradient.p2, [CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        context.drawLinearGradient(cgGradient!, start: gradient.p1, end: gradient.p2, options: [CGGradientDrawingOptions.drawsBeforeStartLocation,CGGradientDrawingOptions.drawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
      * Radial gradient
@@ -215,13 +215,13 @@ private class Utils{
      * TODO: You may consider drawing the elliptical shape from the top left to get better edge rendering. 
      * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
-    static func drawRadialGradient(path:CGPath,_ context:CGContextRef,_ cgGradient:CGGradientRef?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
+    static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
         //Swift.print("Graphics.drawRadialGradient")
         /*begin drawing the radial gradient*/
-        CGContextSaveGState(context)/*save the current context*/
-        if(gradient.transformation != nil) {CGContextConcatCTM(context, gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
-        CGContextDrawRadialGradient(context, cgGradient, gradient.startCenter, gradient.startRadius, gradient.endCenter, gradient.endRadius, [CGGradientDrawingOptions.DrawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        CGContextRestoreGState(context)/*restore the context that was saved*/
+        context.saveGState()/*save the current context*/
+        if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
+        context.drawRadialGradient(cgGradient!, startCenter: gradient.startCenter, startRadius: gradient.startRadius, endCenter: gradient.endCenter, endRadius: gradient.endRadius, options: [CGGradientDrawingOptions.drawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        context.restoreGState()/*restore the context that was saved*/
         /*end drawing the radial gradient*/
     }
 }
@@ -229,11 +229,11 @@ extension Graphics{//private class ShadowUtils
     /**
      *
      */
-    func beginOuterShadow(path:CGPath){
+    func beginOuterShadow(_ path:CGPath){
         //Swift.print("Graphics.beginOuterShadow")
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
             //Swift.print("dropShadow.description: " + "\(dropShadow!.description)");
-            CGContextSaveGState(context)/*initates the GState so that subsequent drawing also gets a shade*/
+            context!.saveGState()/*initates the GState so that subsequent drawing also gets a shade*/
             dropShadow!.shadow.set()/*<- dont use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
     }
@@ -242,7 +242,7 @@ extension Graphics{//private class ShadowUtils
      */
     func endOuterShadow(){
         //Swift.print("endOuterShadow()")
-        if(dropShadow != nil && !dropShadow!.inner){CGContextRestoreGState(context)}//stops drawing the shadow on subsequent drawing
+        if(dropShadow != nil && !dropShadow!.inner){context!.restoreGState()}//stops drawing the shadow on subsequent drawing
     }
     /**
      *
@@ -254,19 +254,19 @@ extension Graphics{//private class ShadowUtils
         let dropShadow = graphics.dropShadow
         */
         if(dropShadow != nil && dropShadow!.inner){
-            CGContextSaveGState(context);/*init the gState*/
-            CGContextAddPath(context, path);/*add The clipping path to the context*/
-            CGContextClip(context);/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
-            CGContextSetAlpha(context, CGColorGetAlpha(dropShadow!.color.CGColor));//this can be simpler
-            CGContextBeginTransparencyLayer(context, nil);
-            CGContextSetShadowWithColor(context, dropShadow!.offset, dropShadow!.blurRadius, dropShadow!.opaqueColor.CGColor);/*This is where the setting of the shadow happens*/
+            context!.saveGState()/*init the gState*/
+            context!.addPath(path)/*add The clipping path to the context*/
+            context!.clip()/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
+            context!.setAlpha(dropShadow!.color.cgColor.alpha)//this can be simpler
+            context!.beginTransparencyLayer(auxiliaryInfo: nil)
+            context!.setShadow(offset: dropShadow!.offset, blur: dropShadow!.blurRadius, color: dropShadow!.opaqueColor.cgColor)/*This is where the setting of the shadow happens*/
             //dropShadow!.opaqueShadow.set()/*<-- dont use this, since you need to ref context if you use CALayer. This is where the setting of the shadow happens*/
-            CGContextSetBlendMode(context, CGBlendMode.SourceOut);/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
-            CGContextSetFillColorWithColor(context, dropShadow!.color.alpha(1.0).CGColor);//this can be made more optimized
-            CGContextAddPath(context, path);
-            CGContextFillPath(context);
-            CGContextEndTransparencyLayer(context);
-            CGContextRestoreGState(context);/*end the gState*/
+            context!.setBlendMode(CGBlendMode.sourceOut)/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
+            context!.setFillColor(dropShadow!.color.alpha(1.0).cgColor)//this can be made more optimized
+            context!.addPath(path)
+            context!.fillPath()
+            context!.endTransparencyLayer()
+            context!.restoreGState()/*end the gState*/
         }
     }
 }

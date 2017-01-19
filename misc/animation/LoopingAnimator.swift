@@ -8,7 +8,8 @@ import Foundation
 class LoopingAnimator:Animator{
     var repeatCount:Int/*<--zero means infinite*/
     var curRepeatCount:Int = 0
-    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
+    //swift 3 update: @escaping was added
+    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping (CGFloat)->Void, _ easing:@escaping (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.repeatCount = repeatCount
         super.init(animatable, duration, from, to, callBack, easing)
     }
@@ -28,8 +29,8 @@ class LoopingAnimator:Animator{
                 stop()//<--stop animation
                 super.onEvent(AnimEvent(AnimEvent.completed,self))
             }
-            curRepeatCount++
+            curRepeatCount += 1
         }
-        self.currentFrameCount++
+        self.currentFrameCount += 1
     }
 }

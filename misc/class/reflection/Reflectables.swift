@@ -1,6 +1,6 @@
 import Cocoa
 
-extension CGColorRef:Reflectable{
+extension CGColor:Reflectable{
     var reflection:(type:String,value:String) {
         return (type:"CGColor",value:RGBAParser.hex(self.nsColor))/*we store 0xFF0000FF values, which includes rgb and alpha*/
     }
@@ -12,7 +12,7 @@ extension NSColor:Reflectable{
 }
 extension CGTransform:Reflectable{
     var reflection:(type:String,value:String) {
-        return (type:"CGTransform",value:self.identity)
+        return (type:"CGTransform",value:self.id)
     }
 }
 extension CGPoint:Reflectable{

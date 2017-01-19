@@ -8,5 +8,5 @@ class SVGGroup:SVGContainer, ISVGView {
         self.style = style
         super.init(items, id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

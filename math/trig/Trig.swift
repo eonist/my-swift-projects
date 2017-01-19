@@ -33,27 +33,27 @@ class Trig{
 }
 extension Trig{/*Legacy-support/convenience*/
     /*Parsers*/
-    class func angle(a:CGPoint, _ b:CGPoint)->CGFloat {return TrigParser.angle(a, b)}
-    class func angleType(angleType:String)->CGFloat {return TrigUtils.angleType(angleType)}
-    class func normalize(angle:CGFloat)->CGFloat {return TrigParser.normalize(angle)}
-    class func normalize2(angle:CGFloat)->CGFloat {return TrigParser.normalize2(angle)}
-    class func degrees(radians:CGFloat) -> CGFloat {return TrigConverter.degrees(radians)}
-    class func radians(degrees:CGFloat) -> CGFloat {return TrigConverter.radians(degrees)}
-    class func difference(startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {return TrigParser.difference(startAngle, endAngle)}
-    class func difference(pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat {return TrigParser.difference(pivot, p1,p2)}
-    class func flip(angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {return TrigParser.flip(angle, axisMultiplier)}
-    class func angleSpan(a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{return TrigParser.angleSpan(a, b, direction)}
-    class func angleSpan2(a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {return TrigParser.angleSpan2(a, b, isClockWise)}
-    class func pointSpan2(p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {return TrigParser.pointSpan2(p1, p2, pivot, isClockWise)}
-    class func angleBisector(a:CGFloat,_ b:CGFloat) -> CGFloat{return TrigParser.angleBisector(a, b)}
+    static func angle(_ a:CGPoint, _ b:CGPoint)->CGFloat {return TrigParser.angle(a, b)}
+    static func angleType(_ angleType:String)->CGFloat {return TrigUtils.angleType(angleType)}
+    static func normalize(_ angle:CGFloat)->CGFloat {return TrigParser.normalize(angle)}
+    static func normalize2(_ angle:CGFloat)->CGFloat {return TrigParser.normalize2(angle)}
+    static func degrees(_ radians:CGFloat) -> CGFloat {return TrigConverter.degrees(radians)}
+    static func radians(_ degrees:CGFloat) -> CGFloat {return TrigConverter.radians(degrees)}
+    static func difference(_ startAngle:CGFloat,_ endAngle:CGFloat)->CGFloat {return TrigParser.difference(startAngle, endAngle)}
+    static func difference(_ pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat {return TrigParser.difference(pivot, p1,p2)}
+    static func flip(_ angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {return TrigParser.flip(angle, axisMultiplier)}
+    static func angleSpan(_ a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{return TrigParser.angleSpan(a, b, direction)}
+    static func angleSpan2(_ a:CGFloat, _ b:CGFloat, _ isClockWise:Bool = true) -> CGFloat {return TrigParser.angleSpan2(a, b, isClockWise)}
+    static func pointSpan2(_ p1:CGPoint,_ p2:CGPoint,_ pivot:CGPoint,_ isClockWise:Bool = true)->CGFloat {return TrigParser.pointSpan2(p1, p2, pivot, isClockWise)}
+    static func angleBisector(_ a:CGFloat,_ b:CGFloat) -> CGFloat{return TrigParser.angleBisector(a, b)}
     /*Asserters*/
-    class func isClockWise(center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {return TrigAsserter.isClockWise(center, p1, p2)}
-    class func isClockWiseByAngle(a:CGFloat,_ b:CGFloat)->Bool { return TrigAsserter.isClockWiseByAngle(a, b) }
-    class func isOppositeDirectional(bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool{return TrigAsserter.isOppositeDirectional(bisectorAngle, angleA, angleB)}
-    class func isContraDirectional(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isContraDirectional(a, b)}
-    class func isParallel(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isParallel(a, b)}
-    class func isCodirectional(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCodirectional(a, b)}
-    class func isNormal(angle1:CGFloat,_ angle2:CGFloat) -> Bool{return TrigAsserter.isNormal(angle1, angle2)}
-    class func isCollinearNormal(p1:CGPoint,_ p2:CGPoint, _ angle1:CGFloat,_ angle2:CGFloat) -> Bool {return TrigAsserter.isCollinearNormal(p1,p2,angle1,angle2)}
-    class func isCoDir(a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCoDir(a, b)}
+    static func isClockWise(_ center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {return TrigAsserter.isClockWise(center, p1, p2)}
+    static func isClockWiseByAngle(_ a:CGFloat,_ b:CGFloat)->Bool { return TrigAsserter.isClockWiseByAngle(a, b) }
+    static func isOppositeDirectional(_ bisectorAngle:CGFloat, _ angleA:CGFloat, _ angleB:CGFloat) -> Bool{return TrigAsserter.isOppositeDirectional(bisectorAngle, angleA, angleB)}
+    static func isContraDirectional(_ a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isContraDirectional(a, b)}
+    static func isParallel(_ a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isParallel(a, b)}
+    static func isCodirectional(_ a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCodirectional(a, b)}
+    static func isNormal(_ angle1:CGFloat,_ angle2:CGFloat) -> Bool{return TrigAsserter.isNormal(angle1, angle2)}
+    static func isCollinearNormal(_ p1:CGPoint,_ p2:CGPoint, _ angle1:CGFloat,_ angle2:CGFloat) -> Bool {return TrigAsserter.isCollinearNormal(p1,p2,angle1,angle2)}
+    static func isCoDir(_ a:CGFloat,_ b:CGFloat) -> Bool{return TrigAsserter.isCoDir(a, b)}
 }

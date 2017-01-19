@@ -10,9 +10,9 @@ class FileParser{
      * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
      * EXAMPLE: FileParser.content("~/Desktop/temp.txt".tildePath)//
      */
-	static func content(path:String)->String?{
+	static func content(_ path:String)->String?{
         do {
-            let content = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String//encoding: NSUTF8StringEncoding
+            let content = try String(contentsOfFile: path, encoding: String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
             return content
         } catch {
             Swift.print("Could not load: " + "\(path)")// contents could not be loaded
@@ -22,8 +22,8 @@ class FileParser{
     /**
      * resourceContent("example","txt")
      */
-    static func resourceContent(fileName:String, _ fileExtension:String)->String?{
-        if let filepath = NSBundle.mainBundle().pathForResource(fileName, ofType:fileExtension ) {
+    static func resourceContent(_ fileName:String, _ fileExtension:String)->String?{
+        if let filepath = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
             return content(filepath)
         } else {
             // example.txt not found!
@@ -33,19 +33,19 @@ class FileParser{
     /**
      * NOTE: make sure the file exists with: FileAsserter.exists("some path here")
      */
-    static func modificationDate(filePath:String)->NSDate{
+    static func modificationDate(_ filePath:String)->NSDate{
         let fileURL:NSURL = NSURL(fileURLWithPath:filePath)
-        let attributes = try! fileURL.resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
-        let modificationDate = attributes[NSURLContentModificationDateKey] as! NSDate
+        let attributes = try! fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey])
+        let modificationDate = attributes[URLResourceKey.contentModificationDateKey] as! NSDate
         return modificationDate
     }
     /**
      * Returns paths of content in a dir
      */
-    static func contentOfDir()->[String]?{
-        let fileManager = NSFileManager.defaultManager()
+    static func contentOfDir(_ path:String)->[String]?{
+        let fileManager = FileManager.default
         do {
-            let files = try fileManager.contentsOfDirectoryAtPath(".")
+            let files = try fileManager.contentsOfDirectory(atPath: path)//"."
             //print(files)
             return files
         }catch let error as NSError {
@@ -64,21 +64,21 @@ class FileParser{
      * Returns the current directory path
      */
     static var curDir:String{
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         let path = fileManager.currentDirectoryPath
         return path
     }
 }
 extension FileParser{
     /**
-     * Returns an xml instance comprised of the string content at location @param path
+     * Returns an xml instance comprised of the string content at location PARAM: path
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
      * IMPORTANT: Remember to expand the "path" with the tildePath call before you call xml(path)
      */
-    static func xml(path:String)->XML {
+    static func xml(_ path:String)->XML {
         let content = FileParser.content(path)
         //Swift.print("content: " + "\(content)")
-        let xmlDoc:XMLDoc = try! XMLDoc(XMLString: content!, options: 0)
+        let xmlDoc:XMLDoc = try! XMLDoc(xmlString: content!, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
     }

@@ -1,56 +1,56 @@
 import Cocoa
 /*Simple types:*/
 extension String:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
-        return String(value) as? T
+    static func unWrap<T>(_ value:String) -> T? {
+        return "\(value)" as? T
     }
 }
 extension Double:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         return value.double as? T
     }
 }
 extension CGFloat:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         return value.cgFloat as? T
     }
 }
 extension Int:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         return value.int as? T
     }
 }
 extension Bool:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         return value.bool as? T
     }
 }
 extension NSColor:UnWrappable{/*We use 32 bit RGBA values when storing color data (This also stores the alpha value)*/
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         //Swift.print("NSColor.unWrap()")
         return NSColorParser.color(value) as? T//turns string values like: FF0000FF into NSColor blue
     }
 }
-extension CGColorRef:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+extension CGColor:UnWrappable{
+    static func unWrap<T>(_ value:String) -> T? {
         //Swift.print("CGColor.unWrap() value: " + "\(value)")
-        return NSColorParser.color(value).CGColor as? T//turns string values like: FF0000FF into CGColor blue
+        return NSColorParser.color(value).cgColor as? T//turns string values like: FF0000FF into CGColor blue
     }
 }
 extension CGPoint:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         let values:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
         return CGPoint(values[0],values[1]) as? T
     }
 }
 extension CGSize:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         let values:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
         return CGSize(values[0],values[1]) as? T
     }
 }
 extension RadialGradient:UnWrappable{
-    static func unWrap<T>(xml:XML) -> T? {
+    static func unWrap<T>(_ xml:XML) -> T? {
         //Swift.print("RadialGradient.unWrap()")
         let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
         let startCenter:CGPoint? = unWrap(xml, "startCenter")
@@ -61,7 +61,7 @@ extension RadialGradient:UnWrappable{
     }
 }
 extension LinearGradient:UnWrappable{
-    static func unWrap<T>(xml:XML) -> T? {
+    static func unWrap<T>(_ xml:XML) -> T? {
         //Swift.print("LinearGradient.unWrap()")
         let colors:Array<CGColor?> = unWrap(xml, "colors")
         //Swift.print("colors: " + "\(colors)")
@@ -75,15 +75,15 @@ extension LinearGradient:UnWrappable{
     }
 }
 extension CGTransform:UnWrappable{
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         //Swift.print("CGTransform.unWrap()")
         let identities:Array<CGFloat> = StringParser.split(value, ",").map{$0.cgFloat}
-        let transformation:CGTransform = CGAffineTransformMake(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])
+        let transformation:CGTransform = CGAffineTransform(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])//swift 3 upgrade -> was->CGAffineTransformMake()
         return transformation as? T
     }
 }
 extension DropShadow:UnWrappable{
-    static func unWrap<T>(xml:XML) -> T? {
+    static func unWrap<T>(_ xml:XML) -> T? {
         let color:NSColor = unWrap(xml, "color")!
         let offsetX:CGFloat = unWrap(xml, "offsetX")!
         let offsetY:CGFloat = unWrap(xml, "offsetY")!

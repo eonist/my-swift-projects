@@ -6,14 +6,14 @@ class ClassAsserter{
     /**
      * Returns true if any of @param instances is of class @param classType
      */
-    static func hasInstanceOfClassType<T>(instances:Array<Any?>,_ classType:T.Type) -> Bool {
+    static func hasInstanceOfClassType<T>(_ instances:Array<Any?>,_ classType:T.Type) -> Bool {
         return ClassParser.instanceByClassType(instances, classType) != nil
     }
     /**
      * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
      * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
      */
-    static func ofType<T>(instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
+    static func ofType<T>(_ instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
         return instance as? T != nil
     }
 	/**
@@ -31,13 +31,13 @@ class ClassAsserter{
      * object.dynamicType is B.Type//false
      * object.dynamicType is Decoratable.Type//true
 	 */
-    static func isOfClassType(obj:AnyObject,_ classType:AnyClass)->Bool{
-        return obj.isMemberOfClass(classType)
+    static func isOfClassType(_ obj:AnyObject,_ classType:AnyClass)->Bool{
+        return obj.isMember!(of: classType)//swift 3 update, may not work
     }
     /**
      * Alternative to the above
      */
-    static func isOfClassType2(obj:AnyObject, _ classType:AnyClass?, _ protocolType:AnyObject? = nil/**/)->Bool? {
+    static func isOfClassType2(_ obj:AnyObject, _ classType:AnyClass?, _ protocolType:AnyObject? = nil/**/)->Bool? {
         return object_getClass(obj) == classType!
     }
     /**
@@ -49,7 +49,7 @@ class ClassAsserter{
      * EXAMPLE: isOfSame(SomeClass.self,SomeClass())//true
      * CAUTION: currently checking against protocols isnt supported
      */
-    static func isOfSame(a: AnyObject, _ b: AnyObject) -> Bool {
+    static func isOfSame(_ a: AnyObject, _ b: AnyObject) -> Bool {
         return object_getClassName(a) == object_getClassName(b)
     }
     /**
@@ -58,7 +58,7 @@ class ClassAsserter{
      * NOTE: // Works, but seems hackish as it reverts to string comparison NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
      * TODO: needs example, cant get this to work easily
      */
-    static func isOfSameProtocol(a:Protocol,_ b:Protocol) -> Bool {
+    static func isOfSameProtocol(_ a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)
     }
     /**
@@ -69,7 +69,7 @@ class ClassAsserter{
      * ClassAsserter(A.self)//true
      * ClassAsserter(I.self)//false
      */
-    static func isClass<T>(classType:T.Type)->Bool{
+    static func isClass<T>(_ classType:T.Type)->Bool{
         return classType is AnyClass
     }
 }

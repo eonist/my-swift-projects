@@ -8,25 +8,25 @@ class LineAsserter {
     /**
      *
      */
-    class func intersects(a:Line,_ b:Line) -> Bool {// :TODO: rename to isSomeName
+    static func intersects(_ a:Line,_ b:Line) -> Bool {// :TODO: rename to isSomeName
         return PointAsserter.intersects(a.p1, a.p2, b.p1, b.p2)
     }
     /**
      *
      */
-    class func oppositeDirectional(bisector:CGLine,_ a:CGLine,_ b:CGLine) -> Bool {// :TODO: rename to isSomeName
+    static func oppositeDirectional(_ bisector:CGLine,_ a:CGLine,_ b:CGLine) -> Bool {// :TODO: rename to isSomeName
         return PointAsserter.oppositeDirectional(bisector.p1,bisector.p2,a.p1,a.p2,b.p1,b.p2)
     }
     /**
      *
      */
-    class func isContraDirectional(a:CGLine,_ b:CGLine) -> Bool {
+    static func isContraDirectional(_ a:CGLine,_ b:CGLine) -> Bool {
         return PointAsserter.isContraDirectional(a.p1,a.p2,b.p1,b.p2)
     }
     /**
      *
      */
-    class func isCoDirectional(a:CGLine,_ b:CGLine) -> Bool {
+    static func isCoDirectional(_ a:CGLine,_ b:CGLine) -> Bool {
         return PointAsserter.isCoDirectional(a.p1, a.p2, b.p1, b.p2)
     }
 }

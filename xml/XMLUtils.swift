@@ -20,7 +20,7 @@ class XMLUtils {
      * TODO: you can probably add the delgate object to the traverser for simplicity, and even make the traverse a pure static method
      * TODO: may need to use infix operator and extensions to make the xml parser work.
      */
-    static func data(xml:String)->Dictionary<String,Any>?{
+    static func data(_ xml:String)->Dictionary<String,Any>?{
         //in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
         return nil
     }
@@ -29,7 +29,7 @@ class XMLUtils {
      * filePath:"//Users/<path>/someFile.xml"
      * NOTE: NSXMLParser has a built in file reader: XMLTraverser(contentsOfURL: configURL ).  but then there is less code reuse in this method so jaut do it your swlf
      */
-    static func xmlByFilePath(filePath:String)->NSXMLDocument?{//# must use param naming
+    static func xmlByFilePath(_ filePath:String)->XMLDocument?{//# must use param naming
         //implement when you need it
         let xml:String = FileParser.content(filePath)!
         print(xml)
@@ -41,10 +41,10 @@ class XMLUtils {
      * PARAM: URL:"http://www.google.com/feeds/news.xml"
      * NOTE: you can also use: FileParser.xml
      */
-    static func xmlByURL(URL:String)->NSXMLDocument?{//# must use param naming
+    static func xmlByURL(_ URL:String)->XMLDocument?{//# must use param naming
         let result:String = NetworkParser.string(URL)
         if(result == "success"){
-            let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: result, options: 0)
+            let xmlDoc:XMLDocument = try! XMLDocument(xmlString: result, options: 0)
             return xmlDoc
         }else{
             //print(result.error)
@@ -55,7 +55,7 @@ class XMLUtils {
      * Compose xml syntax as a string derived from NSXMLelement or alike
      * NOTE: Out of order for now
      */
-    static func xmlString(data:Dictionary<String,Any>)->String?{
+    static func xmlString(_ data:Dictionary<String,Any>)->String?{
         /*
         var xmlString:String = ""
         for (nodeName, nodes) in data["."]{
@@ -75,13 +75,13 @@ class XMLUtils {
      * PARAM: name: the name of the xml node: "item"
      * TODO: move to internal util class?
      */
-    static func element(name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
+    static func element(_ name:String,_ content:String,_ attributes:Dictionary<String,String>)->String{
         var attributeText = ""
         for (key,value) in attributes{
             var attributeText  = (key + "=" + "\"" + value + "\"")
             attributeText += " " //append a space after each key value pair
         }
-        attributeText.removeAtIndex(attributeText.characters.indices.last!)//remove trailing space
+        attributeText.remove(at: attributeText.characters.indices.last!)//remove trailing space
         var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
         if (content.characters.count > 0) { //has content
             xmlText += ">" + content + "</" + name + ">" //end of xml text

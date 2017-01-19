@@ -2,7 +2,7 @@ class ObjectModifier {
     /**
      *
      */
-    static func swapObjects<T>(inout a: T, inout _ b: T) {
+    static func swapObjects<T>(_ a: inout T, _ b: inout T) {
         /*
         let temporaryA = a
         a = b

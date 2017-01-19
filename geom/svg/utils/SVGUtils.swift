@@ -9,11 +9,11 @@ class SVGUtils {
 	 * PARAM: svg (isntance of a custom SVG class that is easy to work with)
 	 * NOTE: for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
-	static func xml(svg:SVG)->XML {// :TODO: refactor to one or loop?
-		let xml:NSXMLElement = SVGUtils.svg(svg)
+	static func xml(_ svg:SVG)->XML {// :TODO: refactor to one or loop?
+		let xml:XMLElement = SVGUtils.svg(svg)
 		for i in 0..<svg.items.count{
 			let svgElement:ISVGElement = svg.items[i]
-			var child:NSXMLElement
+			var child:XMLElement
             if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
             else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
             else if(svgElement is SVGPath) {child = path(svgElement as! SVGPath)}
@@ -26,7 +26,7 @@ class SVGUtils {
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
-	static func pathData(path:SVGPath)->String {
+	static func pathData(_ path:SVGPath)->String {
 		var pathData:String = ""
 		let commands:Array<String> = path.commands
 		var parameters:Array<CGFloat> = path.parameters
@@ -37,19 +37,19 @@ class SVGUtils {
 				index += 2
 			}else if(command.test("[h,H,v,V]")){
 				pathData += command + String(parameters[index]) + " "
-				index++
+				index += 1
 			}else if(command.test("[s,S,q,Q]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
-				index++
+				index += 1
 			}else if(command.test("[c,C]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
-				index++
+				index += 1
 			}else if(command.test("[a,A]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
-				index++
+				index += 1
 			}else if(command.test("[z,Z]")){
 				pathData += command + " "
-				index++
+				index += 1
 			}
 		}
 		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
@@ -58,11 +58,11 @@ class SVGUtils {
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
-	static func svg(svg:SVG)->XML {
+	static func svg(_ svg:SVG)->XML {
 		let xml:XML = "<?xml version=“1.0”?><svg></svg>".xml
 		xml["xmlns"] = "http://www.w3.org/2000/svg"
-		xml["x"] = svg.x.string+"px"
-		xml["y"] = svg.y.string+"px"
+		xml["x"] = svg.frame.x.string+"px"
+		xml["y"] = svg.frame.y.string+"px"
 		xml["width"] = svg.width.string + "px"
 		xml["height"] = svg.height.string + "px"
 		return xml
@@ -70,7 +70,7 @@ class SVGUtils {
 	/**
 	 * Returns a svg line in SVG XML notation from PARAM: line (SVGLine)
 	 */
-	static func line(line:SVGLine)->XML {
+	static func line(_ line:SVGLine)->XML {
 		var xml:XML = "<line></line>".xml
 		xml = id(xml,line);
 		xml["x1"] = line.x1.string
@@ -83,11 +83,11 @@ class SVGUtils {
 	/**
 	 * Returns a svg rect in SVG XML notation from PARAM: rect (SVGRect)
 	 */
-	 static func rect(rect:SVGRect)->XML {//NOTE:: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
+	 static func rect(_ rect:SVGRect)->XML {//NOTE:: API<rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
 		var xml:XML = "<rect></rect>".xml
 		xml = id(xml,rect);
-		xml["x"] = rect.x.string
-		xml["y"] = rect.y.string
+		xml["x"] = rect.frame.x.string
+		xml["y"] = rect.frame.y.string
 		xml["width"] = rect.width.string
 		xml["height"] = rect.height.string
 		xml = style(xml,rect)
@@ -97,7 +97,7 @@ class SVGUtils {
 	 /**
 	  * Returns an SVGPath instance in SVG XML notation from PARAM: path (SVGPath)
 	  */
-	 static func path(path:SVGPath)->XML {
+	 static func path(_ path:SVGPath)->XML {
          var xml:XML = "<path></path>".xml
 		 xml = id(xml,path)
 		 xml["d"] = SVGUtils.pathData(path)
@@ -109,13 +109,13 @@ class SVGUtils {
 	  * NOTE: this method is recursive
 	  * TODO: remeber groups can have style applied inline cant they?
 	  */
-	 static func group(group:SVGGroup) -> XML {
+	 static func group(_ group:SVGGroup) -> XML {
 		 var xml:XML = "<g></g>".xml
 		 xml = id(xml,group);
 		 /*xml = style(xml,group); not supported yet*/
 		 for i in 0..<group.items.count{
 			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement
-			 var child:NSXMLElement
+			 var child:XMLElement
              if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
              else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
              else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
@@ -129,7 +129,7 @@ class SVGUtils {
 	  * Returns the id from a ISVG instance
 	  * TODO: move to an internal class
 	  */
-	 static func id(xml:NSXMLElement,_ svg:ISVGElement)->NSXMLElement {
+	 static func id(_ xml:XMLElement,_ svg:ISVGElement)->XMLElement {
          if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
 		 return xml
 	 }
@@ -137,7 +137,7 @@ class SVGUtils {
 	  * Returns an XML instance with style properties derived from PARAM: xml
 	  * TODO: move to an internal class
 	  */
-	 static func style(xml:NSXMLElement,_ graphic:SVGGraphic)->NSXMLElement {
+	 static func style(_ xml:XMLElement,_ graphic:SVGGraphic)->XMLElement {
         
          //this method is missing support for gradient (Get clues from the legacy SVGPropertyParser)
         

@@ -2,9 +2,9 @@ import Cocoa
 
 class TextFormat {
     var background:Bool = false
-    var backgroundColor:NSColor = NSColor.clearColor()
+    var backgroundColor:NSColor = NSColor.clear
     var selectable:Bool = false
-    var color:NSColor = NSColor.grayColor()
+    var color:NSColor = NSColor.gray
     var align:String = "left"//text.alignment = NSTextAlignment.Center//Left,Right,Justified,Natural,Center
     var font:String = "Lucida Grande"
     var size:CGFloat = 12
@@ -45,7 +45,7 @@ class TextFormat {
                     //Swift.print("Setting color: ")
                     color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
-                case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String($0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
+            case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
                 case TextFormatConstants.size:size = newValue as! CGFloat
                 case TextFormatConstants.type:type = newValue as! String
                 case TextFormatConstants.border:border = newValue as! Bool
@@ -62,7 +62,7 @@ extension TextFormat{
     /**
      * NOTE: you can also set these: paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
      */
-    func attributedStringValue(stringValue:String) -> NSAttributedString{
+    func attributedStringValue(_ stringValue:String) -> NSAttributedString{
         let font:NSFont = TextFieldParser.font(self.font,self.size)
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()

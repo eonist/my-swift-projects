@@ -1,4 +1,12 @@
+import Foundation
 class IntParser{
+    /**
+     * Return a  Random number within a min max value
+     */
+    static func random(_ min:Int, _ max:Int)->Int{//returns an integer between 0 - x
+        let randomNr:Int = Int(arc4random_uniform(UInt32(max)) + UInt32(min))
+        return randomNr
+    }
     /**
      * Returns a normalized integer value
      * NOTE: great for iterating int arrays
@@ -11,13 +19,13 @@ class IntParser{
      * print(IntParser.normalize(8, 7))//1
      * print(IntParser.normalize(12, 7))//5
      */
-    static func normalize(index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
+    static func normalize(_ index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
         return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
     }
 	/**
 	 * 
 	 */
-    static func kind(theInt:Int)->String{
+    static func kind(_ theInt:Int)->String{
         switch theInt {
             case 0:
                 return "Zero"
@@ -32,7 +40,7 @@ class IntParser{
      * EXAMPLE: minMax([8, -6, 2, 109, 3, 71]).min //-6
      * EXAMPLE: minMax([8, -6, 2, 109, 3, 71]).max //109
      */
-    static func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    static func minMax(_ array: [Int]) -> (min: Int, max: Int)? {
         if array.isEmpty { return nil }
         var currentMin = array[0]
         var currentMax = array[0]
@@ -49,7 +57,7 @@ class IntParser{
      * Returns the max int value in @param ints
      * EXAMPLE: max([1, 2, 3, 10, 100])
      */
-    static func max(ints:Array<Int>)->Int{
+    static func max(_ ints:Array<Int>)->Int{
         var maxInt = ints[0]
         for int in ints {if maxInt < int {maxInt = int}}
         return maxInt
@@ -57,7 +65,7 @@ class IntParser{
     /**
      * See comment in the forward call
      */
-    static func loop(index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
-        return NumberParser.loop(index.cgFloat,start.cgFloat,end.cgFloat).int
+    static func loop(_ index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
+        return CGFloatParser.loop(index.cgFloat,start.cgFloat,end.cgFloat).int
     }
 }

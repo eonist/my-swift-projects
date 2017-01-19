@@ -1,6 +1,6 @@
 import Foundation
 /**
- * SVG class is where pther svg elemnts is added
+ * SVG class is where other svg elemnts is added
  * // :TODO: impliment xmlns:xlink,viewBox,enable-background,xml:space,
  * //preserveAspectRatio="xMinYMin meet"
  * //viewBox="0 0 90 90"
@@ -25,5 +25,5 @@ class SVG:SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...som
         self.nameSpace = nameSpace
         super.init(items,id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

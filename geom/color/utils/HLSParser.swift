@@ -14,7 +14,7 @@ class HLSParser {
      * print(hls.l);   // outputs a scale of 0-240
      * print(hls.s);   // outputs a scale of 0-240
      */
-    static func hls(rgb:RGB)->HLS {
+    static func hls(_ rgb:RGB)->HLS {
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         var h:CGFloat = 0//<<--this wasn't here before but its need to be able to compile.
         var l:CGFloat

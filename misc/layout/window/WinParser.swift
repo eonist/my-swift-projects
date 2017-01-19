@@ -8,11 +8,11 @@ class WinParser {
      * NOTE: to manage the windows: app.windowWithWindowNumber(w.windowNumber)
      * EXAMPLE: let app:NSApplication = aNotification.object as! NSApplication//then use the app in this method
      */
-    static func describeWindows(app:NSApplication){
+    static func describeWindows(_ app:NSApplication){
         Swift.print("app.windows.count: " + "\(app.windows.count)")
         for win in app.windows{
             print("windowNumber: " + "\(win.windowNumber)")
-            app.windowWithWindowNumber(win.windowNumber)//this is how you can manage windows
+            app.window(withWindowNumber: win.windowNumber)//this is how you can manage windows
         }
     }
     /**
@@ -21,8 +21,8 @@ class WinParser {
      * NOTE: this method can also be used if you diff this method and the frame.height to get the titlebar height
      * NOTE: to get the width of a window yu can use: window!.frame.width
      */
-    static func height(window:NSWindow)->CGFloat{
-        return NSWindow.contentRectForFrameRect(window.frame, styleMask: window.styleMask).height
+    static func height(_ window:NSWindow)->CGFloat{
+        return NSWindow.contentRect(forFrameRect: window.frame, styleMask: window.styleMask).height
     }
     /**
      * Returns the first window in NSApp of a spedific class or protocol type
@@ -31,14 +31,18 @@ class WinParser {
      * PARAM: strict is a Boolean flag that allows an absolute assert of the class, say if you store the class type in a variable ebfore calling this method and the generic is a subType then the strict flag works well to assert absolutness. (It does not work with protocols, research into protocol supoprt for the strict flag is out of scope for now)
      * NOTE: you only need to use the strict flag if you work with stored class types.
      */
-    static func firstWindow<T>(type:T.Type, _ strict:Bool = false)-> T? {
-        for window : NSWindow in NSApp.windows {if((window as? T != nil && !strict) || (type is AnyClass && window.isMemberOfClass(type as! AnyClass))) {return window as? T}}
+    static func firstWindow<T>(_ type:T.Type, _ strict:Bool = false)-> T? {
+        for window : NSWindow in NSApp.windows {
+            if((window as? T != nil && !strict) || (type is AnyClass && window.isMember(of:type as! AnyClass))) {
+                return window as? T
+            }
+        }
         return nil
     }
     /**
      * Returns an array of NSWindow of type T in the current app
      */
-    static func windowsOfType<T>(type:T.Type)-> [T] {
+    static func windowsOfType<T>(_ type:T.Type)-> [T] {
         var windows:Array<T> = []
         for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         return windows
@@ -46,11 +50,11 @@ class WinParser {
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
      */
-    static func frontMostWinOfType<T:NSWindow>(type:T.Type)-> T?{
+    static func frontMostWinOfType<T:NSWindow>(_ type:T.Type)-> T?{
         var windows:Array<T> = []
         //TODO: for clearity use .forEach on the bellow line
         for window:NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
-        windows.sortInPlace { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
+        windows.sort { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
         return windows.count > 0 ? windows[0] : nil
     }
     /**
@@ -65,7 +69,7 @@ private class Utils{
     /**
      * NOTE: Reducing for-loops is a great way to maintain readability and maintain code modularity. Here is a trick were we use closure blocks to encapsulate the method call. The for loop is the same but the method call is different. This approach is great when you need the code within the for-loop to be the same but you want to have the code within different methods to be different
      */
-    static func performAction(windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
+    static func performAction(_ windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
         for window in windows{
             //print("windowNumber: " + "\(win.windowNumber)")
             if(action(window)){

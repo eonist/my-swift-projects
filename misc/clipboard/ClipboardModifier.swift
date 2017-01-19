@@ -14,8 +14,8 @@ class ClipboardModifier {
     /**
      *
      */
-    static func setStringData(string:String,_ clipboardFormat:String)  {
-        let thePasteboard = NSPasteboard.generalPasteboard()
+    static func setStringData(_ string:String,_ clipboardFormat:String)  {
+        let thePasteboard = NSPasteboard.general()
         thePasteboard.clearContents()/*Clear any previous data, since a sys clipboard can have 2 version of the same data etc*/
         thePasteboard.setString(string, forType: clipboardFormat)
     }

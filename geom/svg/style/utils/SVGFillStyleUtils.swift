@@ -4,7 +4,7 @@ class SVGFillStyleUtils{
     /**
      * Converts SVGStyle to IFillStyle
      */
-    static func fillStyle(style:SVGStyle,_ shape:Shape)-> IFillStyle?{
+    static func fillStyle(_ style:SVGStyle,_ shape:Shape)-> IFillStyle?{
         Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
         Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
         var fillStyle:IFillStyle?
@@ -24,7 +24,7 @@ class SVGFillStyleUtils{
     /**
      * Converts SVGStyle to IGradientFillStyle
      */
-    static func gradientFillStyle(style:SVGStyle,_ shape:Shape)->IGradientFillStyle{
+    static func gradientFillStyle(_ style:SVGStyle,_ shape:Shape)->IGradientFillStyle{
         let svgGradient:SVGGradient = style.fill as! SVGGradient
         let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
         let gradient:IGradient = graphicsGradient.gradient()
@@ -34,7 +34,7 @@ class SVGFillStyleUtils{
     /**
      *
      */
-    static func fillColor(style:SVGStyle)->NSColor{
+    static func fillColor(_ style:SVGStyle)->NSColor{
         //Swift.print("SVGGraphic.beginFill() color")
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
         //Swift.print("colorVal: " + "\(colorVal)")
@@ -54,7 +54,7 @@ class SVGFillStyleUtils{
      * TODO: there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
      * TODO: unless you offset it first! try this
      */
-    static func fillGraphicGradient(shape:Shape,_ gradient:SVGGradient)->IGraphicsGradient{
+    static func fillGraphicGradient(_ shape:Shape,_ gradient:SVGGradient)->IGraphicsGradient{
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //Swift.print("gradientType: " + gradientType);
@@ -92,14 +92,14 @@ class SVGFillStyleUtils{
                 if(gradient.gradientTransform != nil){
                     //Swift.print("drawAxialGradient() gradient.transformation()")
                     //i think you should do tje matrix in Graphics not here
-                    p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
-                    p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+                    p1 = p1.applying(gradient.gradientTransform!)
+                    p2 = p2.applying(gradient.gradientTransform!)
                 }
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
             }else{/*objectBoundingBox*/
                 if(gradient.gradientTransform != nil){fatalError("not supported yet")}
-                let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)
+                let boundingBox:CGRect = shape.path.boundingBox//swift 3-> was: CGPathGetBoundingBox
                 p1.x = boundingBox.width * (p1.x / 100)//this code can be compacted into 1 line
                 p1.y = boundingBox.height * (p1.y / 100)
                 p2.x = boundingBox.width * (p2.x / 100)
@@ -130,7 +130,7 @@ class SVGFillStyleUtils{
             var endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
             //Swift.print("endCenter: " + "\(endCenter)")
             
-            var transformation:CGAffineTransform = CGAffineTransformIdentity
+            var transformation:CGAffineTransform = CGAffineTransform.identity//swift 3,was -> CGAffineTransformIdentity
             
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 //Swift.print("userSpaceOnUse")
@@ -144,12 +144,12 @@ class SVGFillStyleUtils{
                 }
                 //startCenter -= shape.frame.origin
                 //endCenter -= shape.frame.origin
-                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                transformation.concat(CGAffineTransform(translationX: -shape.frame.origin.x, y: -shape.frame.origin.y))
                 //Swift.print("transformation: " + "\(transformation)")
             }else{/*objectBoundingBox*/
                 //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
                 //TODO: we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
-                let boundingBox:CGRect = CGPathGetBoundingBox(shape.path)//TODO: reuse frame as the bounding box
+                let boundingBox:CGRect = shape.path.boundingBox//TODO: reuse frame as the bounding box,swift 3 upgrade
                 startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
                 startCenter.y = boundingBox.height * (startCenter.y / 100)
                 endCenter.x = boundingBox.width * (endCenter.x / 100)

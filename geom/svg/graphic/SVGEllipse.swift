@@ -36,7 +36,7 @@ class SVGEllipse:SVGGraphic{
             lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
 		}
 	}
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension SVGEllipse{
     var center:CGPoint {get{return CGPoint(cx,cy)}set{cx = newValue.x;cy = newValue.y}}

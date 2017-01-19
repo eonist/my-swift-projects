@@ -6,10 +6,10 @@ class HSBParser {
      * PARAM: rgb The RGB color.
      * RETURN: The HSBColor object representing the RGB color. Hue:0-360, Saturate:0-1, brightness:0-1
      */
-    static func hsb(rgb:RGB)->HSB{
+    static func hsb(_ rgb:RGB)->HSB{
         return HSBParser.hsb(rgb.nsColor)
     }
-    static func hsb(nsColor:NSColor)->HSB{
+    static func hsb(_ nsColor:NSColor)->HSB{
         return HSB(nsColor.hueComponent,nsColor.saturationComponent,nsColor.brightnessComponent)
     }
 }

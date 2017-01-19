@@ -12,11 +12,11 @@ class ArrayAsserter {
      * EXAMPLE: ArrayAsserter.contains([1,2,3], [1,2], true)//false, the length of a and b must be the same
      * TODO: create a better description
      */
-    static func contains<T:Equatable>(a:[T], _ b:[T], _ strict:Bool = false)->Bool {
+    static func contains<T:Equatable>(_ a:[T], _ b:[T], _ strict:Bool = false)->Bool {
         var score:Int = 0
         for i in 0..<a.count{
-            if (b.indexOf(a[i]) >= 0 ){
-                score++
+            if (b.index(of: a[i]) != nil){
+                score += 1
             }
         }
         return score == (strict ? a.count : b.count)
@@ -25,13 +25,13 @@ class ArrayAsserter {
      * Asserts if an array has an item
      * NOTE: Determines whether the specified array contains the specified value
      * NOTE: Only works with Equatable types
-     * PARAM: arr The array that will be checked for the specified value.
-     * PARAM: value The object which will be searched for within the array
-     * RETURN: True if the array contains the value, False if it does not.
+     * @param arr The array that will be checked for the specified value.
+     * @param value The object which will be searched for within the array
+     * @return True if the array contains the value, False if it does not.
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
      */
-    static func has<T where T:Equatable, T:Comparable>(arr : [T], _ value:T)->Bool {//the <T: Equatable> part ensures that the types can use the equal operator ==
+    static func has<T>(_ arr : [T], _ value:T)->Bool where T:Equatable, T:Comparable {//the <T: Equatable> part ensures that the types can use the equal operator ==
         return ArrayParser.index(arr, value) != -1
     }
     /**
@@ -39,7 +39,7 @@ class ArrayAsserter {
      * IMPORTANT: use none optional variables in the PARAM: arr and the PARAM: item
      * NOTE: Works by comparing references, not values. Use the other has method if you want to compare value.
      */
-    static func has<T>(arr:[T],_ item:T) -> Bool{
+    static func has<T>(_ arr:[T],_ item:T) -> Bool{
         return ArrayParser.indx(arr, item) != -1
     }
     /**
@@ -50,10 +50,10 @@ class ArrayAsserter {
      * NOTE: could also be named isEqual,isIdentical
      * IMPORTANT: This method compares reference not value
      */
-    static func equals<T>(a:Array<T>, _ b:Array<T>) -> Bool{
+    static func equals<T>(_ a:Array<T>, _ b:Array<T>) -> Bool{
         if(a.count != b.count) { return false }
-        for i in 0..<a.count{//swift 3
-            if((a[i] as! AnyObject) !== (b[i] as! AnyObject)) {//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
+        for i in 0..<a.count{
+            if((a[i] as AnyObject) !== (b[i] as AnyObject)) {//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
                 return false
             }
         }
@@ -69,7 +69,7 @@ class ArrayAsserter {
      * EXAMPLE: ArrayAsserter.equals(["",""], ["","",""])//false
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
      */
-    static func equals<T where T:Equatable, T:Comparable>(a:Array<T>, _ b:Array<T>) -> Bool{
+    static func equals<T>(_ a:Array<T>, _ b:Array<T>) -> Bool where T:Equatable, T:Comparable{
         if(a.count != b.count) { return false }
         for i in 0..<a.count{//swift 3
             if(a[i] != b[i]) {return false}

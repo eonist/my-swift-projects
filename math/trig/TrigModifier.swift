@@ -1,2 +1,1 @@
-class TrigModifier {
-}
+class TrigModifier {}

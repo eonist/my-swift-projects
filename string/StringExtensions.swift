@@ -1,25 +1,30 @@
-import Foundation
+import Cocoa
 /**
  * Convenince extensions for often used string methods
  */
 extension String {
-    var tildePath:String /*{get*/{return NSString(string: self).stringByExpandingTildeInPath}/*}*//*Convenince*/
+    //init(_ value:Any) doesnt work as String("hello".reversed()) must go through 
+    init(_ value:CGFloat){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
+    init(_ value:Int){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
+    init(_ value:Bool){ self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
+    
+    var tildePath:String /*{get*/{return NSString(string: self).expandingTildeInPath}/*}*//*Convenince*/
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
-    func split(delimiter:String)->Array<String>{/*Convenince*/
+    func split(_ delimiter:String)->Array<String>{/*Convenince*/
         return StringParser.split(self, delimiter)
     }
-    func match(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String]{//Convenince
+    func match(_ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String]{//Convenince
         return RegExp.match(self, pattern, options)
     }
-    func matches(pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {//Convenince
+    func matches(_ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {//Convenince
         return RegExp.matches(self,pattern,options)
     }
-    func test(pattern:String)->Bool{/*Convenince*/
+    func test(_ pattern:String)->Bool{/*Convenince*/
         return RegExp.test(self, pattern)
     }
-    func replace(pattern:String,_ replacement:String)->String{/*Convenince*/
+    func replace(_ pattern:String,_ replacement:String)->String{/*Convenince*/
         return RegExp.replace(self,pattern, replacement)
     }
     var count:Int{return self.characters.count}/*Convenince*/
@@ -37,27 +42,30 @@ extension String {
     func decode()->String?{/*Convenince*/
         return StringParser.decode(self)
     }
-    func subStr(i:Int,_ len:Int)->String{/*Convenince*/
+    func subStr(_ i:Int,_ len:Int)->String{/*Convenince*/
         return StringParser.subStr(self, i, len)
     }
-    func subString(beginning:Int,_ end:Int)->String{/*Convenince*/
+    func subString(_ beginning:Int,_ end:Int)->String{/*Convenince*/
         return StringParser.subString(self,beginning,end)
     }
-    func indexOf(b:String)->Int{/*Convenince*/
+    func indexOf(_ b:String)->Int{/*Convenince*/
         return StringParser.indexOf(self, b)
     }
-    func trim(leftAndRight:Character)->String{/*Convenince*/
+    func trim(_ leftAndRight:Character)->String{/*Convenince*/
         return StringParser.trim(self, leftAndRight)
     }
-    func insertCharsAt(charsAndIndicies:[(char:Character,index:Int)])->String{
+    func insertCharsAt(_ charsAndIndicies:[(char:Character,index:Int)])->String{
         return StringModifier.insertCharsAt(self, charsAndIndicies)
+    }
+    func idx(_ index:Int) -> String.Index{
+        return StringParser.idx(self, index)
     }
     var bool:Bool {return StringParser.boolean(self)}
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
     var xml:XML {return XML(self)}/*Convenince*/
-    var url:NSURL {return FilePathParser.path(self)}/*Convenince*/
+    var url:URL {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
 }
 extension NSString{
@@ -69,7 +77,7 @@ extension NSString{
  */
 public func * (left: String, right: Int) -> String {
     var result:String = ""
-    for var i = 0; i < right; ++i{
+    for _ in 0 ..< right{
         result += left
     }
     return result

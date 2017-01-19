@@ -4,7 +4,7 @@ class RGBParser {
     /**
      * EXAMPLE: rgb(NSColor.redColor()).r//Outputs //255.0
      */
-    static func rgb(nsColor:NSColor)->RGB{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
+    static func rgb(_ nsColor:NSColor)->RGB{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
         let ciColor:CIColor = CIColor(color: nsColor)!
         return RGB(ciColor.red*255,ciColor.green*255,ciColor.blue*255)
     }
@@ -16,14 +16,16 @@ class RGBParser {
      *  RETURN: An RGB color.
      *  EXAMPLE: rgbByHue(360,1,1);//0xFF0000
      */
-    static func rgb(hsb:HSB)->RGB {
-        let hue:CGFloat = hsb.h*360; let saturation:CGFloat = hsb.s; let brightness:CGFloat = hsb.b;
+    static func rgb(_ hsb:HSB)->RGB {
+        let hue:CGFloat = hsb.h*360
+        let saturation:CGFloat = hsb.s
+        let brightness:CGFloat = hsb.b
         var r:CGFloat 
         var g:CGFloat 
         var b:CGFloat
         if (saturation == 0) {r = brightness; g = brightness;b = brightness}
         else {
-            let h:CGFloat = (hue % 360) / 60
+            let h:CGFloat = (hue %% 360) / 60
             let i:Int = Int(h)
             let f:CGFloat = h - i.cgFloat//<--this seems strange
             let p:CGFloat = brightness * (1 - saturation)
@@ -77,9 +79,13 @@ class RGBParser {
      * PARAM: s = 120;   //  0-240
      * EXAMPLE: trace(rgbByHls(h,l,s)["r"])//0-255;
      */
-    static func rgb(hls:HLS)->RGB {
-        var h:CGFloat = hls.h; var l:CGFloat = hls.l; var s:CGFloat = hls.s;
-        var r:CGFloat = NaN;var g:CGFloat = NaN;var b:CGFloat = NaN;//<---the NaN values were added to make the code compile
+    static func rgb(_ hls:HLS)->RGB {
+        var h:CGFloat = hls.h
+        var l:CGFloat = hls.l
+        var s:CGFloat = hls.s
+        var r:CGFloat = NaN
+        var g:CGFloat = NaN
+        var b:CGFloat = NaN//<---the NaN values were added to make the code compile
         if(s == 0) {
             r = round(l/240*255);g = r;b = r;
         }else {
@@ -87,15 +93,15 @@ class RGBParser {
             var temp4:CGFloat;var temp3:CGFloat;
             let temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
             let temp1:CGFloat = l*2 - temp2
-            for(var i:uint=0; i<3; i++) {
+            for i in 0..<3{
                 switch(i) {
                     case 0: temp3 = h+1/3
                     case 1: temp3 = h
                     case 2: temp3 = h-1/3
                     default:fatalError("can't happen");
                 }
-                if(temp3 < 0) {temp3++}
-                else if(temp3 > 1) {temp3--}
+                if(temp3 < 0) {temp3 += 1}
+                else if(temp3 > 1) {temp3 -= 1}
                 if(temp3*6 < 1) {temp4 = temp1+(temp2-temp1)*6*temp3}
                 else if(temp3*2 < 1) {temp4 = temp2}
                 else if(temp3*3 < 2) {temp4 = temp1+(temp2-temp1)*((2/3)-temp3)*6}
@@ -113,9 +119,11 @@ class RGBParser {
     /**
      * NOTE: untested
      */
-    static func rgb(hsv:HSV) -> RGB{
-        let h:CGFloat = hsv.h; let s:CGFloat = hsv.s; let v:CGFloat = hsv.v;
-        let hi:Int = Int(floor(h / 60) % 6)//the casting to int part is new
+    static func rgb(_ hsv:HSV) -> RGB{
+        let h:CGFloat = hsv.h
+        let s:CGFloat = hsv.s
+        let v:CGFloat = hsv.v
+        let hi:Int = Int(floor(h / 60) %% 6)//the casting to int part is new
         let f:CGFloat = h / 60 - floor(h / 60)
         let r:CGFloat,g:CGFloat,b:CGFloat
         let p:CGFloat = (v * (1 - s))
@@ -140,7 +148,7 @@ class RGBParser {
      * Y - number between 0 to 255 representing yellow
      * K - number between 0 to 255 representing black
      **/
-    static func rgb(cmyk:CMYK) -> RGB{
+    static func rgb(_ cmyk:CMYK) -> RGB{
         var c:CGFloat = cmyk.c; var m:CGFloat = cmyk.m; var y:CGFloat = cmyk.y; var k:CGFloat = cmyk.k;
         c = 255 - c
         m = 255 - m
@@ -151,7 +159,7 @@ class RGBParser {
     /**
      * NOTE: this is approximate but close enough
      */
-     static func rgb2(cmyk:CMYK) -> RGB {
+     static func rgb2(_ cmyk:CMYK) -> RGB {
         let c:CGFloat = cmyk.c; let m:CGFloat = cmyk.m; let y:CGFloat = cmyk.y; let k:CGFloat = cmyk.k;
         var r:CGFloat = 255 - (round (2.55 * (c + k)))
         var g:CGFloat = 255 - (round (2.55 * (m + k)))
@@ -171,7 +179,7 @@ class RGBParser {
      * print("Green = " + myRGB.g);
      * print("Blue = " + myRGB.b);
      */
-    static func rbg24(hexColor:UInt) -> RGB{
+    static func rbg24(_ hexColor:UInt) -> RGB{
         let r = hexColor >> 16 & 0xFF
         let g = hexColor >> 8 & 0xFF
         let b = hexColor & 0xFF

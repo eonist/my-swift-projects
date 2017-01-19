@@ -1,3 +1,1 @@
-class SQLLiteParser{
-	//add legacy code when needed
-}
+class SQLLiteParser{}//add legacy code when needed

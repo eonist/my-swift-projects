@@ -13,7 +13,7 @@ extension Array {
     mutating func pop() -> Element?{
         return ArrayModifier.pop(&self)
     }
-    mutating func pushPop(item:Element) -> Array<Element>{
+    mutating func pushPop(_ item:Element) -> Array<Element>{
         return ArrayModifier.pushPop(&self, item)
     }
     /**
@@ -25,7 +25,7 @@ extension Array {
      * arr.appendMany(3,4,5)
      * Swift.print(arr)//[0,1,2,3,4,5]
      */
-    mutating func appendMany(items:Element...){
+    mutating func appendMany(_ items:Element...){
         self += items
     }
     /**
@@ -33,40 +33,39 @@ extension Array {
      * NOTE: If you need a mutating concatination behaviour use the += operator
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      */
-    func concat(array:Array<Element>) -> Array<Element>{
+    func concat(_ array:Array<Element>) -> Array<Element>{
         return self + array
     }
     /**
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      * NOTE: If you need a mutating concatination behaviour use the += operator
      */
-    func concat(item:Element) -> Array<Element>{/*Convenince*/
+    func concat(_ item:Element) -> Array<Element>{/*Convenince*/
         return concat([item])
     }
     /**
      * Example: [1,2,3,4].splice(0, 1).count//3
      */
-    mutating func splice2(startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
+    mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
         return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
     }
-    mutating func unshift(item:Element)->Int{
+    mutating func unshift(_ item:Element)->Int{
         return ArrayModifier.unshift(&self, item)
     }
-    mutating func prepend(item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
+    mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
         return ArrayModifier.unshift(&self, item)
     }
-    func DEPRECATEDslice(startIndex:Int, _ endIndex:Int) ->Array<Element>{
+    /*func DEPRECATEDslice(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.DEPRECATEDslice(self,startIndex,endIndex)
-    }
-    func slice2(startIndex:Int, _ endIndex:Int) ->Array<Element>{
+    }*/
+    func slice2(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
-    
     /**
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
-    mutating func removeAt(i:Int){
-        if(i != -1){self.splice2(i, 1)}/*1 equals, does not exist*/
+    mutating func removeAt(_ i:Int){
+        if(i != -1){_ = self.splice2(i, 1)}/*1 equals, does not exist*/
     }
     
     /**
@@ -76,10 +75,10 @@ extension Array {
      * NOTE: You can cast arrays with protocol instances to class types like NSView. (Great way to maintain a protocol based design)
      * CAUTION: using the map method isn't exactly the most optimized way to cast, but sometimes optimizing isnt needed, with small arrays etc, Also sometimes designing around using map can cause you to over design things in code
      */
-    func cast<T>(type:T.Type? = nil) -> [T]{
+    func cast<T>(_ type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
     }
-    mutating func insertAt(item:Element, _ index:Int) -> [Element]{//convenience
+    mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
         return ArrayModifier.insertAt(&self, item, index)
     }
 }
@@ -87,7 +86,7 @@ extension Array {
  * NOTE: only applicable to Array<AnyObject>
  */
 extension Array where Element:AnyObject{
-    func indexOf(item:AnyObject)-> Int{
+    func indexOf(_ item:AnyObject)-> Int{
         return ArrayParser.indexOf(self,item)
     }
 }
@@ -98,13 +97,15 @@ extension Array where Element:Equatable, Element:Comparable{
 }
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
-extension NSArray:AnyArray{}/*<--Empty arrays are always NSArray so this is needed*/
+extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
+
+
 /**
  * var arr = [1,2,3] 
  * arr += 4
  * print(arr)//1,2,3,4
  */
-public func +=<T> (inout left:[T], right: T) -> [T] {/*Returns array for the sake of convenience*/
+public func +=<T> ( left:inout [T], right: T) -> [T] {/*returns array for the sake of convenience*/
     left.append(right)
     return left
 }
@@ -113,10 +114,11 @@ public func +=<T> (inout left:[T], right: T) -> [T] {/*Returns array for the sak
  * 1 += arr
  * print(arr)//1,2,3,4
  */
-public func +=<T> (left: T,inout right:[T]) -> [T] {/*Returns array for the sake of convenience*/
-    right.unshift(left)/*<--this is like prepend*/
+public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sake of convenience*/
+    _ = right.unshift(left)/*<--this is like prepend*/
     return right
 }
+
 //TODO: Needs more research see similar case with AnyObject
 /*
 extension Array where Element:String{

@@ -17,7 +17,7 @@ class UIntParser {
     * trace(UintParser.normalize(7, 4));//3
     * trace(UintParser.normalize(8, 4));//0
     */
-    static func normalize(index:UInt, _ len:UInt)->UInt{
+    static func normalize(_ index:UInt, _ len:UInt)->UInt{
         return index < len ? index : index % len
     }
     /**
@@ -25,7 +25,7 @@ class UIntParser {
      * TODO: refactor this code when you have time
      * EXAMPLE: Swift.print(UIntParser.digit(9, 2))
      */
-    class func digit(n:UInt,_ numOfDigits:Int)->String{
+    static func digit(_ n:UInt,_ numOfDigits:Int)->String{
         let stringNum:String = String(n)
         //Swift.print("stringNum.count: " + "\(stringNum.count)")
         let leftOver:Int = numOfDigits - stringNum.count

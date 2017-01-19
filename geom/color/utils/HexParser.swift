@@ -4,23 +4,23 @@ class HexParser {
     /**
      * EXAMPLE: hexNumber(FF0000)//Output:16711680
      */
-    static func hexValue(hex:String) -> UInt{
+    static func hexValue(_ hex:String) -> UInt{
         return UInt(Float(hex)!)
     }
     /**
      * Convenience method (since extensions can only return one type of each var)
      * EXAMPLE: rgb(NSColor.redColor())//16711680
      */
-    static func hexValue(color:NSColor) -> UInt{
+    static func hexValue(_ color:NSColor) -> UInt{
         return UInt(CGFloat(color.hexVal!))
     }
-    static func hexValue(color:NSColor) -> Double?{
+    static func hexValue(_ color:NSColor) -> Double?{
         return Double("0x" + HexParser.hexString(color))
     }
     /**
      *
      */
-    func hexValue(hsb:HSB) -> UInt{
+    func hexValue(_ hsb:HSB) -> UInt{
         let rgb:RGB = RGBParser.rgb(hsb)
         let hex:UInt = (rgb.r << 16 | rgb.g << 8 | rgb.b)
         return hex
@@ -36,14 +36,14 @@ class HexParser {
      * var hexColor : String = ColorUtil.getHexStringFromARGB(128, 255, 0, 255);
      * print(hexColor); // prints 80FF00FF
      */
-    static func hexValue(r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
+    static func hexValue(_ r:UInt, _ g:UInt, _ b:UInt, _ a:UInt = 255) -> UInt {
         return (a << 24) | (r << 16) | (g << 8) | b
     }
     
     /**
      * EXAMPLE: hexString(16711680)//Output: FF0000
      */
-    static func hexString(hex:UInt) -> String{
+    static func hexString(_ hex:UInt) -> String{
         return NSString(format: "%2X", hex) as String
     }
     /**
@@ -59,7 +59,7 @@ class HexParser {
      * print(hexColor) // Prints 80FF00FF
      * </code>
      */
-    static func hexString(a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
+    static func hexString(_ a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
         var aa:String = String(format:"%X", Int(a))
         //Swift.print("aa: " + "\(aa)")
         var rr:String = String(format:"%X", Int(r))
@@ -79,7 +79,7 @@ class HexParser {
      * EXAMPLE: NSColor.redColor().hex//FF0000
      * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
      */
-    static func hexString(nsColor:NSColor)->String {
+    static func hexString(_ nsColor:NSColor)->String {
         let rgb:RGB = nsColor.rgb
         return HexParser.hexString(rgb.r.cgFloat,rgb.g.cgFloat,rgb.b.cgFloat)
     }
@@ -92,7 +92,7 @@ class HexParser {
      * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */
-    static func hexString(r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
+    static func hexString(_ r:CGFloat,_ g:CGFloat,_ b:CGFloat)->String{
         var rr:String = String(format:"%X", Int(r))
         var gg:String = String(format:"%X", Int(g))
         var bb:String = String(format:"%X", Int(b))

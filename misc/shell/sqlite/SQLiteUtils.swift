@@ -1,3 +1,1 @@
-class SQLLiteUtils{
-	//add legacy code when needed
-}
+class SQLLiteUtils{}//add legacy code when needed

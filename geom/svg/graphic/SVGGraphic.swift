@@ -6,11 +6,12 @@ import Cocoa
  * 2. You add the path to the Graphics instance (through the draw methods)
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
-class SVGGraphic:SVGView,ISVGGraphic{
+class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
     var fillShape:Shape
     var lineShape:Shape
     var trackingArea:NSTrackingArea?
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
+        //Swift.print("SVGGraphic.init")
         fillShape = Shape()
         lineShape = Shape()
         super.init(style,id!)
@@ -20,7 +21,7 @@ class SVGGraphic:SVGView,ISVGGraphic{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
-        self.lineShape.delegate = self
+        self.lineShape.delegate = self//swift 3 upgrade, the casting was not needed before
         //Swift.print("SVGGraphic.init() style: " + "\(style)")
         if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             //Swift.print("SVGGraphic.init() setNeedsDisplay()")
@@ -29,14 +30,17 @@ class SVGGraphic:SVGView,ISVGGraphic{
             lineShape.setNeedsDisplay()/*setup the line geometry*//*draw the fileShape*/
         }
     }
+    
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
      * Handles the call selector call from the Graphic instance
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
-     * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
+     * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets it's call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+    
+    
+    /*override*/ func draw(_ layer: CALayer, in ctx: CGContext) {/*The context is passed from the layers, so that we get access to the context from this class and the classes that inherit this class*/
         //Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
@@ -47,14 +51,13 @@ class SVGGraphic:SVGView,ISVGGraphic{
             lineShape.graphics.context = ctx
             if(style != nil){line()}
         }
-        super.drawLayer
     }
     /**
      *
      */
     func fill(){
         //Swift.print("SVGGraphic.fill()")
-        beginFill();
+        beginFill()
         stylizeFill()
     }
     /**
@@ -104,12 +107,16 @@ class SVGGraphic:SVGView,ISVGGraphic{
     /**
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
-    func draw(){
+    
+    //CAREFULL: MTKView.draw() has its own purpouse in swift3
+    
+    /*override*/ func draw(){
         //Swift.print("SVGGraphic.draw()")
         /*if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             drawLine()
             drawFill()
         }*/
+        
     }
     /**/
     /**
@@ -137,14 +144,14 @@ class SVGGraphic:SVGView,ISVGGraphic{
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
-    override func hitTest(aPoint: NSPoint) -> NSView? {
+    override func hitTest(_ aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
         
         let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
         //Swift.print("localPoint: " + "\(localPoint)")
-        
-        let isPointInside:Bool = CGPathContainsPoint(fillShape.path,nil,localPoint,true)
+        //Swift 3 upgrade, caution used different contains method before, but the bellow should work
+        let isPointInside:Bool = fillShape.path.contains(localPoint)//CGPathContainsPoint(fillShape.path,nil,,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
         
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
@@ -159,10 +166,10 @@ class SVGGraphic:SVGView,ISVGGraphic{
         //Swift.print("SVGGraphic.updateTrackingArea: " + "\(fillShape.frame)")
         //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /*extension SVGGraphic{
 func updateTrackingArea(rect:NSRect){

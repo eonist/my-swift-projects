@@ -2,32 +2,32 @@ import Foundation
 
 class SVGStyleParser {
 	/**
-	 * TODO: why do we need the @param container here?
+	 * TODO: why do we need the PARAM: container here?
 	 */
-	static func style(prop:Any,_ container:ISVGContainer)->SVGStyle {
-		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(String(prop));
-		//ObjectDescriber.describe(inlineStyle);
-		let fill:Any = SVGStyleParser.fill(inlineStyle["fill"], container)
+	static func style(_ prop:Any,_ container:ISVGContainer)->SVGStyle {
+		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(String(describing: prop))
+		//ObjectDescriber.describe(inlineStyle)
+		let fill:Any? = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
 		let fillRule:String? = inlineStyle["fill-rule"]
-		let stroke:Any = SVGStyleParser.stroke(inlineStyle["stroke"], container)
+		let stroke:Any? = SVGStyleParser.stroke(inlineStyle["stroke"], container)
 		let strokeWidth:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-width"])
 		let strokeOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-opacity"])
 		let strokeLineCap:String? = inlineStyle["stroke-linecap"]
 		let strokeLineJoin:String? = inlineStyle["stroke-linejoin"]
 		let strokeMiterLimit:CGFloat = SVGPropertyParser.value(inlineStyle["stroke-miterlimit"])
-		return  SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+		return SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
 	}
 	/**
 	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
-	static func inlineStyle(style:String)->Dictionary<String, String> {//TODO: use tuples instead?
+	static func inlineStyle(_ style:String)->Dictionary<String, String> {//TODO: use tuples instead?
 		//Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
         let matches = style.matches(pattern)
         for match:NSTextCheckingResult in matches {//Loops through the pattern
-            match.numberOfRanges
+            //match.numberOfRanges
             //let content = (style as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let name = match.value(style,1)/*capturing group 1*/
             //Swift.print("name: >" + name+"<");
@@ -40,16 +40,17 @@ class SVGStyleParser {
 	/**
 	 * PARAM: container the parent container of the svg element querried for
 	 */
-	static func fill(var property:Any?,_ container:ISVGContainer)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
+    static func fill(_ property:Any?,_ container:ISVGContainer)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
         //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
+        var property = property//swift 3 upgrade, can probably be removed
         if(property == nil) {
             property = nil
         }else if(property! is String && (property as! String) == "none") {
-            property = Double.NaN
+            property = Double.nan
         }else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
             property = Double(StringParser.color(property as! String))
         }else{/*url(#three_stops);*/
-			let url:String = String(property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
+			let url:String = String(describing: property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
             //Swift.print("url: " + "\(url)")
 			property = container.getItem(url)/*SVGLinearGradient*/
             //Swift.print("property: " + "\(property)")
@@ -59,13 +60,13 @@ class SVGStyleParser {
 	/**
 	 * TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	static func stroke(property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesn't have to be Any! it can be Any?
+	static func stroke(_ property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesn't have to be Any! it can be Any?
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
     /**
      * TODO: Doesn't this method also exist in the a parser class?
      */
-    static func describe(style:SVGStyle) {
+    static func describe(_ style:SVGStyle) {
         Swift.print("SVGParser.describe() ");
         if(style.fill is Double) {
             Swift.print("style.fill: " + "\(style.fill)")

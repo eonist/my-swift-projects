@@ -6,9 +6,9 @@ import Cocoa
  * NOTE: For more complex types see if they them selfs are UnWrappable.
  */
 protocol UnWrappable {
-    static func unWrap<T>(xml:XML) -> T?
-    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?
-    static func unWrap<T>(value:String) -> T?
+    static func unWrap<T>(_ xml:XML) -> T?
+    static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?
+    static func unWrap<T>(_ value:String) -> T?
 }
 /**
  * TODO: Contemplate: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
@@ -17,13 +17,13 @@ extension UnWrappable{
     /**
      * This would be similar to an init method (add to custom classes)
      */
-    static func unWrap<T>(xml:XML) -> T?{
+    static func unWrap<T>(_ xml:XML) -> T?{
         fatalError("must be overridden in subClass")
     }
     /**
      * Non-nested values (NSColor,Int,CGFloat etc)
      */
-    static func unWrap<T>(value:String) -> T? {
+    static func unWrap<T>(_ value:String) -> T? {
         fatalError("must be overridden in subClass")
     }
     /**
@@ -31,7 +31,7 @@ extension UnWrappable{
      * NOTE: looks at the type and converts that the value into a type
      * IMPORTANT: type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
      */
-    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> T?{
+    static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?{
         //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
         //let type:String = xml.firstNode(key)!["type"]!/*<--type not important anymore since we use T, actually, what if the type is Any*/
         //Swift.print("type: " + "\(type)")
@@ -49,7 +49,7 @@ extension UnWrappable{
     /**
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
-    static func unWrap<T:UnWrappable>(xml:XML,_ key:String) -> [T?]{
+    static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
         var array:[T?] = [T?]()
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
@@ -64,7 +64,7 @@ extension UnWrappable{
      * Returns a Dictionary (key is UnWrappable and Hashable) (value is Unwrappable)
      * TODO: In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
      */
-    static func unWrap<T:UnWrappable, K where K:UnWrappable, K:Hashable>(xml:XML,_ key:String) -> [K:T]{
+    static func unWrap<T:UnWrappable, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable{
         var dictionary:[K:T] = [:]
         let child:XML = xml.firstNode(key)!
         if(child.childCount > 0){

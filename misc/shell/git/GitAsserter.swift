@@ -6,20 +6,20 @@ class GitAsserter{
 	 * Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
 	 * Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
 	 */
-	static func isGitRepo(filePath:String)->Bool{
+	static func isGitRepo(_ filePath:String)->Bool{
 		return GitParser.status(filePath, "") != ""
 	}
 	/**
 	 * 
 	 */
-	static func hasRemoteRepoAttached(filePath:String, _ branch:String)->Bool{
+	static func hasRemoteRepoAttached(_ filePath:String, _ branch:String)->Bool{
 		return GitParser.status(filePath, "origin" + "/" + branch) != ""
 	}
 	/**
 	 * Asserts if a remote branch is ahead of a local branch
      * NOTE: We use this command: "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
 	 */
-	static func isRemoteBranchAhead(localPath:String, _ branch:String)->Bool{
+	static func isRemoteBranchAhead(_ localPath:String, _ branch:String)->Bool{
 		//Swift.print("GitAsserter's is_remote_branch_ahead()")
 		let theLog:String = GitParser.doLog(localPath, "--oneline " + branch + ".." + "origin" + "/" + branch)
 		//Swift.print("theLog: " + "\(theLog)")
@@ -30,10 +30,10 @@ class GitAsserter{
 	/**
 	 * You could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
-	static func hasLocalCommits(localRepoPath:String, _ branch:String)->Bool{
+	static func hasLocalCommits(_ localRepoPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's has_local_commits()"
 		//--move the bellow to gitModifier?
-		GitModifier.gitRemoteUpdate(localRepoPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
+		_ = GitModifier.gitRemoteUpdate(localRepoPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
 		let cherryResult:String = GitParser.cherry(localRepoPath, branch)
 		Swift.print("cherryResult: " + "\(cherryResult)")
 		let hasCommits:Bool = (cherryResult.characters.count > 0)
@@ -42,7 +42,7 @@ class GitAsserter{
 	/**
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
-	static func hasUnMergedPaths(localPath:String)->Bool{
+	static func hasUnMergedPaths(_ localPath:String)->Bool{
 		//Swift.print("hasUnMergePaths")
         let result = GitParser.unMergedFiles(localPath)
         Swift.print("result: " + "\(result)")

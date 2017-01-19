@@ -4,7 +4,7 @@ class SVGLineStyleUtils{
     /**
      *
      */
-    static func lineStyle(svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
+    static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
         var lineStyle:ILineStyle?
         if(svgStyle.stroke is Double) {
             lineStyle = colorLineStyle(svgStyle)
@@ -19,20 +19,20 @@ class SVGLineStyleUtils{
     /**
      *
      */
-    static func colorLineStyle(style:SVGStyle)->ILineStyle{
+    static func colorLineStyle(_ style:SVGStyle)->ILineStyle{
         var lineStyle:ILineStyle = LineStyle()
         lineStyle.thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
         lineStyle.miterLimit = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         lineStyle.lineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
         lineStyle.lineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         let strokeOpacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1/*<-- this line is new, used to be done inline*/
-        lineStyle.color = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clearColor()//if color is NaN or nil then set this to clear color
+        lineStyle.color = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clear//if color is NaN or nil then set this to clear color
         return lineStyle
     }
     /**
      *
      */
-    private static func gradientLineStyle(svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
+    private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
         //Swift.print("gradient")
         let lineStyle:ILineStyle = colorLineStyle(svgStyle)
         let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
@@ -43,7 +43,7 @@ class SVGLineStyleUtils{
     /**
      * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the SVGGradient.transformation, instead you have to scale the gradient that is attached to the indeviduel SVGGraphic, and you have to take into consideration that the strokeThickness is now different than the new relative size. Even though its the same, the relative difference between the strokeThickness and the size of the shape is different. So you have to recalculate the gradient.transformation matrix a little bit. Probably by insetting it by some relative value
      */
-    static func lineGraphicsGradient(shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
+    static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
@@ -52,8 +52,8 @@ class SVGLineStyleUtils{
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 if(gradient.gradientTransform != nil){
-                    p1 = CGPointApplyAffineTransform(p1, gradient.gradientTransform!)
-                    p2 = CGPointApplyAffineTransform(p2, gradient.gradientTransform!)
+                    p1 = p1.applying(gradient.gradientTransform!)
+                    p2 = p2.applying(gradient.gradientTransform!)
                 }
                 p1 -= shape.frame.origin
                 p2 -= shape.frame.origin
@@ -71,12 +71,12 @@ class SVGLineStyleUtils{
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
             let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
-            var transformation:CGAffineTransform = CGAffineTransformIdentity
+            var transformation:CGAffineTransform = CGAffineTransform.identity
             if(radialGradient.gradientTransform != nil) {
                 transformation = radialGradient.gradientTransform!.copy()
             }
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-                transformation.concat(CGAffineTransformMakeTranslation(-shape.frame.origin.x, -shape.frame.origin.y))
+                transformation.concat(CGAffineTransform(translationX: -shape.frame.origin.x, y: -shape.frame.origin.y))//swift 3 upgrade
             }else{fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")}
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r

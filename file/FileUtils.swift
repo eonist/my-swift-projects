@@ -5,7 +5,7 @@ class FileUtils{
      * TODO: what format is the filePath in?
 	 * EXAMPLE: openFile((path to desktop as text) & "del.txt")
 	 */
-	static func openFile(filePath:String){
+	static func openFile(_ filePath:String){
         fatalError("out of order")
 		//log file_path
 		//NSWorkspace.openFile(filePath)

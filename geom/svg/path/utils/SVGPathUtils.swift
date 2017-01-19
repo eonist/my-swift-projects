@@ -7,9 +7,9 @@ class SVGPathUtils {
      * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * TODO: impliment quadTo
      */
-    static func drawPath(/*inout*/ path:CGMutablePathRef, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePathRef{//TODO: rename to compilePath?
-        var i:Int = 0;/*parameterIndex*/
-        var prevP:CGPoint = CGPoint();
+    static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePath{//TODO: rename to compilePath?
+        var i:Int = 0/*parameterIndex*/
+        var prevP:CGPoint = CGPoint()
         var prevM:CGPoint!/*previous MoveTo pos*/
         var prevC:CGPoint!/*previous ControlPoint*/
         for e in 0..<commands.count{
@@ -19,28 +19,28 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             //Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
-            switch(command.lowercaseString){
+            switch(command.lowercased()){
                 case SVGPathCommand.m: //moveTo
                     //Swift.print("moveTo")
                     pos += CGPoint(params[i],params[i+1]);
                     prevM = pos.copy()
-                    CGPathMoveToPoint(path, nil, pos.x,pos.y)
-                    i += 2;
+                    path.move(to:pos)//was->CGPathMoveToPoint
+                    i += 2
                     break;
                 case SVGPathCommand.l: //lineTo
                     pos += CGPoint(params[i],params[i+1])
-                    CGPathAddLineToPoint(path,nil,pos.x,pos.y)
+                    path.addLine(to:pos)//swift 3 was: CGPathAddLineToPoint
                     i += 2
                     break;
                 case SVGPathCommand.h://horizontalLineTo
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
-                    CGPathAddLineToPoint(path,nil,pos.x,pos.y)
-                    i++;
+                    path.addLine(to: pos)//swift3-> was: CGPathAddLineToPoint
+                    i += 1
                     break;
                 case SVGPathCommand.v://verticalLineTo
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
-                    CGPathAddLineToPoint(path,nil,pos.x,pos.y)
-                    i++
+                    path.addLine(to: pos)//swift 3
+                    i += 1
                     break;
                 case SVGPathCommand.c://curveTo
                     //Swift.print("curveTo: " + " i: \(i) params: " + "\(params)")
@@ -49,36 +49,36 @@ class SVGPathUtils {
                     //Swift.print("controlP1: " + "\(controlP1)")
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
                     //Swift.print("prevC: " + "\(prevC)")
-                    CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
-                    i += 6;
+                    path.addCurve(to: pos, control1: controlP1, control2: prevC)//swift 3, was-> CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
+                    i += 6
                     break;
                 case SVGPathCommand.s://smoothCurveTo
                     pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
-                    CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
-                    i += 4;//<---shouldnt this also be 6, maybe not actually, there is no i+4 or i+5!?!
+                    path.addCurve(to: pos, control1: cP1, control2: prevC)//swift 3, was->CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
+                    i += 4//<---shouldn't this also be 6, maybe not actually, there is no i+4 or i+5!?!
                     break;
                 case SVGPathCommand.q: //quadCurveTo
                     pos += CGPoint(params[i+2],params[i+3])
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
-                    CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
+                    path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                     i += 4
                     break;
                 case SVGPathCommand.t://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
-                    CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
-                    i += 2;
+                    path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
+                    i += 2
                     break;
                 case SVGPathCommand.z:
                     //Swift.print("close path")
-                    CGPathCloseSubpath(path);
-                    CGPathMoveToPoint(path, nil, prevM.x, prevM.y)/*<--unsure if this is needed?*/
+                    path.closeSubpath()
+                    path.move(to: prevM)/*<--unsure if this is needed?*///CGPathMoveToPoint(path, nil, .x, prevM.y)
                     break;/*closes it self to the prev MT pos*/
                 
                 case SVGPathCommand.a:
-                    fatalError("arc is not supported yet, concat author")
+                    fatalError("arc is not supported yet, contact maintainer")
                     //you need the ellipse from point and center formula to get this working, if you need this to work contact the author and the author will add support
                     /*
                     let arc:IArc = PathParser.arcAt(path,i)//you also need to convert the svg arc data of 7 pieces to an arc
@@ -99,7 +99,7 @@ class SVGPathUtils {
      * Returns a Path instance with data derived from commands and PARAM: params (which contains numbers, as in pathData)
      * TODO: may not work 100%
      */
-    static func path(commands:Array<String>,_ params:Array<CGFloat>)->IPath {
+    static func path(_ commands:Array<String>,_ params:Array<CGFloat>)->IPath {
         let path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
@@ -109,7 +109,7 @@ class SVGPathUtils {
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
-            switch(command.lowercaseString){
+            switch(command.lowercased()){
                 case SVGPathCommand.m: //moveTo
                     pos += CGPoint(params[i],params[i+1])
                     //prevM = pos.copy()
@@ -127,13 +127,13 @@ class SVGPathUtils {
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
-                    i++
+                    i += 1
                     break;
                 case SVGPathCommand.v:/*verticalLineTo*/
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
-                    i++
+                    i += 1
                     break;
                 case SVGPathCommand.c:/*cubicCurveTo*/
                     pos += CGPoint(params[i+4],params[i+5])
@@ -182,7 +182,7 @@ class SVGPathUtils {
      * Returns an Rectangle instance with data derived from a svgRect
      * NOTE: if the svgRect x and or y is of the value NaN, then these are transfered as 0
      */
-    static func rectangle(svgRect:SVGRect) -> CGRect {
+    static func rectangle(_ svgRect:SVGRect) -> CGRect {
         return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
     }
 }

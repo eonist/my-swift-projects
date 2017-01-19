@@ -32,7 +32,7 @@ class SVGLine:SVGGraphic{ //TODO: simplify by using points , and add id{
         lineShape.path = CGPathParser.line(p1 + offset - boundingBox.origin,p2 + offset - boundingBox.origin)/*<-we offset the original points to make them relative to the frame*/
         //you have to set the frame here
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /**
  * Convenience

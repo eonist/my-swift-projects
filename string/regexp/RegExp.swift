@@ -14,9 +14,10 @@ public class RegExp{
      * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
      * NOTE: for simple implimentations:  str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
      * EXAMPLE: RegExp.test("hello world","o.*o")//true
+     * CAUTION: upgraded in swift 3, was-> str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
      */
-    static func test(str:String,_ pattern:String)->Bool{
-        return str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil//or do something like this: return RegExpParser.match(pattern,options).count > 0
+    static func test(_ str:String,_ pattern:String)->Bool{
+        return str.range(of: pattern, options:.regularExpression) != nil//or do something like this: return RegExpParser.match(pattern,options).count > 0
     }
     /**
      * NOTE: NSRegularExpression. (has overview of the regexp syntax supported) https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
@@ -25,11 +26,11 @@ public class RegExp{
      * EXAMPLE: RegExp.match("hello world","(\\b\\w+\\b)")//hello, world
      * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
      */
-    static func match(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [String] {
+    static func match(_ text: String!, _ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
         //todo: figure out how map works
         //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
         //todo: then if it is outof bound return eigther an empty array or nil
-        return matches(text, pattern).map { (text as NSString).substringWithRange($0.range)}
+        return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
     }
     /**
      * Similar to Exec in other languages
@@ -49,11 +50,11 @@ public class RegExp{
      *     let value = $0.value(str, 2)/*capturing group 2*/
      * }//Outputs: name: green, value: 00FF00...and so on
      */
-    static func matches(text: String!, _ pattern: String!, _ options: NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive) -> [NSTextCheckingResult] {
+    static func matches(_ text: String!, _ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: options)
             let nsString = text as NSString
-            let results = regex.matchesInString(text,options: [], range: NSMakeRange(0, nsString.length))
+            let results = regex.matches(in: text,options: [], range: NSMakeRange(0, nsString.length))
             return results
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
@@ -74,11 +75,11 @@ public class RegExp{
      * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
      * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
      */
-    static func replace(str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpressionOptions = NSRegularExpressionOptions.CaseInsensitive)->String{
+    static func replace(_ str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive)->String{
         do {
             let stringlength = str.characters.count
             let regex = try NSRegularExpression(pattern:pattern , options: options)
-            let modString = regex.stringByReplacingMatchesInString(str, options: [], range: NSMakeRange(0, stringlength), withTemplate: replacement)
+            let modString = regex.stringByReplacingMatches(in: str, options: [], range: NSMakeRange(0, stringlength), withTemplate: replacement)
             //print(modString)
             return modString
         } catch let error as NSError {
@@ -91,12 +92,12 @@ public class RegExp{
      * TODO: Would be great if .rawValue was done inside this method, can be done with <T> possibly look at the apple docs about enumerations
      * EXAMPLE: RegExp.value(fullString,match,StatusParts.second.rawValue)
      */
-    static func value(str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
-        return (str as NSString).substringWithRange(result.rangeAtIndex(key))
+    static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
+        return (str as NSString).substring(with: result.rangeAt(key))
     }
 }
 extension NSTextCheckingResult{
-    func value(str:String, _ key:Int)->String{//Convenience
+    func value(_ str:String, _ key:Int)->String{//Convenience
         return RegExp.value(str, self, key)
     }
 }

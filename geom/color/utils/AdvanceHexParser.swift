@@ -19,6 +19,6 @@ class AdvanceHexParser {
         gg = (gg.count == 1) ? "0" + gg : gg;
         bb = (bb.count == 1) ? "0" + bb : bb;
         aa = (aa.count == 1) ? "0" + aa : aa;
-        return (rr + gg + bb + aa).uppercaseString
+        return (rr + gg + bb + aa).uppercased()
     }
 }

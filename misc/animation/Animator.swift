@@ -16,7 +16,8 @@ class Animator:BaseAnimation{
     var currentFrameCount:CGFloat = 0/*curFrameCount*/
     var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat/*variable for holding the easing method*/
     //isActive used by the AnimatiableView to assert if an animator is active or not
-    init(_ animatable:IAnimatable, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:(CGFloat)->Void, _ easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
+    //@escaping was auto added when migrating to swift 3, may break things:
+    init(_ animatable:IAnimatable, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping (CGFloat)->Void, _ easing:@escaping (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Easing.easeLinear){
         self.duration = duration
         self.from = from
         self.to = to
@@ -38,6 +39,6 @@ class Animator:BaseAnimation{
             stop()
             super.onEvent(AnimEvent(AnimEvent.completed,self))
         }
-        self.currentFrameCount++
+        self.currentFrameCount += 1
     }
 }

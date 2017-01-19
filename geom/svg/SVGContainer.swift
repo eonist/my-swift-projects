@@ -4,7 +4,7 @@ import Cocoa
  * TODO: could we omit the _items and just use the display-stack as a record of items added?
  * TODO: we need a remove method to compliment the add method
  */
-class SVGContainer : InteractiveView2, ISVGContainer{
+class SVGContainer:InteractiveView2, ISVGContainer{
     var id:String
     var items:Array<ISVGElement> = []
     init(_ items:Array<ISVGElement>, _ id:String) {
@@ -20,7 +20,7 @@ class SVGContainer : InteractiveView2, ISVGContainer{
     /**
      * PARAM: item (SVGGraphic and elements like SVGLinearGradient)
      */
-    func add(element:ISVGElement) {
+    func add(_ element:ISVGElement) {
         if(element is NSView) {
             //Swift.print("SVGContainer.add() element is NSView")
             addSubview(element as! NSView)
@@ -30,8 +30,8 @@ class SVGContainer : InteractiveView2, ISVGContainer{
     /**
      * Asserts and returns an svg item by PARAM: id
      */
-    func getItem(id:String)->ISVGElement?{
-        for item : ISVGElement in items{ if(item.id/*["id"]*/ == id) {return item}}; return nil;
+    func getItem(_ id:String)->ISVGElement?{
+        for item:ISVGElement in items{ if(item.id/*["id"]*/ == id) {return item}}; return nil;
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

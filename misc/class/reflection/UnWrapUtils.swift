@@ -4,14 +4,14 @@ class UnWrapUtils{
     /**
      * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
-    static func any(xml:XML,_ key:String/*,_ type:String*/) -> Any{//<--if you make this optional, it will cause problems unwrapping the value later, could be because Any is optional by nature?!?
+    static func any(_ xml:XML,_ key:String/*,_ type:String*/) -> Any{//<--if you make this optional, it will cause problems unwrapping the value later, could be because Any is optional by nature?!?
         let child:XML = xml.firstNode(key)!
         return any(child)
     }
     /**
      *
      */
-    private static func any(xml:XML) -> Any{
+    private static func any(_ xml:XML) -> Any{
         let type:String = XMLParser.attribute(xml, "type")!
         if(xml.hasSimpleContent){
             let strVal:String = xml.value
@@ -25,16 +25,16 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func simpleAny(strVal:String,_ type:String)->Any{
-        if(type == String(CGFloat)){
+    private static func simpleAny(_ strVal:String,_ type:String)->Any{
+        if(type == String(describing:CGFloat.self)){
             return  CGFloat.unWrap(strVal)!
-        }else if(type == String(Double)){
+        }else if(type == String(describing: Double.self)){
             return Double.unWrap(strVal)!
-        }else if(type == String(NSColor)){
+        }else if(type == String(describing: NSColor.self)){
             return NSColor.unWrap(strVal)!
-        }else if(type == String(Bool)){
+        }else if(type == String(describing: Bool.self)){
             return Bool.unWrap(strVal)!
-        }else if(type == String(String)){
+        }else if(type == String(describing: String.self)){
             return String.unWrap(strVal)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
@@ -43,15 +43,15 @@ class UnWrapUtils{
     /**
      *
      */
-    private static func complexAny(xml:XML,_ type:String)->Any{
+    private static func complexAny(_ xml:XML,_ type:String)->Any{
         if(type == "Array"){
             let val:[Any] = anyArray(xml)
             return val
-        }else if(type == String(DropShadow)){
+        }else if(type == String(describing:DropShadow.self)){
             return DropShadow.unWrap(xml)!
-        }else if(type == String(RadialGradient)){
+        }else if(type == String(describing: RadialGradient.self)){
             return RadialGradient.unWrap(xml)!
-        }else if(type == String(LinearGradient)){
+        }else if(type == String(describing: LinearGradient.self)){
             return LinearGradient.unWrap(xml)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
@@ -60,7 +60,7 @@ class UnWrapUtils{
     /**
      * Support for Array<Any?>
      */
-    static func anyArray(xml:XML/*,_ key:String*/) -> [Any]{
+    static func anyArray(_ xml:XML/*,_ key:String*/) -> [Any]{
         var array:[Any] = [Any]()
         //let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(xml.childCount > 0){

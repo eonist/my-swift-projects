@@ -4,14 +4,14 @@ import Foundation
  * EXAMPLE: <circle cx="30" cy="30" r="20" style="stroke: black; fill: none;" />
  */
 class SVGCircle : SVGGraphic{
-    var cx : CGFloat;//center x
-    var cy : CGFloat;//center y
-    var r : CGFloat;
+    var cx:CGFloat//center x
+    var cy:CGFloat//center y
+    var r:CGFloat
     init(_ cx:CGFloat, _ cy:CGFloat, _ r:CGFloat, _ style : SVGStyle? = nil, _ id : String? = nil) {
-      self.cx = cx;
-      self.cy = cy;
-      self.r = r;
-      super.init(style, id);
+      self.cx = cx
+      self.cy = cy
+      self.r = r
+      super.init(style, id)
     }
     /**
      * NOTE: If the radius is zero, no shape will be displayed; it is an error to provide a negative radius.
@@ -46,7 +46,7 @@ class SVGCircle : SVGGraphic{
             }
         }
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension SVGCircle{
     var center:CGPoint {get{return CGPoint(cx,cy)}set{cx = newValue.x;cy = newValue.y}}

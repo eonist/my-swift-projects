@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * IMPORTANT: you can't use values like 0.5 etc
+ * TODO: its better to use values from 0 to 100 for alpha. as alpha 50 is easier to read than alpha 127.5, also keep in mind UInt can't hold fractions
  */
 class RGBA {//<--TODO: could be a struct
     var r:UInt/*0-255*/

@@ -20,7 +20,7 @@ class CMYKParser {
      * PARAM: b blue (B) shows the number (0x00 to 0xFF to)
      * RETURN: CMYK values into an array of [H, S, V] 
      */
-    static func cmyk(rgb:RGB)->CMYK {
+    static func cmyk(_ rgb:RGB)->CMYK {
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
         var c:CGFloat=0
         var m:CGFloat=0
