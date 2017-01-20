@@ -8,5 +8,5 @@ var bgQueue = {return DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
 //there is also these: DISPATCH_QUEUE_PRIORITY_DEFAULT,DISPATCH_QUEUE_PRIORITY_HIGH,DISPATCH_QUEUE_PRIORITY_LOW
 var mainQueue = {return DispatchQueue.main}()
 
-//swift 3 updateupdate the bellow line when its needed
-//func async(queue:dispatch_queue_t , _ block:dispatch_block_t) -> Void {return dispatch_async(queue, block)}
+//swift 3 update, The bellow line may work, but maybe not. Do more swift 3 async research
+func async(_ queue:DispatchQueue , _ block:@escaping () -> Void) -> Void {return queue.async(execute: block)}
