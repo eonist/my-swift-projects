@@ -31,7 +31,7 @@ extension CGMutablePath{
 
 extension CGPath {
     /**
-     * TODO:swift 3 update, this method changed drastically, I think Oleb from obj-c.io has a swift 3 version of this that is better.
+     * TODO: swift 3 update, this method changed drastically, I think Oleb from obj-c.io has a swift 3 version of this that is better.
      * NOTE: this method is used in DrawLab when Converting CGPath to Path
      * NOTE: Great method for parsing through CGPath instances 
      */
