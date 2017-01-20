@@ -5,7 +5,8 @@ class CGPathParser{
     /**
      * Returns a path with straight lines derived from an array of points (think follow the dots)
      * TODO: shouldnt this path be closed by a real close call?
-     * NOTE: effectivly it creates a PolyLine
+     * NOTE: effectivly it creates a PolyLine, 
+     * TODO: rename to polyLine
      */
     static func lines(_ points:Array<CGPoint>,_ close:Bool = false,_ offset:CGPoint = CGPoint(0,0))->CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
