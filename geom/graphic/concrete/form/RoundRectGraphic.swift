@@ -47,7 +47,7 @@ extension RoundRectGraphic{
     /**
      *
      */
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         self.init(RectGraphic(x,y,width,height,fillStyle,lineStyle,lineOffset),fillet)
     }
 }
