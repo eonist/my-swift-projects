@@ -60,7 +60,7 @@ class FilePathParser {
     /**
      * fileExtension("~/Desktop/temp.xml".tildePath)//xml
      */
-    static func fileExtension(filePath:String) -> String{
+    static func fileExtension(_ filePath:String) -> String{
         return NSString(string:filePath).pathExtension
     }
 }
