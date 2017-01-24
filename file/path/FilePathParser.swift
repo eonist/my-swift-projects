@@ -57,6 +57,12 @@ class FilePathParser {
     static func resourcePath()->String{
         return Bundle.main.resourcePath!
     }
+    /**
+     *
+     */
+    static func pathExtension(){
+        
+    }
 }
 extension FilePathParser{
     /**
