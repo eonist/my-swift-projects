@@ -25,6 +25,7 @@ class NSColorParser {
     /**
      * Returns NSColor for hex int
      * NOTE: Convenience method
+     * EXAMPLE: nsColor(UInt(0x39D149))
      */
     static func nsColor(_ hexColor:UInt, _ alpha:CGFloat = 1.0)->NSColor{
         //Swift.print("hexColor: " + "\(hexColor)")
