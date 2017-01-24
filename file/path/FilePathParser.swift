@@ -58,7 +58,8 @@ class FilePathParser {
         return Bundle.main.resourcePath!
     }
     /**
-     * fileExtension("~/Desktop/temp.xml".tildePath)//xml
+     * fileExtension("~/Desktop/temp.xml")//xml
+     * NOTE: Does not need tilde expand to work
      */
     static func fileExtension(_ filePath:String) -> String{
         return NSString(string:filePath).pathExtension
