@@ -60,10 +60,12 @@ class FilePathParser {
     /**
      * "~/Desktop/temp.xml".tildePath
      */
-    static func pathExtension(filePath:String){
+    static func fileExtension(filePath:String) -> String{
         let attributes = try! NSURL(fileURLWithPath:filePath).resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey])
-        let filename = attributes[NSURLNameKey] as! String
+        let filename = attributes[URLResourceKey.nameKey] as! String
+        let fileExtension = attributes[URLResourceKey.name] as! String
         _ = filename
+        return fileExtension
     }
 }
 extension FilePathParser{
