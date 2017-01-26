@@ -10,8 +10,8 @@ import Cocoa
  * TODO: why arent the mouse methods calling a central method?
  */
 class InteractiveView2:FlippedView,IInteractiveView{
-    var event: ((Event) -> ())?/*This holds any method assigned to it that has its type*/
-    var eventCall:((Event) -> ())? {
+    var event:EventCallBack/*This holds any method assigned to it that has its type*/
+    var eventCall:EventCallBack {
         return {
             (event:Event) -> Void in if(self.superview is IEventSender){
                 (self.superview as! IEventSender).onEvent(event)
