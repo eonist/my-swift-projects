@@ -27,15 +27,15 @@ class DisplayArcUtils {
         //then you use the angledArc to draw the arc with the native CGPath arc method that supports this
     }
     /**
-     * Draws an arc on @param graphics
+     * Draws an arc on PARAM graphics
      * NOTE: SEGMENT_COUNT:uint = 32//32;//a fixed Arc interpolation number (Higher number means higher arc resolution, Lower means higher performance)
      * NOTE: var points:Vector.<CurvePoint> = ArcParser.curvePoints(this, SEGMENT_COUNT);Computes and returns curve points needed to draw the curve
      */
      /*
-     class func angleArcTo(graphics:Any, _ xRadii:CGFloat, _ yRadii:CGFloat, _ start:CGFloat,_ end:CGFloat,_ centerX:CGFloat,_ centerY:CGFloat,_ rotation:CGFloat) {
-     var points:Array<CurvePoint> = Utils.curvePoints(new Point(centerX,centerY),start,end,new Point(xRadii,yRadii),rotation,16);//Computes and returns curve points needed to draw the curve
-     if (points.length > 0) graphics["moveTo"](points[0].anchor1.x, points[0].anchor1.y);/*sets the initial point to be drawn from*/// :TODO: is this correct? move to ?? this efectivly creates a gap no?
-     for(var i:uint = 0; i<points.length; ++i) graphics["curveTo"](points[i].control.x, points[i].control.y, points[i].anchor2.x, points[i].anchor2.y);/*Curves to the spessific anchor and control points*/
+     static func angleArcTo(graphics:Any, _ xRadii:CGFloat, _ yRadii:CGFloat, _ start:CGFloat,_ end:CGFloat,_ centerX:CGFloat,_ centerY:CGFloat,_ rotation:CGFloat) {
+        var points:Array<CurvePoint> = Utils.curvePoints(new Point(centerX,centerY),start,end,new Point(xRadii,yRadii),rotation,16);//Computes and returns curve points needed to draw the curve
+        if (points.length > 0) graphics["moveTo"](points[0].anchor1.x, points[0].anchor1.y);/*sets the initial point to be drawn from*/// :TODO: is this correct? move to ?? this efectivly creates a gap no?
+        for(var i:uint = 0; i<points.length; ++i) graphics["curveTo"](points[i].control.x, points[i].control.y, points[i].anchor2.x, points[i].anchor2.y);/*Curves to the spessific anchor and control points*/
      }
      */
      /**
