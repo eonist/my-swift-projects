@@ -10,7 +10,6 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      *
      */
     override func beginFill(){
-        //Swift.print("GradientGraphic.beginFill()")
         if(graphic.fillStyle is IGradientFillStyle){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
@@ -19,7 +18,6 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
             let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{
-            //Swift.print("super.beginFill()")
             super.beginFill()/*do regular color fill*/
         }//fatalError("NOT CORRECT fillStyle")
     }
@@ -27,7 +25,6 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      * NOTE: We could renamed this method to applyGradientLinestyle, but as it needs to override it cant be renamed!
      */
     override func applyLineStyle() {
-        //Swift.print("GradientGraphic.applyLineStyle()")
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         if(getGraphic().lineStyle is IGradientLineStyle){
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
