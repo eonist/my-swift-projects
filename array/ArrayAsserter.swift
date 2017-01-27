@@ -69,7 +69,7 @@ class ArrayAsserter {
      */
     static func equals<T>(_ a:Array<T>, _ b:Array<T>) -> Bool where T:Equatable, T:Comparable{
         if(a.count != b.count) { return false }
-        for i in 0..<a.count{//swift 3
+        for i in 0..<a.count{
             if(a[i] != b[i]) {return false}
         }
         return true

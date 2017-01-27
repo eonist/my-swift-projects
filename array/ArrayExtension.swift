@@ -2,12 +2,11 @@ import Foundation
 extension Array {
     /**
      * Removes the first item in an array
-     * Shift
      * var a = ["a","b","c"]
      * Swift.print("a.shift(): " + "\(a.shift())")//a
      * Swift.print("a: " + "\(a)")//b,c
      */
-    mutating func shift(/*x:[Element]*/) ->Element{
+    mutating func shift() ->Element{
         return ArrayModifier.shift(&self)
     }
     mutating func pop() -> Element?{

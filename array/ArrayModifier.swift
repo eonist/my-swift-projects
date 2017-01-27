@@ -4,7 +4,7 @@ import Foundation
 //append
 class ArrayModifier{
 	/**
-	 * UNSHIFT (prepend)
+	 * NOTE: unShift is the same as "prepend"
 	 * Adds one or more elements to the beginning of an array and returns the new
 	 * PARAM: length of the array. The other elements in the array are moved from their 
 	 * original position, i, to i+1.
@@ -18,10 +18,12 @@ class ArrayModifier{
 		return array.count
 	}
 	/**
-	 * SHIFT
 	 * Removes the first element from an array and returns that element.
 	 * NOTE: The remaining array elements are moved from their original position, i, to i-1.
-     * TODO: Write an example
+     * EXAMPLE:
+     * var a = ["a","b","c"]
+     * Swift.print("a.shift(): " + "\(a.shift())")//a
+     * Swift.print("a: " + "\(a)")//b,c
 	 */
 	static func shift<T>(_ array: inout [T])->T{
         return array.removeFirst()
