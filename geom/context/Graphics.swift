@@ -139,14 +139,11 @@ public class Graphics{
         //the change to the bellow line is need in order to get the fill and line working together
         /*if(dropShadow != nil) {*/context!.addPath(path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
         switch true {
-            case (strokeMode == StrokeMode.None)://no stroke
-                //Swift.print("no stroke")
+        case (strokeMode == StrokeMode.None):/*no stroke*/
                 break
-            case (strokeMode == StrokeMode.Color)://color stroke
-                //Swift.print("color stroke")
+            case (strokeMode == StrokeMode.Color):/*color stroke*/
                 context!.drawPath(using: CGPathDrawingMode.stroke)
-            case (strokeMode == StrokeMode.Gradient)://gradient stroke
-                //Swift.print("gradient stroke")
+            case (strokeMode == StrokeMode.Gradient):/*gradient stroke*/
                 Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient, lineWidth)
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
@@ -155,7 +152,7 @@ public class Graphics{
     }
 }
 private class Utils{
-    /*
+    /**
      * Draws a gradient into the current path in the context
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
@@ -197,7 +194,6 @@ private class Utils{
         //Swift.print("gradient.p1: " + "\(gradient.p1)")
         //Swift.print("gradient.p2: " + "\(gradient.p2)")
         //Swift.print("gradient.transformation: " + "\(gradient.transformation)")
-        
         //Swift.print("points: " + "\(points)")
         context.drawLinearGradient(cgGradient!, start: gradient.p1, end: gradient.p2, options: [CGGradientDrawingOptions.drawsBeforeStartLocation,CGGradientDrawingOptions.drawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
