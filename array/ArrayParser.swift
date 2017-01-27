@@ -16,7 +16,7 @@ class ArrayParser{
         if let i = array.index(of: value) {
             return i
         }else{
-            return -1/*-1 indicates non was found*/
+            return -1/*-1 indicates no item was found*/
         }
     }
     /**
@@ -31,7 +31,6 @@ class ArrayParser{
         return -1
     }
     /**
-     * new
      * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
      * NOTE: dupplets doesn't seem to be castable to AnyObject
      */
@@ -192,13 +191,3 @@ private class Utils{
         return -1
     }
 }
-/**
-* Returns the index for item, -1 of none is found
-* NOTE: keep this method around until the index method is tested
-*/
-/*
-class func DEPRECATEDIndexOfValue<T: Equatable>(array: [T], _ value: T) -> Int? {//the <T: Equatable> part ensures that the types can use the equal operator ==
-    for (index, item) in array.enumerate() {if value == item {return index}}
-    return -1
-}
-*/
