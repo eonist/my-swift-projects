@@ -31,9 +31,6 @@ class SVGFillStyleUtils{
         let gradientFillStyle:IGradientFillStyle = GradientFillStyle(gradient)
         return gradientFillStyle
     }
-    /**
-     *
-     */
     static func fillColor(_ style:SVGStyle)->NSColor{
         //Swift.print("SVGGraphic.beginFill() color")
         let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
@@ -50,7 +47,7 @@ class SVGFillStyleUtils{
      * NOTE: objectBoundingBox — x1, y1, x2, y2 represent coordinates in a system established by the bounding box of the element to which the gradient is applied. In other words the gradient scales with the element it’s applied to.
      * NOTE: <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
      * NOTE: The cx, cy and r attributes define the outermost circle and the fx and fy define the innermost circle
-     * DISCUSSION: you cant directly apply the matrix transformation in the Graphics since the graphics class operates in 0,0 space and the matrix transformation that comes in operates it 0,0 space from the point of ciew of the viewbox (this probably isnt true when doing gradientUnits=" 'objectBoundingBox' only when doing: 'userSpaceOnUse' or )
+     * DISCUSSION: you can't directly apply the matrix transformation in the Graphics since the graphics class operates in 0,0 space and the matrix transformation that comes in operates it 0,0 space from the point of ciew of the viewbox (this probably isnt true when doing gradientUnits=" 'objectBoundingBox' only when doing: 'userSpaceOnUse' or )
      * TODO: there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
      * TODO: unless you offset it first! try this
      */

@@ -22,7 +22,6 @@ class SVGStyleParser {
 	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
 	static func inlineStyle(_ style:String)->Dictionary<String, String> {//TODO: use tuples instead?
-		//Swift.print("inlineStyle: "+style);
         var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
         let matches = style.matches(pattern)

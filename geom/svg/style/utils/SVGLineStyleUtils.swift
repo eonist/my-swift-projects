@@ -1,9 +1,6 @@
 import Cocoa
 
 class SVGLineStyleUtils{
-    /**
-     *
-     */
     static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
         var lineStyle:ILineStyle?
         if(svgStyle.stroke is Double) {
@@ -16,9 +13,6 @@ class SVGLineStyleUtils{
         }
         return lineStyle
     }
-    /**
-     *
-     */
     static func colorLineStyle(_ style:SVGStyle)->ILineStyle{
         var lineStyle:ILineStyle = LineStyle()
         lineStyle.thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
@@ -29,9 +23,6 @@ class SVGLineStyleUtils{
         lineStyle.color = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clear//if color is NaN or nil then set this to clear color
         return lineStyle
     }
-    /**
-     *
-     */
     private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
         //Swift.print("gradient")
         let lineStyle:ILineStyle = colorLineStyle(svgStyle)

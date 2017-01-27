@@ -6,8 +6,6 @@ class SVGStyleModifier {
      * TODO: a boolean flag should toggle overide if a value exists already
      */
     static func merge(_ a:SVGStyle,_ b:SVGStyle){
-        //Swift.print("a.fill: " + a.fill);
-        //Swift.print("b.fill: " + b.fill);
         if((!(a.fill is Double) && !(b.fill is Double)) || ((a.fill as! Double).isNaN && !(b.fill as! Double).isNaN)) {a.fill = b.fill}/*Fill*/
         if((a.fillOpacity == nil || a.fillOpacity!.isNaN) && (b.fillOpacity != nil && !b.fillOpacity!.isNaN)) {a.fillOpacity = b.fillOpacity}
         if(a.fillRule == nil && b.fillRule != nil) {a.fillRule = b.fillRule}
