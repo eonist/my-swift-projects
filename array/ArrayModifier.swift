@@ -41,15 +41,15 @@ class ArrayModifier{
     }
      /**
 	  * Removes items from PARAM: array from PARAM: start until PARAM: delCount, and optionally inserts PARAM: values
+      * RETURNS: An array containing the elements that were removed from the original array.
+      * NOTE: splice can also be used to remove item from array
+      * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
+      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
+      * IMPORTANT: the original array is modified
+      * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
       * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
       * EXAMPLE: splice2([a,b,c],2,1)//[c]
       * EXAMPLE: splice2([a,b,c],0,1)//[a]
-      * NOTE: splice can also be used to remove item from array
-      * IMPORTANT: the original array is modified
-      * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
-      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
-      * RETURNS: An array containing the elements that were removed from the original array.
-      * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
       * TODO: You could probably use the native: array.replaceRange instead
 	  */
     static func splice2<T>(_ array:inout [T],_ startIndex:Int,_ deleteCount:Int,_ values:Array<T> = [])->Array<T>{

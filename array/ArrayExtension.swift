@@ -21,6 +21,24 @@ extension Array {
     mutating func appendMany(_ items:Element...){
         self += items
     }
+    mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
+        return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
+    }
+    mutating func unshift(_ item:Element)->Int{
+        return ArrayModifier.unshift(&self, item)
+    }
+    mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
+        return ArrayModifier.unshift(&self, item)
+    }
+    func slice2(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{/*Convenince*/
+        return ArrayModifier.slice2(self,startIndex,endIndex)
+    }
+    /**
+     * NOTE: there is also native: removeAtIndex(index: Int) -> Element
+     */
+    mutating func removeAt(_ i:Int){
+        if(i != -1){_ = self.splice2(i, 1)}/*1 equals, does not exist*/
+    }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
      * NOTE: If you need a mutating concatination behaviour use the += operator
@@ -36,28 +54,6 @@ extension Array {
     func concat(_ item:Element) -> Array<Element>{/*Convenince*/
         return concat([item])
     }
-    mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
-        return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
-    }
-    mutating func unshift(_ item:Element)->Int{
-        return ArrayModifier.unshift(&self, item)
-    }
-    mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
-        return ArrayModifier.unshift(&self, item)
-    }
-    /*func DEPRECATEDslice(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{
-        return ArrayModifier.DEPRECATEDslice(self,startIndex,endIndex)
-    }*/
-    func slice2(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{
-        return ArrayModifier.slice2(self,startIndex,endIndex)
-    }
-    /**
-     * NOTE: there is also native: removeAtIndex(index: Int) -> Element
-     */
-    mutating func removeAt(_ i:Int){
-        if(i != -1){_ = self.splice2(i, 1)}/*1 equals, does not exist*/
-    }
-    
     /**
      * A neat way to cast Array's (Since swift/obj-c has made casting array's cumbersome at times)
      * NOTE: figure out a way to make it work with inout methods aswell
@@ -108,21 +104,3 @@ public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sak
     _ = right.unshift(left)/*<--this is like prepend*/
     return right
 }
-
-//TODO: Needs more research see similar case with AnyObject
-/*
-extension Array where Element:String{
-    /**
-     *
-     */
-    func join(seperator:String)->String{
-        return StringModifier.combine(self as! Array<String>,seperator)
-    }
-    /**
-     *
-     */
-    func indexOfStr(str:String)->Int{
-        return ArrayParser.indexOfStr(self,str)
-    }
-}
-*/
