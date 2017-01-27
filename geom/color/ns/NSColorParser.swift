@@ -16,7 +16,7 @@ class NSColorParser {
         return nsColor(uintColor,alpha)
     }
     /**
-     * color("FF0000FF")//outputs blue with 100% opacity
+     * EXAMPLE: color("FF0000FF")//outputs blue with 100% opacity
      */
     static func color(_ hexColor:String)->NSColor{
         let rgba:RGBA = RGBAParser.rgba32(hexColor)
@@ -45,7 +45,7 @@ class NSColorParser {
         return color.withAlphaComponent(alpha)
     }
     /**
-     * Returns an nsColor for @param cgColor
+     * Returns an nsColor for PARAM: cgColor
      */
     static func nsColor(_ cgColor:CGColor)->NSColor{
         let ciColor = CIColor(cgColor:cgColor)//convert the cg to ci
@@ -71,7 +71,7 @@ extension NSColorParser{
     /**
      * Convenince
      */
-    static func nsColor(_ hls:HLS)->NSColor {//rename to nsColorByHls ?
+    static func nsColor(_ hls:HLS)->NSColor {
         //let rgb:RGB = RGBParser.rgb();
         return hls.rgb.nsColor
     }
