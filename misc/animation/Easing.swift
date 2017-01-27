@@ -10,27 +10,10 @@ import Cocoa
 class Easing{
     
     //Continue here:
-        //seperate out all the easing classes. 
+        //Separate out all the easing classes.
         //Try to do Easing.Bounce.easeInBounce etc. maybe?
     
-    //Quintic - QUINTIC EASING: t^5
-    static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        var t = t
-        t = t/d
-        return c*t*t*t*t*t + b
-    }
-    static func easeOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        var t = t
-        t = t/d-1
-		return c*(t*t*t*t*t + 1) + b
-	}
-    static func easeInOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
-        var t = t
-        t = t/(d/2)//<--the brackets are important
-		if (t < 1) {return c/2*t*t*t*t*t + b}
-        t = t-2
-		return c/2*(t*t*t*t*t + 2) + b
-	}
+    
     //Quartic
     static func easeInQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
@@ -156,6 +139,26 @@ class Sine{
         } else {
             return easeInSine((t * 2) - d,  b + c / 2,  c / 2,  d)
         }
+    }
+}
+class Quint{
+    //Quintic - QUINTIC EASING: t^5
+    static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
+        t = t/d
+        return c*t*t*t*t*t + b
+    }
+    static func easeOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        var t = t
+        t = t/d-1
+        return c*(t*t*t*t*t + 1) + b
+    }
+    static func easeInOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
+        var t = t
+        t = t/(d/2)//<--the brackets are important
+        if (t < 1) {return c/2*t*t*t*t*t + b}
+        t = t-2
+        return c/2*(t*t*t*t*t + 2) + b
     }
 }
 /*Bounce*/
