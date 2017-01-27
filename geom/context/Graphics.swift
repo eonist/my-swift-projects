@@ -38,10 +38,10 @@ public class Graphics{
     }
     /**
      * Initiate filling
-     * EXAMPLE: fill(context,NSColor.greenColor())
-     * TODO: add support for CGContextSetRGBFillColor in the future
      * NOTE: set color to NSColor.clearColor() if you want a clear fill or use the stopFill() call
      * NOTE: this method can be called pre context
+     * EXAMPLE: fill(context,NSColor.greenColor())
+     * TODO: add support for CGContextSetRGBFillColor in the future
      */
     public func fill(_ color:NSColor){
         //Swift.print("Graphics.fill()" + "\(color)")
@@ -64,11 +64,9 @@ public class Graphics{
      * NOTE: this method can be called pre context
      */
     public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = NSColor.black, _ lineCap:CGLineCap = CGLineCap.butt, _ lineJoin:CGLineJoin =  CGLineJoin.miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
-        //Swift.print("context: " + "\(context)")
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
         context!.setStrokeColor(color.cgColor)
-        //set the stroke width!
         context!.setLineWidth(lineWidth)
         context!.setLineCap(lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
         context!.setLineJoin(lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
@@ -91,8 +89,7 @@ public class Graphics{
      * NOTE: this method can be called pre context
      */
     public func stopFill(){
-        //set the fill mode to void
-        fillMode = FillMode.None
+        fillMode = FillMode.None/*set the fill mode to void*/
     }
     /**
      * Stop all subsequent stroking
