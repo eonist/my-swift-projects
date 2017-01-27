@@ -1,5 +1,7 @@
 import Foundation
-/*Elastic*/
+/**
+ * Elastic
+ */
 class Elastic {
     private static func easeInElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t

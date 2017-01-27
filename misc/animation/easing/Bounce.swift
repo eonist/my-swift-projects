@@ -1,7 +1,7 @@
 import Foundation
-
-
-/*Bounce*/
+/**
+ * Bounce
+ */
 class Bounce{
     static func easeInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         return c - easeOutBounce(d - t, 0, c, d) + b

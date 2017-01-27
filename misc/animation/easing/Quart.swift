@@ -1,5 +1,7 @@
 import Foundation
-//Quartic
+/**
+ * Quartic
+ */
 class Quart {
     static func easeInQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t

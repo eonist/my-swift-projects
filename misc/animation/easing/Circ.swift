@@ -1,5 +1,7 @@
 import Foundation
-/*Circular*/
+/**
+ * Circular
+ */
 class Circ {
     static func easeInCirc(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t

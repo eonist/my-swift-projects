@@ -1,7 +1,8 @@
 import Foundation
-
+/**
+ * Quintic - QUINTIC EASING: t^5
+ */
 class Quint{
-    //Quintic - QUINTIC EASING: t^5
     static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         t = t/d

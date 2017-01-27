@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Back
+ */
 class Back {
     static func easeInBack(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var s: CGFloat? = nil
