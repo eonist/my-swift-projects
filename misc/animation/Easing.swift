@@ -143,9 +143,22 @@ class Easing{
         /*if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
         return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;*/
     }
+    private static func easeInCubic(){
+        //c*(t/=d)*t*t + b;
+    }
+    private static func easeOutCubic(){
+        //return c*((t=t/d-1)*t*t + 1) + b;
+    }
+    private static func easeInOutCubic(){
+        /*if ((t/=d/2) < 1) return c/2*t*t*t + b;
+        return c/2*((t-=2)*t*t + 2) + b;*/
+    }
+}
+
+class Bounce{
     /*Bounce*/
-    private static func easeInBounce(){
-        //return c - easeOutBounce (d - t, 0, c, d) + b;
+    static func easeInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+        return c - easeOutBounce(d - t, 0, c, d) + b
     }
     static func easeOutBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         var t = t
@@ -163,19 +176,19 @@ class Easing{
             return c * (7.5625 * t * t + 0.984375) + b
         }
     }
-    private static func easeInOutBounce(){
-        /*if (t < d/2) return easeInBounce (t*2, 0, c, d) * 0.5 + b;
-        else return easeOutBounce (t*2-d, 0, c, d) * 0.5 + c*.5 + b;*/
+    static func easeInOutBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+        if t < d / 2 {
+            return easeInBounce(t * 2, 0, c, d) * 0.5 + b
+        } else {
+            return easeOutBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b
+        }
     }
-    private static func easeInCubic(){
-        //c*(t/=d)*t*t + b;
-    }
-    private static func easeOutCubic(){
-        //return c*((t=t/d-1)*t*t + 1) + b;
-    }
-    private static func easeInOutCubic(){
-        /*if ((t/=d/2) < 1) return c/2*t*t*t + b;
-        return c/2*((t-=2)*t*t + 2) + b;*/
+    static func easeOutInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+        if t < d / 2 {
+            return easeOutBounce(t * 2, b, c / 2, d)
+        } else {
+            return easeInBounce((t * 2) - d, b + c / 2, c / 2, d)
+        }
     }
 }
 
