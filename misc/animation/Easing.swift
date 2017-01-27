@@ -8,7 +8,7 @@ import Cocoa
  * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing work
  */
 class Easing{
-    static var Bounce:Bounce {return Bounce.self}
+    static var bounce:Bounce.Type {return Bounce.self}
 }
 
 /*
