@@ -61,13 +61,9 @@ class HexParser {
      */
     static func hexString(_ a:UInt, _ r:UInt, _ g:UInt, _ b:UInt) -> String {
         var aa:String = String(format:"%X", Int(a))
-        //Swift.print("aa: " + "\(aa)")
         var rr:String = String(format:"%X", Int(r))
-        //Swift.print("rr: " + "\(rr)")
         var gg:String = String(format:"%X", Int(g))
-        //Swift.print("gg: " + "\(gg)")
         var bb:String = String(format:"%X", Int(b))
-        //Swift.print("bb: " + "\(bb)")
         aa = (aa.count == 1) ? "0" + aa : aa
         rr = (rr.count == 1) ? "0" + rr : rr
         gg = (gg.count == 1) ? "0" + gg : gg
@@ -77,18 +73,18 @@ class HexParser {
     /**
      * Support for NSColor
      * EXAMPLE: NSColor.redColor().hex//FF0000
-     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double.
+     * EXAMPLE: Double("0x" + NSColor.red.hex)//255.0  this is great if you need the hex as a Double
      */
     static func hexString(_ nsColor:NSColor)->String {
         let rgb:RGB = nsColor.rgb
         return HexParser.hexString(rgb.r.cgFloat,rgb.g.cgFloat,rgb.b.cgFloat)
     }
     /**
-     * Converts an RGB color value into a hexidecimal String representation.
-     * PARAM: r: A CGFloat from 0 to 1 representing the red color value.
-     * PARAM: g: A CGFloat from 0 to 1 representing the green color value.
-     * PARAM: b: A CGFloat from 0 to 1 representing the blue color value.
-     * RETURN: a hexidecimal color as a String.
+     * Converts an RGB color value into a hexidecimal String representation
+     * PARAM: r: A CGFloat from 0 to 1 representing the red color value
+     * PARAM: g: A CGFloat from 0 to 1 representing the green color value
+     * PARAM: b: A CGFloat from 0 to 1 representing the blue color value
+     * RETURN: a hexidecimal color as a String
      * EXAMPLE: print(ColorParser.hexByRgb(1, 0, 1)) // prints FF00FF
      * TODO: maybe make another method that takes int from 0-255?
      */

@@ -20,6 +20,6 @@ class HSVParser {
         else if(max == b){hue = (60 * (r-g) / (max-min) + 240)}
         value = max/*get Value*/
         saturation = max == 0 ? 0 : (max - min) / max /*get Saturation*/
-        return HSV(hue, saturation, (value / 255))
+        return HSV(hue, saturation, value / 255)
     }
 }

@@ -6,17 +6,17 @@ class HLSParser {
      * NOTE: You can compare these values to those produced in the Windows Color Picker (MS Paint, etc)
      * NOTE: We can't use UInt here because UInt doesnt support NaN
      * EXAMPLE:
-     * var r:uint = 145;
-     * var g:uint = 100;
-     * var b:uint = 120;
+     * var r:uint = 145
+     * var g:uint = 100
+     * var b:uint = 120
      * var hls:Object = hlsByRgb(r,g,b);
-     * print(hls.h);   // outputs a scale of 0-240
-     * print(hls.l);   // outputs a scale of 0-240
-     * print(hls.s);   // outputs a scale of 0-240
+     * print(hls.h)   // outputs a scale of 0-240
+     * print(hls.l)   // outputs a scale of 0-240
+     * print(hls.s)  // outputs a scale of 0-240
      */
     static func hls(_ rgb:RGB)->HLS {
         let r:CGFloat = rgb.r.cgFloat; let g:CGFloat = rgb.g.cgFloat; let b:CGFloat = rgb.b.cgFloat;
-        var h:CGFloat = 0//<<--this wasn't here before but its need to be able to compile.
+        var h:CGFloat = 0/*<<--this wasn't here before but its need to be able to compile.*/
         var l:CGFloat
         var s:CGFloat
         let max:CGFloat = (Swift.max(Swift.max(r, g), b))/255
