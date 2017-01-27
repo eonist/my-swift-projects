@@ -83,19 +83,7 @@ class Easing{
         }
         return easeInQuad((t * 2) - d,  b + c / 2,  c / 2,  d)
     }
-    //Exponential
-    static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-       return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
-    }
-    static func easeOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-        return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
-    }
-    private static func easeInOutExpo(){
-        /*if (t==0) return b;
-        if (t==d) return b+c;
-        if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-        return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
-    }
+   
     /*Elastic*/
     private static func easeInElastic(){
         /*var s:Number;
@@ -190,7 +178,21 @@ class Bounce{
         }
     }
 }
-
+class Expo{
+    //Exponential
+    static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
+    }
+    static func easeOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
+    }
+    private static func easeInOutExpo(){
+        /*if (t==0) return b;
+         if (t==d) return b+c;
+         if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+         return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
+    }
+}
 /*
 /**
 * NOTE: If you decrease the decimal variable you increase the friction effect
