@@ -37,13 +37,11 @@ class SVGPath:SVGGraphic{
         }
         if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
             /*line*/
-            let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin
-            //Swift.print("strokeBoundingBox: " + "\(strokeBoundingBox)")
+            let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin            
             let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
-            //Swift.print("linePathOffset: " + "\(linePathOffset)")
             lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
             lineShape.path = fillShape.path.clone()
-            var lineOffsetPath = fillShape.path.clone()//swift 3 update, used to be copy
+            var lineOffsetPath = fillShape.path.clone()
             lineShape.path = CGPathModifier.translate(&lineOffsetPath, linePathOffset.x, linePathOffset.y)
         }
     }

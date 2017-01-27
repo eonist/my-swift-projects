@@ -10,9 +10,7 @@ class SVGGradientParser {
      * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
 	static func linearGradient(_ xml:XMLElement)->SVGLinearGradient{
-		// print("linearGradient ");
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!
-		// print("x1: " + x1);
 		let x1:CGFloat = StringAsserter.percentage(x1Str) ? StringParser.percentage(x1Str) : SVGPropertyParser.value(x1Str)
 		let y1Str:String = SVGPropertyParser.property(xml,"y1")!
 		let y1:CGFloat = StringAsserter.percentage(y1Str) ? StringParser.percentage(y1Str) : SVGPropertyParser.value(y1Str)
@@ -21,7 +19,6 @@ class SVGGradientParser {
 		let y2Str:String = SVGPropertyParser.property(xml,"y2")!
 		let y2:CGFloat = StringAsserter.percentage(y2Str) ? StringParser.percentage(y2Str) : SVGPropertyParser.value(y2Str)
 		let svgGradient:SVGGradient = Utils.gradient(xml)
-        //Swift.print("SVGGradientParser.linearGradient svgGradient.id: " + "\(svgGradient.id)")
 		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors/*svgGradient.opacities*/,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,svgGradient.gradientTransform)
 	}
 	/**
