@@ -69,30 +69,20 @@ class Easing{
         t = t/d
 		return -c*t*(t-2) + b;
 	}
-    /**
-     :param: t current time
-     :param: b begInnIng value
-     :param: c change In value
-     :param: d duration
-     :returns: current value
-     */
-    /*public func easeInOutQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
-     
-     }*/
-    
     static func easeInOutQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
         t = t / d * 2
         if t < 1 {
-            return c / 2 * t*t + b
+            return c / 2 * t * t + b
         }
         return -c / 2 * ((t - 1) * (t - 3) - 1) + b
-        /*
-         var t = t
-         t = t/(d/2)//<--the brackets are important
-         if (t < 1) {return c/2*t*t + b}
-         return -c/2 * (-1*t*(t-2) - 1) + b /*swift 3 upgrade: was (--t), is now: -t, could break the equation*/*/
 	}
+    static func easeOutInQuad ( _ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float {
+        if t < d / 2 {
+            return easeOutQuad(t * 2,  b, c / 2,  d)
+        }
+        return easeInQuad((t * 2) - d,  b + c / 2,  c / 2,  d)
+    }
     //Exponential
     static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
        return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
