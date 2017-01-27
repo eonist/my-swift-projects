@@ -111,15 +111,15 @@ extension NSView {
     }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
+    //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
+    var X:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
+    var Y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
+    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
+    var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
     /**
      * DEPRECATED
      */
     func getSubviewAt(_ i:Int)->NSView{return NSViewParser.getSubviewAt(self, i)}//favour getSubViewAt method instead, as its optional
     func getSubViewAt(_ i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
-    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
-    var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
-    //swift 3 update: The compiler complaints if the bellow are not commented out. these are now implemented in IElement, you could try to use upper-case X and Y?!?
-    var X:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
-    var Y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
 }
