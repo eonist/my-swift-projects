@@ -9,6 +9,7 @@ import Cocoa
  */
 class Easing{
     static var bounce:Bounce.Type {return Bounce.self}
+    static var expo:Expo.Type {return Expo.self}
 }
 
 /*
