@@ -9,16 +9,4 @@ public class DictionaryParser{
             //if(theValue is Dictionary) {describe(theValue)}
         }
     }
-    /**
-     *
-     */
-    public static func values(){
-        //var valuesArray = [Double](toppings.values)
-    }
-    /**
-     *
-     */
-    public static func keys(){
-        //print(Array(theDict.keys))//convert the map collection view properties into an usable Array
-    }
 }
