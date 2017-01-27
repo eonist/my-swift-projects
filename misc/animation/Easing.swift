@@ -9,6 +9,10 @@ import Cocoa
  */
 class Easing{
     
+    //Continue here:
+        //seperate out all the easing classes. 
+        //Try to do Easing.Bounce.easeInBounce etc. maybe?
+    
     //Quintic - QUINTIC EASING: t^5
     static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
