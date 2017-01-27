@@ -6,13 +6,10 @@ class RectGraphicUtils {
      */
     static func fillFrame(_ rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->CGRect{
         var fillFrameRect:CGRect = rect.copy()
-        //Swift.print("lineRect: " + "\(lineRect)")
-        /*Left*/
-        if(!lineThickness.isNaN && offsetType.left == OffsetType.outside){
+        if(!lineThickness.isNaN && offsetType.left == OffsetType.outside){/*Left*/
             fillFrameRect = fillFrameRect.offset(lineThickness, 0)
         }
-        /*Top*/
-        if(!lineThickness.isNaN && offsetType.top == OffsetType.outside){
+        if(!lineThickness.isNaN && offsetType.top == OffsetType.outside){/*Top*/
             fillFrameRect = fillFrameRect.offset(0,lineThickness)
         }
         return fillFrameRect
