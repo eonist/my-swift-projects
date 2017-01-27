@@ -31,7 +31,6 @@ class CGRectParser{
         path.addArc(tangent1End: CGPoint(rect.maxX, rect.maxY), tangent2End: CGPoint(rect.minX, rect.maxY), radius: radius)
         path.addArc(tangent1End: CGPoint(rect.minX, rect.maxY), tangent2End: CGPoint(rect.minX, rect.minY), radius: radius)
         path.addArc(tangent1End: CGPoint(rect.minX, rect.minY), tangent2End: CGPoint(rect.maxX, rect.minY), radius: radius)
-
         path.closeSubpath()
         return path
     }
@@ -60,27 +59,15 @@ class CGRectParser{
     static func sides(_ rectangle:CGRect) -> Array<Line> {
         return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)]
     }
-    /**
-     *
-     */
     static func topSide(_ rectangle:CGRect) -> Line {
         return Line(rectangle.topLeft, CGPoint(rectangle.right.x,rectangle.top.y))
     }
-    /**
-     *
-     */
     static func rightSide(_ rectangle:CGRect) -> Line {
         return Line(CGPoint(rectangle.right.x,rectangle.top.y),rectangle.bottomRight)
     }
-    /**
-     *
-     */
     static func bottomSide(_ rectangle:CGRect) -> Line {
         return Line(rectangle.bottomRight,CGPoint(rectangle.left.x,rectangle.bottom.y))
     }
-    /**
-     *
-     */
     static func leftSide(_ rectangle:CGRect) -> Line {
         return Line(CGPoint(rectangle.left.x,rectangle.bottom.y),rectangle.topLeft)
     }
@@ -98,9 +85,6 @@ class CGRectParser{
         var rotatedPoints:Array<CGPoint> = PointModifier.rotatePoints(points, CGPoint(), -rotation)
         return rectangle(rotatedPoints[0], rotatedPoints[1])
     }
-    /**
-     *
-     */
     static func rectangle(_ topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{
         let width:CGFloat = CGFloatParser.difference(topLeft.x, bottomRight.x)
         let height:CGFloat = CGFloatParser.difference(topLeft.y, bottomRight.y)

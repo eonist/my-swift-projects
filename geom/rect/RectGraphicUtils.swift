@@ -17,18 +17,14 @@ class RectGraphicUtils {
         }
         return fillFrameRect
     }
-    /**
-     * 
-     */
     static func lineOffsetRect(_ rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()
         var lineRect:CGRect = CGRect(0,0,rect.width,rect.height)
-        //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(lineThickness, 0)
             lineRect = lineRect.offset(lineThickness / 2, 0)//.expand(-lineThickness/2, 0)
-        }else if(offsetType.left == OffsetType.inside){ //inside
+        }else if(offsetType.left == OffsetType.inside){ /*inside*/
             lineRect = lineRect.offset(-lineThickness/2, 0)//.expand(lineThickness/2 , 0)
         }else{//center
             lineFrameRect = lineFrameRect.offset(-lineThickness/2, 0).expand(lineThickness/2, 0)
@@ -38,9 +34,9 @@ class RectGraphicUtils {
         if(offsetType.right == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(lineThickness, 0)
             lineRect = lineRect.expand(lineThickness, 0)
-        }else if(offsetType.right == OffsetType.inside){//inside
+        }else if(offsetType.right == OffsetType.inside){/*inside*/
             lineRect = lineRect.expand(lineThickness, 0)
-        }else{//center
+        }else{/*center*/
             lineFrameRect = lineFrameRect.expand(lineThickness/2, 0)
         }
         /*Top*/
@@ -54,10 +50,10 @@ class RectGraphicUtils {
             lineRect = lineRect.offset(0,lineThickness/2)
         }
         /*Bottom*/
-        if(offsetType.bottom == OffsetType.outside){//outside
+        if(offsetType.bottom == OffsetType.outside){/*outside*/
             lineFrameRect = lineFrameRect.expand(0,lineThickness)
             lineRect = lineRect.expand(0,lineThickness)
-        }else if(offsetType.bottom == OffsetType.inside){//inside
+        }else if(offsetType.bottom == OffsetType.inside){/*inside*/
             lineRect = lineRect.expand(0,lineThickness)
         }else{//center
             lineFrameRect = lineFrameRect.expand(0,lineThickness/2)

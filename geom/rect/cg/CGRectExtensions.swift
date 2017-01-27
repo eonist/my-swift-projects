@@ -82,10 +82,10 @@ extension CGRect{
     func inset(_ dx:CGFloat,_ dy:CGFloat)->CGRect{
         return insetBy(dx: dx, dy: dy)
     }
-    func offset(_ dx:CGFloat,_ dy:CGFloat)->CGRect{//Convenience
+    func offset(_ dx:CGFloat,_ dy:CGFloat)->CGRect{/*Convenience*/
         return self.offsetBy(dx: dx, dy: dy)
     }
-    func offset(_ point:CGPoint)->CGRect{//Convenience
+    func offset(_ point:CGPoint)->CGRect{/*Convenience*/
         return self.offsetBy(dx: point.x,dy: point.y)
     }
     /**
