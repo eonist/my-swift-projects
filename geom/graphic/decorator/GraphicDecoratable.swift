@@ -43,12 +43,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         }
     }
     /**
-     * Stops implicit animation from happening
-     * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
-     * NOTE: this is a delegate method for the shapes in Graphic
-     * NOTE: this method is also called on every frame of the animation it seems
-     */
-    /**
      * This method results in the actual drawing of the fill to the context
      * NOTE:Conceptually this is equvielnt to the line call
      */
@@ -117,16 +111,3 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func getDecoratable()->IGraphicDecoratable{return decoratable}/*new*/
 }
-
-/*
-//old methods that didn't make the cut, delete eventually
-override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-//Swift.print("actionForLayer")
-return NSNull()
-}
-*/
-/*
-func displayLayer(layer: CALayer){
-Swift.print("displayLayer")
-}
-*/
