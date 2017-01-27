@@ -27,7 +27,7 @@ class RGBParser {
         else {
             let h:CGFloat = (hue %% 360) / 60
             let i:Int = Int(h)
-            let f:CGFloat = h - i.cgFloat//<--this seems strange
+            let f:CGFloat = h - i.cgFloat/*<--this seems strange*/
             let p:CGFloat = brightness * (1 - saturation)
             let q:CGFloat = brightness * (1 - (saturation * f))
             let t:CGFloat = brightness * (1 - (saturation * (1 - f)))
@@ -110,7 +110,7 @@ class RGBParser {
                     case 0: r = round(temp4*255)
                     case 1: g = round(temp4*255)
                     case 2: b = round(temp4*255)
-                    default: fatalError("can't happen");
+                    default: fatalError("can't happen")
                 }
             }
         }
@@ -170,14 +170,14 @@ class RGBParser {
         return RGB(r,g,b)
     }
     /**
-     * Converts a 24-bit RGB color value into an RGB object.
-     * PARAM: color: The 24-bit RGB color value.
-     * RETURN: an object with the properties r, g, and b defined.
+     * Converts a 24-bit RGB color value into an RGB object
+     * PARAM: color: The 24-bit RGB color value
+     * RETURN: an object with the properties r, g, and b defined
      * EXAMPLE:
-     * var myRGB:Object = rbg24(0xFF00FF);
-     * print("Red = " + myRGB.r);
-     * print("Green = " + myRGB.g);
-     * print("Blue = " + myRGB.b);
+     * var myRGB:Object = rbg24(0xFF00FF)
+     * print("Red = " + myRGB.r)
+     * print("Green = " + myRGB.g)
+     * print("Blue = " + myRGB.b)
      */
     static func rbg24(_ hexColor:UInt) -> RGB{
         let r = hexColor >> 16 & 0xFF
