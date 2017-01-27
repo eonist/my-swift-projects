@@ -1,6 +1,7 @@
 import Foundation
 /**
  * The SVG commands represented here are from the official SVG syntax
+ * TODO: Great candidate for enum
  */
 class SVGPathCommand {
 	static var m:String = "m"/*Move*/
