@@ -84,7 +84,7 @@ class Easing{
         var t = t
         t = t / d * 2
         if t < 1 {
-            return c / 2 * pow(t, 2) + b
+            return c / 2 * t*t + b
         }
         return -c / 2 * ((t - 1) * (t - 3) - 1) + b
         /*
