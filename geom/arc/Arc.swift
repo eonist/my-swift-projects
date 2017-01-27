@@ -10,7 +10,7 @@ class Arc:IArc{
      * TODO: you might also want to consider including a position argument, for better performance and ease. this is just an idea
      */
     var start:CGPoint
-    var xRadii:CGFloat// :TODO: i think the xRadii and yRadii cant be negative, confirm please and write it up as a note
+    var xRadii:CGFloat// :TODO: i think the xRadii and yRadii can't be negative, confirm please and write it up as a note
     var yRadii:CGFloat
     var rotation:CGFloat
     var largeArcFlag:Bool/*if true the largest of two possible arcs are drawn*/

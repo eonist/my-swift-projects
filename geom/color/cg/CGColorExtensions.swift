@@ -11,5 +11,4 @@ extension CGColor {
     func alpha(_ alpha:CGFloat)->CGColor{
         return self.copy(alpha: alpha)!
     }
-    //var alpha:CGFloat{return self.nsColor.alphaComponent}//Swift 3 update, swift 3 has this built in
 }
