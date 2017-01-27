@@ -195,6 +195,13 @@ class Expo{
         t = t - 1
         return c/2 * (-pow(2, -10 * t) + 2) + b
     }
+    static func easeOutInExpo (_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        if t < d / 2 {
+            return easeOutExpo(t * 2, b,  c / 2,  d)
+        } else {
+            return easeInExpo((t * 2) - d,  b + c / 2,  c / 2,  d)
+        }
+    }
 }
 /*
 /**
