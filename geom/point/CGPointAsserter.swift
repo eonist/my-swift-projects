@@ -39,14 +39,14 @@ class CGPointAsserter {
      * Asserts if p1 is less than p2
      * NOTE: think PARAM: p1 is eigther to the left of PARAM: p2 AND above PARAM: p2
      */
-    static func absolutLess(_ p1:CGPoint, _ p2:CGPoint)->Bool {//TODO: absolutleyLess
+    static func absolutLess(_ p1:CGPoint, _ p2:CGPoint)->Bool {//TODO: absolutleyLess?!?
         return p1.x < p2.x && p1.y < p2.y
     }
     /**
      * Asserts if p1 is more than p2
      * NOTE: think PARAM: p1 is to the right of PARAM: p2 AND bellow PARAM: p2
      */
-    static func absolutMore(_ p1:CGPoint, _ p2:CGPoint)->Bool {//TODO: rename to absolutleyMore
+    static func absolutMore(_ p1:CGPoint, _ p2:CGPoint)->Bool {//TODO: rename to absolutleyMore?!?
         return p1.x > p2.x && p1.y > p2.y
     }
     /**
@@ -140,16 +140,10 @@ class CGPointAsserter {
      * NOTE: if two of the points are equals, then this method may not work, better assert for equals before utilizing this method
      * TODO: if two points are equal then the three are colliinear actually
      */
-    static func collinear(_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {//TODO: rename to is..., depricate and link, or not?!?!
-        //print("p1: " + p1)
-        //print("p2: " + p2)
-        //print("p3: " + p3)
-        let a:CGFloat = PointParser.slope(p2, p3)
-        //print("a: " + a)
-        let b:CGFloat = PointParser.slope(p2, p1)
-        //print("b: " + b)
-        let c:CGFloat = PointParser.slope(p3, p1)
-        //print("c: " + c)
+    static func collinear(_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {//TODO: rename to is..., depricate and link, or not?!?!                        
+        let a:CGFloat = PointParser.slope(p2, p3)        
+        let b:CGFloat = PointParser.slope(p2, p1)        
+        let c:CGFloat = PointParser.slope(p3, p1)        
         return (a == b && b == c) || (CGFloatAsserter.isInfinity(a) && CGFloatAsserter.isInfinity(b) && CGFloatAsserter.isInfinity(c))//why do we assert infinity again?
     }
     /**
@@ -164,9 +158,7 @@ class CGPointAsserter {
      */
     static func isContraDirectional(_ aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let a:CGFloat = Trig.angle(aP1,aP2)
-        //print("angleA: " + a)
         let b:CGFloat = Trig.angle(bP1,bP2)
-        //print("angleB: " + b)
         return Trig.isContraDirectional(a, b)
     }
     /**
@@ -176,9 +168,7 @@ class CGPointAsserter {
      */
     static func isCoDirectional(_ a1:CGPoint,_ a2:CGPoint,_ b1:CGPoint,_ b2:CGPoint) -> Bool {
         let a:CGFloat = Trig.angle(a1, a2)
-        //			print("a: " + a)
         let b:CGFloat = Trig.angle(b1, b2)
-        //			print("b: " + b)
         return Trig.isCoDir(a, b)
     }
 }

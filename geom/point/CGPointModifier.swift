@@ -1,5 +1,5 @@
 import Foundation
-typealias PointModifier = CGPointModifier//legacy support
+typealias PointModifier = CGPointModifier/*legacy support*/
 
 class CGPointModifier {
     /**
