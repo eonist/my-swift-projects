@@ -1,18 +1,12 @@
 import Foundation
 extension Array {
-    /**
-     * Removes the first item in an array
-     * var a = ["a","b","c"]
-     * Swift.print("a.shift(): " + "\(a.shift())")//a
-     * Swift.print("a: " + "\(a)")//b,c
-     */
-    mutating func shift() ->Element{
+    mutating func shift() ->Element{/*convenience*/
         return ArrayModifier.shift(&self)
     }
-    mutating func pop() -> Element?{
+    mutating func pop() -> Element?{/*convenience*/
         return ArrayModifier.pop(&self)
     }
-    mutating func pushPop(_ item:Element) -> Array<Element>{
+    mutating func pushPop(_ item:Element) -> Array<Element>{/*convenience*/
         return ArrayModifier.pushPop(&self, item)
     }
     /**
@@ -42,9 +36,6 @@ extension Array {
     func concat(_ item:Element) -> Array<Element>{/*Convenince*/
         return concat([item])
     }
-    /**
-     * Example: [1,2,3,4].splice(0, 1).count//3
-     */
     mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
         return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
     }

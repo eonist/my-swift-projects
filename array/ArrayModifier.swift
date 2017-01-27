@@ -1,12 +1,10 @@
 import Foundation
-//reverse
-//concat<--this can be used to clone things so maybe add it?
-//append
+
 class ArrayModifier{
 	/**
-	 * NOTE: unShift is the same as "prepend"
 	 * Adds one or more elements to the beginning of an array and returns the new
 	 * PARAM: length of the array. The other elements in the array are moved from their 
+     * NOTE: unShift is the same as "prepend"
 	 * original position, i, to i+1.
 	 * OUTPUT
 	 * a,b,c,d
@@ -432,3 +430,6 @@ class ArrayModifier{
         return arr
     }
 }
+//reverse
+//concat<--this can be used to clone things so maybe add it?
+//append
