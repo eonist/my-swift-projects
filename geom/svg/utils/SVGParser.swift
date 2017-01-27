@@ -117,10 +117,8 @@ class SVGParser {
      * Returns an SVGPolyLine element derived from the polyline data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polyLine(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
-//		Swift.print("polyLine")
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-//		Swift.print("pointsString: " + pointsString);
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString)
         for i in stride(from: 0, to: parameters.count, by: 2){
@@ -132,17 +130,13 @@ class SVGParser {
      * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polygon(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
-		//print("SVGParser.polygon()");
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-		//print("SVGParser.polygon() pointsString: " + pointsString);
         var points:Array<CGPoint> = []
         var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
-        //print("SVGPArser.polygon() parameters: " + "\(parameters)");
         for i in stride(from: 0, to: parameters.count, by: 2) {/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
             points.append(CGPoint(parameters[i],parameters[i+1]))
         }
-		//print("SVGPArser.polygon() points: " + "\(points)")
         return SVGPolygon(points,style,id)
     }
     /**

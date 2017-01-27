@@ -47,28 +47,22 @@ class SVGPropertyParser {
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	static func style(_ xml:XMLElement,_ container:ISVGContainer)->SVGStyle {
-		//Swift.print("SVGPropertyParser.style(): ");//strokeLineCap
 		var style:SVGStyle;
 		let prop:String? = property(xml,"style");
-        //Swift.print("SVGPropertyParser.style() prop: " + "\(prop)");
         if(prop != nil) {style = SVGStyleParser.style(prop!,container)}//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
-            //Swift.print("StylePropertyParser.style() xml.stringValue: " + "\(xml.stringValue)");
 			let fill:Any? = SVGStyleParser.fill(property(xml,"fill"), container)
-            //Swift.print("SVGPropertyParser.style() fill: " + "\(fill)")
 			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
 			let fillRule:String? = property(xml,"fill-rule")
 			let stroke:Any? = SVGStyleParser.stroke(property(xml,"stroke"),container)
 			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
 			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
-            //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
 			let strokeLineCap:String? = property(xml,"stroke-linecap")
 			let strokeLineJoin:String? = property(xml,"stroke-linejoin")
 			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
             if(strokeOpacity.isNaN){strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
 			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
-            //Swift.print("style.strokeOpacity: " + "\(style.strokeOpacity)")
         }
 		return style
 	}
