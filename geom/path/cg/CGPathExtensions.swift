@@ -9,16 +9,16 @@ extension CGMutablePath{
     }
     /**
      * Returns a copy of it self
-     * this was previously copy, but swift 3 uses this method
+     * NOTE: this was previously copy, but swift 3 uses this method
      */
-    func clone()->CGMutablePath {//possibly return CGMutablePathRef
+    func clone()->CGMutablePath {
         return self.mutableCopy()!
     }
     func moveTo(_ x: CGFloat, _ y: CGFloat){/*Convenince*/
-        self.move(to: CGPoint(x,y))//swift 3 updated
+        self.move(to: CGPoint(x,y))
     }
     func moveTo(_ point: CGPoint){/*Convenince*/
-        self.move(to: point)//swift 3 updated
+        self.move(to: point)
     }
     /**
      * Convenince
