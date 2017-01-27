@@ -36,7 +36,7 @@ private class Utils{
      * We need a copy of the shadow color as CGColor with alpha set to 1.0
      * NOTE: this isn't used anymore
      */
-    class func opaqueColor(color:NSColor)->CGColor{
+    static func opaqueColor(color:NSColor)->CGColor{
         return color.cgColor.copy(alpha: 1.0)!
     }
 }
