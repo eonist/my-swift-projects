@@ -45,7 +45,7 @@ class ArrayModifier{
       * NOTE: splice can also be used to remove item from array
       * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
       * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
-      * IMPORTANT: the original array is modified
+      * IM ORTANT: the original array is modified
       * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
       * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
       * EXAMPLE: splice2([a,b,c],2,1)//[c]
@@ -115,11 +115,11 @@ class ArrayModifier{
      * NOTE: Can be optimized a little bit more if array.length is known.
      * NOTE: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
      * EXAMPLE:
-     *	var array:Array = ["a","b","c"];
-     *	let index:Int = 1
-     *	let result = array.splice2(index, 1, ["x",array[index]] )
-     *	print("result: \(result)" )//b "the deleted item"
-     *	print(array) //a,x,b,c
+     * var array:Array = ["a","b","c"];
+     * let index:Int = 1
+     * let result = array.splice2(index, 1, ["x",array[index]] )
+     * print("result: \(result)" )//b "the deleted item"
+     * print(array) //a,x,b,c
      * TODO: return the array for method chaning purposes?
      */
     static func addAt<T>(_ array:inout [T], _ item:T, _ index:Int){
@@ -145,8 +145,7 @@ class ArrayModifier{
         return -1
     }
     /**
-     * New, seems to work
-     * NOTE: comapres and deletes reference "===" not "=="
+     * NOTE: compres and deletes reference "===" not "=="
      */
     static func delete<T>(_ arr:inout Array<T>, _ obj:inout T)->T{
         return arr.remove(at: ArrayParser.idx(&arr, &obj))
@@ -178,7 +177,7 @@ class ArrayModifier{
      */
     static func removeAll<T>(_ arr:inout Array<T>)->Array<T>{
         arr.forEach{_ in
-            arr.removeLast()//removeFirst() also works
+            arr.removeLast()/*using removeFirst() also works*/
         }
         return arr
     }
@@ -294,7 +293,6 @@ class ArrayModifier{
         let len:Int = ceil((copy.count / every).float).int
         var i:Int = 0
         while (i < len){
-            //for ( var i:Int = 0 ,  ; ;i++ ) {
             let a:Int = i * every
             let b:Int = min(a + every, copy.count)
             let split:Array<T> = copy.slice2(a, b)
@@ -419,18 +417,14 @@ class ArrayModifier{
     }
     /**
      * Inserts "before" PARAM index (see examples bellow)
+     * RETURN: the mutated PARAM arr
      * EXAMPLE: ["a","b","c"].insert("x", 0)//x,a,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 2)//q,b,x,c
      * EXAMPLE: ["a","b","c"].insert("x", 3)//a,b,c,x
-     * RETURN: the mutated PARAM arr
      */
     static func insertAt<T>(_ arr:inout [T], _ item:T, _ index:Int) -> [T]{
-        //Swift.print("arr.count: " + "\(arr.count)")
         arr.insert(item, at: index)
         return arr
     }
 }
-//reverse
-//concat<--this can be used to clone things so maybe add it?
-//append
