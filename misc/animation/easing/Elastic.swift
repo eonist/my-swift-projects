@@ -3,7 +3,7 @@ import Foundation
  * Elastic
  */
 class Elastic {
-    private static func easeInElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    private static func easeIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         var a: CGFloat? = nil
         var p: CGFloat? = nil
@@ -21,7 +21,7 @@ class Elastic {
         t = t - 1
         return -(a! * pow(2, 10 * t) * sin((t * d - s) * (2 * CGFloat(M_PI)) / p!)) + b
     }
-    static func easeOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeOut(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         var a: CGFloat? = nil
         var p: CGFloat? = nil
@@ -38,7 +38,7 @@ class Elastic {
         }
         return a! * pow(2, -10 * t) * sin((t * d - s) * (2 * CGFloat(M_PI)) / p!) + c + b
     }
-    static func easeInOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInOut(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         var a: CGFloat? = nil
         var p: CGFloat? = nil

@@ -25,9 +25,9 @@ class Circ {
     }
     static func easeOutIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         if t < d / 2 {
-            return easeOutCirc(t * 2,  b,  c / 2,  d)
+            return easeOut(t * 2,  b,  c / 2,  d)
         } else {
-            return easeInCirc(( t * 2 ) - d, b + c / 2,  c / 2,  d)
+            return easeIn(( t * 2 ) - d, b + c / 2,  c / 2,  d)
         }
     }
 }
