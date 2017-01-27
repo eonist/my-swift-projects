@@ -16,13 +16,11 @@ class CGPathUtils {
             let command:Int = path.commands[i]
             switch(command){
             case PathCommand.moveTo:
-                //Swift.print("CGPathUtils.compile() moveTo")
                 prevMT = CGPoint(path.pathData[index], path.pathData[index+1])
                 prevEnd = prevMT.copy()
-                cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))//swift 3 was-> CGPathMoveToPoint
+                cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
                 index += 2
             case PathCommand.lineTo:
-                //Swift.print("CGPathUtils.compile() lineTo")
                 prevEnd = CGPoint(path.pathData[index], path.pathData[index+1])
                 cgPath.addLine(to: CGPoint(path.pathData[index],path.pathData[index+1]))
                 index += 2
@@ -70,9 +68,6 @@ class CGPathUtils {
 }
 
 private class BasicPathParser{
-    /**
-     *
-     */
     static func arcAt(_ path:IPath,_ commandIndex:Int) -> IArc{
         let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
         let start:CGPoint = commandIndex > 0 ? BasicPathDataParser.end(path, commandIndex-1) : CGPoint()
@@ -91,7 +86,7 @@ private class BasicPathDataParser{
         return pathDataIndex
     }
     /**
-     * Returns the destination end position of a given command at @param commandIndex in @param commands
+     * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
      * PARAM: index the index of the command
      * NOTE: this is cpu intensive to call if you are iterating over an array
      */

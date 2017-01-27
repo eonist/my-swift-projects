@@ -16,7 +16,6 @@ class CGPathParser{
             path.addLine(to: CGPoint(points[i].x+offset.x, points[i].y+offset.y))
         }
         if(close){
-            //Swift.print("close")
             path.addLine(to: CGPoint(points[0].x+offset.x, points[0].y+offset.y))/*closes it self to the start position*/
             path.closeSubpath()/*it may not be necessary to have the above line when you call this method*/
         }
@@ -43,7 +42,7 @@ class CGPathParser{
         let circleCenter:CGPoint = CGPoint(x: cx, y: cy)
         let circleRadius:CGFloat  = radius
         let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI)
-        // Construct the circle path counterclockwise.
+        /*Construct the circle path counterclockwise*/
         circlePath.addArc(center: circleCenter, radius: circleRadius, startAngle: startingAngle, endAngle: endingAngle, clockwise: false)//swift 3, CGPathAddArc
         circlePath.closeSubpath()
         return circlePath
@@ -59,7 +58,6 @@ class CGPathParser{
      */
     static func rect(_ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0)->CGMutablePath{
         let rectPath:CGMutablePath  = CGMutablePath()
-        //swift 3 upgrade, bellow line was CGRectMake
         let rectangle:CGRect = CGRect(x,y,w,h)/* Here are our rectangle boundaries */
         rectPath.addRect(rectangle)/* Add the rectangle to the path */
         //CGPathCloseSubpath(rectPath)
@@ -74,7 +72,6 @@ class CGPathParser{
      */
     static func ellipse(_ w:CGFloat = 100,_ h:CGFloat = 100,_ x:CGFloat = 0,_ y:CGFloat = 0, _ transformation:CGAffineTransform? = nil)->CGMutablePath{
         let ellipsePath:CGMutablePath  = CGMutablePath()
-        //swift 3 upgrade, bellow line was CGRectMake
         let rect:CGRect = CGRect(x, y,w, h)
         ellipsePath.addEllipse(in: rect)
         return ellipsePath
