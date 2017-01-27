@@ -1,7 +1,8 @@
 import Foundation
-
+/**
+ * Sine SINUSOIDAL EASING: sin(t)
+ */
 class Sine{
-    //Sine SINUSOIDAL EASING: sin(t)
     static func easeInSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π2) + c + b
     }

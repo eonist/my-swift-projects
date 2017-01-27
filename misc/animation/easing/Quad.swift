@@ -1,7 +1,8 @@
 import Foundation
-
+/**
+ * Quadratic
+ */
 class Quad {
-    //Quadratic
     static func easeInQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
         t = t/d
