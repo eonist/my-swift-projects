@@ -146,19 +146,22 @@ class Quint{
     static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         t = t/d
-        return c*t*t*t*t*t + b
+        return c * pow(t, 5) + b
     }
     static func easeOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
-        t = t/d-1
-        return c*(t*t*t*t*t + 1) + b
+        t = t / d - 1
+        return c * (pow(t, 5) + 1) + b
     }
     static func easeInOutQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat {
         var t = t
-        t = t/(d/2)//<--the brackets are important
-        if (t < 1) {return c/2*t*t*t*t*t + b}
-        t = t-2
-        return c/2*(t*t*t*t*t + 2) + b
+        t = t / d * 2
+        if t < 1 {
+            return c / 2 * pow(t, 5) + b
+        } else {
+            t = t - 2
+            return c / 2 * (pow(t, 5) + 2) + b
+        }
     }
 }
 /*Bounce*/
