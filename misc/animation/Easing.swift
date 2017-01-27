@@ -56,18 +56,18 @@ class Easing{
         t = t/(d/2)//<--the brackets are important
 		if (t < 1) {return c/2*t*t*t*t + b}
 		t = t-2
-		return -c/2 * (t*t*t*t - 2) + b;
+		return -c/2 * (t*t*t*t - 2) + b
 	}
 	//Quadratic
     static func easeInQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
         t = t/d
-		return c*t*t + b;
+		return c*t*t + b
 	}
     static func easeOutQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
         t = t/d
-		return -c*t*(t-2) + b;
+		return -c*t*(t-2) + b
 	}
     static func easeInOutQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
@@ -77,7 +77,7 @@ class Easing{
         }
         return -c / 2 * ((t - 1) * (t - 3) - 1) + b
 	}
-    static func easeOutInQuad ( _ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float {
+    static func easeOutInQuad ( _ t: CGFloat, _ b: CGFloat, _ c: CGFloat, _ d: CGFloat) -> CGFloat {
         if t < d / 2 {
             return easeOutQuad(t * 2,  b, c / 2,  d)
         }
