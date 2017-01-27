@@ -8,20 +8,7 @@ import Cocoa
  * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing work
  */
 class Easing{
-    //No easing, linear animation
-    static func easeLinear(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
-        return c*t/d + b
-    }
-    //Sine SINUSOIDAL EASING: sin(t)
-    static func easeInSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        return -c * cos(t/d * π2) + c + b
-    }
-    static func easeOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        return c * sin(t/d * π2) + b
-    }
-    static func easeInOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        return -c/2 * (cos(π*t/d) - 1) + b
-    }
+    
     //Quintic - QUINTIC EASING: t^5
     static func easeInQuint(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
@@ -140,6 +127,31 @@ class Easing{
     private static func easeInOutCubic(){
         /*if ((t/=d/2) < 1) return c/2*t*t*t + b;
         return c/2*((t-=2)*t*t + 2) + b;*/
+    }
+}
+class Linear{
+    //No easing, linear animation
+    static func easeLinear(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
+        return c*t/d + b
+    }
+}
+class Sine{
+    //Sine SINUSOIDAL EASING: sin(t)
+    static func easeInSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        return -c * cos(t/d * π2) + c + b
+    }
+    static func easeOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        return c * sin(t/d * π2) + b
+    }
+    static func easeInOutSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        return -c/2 * (cos(π*t/d) - 1) + b
+    }
+    static func easeOutInSine (_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        if t < d / 2 {
+            return easeOutSine(t * 2,  b,  c / 2,  d)
+        } else {
+            return easeInSine((t * 2) - d,  b + c / 2,  c / 2,  d)
+        }
     }
 }
 /*Bounce*/
