@@ -1,5 +1,7 @@
 import Foundation
-//Exponential
+/**
+ * Exponential
+ */
 class Expo{
     static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b
