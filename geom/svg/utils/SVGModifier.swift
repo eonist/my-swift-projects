@@ -35,7 +35,6 @@ class SVGModifier {
 	 * EXAMPLE SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
 	 */
 	static func scale(_ element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
-		//Swift.print("SVGModifier.scale() element: " + "\(element)")
         switch(true){
 			case element is SVGPolyLine:PointModifier.scalePoints(&(element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:PointModifier.scalePoints(&(element as! SVGPolygon).points, pivot, scale);break;
@@ -56,7 +55,6 @@ class SVGModifier {
 	 * NOTE: this method is recursive
 	 */
 	static func style(_ element:ISVGElement,_ style:SVGStyle) {
-        //Swift.print("SVGModifier.style() ")
         if(element is SVGView) {(element as! SVGView).style = style}
         if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
         if(element is SVGContainer) {
@@ -72,8 +70,7 @@ class SVGModifier {
         //Swift.print("SVGModifier.update()")
         //WARNING: this method is incomplete, needs correct order of calls etc
         graphic.draw();/*<--draws the path with the new params*/
-        
-        //graphic.endFill();
+        //graphic.endFill()
         graphic.fillShape.setNeedsDisplay()/*there needs to be an update to the beginFill and applyLineStyll since gradient matrices may have changed etc, but the call must be a request not a direct call since the context isnt ready yet*/
         graphic.lineShape.setNeedsDisplay()
     }

@@ -14,9 +14,6 @@ class SVGStyleUtils {
         else if(strokeLineCap == "square"){return CGLineCap.square}
         else{fatalError("this lineCap type is not supported")}
     }
-    /**
-     *
-     */
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
         let strokeLineJoin = lineJoin != nil && lineJoin != "" ? lineJoin : "miter";
         if(strokeLineJoin == "miter"){return CGLineJoin.miter}
@@ -24,21 +21,12 @@ class SVGStyleUtils {
         else if(strokeLineJoin == "bevel"){return CGLineJoin.bevel}
         else{fatalError("this strokeLineJoin type is not supported")}
     }
-    /**
-     *
-     */
     static func miterLimit(_ miterLimit:CGFloat)->CGFloat{
         return !miterLimit.isNaN ? miterLimit : 10/*<--was 1.414*/;
     }
-    /**
-     *
-     */
     static func strokeWidth(_ strokeWidth:CGFloat)->CGFloat{
         return !(strokeWidth.isNaN) ? strokeWidth : 0
     }
-    /**
-     *
-     */
     static func strokeColor(_ strokeColor:Double,_ strokeOpacity:CGFloat)->NSColor{
         /*color*/
         //Swift.print("style.stroke: " + "\(style.stroke)")
