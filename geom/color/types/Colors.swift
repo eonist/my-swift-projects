@@ -1,5 +1,5 @@
 import Cocoa
-/*
+/**
  * // :TODO: WHITE1,WHITE2, BLACK2, BLACK3 etc
  * // :TODO: add CYAN,MAGENTA,KEY,YELLOW CMYK
  */
@@ -189,7 +189,7 @@ extension Colors{
     static func pink()->UInt{return 0xFF2D55}
     static func darkGray()->UInt{return 0x8E8E93}
     static func lightGray()->UInt{return 0xC7C7CC}
-    /*new*/
+    /*iOS colors*/
     static func paleBlue()->UInt{return 0xD1EEFC}
     static func paleGreen()->UInt{return 0xE0F8D8}
     static func lightPink()->UInt{return 0xFF4981}
