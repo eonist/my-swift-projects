@@ -1,9 +1,19 @@
 import Foundation
 
 extension Comparable{
-    //func clip(_ min:Comparable,_ max:Comparable)->Comparable{return NumberParser.clip(self, min, max)}/*Convenince*/
+    <
 }
 
-extension IntegerType{
+extension NumberType{
+    func clip(_ min:NumberType,_ max:NumberType)->NumberType{return NumberParser.clip(self, min, max)}/*Convenince*/
+}
+
+protocol NumberType{
+    
+}
+extension CGFloat:NumberType{
+    
+}
+extension Int:NumberType{
     
 }
