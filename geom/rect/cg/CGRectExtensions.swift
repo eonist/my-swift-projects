@@ -50,9 +50,8 @@ extension CGRect{
     var right:CGPoint {get {return CGPoint(self.minX, self.midY)}}
     var corners:Array<CGPoint> {return CGRectParser.corners(self)}
     var sides:Array<CGPoint>{return CGRectParser.sides(self)}
-    var nsRect:NSRect {return NSRectFromCGRect(self)} //NSRect(self.x,self.y,self.width,self.height)
-    /*Easy Access to corners*/
-    subscript(key: String) -> CGPoint {
+    var nsRect:NSRect {return NSRectFromCGRect(self)}
+    subscript(key: String) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{
                case Alignment.topLeft:return topLeft
@@ -71,7 +70,6 @@ extension CGRect{
             fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(describing: newValue))
         }
     }
-    //TODO: Support for double and int aswell, also for x,y
     /**
      * negative inset equals outset
      */

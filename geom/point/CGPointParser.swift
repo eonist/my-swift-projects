@@ -325,4 +325,3 @@ class CGPointParser{
         else {return PointParser.intersection(aP1, aP2, bP1, bP2)}
     }
 }
-

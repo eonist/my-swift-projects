@@ -1,8 +1,5 @@
 import Foundation
 class CGRectAsserter {
-    /**
-     *
-     */
     static func containsOrIntersectsLine(_ rectangle:CGRect,_ line:Line) -> Bool {
         return containsLine(rectangle, line) || intersectsLine(rectangle, line)
     }
