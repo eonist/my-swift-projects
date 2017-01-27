@@ -15,13 +15,9 @@ class RGBAParser {
     static func hex(_ color:NSColor)->String{
         let rgba:RGBA = RGBAParser.rgba(color)
         let r:UInt = rgba.r
-        //Swift.print("r: " + "\(r)")
         let g:UInt = rgba.g
-        //Swift.print("g: " + "\(g)")
         let b:UInt = rgba.b
-        ////Swift.print("b: " + "\(b)")
         let a:UInt = rgba.a
-        //Swift.print("a: " + "\(a)")
         let hex:String = HexParser.hexString(a,r,g,b)
         return hex
     }
