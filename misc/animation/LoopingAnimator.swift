@@ -9,7 +9,7 @@ class LoopingAnimator:Animator{
     var repeatCount:Int/*<--zero means infinite*/
     var curRepeatCount:Int = 0
     //swift 3 update: @escaping was added
-    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping (CGFloat)->Void, _ easing:@escaping (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Linear.easeLinear){
+    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping (CGFloat)->Void, _ easing:@escaping (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Linear.ease){
         self.repeatCount = repeatCount
         super.init(animatable, duration, from, to, callBack, easing)
     }
