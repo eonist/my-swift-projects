@@ -10,6 +10,7 @@ import Cocoa
  * NOTE: In the future Graphics may be able to extend CGContext or even employ a extension  scheme of sorts
  * NOTE: This class also simplifies the use of gradient as fill type, since that always involves clipping etc. Esspecially for gradient strokes. Since this isnt really supported in quartz directly.
  * NOTE: If you ever need the use the BoundingBox in this class then: you could add a bounds:CGRect to the Graphics class as a way to optimize it
+ * NOTE: there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
  * EXAMPLE: (add this to a subClass of NSView drawRect() method)
  * let graphics:Graphics = Graphics()
  * var path:CGPath = CGPathParser.rect(200,200)//Shapes
@@ -190,11 +191,6 @@ private class Utils{
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
     static func drawAxialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
-        //Swift.print("Graphics.drawAxialGradient()")
-        //Swift.print("gradient.p1: " + "\(gradient.p1)")
-        //Swift.print("gradient.p2: " + "\(gradient.p2)")
-        //Swift.print("gradient.transformation: " + "\(gradient.transformation)")
-        //Swift.print("points: " + "\(points)")
         context.drawLinearGradient(cgGradient!, start: gradient.p1, end: gradient.p2, options: [CGGradientDrawingOptions.drawsBeforeStartLocation,CGGradientDrawingOptions.drawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
@@ -214,30 +210,17 @@ private class Utils{
         /*end drawing the radial gradient*/
     }
 }
-extension Graphics{//private class ShadowUtils
-    /**
-     *
-     */
+extension Graphics{
     func beginOuterShadow(_ path:CGPath){
-        //Swift.print("Graphics.beginOuterShadow")
         if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
-            //Swift.print("dropShadow.description: " + "\(dropShadow!.description)");
             context!.saveGState()/*initates the GState so that subsequent drawing also gets a shade*/
             dropShadow!.shadow.set()/*<- dont use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
     }
-    /**
-     *
-     */
     func endOuterShadow(){
-        //Swift.print("endOuterShadow()")
         if(dropShadow != nil && !dropShadow!.inner){context!.restoreGState()}//stops drawing the shadow on subsequent drawing
     }
-    /**
-     *
-     */
     func applyInnerShadow(path:CGPath){
-        //Swift.print("Graphics.applyInnerShadow: " + "\(context)")
         /*
         let context = graphics.context
         let dropShadow = graphics.dropShadow
@@ -259,31 +242,3 @@ extension Graphics{//private class ShadowUtils
         }
     }
 }
-
-//Note there is probably a peformace gain by not drawing past start and end, you could mediate this by calculating the amount of gradient you need to cover your area etc. maybe, tests are needed
-
-/*_ graphicsContext:NSGraphicsContext*//*context:CGContextRef*/
-/*self.context = context*/
-
-/* 
-
-Linear "Axial" gradient:
-
-Fill the current clipping region of `context' with a linear gradient from
-`startPoint' to `endPoint'. The location 0 of `gradient' corresponds to
-`startPoint'; the location 1 of `gradient' corresponds to `endPoint';
-colors are linearly interpolated between these two points based on the
-values of the gradient's locations. The option flags control whether the
-gradient is drawn before the start point or after the end point. 
-*/
-
-/*
-
-the code you need for the gradientStroke:
-
-// Use the magic call to create a fillable path.
-CGContextReplacePathWithStrokedPath(context);
-
-// Turn the fillable path in to a clipping region.
-CGContextClip(context);
-*/
