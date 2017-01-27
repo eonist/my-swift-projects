@@ -21,7 +21,7 @@ class AdvanceArrayModifier {
     /**
      * NOTE: the index is returned for convenience
      */
-    static func incrementLast(/*inout */ _ index:Array<Int>) -> Array<Int> {
+    static func incrementLast(_ index:Array<Int>) -> Array<Int> {
         var index = index
         index[index.count-1] = index[index.count-1] + 1
         return index
