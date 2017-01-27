@@ -106,7 +106,6 @@ public class Graphics{
      * NOTE: this method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
     public func draw(_ path:CGPath){
-        //Swift.print("Grpahics.draw() ")
         drawFill(path)
         drawLine(path)
     }
@@ -114,17 +113,14 @@ public class Graphics{
      * NOTE: You can also use CGPathDrawingMode.FillStroke, but since we need to seperate stroking and filling because of we want to add dropshadow if applicaple we dont use it
      */
     public func drawFill(_ path:CGPath){
-        context!.addPath(path)//Adds the path to the context
+        context!.addPath(path)/*Adds the path to the context*/
         beginOuterShadow(path)
         switch true{
-            case (fillMode == FillMode.None)://no fill
-                //Swift.print("gradient fill none")
+        case (fillMode == FillMode.None):/*no fill*/
                 break;
-            case (fillMode == FillMode.Color)://fill
-                //Swift.print("color fill ")
+            case (fillMode == FillMode.Color):/*fill*/
                 context!.drawPath(using: CGPathDrawingMode.fill)
-            case (fillMode == FillMode.Gradient)://gradientFill
-                //Swift.print("gradient fill")
+            case (fillMode == FillMode.Gradient):/*gradientFill*/
                 context!.saveGState()/*we only want to apply a temporary clip*/
                 context!.clip() /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
