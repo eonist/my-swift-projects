@@ -1,18 +1,11 @@
 import Foundation
 class NumberParser{
     /**
-     * Returns the number if its within min-max returns min if its lower and max if its higher
-     * TODO: write examples for this
-     */
-    static func clip<T:Comparable>(_ value: T, _ minValue: T, _ maxValue: T) -> T {/*I belive the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="*/
-        return Swift.max(Swift.min(value, maxValue), minValue)
-    }
-    /**
-     * Returns the number if its within min-max returns min if its lower and max if its higher
+     * Clips a value between min and max
+     * NOTE: the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="
      * EXAMPLE:: minMax(100, 200, 400)//Output: 200
      * EXAMPLE:: minMax(500, 200, 400)//Output: 400
      * EXAMPLE:: minMax(300, 200, 400)//Output: 300
-     * NOTE: a better name for this is clip(2,1,5)
      */
     static func minMax<T:Comparable>(_ num:T , _ min : T , _ max : T) -> T{
         return Swift.max(min, Swift.min(max, num));
@@ -60,4 +53,6 @@ class NumberParser{
             return nil
         }
     }
+    //Convenience
+    static func clip<T:Comparable>(_ val: T, _ min: T, _ max: T) -> T {return minMax(val,min,max)}/*Clips a value between min and max*/
 }
