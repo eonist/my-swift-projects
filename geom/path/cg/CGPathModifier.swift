@@ -41,12 +41,11 @@ class CGPathModifier {
      */
     static func skew(_ path:inout CGPath,_ alpha:Double,_ beta:Double)-> CGPath{
         var transformation = CGAffineTransform.identity
-        // Create an affine transform that skews the coordinate system, by skewing the x axis by alpha radians and the y axis by beta radians.
+        /*Create an affine transform that skews the coordinate system, by skewing the x axis by alpha radians and the y axis by beta radians.*/
         let alp:CGFloat = CGFloat(tan(alpha))
         let bet:CGFloat = CGFloat(tan(beta))
         transformation = CGAffineTransform(1, alp, bet, 1, 0, 0);
-        // Apply that transform to the path
-        path = path.mutableCopy(using: &transformation)!
+        path = path.mutableCopy(using: &transformation)!/*Apply that transform to the path*/
         return path
     }
     /**

@@ -28,12 +28,11 @@ extension CGMutablePath{
         self.addRelativeArc(center: center, radius: xRadii, startAngle: startAngle, delta: delta, transform: matrix)//swift 3 updated
     }
 }
-
 extension CGPath {
     /**
-     * TODO: swift 3 update, this method changed drastically, I think Oleb from obj-c.io has a swift 3 version of this that is better.
      * NOTE: this method is used in DrawLab when Converting CGPath to Path
      * NOTE: Great method for parsing through CGPath instances 
+     * TODO: swift 3 update, this method changed drastically, I think Oleb from obj-c.io has a swift 3 version of this that is better.
      */
     func forEach( body: @convention(block) (CGPathElement) -> Void) {
         typealias Body = @convention(block) (CGPathElement) -> Void
