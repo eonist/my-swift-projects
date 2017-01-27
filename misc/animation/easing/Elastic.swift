@@ -19,14 +19,14 @@ class Elastic {
         t = t - 1
         return -(a! * pow(2, 10 * t) * sin((t * d - s) * (2 * CGFloat(M_PI)) / p!)) + b
     }
-    private static func easeOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         /*var s:Number;
          if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
          if (!a || a < Math.abs(c)) { a=c; s=p/4; }
          else s = p/PI_M2 * Math.asin (c/a);
          return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*PI_M2/p ) + c + b);*/
     }
-    private static func easeInOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         /*var s:Number;
          if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
          if (!a || a < Math.abs(c)) { a=c; s=p/4; }
