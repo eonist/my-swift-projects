@@ -23,14 +23,13 @@ class SVGLine:SVGGraphic{ //TODO: simplify by using points , and add id{
      * NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
      */
     override func draw() {
-        //what y
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth!, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         let offset:CGPoint = PointParser.difference(lineOffsetRect.lineFrameRect.origin, boundingBox.origin)
         //Swift.print("offset: " + "\(offset)")
         lineShape.path = CGPathParser.line(p1 + offset - boundingBox.origin,p2 + offset - boundingBox.origin)/*<-we offset the original points to make them relative to the frame*/
-        //you have to set the frame here
+        //TODO: you have to set the frame here
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

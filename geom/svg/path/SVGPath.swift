@@ -16,10 +16,9 @@ class SVGPath:SVGGraphic{
     * NOTE: closePath Straight line back to original point
     */
     init(_ commands:Array<String>, _ parameters:Array<CGFloat>, _ style:SVGStyle? = nil,_ id:String? = nil) {
-      //Swift.print("SVGPath.init()")
-      self.commands = commands
-      self.parameters = parameters
-      super.init(style,id)
+        self.commands = commands
+        self.parameters = parameters
+        super.init(style,id)
     }
     /**
      * Draws a line for the stroke and a line for the fill (Since the flash api doesnt support non-closed fills)
