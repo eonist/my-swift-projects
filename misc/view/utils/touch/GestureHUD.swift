@@ -31,9 +31,6 @@ class GestureHUD {
             ellipse?.draw()
         }
     }
-    /**
-     *
-     */
     func touchesEnded(_ event:NSEvent){
         let endingTouches:Set<NSTouch> = event.touches(matching:.ended, in: view)
         //Swift.print("endingTouches.count: " + "\(endingTouches.count)")

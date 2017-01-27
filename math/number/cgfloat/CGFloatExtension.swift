@@ -3,18 +3,15 @@ import Foundation
 var NaN:CGFloat = CGFloat.nan/*Global variable for the sake of convenience*/
 
 extension CGFloat {
-    func toFixed(_ places:Int)->CGFloat{
-        return CGFloatModifier.toFixed(self, places)
-    }
-    func isNear(_ value:CGFloat,_ epsilon:CGFloat)->Bool{
-        return CGFloatAsserter.isNear(self, value, epsilon)
-    }
+    func toFixed(_ places:Int)->CGFloat{return CGFloatModifier.toFixed(self, places)}
+    func isNear(_ value:CGFloat,_ epsilon:CGFloat)->Bool{return CGFloatAsserter.isNear(self, value, epsilon)}
     var uint:UInt{return UInt(self)}
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}
     var string:String{return String(describing: self)}
     var isNegative:Bool{return CGFloatAsserter.negative(self)}
     var isPositive:Bool{return CGFloatAsserter.positive(self)}
+    func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
 }
 /**
  * Swift 3 removed the possibility to cast CGFloat to Bool This method brings back this functionality.
