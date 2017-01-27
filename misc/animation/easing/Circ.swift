@@ -1,17 +1,17 @@
 import Foundation
 /*Circular*/
 class Circ {
-    static func easeInCircular(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInCirc(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         t = t / d
         return (-c * (sqrt( 1 - pow(t, 2)) - 1) + b)
     }
-    static func easeOutCircular(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeOutCirc(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         t = t / d - 1
         return (c * sqrt(1 - pow(t, 2)) + b)
     }
-    static func easeInOutCircular(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeInOutCirc(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         t = t / d * 2
         if t < 1 {
