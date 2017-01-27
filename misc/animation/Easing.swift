@@ -186,11 +186,12 @@ class Expo{
     static func easeOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
     }
-    private static func easeInOutExpo(){
-        /*if (t==0) return b;
-         if (t==d) return b+c;
-         if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-         return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;*/
+    static func easeInOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        if (t == 0) {return b}
+        if (t == d) {return b+c}
+        if ((t/=d/2) < 1){ return c/2 * pow(2, 10 * (t - 1)) + b}
+        t = t - 1
+        return c/2 * (-pow(2, -10 * t) + 2) + b
     }
 }
 /*
