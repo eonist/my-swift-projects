@@ -6,14 +6,10 @@ extension NumberType{
     //func clip(_ min:NumberType,_ max:NumberType)->NumberType{return NumberParser.clip(self, min, max)}/*Convenince*/
 }
 
-func == (lhs: NumberType, rhs: NumberType) -> Bool {
-    
-    return false
+func before<T:Comparable>(a: T, b: T) -> T {
+    return a + b
 }
-func < (lhs: NumberType, rhs: NumberType) -> Bool {
-    
-    return true
-}
+
 protocol NumberType:Comparable{
    
 }
