@@ -1,18 +1,16 @@
 import Foundation
 
-/*
-Radial gradient:
-
-Fill the current clipping region of `context' with a radial gradient
-between two circles defined by the center point and radius of each
-circle. The location 0 of `gradient' corresponds to a circle centered at
-`startCenter' with radius `startRadius'; the location 1 of `gradient'
-corresponds to a circle centered at `endCenter' with radius `endRadius';
-colors are linearly interpolated between these two circles based on the
-values of the gradient's locations. The option flags control whether the
-gradient is drawn before the start circle or after the end circle.
-*/
-
+/**
+ * Radial gradient:
+ * Fill the current clipping region of `context' with a radial gradient
+ * between two circles defined by the center point and radius of each
+ * circle. The location 0 of `gradient' corresponds to a circle centered at
+ * `startCenter' with radius `startRadius'; the location 1 of `gradient'
+ * corresponds to a circle centered at `endCenter' with radius `endRadius';
+ * colors are linearly interpolated between these two circles based on the
+ * values of the gradient's locations. The option flags control whether the
+ * gradient is drawn before the start circle or after the end circle.
+ */
 class RadialGradientUtils{
     /**
      * NOTE: Needs better explinations
@@ -29,9 +27,9 @@ class RadialGradientUtils{
         let startCenter:CGPoint = endCenter.interpolate(endFocusPoint, focalRatio)
         let startRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
         let endRadius:CGFloat = minRadius/*The radius of the gradient*/
-        //Swift.print("RadialGradientUtils gradient.endRadius: " + "\(gradient.endRadius)")
-        //Swift.print("RadialGradientUtils gradient.endRadius!.width: " + "\(gradient.endRadius!.width)")
-        //Swift.print("RadialGradientUtils gradient.endRadius!.height: " + "\(gradient.endRadius!.height)")
+        //Swift.print("RadialGradientUtils gradient.endRadius:  \(gradient.endRadius)")
+        //Swift.print("RadialGradientUtils gradient.endRadius!.width: \(gradient.endRadius!.width)")
+        //Swift.print("RadialGradientUtils gradient.endRadius!.height:  \(gradient.endRadius!.height)")
         let scale:CGPoint = CGPoint(gradient.endRadius!.width,gradient.endRadius!.height)
         //Swift.print("scale: " + "\(scale)")
         let offset:CGPoint = CGPoint(-minRadius + (minAxis*gradient.endCenter!.x),-minRadius + (minAxis*gradient.endCenter!.y))
