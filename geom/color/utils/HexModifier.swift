@@ -6,7 +6,7 @@ class HexModifier {
      * PARAM: first: The first color
      * PARAM: second: The second color
      * PARAM: ratio: The ratio of the second color to blend, .5 = equal ratio, .9 = 1:9, .2 = 8:2
-     * RETURN: The color value as a uint.
+     * RETURN: The color value as a uint
      * NOTE: you can also use the Native NSColor.blended(withFraction fraction: CGFloat, of color: NSColor) -> NSColor?
      */
     static func blend(_ first:UInt, _ second:UInt, _ ratio:CGFloat) -> UInt {// :TODO: rename?
@@ -17,12 +17,12 @@ class HexModifier {
         return a.uint | (b.uint << 8) | (c.uint << 16)
     }
     /**
-     * Brighten (or darken) a color by a scalar amount.
-     * PARAM: color: The color to brighten/darken.
+     * Brighten (or darken) a color by a scalar amount
+     * PARAM: color: The color to brighten/darken
      * PARAM: modifier: The scalar to modify the brightness, 0 = no change, ie. 0.9, 1.1
-     * @return	The modified color
+     * RETURNS:	The modified color
      */
-    static func brighten(_ color:UInt, _ modifier:UInt) -> UInt {// :TODO: rename?
+    static func brighten(_ color:UInt, _ modifier:UInt) -> UInt {
         let z:UInt = 0xff * modifier;
         var a:UInt; var b:UInt; var c:UInt;
         a = ((color & 0xff) + z)
@@ -51,6 +51,6 @@ class HexModifier {
      * RETURN: The faded color
      */
     static func fade(_ color:UInt, _ modifier:UInt) -> UInt {
-        return blend(color, 0xFFFFFF, CGFloat(modifier));
+        return blend(color, 0xFFFFFF, CGFloat(modifier))
     }
 }

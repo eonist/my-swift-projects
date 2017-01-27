@@ -3,7 +3,7 @@ import Foundation
 class CMYKParser {
     /**
      * RGB from the respective figures, HSV sequences in terms of returns.
-     * RGB values are as follows.
+     * RGB values are as follows
      * R - a number from 0 to 255
      * G - a number from 0 to 255
      * B - a number from 0 to 255
