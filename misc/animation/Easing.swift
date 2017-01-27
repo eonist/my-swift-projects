@@ -181,15 +181,17 @@ class Bounce{
 class Expo{
     //Exponential
     static func easeInExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-        return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
+        return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b
     }
     static func easeOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
-        return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;
+        return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b
     }
     static func easeInOutExpo(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
+        var t = t
         if (t == 0) {return b}
         if (t == d) {return b+c}
-        if ((t/=d/2) < 1){ return c/2 * pow(2, 10 * (t - 1)) + b}
+        t = t / d * 2
+        if (t < 1){ return c/2 * pow(2, 10 * (t - 1)) + b}
         t = t - 1
         return c/2 * (-pow(2, -10 * t) + 2) + b
     }
