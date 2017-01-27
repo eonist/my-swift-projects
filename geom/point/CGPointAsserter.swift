@@ -1,23 +1,23 @@
 import Foundation
 typealias PointAsserter = CGPointAsserter//legacy support
-/*
-TODO: When needed add these:
-oppositeDirectional
-isContraDirectional
-isNearContraDir
-parallel
-coDirectional
-isCoDirectional
-isNearCoDir
-perpendicular
-intersects
-within
-absoluteWithin
-absolutleyWithin
-nearAbsolutleyWithin
-collinear
-nearEquals
-*/
+/**
+ * TODO: When needed add these:
+ * oppositeDirectional
+ * isContraDirectional
+ * isNearContraDir
+ * parallel
+ * coDirectional
+ * isCoDirectional
+ * isNearCoDir
+ * perpendicular
+ * intersects
+ * within
+ * absoluteWithin
+ * absolutleyWithin
+ * nearAbsolutleyWithin
+ * collinear
+ * nearEquals
+ */
 class CGPointAsserter {
     /**
      * Asserts if p1 is less than p2 (but eigther x OR y can be equal to the other x or y)
@@ -25,14 +25,14 @@ class CGPointAsserter {
      * NOTE: but both x and y cant be the same in both points
      */
     static func less(_ p1:CGPoint, _ p2:CGPoint) -> Bool {
-        return (p1.x <= p2.x && p1.y < p2.y) || (p1.x < p2.x && p1.y <= p2.y)
+    return (p1.x <= p2.x && p1.y < p2.y) || (p1.x < p2.x && p1.y <= p2.y)
     }
     /**
      * Asserts if p1 is more than p2  (but eigther x OR y can be equal to the other x or y)
      * NOTE: think PARAM: p1 is to the right of PARAM: p2 or bellow PARAM: p2
      * NOTE: but both x and y cant be the same in both points
      */
-static func more(_ p1:CGPoint, _ p2:CGPoint) -> Bool {
+    static func more(_ p1:CGPoint, _ p2:CGPoint) -> Bool {
         return (p1.x >= p2.x && p1.y > p2.y) || (p1.x > p2.x && p1.y >= p2.y)
     }
     /**

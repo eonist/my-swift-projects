@@ -4,6 +4,7 @@ import Foundation
  * TODO: Use uint?
  * TODO: Rename to noOp,moveTo,lineTo etc. 
  * TODO: DEPRECATE ht uppercase constants
+ * TODO: This is a great candidate for enum
  */
 class PathCommand {
     static var NO_OP:Int = 0/*0 Represents the default "do nothing" command.*/
