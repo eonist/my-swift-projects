@@ -1,7 +1,5 @@
 import Foundation
 
-extension Array where Element:Equatable, Element:Comparable{
-    func index(value:Element)->Int{
-        return ArrayParser.index(self, value)
-    }
+extension Comparable{
+    func clip(_ min:T,_ max:T)->T{return NumberParser.clip(self, min, max)}/*Convenince*/
 }
