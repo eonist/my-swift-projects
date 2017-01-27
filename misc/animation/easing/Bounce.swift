@@ -3,10 +3,10 @@ import Foundation
  * Bounce
  */
 class Bounce{
-    static func easeInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
-        return c - easeOutBounce(d - t, 0, c, d) + b
+    static func easeIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+        return c - easeOut(d - t, 0, c, d) + b
     }
-    static func easeOutBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+    static func easeOut(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         var t = t
         t = t / d
         if t < 1 / 2.75 {
@@ -22,18 +22,18 @@ class Bounce{
             return c * (7.5625 * t * t + 0.984375) + b
         }
     }
-    static func easeInOutBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+    static func easeInOut(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         if t < d / 2 {
-            return easeInBounce(t * 2, 0, c, d) * 0.5 + b
+            return easeIn(t * 2, 0, c, d) * 0.5 + b
         } else {
-            return easeOutBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b
+            return easeOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b
         }
     }
-    static func easeOutInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
+    static func easeOutIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         if t < d / 2 {
-            return easeOutBounce(t * 2, b, c / 2, d)
+            return easeOut(t * 2, b, c / 2, d)
         } else {
-            return easeInBounce((t * 2) - d, b + c / 2, c / 2, d)
+            return easeIn((t * 2) - d, b + c / 2, c / 2, d)
         }
     }
 }
