@@ -14,24 +14,7 @@ class Easing{
         //Try to do Easing.Bounce.easeInBounce etc. maybe?
     
     
-    //Quartic
-    static func easeInQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        var t = t
-        t = t/d
-        return c*t*t*t*t + b
-    }
-    static func easeOutQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        var t = t
-        t = (t/d)-1//<--the brackets are important
-		return -c * (t*t*t*t - 1) + b
-	}
-    static func easeInOutQuart(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
-        var t = t
-        t = t/(d/2)//<--the brackets are important
-		if (t < 1) {return c/2*t*t*t*t + b}
-		t = t-2
-		return -c/2 * (t*t*t*t - 2) + b
-	}
+    
 	//Quadratic
     static func easeInQuad(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)-> CGFloat{
         var t = t
@@ -116,12 +99,7 @@ class Easing{
         return c/2*((t-=2)*t*t + 2) + b;*/
     }
 }
-class Linear{
-    //No easing, linear animation
-    static func easeLinear(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
-        return c*t/d + b
-    }
-}
+
 class Sine{
     //Sine SINUSOIDAL EASING: sin(t)
     static func easeInSine(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
