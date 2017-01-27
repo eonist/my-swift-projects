@@ -154,9 +154,8 @@ class Easing{
         return c/2*((t-=2)*t*t + 2) + b;*/
     }
 }
-
+/*Bounce*/
 class Bounce{
-    /*Bounce*/
     static func easeInBounce(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat) -> CGFloat{
         return c - easeOutBounce(d - t, 0, c, d) + b
     }
