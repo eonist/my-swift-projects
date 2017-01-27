@@ -1,9 +1,9 @@
 import Foundation
-/*
-* CGContextGetClipBoundingBox(context) - Returns the clipping area of the context
-* CGContextGetPathBoundingBox(context) - havent got this to work yet, may only work for paths created by the context not paths you add? or open paths or or?
-* CGContextGetTypeID() - the context id?
-*/
+/**
+ * CGContextGetClipBoundingBox(context) - Returns the clipping area of the context
+ * CGContextGetPathBoundingBox(context) - havent got this to work yet, may only work for paths created by the context not paths you add? or open paths or or?
+ * CGContextGetTypeID() - the context id?
+ */
 public class CGContextModifier{
     /**
      * Clears the CGContext

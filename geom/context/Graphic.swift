@@ -1,12 +1,12 @@
 import Cocoa
 import QuartzCore
 /**
- * TODO: Write an example
+ * IMPORTANT: You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
  * NOTE: Example is in the Graphics class
  * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
- * IMPORTANT: You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
+ * TODO: Write an example
  */
 
 class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
@@ -15,7 +15,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
     var fillStyle:IFillStyle? //{get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
     var lineStyle:ILineStyle?
-    var lineOffsetType:OffsetType;
+    var lineOffsetType:OffsetType
     //the bellow line was upgraded to swift 3
     var selector: ((_ layer: CALayer, _ ctx:CGContext) -> ())?/*this holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
@@ -40,12 +40,6 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         self.lineShape.delegate = self
         //self.setDelegate(self)
     }
-    
-    //Idea
-    //What if you pass a weak ref of this in to the shape layers, and in the shape you override draw(in context) and pass the ctx into the ref, then you have a custom drawCTX method that calls super.draw(in ctx)
-    //this way you created a work around for the absence of drawLayer in swift 3
-    //also do the same for actionForLayer
-    
     /**
      * Stops implicit animation from happening
      * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
@@ -53,7 +47,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: this method is also called on every frame of the animation it seems
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
-    /*override*/ func action(for layer: CALayer, forKey event: String) -> CAAction? {//<---this method is probably not needed
+    func action(for layer: CALayer, forKey event: String) -> CAAction? {//<---this method is probably not needed
         //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
         return NSNull()//super.actionForLayer(layer, forKey: event)//
     }
@@ -76,7 +70,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
      */
-    /*override*/ func draw(_ layer: CALayer, in ctx: CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
+    func draw(_ layer: CALayer, in ctx: CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
         //Swift.print("Graphic.drawLayer(layer,inContext)")
         selector!(layer, ctx)/*call the selector*/
         //updateTrackingArea()
@@ -107,19 +101,3 @@ extension Graphic{
         self.lineStyle = lineStyle
     }
 }
-/*override func animationForKey(key: String) -> AnyObject? {
-    Swift.print("animationForKey")
-    return super.animationForKey(key)
-}
-override func animationDidStart(anim: CAAnimation) {
-    Swift.print("animationDidStart: " + "\(anim)")
-}
-override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    Swift.print("animationDidStop: " + "\(anim)")
-}*/
-/*
-let actions = ["transform": NSNull(),"position":NSNull(),"frame": NSNull(),"bounds": NSNull(),"frame.position":NSNull()]
-self.fillShape.actions = actions;
-self.layer!.actions = actions;
-self.lineShape.actions = actions;
-*/
