@@ -120,6 +120,6 @@ extension NSView {
     var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
     var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
     //swift 3 update: The compiler complaints if the bellow are not commented out. these are now implemented in IElement, you could try to use upper-case X and Y?!?
-    //var x:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
-    //var y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
+    var x:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
+    var y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
 }
