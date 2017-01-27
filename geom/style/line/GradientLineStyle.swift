@@ -7,8 +7,7 @@ class GradientLineStyle:LineStyle,IGradientLineStyle {
         super.init(thickness, color, lineCap, lineJoin, miterLimit)
     }
 }
-/*Convenient extensions*/
-extension GradientLineStyle{
+extension GradientLineStyle{/*Convenient*/
     convenience init(_ gradient:IGradient,_ lineStyle:ILineStyle) {
         self.init(gradient,lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin, lineStyle.miterLimit);
     }
