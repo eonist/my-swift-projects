@@ -14,10 +14,10 @@ class Elastic {
             a = c
             s = p! / 4
         } else {
-            s = p! / (2 * Float(M_PI)) * asin(c / a!)
+            s = p! / (2 * CGFloat(M_PI)) * asin(c / a!)
         }
         t = t - 1
-        return -(a! * pow(2, 10 * t) * sin((t * d - s) * (2 * M_PI) / p!)) + b
+        return -(a! * pow(2, 10 * t) * sin((t * d - s) * (2 * CGFloat(M_PI)) / p!)) + b
     }
     private static func easeOutElastic(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         /*var s:Number;
