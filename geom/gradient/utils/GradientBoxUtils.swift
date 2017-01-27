@@ -8,9 +8,7 @@ class GradientBoxUtils{
      * EXAMPLE: GradientBoxUtils.points(CGRect(0,0,100,100), 45*Trig.rad) //Ouputs: 0,0 and 100,100
      */
     static func points(_ rect:CGRect, _ angle:CGFloat)->(start:CGPoint,end:CGPoint){
-        //Swift.print("rect: " + "\(rect)")
-        //Swift.print("angle: " + "\(angle)")
-        //Swift.print("GradientBoxUtils.angle: " + "\(angle)")
+        //Swift.print("GradientBoxUtils rect: \(rect) angle: \(angle) angle: \(angle)")
         var cornerPoint:CGPoint = CGPoint()
         switch true{
             case CGFloatRangeAsserter.within(Trig.tl, angle):
@@ -29,11 +27,9 @@ class GradientBoxUtils{
                 fatalError("Angle is out of the allowed range (-π to π): " + "\(angle)")
                 break;
         }
-        //Swift.print("cornerPoint: " + "\(cornerPoint)")
-        //Swift.print("rect.center: " + "\(rect.center)")
+        //Swift.print("cornerPoint: \(cornerPoint) rect.center: \(rect.center) ")
         //let normalizedAngle = Trig.normalize(angle)//clamps the angle between: 0 and Math.PI*2 Radian (0 - 6.28)
-        //Swift.print("normalizedAngle: " + "\(normalizedAngle)")
-        //Swift.print("angle: " + "\(angle)")
+        //Swift.print("normalizedAngle: \(normalizedAngle) angle: \(angle)")
         let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
         //Swift.print("distPoint: " + String(distPoint))
         let end:CGPoint = rect.center.polarPoint(distPoint.x, angle)

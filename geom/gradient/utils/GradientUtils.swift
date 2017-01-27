@@ -33,7 +33,7 @@ class GradientUtils{
         else{fatalError("this type is not supported: " + "\(gradient)")}/*future support for Canonical gradient*/
     }
     /**
-     * linear
+     * Linear
      */
     static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->LinearGraphicsGradient{
         //Swift.print("gradient.rotation: " + "\(gradient.rotation)")
@@ -44,7 +44,7 @@ class GradientUtils{
         return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
     }
     /**
-     * radial
+     * Radial
      */
     static func radialGraphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->RadialGraphicsGradient{
         //TODO:// Extract the bellow lines to GradientUtils in IGradient
@@ -52,7 +52,6 @@ class GradientUtils{
         return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
     }
 }
-
 /*
 //its also possible to do this with component colors:
 //var components: [CGFloat] = [ 1.0, 0, 0.4, 1.0,  /* Start color */0.8, 0.8, 0, 1.0 /*End color*/]
