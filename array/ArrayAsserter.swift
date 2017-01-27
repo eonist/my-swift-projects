@@ -10,7 +10,6 @@ class ArrayAsserter {
      * NOTE: This method compares if the instance has the same variables, it does not compare if the instance has the same referene point, which may be suitable in some situations, maybe make a method for this?
      * EXAMPLE: ArrayAsserter.contains([1,2,3], [1,2], false)//true
      * EXAMPLE: ArrayAsserter.contains([1,2,3], [1,2], true)//false, the length of a and b must be the same
-     * TODO: create a better description
      */
     static func contains<T:Equatable>(_ a:[T], _ b:[T], _ strict:Bool = false)->Bool {
         var score:Int = 0
@@ -25,9 +24,9 @@ class ArrayAsserter {
      * Asserts if an array has an item
      * NOTE: Determines whether the specified array contains the specified value
      * NOTE: Only works with Equatable types
-     * @param arr The array that will be checked for the specified value.
-     * @param value The object which will be searched for within the array
-     * @return True if the array contains the value, False if it does not.
+     * PARAM: arr: The array that will be checked for the specified value.
+     * PARAM: value: The object which will be searched for within the array
+     * RETURN: True if the array contains the value, False if it does not.
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
      */
@@ -35,7 +34,6 @@ class ArrayAsserter {
         return ArrayParser.index(arr, value) != -1
     }
     /**
-     * New
      * IMPORTANT: use none optional variables in the PARAM: arr and the PARAM: item
      * NOTE: Works by comparing references, not values. Use the other has method if you want to compare value.
      */
@@ -53,7 +51,7 @@ class ArrayAsserter {
     static func equals<T>(_ a:Array<T>, _ b:Array<T>) -> Bool{
         if(a.count != b.count) { return false }
         for i in 0..<a.count{
-            if((a[i] as AnyObject) !== (b[i] as AnyObject)) {//Doesn't the !== only work on the same reference, yepp it does. To comapre value create another method
+            if((a[i] as AnyObject) !== (b[i] as AnyObject)) {
                 return false
             }
         }
@@ -64,10 +62,10 @@ class ArrayAsserter {
      * NOTE: same as the other equals method but asserts value and not reference
      * NOTE: This method has support for both Equatable and Comparable aswell, similar to Array.index, the equatable part enables support for numeric types and the comparable part enables support for string types
      * NOTE: there are two methods named equals in this class, the correct one will be infered from the POV of the callee
-     * TODO: create add this method to ArrayExtensions
      * IMPORTANT: This method compares value not reference
      * EXAMPLE: ArrayAsserter.equals(["",""], ["","",""])//false
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
+     * TODO: create add this method to ArrayExtensions
      */
     static func equals<T>(_ a:Array<T>, _ b:Array<T>) -> Bool where T:Equatable, T:Comparable{
         if(a.count != b.count) { return false }
