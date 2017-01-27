@@ -4,8 +4,8 @@ import Foundation
  * EXAMPLE: <circle cx="30" cy="30" r="20" style="stroke: black; fill: none;" />
  */
 class SVGCircle : SVGGraphic{
-    var cx:CGFloat//center x
-    var cy:CGFloat//center y
+    var cx:CGFloat/*center x*/
+    var cy:CGFloat/*center y*/
     var r:CGFloat
     init(_ cx:CGFloat, _ cy:CGFloat, _ r:CGFloat, _ style : SVGStyle? = nil, _ id : String? = nil) {
       self.cx = cx

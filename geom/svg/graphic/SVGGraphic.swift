@@ -11,7 +11,6 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
     var lineShape:Shape
     var trackingArea:NSTrackingArea?
     override init(_ style:SVGStyle? = nil,_ id:String? = nil) {
-        //Swift.print("SVGGraphic.init")
         fillShape = Shape()
         lineShape = Shape()
         super.init(style,id!)
