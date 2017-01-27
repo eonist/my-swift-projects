@@ -19,7 +19,7 @@ class FileModifier{
 		}
 	}
     /**
-     *
+     * Copies a file to another location
      */
     static func copy(_ fromURL:String,_ toURL:String){
         let fileManager = FileManager.default

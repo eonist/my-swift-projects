@@ -28,13 +28,13 @@ class FilePathParser {
         return path.absoluteString
     }
     /**
-     * NOTE: you can also do: NSString(string: self).stringByExpandingTildeInPath
+     * NOTE: You can also do: NSString(string: self).stringByExpandingTildeInPath
      */
     static func userHomePath()->String{
         return NSHomeDirectory()
     }
     /**
-     * fileName
+     * RETURNS: fileName
      * EXAMPLE: FilePathParser.fileName(fileURL)
      * NOTE: you can also use: 
      * let attributes = try! NSURL(fileURLWithPath:"~/Desktop/temp.xml".tildePath).resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
@@ -44,7 +44,7 @@ class FilePathParser {
         return withExtension ? fileURL.absoluteURL.lastPathComponent : fileURL.absoluteURL.deletingPathExtension().lastPathComponent//was-> absoluteURL.URLByDeletingPathExtension before swift 3 upgrade
     }
     /**
-     * directory
+     * Returns directory
      * EXAMPLE: FilePathParser.directory(fileURL)
      */
     static func directory(_ fileURL:URL)->String{
