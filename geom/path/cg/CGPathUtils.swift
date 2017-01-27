@@ -127,15 +127,14 @@ private class BasicPathDataParser{
      * TODO: the start is the end of prev command
      */
     static func arcAt(_ pathData:Array<CGFloat>,_ pathDataIndex:Int,_ start:CGPoint)->IArc {
-        //Swift.print("START: " + start);
         return Arc(start, pathData[pathDataIndex], pathData[pathDataIndex+1], pathData[pathDataIndex+2], Bool(pathData[pathDataIndex+3]), Bool(pathData[pathDataIndex+4]), CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6]), CGPoint(pathData[pathDataIndex+7],pathData[pathDataIndex+8]))
     }
 }
 private class BasicCommandParser{
     /**
      * Returns the number of parameters for a specific command type
-     * // :TODO: include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
-     * // :TODO: isnt this function superflousouse since you can just trace the actual command and get the same value?
+     * // :TODO: Include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
+     * // :TODO: Isn't this function superflousouse since you can just trace the actual command and get the same value?
      */
     static func commandLength(_ command:Int)->Int {
         if(command == PathCommand.CLOSE || command == PathCommand.NO_OP) {return 0}
