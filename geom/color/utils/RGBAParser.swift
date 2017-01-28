@@ -5,7 +5,7 @@ class RGBAParser {
      * EXAMPLE: rgba(NSColor.redColor()).r//Outputs //1.0
      * IMPORTANT: this return 0-1.0 values
      */
-    static func rgba(_ nsColor:NSColor)->RGBA{//<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)
+    static func rgba(_ nsColor:NSColor)->RGBA{/*<--was: (r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat)*/
         let ciColor:CIColor = CIColor(color: nsColor)!
         return RGBA(ciColor.red * 255,ciColor.green * 255,ciColor.blue * 255,ciColor.alpha * 255)//<--you could just do: color.redComponent.uint etc, nopp you can't, redComponent requires colorspace etc see: http://stackoverflow.com/questions/15682923/convert-nscolor-to-rgb/34115587#34115587
     }
