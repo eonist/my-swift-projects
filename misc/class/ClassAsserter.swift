@@ -10,8 +10,8 @@ class ClassAsserter{
         return ClassParser.instanceByClassType(instances, classType) != nil
     }
     /**
-     * EXAMPLE: Classes: Swift.print(ofType(a,A.self))//true or false
-     * EXAMPLE: Protocols: Swift.print(ofType(a,IDescribable.self))//true or false
+     * EXAMPLE: Classes: print(ofType(a,A.self))//true or false
+     * EXAMPLE: Protocols: print(ofType(a,IDescribable.self))//true or false
      */
     static func ofType<T>(_ instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
         return instance as? T != nil

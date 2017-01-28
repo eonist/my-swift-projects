@@ -8,9 +8,6 @@ class ClipboardAsserter {
         let pasteboard = NSPasteboard.general()
         return pasteboard.canReadItem(withDataConformingToTypes: [clipboardFormat])
     }
-    /**
-     *
-     */
     static func hasString() -> Bool {//Untested
         return hasData(NSPasteboardTypeString)
     }
