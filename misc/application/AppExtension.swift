@@ -35,7 +35,6 @@ private class Utils{
      */
     static func performAction(_ windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
         for window in windows{
-            //print("windowNumber: " + "\(win.windowNumber)")
             if(action(window)){
                 return window
             }
