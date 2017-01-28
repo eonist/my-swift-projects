@@ -120,6 +120,19 @@ class TriangleMath {
         return a
     }
     /**
+     * Returns the centroid point of a triangle
+     * PARAM: a,b,c are the triangle corner points
+     * NOTE: basicly its the average point of the mid-point of each line that makes out a triangle
+     * NOTE: the mid point of each side to the opposite angle point will pass through the centroid
+     * NOTE: Applies to any type of triangle
+     * NOTE: other triangle centers include:orthocenter,incenter,circle center, circumcircle, circumcenter
+     * NOTE: The euler line goes through: orthocenter, centroid and circumcenter
+     * // :TODO: make functions for the other triangle centers and the euler line
+     */
+    static func centeroid(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint)->CGPoint {
+        return CGPoint((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3)
+    }
+    /**
      * Finds the length of BC, BD or CD relating to the Angle bisector (a perpendicular line from angle A, perpendicular in that it diveds the angle A in two)
      * NOTE: Another Triangle Angle Bisector Theorem: CA/CD = BA/DB
      * NOTE: Original Triangle Angle Bisector Theorem: BD/DC = AB/AC
