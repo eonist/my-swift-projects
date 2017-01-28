@@ -10,7 +10,6 @@ class LayoutUtils {
      */
     static func instance(_ value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
         let params:Array<Any> = value is Array<Any> ? value as! Array<Any> : [value]
-        //Swift.print(params[0])
         let classType:ILayout.Type = layoutClassType
         var instance:ILayout
         switch(params.count){
