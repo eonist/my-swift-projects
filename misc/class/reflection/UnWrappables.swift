@@ -49,9 +49,8 @@ extension CGSize:UnWrappable{
         return CGSize(values[0],values[1]) as? T
     }
 }
-extension RadialGradient:UnWrappable{
+extension RadialGradient:UnWrappable{//TODO: move to RadialGradient.swift
     static func unWrap<T>(_ xml:XML) -> T? {
-        //Swift.print("RadialGradient.unWrap()")
         let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
         let startCenter:CGPoint? = unWrap(xml, "startCenter")
         let endCenter:CGPoint? = unWrap(xml, "endCenter")
@@ -60,7 +59,7 @@ extension RadialGradient:UnWrappable{
         return RadialGradient(linearGradient!.colors, linearGradient!.locations, linearGradient!.rotation,startCenter,endCenter,startRadius,endRadius, linearGradient!.transformation) as? T
     }
 }
-extension LinearGradient:UnWrappable{
+extension LinearGradient:UnWrappable{//TODO: move to LinearGradient.swift
     static func unWrap<T>(_ xml:XML) -> T? {
         //Swift.print("LinearGradient.unWrap()")
         let colors:Array<CGColor?> = unWrap(xml, "colors")
@@ -82,7 +81,7 @@ extension CGTransform:UnWrappable{
         return transformation as? T
     }
 }
-extension DropShadow:UnWrappable{
+extension DropShadow:UnWrappable{//TODO: move to DropShadow.swift
     static func unWrap<T>(_ xml:XML) -> T? {
         let color:NSColor = unWrap(xml, "color")!
         let offsetX:CGFloat = unWrap(xml, "offsetX")!
@@ -92,22 +91,3 @@ extension DropShadow:UnWrappable{
         return DropShadow(color, offsetX,offsetY, blurRadius, inner) as? T
     }
 }
-
-
-/*
-old code:
-
-switch(true) {
-case type == "String":return value as? T
-case type == "CGFloat":return value.cgFloat as? T
-case type == "Double":return value.double as? T
-case type == "Int":return value.int as? T
-case type == "UInt":return value.uint as? T
-case type == "Bool":return value.bool as? T
-case type == "DropShadow":return value as? T
-//if T is UNWrappable then (T as unwrappaple).unwrap(xml)
-//TODO: add the types above to extensions instead
-default : fatalError("TYPE NOT SUPPORTED: " + "\(type)" + " value: " + "\(value)")
-}
-
-*/

@@ -8,9 +8,6 @@ class UnWrapUtils{
         let child:XML = xml.firstNode(key)!
         return any(child)
     }
-    /**
-     *
-     */
     private static func any(_ xml:XML) -> Any{
         let type:String = XMLParser.attribute(xml, "type")!
         if(xml.hasSimpleContent){
@@ -22,9 +19,6 @@ class UnWrapUtils{
             fatalError("type not supported: " + "\(type)")
         }
     }
-    /**
-     *
-     */
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
         if(type == String(describing:CGFloat.self)){
             return  CGFloat.unWrap(strVal)!
@@ -40,9 +34,6 @@ class UnWrapUtils{
             fatalError("type not supported yet: " + "\(type)")
         }
     }
-    /**
-     *
-     */
     private static func complexAny(_ xml:XML,_ type:String)->Any{
         if(type == "Array"){
             let val:[Any] = anyArray(xml)
