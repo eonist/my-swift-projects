@@ -61,17 +61,14 @@ private class Utils{
     static func handleValue(_ value:Any,_ name:String? = nil)->XML{
         var xml = XML()
         let objectType:String = "\(type(of: value))"//if this doesn't work use generics
-        //Swift.print("handleValue(): name: \(name) objectType \(objectType) value: \(value)")
         if(name != nil){
             xml["type"] = objectType
         }
-        //print(instanceName)
         xml.name = name != nil ? name! : objectType/*the name of instance class*/
         if("\(value)" == "nil" || "\(value)" == "Optional(nil)"){/*Nil is not nil when mirroring. So you can't do value != nil. Casting to string is a workaround for this*/
             xml["type"] = extractClassType(value)
         }else{
             let properties = Reflection.reflect(value)
-            //Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
                 handleProperty(&xml,$0.label,$0.value)
             }
