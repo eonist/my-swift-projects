@@ -62,7 +62,6 @@ class TrigParser {
         return atan2(sin(endAngle - startAngle), cos(endAngle - startAngle))
     }
     /**
-     * new
      * NOTE: you need to abs() the result if you want only posetive angleSpan
      */
     static func difference(_ pivot:CGPoint,_ p1:CGPoint,_ p2:CGPoint) -> CGFloat{
@@ -129,16 +128,16 @@ class TrigParser {
     }
     /**
      * Returns the angle between angles PARAM: a and PARAM: b
+     * PARAM: a The first angle (between 0 and 2PI)
+     * PARAM: b The second angle (between 0 and 2PI)
      * NOTE: you need to normalize PARAM: a and PARAM: b before using this method, between 0 and 2PI or? (or else negative values may not work, 2 and -2 wont yield -PI)
      * NOTE: this does not return the average between two angles, the average is just (angleA+angleB)/2
      * NOTE: think of the angle bisector as a trajactory that splits two angle points, where this trajectory hits is the angleBisector
      * NOTE: the symbole for bisector is sometimes "s"
      * NOTE: you can use TriangleMath.bisectorPoint(pt1, pt2, pt3) and calc the angle between anchor and this point as an alternative to this method
      * NOTE: you can also use: TriangleMath.bisectorPT() which uses this method but accepts points
-     * EXAMPLE: Trig.angleBisector(Trig.QPI,  Trig.HPI+Trig.HPI));//1.9634954084936207
-     * PARAM: a The first angle (between 0 and 2PI)
-     * PARAM: b The second angle (between 0 and 2PI)
      * NOTE: see TriangleMath for other bisector methods
+     * EXAMPLE: Trig.angleBisector(Trig.QPI,  Trig.HPI+Trig.HPI));//1.9634954084936207
      */
     static func angleBisector(_ a:CGFloat,_ b:CGFloat) -> CGFloat {// TODO: rename to just bisector, bisectorAngle
         return a + ((b - a)/2)
