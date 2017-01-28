@@ -5,13 +5,8 @@ class TrigAsserter {
      * NOTE: be cautiouse when the difference == Trig.PI since it can be in both states at the same time, anti clockwise and clockwise
      */
     static func isClockWise(_ center:CGPoint,_ p1:CGPoint,_ p2:CGPoint)->Bool {
-        //print("center: " + "\(center)")
-        //print("p1: " + "\(p1)")
-        //print("p2: " + "\(p2)")
         let a:CGFloat = TrigParser.angle(center, p1)
-        //print("a: " + "\(b)")
         let b:CGFloat = TrigParser.angle(center, p2)
-        //print("b: " + "\(b)")
         return isClockWiseByAngle(a, b)
     }
     /**
@@ -20,7 +15,6 @@ class TrigAsserter {
      */
     static func isClockWiseByAngle(_ a:CGFloat,_ b:CGFloat)->Bool {
         let difference:CGFloat = TrigParser.difference(a, b)
-        //print("  "+"  "+"  "+"  "+"difference: " + "\(difference)");
         if(difference == Trig.pi || difference == -Trig.pi){
             return true
         }else if(difference == 0) {
@@ -43,9 +37,7 @@ class TrigAsserter {
      */
     static func isContraDirectional(_ a:CGFloat,_ b:CGFloat) -> Bool {
         let normalizedA:CGFloat = Trig.normalize(a)
-        //print("normalizedA: " + normalizedA)
         let inverseAngle:CGFloat = Trig.normalize(b-π)
-        //print("inverseAngle: " + inverseAngle)
         return normalizedA == inverseAngle
     }
     /**
@@ -58,7 +50,6 @@ class TrigAsserter {
         return isCodirectional(a, b) || isContraDirectional(a, b)
     }
     /**
-     * beta
      * NOTE: make sure both angles have the same normilization applied
      * NOTE: normalize between 0 and 2PI since -PI and PI is co-dir but not equalTODO: but 0 and 2PI is also co-dir but not equal, fix it some other way
      */
@@ -66,9 +57,6 @@ class TrigAsserter {
         if((a == π && b == -π) || (a == -π && b == π)) {return true}
         else {return a == b}
     }
-    /**
-     *
-     */
     static func isNormal(_ angle1:CGFloat,_ angle2:CGFloat) -> Bool {
         return isParallel(angle1, angle2 + (π/2))
     }
