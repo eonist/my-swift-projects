@@ -194,6 +194,13 @@ class TriangleMath {
     /**
      * Returns the Side a of an triangle
      * Based on formula: a/SinA = c/SinC
+     */
+    static func cACToa(_ c:CGFloat,_ A:CGFloat,_ C:CGFloat):CGFloat {
+        return sin(A*Trig.rad) * (c / sin(C*Trig.rad));
+    }
+    /**
+     * Returns the Side a of an triangle
+     * Based on formula: a/SinA = c/SinC
      * NOTE: uses radian instead of degree
      * NOTE i think this also works on non-right-angle-triangles
      */
