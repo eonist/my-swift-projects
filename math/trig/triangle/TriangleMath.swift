@@ -195,8 +195,8 @@ class TriangleMath {
      * Returns the Side a of an triangle
      * Based on formula: a/SinA = c/SinC
      */
-    static func cACToa(_ c:CGFloat,_ A:CGFloat,_ C:CGFloat):CGFloat {
-        return sin(A*Trig.rad) * (c / sin(C*Trig.rad));
+    static func cACToa(_ c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
+        return sin(A*Trig.rad) * (c / sin(C*Trig.rad))
     }
     /**
      * Returns the Side a of an triangle
@@ -222,6 +222,13 @@ class TriangleMath {
      */
     static func aACToc(_ a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
         return sin(C*Trig.rad) * (a / sin(A*Trig.rad))
+    }
+    /**
+     * Returns the Side b of an triangle
+     * NOTE: Based on formula: b/SinB = c/SinC
+     */
+    static func cBCTob(_ c:CGFloat,_ B:CGFloat,_ C:CGFloat) ->CGFloat {
+        return Math.sin(B*Trig.RAD) * (c / Math.sin(C*Trig.RAD))
     }
     /**
      * Returns the Side b of an triangle
