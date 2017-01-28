@@ -29,11 +29,3 @@ extension ISizeable{
         }
     }
 }
-/*mutating func setSize(width:CGFloat,height:CGFloat){
-self.width = width
-self.height = height
-}*/
-/*mutating func setSize(size:CGSize){
-self.width = size.width
-self.height = size.height
-}*/
