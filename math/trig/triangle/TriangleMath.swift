@@ -298,6 +298,20 @@ class TriangleMath {
          let aSquared:CGFloat = pow(b, 2)+pow(c, 2)-(2*b*c)*cosineOfAngle
          return sqrt(aSquared)
      }
+     /**
+      * // :TODO: this is possible, its basically bcAToa, but you switch out the c in the equation, you have done this on paper before so it will work once you code it.
+      */
+     static func abAToc() {
+         
+     }
+     /**
+      * Returns the angle B for any triangle
+      * Base Formula: sin(A)/a = sin(A)/b
+      */
+     public static function abAToB(_ a:CGFloat, _ b:CGFloat, _ A:_ CGFloat) -> CGFloat {
+         let sinB:CGFloat = (b*sin(A*Trig.rad))/a
+         return asin(sinB)*Trig.deg
+     }
 }
 
 
