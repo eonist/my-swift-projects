@@ -228,7 +228,7 @@ class TriangleMath {
      * NOTE: Based on formula: b/SinB = c/SinC
      */
     static func cBCTob(_ c:CGFloat,_ B:CGFloat,_ C:CGFloat) ->CGFloat {
-        return Math.sin(B*Trig.RAD) * (c / Math.sin(C*Trig.RAD))
+        return sin(B*Trig.rad) * (c / sin(C*Trig.rad))
     }
     /**
      * Returns the Side b of an triangle
@@ -236,6 +236,13 @@ class TriangleMath {
      */
     static func cBCTob2(_ c:CGFloat,_ B:CGFloat,_ C:CGFloat) -> CGFloat {//TODO: move to trianglemath2
         return sin(B) * (c / sin(C))
+    }
+    /**
+     * Returns the Side c of an triangle
+     * Based on formula: c/SinC = b/SinB
+     */
+    static func bBCToc(_ b:CGFloat,_ B:CGFloat,_ C:CGFloat)->CGFloat {
+        return sin(C*Trig.rad) * (b / sin(B*Trig.rad))
     }
 }
 
