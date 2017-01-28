@@ -23,15 +23,9 @@ class SimpleTimer {//was named Timer, but since swift 3, NSTimer is now Timer
         self.target = target
         self.selector = selector
     }
-    /**
-     *
-     */
     func start(){
         timer = Timer.scheduledTimer(timeInterval: interval, target: target, selector: selector, userInfo: nil, repeats: true)//swift 3 upgrade
     }
-    /**
-     *
-     */
     func stop(){
         if(timer != nil){timer!.invalidate()}
     }
