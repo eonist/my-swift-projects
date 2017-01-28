@@ -119,6 +119,23 @@ class TriangleMath {
         let a:CGFloat = TriangleMath.cACToa2(c, A, π/2)
         return a
     }
+    /**
+     * Finds the length of BC, BD or CD relating to the Angle bisector (a perpendicular line from angle A, perpendicular in that it diveds the angle A in two)
+     * NOTE: Another Triangle Angle Bisector Theorem: CA/CD = BA/DB
+     * NOTE: Original Triangle Angle Bisector Theorem: BD/DC = AB/AC
+     */
+    static func angleBisectorAngle() {
+        var AB:Number = 8
+        var AC:Number = 4
+        var BC:Number = 9
+        
+        /*Based on Triangle Angle Bisector Theorem: BD/BC-BD = AB/AC*/
+        var BD:Number = (AB*BC)/(AC+AB)
+        print("BD: " + "\(BD)")
+        
+        var CD:Number = (AC*BD)/AB
+        print("CD: " + "\(CD)")
+    }
     static func inRadius() {
         //see legacy code / stackoverflow
     }
