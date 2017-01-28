@@ -119,6 +119,20 @@ class TriangleMath {
         let a:CGFloat = TriangleMath.cACToa2(c, A, π/2)
         return a
     }
+    /**
+     * The point where the three perpendicular bisectors of a triangle meet. One of a triangle's points of concurrency.
+     * NOTE: The circumcenter is the center of the circumcircle.
+     * NOTE: The circumcenter is also the center of the triangle's circumcircle - the 
+     * NOTE: Inside all acute triangles, Outside all obtuse triangles, On all right triangles (at the midpoint of the hypotenuse)
+     * NOTE: CR: circumcenter (center of circle passing through all three vertices)
+     * NOTE: Intersection of Perpendicular Bisectors:
+     */
+    static func circumCenter() {
+        //see legacy code / stackoverflow
+    }
+    static func circumRadius() {
+        //see legacy code / stackoverflow
+    }
     //----------------------------------
     //  Law of sin
     //----------------------------------
