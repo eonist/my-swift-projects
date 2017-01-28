@@ -248,7 +248,7 @@ class TriangleMath {
      * Returns side c from PARAM: b, PARAM: A and PARAM: C
      */
     static func bACToc(_ b:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
-        var B:Number = 180 - A - C;// :TODO: could be :  360 - A - C;?!?
+        var B:Number = 180 - A - C// :TODO: could be :  360 - A - C;?!?
         return bBCToc(b, B, C)
     }
 }
