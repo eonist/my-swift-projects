@@ -271,6 +271,22 @@ class TriangleMath {
      static func abcToA(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
          return acos((pow(b, 2)+pow(c, 2)-pow(a, 2))/(2*b*c))
      }
+     /**
+      * Returns angle B
+      * Note: Law of cosine
+      * Formula: Cos B = (a^2+c^2-b^2)/(2ac)
+      */
+     static func abcToB(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+         return acos((pow(a, 2)+pow(c, 2)-pow(b, 2))/(2*a*c))
+     }
+     /**
+      * Returns angle C
+      * Note: Law of cosine
+      * Formula: Cos C = (a^2+b^2-c^2)/(2ab)
+      */
+     static func abcToC(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+         return acos((pow(a, 2)+pow(b, 2)-pow(c, 2))/(2*a*b))
+     }
 }
 
 
