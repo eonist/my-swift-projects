@@ -27,17 +27,11 @@ extension Date {
         //Swift.print("days.length: " + "\(days.length)")
         return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
     }
-    /**
-     *
-     */
     var dayName:String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self)
     }
-    /**
-     *
-     */
     var shortDayName:String{
         return dayName != nil ? String(dayName!.characters.first!) : ""
     }
