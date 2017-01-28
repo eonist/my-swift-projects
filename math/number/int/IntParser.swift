@@ -22,9 +22,6 @@ class IntParser{
     static func normalize(_ index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
         return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
     }
-	/**
-	 * 
-	 */
     static func kind(_ theInt:Int)->String{
         switch theInt {
             case 0:

@@ -17,7 +17,6 @@ public class CGFloatParser{
         let string = NSString(format: format, number)
         return CGFloat(atof(string.utf8String))
     }
-    
     /**
      * Return odd numbers
      */
@@ -65,11 +64,11 @@ public class CGFloatParser{
     }
     /**
      * Returns the scalar value from the real progress between two polar numbers
+     * Return: interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
+     * NOTE: to find a scalar value i.e 50/100 = 0.5
      * PARAM: start: start number
      * PARAM: end: end number
      * PARAM: progress progress between a and b
-     * Return: interpolation value between if transition value is within range it will be between 0 and 1 (scalar amount)
-     * NOTE: to find a scalar value i.e 50/100 = 0.5
      * EXAMPLE: scalar(0,8,4) //Output: 0.5
      * print("q: " + NumberParser.scalar(0, -100, -25));//0.25
      * print("q: " + NumberParser.scalar(-200, -100, -150));//0.5
@@ -92,12 +91,12 @@ public class CGFloatParser{
     /**
      * Returns the numeric distance between two values (always positive)
      * NOTE: doing Math.abs(b-a) instead of this method may be faster
-     * TODO: do a bulk test to see which is faster, then maybe deprecate this method
      * EXAMPLE:
      * print(distance(-5,-2));//3
      * print(distance(-5,2));//7
      * print(distance(5,2));//3
      * print(distance(5,-2));//7
+     * TODO: do a bulk test to see which is faster, then maybe deprecate this method
      */
     static func distance(_ a:CGFloat,_ b:CGFloat)->CGFloat {
         if(a.isNegative && b.isNegative) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
@@ -112,17 +111,17 @@ public class CGFloatParser{
     }
     /**
      * Returns a constant looping number, really great when making looping slideshows
+     * Return a number between PARAM: start number and the PARAM: end of the loop
      * PARAM: index: the current cursor of an infinite loop
      * PARAM: start: the start of the loop
      * PARAM: end: end of the loop
-     * Return a number between PARAM: start number and the PARAM: end of the loop
      * NOTE: take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
      * NOTE: UintParser.normalize alos works well for uint values
-     * TODO: Could be refactor to be simpler and more efficient
-     * TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
      * EXAMPLE:
      * print("test "+(NumberParser.loop(20, 0, 10)));//0
      * print("test "+(NumberParser.loop(-2, -5, 10)));//8
+     * TODO: Could be refactor to be simpler and more efficient
+     * TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
      */
     static func loop(_ index:CGFloat, _ start:CGFloat, _ end:CGFloat) -> CGFloat{// :TODO: start,end,index is easier to understand
         var r:CGFloat

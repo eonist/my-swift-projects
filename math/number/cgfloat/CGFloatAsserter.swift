@@ -1,4 +1,3 @@
-
 import Foundation
 /**
  * Definition of Asserter: state a fact or belief confidently and forcefully
@@ -16,9 +15,7 @@ class CGFloatAsserter{
      * print(NumberAsserter.odd(4));//false
      */
     static func odd(_ number:CGFloat)->Bool {
-        return (number %% 2) != 0.0//upgraded to swift 3
-        //if((number % Math.sqrt(number) == 0) || (number % 2 == 0)) return false;
-        //else return true;
+        return (number %% 2) != 0.0
     }
     /**
      * EXAMPLE: event(0),even(2),even(4)
@@ -39,8 +36,8 @@ class CGFloatAsserter{
         return number > 0
     }
     /**
-     * print(NumberAsserter.isNear(-1.8650465545944293 , -1.8650465545944273, NumberAsserter.EPSILON));//true, result is 10e-15 which is less than 10e-12
      * NOTE: I think this could be written simpler: Math.abs(a - b) <= epsilon, test different cases to verify
+     * EXAMPLE: print(NumberAsserter.isNear(-1.8650465545944293 , -1.8650465545944273, NumberAsserter.EPSILON));//true, result is 10e-15 which is less than 10e-12
      */
     static func isNear(_ a:CGFloat,_ b:CGFloat,_ epsilon:CGFloat)->Bool {//this could also be named almostEqual
         if(a == b){ return true}
