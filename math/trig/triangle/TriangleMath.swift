@@ -251,6 +251,16 @@ class TriangleMath {
         var B:Number = 180 - A - C// :TODO: could be :  360 - A - C;?!?
         return bBCToc(b, B, C)
     }
+    //----------------------------------
+    //  Law of cosine:
+    //----------------------------------
+    /**
+     * Law of cosine:
+     * Pre condition 1 side and 2 other parts (no need for side angle pair)
+     * Formula 1: a^2 = b^2+c^2-2bc*cos*A
+     * Formula 2: b^2 = a^2+c^2-2ac*cos*B
+     * Formula 3: cos*a = (b^2+c^2-a^2)/2bc
+     */
 }
 
 
