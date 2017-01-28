@@ -1,4 +1,5 @@
-class IntAsserter {
+import Foundation
+class NumberAsserter{
     /**
      * NOTE: In most cases you will want to write if(someNumber < 0)
      */
