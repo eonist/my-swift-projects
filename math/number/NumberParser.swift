@@ -53,6 +53,6 @@ class NumberParser{
             return nil
         }
     }
-    //Convenience
+    /*Convenience*/
     static func clip<T:Comparable>(_ val: T, _ min: T, _ max: T) -> T {return minMax(val,min,max)}/*Clips a value between min and max*/
 }
