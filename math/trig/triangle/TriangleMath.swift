@@ -119,6 +119,9 @@ class TriangleMath {
         let a:CGFloat = TriangleMath.cACToa2(c, A, π/2)
         return a
     }
+    static func inRadius() {
+        //see legacy code / stackoverflow
+    }
     /**
      * The point where the three perpendicular bisectors of a triangle meet. One of a triangle's points of concurrency.
      * NOTE: The circumcenter is the center of the circumcircle.
