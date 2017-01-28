@@ -332,6 +332,18 @@ class TriangleMath {
      static func polarToLength(_ x:CGFloat, _ y:CGFloat) -> CGFloat {
          return sqrt(pow(x, 2) + pow(y, 2))
      }
+     /**
+      * Returns the angle (in radians) of a polar position (from 0,0 in a polar system)
+      * Base Formula TanΘ = y/x
+      * PARAM: x: polarPosition in x axis
+      * PARAM: y: polarPosition in y axis
+      * RETURN: a value in radians
+      * this formula can also be used: Math.atan2(x, y)
+      * Note: AngleMath.pointsToAngle(p1,p2) does the same thing
+      */
+     static func polarToAngle(_ x:CGFloat, _ y:CGFloat) -> CGFloat {
+         return atan(y/x)
+     }
 }
 
 
