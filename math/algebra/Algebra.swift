@@ -1,5 +1,5 @@
 import Foundation
-import Darwin
+
 class Algebra{
 	/**
 	 * Returns a fraction in a quadratic equation
