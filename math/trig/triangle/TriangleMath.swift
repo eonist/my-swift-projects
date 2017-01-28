@@ -294,11 +294,9 @@ class TriangleMath {
       * // :TODO: you could add an if clause if A is 90 deg, then the cosine is 0 but its not 0 in computer math, so its more correct to use 0
       */
      static func bcAToa(_ b:CGFloat, _ c:CGFloat, _ A:CGFloat) -> CGFloat {
-         var cosineOfAngle:Number = Math.cos(A*Trig.RAD);
-//			trace("cosineOfAngle: " + cosineOfAngle);
-         var aSquared:Number = Math.pow(b, 2)+Math.pow(c, 2)-(2*b*c)*cosineOfAngle;
-//			trace("aSquared: " + aSquared);
-         return Math.sqrt(aSquared);
+         let cosineOfAngle:CGFloat = cos(A*Trig.rad)
+         let aSquared:CGFloat = pow(b, 2)+pow(c, 2)-(2*b*c)*cosineOfAngle
+         return sqrt(aSquared)
      }
 }
 
