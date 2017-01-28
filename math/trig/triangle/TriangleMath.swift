@@ -320,6 +320,18 @@ class TriangleMath {
      static func abCToc(_ a:CGFloat,_ b:CGFloat,_ C:CGFloat) -> CGFloat {
          return sqrt(pow(a,2) + pow(b,2) - (2*(a*b)*cos(C)))
      }
+     //----------------------------------
+     //  Law of tan (Base Formula TanΘ = y/x)
+     //----------------------------------
+     /**
+      * Returns the length from position (0,0 in a polar system)
+      * NOTE: This function is reverse of Point.polar(len, angle):Point
+      * NOTE: this finds the radius of a circle (magnitude)
+      * Base Formula c2 = a^2 + b^2
+      */
+     static func polarToLength(_ x:CGFloat, _ y:CGFloat) -> CGFloat {
+         return sqrt(pow(x, 2) + pow(y, 2))
+     }
 }
 
 
