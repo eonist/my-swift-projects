@@ -261,6 +261,16 @@ class TriangleMath {
      * Formula 2: b^2 = a^2+c^2-2ac*cos*B
      * Formula 3: cos*a = (b^2+c^2-a^2)/2bc
      */
+     /**
+      * Returns angle A 
+      * Note: Law of cosine
+      * Formula: a^2 = b^2 + c^2 - 2bc*Cos(A)
+      * which can be written: Cos A = (b^2+c^2-a^2)/(2bc)
+      * which can be written A = acos((b^2+c^2-a^2)/(2bc))
+      */
+     static func abcToA(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+         return acos((pow(b, 2)+pow(c, 2)-pow(a, 2))/(2*b*c))
+     }
 }
 
 
