@@ -308,7 +308,7 @@ class TriangleMath {
       * Returns the angle B for any triangle
       * Base Formula: sin(A)/a = sin(A)/b
       */
-     static func abAToB(_ a:CGFloat, _ b:CGFloat, _ A:_ CGFloat) -> CGFloat {
+     static func abAToB(_ a:CGFloat, _ b:CGFloat, _ A:CGFloat) -> CGFloat {
          let sinB:CGFloat = (b*sin(A*Trig.rad))/a
          return asin(sinB)*Trig.deg
      }
@@ -347,7 +347,7 @@ class TriangleMath {
      /**
       * 
       */
-     public static function withinTriangle(_ x:CGFloat, _ y:CGFloat, _ x1:CGFloat, _ y1:CGFloat, _ x2:CGFloat, _ y2:CGFloat, _ x3:CGFloat, _ y3:CGFloat) -> Boolean {
+     public static func withinTriangle(_ x:CGFloat, _ y:CGFloat, _ x1:CGFloat, _ y1:CGFloat, _ x2:CGFloat, _ y2:CGFloat, _ x3:CGFloat, _ y3:CGFloat) -> Bool {
         let fab:CGFloat = ((y - y1) * (x2 - x1)) - ((x - x1) * (y2 - y1))
         let fbc:CGFloat = ((y - y2) * (x3 - x2)) - ((x - x2) * (y3 - y2))
         let fca:CGFloat = ((y - y3) * (x1 - x3)) - ((x - x3) * (y1 - y3))
