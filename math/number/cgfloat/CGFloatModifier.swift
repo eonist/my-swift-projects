@@ -49,7 +49,7 @@ class CGFloatModifier {
         let remainder:CGFloat = number %% closest
         if(remainder == 0) {return number}
         else if(abs(remainder) < (closest/2)){ return number - remainder}
-        else if (CGFloatAsserter.negative(number)){ return number - (closest+remainder)}
+        else if (NumberAsserter.negative(number)){ return number - (closest+remainder)}
         else {return number + (closest-remainder)}
     }
 }
