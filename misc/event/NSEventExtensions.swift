@@ -25,4 +25,13 @@ extension NSEvent {
             eventMonitor = nil
         }
     }
+    
+}
+class EventMonitor{
+    /**
+     * Makes adding event monitors less verbose
+     */
+    func addLocalMonitor(_ mask: NSEventMask,_ handler block: @escaping (NSEvent) -> NSEvent?) -> EventMonitor{
+        return NSEvent.addLocalMonitorForEvents(matching:mask, handler:block)
+    }
 }
