@@ -42,9 +42,3 @@ extension Range where Bound:Comparable {
         return RangeAsserter.edge(index, self)
     }
 }
-
-/*
-//seems to be native already
-public func ==<T: Comparable> (a: Range<T>, b:Range<T>) -> Bool{/*convenience*/
-return a.equals(b)
-}*/

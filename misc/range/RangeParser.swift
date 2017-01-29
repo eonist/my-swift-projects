@@ -9,9 +9,6 @@ class RangeParser {
     static func min<T:Comparable>(_ range:Range<T>)->T {
         return Swift.min(range.start, range.end)
     }
-    /**
-     *
-     */
     static func describe<T>(_ range:Range<T>) {
         Swift.print("range.start: " + "\(range.start)")
         Swift.print("range.end: " + "\(range.end)")
