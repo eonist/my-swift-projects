@@ -7,6 +7,6 @@ extension Int {
     var double:Double {return Double(self)}/*Convenince*/
     func minMax(_ min:Int,_ max:Int)->Int{return NumberParser.minMax(self, min, max)}/*Convenince*/
     func clip(_ min:Int,_ max:Int)->Int{return NumberParser.clip(self, min, max)}/*Convenince*/
-    var negative:Bool{return IntAsserter.negative(self)}
-    var positive:Bool{return IntAsserter.positive(self)}
+    var negative:Bool{return NumberAsserter.negative(self)}
+    var positive:Bool{return NumberAsserter.positive(self)}
 }

@@ -77,7 +77,7 @@ public class CGFloatParser{
     static func scalar(_ start:CGFloat,_ end:CGFloat, _ progress:CGFloat) -> CGFloat {
         var a:CGFloat
         var b:CGFloat
-        if(CGFloatAsserter.negative(start) || CGFloatAsserter.negative(end) && end < start){
+        if(NumberAsserter.negative(start) || NumberAsserter.negative(end) && end < start){
             a = Swift.min(start, end)
             b = Swift.max(start, end)
         }else{

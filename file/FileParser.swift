@@ -88,7 +88,7 @@ extension FileParser{
 		myFileDialog.runModal()
 
 		/*Get the path to the file chosen in the NSOpenPanel*/
-		let thePath = myFileDialog.URL?.path
+		let thePath = myFileDialog.url?.path
 
 		/*Make sure that a path was chosen*/
 		if (thePath != nil) {
