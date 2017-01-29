@@ -16,4 +16,13 @@ extension NSEvent {
     static func cmdKey()->Bool{/*Convenience*/
         return NSEvent.modifierFlags().contains(NSEventModifierFlags.shift)
     }
+    /**
+     * Asserts if the eventMonitor exists before removing it and setting the reference to nil
+     */
+    func removeMonitor(_ eventMonitor:Any?) {
+        if(eventMonitor != nil){
+            NSEvent.removeMonitor(eventMonitor!)
+            eventMonitor = nil
+        }
+    }
 }
