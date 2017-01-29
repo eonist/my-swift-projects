@@ -19,7 +19,7 @@ extension NSEvent {
     /**
      * Asserts if the eventMonitor exists before removing it and setting the reference to nil
      */
-    func removeMonitor(_ eventMonitor:Any?) {
+    func removeMonitor(_ eventMonitor:inout Any?) {
         if(eventMonitor != nil){
             NSEvent.removeMonitor(eventMonitor!)
             eventMonitor = nil
@@ -31,7 +31,7 @@ class EventMonitor{
     /**
      * Makes adding event monitors less verbose
      */
-    func addLocalMonitor(_ mask: NSEventMask,_ handler block: @escaping (NSEvent) -> NSEvent?) -> EventMonitor{
+    func addLocalMonitor(_ mask: NSEventMask,_  block: @escaping (NSEvent) -> NSEvent?) -> Any?{
         return NSEvent.addLocalMonitorForEvents(matching:mask, handler:block)
     }
 }
