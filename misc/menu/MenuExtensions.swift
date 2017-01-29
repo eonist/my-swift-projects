@@ -8,9 +8,6 @@ extension NSMenu {
         addItem(newItem)
         return newItem
     }
-    /**
-     *
-     */
     func addSubMenu(){
         //TODO: add later
     }
