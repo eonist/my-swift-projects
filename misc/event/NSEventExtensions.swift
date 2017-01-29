@@ -27,6 +27,9 @@ extension NSEvent {
     }
     
 }
+/**
+ * This is on the idea stage for now
+ */
 class EventMonitor{
     /**
      * Makes adding event monitors less verbose

@@ -138,15 +138,15 @@ class TriangleMath {
      * NOTE: Original Triangle Angle Bisector Theorem: BD/DC = AB/AC
      */
     static func angleBisectorAngle() {
-        var AB:Number = 8
-        var AC:Number = 4
-        var BC:Number = 9
+        let AB:CGFloat = 8
+        let AC:CGFloat = 4
+        let BC:CGFloat = 9
         
         /*Based on Triangle Angle Bisector Theorem: BD/BC-BD = AB/AC*/
-        var BD:Number = (AB*BC)/(AC+AB)
+        let BD:CGFloat = (AB*BC)/(AC+AB)
         print("BD: " + "\(BD)")
         
-        var CD:Number = (AC*BD)/AB
+        let CD:CGFloat = (AC*BD)/AB
         print("CD: " + "\(CD)")
     }
     static func inRadius() {
@@ -248,7 +248,7 @@ class TriangleMath {
      * Returns side c from PARAM: b, PARAM: A and PARAM: C
      */
     static func bACToc(_ b:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
-        var B:Number = 180 - A - C// :TODO: could be :  360 - A - C;?!?
+        let B:CGFloat = 180 - A - C// :TODO: could be :  360 - A - C;?!?
         return bBCToc(b, B, C)
     }
     //----------------------------------
