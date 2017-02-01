@@ -29,6 +29,7 @@ extension NSTouch {
 extension NSTouchPhase{
     /**
      * Great when logging phaseType
+     * TODO: Would it be possible to return .began.rawValue instead?
      */
     var type:String{
         if(self == .began){
@@ -48,7 +49,9 @@ extension NSTouchPhase{
         }
     }
 }
-
+/**
+ * TODO: Would it be possible to return .began.rawValue instead?
+ */
 extension NSEventPhase{
     var type:String{
         if(self == .began){
