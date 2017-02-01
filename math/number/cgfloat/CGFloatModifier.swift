@@ -2,13 +2,6 @@ import Foundation
 
 class CGFloatModifier {
     /**
-     * Directly replaces a with b, and b with a
-     * NOTE: Modifies the original a and b Doubles
-     */
-    static func swap(_ a:inout CGFloat, _ b:inout CGFloat) {
-        ObjectModifier.swapObjects(&a, &b)
-    }
-    /**
      * Returns a number that is incremented by PARAM: incrementation
      * NOTE: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the PARAM: number has
      */
