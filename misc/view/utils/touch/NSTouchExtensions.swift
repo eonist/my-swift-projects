@@ -1,7 +1,5 @@
 import Cocoa
 
-
-
 extension NSTouch {
     /**
      * Returns the relative position of the touch to the view
