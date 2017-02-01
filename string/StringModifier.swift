@@ -139,13 +139,6 @@ class StringModifier{
         return str
     }
     /**
-     * Directly replaces a with b, and b with a
-     * NOTE: Modifies the original a and b strings
-     */
-    static func swap(_ a: inout String, _ b: inout String){
-        ObjectModifier.swapObjects(&a, &b)
-    }
-    /**
      * Trims all whitespace from left and right of PARAM: str
      * NOTE: the original string is not modified
      * NOTE: you can also use: NSCharacterSet.whitespaceAndNewlineCharacterSet()
