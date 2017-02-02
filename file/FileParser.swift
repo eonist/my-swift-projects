@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 class FileParser{
 	/**
 	 * Returns string content from a file at file location "path"
