@@ -19,12 +19,7 @@ class ArrayParser{
             return -1/*-1 indicates no item was found*/
         }
     }
-    /**
-     *
-     */
-    static func index(_ array:[String], _ match:String, _ comparingMethod:(String)->String){
-        
-    }
+    
     /**
      * New
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
@@ -158,6 +153,15 @@ class ArrayParser{
         var items:Array<T> = []
         for item in array{ if (item as? T != nil) {items.append(item as! T)}}
         return items
+    }
+    /**
+     *
+     */
+    static func firstOccurence(_ arr:[String], _ match:String, _ compareMethod:(String)->Bool)->String?{
+        for item in arr{
+            if(compareMethod(item)){return item}
+        }
+        return nil
     }
     /**
      * Returns a random array with unique numbers (no duplicates)
