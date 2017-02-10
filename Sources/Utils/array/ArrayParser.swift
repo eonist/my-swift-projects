@@ -20,6 +20,12 @@ class ArrayParser{
         }
     }
     /**
+     *
+     */
+    static func index(){
+        
+    }
+    /**
      * New
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
      * IMPORTANT: compares reference not value
@@ -33,6 +39,7 @@ class ArrayParser{
     /**
      * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
      * NOTE: dupplets doesn't seem to be castable to AnyObject
+     * NOTE: Compares reference not value
      */
     static func idx<T>(_ arr:inout [T], _ item:inout T) -> Int{
         for i in 0 ..< arr.count{

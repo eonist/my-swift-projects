@@ -123,7 +123,7 @@ extension DataProvider{
      */
     func addItems(_ items:[Dictionary<String, String>]) {
         self.items += items//concats
-        super.onEvent(DataProviderEvent(DataProviderEvent.add, /*items,*/self.items.count - items.count, self.items.count,self))
+        super.onEvent(DataProviderEvent(DataProviderEvent.add, self.items.count - items.count, self.items.count,self))
     }
     /**
      * Adds an item to the end of the Items Array
@@ -131,16 +131,16 @@ extension DataProvider{
      */
     func addItem(_ item:Dictionary<String, String>) {
         self.items.append(item)
-        super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,self.items.count-1,self.items.count,self))
+        super.onEvent(DataProviderEvent(DataProviderEvent.add,self.items.count-1,self.items.count,self))
     }
     /**
      * Adds an item to a spesific index
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func addItemAt(_ item:Dictionary<String, String>, _ index:Int/*<--was UInt*/){
+    func addItemAt(_ item:Dictionary<String, String>, _ index:Int){
         Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
-        super.onEvent(DataProviderEvent(DataProviderEvent.add/*,[item]*/,index,index+1,self))
+        super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
     }
     /**
      * Removes an item at a spesific index
