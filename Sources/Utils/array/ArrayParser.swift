@@ -155,11 +155,16 @@ class ArrayParser{
         return items
     }
     /**
-     *
+     * Returns the first item that matches PARAM: match according to the constraints in PARAM: method
+     * EXAMPLE: ["a","b","c"].first("b",{$0.id == $1})//b
+     * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
+     * EXAMPLE: [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
      */
-    static func firstOccurence(_ arr:[String], _ match:String, _ compareMethod:(String)->Bool)->String?{
-        for item in arr{
-            if(compareMethod(item)){return item}
+    func first<T,V>(_ variables:[T],_ match:V,_ method:(T,V)->Bool) -> T?  where V:Equatable{
+        for item in variables{
+            if(method(item,match)){
+                return item
+            }
         }
         return nil
     }
