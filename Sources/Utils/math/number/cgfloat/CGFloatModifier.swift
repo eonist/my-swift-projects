@@ -15,9 +15,9 @@ class CGFloatModifier {
      * NOTE: The multiplication and division is a floating bug fix, optimized by looking at how many decimal points the PARAM: number has
      */
     static func decrement(_ number:CGFloat,_ decrementation:CGFloat)->CGFloat {
-        let numOfDecimals:Int = NumberParser.decimals(number);
-        let modifier:CGFloat =  pow(10, CGFloat(numOfDecimals));
-        return ((number * modifier) - (decrementation * modifier)) / modifier;
+        let numOfDecimals:Int = NumberParser.decimals(number)
+        let modifier:CGFloat =  pow(10, CGFloat(numOfDecimals))
+        return ((number * modifier) - (decrementation * modifier)) / modifier
     }
     /**
      * NOTE: This is an alternative: let duration = String(format: "%.01f", 3.32323242)
