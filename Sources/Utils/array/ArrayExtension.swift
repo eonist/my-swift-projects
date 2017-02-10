@@ -81,8 +81,8 @@ extension Array where Element:Equatable, Element:Comparable{
         return ArrayParser.index(self, value)
     }
 }
-extension Array where Element:Equatable{
-    func first<T,V>(_ match:Element,_ method:(T,Element)->Bool)-> T? {
+extension Array{
+    func first<T,V>(_ match:V,_ method:(T,V)->Bool)-> T? where V:Equatable{
         return ArrayParser.first(self,match,method)
     }
 }
