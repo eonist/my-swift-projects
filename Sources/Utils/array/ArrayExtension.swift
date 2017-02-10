@@ -82,12 +82,10 @@ extension Array where Element:Equatable, Element:Comparable{
     }
 }
 extension Array where Element:Equatable{
-    func first<T,V>(_ match:V,_ method:(T,V)->Bool)-> T?  where V:Equatable{
+    func first<T,V>(_ match:Element,_ method:(T,Element)->Bool)-> T? {
         return ArrayParser.first(self,match,method)
     }
 }
-
-
 
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
