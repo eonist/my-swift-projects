@@ -22,7 +22,7 @@ class ArrayParser{
     /**
      *
      */
-    static func index(){
+    static func index(_ array:[String], _ match:String, _ comparingMethod){
         
     }
     /**
