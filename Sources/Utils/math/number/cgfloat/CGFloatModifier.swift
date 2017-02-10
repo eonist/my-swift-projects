@@ -7,8 +7,8 @@ class CGFloatModifier {
      */
     static func increment(_ number:CGFloat,_ incrementation:CGFloat) -> CGFloat {
         let decimalCount:Int = NumberParser.decimals(number)
-        let modifier:CGFloat =  pow(10, CGFloat(decimalCount));
-        return ((number * modifier) + (incrementation * modifier)) / modifier;
+        let modifier:CGFloat =  pow(10, CGFloat(decimalCount))
+        return ((number * modifier) + (incrementation * modifier)) / modifier
     }
     /**
      * Returns a number that is decremented by PARAM: decrementation
