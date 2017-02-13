@@ -5,12 +5,13 @@ class DataProviderParser {
      * TODO: Use a real Range type here
      */
     static func itemsInRange(_ start:Int, _ end:Int,_ items:[Dictionary<String,String>]) -> [Dictionary<String,String>]{
-        var theItems:[Dictionary<String,String>] = []
-        
-        for i in start..<end{//swift 3 upgrade, we could also use subRange here -> arr[start..<end]
-            theItems.append(items[i])
-        }
-        return theItems
+        /*var theItems:[Dictionary<String,String>] = []
+         
+         for i in start..<end{//swift 3 upgrade, we could also use subRange here -> arr[start..<end]
+         theItems.append(items[i])
+         }
+         return theItems*/
+        return items.slice2(start, end)
     }
     /**
      *
