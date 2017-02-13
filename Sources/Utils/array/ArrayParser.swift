@@ -155,6 +155,7 @@ class ArrayParser{
         return items
     }
     /**
+     * Think of this method as: firstOccurence of something
      * Returns the first item that matches PARAM: match according to the constraints in PARAM: method
      * EXAMPLE: ["a","b","c"].first("b",{$0.id == $1})//b
      * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
