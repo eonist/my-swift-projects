@@ -196,6 +196,7 @@ class ArrayParser{
             if((theList[i] as AnyObject) === (theItem as AnyObject)){counter += 1}
         }
     }
+    static func
 }
 private class Utils{
     /**
