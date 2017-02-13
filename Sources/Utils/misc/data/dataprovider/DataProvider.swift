@@ -152,7 +152,7 @@ extension DataProvider{
             Swift.print("removed at: " + "\(index)")
             removedItem = self.items.splice2(index,1)[0]
         }else {(fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))}
-        super.onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))
+        super.onEvent(DataProviderEvent(DataProviderEvent.remove, index-1,index,self))
         return removedItem
     }
     /**
