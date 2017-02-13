@@ -24,9 +24,9 @@ extension DataProviderEvent{
      * NOTE: Keeps the event light-weight by not referencing the item directly
      */
     var items:[Dictionary<String, String>]{
-        /*Swift.print("startIndex: " + "\(startIndex)")
+        Swift.print("startIndex: " + "\(startIndex)")
          Swift.print("endIndex: " + "\(endIndex)")
-         Swift.print("items.count: \((origin as! DataProvider).items.count)" )*/
+         Swift.print("items.count: \((origin as! DataProvider).items.count)" )
         return DataProviderParser.itemsInRange(startIndex,  endIndex, (origin as! DataProvider).items)
     }
     var item:[String:String]{return (origin as! DataProvider).items[startIndex]}//new
