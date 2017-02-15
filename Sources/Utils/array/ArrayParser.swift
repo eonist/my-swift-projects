@@ -78,7 +78,7 @@ class ArrayParser{
     }
     /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
-     * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
+     * NOTE: the orgiginal version of this method is a little different, it uses an indexOf call
      * IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
      */
     static func similar<T:Equatable>(_ a:[T],_ b:[T])->[T]{//TODO:Add support for COmparable to this method
