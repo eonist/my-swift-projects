@@ -148,10 +148,10 @@ extension DataProvider{
     func removeItemAt(_ index:Int)->[String:String] {
         Swift.print("removeItemAt.index: " + "\(index)")
         var removedItem:[String:String]
-        if (index < self.items.count) {
+        if (index < items.count) {
             Swift.print("removed at: " + "\(index)")
             removedItem = items[index]
-            self.items.removeAt(index)
+            items.removeAt(index)
         }else {(fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))}
         let start:Int = index == 0 ? 0 : index - 1
         let end:Int = index
