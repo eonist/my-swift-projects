@@ -57,7 +57,7 @@ class ArrayParser{
     /**
      * Returns an array with itmes that are not the same in 2 arrays
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
-     * IMPORTANT: compares value not reference (If you need support for ref
+     * IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
     static func difference<T>(_ a:Array<T>, _ b:Array<T> )->Array<T> where T:Equatable, T:Comparable{
         var diff:Array<T> = []
