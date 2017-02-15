@@ -153,8 +153,8 @@ extension DataProvider{
             removedItem = items[index]
             items.removeAt(index)
         }else {(fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))}
-        let start:Int = index == 0 ? 0 : index - 1
-        let end:Int = index
+        let start:Int = index// == 0 ? 0 : index - 1
+        let end:Int = index+1
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))
         return removedItem
     }
