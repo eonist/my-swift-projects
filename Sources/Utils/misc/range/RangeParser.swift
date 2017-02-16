@@ -52,5 +52,13 @@ class RangeParser {
         else if(RangeAsserter.within(b, a.end)){end = a.end}
         return start != nil && end != nil ? start!..<end! : nil
     }
-    j
+    /**
+     *
+     */
+    static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
+        //continue here:
+            //use intersection of a,b and then just do som asserting etc
+        let intersection = intersection(a,b)
+        
+    }
 }
