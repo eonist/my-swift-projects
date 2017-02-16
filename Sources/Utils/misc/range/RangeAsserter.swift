@@ -27,6 +27,7 @@ class RangeAsserter{
     }
     /**
      * Asserts if PARAM: a overlaps PARAM: b
+     * NOTE: touching edges are considered to overlap, use absolutlyOverlaps if you need to exclude edge cases
      */
     static func overlaps<T:Comparable>(_ a:Range<T>,_ b:Range<T>)->Bool {
         return RangeAsserter.equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end)
