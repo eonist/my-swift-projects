@@ -56,9 +56,12 @@ class RangeParser {
      *
      */
     static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
-        //continue here:
-            //use intersection of a,b and then just do som asserting etc
-        let intersection = intersection(a,b)
-        let range1 = b.start
+        let intersection = RangeParser.intersection(a,b)
+        if(intersection != nil){
+            let range1 = Swift.min(a.start,b.start)..<intersection!.start
+            let range2 = intersection!.end..<max(a.end,b.end)
+            return (range1,range2)
+        }
+        return (nil,nil)
     }
 }
