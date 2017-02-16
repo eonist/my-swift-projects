@@ -59,7 +59,7 @@ class RangeParser {
     static func exclusion<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
         let intersection = RangeParser.intersection(a,b)
         if(intersection != nil){
-            let range1 =   Swift.min(a.start,b.start)..<intersection!.start
+            let range1 = Swift.min(a.start,b.start)..<intersection!.start
             let range2 = intersection!.end..<Swift.max(a.end,b.end)
             return (range1,range2)
         }
@@ -70,8 +70,9 @@ class RangeParser {
      */
     static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
         let exclusion = RangeParser.exclusion(a, b)
-        if(exclusion.0 != nil){
-            RangeAsserter.within(exclusion.0, b)
+        var range1:Range<T>?
+        if(exclusion.0 != nil && RangeAsserter.within(exclusion.0!, b)){
+            
         }
     }
 }

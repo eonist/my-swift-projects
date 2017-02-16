@@ -34,6 +34,7 @@ class RangeAsserter{
     }
     /**
      * Asserts if PARAM: a contains PARAM: a or PARAM: b contains PARAM: a
+     * NOTE: use absolutlyContains if you want to avoid edge
      */
     static func contains<T:Comparable>(_ a:Range<T>,_ b:Range<T>)->Bool {
         return a.start <= b.start && a.end >= b.end
