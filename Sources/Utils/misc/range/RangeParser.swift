@@ -65,4 +65,10 @@ class RangeParser {
         }
         return (nil,nil)
     }
+    /**
+     * The items in a that are not within b 
+     */
+    static func difference(){
+    
+    }
 }
