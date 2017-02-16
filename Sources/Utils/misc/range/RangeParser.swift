@@ -59,6 +59,6 @@ class RangeParser {
         //continue here:
             //use intersection of a,b and then just do som asserting etc
         let intersection = intersection(a,b)
-        
+        let range1 = b.start
     }
 }
