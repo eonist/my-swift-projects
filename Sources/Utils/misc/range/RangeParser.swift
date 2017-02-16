@@ -56,7 +56,7 @@ class RangeParser {
      * Returns the left overs after an intersection
      * exclusion(0..<4, 2..<7)//0..<2, 4..<7
      */
-    func exclusion<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
+    static func exclusion<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
         let intersection = RangeParser.intersection(a,b)
         if(intersection != nil){
             let range1 = Swift.min(a.start,b.start)..<intersection!.start
