@@ -66,9 +66,12 @@ class RangeParser {
         return (nil,nil)
     }
     /**
-     * The items in a that are not within b 
+     * The items in a that are not within b
      */
-    static func difference(){
-    
+    static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
+        let exclusion = RangeParser.exclusion(a, b)
+        if(exclusion.0 != nil){
+            
+        }
     }
 }
