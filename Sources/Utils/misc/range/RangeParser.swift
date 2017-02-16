@@ -71,8 +71,13 @@ class RangeParser {
     static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
         let exclusion = RangeParser.exclusion(a, b)
         var range1:Range<T>?
-        if(exclusion.0 != nil && RangeAsserter.contains(exclusion.0!, b)){
-            
+        if(exclusion.0 != nil && RangeAsserter.contains(b,exclusion.0!)){
+            range1 = exclusion.0
         }
+        var range2:Range<T>?
+        if(exclusion.1 != nil && RangeAsserter.contains(b,exclusion.1!)){
+            range2 = exclusion.1
+        }
+        return (range1,range2)
     }
 }
