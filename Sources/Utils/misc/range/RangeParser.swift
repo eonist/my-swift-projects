@@ -38,4 +38,18 @@ class RangeParser {
     static func numOfIndecies(_ range:Range<Int>) -> Int{
         return range.end - range.start + 1
     }
+    /**
+     * Returns the intersection between PARAM: a and PARAM: b
+     * NOTE: edges are considered intersecting, use absolulteIntersection if you need non-edge cases
+     * EXAMPLE: intersection(0..<4,2..<7)//Output: 2..<4
+     */
+    static func intersection<T>(_ a:Range<T>, _ b:Range<T>) -> Range<T>?{
+        var start:T?
+        if(RangeAsserter.within(a, b.start)){start = b.start}
+        else if(RangeAsserter.within(b, a.start)){start = a.start}
+        var end:T?
+        if(RangeAsserter.within(a, b.end)){end = b.end}
+        else if(RangeAsserter.within(b, a.end)){end = a.end}
+        return start != nil && end != nil ? start!..<end! : nil
+    }
 }
