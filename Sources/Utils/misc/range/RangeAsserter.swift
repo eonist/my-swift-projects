@@ -10,7 +10,7 @@ class RangeAsserter{
         return a == b
     }
     /**
-     * Asserts if PARAM: value is within the PARAM: range
+     * Asserts if PARAM: number is within the PARAM: range
      * TODO: Add some examples
      * TODO: a potential bug is that <= max isn't correct, if it is max then its not within, if you think about how integers work, but this may also be correct since if a number range is asserted it may need to also include the max, for now use contained if you deal with integers
      */
