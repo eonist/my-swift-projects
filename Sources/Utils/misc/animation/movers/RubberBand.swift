@@ -8,9 +8,7 @@ import Cocoa
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
-    var result:CGFloat = 0/*output value*/
-    var hasStopped:Bool = true/*indicates that the motion has stopped*/
-    var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
+    /*Initial values*/
     var frame:CGRect/*represents the visible part of the content*/
     var itemsRect:CGRect/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
@@ -18,6 +16,11 @@ class RubberBand:Mover{
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     var callBack:(CGFloat)->Void/*the closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    /**/
+    var result:CGFloat = 0/*output value*/
+    var hasStopped:Bool = true/*indicates that the motion has stopped*/
+    var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
+    
     //var topMargin:CGFloat = 0
     init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.frame = frame
