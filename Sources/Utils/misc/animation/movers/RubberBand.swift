@@ -6,6 +6,7 @@ import Cocoa
  * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
  */
 class RubberBand:Mover{
+    /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     var result:CGFloat = 0/*output value*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
