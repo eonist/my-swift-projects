@@ -161,6 +161,7 @@ class ArrayParser{
      * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
      * EXAMPLE: [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
      * NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
+     * NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
      */
     static func first<T,V>(_ variables:[T],_ match:V,_ method:(T,V)->Bool) -> T?  where V:Equatable{
         for item in variables{
