@@ -116,6 +116,7 @@ extension NSView {
     var Y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
     var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
     var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
+    var idx:Int {return self.superview!.indexOf(self)}
     /**
      * DEPRECATED
      */
