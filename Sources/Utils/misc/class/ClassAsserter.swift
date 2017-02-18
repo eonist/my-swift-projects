@@ -4,7 +4,7 @@ import Foundation
  */
 class ClassAsserter{
     /**
-     * Returns true if any of @param instances is of class @param classType
+     * Returns true if any of PARAM: instances is of class @param classType
      */
     static func hasInstanceOfClassType<T>(_ instances:Array<Any?>,_ classType:T.Type) -> Bool {
         return ClassParser.instanceByClassType(instances, classType) != nil
