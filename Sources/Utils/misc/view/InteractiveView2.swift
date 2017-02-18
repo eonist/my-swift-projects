@@ -106,9 +106,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //Swift.print("\(self.dynamicType)" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         //im not sure if the bellow code is perfectly stable in all cases, more testing needed
         if(!hasMouseEntered && viewUnderMouse === self){
-            hasMouseEntered = true;/*optimization*/
-            isMouseOver = true;
-            mouseOver(MouseEvent(event,self/*,self*/));
+            hasMouseEntered = true/*optimization*/
+            isMouseOver = true
+            mouseOver(MouseEvent(event,self/*,self*/))
         }//mouse move on visible view
         //super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
