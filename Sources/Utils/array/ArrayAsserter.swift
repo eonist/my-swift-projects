@@ -84,9 +84,9 @@ class ArrayAsserter {
      * Asserts if an item is at or before PARAM: idx
      * NOTE: Usefull in conjunction with ArrayModifier.insertAt()// to assert if an item already exists at that idx or not. to avoid dups
      */
-    /*static func existAtOrBefore<T>(_ arr:[T],_ idx:Int, _ item:T) -> Bool where T:Equatable{
-     var itemAlreadyExistAtIdx:Bool {return arr.valid(idx) && arr[idx] == item }
-     var itemExistsAtIdxBefore:Bool {return arr.valid(idx-1) && arr[idx-1] == item}
-     return itemAlreadyExistAtIdx || itemExistsAtIdxBefore
-     }*/
+    static func existAtOrBefore<T>(_ arr:[T],_ idx:Int, _ item:T) -> Bool where T:Equatable{
+        var itemAlreadyExistAtIdx:Bool {return arr.valid(idx) && arr[idx] == item }
+        var itemExistsAtIdxBefore:Bool {return arr.valid(idx-1) && arr[idx-1] == item}
+        return itemAlreadyExistAtIdx || itemExistsAtIdxBefore
+    }
 }
