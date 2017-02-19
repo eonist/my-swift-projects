@@ -82,7 +82,7 @@ extension UnWrappable{
      * Support for Array with Dictionaries like: [Dictionary<String,String>]
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        //let arr:[T?]
-        return unWrap(xml, key)
+        let arr:[T?] = unWrap(xml, key)
+        return arr
     }
 }
