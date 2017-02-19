@@ -94,12 +94,12 @@ extension UnWrappable{
     /**
      * Support for Array with Dictionaries like: [Dictionary<String,String>]
      */
-    static func unWrap<K, V>(_ xml:XML,_ key:String)-> [[K:V]?] where K:UnWrappable, V:UnWrappable{
-        var array:[[K:V]?] = [[K:V]?]()
+    static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
+        var array:[[K:T]?] = [[K:T]?]()
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append([K:V].unWrap($0.value))//$0.hasComplexContent ? .. : nil
+                array.append(Dictionary<K,T>.unWrap($0.value))//$0.hasComplexContent ? .. : nil
             }
         }
         return array
