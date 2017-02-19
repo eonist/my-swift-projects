@@ -209,7 +209,7 @@ private class Utils{
             //Swift.print("$0.label: " + "\($0.label)")
             xml += dictionaryItem($0.value)
         }
-        Swift.print("handleDictionary.xml.xmlString.count: " + "\(xml.xmlString.count)")
+        Swift.print("handleDictionary xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**
@@ -227,6 +227,7 @@ private class Utils{
         //Swift.print("val: " + "\(val)")
         handleProperty(&xml, "key", key)
         handleProperty(&xml, "value", val)
+        Swift.print("dictionaryItem xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**
