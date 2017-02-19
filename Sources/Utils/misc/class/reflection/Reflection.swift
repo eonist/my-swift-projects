@@ -84,7 +84,7 @@ private class Utils{
      * NOTE: handleDict and handleValue should use this method, handleArray will use it in the future
      */
     static func handleProperty(_ xml:inout XML, _ label:String, _ value:Any){
-        Swift.print("label: " + "\(label)")
+        //Swift.print("label: " + "\(label)")
         //Swift.print("value: " + "\(value)")
         if (value is AnyArray){/*array*/
             //Swift.print("AnyArray " + "\(value)")
