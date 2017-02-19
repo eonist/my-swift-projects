@@ -60,6 +60,7 @@ private class Utils{
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(_ value:Any,_ name:String? = nil)->XML{
+        Swift.print("handleValue name: \(name)")
         var xml = XML()
         let objectType:String = "\(type(of: value))"//if this doesn't work use generics
         Swift.print("objectType: " + "\(objectType)")
@@ -89,11 +90,13 @@ private class Utils{
         //Swift.print("label: " + "\(label)")
         //Swift.print("value: " + "\(value)")
         if (value is AnyArray){/*array*/
+            Swift.print("AnyArray")
             //Swift.print("AnyArray " + "\(value)")
             //let properties = Reflection.reflect(value)
             //Swift.print("properties.count: " + "\(properties.count)")
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
+            Swift.print("AnyDictionary")
             xml += handleDictionary(value,label)
         }else if(value is Reflectable){
             xml += handleReflectable(value as! Reflectable,label)
