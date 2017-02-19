@@ -16,7 +16,7 @@ class Reflection {
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
         //Swift.print("mirror: " + "\(mirror)")
-        //Swift.print("mirror.children.count: " + "\(mirror.children.count)")
+        Swift.print("mirror.children.count: " + "\(mirror.children.count)")
         mirror.children.forEach{
             //Swift.print("$0.label: " + "\($0.label)")
             //Swift.print("$0.value: " + "\($0.value)")
@@ -91,7 +91,7 @@ private class Utils{
             //Swift.print("properties.count: " + "\(properties.count)")
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
-            xml += handleDictionary(value,label)
+            xml += handleDictionary(value as! AnyDictionary,label)
         }else if(value is Reflectable){
             xml += handleReflectable(value as! Reflectable,label)
         }else if (stringConvertiable(value)){/*<--asserts if the value can be converted to a string*/
@@ -165,7 +165,7 @@ private class Utils{
                 xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
             }else if ($0.value is AnyDictionary){/*dictionary*/
                 Swift.print("value is AnyDict")
-                xml += handleDictionary($0.value,$0.label)//<--should this also be: "item" as label
+                xml += handleDictionary($0.value as! AnyDictionary,$0.label)//<--should this also be: "item" as label
             }else if(CFGetTypeID($0.value as AnyObject) == CGColor.typeID){
                 xml += handleReflectable($0.value as! CGColor,"item")
             }else{/*all other cases*/
