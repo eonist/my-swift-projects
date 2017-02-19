@@ -60,22 +60,22 @@ private class Utils{
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(_ value:Any,_ name:String? = nil)->XML{
-        Swift.print("handleValue name: \(name)")
+        //Swift.print("handleValue name: \(name)")
         var xml = XML()
         let objectType:String = "\(type(of: value))"//if this doesn't work use generics
-        Swift.print("objectType: " + "\(objectType)")
+        //Swift.print("objectType: " + "\(objectType)")
         if(name != nil){
             xml["type"] = objectType
         }
         xml.name = name != nil ? name! : objectType/*the name of instance class*/
         if("\(value)" == "nil" || "\(value)" == "Optional(nil)"){/*Nil is not nil when mirroring. So you can't do value != nil. Casting to string is a workaround for this*/
             let classTypeStr:String = extractClassType(value)
-            Swift.print("classTypeStr: " + "\(classTypeStr)")
+            //Swift.print("classTypeStr: " + "\(classTypeStr)")
             xml["type"] = classTypeStr
             //Swift.print("\(xml["type"])")
         }else{
             let properties = Reflection.reflect(value)
-            Swift.print("properties.count: " + "\(properties.count)")
+            //Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
                 handleProperty(&xml,$0.label,$0.value)
             }
@@ -90,13 +90,13 @@ private class Utils{
         //Swift.print("label: " + "\(label)")
         //Swift.print("value: " + "\(value)")
         if (value is AnyArray){/*array*/
-            Swift.print("AnyArray")
+            //Swift.print("AnyArray")
             //Swift.print("AnyArray " + "\(value)")
             //let properties = Reflection.reflect(value)
             //Swift.print("properties.count: " + "\(properties.count)")
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
-            Swift.print("AnyDictionary")
+            //Swift.print("AnyDictionary")
             xml += handleDictionary(value,label)
         }else if(value is Reflectable){
             xml += handleReflectable(value as! Reflectable,label)
