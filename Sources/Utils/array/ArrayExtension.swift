@@ -67,8 +67,8 @@ extension Array {
     mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
         return ArrayModifier.insertAt(&self, item, index)
     }
-    func withinRange(_ idx:Int){
-        
+    func withinRange(_ idx:Int) -> Bool{
+        return self.count > 0 && idx > -1 && idx < self.count
     }
 }
 /**
