@@ -78,7 +78,10 @@ extension UnWrappable{
         }
         return dictionary
     }
-    static func unWrap<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
+    /**
+     * New, TODO: could be called form the method above
+     */
+    static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dictionary:[K:T] = [:]
         if(xml.childCount > 0){
             XMLParser.children(xml).forEach{
@@ -99,7 +102,7 @@ extension UnWrappable{
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append(Dictionary<K,T>.unWrap($0.value))//$0.hasComplexContent ? .. : nil
+                array.append(unWrapDict($0.value.xml))//$0.hasComplexContent ? .. : nil
             }
         }
         return array
