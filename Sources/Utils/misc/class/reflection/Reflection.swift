@@ -164,6 +164,7 @@ private class Utils{
             }else if($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
             }else if ($0.value is AnyDictionary){/*dictionary*/
+                Swift.print("value is AnyDict")
                 xml += handleDictionary($0.value,$0.label)//<--should this also be: "item" as label
             }else if(CFGetTypeID($0.value as AnyObject) == CGColor.typeID){
                 xml += handleReflectable($0.value as! CGColor,"item")
@@ -188,7 +189,7 @@ private class Utils{
      * <someDict>
      */
     static func handleDictionary(_ value:Any,_ name:String) -> XML{
-        //Swift.print("handleDictionary()")
+        Swift.print("handleDictionary() name: \(name)")
         let xml = XML()
         xml.name = name
         xml["type"] = "Dictionary"
