@@ -154,7 +154,7 @@ private class Utils{
      * Array types
      */
     static func handleArray(_ value:Any,_ name:String)->XML{
-        //Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
+        Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
         let xml = XML()
         xml.name = name
         xml["type"] = "Array"
