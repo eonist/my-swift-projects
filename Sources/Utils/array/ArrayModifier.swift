@@ -122,6 +122,7 @@ class ArrayModifier{
      * print("result: \(result)" )//b "the deleted item"
      * print(array) //a,x,b,c
      * TODO: return the array for method chaning purposes?
+     * NOTE: ArrayModifier.insertAt does the same thing as this method
      */
     static func addAt<T>(_ array:inout [T], _ item:T, _ index:Int){
         if(index == 0) {_ = array.unshift(item)}/*add item at the begining of an array*/
@@ -423,6 +424,7 @@ class ArrayModifier{
      * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 2)//q,b,x,c
      * EXAMPLE: ["a","b","c"].insert("x", 3)//a,b,c,x
+     * NOTE: ArrayModifier.addAt does the same thing as this method
      */
     static func insertAt<T>(_ arr:inout [T], _ item:T, _ index:Int) -> [T]{
         arr.insert(item, at: index)
