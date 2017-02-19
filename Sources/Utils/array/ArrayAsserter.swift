@@ -41,6 +41,12 @@ class ArrayAsserter {
         return ArrayParser.indx(arr, item) != -1
     }
     /**
+     * EXAMPLE: ["a","b","c"].has("b",{$0 == $1})//true
+     */
+    static func has<T,V>(_ variables:[T],_ match:V,_ method:(T,V)->Bool) -> Bool  where V:Equatable{
+        return ArrayParser.first(variables, match, method) != nil
+    }
+    /**
      * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
      * PARAM a: Array to be compared with
      * PARAM b: Array to be compared against
