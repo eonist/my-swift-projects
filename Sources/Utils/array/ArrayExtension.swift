@@ -67,6 +67,9 @@ extension Array {
     mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
         return ArrayModifier.insertAt(&self, item, index)
     }
+    func withinRange(_ idx:Int){
+        
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
