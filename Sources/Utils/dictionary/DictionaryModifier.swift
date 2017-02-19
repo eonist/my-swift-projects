@@ -1,6 +1,6 @@
 class DictionaryModifier{
 	/**
-	 * Merges 2 arrays, changes the left array, the right is untouched
+	 * Merges 2 dicts, changes the left array, the right is untouched
 	 * Returns the left dictionary for convenience purposes
 	 */
     static func merge<KeyType,ValueType> (_ left:inout Dictionary<KeyType,ValueType>, _ right: Dictionary<KeyType,ValueType>)-> Dictionary<KeyType,ValueType>{
