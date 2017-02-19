@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * Standard types
+ */
 extension CGColor:Reflectable{
     var reflection:(type:String,value:String) {
         return (type:"CGColor",value:RGBAParser.hex(self.nsColor))/*we store 0xFF0000FF values, which includes rgb and alpha*/

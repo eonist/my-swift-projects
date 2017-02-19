@@ -1,5 +1,7 @@
 import Cocoa
-/*Simple types:*/
+/**
+ * Standard types
+ */
 extension String:UnWrappable{
     static func unWrap<T>(_ value:String) -> T? {
         return "\(value)" as? T
