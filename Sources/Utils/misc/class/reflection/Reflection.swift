@@ -86,7 +86,7 @@ private class Utils{
         Swift.print("label: " + "\(label)")
         //Swift.print("value: " + "\(value)")
         if (value is AnyArray){/*array*/
-            Swift.print("AnyArray " + "\(value)")
+            //Swift.print("AnyArray " + "\(value)")
             //let properties = Reflection.reflect(value)
             //Swift.print("properties.count: " + "\(properties.count)")
             xml += handleArray(value,label)
@@ -148,12 +148,12 @@ private class Utils{
      * Array types
      */
     static func handleArray(_ value:Any,_ name:String)->XML{
-        Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
+        //Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
         let xml = XML()
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
-        //Swift.print("properties.count: " + "\(properties.count)")
+        Swift.print("properties.count: " + "\(properties.count)")
         properties.forEach{
             if($0.value is Reflectable){/*The type implements custom reflection*/
                 //Swift.print("$0.value: " + "\($0.value)")
