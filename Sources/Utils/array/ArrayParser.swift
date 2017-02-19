@@ -157,7 +157,7 @@ class ArrayParser{
     /**
      * Think of this method as: firstOccurence of something
      * Returns the first item that matches PARAM: match according to the constraints in PARAM: method
-     * EXAMPLE: ["a","b","c"].first("b",{$0.id == $1})//b
+     * EXAMPLE: ["a","b","c"].first("b",{$0 == $1})//b
      * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
      * EXAMPLE: [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
      * NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
