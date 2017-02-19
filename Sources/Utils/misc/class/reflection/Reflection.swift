@@ -192,8 +192,11 @@ private class Utils{
     static func handleDictionary(_ value:Any,_ name:String) -> XML{
         Swift.print("handleDictionary() name: \(name) value: \(value)")
         let xml = XML()
+        Swift.print("XML is created")
         xml.name = name
+        Swift.print("xml name is set")
         xml["type"] = "Dictionary"
+        Swift.print("xml type is set")
         let properties = Reflection.reflect(value)
         Swift.print("properties.count: " + "\(properties.count)")
         properties.forEach{
