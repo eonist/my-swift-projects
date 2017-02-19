@@ -9,6 +9,7 @@ protocol UnWrappable {
     static func unWrap<T>(_ xml:XML) -> T?
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?
     static func unWrap<T>(_ value:String) -> T?
+    //static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?]
 }
 /**
  * TODO: Contemplate: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
