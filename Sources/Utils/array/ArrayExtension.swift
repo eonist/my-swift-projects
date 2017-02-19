@@ -73,6 +73,7 @@ extension Array {
     func valid(_ idx:Int) -> Bool{
         return self.count > 0 && idx > -1 && idx < self.count
     }
+    
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
@@ -85,6 +86,11 @@ extension Array where Element:AnyObject{
 extension Array where Element:Equatable, Element:Comparable{
     func index(value:Element)->Int{
         return ArrayParser.index(self, value)
+    }
+}
+extension Array where Element:Equatable{
+    func existAtOrBefore(_ idx:Int, _ item:Element) -> Bool{
+        return ArrayAsserter.existAtOrBefore(self, idx, item)
     }
 }
 
