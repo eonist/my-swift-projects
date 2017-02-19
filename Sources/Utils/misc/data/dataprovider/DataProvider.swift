@@ -138,7 +138,7 @@ extension DataProvider{
      * PARAM: item is an Object instance as {title:"title"}
      */
     func addItemAt(_ item:Dictionary<String, String>, _ index:Int){
-        Swift.print("DataProvider.addItemAt()")
+        //Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
     }
@@ -146,10 +146,10 @@ extension DataProvider{
      * Removes an item at a spesific index
      */
     func removeItemAt(_ index:Int)->[String:String] {
-        Swift.print("removeItemAt.index: " + "\(index)")
+        //Swift.print("removeItemAt.index: " + "\(index)")
         var removedItem:[String:String]
         if (index < items.count) {
-            Swift.print("removed at: " + "\(index)")
+            //Swift.print("removed at: " + "\(index)")
             removedItem = items[index]
             items.removeAt(index)
         }else {(fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))}
