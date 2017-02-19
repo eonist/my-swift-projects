@@ -159,7 +159,7 @@ private class Utils{
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
-        Swift.print("handleArray.properties.count: " + "\(properties.count)")
+        //Swift.print("handleArray.properties.count: " + "\(properties.count)")
         properties.forEach{
             if($0.value is Reflectable){/*The type implements custom reflection*/
                 //Swift.print("$0.value: " + "\($0.value)")
@@ -227,7 +227,7 @@ private class Utils{
         //Swift.print("val: " + "\(val)")
         handleProperty(&xml, "key", key)
         handleProperty(&xml, "value", val)
-        Swift.print("dictionaryItem xml.xmlString.count: " + "\(xml.xmlString.count)")
+        //Swift.print("dictionaryItem xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**
