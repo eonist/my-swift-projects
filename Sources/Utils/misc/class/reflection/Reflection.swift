@@ -209,21 +209,22 @@ private class Utils{
             //Swift.print("$0.label: " + "\($0.label)")
             xml += dictionaryItem($0.value)
         }
+        Swift.print("handleDictionary.xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**
      * Handles individual Dictionary items
      */
     static func dictionaryItem(_ value:Any) -> XML{
-        Swift.print("dictionaryItem")
+        //Swift.print("dictionaryItem")
         var xml = XML()
         //Swift.print("create xml")
         xml.name = "item"
         let dictKeyValuePair:[(label:String,value:Any)] = Reflection.reflect(value)
         let key = dictKeyValuePair[0].value
-        Swift.print("key: " + "\(key)")
+        //Swift.print("key: " + "\(key)")
         let val = dictKeyValuePair[1].value
-        Swift.print("val: " + "\(val)")
+        //Swift.print("val: " + "\(val)")
         handleProperty(&xml, "key", key)
         handleProperty(&xml, "value", val)
         return xml
