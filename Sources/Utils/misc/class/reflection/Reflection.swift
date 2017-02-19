@@ -198,7 +198,7 @@ private class Utils{
         Swift.print("handleDictionary() name: \(name)")
         let xml = XML()
         //Swift.print("XML is created")
-        xml.name = name.count > 0 ? name : ""
+        xml.name = name.count > 0 ? name : "item"
         //Swift.print("xml name is set")
         xml["type"] = "Dictionary"
         //Swift.print("xml type is set")
