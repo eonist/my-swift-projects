@@ -154,7 +154,7 @@ private class Utils{
      * Array types
      */
     static func handleArray(_ value:Any,_ name:String)->XML{
-        Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
+        //Swift.print("handleArray: " + "name \(name)" + " $0.value: \(value)" )
         let xml = XML()
         xml.name = name
         xml["type"] = "Array"
@@ -195,7 +195,7 @@ private class Utils{
      * <someDict>
      */
     static func handleDictionary(_ value:Any,_ name:String) -> XML{
-        //Swift.print("handleDictionary() name: \(name) value: \(value)")
+        Swift.print("handleDictionary() name: \(name)")
         let xml = XML()
         //Swift.print("XML is created")
         if(name.count > 0){xml.name = name}
@@ -203,7 +203,7 @@ private class Utils{
         xml["type"] = "Dictionary"
         //Swift.print("xml type is set")
         let properties = Reflection.reflect(value)
-        //Swift.print("properties.count: " + "\(properties.count)")
+        Swift.print("properties.count: " + "\(properties.count)")
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
