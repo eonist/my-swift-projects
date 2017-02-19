@@ -86,7 +86,7 @@ extension UnWrappable{
         let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(child.childCount > 0){
             XMLParser.children(child).forEach{
-                array.append($0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0) )//$0.hasComplexContent ? .. : nil
+                array.append(unWrap($0, <#T##key: String##String#>) )//$0.hasComplexContent ? .. : nil
             }
         }
         return array
