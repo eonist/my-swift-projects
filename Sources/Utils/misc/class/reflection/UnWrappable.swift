@@ -78,6 +78,19 @@ extension UnWrappable{
         }
         return dictionary
     }
+    static func unWrap<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
+        var dictionary:[K:T] = [:]
+        if(xml.childCount > 0){
+            XMLParser.children(xml).forEach{
+                let first = $0.children!.first!
+                let key:K = K.unWrap(first.stringValue!)!
+                let last:XML = $0.children!.last! as! XML/*we cast NSXMLNode to XML*/
+                let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
+                dictionary[key] = value
+            }
+        }
+        return dictionary
+    }
     /**
      * Support for Array with Dictionaries like: [Dictionary<String,String>]
      */
