@@ -194,6 +194,7 @@ private class Utils{
         xml.name = name
         xml["type"] = "Dictionary"
         let properties = Reflection.reflect(value)
+        Swift.print("properties.count: " + "\(properties.count)")
         properties.forEach{
             Swift.print("$0.value: " + "\($0.value)")
             Swift.print("$0.label: " + "\($0.label)")
