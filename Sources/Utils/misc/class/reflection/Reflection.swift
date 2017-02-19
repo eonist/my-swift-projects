@@ -69,6 +69,7 @@ private class Utils{
         xml.name = name != nil ? name! : objectType/*the name of instance class*/
         if("\(value)" == "nil" || "\(value)" == "Optional(nil)"){/*Nil is not nil when mirroring. So you can't do value != nil. Casting to string is a workaround for this*/
             let classTypeStr:String = extractClassType(value)
+            Swift.print("classTypeStr: " + "\(classTypeStr)")
             xml["type"] = classTypeStr
             //Swift.print("\(xml["type"])")
         }else{
@@ -155,7 +156,7 @@ private class Utils{
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
-        //Swift.print("properties.count: " + "\(properties.count)")
+        Swift.print("handleArray.properties.count: " + "\(properties.count)")
         properties.forEach{
             if($0.value is Reflectable){/*The type implements custom reflection*/
                 //Swift.print("$0.value: " + "\($0.value)")
