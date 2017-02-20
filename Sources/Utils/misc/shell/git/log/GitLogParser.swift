@@ -1,6 +1,7 @@
 import Foundation
 typealias CommitData = (hash:String,author:String,date:String,subject:String,body:String)/*convenience*/
 class GitLogParser {
+    static var debugCounter:Int = 0
     /**
      * Returns a ComitData instance that is populated with auther, date, subject, body
      * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
@@ -46,11 +47,13 @@ class GitLogParser {
      * Compacts the bodyStr aka the commit description
      */
     static func compactBody(_ bodyStr:String) -> String{
+        if(debugCounter == 0){Swift.print("🦄 bodyStr: >\(bodyStr)<")}
         let preprocessedBody = Utils.preProcess(bodyStr)
-        //Swift.print("preprocessedBody: " + "\(preprocessedBody)")
+        if(debugCounter == 0){Swift.print("🦄 preprocessedBody: >\(preprocessedBody)<")}
         let compactBody:String = Utils.compact(preprocessedBody)
-        //Swift.print("compactBody: " )
-        //Swift.print(compactBody)
+        if(debugCounter == 0){Swift.print("🦄 compactBody: >" + "\(compactBody)<")}
+        
+        debugCounter = 1
         return compactBody
     }
 }
@@ -72,7 +75,7 @@ private class Utils{
      */
     static func trim(_ str:String)->String{
         var retVal:String = ""
-        let pattern = "^(?:'?\n*)(.*?)(?:\n*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
+        let pattern = "^(?:'?\n*\r*)(.*?)(?:\n*\r*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
         let options:NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]//we need the S-flag (.DotMatches....) to allow for capturing line-breaks with >.*?<
         str.matches(pattern,options).forEach{//its not pretty but it works
             if($0.numberOfRanges > 1){
