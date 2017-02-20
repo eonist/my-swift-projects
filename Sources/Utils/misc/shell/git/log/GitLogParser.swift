@@ -43,7 +43,7 @@ class GitLogParser {
         return commitData
     }
     /**
-     *
+     * Compacts the bodyStr aka the commit description
      */
     static func compactBody(_ bodyStr:String) -> String{
         let preprocessedBody = Utils.preProcess(bodyStr)
