@@ -89,11 +89,12 @@ extension UnWrappable{
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
                 let last:XML = $0.children!.last! as! XML/*we cast NSXMLNode to XML*/
-                Swift.print("last: " + "\(last)")
-                Swift.print("last: " + "\(last.xmlString)")
-                Swift.print("last.value: " + "\(last.value)")
-                Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
-                Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
+                /* Swift.print("last: " + "\(last)")
+                 Swift.print("last: " + "\(last.xmlString)")
+                 Swift.print("last.value: " + "\(last.value)")
+                 Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
+                 Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
+                 */
                 let value:T? = last.hasComplexContent ?  T.unWrap(last) : T.unWrap(last.value)
                 dictionary[key] = value
             }
