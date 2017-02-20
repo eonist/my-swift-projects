@@ -11,6 +11,7 @@ extension Date {
         if(month != nil){components.month = month!}
         if(day != nil){components.day = day!}
         if(hour != nil){components.hour = hour!}
+        if(minute != nil){components.minute = minute!}
         if(second != nil){components.second = second!}
         return calendar.date(from: components)
     }
