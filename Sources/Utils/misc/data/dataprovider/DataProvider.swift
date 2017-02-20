@@ -138,7 +138,7 @@ extension DataProvider{
      * PARAM: item is an Object instance as {title:"title"}
      */
     func addItemAt(_ item:Dictionary<String, String>, _ index:Int){
-        //Swift.print("DataProvider.addItemAt()")
+        Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
     }
