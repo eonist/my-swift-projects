@@ -190,7 +190,7 @@ class ArrayParser{
         return randomNumbers
     }
     /**
-     * IMPORTANT: Compares reference not value, if value comparing is needed then create another method to support that
+     * IMPORTANT: Compares reference not value. If value comparing is needed then create another method to support that
      */
     static func occurences<T>(_ theList:Array<T>, theItem:T){
         var counter:Int = 0
