@@ -78,7 +78,7 @@ class GitParser{
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
     /**
-     * DEPRECATED: Use GitParser.log instead
+     * ⚠️️DEPRECATED⚠️️: Use GitParser.log instead
      * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
      */
     static func doLog(_ localPath:String, _ cmd:String)->String{return log(localPath, cmd)}
