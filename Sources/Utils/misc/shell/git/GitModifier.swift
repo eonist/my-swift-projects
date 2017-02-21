@@ -2,6 +2,8 @@ import Foundation
 
 typealias GitKey = (user:String,  pass:String)
 typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
+typealias GitMsg = (title:String,  desc:String)
+
 class GitModifier{
    /**
     * Add a file or many files to a commit
@@ -34,9 +36,9 @@ class GitModifier{
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
-   static func commit(_ localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
+    static func commit(_ localRepoPath:String, _ msg:GitMsg)->String{
     	//log ("GitModifier's commit(" + message_title + ")")
-    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
+    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
         Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
    }
