@@ -27,7 +27,7 @@ class GitModifier{
     * 1 file changed, 0 insertions(+), 0 deletions(-)
     * create mode 100644 error.html
     * NOTE: Commit , usually doesnt return anything
-    * NOTE: its important that the message is betweentwo single quates
+    * NOTE: its important that the message is between two single quates
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: can we also add desscription to a commit?
     * TODO: what does commit -a do? -all?
@@ -40,7 +40,6 @@ class GitModifier{
         Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
    }
-   
    /*
     * The opposite of the add action
     * Important: You should never use git reset <commit> when any snapshots after <commit> have been pushed to a public repository
@@ -79,11 +78,11 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   static func pull(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
-       let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
-       let targetBranch:String = "master" //--master branch
+   static func pull(_ repo:GitRepo, _ key:GitKey)->String{ //--TODO: add branch here
+       let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
+       let targetBranch:String = repo.branch //--master branch
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
-       return ShellUtils.run(shellScript,localRepoPath)
+       return ShellUtils.run(shellScript,repo.localPath)
    }
     /**
      * Uploads the current from the local git commits to the remote git
@@ -104,7 +103,6 @@ class GitModifier{
      * TODO: maybe add try error when doing the shell part
      * TODO: add branch as a param
      */
-   
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
         let remoteLoc:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath //--https://user:pass@github.com/user/repo.git--"origin"
