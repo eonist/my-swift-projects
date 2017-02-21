@@ -1,4 +1,7 @@
-//import "text:TextAsserter.applescript"
+import Foundation
+
+typealias GitKey = (user:String,  pass:String)
+typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
 class GitModifier{
    /**
     * Add a file or many files to a commit
@@ -101,8 +104,7 @@ class GitModifier{
      * TODO: maybe add try error when doing the shell part
      * TODO: add branch as a param
      */
-    typealias GitKey = (user:String,  pass:String)
-    typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
+   
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
         let remoteLoc:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath //--https://user:pass@github.com/user/repo.git--"origin"
