@@ -15,7 +15,7 @@ class DictionaryModifier{
      * var a:[String:Any] = ["name":"john", "color":"blue","index":0]
      * var b:[String:Any] = ["name":"john", "color":"red","index":2]
      * var c = DictionaryModifier.combine(a, b)
-     * DictionaryParser.describe(c)//Output:    key: color value: red, key: name value: john, key: index value: 2
+     * DictionaryParser.describe(c)//Output: key: color value: red, key: name value: john, key: index value: 2
 	 */
     static func combine<K,V>(_ a:Dictionary<K,V>, _ b:Dictionary<K,V>)->Dictionary<K,V>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
 		var c:Dictionary<K,V> = [:]//use generics in the future: T and <T>
