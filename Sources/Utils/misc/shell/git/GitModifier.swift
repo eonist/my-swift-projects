@@ -201,14 +201,14 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   static func fetch(_ localRepoPath:String, _ remotePath:String, _ branch:String)->String{
+    static func fetch(repo:GitRepo)->String{
        //--log "fetch()"
        //log ("GitModifier's fetch(" + branch + ")")
        //--condition
        var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git fetch " + "origin"
-       if(branch != " "){ shellScript += " " + branch}
+       if(repo.branch != " "){ shellScript += " " + repo.branch}
        //--log "shellScript: " + shellScript
-       return ShellUtils.run(shellScript,localRepoPath)
+       return ShellUtils.run(shellScript,repo.localPath)
    }
    /**
     * branch
