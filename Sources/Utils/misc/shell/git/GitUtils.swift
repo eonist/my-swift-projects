@@ -6,7 +6,7 @@ class GitUtils{
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
-    static func manualPull(_ repo:GitRepo){
+    static func manualPull(_ repo:GitRepo) -> Bool{
 		//Swift.print("GitUtils.manualPull()")
 		_ = GitModifier.fetch(repo)//--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(repo.localPath, repo.branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
@@ -18,6 +18,8 @@ class GitUtils{
         }else{
 			Swift.print("nothing to merge, local branch is up-to-date")
 		}
+        
+        return false//temp
 	}
 	/**
 	 * Manually clone a git to a local folder
