@@ -6,14 +6,14 @@ class GitUtils{
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
-	static func manualPull(_ localPath:String, _ remotePath:String, _ branch:String){
+    static func manualPull(_ repo:GitRepo){
 		//Swift.print("GitUtils.manualPull()")
-		_ = GitModifier.fetch(localPath, remotePath, branch)//--git fetch origin master, retrive the latest repo info
-		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+		_ = GitModifier.fetch(repo)//--git fetch origin master, retrive the latest repo info
+		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(repo.localPath, repo.branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			Swift.print("remote branch is ahead, so there is something to merge")
-			_ = GitModifier.merge(localPath, branch, "origin/" + branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
+			_ = GitModifier.merge(repo.localPath, branch, "origin/" + branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
 		}else{
 			Swift.print("nothing to merge, local branch is up-to-date")
 		}
