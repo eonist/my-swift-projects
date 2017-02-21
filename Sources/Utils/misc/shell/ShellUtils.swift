@@ -19,12 +19,18 @@ class ShellUtils{
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
+     * IMPORTANT: if input has spaces and the space are not seperators of arguments, then you must encode it first: "".encode()!
+     * IMPORTANT: if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
      */
     static func exc(_ input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
+        Swift.print("input: " + "\(input)")
         var arguments = input.components(separatedBy: " ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
-        arguments = arguments.map {$0.encode()!.decode()!}/*<--the encode part was necessary to allow % chars*/
-        //arguments.forEach{Swift.print("$0: " + "\($0)")}
+        //TODO: This line bellow was $0.encode().decode() to allow % chars, But if your input is already encoded to support space, then you get double encoded content.
+        arguments = arguments.map {$0.decode()!}
+        Swift.print("block of interest start")
+        arguments.forEach{Swift.print("$0: " + "\($0)")}
+        Swift.print("block of interest end")
         let task = Process()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
