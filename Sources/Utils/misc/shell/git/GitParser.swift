@@ -60,6 +60,7 @@ class GitParser{
 	/**
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
+     * NOTE: basically remote file has changes that never has been applied to local file.
 	 */
 	static func unMergedFiles(_ localPath:String)->Array<String>{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
