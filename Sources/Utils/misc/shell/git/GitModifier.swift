@@ -37,7 +37,7 @@ class GitModifier{
         Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
+   /**
     * Uploads the current from the local git commits to the remote git
     * PARAM: from_where: "master"
     * PARAM: to_where: "origin"
