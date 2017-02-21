@@ -10,3 +10,4 @@ var mainQueue = {return DispatchQueue.main}()
 
 //swift 3 update, The bellow line may work, but maybe not. Do more swift 3 async research
 func async(_ queue:DispatchQueue , _ block:@escaping () -> Void) -> Void {return queue.async(execute: block)}
+
