@@ -23,14 +23,14 @@ class ShellUtils{
      * IMPORTANT: if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
      */
     static func exc(_ input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
-        Swift.print("input: " + "\(input)")
+        //Swift.print("input: " + "\(input)")
         var arguments = input.components(separatedBy: " ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         //TODO: This line bellow was $0.encode().decode() to allow % chars, But if your input is already encoded to support space, then you get double encoded content.
         arguments = arguments.map {$0.decode()!}
-        Swift.print("block of interest start")
+        //Swift.print("block of interest start")
         arguments.forEach{Swift.print("$0: " + "\($0)")}
-        Swift.print("block of interest end")
+        //Swift.print("block of interest end")
         let task = Process()
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
