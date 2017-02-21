@@ -13,8 +13,9 @@ class GitUtils{
 		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			Swift.print("remote branch is ahead, so there is something to merge")
-			_ = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
-		}else{
+			let result = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
+            Swift.print("⚠️️⚠️️⚠️️ result: " + "\(result)")
+        }else{
 			Swift.print("nothing to merge, local branch is up-to-date")
 		}
 	}
