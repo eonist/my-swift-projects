@@ -101,14 +101,15 @@ class GitModifier{
      * TODO: maybe add try error when doing the shell part
      * TODO: add branch as a param
      */
-    //typealias PushData = (localRepoPath:String,  remotePath:String,  userName:String,  userPassword:String,  branch:String)
-    static func push(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
+    typealias GitKey = (user:String,  pass:String)
+    typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
+    static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
-        let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
-        Swift.print("remoteLoc: " + "\(remoteLoc)")
-        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git push" + " " + remoteLoc + " " + branch
-        Swift.print("shellScript: " + "\(shellScript)")
-        return ShellUtils.run(shellScript,localRepoPath)
+        let remoteLoc:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath //--https://user:pass@github.com/user/repo.git--"origin"
+        //Swift.print("remoteLoc: " + "\(remoteLoc)")
+        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git push" + " " + remoteLoc + " " + repo.branch
+        //Swift.print("shellScript: " + "\(shellScript)")
+        return ShellUtils.run(shellScript,repo.localPath)
     }
    /*
     * The opposite of the add action
