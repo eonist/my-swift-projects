@@ -19,7 +19,7 @@ class GitUtils{
 			Swift.print("nothing to merge, local branch is up-to-date")
 		}
         
-        return false//temp
+        return true//temp
 	}
 	/**
 	 * Manually clone a git to a local folder
