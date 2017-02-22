@@ -70,7 +70,11 @@ class RangeParser {
      * EXAMPLE: difference(0..<4, 2..<7)//nil,4..<7
      */
     static func difference<T>(_ a:Range<T>, _ b:Range<T>) -> (Range<T>?,Range<T>?){
+        if(!RangeAsserter.overlaps(b, a)){//quick fix
+            return (nil,b)//return early
+        }
         let exclusion = RangeParser.exclusion(a, b)
+        //Swift.print("exclusion: " + "\(exclusion)")
         var range1:Range<T>?
         if(exclusion.0 != nil && RangeAsserter.contains(b,exclusion.0!)){
             range1 = exclusion.0
