@@ -128,7 +128,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         }
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
-    override func mouseDown(with event: NSEvent) {mouseDown(MouseEvent(event,self))}
+    override func mouseDown(with event: NSEvent) {
+        mouseDown(MouseEvent(event,self))
+    }
     override func mouseUp(with event:NSEvent) {
         mouseUp(MouseEvent(event,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, lets keep it above for now as the LeverStepper problem was a broken track pad problem not this*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(event,self)) : mouseUpOutside(MouseEvent(event,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
