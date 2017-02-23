@@ -71,7 +71,8 @@ extension NSView {
     func contains<T:NSView>(_ view:T)->Bool{
         return NSViewAsserter.contains(self, view)
     }
-    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}/*you cant have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
+    /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
+    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     
     //var width:CGFloat{return frame.width}//TODO:implement later
     //var height:CGFloat{return frame.height}
