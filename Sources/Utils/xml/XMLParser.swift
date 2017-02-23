@@ -132,9 +132,9 @@ public class XMLParser{
     }
     /**
      * Returns an an XML instance at @param index (Array index)
-     * @Note this function is recursive
-     * @Note to find a child at an integer use the native code: xml.children[integer]
-     * @Note to find the children of the root use an empty array as the index value
+     * NOTE: this function is recursive
+     * NOTE: to find a child at an integer use the native code: xml.children[integer]
+     * NOTE: to find the children of the root use an empty array as the index value
      */
     static func childAt(_ xml:XML?,_ index:Array<Int>)->XML? {
         //Swift.print("index: " + "\(index)")
