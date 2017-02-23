@@ -43,46 +43,60 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is over the visible part of this view 
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Same as regular mouseDown event except this also includes the origin
      */
     func mouseDown(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Handles actions and drawing states for the release event.
      * NOTE: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * This method exists for the sake of convenience
      */
     func mouseUp(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * MouseMoved
