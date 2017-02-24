@@ -121,6 +121,7 @@ public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sak
 /*Advance array extensions*/
 
 /**
+ * Multidimensional-flat-map...because flatMap only works on "2d arrays". This is for "3d array's"
  * Example:
  * let arr:[Any] = [[[1],[2,3]],[[4,5],[6]]]
  * let x2:[Int] = arr.recursiveFlatmap()
