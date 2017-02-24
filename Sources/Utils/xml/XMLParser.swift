@@ -206,7 +206,12 @@ public class XMLParser{
         }
         return items
     }
-    s
+    /**
+     *
+     */
+    static func arr(_ xml:XML){
+        //[]
+    }
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
      */
