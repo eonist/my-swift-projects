@@ -7,7 +7,7 @@ class NodeParser {
     /**
      * New
      */
-    static func dataAt(_ node:Node, idx:[Int]) -> Dictionary<String,String>{
+    static func dataAt(_ node:Node,_ idx:[Int]) -> Dictionary<String,String>{
         let xml:XML = XMLParser.childAt(node.xml, idx)!
         print("dataAt.xml:  \(xml)")
         let attributes:Dictionary<String,String> = XMLParser.attribs(xml)
