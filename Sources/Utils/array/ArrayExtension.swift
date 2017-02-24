@@ -117,3 +117,25 @@ public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sak
     _ = right.unshift(left)/*<--this is like prepend*/
     return right
 }
+
+/*Advance array extensions*/
+
+/**
+ * Example:
+ * let arr:[Any] = [[[1],[2,3]],[[4,5],[6]]]
+ * let x2:[Int] = arr.recursiveFlatmap()
+ * Swift.print(x2)//1,2,3,4,5,6
+ */
+extension Collection {
+    func recursiveFlatmap<T>() -> [T] {
+        var results = [T]()
+        for element in self {
+            if let sublist = element as? [Self.Generator.Element] {
+                results += sublist.recursiveFlatmap()
+            } else if let element = element as? T {
+                results.append(element)
+            }
+        }
+        return results
+    }
+}
