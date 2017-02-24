@@ -209,13 +209,13 @@ public class XMLParser{
     /**
      *
      */
-    static func arr(_ xml:XML) -> [[String:String]]{
-        var items:[Dictionary<String,String>] = []
+    static func arr(_ xml:XML) -> [[String:Any]]{
+        var items:[Dictionary<String,Any>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for i in 0..<count{
             let child:XMLElement = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-            var item:Dictionary<String,String> = Dictionary<String,String>()
+            var item:Dictionary<String,Any> = Dictionary<String,Any>()
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
