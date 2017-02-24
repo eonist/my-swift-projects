@@ -95,13 +95,13 @@ public class XMLParser{
      * New
      */
     static func attribs(_ child:XML) -> Dictionary<String,String>{
-        var attributes:Dictionary<String,String> = [:]
+        var dict:Dictionary<String,String> = [:]
         if(child.attributes != nil && child.attributes!.count > 0){
-            for node:XMLNode in child.attributes!{
-                attributes[node.name!] = node.stringValue!
+            child.attributes?.forEach{
+                dict[$0.name!] = $0.stringValue!
             }
         }
-        return attributes
+        return dict
     }
     /**
      * Returns a key/value object with the attributes at the @param index in @param database
