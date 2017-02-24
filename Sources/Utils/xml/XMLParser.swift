@@ -220,8 +220,11 @@ public class XMLParser{
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
             }
-            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
-            else if(child.hasComplexContent) {item["xml"] = arr(child)}
+            if(child.stringValue != nil && child.stringValue!.count > 0) {
+                item["xml"] = child.stringValue!
+            }else if(child.hasComplexContent) {
+                item["xml"] = arr(child)
+            }
             items.append(item)
         }
         return items
