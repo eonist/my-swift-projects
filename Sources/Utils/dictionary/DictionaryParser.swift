@@ -12,11 +12,11 @@ class DictionaryParser{
     /**
      *
      */
-    static func xml(dict:Dictionary<String,String>)->XML{
-        let xml:XML = XML()
+    static func xml(_ nodeName:String,_ dict:Dictionary<String,String>)->XML{
+        let xml:XML = "<item></item>".xml
         for (theKey,theValue) in dict{
             print("key: \(theKey) value: \(theValue)")
-            xml[theKey]
+            xml.setAttributesWith(attributes)
             //if(theValue is Dictionary) {describe(theValue)}
         }
         return XML()
