@@ -16,34 +16,34 @@ public class XMLModifier {
     /**
      *
      */
-    static func addChildAt(_ xml:XML,_ child:XML,_ index:Int) -> XMLElement {
+    static func addChildAt(_ xml:XML,_ child:XML,_ index:Int) -> XML {
         return insertAt(xml,index,child)
     }
     /**
      * Inserts PARAM child at PARAM index in PARAM xml
      * NOTE: works similarly to the sprite.addChildAt() function
      */
-    static func insertAt(_ xml:XML,_ index:Int,_ child:XML) -> XMLElement {
+    static func insertAt(_ xml:XML,_ index:Int,_ child:XML) -> XML {
         xml.insertChild(child, at: index)
         return xml;
     }
     /**
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
-    static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XMLElement {// :TODO: remove may need to be recursive, rename to removeAt?
+    static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
         return XMLParser.childAt(xml, index.slice2(0,index.count-1))!.removeAt(index[index.count-1])
     }
     /**
      * Convenince
      */
-    static func removeChildAt(_ xml:XML,_ index:Int) -> XMLElement {
+    static func removeChildAt(_ xml:XML,_ index:Int) -> XML {
         xml.removeChild(at: index)
         return xml
     }
     /**
      * EXAMPLE XMLModifier.setNameAt(database.xml, index, "menu")
      */
-    static func setNameAt(_ xml:XML,_ index:Array<Int>, _ name:String) -> XMLElement {
+    static func setNameAt(_ xml:XML,_ index:Array<Int>, _ name:String) -> XML {
         XMLParser.childAt(xml, index)?.name = name
         return xml
     }
@@ -51,7 +51,7 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.setAttributeAt(xml, [0,1], "title", "someTitle")
      * NOTE: I think this method works with depth indecies
      */
-    static func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XMLElement {
+    static func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XML {
         XMLParser.childAt(xml, index)?[key] = value
         return xml
     }
