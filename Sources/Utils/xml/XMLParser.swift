@@ -207,24 +207,22 @@ public class XMLParser{
         return items
     }
     /**
-     * A limitation is if you have an attrib thats named xml, then it doesnt work
+     * New
      */
-    static func arr(_ xml:XML) -> [[String:Any]]{
-        var items:[Dictionary<String,Any>] = []
+    static func arr(_ xml:XML) -> [Any]{
+        var items:[Any] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for i in 0..<count{
             let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
             //var item:Dictionary<String,Any> = Dictionary<String,Any>()
-            
+            var item:[Any] = []
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
-            for attribute in attributes {
-                item[attribute["name"]!] = attribute["value"]!
-            }
+            item.append(attributes)
             if(child.stringValue != nil && child.stringValue!.count > 0) {
-                item["xml"] = child.stringValue!
+                item.append(child.stringValue!)
             }else if(child.hasComplexContent) {
-                item["xml"] = arr(child)
+                item.append(arr(child))
             }
             items.append(item)
         }
