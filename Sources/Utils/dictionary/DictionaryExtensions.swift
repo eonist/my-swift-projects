@@ -10,3 +10,13 @@ extension AnyDictionary {
         return DictionaryParser.xml(self as! Dictionary<String, String>)
     }
 }
+
+extension Dictionary where Key : ExpressibleByStringLiteral, Value : AnyObject {
+    
+    var movieName : String {
+        if let nameObj = self["im:name"] as? [String:AnyObject] {
+            return nameObj["label"] as! String
+        }
+        return ""
+    }
+}
