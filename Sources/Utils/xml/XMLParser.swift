@@ -207,7 +207,7 @@ public class XMLParser{
         return items
     }
     /**
-     *
+     * A limitation is if you have an attrib thats named xml, then it doesnt work
      */
     static func arr(_ xml:XML) -> [[String:Any]]{
         var items:[Dictionary<String,Any>] = []
