@@ -202,7 +202,6 @@ public class XMLParser{
                 item[attribute["name"]!] = attribute["value"]!
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
-            else if(child.hasComplexContent) {item["xml"] = child}
             items.append(item)
         }
         return items
@@ -210,8 +209,22 @@ public class XMLParser{
     /**
      *
      */
-    static func arr(_ xml:XML){
-        //[]
+    static func arr(_ xml:XML) -> [[String:String]]{
+        var items:[Dictionary<String,String>] = []
+        let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        for i in 0..<count{
+            let child:XMLElement = XMLParser.childAt(xml.children!, i)!
+            //print("Import - child.toXMLString(): " + child.toXMLString());
+            var item:Dictionary<String,String> = Dictionary<String,String>()
+            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
+            for attribute in attributes {
+                item[attribute["name"]!] = attribute["value"]!
+            }
+            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
+            else if(child.hasComplexContent) {item["xml"] = arr(child)}
+            items.append(item)
+        }
+        return items
     }
     /**
      * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
