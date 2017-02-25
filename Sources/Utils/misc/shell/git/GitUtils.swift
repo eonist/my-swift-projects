@@ -56,12 +56,13 @@ class GitUtils{
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         return result
     }
+    static var logFormat:String = "\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
     /**
      * Returns the count from now until the date speccifed in PARAM: after
      * PARAM: after: "2016-10-12 00:00:00" (git date format)
      */
     static func commitCount(_ localRepoPath:String, after:String)->String{
-        let cmd = "git log --after=\"" + after + "\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
+        let cmd = "git log --after=\"" + after + logFormat
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
@@ -74,7 +75,9 @@ class GitUtils{
      * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
      */
     static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
-        let cmd = "git log --since=\"01-Dec-2016\" --until=\"31-Dec-2016\""
-        
+        let cmd = "git log --since=\"01-Dec-2016\" --until=\"31-Dec-2016\"" + logFormat
+        let shellScript:String = cmd
+        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
+        return result
     }
 }
