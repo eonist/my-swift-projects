@@ -11,6 +11,9 @@ class GitDateUtils {
         let gitTime = chronoTime.insertCharsAt([("-",4),("-",6),(" ",8),(":",10),(":",12)])
         return gitTime
     }
+    /**
+     * Date -> GitDate
+     */
     static func gitTime(_ date:Date)->String{
         let chronoTime:String = DateParser.descendingDate(date)
         let gitTime:String = GitDateUtils.gitTime(chronoTime)
