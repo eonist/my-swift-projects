@@ -78,7 +78,7 @@ class GitUtils{
         let cmd = "git log --since=\""+since+"\" --until=\""+until + logFormat
         //
         //let cmd:String = "git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""
-        Swift.print(cmd)
+        //Swift.print(cmd)
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         //Swift.print("result.count: " + "\(result.count)")
