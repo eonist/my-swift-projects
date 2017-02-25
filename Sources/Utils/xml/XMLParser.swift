@@ -95,8 +95,8 @@ public class XMLParser{
      * New
      * TODO:  the return should be optional so you can use if let. if there is no atribs then return nil
      */
-    static func attribs(_ child:XML) -> Dictionary<String,String>{
-        var dict:Dictionary<String,String> = [:]
+    static func attribs(_ child:XML) -> [String:String]{
+        var dict:[String:String] = [:]
         if(child.attributes != nil && child.attributes!.count > 0){
             child.attributes?.forEach{
                 dict[$0.name!] = $0.stringValue!
@@ -132,12 +132,12 @@ public class XMLParser{
         return children[index] as? XML
     }
     /**
-     * Returns an an XML instance at @param index (Array index)
+     * Returns an an XML instance at PARAM: index (Array index)
      * NOTE: this function is recursive
      * NOTE: to find a child at an integer use the native code: xml.children[integer]
      * NOTE: to find the children of the root use an empty array as the index value
      */
-    static func childAt(_ xml:XML?,_ index:Array<Int>)->XML? {
+    static func childAt(_ xml:XML?,_ index:[Int])->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
