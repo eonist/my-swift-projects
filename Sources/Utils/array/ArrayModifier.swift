@@ -375,6 +375,15 @@ class ArrayModifier{
         return result
     }
     /**
+     *
+     */
+    static func removeDups<T>(_ arr:[T], _ condition:()->Bool)->[T]{
+        
+        //Add logic here
+        
+        return []
+    }
+    /**
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
      * NOTE: modifies the original array,returns the array (convenient)
