@@ -17,7 +17,7 @@ class Node:EventSender{//this should probably extend NSXMLElement, and just impl
     /**
      * TODO: consider renaming to appendAt
      */
-    func addAt(_ index:Array<Int>,_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func addAt(_ index:[Int],_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         _ = XMLModifier.addChildAt(self.xml, index, xml)
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
@@ -25,7 +25,7 @@ class Node:EventSender{//this should probably extend NSXMLElement, and just impl
      * EXAMPLE: setAttributeAt([0], ["title":"someTitle"]);
      * TODO: rename to changeAttribute? or editAttribute?
      */
-    func setAttributeAt(_ index:Array<Int>,_ attributes:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func setAttributeAt(_ index:[Int],_ attributes:[String:String]){// :TODO: do we still need the event dispatching, cant the calling method do this?
         _ = XMLModifier.setAttributeAt(xml, index, attributes)
         onEvent(NodeEvent(NodeEvent.setAttributeAt,index,self))
     }
