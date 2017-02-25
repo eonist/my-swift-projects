@@ -78,7 +78,7 @@ class GitUtils{
         let cmd = "git log --since=\""+since+"\" --until=\""+until+"\""// + logFormat
         Swift.print(cmd)
         let shellScript:String = cmd
-        let result:String = ShellUtils.run(shellScript,localRepoPath)
+        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         return result
     }
 }
