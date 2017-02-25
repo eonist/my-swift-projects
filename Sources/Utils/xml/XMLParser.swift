@@ -93,6 +93,7 @@ public class XMLParser{
     }
     /**
      * New
+     * TODO:  the return should be optional so you can use if let. if there is no atribs then return nil
      */
     static func attribs(_ child:XML) -> Dictionary<String,String>{
         var dict:Dictionary<String,String> = [:]
