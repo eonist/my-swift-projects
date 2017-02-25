@@ -51,7 +51,7 @@ class ShellUtils{
      */
     static func unsafeRun(_ input: String, _ cd:String = "") -> String {
         let (output, terminationStatus) = ShellUtils.unsafeExc(input,cd)
-        Swift.print("terminationStatus: " + "\(terminationStatus)")
+        //Swift.print("terminationStatus: " + "\(terminationStatus)")
         _ = terminationStatus
         return output
     }
