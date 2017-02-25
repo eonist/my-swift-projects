@@ -70,7 +70,7 @@ class GitUtils{
         return result
     }
     /**
-     *
+     * NOTE: There is also: --since --before
      */
     static func commitCount(_ localRepoPath:String, since:String, until)->String{
         let cmd = "git log --since=\"01-Dec-2016\" --until=\"31-Dec-2016\""
