@@ -220,8 +220,9 @@ public class XMLParser{
             //print("Import - child.toXMLString(): " + child.toXMLString());
             //var item:Dictionary<String,Any> = Dictionary<String,Any>()
             var item:[Any] = []
-            let attributes:Dictionary<String,String> = XMLParser.attribs(child)//TODO: use: attribs instead
-            item.append(attributes)
+            if(xml.attributes != nil && xml.attributes!.count > 0){
+                item.append(child.attribs)
+            }
             if(child.stringValue != nil && child.stringValue!.count > 0) {
                 item.append(child.stringValue!)
             }else if(child.hasComplexContent) {
