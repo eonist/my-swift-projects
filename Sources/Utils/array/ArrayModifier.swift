@@ -375,9 +375,9 @@ class ArrayModifier{
         return result
     }
     /**
-     * We use a method instead of just a match:Equatable, that way we can add 
+     * We use a method instead of just a match:Equatable, that way we can add multiple match conditions etc
      */
-    static func removeDups<T,U>(_ arr:[T], _ condition:(_ a:T, _ match:U)->Bool)->[T] where U:Equatable{
+    static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         
         //Add logic here
         //find a similar method: arr.index(of:$0,condition) aka a conditional indexOf method
