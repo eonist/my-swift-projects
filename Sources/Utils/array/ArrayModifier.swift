@@ -375,7 +375,7 @@ class ArrayModifier{
         return result
     }
     /**
-     *
+     * We use a method instead of just a match:Equatable, that way we can add 
      */
     static func removeDups<T,U>(_ arr:[T], _ condition:(_ a:T, _ match:U)->Bool)->[T] where U:Equatable{
         
