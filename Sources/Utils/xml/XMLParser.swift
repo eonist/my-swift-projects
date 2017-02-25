@@ -84,8 +84,8 @@ public class XMLParser{
                 let name:String = node.name!
                 let value:String = node.stringValue!
                 //print("name: " + name + " " + "value:"+value)
-                attribute["name"] = name
-                attribute["value"] = value
+                attribute["name"] = name//👈the problem is here.
+                attribute["value"] = value//👈the problem is here. 
                 attributes.append(attribute)
             }
         }
@@ -217,7 +217,7 @@ public class XMLParser{
             //print("Import - child.toXMLString(): " + child.toXMLString());
             //var item:Dictionary<String,Any> = Dictionary<String,Any>()
             var item:[Any] = []
-            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
+            let attributes:[Dictionary<String,String>] = XMLParser.attribs(child)//TODO: use: attribs instead
             item.append(attributes)
             if(child.stringValue != nil && child.stringValue!.count > 0) {
                 item.append(child.stringValue!)
