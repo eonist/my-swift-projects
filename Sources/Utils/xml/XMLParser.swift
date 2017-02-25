@@ -224,7 +224,7 @@ public class XMLParser{
             let attribs = child.attribs
             
             if(!attribs.isEmpty){
-                item += attribs
+                item.append(attribs)
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) {
                 item.append(child.stringValue!)
