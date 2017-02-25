@@ -365,7 +365,7 @@ class ArrayModifier{
      * Removes duplicates
      * NOTE: the following two lines may be more efficient try to factor them and see if they are good
      * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"]
-     *
+     * EXAMPLE: let arr:[String] = ["a","b","b","c","b","d","c"];var z:[String] = [] Swift.print(arr.forEach{if(z.index(of: $0) == nil) {z.append($0)}})//["a", "b", "c", "d"]
      */
     static func removeDuplicates<T>(_ array:[T]) -> Array<T> where T:Equatable, T:Comparable{
         var result:[T] = []
