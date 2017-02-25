@@ -79,6 +79,7 @@ class GitUtils{
         Swift.print(cmd)
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
+        Swift.print("result.count: " + "\(result.count)")
         return result
     }
 }
