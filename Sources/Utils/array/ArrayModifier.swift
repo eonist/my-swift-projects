@@ -367,13 +367,12 @@ class ArrayModifier{
      * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"]
      *
      */
-    static func removeDuplicates<T>(_ array:Array<T>) -> Array<T> where T:Equatable, T:Comparable{
-        var tempArray:Array<T> = []
-        for i in 0..<array.count{
-            let item:T = array[i]
-            if (ArrayParser.index(tempArray, item) == -1) {tempArray.append(item)}//append if doesn't exists
+    static func removeDuplicates<T>(_ array:[T]) -> Array<T> where T:Equatable, T:Comparable{
+        var result:[T] = []
+        array.forEach{
+            if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists
         }
-        return tempArray
+        return result
     }
     /**
      * Very simple numeric sorter
