@@ -75,11 +75,12 @@ class GitUtils{
      * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
      */
     static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
-        let cmd = "git log --since=\""+since+"\" --until=\""+until+"\""// + logFormat
-        Swift.print(cmd)
+        //let cmd = "git log --since=\""+since+"\" --until=\""+until+"\""// + logFormat
+        //Swift.print(cmd)
+        let cmd:String = "git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
-        Swift.print("result.count: " + "\(result.count)")
+        //Swift.print("result.count: " + "\(result.count)")
         return result
     }
 }
