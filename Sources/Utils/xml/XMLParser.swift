@@ -85,7 +85,7 @@ public class XMLParser{
                 let value:String = node.stringValue!
                 //print("name: " + name + " " + "value:"+value)
                 attribute["name"] = name//👈the problem is here.
-                attribute["value"] = value//👈the problem is here. 
+                attribute["value"] = value//👈the problem is here.
                 attributes.append(attribute)
             }
         }
@@ -191,6 +191,9 @@ public class XMLParser{
      * TODO: Does it support xml string value? 
      */
     static func toArray(_ xml:XML)->[[String:String]] {
+        
+        //you probably shouldnt use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
+        
         var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for i in 0..<count{
@@ -217,7 +220,7 @@ public class XMLParser{
             //print("Import - child.toXMLString(): " + child.toXMLString());
             //var item:Dictionary<String,Any> = Dictionary<String,Any>()
             var item:[Any] = []
-            let attributes:[Dictionary<String,String>] = XMLParser.attribs(child)//TODO: use: attribs instead
+            let attributes:Dictionary<String,String> = XMLParser.attribs(child)//TODO: use: attribs instead
             item.append(attributes)
             if(child.stringValue != nil && child.stringValue!.count > 0) {
                 item.append(child.stringValue!)
