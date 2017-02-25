@@ -219,11 +219,8 @@ public class XMLParser{
         for i in 0..<count{
             let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-            //var item:Dictionary<String,Any> = Dictionary<String,Any>()
             var item:[Any] = []
-           
             let attribs = child.attribs
-            
             if(!attribs.isEmpty){
                 item.append(attribs)
             }
