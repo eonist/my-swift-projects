@@ -5,15 +5,7 @@ extension Date {
      * Returns a date instance for time components like: 2016,11,03,15,49,59
      */
     static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{
-        let calendar = Calendar.current
-        var components = DateComponents()
-        if(year != nil){components.year = year!}
-        if(month != nil){components.month = month!}
-        if(day != nil){components.day = day!}
-        if(hour != nil){components.hour = hour!}
-        if(minute != nil){components.minute = minute!}
-        if(second != nil){components.second = second!}
-        return calendar.date(from: components)
+        return DateParser.createDate(year, month, day, hour, minute, second)
     }
     /**
      * beta
