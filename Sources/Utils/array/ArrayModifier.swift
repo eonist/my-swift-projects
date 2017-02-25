@@ -380,6 +380,7 @@ class ArrayModifier{
     static func removeDups<T,U>(_ arr:[T], _ condition:(_ a:T, _ match:U)->Bool)->[T] where U:Equatable{
         
         //Add logic here
+        //find a similar method: arr.index(of:$0,condition) aka a conditional indexOf method
         
         return []
     }
