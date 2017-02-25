@@ -14,6 +14,8 @@ class Node:EventSender{//this should probably extend NSXMLElement, and just impl
     init(_ xml:XML = XML()) {
         self.xml = xml
     }
+}
+extension Node{
     /**
      * TODO: consider renaming to appendAt
      */
