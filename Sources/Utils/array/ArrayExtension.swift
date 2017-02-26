@@ -77,7 +77,7 @@ extension Array {
         return ArrayParser.first(self, match, condition)
     }
     func removeDups(_ match:Element, _ condition:(_ a:Element, _ b:Element)->Bool)->[Element]{
-        return ArrayModifier.removeDups(self, <#T##match: T##T#>, <#T##condition: (T, T) -> Bool##(T, T) -> Bool#>)
+        return ArrayModifier.removeDups(self, match, condition)
     }
 }
 /**
