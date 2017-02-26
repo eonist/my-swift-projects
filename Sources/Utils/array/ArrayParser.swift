@@ -171,6 +171,7 @@ class ArrayParser{
         }
         return nil
     }
+    
     /**
      * Returns a random array with unique numbers (no duplicates)
      * EXAMPLE:

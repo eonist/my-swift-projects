@@ -377,8 +377,12 @@ class ArrayModifier{
     /**
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions etc
      */
-    static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
-        
+    static func removeDups<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+        /*var result:[T] = []
+        arr.forEach{
+            if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists
+        }
+        return result*/
      
         
         
@@ -387,17 +391,7 @@ class ArrayModifier{
         
         return []
     }
-    /**
-     *
-     */
-    static func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
-        for item in arr{
-            if(condition(item,match)){
-                return item
-            }
-        }
-        return nil
-    }
+    
     /**
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
