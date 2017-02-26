@@ -7,12 +7,12 @@ public class XMLModifier {
      */
     static func addChildAt(_ xml:XML,_ index:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
         Swift.print("index: " + "\(index)")
-        let i = index.slice2(0,index.count-1)
+        let i = index
         Swift.print("i: " + "\(i)")
         let parent:XML? = XMLParser.childAt(xml, i)
         //Swift.print("parent: " + "\(parent)")
         Swift.print("parent?.childCount: " + "\(parent!.childCount)")
-        let lastIdx:Int = index.count-1
+        let lastIdx:Int = index.last ?? 0
         Swift.print("lastIdx: " + "\(lastIdx)")
         let insertAt:Int = index[lastIdx]
         Swift.print("insertAt: " + "\(insertAt)")
