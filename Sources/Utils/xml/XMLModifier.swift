@@ -26,7 +26,7 @@ public class XMLModifier {
      */
     static func insertAt(_ xml:XML,_ index:Int,_ child:XML) -> XML {
         xml.insertChild(child, at: index)
-        return xml;
+        return xml
     }
     /**
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
