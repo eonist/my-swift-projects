@@ -37,21 +37,21 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
     static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
+        //let match:XML = XMLParser.childAt(xml, index)!
         let lastIdx:Int = index[index.count-1]
         Swift.print("lastIdx: " + "\(lastIdx)")
         let parentIdx:[Int] = index.slice2(0,index.count-1)
         Swift.print("parentIdx: " + "\(parentIdx)")
         return XMLParser.childAt(xml, parentIdx)!.removeAt(lastIdx)
+        //return match
     }
     /**
      * Convenince
      */
     static func removeChildAt(_ parent:XML,_ idx:Int) -> XML {
-        
-        //Continue here: see if splice is better. you should return child here not parent!
-        
+        let child:XML = parent.child(at: idx) as! XML
         parent.removeChild(at: idx)
-        return parent
+        return child
     }
     /**
      * EXAMPLE XMLModifier.setNameAt(database.xml, index, "menu")
