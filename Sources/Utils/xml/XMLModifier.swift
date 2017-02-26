@@ -47,6 +47,9 @@ public class XMLModifier {
      * Convenince
      */
     static func removeChildAt(_ parent:XML,_ idx:Int) -> XML {
+        
+        //Continue here: see if splice is better. you should return child here not parent!
+        
         parent.removeChild(at: idx)
         return parent
     }
