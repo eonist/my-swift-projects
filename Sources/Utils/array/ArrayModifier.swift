@@ -392,6 +392,12 @@ class ArrayModifier{
         return []
     }
     /**
+     *
+     */
+    static func idxOf<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+        
+    }
+    /**
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
      * NOTE: modifies the original array,returns the array (convenient)
