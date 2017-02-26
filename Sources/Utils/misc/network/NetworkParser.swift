@@ -35,7 +35,7 @@ class NetworkParser{
 }
 class NetworkUtils{
     /**
-     *
+     * Opens an url in the default browser. openURLInDefaultBrowser("https://www.google.com/")
      */
     static func openURLInDefaultBrowser(_ url:String){
         if let url = URL(string: url), NSWorkspace.shared().open(url) {
