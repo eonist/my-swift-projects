@@ -378,16 +378,16 @@ class ArrayModifier{
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions etc
      */
     static func removeDups<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->[T]{
-        /*var result:[T] = []
+        var result:[T] = []
         arr.forEach{
-            if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists
+            if(result.first($0, condition) == nil) {result.append($0)}//append if doesn't exists
         }
-        return result*/
+        return result
      
         
         
         //Add logic here
-        //find a similar method: arr.index(of:$0,condition) aka a conditional indexOf method
+        //find a similar method: arr.index(of:$0,condition) aka a
         
         return []
     }
