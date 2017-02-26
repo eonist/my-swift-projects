@@ -379,11 +379,7 @@ class ArrayModifier{
      */
     static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         
-        for item in arr{
-            if(condition(item,match)){
-                return item
-            }
-        }
+     
         
         
         //Add logic here
@@ -394,8 +390,14 @@ class ArrayModifier{
     /**
      *
      */
-    static func idxOf<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+    static func idxOf<T>(_ arr:[T], _ match:T _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+        for item in arr{
+            if(condition(item,match)){
+                return item
+            }
+        }
         
+        return []
     }
     /**
      * Very simple numeric sorter
