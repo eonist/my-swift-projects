@@ -74,7 +74,7 @@ extension Array {
         return self.count > 0 && idx > -1 && idx < self.count
     }
     func first(_ match:Element, _ condition:(_ a:Element, _ b:Element)->Bool)->Element?{
-        return ArrayParser.frst(self, match, condition)
+        return ArrayParser.first(self, match, condition)
      }
 }
 /**
