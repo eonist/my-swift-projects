@@ -30,7 +30,7 @@ extension Array {
     mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
         return ArrayModifier.unshift(&self, item)
     }
-    func slice2(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{/*Convenince*/
+    func slice2(_ startIndex:Int, _ endIndex:Int) ->[Element]{/*Convenince*/
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
     /**

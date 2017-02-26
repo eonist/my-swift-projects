@@ -65,7 +65,7 @@ class ArrayModifier{
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      * TODO: should probably be moved to ArrayParser?
      */
-    static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
+    static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->[T]{//TODO:Rename this to just slice, soon!
         return Array(array[startIndex..<endIndex])
     }
     /**
