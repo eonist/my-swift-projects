@@ -11,7 +11,8 @@ public class XMLModifier {
         Swift.print("i: " + "\(i)")
         let parent:XML? = XMLParser.childAt(xml, i)
         Swift.print("parent: " + "\(parent)")
-        _ = parent!.addAt(child,index[index.count-1])
+        let insertAt:Int = index.count-1
+        _ = parent!.addAt(child,index[insertAt])
         return xml
     }
     /**
