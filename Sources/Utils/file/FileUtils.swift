@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 class FileUtils{
 	/**
 	 * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSWorkspace_Class/index.html#//apple_ref/occ/instm/NSWorkspace/openURL:
@@ -18,4 +18,12 @@ class FileUtils{
 			openFile(filePath)
 		}	
 	}
+    /**
+     * showFileInFinder("~/dev/Element") -> shows the file or folder in finder
+     */
+    static func showFileInFinder(_ filePath:String){
+        let expandedFilePath:String = filePath.tildePath
+        //Swift.print("expandedFilePath: " + "\(expandedFilePath)")
+        NSWorkspace.shared().selectFile(nil, inFileViewerRootedAtPath: expandedFilePath)
+    }
 }
