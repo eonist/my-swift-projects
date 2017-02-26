@@ -377,7 +377,7 @@ class ArrayModifier{
     /**
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
      */
-    static func removeDups<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+    static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         var result:[T] = []
         arr.forEach{
             if(result.first($0, condition) == nil) {result.append($0)}//append if doesn't exists
