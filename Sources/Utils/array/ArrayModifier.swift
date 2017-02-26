@@ -384,13 +384,10 @@ class ArrayModifier{
         }
         return result
      
-    
         //Add logic here
         //find a similar method: arr.index(of:$0,condition) aka a
         
-        return []
     }
-    
     /**
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
