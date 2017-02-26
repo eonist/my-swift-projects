@@ -6,6 +6,7 @@ public class XMLModifier {
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
     static func addChildAt(_ xml:XML,_ index:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
+        Swift.print("index: " + "\(index)")
         let i = index.slice2(0,index.count-1)
         Swift.print("i: " + "\(i)")
         let parent:XML? = XMLParser.childAt(xml, i)
