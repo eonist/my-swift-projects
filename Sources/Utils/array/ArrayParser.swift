@@ -171,7 +171,17 @@ class ArrayParser{
         }
         return nil
     }
-    
+    /**
+     * EXAMPLE: [("a",0),("x",1),("b",0),("b",1),("c",2)].first(("b",1), {$0.1 == $1.1 && $0.0 == $1.0})//("b", 1)
+     */
+    func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
+        for item in arr{
+            if(condition(item,match)){
+                return item
+            }
+        }
+        return nil
+    }
     /**
      * Returns a random array with unique numbers (no duplicates)
      * EXAMPLE:

@@ -73,7 +73,9 @@ extension Array {
     func valid(_ idx:Int) -> Bool{
         return self.count > 0 && idx > -1 && idx < self.count
     }
-    
+    func first<T>(_ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
+        ArrayParser.
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
