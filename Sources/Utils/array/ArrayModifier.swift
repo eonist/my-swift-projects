@@ -375,7 +375,7 @@ class ArrayModifier{
         return result
     }
     /**
-     * We use a method instead of just a match:Equatable, that way we can add multiple match conditions etc
+     * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
      */
     static func removeDups<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         var result:[T] = []
@@ -383,10 +383,6 @@ class ArrayModifier{
             if(result.first($0, condition) == nil) {result.append($0)}//append if doesn't exists
         }
         return result
-     
-        //Add logic here
-        //find a similar method: arr.index(of:$0,condition) aka a
-        
     }
     /**
      * Very simple numeric sorter
