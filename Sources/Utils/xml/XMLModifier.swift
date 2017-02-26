@@ -7,12 +7,12 @@ public class XMLModifier {
      */
     static func addChildAt(_ xml:XML,_ index:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
         Swift.print("index: " + "\(index)")
-        let i = index
+        let i = index.slice2(0,index.count-1)
         Swift.print("i: " + "\(i)")
         let parent:XML? = XMLParser.childAt(xml, i)
         //Swift.print("parent: " + "\(parent)")
         Swift.print("parent?.childCount: " + "\(parent!.childCount)")
-        let lastIdx:Int = index.last ?? 0
+        let lastIdx:Int = index.count-1
         Swift.print("lastIdx: " + "\(lastIdx)")
         let insertAt:Int = index[lastIdx]
         Swift.print("insertAt: " + "\(insertAt)")
@@ -37,7 +37,7 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
     static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
-        return XMLParser.childAt(xml, index)!.removeAt(index[index.last ?? 0])
+        return XMLParser.childAt(xml, index.slice2(0,index.count-1))!.removeAt(index[index.last ?? 0])
     }
     /**
      * Convenince
