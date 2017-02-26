@@ -384,8 +384,7 @@ class ArrayModifier{
         }
         return result
      
-        
-        
+    
         //Add logic here
         //find a similar method: arr.index(of:$0,condition) aka a
         
