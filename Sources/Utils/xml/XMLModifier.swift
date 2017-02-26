@@ -12,9 +12,11 @@ public class XMLModifier {
         let parent:XML? = XMLParser.childAt(xml, i)
         //Swift.print("parent: " + "\(parent)")
         Swift.print("parent?.childCount: " + "\(parent!.childCount)")
-        let insertAt:Int = index.count-1
+        let lastIdx:Int = index.count-1
+        Swift.print("lastIdx: " + "\(lastIdx)")
+        let insertAt:Int = index[lastIdx]
         Swift.print("insertAt: " + "\(insertAt)")
-        _ = parent!.addAt(child,index[insertAt])
+        _ = parent!.addAt(child,insertAt)
         return xml
     }
     /**
