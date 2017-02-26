@@ -379,6 +379,13 @@ class ArrayModifier{
      */
     static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         
+        for item in arr{
+            if(condition(item,match)){
+                return item
+            }
+        }
+        
+        
         //Add logic here
         //find a similar method: arr.index(of:$0,condition) aka a conditional indexOf method
         
