@@ -37,7 +37,7 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
     static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
-        return XMLParser.childAt(xml, index)!.removeAt(index[index.count-1])
+        return XMLParser.childAt(xml, index)!.removeAt(index[index.last ?? 0])
     }
     /**
      * Convenince
