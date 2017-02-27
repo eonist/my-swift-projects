@@ -13,7 +13,6 @@ class GitLogParser {
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let firstPart:String = input.subString(0,firstIdx)
         //Swift.print("firstPart: " + "\(firstPart)")
-        //Swift.print("firstPart: " + "\(firstPart)")
         let secondIdx:Int = firstIdx+1 + input.subString(firstIdx+1,input.count).indexOf("\n")
         //Swift.print("secondIdx: " + "\(secondIdx)")
         let secondPart:String = input.subString(firstIdx+1,secondIdx)
