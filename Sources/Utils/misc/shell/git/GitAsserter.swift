@@ -34,8 +34,8 @@ class GitAsserter{
 		//--log "GitAsserter's has_local_commits()"
 		//--move the bellow to gitModifier?
 		_ = GitModifier.gitRemoteUpdate(localRepoPath)//🌵 in order for the cherry to work with "git add" that uses https, we need to call this method
-		let cherryResult:String = GitParser.cherry(localRepoPath, branch)
-		Swift.print("cherryResult: " + "\(cherryResult)")
+		let cherryResult:String = GitParser.cherry(localRepoPath, branch)//🌵
+		//Swift.print("cherryResult: " + "\(cherryResult)")
 		let hasCommits:Bool = (cherryResult.characters.count > 0)
 		return hasCommits
 	}
