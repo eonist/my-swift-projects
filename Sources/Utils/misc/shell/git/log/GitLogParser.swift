@@ -46,11 +46,11 @@ class GitLogParser {
      * Compacts the bodyStr aka the commit description
      */
     static func compactBody(_ bodyStr:String) -> String{
-        if(debugCounter == 0){Swift.print("🦄 bodyStr: >\(bodyStr)<")}
+        //if(debugCounter == 0){Swift.print("🦄 bodyStr: >\(bodyStr)<")}
         let preprocessedBody = Utils.preProcess(bodyStr)
-        if(debugCounter == 0){Swift.print("🦄 preprocessedBody: >\(preprocessedBody)<")}
+        //if(debugCounter == 0){Swift.print("🦄 preprocessedBody: >\(preprocessedBody)<")}
         let compactBody:String = Utils.compact(preprocessedBody)
-        if(debugCounter == 0){Swift.print("🦄 compactBody: >" + "\(compactBody)<")}
+        //if(debugCounter == 0){Swift.print("🦄 compactBody: >" + "\(compactBody)<")}
         
         debugCounter = 1
         return compactBody
