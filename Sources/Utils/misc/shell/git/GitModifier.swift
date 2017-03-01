@@ -19,7 +19,7 @@ class GitModifier{
         //}
         let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
         //--log "shellScript: " + shellScript
-        Swift.print("shellScript: " + "\(shellScript)")
+        //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -39,7 +39,7 @@ class GitModifier{
     static func commit(_ localRepoPath:String, _ msg:GitMsg)->String{
     	//log ("GitModifier's commit(" + message_title + ")")
     	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
-        Swift.print("shellScript: " + "\(shellScript)")
+        //Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
