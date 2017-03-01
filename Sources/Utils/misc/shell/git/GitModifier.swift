@@ -9,7 +9,7 @@ class GitModifier{
     * Add a file or many files to a commit
     * PARAM: fileName is the file name you want to add, use * if you want to add all files
     * NOTE: the opposite of add is reset, see the reset method for more info
-    * CAUTION: when a file is removed, the * char wont work, you have to add the file manually
+    * CAUTION: When a file is removed, the * char wont work, you have to add the file manually
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
