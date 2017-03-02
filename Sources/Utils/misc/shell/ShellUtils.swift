@@ -32,26 +32,26 @@ class ShellUtils{
         //arguments.forEach{Swift.print("$0: " + "\($0)")}
         //Swift.print("block of interest end")
         let task = Process()
-        Swift.print("Process(): ")
+        //Swift.print("Process(): ")
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
         task.arguments = arguments
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
-        Swift.print("Pipe()")
+        //Swift.print("Pipe()")
         let pipe = Pipe()
         task.standardOutput = pipe
         /*Error*/
         let errpipe = Pipe()
         task.standardError = errpipe
         task.launch()
-        Swift.print("task.launch()")
+        //Swift.print("task.launch()")
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String/*decode the date to a string*/
         /*Error*/
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
         let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue) as! String
-        Swift.print("errorStr: " + "\(errorStr)")
+        //Swift.print("errorStr: " + "\(errorStr)")
         
         //Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
