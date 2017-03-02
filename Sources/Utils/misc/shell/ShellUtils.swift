@@ -23,7 +23,7 @@ class ShellUtils{
      * IMPORTANT: if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
      */
     static func exc(_ input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
-        //Swift.print("input: " + "\(input)")
+        Swift.print("🚪⬅️️exc start. input: " + "\(input)")
         var arguments = input.components(separatedBy: " ")//<--you can also use split here
         //Swift.print("arguments.count: " + "\(arguments.count)")
         //TODO: This line bellow was $0.encode().decode() to allow % chars, But if your input is already encoded to support space, then you get double encoded content.
@@ -42,6 +42,7 @@ class ShellUtils{
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String/*decode the date to a string*/
+        Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
     }
     /**
