@@ -14,8 +14,8 @@ extension Int {
 /**
  * EXAMPLE: let i:Int = 40.5//40
  */
-extension Int : ExpressibleByFloatLiteral {
-    public init(floatLiteral value: FloatLiteralType) {
-        self.init(Int(value))
-    }
-}
+/*extension Int : ExpressibleByFloatLiteral {
+ public init(floatLiteral value: FloatLiteralType) {
+ self.init(Int(value))
+ }
+ }*/
