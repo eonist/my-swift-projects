@@ -51,8 +51,8 @@ class ShellUtils{
         /*Error*/
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
         let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue) as! String
+        _ = errorStr
         //Swift.print("errorStr: " + "\(errorStr)")
-        
         //Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
     }
