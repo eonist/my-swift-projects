@@ -106,13 +106,13 @@ class GitModifier{
      * TODO: add branch as a param
      */
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
-        Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
+        //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
         let remoteLoc:String = "https://\(key.user):\(key.pass)@\(repo.remotePath)"  //--https://user:pass@github.com/user/repo.git--"origin"
         //Swift.print("remoteLoc: " + "\(remoteLoc)")
         let shellScript:String = "\(Git.path)git push \(remoteLoc) \(repo.branch)"
         //Swift.print("shellScript: " + "\(shellScript)")
         let retVal = ShellUtils.run(shellScript,repo.localPath)
-        Swift.print("🔦 GitModifier.push complete")
+        //Swift.print("🔦 GitModifier.push complete")
         return retVal
     }
    /*
