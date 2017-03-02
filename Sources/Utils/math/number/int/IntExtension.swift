@@ -11,3 +11,11 @@ extension Int {
     var negative:Bool{return NumberAsserter.negative(self,0)}
     var positive:Bool{return NumberAsserter.positive(self,0)}
 }
+/**
+ * EXAMPLE: let i:Int = 40.5//40
+ */
+extension Int : ExpressibleByFloatLiteral {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.init(Int(value))
+    }
+}
