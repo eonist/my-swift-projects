@@ -111,7 +111,8 @@ class GitModifier{
         //Swift.print("remoteLoc: " + "\(remoteLoc)")
         let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git push" + " " + remoteLoc + " " + repo.branch
         //Swift.print("shellScript: " + "\(shellScript)")
-        return ShellUtils.run(shellScript,repo.localPath)
+        let retVal = ShellUtils.run(shellScript,repo.localPath)
+        return retVal
     }
    /*
     * The opposite of the add action
