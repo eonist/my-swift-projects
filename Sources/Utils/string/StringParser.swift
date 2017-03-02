@@ -23,7 +23,7 @@ class StringParser{
     /**
      * Returns an array for every line in a string
      */
-    static func paragraphs(_ string:String)->Array<String>{
+    static func paragraphs(_ string:String)->[String]{
         var result = split(string,"\n")
         result.removeLast()/*if the string is empty it still returns a result as [""] and if the string is not empty it returns plus one empty string. so we pop the last one of the array*/
         return result
