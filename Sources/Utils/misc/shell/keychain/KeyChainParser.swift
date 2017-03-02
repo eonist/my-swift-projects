@@ -5,13 +5,13 @@ import Foundation
  */
 class KeyChainParser {
     /**
-     *
+     * Returns password for PARAM: accountName
      */
     static func password(_ accountName:String)->String{
        return load(accountName)!.stringValue
     }
 	/**
-	 * Returns a keychain item for key
+	 * Returns a keychain item for PARAM: key
      * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//loads the password for this account
 	 */	
     static func load(_ key:String) -> Data? {
