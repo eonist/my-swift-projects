@@ -38,6 +38,7 @@ class ShellUtils{
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
         let pipe = Pipe()
         task.standardOutput = pipe
+        var error : [String] = []
         let errpipe = Pipe()
         task.standardError = errpipe
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
@@ -48,7 +49,8 @@ class ShellUtils{
         task.launch()
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
-        let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String/*decode the date to a string*/
+        let output:String = String(data: data, encoding: .utf8)/*decode the data to a string*/
+        //NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String
         //Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
     }
