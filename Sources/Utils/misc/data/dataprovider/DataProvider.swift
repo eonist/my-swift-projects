@@ -26,7 +26,7 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  */
 class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers asserters
-    var items:[Dictionary<String, String>]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
+    var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
@@ -34,7 +34,7 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
      * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
      * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
-    init(_ items:[Dictionary<String, String>] = []){
+    init(_ items:[[String:String]] = []){
         self.items = items
         super.init()
     }
@@ -60,7 +60,7 @@ extension DataProvider{
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
-    func getItem(_ value:String, key:String = "title")->Dictionary<String, String>?{// :TODO: move this to DataProviderParser
+    func getItem(_ value:String, key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
         for item in self.items {
             if(item[key] == value) {return item}
         }
@@ -80,7 +80,7 @@ extension DataProvider{
     /**
      * Returns an item at a spessific index
      */
-    func getItemAt(_ index:Int) -> Dictionary<String, String>? {
+    func getItemAt(_ index:Int) -> [String:String]? {
         if(index < self.items.count) {return self.items[index]}
         Swift.print("\(self)" + "no item at the index of " + "\(index)")
         return nil
@@ -88,7 +88,7 @@ extension DataProvider{
     /**
      * Returns the item index passed through the PARAM item
      */
-    func getItemIndex(_ item:Dictionary<String, String>)->Int{// :TODO: rename to indexToItem?!?
+    func getItemIndex(_ item:[String:String])->Int{// :TODO: rename to indexToItem?!?
         return self.items.index{$0 == item} ?? -1//upgraded to swift 3 syntax
     }
     /**
@@ -97,7 +97,7 @@ extension DataProvider{
     func getIndex(_ title:String)->Int?{
         let count = self.items.count
         for i in 0..<count{
-            let item:Dictionary<String, String> = self.items[i]
+            let item:[String:String] = self.items[i]
             if(item["title"] == title) {return i}
         }
         return nil
@@ -137,8 +137,8 @@ extension DataProvider{
      * Adds an item to a spesific index
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func addItemAt(_ item:Dictionary<String, String>, _ index:Int){
-        Swift.print("DataProvider.addItemAt()")
+    func addItemAt(_ item:[String:String], _ index:Int){
+        //Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
     }
@@ -159,10 +159,10 @@ extension DataProvider{
         return removedItem
     }
     /**
-     * Removes the item passed through the @param item
+     * Removes the item passed through the PARAM item
      * RETURNS: the removed item
      */
-    func removeItem(_ item:Dictionary<String, String>)->[String:String] {
+    func removeItem(_ item:[String:String])->[String:String] {
         let index:Int = self.items.index{$0 == item} ?? -1//-1 indicates no result found
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
         return self.items.splice2(index,1)[0]
