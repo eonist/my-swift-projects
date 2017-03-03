@@ -234,9 +234,9 @@ public class XMLParser{
         return items
     }
     /**
-     * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
+     * Returns the first matching xml that has the attribute key value pair PARAM attribute in @param xml
      */
-    static func index(_ xml:XML,_ key:String, _ value:String) -> Array<Int>? {
+    static func index(_ xml:XML,_ key:String, _ value:String) -> [Int]? {
         if(xml[key] == value) {
             return []
         }else if(xml.childCount > 0){
