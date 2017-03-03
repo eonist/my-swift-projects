@@ -4,6 +4,7 @@ import Darwin
 import Foundation
 /**
  * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow) 
+ * NOTE: Or easier: let d = CACurrentMediaTime(); /*Do heavy computing*/let d1 = CACurrentMediaTime()-d; print(d1)//0.452 sec
  * EXAMPLE:
  * let timer = SimpleTimer(0.5,true,self,#selector(update))
  * timer.start()
