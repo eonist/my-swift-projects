@@ -122,17 +122,15 @@ public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sak
     _ = right.unshift(left)/*<--this is like prepend*/
     return right
 }
-
 /*Advance array extensions*/
-
-/**
- * Multidimensional-flat-map...because flatMap only works on "2d arrays". This is for "3d array's"
- * EXAMPLE:
- * let arr:[Any] = [[[1],[2,3]],[[4,5],[6]]]
- * let x2:[Int] = arr.recursiveFlatmap()
- * Swift.print(x2)//[1,2,3,4,5,6]
- */
 extension Collection {
+    /**
+     * Multidimensional-flat-map...because flatMap only works on "2d arrays". This is for "3d array's"
+     * EXAMPLE:
+     * let arr:[Any] = [[[1],[2,3]],[[4,5],[6]]]👈3d array
+     * let x2:[Int] = arr.recursiveFlatmap()
+     * Swift.print(x2)//[1,2,3,4,5,6]
+     */
     func recursiveFlatmap<T>() -> [T] {
         var results = [T]()
         for element in self {
