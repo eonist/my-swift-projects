@@ -19,7 +19,7 @@ class TextFieldModifier {
         textField.focusRingType = NSFocusRingType.none//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
         textField.isBordered = textFormat.border//<--This doesn't work in Live Edit mode
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
-        textField.usesSingleLineMode = false//!textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
+        textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
         let leadingYOffset:CGFloat = textFormat.leading.isNaN ? 0 : textFormat.size - textFormat.leading
         textField.bounds.origin += CGPoint(0,leadingYOffset)
         //textField.lineBreakMode = .ByWordWrapping
