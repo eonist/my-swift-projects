@@ -215,7 +215,7 @@ class ArrayParser{
 }
 private class Utils{
     /**
-     * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
+     * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the PARAM sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
     static func index<T>(_ value:T, _ sortedArray:[T],_ condition:(_ a: T, _ b: T)->Bool)->Int{
         for i in 0..<sortedArray.count{
