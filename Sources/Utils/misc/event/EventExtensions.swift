@@ -32,6 +32,12 @@ extension Event{
         return self.type == type && self.immediate === immediate
     }
 }
+/**
+ * TODO: Also do event == (Button.Event,btn1)
+ */
 func == (l:Event , r:AnyObject) -> Bool {
     return l.immediate === r
+}
+func === (l:Event , r:AnyObject) -> Bool {
+    return l.origin === r
 }
