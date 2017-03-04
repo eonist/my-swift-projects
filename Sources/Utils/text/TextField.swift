@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * Simplifies interaction with the NSTextField
+ */
 class TextField:NSTextField{
     var globalMouseDownHandler:Any?//swift 3, was AnyObject?
     /**
