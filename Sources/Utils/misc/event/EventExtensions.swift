@@ -40,11 +40,14 @@ func == (l:Event , r:AnyObject) -> Bool {//immediate
     return l.immediate === r
 }
 func == (l:Event , r:(eventType:String,immediate:AnyObject)) -> Bool {//immediate
-    return l.type == eventType && l.immediate === r.immediate
+    return l.type == r.eventType && l.immediate === r.immediate
 }
 func === (l:Event , r:AnyObject) -> Bool {//origin
     return l.origin === r
 }
 func === (l:Event , r:(eventType:String,origin:AnyObject)) -> Bool {//origin
-    return l.type == eventType && l.origin === r.origin
+    return l.type == r.eventType && l.origin === r.origin
+}
+func == (l:Event , r:String) -> Bool {//origin
+    return l.type == r
 }
