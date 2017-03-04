@@ -32,4 +32,6 @@ extension Event{
         return self.type == type && self.immediate === immediate
     }
 }
-
+func == (l:Event , r:AnyObject) -> Bool {
+    return l.immediate === r
+}
