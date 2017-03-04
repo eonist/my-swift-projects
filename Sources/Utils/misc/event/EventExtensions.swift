@@ -33,11 +33,14 @@ extension Event{
     }
 }
 /**
- * TODO: Also do event == (Button.Event,btn1)
+ * EXAMPLE: if(event == (Button.Event,btn1)){/*do something here*/}
  */
-func == (l:Event , r:AnyObject) -> Bool {
+func == (l:Event , r:AnyObject) -> Bool {//immediate
     return l.immediate === r
 }
-func === (l:Event , r:AnyObject) -> Bool {
+func == (l:Event , r:AnyObject) -> Bool {//immediate
+    return l.immediate === r
+}
+func === (l:Event , r:AnyObject) -> Bool {//origin
     return l.origin === r
 }
