@@ -5,7 +5,7 @@ import Foundation
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
  */
 typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose*/
-public class EventSender:IEventSender {
+class EventSender:IEventSender {
     var eventCall:EventCallBack {
         return {
             (event:Event) -> Void in /*Swift.print("\(ClassParser.type(self))  event handler missing,  event.type: \(event.type) event.origin: \(ClassParser.type(event.origin))" )*//*Empty call so that if no event handler is attached it doesnt throw an error*/
