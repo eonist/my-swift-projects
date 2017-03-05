@@ -5,7 +5,7 @@ import Cocoa
  * PARAM: frame: represents the visible part of the content //TODO: could be ranmed to maskRect
  * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
  */
-public class RubberBand:Mover{
+class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
