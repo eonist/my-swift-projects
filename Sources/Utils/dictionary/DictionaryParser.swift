@@ -19,6 +19,7 @@ class DictionaryParser{
     }
     /**
      * Rturns tuples from PARAM: dict
+     * NOTE: is generic
      * EXAMPLE: pairs([1: "Swift", 2: "Generics", 3: "Rule"])//[(2, "Generics"), (3, "Rule"), (1, "Swift")]
      */
     static func pairs<Key, Value>(_ dict: [Key: Value]) -> [(Key, Value)] {
