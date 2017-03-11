@@ -11,3 +11,22 @@ extension AnyDict {
         return DictionaryParser.xml(self as! Dictionary<String, String>)
     }
 }
+/**
+ * ⚠️️ Untested
+ */
+extension Dictionary where Value:Comparable {
+    var valuesOrdered:[Value] {
+        return self.values.sorted()
+    }
+}
+
+/**
+ * ⚠️️ Untested
+ * ["two":"monkey","one":"cat","three":"hamster"].keysOrdered  // ["one", "three", "two"]
+ */
+extension Dictionary where Key:Comparable {
+    var keysOrdered:[Key] {
+        return self.keys.sorted()
+    }
+}
+
