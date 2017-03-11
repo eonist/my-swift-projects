@@ -18,9 +18,10 @@ class DictionaryParser{
         return xml
     }
     /**
-     *
+     * Rturns tuples from PARAM: dict
+     * EXAMPLE: pairs([1: "Swift", 2: "Generics", 3: "Rule"])//[(2, "Generics"), (3, "Rule"), (1, "Swift")]
      */
-    static func pairs<Key, Value>(from dictionary: [Key: Value]) -> [(Key, Value)] {
-        return Array(dictionary)
+    static func pairs<Key, Value>(_ dict: [Key: Value]) -> [(Key, Value)] {
+        return Array(dict)
     }
 }
