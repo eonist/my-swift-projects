@@ -17,4 +17,10 @@ class DictionaryParser{
         xml.setAttributesWith(dict)
         return xml
     }
+    /**
+     *
+     */
+    static func pairs<Key, Value>(from dictionary: [Key: Value]) -> [(Key, Value)] {
+        return Array(dictionary)
+    }
 }
