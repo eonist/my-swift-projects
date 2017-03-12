@@ -136,9 +136,9 @@ extension Collection {
     func recursiveFlatmap<T>() -> [T] {
         var results = [T]()
         for element in self {
-            if let sublist = element as? [Self.Generator.Element] {
+            if let sublist = element as? [Self.Generator.Element] {/*Array*/
                 results += sublist.recursiveFlatmap()
-            } else if let element = element as? T {
+            } else if let element = element as? T {/*Item*/
                 results.append(element)
             }
         }
