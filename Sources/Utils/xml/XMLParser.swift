@@ -227,7 +227,7 @@ public class XMLParser{
             if(child.stringValue != nil && child.stringValue!.count > 0) {
                 items.append(child.stringValue!)
             }else if(child.hasComplexContent) {
-                item.append(arr(child))
+                items.append(arr(child))
             }
             //items.append(item)
         }
