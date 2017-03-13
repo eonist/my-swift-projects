@@ -34,5 +34,8 @@ extension Dictionary {
     func hasKey( _ key:Key) -> Bool{
         return DictionaryAsserter.hasKey(self, key)
     }
+    func contains(_ dict:[Key: Value], _ keys:[Key]) -> Bool{
+        return DictionaryAsserter.contains(self, keys)
+    }
 }
 

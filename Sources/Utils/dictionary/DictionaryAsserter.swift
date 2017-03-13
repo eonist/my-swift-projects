@@ -11,8 +11,6 @@ class DictionaryAsserter {
         for k in keys{
             return dict.hasKey(k)
         }
-        
-        dict.
-        //return dict[key] != nil
+        return false
     }
 }
