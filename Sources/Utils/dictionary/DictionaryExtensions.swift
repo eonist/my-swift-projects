@@ -30,12 +30,9 @@ extension Dictionary where Key:Comparable {
     }
     
 }
-extension Sequence where Iterator.Element == (key: String, value: AnyObject) {
-    
-}
-extension Dictionary where Key: ExpressibleByStringLiteral {
-    
-    func hasKey( _ key:String) -> Bool{
-        return self[key] != nil
+
+extension Dictionary {
+    func hasKey( _ key:Key) -> Bool{
+        return DictionaryAsserter.hasKey(self, key)
     }
 }
