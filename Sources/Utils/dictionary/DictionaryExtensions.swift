@@ -28,5 +28,11 @@ extension Dictionary where Key:Comparable {
     var keysOrdered:[Key] {
         return self.keys.sorted()
     }
+    
 }
 
+extension Dictionary where Key == String{
+    func hasKey<Key, Value>( _ key:Key) -> Bool{
+        return self[key] != nil
+    }
+}
