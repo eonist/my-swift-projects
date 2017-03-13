@@ -219,17 +219,17 @@ public class XMLParser{
         for i in 0..<count{
             let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-            //var item:[Any] = []
+            var item:[Any] = []
             let attribs = child.attribs
             if(!attribs.isEmpty){
-                items.append(attribs)
+                item.append(attribs)
             }
             if(child.stringValue != nil && child.stringValue!.count > 0) {
-                items.append(child.stringValue!)
+                item.append(child.stringValue!)
             }else if(child.hasComplexContent) {
-                items.append(arr(child))
+                item.append(arr(child))
             }
-            //items.append(item)
+            items.append(item)
         }
         return items
     }
