@@ -28,7 +28,6 @@ extension Dictionary where Key:Comparable {
     var keysOrdered:[Key] {
         return self.keys.sorted()
     }
-    
 }
 
 extension Dictionary {
