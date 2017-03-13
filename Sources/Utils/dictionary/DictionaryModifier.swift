@@ -24,3 +24,6 @@ class DictionaryModifier{
 		return c
 	}
 }
+
+
+//Also create an override method? see legacy code?
