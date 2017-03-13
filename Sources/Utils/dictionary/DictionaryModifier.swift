@@ -1,6 +1,8 @@
 class DictionaryModifier{
 	/**
 	 * Merges 2 dicts, changes the left array, the right is untouched
+     * IMPORTANT: updateValue also creates new key,value pairs if non exist. 
+     * TODO: See legacy code, it has more powerfull dictionary modifiers
 	 * Returns the left dictionary for convenience purposes
 	 */
     static func merge<KeyType,ValueType> (_ left:inout Dictionary<KeyType,ValueType>, _ right: Dictionary<KeyType,ValueType>)-> Dictionary<KeyType,ValueType>{
@@ -9,6 +11,7 @@ class DictionaryModifier{
 	}
 	/**
 	 * Combines the key and property pairs of object PARAM: a and PARAM: b 
+     * TODO: See legacy code, it has more powerfull dictionary modifiers
 	 * NOTE: if key and property pairs have the same key the key from PARAM: b takes precedence
 	 * NOTE: If the PARAM: a and PARAM: b both specify arrays, the elements of that array are concatenated // :TODO: test if they also merge?
 	 * EXAMPLE:
