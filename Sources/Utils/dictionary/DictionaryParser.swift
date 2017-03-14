@@ -12,7 +12,7 @@ class DictionaryParser{
     /**
      * New
      */
-    static func xml(_ dict:Dictionary<String,String>,_ nodeName:String = "item")->XML{
+    static func xml(_ dict:[String:String],_ nodeName:String = "item")->XML{
         let xml:XML = "<\(nodeName)></\(nodeName)>".xml
         xml.setAttributesWith(dict)
         return xml
