@@ -140,5 +140,11 @@ extension RubberBand{
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.init(animatable, callBack, (maskRect.y,maskRect.height),(contentRect.y,contentRect.height),value,velocity,friction,springEasing,spring,limit)
     }
-    var frame:CGRect {get{return }set{}}
+    var frame:CGRect {
+        get{
+            return CGRect(frame.min,0,frame.len,0)
+        }set{
+            frame = (newValue.y,newValue.height)
+        }
+    }
 }
