@@ -4,16 +4,15 @@ import Cocoa
  * NOTE: I think essentialy this is a SpringSolver. You can find an example of the SpringSolver in books and also in facebook pop
  * PARAM: maskRect: represents the visible part of the content
  * PARAM: contentRect: represents the total size of the content
+ * TODO: Rename to ElasticSpringSolver? or ElasticBand?
+ * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
 
-
-//TODO: Rename to ElasticSpringSolver? or ElasticBand?
-//TODO: Make the Springsolver work for dynamic variables. ["y"] and ["width"], ["height"]
 //todo: Support x and Y axis
-//integrate temp values inside rubberband or make a tempvalue struct
+//
 
 class RubberBand:Mover{
-    typealias Frame = (min:CGFloat,len:CGFloat)
+    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width)
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
