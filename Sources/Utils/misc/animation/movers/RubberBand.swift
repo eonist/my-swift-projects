@@ -11,13 +11,14 @@ import Cocoa
 //TODO: Make the Springsolver work for dynamic variables. ["y"] and ["width"], ["height"]
 //todo: Support x and Y axis
 //integrate temp values inside rubberband or make a tempvalue struct
-typealias 
+
 class RubberBand:Mover{
+    typealias Frame = (min:CGFloat,len:CGFloat)
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
-    var frame:(min:CGFloat,len:CGFloat)/*represents the visible part of the content*/
-    var contentFrame:(min:CGFloat,len:CGFloat)/*represents the total size of the content*/
+    var frame:Frame/*represents the visible part of the content*/
+    var contentFrame:Frame/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
@@ -29,9 +30,9 @@ class RubberBand:Mover{
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
     //var topMargin:CGFloat = 0
-    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskLen:CGRect, _ contentLen:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.frame = maskLen
-        self.contentFrame = contentLen
+    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ frame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.frame = frame
+        self.contentFrame = contentFrame
         self.friction = friction
         self.springEasing = springEasing
         self.spring = spring
@@ -136,8 +137,8 @@ private class CustomFriction{/*Creates the displacement friction effect. Like yo
 
 extension RubberBand{
     //Legacy support
-    /*convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.init(animatable, callBack, maskRect.y,contentRect.y,value,velocity,friction,springEasing,spring,limit)
+    convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.init(animatable, callBack, (maskRect.y,maskRect.height),(contentRect.y,contentRect.height),value,velocity,friction,springEasing,spring,limit)
     }
-    var frame:CGRect {get{}set{}}*/
+    var frame:CGRect {get{return }set{}}
 }
