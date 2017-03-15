@@ -10,6 +10,8 @@ import Cocoa
 //TODO: Rename to ElasticSpringSolver? or ElasticBand?
 //TODO: Make the Springsolver work for dynamic variables. ["y"] and ["width"], ["height"]
 //todo: Support x and Y axis
+//integrate temp values inside rubberband or make a tempvalue struct
+
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
@@ -27,7 +29,7 @@ class RubberBand:Mover{
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
     //var topMargin:CGFloat = 0
-    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskLen:CGRect, _ contentLen:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskLen:CGFloat, _ contentLen:CGFloat, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskLen = maskLen
         self.contentLen = contentLen
         self.friction = friction
@@ -134,7 +136,7 @@ private class CustomFriction{/*Creates the displacement friction effect. Like yo
 
 extension RubberBand{
     //Legacy support
-    /*convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        
-    }*/
+    convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.init(animatable, callBack, maskRect.y,contentRect.y,value,velocity,friction,springEasing,spring,limit)
+    }
 }
