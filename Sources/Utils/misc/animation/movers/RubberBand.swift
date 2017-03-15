@@ -25,7 +25,7 @@ class RubberBand:Mover{
     init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskRect = maskRect
         self.contentRect = contentRect
-        self.friction = friction
+        self.friction = friction    
         self.springEasing = springEasing
         self.spring = spring
         self.limit = limit
