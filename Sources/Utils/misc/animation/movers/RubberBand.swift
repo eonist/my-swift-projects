@@ -7,12 +7,8 @@ import Cocoa
  * TODO: Rename to ElasticSpringSolver? or ElasticBand?
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
-
-//todo: Support x and Y axis
-//
-
 class RubberBand:Mover{
-    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width)
+    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
@@ -94,7 +90,7 @@ class RubberBand:Mover{
             let totHeight = (contentFrame.len - maskFrame.len)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
-        }else{/*springs back to limit*/
+        }else{/*Springs back to limit*/
             let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
             velocity *= springEasing
