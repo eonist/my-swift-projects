@@ -51,6 +51,7 @@ extension CGRect {
     var nsRect:NSRect {return NSRectFromCGRect(self)}
     /**
      * TODO: Maybe for x,y,width,height aswell?
+     * TODO: Make it enum! its faster
      */
     subscript(key: String) -> CGPoint {/*Easy Access to corners*/
         get {
