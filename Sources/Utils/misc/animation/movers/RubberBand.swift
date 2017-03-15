@@ -11,13 +11,13 @@ import Cocoa
 //TODO: Make the Springsolver work for dynamic variables. ["y"] and ["width"], ["height"]
 //todo: Support x and Y axis
 //integrate temp values inside rubberband or make a tempvalue struct
-
+typealias 
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
-    var frame:CGRect/*represents the visible part of the content*/
-    var contentFrame:CGRect/*represents the total size of the content*/
+    var frame:(min:CGFloat,len:CGFloat)/*represents the visible part of the content*/
+    var contentFrame:(min:CGFloat,len:CGFloat)/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
