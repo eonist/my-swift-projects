@@ -30,7 +30,7 @@ class NumberParser{
     }
     /**
      * Retuns the lowest number in a list of numbers
-     * Note: Swift.min can be used, but this function supports arrays Swift.Min doesnt
+     * Note: Swift.min can be used, but this function supports arrays Swift.Min doesn't
      */
     static func min<T:Comparable>(_ numbers:Array<T>)->T {
         var min = numbers.count > 0 ? numbers[0] : 0 as! T
