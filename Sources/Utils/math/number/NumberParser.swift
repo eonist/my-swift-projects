@@ -38,12 +38,6 @@ class NumberParser{
         return numbers.min() ?? 0 as! T
     }
     /**
-     *
-     */
-    static func average()->Int{
-        return [2,3,4].av()
-    }
-    /**
      * Returns the floor and ceil of many numbers
      */
     static func findRangeFromNumbers<T:Comparable>(_ numbers: T...) -> (min: T, max: T)? {
