@@ -33,10 +33,9 @@ class NumberParser{
      * Note: Swift.min can be used, but this function supports arrays Swift.Min doesn't
      */
     static func min<T:Comparable>(_ numbers:Array<T>)->T {
-        /*var min = numbers.count > 0 ? numbers[0] : 0 as! T
+        var min = numbers.count > 0 ? numbers[0] : 0 as! T
         for number in numbers{ if(number < min) {min = number}}
-        return min*/
-        numbers.reduce(Int.max, { min($0, $1) })
+        return min
     }
     /**
      * Returns the floor and ceil of many numbers
