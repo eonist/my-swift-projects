@@ -141,7 +141,7 @@ extension RubberBand{
         self.init(animatable, callBack, (maskRect.y,maskRect.height),(contentRect.y,contentRect.height),value,velocity,friction,springEasing,spring,limit)
     }
     //Legacy support
-    var frame:CGRect {get{return CGRect(maskFrame.min,0,maskFrame.len,0)}set{maskFrame = (newValue.y,newValue.height)}}
+    var frame:CGRect {get{return CGRect(0,maskFrame.min,0,maskFrame.len)}set{maskFrame = (newValue.y,newValue.height)}}
     //Legacy support
-    var itemsRect:CGRect {get{return CGRect(contentFrame.min,0,contentFrame.len,0)}set{contentFrame = (newValue.y,newValue.height)}}
+    var itemsRect:CGRect {get{return CGRect(0,contentFrame.min,0,contentFrame.len)}set{contentFrame = (newValue.y,newValue.height)}}
 }
