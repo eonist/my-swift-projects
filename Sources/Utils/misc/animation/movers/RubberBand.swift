@@ -2,15 +2,15 @@ import Cocoa
 /**
  * NOTE: this rubberBand tween is cheating a bit. The perfect way to implement this would be to add a half circle easing curve
  * NOTE: I think essentialy this is a SpringSolver. You can find an example of the SpringSolver in books and also in facebook pop
- * PARAM: frame: represents the visible part of the content //TODO: could be ranmed to maskRect
- * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
+ * PARAM: maskRect: represents the visible part of the content
+ * PARAM: contentRect: represents the total size of the content
  */
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
-    var frame:CGRect/*represents the visible part of the content*/
-    var itemsRect:CGRect/*represents the total size of the content*/
+    var maskRect:CGRect/*represents the visible part of the content*/
+    var contentRect:CGRect/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
@@ -22,9 +22,9 @@ class RubberBand:Mover{
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
     //var topMargin:CGFloat = 0
-    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ frame:CGRect, _ itemRects:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.frame = frame
-        self.itemsRect = itemRects
+    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.maskRect = maskRect
+        self.contentRect = contentRect
         self.friction = friction
         self.springEasing = springEasing
         self.spring = spring
@@ -48,8 +48,8 @@ class RubberBand:Mover{
      */
     override func updatePosition() {
         //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
-        if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + itemsRect.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        if(value > maskRect.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        else if((value + contentRect.height) < maskRect.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
                 velocity *= friction
@@ -61,28 +61,28 @@ class RubberBand:Mover{
     }
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary() value: " + "\(value)")
-        let distToGoal:CGFloat = value - frame.y
+        let distToGoal:CGFloat = value - maskRect.y
         //Swift.print("distToGoal: " + "\(distToGoal)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
-            result = frame.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - frame.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            result = maskRect.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - maskRect.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
             velocity -= ((distToGoal /*- topMargin*/) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(frame.y, 1)){checkForStop()}
+            if(value.isNear(maskRect.y, 1)){checkForStop()}
             result = value
         }
     }
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
-            let totHeight = (itemsRect.height - frame.height)//(tot height of items - height of mask)
+            let totHeight = (contentRect.height - maskRect.height)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            let dist = frame.height - (value + itemsRect.height)/*distanceToGoal*/
+            let dist = maskRect.height - (value + contentRect.height)/*distanceToGoal*/
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
