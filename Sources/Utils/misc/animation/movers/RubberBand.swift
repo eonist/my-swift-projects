@@ -5,6 +5,10 @@ import Cocoa
  * PARAM: maskRect: represents the visible part of the content
  * PARAM: contentRect: represents the total size of the content
  */
+
+
+//TODO: Rename to ElasticSpringSolver? or ElasticBand?
+//
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
@@ -25,7 +29,7 @@ class RubberBand:Mover{
     init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskRect = maskRect
         self.contentRect = contentRect
-        self.friction = friction    
+        self.friction = friction
         self.springEasing = springEasing
         self.spring = spring
         self.limit = limit
@@ -59,6 +63,9 @@ class RubberBand:Mover{
             result = value
         }
     }
+    /**
+     * When the min val reaches beyond max
+     */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value - maskRect.y
@@ -67,7 +74,7 @@ class RubberBand:Mover{
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
             result = maskRect.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - maskRect.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
-        }else{/*springs back to limit*/
+        }else{/*Springs back to limit*/
             velocity -= ((distToGoal /*- topMargin*/) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
@@ -75,6 +82,9 @@ class RubberBand:Mover{
             result = value
         }
     }
+    /**
+     * when the max val reaches beyond the min
+     */
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
