@@ -23,9 +23,7 @@ extension CGRect {
      * EXAMPLE: CGRect(0,0,100,100).path
      */
     var path:CGMutablePath{return CGRectParser.path(self)}
-}
-/*Convenient extensions*/
-extension CGRect{
+    /*Convenient extensions*/
     /*Initialization*/
     init(_ pos:CGPoint,_ size:CGSize){ self.init(origin: pos, size: size)}
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
@@ -51,6 +49,9 @@ extension CGRect{
     var corners:Array<CGPoint> {return CGRectParser.corners(self)}
     var sides:Array<CGPoint>{return CGRectParser.sides(self)}
     var nsRect:NSRect {return NSRectFromCGRect(self)}
+    /**
+     * TODO: Maybe for x,y,width,height aswell?
+     */
     subscript(key: String) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{
