@@ -56,8 +56,8 @@ class RubberBand:Mover{
      */
     override func updatePosition() {
         //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
-        if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + contentFrame.len) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        if(value > maskFrame.min /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
                 velocity *= friction
@@ -72,17 +72,17 @@ class RubberBand:Mover{
      */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary() value: " + "\(value)")
-        let distToGoal:CGFloat = value - frame.y
+        let distToGoal:CGFloat = value - maskFrame.min
         //Swift.print("distToGoal: " + "\(distToGoal)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
-            result = frame.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - frame.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            result = maskFrame.min /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
             velocity -= ((distToGoal /*- topMargin*/) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(frame.y, 1)){checkForStop()}
+            if(value.isNear(maskFrame.min, 1)){checkForStop()}
             result = value
         }
     }
@@ -92,11 +92,11 @@ class RubberBand:Mover{
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
-            let totHeight = (contentFrame.len - frame.height)//(tot height of items - height of mask)
+            let totHeight = (contentFrame.len - maskFrame.len)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            let dist = frame.height - (value + contentFrame.len)/*distanceToGoal*/
+            let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
