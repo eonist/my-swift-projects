@@ -16,8 +16,8 @@ class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
-    var maskLen:CGRect/*represents the visible part of the content*/
-    var contentLen:CGRect/*represents the total size of the content*/
+    var frame:CGRect/*represents the visible part of the content*/
+    var contentFrame:CGRect/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
     var springEasing:CGFloat/*the easeOut effect on the spring*/
     var spring:CGFloat/*the strength of the spring*/
@@ -29,9 +29,9 @@ class RubberBand:Mover{
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
     //var topMargin:CGFloat = 0
-    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskLen:CGFloat, _ contentLen:CGFloat, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.maskLen = maskLen
-        self.contentLen = contentLen
+    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskLen:CGRect, _ contentLen:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.frame = maskLen
+        self.contentFrame = contentLen
         self.friction = friction
         self.springEasing = springEasing
         self.spring = spring
@@ -55,8 +55,8 @@ class RubberBand:Mover{
      */
     override func updatePosition() {
         //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
-        if(value > maskLen.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + contentLen.height) < maskLen.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        else if((value + contentFrame.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
                 velocity *= friction
@@ -71,17 +71,17 @@ class RubberBand:Mover{
      */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary() value: " + "\(value)")
-        let distToGoal:CGFloat = value - maskLen.y
+        let distToGoal:CGFloat = value - frame.y
         //Swift.print("distToGoal: " + "\(distToGoal)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             //Continue here: somehow figure out how to match the bellow value..
             //to where the list is located when in refresh mode
-            result = maskLen.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - maskLen.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            result = frame.y /*topMargin*/ + CustomFriction.constraintValueWithLog(distToGoal /*- topMargin*/,limit - frame.y /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
             velocity -= ((distToGoal /*- topMargin*/) * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(maskLen.y, 1)){checkForStop()}
+            if(value.isNear(frame.y, 1)){checkForStop()}
             result = value
         }
     }
@@ -91,11 +91,11 @@ class RubberBand:Mover{
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
-            let totHeight = (contentLen.height - maskLen.height)//(tot height of items - height of mask)
+            let totHeight = (contentFrame.height - frame.height)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            let dist = maskLen.height - (value + contentLen.height)/*distanceToGoal*/
+            let dist = frame.height - (value + contentFrame.height)/*distanceToGoal*/
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
@@ -136,7 +136,8 @@ private class CustomFriction{/*Creates the displacement friction effect. Like yo
 
 extension RubberBand{
     //Legacy support
-    convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    /*convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.init(animatable, callBack, maskRect.y,contentRect.y,value,velocity,friction,springEasing,spring,limit)
     }
+    var frame:CGRect {get{}set{}}*/
 }
