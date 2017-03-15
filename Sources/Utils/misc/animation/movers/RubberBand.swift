@@ -33,7 +33,7 @@ class RubberBand:Mover{
         super.init(animatable, value, velocity)
     }
     override func onFrame(){
-        //Swift.print("RBSliderList.onFrame")
+        //Swift.print("RubberBand.onFrame")
         if(hasStopped){//stop the frameTicker here
             //CVDisplayLinkStop(displayLink)
             stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
@@ -59,7 +59,7 @@ class RubberBand:Mover{
             result = value
         }
     }
-    func applyTopBoundary(){/*surface is slipping the further you pull*/
+    func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary() value: " + "\(value)")
         let distToGoal:CGFloat = value - frame.y
         //Swift.print("distToGoal: " + "\(distToGoal)")
