@@ -17,7 +17,7 @@ class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
-    var frame:Frame/*represents the visible part of the content*/
+    var maskFrame:Frame/*represents the visible part of the content*/
     var contentFrame:Frame/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
     var springEasing:CGFloat/*the easeOut effect on the spring*/
@@ -30,8 +30,8 @@ class RubberBand:Mover{
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
     //var topMargin:CGFloat = 0
-    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ frame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.frame = frame
+    init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+        self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.friction = friction
         self.springEasing = springEasing
@@ -57,7 +57,7 @@ class RubberBand:Mover{
     override func updatePosition() {
         //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
         if(value > frame.y /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + contentFrame.height) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        else if((value + contentFrame.len) < frame.height){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
                 velocity *= friction
@@ -92,11 +92,11 @@ class RubberBand:Mover{
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
-            let totHeight = (contentFrame.height - frame.height)//(tot height of items - height of mask)
+            let totHeight = (contentFrame.len - frame.height)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*springs back to limit*/
-            let dist = frame.height - (value + contentFrame.height)/*distanceToGoal*/
+            let dist = frame.height - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
@@ -140,11 +140,20 @@ extension RubberBand{
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.init(animatable, callBack, (maskRect.y,maskRect.height),(contentRect.y,contentRect.height),value,velocity,friction,springEasing,spring,limit)
     }
+    //Legacy support
     var frame:CGRect {
         get{
-            return CGRect(frame.min,0,frame.len,0)
+            return CGRect(maskFrame.min,0,maskFrame.len,0)
         }set{
-            frame = (newValue.y,newValue.height)
+            maskFrame = (newValue.y,newValue.height)
+        }
+    }
+    //Legacy support
+    var itemsRect:CGRect {
+        get{
+            return CGRect(contentFrame.min,0,contentFrame.len,0)
+        }set{
+            contentFrame = (newValue.y,newValue.height)
         }
     }
 }
