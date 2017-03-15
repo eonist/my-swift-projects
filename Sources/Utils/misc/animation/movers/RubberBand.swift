@@ -8,7 +8,7 @@ import Cocoa
 
 
 //TODO: Rename to ElasticSpringSolver? or ElasticBand?
-//
+//TODO: Make the Springsolver work for dynamic variables. ["y"] and ["width"], ["height"]
 class RubberBand:Mover{
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
