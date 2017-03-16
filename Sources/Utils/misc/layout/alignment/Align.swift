@@ -25,10 +25,13 @@ class Align {
      * NOTE: this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point
      */
     static func alignmentPoint(_ objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
-        var alignmentPoint:CGPoint = Align.point(canvasSize, canvasAlignment)
-        let viewAlignmentPoint:CGPoint = Align.point(objectSize, objectAlignment)
-        alignmentPoint = alignmentPoint - viewAlignmentPoint
-        return alignmentPoint + offset
+        let canvasP:CGPoint = Align.point(canvasSize, canvasAlignment)
+        Swift.print("canvasP: " + "\(canvasP)")
+        let objP:CGPoint = Align.point(objectSize, objectAlignment)
+        Swift.print("objP: " + "\(objP)")
+        let p = canvasP - objP
+        Swift.print("p: " + "\(p)")
+        return p + offset
     }
     /**
      * Returns the pivot point of an object according to what pivotAlignment it has
