@@ -32,8 +32,8 @@ class TextFieldModifier {
      * Beta
      */
     static func size(_ textField:TextField,_ width:CGFloat,_ height:CGFloat) {
-        textField.frame.width = width/*SkinParser.width(this);*/
-        textField.frame.height = height/*SkinParser.height(this);*/
+        textField.frame.w = width/*SkinParser.width(this);*/
+        textField.frame.h = height/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
     }
 }
