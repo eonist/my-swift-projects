@@ -34,8 +34,8 @@ extension CGRect {
     var x:CGFloat {set {origin.x = newValue} get {return origin.x} }
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
     /*Size*/
-    var width:CGFloat {set {size.width = newValue} get {return size.width} }
-    var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    //var width:CGFloat {set {size.width = newValue} get {return size.width} }
+    //var height:CGFloat {set {size.height = newValue} get {return size.height} }
     /*Corners*/
     var topLeft:CGPoint {get {return self.origin} }
     var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
