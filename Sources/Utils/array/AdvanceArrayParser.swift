@@ -16,12 +16,13 @@ class AdvanceArrayParser {
     }
     /**
      * Returns the first index of PARAM: index in PARAM: indices
-     * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex?
+     * TODO: Rename index to depth or map, and indices to depts or maps? depthIndex? IndexPath is the the correct term 👌 
+     * NOTE: MatrixIndex is a viable option as well. Although I feel its tied to Matrix Math. Which for me at least is more about transformations. I do however like that it describes what it is in 👉just two words👈. Matrix meaning columns and rows and index meaning address to somewhere. 👌
      * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
-    static func index(_ index:Array<Int>,_ indices:Array<[Int]>) -> Int{
+    static func index(_ index:[Int],_ indices:Array<[Int]>) -> Int{
         for i in 0..<indices.count{
-            var indicesIndex:Array<Int> = indices[i]
+            var indicesIndex:[Int] = indices[i]
             for e in 0..<index.count{
                 if(indicesIndex.count > e && index.count > e){//<--quick fix
                     if(/*indicesIndex[e].isNaN || */ index[e] < indicesIndex[e]) {break;}

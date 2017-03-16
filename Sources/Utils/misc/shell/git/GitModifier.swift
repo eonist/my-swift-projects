@@ -12,9 +12,9 @@ class GitModifier{
         //if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
         //fileName = StringModifier.wrapWith(fileName,"'")
         //}
-        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
+        //let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
         //--log "shellScript: " + shellScript
-        Swift.print("shellScript: " + "\(shellScript)")
+        //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -34,7 +34,7 @@ class GitModifier{
    static func commit(_ localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
     	//log ("GitModifier's commit(" + message_title + ")")
     	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
-        Swift.print("shellScript: " + "\(shellScript)")
+        //Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*

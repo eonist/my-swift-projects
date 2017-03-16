@@ -20,12 +20,11 @@
 
 ## **GraphicsLib**
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GraphicsLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GraphicsLib.svg">
 
 Read more about the GraphicsLib [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)   
 
-<img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">
-
+<img width="650" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/Screen Shot 2015-12-26 at 10.30.58.png">
 
 The swift code for the above example:  
 
@@ -57,10 +56,9 @@ lineGraphic.draw()
 **NOTE:** Also supports RadialGradient now example of this coming soon
 The graphics framework is open source and can be found on github [here](https://github.com/eonist/swift-utils)   
 
-
 ## **SVGLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SvgLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SvgLib.svg">
 
 - Read and write svg syntax (CRUD)
 
@@ -69,13 +67,13 @@ The graphics framework is open source and can be found on github [here](https://
 
 ## **MathLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/MathLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/MathLib.svg">
 
 - Contains a lot of use full math Utils, more to come)
 
 ## **SQLLiteLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/SQLiteLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SQLiteLib.svg">
 
 - works by utilizing shell (CRUD)
 
@@ -93,7 +91,7 @@ GitAsserter.isGitRepo("~/test/.git/")//Output: true or false
 
 ## **XMLLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/XMLLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/XMLLib.svg">
 
 - Makes parsing and modifying xml data easier (CRUD)
 - Supports parsing and modifying at deep indices 
@@ -118,7 +116,7 @@ print(xml.XMLString)//Output: "<data><files><file date=\"2022-10-02\">/Desktop/t
 
 ## **FileLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">
 
 - Open,Save,Delete,Create (CRUD)
 
@@ -130,7 +128,7 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 
 ## **KeyChainLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/KeyChainLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/KeyChainLib.svg">
 
 - Basic interaction with Apple KeyChain (Create, Read, Update, Delete)
 
@@ -156,7 +154,7 @@ RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
 
 ## **AnimLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/AnimLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/AnimLib.svg">
 
 - Supports all common easing equations
 - Interactive spring dynamics. Friction, SpringStrength etc. 
@@ -182,7 +180,7 @@ animator.start()
 
 ## **ColorLib**
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/ColorLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/ColorLib.svg">
 
 - Easily convert between color types: ColorLib, RGB, CMYK, HSL, HSB, HSB, NSColor, CGColor, CLColor
 - Supporting 7 Hex color types:
@@ -199,7 +197,7 @@ ColorParser.nsColor(16711935,1)//red nsColor
 
 ## EventLib
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/EventLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/EventLib.svg">
  
 - Small footprint: Only 2 methods and a variable
 - Propagates up class hierarchies. That extend the EventSender
@@ -228,7 +226,7 @@ Read about the event system here: http://stylekit.org/blog/2016/02/10/The-event-
 
 ## FileWatcher
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/FileWatcher.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileWatcher.svg">
 
 A simple File watcher in swift. Example code: 
 
@@ -278,6 +276,13 @@ extension Temp:UnWrappable{
 ## **Utils** 
 
 - Other basic programming utilities for working with array, dictionary, numbers, strings etc
+
+
+## Progress:
+
+**2017-mar** 
+- RubberBand now supports X & Y axis  
+
 
 
 [MIT License](http://opensource.org/licenses/MIT) 
