@@ -1,7 +1,7 @@
 import Foundation
 /**
  * NOTE: index:Array = [0,2,1,0] //means node at 0, node at 2, node at 1, node at 0
- * NOTE: a benefit of not using Node and instead using XML is that you then can access things deply nested inside xml, with ease. Which i guess you can if you convert the xml to NOde aswell. But then its 3 conversions which may not be great.
+ * NOTE: a benefit of using XML is that you then can access things deply nested inside xml, with ease. Which i guess you can if you convert the xml to NOde aswell. But then its 3 conversions which may not be great. However with reflection it could be faster to use a stuct or object hirarachy to store data ?!?
  * NOTE: To store data as a child, you can just add another node and have the data in content variable
  * TODO: Node should have some core methods for easy access
  * TODO: add a method for setting the xml setXML that also dispatches an event
@@ -14,10 +14,12 @@ class Node:EventSender{//this should probably extend NSXMLElement, and just impl
     init(_ xml:XML = XML()) {
         self.xml = xml
     }
+}
+extension Node{
     /**
      * TODO: consider renaming to appendAt
      */
-    func addAt(_ index:Array<Int>,_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func addAt(_ index:[Int],_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         _ = XMLModifier.addChildAt(self.xml, index, xml)
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
@@ -25,14 +27,14 @@ class Node:EventSender{//this should probably extend NSXMLElement, and just impl
      * EXAMPLE: setAttributeAt([0], ["title":"someTitle"]);
      * TODO: rename to changeAttribute? or editAttribute?
      */
-    func setAttributeAt(_ index:Array<Int>,_ attributes:Dictionary<String,String>){// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func setAttributeAt(_ index:[Int],_ attributes:[String:String]){// :TODO: do we still need the event dispatching, cant the calling method do this?
         _ = XMLModifier.setAttributeAt(xml, index, attributes)
         onEvent(NodeEvent(NodeEvent.setAttributeAt,index,self))
     }
     /**
      * Removes the item PARAM: index
      */
-    func removeAt(_ index:Array<Int>)->XML{// :TODO: do we still need the event dispatching, can't the calling method do this?
+    func removeAt(_ index:[Int])->XML{// :TODO: do we still need the event dispatching, can't the calling method do this?
         let removedXML:XML = XMLModifier.removeChildAt(xml, index)
         onEvent(NodeEvent(NodeEvent.removeAt,index,self))
         return removedXML

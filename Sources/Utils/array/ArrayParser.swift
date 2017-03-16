@@ -19,6 +19,7 @@ class ArrayParser{
             return -1/*-1 indicates no item was found*/
         }
     }
+    
     /**
      * New
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
@@ -33,6 +34,7 @@ class ArrayParser{
     /**
      * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
      * NOTE: dupplets doesn't seem to be castable to AnyObject
+     * NOTE: Compares reference not value
      */
     static func idx<T>(_ arr:inout [T], _ item:inout T) -> Int{
         for i in 0 ..< arr.count{
@@ -55,7 +57,7 @@ class ArrayParser{
     /**
      * Returns an array with itmes that are not the same in 2 arrays
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
-     * IMPORTANT: compares value not reference (If you need support for ref
+     * IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
     static func difference<T>(_ a:Array<T>, _ b:Array<T> )->Array<T> where T:Equatable, T:Comparable{
         var diff:Array<T> = []
@@ -76,7 +78,7 @@ class ArrayParser{
     }
     /**
      * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
-     * NOTE: the orgiginal versio nof this method is a little different, it uses an indexOf call
+     * NOTE: the orgiginal version of this method is a little different, it uses an indexOf call
      * IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
      */
     static func similar<T:Equatable>(_ a:[T],_ b:[T])->[T]{//TODO:Add support for COmparable to this method
@@ -153,6 +155,37 @@ class ArrayParser{
         return items
     }
     /**
+     * Think of this method as: firstOccurence of something
+     * Returns the first item that matches PARAM: match according to the constraints in PARAM: method
+     * EXAMPLE: ["a","b","c"].first("b",{$0 == $1})//b
+     * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
+     * EXAMPLE: [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
+     * NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
+     * NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
+     */
+    static func first<T,V>(_ variables:[T],_ match:V,_ method:(T,V)->Bool) -> T?  where V:Equatable{
+        for item in variables{
+            if(method(item,match)){
+                return item
+            }
+        }
+        return nil
+    }
+    /**
+     * Returns the first occurence of an PARAM: match in PARAM: arr that meets PARAM: condition 
+     * NOTE: Think of this method as "a conditional indexOf method"
+     * NOTE: the great thing about this method is that your types doesn't need to extend equatable. As not all types needs to be equatable 
+     * EXAMPLE: [("a",0),("x",1),("b",0),("b",1),("c",2)].first(("b",1), {$0.1 == $1.1 && $0.0 == $1.0})//("b", 1)
+     */
+    static func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
+        for item in arr{
+            if(condition(item,match)){
+                return item
+            }
+        }
+        return nil
+    }
+    /**
      * Returns a random array with unique numbers (no duplicates)
      * EXAMPLE:
      * let ranArr = ArrayParser.uniqueRandom(0, 4)
@@ -171,7 +204,7 @@ class ArrayParser{
         return randomNumbers
     }
     /**
-     * IMPORTANT: Compares reference not value, if value comparing is needed then create another method to support that
+     * IMPORTANT: Compares reference not value. If value comparing is needed then create another method to support that
      */
     static func occurences<T>(_ theList:Array<T>, theItem:T){
         var counter:Int = 0
@@ -182,7 +215,7 @@ class ArrayParser{
 }
 private class Utils{
     /**
-     * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the @param sortedArray meets the condition method "true" then return -1 (-1 means no match found)
+     * Returns the index of the item in PARAM: sortedArray that meets the PARAM: condition method "true", if there is no item in the PARAM sortedArray meets the condition method "true" then return -1 (-1 means no match found)
      */
     static func index<T>(_ value:T, _ sortedArray:[T],_ condition:(_ a: T, _ b: T)->Bool)->Int{
         for i in 0..<sortedArray.count{

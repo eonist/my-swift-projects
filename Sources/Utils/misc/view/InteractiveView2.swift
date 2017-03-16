@@ -43,46 +43,60 @@ class InteractiveView2:FlippedView,IInteractiveView{
      * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is over the visible part of this view 
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Same as regular mouseDown event except this also includes the origin
      */
     func mouseDown(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Handles actions and drawing states for the release event.
      * NOTE: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * This method exists for the sake of convenience
      */
-    func mouseUp(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){(self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)}/*informs the parent that an event occured*/
+    func mouseUp(_ event:MouseEvent){
+        if(self.superview is IInteractiveView){
+            (self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)
+        }/*informs the parent that an event occured*/
     }
     /**
      * MouseMoved
@@ -106,9 +120,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         //Swift.print("\(self.dynamicType)" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         //im not sure if the bellow code is perfectly stable in all cases, more testing needed
         if(!hasMouseEntered && viewUnderMouse === self){
-            hasMouseEntered = true;/*optimization*/
-            isMouseOver = true;
-            mouseOver(MouseEvent(event,self/*,self*/));
+            hasMouseEntered = true/*optimization*/
+            isMouseOver = true
+            mouseOver(MouseEvent(event,self/*,self*/))
         }//mouse move on visible view
         //super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
@@ -128,7 +142,9 @@ class InteractiveView2:FlippedView,IInteractiveView{
         }
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
-    override func mouseDown(with event: NSEvent) {mouseDown(MouseEvent(event,self))}
+    override func mouseDown(with event: NSEvent) {
+        mouseDown(MouseEvent(event,self))
+    }
     override func mouseUp(with event:NSEvent) {
         mouseUp(MouseEvent(event,self))/*<--The mouseUp call was moved above the upInside/upOutSide calls because there was a bug when having it bellow the 2 calls, then it was moved bellow again since if it was above it could break the LeverStepper, lets keep it above for now as the LeverStepper problem was a broken track pad problem not this*/
         viewUnderMouse === self ? mouseUpInside(MouseEvent(event,self)) : mouseUpOutside(MouseEvent(event,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/

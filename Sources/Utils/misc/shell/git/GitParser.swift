@@ -60,10 +60,11 @@ class GitParser{
 	/**
 	 * git diff --name-only --diff-filter=U "outputs: text2.txt"
 	 * git status -s "outputs UU text2.txt"
+     * NOTE: basically remote file has changes that never has been applied to local file.
 	 */
 	static func unMergedFiles(_ localPath:String)->Array<String>{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
-        Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
+        //Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
 		return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
 	}
 	/*
@@ -78,7 +79,7 @@ class GitParser{
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
     /**
-     * DEPRECATED: Use GitParser.log instead
+     * ⚠️️DEPRECATED⚠️️: Use GitParser.log instead
      * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
      */
     static func doLog(_ localPath:String, _ cmd:String)->String{return log(localPath, cmd)}

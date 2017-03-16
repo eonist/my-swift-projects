@@ -6,17 +6,23 @@ class GitUtils{
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
 	 * TODO: add support for different local and remote branch name
 	 */
-	static func manualPull(_ localPath:String, _ remotePath:String, _ branch:String){
+    static func manualPull(_ repo:GitRepo) -> Bool{
 		//Swift.print("GitUtils.manualPull()")
-		_ = GitModifier.fetch(localPath, remotePath, branch)//--git fetch origin master, retrive the latest repo info
-		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(localPath, branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
+		_ = GitModifier.fetch(repo)//--git fetch origin master, retrive the latest repo info
+		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(repo.localPath, repo.branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
 		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
-			Swift.print("remote branch is ahead, so there is something to merge")
-			_ = GitModifier.merge(localPath, branch, "origin/" + branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
-		}else{
-			Swift.print("nothing to merge, local branch is up-to-date")
+			//Swift.print("remote branch is ahead, so there is something to merge")
+			let result = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
+            _ = result
+            //Swift.print("⚠️️⚠️️⚠️️ result: " + "\(result)")
+            return true
+        }else{
+			//Swift.print("nothing to merge, local branch is up-to-date")
+            return false
 		}
+        //fatalError("handle the result first, success or error and return this as bool")
+        //return true//temp
 	}
 	/**
 	 * Manually clone a git to a local folder
@@ -51,17 +57,32 @@ class GitUtils{
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         return result
     }
+    static var logFormat:String = "\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
     /**
      * Returns the count from now until the date speccifed in PARAM: after
      * PARAM: after: "2016-10-12 00:00:00" (git date format)
      */
     static func commitCount(_ localRepoPath:String, after:String)->String{
-        let cmd = "git log --after=\""+after+"\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
+        let cmd = "git log --after=\"" + after + logFormat
         //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         //result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
         //Swift.print("result: " + "\(result)")
+        return result
+    }
+    /**
+     * NOTE: There is also: --since --before
+     * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
+     */
+    static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
+        let cmd = "git log --since=\""+since+"\" --until=\""+until + logFormat
+        //
+        //let cmd:String = "git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""
+        //Swift.print(cmd)
+        let shellScript:String = cmd
+        let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
+        //Swift.print("result.count: " + "\(result.count)")
         return result
     }
 }

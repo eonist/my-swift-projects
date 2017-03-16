@@ -71,7 +71,8 @@ extension NSView {
     func contains<T:NSView>(_ view:T)->Bool{
         return NSViewAsserter.contains(self, view)
     }
-    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}/*you cant have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
+    /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
+    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     
     //var width:CGFloat{return frame.width}//TODO:implement later
     //var height:CGFloat{return frame.height}
@@ -114,8 +115,9 @@ extension NSView {
     //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
     var X:CGFloat{get{return frame.origin.x}set{frame.origin.x = newValue}}
     var Y:CGFloat{get{return frame.origin.y}set{frame.origin.y = newValue}}
-    var w:CGFloat{get{return frame.width}set{frame.width = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
-    var h:CGFloat{get{return frame.height}set{frame.height = newValue}}
+    var w:CGFloat{get{return frame.width}set{frame.w = newValue}}//aperantly .width is used too may places, you need to refactor it out first, same with height
+    var h:CGFloat{get{return frame.height}set{frame.h = newValue}}
+    var idx:Int {return self.superview!.indexOf(self)}/*returns the index of a nsview*/
     /**
      * DEPRECATED
      */

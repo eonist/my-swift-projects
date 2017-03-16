@@ -18,3 +18,13 @@ extension RadialGradient{
         self.init(gradient.colors,gradient.locations,gradient.rotation)
     }
 }
+extension RadialGradient:UnWrappable{
+    static func unWrap<T>(_ xml:XML) -> T? {
+        let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
+        let startCenter:CGPoint? = unWrap(xml, "startCenter")
+        let endCenter:CGPoint? = unWrap(xml, "endCenter")
+        let startRadius:CGSize? = unWrap(xml, "startRadius")
+        let endRadius:CGSize? = unWrap(xml, "endRadius")/*Should be 0,0 to mimic the focal ratio radial gradient system*/
+        return RadialGradient(linearGradient!.colors, linearGradient!.locations, linearGradient!.rotation,startCenter,endCenter,startRadius,endRadius, linearGradient!.transformation) as? T
+    }
+}

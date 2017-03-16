@@ -1,6 +1,7 @@
 import Foundation
 /**
  * Data container class
+ * TODO: Use struct instead?, does anythingextend this class?
  */
 class AngleArc {
     var start:CGFloat

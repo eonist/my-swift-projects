@@ -1,10 +1,15 @@
-//import "text:TextAsserter.applescript"
+import Foundation
+
+typealias GitKey = (user:String,  pass:String)
+typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
+typealias GitMsg = (title:String,  desc:String)
+
 class GitModifier{
    /**
     * Add a file or many files to a commit
     * PARAM: fileName is the file name you want to add, use * if you want to add all files
-    * NOTE: the opposite of add is reset, see the reset method for more info
-    * CAUTION: when a file is removed, the * char wont work, you have to add the file manually
+    * NOTE: The opposite of add is reset, see the reset method for more info
+    * CAUTION: When a file is removed, the * char wont work, you have to add the file manually
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
@@ -12,7 +17,7 @@ class GitModifier{
         //if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
         //fileName = StringModifier.wrapWith(fileName,"'")
         //}
-        //let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
+        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
         //--log "shellScript: " + shellScript
         //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
@@ -24,45 +29,18 @@ class GitModifier{
     * 1 file changed, 0 insertions(+), 0 deletions(-)
     * create mode 100644 error.html
     * NOTE: Commit , usually doesnt return anything
-    * NOTE: its important that the message is betweentwo single quates
+    * NOTE: its important that the message is between two single quates
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
     * TODO: can we also add desscription to a commit?
     * TODO: what does commit -a do? -all?
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
-   static func commit(_ localRepoPath:String, _ messageTitle:String, _ messageDescription:String)->String{
+    static func commit(_ localRepoPath:String, _ msg:GitMsg)->String{
     	//log ("GitModifier's commit(" + message_title + ")")
-    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + messageTitle.encode()! + "' -m '" + messageDescription.encode()! + "'"
+    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
         //Swift.print("shellScript: " + "\(shellScript)")
     	return ShellUtils.run(shellScript,localRepoPath)
-   }
-   /*
-    * Uploads the current from the local git commits to the remote git
-    * PARAM: from_where: "master"
-    * PARAM: to_where: "origin"
-    * PARAM: remotePath: github.com/user-name/repo-name.git
-    * PARAM: branch: usually "master"
-    * NOTE: if the remote history has diverged from your history, you need to pull the remote branch and merge it into your local one,
-    * NOTE: git push <remote> <branch> (Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won�t let you push when it results in a non-fast-forward merge in the destination repository.)
-    * NOTE: you may mitigate using username and pass by researching how to use SSH key in github from trusted maschines
-    * NOTE: Original gti cmd: git push https://github.com/user/test.git master
-    * NOTE: ssh-example: ssh://user@host/path/to/repo.git
-    * NOTE: Only Push to Bare Repositories In addition, you should only push to repositories that have been created with the --bare flag. Since pushing messes with the remote branch structure, it's important to never push to another developers repository. But because bare repos don't have a working directory, it's impossible to interrupt anybodys developments.
-    * NOTE: The only time you should ever need to force push is when you realize that the commits you just shared were not quite right and you fixed them with a git commit --amend or an interactive rebase. However, you must be absolutely certain that none of your teammates have pulled those commits before using the --force option.
-    * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
-    * NOTE: remove remote feature branch: git push origin --delete <branch-name>
-    * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
-    * TODO: maybe add try error when doing the shell part
-    * TODO: add branch as a param
-    */
-   static func push(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String, _ branch:String)->String{
-   	//log ("GitModifier's push(" + "localPath: " + localRepoPath + ", remotePath: " + remotePath + ", user: " + userName + ", pass: " + userPassword + ", branch: " + branch + ")")
-   	let remoteLoc:String = "https://" + userName + ":" + userPassword + "@" + remotePath //--https://user:pass@github.com/user/repo.git--"origin"
-   	Swift.print("remoteLoc: " + "\(remoteLoc)")
-    let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git push" + " " + remoteLoc + " " + branch
-   	Swift.print("shellScript: " + "\(shellScript)")
-   	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
     * The opposite of the add action
@@ -102,12 +80,41 @@ class GitModifier{
     * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   static func pull(_ localRepoPath:String, _ remotePath:String, _ userName:String, _ userPassword:String)->String{ //--TODO: add branch here
-       let remoteLocation:String = "https://" + userName + ":" + userPassword + "@" + remotePath
-       let targetBranch:String = "master" //--master branch
+   static func pull(_ repo:GitRepo, _ key:GitKey)->String{ //--TODO: add branch here
+       let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
+       let targetBranch:String = repo.branch //--master branch
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
-       return ShellUtils.run(shellScript,localRepoPath)
+       return ShellUtils.run(shellScript,repo.localPath)
    }
+    /**
+     * Uploads the current from the local git commits to the remote git
+     * PARAM: from_where: "master"
+     * PARAM: to_where: "origin"
+     * PARAM: remotePath: github.com/user-name/repo-name.git
+     * PARAM: branch: usually "master"
+     * NOTE: if the remote history has diverged from your history, you need to pull the remote branch and merge it into your local one,
+     * NOTE: git push <remote> <branch> (Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won�t let you push when it results in a non-fast-forward merge in the destination repository.)
+     * NOTE: you may mitigate using username and pass by researching how to use SSH key in github from trusted maschines
+     * NOTE: Original gti cmd: git push https://github.com/user/test.git master
+     * NOTE: ssh-example: ssh://user@host/path/to/repo.git
+     * NOTE: Only Push to Bare Repositories In addition, you should only push to repositories that have been created with the --bare flag. Since pushing messes with the remote branch structure, it's important to never push to another developers repository. But because bare repos don't have a working directory, it's impossible to interrupt anybodys developments.
+     * NOTE: The only time you should ever need to force push is when you realize that the commits you just shared were not quite right and you fixed them with a git commit --amend or an interactive rebase. However, you must be absolutely certain that none of your teammates have pulled those commits before using the --force option.
+     * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
+     * NOTE: remove remote feature branch: git push origin --delete <branch-name>
+     * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
+     * TODO: maybe add try error when doing the shell part
+     * TODO: add branch as a param
+     */
+    static func push(_ repo:GitRepo, _ key:GitKey)->String{
+        //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
+        let remoteLoc:String = "https://\(key.user):\(key.pass)@\(repo.remotePath)"  //--https://user:pass@github.com/user/repo.git--"origin"
+        //Swift.print("remoteLoc: " + "\(remoteLoc)")
+        let shellScript:String = "\(Git.path)git push \(remoteLoc) \(repo.branch)"
+        //Swift.print("shellScript: " + "\(shellScript)")
+        let retVal = ShellUtils.run(shellScript,repo.localPath)
+        //Swift.print("🔦 GitModifier.push complete")
+        return retVal
+    }
    /*
     * The opposite of the add action
     * "git reset"
@@ -196,14 +203,14 @@ class GitModifier{
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
-   static func fetch(_ localRepoPath:String, _ remotePath:String, _ branch:String)->String{
+    static func fetch(_ repo:GitRepo)->String{
        //--log "fetch()"
        //log ("GitModifier's fetch(" + branch + ")")
        //--condition
        var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git fetch " + "origin"
-       if(branch != " "){ shellScript += " " + branch}
+       if(repo.branch != " "){ shellScript += " " + repo.branch}
        //--log "shellScript: " + shellScript
-       return ShellUtils.run(shellScript,localRepoPath)
+       return ShellUtils.run(shellScript,repo.localPath)
    }
    /**
     * branch

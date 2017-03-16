@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * Watches for file changes in a list of filePath(s)
+ * NOTE: If you specify folder path(s) then every descendant folder is also "watched"
  * NOTE: You could stop and start to restart
  * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
  * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback

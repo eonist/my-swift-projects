@@ -23,7 +23,7 @@ class StringParser{
     /**
      * Returns an array for every line in a string
      */
-    static func paragraphs(_ string:String)->Array<String>{
+    static func paragraphs(_ string:String)->[String]{
         var result = split(string,"\n")
         result.removeLast()/*if the string is empty it still returns a result as [""] and if the string is not empty it returns plus one empty string. so we pop the last one of the array*/
         return result
@@ -32,7 +32,7 @@ class StringParser{
      * Returns an Array of words derived from @param str by splitting it at every @param delimiter
      * EXAMPLE: components("Berlin, Paris, New York, San Francisco")//Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
 	 * NOTE: use "\n" to retrive paragraphs
-     * NOTE: the opposit of this method is StringModifier.combine(array," ")
+     * NOTE: The opposit of this method is StringModifier.combine(array," ")
      */
 	static func split(_ string:String,_ delimiter:String)->Array<String>{
 		return string.components(separatedBy:delimiter)

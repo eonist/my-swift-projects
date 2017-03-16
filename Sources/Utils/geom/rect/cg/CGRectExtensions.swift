@@ -23,9 +23,7 @@ extension CGRect {
      * EXAMPLE: CGRect(0,0,100,100).path
      */
     var path:CGMutablePath{return CGRectParser.path(self)}
-}
-/*Convenient extensions*/
-extension CGRect{
+    /*Convenient extensions*/
     /*Initialization*/
     init(_ pos:CGPoint,_ size:CGSize){ self.init(origin: pos, size: size)}
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
@@ -36,8 +34,11 @@ extension CGRect{
     var x:CGFloat {set {origin.x = newValue} get {return origin.x} }
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
     /*Size*/
-    var width:CGFloat {set {size.width = newValue} get {return size.width} }
-    var height:CGFloat {set {size.height = newValue} get {return size.height} }
+    /*var width:CGFloat {set {size.width = newValue} get {return size.width} }
+     var height:CGFloat {set {size.height = newValue} get {return size.height} }*/
+    /*⚠️️ NOTE: Siwft3 seems to have problems with width get and height get as extensions so use w and h instead. set worked for some reason but still*/
+    var w:CGFloat {set {size.width = newValue} get {return size.width} }
+    var h:CGFloat {set {size.height = newValue} get {return size.height} }
     /*Corners*/
     var topLeft:CGPoint {get {return self.origin} }
     var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
@@ -51,6 +52,10 @@ extension CGRect{
     var corners:Array<CGPoint> {return CGRectParser.corners(self)}
     var sides:Array<CGPoint>{return CGRectParser.sides(self)}
     var nsRect:NSRect {return NSRectFromCGRect(self)}
+    /**
+     * TODO: Maybe for x,y,width,height aswell?
+     * TODO: Make it enum! its faster
+     */
     subscript(key: String) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{

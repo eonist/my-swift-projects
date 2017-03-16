@@ -1,4 +1,7 @@
 import Foundation
+/**
+ * TODO: Use enums!
+ */
 class Alignment {
     static var horisontal:String = "horisontal"
     static var vertical:String = "vertical"

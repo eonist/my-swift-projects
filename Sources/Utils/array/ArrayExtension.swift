@@ -30,7 +30,7 @@ extension Array {
     mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
         return ArrayModifier.unshift(&self, item)
     }
-    func slice2(_ startIndex:Int, _ endIndex:Int) ->Array<Element>{/*Convenince*/
+    func slice2(_ startIndex:Int, _ endIndex:Int) ->[Element]{/*Convenince*/
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
     /**
@@ -67,6 +67,18 @@ extension Array {
     mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
         return ArrayModifier.insertAt(&self, item, index)
     }
+    /**
+     * Asserts if PARAM: idx is within the bounds of the array
+     */
+    func valid(_ idx:Int) -> Bool{
+        return self.count > 0 && idx > -1 && idx < self.count
+    }
+    func first(_ match:Element, _ condition:(_ a:Element, _ b:Element)->Bool)->Element?{
+        return ArrayParser.first(self, match, condition)
+    }
+    func removeDups( _ condition:(_ a:Element, _ b:Element)->Bool)->[Element]{
+        return ArrayModifier.removeDups(self, condition)
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
@@ -81,6 +93,12 @@ extension Array where Element:Equatable, Element:Comparable{
         return ArrayParser.index(self, value)
     }
 }
+extension Array where Element:Equatable{
+    func existAtOrBefore(_ idx:Int, _ item:Element) -> Bool{
+        return ArrayAsserter.existAtOrBefore(self, idx, item)
+    }
+}
+
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
 extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
@@ -103,4 +121,27 @@ public func +=<T> ( left:inout [T], right: T) -> [T] {/*returns array for the sa
 public func +=<T> (left: T, right:inout [T]) -> [T] {/*returns array for the sake of convenience*/
     _ = right.unshift(left)/*<--this is like prepend*/
     return right
+}
+/*Advance array extensions*/
+extension Collection {
+    /**
+     * Multidimensional-flat-map...because flatMap only works on "2d arrays". This is for "3d array's"
+     * NOTE: A 3d array is an array structure that can have nested arrays within nested arrays infinite addendum
+     * NOTE: Alternate names for this method as suggest by @defrenz and @timvermeulen on slack swift-lang #random: `recursiveFlatten` or `recursiveJoined`
+     * EXAMPLE:
+     * let arr:[Any] = [[[1],[2,3]],[[4,5],[6]]] 👈 3d array (3 depths deep)
+     * let x2:[Int] = arr.recursiveFlatmap()
+     * Swift.print(x2)//[1,2,3,4,5,6]
+     */
+    func recursiveFlatmap<T>() -> [T] {
+        var results = [T]()
+        for element in self {
+            if let sublist = element as? [Self.Generator.Element] {/*Array*/
+                results += sublist.recursiveFlatmap()
+            } else if let element = element as? T {/*Item*/
+                results.append(element)
+            }
+        }
+        return results
+    }
 }

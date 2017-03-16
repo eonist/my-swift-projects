@@ -7,9 +7,9 @@ import Cocoa
  * TODO: package these classes as its own lib. Kinetic. Bump. mc2. Other names?
  */
 class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
-    static let sharedInstance = Animation()
+    static let sharedInstance = Animation()//TODO: rename to .shared
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
-    var animators:Array<BaseAnimation> = []
+    var animators:[BaseAnimation] = []
     //var drawCalls:Array<()->Void> = []
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
@@ -23,7 +23,7 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      */
     func onFrameOnMainThread(){
         //Swift.print("it works")
-        for animator in animators{animator.onFrame()}
+        for animator in animators{animator.onFrame()}//TODO: 👉 animators.forEach{$.onFrame()}
         /*while drawCalls.count > 0{
         if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
         }*/
@@ -33,7 +33,7 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      * Note: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
      */
     func setUpDisplayLink() -> CVDisplayLink {
-        Swift.print("Animation.setUpDisplayLink()")
+        //Swift.print("Animation.setUpDisplayLink()")
         var displayLink: CVDisplayLink?
         var status = kCVReturnSuccess
         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)

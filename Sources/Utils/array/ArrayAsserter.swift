@@ -41,6 +41,12 @@ class ArrayAsserter {
         return ArrayParser.indx(arr, item) != -1
     }
     /**
+     * EXAMPLE: ["a","b","c"].has("b",{$0 == $1})//true
+     */
+    static func has<T,V>(_ variables:[T],_ match:V,_ method:(T,V)->Bool) -> Bool  where V:Equatable{
+        return ArrayParser.first(variables, match, method) != nil
+    }
+    /**
      * Asserts if two arrays are identical, a boolean is returned depending on the equality of two arrays (must be in the same order)
      * PARAM a: Array to be compared with
      * PARAM b: Array to be compared against
@@ -73,5 +79,14 @@ class ArrayAsserter {
             if(a[i] != b[i]) {return false}
         }
         return true
+    }
+    /**
+     * Asserts if an item is at or before PARAM: idx
+     * NOTE: Usefull in conjunction with ArrayModifier.insertAt()// to assert if an item already exists at that idx or not. to avoid dups
+     */
+    static func existAtOrBefore<T>(_ arr:[T],_ idx:Int, _ item:T) -> Bool where T:Equatable{
+        func itemAlreadyExistAtIdx()->Bool {return (arr.valid(idx) && arr[idx] == item) }
+        func itemExistsAtIdxBefore()->Bool {return (arr.valid(idx-1) && arr[idx-1] == item)}
+        return itemAlreadyExistAtIdx() || itemExistsAtIdxBefore()
     }
 }

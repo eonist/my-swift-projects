@@ -26,14 +26,14 @@ class TextFieldModifier {
         //Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically, this could probably be set when setting the paragraphstyle
         //if(textFormat.multiline) {textField.setContentCompressionResistancePriority(50, forOrientation: .Horizontal)}//this is for auto-layout only i think
-        textField.cell?.isScrollable = textFormat.scrollable//i guess this is connected to wordWrap
+        textField.cell?.isScrollable = textFormat.scrollable/*If true then you can scroll sideways. (I guess this is connected to wordWrap as well)*/
     }
     /**
      * Beta
      */
     static func size(_ textField:TextField,_ width:CGFloat,_ height:CGFloat) {
-        textField.frame.width = width/*SkinParser.width(this);*/
-        textField.frame.height = height/*SkinParser.height(this);*/
+        textField.frame.w = width/*SkinParser.width(this);*/
+        textField.frame.h = height/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
     }
 }

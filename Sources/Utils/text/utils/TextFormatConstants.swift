@@ -14,6 +14,6 @@ class TextFormatConstants {
     static var wordWrap:String = "wordWrap"
     static var scrollable:String = "scrollable"
     static var leading:String = "leading"/*line-spacing*/
-    static var textFormatPropertyNames:Array<String> = [size,font,align,selectable,background,backgroundColor,color,type,border,multiline,wordWrap,scrollable,leading]
+    static var textFormatPropertyNames:[String] = [size,font,align,selectable,background,backgroundColor,color,type,border,multiline,wordWrap,scrollable,leading]
 }
 //["align","blockIndent","bold","bullet","color","font","indent","italic","kerning","leading","leftMargin","letterSpacing","rightMargin","size","tabStops","target","underline","url"];

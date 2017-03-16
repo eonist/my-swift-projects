@@ -13,6 +13,7 @@ class Reflection {
      * NOTE: works with struct and class
      */
     static func reflect(_ instance:Any)->[(label:String,value:Any)]{//<---Should this method be private? as toXML is the primary method in this class
+        //Swift.print("reflect: ")
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
         //Swift.print("mirror: " + "\(mirror)")
@@ -59,16 +60,22 @@ private class Utils{
      * PARAM: value (will never be nil directly, can be Optional(nil) which is something mirror uses)
      */
     static func handleValue(_ value:Any,_ name:String? = nil)->XML{
+        //Swift.print("handleValue name: \(name)")
         var xml = XML()
         let objectType:String = "\(type(of: value))"//if this doesn't work use generics
+        //Swift.print("objectType: " + "\(objectType)")
         if(name != nil){
             xml["type"] = objectType
         }
         xml.name = name != nil ? name! : objectType/*the name of instance class*/
         if("\(value)" == "nil" || "\(value)" == "Optional(nil)"){/*Nil is not nil when mirroring. So you can't do value != nil. Casting to string is a workaround for this*/
-            xml["type"] = extractClassType(value)
+            let classTypeStr:String = extractClassType(value)
+            //Swift.print("classTypeStr: " + "\(classTypeStr)")
+            xml["type"] = classTypeStr
+            //Swift.print("\(xml["type"])")
         }else{
             let properties = Reflection.reflect(value)
+            //Swift.print("properties.count: " + "\(properties.count)")
             properties.forEach{
                 handleProperty(&xml,$0.label,$0.value)
             }
@@ -80,12 +87,16 @@ private class Utils{
      * NOTE: handleDict and handleValue should use this method, handleArray will use it in the future
      */
     static func handleProperty(_ xml:inout XML, _ label:String, _ value:Any){
+        //Swift.print("label: " + "\(label)")
+        //Swift.print("value: " + "\(value)")
         if (value is AnyArray){/*array*/
+            //Swift.print("AnyArray")
             //Swift.print("AnyArray " + "\(value)")
             //let properties = Reflection.reflect(value)
             //Swift.print("properties.count: " + "\(properties.count)")
             xml += handleArray(value,label)
         }else if (value is AnyDictionary){/*dictionary*/
+            //Swift.print("AnyDictionary")
             xml += handleDictionary(value,label)
         }else if(value is Reflectable){
             xml += handleReflectable(value as! Reflectable,label)
@@ -148,7 +159,7 @@ private class Utils{
         xml.name = name
         xml["type"] = "Array"
         let properties = Reflection.reflect(value)
-        //Swift.print("properties.count: " + "\(properties.count)")
+        //Swift.print("handleArray.properties.count: " + "\(properties.count)")
         properties.forEach{
             if($0.value is Reflectable){/*The type implements custom reflection*/
                 //Swift.print("$0.value: " + "\($0.value)")
@@ -159,6 +170,7 @@ private class Utils{
             }else if($0.value is AnyArray){/*array*/
                 xml += handleArray($0.value,$0.label)//<--should this also be: "item" as label in an array is always [0],[1] etc
             }else if ($0.value is AnyDictionary){/*dictionary*/
+                //Swift.print("value is AnyDict")
                 xml += handleDictionary($0.value,$0.label)//<--should this also be: "item" as label
             }else if(CFGetTypeID($0.value as AnyObject) == CGColor.typeID){
                 xml += handleReflectable($0.value as! CGColor,"item")
@@ -183,22 +195,28 @@ private class Utils{
      * <someDict>
      */
     static func handleDictionary(_ value:Any,_ name:String) -> XML{
-        //Swift.print("handleDictionary()")
+        //Swift.print("handleDictionary() name: \(name)")
         let xml = XML()
-        xml.name = name
+        //Swift.print("XML is created")
+        xml.name = name.count > 0 ? name : "item"
+        //Swift.print("xml name is set")
         xml["type"] = "Dictionary"
+        //Swift.print("xml type is set")
         let properties = Reflection.reflect(value)
+        //Swift.print("properties.count: " + "\(properties.count)")
         properties.forEach{
             //Swift.print("$0.value: " + "\($0.value)")
             //Swift.print("$0.label: " + "\($0.label)")
             xml += dictionaryItem($0.value)
         }
+        //Swift.print("handleDictionary xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**
      * Handles individual Dictionary items
      */
     static func dictionaryItem(_ value:Any) -> XML{
+        //Swift.print("dictionaryItem")
         var xml = XML()
         //Swift.print("create xml")
         xml.name = "item"
@@ -209,6 +227,7 @@ private class Utils{
         //Swift.print("val: " + "\(val)")
         handleProperty(&xml, "key", key)
         handleProperty(&xml, "value", val)
+        //Swift.print("dictionaryItem xml.xmlString.count: " + "\(xml.xmlString.count)")
         return xml
     }
     /**

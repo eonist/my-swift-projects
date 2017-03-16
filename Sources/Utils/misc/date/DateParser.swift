@@ -41,4 +41,15 @@ class DateParser {
         //Swift.print("dateTimePrefix: " + "\(dateTimePrefix)")
         return dateStr
     }
+    static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{
+        let calendar = Calendar.current
+        var components = DateComponents()
+        if(year != nil){components.year = year!}
+        if(month != nil){components.month = month!}
+        if(day != nil){components.day = day!}
+        if(hour != nil){components.hour = hour!}
+        if(minute != nil){components.minute = minute!}
+        if(second != nil){components.second = second!}
+        return calendar.date(from: components)
+    }
 }

@@ -5,45 +5,58 @@ public class XMLModifier {
      * Adds PARAM: child to PARAM: xml at an array index PARAM: index
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
-    static func addChildAt(_ xml:XML,_ index:Array<Int>,_ child:XML) -> XML {// :TODO: rename to addAt?
+    static func addChildAt(_ xml:XML,_ index:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
+        Swift.print("index: " + "\(index)")
         let i = index.slice2(0,index.count-1)
-        //Swift.print("i: " + "\(i)")
-        let parent:XMLElement? = XMLParser.childAt(xml, i)
+        Swift.print("i: " + "\(i)")
+        let parent:XML? = XMLParser.childAt(xml, i)
         //Swift.print("parent: " + "\(parent)")
-        _ = parent!.addAt(child,index[index.count-1])
+        Swift.print("parent?.childCount: " + "\(parent!.childCount)")
+        let lastIdx:Int = index.count-1
+        Swift.print("lastIdx: " + "\(lastIdx)")
+        let insertAt:Int = index[lastIdx]
+        Swift.print("insertAt: " + "\(insertAt)")
+        _ = parent!.addAt(child,insertAt)
         return xml
     }
     /**
      *
      */
-    static func addChildAt(_ xml:XML,_ child:XML,_ index:Int) -> XMLElement {
+    static func addChildAt(_ xml:XML,_ child:XML,_ index:Int) -> XML {
         return insertAt(xml,index,child)
     }
     /**
      * Inserts PARAM child at PARAM index in PARAM xml
      * NOTE: works similarly to the sprite.addChildAt() function
      */
-    static func insertAt(_ xml:XML,_ index:Int,_ child:XML) -> XMLElement {
+    static func insertAt(_ xml:XML,_ index:Int,_ child:XML) -> XML {
         xml.insertChild(child, at: index)
-        return xml;
+        return xml
     }
     /**
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
-    static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XMLElement {// :TODO: remove may need to be recursive, rename to removeAt?
-        return XMLParser.childAt(xml, index.slice2(0,index.count-1))!.removeAt(index[index.count-1])
+    static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
+        //let match:XML = XMLParser.childAt(xml, index)!
+        let lastIdx:Int = index[index.count-1]
+        Swift.print("lastIdx: " + "\(lastIdx)")
+        let parentIdx:[Int] = index.slice2(0,index.count-1)
+        Swift.print("parentIdx: " + "\(parentIdx)")
+        return XMLParser.childAt(xml, parentIdx)!.removeAt(lastIdx)
+        //return match
     }
     /**
      * Convenince
      */
-    static func removeChildAt(_ xml:XML,_ index:Int) -> XMLElement {
-        xml.removeChild(at: index)
-        return xml
+    static func removeChildAt(_ parent:XML,_ idx:Int) -> XML {
+        let child:XML = parent.child(at: idx) as! XML
+        parent.removeChild(at: idx)
+        return child
     }
     /**
      * EXAMPLE XMLModifier.setNameAt(database.xml, index, "menu")
      */
-    static func setNameAt(_ xml:XML,_ index:Array<Int>, _ name:String) -> XMLElement {
+    static func setNameAt(_ xml:XML,_ index:Array<Int>, _ name:String) -> XML {
         XMLParser.childAt(xml, index)?.name = name
         return xml
     }
@@ -51,7 +64,7 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.setAttributeAt(xml, [0,1], "title", "someTitle")
      * NOTE: I think this method works with depth indecies
      */
-    static func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XMLElement {
+    static func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XML {
         XMLParser.childAt(xml, index)?[key] = value
         return xml
     }

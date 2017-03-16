@@ -9,6 +9,7 @@ protocol UnWrappable {
     static func unWrap<T>(_ xml:XML) -> T?
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?
     static func unWrap<T>(_ value:String) -> T?
+    //static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?]
 }
 /**
  * TODO: Contemplate: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
@@ -64,7 +65,7 @@ extension UnWrappable{
      * Returns a Dictionary (key is UnWrappable and Hashable) (value is Unwrappable)
      * TODO: In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
      */
-    static func unWrap<T:UnWrappable, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable{
+    static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dictionary:[K:T] = [:]
         let child:XML = xml.firstNode(key)!
         if(child.childCount > 0){
@@ -77,5 +78,42 @@ extension UnWrappable{
             }
         }
         return dictionary
+    }
+    /**
+     * New, TODO: could be called form the method above
+     */
+    static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
+        var dictionary:[K:T] = [:]
+        if(xml.childCount > 0){
+            XMLParser.children(xml).forEach{
+                let first = $0.children!.first!
+                let key:K = K.unWrap(first.stringValue!)!
+                let last:XML = $0.children!.last! as! XML/*we cast NSXMLNode to XML*/
+                /* Swift.print("last: " + "\(last)")
+                 Swift.print("last: " + "\(last.xmlString)")
+                 Swift.print("last.value: " + "\(last.value)")
+                 Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
+                 Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
+                 */
+                let value:T? = last.hasComplexContent ?  T.unWrap(last) : T.unWrap(last.value)
+                dictionary[key] = value
+            }
+        }
+        return dictionary
+    }
+    /**
+     * Support for Array with Dictionaries like: [Dictionary<String,String>]
+     * TODO: You could porbably do this simpler with AnyDictionary
+     */
+    static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
+        var array:[[K:T]?] = [[K:T]?]()
+        let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
+        if(child.childCount > 0){
+            XMLParser.children(child).forEach{
+                let xml:XML = $0
+                array.append(unWrapDict(xml))//$0.hasComplexContent ? .. : nil
+            }
+        }
+        return array
     }
 }

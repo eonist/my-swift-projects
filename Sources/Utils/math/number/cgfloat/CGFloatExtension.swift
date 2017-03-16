@@ -60,6 +60,7 @@ infix operator %%/*<--infix operator is required for custom infix char combos*/
  * print(4.3 %% 2.1) // 0.0999999999999996
  * print(4 %% 4)     // 0
  * NOTE: The first print returns 2, rather than 12/5 or 2.4, because the modulo (%) operator returns only the remainder. The second trace returns 0.0999999999999996 instead of the expected 0.1 because of the limitations of floating-point accuracy in binary computing.
+ * FUN-FACT: UInt still has regular modulo support with the % char
  */
 public func %% (left:CGFloat, right:CGFloat) -> CGFloat {
     return left.truncatingRemainder(dividingBy: right)

@@ -1,6 +1,6 @@
 import Cocoa
 /*
- * TODO: The mask doesnt have an exact fitting fillet (figure out how to solve this)
+ * TODO: The mask doesn't have an exact fitting fillet (figure out how to solve this)
  * TODO: Impliment elliptical round corners corner-radius:50/25; creates an elliptical roundcornered rect
  * NOTE: We might need to create a method named drawAdvanceRoundRect, which would draw a round rect with individual corners that also could have 2 radiuses ech so you would have elliptical corners,
  * NOTE: google for Drawing Circles with Rational Quadratic Bezier Curves.pdf or use a value named kappa which is basically kappa = 4 * (sqrt(2) - 1) / 3
@@ -15,7 +15,7 @@ class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
         //Swift.print("RoundRectGraphic.drawFill() ")
-        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
+        let fillFrame = graphic.lineStyle != nil ? RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
         graphic.fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
     }

@@ -10,7 +10,8 @@ class RangeAsserter{
         return a == b
     }
     /**
-     * Asserts if PARAM: value is within the PARAM: range
+     * Asserts if PARAM: number is within the PARAM: range
+     * NOTE: if the number is on the edge it is considered within. Use absolutelyWithin if you need to not include edge
      * TODO: Add some examples
      * TODO: a potential bug is that <= max isn't correct, if it is max then its not within, if you think about how integers work, but this may also be correct since if a number range is asserted it may need to also include the max, for now use contained if you deal with integers
      */
@@ -26,12 +27,14 @@ class RangeAsserter{
     }
     /**
      * Asserts if PARAM: a overlaps PARAM: b
+     * NOTE: touching edges are considered to overlap, use absolutlyOverlaps if you need to exclude edge cases
      */
     static func overlaps<T:Comparable>(_ a:Range<T>,_ b:Range<T>)->Bool {
         return RangeAsserter.equals(a,b) || contains(a,b) || contains(b,a) || within(a,b.start) || within(a,b.end)
     }
     /**
      * Asserts if PARAM: a contains PARAM: a or PARAM: b contains PARAM: a
+     * NOTE: use absolutlyContains if you want to avoid edge
      */
     static func contains<T:Comparable>(_ a:Range<T>,_ b:Range<T>)->Bool {
         return a.start <= b.start && a.end >= b.end

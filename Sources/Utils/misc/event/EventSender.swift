@@ -13,7 +13,7 @@ class EventSender:IEventSender {
     }/*returns closure that will take care of propagating the event to the parent*/
     var event:EventCallBack/*this holds any method assigned to it that has its type*/
     init(){
-        event = eventCall
+        event = eventCall// TODO: is this needed? can't this be done in the event variable?, could be that you need self sometimes?!?
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down

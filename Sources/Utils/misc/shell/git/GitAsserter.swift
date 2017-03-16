@@ -33,9 +33,9 @@ class GitAsserter{
 	static func hasLocalCommits(_ localRepoPath:String, _ branch:String)->Bool{
 		//--log "GitAsserter's has_local_commits()"
 		//--move the bellow to gitModifier?
-		_ = GitModifier.gitRemoteUpdate(localRepoPath) //--in order for the cherry to work with "git add" that uses https, we need to call this method
-		let cherryResult:String = GitParser.cherry(localRepoPath, branch)
-		Swift.print("cherryResult: " + "\(cherryResult)")
+		_ = GitModifier.gitRemoteUpdate(localRepoPath)//🌵 in order for the cherry to work with "git add" that uses https, we need to call this method
+		let cherryResult:String = GitParser.cherry(localRepoPath, branch)//🌵
+		//Swift.print("cherryResult: " + "\(cherryResult)")
 		let hasCommits:Bool = (cherryResult.characters.count > 0)
 		return hasCommits
 	}
@@ -45,7 +45,7 @@ class GitAsserter{
 	static func hasUnMergedPaths(_ localPath:String)->Bool{
 		//Swift.print("hasUnMergePaths")
         let result = GitParser.unMergedFiles(localPath)
-        Swift.print("result: " + "\(result)")
+        //Swift.print("result: " + "\(result)")
 		return result.count > 0
 	}
 }

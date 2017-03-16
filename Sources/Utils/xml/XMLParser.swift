@@ -84,8 +84,8 @@ public class XMLParser{
                 let name:String = node.name!
                 let value:String = node.stringValue!
                 //print("name: " + name + " " + "value:"+value)
-                attribute["name"] = name
-                attribute["value"] = value
+                attribute["name"] = name//👈the problem is here.
+                attribute["value"] = value//👈the problem is here.
                 attributes.append(attribute)
             }
         }
@@ -93,21 +93,22 @@ public class XMLParser{
     }
     /**
      * New
+     * TODO:  the return should be optional so you can use if let. if there is no atribs then return nil
      */
-    static func attribs(_ child:XML) -> Dictionary<String,String>{
-        var attributes:Dictionary<String,String> = [:]
+    static func attribs(_ child:XML) -> [String:String]{
+        var dict:[String:String] = [:]
         if(child.attributes != nil && child.attributes!.count > 0){
-            for node:XMLNode in child.attributes!{
-                attributes[node.name!] = node.stringValue!
+            child.attributes?.forEach{
+                dict[$0.name!] = $0.stringValue!
             }
         }
-        return attributes
+        return dict
     }
     /**
-     * Returns a key/value object with the attributes at the @param index in @param database
+     * Returns a key/value object with the attributes at the PARAM: index in PARAM database
      * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
-    static func attributesAt(_ child:XML, _ index:Array<Int>) -> [String:String]?{// :TODO: rename to objAt?
+    static func attributesAt(_ child:XML, _ index:[Int]) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
     }
     /**
@@ -131,21 +132,21 @@ public class XMLParser{
         return children[index] as? XML
     }
     /**
-     * Returns an an XML instance at @param index (Array index)
-     * @Note this function is recursive
-     * @Note to find a child at an integer use the native code: xml.children[integer]
-     * @Note to find the children of the root use an empty array as the index value
+     * Returns an an XML instance at PARAM: index (Array index)
+     * NOTE: this function is recursive
+     * NOTE: to find a child at an integer use the native code: xml.children[integer]
+     * NOTE: to find the children of the root use an empty array as the index value
      */
-    static func childAt(_ xml:XML?,_ index:Array<Int>)->XML? {
+    static func childAt(_ xml:XML?,_ index:[Int])->XML? {
         //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
         }
-        else if(index.count == 1 && xml != nil && xml?.child(at: index[0]) != nil) {//XMLParser.childAt(xml!.children!, index[0])
+        else if(index.count == 1 && xml != nil && xml!.child(at: index.first!) != nil) {//XMLParser.childAt(xml!.children!, index[0])
             return xml!.childByIndex(index[0])
         }// :TODO: if index.length is 1 you can just ref index
         else if(index.count > 1 && xml!.children!.count > 0) {
-            return XMLParser.childAt(xml!.children![index[0]] as? XML,index.slice2(1,index.count))
+            return XMLParser.childAt(xml!.children![index.first!] as? XML,index.slice2(1,index.count))
         }
         return nil
     }
@@ -191,25 +192,51 @@ public class XMLParser{
      * TODO: Does it support xml string value? 
      */
     static func toArray(_ xml:XML)->[[String:String]] {
+        
+        //you probably shouldnt use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
+        
         var items:[Dictionary<String,String>] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for i in 0..<count{
-            let child:XMLElement = XMLParser.childAt(xml.children!, i)!
+            let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
             var item:Dictionary<String,String> = Dictionary<String,String>()
             let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
             }
-            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }// :TODO: this may need to be rolled back to previouse code state
+            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
             items.append(item)
         }
         return items
     }
     /**
-     * Returns the first matching xml that has the attribute key value pair @param attribute in @param xml
+     * New
      */
-    static func index(_ xml:XML,_ key:String, _ value:String) -> Array<Int>? {
+    static func arr(_ xml:XML) -> [Any]{
+        var items:[Any] = []
+        let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        for i in 0..<count{
+            let child:XML = XMLParser.childAt(xml.children!, i)!
+            //print("Import - child.toXMLString(): " + child.toXMLString());
+            var item:[Any] = []
+            let attribs = child.attribs
+            if(!attribs.isEmpty){
+                item.append(attribs)
+            }
+            if(child.stringValue != nil && child.stringValue!.count > 0) {
+                item.append(child.stringValue!)
+            }else if(child.hasComplexContent) {
+                item.append(arr(child))
+            }
+            items.append(item)
+        }
+        return items
+    }
+    /**
+     * Returns the first matching xml that has the attribute key value pair PARAM attribute in @param xml
+     */
+    static func index(_ xml:XML,_ key:String, _ value:String) -> [Int]? {
         if(xml[key] == value) {
             return []
         }else if(xml.childCount > 0){

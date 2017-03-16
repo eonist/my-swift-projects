@@ -60,11 +60,13 @@ class ArrayModifier{
     }
     /**
      * Old-school implementation of slice
-     * IMPORTANT: This method does NOT alter the original array (should probably be moved to ArrayParser?)
+     * IMPORTANT: This method does NOT alter the original array
+     * IMPORTANT: let arr:[Int] = [1,2,3,4,5]; arr.slice2(0,arr.count)//1,2,3,4,5. if you use .count-1 then you get all but the last
      * RETURNS: The items from startIndex to endIndex
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
+     * TODO: should probably be moved to ArrayParser?
      */
-    static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->Array<T>{//TODO:Rename this to just slice, soon!
+    static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->[T]{//TODO:Rename this to just slice, soon!
         return Array(array[startIndex..<endIndex])
     }
     /**
@@ -121,6 +123,7 @@ class ArrayModifier{
      * print("result: \(result)" )//b "the deleted item"
      * print(array) //a,x,b,c
      * TODO: return the array for method chaning purposes?
+     * NOTE: ArrayModifier.insertAt does the same thing as this method
      */
     static func addAt<T>(_ array:inout [T], _ item:T, _ index:Int){
         if(index == 0) {_ = array.unshift(item)}/*add item at the begining of an array*/
@@ -363,15 +366,24 @@ class ArrayModifier{
      * Removes duplicates
      * NOTE: the following two lines may be more efficient try to factor them and see if they are good
      * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"]
-     * EXAMPLE: var z:Array = arr.filter(func (a:*,b:int,c:Array):Boolean { return ((z ? z : z = Array()).indexOf(a) >= 0 ? false : (z.append(a) >= 0)); }, self);  (more functional, maybe faster?)
+     * EXAMPLE: let arr:[String] = ["a","b","b","c","b","d","c"];var z:[String] = [] Swift.print(arr.forEach{if(z.index(of: $0) == nil) {z.append($0)}})//["a", "b", "c", "d"]
      */
-    static func removeDuplicates<T>(_ array:Array<T>) -> Array<T> where T:Equatable, T:Comparable{
-        var tempArray:Array<T> = []
-        for i in 0..<array.count{
-            let item:T = array[i]
-            if (ArrayParser.index(tempArray, item) == -1) {tempArray.append(item)}//append if doesn't exists
+    static func removeDuplicates<T>(_ array:[T]) -> Array<T> where T:Equatable, T:Comparable{
+        var result:[T] = []
+        array.forEach{
+            if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists
         }
-        return tempArray
+        return result
+    }
+    /**
+     * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
+     */
+    static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
+        var result:[T] = []
+        arr.forEach{
+            if(result.first($0, condition) == nil) {result.append($0)}//append if doesn't exists
+        }
+        return result
     }
     /**
      * Very simple numeric sorter
@@ -422,6 +434,7 @@ class ArrayModifier{
      * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 2)//q,b,x,c
      * EXAMPLE: ["a","b","c"].insert("x", 3)//a,b,c,x
+     * NOTE: ArrayModifier.addAt does the same thing as this method
      */
     static func insertAt<T>(_ arr:inout [T], _ item:T, _ index:Int) -> [T]{
         arr.insert(item, at: index)

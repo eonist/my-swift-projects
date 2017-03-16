@@ -136,7 +136,7 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 
 <img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
 
-- Makes parsing and modifying with RegExp easier  
+- Makes parsing and modifying with RegEx easier  
 
 ```swift
 RegExp.match("My name is Taylor Swift","My name is Taylor (.*)")//Swift
