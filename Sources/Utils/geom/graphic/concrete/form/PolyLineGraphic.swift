@@ -7,17 +7,17 @@ class PolyLineGraphic:PathGraphic{
         let path:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
         super.init(path, decoratable)
     }
-    func setPoints(points:[CGFloat]) {
+    func setPoints(points:[CGPoint]) {
         self.points = points
         draw()
     }
 }
 extension PolyLineGraphic{
-    convenience init(_ points:[CGFloat], _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
+    convenience init(_ points:[CGPoint], _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
         //Swift.print("PolyLineGraphic.init() type: BaseGraphic")
         self.init(points, BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ points:[CGFloat], _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
+    convenience init(_ points:[CGPoint], _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
         //Swift.print("PolyLineGraphic.init() type: GradientGraphic")
         self.init(points, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }
@@ -26,9 +26,9 @@ class PolyLineGraphicUtils{
     /**
      * NOTE: rename to pathByPoints?, as swift supports method overloading, you don't need that speccific naming
      */
-    static func path(_ points:[CGFloat]) -> IPath {
+    static func path(_ points:[CGPoint]) -> IPath {
         var commands:[Int] = [PathCommand.moveTo]
-        var pathData:Array<CGFloat> = [points[0].x,points[0].y]
+        var pathData:[CGFloat] = [points[0].x,points[0].y]
         for i in 1..<points.count{//swift 3 update
             commands.append(PathCommand.lineTo)
             let p:CGPoint = points[i]
