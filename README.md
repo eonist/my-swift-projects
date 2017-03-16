@@ -79,7 +79,7 @@ The graphics framework is open source and can be found on github [here](https://
 
 ## **GitLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/GitLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GitLib.svg">
 
 - works by utilizing shell and git (CRUD)
 
