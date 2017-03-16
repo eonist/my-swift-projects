@@ -21,7 +21,7 @@ extension CountableRange/* where Bound:Integer */{
     //you can also use the native var: .count instead of the bellow .length
     var length:Int {return (self.endIndex as! Int) - (self.startIndex as! Int)}/*convenince*/
     var numOfIndecies:Int{ return (self.end as! Int) - (self.start as! Int) + 1 }
-    var ran:Int {return IntParser.random(self.start as! Int, self.end as! Int)}
+    var random:Int {return IntParser.random(self.start as! Int, self.end as! Int)}
 }
 extension Range where Bound:Comparable {
     func equals(_ range:Range<Bound>)->Bool {/*Convenience*/
