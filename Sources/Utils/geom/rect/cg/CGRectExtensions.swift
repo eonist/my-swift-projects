@@ -36,7 +36,7 @@ extension CGRect {
     /*Size*/
     /*var width:CGFloat {set {size.width = newValue} get {return size.width} }
      var height:CGFloat {set {size.height = newValue} get {return size.height} }*/
-    /**/
+    /*⚠️️ NOTE: Siwft3 seems to have problems with width get and height get as extensions so use w and h instead. set worked for some reason but still*/
     var w:CGFloat {set {size.width = newValue} get {return size.width} }
     var h:CGFloat {set {size.height = newValue} get {return size.height} }
     /*Corners*/
