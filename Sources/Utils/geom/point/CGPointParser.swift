@@ -104,7 +104,7 @@ class CGPointParser{
      * NOTE: this method is great if you have 2 points and you want to find the third but you only know the x value of that point
      * PARAM: slope (the rate of change between x and y) use PointParser.slope(p1,p2) to find the slope
      * PARAM: p1: the first Point that makes up the line that makes up the slope
-     * PARAM: x2: 
+     * PARAM: x2: the x marks the spot. X is the final x in the point on the slope. 
      * EXAMPLE: PointParser.y(CGPoint(100,100), 200, 1);//Output: 200
      */
     static func y(_ p1:CGPoint,_ x2:CGFloat,_ slope:CGFloat)->CGFloat {
