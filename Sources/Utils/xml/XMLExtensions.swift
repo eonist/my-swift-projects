@@ -2,7 +2,7 @@ import Foundation
 
 typealias XML = XMLElement/*Makes refering to NSXMLElement simpler, just use XML instead*/
 typealias XMLDoc = XMLDocument
-extension XMLElement {
+extension XML {
     /**
      * Convenience
      */
