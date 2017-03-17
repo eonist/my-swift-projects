@@ -134,7 +134,7 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 
 ## **RegExpLib** 
 
-<img width="100" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/RegExpLib.svg">
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/RegExpLib.svg">
 
 - Makes parsing and modifying with RegEx easier  
 
