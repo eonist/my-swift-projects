@@ -15,52 +15,52 @@ class CGPathUtils {
         for i in 0..<cmdLen{
             let command:Int = path.commands[i]
             switch(command){
-            case PathCommand.moveTo:
-                prevMT = CGPoint(path.pathData[index], path.pathData[index+1])
-                prevEnd = prevMT.copy()
-                cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
-                index += 2
-            case PathCommand.lineTo:
-                prevEnd = CGPoint(path.pathData[index], path.pathData[index+1])
-                cgPath.addLine(to: CGPoint(path.pathData[index],path.pathData[index+1]))
-                index += 2
-            case PathCommand.curveTo:/*quad*/
-                prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
-                cgPath.addQuadCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control: CGPoint(path.pathData[index+2],path.pathData[index+3]))//swift 3->was: CGPathAddQuadCurveToPoint
-                index += 4
-            case PathCommand.cubicCurveTo:/*cubic*/
-                prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
-                //the bellow could be wrong
-                //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
-                //continue here: something is wrong with the path conversion, try a simpler cubic curve test with stroke. etc
-                cgPath.addCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control1: CGPoint(path.pathData[index+2],path.pathData[index+3]), control2: CGPoint(path.pathData[index+4],path.pathData[index+5]))//CGPathAddCurveToPoint
-                index += 6
-                /**
-                 * NOTE: At the moment i dont think this takes largeFlag into account
-                 * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
-                 */
-            case PathCommand.arcTo:
-                //Swift.print("prevEnd: " + "\(prevEnd)")
-                //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
-                //Swift.print("path.pathData[index+0]: " + "\(path.pathData[index+0])")
-                let arc:IArc = BasicPathParser.arcAt(path,i)
-                /*
-                Swift.print("describeArc")
-                ArcParser.describe(arc)
-                Swift.print("")
-                */
-                DisplayArcUtils.arcTo(cgPath,arc)
-                prevEnd = arc.end.copy()/*<--I think this should be start*/
-                index += 9
-            case PathCommand.close:/*for the closed path support*/
-                if(prevEnd != prevMT) {/*<--draw a line to the prevMT if end isnt above prevMT*/
-                    //Swift.print("ADD AN EXTRA CLOSE LINE")
-                    cgPath.addLine(to: CGPoint(prevMT.x,prevMT.y))//Swift 3 was->CGPathAddLineToPoint
-                }
-                cgPath.closeSubpath()
-                cgPath.move(to: CGPoint(prevMT.x, prevMT.y))/*<--unsure if this is needed?*///upgraded to swift 3:->was:CGPathMoveToPoint
-            default:
-                break;
+                case PathCommand.moveTo:
+                    prevMT = CGPoint(path.pathData[index], path.pathData[index+1])
+                    prevEnd = prevMT.copy()
+                    cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
+                    index += 2
+                case PathCommand.lineTo:
+                    prevEnd = CGPoint(path.pathData[index], path.pathData[index+1])
+                    cgPath.addLine(to: CGPoint(path.pathData[index],path.pathData[index+1]))
+                    index += 2
+                case PathCommand.curveTo:/*quad*/
+                    prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
+                    cgPath.addQuadCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control: CGPoint(path.pathData[index+2],path.pathData[index+3]))//swift 3->was: CGPathAddQuadCurveToPoint
+                    index += 4
+                case PathCommand.cubicCurveTo:/*cubic*/
+                    prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
+                    //the bellow could be wrong
+                    //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
+                    //continue here: something is wrong with the path conversion, try a simpler cubic curve test with stroke. etc
+                    cgPath.addCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control1: CGPoint(path.pathData[index+2],path.pathData[index+3]), control2: CGPoint(path.pathData[index+4],path.pathData[index+5]))//CGPathAddCurveToPoint
+                    index += 6
+                    /**
+                     * NOTE: At the moment i dont think this takes largeFlag into account
+                     * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
+                     */
+                case PathCommand.arcTo:
+                    //Swift.print("prevEnd: " + "\(prevEnd)")
+                    //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
+                    //Swift.print("path.pathData[index+0]: " + "\(path.pathData[index+0])")
+                    let arc:IArc = BasicPathParser.arcAt(path,i)
+                    /*
+                    Swift.print("describeArc")
+                    ArcParser.describe(arc)
+                    Swift.print("")
+                    */
+                    DisplayArcUtils.arcTo(cgPath,arc)
+                    prevEnd = arc.end.copy()/*<--I think this should be start*/
+                    index += 9
+                case PathCommand.close:/*for the closed path support*/
+                    if(prevEnd != prevMT) {/*<--draw a line to the prevMT if end isnt above prevMT*/
+                        //Swift.print("ADD AN EXTRA CLOSE LINE")
+                        cgPath.addLine(to: CGPoint(prevMT.x,prevMT.y))//Swift 3 was->CGPathAddLineToPoint
+                    }
+                    cgPath.closeSubpath()
+                    cgPath.move(to: CGPoint(prevMT.x, prevMT.y))/*<--unsure if this is needed?*///upgraded to swift 3:->was:CGPathMoveToPoint
+                default:
+                    break;
             }
         }
         return cgPath
