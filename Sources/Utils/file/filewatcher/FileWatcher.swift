@@ -72,6 +72,8 @@ class FileWatcher{
     /**
      * Carefull with enabling this as we don't deinit things in swift anymore? ARC and all that?
      * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed.
+     * NOTE: You never call this function yourself; it is called by the run‐ time when an instance of this class goes out of existence.
+     * NOTE: The idea of a deinitializer is that you might want to perform some cleanup, or just log to the console to prove to yourself that your instance is going out of existence in good order.
      */
     deinit {
         //stop()
