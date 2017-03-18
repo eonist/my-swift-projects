@@ -1,7 +1,7 @@
 import Foundation
 
 class XMLUtils {
-    /*
+    /**
      * Returns a tree-structures dictionary populated with xml data from an string with xml data
      * PARAM: string:xml string data
      * NOTE: this method is inspired by E4X (https://en.wikipedia.org/wiki/ECMAScript_for_XML)
