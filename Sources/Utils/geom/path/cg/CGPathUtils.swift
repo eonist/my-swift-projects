@@ -8,7 +8,7 @@ class CGPathUtils {
      * NOTE: the CGPathAddArc method doesnt seem to support drawing from negative area to positive area. The CGPathAddRelativeArc method supports this
      */
     static func compile(_ cgPath:CGMutablePath, _ path:IPath) -> CGMutablePath{
-        var index:Int = 0/*pathDataIndex*/
+        var idx:Int = 0/*pathDataIndex*/
         var prevMT:CGPoint = CGPoint()/*for the closed path support*/
         var prevEnd:CGPoint = CGPoint()
         let cmdLen:Int = path.commands.count
@@ -16,25 +16,25 @@ class CGPathUtils {
             let command:Int = path.commands[i]
             switch(command){
                 case PathCommand.moveTo:
-                    prevMT = CGPoint(path.pathData[index], path.pathData[index+1])
+                    prevMT = CGPoint(path.pathData[idx], path.pathData[idx +1])
                     prevEnd = prevMT.copy()
                     cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
-                    index += 2
+                    idx += 2
                 case PathCommand.lineTo:
-                    prevEnd = CGPoint(path.pathData[index], path.pathData[index+1])
-                    cgPath.addLine(to: CGPoint(path.pathData[index],path.pathData[index+1]))
-                    index += 2
+                    prevEnd = CGPoint(path.pathData[idx], path.pathData[idx +1])
+                    cgPath.addLine(to: CGPoint(path.pathData[idx],path.pathData[idx +1]))
+                    idx += 2
                 case PathCommand.curveTo:/*quad*/
-                    prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
-                    cgPath.addQuadCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control: CGPoint(path.pathData[index+2],path.pathData[index+3]))//swift 3->was: CGPathAddQuadCurveToPoint
-                    index += 4
+                    prevEnd = CGPoint(path.pathData[idx +2], path.pathData[idx +3])
+                    cgPath.addQuadCurve(to: CGPoint(path.pathData[idx],path.pathData[idx +1]), control: CGPoint(path.pathData[idx +2],path.pathData[idx +3]))//swift 3->was: CGPathAddQuadCurveToPoint
+                    idx += 4
                 case PathCommand.cubicCurveTo:/*cubic*/
-                    prevEnd = CGPoint(path.pathData[index+2], path.pathData[index+3])
+                    prevEnd = CGPoint(path.pathData[idx +2], path.pathData[idx +3])
                     //the bellow could be wrong
                     //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
                     //continue here: something is wrong with the path conversion, try a simpler cubic curve test with stroke. etc
-                    cgPath.addCurve(to: CGPoint(path.pathData[index],path.pathData[index+1]), control1: CGPoint(path.pathData[index+2],path.pathData[index+3]), control2: CGPoint(path.pathData[index+4],path.pathData[index+5]))//CGPathAddCurveToPoint
-                    index += 6
+                    cgPath.addCurve(to: CGPoint(path.pathData[idx],path.pathData[idx +1]), control1: CGPoint(path.pathData[idx +2],path.pathData[idx +3]), control2: CGPoint(path.pathData[idx +4],path.pathData[idx +5]))//CGPathAddCurveToPoint
+                    idx += 6
                     /**
                      * NOTE: At the moment i dont think this takes largeFlag into account
                      * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
@@ -51,7 +51,7 @@ class CGPathUtils {
                     */
                     DisplayArcUtils.arcTo(cgPath,arc)
                     prevEnd = arc.end.copy()/*<--I think this should be start*/
-                    index += 9
+                    idx += 9
                 case PathCommand.close:/*for the closed path support*/
                     if(prevEnd != prevMT) {/*<--draw a line to the prevMT if end isnt above prevMT*/
                         //Swift.print("ADD AN EXTRA CLOSE LINE")
