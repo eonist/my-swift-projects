@@ -26,11 +26,11 @@ class Align {
      */
     static func alignmentPoint(_ objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         let canvasP:CGPoint = Align.point(canvasSize, canvasAlignment)
-        Swift.print("canvasP: " + "\(canvasP)")
+        //Swift.print("canvasP: " + "\(canvasP)")
         let objP:CGPoint = Align.point(objectSize, objectAlignment)
-        Swift.print("objP: " + "\(objP)")
+        //Swift.print("objP: " + "\(objP)")
         let p = canvasP - objP
-        Swift.print("p: " + "\(p)")
+        //Swift.print("p: " + "\(p)")
         return p + offset
     }
     /**
