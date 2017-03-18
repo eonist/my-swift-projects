@@ -11,13 +11,13 @@ class CubicCurveUtils {
     }
     
     /**
-     * Returns Y fiven X on a CubicPath segment
+     * Returns Y given X on a CubicPath segment
      * PARAM: p0: prev end point
      * PARAM: c0: controllpoint 1 for prev end point
      * PARAM: c1: control point 2 for end point
      * PARAM: p1: end point
      */
-    static func YBX(_ p0:CGPoint,_ c0:CGPoint,_ c1:CGPoint,_ p1:CGPoint,_ x:CGFloat)->CGPoint{
+    static func point(_ p0:CGPoint,_ c0:CGPoint,_ c1:CGPoint,_ p1:CGPoint,_ x:CGFloat)->CGPoint{
         let a:CGFloat = p0.x
         let b:CGFloat = c0.x
         let c:CGFloat = c1.x
@@ -28,16 +28,17 @@ class CubicCurveUtils {
         let C:CGFloat = 3*b - 3*a
         let D:CGFloat = a-x
         /*So we need to solve At³ + Bt² + Ct + D = 0*/
-        let t:CGFloat =  cubic(A,B,C,D);
+        let t:CGFloat =  Utils.cubic(A,B,C,D);
         /*Replace the t on Bezier function and get x,y */
-        let p:CGPoint = bezier(p0,c0,c1,p1,t)
+        let p:CGPoint = Utils.point(p0,c0,c1,p1,t)
         return p
     }
-    
+}
+private class Utils{
     /**
      * Returns point on a CubicCurve for PARAM: t (0-1)
      */
-    private static func bezier(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint,_ d:CGPoint,_ t:CGFloat)->CGPoint{
+    static func point(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint,_ d:CGPoint,_ t:CGFloat)->CGPoint{
         var point:CGPoint = CGPoint(x:0,y:0)
         let mt:CGFloat  = 1-t
         let mt2:CGFloat = mt*mt
@@ -55,7 +56,7 @@ class CubicCurveUtils {
      * PARAMS: a,b,c,d
      * RETURNS: x
      */
-    private static func cubic(_ a:CGFloat,_ b:CGFloat,_ c:CGFloat,_ d:CGFloat)->CGFloat{
+    static func cubic(_ a:CGFloat,_ b:CGFloat,_ c:CGFloat,_ d:CGFloat)->CGFloat{
         var d:CGFloat = d//may not work, could be inout?!? seems to work regardless
         var m:CGFloat = 0
         var m2:CGFloat = 0
