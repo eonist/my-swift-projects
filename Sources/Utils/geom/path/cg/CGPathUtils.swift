@@ -25,11 +25,11 @@ class CGPathUtils {
                     cgPath.addLine(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]))
                     idx += 2
                 case PathCommand.curveTo:/*quad*/
-                    prevEnd = CGPoint(path.pathData[idx + 2], path.pathData[idx + 3])
+                    prevEnd = CGPoint(path.pathData[idx + 0], path.pathData[idx + 1])
                     cgPath.addQuadCurve(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]), control: CGPoint(path.pathData[idx + 2],path.pathData[idx + 3]))//swift 3->was: CGPathAddQuadCurveToPoint
                     idx += 4
                 case PathCommand.cubicCurveTo:/*cubic*/
-                    prevEnd = CGPoint(path.pathData[idx + 2], path.pathData[idx + 3])
+                    prevEnd = CGPoint(path.pathData[idx + 0], path.pathData[idx + 1])
                     //the bellow could be wrong
                     //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
                     //continue here: something is wrong with the path conversion, try a simpler cubic curve test with stroke. etc
