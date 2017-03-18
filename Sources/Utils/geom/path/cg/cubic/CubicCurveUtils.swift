@@ -4,10 +4,10 @@ class CubicCurveUtils {
     /**
      * Returns point on a CubicCurve for PARAM: t (0-1)
      */
-    static func point(_ a1:CGPoint,_ a2:CGPoint,_ c1:CGPoint,_ c2:CGPoint, _ t:CGFloat) -> CGPoint{
-        let posX:CGFloat = pow(t,3)*(a2.x+3*(c1.x-c2.x)-a1.x)+3*pow(t,2)*(a1.x-2*c1.x+c2.x)+3*t*(c1.x-a1.x)+a1.x;
-        let posY:CGFloat = pow(t,3)*(a2.y+3*(c1.y-c2.y)-a1.y)+3*pow(t,2)*(a1.y-2*c1.y+c2.y)+3*t*(c1.y-a1.y)+a1.y;
-        return CGPoint(posX, posY);
+    static func pt(_ a1:CGPoint,_ a2:CGPoint,_ c1:CGPoint,_ c2:CGPoint, _ t:CGFloat) -> CGPoint{
+        let posX:CGFloat = pow(t,3)*(a2.x+3*(c1.x-c2.x)-a1.x)+3*pow(t,2)*(a1.x-2*c1.x+c2.x)+3*t*(c1.x-a1.x)+a1.x
+        let posY:CGFloat = pow(t,3)*(a2.y+3*(c1.y-c2.y)-a1.y)+3*pow(t,2)*(a1.y-2*c1.y+c2.y)+3*t*(c1.y-a1.y)+a1.y
+        return CGPoint(posX, posY)
     }
     
     /**
