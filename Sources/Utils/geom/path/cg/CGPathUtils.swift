@@ -16,24 +16,24 @@ class CGPathUtils {
             let command:Int = path.commands[i]
             switch(command){
                 case PathCommand.moveTo:
-                    prevMT = CGPoint(path.pathData[idx], path.pathData[idx +1])
+                    prevMT = CGPoint(path.pathData[idx], path.pathData[idx + 1])
                     prevEnd = prevMT.copy()
                     cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
                     idx += 2
                 case PathCommand.lineTo:
-                    prevEnd = CGPoint(path.pathData[idx], path.pathData[idx +1])
-                    cgPath.addLine(to: CGPoint(path.pathData[idx],path.pathData[idx +1]))
+                    prevEnd = CGPoint(path.pathData[idx], path.pathData[idx + 1])
+                    cgPath.addLine(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]))
                     idx += 2
                 case PathCommand.curveTo:/*quad*/
-                    prevEnd = CGPoint(path.pathData[idx +2], path.pathData[idx +3])
-                    cgPath.addQuadCurve(to: CGPoint(path.pathData[idx],path.pathData[idx +1]), control: CGPoint(path.pathData[idx +2],path.pathData[idx +3]))//swift 3->was: CGPathAddQuadCurveToPoint
+                    prevEnd = CGPoint(path.pathData[idx + 2], path.pathData[idx + 3])
+                    cgPath.addQuadCurve(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]), control: CGPoint(path.pathData[idx + 2],path.pathData[idx + 3]))//swift 3->was: CGPathAddQuadCurveToPoint
                     idx += 4
                 case PathCommand.cubicCurveTo:/*cubic*/
-                    prevEnd = CGPoint(path.pathData[idx +2], path.pathData[idx +3])
+                    prevEnd = CGPoint(path.pathData[idx + 2], path.pathData[idx + 3])
                     //the bellow could be wrong
                     //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
                     //continue here: something is wrong with the path conversion, try a simpler cubic curve test with stroke. etc
-                    cgPath.addCurve(to: CGPoint(path.pathData[idx],path.pathData[idx +1]), control1: CGPoint(path.pathData[idx +2],path.pathData[idx +3]), control2: CGPoint(path.pathData[idx +4],path.pathData[idx +5]))//CGPathAddCurveToPoint
+                    cgPath.addCurve(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]), control1: CGPoint(path.pathData[idx + 2],path.pathData[idx + 3]), control2: CGPoint(path.pathData[idx + 4],path.pathData[idx + 5]))//CGPathAddCurveToPoint
                     idx += 6
                     /**
                      * NOTE: At the moment i dont think this takes largeFlag into account
