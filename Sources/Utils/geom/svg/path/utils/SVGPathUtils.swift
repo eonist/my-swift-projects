@@ -7,7 +7,7 @@ class SVGPathUtils {
      * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * TODO: impliment quadTo
      */
-    static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:Array<String>,_ params:Array<CGFloat>)->CGMutablePath{//TODO: rename to compilePath?
+    static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
         var prevM:CGPoint!/*previous MoveTo pos*/
@@ -99,7 +99,7 @@ class SVGPathUtils {
      * Returns a Path instance with data derived from commands and PARAM: params (which contains numbers, as in pathData)
      * TODO: may not work 100%
      */
-    static func path(_ commands:Array<String>,_ params:Array<CGFloat>)->IPath {
+    static func path(_ commands:[String],_ params:[CGFloat])->IPath {
         let path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
