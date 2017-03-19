@@ -14,7 +14,7 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         if(pos.y.isNaN){fatalError("y can't be NaN")}
         return pos
     }
-    func setPosition(_ position: CGPoint) {
+    func setPosition(_ position:CGPoint) {
         if(position.x.isNaN){fatalError("x can't be NaN")}
         if(position.y.isNaN){fatalError("y can't be NaN")}
         self.pos = position

@@ -8,11 +8,11 @@ import Foundation
  * TODO: Find that medium article on axial gradient. the one that looks like a "spread out patonefan"
  */
 class Gradient:IGradient {
-    var colors:Array<CGColor>
-    var locations:Array<CGFloat>/*Same as color stops between 0 & 1*/
+    var colors:[CGColor]
+    var locations:[CGFloat]/*Same as color stops between 0 & 1*/
     var rotation:CGFloat/*Must be between -π and π or it will fail*/ /*<---this doesnt belong here, you apply rotations in the matrix*/
     var transformation:CGAffineTransform?
-    init(_ colors:Array<CGColor> = [], _ locations:Array<CGFloat> = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
+    init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
             //Swift.print(colors.count)

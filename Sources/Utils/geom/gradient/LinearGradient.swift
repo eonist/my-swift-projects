@@ -13,17 +13,12 @@ extension LinearGradient{
         self.init(gradient.colors,gradient.locations,gradient.rotation)
     }
 }
-extension LinearGradient:UnWrappable{//TODO: move to LinearGradient.swift
+extension LinearGradient:UnWrappable{
     static func unWrap<T>(_ xml:XML) -> T? {
-        //Swift.print("LinearGradient.unWrap()")
-        let colors:Array<CGColor?> = unWrap(xml, "colors")
-        //Swift.print("colors: " + "\(colors)")
-        let locations:Array<CGFloat?> = unWrap(xml, "locations")
-        //Swift.print("locations: " + "\(locations)")
+        let colors:[CGColor?] = unWrap(xml, "colors")
+        let locations:[CGFloat?] = unWrap(xml, "locations")
         let rotation:CGFloat = unWrap(xml, "rotation")!
-        //Swift.print("rotation: " + "\(rotation)")
         let transformation:CGTransform? = unWrap(xml, "transformation")
-        //Swift.print("transformation: " + "\(transformation)")
         return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }

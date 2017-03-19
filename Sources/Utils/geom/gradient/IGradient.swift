@@ -1,8 +1,8 @@
 import Foundation
 
 protocol IGradient {
-    var colors:Array<CGColor>{get set}
-    var locations:Array<CGFloat>{get set}
+    var colors:[CGColor]{get set}
+    var locations:[CGFloat]{get set}
     var rotation:CGFloat{get set}
 }
 extension IGradient{
