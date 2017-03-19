@@ -59,7 +59,7 @@ class ArrayParser{
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
-    static func difference<T>(_ a:Array<T>, _ b:Array<T> )->Array<T> where T:Equatable, T:Comparable{
+    static func difference<T>(_ a:[T], _ b:[T] )->[T] where T:Equatable, T:Comparable{
         var diff:Array<T> = []
         for item in a { if (ArrayParser.index(b,item) == -1) {diff.append(item)}}
         for item in b { if (ArrayParser.index(a,item) == -1) {diff.append(item)}}
@@ -70,7 +70,7 @@ class ArrayParser{
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares reference not value
      */
-    static func difference<T>(_ a:Array<T>, _ b:Array<T> )->Array<T> {
+    static func difference<T>(_ a:[T], _ b:[T] )->Array<T> {
         var diff:Array<T> = []
         for item in a { if (ArrayParser.indx(b,item) == -1) {diff.append(item)}}
         for item in b { if (ArrayParser.indx(a,item) == -1) {diff.append(item)}}
@@ -97,7 +97,7 @@ class ArrayParser{
      * Returns a list unique with all the unique Int from PARAM: ints
      * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
      */
-    static func unique(_ ints:Array<Int>)->Array<Int>{//use comparable instead of int, see RangeAsserter for example for how to implement that
+    static func unique(_ ints:[Int])->[Int]{//use comparable instead of int, see RangeAsserter for example for how to implement that
         var uniqueList:[Int] = []
         for number in ints {
             var numberIsNew = true
@@ -130,7 +130,7 @@ class ArrayParser{
      * NOTE: leaves the original array intact
      * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */
-    static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->Array<T>{
+    static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
         var sortedArray:Array<T> = []
         for i in 0 ..< array.count{
             let index:Int = Utils.index(array[i], sortedArray, condition)
@@ -142,14 +142,14 @@ class ArrayParser{
     /**
      * Returns the first item in PARAM: array that is of PARAM: type
      */
-    static func firstItemByType<T>(_ array:Array<Any?>, type:T.Type) -> T?{
+    static func firstItemByType<T>(_ array:[Any?], type:T.Type) -> T?{
         for item in array{ if (item as? T != nil) {return item as? T}}
         return nil
     }
     /**
      * Returns all items in PARAM: array that is of PARAM: type
      */
-    static func itemsByType<T>(_ array:Array<Any?>, type:T.Type) -> Array<T>{
+    static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
         var items:Array<T> = []
         for item in array{ if (item as? T != nil) {items.append(item as! T)}}
         return items
@@ -191,7 +191,7 @@ class ArrayParser{
      * let ranArr = ArrayParser.uniqueRandom(0, 4)
      * print(ranArr)//[3, 1, 0, 4, 2]
      */
-    static func uniqueRandom(_ start:Int, _ end:Int) -> Array<Int> {
+    static func uniqueRandom(_ start:Int, _ end:Int) -> [T] {
         var numbers:Array<Int> = []
         for a in start...end{numbers.append(a)}
         var randomNumbers:Array<Int> = []
@@ -206,7 +206,7 @@ class ArrayParser{
     /**
      * IMPORTANT: Compares reference not value. If value comparing is needed then create another method to support that
      */
-    static func occurences<T>(_ theList:Array<T>, theItem:T){
+    static func occurences<T>(_ theList:[T], theItem:T){
         var counter:Int = 0
         for i in 0..<theList.count{
             if((theList[i] as AnyObject) === (theItem as AnyObject)){counter += 1}
