@@ -7,7 +7,7 @@ class AdvanceArrayParser {
      * NOTE: to find the children of the root use an empty array as the index value
      * EXAMPLE: childAt([["red","green"],[["four","five"],[1,2,3]]],[1,0,1])//five?
      */
-    static func childAt(_ children:Array<AnyObject>,_ index:Array<Int>)->AnyObject?{
+    static func childAt(_ children:[AnyObject],_ index:[Int])->AnyObject?{
         //Swift.print("children: " + "\(children)")
         if(index.count == 0 && children.count >= 1){return children as AnyObject?}/*returns the root*/
         else if(index.count == 1 && children.count >= index[0]){return children[index[0]]}/*the index is at its end point, cut of the branch*/
@@ -20,7 +20,7 @@ class AdvanceArrayParser {
      * NOTE: MatrixIndex is a viable option as well. Although I feel its tied to Matrix Math. Which for me at least is more about transformations. I do however like that it describes what it is in 👉just two words👈. Matrix meaning columns and rows and index meaning address to somewhere. 👌
      * EXAMPLE: index([2,1,1],[[2],[2,1],[2,1,0],[2,0]]);//2
      */
-    static func index(_ index:[Int],_ indices:Array<[Int]>) -> Int{
+    static func index(_ index:[Int],_ indices:[[Int]]) -> Int{
         for i in 0..<indices.count{
             var indicesIndex:[Int] = indices[i]
             for e in 0..<index.count{
