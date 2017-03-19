@@ -10,7 +10,6 @@ class SVGFillStyleUtils{
         var fillStyle:IFillStyle?
         if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
-            //Swift.print("color: " + "\(color)")
             fillStyle = FillStyle(color)
         }else if(style.fill != nil && style.fill is ISVGGradient){
             fillStyle = SVGFillStyleUtils.gradientFillStyle(style, shape)
