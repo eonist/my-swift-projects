@@ -29,9 +29,6 @@ class SVGAsset:InteractiveView2 {
         SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.setFrameOrigin(CGPoint(x,y))
     }
-    /**
-     *
-     */
     func applyStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         //Swift.print("SVGAsset.applyStyle()")
         //if(fillStyle != nil){FillStyleParser.describe(fillStyle!)}

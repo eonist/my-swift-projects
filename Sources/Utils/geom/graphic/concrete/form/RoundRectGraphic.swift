@@ -14,16 +14,11 @@ class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
-        //Swift.print("RoundRectGraphic.drawFill() ")
         let fillFrame = graphic.lineStyle != nil ? RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
         graphic.fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
     }
-    /**
-     *
-     */
     override func drawLine(){
-        //Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!.thickness, lineOffsetType)
@@ -37,16 +32,9 @@ class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
     }
 }
 extension RoundRectGraphic{
-    /**
-     *
-     */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillet:Fillet, _ gradientFillStyle:GradientFillStyle, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
-        //Swift.print("Init with gradientFill")
         self.init(RectGraphic(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset))),fillet)
     }
-    /**
-     *
-     */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         self.init(RectGraphic(x,y,width,height,fillStyle,lineStyle,lineOffset),fillet)
     }
