@@ -3,8 +3,8 @@ import Foundation
  * Draws a polygon based on points, closes it self to the first point
  */
 class SVGPolygon:SVGGraphic,ISVGPolyLine{
-    var points:Array<CGPoint>
-    init(_ points:Array<CGPoint>, _ style : SVGStyle? = nil, _ id : String? = nil) {
+    var points:[CGPoint]
+    init(_ points:[CGPoint], _ style : SVGStyle? = nil, _ id : String? = nil) {
         self.points = points
         super.init(style, id)
     }
