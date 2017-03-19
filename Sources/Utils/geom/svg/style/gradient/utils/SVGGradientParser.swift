@@ -9,7 +9,7 @@ class SVGGradientParser {
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
      * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
-	static func linearGradient(_ xml:XMLElement)->SVGLinearGradient{
+	static func linearGradient(_ xml:XML)->SVGLinearGradient{
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!
 		let x1:CGFloat = StringAsserter.percentage(x1Str) ? StringParser.percentage(x1Str) : SVGPropertyParser.value(x1Str)
 		let y1Str:String = SVGPropertyParser.property(xml,"y1")!
@@ -24,7 +24,7 @@ class SVGGradientParser {
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
 	 */
-	static func radialGradient(_ xml:XMLElement)->SVGRadialGradient{
+	static func radialGradient(_ xml:XML)->SVGRadialGradient{
 		let cxStr:String = SVGPropertyParser.property(xml,"cx")!
         let cx:CGFloat = StringAsserter.percentage(cxStr) ? StringParser.percentage(cxStr) : SVGPropertyParser.value(cxStr)
 		let cyStr:String = SVGPropertyParser.property(xml,"cy")!
@@ -44,13 +44,13 @@ private class Utils{
 	 * Returns an gradient instance with data derived from PARAM: xml 
      * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
 	 */
-	static func gradient(_ xml:XMLElement)->SVGGradient{
-		var offsets:Array<CGFloat> = []
-		var colors:Array<CGColor> = []
-		var opacities:Array<CGFloat> = []
+	static func gradient(_ xml:XML)->SVGGradient{
+		var offsets:[CGFloat] = []
+		var colors:[CGColor] = []
+		var opacities:[CGFloat] = []
         let children:[XMLNode] = xml.children!
         for i in 0..<xml.childCount{
-            let child:XMLElement = XMLParser.childAt(children, i)!
+            let child:XML = XMLParser.childAt(children, i)!
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -64,7 +64,7 @@ private class Utils{
 			// :TODO: if style is present then dont check for color etc
 			if(style != nil){
 				// Swift.print("style: " + style);
-				var inlineStyle:Dictionary<String,String> = SVGStyleParser.inlineStyle(style!)
+				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style!)
 //				ObjectParser.describe(inlineStyle);
 				let stopColorProperty:String = inlineStyle["stop-color"]!
 				// Swift.print("stopColorProperty: " + stopColorProperty);
@@ -81,9 +81,6 @@ private class Utils{
 			colors.append(stopColor)
 			opacities.append(stopOpacity)
 		}
-		 //Swift.print("colors: " + "\(colors)");
-		 //Swift.print("offsets: " + "\(offsets)");
-		 //Swift.print("opacities: " + "\(opacities)");
 		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
         //Swift.print("gradientUnits: " + "\(gradientUnits)")
 		/*userSpaceOnUse*/
@@ -102,8 +99,8 @@ private class Utils{
         let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform")
         if(gradientTransformString != nil){
             let matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0]
-            let matrixStringArray:Array<String> = matrixString.split(" ")
-            let matrixArray:Array<CGFloat> = matrixStringArray.map {CGFloat(Double($0)!)}//<--todo: use $0.cgFloat here
+            let matrixStringArray:[String] = matrixString.split(" ")
+            let matrixArray:[CGFloat] = matrixStringArray.map {CGFloat(Double($0)!)}//<--todo: use $0.cgFloat here
             gradientTransform = CGAffineTransform(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])//Swift 3 was->CGAffineTransformMake
         }
         return gradientTransform
