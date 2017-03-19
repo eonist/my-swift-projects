@@ -2,7 +2,7 @@ import Cocoa
 
 class GradientLineStyle:LineStyle,IGradientLineStyle {
     var gradient:IGradient
-    init(_ gradient:IGradient,_ thickness:CGFloat = 1,_ color:NSColor = NSColor.black, _ lineCap:CGLineCap = CGLineCap.butt, _ lineJoin:CGLineJoin =  CGLineJoin.miter, _ miterLimit:CGFloat = 10) {
+    init(_ gradient:IGradient,_ thickness:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10) {
         self.gradient = gradient
         super.init(thickness, color, lineCap, lineJoin, miterLimit)
     }

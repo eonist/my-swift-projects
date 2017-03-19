@@ -9,8 +9,8 @@ class LineStyle:ILineStyle {
     var lineJoin:CGLineJoin
     var miterLimit:CGFloat
     var phase:CGFloat/*start of the dash*/
-    var lengths:Array<CGFloat>/*gap,length,gap,length, etc*/
-    init(_ thickness:CGFloat = 1,_ color:NSColor = NSColor.black, _ lineCap:CGLineCap = CGLineCap.butt, _ lineJoin:CGLineJoin =  CGLineJoin.miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
+    var lengths:[CGFloat]/*gap,length,gap,length, etc*/
+    init(_ thickness:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:[CGFloat] = []){
         self.thickness = thickness
         self.color = color
         self.lineCap = lineCap
