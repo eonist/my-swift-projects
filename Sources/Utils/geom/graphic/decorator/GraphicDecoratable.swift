@@ -19,7 +19,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        //Swift.print("GraphicDecoratable.draw()" )
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*setup the fill geometry, draw the fileShape*/
         else{graphic.fillShape.setNeedsDisplay()}/*if the fillStyle is nil, we want the possible last drawing to disapear*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*setup the line geometry, draw the lineShape*/
@@ -31,13 +30,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     func handleSelector(layer:CALayer,ctx:CGContext) {
         //isDrawing = false//reset if(!isDrawing){}
-        //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
-            //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx/*we set the context so that the Graphics class can alter it, we can only get the ctx from this method*/
             if(graphic.fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
-            //Swift.print("lineShape")
             graphic.lineShape.graphics.context = ctx
             if(graphic.lineStyle != nil){line()}
         }
@@ -47,9 +43,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE:Conceptually this is equvielnt to the line call
      */
     override func fill(){
-        //Swift.print("GraphicDecoratable.fill()")
         beginFill()
-        //drawFill()/*this method can be called before beginFill*/
         stylizeFill()
     }
     /**
@@ -57,14 +51,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: Conceptually this is equvielnt to the applyLineStyle call
      */
     override func beginFill(){
-        //Swift.print("GraphicDecoratable.beginFill()")
         decoratable.beginFill()
     }
     /**
      * This method results in the setting of the "fill-path" to the graphics instance
      */
     override func drawFill(){
-        //Swift.print("GraphicDecoratable.drawFill() decoratable: " + "\(decoratable)")
         decoratable.drawFill()
     }
     /**
@@ -78,7 +70,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: Conceptually this is equvielnt to the fill call
      */
     override func line(){
-        //Swift.print("GraphicDecoratable.line()")
         applyLineStyle()
         //drawLine()/*this method can be called before beginFill*/
         stylizeLine()

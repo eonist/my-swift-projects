@@ -28,7 +28,7 @@ class CubicCurveUtils {
         let C:CGFloat = 3*b - 3*a
         let D:CGFloat = a-x
         /*So we need to solve At³ + Bt² + Ct + D = 0*/
-        let t:CGFloat =  Utils.cubic(A,B,C,D);
+        let t:CGFloat =  Utils.cubic(A,B,C,D)
         /*Replace the t on Bezier function and get x,y */
         let p:CGPoint = Utils.point(p0,c0,c1,p1,t)
         return p
