@@ -48,9 +48,6 @@ class CGPathModifier {
         path = path.mutableCopy(using: &transformation)!/*Apply that transform to the path*/
         return path
     }
-    /**
-     *
-     */
     static func transform(_ path:CGMutablePath,_ transformation:CGAffineTransform)->CGMutablePath{
         var transformation:CGAffineTransform = transformation.copy()
         return path.mutableCopy(using: &transformation)!//Swift 3 upgrade
