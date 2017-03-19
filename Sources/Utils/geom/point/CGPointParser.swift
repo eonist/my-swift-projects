@@ -168,7 +168,6 @@ class CGPointParser{
         let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return PointParser.relativeDifference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
-    
     /**
      * Returns a CGRect that makes derived from PARAM: points (think bounding box of points)
      */

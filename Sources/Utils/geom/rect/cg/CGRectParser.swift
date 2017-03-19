@@ -50,13 +50,13 @@ class CGRectParser{
     /**
      * Returns the midPoint of each side in PARAM: rect
      */
-    static func sides(_ rect:CGRect) -> Array<CGPoint> {/*<--Was previously named sidePoints*/
+    static func sides(_ rect:CGRect) -> [CGPoint] {/*<--Was previously named sidePoints*/
         return [rect.left,rect.right,rect.top,rect.bottom]
     }
     /**
      * Returns an array with Line instances of all sides of a rectangle
      */
-    static func sides(_ rectangle:CGRect) -> Array<Line> {
+    static func sides(_ rectangle:CGRect) -> [Line] {
         return [topSide(rectangle),rightSide(rectangle),bottomSide(rectangle),leftSide(rectangle)]
     }
     static func topSide(_ rectangle:CGRect) -> Line {
@@ -74,7 +74,7 @@ class CGRectParser{
     /**
      * Returns all the corners in PARAM: rect
      */
-    static func corners(_ rect:CGRect) -> Array<CGPoint> {
+    static func corners(_ rect:CGRect) -> [CGPoint] {
         return [rect.topLeft,rect.topRight,rect.bottomLeft,rect.bottomRight]
     }
     /**
