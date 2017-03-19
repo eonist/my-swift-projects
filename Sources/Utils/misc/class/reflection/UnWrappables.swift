@@ -55,7 +55,7 @@ extension CGTransform:UnWrappable{
     static func unWrap<T>(_ value:String) -> T? {
         //Swift.print("CGTransform.unWrap()")
         let identities:[CGFloat] = StringParser.split(value, ",").map{$0.cgFloat}
-        let transformation:CGTransform = CGAffineTransform(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])//swift 3 upgrade -> was->CGAffineTransformMake()
+        let transformation:CGTransform = CGTransform(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])//swift 3 upgrade -> was->CGAffineTransformMake()
         return transformation as? T
     }
 }

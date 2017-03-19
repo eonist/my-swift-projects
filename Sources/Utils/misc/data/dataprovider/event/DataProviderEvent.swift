@@ -9,10 +9,10 @@ class DataProviderEvent:Event{
     static var replace:String = "replace"
     static var sort:String = "sort"
     static var dataChange:String = "dataChange"
-    static var types:Array<String> = [add,dataChange,remove,removeAll,replace,sort]
+    static var types:[String] = [add,dataChange,remove,removeAll,replace,sort]
     var startIndex:Int
     var endIndex:Int
-    init(_ type: String, _ startIndex:Int = -1, _ endIndex:Int = -1, _ origin: AnyObject) {
+    init(_ type: String, _ startIndex:Int = -1, _ endIndex:Int = -1, _ origin:AnyObject) {
         self.startIndex = startIndex
         self.endIndex = endIndex
         super.init(type, origin)
@@ -23,7 +23,7 @@ extension DataProviderEvent{
      * Convenience
      * NOTE: Keeps the event light-weight by not referencing the item directly
      */
-    var items:[Dictionary<String, String>]{
+    var items:[[String:String]]{
         Swift.print("startIndex: " + "\(startIndex)")
          Swift.print("endIndex: " + "\(endIndex)")
          Swift.print("items.count: \((origin as! DataProvider).items.count)" )

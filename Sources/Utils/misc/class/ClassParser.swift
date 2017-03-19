@@ -51,7 +51,7 @@ class ClassParser {
     /**
      * Untested
      */
-    static func instanceByClassType<T>(_ instances:Array<Any?>,_ classType:T.Type)->Any? {
+    static func instanceByClassType<T>(_ instances:[Any?],_ classType:T.Type)->Any? {
         for i in 0..<instances.count{
             if(instances[i] as? T != nil) {
                 return instances[i]
