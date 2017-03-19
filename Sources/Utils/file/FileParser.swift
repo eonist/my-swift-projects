@@ -84,7 +84,7 @@ extension FileParser{
     }
 	private static func modalExample(){
 		/*open modal panel*/
-		let myFileDialog: NSOpenPanel = NSOpenPanel()
+		let myFileDialog:NSOpenPanel = NSOpenPanel()
 		myFileDialog.runModal()
 
 		/*Get the path to the file chosen in the NSOpenPanel*/

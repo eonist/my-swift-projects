@@ -23,7 +23,6 @@ class FileUtils{
      */
     static func showFileInFinder(_ filePath:String){
         let expandedFilePath:String = filePath.tildePath
-        //Swift.print("expandedFilePath: " + "\(expandedFilePath)")
         NSWorkspace.shared().selectFile(nil, inFileViewerRootedAtPath: expandedFilePath)
     }
 }
