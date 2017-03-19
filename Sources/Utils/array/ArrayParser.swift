@@ -48,7 +48,7 @@ class ArrayParser{
      * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
      * IMPORTANT: compares reference not value
      */
-    static func indexOf(_ arr:Array<AnyObject>,_ item:AnyObject)-> Int{
+    static func indexOf(_ arr:[AnyObject],_ item:AnyObject)-> Int{
         for i in 0 ..< arr.count{
             if(arr[i] === item){return i}
         }
