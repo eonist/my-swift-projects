@@ -14,11 +14,9 @@ class PolyLineGraphic:PathGraphic{
 }
 extension PolyLineGraphic{
     convenience init(_ points:[CGPoint], _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
-        //Swift.print("PolyLineGraphic.init() type: BaseGraphic")
         self.init(points, BaseGraphic(fillStyle,lineStyle))
     }
     convenience init(_ points:[CGPoint], _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
-        //Swift.print("PolyLineGraphic.init() type: GradientGraphic")
         self.init(points, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }
 }

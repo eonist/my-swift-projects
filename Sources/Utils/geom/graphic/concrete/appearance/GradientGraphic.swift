@@ -11,7 +11,6 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
             let boundingBox:CGRect = graphic.fillShape.path.boundingBox /*creates a boundingbox derived from the bounds of the path*/
-            //Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
             let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{

@@ -20,9 +20,6 @@ class LineGraphic:SizeableDecorator {
     override func drawFill() {
         /*must be overriden, there is no fill when using the LineGraphic*/
     }
-    /**
-     * 
-     */
     func setPoints(p1:CGPoint, _ p2:CGPoint) {
         self.p1 = p1
         self.p2 = p2
