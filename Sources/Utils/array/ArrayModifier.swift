@@ -51,6 +51,7 @@ class ArrayModifier{
       * EXAMPLE: splice2([a,b,c],2,1)//[c]
       * EXAMPLE: splice2([a,b,c],0,1)//[a]
       * TODO: You could probably use the native: array.replaceRange instead
+      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
 	  */
     static func splice2<T>(_ array:inout [T],_ startIndex:Int,_ deleteCount:Int,_ values:[T] = [])->[T]{
         let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
