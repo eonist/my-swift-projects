@@ -22,16 +22,16 @@ extension CGAffineTransform {
     mutating func skew(_ transform:CGAffineTransform, angle:CGFloat, skewSide:String = "right"){
         //see old code for this implementation
     }
-    static func rotateAroundPoint(_ transform:CGTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func rotateAroundPoint(_ transform:CGTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGTransform{
         return CGAffineTransformParser.rotateAroundPoint(transform, rotation, pivot)
     }
-    static func scaleFromPoint(_ transform:CGTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGAffineTransform{
+    static func scaleFromPoint(_ transform:CGTransform, _ xScale:CGFloat,_ yScale:CGFloat,_ pivot:CGPoint)->CGTransform{
         return CGAffineTransformParser.scaleFromPoint(transform, xScale, yScale, pivot)
     }
     static func translate(_ transform:CGTransform,_ x:CGFloat,_ y:CGFloat)->CGAffineTransform{
         return CGAffineTransformParser.translate(transform, x, y)
     }
-    static func transformAroundPoint(_ transform:CGTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint)->CGAffineTransform{
+    static func transformAroundPoint(_ transform:CGTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint)->CGTransform{
         return CGAffineTransformParser.transformAroundPoint(transform, scale, rotation, offset, pivot)
     }
     static func transformWithPivot(_ transform:inout CGTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) {
