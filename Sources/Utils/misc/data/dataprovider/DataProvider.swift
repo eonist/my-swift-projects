@@ -121,7 +121,7 @@ extension DataProvider{
      * Adds an array to the exisiting items array
      * PARAM: items is an Array comprised of objects
      */
-    func addItems(_ items:[Dictionary<String, String>]) {
+    func addItems(_ items:[[String:String]]) {
         self.items += items//concats
         super.onEvent(DataProviderEvent(DataProviderEvent.add, self.items.count - items.count, self.items.count,self))
     }
@@ -129,7 +129,7 @@ extension DataProvider{
      * Adds an item to the end of the Items Array
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func addItem(_ item:Dictionary<String, String>) {
+    func addItem(_ item:[String:String]) {
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,self.items.count-1,self.items.count,self))
     }

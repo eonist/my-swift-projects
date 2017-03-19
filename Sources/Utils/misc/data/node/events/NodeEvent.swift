@@ -5,8 +5,8 @@ class NodeEvent:Event {
     static var removeAt:String = "nodeEventRemoveAt"
     static var removeAll:String = "nodeEventRemoveAll"
     static var setAttributeAt:String = "nodeEventSetAttributeAt"
-    var index:Array<Int>
-    init(_ type: String, _ index:Array<Int>, _ origin: AnyObject) {
+    var index:[Int]
+    init(_ type: String, _ index:[Int], _ origin: AnyObject) {
         self.index = index;
         super.init(type, origin)
     }
