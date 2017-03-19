@@ -17,7 +17,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType
     //the bellow line was upgraded to swift 3
-    var selector: ((_ layer: CALayer, _ ctx:CGContext) -> ())?/*this holds any method assigned to it that has it's type signature*/
+    var selector: ((_ layer:CALayer, _ ctx:CGContext) -> ())?/*this holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
@@ -70,8 +70,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
      */
-    func draw(_ layer: CALayer, in ctx: CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
-        //Swift.print("Graphic.drawLayer(layer,inContext)")
+    func draw(_ layer: CALayer, in ctx:CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
         selector!(layer, ctx)/*call the selector*/
         //updateTrackingArea()
     }
