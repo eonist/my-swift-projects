@@ -23,7 +23,7 @@ class NumberParser{
      * Retuns the highest number in a list of numbers
      * Note: Swift.max can be used, but this function supports arrays Math.max doesnt, however you can use as many arguments you want with the Swift.max function
      */
-    static func max<T:Comparable>(_ numbers:Array<T>)->T {
+    static func max<T:Comparable>(_ numbers:[T])->T {
         //var max = numbers.count > 0 ? numbers[0] : 0 as! T
         //for number in numbers {if(number > max) {max = number}}
         return numbers.max() ?? 0 as! T
@@ -32,7 +32,7 @@ class NumberParser{
      * Retuns the lowest number in a list of numbers
      * Note: Swift.min can be used, but this function supports arrays Swift.Min doesn't
      */
-    static func min<T:Comparable>(_ numbers:Array<T>)->T {
+    static func min<T:Comparable>(_ numbers:[T])->T {
         //var min = numbers.count > 0 ? numbers[0] : 0 as! T
         //for number in numbers{ if(number < min) {min = number}}
         return numbers.min() ?? 0 as! T
