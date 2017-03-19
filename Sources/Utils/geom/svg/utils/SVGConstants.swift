@@ -1,6 +1,7 @@
 import Foundation
-/*
+/**
  * These constants represents the names in the SVG specification 
+ * TODO:  Enum please
  */
 class SVGConstants {
 	static var rect:String = "rect"

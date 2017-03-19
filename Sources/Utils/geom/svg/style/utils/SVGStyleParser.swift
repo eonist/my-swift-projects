@@ -26,7 +26,6 @@ class SVGStyleParser {
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
         let matches = style.matches(pattern)
         for match:NSTextCheckingResult in matches {//Loops through the pattern
-            //match.numberOfRanges
             //let content = (style as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let name = match.value(style,1)/*capturing group 1*/
             //Swift.print("name: >" + name+"<");

@@ -67,7 +67,7 @@ class SVGParser {
      * PARAM: xml (<g id="whiskers"></g>)
      * TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
-    static func group(_ xml:XMLElement, _ style:SVGStyle, _ id:String) -> SVGGroup {
+    static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id);
         for i in 0..<xml.childCount{
             let child:XMLElement = XMLParser.childAt(xml.children!, i)!
@@ -83,7 +83,7 @@ class SVGParser {
      * EXAMPLE: <path d="M 12 24 h 15 v 25 h -15 z"/> //
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
-    static func path(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGPath? {
+    static func path(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPath? {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
         let pathDefinition:String = xml[SVGConstants.data]!
 		//print("SVGParser.path() pathDefinition: " + pathDefinition);
@@ -93,7 +93,7 @@ class SVGParser {
     /**
      * Returns an SVGRect element derived from the rectangle data in PARAM: xml with the PARAM: style and PARAM: id
      */
-    static func rect(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGRect {
+    static func rect(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGRect {
         let x:CGFloat = SVGPropertyParser.digit(xml,"x")
         let y:CGFloat = SVGPropertyParser.digit(xml,"y")
         let width:CGFloat = SVGPropertyParser.digit(xml,"width")
