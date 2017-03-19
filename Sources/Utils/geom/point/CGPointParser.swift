@@ -79,9 +79,7 @@ class CGPointParser{
      */
     static func slope(_ p1:CGPoint,_ p2:CGPoint)->CGFloat {
         let a:CGFloat = (p2.y-p1.y)
-        //print("a: " + a)
         let b:CGFloat = (p2.x-p1.x)
-        //print("b: " + b)
         //var test:Number = Math.tan(Trig.angle(p1,p2))
         //print("test: " + test)
         return a/b
