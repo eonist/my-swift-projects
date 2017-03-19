@@ -201,7 +201,6 @@ private class Utils{
      * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
     static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
-        //Swift.print("Graphics.drawRadialGradient")
         /*begin drawing the radial gradient*/
         context.saveGState()/*save the current context*/
         if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
