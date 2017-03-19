@@ -76,9 +76,9 @@ private class BasicPathParser{
 }
 private class BasicPathDataParser{
     /**
-     * Returns the pathDataIndex based on the @param commandIndex
+     * Returns the pathDataIndex based on the PARAM: commandIndex
      */
-    static func index(_ commands:Array<Int>,_ commandIndex:Int) -> Int {
+    static func index(_ commands:[Int],_ commandIndex:Int) -> Int {
         var pathDataIndex:Int = 0
         for i in 0..<commandIndex{
             pathDataIndex += BasicCommandParser.commandLength(commands[i])
@@ -92,9 +92,9 @@ private class BasicPathDataParser{
      */
     static func end(_ path:IPath, _ commandIndex:Int) -> CGPoint {// :TODO: rename to position?!? or maybe point?
         //START USING END2 which supports CLOSE
-        let command:Int = path.commands[commandIndex];
-        let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex);
-        return endAt(path.pathData, pathDataIndex, command);
+        let command:Int = path.commands[commandIndex]
+        let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
+        return endAt(path.pathData, pathDataIndex, command)
         
         /*
         var pathData:Vector.<Number> = pathDataAt(path, commandIndex);
@@ -111,7 +111,7 @@ private class BasicPathDataParser{
      * NOTE: the CLOSE case should probably be dealt with by the caller
      * // :TODO: for the close case we could also iterate backward to find the last MT???
      */
-    static func endAt(_ pathData:Array<CGFloat>, _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
+    static func endAt(_ pathData:[CGFloat], _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
         if(commandType == PathCommand.MOVE_TO || commandType == PathCommand.LINE_TO || commandType == PathCommand.WIDE_MOVE_TO || commandType == PathCommand.WIDE_LINE_TO) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
         else if(commandType == PathCommand.ARC_TO) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
         else if(commandType == PathCommand.CURVE_TO) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
@@ -126,7 +126,7 @@ private class BasicPathDataParser{
      * NOTE: the Function PathParser.arcAt does the same thing but by looking at the commandIndex instead
      * TODO: the start is the end of prev command
      */
-    static func arcAt(_ pathData:Array<CGFloat>,_ pathDataIndex:Int,_ start:CGPoint)->IArc {
+    static func arcAt(_ pathData:[CGFloat],_ pathDataIndex:Int,_ start:CGPoint)->IArc {
         return Arc(start, pathData[pathDataIndex], pathData[pathDataIndex+1], pathData[pathDataIndex+2], Bool(pathData[pathDataIndex+3]), Bool(pathData[pathDataIndex+4]), CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6]), CGPoint(pathData[pathDataIndex+7],pathData[pathDataIndex+8]))
     }
 }
@@ -147,6 +147,7 @@ private class BasicCommandParser{
 private class Utils{
     /**
      * Very temp, remove if the other solution works
+     * //⚠️️ This is probably deperecated
      */
     static func arcTo(_ path:IPath,cgPath:CGMutablePath,index:Int,prevEnd:CGPoint){
         //CGPathAddArcToPoint(cgPath, nil, prevEnd.x, prevEnd.y, path.pathData[index+5], path.pathData[index+6], path.pathData[index+0])
