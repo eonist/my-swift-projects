@@ -28,7 +28,6 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
             lineShape.setNeedsDisplay()/*setup the line geometry*//*draw the fileShape*/
         }
     }
-    
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
      * Handles the call selector call from the Graphic instance
