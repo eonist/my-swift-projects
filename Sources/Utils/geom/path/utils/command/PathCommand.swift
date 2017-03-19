@@ -3,8 +3,9 @@ import Foundation
  * TODO: Set the values to the actual int not a pointer, one les cycle to call
  * TODO: Use uint?
  * TODO: Rename to noOp,moveTo,lineTo etc. 
- * TODO: DEPRECATE ht uppercase constants
- * TODO: This is a great candidate for enum
+ * TODO: DEPRECATE: ⚠️️ the uppercase constants
+ * TODO: This is a great candidate for enum <--speed 👌
+ * TODO: Or extend Int and get .syntaxt power
  */
 class PathCommand {
     static var NO_OP:Int = 0/*0 Represents the default "do nothing" command.*/

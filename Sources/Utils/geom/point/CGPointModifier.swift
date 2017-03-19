@@ -52,8 +52,8 @@ class CGPointModifier {
      * PARAM: rotation: in radians (suppers radian values from -∞ to +∞)
      * TODO: make a similar method that takes initPoints and points, this way you avoid recrating a new array everytime
      */
-    static func rotatePoints(_ points:Array<CGPoint>, _ pivot:CGPoint, _ rotation:CGFloat) -> Array<CGPoint> {
-        var rotatedPoints:Array<CGPoint> = []
+    static func rotatePoints(_ points:[CGPoint], _ pivot:CGPoint, _ rotation:CGFloat) -> [CGPoint] {
+        var rotatedPoints:[CGPoint] = []
         var transform = CGAffineTransform.identity//Swift 3
         transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation)
         for point:CGPoint in points { rotatedPoints.append(point.applying(transform))}
