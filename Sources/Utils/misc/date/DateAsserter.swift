@@ -8,7 +8,6 @@ class DateAsserter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yy/mm/dd"
         let date:Date? = dateFormatter.date(from: dateStr)
-        //Swift.print("date: " + "\(date)")
         let isValideDate:Bool = date != nil
         return isValideDate
     }
