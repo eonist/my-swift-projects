@@ -20,7 +20,7 @@ public class CGFloatParser{
     /**
      * Return odd numbers
      */
-    static func odds(_ numbers:Array<CGFloat>)->Array<CGFloat>{
+    static func odds(_ numbers:[CGFloat])->[CGFloat]{
         let odds = numbers.filter{($0 %% 2.0) == 1}//greate example of the filter method
         return odds
     }
@@ -28,7 +28,7 @@ public class CGFloatParser{
      * sums numbers with addition
      * TODO: add an option for multiplication minus and dividens
      */
-    static func sum(_ numbers:Array<CGFloat>)->CGFloat {
+    static func sum(_ numbers:[CGFloat])->CGFloat {
         var sum:CGFloat = 0
         for number in numbers {
             sum += number
@@ -145,8 +145,8 @@ public class CGFloatParser{
      * Returns an a array of interpoated numbers between min and max
      * EXAMPLE: CGFloatParser.interpolatedRange(0,  1,  3)//[0.0, 0.5, 1.0]
      */
-     static func interpolatedRange(_ min:CGFloat ,_ max:CGFloat,_ length:Int)->Array<CGFloat>{
-        var interpolatedRange:Array<CGFloat> = []
+     static func interpolatedRange(_ min:CGFloat ,_ max:CGFloat,_ length:Int)->[CGFloat]{
+        var interpolatedRange:[CGFloat] = []
         if(length == 0){return interpolatedRange}//only populate the array with values if the length is more than zero
         let increaseBy:CGFloat = max/CGFloat(length-1)
         //Swift.print(value)

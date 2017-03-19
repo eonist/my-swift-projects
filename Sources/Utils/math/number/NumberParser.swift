@@ -8,7 +8,7 @@ class NumberParser{
      * EXAMPLE:: minMax(300, 200, 400)//Output: 300
      */
     static func minMax<T:Comparable>(_ num:T , _ min : T , _ max : T) -> T{
-        return Swift.max(min, Swift.min(max, num));
+        return Swift.max(min, Swift.min(max, num))
     }
     /**
      * Returns the number of decimals in a number
