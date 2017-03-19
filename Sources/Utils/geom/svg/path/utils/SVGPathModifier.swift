@@ -11,8 +11,8 @@ class SVGPathModifier {
      */
     static func scale(_ path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
         var i:Int = 0;/*parameterIndex*/
-        var commands:Array<String> = path.commands
-        var params:Array<CGFloat> = path.parameters
+        var commands:[String] = path.commands
+        var params:[CGFloat] = path.parameters
         var p:CGPoint
         var c1:CGPoint
         var c2:CGPoint

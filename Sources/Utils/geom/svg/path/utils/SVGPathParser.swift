@@ -9,8 +9,8 @@ class SVGPathParser {
 	 * EXAMPLE: SVGPathDataUtils.pathData("M10,10pxH110");//commands: M,H parameters: 10,10,110
 	 */
 	static func pathData(_ data:String)->SVGPathData {
-		var parameters:Array<CGFloat> = []
-		var commands:Array<String> = []
+		var parameters:[CGFloat] = []
+		var commands:[String] = []
         ///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
 		let pattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
         let matches = data.matches(pattern)
@@ -23,7 +23,7 @@ class SVGPathParser {
             commands.append(cmnd)//command()
             let params = match.value(data,2)/*capturing group 2*/
             //Swift.print("params: >" + params+"<");
-            let array:Array<CGFloat> = SVGPathParser.parameters(params)
+            let array:[CGFloat] = SVGPathParser.parameters(params)
             //Swift.print("pathData.parameters: " + array);
             parameters += array//<---this is the same as concat
         }
@@ -38,17 +38,17 @@ class SVGPathParser {
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
 	 * TODO: write more examples in this comment section
 	 */
-	static func parameters(_ parameters:String)->Array<CGFloat> {
+	static func parameters(_ parameters:String)->[CGFloat] {
         //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
         let beginning:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
         let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
         let end:String = "(?=px|\\s|\\,|\\-|$)"
         let pattern:String = beginning + middle + end
         //Swift.print("pattern: " + "\(pattern)")
-		let stringArray:Array<String> = parameters.match(pattern);
+		let stringArray:[String] = parameters.match(pattern);
         //Swift.print("stringArray: " + "\(stringArray)")
         //Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
-        let array:Array<CGFloat> = stringArray.map {CGFloat(Double($0)!)}//<--temp fix, converts the values in the array to CGFloat
+        let array:[CGFloat] = stringArray.map {CGFloat(Double($0)!)}//<--temp fix, converts the values in the array to CGFloat
         return array
 	}
 	/**
@@ -68,10 +68,10 @@ class SVGPathParser {
 	 * TODO: add support for zZ ?!? do we need to?
 	 * TODO: cubic and quad curve may have more params and they may have t and s  impliment this
 	 */
-	static func points(_ path:SVGPath)->Array<CGPoint> {
+	static func points(_ path:SVGPath)->[CGPoint] {
 		var commands:Array = path.commands
 		var params:Array = path.parameters
-		var positions:Array<CGPoint> = []
+		var positions:[CGPoint] = []
 		var i:Int = 0;/*parameterIndex*/
 		var prevP:CGPoint = CGPoint()
 		for e in 0..<commands.count{
@@ -122,7 +122,7 @@ class SVGPathParser {
 	 * TODO: arcs and curve bounding boxes will be dificult,but you have code for this, see notebooks
 	 */
 	static func rectangle(_ path:SVGPath) -> CGRect {
-		let points:Array<CGPoint> = SVGPathParser.points(path)
+		let points:[CGPoint] = SVGPathParser.points(path)
 		return PointParser.rectangle(points)
 	}
 }
