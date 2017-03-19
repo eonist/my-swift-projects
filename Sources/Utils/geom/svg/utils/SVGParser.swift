@@ -105,7 +105,7 @@ class SVGParser {
     /**
      * Returns an SVGLine element derived from the line data in PARAM: xml with the PARAM: style and PARAM: id
      */
-    static func line(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGLine {
+    static func line(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGLine {
         // :TODO: should return nil if there is no def ?!?
         let x1:CGFloat = SVGPropertyParser.digit(xml,"x1")
         let y1:CGFloat = SVGPropertyParser.digit(xml,"y1")
@@ -116,11 +116,11 @@ class SVGParser {
     /**
      * Returns an SVGPolyLine element derived from the polyline data in PARAM: xml with the PARAM: style and PARAM: id
      */
-    static func polyLine(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
+    static func polyLine(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-        var points:Array<CGPoint> = []
-        var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString)
+        var points:[CGPoint] = []
+        var parameters:[CGFloat] = SVGPathParser.parameters(pointsString)
         for i in stride(from: 0, to: parameters.count, by: 2){
             points.append(CGPoint(parameters[i],parameters[i+1]))
         }
@@ -129,11 +129,11 @@ class SVGParser {
     /**
      * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
      */
-    static func polygon(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGPolygon? {
+    static func polygon(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolygon? {
         if(!xml.hasAttribute(SVGConstants.points)) {return nil}
         let pointsString:String = xml[SVGConstants.points]!
-        var points:Array<CGPoint> = []
-        var parameters:Array<CGFloat> = SVGPathParser.parameters(pointsString);
+        var points:[CGPoint] = []
+        var parameters:[CGFloat] = SVGPathParser.parameters(pointsString);
         for i in stride(from: 0, to: parameters.count, by: 2) {/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
             points.append(CGPoint(parameters[i],parameters[i+1]))
         }
@@ -144,7 +144,7 @@ class SVGParser {
      * PARAM: xml (<circle cx="70" cy="95" r="50" style="stroke: black; fill: none" />)
      * TODO: if cx or cy isnt there it should defualt to 0
      */
-    static func circle(_ xml:XMLElement,_ style:SVGStyle,_ id:String)->SVGCircle {
+    static func circle(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGCircle {
         let cx:CGFloat = SVGPropertyParser.digit(xml,"cx")
         let cy:CGFloat = SVGPropertyParser.digit(xml,"cy")
         let r:CGFloat = SVGPropertyParser.digit(xml,"r")

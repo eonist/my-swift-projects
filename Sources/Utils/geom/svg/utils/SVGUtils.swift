@@ -10,7 +10,7 @@ class SVGUtils {
 	 * NOTE: for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
 	static func xml(_ svg:SVG)->XML {// :TODO: refactor to one or loop?
-		let xml:XMLElement = SVGUtils.svg(svg)
+		let xml:XML = SVGUtils.svg(svg)
 		for i in 0..<svg.items.count{
 			let svgElement:ISVGElement = svg.items[i]
 			var child:XMLElement
@@ -28,8 +28,8 @@ class SVGUtils {
 	 */
 	static func pathData(_ path:SVGPath)->String {
 		var pathData:String = ""
-		let commands:Array<String> = path.commands
-		var parameters:Array<CGFloat> = path.parameters
+		let commands:[String] = path.commands
+		var parameters:[CGFloat] = path.parameters
 		var index:Int = 0
 		for command:String in commands {
 			if(command.test("[m,M,l,L,t,T]")) {

@@ -30,7 +30,7 @@ class SVGPropertyParser {
     static func viewBox(_ xml:XMLElement)->CGRect{
         let prop:String? = property(xml,"viewBox")
         if(prop != nil){
-            let values:Array<CGFloat> = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
+            let values:[CGFloat] = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
             return CGRect(values[0],values[1],values[2],values[3])
         }
         return CGRect(NaN,NaN,NaN,NaN)
@@ -39,7 +39,7 @@ class SVGPropertyParser {
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
 	 */
 	static func id(_ xml:XMLElement)->String {
-		return xml.hasAttribute("id") ? xml["id"]! : "";
+		return xml.hasAttribute("id") ? xml["id"]! : ""
 	}
 	/**
 	 * Returns an SVGStyle instance comprised of values derived from PARAM: xml and or PARAM: container, if no style data is available then default values are applied, NaN, empty string, null etc 
@@ -47,8 +47,8 @@ class SVGPropertyParser {
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	static func style(_ xml:XMLElement,_ container:ISVGContainer)->SVGStyle {
-		var style:SVGStyle;
-		let prop:String? = property(xml,"style");
+		var style:SVGStyle
+		let prop:String? = property(xml,"style")
         if(prop != nil) {style = SVGStyleParser.style(prop!,container)}//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
 		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
 			let fill:Any? = SVGStyleParser.fill(property(xml,"fill"), container)
