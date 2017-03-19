@@ -6,7 +6,7 @@ extension Array {
     mutating func pop() -> Element?{/*convenience*/
         return ArrayModifier.pop(&self)
     }
-    mutating func pushPop(_ item:Element) -> Array<Element>{/*convenience*/
+    mutating func pushPop(_ item:Element) -> [Element]{/*convenience*/
         return ArrayModifier.pushPop(&self, item)
     }
     /**
@@ -21,7 +21,7 @@ extension Array {
     mutating func appendMany(_ items:Element...){
         self += items
     }
-    mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:Array<Element> = [])->Array<Element>{
+    mutating func splice2(_ startIndex:Int,_ deleteCount:Int,_ values:[Element] = [])->[Element]{
         return ArrayModifier.splice2(&self, startIndex, deleteCount, values)
     }
     mutating func unshift(_ item:Element)->Int{
@@ -44,14 +44,14 @@ extension Array {
      * NOTE: If you need a mutating concatination behaviour use the += operator
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      */
-    func concat(_ array:Array<Element>) -> Array<Element>{
+    func concat(_ array:[Element]) -> [Element]{
         return self + array
     }
     /**
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      * NOTE: If you need a mutating concatination behaviour use the += operator
      */
-    func concat(_ item:Element) -> Array<Element>{/*Convenince*/
+    func concat(_ item:Element) -> [Element]{/*Convenince*/
         return concat([item])
     }
     /**
