@@ -4,7 +4,7 @@ import Foundation
  */
 class SVGGroup:SVGContainer, ISVGView {
     var style:SVGStyle?
-    init(_ items:Array<ISVGElement>, _ style:SVGStyle?, _ id:String){
+    init(_ items:[ISVGElement], _ style:SVGStyle?, _ id:String){
         self.style = style
         super.init(items, id)
     }

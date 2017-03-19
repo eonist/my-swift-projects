@@ -115,21 +115,21 @@ class SVGUtils {
 		 /*xml = style(xml,group); not supported yet*/
 		 for i in 0..<group.items.count{
 			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement
-			 var child:XMLElement
+			 var child:XML
              if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
              else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
              else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
              else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
              else{ fatalError("type not supported: " + "\(svgGraphic)")}
-             xml.appendChild(child);
+             xml.appendChild(child)
 		 }
-		 return xml;
+		 return xml
 	 }
 	 /**
 	  * Returns the id from a ISVG instance
 	  * TODO: move to an internal class
 	  */
-	 static func id(_ xml:XMLElement,_ svg:ISVGElement)->XMLElement {
+	 static func id(_ xml:XMLElement,_ svg:ISVGElement)->XML {
          if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
 		 return xml
 	 }
@@ -137,7 +137,7 @@ class SVGUtils {
 	  * Returns an XML instance with style properties derived from PARAM: xml
 	  * TODO: move to an internal class
 	  */
-	 static func style(_ xml:XMLElement,_ graphic:SVGGraphic)->XMLElement {
+	 static func style(_ xml:XMLElement,_ graphic:SVGGraphic)->XML {
         
          //this method is missing support for gradient (Get clues from the legacy SVGPropertyParser)
         
