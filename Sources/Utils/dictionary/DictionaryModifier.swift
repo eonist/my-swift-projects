@@ -5,7 +5,7 @@ class DictionaryModifier{
      * TODO: See legacy code, it has more powerfull dictionary modifiers
 	 * Returns the left dictionary for convenience purposes
 	 */
-    static func merge<KeyType,ValueType> (_ left:inout Dictionary<KeyType,ValueType>, _ right: Dictionary<KeyType,ValueType>)-> Dictionary<KeyType,ValueType>{
+    static func merge<KeyType,ValueType> (_ left:inout [KeyType:ValueType], _ right: [KeyType:ValueType])-> [KeyType:ValueType]{
 	    for (k,v) in right {left.updateValue(v,forKey:k)}
 	    return left
 	}
@@ -20,8 +20,8 @@ class DictionaryModifier{
      * var c = DictionaryModifier.combine(a, b)
      * DictionaryParser.describe(c)//Output: key: color value: red, key: name value: john, key: index value: 2
 	 */
-    static func combine<K,V>(_ a:Dictionary<K,V>, _ b:Dictionary<K,V>)->Dictionary<K,V>{//// :TODO: rename to combine since merge implies that the passed obj is also changed
-		var c:Dictionary<K,V> = [:]//use generics in the future: T and <T>
+    static func combine<K,V>(_ a:[K:V], _ b:[K:V])->[K:V]{//// :TODO: rename to combine since merge implies that the passed obj is also changed
+		var c:[K:V] = [:]//use generics in the future: T and <T>
         for keyA in a.keys{c[keyA] = a[keyA]}//copies the items in a to the return object
         for keyB in b.keys{c[keyB] = b[keyB]}//assigns the items in b to the return object, if they already exist s they are overriden
 		return c

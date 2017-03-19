@@ -12,7 +12,7 @@ class FileWatcherEvent{
     var id: FSEventStreamEventId
     var path:String
     var flags: FSEventStreamEventFlags
-    init(_ eventId: FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
+    init(_ eventId:FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
         self.id = eventId
         self.path = eventPath
         self.flags = eventFlags
@@ -52,7 +52,7 @@ extension FileWatcherEvent{
  * EXAMPLE: Swift.print(event.description)//Outputs: The file /Users/John/Desktop/test/text.txt was modified
  */
 extension FileWatcherEvent{
-    var description: String {
+    var description:String {
         var result = "The \(fileChange ? "file":"directory") \(self.path) was"
         if self.created {
             result += " created"
