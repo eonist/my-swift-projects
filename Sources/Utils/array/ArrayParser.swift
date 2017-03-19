@@ -60,7 +60,7 @@ class ArrayParser{
      * IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
     static func difference<T>(_ a:[T], _ b:[T] )->[T] where T:Equatable, T:Comparable{
-        var diff:Array<T> = []
+        var diff:[T] = []
         for item in a { if (ArrayParser.index(b,item) == -1) {diff.append(item)}}
         for item in b { if (ArrayParser.index(a,item) == -1) {diff.append(item)}}
         return diff
@@ -70,8 +70,8 @@ class ArrayParser{
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares reference not value
      */
-    static func difference<T>(_ a:[T], _ b:[T] )->Array<T> {
-        var diff:Array<T> = []
+    static func difference<T>(_ a:[T], _ b:[T] )->[T] {
+        var diff:[T] = []
         for item in a { if (ArrayParser.indx(b,item) == -1) {diff.append(item)}}
         for item in b { if (ArrayParser.indx(a,item) == -1) {diff.append(item)}}
         return diff
@@ -131,7 +131,7 @@ class ArrayParser{
      * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */
     static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
-        var sortedArray:Array<T> = []
+        var sortedArray:[T] = []
         for i in 0 ..< array.count{
             let index:Int = Utils.index(array[i], sortedArray, condition)
             if(index > -1){_ = ArrayModifier.splice2(&sortedArray,index, 1, [array[i],sortedArray[index]])}
@@ -150,7 +150,7 @@ class ArrayParser{
      * Returns all items in PARAM: array that is of PARAM: type
      */
     static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
-        var items:Array<T> = []
+        var items:[T] = []
         for item in array{ if (item as? T != nil) {items.append(item as! T)}}
         return items
     }
