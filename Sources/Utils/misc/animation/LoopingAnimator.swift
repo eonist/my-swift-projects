@@ -16,9 +16,7 @@ class LoopingAnimator:Animator{
      * Fires on every frame tick
      */
     override func onFrame(){
-        //Swift.print("onFrame()")
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        //Swift.print("val: " + "\(val)")
         callBack(val)//call the callBack method
         if(currentFrameCount >= framesToEnd){
             //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/

@@ -15,14 +15,12 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      * Fires on every screen refresh at 60 FPS, or device speed
      */
     func onFrame(){
-        //Swift.print("\(self.dynamicType)" + "onFrame()")
         self.performSelector(onMainThread: #selector(Animation.onFrameOnMainThread), with: nil, waitUntilDone: false)//upgreaded to swift 3
     }
     /**
      *
      */
     func onFrameOnMainThread(){
-        //Swift.print("it works")
         for animator in animators{animator.onFrame()}//TODO: 👉 animators.forEach{$.onFrame()}
         /*while drawCalls.count > 0{
         if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
@@ -33,7 +31,6 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      * Note: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
      */
     func setUpDisplayLink() -> CVDisplayLink {
-        //Swift.print("Animation.setUpDisplayLink()")
         var displayLink: CVDisplayLink?
         var status = kCVReturnSuccess
         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
