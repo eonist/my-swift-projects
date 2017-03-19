@@ -124,6 +124,7 @@ class ArrayModifier{
      * print(array) //a,x,b,c
      * TODO: return the array for method chaning purposes?
      * NOTE: ArrayModifier.insertAt does the same thing as this method
+     * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func addAt<T>(_ array:inout [T], _ item:T, _ index:Int){
         if(index == 0) {_ = array.unshift(item)}/*add item at the begining of an array*/
@@ -228,6 +229,7 @@ class ArrayModifier{
      * var abc:Array = ["a","b","c"];
      * var def:Array = ["d","e","f"];
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c// and the def array should now be empty
+     * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func mergeInPlaceAt<T>(_ a:inout [T], _ b:inout [T], _ i:Int) -> [T] {
         //TODO: test this method first
@@ -254,6 +256,7 @@ class ArrayModifier{
      * PARAM: index: where on the targetArray should it merge on
      * NOTE: For a non optimized version go ahead and just use arrayA.splice(0, index).concat(arrayB,arrayA);
      * EXAMPLE: ArrayModifier.mergeAt([1,2,3], [4,5,6], 1)//[1, 4, 5, 6, 2, 3]
+     * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func mergeAt<T>(_ a:inout [T], _ b:[T], _ index:Int) -> [T]{
         if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
