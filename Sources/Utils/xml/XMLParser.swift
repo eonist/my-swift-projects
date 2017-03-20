@@ -210,7 +210,7 @@ public class XMLParser{
         return items
     }
     /**
-     * New
+     * New 
      */
     static func arr(_ xml:XML) -> [Any]{
         var items:[Any] = []
@@ -241,7 +241,7 @@ public class XMLParser{
         }else if(xml.childCount > 0){
             for i in 0..<xml.childCount{
                 let child:XML = xml.children![i] as! XMLElement
-                let match:Array<Int>? = index(child,key,value)
+                let match:[Int]? = index(child,key,value)
                 if(match != nil) {return [i] + match!}
             }
         }
