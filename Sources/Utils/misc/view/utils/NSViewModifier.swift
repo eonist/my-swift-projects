@@ -4,19 +4,13 @@ typealias ViewModifier = NSViewModifier//<---Legacy support
  * TODO: make a method with the NSView.sortSubviewsUsingFunction method. 
  */
 class NSViewModifier {
-    /**
-     *
-     */
     static func applyColor(_ view:NSView,_ nsFillColor:NSColor = NSColor.clear,_ nsLineColor:NSColor = NSColor.clear,_ lineWidth:Int = 0){
         let cgFillColor:CGColor = CGColorParser.cgColor(nsFillColor)
         if(nsFillColor != NSColor.clear){/*clearColor: 0.0 white, 0.0 alpha */
-            //Swift.print("fill")
             view.layer!.backgroundColor = cgFillColor
         }
         let cgLineColor:CGColor = CGColorParser.cgColor(nsLineColor)
-        //Swift.print(nsLineColor)
         if(nsLineColor != NSColor.clear){/*clearColor: 0.0 white, 0.0 alpha */
-            //Swift.print("line")
             view.layer!.borderColor = cgLineColor
             view.layer!.borderWidth = CGFloat(lineWidth)
         }
@@ -28,9 +22,6 @@ class NSViewModifier {
     static func position(_ view:NSView,_ point:CGPoint){
         view.frame.origin = point
     }
-    /**
-     *
-     */
     static func removeAll(_ view:NSView){
         for subView in view.subviews {subView.removeFromSuperview()}
     }
@@ -62,17 +53,14 @@ class NSViewModifier {
         }
         return subView
     }
-    /**
-     *
-     */
-    static func removeSubviewAt(_ view: NSView, _ i:Int){
+    static func removeSubviewAt(_ view:NSView, _ i:Int){
         let item = view.getSubviewAt(i)
         item.removeFromSuperview()
     }
     /**
      * NOTE: removes in the backward direction over the array
      */
-    static func removeMany(_ views:Array<NSView>) {//TODO: rename to removeAll(all) ? maybe?
+    static func removeMany(_ views:[NSView]) {//TODO: rename to removeAll(all) ? maybe?
         for i in (0..<views.count).reversed(){//upgraded to swift 3
             let view : NSView = views[i]
             view.removeFromSuperview()
@@ -81,8 +69,8 @@ class NSViewModifier {
     /**
      * Rename to subViewsOfType
      */
-    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->Array<T> {
-        var children:Array<T> = []
+    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T]{
+        var children:[T] = []
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! T)}
         }

@@ -7,8 +7,8 @@ class NSViewParser {
      * IMPORTANT: Remember to use: IA.self and A.self as the type 
      * TODO: rename to childrenByClassType, maybe not?, I say not!
      */
-    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->Array<T> {
-        var children:Array<T> = []
+    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T] {
+        var children:[T] = []
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! T)}
         }
@@ -17,8 +17,8 @@ class NSViewParser {
     /**
      * Returns a list of parents (this works, tested)
      */
-    static func parents(_ view:NSView)->Array<NSView>{
-        var parents:Array<NSView> = []
+    static func parents(_ view:NSView)->[NSView]{
+        var parents:[NSView] = []
         var parent:NSView? = view.superview// :TODO: seperate this into a check if its DO then that, if its Window then do that
         while(parent != nil) {//loops up the object hierarchy as long as the parent is a Element supertype
             _ = ArrayModifier.unshift(&parents,parent!)
@@ -56,12 +56,12 @@ class NSViewParser {
      * @Note this function is recursive
      * // :TODO: rename to indexMap? or depth or map?, since index should be index of a NSView
      */
-    static func index(_ parent:NSView,_ child:NSView) -> Array<Int>? {
+    static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
         if(parent === child) {return []}
         else if(parent.numSubViews > 0){
             for i in 0..<parent.numSubViews{
                 let view:NSView = parent.getSubViewAt(i)!
-                let match:Array<Int>? = view.numSubViews != 0 ? index(view,child) : nil
+                let match:[Int]? = view.numSubViews != 0 ? index(view,child) : nil
                 if(match != nil) {return [i] + match!}
             }
         }
