@@ -9,7 +9,7 @@ public class XMLParser{
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001263-SW1
      */
     static func root(_ xmlStr:String)->XML?{
-        let xmlDoc:XMLDocument = try! XMLDocument(xmlString: xmlStr, options: 0)
+        let xmlDoc:XMLDoc = try! XMLDoc(xmlString: xmlStr, options: 0)
         let rootElement:XML = xmlDoc.rootElement()!
         return rootElement
     }
@@ -17,10 +17,10 @@ public class XMLParser{
      * Returns all children of the root element
      * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
      */
-    static func rootChildren(_ xmlStr:String)->Array<XML>{
+    static func rootChildren(_ xmlStr:String)->[XML]{
         let rootElement:XML = root(xmlStr)!
         let children:[XMLNode] = rootElement.children!
-        let theChildren:Array<XML> = children as! [XML]
+        let theChildren:[XML] = children as! [XML]
         return theChildren
     }
     /**

@@ -75,7 +75,7 @@ extension XML {
     func replaceAt(_ xml:XML,_ index:Int,_ replacement:XML) -> XML {/*Convenience*/
         return XMLModifier.replaceAt(xml, index, replacement)
     }
-    func replaceChildAt(_ xml:XML,_ index:Array<Int>,_ replacement:XML) -> XML {/*Convenience*/
+    func replaceChildAt(_ xml:XML,_ index:[Int],_ replacement:XML) -> XML {/*Convenience*/
         return XMLModifier.replaceAt(xml, index, replacement)
     }
     func firstNode(_ nodeName:String) -> XML? {/*Convenience*/
@@ -94,6 +94,6 @@ extension XML {
     return left
 }*/
 /*swift 3 doesn't like unused returns thats why this complimentary method exists*/
-public func += (left: XMLElement, right: XMLElement) {/*Convenience*/
+public func += (left:XML, right:XML) {/*Convenience*/
     left.appendChild(right)
 }

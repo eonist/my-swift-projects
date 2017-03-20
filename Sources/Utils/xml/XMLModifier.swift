@@ -19,9 +19,6 @@ public class XMLModifier {
         _ = parent!.addAt(child,insertAt)
         return xml
     }
-    /**
-     *
-     */
     static func addChildAt(_ xml:XML,_ child:XML,_ index:Int) -> XML {
         return insertAt(xml,index,child)
     }
