@@ -14,7 +14,7 @@ class Fillet:ILayout {
     required convenience init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
         self.init(args.map {CGFloat(Double(String(describing: $0))!)})/*<-- it looks complicated but its just array casting, see research docs for the explination*/
     }
-    init(_ args:Array<CGFloat>){
+    init(_ args:[CGFloat]){
         switch(args.count){
             case 0: topLeft = 0; topRight = 0; bottomLeft = 0; bottomRight = 0; break;
             case 1: topLeft = args[0];topRight = args[0];bottomLeft = args[0];bottomRight = args[0]; break;
