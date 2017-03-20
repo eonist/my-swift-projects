@@ -14,7 +14,7 @@ class DepthModifier {
     static func sortByIndices(_ container:NSView, _ indices:Array<Int>) {
         Swift.print("DepthModifier.sortByIndices()");
         
-        let children:Array<NSView> = NSViewParser.childrenOfType(container, NSView.self)
+        let children:[NSView] = NSViewParser.childrenOfType(container, NSView.self)
         
         let indicesLen:Int = indices.count
         for i in 0..<indicesLen{
