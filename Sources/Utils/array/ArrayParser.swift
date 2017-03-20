@@ -191,10 +191,10 @@ class ArrayParser{
      * let ranArr = ArrayParser.uniqueRandom(0, 4)
      * print(ranArr)//[3, 1, 0, 4, 2]
      */
-    static func uniqueRandom(_ start:Int, _ end:Int) -> [T] {
-        var numbers:Array<Int> = []
+    static func uniqueRandom(_ start:Int, _ end:Int) -> [Int] {
+        var numbers:[Int] = []
         for a in start...end{numbers.append(a)}
-        var randomNumbers:Array<Int> = []
+        var randomNumbers:[Int] = []
         let len:Int = numbers.count
         for e in 0..<len{
             let randomNr:Int = Int(arc4random_uniform(UInt32(len-e)))
