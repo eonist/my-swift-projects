@@ -45,9 +45,6 @@ extension NSView {
         self.addSubview(view)
         return view
     }
-    /**
-     *
-     */
     func addSubViewAt<T:NSView>(_ view:T, _ i:Int)->T{
         _ = ViewModifier.addSubviewAt(self, view, i)
         return view
