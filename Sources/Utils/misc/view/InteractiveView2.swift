@@ -9,7 +9,7 @@ import Cocoa
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * TODO: why arent the mouse methods calling a central method?
  */
-class InteractiveView2:FlippedView,IInteractiveView{
+class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with appcode
     var event:EventCallBack/*This holds any method assigned to it that has its type*/
     var eventCall:EventCallBack {
         return {
@@ -23,8 +23,8 @@ class InteractiveView2:FlippedView,IInteractiveView{
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false
     /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
+    override init(frame frameRect:NSRect) {
+        super.init(frame:frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
@@ -133,7 +133,7 @@ class InteractiveView2:FlippedView,IInteractiveView{
     override func mouseExited(with event: NSEvent){
         //Swift.print("\(self.dynamicType)" + ".mouseExited: event.locationInWindow: " + "\(event.locationInWindow)")
         
-        //im not sure if the bellow code is perfectly stable in all cases, more testing needed
+        //⚠️️ I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         
         if(hasMouseEntered && isMouseOver){
             hasMouseEntered = false/*optimization*/
