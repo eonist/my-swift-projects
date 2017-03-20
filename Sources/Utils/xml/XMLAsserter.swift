@@ -2,22 +2,22 @@ import Foundation
 
 public class XMLAsserter {
     /**
-     * Asserts if PARAM: child has an attribute with the name @param attrName
+     * Asserts if PARAM: child has an attribute with the name PARAM: attrName
      * EXAMPLE: XMLAsserter.hasAttribute(child,"type")
      */
-    static func hasAttribute(_ child:XMLElement, _ attrName:String)->Bool{
+    static func hasAttribute(_ child:XML, _ attrName:String)->Bool{
         return child.attribute(forName: attrName) != nil
     }
     /**
      * Asserts if an database item has children at PARAM: index in PARAM: database
      */
-    static func hasChildrenAt(_ xml:XMLElement,_ index:Array<Int>)->Bool{
+    static func hasChildrenAt(_ xml:XML,_ index:[Int])->Bool{
         return xml.childAt(index) != nil && xml.childAt(index)!.childCount > 0
     }
     /**
      *
      */
-    static func hasChildren(_ xml:XMLElement) -> Bool {
+    static func hasChildren(_ xml:XML) -> Bool {
         return xml.childCount > 0
     }
     /**

@@ -78,7 +78,7 @@ extension TextFormat{
 
 /*
 
-Research for implementing lineSpacing: (this task is completed, but was pretty complicated, so keep these notes)
+Research for implementing lineSpacing: (this task is completed ✅, but was pretty complicated, so keep these notes)
 
 // text height is called line spacing in NsTextfield
 

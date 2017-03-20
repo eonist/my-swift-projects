@@ -16,4 +16,3 @@ class TextFormatConstants {
     static var leading:String = "leading"/*line-spacing*/
     static var textFormatPropertyNames:[String] = [size,font,align,selectable,background,backgroundColor,color,type,border,multiline,wordWrap,scrollable,leading]
 }
-//["align","blockIndent","bold","bullet","color","font","indent","italic","kerning","leading","leftMargin","letterSpacing","rightMargin","size","tabStops","target","underline","url"];

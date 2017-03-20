@@ -15,22 +15,18 @@ class TextField:NSTextField{
         return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
     override func mouseDown(with theEvent:NSEvent) {
-        //Swift.print("TextField.mouseDown() theEvent: " + "\(theEvent)")//
         //swift 3 upgrade: was leftMouseDownMask
         if(globalMouseDownHandler == nil){globalMouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler:onMouseDownOutside)}//we add an eventListener that takes care of resigning the edit mode of the textField
         super.mouseDown(with: theEvent)
     }
     func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
-        //Swift.print("onMouseDownOutside " + "localPos: " + "\(event.localPos(self))")
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
-            //Swift.print("resign")
             if(globalMouseDownHandler != nil) {NSEvent.removeMonitor(globalMouseDownHandler!)}//we remove the evenListener as its done its job
             self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
         }
         return event
     }
     override func textDidChange(_ notification:Notification) {
-        //Swift.print("TextField.textDidChange()")
         if(self.superview is IEventSender){
             //Swift.print("superview is IEventSender")
             (self.superview as! IEventSender).event!(TextFieldEvent(Event.update,self))
