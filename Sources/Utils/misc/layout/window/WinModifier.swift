@@ -15,7 +15,6 @@ class WinModifier {
      */
     static func align(_ win:NSWindow,_ canvasAlignment:String,_ viewAlignment:String,_ offset:CGPoint = CGPoint(0,0)) {
         let alignmentPoint:CGPoint = alignPoint(win.frame.size,canvasAlignment,viewAlignment,offset)
-        //Swift.print("ScreenUtils.alignmentPoint: " + "\(alignmentPoint)")
         WinModifier.position(win, alignmentPoint)
     }
     /**

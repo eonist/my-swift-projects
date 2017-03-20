@@ -13,7 +13,6 @@ class Win:NSWindow, NSApplicationDelegate, NSWindowDelegate {
      * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
-        Swift.print("Win.init()")
         let styleMask:NSWindowStyleMask = [.borderless, .resizable, .titled,.closable,.miniaturizable]/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
@@ -42,11 +41,10 @@ class Win:NSWindow, NSApplicationDelegate, NSWindowDelegate {
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc
      */
-    func windowShouldClose(sender: AnyObject) -> Bool {
+    func windowShouldClose(sender:AnyObject) -> Bool {
         Swift.print("windowShouldClose")
         return true
     }
-    
 }
 class WinView:InteractiveView2{
     init(_ frame:CGRect) {
