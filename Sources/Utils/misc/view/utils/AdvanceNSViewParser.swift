@@ -6,8 +6,8 @@ class AdvanceNSViewParser {
      * Returns depths of every NSView instance in PARAM: views
      */
     static func indicesOfViews(_ container:NSView,_ views:[NSView]) -> [[Int]] {
-        var indices:Array<[Int]> = []
-        for view : NSView in views {indices.append(NSViewParser.index(container, view)!)}/*<--This should be correct*/
+        var indices:[[Int]] = []
+        for view:NSView in views {indices.append(NSViewParser.index(container, view)!)}/*<--This should be correct*/
         return indices
     }
     /**
@@ -15,7 +15,7 @@ class AdvanceNSViewParser {
      * NOTE: this function is recursive
      * TODO: rename index to map?, move to AdvanceDisplayObjectParser?
      */
-    static func getAt(_ container:NSView?, _ index:Array<Int>) -> NSView? {
+    static func getAt(_ container:NSView?, _ index:[Int]) -> NSView? {
         if(index.count == 0 && container != nil) {
             Swift.print("a")
             return container!
