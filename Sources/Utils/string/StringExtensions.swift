@@ -12,7 +12,7 @@ extension String {
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
-    func split(_ delimiter:String)->Array<String>{/*Convenince*/
+    func split(_ delimiter:String)->[String]{/*Convenince*/
         return StringParser.split(self, delimiter)
     }
     func match(_ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String]{//Convenince

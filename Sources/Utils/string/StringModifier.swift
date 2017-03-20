@@ -45,9 +45,6 @@ class StringModifier{
     static func combine(_ strings:Array<String>, _ seperator:String)->String{
         return strings.joined(separator: seperator)
     }
-	/**
-	 *
-	 */
 	static func wrapWith(_ string:String, _ wrapper:String)->String{
 	   return wrapper + string + wrapper
 	}
@@ -65,9 +62,6 @@ class StringModifier{
 	static func reverse(_ str:String)->String{
         return String(str.characters.reversed())//new in swift 2
 	}
-	/**
-	 * 
-	 */
 	static func capitalize(_ string:String)->String{
 		return string.capitalized//swift 3 upgrade
 	}
@@ -93,7 +87,7 @@ class StringModifier{
         return String(firstChar) + theRest
     }
     /**
-     * Returns a new string from @param str with a new @param char inserted at @param index
+     * Returns a new string from PARAM: str with a new PARAM: char inserted at PARAM: index
      */
     static func insertCharAt(_ str:String, _ char:Character,_ index:Int)->String{
         var str = str
