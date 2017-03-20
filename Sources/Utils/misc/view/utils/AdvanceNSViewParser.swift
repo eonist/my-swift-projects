@@ -5,7 +5,7 @@ class AdvanceNSViewParser {
      * TODO: not optimized very well
      * Returns depths of every NSView instance in PARAM: views
      */
-    static func indicesOfViews(_ container:NSView,_ views:Array<NSView>) -> Array<[Int]> {
+    static func indicesOfViews(_ container:NSView,_ views:[NSView]) -> [[Int]] {
         var indices:Array<[Int]> = []
         for view : NSView in views {indices.append(NSViewParser.index(container, view)!)}/*<--This should be correct*/
         return indices

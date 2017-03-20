@@ -7,5 +7,4 @@ class MouseUtils {
     static func point(_ view:NSView) -> CGPoint {
         return view.localPos()
     }
-    //isOver
 }
