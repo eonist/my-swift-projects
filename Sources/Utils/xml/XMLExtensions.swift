@@ -48,28 +48,28 @@ extension XML {
     var string:String{/*Convenience*/
         return XMLParser.string(self)
     }
-    func childAt(_ index:Array<Int>)->XML?{/*Convenience*/
+    func childAt(_ index:[Int])->XML?{/*Convenience*/
         return XMLParser.childAt(self, index)
     }
     func childByIndex(_ index:Int)->XML?{/*Convenience*/
         return self.child(at: index) as? XML
     }
-    var attribs:Dictionary<String,String> {//Convenience, the name attributes is occupied so attribs it is
+    var attribs:[String:String] {//Convenience, the name attributes is occupied so attribs it is
        return XMLParser.attribs(self)
     }
     func addAt(_ child:XML,_ index:Int)->XML{/*Convenience*/
         return XMLModifier.insertAt(self, index, child)
     }
-    func addchildAt(_ child:XML,_ index:Array<Int>)->XML{/*Convenience*/
+    func addchildAt(_ child:XML,_ index:[Int])->XML{/*Convenience*/
         return XMLModifier.addChildAt(self, index, child)
     }
-    func setNameAt(_ index:Array<Int>, _ name:String) -> XML {/*Convenience*/
+    func setNameAt(_ index:[Int], _ name:String) -> XML {/*Convenience*/
         return XMLModifier.setNameAt(self, index, name)
     }
-    func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ key:String,_ value:String) -> XML {/*Convenience*/
+    func setAttributeAt(_ xml:XML,_ index:[Int], _ key:String,_ value:String) -> XML {/*Convenience*/
         return XMLModifier.setAttributeAt(self, index, key, value)
     }
-    func setAttributeAt(_ xml:XML,_ index:Array<Int>, _ attributes:Dictionary<String,String>) -> XML {/*Convenience*/
+    func setAttributeAt(_ xml:XML,_ index:[Int], _ attributes:[String:String]) -> XML {/*Convenience*/
         return XMLModifier.setAttributeAt(xml, index, attributes)
     }
     func replaceAt(_ xml:XML,_ index:Int,_ replacement:XML) -> XML {/*Convenience*/
