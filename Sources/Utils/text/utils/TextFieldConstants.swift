@@ -1,5 +1,5 @@
 import Foundation
-/*
+/**
  * NOTE: It may be tempting to make variables of each of these types, don't its just more code
  */
 class TextFieldConstants {

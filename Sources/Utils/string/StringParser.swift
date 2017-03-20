@@ -134,13 +134,10 @@ class StringParser{
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
     static func digit(_ string:String)->CGFloat{
-        //Swift.print("string: " + string)
         let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
         let matches = RegExp.matches(string, pattern)
         let match:NSTextCheckingResult = matches[0]
         let value:String = RegExp.value(string, match, 1)
-        //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-        //Swift.print("value: " + value)
         return value.cgFloat
     }
     /**
@@ -188,9 +185,6 @@ class StringParser{
     static func path(_ url:String)->String {
         return url.match("^.*?\\/(?=\\w*?\\.\\w*?$)")[0]
     }
-    /**
-     *
-     */
     static func fileName(_ url:String)->String {
         return url.match("^.*?\\/(\\w*?\\.\\w*?$)")[1]
     }

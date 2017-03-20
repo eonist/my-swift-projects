@@ -5,13 +5,11 @@ class TextFieldModifier {
      * TODO: Border color?
      */
     static func applyTextFormat(_ textField:TextField,_ textFormat:TextFormat){
-        //Swift.print("attrString: " + "\(attrString)")
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.isSelectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clear
         //Swift.print("textField.backgroundColor: " + "\(textField.backgroundColor)")
         textField.drawsBackground = true//textFormat.background//<--this is a temp fix so that one can add or remove a background while the app is running, this should ideally be done automatically when the text is re-rendered, more research needed
-
         //textField.alignment = TextFieldParser.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         //textField.textColor = textFormat.color
         //textField.font = TextFieldParser.font(textFormat.font,textFormat.size)
