@@ -43,15 +43,15 @@ class WinParser {
      * Returns an array of NSWindow of type T in the current app
      */
     static func windowsOfType<T>(_ type:T.Type)-> [T] {
-        var windows:Array<T> = []
-        for window : NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
+        var windows:[T] = []
+        for window:NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         return windows
     }
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
      */
     static func frontMostWinOfType<T:NSWindow>(_ type:T.Type)-> T?{
-        var windows:Array<T> = []
+        var windows:[T] = []
         //TODO: for clearity use .forEach on the bellow line
         for window:NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
         windows.sort { (a, b) -> Bool in return a.orderedIndex > b.orderedIndex}
@@ -69,7 +69,7 @@ private class Utils{
     /**
      * NOTE: Reducing for-loops is a great way to maintain readability and maintain code modularity. Here is a trick were we use closure blocks to encapsulate the method call. The for loop is the same but the method call is different. This approach is great when you need the code within the for-loop to be the same but you want to have the code within different methods to be different
      */
-    static func performAction(_ windows:Array<NSWindow>, _ action:(NSWindow)->Bool)->NSWindow?{
+    static func performAction(_ windows:[NSWindow], _ action:(NSWindow)->Bool)->NSWindow?{
         for window in windows{
             if(action(window)){
                 return window
