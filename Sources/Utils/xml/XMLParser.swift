@@ -40,7 +40,7 @@ public class XMLParser{
     /**
      *
      */
-    static func rootChildrenByFilePath(_ filePath:String)->Array<XML>{
+    static func rootChildrenByFilePath(_ filePath:String)->[XML]{
         let xmlStr:String = FileParser.content(filePath)!
         return rootChildren(xmlStr)
     }
@@ -65,7 +65,7 @@ public class XMLParser{
      * Returns string Content of an xml
      * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
-    static func valueAt(_ child:XML,_ index:Array<Int>)->String?{
+    static func valueAt(_ child:XML,_ index:[Int])->String?{
         return childAt(child, index)?.stringValue
     }
     /**
@@ -80,7 +80,7 @@ public class XMLParser{
         var attributes = [[String:String]]()
         if(child.attributes != nil && child.attributes!.count > 0){
             for node:XMLNode in child.attributes!{
-                var attribute:Dictionary<String,String> = [:]
+                var attribute:[String:String] = [:]
                 let name:String = node.name!
                 let value:String = node.stringValue!
                 //print("name: " + name + " " + "value:"+value)
@@ -116,9 +116,9 @@ public class XMLParser{
      * @Note: returns an empty array if the index is out of bound
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    static func siblingAttributes(_ child:XML, _ index:Array<Int>)->[Dictionary<String,String>] {// :TODO: rename to objAt
+    static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
         let xml = childAt(child, index)
-        var result:[Dictionary<String,String>] = []
+        var result:[[String:String]] = []
         for c in xml?.children as! Array<XML>{
             result.append(c.attribs)
         }
