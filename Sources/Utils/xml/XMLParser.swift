@@ -151,7 +151,7 @@ public class XMLParser{
         return nil
     }
     /**
-     * Returns the attribute value of @param child by key @param name
+     * Returns the attribute value of PARAM: child by key PARAM: name
      * PARAM: attrKey: name of the attribute
      * NOTE: returns nil if there is no attr by that name
      * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
@@ -167,7 +167,7 @@ public class XMLParser{
         return child.name!//child.localName also works
     }
     /**
-     * Returns the first attribute that contains the attribute by the @param name and with the @param value
+     * Returns the first attribute that contains the attribute by the PARAM: name and with the @param value
      */
     static func childByAttribute(_ child:XML,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
@@ -177,7 +177,6 @@ public class XMLParser{
      * You can use the returned nodes as the new context node for evaluating further XPath expressions.
      */
     static func xPath(){
-        
     }
     /**
      * Parses through an xml and returns an array
@@ -193,15 +192,15 @@ public class XMLParser{
      */
     static func toArray(_ xml:XML)->[[String:String]] {
         
-        //you probably shouldnt use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
+        //⚠️️ you probably shouldnt use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
         
-        var items:[Dictionary<String,String>] = []
+        var items:[[String:String]] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
         for i in 0..<count{
             let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
-            var item:Dictionary<String,String> = Dictionary<String,String>()
-            let attributes:[Dictionary<String,String>] = XMLParser.attributes(child)//TODO: use: attribs instead
+            var item:[String:String] = [String:String]()
+            let attributes:[[String:String]] = XMLParser.attributes(child)//TODO: use: attribs instead
             for attribute in attributes {
                 item[attribute["name"]!] = attribute["value"]!
             }
