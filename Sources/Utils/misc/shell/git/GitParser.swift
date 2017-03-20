@@ -62,7 +62,7 @@ class GitParser{
 	 * git status -s "outputs UU text2.txt"
      * NOTE: basically remote file has changes that never has been applied to local file.
 	 */
-	static func unMergedFiles(_ localPath:String)->Array<String>{
+	static func unMergedFiles(_ localPath:String)->[String]{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
         //Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
 		return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
