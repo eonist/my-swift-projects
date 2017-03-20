@@ -27,7 +27,7 @@ class StringAsserter{
      */
     static func boolean(_ string:String)->Bool{
         //Swift.print("StringAsserter.boolean()"+"\(Bool(string == "true").dynamicType)")
-        return string.test("^(true|false)$");
+        return string.test("^(true|false)$")
     }
     /*
      * Check if string contains another string
