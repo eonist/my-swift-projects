@@ -1,7 +1,7 @@
 import Foundation
 
-typealias XML = XMLElement/*Makes refering to NSXMLElement simpler, just use XML instead*/
-typealias XMLDoc = XMLDocument
+typealias XML = XMLElement/*Convenience, Makes refering to NSXMLElement simpler, just use XML instead*/
+typealias XMLDoc = XMLDocument/*Convenience*/
 extension XML {
     /**
      * Convenience
@@ -23,7 +23,7 @@ extension XML {
     func appendChild(_ xml:XML){/*convenince*/
         self.addChild(xml)
     }
-    func removeChildAt(_ index:Array<Int>)->XML{/*Convenience*/
+    func removeChildAt(_ index:[Int])->XML{/*Convenience*/
         return XMLModifier.removeChildAt(self, index)
     }
     func removeAt(_ index:Int)->XML{/*Convenience*/
@@ -38,7 +38,7 @@ extension XML {
     var hasSimpleContent:Bool{
         return XMLAsserter.hasSimpleContent(self)
     }
-    func valueAt(_ index:Array<Int>)->String?{/*Convenience*/
+    func valueAt(_ index:[Int])->String?{/*Convenience*/
         return XMLParser.valueAt(self, index)
     }
     var value:String {return XMLParser.value(self)}/*Convenience*/

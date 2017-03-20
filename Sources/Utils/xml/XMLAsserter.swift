@@ -14,9 +14,6 @@ public class XMLAsserter {
     static func hasChildrenAt(_ xml:XML,_ index:[Int])->Bool{
         return xml.childAt(index) != nil && xml.childAt(index)!.childCount > 0
     }
-    /**
-     *
-     */
     static func hasChildren(_ xml:XML) -> Bool {
         return xml.childCount > 0
     }
@@ -28,12 +25,12 @@ public class XMLAsserter {
      */
     static func validXML(_ xmlStr:String)->Bool{
         Swift.print("XMLAsserter.validXML UNTESTED")
-        let xmlDoc:XMLDocument? = try? XMLDocument(xmlString: xmlStr, options: 0)
+        let xmlDoc:XMLDoc? = try? XMLDoc(xmlString: xmlStr, options: 0)
         if(xmlDoc == nil){return false}
         if(xmlDoc?.kind != XMLNode.Kind.element){return false;}
         return true
     }
-    static func equals(_ a:XMLElement,_ b:XMLElement)->Bool {
+    static func equals(_ a:XML,_ b:XML)->Bool {
         Swift.print("XMLAsserter.equals() UNTESTED")
         Swift.print("a.XMLString")
         Swift.print(a.xmlString)
