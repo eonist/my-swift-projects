@@ -27,7 +27,6 @@ public class RegExp{
      * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
      */
     static func match(_ text: String!, _ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
-        //todo: figure out how map works
         //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
         //todo: then if it is outof bound return eigther an empty array or nil
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}

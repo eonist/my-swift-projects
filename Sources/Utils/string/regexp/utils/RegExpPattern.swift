@@ -13,7 +13,6 @@ class RegExpPattern {
         let g4:String = "((?<=\\d)\\.(?=\\d))*"/*zero or one dot char that must be preceeded with a digit and subseeded with a digit*/
         let g5:String = "((?<=\\d\\.)\\d+?)*"/*zero or more digits that must be preceeded with a digit and a char*/
         //let g6:String = "(?=$)"/*followed by an end or */
-        
         let pattern:String = /*g1 +*/ g2 + g3 + g4 + g5 /*+ g6*/
         return pattern
     }
