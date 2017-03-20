@@ -2,14 +2,14 @@ import Foundation
 
 class LayoutUtils {
     /**
-     * Returns an instance from @param classType populated with values from @param array
+     * Returns an instance from PARAM: classType populated with values from PARAM: array
      * PARAM: value can be an array, if its a single value then its added to a new array
      * PARAM: classType (Padding,Margin,Offset,OffsetType,Fillet)
      * NOTE: remember to pass in the layoutClasstype as this: Fillet.self
      * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
     static func instance(_ value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
-        let params:Array<Any> = value is Array<Any> ? value as! Array<Any> : [value]
+        let params:[Any] = value is Array<Any> ? value as! Array<Any> : [value]
         let classType:ILayout.Type = layoutClassType
         var instance:ILayout
         switch(params.count){

@@ -2,20 +2,17 @@ import Foundation
 
 class Resizer {
     /**
-     * Fits inside a frame
+     * Fits inside a frame (Scales to ratio)
      */
     static func fit(_ size:CGSize, _ ratio:CGFloat)->CGSize{
-        //Scale to ratio:
         let w:CGFloat = size.width
         let h:CGFloat = size.height
-        //Swift.print("ratio: " + "\(ratio)")
-        //Swift.print("(w/h): " + "\((w/h))")
         if((w/h) > ratio){
             //Swift.print("w is wider than ratio allows")
             return CGSize(h*ratio,h)
         }else if((w/h) < ratio){
             //Swift.print("h is taller than ratio allows")
-            return CGSize(w,w*ratio)
+            return CGSize(w,w * ratio)
         }else{
             return CGSize(w,h)
         }
