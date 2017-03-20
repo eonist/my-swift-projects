@@ -21,7 +21,7 @@ class XMLUtils {
      * TODO: may need to use infix operator and extensions to make the xml parser work.
      */
     static func data(_ xml:String)->[String:Any]?{
-        //in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
+        //⚠️️ in the future this method should return a dictionary/array treestructure described in the comments above. The design is sound, you have the code. just build it when you need it
         return nil
     }
     /**
