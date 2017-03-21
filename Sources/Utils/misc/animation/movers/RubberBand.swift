@@ -33,7 +33,7 @@ class RubberBand:Mover{
         self.spring = spring
         self.limit = limit
         self.callBack = callBack
-        super.init(animatable, value, velocity)
+        super.init(animatable, callBack, value, velocity)
     }
     override func onFrame(){
         //Swift.print("RubberBand.onFrame")

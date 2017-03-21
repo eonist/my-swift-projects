@@ -5,9 +5,9 @@ class Friction:Mover{
     var lastValue:CGFloat = 0/*this value is a temporary value that is used when checking if the motion is about to stop*/
     var slowDownFriction:CGFloat = 1/*slowDownFriction is basically an inactive friction value, unless you change it to something else than 1, this variable can also be named easing*/
     var hasStopped:Bool = true
-    init(_ view:IAnimatable, _ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98){
+    init(_ view:IAnimatable,  _ callBack:@escaping (CGFloat)->Void,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98){
         self.frictionStrength = frictionStrength
-        super.init(view, value, velocity)
+        super.init(view, callBack, value, velocity)
         
     }
     override func updatePosition() {
