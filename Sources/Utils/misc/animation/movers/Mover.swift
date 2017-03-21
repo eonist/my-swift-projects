@@ -12,6 +12,6 @@ class Mover:BaseAnimation {
         value += velocity
     }
     override func onFrame(){
-        //not implemented yet
+        updatePosition()//new
     }
 }
