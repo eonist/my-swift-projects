@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: Consider not using EventSender in the animation lib. Use callbacks instead. As Events are too costly at such high iterations
+ */
 class BaseAnimation:EventSender {
     var animatable:IAnimatable/*Reference to where the displayLink resides*/
     init(_ animatable:IAnimatable){
