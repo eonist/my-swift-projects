@@ -11,7 +11,7 @@ class SnapFriction:Friction {
         //keep some velocity alive
         //when at snap stop
         if(velocity <= 1.0){
-            if(value %% snap == 0){
+            if((value %% snap) == 0){
                 
             }
             velocity = 1.0
