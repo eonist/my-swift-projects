@@ -94,6 +94,6 @@ extension XML {
     return left
 }*/
 /*swift 3 doesn't like unused returns thats why this complimentary method exists*/
-public func += (left:XML, right:XML) {/*Convenience*/
+public func += (left:XMLElement, right:XMLElement) {/*Convenience*/
     left.appendChild(right)
 }
