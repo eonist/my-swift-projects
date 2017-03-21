@@ -27,7 +27,7 @@ class FileWatcher{
      * VARIABLE: runLoopMode: The run loop mode for the watcher.
      */
     func start() {
-        Swift.print("start - has started: " + "\(hasStarted)")
+        Swift.print("FileWatcher start - has started: " + "\(hasStarted)")
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque())//this line chached a lot converting to swift 3
@@ -42,7 +42,7 @@ class FileWatcher{
      * NOTE: Stops the stream, ensuring the client's callback will not be called again for this stream. After stopping the stream, it can be restarted seamlessly via FSEventStreamStart() without missing any events.
      */
     func stop() {
-        Swift.print("stop - has started: " + "\(hasStarted)")
+        Swift.print("FileWatcher stop - has started: " + "\(hasStarted)")
         if(!hasStarted){return}/*<--only stop if it has been started*/
         FSEventStreamStop(streamRef!)
         FSEventStreamInvalidate(streamRef!)//Invalidates the stream, like CFRunLoopSourceInvalidate() does for a CFRunLoopSourcRef.
