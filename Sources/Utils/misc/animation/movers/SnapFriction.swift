@@ -11,7 +11,9 @@ class SnapFriction:Friction {
         //keep some velocity alive
         //when at snap stop
         if(velocity <= 1.0){
-            if((value %% snap) == 0){
+            let modulo:CGFloat = (value %% snap)
+            
+            if(modulo.isNear(0, 1)){//modulo is closer than 1 px to 0,
                 
             }
             velocity = 1.0
