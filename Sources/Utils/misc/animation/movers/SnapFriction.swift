@@ -12,9 +12,9 @@ class SnapFriction:Friction {
         //when at snap stop
         if(velocity <= 1.0){
             let modulo:CGFloat = (value %% snap)
-            
+            //Swift.print("modulo: " + "\(modulo)")
             if(modulo.isNear(0, 1)){//modulo is closer than 1 px to 0,
-                
+                stop()
             }
             velocity = 1.0
         }else{
