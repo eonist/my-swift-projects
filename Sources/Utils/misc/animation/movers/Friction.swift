@@ -27,6 +27,7 @@ class Friction:Mover{
         if(value.toFixed(3) == lastValue.toFixed(3)) {//this could be easier solved with a epsilon value assert
             Swift.print("stop")
             hasStopped = true
+            stop()//new
         }
         lastValue = value
     }
