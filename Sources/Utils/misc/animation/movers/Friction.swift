@@ -7,8 +7,7 @@ class Friction:Mover{
     var hasStopped:Bool = true
     init(_ view:IAnimatable,  _ callBack:@escaping (CGFloat)->Void,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98){
         self.frictionStrength = frictionStrength
-        super.init(view, callBack, value, velocity)
-        
+        super.init(view, callBack, value, velocity) 
     }
     override func updatePosition() {
         super.updatePosition()
