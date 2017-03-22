@@ -34,8 +34,7 @@ class RubberBand:Mover{
     }
     override func onFrame(){
         if(hasStopped){/*stop the frameTicker here*/
-            //CVDisplayLinkStop(displayLink)
-            stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
+            stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
         }else{/*only move the view if the mover is not stopped*/
             updatePosition()/*tick the mover on every frame*/
             callBack(result)/*indirect manipulation aka momentum*/
@@ -43,7 +42,7 @@ class RubberBand:Mover{
     }
     /**
      * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
-     * NOTE: When in inderect motion: Springs back to its limit
+     * NOTE: When in inderect motion: Springs back to it's limit
      */
     override func updatePosition() {
         if(value > maskFrame.min){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
