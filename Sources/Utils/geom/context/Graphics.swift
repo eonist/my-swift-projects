@@ -117,7 +117,7 @@ public class Graphics{
         context!.addPath(path)/*Adds the path to the context*/
         beginOuterShadow(path)
         switch true{
-        case (fillMode == FillMode.None):/*no fill*/
+            case (fillMode == FillMode.None):/*no fill*/
                 break;
             case (fillMode == FillMode.Color):/*fill*/
                 context!.drawPath(using: CGPathDrawingMode.fill)
