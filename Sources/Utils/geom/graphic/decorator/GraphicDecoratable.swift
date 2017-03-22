@@ -26,7 +26,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
-     * NOTE: This method gets it's call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
+     * NOTE: This method gets it's call from the Graphic instance through a functional selector. Which gets it's call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     func handleSelector(layer:CALayer,ctx:CGContext) {
         //isDrawing = false//reset if(!isDrawing){}
