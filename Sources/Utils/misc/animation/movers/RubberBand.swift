@@ -76,7 +76,6 @@ class RubberBand:Mover{
      * When the max val reaches beyond the min
      */
     func applyBottomBoundary(){
-        //Swift.print("applyBottomBoundary() value: " + "\(value)")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             let totHeight = (contentFrame.len - maskFrame.len)//(tot height of items - height of mask)
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
@@ -95,14 +94,15 @@ class RubberBand:Mover{
      * NOTE: Basically stops listening for the onFrame event
      */
     func checkForStop() {
-        //Swift.print("checkForStop() " + "\(value.toFixed(3))")
         if(!isDirectlyManipulating && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
-            //Swift.print("stop velocity: " + "\(velocity)")
             hasStopped = true
         }
     }
 }
-private class CustomFriction{/*Creates the displacement friction effect. Like you finger is slightly losing its grip*/
+/**
+ * Creates the displacement friction effect. Like you finger is slightly losing its grip
+ */
+private class CustomFriction{
     /**
      * NOTE: the vertical limit is the point where the value almost doesn't move at all
      * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
