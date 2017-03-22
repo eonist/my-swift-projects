@@ -19,7 +19,7 @@ class RubberBand:Mover{
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     /*Interim values*/
-    var result:CGFloat = 0/*output value*/
+    var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
