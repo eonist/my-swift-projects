@@ -68,7 +68,13 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * This is a delegate handler method
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      * NOTE: this is a delegate method for the shapes in Graphic
-     * NOTE: 1. You call setDisaplay on the CALAyer 2.it calls draw(...) 3. since a delegate is attached to the CALAyer the draw(...) calls Graphic.draw(...) 4. which then calls the attached selector 5. which calls all the way up to the decorator chain to the last decorator. Which then  
+     * 1. You call setDisaplay on the CALAyer
+     * 2. it calls draw(...) 
+     * 3. since a delegate is attached to the CALAyer the draw(...) calls Graphic.draw(...) 
+     * 4. which then calls the attached selector 
+     * 5. which calls all the way up to the decorator chain to the last decorator. 
+     * 6. Which then calls all the methods for form and apperance 
+     * 7. which eventually calls Graphics and finalizes the design.
      */
     func draw(_ layer: CALayer, in ctx:CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
         selector!(layer, ctx)/*call the selector*/
