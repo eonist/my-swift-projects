@@ -16,12 +16,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * Setup the geometry and init the display process of fill and line
-     * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
+     * ⚠️️IMPORTANT⚠️️: It's the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*setup the fill geometry, draw the fileShape*/
+        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*👈 setup the fill geometry, draw the fileShape*/
         else{graphic.fillShape.setNeedsDisplay()}/*if the fillStyle is nil, we want the possible last drawing to disapear*/
-        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*setup the line geometry, draw the lineShape*/
+        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*👈 setup the line geometry, draw the lineShape*/
         else{graphic.lineShape.setNeedsDisplay()}
     }
     /**
@@ -40,7 +40,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * This method results in the actual drawing of the fill to the context
-     * NOTE:Conceptually this is equvielnt to the line call
+     * NOTE: Conceptually this is equvielnt to the line call
      */
     override func fill(){
         beginFill()
