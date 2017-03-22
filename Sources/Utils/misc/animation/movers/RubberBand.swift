@@ -34,7 +34,6 @@ class RubberBand:Mover{
         super.init(animatable, callBack, value, velocity)
     }
     override func onFrame(){
-        //Swift.print("RubberBand.onFrame")
         if(hasStopped){/*stop the frameTicker here*/
             //CVDisplayLinkStop(displayLink)
             stop()//<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block
