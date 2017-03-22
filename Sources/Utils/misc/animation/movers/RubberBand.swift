@@ -51,6 +51,8 @@ class RubberBand:Mover{
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
                 velocity *= friction
                 value += velocity
+                
+                //if you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
             }
             checkForStop()/*Assert if the movement is close to stopping, if it is then stop it*/
             result = value
