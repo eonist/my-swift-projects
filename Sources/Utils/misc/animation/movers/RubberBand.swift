@@ -52,7 +52,7 @@ class RubberBand:Mover{
                 velocity *= friction
                 value += velocity
             }
-            checkForStop()/*assert if the movement is close to stopping, if it is then stop it*/
+            checkForStop()/*Assert if the movement is close to stopping, if it is then stop it*/
             result = value
         }
     }
