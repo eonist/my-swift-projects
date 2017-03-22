@@ -109,7 +109,6 @@ private class CustomFriction{
      */
     static func constraintValueWithLog(_ value:CGFloat, _ limit:CGFloat) -> CGFloat {
         let multiplier = log10(1.0 + value/limit)
-        //Swift.print("multiplier: " + "\(multiplier)" + " yPosition: " + "\(yPosition)")
         return limit * multiplier
     }
     /**
