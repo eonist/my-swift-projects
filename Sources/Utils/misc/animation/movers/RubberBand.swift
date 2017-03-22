@@ -58,7 +58,7 @@ class RubberBand:Mover{
 }
 extension RubberBand{
     /**
-     * if you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
+     * If you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
      */
     func applyFriction(){
         velocity *= friction
