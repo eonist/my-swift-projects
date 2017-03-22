@@ -15,6 +15,6 @@ class Mover:BaseAnimation {
     }
     override func onFrame(){
         updatePosition()//new
-        callBack(value)
+        callBack(value)//new
     }
 }
