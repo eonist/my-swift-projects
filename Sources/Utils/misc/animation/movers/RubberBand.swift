@@ -8,7 +8,7 @@ import Cocoa
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
 class RubberBand:Mover{
-    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis
+    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
     /*Initial values*/
@@ -23,7 +23,6 @@ class RubberBand:Mover{
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     
-    //var topMargin:CGFloat = 0
     init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
@@ -47,7 +46,7 @@ class RubberBand:Mover{
      * NOTE: When in inderect motion: Springs back to its limit
      */
     override func updatePosition() {
-        if(value > maskFrame.min /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
+        if(value > maskFrame.min){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
