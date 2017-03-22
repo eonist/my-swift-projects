@@ -55,8 +55,6 @@ class RubberBand:Mover{
             result = value
         }
     }
-}
-extension RubberBand{
     /**
      * If you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
      */
@@ -64,6 +62,8 @@ extension RubberBand{
         velocity *= friction
         value += velocity
     }
+}
+extension RubberBand{
     /**
      * When the min val reaches beyond max
      */
