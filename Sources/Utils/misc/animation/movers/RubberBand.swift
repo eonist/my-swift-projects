@@ -15,7 +15,7 @@ class RubberBand:Mover{
     var maskFrame:Frame/*represents the visible part of the content*/
     var contentFrame:Frame/*represents the total size of the content*/
     var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
-    var springEasing:CGFloat/*the easeOut effect on the spring*/
+    var springEasing:CGFloat/*the easeOut effect on the spring (aka the dampener)*/
     var spring:CGFloat/*the strength of the spring*/
     var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     /*Interim values*/
