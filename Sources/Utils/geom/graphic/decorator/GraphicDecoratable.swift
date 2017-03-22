@@ -12,7 +12,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
         super.init()/*This doesn't init anything, its just needed to support the setting of self as delegate*/
-        graphic.selector = self.handleSelector
+        graphic.selector = self.handleSelector/*👈 Assigns the selector ⚠️️IMPORTANT⚠️️ It sort of ad-hocks it self down the decorator chain*/
     }
     /**
      * Setup the geometry and init the display process of fill and line
