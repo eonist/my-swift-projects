@@ -19,10 +19,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * ⚠️️IMPORTANT⚠️️: It's the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*👈 setup the fill geometry, draw the fileShape*/
-        else{graphic.fillShape.setNeedsDisplay()}/*if the fillStyle is nil, we want the possible last drawing to disapear*/
-        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*👈 setup the line geometry, draw the lineShape*/
-        else{graphic.lineShape.setNeedsDisplay()}
+        if(getGraphic().fillStyle != nil){drawFill();}/*👈 setup the fill geometry, draw the fileShape*/
+        graphic.fillShape.setNeedsDisplay()/*if the fillStyle is nil, we want the possible last drawing to disapear*/
+        if(getGraphic().lineStyle != nil){drawLine();}/*👈 setup the line geometry, draw the lineShape*/
+        graphic.lineShape.setNeedsDisplay()
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
