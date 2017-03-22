@@ -77,7 +77,7 @@ class RubberBand:Mover{
      */
     func applyBottomBoundary(){
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
-            let totHeight = (contentFrame.len - maskFrame.len)//(tot height of items - height of mask)
+            let totHeight = (contentFrame.len - maskFrame.len)/*tot height of items - height of mask*/
             let normalizedValue:CGFloat = totHeight + value/*goes from 0 to -100*/
             result = -totHeight + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
@@ -119,7 +119,6 @@ private class CustomFriction{
         return limit * multiplier
     }
 }
-
 extension RubberBand{
     //DEPRECATED,Legacy support
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
