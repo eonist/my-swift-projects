@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * NOTE: Shape is a convenient way to seperate drawing the stroke and the fill. ("Composite drawing") 
+ * NOTE: Ultimatly you should have both stroke and fill in the same layer, as I suspect both contexts are redrawn if either change anyway. 
  */
 class Shape:CALayer{
     //override func containsPoint(p: CGPoint) -> Bool {return true}
