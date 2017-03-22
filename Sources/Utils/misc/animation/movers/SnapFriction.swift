@@ -1,10 +1,11 @@
 import Foundation
 
 class SnapFriction:Friction {
-    var minVelocity:CGFloat = 0.8
     var snap:CGFloat
-    init(_ view:IAnimatable,  _ callBack:@escaping (CGFloat)->Void,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98, _ snap:CGFloat = 0){
+    var minVelocity:CGFloat = 0.8
+    init(_ view:IAnimatable,  _ callBack:@escaping (CGFloat)->Void,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98, _ snap:CGFloat = 0,_ minVelocity:CGFloat = 0.8){
         self.snap = snap
+        self.minVelocity = minVelocity
         super.init(view, callBack, value, velocity, frictionStrength)
     }
     override func applyFriction() {
