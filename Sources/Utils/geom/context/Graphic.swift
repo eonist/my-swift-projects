@@ -16,7 +16,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType
     //the bellow line was upgraded to swift 3
-    var selector: ((_ layer:CALayer, _ ctx:CGContext) -> ())?/*this holds any method assigned to it that has it's type signature*/
+    var selector: ((_ layer:CALayer, _ ctx:CGContext) -> ())?/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
     //override var wantsUpdateLayer:Bool {return true}
@@ -35,7 +35,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         
-        self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
+        self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         //self.setDelegate(self)
     }
