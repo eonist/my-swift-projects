@@ -19,11 +19,9 @@ class Shape:CALayer{
         return super.hitTest(p)
     }
     override func setNeedsDisplay() {
-        //Swift.print("Shape.setNeedsDisplay()")
         super.setNeedsDisplay()
     }
     override func draw(in ctx:CGContext) {
-        //Swift.print("Shape.draw(ctx)")
         super.draw(in: ctx)
     }
     /*override func containsPoint(p: CGPoint) -> Bool {
