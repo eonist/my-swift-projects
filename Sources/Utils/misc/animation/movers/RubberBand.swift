@@ -32,8 +32,6 @@ class RubberBand:Mover{
         self.limit = limit
         super.init(animatable, callBack, value, velocity)
     }
-}
-extension RubberBand{
     override func onFrame(){
         if(hasStopped){/*stop the frameTicker here*/
             stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
@@ -58,6 +56,8 @@ extension RubberBand{
             result = value
         }
     }
+}
+extension RubberBand{
     /**
      * When the min val reaches beyond max
      */
