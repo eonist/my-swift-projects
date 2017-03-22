@@ -8,7 +8,6 @@ import QuartzCore
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  * TODO: Write an example
  */
-
 class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
     //let delegate = LayerDelegate()
     lazy var fillShape:Shape = Shape()//TODO:Graphic.init(): dont use lazy, they could be the problem to alot of things, casting problems etc
