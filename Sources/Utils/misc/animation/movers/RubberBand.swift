@@ -47,7 +47,6 @@ class RubberBand:Mover{
      * NOTE: When in inderect motion: Springs back to its limit
      */
     override func updatePosition() {
-        //Swift.print("RubberBand.updatePosition() frame.y : " + "\((frame.y))")
         if(value > maskFrame.min /*+ topMargin*/){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
