@@ -49,10 +49,7 @@ class RubberBand:Mover{
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
-                velocity *= friction
-                value += velocity
-                
-                //if you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
+                applyFriction()
             }
             checkForStop()/*Assert if the movement is close to stopping, if it is then stop it*/
             result = value
@@ -60,6 +57,13 @@ class RubberBand:Mover{
     }
 }
 extension RubberBand{
+    /**
+     * if you extract this code to a method 🚀, and then override it with the snapFriction equation, then it should work just like that!
+     */
+    func applyFriction(){
+        velocity *= friction
+        value += velocity
+    }
     /**
      * When the min val reaches beyond max
      */
