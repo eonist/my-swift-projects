@@ -199,7 +199,7 @@ class CGPointParser{
      * TODO: rename to average?
      * TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
      */
-    static func median(_ points:Array<CGPoint>) -> CGPoint{
+    static func median(_ points:[CGPoint]) -> CGPoint{
         var median:CGPoint = CGPoint()
         for point:CGPoint in points {
             median.x += point.x//TODO: possibly use point.add?, you can also just do median += point here
