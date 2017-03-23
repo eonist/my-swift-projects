@@ -68,6 +68,7 @@ extension RubberBand{
      * When the min val reaches beyond max
      */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
+        Swift.print("applyTopBoundary")
         let distToGoal:CGFloat = value - maskFrame.min
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
@@ -83,6 +84,7 @@ extension RubberBand{
      * When the max val reaches beyond the min
      */
     func applyBottomBoundary(){
+        Swift.print("applyBottomBoundary")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value/*goes from 0 to -100*/
