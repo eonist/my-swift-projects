@@ -283,6 +283,8 @@ extension Temp:UnWrappable{
 **2017-mar** 
 - RubberBand now supports X & Y axis  
 
+## Support
+Please, don't hesitate to file an issue if you have questions.
 
 
 [MIT License](http://opensource.org/licenses/MIT) 
