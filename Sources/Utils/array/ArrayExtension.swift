@@ -39,6 +39,9 @@ extension Array {
     mutating func removeAt(_ i:Int){
         if(i != -1){_ = self.splice2(i, 1)}/*1 equals, does not exist*/
     }
+    static func shiftAppend<T>(item:T) -> [T]{
+        ArrayModifier.shiftAppend(self, item)
+    }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
      * NOTE: If you need a mutating concatination behaviour use the += operator
