@@ -444,7 +444,12 @@ class ArrayModifier{
         arr.insert(item, at: index)
         return arr
     }
-    static func shiftAppend(_ arr:inout [T], item:T) -> [T]{
-        
+    /**
+     *
+     */
+    static func shiftAppend<T>(_ arr:inout [T], item:T) -> [T]{
+        arr.shift
+        arr.append(item)
+        return arr
     }
 }
