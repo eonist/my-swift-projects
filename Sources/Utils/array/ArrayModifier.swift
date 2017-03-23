@@ -445,10 +445,11 @@ class ArrayModifier{
         return arr
     }
     /**
-     *
+     * Removes the first item then adds an item to the end of the arr
+     * [a,b,c].shiftAppend(d)//[b,c,d]
      */
     static func shiftAppend<T>(_ arr:inout [T], item:T) -> [T]{
-        arr.shift
+        _ = arr.shift()
         arr.append(item)
         return arr
     }
