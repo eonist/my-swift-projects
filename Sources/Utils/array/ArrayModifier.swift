@@ -7,8 +7,8 @@ class ArrayModifier{
      * NOTE: unShift is the same as "prepend"
 	 * original position, i, to i+1.
 	 * OUTPUT:
-	 * a,b,c,d
-     * _,a,b,c,d
+	 * let arr = [a,b,c,d];arr.unShift(X)
+     * print(arr)//[x,a,b,c,d]
      * RETURNS: An integer representing the new length of the array
      */
     static func unshift<T>(_ array: inout [T],_ item:T, _ index:Int = 0)->Int{
