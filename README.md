@@ -139,9 +139,9 @@ FileParser.content("~/Desktop/temp.txt".tildePath)//Output: test
 - Makes parsing and modifying with RegEx easier  
 
 ```swift
-RegExp.match("My name is Taylor Swift","My name is Taylor (.*)")//Swift
-RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
-RegExp.test("hello world","o.*o")//true
+"My name is Taylor Swift".match("My name is Taylor (.*)")//Swift
+"yeah yeah".replace("(\\b\\w+\\b)", "bla")//bla bla
+"hello world".test("o.*o")//true
 /*RegExp Exec:*/
 let str = "blue:0000FF green:00FF00 red:FF0000"
 RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
