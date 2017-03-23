@@ -2,11 +2,11 @@ import Foundation
 
 class ArrayModifier{
 	/**
-	 * Adds one or more elements to the beginning of an array and returns the new
-	 * PARAM: length of the array. The other elements in the array are moved from their 
+	 * Adds one or more elements to the beginning of an array and returns the new length of the array.
+	 * NOTE: The other elements in the array are moved from their
      * NOTE: unShift is the same as "prepend"
 	 * original position, i, to i+1.
-	 * OUTPUT
+	 * OUTPUT:
 	 * a,b,c,d
      * _,a,b,c,d
      * RETURNS: An integer representing the new length of the array
