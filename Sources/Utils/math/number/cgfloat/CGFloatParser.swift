@@ -160,4 +160,15 @@ public class CGFloatParser{
         interpolatedRange.append(max)
         return interpolatedRange
     }
+    /**
+     * 
+     * NOTE: The example below calculates the arithmetic mean (also known as the average) for a list of numbers of any length
+     */
+    func arithmeticMean(numbers: Double...) -> Double {
+        var total: Double = 0
+        for number in numbers {
+            total += number
+        }
+        return total / Double(numbers.count)
+    }
 }
