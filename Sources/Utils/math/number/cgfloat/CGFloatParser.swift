@@ -169,10 +169,7 @@ public class CGFloatParser{
     func average(_ numbers:[CGFloat]) -> CGFloat {
         return numbers.reduce(0, +) / numbers.count.cgFloat
         /*var total: CGFloat = 0
-         for number in numbers {
-         total += number
-         }
-         return total / CGFloat(numbers.count)
-        */
+         for number in numbers {total += number}
+         return total / CGFloat(numbers.count)*/
     }
 }
