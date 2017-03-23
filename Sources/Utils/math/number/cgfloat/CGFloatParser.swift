@@ -163,12 +163,14 @@ public class CGFloatParser{
     /**
      * 
      * NOTE: The example below calculates the arithmetic mean (also known as the average) for a list of numbers of any length
+     * EXAMPLE: avg(1, 2, 3, 4, 5)// returns 3.0, which is the arithmetic mean of these five numbers
+     * EXAMPLE: arithmeticMean(3, 8.25, 18.75)// returns 10.0, which is the arithmetic mean of these three numbers
      */
-    func arithmeticMean(numbers: Double...) -> Double {
-        var total: Double = 0
+    func arithmeticMean(numbers: CGFloat...) -> CGFloat {
+        var total: CGFloat = 0
         for number in numbers {
             total += number
         }
-        return total / Double(numbers.count)
+        return total / CGFloat(numbers.count)
     }
 }
