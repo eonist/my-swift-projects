@@ -447,6 +447,7 @@ class ArrayModifier{
     /**
      * Removes the first item then adds an item to the end of the arr
      * [a,b,c].shiftAppend(d)//[b,c,d]
+     * CAUTION: [0,0,0,0,5].avg//1 Sometimes you want this to result in 5. use [].filter{$0 != 0} to remove 0
      */
     static func shiftAppend<T>(_ arr:inout [T], _ item:T) -> [T]{
         _ = arr.shift()
