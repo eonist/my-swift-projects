@@ -39,7 +39,7 @@ extension Array {
     mutating func removeAt(_ i:Int){
         if(i != -1){_ = self.splice2(i, 1)}/*1 equals, does not exist*/
     }
-    mutating func shiftAppend(item:Element) -> [Element]{/*Convenience*/
+    mutating func shiftAppend(_ item:Element) -> [Element]{/*Convenience*/
         return ArrayModifier.shiftAppend(&self, item)
     }
     /**
