@@ -13,7 +13,7 @@ class FileUtils{
 	/**
 	 * PARAM: filePaths is an array of file paths
 	 */
-	static func openFiles(_ filePaths:Array<String>){
+	static func openFiles(_ filePaths:[String]){
 		for filePath in filePaths{
 			openFile(filePath)
 		}	
