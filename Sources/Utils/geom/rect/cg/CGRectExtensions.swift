@@ -54,9 +54,9 @@ extension CGRect {
     var nsRect:NSRect {return NSRectFromCGRect(self)}
     /**
      * TODO: Maybe for x,y,width,height aswell?
-     * TODO: Make it enum! its faster
+     * TODO: Make it enum! it's faster
      */
-    subscript(key: String) -> CGPoint {/*Easy Access to corners*/
+    subscript(key:String) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{
                case Alignment.topLeft:return topLeft
