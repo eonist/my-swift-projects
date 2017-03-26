@@ -14,9 +14,12 @@ extension CGFloat {
     func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
     func interpolate(_ to:CGFloat, _ fraction:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,fraction)}
 }
-extension Array where Element == CGFloat{
+extension Sequence where Element == CGFloat {
     var average:CGFloat {CGFloatParser.average(self)}
 }
+/*extension Array where Element == CGFloat{
+ 
+ }*/
 /**
  * Swift 3 removed the possibility to cast CGFloat to Bool This method brings back this functionality.
  * JUSTIFICATION: Most other languages allow this functionality, and is familiar to the user the alternative is verbose code. Which makes code cognitively harder to read.
