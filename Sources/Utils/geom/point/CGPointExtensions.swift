@@ -30,6 +30,24 @@ extension CGPoint{
     func divide(_ p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
     /*Asserters*/
     func equals(_ p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
+    
+    
+    subscript(dir:Dir) -> CGFloat {/*Convenience*/
+        get {
+            if(dir == .hor){
+                return self.x
+            }else if(dir == .ver){
+                return self.y
+            }else{fatalError("not supported")}
+        }set {
+            if(dir == .hor){
+                self.x = newValue
+            }else if(dir == .ver){
+                self.y = newValue
+            }else{fatalError("not supported")}
+        }
+    }
+
 }
 /*Convenient operators*/
 public func +(a: CGPoint, b: CGPoint) -> CGPoint { return PointParser.add(a, b)}//Adds the coordinates of point p to the coordinates of this point to create a new point

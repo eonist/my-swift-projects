@@ -25,8 +25,13 @@ extension NSEvent {
             eventMonitor = nil
         }
     }
-    
+
+    var scrollingDelta:CGPoint {return CGPoint(self.scrollingDeltaX,self.scrollingDeltaY)}/*Convenience*/
+    /*func scrollingDelta(_ dir:Dir)->CGFloat{/*Convenience*/
+     return dir == .hor ? self.scrollingDeltaX : (dir == .ver ? self.scrollingDeltaY : NaN)
+     }*/
 }
+
 /**
  * This is on the idea stage for now
  */
