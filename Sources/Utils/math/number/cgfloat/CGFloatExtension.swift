@@ -13,6 +13,7 @@ extension CGFloat {
     var isPositive:Bool{return NumberAsserter.positive(self,0)}
     func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
     func interpolate(_ to:CGFloat, _ fraction:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,fraction)}
+    var average:CGFloat {CGFloat}
 }
 /**
  * Swift 3 removed the possibility to cast CGFloat to Bool This method brings back this functionality.
