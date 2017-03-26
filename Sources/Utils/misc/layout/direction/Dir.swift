@@ -1,5 +1,5 @@
 import Foundation
 
-class Dir {
-
+public enum Dir {
+    case hor, ver
 }
