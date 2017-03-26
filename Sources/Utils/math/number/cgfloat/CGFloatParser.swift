@@ -165,8 +165,8 @@ public class CGFloatParser{
      * EXAMPLE: average([1, 2, 3, 4, 5])// returns 3.0, which is the arithmetic mean of these five numbers
      * EXAMPLE: average([3, 8.25, 18.75])// returns 10.0, which is the arithmetic mean of these three numbers
      */
-    static func average(_ numbers:[CGFloat]) -> CGFloat {
-        return numbers.reduce(0, +) / numbers.count.cgFloat
+    static func average(_ nums:[CGFloat]) -> CGFloat {
+        return nums.count == 0 ? 0 : nums.reduce(0, +) / nums.count.cgFloat
         /*var total: CGFloat = 0
          for number in numbers {total += number}
          return total / CGFloat(numbers.count)*/
