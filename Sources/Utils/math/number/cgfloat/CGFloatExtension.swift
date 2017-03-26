@@ -14,8 +14,10 @@ extension CGFloat {
     func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
     func interpolate(_ to:CGFloat, _ fraction:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,fraction)}
 }
-extension Sequence where Element == CGFloat {
-    var average:CGFloat {CGFloatParser.average(self)}
+
+
+extension Sequence where Iterator.Element == CGFloat {
+    var average:CGFloat {return CGFloatParser.average(self as! [CGFloat])}
 }
 /*extension Array where Element == CGFloat{
  
