@@ -6,7 +6,7 @@ import Cocoa
 class SVGUtils {
 	/**
 	 * Returns svg syntax in an XML instance derived from PARAM: svg 
-	 * PARAM: svg (isntance of a custom SVG class that is easy to work with)
+	 * PARAM: svg (instance of a custom SVG class that is easy to work with)
 	 * NOTE: for the reverse function look into using the adobe native functionality namespaceDeclarations, namespace to also include the namespace
 	 */
 	static func xml(_ svg:SVG)->XML {// :TODO: refactor to one or loop?

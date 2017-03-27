@@ -110,7 +110,7 @@ class DisplayArcUtils {
         //Swift.print("Angle.normalize2(Angle.angle(c, start): " + Angle.normalize2(Angle.angle(c, start)));
         let startAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, start)-rot))/*<- new code (used to use normalize2)*/
         let endAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(axis.x, axis.y, Trig.normalize(Trig.angle(c, end)-rot))/*<- new code (used to use normalize2)*/
-        //return ["start":,"end":,"center":,"xRadii":,"yRadii":r.y]//return new Arc4(r.x, r.y, Angle.flip(startAngle, multiplier), Angle.flip(endAngle, multiplier), c,); // :TODO: why do we have to flip the angles?
+        //return ["start":,"end":,"center":,"xRadii":,"yRadii":r.y]//return Arc4(r.x, r.y, Angle.flip(startAngle, multiplier), Angle.flip(endAngle, multiplier), c,); // :TODO: why do we have to flip the angles?
         r = CGPoint(abs(r.x),abs(r.y))/*<--BETA: This is new, we need to clamp the radii values to be positive, since CGPath can only use posetive radii values*/
         return AngleArc(/*startAngle*/Trig.flip(startAngle, multiplier),/*endAngle*/Trig.flip(endAngle, multiplier),r.x,r.y,c,rot)
     }
