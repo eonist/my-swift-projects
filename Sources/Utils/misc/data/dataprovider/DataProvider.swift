@@ -24,6 +24,7 @@ import Foundation
  * // :TODO: sortOn
  * // :TODO: Do we need a DataProviderItem?
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
+ * TODO: ⚠️️ Make it in POP ⚠️️
  */
 class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
@@ -76,6 +77,9 @@ extension DataProvider{
             if(items[i][key] == value) {return i}
         }
         return nil
+    }
+    func item(){
+        
     }
     /**
      * Returns an item at a spessific index
