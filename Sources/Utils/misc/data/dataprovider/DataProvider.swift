@@ -78,17 +78,18 @@ extension DataProvider{
         }
         return nil
     }
-    func item(){
-        
-    }
     /**
      * Returns an item at a spessific index
      */
-    func getItemAt(_ index:Int) -> [String:String]? {
-        if(index < self.items.count) {return self.items[index]}
-        Swift.print("\(self)" + "no item at the index of " + "\(index)")
+    func item( _ at:Int) -> [String:String]?{
+        if(at < self.items.count) {return self.items[at]}
+        Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
     }
+    
+    
+        
+    
     /**
      * Returns the item index passed through the PARAM item
      */
@@ -210,4 +211,8 @@ extension DataProvider{
             if(i != exceptionIndex){self.items[exceptionIndex][key] = value}
         }
     }
+}
+//DEPRECATED
+extension DataProvider{
+    func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
 }
