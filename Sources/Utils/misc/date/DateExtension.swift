@@ -11,7 +11,7 @@ extension Date {
         return DateParser.dayName(self)
     }
     var shortDayName:String{/*Convenience*/
-        return DateParser.shortDate(self)
+        return DateParser.shortDayName(self)
     }
     var monthName:String? {/*Convenience*/
         return DateParser.monthName(self)

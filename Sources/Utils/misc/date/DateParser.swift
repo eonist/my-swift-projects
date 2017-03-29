@@ -74,6 +74,9 @@ class DateParser {
         dateFormatter.dateFormat = "MMMM"
         return dateFormatter.string(from: date)
     }
+    /**
+     * Returns m,t,w,t,f,s,s for date
+     */
     static func shortDayName(_ date:Date)->String{
         return date.dayName != nil ? String(date.dayName!.characters.first!) : ""
     }
