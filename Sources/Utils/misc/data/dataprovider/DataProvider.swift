@@ -40,6 +40,10 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
         super.init()
     }
 }
+
+//Continue here: 
+    //Keep modernizing the api
+
 /*Parser*/
 extension DataProvider{
     var count:Int{return self.items.count}/*convenience*/
@@ -80,13 +84,14 @@ extension DataProvider{
     /**
      * Returns the index of the first item that has the PARAM: value at PARAM: key
      */
-    func index(_ key:String,_ value:String) -> Int?{
+    func idx(_ key:String,_ value:String) -> Int?{
         let count = items.count
         for i in 0..<count{
             if(items[i][key] == value) {return i}
         }
         return nil
     }
+    
     /**
      * Returns the item index passed through the PARAM item
      */
@@ -209,9 +214,10 @@ extension DataProvider{
         }
     }
 }
-//DEPRECATED
+//DEPRECATED, legacy support
 extension DataProvider{
     func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
     func getItemIndex(_ item:[String:String])->Int{return idx(item)}
     func getIndex(_ title:String)->Int?{return idx(title)}
+    func index(_ key:String,_ value:String) -> Int?{return idx(key,value)}
 }
