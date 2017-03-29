@@ -28,6 +28,7 @@ import Foundation
  */
 class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
+    var count:Int{return self.items.count}
     //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
@@ -42,7 +43,6 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
 }
 /*Parser*/
 extension DataProvider{
-    var count:Int{return self.items.count}/*convenience*/
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Creates a DataProvider instance from an XML instance
