@@ -68,6 +68,15 @@ extension DataProvider{
         Swift.print("\(ClassParser.type(self))" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
         return nil
     }
+    
+    /**
+     * Returns an item at a spessific index
+     */
+    func item( _ at:Int) -> [String:String]?{
+        if(at < self.items.count) {return self.items[at]}
+        Swift.print("\(self)" + "no item at the index of " + "\(at)")
+        return nil
+    }
     /**
      * Returns the index of the first item that has the PARAM: value at PARAM: key
      */
@@ -79,27 +88,15 @@ extension DataProvider{
         return nil
     }
     /**
-     * Returns an item at a spessific index
-     */
-    func item( _ at:Int) -> [String:String]?{
-        if(at < self.items.count) {return self.items[at]}
-        Swift.print("\(self)" + "no item at the index of " + "\(at)")
-        return nil
-    }
-    
-    
-        
-    
-    /**
      * Returns the item index passed through the PARAM item
      */
-    func getItemIndex(_ item:[String:String])->Int{// :TODO: rename to indexToItem?!?
+    func idx(_ item:[String:String])->Int{
         return self.items.index{$0 == item} ?? -1//upgraded to swift 3 syntax
     }
     /**
-     *
+     * Returns index for title
      */
-    func getIndex(_ title:String)->Int?{
+    func idx(_ title:String)->Int?{
         let count = self.items.count
         for i in 0..<count{
             let item:[String:String] = self.items[i]
@@ -215,4 +212,6 @@ extension DataProvider{
 //DEPRECATED
 extension DataProvider{
     func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
+    func getItemIndex(_ item:[String:String])->Int{return idx(item)}
+    func getIndex(_ title:String)->Int?{return idx(title)}
 }
