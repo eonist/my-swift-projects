@@ -159,12 +159,11 @@ extension DataProvider{
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))
         return removedItem
     }
-    
     /**
      * Removes the item passed through the PARAM item
      * RETURNS: the removed item
      */
-    func removeItem(_ item:[String:String])->[String:String] {
+    func remove(_ item:[String:String])->[String:String] {
         let index:Int = self.items.index{$0 == item} ?? -1//-1 indicates no result found
         onEvent(DataProviderEvent(DataProviderEvent.remove, /*[item],*/ index,index+1,self))
         return self.items.splice2(index,1)[0]
@@ -220,4 +219,5 @@ extension DataProvider{
     func addItem(_ item:[String:String]) {add(item)}
     func addItemAt(_ item:[String:String], _ index:Int){add(item,index)}
     func removeItemAt(_ index:Int)->[String:String] {return remove(index)}
+    func removeItem(_ item:[String:String])->[String:String] {return remove(item)}
 }
