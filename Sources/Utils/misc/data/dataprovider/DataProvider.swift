@@ -40,10 +40,6 @@ class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers ass
         super.init()
     }
 }
-
-//Continue here: 
-    //Keep modernizing the api
-
 /*Parser*/
 extension DataProvider{
     var count:Int{return self.items.count}/*convenience*/
@@ -90,7 +86,6 @@ extension DataProvider{
         }
         return nil
     }
-    
     /**
      * Returns the item index passed through the PARAM item
      */
@@ -127,7 +122,7 @@ extension DataProvider{
      * Adds an array to the exisiting items array
      * PARAM: items is an Array comprised of objects
      */
-    func addItems(_ items:[[String:String]]) {
+    func add(_ items:[[String:String]]) {
         self.items += items//concats
         super.onEvent(DataProviderEvent(DataProviderEvent.add, self.items.count - items.count, self.items.count,self))
     }
@@ -135,7 +130,7 @@ extension DataProvider{
      * Adds an item to the end of the Items Array
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func addItem(_ item:[String:String]) {
+    func add(_ item:[String:String]) {
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,self.items.count-1,self.items.count,self))
     }
@@ -143,7 +138,7 @@ extension DataProvider{
      * Adds an item to a spesific index
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func addItemAt(_ item:[String:String], _ index:Int){
+    func add(_ item:[String:String], _ index:Int){
         //Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
@@ -220,4 +215,7 @@ extension DataProvider{
     func getIndex(_ title:String)->Int?{return index(title)}
     func getItem(_ value:String, key:String = "title")->[String:String]?{return item(value,key)}
     func getValue(_ index:Int,_ key:String)->String?{return value(index,key)}
+    func addItems(_ items:[[String:String]]) {add(items)}
+    func addItem(_ item:[String:String]) {add(item)}
+    func addItemAt(_ item:[String:String], _ index:Int){add(item,index)}
 }
