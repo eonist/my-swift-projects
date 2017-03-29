@@ -35,21 +35,13 @@ extension Date {
     var shortDayName:String{
         return dayName != nil ? String(dayName!.characters.first!) : ""
     }
-    /**
-     * TODO: move into DateParser
-     */
-    var monthName:String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM"
-        return dateFormatter.string(from: self)
+    var monthName:String? {/*Convenience*/
+        return DateParser.monthName(self)
     }
     var shortDate:String{/*Convenience*/
         return DateParser.shortDate(self)
     }
-    /**
-     * NSDate().offsetByDays(-3)//an NSDate instance that is 3 days ago
-     */
-    func offsetByDays(_ days:Int)->Date{
+    func offsetByDays(_ days:Int)->Date{/*Convenience*/
         return DateModifier.offsetByDays(self,days)
     }
 }
