@@ -26,7 +26,10 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  * TODO: ⚠️️ Make it in POP ⚠️️
  */
-class DataProvider:EventSender{// :TODO: move methods into parsers,modifiers asserters
+protocol DataProvidable{
+    func item(_ at:Int) -> [String:String]?
+}
+class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     var count:Int{return self.items.count}
     //private var allowDuplicates:Bool = true
