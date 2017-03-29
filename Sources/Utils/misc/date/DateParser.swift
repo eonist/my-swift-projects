@@ -66,12 +66,17 @@ class DateParser {
         //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
-    /**
-     * TODO: move into DateParser
-     */
     static func monthName(_ date:Date) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: date)
+    }
+    static func shortDayName(_ date:Date)->String{
+        return date.dayName != nil ? String(date.dayName!.characters.first!) : ""
+    }
+    static func dayName(_ date:Date) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
     }
 }
