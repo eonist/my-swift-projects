@@ -9,6 +9,7 @@ extension Date {
     }
     /**
      * beta
+     * TODO: move into DateParser
      */
     var numOfDaysInMonth:Int{
         //parts to NSDate:
@@ -20,14 +21,23 @@ extension Date {
         //Swift.print("days.length: " + "\(days.length)")
         return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
     }
+    /**
+     * TODO: move into DateParser
+     */
     var dayName:String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self)
     }
+    /**
+     * TODO: move into DateParser
+     */
     var shortDayName:String{
         return dayName != nil ? String(dayName!.characters.first!) : ""
     }
+    /**
+     * TODO: move into DateParser
+     */
     var monthName:String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
@@ -37,6 +47,7 @@ extension Date {
      * NOTE: there are also other date styles aviable: MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle, "EEEE"
      * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
      * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
+     * TODO: move into DateParser
      */
     var shortDate:String{//TODO: move the content bellow into DateParser
         let dateFormatter = DateFormatter()

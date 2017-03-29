@@ -52,4 +52,18 @@ class DateParser {
         if(second != nil){components.second = second!}
         return calendar.date(from: components)
     }
+    /**
+     * NOTE: there are also other date styles aviable: MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle, "EEEE"
+     * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
+     * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
+     * TODO: move into DateParser
+     */
+    func shortDate(_ date:Date) -> String{//TODO: move the content bellow into DateParser
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateStyle = .short//swift 3 -> was: dateFormatter.style.short
+        let convertedDate = dateFormatter.string(from:date)
+        //Swift.print("convertedDate: " + "\(convertedDate)")
+        return convertedDate
+    }
 }
