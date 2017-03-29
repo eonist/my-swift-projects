@@ -65,7 +65,7 @@ extension DataProvider{
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
-    func item(_ value:String, key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
+    func item(_ value:String, _ key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
         for item in self.items {
             if(item[key] == value) {return item}
         }
@@ -83,7 +83,7 @@ extension DataProvider{
     /**
      * Returns the index of the first item that has the PARAM: value at PARAM: key
      */
-    func idx(_ key:String,_ value:String) -> Int?{
+    func index(_ key:String,_ value:String) -> Int?{
         let count = items.count
         for i in 0..<count{
             if(items[i][key] == value) {return i}
@@ -94,13 +94,13 @@ extension DataProvider{
     /**
      * Returns the item index passed through the PARAM item
      */
-    func idx(_ item:[String:String])->Int{
+    func index(_ item:[String:String])->Int{
         return self.items.index{$0 == item} ?? -1//upgraded to swift 3 syntax
     }
     /**
      * Returns index for title
      */
-    func idx(_ title:String)->Int?{
+    func index(_ title:String)->Int?{
         let count = self.items.count
         for i in 0..<count{
             let item:[String:String] = self.items[i]
@@ -111,16 +111,7 @@ extension DataProvider{
     /**
      * Returns the count of the self.items
      */
-    func getValue(_ index:Int,_ key:String)->String?{
-        if let value = self.items[index][key]{
-            return value
-        }
-        return nil
-    }
-    /**
-     * Returns the count of the self.items
-     */
-    func getValue(_ index:Int,_ key:String)->String?{
+    func value(_ index:Int,_ key:String)->String?{
         if let value = self.items[index][key]{
             return value
         }
@@ -225,8 +216,8 @@ extension DataProvider{
 //DEPRECATED, legacy support
 extension DataProvider{
     func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
-    func getItemIndex(_ item:[String:String])->Int{return idx(item)}
-    func getIndex(_ title:String)->Int?{return idx(title)}
-    func index(_ key:String,_ value:String) -> Int?{return idx(key,value)}
+    func getItemIndex(_ item:[String:String])->Int{return index(item)}
+    func getIndex(_ title:String)->Int?{return index(title)}
     func getItem(_ value:String, key:String = "title")->[String:String]?{return item(value,key)}
+    func getValue(_ index:Int,_ key:String)->String?{return value(index,key)}
 }
