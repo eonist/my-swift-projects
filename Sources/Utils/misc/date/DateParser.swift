@@ -58,7 +58,7 @@ class DateParser {
      * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
      * TODO: move into DateParser
      */
-    func shortDate(_ date:Date) -> String{//TODO: move the content bellow into DateParser
+    static func shortDate(_ date:Date) -> String{//TODO: move the content bellow into DateParser
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateStyle = .short//swift 3 -> was: dateFormatter.style.short
