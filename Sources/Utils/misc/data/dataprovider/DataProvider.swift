@@ -65,18 +65,17 @@ extension DataProvider{
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
-    func getItem(_ value:String, key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
+    func item(_ value:String, key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
         for item in self.items {
             if(item[key] == value) {return item}
         }
         Swift.print("\(ClassParser.type(self))" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
         return nil
     }
-    
     /**
      * Returns an item at a spessific index
      */
-    func item( _ at:Int) -> [String:String]?{
+    func item(_ at:Int) -> [String:String]?{
         if(at < self.items.count) {return self.items[at]}
         Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
@@ -106,6 +105,15 @@ extension DataProvider{
         for i in 0..<count{
             let item:[String:String] = self.items[i]
             if(item["title"] == title) {return i}
+        }
+        return nil
+    }
+    /**
+     * Returns the count of the self.items
+     */
+    func getValue(_ index:Int,_ key:String)->String?{
+        if let value = self.items[index][key]{
+            return value
         }
         return nil
     }
@@ -220,4 +228,5 @@ extension DataProvider{
     func getItemIndex(_ item:[String:String])->Int{return idx(item)}
     func getIndex(_ title:String)->Int?{return idx(title)}
     func index(_ key:String,_ value:String) -> Int?{return idx(key,value)}
+    func getItem(_ value:String, key:String = "title")->[String:String]?{return item(value,key)}
 }
