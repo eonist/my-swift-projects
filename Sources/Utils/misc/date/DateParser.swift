@@ -41,6 +41,9 @@ class DateParser {
         //Swift.print("dateTimePrefix: " + "\(dateTimePrefix)")
         return dateStr
     }
+    /**
+     * Returns a date instance for time components like: 2016,11,03,15,49,59
+     */
     static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{
         let calendar = Calendar.current
         var components = DateComponents()
@@ -78,5 +81,15 @@ class DateParser {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
+    }
+    static func numOfDaysInMonth(_ date:Date)->Int{
+        //parts to NSDate:
+        let cal = Calendar.current
+        //range(of: NSCalendar.Unit.day, in: NSCalendar.Unit.month, for: self)
+        let days = cal.range(of: .day, in: .month, for: date)
+        //Swift.print("days: " + "\(days)")
+        //Swift.print("days.location: " + "\(days.location)")
+        //Swift.print("days.length: " + "\(days.length)")
+        return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
     }
 }
