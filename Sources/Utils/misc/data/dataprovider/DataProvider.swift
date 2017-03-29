@@ -146,7 +146,7 @@ extension DataProvider{
     /**
      * Removes an item at a spesific index
      */
-    func removeItemAt(_ index:Int)->[String:String] {
+    func remove(_ index:Int)->[String:String] {
         //Swift.print("removeItemAt.index: " + "\(index)")
         var removedItem:[String:String]
         if (index < items.count) {
@@ -159,6 +159,7 @@ extension DataProvider{
         super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))
         return removedItem
     }
+    
     /**
      * Removes the item passed through the PARAM item
      * RETURNS: the removed item
@@ -218,4 +219,5 @@ extension DataProvider{
     func addItems(_ items:[[String:String]]) {add(items)}
     func addItem(_ item:[String:String]) {add(item)}
     func addItemAt(_ item:[String:String], _ index:Int){add(item,index)}
+    func removeItemAt(_ index:Int)->[String:String] {return remove(index)}
 }
