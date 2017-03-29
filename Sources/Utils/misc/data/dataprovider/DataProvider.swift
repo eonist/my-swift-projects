@@ -43,6 +43,14 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         self.items = items
         super.init()
     }
+    /**
+     * Returns an item at a spessific index
+     */
+    func item(_ at:Int) -> [String:String]?{
+        if(at < self.items.count) {return self.items[at]}
+        Swift.print("\(self)" + "no item at the index of " + "\(at)")
+        return nil
+    }
 }
 /*Parser*/
 extension DataProvider{
@@ -69,14 +77,6 @@ extension DataProvider{
             if(item[key] == value) {return item}
         }
         Swift.print("\(ClassParser.type(self))" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
-        return nil
-    }
-    /**
-     * Returns an item at a spessific index
-     */
-    func item(_ at:Int) -> [String:String]?{
-        if(at < self.items.count) {return self.items[at]}
-        Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
     }
     /**
