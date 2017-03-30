@@ -75,10 +75,10 @@ class DateParser {
         return dateFormatter.string(from: date)
     }
     /**
-     *
+     * Jan,Feb,Mar etc
      */
-    static func shortMonthName(_ date:Date){
-        return date.monthName != nil ? String(date.monthName!.characters.first!) : ""
+    static func shortMonthName(_ date:Date)->String{
+        return date.monthName != nil ? String(date.monthName!.subStr(0, 3)) : ""
     }
     /**
      * Returns m,t,w,t,f,s,s for date
