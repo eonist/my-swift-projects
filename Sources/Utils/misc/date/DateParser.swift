@@ -75,6 +75,12 @@ class DateParser {
         return dateFormatter.string(from: date)
     }
     /**
+     *
+     */
+    static func shortMonthName(){
+        
+    }
+    /**
      * Returns m,t,w,t,f,s,s for date
      */
     static func shortDayName(_ date:Date)->String{
