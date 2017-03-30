@@ -173,7 +173,7 @@ extension DataProvider{
     }
     func removeAll(){
         //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
-        let itemsCount = items.count
+        let itemsCount = count
         self.items = []
         onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,self));
     }
