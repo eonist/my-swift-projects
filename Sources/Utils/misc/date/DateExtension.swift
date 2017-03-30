@@ -25,7 +25,7 @@ extension Date {
     func offsetByDays(_ days:Int)->Date{/*Convenience*/
         return DateModifier.offsetByDays(self,days)
     }
-    func offsetByMonths(_ date:Date, _ months:Int)->Date{
-        return DateModifier.offsetByMonths(date, months)
+    func offsetByMonths(_ months:Int)->Date{
+        return DateModifier.offsetByMonths(self, months)
     }
 }
