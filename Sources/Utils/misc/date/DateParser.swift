@@ -107,7 +107,7 @@ class DateParser {
     static func numOfDays(_ from:Date,_ to:Date) -> Int{
         var calendar = NSCalendar.current
         var days: Int {
-            return calendar.components(.day,fromDate: from, toDate: to, options: nil)//.day
+            return calendar.components
         }
         return days
     }
