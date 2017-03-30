@@ -77,8 +77,8 @@ class DateParser {
     /**
      *
      */
-    static func shortMonthName(){
-        
+    static func shortMonthName(_ date:Date){
+        return date.monthName != nil ? String(date.monthName!.characters.first!) : ""
     }
     /**
      * Returns m,t,w,t,f,s,s for date
