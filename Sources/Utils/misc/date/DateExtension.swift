@@ -16,7 +16,7 @@ extension Date {
     var monthName:String? {/*Convenience*/
         return DateParser.monthName(self)
     }
-    var shortMonthName:String{
+    var shortMonthName:String{/*Convenience*/
         return DateParser.shortMonthName(self)
     }
     var shortDate:String{/*Convenience*/
@@ -25,7 +25,10 @@ extension Date {
     func offsetByDays(_ days:Int)->Date{/*Convenience*/
         return DateModifier.offsetByDays(self,days)
     }
-    func offsetByMonths(_ months:Int)->Date{
+    func offsetByMonths(_ months:Int)->Date{/*Convenience*/
         return DateModifier.offsetByMonths(self, months)
+    }
+    func numOfDays(_ until:Date)->Int{/*Convenience*/
+        return DateParser.numOfDays(self, until)
     }
 }
