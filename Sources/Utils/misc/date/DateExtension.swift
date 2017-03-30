@@ -31,4 +31,7 @@ extension Date {
     func numOfDays(_ until:Date)->Int{/*Convenience*/
         return DateParser.numOfDays(self, until)
     }
+    func numOfMonths(_ until:Date)->Int{/*Convenience*/
+        return DateParser.numOfMonths(self, until)
+    }
 }
