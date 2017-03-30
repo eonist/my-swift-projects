@@ -75,16 +75,22 @@ class DateParser {
         return dateFormatter.string(from: date)
     }
     /**
+     * Returns m,t,w,t,f,s,s for date
+     */
+    static func shortDayName(_ date:Date)->String{
+        return date.dayName != nil ? String(date.dayName!.characters.first!) : ""
+    }
+    /**
      * Jan,Feb,Mar etc
      */
     static func shortMonthName(_ date:Date)->String{
         return date.monthName != nil ? String(date.monthName!.subStr(0, 3)) : ""
     }
     /**
-     * Returns m,t,w,t,f,s,s for date
+     * 11,12,13...17 etc
      */
-    static func shortDayName(_ date:Date)->String{
-        return date.dayName != nil ? String(date.dayName!.characters.first!) : ""
+    static func shortYearName(){
+        //implement
     }
     static func dayName(_ date:Date) -> String? {
         let dateFormatter = DateFormatter()
