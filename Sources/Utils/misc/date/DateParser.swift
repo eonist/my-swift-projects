@@ -101,4 +101,19 @@ class DateParser {
         //Swift.print("days.length: " + "\(days.length)")
         return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
     }
+    
+    /*
+    let startDate:NSDate
+    let endDate:NSDate
+    var calendar = NSCalendar.currentCalendar()
+    var days: Int {
+        return calendar.components(.CalendarUnitDay,
+                                   fromDate: startDate, toDate: endDate, options: nil).day
+    }
+    var months: Int {
+        return calendar.components(.CalendarUnitMonth,
+                                   fromDate: startDate, toDate: endDate, options: nil).month
+    }
+    
+    */
 }
