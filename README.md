@@ -281,6 +281,7 @@ extension Temp:UnWrappable{
 ## Progress:
 
 **2017-mar** 
+- Cleaned up DateExtensions
 - RubberBand now supports X & Y axis  
 
 ## Support
