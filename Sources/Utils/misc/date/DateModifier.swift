@@ -11,4 +11,11 @@ class DateModifier {
         let newDate:Date = calendar.date(byAdding: .day, value: days, to: date)!//let newDate:Date = NSCalendar.current.dateByAddingUnit(NSCalendar.Unit.Day, value: days, toDate: date, options: Calendar.Options.matchStrictly)!
         return newDate
     }
+    /**
+     *
+     */
+    static func offsetByMonths(){
+        let calendar = Calendar.current
+        let newDate:Date = calendar.date
+    }
 }
