@@ -108,6 +108,6 @@ class DateParser {
         return Calendar.current.dateComponents([.day], from: from, to: to).month!
     }
     static func numOfYears(_ from:Date,_ to:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: from, to: to).month!
+        return Calendar.current.dateComponents([.day], from: from, to: to).year!
     }
 }
