@@ -14,13 +14,14 @@ extension Range {
     var start:Bound {return self.lowerBound}
     var end:Bound {return self.upperBound}
     var length:Int {return (self.upperBound as! Int) - (self.lowerBound as! Int)}/*convenince*/
+    var numOfIndecies:Int {return length + 1}
 }
 extension CountableRange/* where Bound:Integer */{
     var start:Bound {return self.startIndex}/*convenince*/
     var end:Bound {return self.endIndex}/*convenince*/
     //you can also use the native var: .count instead of the bellow .length
     var length:Int {return (self.endIndex as! Int) - (self.startIndex as! Int)}/*convenince*/
-    var numOfIndecies:Int{ return (self.end as! Int) - (self.start as! Int) + 1 }
+    var numOfIndecies:Int{ return (self.end as! Int) - (self.start as! Int) + 1 }//TODO: rewrite this as: length + 1
     var random:Int {return IntParser.random(self.start as! Int, self.end as! Int)}
 }
 extension Range where Bound:Comparable {
