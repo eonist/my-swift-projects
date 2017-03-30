@@ -86,12 +86,6 @@ class DateParser {
     static func shortMonthName(_ date:Date)->String{
         return date.monthName != nil ? String(date.monthName!.subStr(0, 3)) : ""
     }
-    /**
-     * 11,12,13...17 etc
-     */
-    static func shortYearName(){
-        //implement
-    }
     static func dayName(_ date:Date) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
