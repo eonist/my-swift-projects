@@ -102,12 +102,15 @@ class DateParser {
         return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
     }
     static func numOfDays(_ from:Date,_ to:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: from, to: to).day!
+        let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).day!
+        return num ?? 0
     }
     static func numOfMonths(_ from:Date,_ to:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: from, to: to).month!
+        let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).month
+        return num ?? 0
     }
     static func numOfYears(_ from:Date,_ to:Date) -> Int{
-        return Calendar.current.dateComponents([.day], from: from, to: to).year!
+        let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).year
+        return num ?? 0
     }
 }
