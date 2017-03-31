@@ -110,7 +110,7 @@ class DateParser {
         return num ?? 0
     }
     /**
-     * @Example:
+     * EXAMPLE:
      * let from:Date = DateParser.createDate(2011)!
      * let until:Date = from.offsetByMonths(25)
      * from.numOfYears(until)//2
