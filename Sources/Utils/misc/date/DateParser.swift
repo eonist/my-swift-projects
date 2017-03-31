@@ -109,6 +109,12 @@ class DateParser {
         let num:Int? = Calendar.current.dateComponents([.month], from: from, to: to).month
         return num ?? 0
     }
+    /**
+     * @Example:
+     * let from:Date = DateParser.createDate(2011)!
+     * let until:Date = from.offsetByMonths(25)
+     * from.numOfYears(until)//2
+     */
     static func numOfYears(_ from:Date,_ to:Date) -> Int{
         let num:Int? = Calendar.current.dateComponents([.year], from: from, to: to).year
         return num ?? 0
