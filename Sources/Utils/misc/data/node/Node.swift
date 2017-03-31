@@ -19,7 +19,7 @@ extension Node{
     /**
      * TODO: consider renaming to appendAt
      */
-    func addAt(_ index:[Int],_ xml:XML){// :TODO: shouldnt the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
+    func addAt(_ index:[Int],_ xml:XML){// :TODO: shouldn't the arguments be in this order: xml, index// :TODO: do we still need the event dispatching, cant the calling method do this?
         _ = XMLModifier.addChildAt(self.xml, index, xml)
         onEvent(NodeEvent(NodeEvent.addAt,index,self))
     }
