@@ -28,6 +28,7 @@ import Foundation
  */
 protocol DataProvidable{
     func item(_ at:Int) -> [String:String]?
+    var count:Int{get}
 }
 class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
