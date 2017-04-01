@@ -13,6 +13,7 @@ extension CGFloat {
     var isPositive:Bool{return NumberAsserter.positive(self,0)}
     func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
     func interpolate(_ to:CGFloat, _ fraction:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,fraction)}
+    func roundTo(_ closest:CGFloat)->CGFloat{return CGFloatModifier.roundTo(self, closest)}/*Convenince*/
 }
 
 
