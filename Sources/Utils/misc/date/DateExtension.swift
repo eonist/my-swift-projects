@@ -28,6 +28,9 @@ extension Date {
     func offsetByMonths(_ months:Int)->Date{/*Convenience*/
         return DateModifier.offsetByMonths(self, months)
     }
+    func offsetByYears(_ years:Int)->Date{/*Convenience*/
+        return DateModifier.offsetByYears(self, years)
+    }
     func numOfDays(_ until:Date)->Int{/*Convenience*/
         return DateParser.numOfDays(self, until)
     }
