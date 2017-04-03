@@ -16,4 +16,9 @@ class DateModifier {
         let newDate:Date = calendar.date(byAdding: .month, value: months, to: date)!
         return newDate
     }
+    static func offsetByYears(_ date:Date, _ years:Int)->Date{
+        let calendar = Calendar.current
+        let newDate:Date = calendar.date(byAdding: .year, value: years, to: date)!
+        return newDate
+    }
 }
