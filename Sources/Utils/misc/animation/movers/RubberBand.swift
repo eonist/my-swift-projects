@@ -104,7 +104,7 @@ extension RubberBand{
      */
     func checkForStop() {
         if(!isDirectlyManipulating && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
-            velocity = 0
+            velocity = 0//⚠️️ quick fix, may break things, was added to be able to detect anim stop on bounce-back complete
             hasStopped = true
         }
     }
