@@ -104,6 +104,7 @@ extension RubberBand{
      */
     func checkForStop() {
         if(!isDirectlyManipulating && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
+            velocity = 0
             hasStopped = true
         }
     }
