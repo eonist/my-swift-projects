@@ -69,6 +69,7 @@ class DateParser {
         //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
+    static func 
     static func monthName(_ date:Date) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
