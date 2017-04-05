@@ -22,6 +22,9 @@ extension Date {
     var shortDate:String{/*Convenience*/
         return DateParser.shortDate(self)
     }
+    var simpleDate:String{/*Convenience*/
+        return DateParser.simpleDate(self)
+    }
     func offsetByDays(_ days:Int)->Date{/*Convenience*/
         return DateModifier.offsetByDays(self,days)
     }
