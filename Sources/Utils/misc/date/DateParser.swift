@@ -46,6 +46,9 @@ class DateParser {
      * IMPORTANT: ⚠️️⚠️️⚠️️ if you pass 0 in any of the arguments the returned date is all wrong, use nil and make sure your var is not 0
      */
     static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{
+        if(year == 0 || month == 0 || day == 0){//this may not apply to hour,min,sec so these arent tested
+            fatalError("can't be 0")
+        }
         let calendar = Calendar.current
         var components = DateComponents()
         if(year != nil){components.year = year!}
