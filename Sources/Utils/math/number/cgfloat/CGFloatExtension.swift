@@ -17,8 +17,6 @@ extension CGFloat {
     func interpolate(_ to:CGFloat, _ fraction:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,fraction)}
     func roundTo(_ closest:CGFloat)->CGFloat{return CGFloatModifier.roundTo(self, closest)}/*Convenince*/
 }
-
-
 extension Sequence where Iterator.Element == CGFloat {
     var average:CGFloat {return CGFloatParser.average(self as! [CGFloat])}
 }
