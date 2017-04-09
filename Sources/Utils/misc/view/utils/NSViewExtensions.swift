@@ -70,14 +70,9 @@ extension NSView {
     }
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
     var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
-    
-    //var width:CGFloat{return frame.width}//TODO:implement later
-    //var height:CGFloat{return frame.height}
     /**
      * Returns localPosition in a view (converts a global position to a local position)
      * TODO: hopefully this method also works if the view is not 0,0 in the window
-     */
-    /**
      * Returns the local mouse position in the views coordinate system 0,0
      */
     func localPos()->CGPoint{
@@ -122,3 +117,6 @@ extension NSView {
     func getSubViewAt(_ i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
 }
+//these wont work since swift 3 i think, use .w and .h instead (aperantly .width is used too may places, you need to refactor it out first, same with height)
+//var width:CGFloat{return frame.width}//TODO:implement later
+//var height:CGFloat{return frame.height}
