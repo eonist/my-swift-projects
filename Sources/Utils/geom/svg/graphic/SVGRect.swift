@@ -61,6 +61,6 @@ class SVGRect:SVGGraphic {
  */
 extension SVGRect{
     var position:CGPoint {get{return CGPoint(xVal,yVal)}set {xVal = newValue.x;yVal = newValue.y}}
-    var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
+    /*the override is new->*/override var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
     var rect:CGRect {return CGRect(xVal,yVal,width,height)}
 }
