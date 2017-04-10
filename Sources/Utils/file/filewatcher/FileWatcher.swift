@@ -30,7 +30,7 @@ class FileWatcher{
         Swift.print("FileWatcher start - has started: " + "\(hasStarted)")
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-        context.info = UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque())//this line chached a lot converting to swift 3
+        context.info = Unmanaged.passRetained(self).toOpaque()//this line chached a lot converting to swift 3
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths as CFArray, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
         FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/ // Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
@@ -61,8 +61,8 @@ class FileWatcher{
      */
     private let eventCallback:FSEventStreamCallback = {(stream:ConstFSEventStreamRef,contextInfo:UnsafeMutableRawPointer?,numEvents:Int,eventPaths:UnsafeMutableRawPointer,eventFlags:UnsafePointer<FSEventStreamEventFlags>?,eventIds:UnsafePointer<FSEventStreamEventId>?) in
         //this method changed a lot when upgrading to swift 3. some additional testing may be required...seems to work fine!
-        let fileSystemWatcher: FileWatcher = unsafeBitCast(contextInfo, to: FileWatcher.self)
-        let paths = unsafeBitCast(eventPaths, to: NSArray.self) as! [String]
+        let fileSystemWatcher = Unmanaged<FileWatcher>.fromOpaque(contextInfo!).takeUnretainedValue()
+        let paths = Unmanaged<CFArray>.fromOpaque(eventPaths).takeUnretainedValue() as! [String]
         var eventFlagArray = Array(UnsafeBufferPointer(start: eventFlags, count: numEvents))
         for index in 0..<numEvents {
             fileSystemWatcher.event?(FileWatcherEvent(eventIds![index], paths[index], eventFlags![index]))
