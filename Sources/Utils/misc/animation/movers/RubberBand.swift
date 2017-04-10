@@ -7,7 +7,7 @@ import Cocoa
  * TODO: Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring?
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
-class RubberBand:Mover{
+class RubberBand:Mover{//TODO: rename to Elastic
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
