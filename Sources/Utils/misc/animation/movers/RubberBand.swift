@@ -4,15 +4,14 @@ import Cocoa
  * NOTE: I think essentialy this is a SpringSolver. You can find an example of the SpringSolver in books and also in facebook pop
  * PARAM: maskRect: represents the visible part of the content
  * PARAM: contentRect: represents the total size of the content
- * TODO: Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring?
+ * TODO: Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring? Elastic?
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
+ * NOTE: friction: This value is the strength of the friction when the item is floating freely
+ * NOTE: springEasing: the easeOut effect on the spring (aka the dampener)
+ * NOTE: spring: the strength of the spring
+ * NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
  */
-/*NOTE: friction: This value is the strength of the friction when the item is floating freely*/
-/*NOTE: springEasing: the easeOut effect on the spring (aka the dampener)*/
-/*NOTE: spring: the strength of the spring*/
-/*NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
 class RubberBand:Mover{//TODO: rename to Elastic
-    
     typealias Config = (velocity:CGFloat,friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
