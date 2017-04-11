@@ -21,7 +21,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     var config:Config/*Config*/
     /*Interim values*/
-    var result:CGFloat = 0/*output value, this is the value that external callers can use*/
+    fileprivate(set) public var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
