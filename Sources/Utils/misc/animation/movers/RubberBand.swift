@@ -13,29 +13,23 @@ import Cocoa
  * NOTE: epsilon: twips 20th of a pixel
  */
 class RubberBand:Mover{//TODO: rename to Elastic
-    
-    static var defaultConfig:Config = (friction:0.98, springEasing:0.2, spring:0.4, limit:100, epsilon:0.15)
     typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat,epsilon:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
-    /*Constants*/
-    
+    static var defaultConfig:Config = (friction:0.98, springEasing:0.2, spring:0.4, limit:100, epsilon:0.15)/*Constants*/
     /*Initial values*/
     var maskFrame:Frame/*represents the visible part of the content*/
     var contentFrame:Frame/*represents the total size of the content*/
-    /*Config*/
-    var config:Config
+    var config:Config/*Config*/
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
-        
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
         super.init(Animation.sharedInstance, callBack, 0, 0)
     }
-    
     override func onFrame(){
         if(hasStopped){/*stop the frameTicker here*/
             stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
