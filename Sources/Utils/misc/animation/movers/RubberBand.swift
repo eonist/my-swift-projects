@@ -22,7 +22,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     var config:Config/*Config*/
     /*Interim values*/
-    fileprivate(set) var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
+    var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
@@ -31,7 +31,6 @@ class RubberBand:Mover{//TODO: rename to Elastic
         self.config = config
         super.init(Animation.sharedInstance, callBack, 0, 0)
     }
-    
     override func onFrame(){
         if(hasStopped){/*stop the frameTicker here*/
             stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
