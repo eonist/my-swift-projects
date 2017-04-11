@@ -30,6 +30,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
         self.config = config
         super.init(Animation.sharedInstance, callBack, 0, 0)
     }
+    
     override func onFrame(){
         if(hasStopped){/*stop the frameTicker here*/
             stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
