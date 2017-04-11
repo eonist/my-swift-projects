@@ -44,7 +44,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
      * NOTE: When in inderect motion: Springs back to it's limit
      * TODO: ⚠️️ Add a isDirectlyManipulating flag to the function arg instead of having a class scoped bool flag!?!?
      */
-    override func updatePosition() {
+    override func updatePosition(_ direct:Bool = false) {
         if(value > maskFrame.min){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/

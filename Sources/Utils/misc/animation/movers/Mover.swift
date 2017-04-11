@@ -11,7 +11,7 @@ class Mover:BaseAnimation {
         self.callBack = callBack
         super.init(animatable)
     }
-    func updatePosition() {
+    func updatePosition(_ direct:Bool = false) {
         value += velocity
     }
     override func onFrame(){
