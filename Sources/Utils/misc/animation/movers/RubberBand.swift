@@ -7,6 +7,10 @@ import Cocoa
  * TODO: Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring?
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
+/*NOTE: friction: This value is the strength of the friction when the item is floating freely*/
+/*NOTE: springEasing: the easeOut effect on the spring (aka the dampener)*/
+/*NOTE: spring: the strength of the spring*/
+/*NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
 class RubberBand:Mover{//TODO: rename to Elastic
     
     typealias Config = (velocity:CGFloat,friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
@@ -18,10 +22,10 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     /*Config*/
     var config:Config
-    var friction:CGFloat/*NOTE: friction: This value is the strength of the friction when the item is floating freely*/
-    var springEasing:CGFloat/*NOTE: springEasing: the easeOut effect on the spring (aka the dampener)*/
-    var spring:CGFloat/*NOTE: spring: the strength of the spring*/
-    var limit:CGFloat/*NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
+    var friction:CGFloat
+    var springEasing:CGFloat
+    var spring:CGFloat
+    var limit:CGFloat
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
