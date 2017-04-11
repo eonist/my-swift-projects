@@ -21,20 +21,18 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     /*Config*/
     var config:Config
-    var velocity:CGFloat
-    var value:CGFloat
+    /*var velocity:CGFloat
+     var value:CGFloat*/
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
-        self.callBack = callBack
+        //self.callBack = callBack
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
-        self.value = 0
-        self.velocity = 0
-        super.init(Animation.sharedInstance, callBack, value, velocity)
+        super.init(Animation.sharedInstance, callBack, 0, 0)
     }
     
     override func onFrame(){
@@ -138,16 +136,10 @@ private class CustomFriction{
 extension RubberBand{
     //legacy
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        self.maskFrame = maskFrame
-        self.contentFrame = contentFrame
-        let config:Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
-        self.config.friction = friction
-        self.config.springEasing = springEasing
-        self.config.spring = spring
-        self.config.limit = limit
-        self.velocity = velocity
-        self.value = value
+        let config:Config = (friction,springEasing,spring,limit)
         self.init(callBack, maskFrame,contentFrame, config)
+        /*self.velocity = velocity
+         self.value = value*/
     }
     //DEPRECATED,Legacy support
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping (CGFloat)->Void, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
