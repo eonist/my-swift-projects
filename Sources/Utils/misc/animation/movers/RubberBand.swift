@@ -14,7 +14,7 @@ import Cocoa
  */
 class RubberBand:Mover{//TODO: rename to Elastic
     
-    static var defaultConfig = ()
+    static var defaultConfig:Config = (friction:0.98, springEasing:0.2, spring:0.4, limit:100, epsilon:0.15)
     typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat,epsilon:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
