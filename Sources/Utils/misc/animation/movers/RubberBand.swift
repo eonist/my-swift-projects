@@ -24,7 +24,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
-    var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
+    //var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
@@ -45,11 +45,11 @@ class RubberBand:Mover{//TODO: rename to Elastic
      * TODO: ⚠️️ Add a isDirectlyManipulating flag to the function arg instead of having a class scoped bool flag!?!?
      */
     override func updatePosition(_ direct:Bool = false) {
-        if(value > maskFrame.min){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        if(value > maskFrame.min){applyTopBoundary(direct)}/*the top of the item-container passed the mask-container top checkPoint*/
+        else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
-            if(!isDirectlyManipulating){/*only apply friction and velocity when not directly manipulating the value*/
-                applyFriction()
+            if(!direct){/*only apply friction and velocity when not directly manipulating the value*/
+                applyFriction(direct)
             }
             checkForStop()/*Assert if the movement is close to stopping, if it is then stop it*/
             result = value
@@ -67,10 +67,10 @@ extension RubberBand{
     /**
      * When the min val reaches beyond max
      */
-    func applyTopBoundary(){/*Surface is slipping the further you pull*/
+    func applyTopBoundary(_ direct:Bool){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary")
         let distToGoal:CGFloat = value - maskFrame.min
-        if(isDirectlyManipulating){/*surface is slipping the further you pull*/
+        if(direct){/*surface is slipping the further you pull*/
             result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
@@ -83,7 +83,7 @@ extension RubberBand{
     /**
      * When the max val reaches beyond the min
      */
-    func applyBottomBoundary(){
+    func applyBottomBoundary(_ direct:Bool){
         //Swift.print("applyBottomBoundary")
         if(isDirectlyManipulating){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
@@ -102,8 +102,8 @@ extension RubberBand{
      * When velocity is less than epsilon basically less than half of a twib 0.15. then set the hasStopped flag to true
      * NOTE: Basically stops listening for the onFrame event
      */
-    func checkForStop() {
-        if(!isDirectlyManipulating && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
+    func checkForStop(_ direct:Bool) {
+        if(!direct && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
             velocity = 0//⚠️️ quick fix, may break things, was added to be able to detect anim stop on bounce-back complete
             hasStopped = true
         }
