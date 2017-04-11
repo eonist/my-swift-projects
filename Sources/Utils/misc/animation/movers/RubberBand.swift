@@ -21,24 +21,25 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     /*Config*/
     var config:Config
-    var friction:CGFloat
-    var springEasing:CGFloat
-    var spring:CGFloat
-    var limit:CGFloat
+    
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     convenience init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ value:CGFloat = 0,_ config:Config) {
-        <#statements#>
+        self.callBack = callBack
+        self.maskFrame = maskFrame
+        self.contentFrame = contentFrame
+        self.config = config
+        self.value = value
     }
     init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
-        self.friction = friction
-        self.springEasing = springEasing
-        self.spring = spring
-        self.limit = limit
+        self.config.friction = friction
+        self.config.springEasing = springEasing
+        self.config.spring = spring
+        self.config.limit = limit
         super.init(animatable, callBack, value, velocity)
     }
     override func onFrame(){
@@ -148,4 +149,10 @@ extension RubberBand{
     var frame:CGRect {get{return CGRect(0,maskFrame.min,0,maskFrame.len)}set{maskFrame = (newValue.y,newValue.height)}}
     //DEPRECATED,Legacy support
     var itemsRect:CGRect {get{return CGRect(0,contentFrame.min,0,contentFrame.len)}set{contentFrame = (newValue.y,newValue.height)}}
+}
+extension RubberBand{//convenience
+    var friction:CGFloat {return config.friction}
+    var springEasing:CGFloat {return config.springEasing}
+    var spring:CGFloat {return config.spring}
+    var limit:CGFloat {return config.limit}
 }
