@@ -12,7 +12,7 @@ import Cocoa
  * NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
  */
 class RubberBand:Mover{//TODO: rename to Elastic
-    typealias Config = (velocity:CGFloat,friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
+    typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
     let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
@@ -21,7 +21,8 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var contentFrame:Frame/*represents the total size of the content*/
     /*Config*/
     var config:Config
-    
+    var velocity:CGFloat
+    var value:CGFloat
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
@@ -139,6 +140,7 @@ extension RubberBand{
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
+        let config:Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
         self.config.friction = friction
         self.config.springEasing = springEasing
         self.config.spring = spring
