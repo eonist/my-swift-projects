@@ -16,10 +16,12 @@ class RubberBand:Mover{//TODO: rename to Elastic
     /*Initial values*/
     var maskFrame:Frame/*represents the visible part of the content*/
     var contentFrame:Frame/*represents the total size of the content*/
-    var friction:CGFloat/*This value is the strength of the friction when the item is floating freely*/
-    var springEasing:CGFloat/*the easeOut effect on the spring (aka the dampener)*/
-    var spring:CGFloat/*the strength of the spring*/
-    var limit:CGFloat/*the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
+    /*Config*/
+    var config:Config
+    var friction:CGFloat/*NOTE: friction: This value is the strength of the friction when the item is floating freely*/
+    var springEasing:CGFloat/*NOTE: springEasing: the easeOut effect on the spring (aka the dampener)*/
+    var spring:CGFloat/*NOTE: spring: the strength of the spring*/
+    var limit:CGFloat/*NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping*/
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
