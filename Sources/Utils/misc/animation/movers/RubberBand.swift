@@ -10,25 +10,26 @@ import Cocoa
  * NOTE: springEasing: the easeOut effect on the spring (aka the dampener)
  * NOTE: spring: the strength of the spring
  * NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
+ * NOTE: epsilon: twips 20th of a pixel
  */
 class RubberBand:Mover{//TODO: rename to Elastic
-    typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
+    
+    static var defaultConfig = ()
+    typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat,epsilon:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
-    let epsilon:CGFloat = 0.15/*twips 20th of a pixel*/
+    
     /*Initial values*/
     var maskFrame:Frame/*represents the visible part of the content*/
     var contentFrame:Frame/*represents the total size of the content*/
     /*Config*/
     var config:Config
-    /*var velocity:CGFloat
-     var value:CGFloat*/
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
-        //self.callBack = callBack
+        
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
@@ -136,7 +137,7 @@ private class CustomFriction{
 extension RubberBand{
     //legacy
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
-        let config:Config = (friction,springEasing,spring,limit)
+        let config:Config = (friction,springEasing,spring,limit,0.15)
         self.init(callBack, maskFrame,contentFrame, config)
         /*self.velocity = velocity
          self.value = value*/
@@ -155,4 +156,5 @@ extension RubberBand{//convenience
     var springEasing:CGFloat {return config.springEasing}
     var spring:CGFloat {return config.spring}
     var limit:CGFloat {return config.limit}
+    var epsilon:CGFloat {return config.epsilon}
 }
