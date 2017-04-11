@@ -148,7 +148,8 @@ extension RubberBand{
     var frame:CGRect {get{return CGRect(0,maskFrame.min,0,maskFrame.len)}set{maskFrame = (newValue.y,newValue.height)}}
     //DEPRECATED,Legacy support
     var itemsRect:CGRect {get{return CGRect(0,contentFrame.min,0,contentFrame.len)}set{contentFrame = (newValue.y,newValue.height)}}
-    var isDirectlyManipulating:Bool {get{fatalError("not supported anymore")}set{_ = newValue}}/*toggles the directManipulation mode*/
+    //DEPRECATED
+    var isDirectlyManipulating:Bool {get{fatalError("not supported anymore")}set{_ = newValue;fatalError("deprecated");}}/*toggles the directManipulation mode*/
 }
 extension RubberBand{//convenience
     var friction:CGFloat {return config.friction}
