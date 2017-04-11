@@ -26,12 +26,14 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
-    convenience init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ value:CGFloat = 0,_ config:Config) {
+    convenience init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
         self.callBack = callBack
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
-        self.value = value
+        self.value = 0
+        self.velocity = 0
+        super.init(animatable, callBack, value, velocity)
     }
     init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.maskFrame = maskFrame
