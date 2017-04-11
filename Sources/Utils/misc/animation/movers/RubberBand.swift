@@ -43,6 +43,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     /**
      * While directly manipulating: Enforces the illusion that the surface is slipping the further you pull
      * NOTE: When in inderect motion: Springs back to it's limit
+     * TODO: ⚠️️ Add a isDirectlyManipulating flag to the function arg instead of having a class scoped bool flag!?!?
      */
     override func updatePosition() {
         if(value > maskFrame.min){applyTopBoundary()}/*the top of the item-container passed the mask-container top checkPoint*/
