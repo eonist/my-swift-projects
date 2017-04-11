@@ -9,7 +9,7 @@ class Friction:Mover{
         self.frictionStrength = frictionStrength
         super.init(view, callBack, value, velocity) 
     }
-    override func updatePosition() {
+    override func updatePosition(_ direct:Bool = false) {
         super.updatePosition()
         applyFriction()/*apply friction for every frame called*/
         checkForStop()/*assert if the movement is close to stopping, if it is then stop it*/

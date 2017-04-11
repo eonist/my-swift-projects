@@ -24,7 +24,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     /*Interim values*/
     var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
-    //var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
+    
     init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
@@ -49,9 +49,9 @@ class RubberBand:Mover{//TODO: rename to Elastic
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if(!direct){/*only apply friction and velocity when not directly manipulating the value*/
-                applyFriction(direct)
+                applyFriction()
             }
-            checkForStop()/*Assert if the movement is close to stopping, if it is then stop it*/
+            checkForStop(direct)/*Assert if the movement is close to stopping, if it is then stop it*/
             result = value
         }
     }
@@ -66,6 +66,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
 extension RubberBand{
     /**
      * When the min val reaches beyond max
+     * PARAM: direct: toggles the directManipulation mode
      */
     func applyTopBoundary(_ direct:Bool){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary")
@@ -76,16 +77,17 @@ extension RubberBand{
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(maskFrame.min, 1)){checkForStop()}
+            if(value.isNear(maskFrame.min, 1)){checkForStop(direct)}
             result = value
         }
     }
     /**
      * When the max val reaches beyond the min
+     * PARAM: direct: toggles the directManipulation mode
      */
     func applyBottomBoundary(_ direct:Bool){
         //Swift.print("applyBottomBoundary")
-        if(isDirectlyManipulating){/*surface is slipping the further you pull*/
+        if(direct){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value/*goes from 0 to -100*/
             result = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
@@ -94,13 +96,14 @@ extension RubberBand{
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
-            if(dist.isNear(0, 1)){checkForStop()}/*checks if dist is near 0, with an epsilon of 1px*/
+            if(dist.isNear(0, 1)){checkForStop(direct)}/*checks if dist is near 0, with an epsilon of 1px*/
             result = value
         }
     }
     /**
      * When velocity is less than epsilon basically less than half of a twib 0.15. then set the hasStopped flag to true
      * NOTE: Basically stops listening for the onFrame event
+     * PARAM: direct: toggles the directManipulation mode
      */
     func checkForStop(_ direct:Bool) {
         if(!direct && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
