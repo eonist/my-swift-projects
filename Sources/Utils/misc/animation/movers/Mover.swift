@@ -1,6 +1,7 @@
 import Cocoa
 
 class Mover:BaseAnimation {
+    typealias CallBack = (CGFloat)->Void/*call back signature */
     var value:CGFloat = 0/*the value that should be applied to the target*/
     var velocity:CGFloat
     var callBack:(CGFloat)->Void/*the closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/

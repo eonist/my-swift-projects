@@ -8,7 +8,7 @@ import Cocoa
  * TODO: integrate temp values inside rubberband or make a tempvalue struct
  */
 class RubberBand:Mover{//TODO: rename to Elastic
-    typealias CallBack = (CGFloat)->Void/*call back signature*/
+    
     typealias Config = (velocity:CGFloat,friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat)
     typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
     /*Constants*/
@@ -24,7 +24,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var result:CGFloat = 0/*output value, this is the value that external callers can use*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     var isDirectlyManipulating:Bool = false/*toggles the directManipulation mode*/
-    convenience init(<#parameters#>) {
+    convenience init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ value:CGFloat = 0,_ config:Config) {
         <#statements#>
     }
     init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
