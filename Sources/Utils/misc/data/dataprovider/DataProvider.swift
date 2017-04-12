@@ -26,6 +26,7 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  * TODO: ⚠️️ Make it in POP ⚠️️
  */
+typealias DP = DataProvider
 protocol DataProvidable{
     func item(_ at:Int) -> [String:String]?
     var count:Int{get}
