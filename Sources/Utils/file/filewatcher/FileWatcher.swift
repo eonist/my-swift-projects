@@ -6,6 +6,7 @@ import Cocoa
  * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
  * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  * NOTE: The collaboration that led to FileWatcher: https://raw.githubusercontent.com/stylekit/img/master/FileWatcher.pdf
+ * IMPORTANT: ⚠️️ I believe FileWatcher has to be referenced in the class scope to work. As the app needs to be able to reach FileWatcher from Appdelegate. I never figured out how to Make FileWatcher work in an isolated context. I think it is possible, but I ran out of time to work on it and just left it as is. I will probably make it work in an isolated context in the future. (A patch is been proposed and is in review)
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * EXAMPLE: fileWatcher!.event = { [weak self] event in Swift.print(self?.temp); Swift.print(event.description)}//<--this is the closure that would print the fileChange event and also be able to interact with the app. The temp var is a temp var in the calling class to demonstrate that the closure is able to interact with the app as well. the unknown self part avoids strong reference cycles.
  */
