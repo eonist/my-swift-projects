@@ -211,7 +211,8 @@ public class XMLParser{
     }
     /**
      * Convert xml to multidimensional array
-     * [[attribs],]
+     * IMPORTANT: 
+     * [[key:value,key:value],[[key:value],"string"]]
      */
     static func arr(_ xml:XML) -> [Any]{
         var items:[Any] = []
