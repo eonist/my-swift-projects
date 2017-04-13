@@ -211,8 +211,9 @@ public class XMLParser{
     }
     /**
      * Convert xml to multidimensional array
-     * IMPORTANT: 
-     * [[key:value,key:value],[[key:value],"string"]]
+     * IMPORTANT: node name is not preserved.
+     * TODO: You could create a more JSON like conversion system. as JSON stores node-name as well.
+     * OUTPUT: [[key:value,key:value],[[key:value],"string"]]
      */
     static func arr(_ xml:XML) -> [Any]{
         var items:[Any] = []
