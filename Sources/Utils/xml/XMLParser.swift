@@ -192,7 +192,7 @@ public class XMLParser{
      */
     static func toArray(_ xml:XML)->[[String:String]] {
         
-        //⚠️️ you probably shouldnt use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
+        //⚠️️ you probably shouldn't use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
         
         var items:[[String:String]] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
