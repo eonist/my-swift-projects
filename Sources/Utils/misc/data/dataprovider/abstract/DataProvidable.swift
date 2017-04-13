@@ -1,5 +1,6 @@
 import Foundation
 
-class DataProvidable {
-
+protocol DataProvidable{
+    func item(_ at:Int) -> [String:String]?
+    var count:Int{get}
 }
