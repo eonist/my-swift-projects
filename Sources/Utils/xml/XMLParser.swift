@@ -210,7 +210,7 @@ public class XMLParser{
         return items
     }
     /**
-     * New 
+     * Convert xml to multidimensional array
      */
     static func arr(_ xml:XML) -> [Any]{
         var items:[Any] = []
