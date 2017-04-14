@@ -2,6 +2,7 @@ import Foundation
 /**
  * Makes working with threads, queues, serial and concurrent tasks easier by using shorter/less cryptic names
  * NOTE: there is also these: DISPATCH_QUEUE_PRIORITY_DEFAULT,DISPATCH_QUEUE_PRIORITY_HIGH,DISPATCH_QUEUE_PRIORITY_LOW
+ * Example: bg.async{main.async{print("🎉")}}
  */
 var bg = {return DispatchQueue.global(qos: DispatchQoS.QoSClass.background)}()/*Convenience*/
 var main = {return DispatchQueue.main}()/*Convenience*/
