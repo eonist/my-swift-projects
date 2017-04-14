@@ -33,7 +33,7 @@ public class XMLModifier {
     /**
      * EXAMPLE XMLModifier.removeChildAt(xml, [0,0]);
      */
-    static func removeChildAt(_ xml:XML,_ index:Array<Int>) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
+    static func removeChildAt(_ xml:XML,_ index:[Int]) -> XML {// :TODO: remove may need to be recursive, rename to removeAt?
         //let match:XML = XMLParser.childAt(xml, index)!
         let lastIdx:Int = index[index.count-1]
         Swift.print("lastIdx: " + "\(lastIdx)")
@@ -53,7 +53,7 @@ public class XMLModifier {
     /**
      * EXAMPLE XMLModifier.setNameAt(database.xml, index, "menu")
      */
-    static func setNameAt(_ xml:XML,_ index:Array<Int>, _ name:String) -> XML {
+    static func setNameAt(_ xml:XML,_ index:[Int], _ name:String) -> XML {
         XMLParser.childAt(xml, index)?.name = name
         return xml
     }
@@ -92,7 +92,7 @@ public class XMLModifier {
      * EXAMPLE: replaceChildAt(xml, [0,1], child)
      * NOTE: if the index is out of bound the replacment is appended to the parent index
      */
-    static func replaceAt(_ xml:XML,_ index:Array<Int>,_ replacement:XML) -> XML {
+    static func replaceAt(_ xml:XML,_ index:[Int],_ replacement:XML) -> XML {
         let idx = index.slice2(0,index.count-1)
         let child = XMLParser.childAt(xml, idx)
         _ = child?.replaceAt(xml, index[index.count-1], replacement)
