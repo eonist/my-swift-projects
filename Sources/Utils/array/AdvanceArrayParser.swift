@@ -33,4 +33,16 @@ class AdvanceArrayParser {
         }
         return indices.count/*or else just return the last index*/
     }
+    /**
+     * Stores indecies as keys
+     * ⚠️️ IMPORTANT: keys must be uniqe (Assert uniqness of array before use)
+     * ["a","b","c"].hash//[["a":0],["b":1],["c":2]]
+     */
+    static func hash(_ arr:[String])->[String:Int]{
+        var dict:[String:Int] = [:]
+        for (i,key) in arr.enumerated(){
+            dict[key] = i
+        }
+        return dict
+    }
 }
