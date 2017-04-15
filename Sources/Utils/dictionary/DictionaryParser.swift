@@ -25,4 +25,5 @@ class DictionaryParser{
     static func pairs<Key, Value>(_ dict: [Key: Value]) -> [(Key, Value)] {
         return Array(dict)
     }
+    
 }
