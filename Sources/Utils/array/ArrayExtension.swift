@@ -88,7 +88,7 @@ extension Array {
     }
     var end:Element?{//new
         get{return self.last}
-        set{self[self.count] = newValue!}
+        set{self[self.count == 0 ? 0 : self.count - 1] = newValue!}
     }
 }
 /**
