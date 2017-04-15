@@ -109,13 +109,15 @@ extension Array where Element:Equatable{
         return ArrayAsserter.existAtOrBefore(self, idx, item)
     }
 }
+/**
+ * [1,2,3].string//"123"
+ */
 extension Array where Element:Integer{
     var string:String {return self.map{"\($0)"}.reduce(""){$0+$1}}
 }
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
 extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
-
 
 /**
  * var arr = [1,2,3] 
