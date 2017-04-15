@@ -116,6 +116,7 @@ extension Array where Element:Equatable{
 extension Array where Element:Integer{
     var string:String {return self.map{"\($0)"}.reduce(""){$0+$1}}
 }
+//extension Array where Element:ExpressibleByStringLiteral{
 extension Collection where Iterator.Element == String{//SubSequence.Iterator.Element == String
     func hash()->[String:Int]{
         return AdvanceArrayParser.hash(self as! [String])
