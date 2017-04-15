@@ -22,11 +22,11 @@ class FileWatcher{
     }
     /**
      * Start listening for FSEvents
-     * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen).
+     * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen)
      * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
      * VARIABLE: latency: How often the watcher updates. (This should be set acording to use, if you need instant feedback then set it to 0, less frequent then maybe 3.0)
-     * VARIABLE: flags: The flags used to create the watcher.
-     * VARIABLE: runLoopMode: The run loop mode for the watcher.
+     * VARIABLE: flags: The flags used to create the watcher
+     * VARIABLE: runLoopMode: The run loop mode for the watcher
      */
     func start() {
         Swift.print("FileWatcher start - has started: " + "\(hasStarted)")
@@ -55,11 +55,11 @@ class FileWatcher{
     /**
      * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created. (there is a lor of info in the FSEventStreamCallback code doc)
      * PARAM: streamRef: The stream for which event(s) occurred.
-     * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created.
-     * PARAM: numEvents: The number of events being reported in this callback. Each of the arrays (eventPaths, eventFlags, eventIds) will have this many elements.
+     * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created
+     * PARAM: numEvents: The number of events being reported in this callback. Each of the arrays (eventPaths, eventFlags, eventIds) will have this many elements
      * PARAM: eventPaths: An array of paths to the directories in which event(s) occurred.The type of this parameter depends on the flags passed to FSEventStreamCreate...(). If kFSEventStreamCreateFlagUseCFTypes was set, then this will be a CFArrayRef containing CFStringRef objects (per CFStringCreateWithFileSystemRepresentation()). Ownership follows the Get rule, and they will be released by the framework after your callback returns. If kFSEventStreamCreateFlagUseCFTypes was not set, then the framework will pass your callback a raw C array of raw C strings that will be deallocated by the framework after your callback returns. A path might be "/" if ether of these flags is set for the event: kFSEventStreamEventFlagUserDropped, kFSEventStreamEventFlagKernelDropped.
-     * PARAM: eventFlags: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags.
-     * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter. Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function.
+     * PARAM: eventFlags: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags
+     * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter.  Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function.
      */
     private let eventCallback:FSEventStreamCallback = {(stream:ConstFSEventStreamRef,contextInfo:UnsafeMutableRawPointer?,numEvents:Int,eventPaths:UnsafeMutableRawPointer,eventFlags:UnsafePointer<FSEventStreamEventFlags>?,eventIds:UnsafePointer<FSEventStreamEventId>?) in
         //this method changed a lot when upgrading to swift 3. some additional testing may be required...seems to work fine!
