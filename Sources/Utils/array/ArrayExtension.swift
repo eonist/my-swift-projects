@@ -82,6 +82,9 @@ extension Array {
     func removeDups( _ condition:(_ a:Element, _ b:Element)->Bool)->[Element]{
         return ArrayModifier.removeDups(self, condition)
     }
+    func setEnd(_ element:Element){
+        self[self.count] = element
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
