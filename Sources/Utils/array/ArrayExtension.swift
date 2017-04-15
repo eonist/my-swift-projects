@@ -82,11 +82,11 @@ extension Array {
     func removeDups( _ condition:(_ a:Element, _ b:Element)->Bool)->[Element]{
         return ArrayModifier.removeDups(self, condition)
     }
-    var start:Element?{
+    var start:Element?{//new
         get{return self.first}
         set{self[0] = newValue!}
     }
-    var end:Element?{
+    var end:Element?{//new
         get{return self.last}
         set{self[self.count] = newValue!}
     }
