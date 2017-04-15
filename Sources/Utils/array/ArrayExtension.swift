@@ -116,11 +116,13 @@ extension Array where Element:Equatable{
 extension Array where Element:Integer{
     var string:String {return self.map{"\($0)"}.reduce(""){$0+$1}}
 }
-extension Array where Element:CustomStringConvertible{
+extension Sequence where Generator.Element == String {
     func hash()->[String:Int]{
-        return AdvanceArrayParser.hash(self as! [String])
+        return AdvanceArrayParser.hash(self)
     }
+
 }
+
 
 protocol AnyArray{}/*<--Neat trick to assert if a value is an Array, use-full in reflection and when the value is Any but really an array*/
 extension Array:AnyArray{}//Maybe rename to ArrayType
