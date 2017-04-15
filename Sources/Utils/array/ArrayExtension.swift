@@ -111,6 +111,7 @@ extension Array where Element:Equatable{
 }
 /**
  * [1,2,3].string//"123"
+ * one can also use .joined but reduce does the same I suppose
  */
 extension Array where Element:Integer{
     var string:String {return self.map{"\($0)"}.reduce(""){$0+$1}}
