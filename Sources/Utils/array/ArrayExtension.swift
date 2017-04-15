@@ -118,7 +118,7 @@ extension Array where Element:Integer{
 }
 //extension Array where Element:ExpressibleByStringLiteral{
 extension Collection where Iterator.Element == String{//SubSequence.Iterator.Element == String
-    func hash()->[String:Int]{
+    var hash:[String:Int]{
         return AdvanceArrayParser.hash(self as! [String])
     }
 }
