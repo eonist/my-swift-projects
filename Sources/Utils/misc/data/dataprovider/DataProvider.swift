@@ -57,6 +57,11 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         let xml = FileParser.xml(fileURLStr)
         self.init(xml)
     }
+    
+}
+/*Parser*/
+extension DataProvidable{
+    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Returns an item at a spessific index
      */
@@ -65,10 +70,6 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
     }
-}
-/*Parser*/
-extension DataProvidable{
-    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
