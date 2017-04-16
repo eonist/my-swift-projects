@@ -204,4 +204,10 @@ class StringParser{
     static func idx(_ str:String,_ index:Int) -> String.Index {
         return str.index(str.startIndex, offsetBy: index)/*Upgraded to swift 3-> was: startIndex.advancedBy*/
     }
+    /**
+     *
+     */
+    static func array<T>(_ str:String)->[T]{
+        let arr:[T] = str.characters.map{}
+    }
 }
