@@ -6,15 +6,12 @@ import Foundation
  */
 typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose*/
 class EventSender:IEventSender {
-    var event:EventCallBack/*this holds any method assigned to it that has its type*/
-    private var eventCall:EventCallBack {//TODO:this should probably be private
+    var event:EventCallBack = eventCall/*this holds any method assigned to it that has its type*/
+    private static var eventCall:EventCallBack {//TODO:this should probably be private
         return {
             (event:Event) -> Void in /*Swift.print("\(ClassParser.type(self))  event handler missing,  event.type: \(event.type) event.origin: \(ClassParser.type(event.origin))" )*//*Empty call so that if no event handler is attached it doesnt throw an error*/
         }
     }/*returns closure that will take care of propagating the event to the parent*/
-    init(){
-        event = eventCall// TODO: is this needed? can't this be done in the event variable?, could be that you need self sometimes?!?
-    }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
      * IMPORTANT: Remember to add immediate to the outgoing event. 
