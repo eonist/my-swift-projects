@@ -1,6 +1,6 @@
 import Foundation
 
-struct DP:DataProvidable,IEventSender {
+struct DP:DataProvidable,EventSendable {
     var event:EventCallBack/*this holds any method assigned to it that has its type*/
     var eventCall:EventCallBack {//TODO:this should probably be private
         return {
