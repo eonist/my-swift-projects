@@ -26,7 +26,7 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  * TODO: ⚠️️ Make it in POP ⚠️️
  */
-//typealias DP = DataProvider
+typealias DP = DataProvider
 
 class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
@@ -43,32 +43,30 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         super.init()
     }
     /**
-     * Creates a DataProvider instance from an XML instance
-     */
-    convenience init(_ xml:XML?){
-        let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : []
-        self.init(arr)
-    }
-    /**
-     * Creates a DP from an file url string
-     * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
-     */
-    convenience init(_ fileURLStr:String){
-        let xml = FileParser.xml(fileURLStr)
-        self.init(xml)
-    }
-    
-}
-/*Parser*/
-extension DataProvidable{
-    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
-    /**
      * Returns an item at a spessific index
      */
     func item(_ at:Int) -> [String:String]?{
         if(at < self.items.count) {return self.items[at]}
         Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
+    }
+}
+/*Parser*/
+extension DataProvider{
+    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
+    /**
+     * Creates a DataProvider instance from an XML instance
+     */
+    convenience init(_ xml:XML?){
+        self.init(xml != nil ? XMLParser.toArray(xml!) : [])
+    }
+    /**
+     * Creates a DP from an file url string 
+     * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
+     */
+    convenience init(_ fileURLStr:String){
+        let xml = FileParser.xml(fileURLStr)
+        self.init(XMLParser.toArray(xml))
     }
     /**
      * Returns the first item that has the PARAM: value at PARAM key
