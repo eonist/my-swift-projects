@@ -52,7 +52,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
     }
 }
 /*Parser*/
-extension DataProvider{
+extension DataProvidable{
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Creates a DataProvider instance from an XML instance
