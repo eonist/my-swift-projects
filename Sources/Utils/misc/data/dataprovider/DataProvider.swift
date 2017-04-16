@@ -38,7 +38,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
      * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
      * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
      */
-    init(_ items:[[String:String]] = []){
+    required init(_ items:[[String:String]] = []){
         self.items = items
         super.init()
     }
@@ -58,8 +58,8 @@ extension DataProvidable{
      * Creates a DataProvider instance from an XML instance
      */
     init(_ xml:XML?){
-        let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : [[String:String]]()
-        init(arr)
+        //let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : [[String:String]]()
+        self.init([["":""]])
     }
     /**
      * Creates a DP from an file url string 
