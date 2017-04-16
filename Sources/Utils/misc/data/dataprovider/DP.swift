@@ -5,11 +5,10 @@ struct DP:DataProvidable,EventSendable {
     func onEvent(_ event:Event){
         //self.event!(event.setImmediate(self))
     }
-    var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
+    var items:[[String:String]]
     var count:Int{return self.items.count}
     
     init(_ items:[[String:String]] = []){
         self.items = items
-        //event = eventCall
     }
 }
