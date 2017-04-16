@@ -68,7 +68,7 @@ extension String {
     var url:URL {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
-        return StringParser.array(self, char)
+        return StringParser.array(self, cast)
     }
 }
 extension NSString{
