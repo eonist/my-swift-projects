@@ -171,7 +171,7 @@ class GitModifier{
    /**
     * Config
     * NOTE: set your name: git config --global user.name "your-user-name"
-    * NOTE: set your email: git config --global user.email you@example.com
+    * NOTE: set your email: git config --global user.email youEXAMPLE:.com
     * NOTE: git config --global core.editor "vi", or use nano or atom, see gitsync on github in the wiki: dev tips
     */
    static func config(){

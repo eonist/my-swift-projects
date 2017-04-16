@@ -106,7 +106,7 @@ public class XMLParser{
     }
     /**
      * Returns a key/value object with the attributes at the PARAM: index in PARAM database
-     * @example: DatabaseParser.attributesAt(database,[0,0])["title"]
+     * EXAMPLE:: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
     static func attributesAt(_ child:XML, _ index:[Int]) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
