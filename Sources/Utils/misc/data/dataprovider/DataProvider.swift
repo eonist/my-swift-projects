@@ -32,20 +32,6 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     var count:Int{return self.items.count}
     //private var allowDuplicates:Bool = true
-    
-    
-    /**
-     * Returns an item at a spessific index
-     */
-    func item(_ at:Int) -> [String:String]?{
-        if(at < self.items.count) {return self.items[at]}
-        Swift.print("\(self)" + "no item at the index of " + "\(at)")
-        return nil
-    }
-}
-/*Parser*/
-extension DataProvidable{
-    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Constructs the DataProvider class
      * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
@@ -59,18 +45,30 @@ extension DataProvidable{
     /**
      * Creates a DataProvider instance from an XML instance
      */
-    init(_ xml:XML?){
+    convenience init(_ xml:XML?){
         //let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : [[String:String]]()
         self.init([["":""]])
     }
     /**
-     * Creates a DP from an file url string 
+     * Creates a DP from an file url string
      * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
-    init(_ fileURLStr:String){
+    convenience init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
         self.init(xml)
     }
+    /**
+     * Returns an item at a spessific index
+     */
+    func item(_ at:Int) -> [String:String]?{
+        if(at < self.items.count) {return self.items[at]}
+        Swift.print("\(self)" + "no item at the index of " + "\(at)")
+        return nil
+    }
+}
+/*Parser*/
+extension DataProvidable{
+    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
