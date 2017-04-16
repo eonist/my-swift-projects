@@ -207,7 +207,8 @@ class StringParser{
     /**
      *
      */
-    static func array<T>(_ str:String)->[T]{
-        let arr:[T] = str.characters.map{}
+    static func array<T>(_ str:String, cast:(_ char:Character)->T)->[T]{
+        let arr:[T] = str.characters.map{cast($0)}
+        return arr
     }
 }
