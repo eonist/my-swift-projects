@@ -1,5 +1,5 @@
 import Foundation
 
-class DP {
+struct DP:DataProvidable {
 
 }
