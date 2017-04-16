@@ -206,6 +206,7 @@ class StringParser{
     }
     /**
      * Basically enables you to convert a string to any kind of Array of char in any kind of type
+     * EXAMPLE: "001".array({$0.int}) -> [0,0,1]
      */
     static func array<T>(_ str:String, _ cast:(_ char:Character)->T)->[T]{
         let arr:[T] = str.characters.map{cast($0)}
