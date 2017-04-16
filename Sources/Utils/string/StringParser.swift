@@ -205,9 +205,9 @@ class StringParser{
         return str.index(str.startIndex, offsetBy: index)/*Upgraded to swift 3-> was: startIndex.advancedBy*/
     }
     /**
-     *
+     * Basically enables you to convert a string to any kind of Array of char in any kind of type
      */
-    static func array<T>(_ str:String, cast:(_ char:Character)->T)->[T]{
+    static func array<T>(_ str:String, _ cast:(_ char:Character)->T)->[T]{
         let arr:[T] = str.characters.map{cast($0)}
         return arr
     }
