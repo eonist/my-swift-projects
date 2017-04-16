@@ -46,8 +46,8 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
      * Creates a DataProvider instance from an XML instance
      */
     convenience init(_ xml:XML?){
-        //let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : [[String:String]]()
-        self.init([["":""]])
+        let arr:[[String:String]] = xml != nil ? XMLParser.toArray(xml!) : []
+        self.init(arr)
     }
     /**
      * Creates a DP from an file url string
@@ -120,7 +120,7 @@ extension DataProvidable{
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
  */
 //Modifier
-extension DataProvider{
+extension DataProvidable{
     /**
      * Adds an array to the exisiting items array
      * PARAM: items is an Array comprised of objects
@@ -149,7 +149,7 @@ extension DataProvider{
     /**
      * Removes an item at a spesific index
      */
-    func remove(_ index:Int)->[String:String] {
+    mutating func remove(_ index:Int)->[String:String] {
         //Swift.print("removeItemAt.index: " + "\(index)")
         var removedItem:[String:String]
         if (index < items.count) {
@@ -213,7 +213,7 @@ extension DataProvider{
     }
 }
 //DEPRECATED, legacy support
-extension DataProvider{
+extension DataProvidable{
     func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
     func getItemIndex(_ item:[String:String])->Int{return index(item)}
     func getIndex(_ title:String)->Int?{return index(title)}
