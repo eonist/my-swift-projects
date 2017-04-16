@@ -1,5 +1,6 @@
 import Foundation
 
-class EventSendable {
-
+protocol EventSendable {
+    var event:EventCallBack{get set}
+    func onEvent(_ event:Event)
 }
