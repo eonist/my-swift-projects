@@ -32,16 +32,8 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     var count:Int{return self.items.count}
     //private var allowDuplicates:Bool = true
-    /**
-     * Constructs the DataProvider class
-     * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
-     * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
-     * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
-     */
-    required init(_ items:[[String:String]] = []){
-        self.items = items
-        super.init()
-    }
+    
+    
     /**
      * Returns an item at a spessific index
      */
@@ -54,6 +46,16 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
 /*Parser*/
 extension DataProvidable{
     var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
+    /**
+     * Constructs the DataProvider class
+     * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
+     * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
+     * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
+     */
+    init(_ items:[[String:String]] = []){
+        self.items = items
+        super.init()
+    }
     /**
      * Creates a DataProvider instance from an XML instance
      */
