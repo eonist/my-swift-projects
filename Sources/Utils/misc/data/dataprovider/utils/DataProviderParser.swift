@@ -16,8 +16,8 @@ class DataProviderParser {
     /**
      *
      */
-    static func itemByProperty(_ dp:DataProvidable,_ property:String) -> [String:String]?{
-        for object in dp.items {
+    static func itemByProperty(_ dataProvider:DataProvider,_ property:String) -> [String:String]?{
+        for object in dataProvider.items {
             if(object["property"] == property) {return object}
         }
         //fatalError("NO ITEM WITH THE PROPERTY OF: "+property);
@@ -27,10 +27,10 @@ class DataProviderParser {
      * Returns an XML instance from PARAM: dataProvider
      * NOTE: the is the reverse algorithm as XMLParser.parseXMLToArray(xml)
      */
-    static func xml(_ dp:DataProvidable) -> XML {
+    static func xml(_ dataProvider:DataProvider) -> XML {
         let xml = "<items></items>".xml
-        for i in 0..<dp.items.count{//swift 3 upgrade
-            let item = dp.items[i]
+        for i in 0..<dataProvider.items.count{//swift 3 upgrade
+            let item = dataProvider.items[i]
             let child = "<item></item>".xml
             for attr:(key:String,value:String) in item{
                 child[attr.key] = attr.value//add all attributes to the item
