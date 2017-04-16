@@ -26,7 +26,7 @@ import Foundation
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
  * TODO: ⚠️️ Make it in POP ⚠️️
  */
-typealias DP = DataProvider
+//typealias DP = DataProvider
 
 class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
