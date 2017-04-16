@@ -66,7 +66,7 @@ extension DataProvider{
      */
     convenience init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
-        self.init(XMLParser.toArray(xml))
+        self.init(xml)
     }
     /**
      * Returns the first item that has the PARAM: value at PARAM key
