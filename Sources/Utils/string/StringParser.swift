@@ -29,12 +29,12 @@ class StringParser{
         return result
     }
 	/**
-     * Returns an Array of words derived from @param str by splitting it at every @param delimiter
+     * Returns an Array of words derived from PARAM str by splitting it at every PARAM delimiter
      * EXAMPLE: components("Berlin, Paris, New York, San Francisco")//Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
 	 * NOTE: use "\n" to retrive paragraphs
      * NOTE: The opposit of this method is StringModifier.combine(array," ")
      */
-	static func split(_ string:String,_ delimiter:String)->Array<String>{
+	static func split(_ string:String,_ delimiter:String)->[String]{
 		return string.components(separatedBy:delimiter)
 	}
 	static func firstWord(_ string:String)->String {
