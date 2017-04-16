@@ -120,7 +120,7 @@ extension DataProvidable{
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
  */
 //Modifier
-extension DataProvidable{
+extension DataProvider{
     /**
      * Adds an array to the exisiting items array
      * PARAM: items is an Array comprised of objects
@@ -149,7 +149,7 @@ extension DataProvidable{
     /**
      * Removes an item at a spesific index
      */
-    mutating func remove(_ index:Int)->[String:String] {
+    func remove(_ index:Int)->[String:String] {
         //Swift.print("removeItemAt.index: " + "\(index)")
         var removedItem:[String:String]
         if (index < items.count) {
@@ -213,7 +213,7 @@ extension DataProvidable{
     }
 }
 //DEPRECATED, legacy support
-extension DataProvidable{
+extension DataProvider{
     func getItemAt(_ index:Int) -> [String:String]? {return item(index)}
     func getItemIndex(_ item:[String:String])->Int{return index(item)}
     func getIndex(_ title:String)->Int?{return index(title)}
