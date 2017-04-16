@@ -29,12 +29,12 @@ class StringParser{
         return result
     }
 	/**
-     * Returns an Array of words derived from PARAM: str by splitting it at every PARAM: delimiter
+     * Returns an Array of words derived from PARAM str by splitting it at every PARAM delimiter
      * EXAMPLE: components("Berlin, Paris, New York, San Francisco")//Returns an array with the following values:  ["Berlin", " Paris", " New York", " San Francisco"]
 	 * NOTE: use "\n" to retrive paragraphs
      * NOTE: The opposit of this method is StringModifier.combine(array," ")
      */
-	static func split(_ string:String,_ delimiter:String)->Array<String>{
+	static func split(_ string:String,_ delimiter:String)->[String]{
 		return string.components(separatedBy:delimiter)
 	}
 	static func firstWord(_ string:String)->String {
@@ -67,7 +67,7 @@ class StringParser{
         return str.substring(with:range)
     }
     /**
-     * Returns an array comprised of two strings that is the result of splitting the PARAM: str
+     * Returns an array comprised of two strings that is the result of splitting the @param str
      * EXAMPLE: splitAt("Hello, playground",5)//["hello"," playground"]
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
@@ -83,7 +83,7 @@ class StringParser{
         //impliment this
     }
     /**
-     * Returns the index of the first match of PARAM: b in PARAM: a
+     * Returns the index of the first match of @param b in @param a
      */
     static func indexOf(_ a:String,_ b:String)->Int{
         let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
