@@ -57,14 +57,14 @@ extension DataProvidable{
     /**
      * Creates a DataProvider instance from an XML instance
      */
-    convenience init(_ xml:XML?){
+    init(_ xml:XML?){
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
     /**
      * Creates a DP from an file url string 
      * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
-    convenience init(_ fileURLStr:String){
+    init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
         self.init(xml)
     }
