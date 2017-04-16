@@ -119,7 +119,7 @@ private class BasicPathDataParser{
         else {fatalError("PathCommand not yet supported")}//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
     }
     /**
-     * Returns a IArc5 instance derived from @param pathData at @param index
+     * Returns a IArc5 instance derived from PARAM: pathData at PARAM: index
      * PARAM: pathDataIndex is the index in the pathData not the commandIndex
      * PARAM: start is the start position of the prev command
      * NOTE: this function is used in the SelectPath4 draw functions

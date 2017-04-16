@@ -43,7 +43,7 @@ class ArrayParser{
         return -1
     }
     /**
-     * Returns the index of the first instance that matches the @param item in the @param arr, -1 of none is found
+     * Returns the index of the first instance that matches the PARAM: item in the PARAM: arr, -1 of none is found
      * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
      * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
      * IMPORTANT: compares reference not value
@@ -126,7 +126,7 @@ class ArrayParser{
         return arr[arr.count-1]
     }
     /**
-     * Returns a new array with every item in @param array sorted according a custom method provided in @param contition
+     * Returns a new array with every item in PARAM: array sorted according a custom method provided in PARAM: contition
      * NOTE: leaves the original array intact
      * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */

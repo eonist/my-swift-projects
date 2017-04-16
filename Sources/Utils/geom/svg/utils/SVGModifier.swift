@@ -2,7 +2,7 @@ import Foundation
 
 class SVGModifier {
 	/**
-	 * Offsets each item in a svg by @param offset (Point)
+	 * Offsets each item in a svg by PARAM: offset (Point)
 	 * TODO: add support for other SVG elements as well, use switch method instead of if
      * NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
@@ -27,7 +27,7 @@ class SVGModifier {
 		}
 	}
 	/**
-	 * Scales SVG elements at @param pivot to @param scale (0-1) 
+	 * Scales SVG elements at PARAM: pivot to PARAM: scale (0-1) 
 	 * PARAM: scalePoint (0 - 1)
 	 * NOTE: this method is recursive
      * NOTE: The stroke thickness isnt scaled, is this correct or?

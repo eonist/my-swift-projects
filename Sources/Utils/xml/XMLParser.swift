@@ -112,7 +112,7 @@ public class XMLParser{
         return childAt(child,index)?.attribs
     }
     /**
-     * Returns an array of Object instances containing key/value pairs of the xml properties at @param index from @param child
+     * Returns an array of Object instances containing key/value pairs of the xml properties at PARAM: index from PARAM: child
      * @Note: returns an empty array if the index is out of bound
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
@@ -160,13 +160,13 @@ public class XMLParser{
         return child.attribute(forName: attrKey)?.stringValue
     }
     /**
-     * Returns the name of the @param child
+     * Returns the name of the PARAM: child
      */
     static func name(_ child:XML)->String{
         return child.name!//child.localName also works
     }
     /**
-     * Returns the first attribute that contains the attribute by the PARAM: name and with the @param value
+     * Returns the first attribute that contains the attribute by the PARAM: name and with the PARAM: value
      */
     static func childByAttribute(_ child:XML,_ attributeName:String,_ attributeValue:String){
         //not implimented yet
@@ -235,7 +235,7 @@ public class XMLParser{
         return items
     }
     /**
-     * Returns the first matching xml that has the attribute key value pair PARAM attribute in @param xml
+     * Returns the first matching xml that has the attribute key value pair PARAM attribute in PARAM: xml
      */
     static func index(_ xml:XML,_ key:String, _ value:String) -> [Int]? {
         if(xml[key] == value) {

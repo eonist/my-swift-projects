@@ -2,7 +2,7 @@ import Cocoa
 
 class NSViewParser {
     /**
-     * Returns an array of all the children in @param view that is of type @param classType
+     * Returns an array of all the children in PARAM: view that is of type PARAM: classType
      * NOTE: this works with classes and protocols
      * IMPORTANT: Remember to use: IA.self and A.self as the type 
      * TODO: rename to childrenByClassType, maybe not?, I say not!
@@ -44,7 +44,7 @@ class NSViewParser {
         return i < view.subviews.count ? view.subviews[i] : nil
     }
     /**
-     * Returns the first parent of @param view that is of type @param classType
+     * Returns the first parent of PARAM: view that is of type PARAM: classType
      * @Note this method is recursive, and looks through parents of parents and so on until it finds a match for the classType
      */
     static func parentOfType<T>(_ view:NSView,_ classType:T.Type)->T? {
@@ -52,7 +52,7 @@ class NSViewParser {
         return view.superview != nil ? view.superview as? T : nil
     }
     /**
-     * Returns the array index of @param item from @param parent
+     * Returns the array index of PARAM: item from PARAM: parent
      * @Note this function is recursive
      * // :TODO: rename to indexMap? or depth or map?, since index should be index of a NSView
      */

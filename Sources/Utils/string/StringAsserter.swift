@@ -17,7 +17,7 @@ class StringAsserter{
         return string.hasPrefix(prefix)
 	}
     /**
-     * Asserts if PARAM: str ends with @param suffix
+     * Asserts if PARAM: str ends with PARAM: suffix
      */
     static func endWith(_ str:String, _ suffix:String)->Bool{
         return str.hasSuffix(suffix)

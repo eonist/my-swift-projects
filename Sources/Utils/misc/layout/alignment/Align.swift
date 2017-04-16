@@ -19,7 +19,7 @@ class Align {
         NSViewModifier.position(view, alignmentPoint)
     }
     /**
-     * Returns the point from where to align target @param objectSize within @param canvasSize at @param objectAlignment and @param canvasAlignment and @param offset
+     * Returns the point from where to align target PARAM: objectSize within PARAM: canvasSize at PARAM: objectAlignment and PARAM: canvasAlignment and PARAM: offset
      * PARAM: objectSize the size of the object that is being aligned
      * PARAM: canvasSize is the size of the canvas the object is beeing aligned to (Thinkn of the canvas as a painting and the object as an element in that painting, figurativly speaking)
      * NOTE: this function is usefull when aligning two or more objects where you can add the size together and find the correct alignment point

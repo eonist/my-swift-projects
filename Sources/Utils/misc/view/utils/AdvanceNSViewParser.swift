@@ -11,7 +11,7 @@ class AdvanceNSViewParser {
         return indices
     }
     /**
-     * Returns an NSView instance at @param index in PARAM: container
+     * Returns an NSView instance at PARAM: index in PARAM: container
      * NOTE: this function is recursive
      * TODO: rename index to map?, move to AdvanceDisplayObjectParser?
      */

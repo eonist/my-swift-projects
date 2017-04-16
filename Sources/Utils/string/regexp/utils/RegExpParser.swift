@@ -7,7 +7,7 @@ public class RegExpParser{
      */
     static let usDatePattern:String = "(\\d\\d)[-\\/](\\d\\d)[-\\/](\\d\\d(?:\\d\\d)?)"//g
     /**
-     * Returns an array of computer date formated dates from @param usDate
+     * Returns an array of computer date formated dates from PARAM: usDate
      * EXAMPLE:
      * computerDate("12-30-1968")//Output 1968/12/30
      * computerDate("12/30/1968")//Output 1968/12/30

@@ -51,7 +51,7 @@ class IntParser{
         return (currentMin, currentMax)
     }
     /**
-     * Returns the max int value in @param ints
+     * Returns the max int value in PARAM: ints
      * EXAMPLE: max([1, 2, 3, 10, 100])
      */
     static func max(_ ints:Array<Int>)->Int{

@@ -42,7 +42,7 @@ class DisplayArcUtils {
       * Returns an object containing the start angle, end angle and center point
       * PARAM: r radii in the xAxis,yAxis (half of the ellipse xAxis,yAxis)
       * PARAM: rot rotation of the ellipse (in radians)
-      * PARAM: largeArcFlag if the the angle span between @param start and @param end is more than 180 degrees then this is false else its true
+      * PARAM: largeArcFlag if the the angle span between PARAM: start and PARAM: end is more than 180 degrees then this is false else its true
       * PARAM: sweepFlag cw vs ccw
       * PARAM: start is the start point of the arc
       * PARAM: end is the end point of the arc

@@ -164,7 +164,7 @@ class ArrayModifier{
     }
     /**
      * Returns PARAM: array with out the items in PARAM: these
-     * NOTE: only removed the first instance, if there are duplicates in the @param array then they will not be removed
+     * NOTE: only removed the first instance, if there are duplicates in the PARAM: array then they will not be removed
      * EXAMPLE: print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
      * IMPORTANT: compares reference not value, create a similar method if you need to compare value
      */
@@ -225,9 +225,9 @@ class ArrayModifier{
         return array
     }
     /**
-     * Merges Array instance @param a into Array instance @param b at index @param i
+     * Merges Array instance PARAM: a into Array instance PARAM: b at index PARAM: i
      * IMPORTANT: Alters PARAM: a and PARAM: b
-     * RETURNS: The altered Array instance @param a
+     * RETURNS: The altered Array instance PARAM: a
      * var abc:Array = ["a","b","c"];
      * var def:Array = ["d","e","f"];
      * print(ArrayModifier.merge(abc, def, 2));//a,b,d,e,f,c// and the def array should now be empty

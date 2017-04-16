@@ -41,7 +41,7 @@ class TrigAsserter {
         return normalizedA == inverseAngle
     }
     /**
-     * Asserts if angle @param a is parallel or anti-parallel to angle @param b
+     * Asserts if angle PARAM: a is parallel or anti-parallel to angle PARAM: b
      * NOTE: input must be normalized between -PI and +PI
      * NOTE: this method treats both anti-Parallel and parallel as paralell
      * NOTE: two nonzero vectors are called anti-parallel if they are parallel but have opposite directions

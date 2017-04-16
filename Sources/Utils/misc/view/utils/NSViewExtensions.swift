@@ -63,7 +63,7 @@ extension NSView {
         ViewModifier.removeSubviewAt(self, i)
     }
     /**
-     * Asserts if @param view is a subView of @param parent
+     * Asserts if PARAM: view is a subView of PARAM: parent
      */
     func contains<T:NSView>(_ view:T)->Bool{
         return NSViewAsserter.contains(self, view)
