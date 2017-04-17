@@ -78,14 +78,14 @@ class FileWatcher{
      * The callback used to retain the info pointer.
      */
     private let retainCallback: CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
-      _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
-      return info
+        _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
+        return info
     }
     /**
      * The callback used to release a retain on the info pointer.
      */
     private let releaseCallback: CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
-      Unmanaged<FileWatcher>.fromOpaque(info!).release()
+        Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
      * Carefull with enabling this as we don't deinit things in swift anymore? ARC and all that?
