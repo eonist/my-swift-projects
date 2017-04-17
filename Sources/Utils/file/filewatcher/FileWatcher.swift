@@ -34,8 +34,8 @@ class FileWatcher{
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = Unmanaged.passUnretained(self).toOpaque()//this line chached a lot converting to swift 3
-        context.retain  = retainCallback
-        context.release = releaseCallback
+        context.retain  = retainCallback/*A locally scoped variable where the FileWatching context can reside*/
+        context.release = releaseCallback/*This is the handler for when the reference is released*/
       
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths as CFArray, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
