@@ -16,8 +16,8 @@ class FileWatcher{
     var hasStarted = false/*Whether or not the watcher has started yet.*/
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId:FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
-    var event: ((_ fileWatcherEvent:FileWatcherEvent) -> Void)?
-    init(_ paths: [String], _ sinceWhen: FSEventStreamEventId) {
+    var event:((_ fileWatcherEvent:FileWatcherEvent) -> Void)?
+    init(_ paths:[String], _ sinceWhen:FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
     }
@@ -32,7 +32,7 @@ class FileWatcher{
     func start() {
         Swift.print("FileWatcher start - has started: " + "\(hasStarted)")
         if(hasStarted){return}/*<--only start if its not already started*/
-        var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+        var context = FSEventStreamContext(version: 0, info:nil, retain:nil, release:nil, copyDescription:nil)
         context.info = Unmanaged.passUnretained(self).toOpaque()//this line chached a lot converting to swift 3
         context.retain  = retainCallback/*A locally scoped variable where the FileWatching context can reside*/
         context.release = releaseCallback/*This is the handler for when the reference is released*/
@@ -78,14 +78,14 @@ class FileWatcher{
     /**
      * The callback used to retain the info pointer
      */
-    private let retainCallback:CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
+    private let retainCallback:CFAllocatorRetainCallBack = {(info:UnsafeRawPointer?) in
         _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
         return info
     }
     /**
      * The callback used to release a retain on the info pointer
      */
-    private let releaseCallback:CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
+    private let releaseCallback:CFAllocatorReleaseCallBack = {(info:UnsafeRawPointer?) in
         Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
