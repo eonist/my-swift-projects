@@ -77,14 +77,14 @@ class FileWatcher{
     /**
      * The callback used to retain the info pointer.
      */
-    private let retainCallback: CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
+    private let retainCallback:CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
         _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
         return info
     }
     /**
      * The callback used to release a retain on the info pointer.
      */
-    private let releaseCallback: CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
+    private let releaseCallback:CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
         Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
