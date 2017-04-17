@@ -73,7 +73,7 @@ class FileWatcher{
         for index in 0..<numEvents {
             fileSystemWatcher.event?(FileWatcherEvent(eventIds![index], paths[index], eventFlags![index]))
         }
-        fileSystemWatcher.lastEventId = eventIds![numEvents - 1]//<--im not sure if this is needed anymore
+        fileSystemWatcher.lastEventId = eventIds![numEvents - 1]//<--i'm not sure if this is needed anymore
     }
     /**
      * The callback used to retain the info pointer.
