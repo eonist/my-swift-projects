@@ -3,13 +3,13 @@ import Cocoa
  * Watches for file changes in a list of filePath(s)
  * NOTE: If you specify folder path(s) then every descendant folder is also "watched"
  * NOTE: You could stop and start to restart
- * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder.
+ * NOTE: The nice thing about FSEvents is that you just need to watch one folder and you will be notified of any changes that occur anywhere in the subfolder hierarchy of that folder
  * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  * NOTE: The collaboration that led to FileWatcher: https://raw.githubusercontent.com/stylekit/img/master/FileWatcher.pdf
  * NOTE: Future upgrade: https://lists.swift.org/pipermail/swift-users/Week-of-Mon-20170123/004516.html
- * NOTE: File-watcher can be locally scoped 
+ * NOTE: File-watcher can be locally scoped 👌
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
- * EXAMPLE: fileWatcher!.event = { [weak self] event in Swift.print(self?.temp); Swift.print(event.description)}//<--this is the closure that would print the fileChange event and also be able to interact with the app. The temp var is a temp var in the calling class to demonstrate that the closure is able to interact with the app as well. the unknown self part avoids strong reference cycles.
+ * EXAMPLE: fileWatcher!.event = { [weak self] event in Swift.print(self?.temp); Swift.print(event.description)}//<--this is the closure that would print the fileChange event and also be able to interact with the app. The temp var is a temp var in the calling class to demonstrate that the closure is able to interact with the app as well. the unknown self part avoids strong reference cycles
  */
 class FileWatcher{
     let filePaths:[String]/*Specify many paths to watch, works on folders and file paths*/
@@ -24,7 +24,7 @@ class FileWatcher{
     /**
      * Start listening for FSEvents
      * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen)
-     * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
+     * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files
      * VARIABLE: latency: How often the watcher updates. (This should be set according to use, if you need instant feedback then set it to 0, less frequent then maybe 3.0)
      * VARIABLE: flags: The flags used to create the watcher
      * VARIABLE: runLoopMode: The run loop mode for the watcher
@@ -61,9 +61,9 @@ class FileWatcher{
      * PARAM: streamRef: The stream for which event(s) occurred.
      * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created
      * PARAM: numEvents: The number of events being reported in this callback. Each of the arrays (eventPaths, eventFlags, eventIds) will have this many elements
-     * PARAM: eventPaths: An array of paths to the directories in which event(s) occurred.The type of this parameter depends on the flags passed to FSEventStreamCreate...(). If kFSEventStreamCreateFlagUseCFTypes was set, then this will be a CFArrayRef containing CFStringRef objects (per CFStringCreateWithFileSystemRepresentation()). Ownership follows the Get rule, and they will be released by the framework after your callback returns. If kFSEventStreamCreateFlagUseCFTypes was not set, then the framework will pass your callback a raw C array of raw C strings that will be deallocated by the framework after your callback returns. A path might be "/" if ether of these flags is set for the event: kFSEventStreamEventFlagUserDropped, kFSEventStreamEventFlagKernelDropped.
+     * PARAM: eventPaths: An array of paths to the directories in which event(s) occurred.The type of this parameter depends on the flags passed to FSEventStreamCreate...(). If kFSEventStreamCreateFlagUseCFTypes was set, then this will be a CFArrayRef containing CFStringRef objects (per CFStringCreateWithFileSystemRepresentation()). Ownership follows the Get rule, and they will be released by the framework after your callback returns. If kFSEventStreamCreateFlagUseCFTypes was not set, then the framework will pass your callback a raw C array of raw C strings that will be deallocated by the framework after your callback returns. A path might be "/" if ether of these flags is set for the event: kFSEventStreamEventFlagUserDropped, kFSEventStreamEventFlagKernelDropped
      * PARAM: eventFlags: An array of flag words corresponding to the paths in the eventPaths parameter. If no flags are set, then there was some change in the directory at the specific path supplied in this event. See FSEventStreamEventFlags
-     * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter.  Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function.
+     * PARAM: eventIds: An array of FSEventStreamEventIds corresponding to the paths in the eventPaths parameter. Each event ID comes from the most recent event being reported in the corresponding directory named in the eventPaths parameter.  Event IDs all come from a single global source. They are guaranteed to always be increasing, usually in leaps and bounds, even across system reboots and moving drives from one machine to another. Just before invoking your callback your stream is updated so that calling the accessor FSEventStreamGetLatestEventId() will return the largest of the values passed in the eventIds parameter; if you were to stop processing events from this stream after this callback and resume processing them later from a newly-created FSEventStream, this is the value you would pass for the sinceWhen parameter to the FSEventStreamCreate...() function
      */
     private let eventCallback:FSEventStreamCallback = {(stream:ConstFSEventStreamRef,contextInfo:UnsafeMutableRawPointer?,numEvents:Int,eventPaths:UnsafeMutableRawPointer,eventFlags:UnsafePointer<FSEventStreamEventFlags>?,eventIds:UnsafePointer<FSEventStreamEventId>?) in
         //this method changed a lot when upgrading to swift 3. some additional testing may be required...seems to work fine!
@@ -76,23 +76,23 @@ class FileWatcher{
         fileSystemWatcher.lastEventId = eventIds![numEvents - 1]//<--i'm not sure if this is needed anymore
     }
     /**
-     * The callback used to retain the info pointer.
+     * The callback used to retain the info pointer
      */
     private let retainCallback:CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
         _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
         return info
     }
     /**
-     * The callback used to release a retain on the info pointer.
+     * The callback used to release a retain on the info pointer
      */
     private let releaseCallback:CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
         Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
      * Careful with enabling this as we don't deinit things in swift anymore? ARC and all that?
-     * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed.
-     * NOTE: You never call this function yourself; it is called by the run‐ time when an instance of this class goes out of existence.
-     * IMPORTANT: The idea of a deinitializer is that you might want to perform some cleanup, or just log to the console to prove to yourself that your instance is going out of existence in good order.
+     * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed
+     * NOTE: You never call this function yourself; it is called by the run‐ time when an instance of this class goes out of existence
+     * IMPORTANT: The idea of a deinitializer is that you might want to perform some cleanup, or just log to the console to prove to yourself that your instance is going out of existence in good order
      */
     deinit {
         //stop()
