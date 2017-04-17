@@ -7,12 +7,12 @@ import Cocoa
  * NOTE: lots of info on FSEVent: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/index.html#//apple_ref/c/tdef/FSEventStreamCallback
  * NOTE: The collaboration that led to FileWatcher: https://raw.githubusercontent.com/stylekit/img/master/FileWatcher.pdf
  * NOTE: Future upgrade: https://lists.swift.org/pipermail/swift-users/Week-of-Mon-20170123/004516.html
- * NOTE: File-watcher can be locally scoped 👌
+ * NOTE: File-watcher can be locally scoped 
  * FUN-FACT: Dropbox also uses FSEvents to watch the change inside the Dropbox folder.
  * EXAMPLE: fileWatcher!.event = { [weak self] event in Swift.print(self?.temp); Swift.print(event.description)}//<--this is the closure that would print the fileChange event and also be able to interact with the app. The temp var is a temp var in the calling class to demonstrate that the closure is able to interact with the app as well. the unknown self part avoids strong reference cycles.
  */
 class FileWatcher{
-    let filePaths:[String]/*Specifiy many paths to watch, works on folders and file paths*/
+    let filePaths:[String]/*Specify many paths to watch, works on folders and file paths*/
     var hasStarted = false/*Whether or not the watcher has started yet.*/
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId:FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
@@ -25,7 +25,7 @@ class FileWatcher{
      * Start listening for FSEvents
      * NOTE: Starts receiving events and servicing them from the client's runloop(s) using the callback supplied by the client when the stream was created. If a value was supplied for the sinceWhen parameter then "historical" events will be sent via your callback first, then a HistoryDone event, then "contemporary" events will be sent on an ongoing basis (as though you had supplied kFSEventStreamEventIdSinceNow for sinceWhen)
      * NOTE: FSEvents now supports file-level granularity, use kFSEventStreamCreateFlagFileEvents flag when creating events stream to get informed about changes to particular files.
-     * VARIABLE: latency: How often the watcher updates. (This should be set acording to use, if you need instant feedback then set it to 0, less frequent then maybe 3.0)
+     * VARIABLE: latency: How often the watcher updates. (This should be set according to use, if you need instant feedback then set it to 0, less frequent then maybe 3.0)
      * VARIABLE: flags: The flags used to create the watcher
      * VARIABLE: runLoopMode: The run loop mode for the watcher
      */
@@ -57,7 +57,7 @@ class FileWatcher{
         hasStarted = false
     }
     /**
-     * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created. (there is a lor of info in the FSEventStreamCallback code doc)
+     * NOTE: This is the type of the callback function supplied by the client when creating a new stream. This callback is invoked by the service from the client's runloop(s) when events occur, per the parameters specified when the stream was created. (there is a lot of info in the FSEventStreamCallback code doc)
      * PARAM: streamRef: The stream for which event(s) occurred.
      * PARAM: clientCallBackInfo: The info field that was supplied in the context when this stream was created
      * PARAM: numEvents: The number of events being reported in this callback. Each of the arrays (eventPaths, eventFlags, eventIds) will have this many elements
@@ -89,7 +89,7 @@ class FileWatcher{
         Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
-     * Carefull with enabling this as we don't deinit things in swift anymore? ARC and all that?
+     * Careful with enabling this as we don't deinit things in swift anymore? ARC and all that?
      * NOTE: if you enable it the class will deint right after its init. A suggestion is to call stop when its not needed.
      * NOTE: You never call this function yourself; it is called by the run‐ time when an instance of this class goes out of existence.
      * IMPORTANT: The idea of a deinitializer is that you might want to perform some cleanup, or just log to the console to prove to yourself that your instance is going out of existence in good order.
