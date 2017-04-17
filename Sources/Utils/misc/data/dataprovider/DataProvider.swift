@@ -50,10 +50,6 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         Swift.print("\(self)" + "no item at the index of " + "\(at)")
         return nil
     }
-}
-/*Parser*/
-extension DataProvider{
-    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
     /**
      * Creates a DataProvider instance from an XML instance
      */
@@ -61,13 +57,18 @@ extension DataProvider{
         self.init(xml != nil ? XMLParser.toArray(xml!) : [])
     }
     /**
-     * Creates a DP from an file url string 
+     * Creates a DP from an file url string
      * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
     convenience init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
         self.init(XMLParser.toArray(xml))
     }
+}
+/*Parser*/
+extension DataProvider{
+    var xml:XML {return DataProviderParser.xml(self)}/*convenience*/
+    
     /**
      * Returns the first item that has the PARAM: value at PARAM key
      */
