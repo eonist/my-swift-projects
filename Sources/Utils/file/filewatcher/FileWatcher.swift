@@ -33,6 +33,9 @@ class FileWatcher{
         if(hasStarted){return}/*<--only start if its not already started*/
         var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = Unmanaged.passUnretained(self).toOpaque()//this line chached a lot converting to swift 3
+        context.retain  = retainCallback
+        context.release = releaseCallback
+      
         let flags = UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents)
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths as CFArray, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
         FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/ // Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
@@ -70,6 +73,19 @@ class FileWatcher{
             fileSystemWatcher.event?(FileWatcherEvent(eventIds![index], paths[index], eventFlags![index]))
         }
         fileSystemWatcher.lastEventId = eventIds![numEvents - 1]//<--im not sure if this is needed anymore
+    }
+    /**
+     * The callback used to retain the info pointer.
+     */
+    private let retainCallback: CFAllocatorRetainCallBack = { (info: UnsafeRawPointer?) in
+      _ = Unmanaged<FileWatcher>.fromOpaque(info!).retain()
+      return info
+    }
+    /**
+     * The callback used to release a retain on the info pointer.
+     */
+    private let releaseCallback: CFAllocatorReleaseCallBack = { (info: UnsafeRawPointer?) in
+      Unmanaged<FileWatcher>.fromOpaque(info!).release()
     }
     /**
      * Carefull with enabling this as we don't deinit things in swift anymore? ARC and all that?
