@@ -434,6 +434,7 @@ class ArrayModifier{
     }
     /**
      * Inserts "before" PARAM index (see examples bellow)
+     * NOTE: Another way to think of it is that the index always becomes the index of the item in the array
      * RETURN: the mutated PARAM arr
      * EXAMPLE: ["a","b","c"].insert("x", 0)//x,a,b,c
      * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
