@@ -13,7 +13,7 @@ import Foundation
  * dp.addItem(red)
  * dp.removeItemAt(dp.getItemIndex(orange))
  * Swift.print(dp.count())
- * // :TODO: Is dataprovider a candidat for struct? No, as it extends EventSender, unless you make an EventSender that is an extension, maybe with protocol and mixin?
+ * // :TODO: Is dataprovider a candidat for struct? No, as it extends EventSender, unless you make an EventSender that is an extension, maybe with protocol and mixin? 👈 yes
  * // :TODO: add the method addItemsAs ?
  * // :TODO: impliment allowDuplicates
  * // :TODO: replaceItem
