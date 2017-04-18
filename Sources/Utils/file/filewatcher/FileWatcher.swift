@@ -20,6 +20,7 @@ class FileWatcher{
     init(_ paths:[String], _ sinceWhen:FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
+        Int8
     }
     /**
      * Start listening for FSEvents
