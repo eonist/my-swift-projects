@@ -26,9 +26,15 @@ class DictionaryParser{
         return Array(dict)
     }
     /**
-     *
+     * New
      */
     static func sortByValue<Key, Value:Comparable>(_ dict: [Key: Value])->[(Key, Value)]{
         return Array(dict).sorted{$0.1 < $1.1}
+    }
+    /**
+     * New
+     */
+    static func sortByKey<Key:Comparable, Value>(_ dict: [Key: Value])->[(Key, Value)]{
+        return Array(dict).sorted{$0.0 < $1.0}
     }
 }

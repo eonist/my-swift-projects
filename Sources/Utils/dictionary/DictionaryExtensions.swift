@@ -19,15 +19,16 @@ extension Dictionary where Value:Comparable {
     var valuesOrdered:[Value] {
         return self.values.sorted()
     }
+    var sortedByValue:[(Key,Value)] {return DictionaryParser.sortByValue(self)}
+    
 }
 /**
  * ⚠️️ Untested
  * ["two":"monkey","one":"cat","three":"hamster"].keysOrdered  // ["one", "three", "two"]
  */
 extension Dictionary where Key:Comparable {
-    var keysOrdered:[Key] {
-        return self.keys.sorted()
-    }
+    var keysOrdered:[Key] {return self.keys.sorted()}
+    var sortedByKey:[(Key,Value)] {return DictionaryParser.sortByKey(self)}
 }
 extension Dictionary {
     func hasKey( _ key:Key) -> Bool{/*Convenience*/
