@@ -25,4 +25,10 @@ class DictionaryParser{
     static func pairs<Key, Value>(_ dict: [Key: Value]) -> [(Key, Value)] {
         return Array(dict)
     }
+    /**
+     *
+     */
+    static func sort<Key, Value>(_ dict: [Key: Value])->[(Key, Value)]{
+        return (Array(dict).sorted{$0.1 < $1.1}).map{(k,v)}
+    }
 }
