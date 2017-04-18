@@ -29,6 +29,8 @@ class DictionaryParser{
      *
      */
     static func sort<Key, Value>(_ dict: [Key: Value])->[(Key, Value)]{
-        return (Array(dict).sorted{$0.1 < $1.1}).map{(k,v)}
+        let arr = Array(dict)
+        let sortedArr = arr.sorted{$0.1 < $1.1}
+        return [("","")]
     }
 }
