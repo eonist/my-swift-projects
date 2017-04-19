@@ -226,7 +226,7 @@ class ArrayModifier{
     }
     /**
      * Merges Array instance PARAM: a into Array instance PARAM: b at index PARAM: i
-     * IMPORTANT: Alters PARAM: a and PARAM: b
+     * ⚠️️ IMPORTANT: Alters PARAM: a and PARAM: b
      * RETURNS: The altered Array instance PARAM: a
      * var abc:Array = ["a","b","c"];
      * var def:Array = ["d","e","f"];
@@ -252,7 +252,7 @@ class ArrayModifier{
     }
     /**
      * Merges b into a at index (returns a for convenience)
-     * IMPORTANT: Alters PARAM: a
+     * ⚠️️ IMPORTANT: Alters PARAM: a
      * PARAM: a:Target array
      * PARAM: b: array to merged onto Target array (does not alter b)
      * PARAM: index: where on the targetArray should it merge on
