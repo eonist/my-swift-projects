@@ -91,9 +91,9 @@ extension Array {
         set{self[self.count == 0 ? 0 : self.count - 1] = newValue!}
     }
     /**
-     * Performance wise this is as fast as doing .contain, so no penality
+     * Performance wise this is as fast as doing .contain, so no penalty
      * RATIONAL 1: Enhances readability when doing `if let` style coding
-     * RATIONAL 2: using if let in conjuction with array avoids out of bound crashing
+     * RATIONAL 2: using if let in conjunction with array avoids out of bound crashing
      * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?]
      * EXAMPLE: if let item = [a,b,c,d].at(3) {print(item)}
      */
