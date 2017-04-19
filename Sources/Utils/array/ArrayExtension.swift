@@ -90,6 +90,13 @@ extension Array {
         get{return self.last}
         set{self[self.count == 0 ? 0 : self.count - 1] = newValue!}
     }
+    /**
+     * Performance wise this is as fast as doing .contain, so no penality
+     * RATIONAL 1: Enhances readability when doing `if let` style coding
+     * RATIONAL 2: using if let in conjuction with array avoids out of bound crashing
+     * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?]
+     * EXAMPLE: if let item = [a,b,c,d].at(3) {print(item)}
+     */
     func at(_ at:Int) -> Element?{
         return self.dropFirst(at).first
     }
