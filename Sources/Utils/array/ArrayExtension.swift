@@ -90,6 +90,7 @@ extension Array {
         get{return self.last}
         set{self[self.count == 0 ? 0 : self.count - 1] = newValue!}
     }
+    var items.dropFirst(n).first
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
