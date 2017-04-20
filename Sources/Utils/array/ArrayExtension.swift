@@ -98,7 +98,7 @@ extension Array {
      * EXAMPLE: if let item = [a,b,c,d][safe:3] {print(item)}
      */
     
-    subscript(_ index: Index) -> Iterator.Element? {
+    subscript(safe index: Index) -> Iterator.Element? {
         if indices.contains(index) { return self[index] }
         return nil
      }
