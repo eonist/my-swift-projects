@@ -163,8 +163,8 @@ class ArrayParser{
      * NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
      * NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
      */
-    static func first<T,V>(_ variables:[T],_ match:V,_ method:@escaping (T,V)->Bool) -> T?  where V:Equatable{
-       return variables.first(where:{method($0,match)})//new upgrade
+    static func first<T,V>(_ arr:[T],_ match:V,_ method:@escaping (T,V)->Bool) -> T?  where V:Equatable{
+       return arr.first(where:{method($0,match)})//new upgrade
         /*
          for item in variables{
             if(method(item,match)){
@@ -181,12 +181,15 @@ class ArrayParser{
      * EXAMPLE: [("a",0),("x",1),("b",0),("b",1),("c",2)].first(("b",1), {$0.1 == $1.1 && $0.0 == $1.0})//("b", 1)
      */
     static func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
+        return arr.first(where:{condition($0,match)})//new upgrade
+        /*
         for item in arr{
             if(condition(item,match)){
                 return item
             }
         }
         return nil
+        */
     }
     /**
      * Returns a random array with unique numbers (no duplicates)
