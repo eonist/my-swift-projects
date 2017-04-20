@@ -97,12 +97,13 @@ extension Array {
      * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?]
      * EXAMPLE: if let item = [a,b,c,d][safe:3] {print(item)}
      */
-    func at(_ at:Int) -> Element?{
-        return self.dropFirst(at).first
-    }
-    /*subscript(_ index: Index) -> Iterator.Element? {
-     if indices.contains(index) { return self[index] }
-     return nil
+    
+    subscript(_ index: Index) -> Iterator.Element? {
+        if indices.contains(index) { return self[index] }
+        return nil
+     }
+    /*func at(_ at:Int) -> Element?{
+     return self.dropFirst(at).first
      }*/
 }
 /**
