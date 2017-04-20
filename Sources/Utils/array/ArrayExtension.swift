@@ -91,18 +91,15 @@ extension Array {
         set{self[self.count == 0 ? 0 : self.count - 1] = newValue!}
     }
     /**
-     * Performance wise this is as fast as doing .contain, so no penalty
      * RATIONAL 1: Enhances readability when doing `if let` style coding
      * RATIONAL 2: using if let in conjunction with array avoids out of bound crashing
+     * NOTE: Performance wise `self.dropFirst(at).first` is as fast as doing .contain,
      * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?]
      * EXAMPLE: if let item = [a,b,c,d].at(3) {print(item)}
      */
-    func at(_ at:Int) -> Element?{
-        return self.dropFirst(at).first
-    }
-    subscript(safe index: Index) -> Iterator.Element? {
-        guard indices.contains(index) else { return nil }
-        return self[index]
+    subscript(_ index:Index) -> Iterator.Element? {
+        if indices.contains(index) { return self[index] }
+        return nil
     }
 }
 /**
