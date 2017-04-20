@@ -218,7 +218,6 @@ class ArrayParser{
             if((theList[i] as AnyObject) === (theItem as AnyObject)){counter += 1}
         }
     }
-    
 }
 private class Utils{
     /**
