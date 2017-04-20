@@ -95,7 +95,7 @@ extension Array {
      * RATIONAL 2: using if let in conjunction with array avoids out of bound crashing
      * NOTE: Performance wise `self.dropFirst(at).first` is as fast as doing .contain,
      * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?]
-     * EXAMPLE: if let item = [a,b,c,d].at(3) {print(item)}
+     * EXAMPLE: if let item = [a,b,c,d][safe:3] {print(item)}
      */
     subscript(safe index: Index) -> Iterator.Element? {
         if indices.contains(index) { return self[index] }
