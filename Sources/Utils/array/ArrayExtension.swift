@@ -100,6 +100,10 @@ extension Array {
     func at(_ at:Int) -> Element?{
         return self.dropFirst(at).first
     }
+    subscript(safe index: Index) -> Iterator.Element? {
+        guard indices.contains(index) else { return nil }
+        return self[index]
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
