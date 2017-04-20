@@ -6,6 +6,7 @@ class ArrayParser{
      * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
      * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
      * NOTE: the multiple generig type could also be written like this: <T : protocol<Equatable, Comparable>>
+     * NOTE: there is also Native: [].index(where: {$0 == val})
      * IMPORTANT: If you want to compare String, int, CGFloat etc use this as is, 
      * IMPORTANT: if you want to compare custom classes, then you should compare reference or 
      * IMPORTANT: if you want to compare values then you must implement Equatable or COmparable in this class
