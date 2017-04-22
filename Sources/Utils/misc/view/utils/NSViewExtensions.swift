@@ -121,3 +121,14 @@ extension NSView {
 //these wont work since swift 3 i think, use .w and .h instead (aperantly .width is used too may places, you need to refactor it out first, same with height)
 //var width:CGFloat{return frame.width}//TODO:implement later
 //var height:CGFloat{return frame.height}
+
+/**
+ * Disable implicit animation
+ * EXAMPLE: disableAnim{view.isHidden = true}//Default animation is now disabled
+ */
+func disableAnim(_ closure:()->Void){
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    closure()
+    CATransaction.commit()
+}
