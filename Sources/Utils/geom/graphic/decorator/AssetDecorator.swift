@@ -15,17 +15,12 @@ class AssetDecorator:SizeableDecorator{
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")
-        if(asset != nil) {
-            if(asset!.path == assetURL){//asset is the same, no need to re-add
-                
-            }else{
-                asset!.removeFromSuperview()
-            }
-        }else{
-            asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
+        if(asset != nil && asset!.path != assetURL) {//already exists and asset is different remove and add new
+            asset!.removeFromSuperview()
         }
-        
-        
+        if(asset == nil){// has no asset, so add one
+            asset = graphic.addSubView(SVGAsset(assetURL))
+        }
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
