@@ -71,6 +71,7 @@ extension String {
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
         return StringParser.array(self, cast)
     }
+    var nsColor:NSColor{return StringParser.nsColor(self)}
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/

@@ -140,11 +140,8 @@ class StringParser{
         let value:String = RegExp.value(string, match, 1)
         return value.cgFloat
     }
-    /**
-     *
-     */
     static func boolean(_ string:String) -> Bool {
-        return string == "true";
+        return string == "true"
     }
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)

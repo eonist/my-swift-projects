@@ -118,6 +118,9 @@ extension Array where Element:Equatable, Element:Comparable{
     func index(_ value:Element)->Int{
         return ArrayParser.index(self, value)
     }
+    func has(_ value:Element)->Bool{
+        return self.index(of: value) != nil
+    }
 }
 extension Array where Element:Equatable{
     func existAtOrBefore(_ idx:Int, _ item:Element) -> Bool{

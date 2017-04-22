@@ -1,4 +1,5 @@
 class StringAsserter{
+    static var webColorPattern:[String] = ["blue","fuchsia","black","gray","grey","silver","maroon","red","orange","yellow","olive","green","teal","lime","aqua","navy","purple","white","grey1","grey2","grey3","grey4","grey5","grey6","grey7","grey8","grey9","white1","white2","white3","white4","white5","white6","white7","white8","white9"]
 	/*
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
 	 */
@@ -39,17 +40,16 @@ class StringAsserter{
      * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 20%, 0.2)
      */
     static func digit(_ string:String)->Bool{
-        return RegExp.test(string, "^-?\\d*?\\.?\\d*?(px)?$")
+        return string.test("^-?\\d*?\\.?\\d*?(px)?$")
     }
     static func metric(_ string:String) -> Bool{
-        return RegExp.test(string, "^-?\\d*?\\.?\\d*?(ems|%)?$")
+        return string.test("^-?\\d*?\\.?\\d*?(ems|%)?$")
     }
     static func color(_ string:String) -> Bool {
-        return RegExp.test(string,"^#?([a-fA-F0-9]{3}){1,2}$")
+        return string.test("^#?([a-fA-F0-9]{3}){1,2}$")
     }
     static func webColor(_ string:String)->Bool {
-        let webColorPattern:String = "^(?:blue|fuchsia|black|gray|grey|silver|maroon|red|orange|yellow|olive|green|teal|lime|aqua|navy|purple|white|grey1|grey2|grey3|grey4|grey5|grey6|grey7|grey8|grey9|white1|white2|white3|white4|white5|white6|white7|white8|white9)$"
-        return RegExp.test(string,webColorPattern)
+        return webColorPattern.has(string)//was regexp, is now array assert because probably faster
     }
     /**
      * Asserts if a string is in lower case
