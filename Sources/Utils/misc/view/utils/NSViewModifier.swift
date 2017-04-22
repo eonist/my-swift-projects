@@ -87,4 +87,10 @@ class NSViewModifier {
             }
         }
     }
+    /**
+     *
+     */
+    static func animate(_ method:()->Void,_ isAnimated:Bool = false){
+        method()
+    }
 }
