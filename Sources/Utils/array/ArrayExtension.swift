@@ -115,7 +115,7 @@ extension Array where Element:AnyObject{
     }
 }
 extension Array where Element:Equatable, Element:Comparable{
-    func index(value:Element)->Int{
+    func index(_ value:Element)->Int{
         return ArrayParser.index(self, value)
     }
 }
