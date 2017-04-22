@@ -88,9 +88,13 @@ class NSViewModifier {
         }
     }
 }
-func deAnimate(_ closure:()->Void){
-    CATransaction.begin()
-    CATransaction.setDisableActions(true)
-    closure()
-    CATransaction.commit()
+typealias DeAnimateType = ()->Void
+var deAnimate:DeAnimateType{
+    get{ fatalError("not supported")}
+    set{
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        newValue()
+        CATransaction.commit()
+    }
 }
