@@ -4,24 +4,19 @@ import Cocoa
  * NOTE: asset is svg for now but in the future it should support png
  */
 class AssetDecorator:SizeableDecorator{
-    var asset:SVGAsset? = nil
+    var asset:SVGAsset?
     var assetURL:String
     init(_ decoratable:IGraphicDecoratable,_ iconURL:String) {//this should be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         assetURL = iconURL
         //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
-        //asset = graphic.addSubView(SVGAsset(assetURL))
+        asset = graphic.addSubView(SVGAsset(assetURL))
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied*/
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")
-        if(asset != nil) {//already exists and asset is different remove and add new
-            asset!.removeFromSuperview()
-            asset = nil
-        }
-        if(asset == nil){// has no asset, so add one
-            asset = graphic.addSubView(SVGAsset(assetURL))
-        }
+        if(asset != nil) {asset!.removeFromSuperview();asset = nil}/*temp solution, find a more elegant solution than removing*/
+        if(asset == nil) {asset = graphic.addSubView(SVGAsset(assetURL))}/*temp solution*/
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
