@@ -5,7 +5,9 @@ import Cocoa
  */
 class SVGAsset:InteractiveView2 {
     var svg:SVG
+    var path:String
     init(_ path:String) {
+        self.path = path
         let rootElement:XML = FileParser.xml(path.tildePath)
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
