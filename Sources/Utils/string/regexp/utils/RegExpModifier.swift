@@ -8,7 +8,7 @@ public class RegExpModifier{
     static func removeComments(_ string:String)->String {
         let pattern:String = "\\/\\*.*?\\*\\/";
         let output:String = RegExp.replace(string,pattern, "")
-        return output;
+        return output
     }
     /**
      * Returns the PARAM: input without whitespace on the left and right side
@@ -20,7 +20,7 @@ public class RegExpModifier{
     static func removeWrappingWhitespace(_ input:String)->String {
         // :TODO: ⚠️️ the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
         let pattern:String = "[^\\s]+?(?<=\\b)(.|\\n)*?(?=$|\\s*?$)"
-        return RegExp.match(input, pattern)[0];
+        return RegExp.match(input, pattern)[0]
     }
 }
 
