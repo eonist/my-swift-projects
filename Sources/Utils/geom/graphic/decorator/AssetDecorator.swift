@@ -15,7 +15,8 @@ class AssetDecorator:SizeableDecorator{
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")
-        if(asset != nil) {
+        if(asset != nil && asset!.path != assetURL) {
+            Swift.print("AssetDecorator.draw isNewPath: \(Bool(asset!.path != assetURL))")
             asset!.removeFromSuperview()
             asset = nil
             asset = graphic.addSubView(SVGAsset(assetURL))
