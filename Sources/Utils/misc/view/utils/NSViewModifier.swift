@@ -87,10 +87,10 @@ class NSViewModifier {
             }
         }
     }
-    /**
-     *
-     */
-    static func animate(_ method:()->Void,_ isAnimated:Bool = false){
-        method()
-    }
+}
+func deAnimate(_ closure:()->Void){
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    closure()
+    CATransaction.commit()
 }
