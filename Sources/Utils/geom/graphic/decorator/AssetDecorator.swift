@@ -15,13 +15,12 @@ class AssetDecorator:SizeableDecorator{
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")
-        
         if(asset != nil) {
-            if (asset!.path == assetURL){//asset is the same, no need to re-add
+            if(asset!.path == assetURL){//asset is the same, no need to re-add
                 
+            }else{
+                asset!.removeFromSuperview()
             }
-            asset!.removeFromSuperview()
-            
         }else{
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
         }
