@@ -219,7 +219,7 @@ class ArrayParser{
         }
     }
     /**
-     * let str:String = [("a","1"),("b","2")].mapReduce{}
+     * let str:String = [("a","1"),("b","2")].mapReduce{return $0.0 + $0.1}
      */
     static func mapReduce<T,V>(_ arr:[T])->V{
         fatalError("")
