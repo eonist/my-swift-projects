@@ -218,6 +218,12 @@ class ArrayParser{
             if((theList[i] as AnyObject) === (theItem as AnyObject)){counter += 1}
         }
     }
+    /**
+     * let str:String = [("a","1"),("b","2")].mapReduce{}
+     */
+    static func mapReduce<T,V>(_ arr:[T])->V{
+        fatalError("")
+    }
 }
 private class Utils{
     /**
