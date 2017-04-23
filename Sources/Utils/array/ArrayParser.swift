@@ -223,6 +223,7 @@ class ArrayParser{
      * RATIONAL: Doing [].map.reduce loops over the same array twice
      * RATIONAL: [].map.reduce can only reduce to the same type as the array type
      * EXAMPLE: [("a","1"),("b","2")].mapReduce(""){$0 + ($1.0 + $1.1)}//Output: a1b2
+     * IMPORTANT: ⚠️️ You can also use: arr.lazy.map{}.reduce(){} which does the same thing. Only difference is mapReduce uses 1 closure and the other uses 2. The lazy way may be more appropriate since more people will understand it straight away
      */
     static func mapReduce<T,V>(_ arr:[T], _ initVal:V, _ closure:@escaping (_ interim: V,_ item:T)->V)->V{
         var retVal = initVal
