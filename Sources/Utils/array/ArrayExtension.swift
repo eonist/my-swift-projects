@@ -102,9 +102,12 @@ extension Array {
         if indices.contains(index) { return self[index] }
         return nil
      }
-    /*func at(_ at:Int) -> Element?{
-     return self.dropFirst(at).first
-     }*/
+    /**
+     * EXAMPLE: [("a","1"),("b","2")].mapReduce(""){ return $0 + ($1.0 + $1.1) }//Output: a1b2
+     */
+    func mapReduce<V>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->V{
+        return ArrayParser.mapReduce(self,result,closure)
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>

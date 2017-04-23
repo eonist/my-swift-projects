@@ -219,12 +219,14 @@ class ArrayParser{
         }
     }
     /**
-     * let str:String = [("a","1"),("b","2")].mapReduce{return $0.0 + $0.1}
+     * EXAMPLE: [("a","1"),("b","2")].mapReduce(""){ return $0 + ($1.0 + $1.1) }//Output: a1b2
      */
-    static func mapReduce<T,V>(_ arr:[T], _ result:V, _ closure:@escaping (_ item:T,_ result:inout V)->Void)->V{
-        var result = result
-        arr.forEach{closure($0,&result)}
-        return result
+    static func mapReduce<T,V>(_ arr:[T], _ initVal:V, _ closure:@escaping (_ interim: V,_ item:T)->V)->V{
+        var retVal = initVal
+        arr.forEach{
+            retVal = closure(retVal,$0)
+        }
+        return retVal
     }
 }
 private class Utils{
