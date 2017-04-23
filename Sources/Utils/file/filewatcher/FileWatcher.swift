@@ -17,7 +17,7 @@ class FileWatcher{
     var streamRef:FSEventStreamRef?
     private(set) var lastEventId:FSEventStreamEventId/*<-this needs to be private or an error will happen when in use*/ // The date to start at.
     var event:((_ fileWatcherEvent:FileWatcherEvent) -> Void)?
-    var queue: DispatchQueue?
+    var queue:DispatchQueue?
     init(_ paths:[String], _ sinceWhen:FSEventStreamEventId) {
         self.lastEventId = sinceWhen
         self.filePaths = paths
@@ -42,11 +42,11 @@ class FileWatcher{
         streamRef = FSEventStreamCreate(kCFAllocatorDefault, eventCallback, &context, filePaths as CFArray, lastEventId, 0/*<--latency*/, flags)//Creates an FSEventStream.
       
         if let queue = queue {
-          print("using dispach queue")
-          FSEventStreamSetDispatchQueue(streamRef!, queue)
-        } else {
-          print("using main run loop")
-          FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/ // Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
+            print("using dispach queue")
+            FSEventStreamSetDispatchQueue(streamRef!, queue)
+        }else {
+            print("using main run loop")
+            FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)/*NSRunLoop.currentRunLoop().getCFRunLoop()*//*CFRunLoopGetMain()*/ // Schedules an FSEventStream on a runloop, like CFRunLoopAddSource() does for a CFRunLoopSourceRef., you could also use a different runloop here: NSRunLoop.currentRunLoop().getCFRunLoop() for instance
         }
         FSEventStreamStart(streamRef!)
         hasStarted = true
