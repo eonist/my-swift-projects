@@ -16,6 +16,9 @@ struct TextFormat {//struct
     var leading:CGFloat = NaN
     //TODO: autoSize can be implemented, check stackoverflow
 }
+/**
+ * TODO: Use reflection instead of the bellow switch
+ */
 extension TextFormat{
     subscript(key: String) -> Any {
         get {
@@ -42,9 +45,7 @@ extension TextFormat{
                 case TextFormatConstants.background:background = newValue as! Bool
                 case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
                 case TextFormatConstants.selectable:selectable = newValue as! Bool
-                case TextFormatConstants.color:
-                    //Swift.print("Setting color: ")
-                    color = newValue as! NSColor
+                case TextFormatConstants.color:color = newValue as! NSColor
                 case TextFormatConstants.align:align = newValue as! String
                 case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
                 case TextFormatConstants.size:size = newValue as! CGFloat
