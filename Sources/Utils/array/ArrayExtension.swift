@@ -102,12 +102,6 @@ extension Array {
         if indices.contains(index) { return self[index] }
         return nil
      }
-    /**
-     * Loops ove rthe array 1 time. Can return different Type than Array type
-     * RATIONAL: Doing [].map.reduce loops over the same array twice
-     * RATIONAL: [].map.reduce can only reduce to the same type as the array type
-     * EXAMPLE: [("a","1"),("b","2")].mapReduce(""){$0 + ($1.0 + $1.1)}//Output: a1b2
-     */
     func mapReduce<V>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->V{
         return ArrayParser.mapReduce(self,result,closure)
     }
