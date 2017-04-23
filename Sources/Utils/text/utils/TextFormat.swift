@@ -1,6 +1,6 @@
 import Cocoa
 
-class TextFormat {
+class TextFormat {//struct
     var background:Bool = false
     var backgroundColor:NSColor = NSColor.clear
     var selectable:Bool = false
@@ -15,50 +15,49 @@ class TextFormat {
     var scrollable:Bool = true
     var leading:CGFloat = NaN
     //TODO: autoSize can be implemented, check stackoverflow
-    init(){}
+}
+extension TextFormat{
     subscript(key: String) -> Any {
         get {
             switch key{
-                case TextFormatConstants.background:return background
-                case TextFormatConstants.backgroundColor:return backgroundColor
-                case TextFormatConstants.selectable:return selectable
-                case TextFormatConstants.color:return color
-                case TextFormatConstants.align:return align
-                case TextFormatConstants.font:return font
-                case TextFormatConstants.size:return size
-                case TextFormatConstants.type:return type
-                case TextFormatConstants.border:return border
-                case TextFormatConstants.multiline:return multiline
-                case TextFormatConstants.wordWrap:return wordWrap
-                case TextFormatConstants.scrollable:return scrollable
-                case TextFormatConstants.leading:return leading
-                default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
+            case TextFormatConstants.background:return background
+            case TextFormatConstants.backgroundColor:return backgroundColor
+            case TextFormatConstants.selectable:return selectable
+            case TextFormatConstants.color:return color
+            case TextFormatConstants.align:return align
+            case TextFormatConstants.font:return font
+            case TextFormatConstants.size:return size
+            case TextFormatConstants.type:return type
+            case TextFormatConstants.border:return border
+            case TextFormatConstants.multiline:return multiline
+            case TextFormatConstants.wordWrap:return wordWrap
+            case TextFormatConstants.scrollable:return scrollable
+            case TextFormatConstants.leading:return leading
+            default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
         set {
             //Swift.print("TextFormat.set() newValue: " + "\(newValue)")
             switch key{
-                case TextFormatConstants.background:background = newValue as! Bool
-                case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
-                case TextFormatConstants.selectable:selectable = newValue as! Bool
-                case TextFormatConstants.color:
-                    //Swift.print("Setting color: ")
-                    color = newValue as! NSColor
-                case TextFormatConstants.align:align = newValue as! String
+            case TextFormatConstants.background:background = newValue as! Bool
+            case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
+            case TextFormatConstants.selectable:selectable = newValue as! Bool
+            case TextFormatConstants.color:
+                //Swift.print("Setting color: ")
+                color = newValue as! NSColor
+            case TextFormatConstants.align:align = newValue as! String
             case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
-                case TextFormatConstants.size:size = newValue as! CGFloat
-                case TextFormatConstants.type:type = newValue as! String
-                case TextFormatConstants.border:border = newValue as! Bool
-                case TextFormatConstants.multiline:multiline = newValue as! Bool
-                case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
-                case TextFormatConstants.scrollable:scrollable = newValue as! Bool
-                case TextFormatConstants.leading:leading = newValue as! CGFloat
-                default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
+            case TextFormatConstants.size:size = newValue as! CGFloat
+            case TextFormatConstants.type:type = newValue as! String
+            case TextFormatConstants.border:border = newValue as! Bool
+            case TextFormatConstants.multiline:multiline = newValue as! Bool
+            case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
+            case TextFormatConstants.scrollable:scrollable = newValue as! Bool
+            case TextFormatConstants.leading:leading = newValue as! CGFloat
+            default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
     }
-}
-extension TextFormat{
     /**
      * NOTE: you can also set these: paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
      */
