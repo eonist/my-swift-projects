@@ -221,7 +221,8 @@ class ArrayParser{
     /**
      * let str:String = [("a","1"),("b","2")].mapReduce{return $0.0 + $0.1}
      */
-    static func mapReduce<T,V>(_ arr:[T], _ result:inout V, _ closure:@escaping (_ item:T,_ result:inout V)->Void)->V{
+    static func mapReduce<T,V>(_ arr:[T], _ result:V, _ closure:@escaping (_ item:T,_ result:inout V)->Void)->V{
+        var result = result
         arr.forEach{closure($0,&result)}
         return result
     }
