@@ -81,9 +81,8 @@ extension NSString{
  * EXAMPLE: "hello" * 3 //hellohellohello
  */
 public func * (left: String, right: Int) -> String {
-    var result:String = ""
-    for _ in 0 ..< right{
-        result += left
+    let result:String = (0 ..< right).indices.reduce("") { interim,_ in
+        return interim + left
     }
     return result
 }
