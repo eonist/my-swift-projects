@@ -80,20 +80,8 @@ class ArrayParser{
      * IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
      */
     static func similar<T:Equatable>(_ a:[T],_ b:[T])->[T]{//TODO:Add support for COmparable to this method
-        var similarList:[T] = []
-        
-        a.filter(){}
-        
-        for x in b {
-            for y in a {
-                if y == x {
-                    similarList.append(y)
-                    break
-                }
-            }
-        }
-        return similarList
-    }  
+        return a.filter(){x in b.first(where: {x == $0}) != nil}
+    }
     /**
      * Returns a list unique with all the unique Int from PARAM: ints
      * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
