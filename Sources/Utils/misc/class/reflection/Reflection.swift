@@ -13,7 +13,6 @@ class Reflection {
      * NOTE: works with struct and class
      */
     static func reflect(_ instance:Any)->[(label:String,value:Any)]{//<---Should this method be private? as toXML is the primary method in this class
-        //Swift.print("reflect: ")
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
         let mirror = Mirror(reflecting: instance)
         //Swift.print("mirror: " + "\(mirror)")
