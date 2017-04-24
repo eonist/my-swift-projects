@@ -15,8 +15,7 @@ class ClassParser {
      * EXAMPLE: Swift.print(ofType(c,C.self))//instance of c
      */
     static func ofType<T>(_ instance:Any?,_ type:T.Type) -> T?{/*<--we use the ? char so that it can also return a nil*/
-        if(instance as? T != nil){return instance as? T}
-        return nil
+        return instance as? T
     }
     /**
      * Returns a usable class
@@ -52,12 +51,7 @@ class ClassParser {
      * Untested
      */
     static func instanceByClassType<T>(_ instances:[Any?],_ classType:T.Type)->Any? {
-        for i in 0..<instances.count{
-            if(instances[i] as? T != nil) {
-                return instances[i]
-            }
-        }
-        return nil
+        return instances.first(where: {$0 as? T != nil}) ?? nil
     }
     //DEPRECATED:
     static func classType(_ instance:Any)->Any.Type{return ClassParser.type(instance)}
