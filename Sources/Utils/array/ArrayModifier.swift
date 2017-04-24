@@ -169,8 +169,8 @@ class ArrayModifier{
      * IMPORTANT: compares reference not value, create a similar method if you need to compare value
      */
     static func removeMany<T>(_ array:inout [T],_ many:[T]) -> [T] {
-        for i in 0..<many.count{//Swift 3
-            let index:Int = ArrayParser.indx(array, many[i])
+        many.forEach{
+            let index:Int = ArrayParser.indx(array, $0)
             if(index != -1) {array.remove(at: index)/*was --> array.splice2(index,1)*/}
         }
         return array
@@ -185,7 +185,7 @@ class ArrayModifier{
         arr.forEach{_ in
             arr.removeLast()/*using removeFirst() also works*/
         }
-        return arr
+        return arr//why are we returning an empty arr?
     }
     /**
      * Returns PARAM: array with out the items in PARAM: these by the PARAM: key
@@ -234,7 +234,6 @@ class ArrayModifier{
      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func mergeInPlaceAt<T>(_ a:inout [T], _ b:inout [T], _ i:Int) -> [T] {
-        //TODO: test this method first
         if(i == 0) {
             while(b.count > 0) {
                 _ = a.unshift(b.splice2(b.count-1,1)[0])// :TODO: if splice is faster than unshift then use splice
