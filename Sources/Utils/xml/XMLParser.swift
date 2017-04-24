@@ -1,6 +1,11 @@
 import Foundation
 
 public class XMLParser{
+    static func attribs(_ child:XML) -> [String:String]{
+        return child.attributes?.reduce([:]){
+            $0[$1.name!] = $1.stringValue!
+            } ?? [:]()
+    }
     /**
      * Returns a key/value object with the attributes at the PARAM: index in PARAM database
      * EXAMPLE: DatabaseParser.attributesAt(database,[0,0])["title"]
