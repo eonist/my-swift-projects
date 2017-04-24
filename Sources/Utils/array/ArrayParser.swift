@@ -148,7 +148,7 @@ class ArrayParser{
      * Returns all items in PARAM: array that is of PARAM: type
      */
     static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
-        let items:[T] = array.forEach{ if ($0 as? T != nil) {items.append($0 as! T)}}
+        let items:[T] = array.filter(){$0 as? T != nil}.map{ $0 as! T}
         return items
     }
     /**
