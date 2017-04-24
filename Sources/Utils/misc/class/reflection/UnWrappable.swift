@@ -77,7 +77,8 @@ extension UnWrappable{
         return dict
     }
     /**
-     * New, TODO: could be called from the method above
+     * New 
+     * TODO: could be called from the method above
      */
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dictionary:[K:T] = [:]
