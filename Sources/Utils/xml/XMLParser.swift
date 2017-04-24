@@ -231,8 +231,8 @@ public class XMLParser{
     
     static func toDictionary(_ xml:XML)->[String:Any]{
         var root = [String:Any]()
-        let attributes = XMLParser.attributes(xml)
-        for attr in attributes{root[attr["key"]!] = attr["value"]!}
+        let attributes = XMLParser.attributes(xml)//<--use attribs instead
+        attributes.forEach{ root[$0["key"]!] = $0["value"]!}
         if(xml.hasComplexContent){
             let children:[[String:Any]] = xml.children?.map{toDictionary($0 as! XML)} ?? []
             root[xml.name!] = children
