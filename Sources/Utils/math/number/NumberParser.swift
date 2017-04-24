@@ -7,7 +7,7 @@ class NumberParser{
      * EXAMPLE:: minMax(500, 200, 400)//Output: 400
      * EXAMPLE:: minMax(300, 200, 400)//Output: 300
      */
-    static func minMax<T:Comparable>(_ num:T , _ min : T , _ max : T) -> T{
+    static func minMax<T:Comparable>(_ num:T, _ min:T, _ max:T) -> T{
         return Swift.max(min, Swift.min(max, num))
     }
     /**
@@ -15,7 +15,7 @@ class NumberParser{
      * EXAMPLE: NumberParser.decimals(4.433)//Output: 3
      */
     static func decimals<T:Comparable>(_ number:T)->Int {//could also be named decimalPLaces
-        var matches:Array<String> = String(describing: number).split(".")
+        var matches:[String] = String(describing: number).split(".")
         if(matches.count > 1) {return matches[1].count}
         else {return 0}
     }
@@ -44,9 +44,9 @@ class NumberParser{
         if numbers.count > 0 {
             var min = numbers[0]
             var max = numbers[0]
-            for number in numbers {
+            numbers.forEach { number in
                 if number > max {max = number}
-                if number < min { min = number }
+                if number < min {min = number }
             }
             return (min, max)
         } else {
