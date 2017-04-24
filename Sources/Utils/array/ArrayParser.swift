@@ -94,12 +94,13 @@ class ArrayParser{
     /**
      * Returns a list unique with all the unique Int from PARAM: ints
      * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
+     * TODO: 
      */
     static func unique(_ ints:[Int])->[Int]{//use comparable instead of int, see RangeAsserter for example for how to implement that
         var uniqueList:[Int] = []
         ints.forEach{ number in
             var numberIsNew = true
-            uniqueList.forEach { otherNumber in
+            for otherNumber in uniqueList {
                 if number == otherNumber {
                     numberIsNew = false
                     break
