@@ -47,7 +47,7 @@ class ArrayParser{
      * IMPORTANT: compares reference not value
      */
     static func indexOf(_ arr:[AnyObject],_ item:AnyObject)-> Int{
-        return arr.first(where: {$0 === item}) ?? -1
+        return arr.index(where: {$0 === item}) ?? -1
     }
     /**
      * Returns an array with itmes that are not the same in 2 arrays
