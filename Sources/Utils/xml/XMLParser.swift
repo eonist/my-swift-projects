@@ -1,7 +1,35 @@
 import Foundation
 
 public class XMLParser{
-    
+    /**
+     * Convert xml to multidimensional array
+     * IMPORTANT: node name is not preserved.
+     * TODO: You could create a more JSON like conversion system. as JSON stores node-name as well.
+     * OUTPUT: [[key:value,key:value],[[key:value],"string"]]
+     */
+    static func arr(_ xml:XML) -> [Any]{
+        //var items:[Any] = []
+        //let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        if let children = xml.children {
+            return children.lazy.filter(){
+                return ($0 as? XML) != nil//we could do filter.map if it could be combinable with lazy?
+                }.map{
+                    let child:XML = $0 as! XML//at this point your garantueed that the child is XML
+                    var item:[Any] = []
+                    let attribs = child.attribs
+                    if(!attribs.isEmpty){
+                        item.append(attribs)
+                    }
+                    if(child.stringValue != nil && child.stringValue!.count > 0) {
+                        item.append(child.stringValue!)
+                    }else if(child.hasComplexContent) {
+                        item.append(arr(child))
+                    }
+                    return item
+            }
+        }
+        return []
+    }
     /**
      * Returns the first matching xml that has the attribute key value pair PARAM attribute in PARAM: xml
      * NOTE: recursive
