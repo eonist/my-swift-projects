@@ -114,7 +114,7 @@ extension NSView {
     /**
      * DEPRECATED
      */
-    func getSubviewAt(_ i:Int)->NSView{return NSViewParser.getSubviewAt(self, i)}//favour getSubViewAt method instead, as its optional
+    //func getSubviewAt(_ i:Int)->NSView{return NSViewParser.getSubviewAt(self, i)}//favour getSubViewAt method instead, as its optional
     func getSubViewAt(_ i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
 }

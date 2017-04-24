@@ -54,7 +54,7 @@ class NSViewModifier {
         return subView
     }
     static func removeSubviewAt(_ view:NSView, _ i:Int){
-        let item = view.getSubviewAt(i)
+        let item = view.getSubViewAt(i)
         item.removeFromSuperview()
     }
     /**
