@@ -62,16 +62,16 @@ class NSViewModifier {
      * NOTE: removes in the backward direction over the array
      */
     static func removeMany(_ views:[NSView]) {//TODO: rename to removeAll(all) ? maybe?
-        for i in (0..<views.count).reversed(){//upgraded to swift 3
-            let view : NSView = views[i]
-            view.removeFromSuperview()
-        }
+        views.reversed().forEach{$0.removeFromSuperview()}
     }
     /**
      * Beta (not tested, but similar code will work, use pen and paper if it doesnt)
      * NOTE: remove children in a backward direction over the array
      */
     static func removeAllOfType<T>(_ view:NSView, _ type:T.Type) {
+        
+        view.subviews.reversed().
+        //view.subviews.filter() {$0 as? T != nil}.map{$0 as! T}
         for i in (0..<view.subviews.count).reversed() {//<--recently upgraded to swift 3 loop syntax
             if(view.subviews[i] as? T != nil) {
                 view.subviews[i].removeFromSuperview()
