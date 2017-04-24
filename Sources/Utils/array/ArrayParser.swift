@@ -14,16 +14,13 @@ class ArrayParser{
      * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
      */
     static func index<T>(_ array : [T], _ value:T)->Int where T:Equatable, T:Comparable{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
-        if let i = array.index(of: value) {
-            return i
-        }else{
-            return -1/*-1 indicates no item was found*/
-        }
+        return array.index(of: value) ?? -1
     }
     /**
      * New
      * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
      * IMPORTANT: compares reference not value
+     * NOTE: use arr.index(where {..}) ?? -1 instead
      */
     static func indx<T>(_ arr: [T], _ item: T) -> Int{//<--use inout for both args?
         for i in 0 ..< arr.count{
