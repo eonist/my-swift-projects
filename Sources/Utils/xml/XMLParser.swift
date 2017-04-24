@@ -219,22 +219,20 @@ public class XMLParser{
         //let count = xml.children!.count//or use rootElement.childCount TODO: test this
         if let children = xml.children {
             return children.map{
-                if let child:XML = $0 as? XML{
-                    var item:[Any] = []
-                    let attribs = child.attribs
-                    if(!attribs.isEmpty){
-                        item.append(attribs)
-                    }
-                    if(child.stringValue != nil && child.stringValue!.count > 0) {
-                        item.append(child.stringValue!)
-                    }else if(child.hasComplexContent) {
-                        item.append(arr(child))
-                    }
-                    return item
+                let child:XML = $0 as! XML
+                var item:[Any] = []
+                let attribs = child.attribs
+                if(!attribs.isEmpty){
+                    item.append(attribs)
                 }
+                if(child.stringValue != nil && child.stringValue!.count > 0) {
+                    item.append(child.stringValue!)
+                }else if(child.hasComplexContent) {
+                    item.append(arr(child))
+                }
+                return item
             }
         }
-        
         return []
     }
     /**
