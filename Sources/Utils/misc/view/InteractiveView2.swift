@@ -153,7 +153,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
      * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
      */
-    override func hitTest(_ aPoint: NSPoint) -> NSView? {
+    override func hitTest(_ aPoint:NSPoint) -> NSView? {
         //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
             for i in (0..<self.subviews.count).reversed(){/*swift 3 upgraded*/
