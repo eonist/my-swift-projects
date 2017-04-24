@@ -3,6 +3,7 @@ import Foundation
  * EXAMPLE: Margin(CGFloat(2)).top//2
  * EXAMPLE: Margin([CGFloat(3)]).top//3
  * EXAMPLE: Margin().top//0
+ * TODO: ⚠️️ Use Generics for these Margin, Fillet,Padding classes 
  */
 class Margin{
     var top:CGFloat = 0

@@ -1,6 +1,7 @@
 import Foundation
 /**
  * TopRightBottomLeft (TRBL aka Trouble)
+ * TODO: ⚠️️ Use Generics for these Margin, Fillet,Padding classes
  */
 class Padding {
     var top:CGFloat = 0

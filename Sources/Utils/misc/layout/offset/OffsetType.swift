@@ -1,7 +1,7 @@
 import Foundation
 /*
  * TODO: redesign this class like TRBL
- * TODO: this should probably use Generics, to get rid of the casting
+ * TODO: ⚠️️ this should probably use Generics, to get rid of the casting
  */
 class OffsetType:Equatable,ILayout{
     static var center:String = "center"// :TODO: move this to a class called OffsetType
