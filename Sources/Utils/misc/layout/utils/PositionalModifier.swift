@@ -7,10 +7,10 @@ class PositionalModifier {
     static func rotate(_ positionals:[IPositional], _ pivot:CGPoint, _ rotation:CGFloat) {
         var matrix:CGTransform = CGTransform.identity
         matrix.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
-        for positional:IPositional in positionals {
-            var point:CGPoint = positional.getPosition()
-            point = matrix.transformPoint(point)
-            positional.setPosition(point)
+        positionals.forEach { positional in
+            let point:CGPoint = positional.getPosition()
+            let p:CGPoint = matrix.transformPoint(point)
+            positional.setPosition(p)
         }
     }
     /**

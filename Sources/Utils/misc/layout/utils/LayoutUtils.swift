@@ -9,17 +9,17 @@ class LayoutUtils {
      * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
     static func instance(_ value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
-        let params:[Any] = value is Array<Any> ? value as! Array<Any> : [value]
+        let params:[Any] = value is [Any] ? value as! [Any] : [value]
         let classType:ILayout.Type = layoutClassType
-        var instance:ILayout
-        switch(params.count){
-            case 1: instance = classType.init(params[0])
-            case 2: instance = classType.init(params[0],params[1])
-            case 3: instance = classType.init(params[0],params[1],params[2])
-            case 4: instance = classType.init(params[0],params[1],params[2], params[3])
-            default:fatalError("ARGUMENT COUNT MISMATCH")
-        }
-        return instance;
+        return {
+            switch(params.count){
+                case 1: return classType.init(params[0])
+                case 2: return classType.init(params[0],params[1])
+                case 3: return classType.init(params[0],params[1],params[2])
+                case 4: return classType.init(params[0],params[1],params[2], params[3])
+                default:fatalError("ARGUMENT COUNT MISMATCH")
+            }
+        }()
     }
     /**
      * This should be done through generics etc
