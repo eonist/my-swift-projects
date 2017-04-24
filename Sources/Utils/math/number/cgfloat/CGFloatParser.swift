@@ -29,11 +29,7 @@ public class CGFloatParser{
      * TODO: add an option for multiplication minus and dividens
      */
     static func sum(_ numbers:[CGFloat])->CGFloat {
-        var sum:CGFloat = 0
-        for number in numbers {
-            sum += number
-        }
-        return sum
+        return numbers.reduce(0) {$0 + $1}
     }
     /**
      * Returns the number you can add to start that becomes end (start + x = end)
@@ -152,7 +148,7 @@ public class CGFloatParser{
         //Swift.print(value)
         var curVal:CGFloat = 0
         interpolatedRange.append(min)
-        for _ in 1..<length-1{//upgraded to swift 3 -> was: for var i = 1; i < length-1; ++i{
+        for _ in 1..<length-1{//was: for var i = 1; i < length-1; ++i{
             //Swift.print("i: " + "\(i)")
             curVal += increaseBy
             interpolatedRange.append(curVal)
