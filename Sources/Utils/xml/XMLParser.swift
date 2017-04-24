@@ -178,37 +178,6 @@ public class XMLParser{
     static func xPath(){
     }
     /**
-     * Parses through an xml and returns an array
-     * NOTE: this method does not seem to be recursive
-     * NOTE: also adds other attributes and value pairs if they exist in the xml
-     * EXAMPLE:
-     * 	<items>
-            <item title="orange" property="harry"/>
-            <item title="blue" property="na"/>
-        </items>
-     * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
-     * TODO: Does it support xml string value? 
-     */
-    static func toArray(_ xml:XML)->[[String:String]] {
-        
-        //⚠️️ you probably shouldn't use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
-        
-        var items:[[String:String]] = []
-        let count = xml.children!.count//or use rootElement.childCount TODO: test this
-        for i in 0..<count{
-            let child:XML = XMLParser.childAt(xml.children!, i)!
-            //print("Import - child.toXMLString(): " + child.toXMLString());
-            var item:[String:String] = [String:String]()
-            let attributes:[[String:String]] = XMLParser.attributes(child)//TODO: use: attribs instead
-            for attribute in attributes {
-                item[attribute["name"]!] = attribute["value"]!
-            }
-            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
-            items.append(item)
-        }
-        return items
-    }
-    /**
      * Convert xml to multidimensional array
      * IMPORTANT: node name is not preserved.
      * TODO: You could create a more JSON like conversion system. as JSON stores node-name as well.
@@ -294,7 +263,7 @@ public class XMLParser{
             for item in (theContent as! Array<AnyObject>){
                 if(item is String){
                     theXML.stringValue = item as? String
-                }else if(item is Dictionary<String, AnyObject>){/*handle dictionary here*/
+                }else if(item is [String:AnyObject]){/*handle dictionary here*/
                     theXML.appendChild(toXML(item))/*<--recursive*/
                 }else{/*array*/
                     fatalError("this can't happen")
@@ -316,5 +285,41 @@ public class XMLParser{
             }
         }
         return xml
+    }
+}
+extension XMLParser{
+    /**
+     * Parses through an xml and returns an array
+     * NOTE: this method does not seem to be recursive
+     * NOTE: also adds other attributes and value pairs if they exist in the xml
+     * EXAMPLE:
+     * 	<items>
+     <item title="orange" property="harry"/>
+     <item title="blue" property="na"/>
+     </items>
+     * outputs: [{title:"orange", property:harry}, {title:"blue", property:"no"}]
+     * TODO: Does it support xml string value?
+     */
+    
+    //DEPRECATED
+    
+    static func toArray(_ xml:XML)->[[String:String]] {
+        
+        //⚠️️ you probably shouldn't use this method as it uses the old attibutes method. Try the method arr() instead, its recursive but should still work for 2d arrays
+        
+        var items:[[String:String]] = []
+        let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        for i in 0..<count{
+            let child:XML = XMLParser.childAt(xml.children!, i)!
+            //print("Import - child.toXMLString(): " + child.toXMLString());
+            var item:[String:String] = [String:String]()
+            let attributes:[[String:String]] = XMLParser.attributes(child)//TODO: use: attribs instead
+            for attribute in attributes {
+                item[attribute["name"]!] = attribute["value"]!
+            }
+            if(child.stringValue != nil && child.stringValue!.count > 0) { item["xml"] = child.stringValue! }
+            items.append(item)
+        }
+        return items
     }
 }
