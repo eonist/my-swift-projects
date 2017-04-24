@@ -80,24 +80,23 @@ extension UnWrappable{
         return dictionary
     }
     /**
-     * New, TODO: could be called form the method above
+     * New, TODO: could be called from the method above
      */
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dictionary:[K:T] = [:]
-        if(xml.childCount > 0){
-            XMLParser.children(xml).forEach{
-                let first = $0.children!.first!
-                let key:K = K.unWrap(first.stringValue!)!
-                let last:XML = $0.children!.last! as! XML/*we cast NSXMLNode to XML*/
-                /* Swift.print("last: " + "\(last)")
-                 Swift.print("last: " + "\(last.xmlString)")
-                 Swift.print("last.value: " + "\(last.value)")
-                 Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
-                 Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
-                 */
-                let value:T? = last.hasComplexContent ?  T.unWrap(last) : T.unWrap(last.value)
-                dictionary[key] = value
-            }
+        xml.children?.forEach {
+            let child:XML = $0 as! XML
+            let first = child.children!.first!
+            let key:K = K.unWrap(first.stringValue!)!
+            let last:XML = child.children!.last! as! XML/*we cast NSXMLNode to XML*/
+            /* Swift.print("last: " + "\(last)")
+             Swift.print("last: " + "\(last.xmlString)")
+             Swift.print("last.value: " + "\(last.value)")
+             Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
+             Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
+             */
+            let value:T? = last.hasComplexContent ?  T.unWrap(last) : T.unWrap(last.value)
+            dictionary[key] = value
         }
         return dictionary
     }
