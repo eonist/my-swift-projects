@@ -8,7 +8,7 @@ extension String {
     init(_ value:Int){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Bool){ self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     
-    var tildePath:String /*{get*/{return NSString(string: self).expandingTildeInPath}/*}*//*Convenince*/
+    var tildePath:String {return NSString(string: self).expandingTildeInPath}/*Convenince*/
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
