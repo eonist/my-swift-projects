@@ -426,7 +426,7 @@ class ArrayModifier{
      * IMPORTANT: Compares reference not value, create a similar method if value comparing is needed
      */
     static func replaceMany<T>(_ array:inout [T], _ matches:[T], _ replacments:[T]) -> [T]{
-        for i in 0..<matches.count{//Swift 3 support
+        for i in 0..<matches.count {
             let index:Int = ArrayParser.indx(array, matches[i])//finds index of reference
             if(index != -1){array[index] = replacments[i]}
         }
