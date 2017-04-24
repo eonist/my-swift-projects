@@ -14,9 +14,7 @@ class FileUtils{
 	 * PARAM: filePaths is an array of file paths
 	 */
 	static func openFiles(_ filePaths:[String]){
-		for filePath in filePaths{
-			openFile(filePath)
-		}	
+		filePaths.forEach{ openFile($0)}
 	}
     /**
      * showFileInFinder("~/dev/Element") -> shows the file or folder in finder
