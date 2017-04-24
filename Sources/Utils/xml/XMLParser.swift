@@ -2,6 +2,16 @@ import Foundation
 
 public class XMLParser{
     /**
+     * Returns all children of the root element
+     * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
+     */
+    static func rootChildren(_ xmlStr:String)->[XML]{
+        if let rootElement:XML = root(xmlStr), let children:[XMLNode] = rootElement.children,let theChildren:[XML] = children as? [XML] {
+            return theChildren
+        }
+        fatalError("not supported")//maybe return optional?
+    }
+    /**
      * Returns the root of an xml
      * EXAMPLE: let xml:NSXMLElement = XMLParser.root("<subCategories><category><id>someId</id><name>someName</name></category></subCategories>")!
      * EXAMPLE: Swift.print(xml.children![0].childCount)//2
@@ -10,18 +20,10 @@ public class XMLParser{
      */
     static func root(_ xmlStr:String)->XML?{
         let xmlDoc:XMLDoc = try! XMLDoc(xmlString: xmlStr, options: 0)
-        let rootElement:XML = xmlDoc.rootElement()!
-        return rootElement
-    }
-    /**
-     * Returns all children of the root element
-     * EXAMPLE: rootChildren("<a><one></one><two></two></a>")//Output: <one></one><two></two>
-     */
-    static func rootChildren(_ xmlStr:String)->[XML]{
-        let rootElement:XML = root(xmlStr)!
-        let children:[XMLNode] = rootElement.children!
-        let theChildren:[XML] = children as! [XML]
-        return theChildren
+        if let rootElement:XML = xmlDoc.rootElement(){
+            return rootElement
+        }
+        return nil
     }
     /**
      * New
