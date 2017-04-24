@@ -208,12 +208,12 @@ class ArrayParser{
         return randomNumbers
     }
     /**
-     * IMPORTANT: Compares reference not value. If value comparing is needed then create another method to support that
+     * IMPORTANT: ⚠️️ Compares reference not value. If value comparing is needed then create another method to support that
      */
     static func occurences<T>(_ theList:[T], theItem:T){
         var counter:Int = 0
-        for i in 0..<theList.count{
-            if((theList[i] as AnyObject) === (theItem as AnyObject)){counter += 1}
+        theList.forEach{
+            if(($0 as AnyObject) === (theItem as AnyObject)){counter += 1}
         }
     }
     /**
