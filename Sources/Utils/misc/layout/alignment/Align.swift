@@ -26,11 +26,8 @@ class Align {
      */
     static func alignmentPoint(_ objectSize:CGSize, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ objectAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint())->CGPoint {
         let canvasP:CGPoint = Align.point(canvasSize, canvasAlignment)
-        //Swift.print("canvasP: " + "\(canvasP)")
         let objP:CGPoint = Align.point(objectSize, objectAlignment)
-        //Swift.print("objP: " + "\(objP)")
         let p = canvasP - objP
-        //Swift.print("p: " + "\(p)")
         return p + offset
     }
     /**
@@ -58,6 +55,6 @@ extension Align{
      * NOTE: alt names: alignMany? or alignAll?
      */
     static func align(_ views:[NSView], _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
-        for view in views{ Align.align(view, canvasSize,canvasAlignment,viewAlignment,offset)}
+        views.forEach{ view in Align.align(view, canvasSize,canvasAlignment,viewAlignment,offset)}
     }
 }
