@@ -7,21 +7,13 @@ extension DataProvider{
      * Returns the first item that has the PARAM: value at PARAM key
      */
     func item(_ value:String, _ key:String = "title")->[String:String]?{// :TODO: move this to DataProviderParser
-        for item in self.items {
-            if(item[key] == value) {return item}
-        }
-        Swift.print("\(ClassParser.type(self))" + " NO ITEM WITH THE " + "\(key)" + " OF: " + "\(value)")
-        return nil
+        return self.items.first(where:{$0[key] == value})
     }
     /**
      * Returns the index of the first item that has the PARAM: value at PARAM: key
      */
     func index(_ key:String,_ value:String) -> Int?{
-        let count = items.count
-        for i in 0..<count{
-            if(items[i][key] == value) {return i}
-        }
-        return nil
+        return items.index(where: {$0[key] == value})
     }
     /**
      * Returns the item index passed through the PARAM item
