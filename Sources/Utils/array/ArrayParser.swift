@@ -97,9 +97,9 @@ class ArrayParser{
      */
     static func unique(_ ints:[Int])->[Int]{//use comparable instead of int, see RangeAsserter for example for how to implement that
         var uniqueList:[Int] = []
-        for number in ints {
+        ints.forEach{ number in
             var numberIsNew = true
-            for otherNumber in uniqueList {
+            uniqueList.forEach { otherNumber in
                 if number == otherNumber {
                     numberIsNew = false
                     break
