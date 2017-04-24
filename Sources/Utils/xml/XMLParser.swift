@@ -218,19 +218,22 @@ public class XMLParser{
         //var items:[Any] = []
         //let count = xml.children!.count//or use rootElement.childCount TODO: test this
         if let children = xml.children {
-            return children.map{
-                let child:XML = $0 as! XML//we could do filter.map if it could be combinable with lazy?
-                var item:[Any] = []
-                let attribs = child.attribs
-                if(!attribs.isEmpty){
-                    item.append(attribs)
-                }
-                if(child.stringValue != nil && child.stringValue!.count > 0) {
-                    item.append(child.stringValue!)
-                }else if(child.hasComplexContent) {
-                    item.append(arr(child))
-                }
-                return item
+            return children.lazy.filter(){ child -> Bool in
+                return (child as? XML) != nil//we could do filter.map if it could be combinable with lazy?
+                
+                }.map{ child in
+                    var item:[Any] = []
+                    let attribs = child.attribs
+                    if(!attribs.isEmpty){
+                        item.append(attribs)
+                    }
+                    if(child.stringValue != nil && child.stringValue!.count > 0) {
+                        item.append(child.stringValue!)
+                    }else if(child.hasComplexContent) {
+                        item.append(arr(child))
+                    }
+                    return item
+            
             }
         }
         return []
