@@ -46,9 +46,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
      * Returns an item at a spessific index
      */
     func item(_ at:Int) -> [String:String]?{
-        if(at < self.items.count) {return self.items[at]}
-        Swift.print("\(self)" + "no item at the index of " + "\(at)")
-        return nil
+        return self.items[safe:at]
     }
     /**
      * Creates a DataProvider instance from an XML instance
@@ -65,4 +63,3 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
         self.init(XMLParser.toArray(xml))
     }
 }
-
