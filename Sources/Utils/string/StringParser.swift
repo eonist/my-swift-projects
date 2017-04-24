@@ -76,14 +76,9 @@ class StringParser{
 		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
 	}
+    
     /**
-     * Counts how many times a string appears in a string
-     */
-    static func occurrences(){
-        //impliment this
-    }
-    /**
-     * Returns the index of the first match of @param b in @param a
+     * Returns the index of the first match of PARAM: b in PARAM: a
      */
     static func indexOf(_ a:String,_ b:String)->Int{
         let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
@@ -124,7 +119,7 @@ class StringParser{
      * Returns the percentage as a CGFloat
      */
     static func percentage(_ value:String)->CGFloat{
-        return CGFloat(Double(value.match(".*?(?=%)")[0])!)
+        return value.match(".*?(?=%)")[0].cgFloat
     }
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
@@ -208,5 +203,11 @@ class StringParser{
     static func array<T>(_ str:String, _ cast:(_ char:Character)->T)->[T]{
         let arr:[T] = str.characters.map{cast($0)}
         return arr
+    }
+    /**
+     * Counts how many times a string appears in a string
+     */
+    static func occurrences(){
+        //impliment this
     }
 }
