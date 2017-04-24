@@ -22,5 +22,4 @@ class CharacterModifier {
         str.remove(at: str.characters.indices.last!)
         return str
     }
-    
 }
