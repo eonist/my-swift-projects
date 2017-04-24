@@ -119,7 +119,7 @@ public class XMLParser{
     static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
         let xml = childAt(child, index)
         var result:[[String:String]] = []
-        for c in xml?.children as! Array<XML>{
+        for c in xml?.children as! [XML]{
             result.append(c.attribs)
         }
         return result
@@ -138,7 +138,6 @@ public class XMLParser{
      * NOTE: to find the children of the root use an empty array as the index value
      */
     static func childAt(_ xml:XML?,_ index:[Int])->XML? {
-        //Swift.print("index: " + "\(index)")
         if(index.count == 0 && xml != nil) {
             return xml
         }else if(index.count == 1 && xml != nil && xml!.child(at: index.first!) != nil) {//XMLParser.childAt(xml!.children!, index[0])
@@ -164,18 +163,6 @@ public class XMLParser{
      */
     static func name(_ child:XML)->String{
         return child.name!//child.localName also works
-    }
-    /**
-     * Returns the first attribute that contains the attribute by the PARAM: name and with the PARAM: value
-     */
-    static func childByAttribute(_ child:XML,_ attributeName:String,_ attributeValue:String){
-        //not implimented yet
-    }
-    /**
-     * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
-     * You can use the returned nodes as the new context node for evaluating further XPath expressions.
-     */
-    static func xPath(){
     }
     /**
      * Convert xml to multidimensional array
@@ -208,13 +195,14 @@ public class XMLParser{
     }
     /**
      * Returns the first matching xml that has the attribute key value pair PARAM attribute in PARAM: xml
+     * NOTE: recursive
      */
     static func index(_ xml:XML,_ key:String, _ value:String) -> [Int]? {
         if(xml[key] == value) {
             return []
         }else if(xml.childCount > 0){
             for i in 0..<xml.childCount{
-                let child:XML = xml.children![i] as! XMLElement
+                let child:XML = xml.children![i] as! XML
                 let match:[Int]? = index(child,key,value)
                 if(match != nil) {return [i] + match!}
             }
@@ -285,6 +273,18 @@ public class XMLParser{
             }
         }
         return xml
+    }
+    /**
+     * Returns the first attribute that contains the attribute by the PARAM: name and with the PARAM: value
+     */
+    static func childByAttribute(_ child:XML,_ attributeName:String,_ attributeValue:String){
+        //not implimented yet
+    }
+    /**
+     * You can also drill down to the nodes you want using [ xmldoc nodesForXPath: @"/application/movie[@name='tc']" error: err ]
+     * You can use the returned nodes as the new context node for evaluating further XPath expressions.
+     */
+    static func xPath(){
     }
 }
 extension XMLParser{
