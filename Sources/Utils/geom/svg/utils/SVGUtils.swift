@@ -11,17 +11,18 @@ class SVGUtils {
 	 */
 	static func xml(_ svg:SVG)->XML {// :TODO: refactor to one or loop?
 		let xml:XML = SVGUtils.svg(svg)
-		for i in 0..<svg.items.count{
-			let svgElement:ISVGElement = svg.items[i]
-			var child:XMLElement
-            if(svgElement is SVGLine) {child = line(svgElement as! SVGLine)}
-            else if(svgElement is SVGRect) {child = rect(svgElement as! SVGRect)}
-            else if(svgElement is SVGPath) {child = path(svgElement as! SVGPath)}
-            else if(svgElement is SVGGroup) {child = group(svgElement as! SVGGroup)}
-            else {fatalError("type not supported: " + "\(svgElement)")}
-            xml.appendChild(child)
+		return svg.items.reduce(xml){
+			let svgElement:ISVGElement = $1
+            let child:XML = {
+                if(svgElement is SVGLine) {return line(svgElement as! SVGLine)}
+                else if(svgElement is SVGRect) {return rect(svgElement as! SVGRect)}
+                else if(svgElement is SVGPath) {return path(svgElement as! SVGPath)}
+                else if(svgElement is SVGGroup) {return group(svgElement as! SVGGroup)}
+                else {fatalError("type not supported: " + "\(svgElement)")}
+            }()
+            $0.appendChild(child)
+            return $0
 		}
-		return xml
 	}
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
