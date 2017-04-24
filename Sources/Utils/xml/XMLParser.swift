@@ -217,6 +217,12 @@ public class XMLParser{
     static func arr(_ xml:XML) -> [Any]{
         var items:[Any] = []
         let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        
+        if let children = xml.children{
+            children.forEach{
+                
+            }
+        }
         for i in 0..<count{
             let child:XML = XMLParser.childAt(xml.children!, i)!
             //print("Import - child.toXMLString(): " + child.toXMLString());
