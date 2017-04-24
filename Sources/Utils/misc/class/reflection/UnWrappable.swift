@@ -103,13 +103,10 @@ extension UnWrappable{
      * TODO: You could porbably do this simpler with AnyDictionary
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        var array:[[K:T]?] = [[K:T]?]()
-        if let child:XML = xml.firstNode(key){
-            child.children?.forEach {
-                let subChild:XML = $0 as! XML
-                array.append(unWrapDict(subChild))//$0.hasComplexContent ? .. : nil
-            }
-        }
-        return array
+        let child:XML? = xml.firstNode(key)
+        return child?.children?.map {
+            let subChild:XML = $0 as! XML
+            return unWrapDict(subChild)//$0.hasComplexContent ? .. : nil
+        } ?? [[K:T]?]()
     }
 }
