@@ -14,10 +14,7 @@ class ArrayAsserter {
     static func contains<T:Equatable>(_ a:[T], _ b:[T], _ strict:Bool = false)->Bool {
         var score:Int = 0
         a.forEach{ x in
-            b.index(where: $0 )
-        }
-        for i in 0..<a.count{
-            if (b.index(of: a[i]) != nil){
+            if b.index(of: x) != nil {
                 score += 1
             }
         }
