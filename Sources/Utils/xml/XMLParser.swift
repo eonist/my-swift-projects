@@ -117,10 +117,10 @@ public class XMLParser{
      * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
     static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
-        let xml = childAt(child, index)
+        let xml:XML? = childAt(child, index)
         var result:[[String:String]] = []
-        for c in xml?.children as! [XML]{
-            result.append(c.attribs)
+        (xml?.children as! [XML]).forEach{
+            result.append($0.attribs)
         }
         return result
     }
