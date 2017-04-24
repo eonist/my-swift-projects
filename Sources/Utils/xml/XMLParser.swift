@@ -2,22 +2,12 @@ import Foundation
 
 public class XMLParser{
     /**
-     * New
-     * TODO:  the return should be 👉optional👈 so you can use if let. if there is no atribs then return nil
-     */
-    static func attribs(_ child:XML) -> [String:String]{
-        return child.attributes?.reduce([:]){
-            $0[$1.name!] = $1.stringValue!
-        }
-    }
-    /**
      * Returns a key/value object with the attributes at the PARAM: index in PARAM database
-     * EXAMPLE:: DatabaseParser.attributesAt(database,[0,0])["title"]
+     * EXAMPLE: DatabaseParser.attributesAt(database,[0,0])["title"]
      */
     static func attributesAt(_ child:XML, _ index:[Int]) -> [String:String]?{// :TODO: rename to objAt?
         return childAt(child,index)?.attribs
     }
-    
     /**
      * Returns an array of Object instances containing key/value pairs of the xml properties at PARAM: index from PARAM: child
      * NOTE: returns an empty array if the index is out of bound
