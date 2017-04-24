@@ -96,12 +96,13 @@ public class XMLParser{
      * TODO:  the return should be 👉optional👈 so you can use if let. if there is no atribs then return nil
      */
     static func attribs(_ child:XML) -> [String:String]{
-        var dict:[String:String] = [:]
+        
+        var dict:[String:String] = child.attributes?.forEach{
+            dict[$0.name!] = $0.stringValue!
+        } ?? [:]
+
         if(child.attributes != nil && child.attributes!.count > 0){
-            child.attributes?.forEach{
-                dict[$0.name!] = $0.stringValue!
-            }
-        }
+            child.attributes?        }
         return dict
     }
     /**
