@@ -107,14 +107,6 @@ class ArrayModifier{
         return array
     }
     /**
-     * Note: Usefull if you want to do inline appendation
-     */
-    static func append<T>(_ array:[T],_ item:T)->[T]{
-        var array = array
-        array.append(item)
-        return array
-    }
-    /**
      * Adds an item at an index while preserving the order of the array.
      * NOTE: Can be optimized a little bit more if array.length is known.
      * NOTE: For a non-optimized version go ahead and just use array.splice(index, 1, item, array[index] )
@@ -451,5 +443,13 @@ class ArrayModifier{
         _ = arr.shift()
         arr.append(item)
         return arr
+    }
+    /**
+     * Note: Useful if you want to do inline appendation
+     */
+    static func append<T>(_ array:[T],_ item:T)->[T]{
+        var array = array
+        array.append(item)
+        return array
     }
 }
