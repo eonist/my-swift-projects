@@ -131,9 +131,9 @@ class ArrayParser{
     static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
         var sortedArray:[T] = []
         array.forEach{
-            let index:Int = Utils.index($0, sortedArray, condition)
-            if(index > -1){_ = ArrayModifier.splice2(&sortedArray,index, 1, [$0,sortedArray[index]])}
-            else{sortedArray.append($0)/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
+            if let index:Int = Utils.index($0, sortedArray, condition),index > -1{
+                _ = ArrayModifier.splice2(&sortedArray,index, 1, [$0,sortedArray[index]])
+            }else{sortedArray.append($0)/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
         }
         return sortedArray
     }
