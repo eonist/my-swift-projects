@@ -293,10 +293,10 @@ class ArrayModifier{
      * let newArr = ArrayModifier.splitAtEvery(arr,3)
      * Swift.print(newArr)//[["1", "2", "3"], ["4", "5", "6"]]
      */
-    static func splitAtEvery<T>(_ array:[T] , _ every:Int = 1 ) -> Array<[T]> {
+    static func splitAtEvery<T>(_ array:[T] , _ every:Int = 1 ) -> [[T]] {
         var every = every
         let copy:[T] = array//Create a copy
-        var list:Array<[T]> = []
+        var list:[[T]] = []
         every = max(every, 1)//Force value to be 1 or more
         let len:Int = ceil((copy.count / every).float).int
         var i:Int = 0
@@ -331,7 +331,6 @@ class ArrayModifier{
             array[index1] = b
             array[index2] = a
         }
-        
         return array
     }
     /**
