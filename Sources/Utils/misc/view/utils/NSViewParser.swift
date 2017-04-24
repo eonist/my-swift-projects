@@ -55,7 +55,7 @@ class NSViewParser {
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
         if(parent === child) {return []}
         else if(parent.numSubViews > 0){
-            for i in 0..<parent.numSubViews{
+            parent.subViews{ view in
                 let view:NSView = parent.getSubViewAt(i)!
                 let match:[Int]? = view.numSubViews != 0 ? index(view,child) : nil
                 if(match != nil) {return [i] + match!}
