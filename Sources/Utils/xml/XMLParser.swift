@@ -260,7 +260,7 @@ public class XMLParser{
     static func toXML(_ content:AnyObject)->XML{
         let xml:XML = XML()
         func handleArray(_ theXML:XML,_ theContent:AnyObject){
-            for item in (theContent as! Array<AnyObject>){
+            for item in (theContent as! [AnyObject]){
                 if(item is String){
                     theXML.stringValue = item as? String
                 }else if(item is [String:AnyObject]){/*handle dictionary here*/
