@@ -7,12 +7,12 @@ import Foundation
  * TODO: Definitly a candidate for struct
  */
 class Fillet:ILayout {
-    var topLeft:CGFloat;
-    var topRight:CGFloat;
-    var bottomLeft:CGFloat;
-    var bottomRight:CGFloat;
+    var topLeft:CGFloat
+    var topRight:CGFloat
+    var bottomLeft:CGFloat
+    var bottomRight:CGFloat
     required convenience init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
-        self.init(args.map {CGFloat(Double(String(describing: $0))!)})/*<-- it looks complicated but its just array casting, see research docs for the explination*/
+        self.init(args.map {"\($0)".cgFloat})/*<-- it looks complicated but its just array casting, see research docs for the explination*/
     }
     init(_ args:[CGFloat]){
         switch(args.count){
