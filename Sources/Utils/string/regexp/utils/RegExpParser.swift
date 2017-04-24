@@ -18,13 +18,13 @@ public class RegExpParser{
         let pattern:String = usDatePattern
         var output:String = ""
         usDate.matches(pattern).forEach {
-            Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
+            //Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
             let month:String = $0.value(usDate, 1)
             let day:String = $0.value(usDate, 2)
             let year:String = $0.value(usDate, 3)
             output = year + "/" + month + "/" + day
         }
-        Swift.print("output: " + "\(output)")
+        //Swift.print("output: " + "\(output)")
         return output
     }
 }
