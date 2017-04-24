@@ -28,16 +28,15 @@ class DataProviderParser {
      * NOTE: the is the reverse algorithm as XMLParser.parseXMLToArray(xml)
      */
     static func xml(_ dataProvider:DataProvider) -> XML {
-        let xml = "<items></items>".xml
-        for i in 0..<dataProvider.items.count{//swift 3 upgrade
-            let item = dataProvider.items[i]
+        return dataProvider.items.reduce("<items></items>".xml){
+            let item = $1
             let child = "<item></item>".xml
             for attr:(key:String,value:String) in item{
                 child[attr.key] = attr.value//add all attributes to the item
             }
-            xml.appendChild(child)
+            $0.appendChild(child)
+            return $0
         }
-        return xml
     }
 }
 //getItemAtIndex
