@@ -9,7 +9,7 @@ import Foundation
  * EXAMPLE: Swift.print("\t eventId: \(event.id) - eventFlags:  \(event.flags) - eventPath:  \(event.path)")
  */
 class FileWatcherEvent{
-    var id: FSEventStreamEventId
+    var id:FSEventStreamEventId
     var path:String
     var flags: FSEventStreamEventFlags
     init(_ eventId:FSEventStreamEventId, _ eventPath: String, _ eventFlags: FSEventStreamEventFlags){
