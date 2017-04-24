@@ -5,17 +5,11 @@ public class XMLModifier {
      * Adds PARAM: child to PARAM: xml at an array index PARAM: index
      * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
      */
-    static func addChildAt(_ xml:XML,_ index:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
-        Swift.print("index: " + "\(index)")
-        let i = index.slice2(0,index.count-1)
-        Swift.print("i: " + "\(i)")
+    static func addChildAt(_ xml:XML,_ idx3d:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
+        let i = idx3d.slice2(0,idx3d.count-1)
         let parent:XML? = XMLParser.childAt(xml, i)
-        //Swift.print("parent: " + "\(parent)")
-        Swift.print("parent?.childCount: " + "\(parent!.childCount)")
-        let lastIdx:Int = index.count-1
-        Swift.print("lastIdx: " + "\(lastIdx)")
-        let insertAt:Int = index[lastIdx]
-        Swift.print("insertAt: " + "\(insertAt)")
+        let lastIdx:Int = idx3d.count-1
+        let insertAt:Int = idx3d[lastIdx]
         _ = parent!.addAt(child,insertAt)
         return xml
     }
