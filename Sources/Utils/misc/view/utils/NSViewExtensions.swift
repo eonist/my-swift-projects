@@ -85,9 +85,6 @@ extension NSView {
     func globalPoint()->CGPoint{
         return (window?.mouseLocationOutsideOfEventStream)!
     }
-    /**
-     *
-     */
     func indexOf<T:NSView>(_ subView:T)->Int{
         return NSViewParser.indexOf(self, subView)
     }
