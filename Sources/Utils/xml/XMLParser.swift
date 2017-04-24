@@ -219,7 +219,7 @@ public class XMLParser{
         //let count = xml.children!.count//or use rootElement.childCount TODO: test this
         if let children = xml.children {
             return children.map{
-                let child:XML = $0 as! XML
+                let child:XML = $0 as! XML//we could do filter.map if it could be combinable with lazy?
                 var item:[Any] = []
                 let attribs = child.attribs
                 if(!attribs.isEmpty){
