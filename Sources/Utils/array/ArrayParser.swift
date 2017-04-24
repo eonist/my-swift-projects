@@ -35,10 +35,7 @@ class ArrayParser{
      * NOTE: Compares reference not value
      */
     static func idx<T>(_ arr:inout [T], _ item:inout T) -> Int{
-        for i in 0 ..< arr.count{
-            if((arr[i] as AnyObject) === (item as AnyObject)){return i}//we cast to AnyObject because generics can't ref compare, but AnyObject can
-        }
-        return -1
+        return arr.index(where: {($0 as AnyObject) === (item as AnyObject)}) ?? -1//we cast to AnyObject because generics can't ref compare, but AnyObject can
     }
     /**
      * Returns the index of the first instance that matches the PARAM: item in the PARAM: arr, -1 of none is found
