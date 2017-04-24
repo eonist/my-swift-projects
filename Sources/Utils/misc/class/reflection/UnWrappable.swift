@@ -51,10 +51,10 @@ extension UnWrappable{
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
-        let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
-        return child.children?.map {
+        let child:XML? = xml.firstNode(key)
+        return child?.children?.map {
             let subChild:XML = $0 as! XML
-            subChild.hasSimpleContent ? T.unWrap(subChild.value) : T.unWrap(subChild) //$0.hasComplexContent ? .. : nil
+            return subChild.hasSimpleContent ? T.unWrap(subChild.value) : T.unWrap(subChild) //$0.hasComplexContent ? .. : nil
         } ?? [T?]()
     }
     /**
