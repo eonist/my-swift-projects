@@ -128,8 +128,10 @@ extension DataProvider{
      * Sets all values except at PARAM: exceptionIndex
      */
     func setValuesExceptAt(_ exceptionIndex:Int, _ key:String, _ value:String) {
-        for i in 0..<self.items.count{
-            if(i != exceptionIndex){self.items[exceptionIndex][key] = value}
+        items.indices.forEach {
+            if($0 != exceptionIndex){
+                self.items[exceptionIndex][key] = value
+            }
         }
     }
 }
