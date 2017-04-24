@@ -53,9 +53,10 @@ class NSViewModifier {
         }
         return subView
     }
-    static func removeSubviewAt(_ view:NSView, _ i:Int){
-        let item = view.getSubViewAt(i)
-        item.removeFromSuperview()
+    static func removeSubviewAt(_ view:NSView, _ at:Int){
+        if let item = view.subviews[safe:at]{
+            item.removeFromSuperview()
+        }
     }
     /**
      * NOTE: removes in the backward direction over the array
@@ -65,16 +66,6 @@ class NSViewModifier {
             let view : NSView = views[i]
             view.removeFromSuperview()
         }
-    }
-    /**
-     * Rename to subViewsOfType
-     */
-    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T]{
-        var children:[T] = []
-        for subView in view.subviews {
-            if(subView as? T != nil){children.append(subView as! T)}
-        }
-        return children
     }
     /**
      * Beta (not tested, but similar code will work, use pen and paper if it doesnt)
@@ -87,4 +78,10 @@ class NSViewModifier {
             }
         }
     }
+}
+//DEPRECATED
+extension NSViewModifier{
+    /*static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T]{
+     return NSViewParser.childrenOfType(view,type)
+     }*/
 }
