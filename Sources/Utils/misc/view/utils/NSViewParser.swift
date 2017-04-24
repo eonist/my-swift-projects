@@ -54,7 +54,7 @@ class NSViewParser {
      */
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
         if(parent === child) {return []}
-        else if(parent.numSubViews > 0){
+        else if(!parent.subviews.isEmpty){
             for (i,view) in parent.subviews.enumerated(){
                 let match:[Int]? = !view.subviews.isEmpty ? index(view,child) : nil
                 if(match != nil) {return [i] + match!}
@@ -63,5 +63,5 @@ class NSViewParser {
         return nil
     }
     //DEPRECATED
-    static func getSubviewAt(_ view:NSView, _ i:Int)->NSView{return view.subviews[i]}/*favour getSubViewAt method instead, as its optional*/
+    //static func getSubviewAt(_ view:NSView, _ i:Int)->NSView{return view.subviews[i]}/*favour getSubViewAt method instead, as its optional*/
 }
