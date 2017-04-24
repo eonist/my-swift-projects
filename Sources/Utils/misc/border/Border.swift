@@ -1,10 +1,10 @@
 import Foundation
 
 class Border{
-    var top:CGFloat = 0;
-    var right:CGFloat = 0;
-    var bottom:CGFloat = 0;
-    var left:CGFloat = 0;
+    var top:CGFloat = 0
+    var right:CGFloat = 0
+    var bottom:CGFloat = 0
+    var left:CGFloat = 0
     required init(_ args:Any...){
         switch(args.count){
             case 1: left = args[0] as! CGFloat; right = args[0] as! CGFloat; top = args[0] as! CGFloat; bottom = args[0] as! CGFloat; break;

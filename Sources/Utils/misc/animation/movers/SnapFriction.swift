@@ -12,14 +12,13 @@ class SnapFriction:Friction {
         //keep some velocity alive
         //when at snap stop
         if(velocity <= minVelocity){
-            let modulo:CGFloat = (value %% snap)
-            //Swift.print("modulo: " + "\(modulo)")
-            if(modulo.isNear(0, minVelocity)){//modulo is closer than 1 px to 0,
+            let modulo:CGFloat = value %% snap
+            if(modulo.isNear(0, minVelocity)){/*modulo is closer than 1 px to 0*/
                 stop()
             }
             velocity = minVelocity
         }else{
-            super.applyFriction()//regular friction
+            super.applyFriction()/*regular friction*/
         }
     }
 }
