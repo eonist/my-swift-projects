@@ -256,11 +256,12 @@ public class XMLParser{
      * nameDict["name"] = titleDict
      * nameDict["color"] = "blue"
      * toXML(nameDict)//Output: <name color="blue"><title age="16">some content here</title></name>
+     * TODO: ⚠️️ Probably use Any instead of AnyObject
      */
     static func toXML(_ content:AnyObject)->XML{
         let xml:XML = XML()
         func handleArray(_ theXML:XML,_ theContent:AnyObject){
-            for item in (theContent as! [AnyObject]){
+            for item in (theContent as! [AnyObject]){//<- this looks not so good
                 if(item is String){
                     theXML.stringValue = item as? String
                 }else if(item is [String:AnyObject]){/*handle dictionary here*/
