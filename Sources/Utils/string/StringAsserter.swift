@@ -1,5 +1,4 @@
 class StringAsserter{
-    static var webColorPattern:[String] = ["blue","fuchsia","black","gray","grey","silver","maroon","red","orange","yellow","olive","green","teal","lime","aqua","navy","purple","white","grey1","grey2","grey3","grey4","grey5","grey6","grey7","grey8","grey9","white1","white2","white3","white4","white5","white6","white7","white8","white9"]
 	/*
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
 	 */
@@ -13,8 +12,6 @@ class StringAsserter{
 	 *	RETURN: True if the string starts with the prefix, false if it does not.
 	 */	
 	static func beginsWith(_ string:String, _ prefix:String)->Bool{
-        //let range = prefix.startIndex..<prefix.endIndex//create a range
-        //return (prefix == string.substringWithRange(range));
         return string.hasPrefix(prefix)
 	}
     /**
@@ -49,7 +46,7 @@ class StringAsserter{
         return string.test("^#?([a-fA-F0-9]{3}){1,2}$")
     }
     static func webColor(_ string:String)->Bool {
-        return webColorPattern.has(string)//was regexp, is now array assert because probably faster
+        return WebColors.webColors.has(string)//was regexp, is now array assert because probably faster
     }
     /**
      * Asserts if a string is in lower case
