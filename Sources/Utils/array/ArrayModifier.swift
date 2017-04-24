@@ -169,7 +169,7 @@ class ArrayModifier{
      * IMPORTANT: compares reference not value, create a similar method if you need to compare value
      */
     static func removeMany<T>(_ array:inout [T],_ many:[T]) -> [T] {
-        many.forEach{
+        many.filter(){
             let index:Int = ArrayParser.indx(array, $0)
             if(index != -1) {array.remove(at: index)/*was --> array.splice2(index,1)*/}
         }
