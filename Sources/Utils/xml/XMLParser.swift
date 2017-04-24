@@ -1,10 +1,15 @@
 import Foundation
 
 public class XMLParser{
+    /**
+     * New
+     * TODO:  the return should be "optional" so you can use if let. if there is no attribs then return nil
+     */
     static func attribs(_ child:XML) -> [String:String]{
         if let attribs = child.attributes{
-            return attribs.reduce(){
-                $0[$1.name!] = $1.stringValue!
+            var dict:[String:String] = [:]
+            attribs.forEach{
+                dict[$0.name!] = $0.stringValue!
             }
         }
         return [:]
