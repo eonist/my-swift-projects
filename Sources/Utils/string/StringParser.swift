@@ -41,11 +41,11 @@ class StringParser{
        return string.components(separatedBy: " ")[0]
     }
     /**
-     * Returns the
+     * Returns the last char
      */
    static func lastChar(_ string:String)->String {
-        let lastCharIndex:Int = string.characters.count - 1
-        print(lastCharIndex)
+        //let lastCharIndex:Int = string.characters.count - 1
+        //print(lastCharIndex)
         return String(describing: string.characters.last)//swift 3 upgrade -> was: String()
     }
     /**
@@ -72,8 +72,8 @@ class StringParser{
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
 	static func splitAt(_ str:String, _ index:Int)->[String] {
-		let a:String =  subStr(str,0,index)
-		let b:String =  subStr(str,index,str.characters.count)
+		let a:String = subStr(str,0,index)
+		let b:String = subStr(str,index,str.characters.count)
 		return [a,b]
 	}
     

@@ -103,8 +103,8 @@ class StringModifier{
     static func insertCharsAt(_ str:String, _ charsAndIndicies:[(char:Character,index:Int)])->String{
         var charsAndIndicies = charsAndIndicies
         var str = str
-        charsAndIndicies.sort(by: {$0.index > $1.index})//sort from highest index to lowest
-        charsAndIndicies.forEach{//we loop backwards because looping forward and you would lose the indecies
+        charsAndIndicies.sort(by: {$0.index > $1.index})/*sort from highest index to lowest*/
+        charsAndIndicies.forEach{/*we loop backwards because looping forward and you would lose the indecies*/
             let strIndex = str.idx($0.index)
             str.insert($0.char, at: strIndex)
         }
