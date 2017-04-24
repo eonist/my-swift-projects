@@ -71,7 +71,7 @@ class StringParser{
      * EXAMPLE: splitAt("Hello, playground",5)//["hello"," playground"]
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
-	static func splitAt(_ str:String, _ index:Int)->Array<String> {
+	static func splitAt(_ str:String, _ index:Int)->[String] {
 		let a:String =  subStr(str,0,index)
 		let b:String =  subStr(str,index,str.characters.count)
 		return [a,b]
@@ -79,11 +79,11 @@ class StringParser{
     
     /**
      * Returns the index of the first match of PARAM: b in PARAM: a
+     * New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found
      */
     static func indexOf(_ a:String,_ b:String)->Int{
         let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
-        //bellow line was upgraded to swift 3 was-> a.startIndex.distanceTo(range!.startIndex)
-        return range != nil ? a.distance(from:a.startIndex,to:range!.lowerBound) : -1/*New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found*/
+        return range != nil ? a.distance(from:a.startIndex,to:range!.lowerBound) : -1
     }
     /**
      * Returns str sans the first char
