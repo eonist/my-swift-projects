@@ -270,8 +270,8 @@ public class XMLParser{
                 }
             }
         }
-        if let dict = content as? Dictionary<String, AnyObject>{/*content is a dictionary*/
-            for (key,value) in dict{
+        if let dict = content as? [String:AnyObject]{/*content is a dictionary*/
+            dict.forEach { key,value in
                 if(value is String) {/*attributes*/
                     xml[key] = value as? String
                 }
