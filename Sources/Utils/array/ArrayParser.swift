@@ -148,8 +148,7 @@ class ArrayParser{
      * Returns all items in PARAM: array that is of PARAM: type
      */
     static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
-        var items:[T] = []
-        for item in array{ if (item as? T != nil) {items.append(item as! T)}}
+        let items:[T] = array.forEach{ if ($0 as? T != nil) {items.append($0 as! T)}}
         return items
     }
     /**
@@ -162,15 +161,7 @@ class ArrayParser{
      * NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
      */
     static func first<T,V>(_ arr:[T],_ match:V,_ method:@escaping (T,V)->Bool) -> T?  where V:Equatable{
-       return arr.first(where:{method($0,match)})//new upgrade
-        /*
-         for item in variables{
-            if(method(item,match)){
-                return item
-            }
-         }
-         return nil
-         */
+       return arr.first(where:{method($0,match)})//New upgrade, more functional 🤖
     }
     /**
      * Returns the first occurence of an PARAM: match in PARAM: arr that meets PARAM: condition 
@@ -180,14 +171,6 @@ class ArrayParser{
      */
     static func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
         return arr.first(where:{condition($0,match)})//new upgrade
-        /*
-        for item in arr{
-            if(condition(item,match)){
-                return item
-            }
-        }
-        return nil
-        */
     }
     /**
      * Returns a random array with unique numbers (no duplicates)
