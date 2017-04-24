@@ -26,7 +26,7 @@ public class XMLParser{
     /**
      * New
      */
-    static func children(_ xml:XML)->Array<XML>{
+    static func children(_ xml:XML)->[XML]{
         return xml.children as! [XML]
     }
     /**
@@ -35,7 +35,7 @@ public class XMLParser{
      * @output:text
      */
     static func firstNode(_ xml:XML, _ nodeName:String) -> XML? {
-        return xml.elements(forName: nodeName).count > 0 ? xml.elements(forName: nodeName)[0] : nil//Swift 3 updated
+        return xml.elements(forName:nodeName).count > 0 ? xml.elements(forName: nodeName)[0] : nil
     }
     /**
      *
@@ -69,41 +69,13 @@ public class XMLParser{
         return childAt(child, index)?.stringValue
     }
     /**
-     * Returns all attributes in PARAM: child
-     * EXAMPLE: attributes.count// num of attributes
-     * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
-     */
-    static func attributes(_ child:XML) -> [[String:String]]{
-        
-        //print("you should probably not use this, use attribs instead")
-        
-        var attributes = [[String:String]]()
-        if(child.attributes != nil && child.attributes!.count > 0){
-            for node:XMLNode in child.attributes!{
-                var attribute:[String:String] = [:]
-                let name:String = node.name!
-                let value:String = node.stringValue!
-                //print("name: " + name + " " + "value:"+value)
-                attribute["name"] = name//👈the problem is here.
-                attribute["value"] = value//👈the problem is here.
-                attributes.append(attribute)
-            }
-        }
-        return attributes
-    }
-    /**
      * New
      * TODO:  the return should be 👉optional👈 so you can use if let. if there is no atribs then return nil
      */
     static func attribs(_ child:XML) -> [String:String]{
-        
-        var dict:[String:String] = child.attributes?.forEach{
-            dict[$0.name!] = $0.stringValue!
-        } ?? [:]
-
-        if(child.attributes != nil && child.attributes!.count > 0){
-            child.attributes?        }
-        return dict
+        return child.attributes?.reduce([:]){
+            $0[$1.name!] = $1.stringValue!
+        }
     }
     /**
      * Returns a key/value object with the attributes at the PARAM: index in PARAM database
@@ -319,5 +291,28 @@ extension XMLParser{
             items.append(item)
         }
         return items
+    }
+    /**
+     * Returns all attributes in PARAM: child
+     * EXAMPLE: attributes.count// num of attributes
+     * EXAMPLE: if(attributes.count > 0) {  print(attributes[0]["value"]) }//prints the first attribute value in the first child that has an attribute
+     */
+    static func attributes(_ child:XML) -> [[String:String]]{
+        
+        //print("you should probably not use this, use attribs instead")
+        
+        var attributes = [[String:String]]()
+        if(child.attributes != nil && child.attributes!.count > 0){
+            for node:XMLNode in child.attributes!{
+                var attribute:[String:String] = [:]
+                let name:String = node.name!
+                let value:String = node.stringValue!
+                //print("name: " + name + " " + "value:"+value)
+                attribute["name"] = name//👈the problem is here.
+                attribute["value"] = value//👈the problem is here.
+                attributes.append(attribute)
+            }
+        }
+        return attributes
     }
 }
