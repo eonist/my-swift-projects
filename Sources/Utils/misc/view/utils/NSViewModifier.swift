@@ -39,7 +39,7 @@ class NSViewModifier {
      * TODO: add a method named prepend that inserts NSView items at the top of the stack
      */
     static func addSubviewAt<T:NSView>(_ view: T,_ subView:T, _ i:Int)->NSView{//Returns the subview for convenience
-        if(view.subviews.count == 0){
+        if(view.subviews.isEmpty){
             view.addSubview(subView)
         }else if(i == 0){/*the view.subviews.count > 0*/
             view.addSubview(subView, positioned: NSWindowOrderingMode.below, relativeTo: view.subviews[0])
