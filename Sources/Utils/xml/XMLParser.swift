@@ -2,6 +2,56 @@ import Foundation
 
 public class XMLParser{
     /**
+     * Returns an array of Object instances containing key/value pairs of the xml properties at PARAM: index from PARAM: child
+     * NOTE: returns an empty array if the index is out of bound
+     * NOTE: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
+     */
+    static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
+        let xml:XML? = childAt(child, index)
+        let result:[[String:String]] = xml?.children?.map{return ($0 as! XML).attribs} ?? []
+        return result
+    }
+    /**
+     * Returns child from PARAM: children at PARAM: index
+     * EXAMPLE: XMLParser.childAt(children, 0)
+     */
+    static func childAt(_ children:[XMLNode], _ index:Int)->XML?{//swift 3 upgrade, was -> children:NSArray
+        return children[index] as? XML
+    }
+    /**
+     * Returns an an XML instance at PARAM: index (Array index)
+     * NOTE: this function is recursive
+     * NOTE: to find a child at an integer use the native code: xml.children[integer]
+     * NOTE: to find the children of the root use an empty array as the index value
+     */
+    static func childAt(_ xml:XML?,_ index:[Int])->XML? {
+        if(index.count == 0 && xml != nil) {
+            return xml
+        }else if(index.count == 1 && xml != nil && xml!.child(at: index.first!) != nil) {//XMLParser.childAt(xml!.children!, index[0])
+            return xml!.childByIndex(index[0])
+        }// :TODO: if index.length is 1 you can just ref index
+        else if(index.count > 1 && xml!.children!.count > 0) {
+            return XMLParser.childAt(xml!.children![index.first!] as? XML,index.slice2(1,index.count))
+        }
+        return nil
+    }
+    /**
+     * Returns the attribute value of PARAM: child by key PARAM: name
+     * PARAM: attrKey: name of the attribute
+     * NOTE: returns nil if there is no attr by that name
+     * EXAMPLE: if let type:String = XMLParser.attribute(child, "type") { print("type: " + type) }
+     * EXAMPLE: print(XMLParser.attribute(child, "type"))//returns Optional("digital") if there is something
+     */
+    static func attribute(_ child:XML,_ attrKey:String)->String?{
+        return child.attribute(forName: attrKey)?.stringValue
+    }
+    /**
+     * Returns the name of the PARAM: child
+     */
+    static func name(_ child:XML)->String{
+        return child.name!//child.localName also works
+    }
+    /**
      * Convert xml to multidimensional array
      * IMPORTANT: node name is not preserved.
      * TODO: You could create a more JSON like conversion system. as JSON stores node-name as well.
