@@ -12,10 +12,10 @@ class HexParser {
      * EXAMPLE: rgb(NSColor.redColor())//16711680
      */
     static func hexValue(_ color:NSColor) -> UInt{
-        return UInt(CGFloat(color.hexVal!))
+        return color.hexVal!.cgFloat.uint
     }
     static func hexValue(_ color:NSColor) -> Double?{
-        return Double("0x" + HexParser.hexString(color))
+        return ("0x" + HexParser.hexString(color)).double
     }
     /**
      *
