@@ -19,7 +19,7 @@ class IntParser{
      * print(IntParser.normalize(8, 7))//1
      * print(IntParser.normalize(12, 7))//5
      */
-    static func normalize(_ index:Int,_ len:Int/*UInt*/) -> Int/*UInt*/ {
+    static func normalize(_ index:Int,_ len:Int) -> Int {
         return index >= 0 ? (index < len ? index : index % len) : len + (index % len)
     }
     static func kind(_ theInt:Int)->String{
@@ -41,7 +41,7 @@ class IntParser{
         if array.isEmpty { return nil }
         var currentMin = array[0]
         var currentMax = array[0]
-        for value in array[1..<array.count] {
+        array[1..<array.count].forEach { value in
             if value < currentMin {
                 currentMin = value
             } else if value > currentMax {
