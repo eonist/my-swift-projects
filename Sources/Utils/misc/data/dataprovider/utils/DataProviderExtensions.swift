@@ -25,15 +25,7 @@ extension DataProvider{
      * Returns index for title
      */
     func index(_ title:String)->Int?{
-        let count = self.items.count
-        
-        self.items.
-        
-        for i in 0..<count{
-            let item:[String:String] = self.items[i]
-            if(item["title"] == title) {return i}
-        }
-        return nil
+        return self.items.index(where: {$0["title"] == title})
     }
     /**
      * Returns the count of the self.items
