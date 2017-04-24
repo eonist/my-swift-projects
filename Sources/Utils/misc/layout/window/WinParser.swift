@@ -40,9 +40,7 @@ class WinParser {
      * Returns an array of NSWindow of type T in the current app
      */
     static func windowsOfType<T>(_ type:T.Type)-> [T] {
-        var windows:[T] = []
-        for window:NSWindow in NSApp.windows { if(window as? T != nil) {windows.append(window as! T)}}
-        return windows
+        return NSApp.windows.lazy.filter(){$0 as? T != nil}.map{$0 as! T}
     }
     /**
      * Returns the front most window in NSApp of a spedific class or protocol type
