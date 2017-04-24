@@ -234,8 +234,7 @@ public class XMLParser{
         let attributes = XMLParser.attributes(xml)
         for attr in attributes{root[attr["key"]!] = attr["value"]!}
         if(xml.hasComplexContent){
-            var children:[[String:Any]] = []
-            for child in xml.children!{children.append(toDictionary(child as! XML))}
+            let children:[[String:Any]] = xml.children?.map{toDictionary($0 as! XML)} ?? []
             root[xml.name!] = children
         }else if(xml.stringValue != nil && xml.stringValue != ""){root[xml.name!] = [xml.stringValue!]}
         else{root[xml.name!] = []}
