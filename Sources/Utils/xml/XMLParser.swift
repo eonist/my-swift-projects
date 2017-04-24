@@ -113,8 +113,8 @@ public class XMLParser{
     }
     /**
      * Returns an array of Object instances containing key/value pairs of the xml properties at PARAM: index from PARAM: child
-     * @Note: returns an empty array if the index is out of bound
-     * @Note: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
+     * NOTE: returns an empty array if the index is out of bound
+     * NOTE: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
     static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
         let xml:XML? = childAt(child, index)
