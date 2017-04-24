@@ -2,6 +2,7 @@ import Cocoa
 /**
  * // :TODO: WHITE1,WHITE2, BLACK2, BLACK3 etc
  * // :TODO: add CYAN,MAGENTA,KEY,YELLOW CMYK
+ * TODO: ⚠️️ make these consts lowercase
  */
 class Colors {
     static var GREY_1:UInt = 0x111111/*near black*/
