@@ -44,4 +44,16 @@ class CharacterParser {
     static func first(_ str:String)->Character{
         return str.characters.first!
     }
+    /**
+     * Returns the PARAM: str in reverse order
+     * EXAMPLE: reverse("this string has 29 characters")//sretcarahc 92 sah gnirts siht
+     */
+    static func reversed(_ str:String)->String{
+        var reverse = ""
+        for scalar in str.unicodeScalars {
+            let asString = "\(scalar)"
+            reverse = asString + reverse
+        }
+        return reverse
+    }
 }
