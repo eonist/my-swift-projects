@@ -6,9 +6,7 @@ class AdvanceNSViewParser {
      * Returns depths of every NSView instance in PARAM: views
      */
     static func indicesOfViews(_ container:NSView,_ views:[NSView]) -> [[Int]] {
-        var indices:[[Int]] = []
-        for view:NSView in views {indices.append(NSViewParser.index(container, view)!)}/*<--This should be correct*/
-        return indices
+        return views.map{NSViewParser.index(container, $0)!}
     }
     /**
      * Returns an NSView instance at PARAM: index in PARAM: container
