@@ -8,11 +8,9 @@ class NSViewParser {
      * TODO: rename to childrenByClassType, maybe not?, I say not!
      */
     static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T] {
-        // = []
-        var arr:[T] = view.subviews.filter() {
+        return view.subviews.filter() {
             $0 as? T != nil
-        }
-        return arr
+            }.map{$0 as! T}
     }
     /**
      * Returns a list of parents (this works, tested)
