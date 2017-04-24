@@ -141,9 +141,7 @@ class ArrayParser{
      * Returns the first item in PARAM: array that is of PARAM: type
      */
     static func firstItemByType<T>(_ array:[Any?], type:T.Type) -> T?{
-        
-        for item in array{ if (item as? T != nil) {return item as? T}}
-        return nil
+        return array.first(where: {$0 as? T != nil}) as? T
     }
     /**
      * Returns all items in PARAM: array that is of PARAM: type
