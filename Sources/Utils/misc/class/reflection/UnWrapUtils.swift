@@ -21,7 +21,7 @@ class UnWrapUtils{
     }
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
         if(type == String(describing:CGFloat.self)){
-            return  CGFloat.unWrap(strVal)!
+            return CGFloat.unWrap(strVal)!
         }else if(type == String(describing: Double.self)){
             return Double.unWrap(strVal)!
         }else if(type == String(describing: NSColor.self)){
