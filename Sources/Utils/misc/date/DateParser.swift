@@ -22,11 +22,9 @@ class DateParser {
         let secondsAgo:Int = aComponents.second! - bComponents.second!//cur sec - sec = 4
         //result: 4s ago
         let timeUnits:[(value:Int,type:String)] = [(yearsAgo,"y"),(monthsAgo,"M"),(weeksAgo,"w"),(daysAgo,"d"),(hoursAgo,"h"),(minutesAgo,"m"),(secondsAgo,"s")]
-        var relativeTime:[(value:Int,type:String)] = []
-        timeUnits.forEach{
-            if($0.value > 0){relativeTime.append($0)}
+        return timeUnits.filter(){
+            $0.value > 0
         }
-        return relativeTime
     }
     /**
      * Returns a date formated like: 201612035959 aka YYYYMMDDHHMMSS
