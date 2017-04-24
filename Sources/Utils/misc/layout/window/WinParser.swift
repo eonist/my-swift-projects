@@ -34,7 +34,7 @@ class WinParser {
     static func firstWindow<T>(_ type:T.Type, _ strict:Bool = false)-> T? {
         return NSApp.windows.first(where:{
             ($0 as? T != nil && !strict) || (type is AnyClass && $0.isMember(of:type as! AnyClass))
-        })
+        }) as? T
     }
     /**
      * Returns an array of NSWindow of type T in the current app
