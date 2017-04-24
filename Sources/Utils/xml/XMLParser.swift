@@ -118,10 +118,7 @@ public class XMLParser{
      */
     static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
         let xml:XML? = childAt(child, index)
-        var result:[[String:String]] = []
-        (xml?.children as! [XML]).forEach{
-            result.append($0.attribs)
-        }
+        let result:[[String:String]] = xml?.children?.map{return ($0 as! XML).attribs} ?? []
         return result
     }
     /**
