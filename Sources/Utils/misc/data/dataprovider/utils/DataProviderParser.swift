@@ -14,14 +14,10 @@ class DataProviderParser {
         return items.slice2(start, end)
     }
     /**
-     *
+     * TODO: Remove or use a more genereal approache?
      */
     static func itemByProperty(_ dataProvider:DataProvider,_ property:String) -> [String:String]?{
-        for object in dataProvider.items {
-            if(object["property"] == property) {return object}
-        }
-        //fatalError("NO ITEM WITH THE PROPERTY OF: "+property);
-        return nil
+        return dataProvider.items.first(where: {$0["property"] == property})
     }
     /**
      * Returns an XML instance from PARAM: dataProvider
@@ -31,8 +27,8 @@ class DataProviderParser {
         return dataProvider.items.reduce("<items></items>".xml){
             let item = $1
             let child = "<item></item>".xml
-            for attr:(key:String,value:String) in item{
-                child[attr.key] = attr.value//add all attributes to the item
+            item.forEach{ key,value in//add all attributes to the item
+                child[key] = value
             }
             $0.appendChild(child)
             return $0
