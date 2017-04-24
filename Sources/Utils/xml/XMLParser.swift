@@ -215,30 +215,27 @@ public class XMLParser{
      * OUTPUT: [[key:value,key:value],[[key:value],"string"]]
      */
     static func arr(_ xml:XML) -> [Any]{
-        var items:[Any] = []
-        let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        //var items:[Any] = []
+        //let count = xml.children!.count//or use rootElement.childCount TODO: test this
+        if let children = xml.children {
+            return children.map{
+                if let child:XML = $0 as? XML{
+                    var item:[Any] = []
+                    let attribs = child.attribs
+                    if(!attribs.isEmpty){
+                        item.append(attribs)
+                    }
+                    if(child.stringValue != nil && child.stringValue!.count > 0) {
+                        item.append(child.stringValue!)
+                    }else if(child.hasComplexContent) {
+                        item.append(arr(child))
+                    }
+                    return item
+                }
+            }
+        }
         
-        if let children = xml.children{
-            children.forEach{
-                
-            }
-        }
-        for i in 0..<count{
-            let child:XML = XMLParser.childAt(xml.children!, i)!
-            //print("Import - child.toXMLString(): " + child.toXMLString());
-            var item:[Any] = []
-            let attribs = child.attribs
-            if(!attribs.isEmpty){
-                item.append(attribs)
-            }
-            if(child.stringValue != nil && child.stringValue!.count > 0) {
-                item.append(child.stringValue!)
-            }else if(child.hasComplexContent) {
-                item.append(arr(child))
-            }
-            items.append(item)
-        }
-        return items
+        return []
     }
     /**
      * Returns the first matching xml that has the attribute key value pair PARAM attribute in PARAM: xml
