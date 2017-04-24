@@ -1,6 +1,6 @@
 import Cocoa
 
-struct TextFormat {//struct
+struct TextFormat {
     var background:Bool = false
     var backgroundColor:NSColor = NSColor.clear
     var selectable:Bool = false

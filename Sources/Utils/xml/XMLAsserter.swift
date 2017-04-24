@@ -24,17 +24,17 @@ public class XMLAsserter {
      * valid XML.
      */
     static func validXML(_ xmlStr:String)->Bool{
-        Swift.print("XMLAsserter.validXML UNTESTED")
+        //Swift.print("XMLAsserter.validXML UNTESTED")
         let xmlDoc:XMLDoc? = try? XMLDoc(xmlString: xmlStr, options: 0)
         if(xmlDoc == nil){return false}
         if(xmlDoc?.kind != XMLNode.Kind.element){return false;}
         return true
     }
     static func equals(_ a:XML,_ b:XML)->Bool {
-        Swift.print("XMLAsserter.equals() UNTESTED")
-        Swift.print("a.XMLString")
+        //Swift.print("XMLAsserter.equals() UNTESTED")
+        //Swift.print("a.XMLString")
         Swift.print(a.xmlString)
-        Swift.print("b.XMLString")
+        //Swift.print("b.XMLString")
         Swift.print(b.xmlString)/**/
         return a.xmlString == b.xmlString
     }
