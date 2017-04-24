@@ -24,10 +24,8 @@ class ArrayParser{
      * TODO: ⚠️️ maybe this can be cleaned up with Any?
      */
     static func indx<T>(_ arr: [T], _ item: T) -> Int{//<--use inout for both args?
-        for i in 0 ..< arr.count{
-            if((arr[i] as AnyObject) === (item as AnyObject)){return i}
-        }
-        return -1
+        return arr.index(where: {(arr[i] as AnyObject) === (item as AnyObject)}) ?? 
+        
     }
     /**
      * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
