@@ -22,9 +22,6 @@ class NSViewModifier {
     static func position(_ view:NSView,_ point:CGPoint){
         view.frame.origin = point
     }
-    static func removeAll(_ view:NSView){
-        for subView in view.subviews {subView.removeFromSuperview()}
-    }
     /**
      * Removes all children in an NSView
      * TODO: rename to removeAll
@@ -34,7 +31,7 @@ class NSViewModifier {
      * view.subviews.map({ $0.removeFromSuperview() }) // this returns modified array
      */
     static func removeAllChildren(_ view:NSView){
-        while(view.subviews.count > 0) {(view.subviews[0] as NSView).removeFromSuperview()}
+        while(view.subviews.count > 0) {view.subviews[0].removeFromSuperview()}
     }
     /**
      * NOTE: This can also be used as a setSubViewAt method. Apple will reuse the same View so no duplicates. Although apples own sort method is prefered, but it uses c-pointers which can be hard to implement in swift. 
@@ -77,4 +74,7 @@ extension NSViewModifier{
     /*static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T]{
      return NSViewParser.childrenOfType(view,type)
      }*/
+    static func removeAll(_ view:NSView){
+        removeAllChildren(view)
+    }
 }
