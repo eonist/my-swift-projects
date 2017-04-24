@@ -10,7 +10,7 @@ class WinParser {
      */
     static func describeWindows(_ app:NSApplication){
         Swift.print("app.windows.count: " + "\(app.windows.count)")
-        app.windows{ win in
+        app.windows.forEach{ win in
             print("windowNumber: " + "\(win.windowNumber)")
             app.window(withWindowNumber: win.windowNumber)//this is how you can manage windows
         }
@@ -32,12 +32,9 @@ class WinParser {
      * NOTE: you only need to use the strict flag if you work with stored class types.
      */
     static func firstWindow<T>(_ type:T.Type, _ strict:Bool = false)-> T? {
-        for window : NSWindow in NSApp.windows {
-            if((window as? T != nil && !strict) || (type is AnyClass && window.isMember(of:type as! AnyClass))) {
-                return window as? T
-            }
-        }
-        return nil
+        return NSApp.windows.first(where:{
+            ($0 as? T != nil && !strict) || (type is AnyClass && $0.isMember(of:type as! AnyClass))
+        })
     }
     /**
      * Returns an array of NSWindow of type T in the current app
