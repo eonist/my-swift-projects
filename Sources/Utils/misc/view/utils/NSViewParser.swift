@@ -26,18 +26,13 @@ class NSViewParser {
      * TODO: should this return nil instead of -1? its easier to debug if it returns nil
      */
     static func indexOf(_ view:NSView,_ subView:NSView)->Int{
-        for i in 0..<view.subviews.count{
-            if(view.subviews[i] === subView){
-                return i
-            }
-        }
-        return -1
+        return view.subviews.index(where: {$0 === subView}) ?? -1
     }
     /**
      * Returns the index of PARAM: subView in PARAM: view, -1 if no match is found
      */
-    static func getSubViewAt(_ view:NSView, _ i:Int)->NSView?{
-        return i < view.subviews.count ? view.subviews[i] : nil
+    static func getSubViewAt(_ view:NSView, _ at:Int)->NSView?{
+        return view.subviews[safe:at]
     }
     /**
      * Returns the first parent of PARAM: view that is of type PARAM: classType
@@ -49,7 +44,7 @@ class NSViewParser {
     }
     /**
      * Returns the array index of PARAM: item from PARAM: parent
-     * @Note this function is recursive
+     * NOTE: this function is recursive
      * // :TODO: rename to indexMap? or depth or map?, since index should be index of a NSView
      */
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
