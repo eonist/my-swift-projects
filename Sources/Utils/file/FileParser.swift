@@ -26,8 +26,7 @@ class FileParser{
         if let filepath = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
             return content(filepath)
         } else {
-            // example.txt not found!
-            return ""
+            return ""// example.txt not found!
         }
     }
     /**
@@ -77,21 +76,17 @@ extension FileParser{
      */
     static func xml(_ path:String)->XML {
         let content = FileParser.content(path)
-        //Swift.print("content: " + "\(content)")
         let xmlDoc:XMLDoc = try! XMLDoc(xmlString: content!, options: 0)
-        let rootElement:XML = xmlDoc.rootElement()!
-        return rootElement
+        if let rootElement:XML = xmlDoc.rootElement(){
+            return rootElement
+        }
+        fatalError("Should not happen")
     }
 	private static func modalExample(){
-		/*open modal panel*/
-		let myFileDialog:NSOpenPanel = NSOpenPanel()
+		let myFileDialog:NSOpenPanel = NSOpenPanel()/*open modal panel*/
 		myFileDialog.runModal()
-
-		/*Get the path to the file chosen in the NSOpenPanel*/
-		let thePath = myFileDialog.url?.path
-
-		/*Make sure that a path was chosen*/
-		if (thePath != nil) {
+		let thePath = myFileDialog.url?.path/*Get the path to the file chosen in the NSOpenPanel*/
+		if (thePath != nil) {/*Make sure that a path was chosen*/
 			let theContent = FileParser.content(thePath!)
 			Swift.print("theContent: " + "\(theContent)")
 		}	

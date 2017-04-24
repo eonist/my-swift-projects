@@ -4,8 +4,8 @@ class DictionaryParser{
      * // :TODO: maybe write a method that works on Class instances aswell? you probably could use that Class method that returns an xml of data about the object
      */
     static func describe<K,V>(_ dictionary:[K:V]) where K:CustomStringConvertible{
-        for (theKey,theValue) in dictionary{
-            print("key: \(theKey) value: \(theValue)")
+        dictionary.forEach{ k,v in
+            print("key: \(k) value: \(v)")
             //if(theValue is Dictionary) {describe(theValue)}
         }
     }
