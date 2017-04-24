@@ -51,7 +51,7 @@ public class XMLModifier {
      * EXAMPLE XMLModifier.setAttributeAt(xml, [0,1], "title", "someTitle")
      * NOTE: I think this method works with depth indecies
      */
-    static func setAttributeAt(_ xml:XML,_ index:[Int], _ key:String,_ value:String) -> XML {
+    static func setAttributeAt(_ xml:XML, _ index:[Int], _ key:String,_ value:String) -> XML {
         XMLParser.childAt(xml, index)?[key] = value
         return xml
     }
