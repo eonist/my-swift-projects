@@ -10,17 +10,16 @@ class SVGPathParser {
 	 * EXAMPLE: SVGPathDataUtils.pathData("M10,10pxH110");//commands: M,H parameters: 10,10,110
 	 */
 	static func pathData(_ data:String)->SVGPathData {
-		var parameters:[CGFloat] = []
-		var commands:[String] = []
         let matches = data.matches(pathPattern)
-        matches {/*Loops through the pattern*///TODO: use marches.forEach instead
+        return matches.reduce(SVGPathData([],[])) { /*Loops through the pattern*///TODO: use marches.forEach instead
+            let match:NSTextCheckingResult = $1
             let cmnd = match.value(data,1)/*capturing group 1*/
-            commands.append(cmnd)
+            $0.commands.append(cmnd)
             let params = match.value(data,2)/*capturing group 2*/
             let array:[CGFloat] = SVGPathParser.parameters(params)
-            parameters += array//<---this is the same as concat
+            $0.parameters += array//<---this is the same as concat
+            return $0
         }
-		return SVGPathData(commands,parameters)
 	}
     /**
 	 * Returns an array comprised of values "sans" its prefix and or suffix
