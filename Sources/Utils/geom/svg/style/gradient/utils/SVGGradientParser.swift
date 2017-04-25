@@ -86,13 +86,12 @@ private class Utils{
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
      */
     static func gradientTransform(_ xml:XML)->CGAffineTransform? {
-        var gradientTransform:CGAffineTransform? = nil
         if let gradientTransformString = SVGPropertyParser.property(xml,"gradientTransform"){
             let matrixString:String = gradientTransformString.match(SVGGradientParser.gradientTransformPattern)[0]
             let matrixStringArray:[String] = matrixString.split(" ")
-            let matrixArray:[CGFloat] = matrixStringArray.map {CGFloat(Double($0)!)}//<--todo: use $0.cgFloat here
-            gradientTransform = CGAffineTransform(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])//Swift 3 was->CGAffineTransformMake
+            let matrixArr:[CGFloat] = matrixStringArray.map {$0.cgFloat}//<--todo: use $0.cgFloat here
+            return CGAffineTransform(matrixArr[0],matrixArr[1],matrixArr[2],matrixArr[3],matrixArr[4],matrixArr[5])//Swift 3 was->CGAffineTransformMake
         }
-        return gradientTransform
+        return nil
     }
 }
