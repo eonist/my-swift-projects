@@ -45,12 +45,19 @@ private class Utils{
      * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
 	 */
 	static func gradient(_ xml:XML)->SVGGradient{
+        
+        /*userSpaceOnUse*/
+        let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? ""/*<--temp*/
+        let id:String = SVGPropertyParser.id(xml)
+        //Swift.print("id: " + "\(id)")
+        let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
+        let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
+        
 		var offsets:[CGFloat] = []
 		var colors:[CGColor] = []
 		var opacities:[CGFloat] = []
-        let children:[XMLNode] = xml.children!
-        for i in 0..<xml.childCount{
-            let child:XML = XMLParser.childAt(children, i)!
+        xml.children?.forEach{
+            let child:XML = $0 as! XML
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -81,15 +88,11 @@ private class Utils{
 			colors.append(stopColor)
 			opacities.append(stopOpacity)
 		}
-		let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
+		
         //Swift.print("gradientUnits: " + "\(gradientUnits)")
-		/*userSpaceOnUse*/
-		let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? ""/*<--temp*/
-		let id:String = SVGPropertyParser.id(xml)
-        //Swift.print("id: " + "\(id)")
-		let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
+		
         //Swift.print("SVGGradientParser.gradient() gradientTransform: " + "\(gradientTransform)")
-		return SVGGradient(offsets,colors,/*opacities*/spreadMethod,id,gradientUnits,gradientTransform)/**/
+		return SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)/**/
 	}
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
