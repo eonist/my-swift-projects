@@ -30,26 +30,27 @@ class SVGUtils {
 	static func pathData(_ path:SVGPath)->String {
 		let commands:[String] = path.commands
 		var parameters:[CGFloat] = path.parameters
-		var index:Int = 0
-		let pathData:String = commands.reduce(""){
+		var i:Int = 0
+		let pathData:String = commands.reduce(""){ result,command in
+            let index = i
 			if(command.test("[m,M,l,L,t,T]")) {
-				$0 command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
-				index += 2
+				i += 2
+                return result + command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 			}else if(command.test("[h,H,v,V]")){
 				pathData += command + String(parameters[index]) + " "
-				index += 1
+				i += 1
 			}else if(command.test("[s,S,q,Q]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
-				index += 1
+				i += 1
 			}else if(command.test("[c,C]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
-				index += 1
+				i += 1
 			}else if(command.test("[a,A]")){
 				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
-				index += 1
+				i += 1
 			}else if(command.test("[z,Z]")){
 				pathData += command + " "
-				index += 1
+				i += 1
 			}
 		}
 		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
