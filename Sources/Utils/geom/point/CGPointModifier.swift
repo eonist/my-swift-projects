@@ -21,10 +21,8 @@ class CGPointModifier {
      */
     static func safeRotatePoint(_ pivot:CGPoint, _ point:CGPoint, _ rotation:CGFloat)->CGPoint {
         let pointAngle:CGFloat = Trig.angle(pivot, point)//find the angle of point
-        //Swift.print("pointAngle: " + "\(pointAngle)")
         let distance:CGFloat = PointParser.distance(pivot, point)//length of point and pivotPoint
         let rot:CGFloat = Trig.normalize2(pointAngle + rotation)//sum of pointAngle and rotation, normalize this aka clamp between (-π and π)
-        //Swift.print("rot: " + "\(rot)")
         return pivot + PointParser.safePolar(distance, rot)//use Point.polar
     }
     /**
@@ -80,12 +78,10 @@ class CGPointModifier {
      * var scaledPoints:Array = PointModifier.scalePoints([new Point(circle.x,circle.y)], pivotPoint,1, 1.5)
      * circle.setPosition(scaledPoints[0]);//Output: the circle is now at 100,125
      */
-    static func scalePoints(_ points:Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint)->Array<CGPoint>{
-        var scaledPoints:Array<CGPoint> = []
-        for p:CGPoint in points{
-            scaledPoints.append(PointModifier.scale(p,pivot,scale))
+    static func scalePoints(_ points:[CGPoint],_ pivot:CGPoint,_ scale:CGPoint)->[CGPoint]{
+        return points.map{ p in
+            PointModifier.scale(p,pivot,scale)
         }
-        return scaledPoints
     }
     /**
      * Use this when you want to scale the points directly
