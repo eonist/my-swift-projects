@@ -32,11 +32,9 @@ class SVGAsset:InteractiveView2 {
         svg.setFrameOrigin(CGPoint(x,y))
     }
     func applyStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
-        //Swift.print("SVGAsset.applyStyle()")
         //if(fillStyle != nil){FillStyleParser.describe(fillStyle!)}
         //if(lineStyle != nil){LineStyleParser.describe(lineStyle!)}
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
-        //SVGStyleParser.describe(svgStyle)
         SVGModifier.style(svg, svgStyle)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

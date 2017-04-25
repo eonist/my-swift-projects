@@ -13,11 +13,11 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
         if let dropShadow = dropShadow, dropShadow.inner {/*Inner*/
             graphic.fillShape.graphics.dropShadow = dropShadow
         }else if let dropShadow = dropShadow, !dropShadow.inner {/*Outer*/
-            graphic.layer!.shadowColor = dropShadow!.color.cgColor//don't forget about the graphic.layer!.shadowPath
-            graphic.layer!.shadowOpacity = dropShadow!.color.alphaComponent.float
+            graphic.layer!.shadowColor = dropShadow.color.cgColor//don't forget about the graphic.layer!.shadowPath
+            graphic.layer!.shadowOpacity = dropShadow.color.alphaComponent.float
             //Swift.print("dropShadow!.blurRadius: " + "\(dropShadow!.blurRadius)")
-            graphic.layer!.shadowRadius = dropShadow!.blurRadius
-            graphic.layer!.shadowOffset = dropShadow!.offset
+            graphic.layer!.shadowRadius = dropShadow.blurRadius
+            graphic.layer!.shadowOffset = dropShadow.offset
         }else{/*No shadow*/
             graphic.fillShape.graphics.dropShadow = nil
             graphic.layer!.shadowColor = NSColor.clear.cgColor
