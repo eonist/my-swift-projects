@@ -19,7 +19,7 @@ class SVGGradientParser {
 		let y2Str:String = SVGPropertyParser.property(xml,"y2")!
 		let y2:CGFloat = StringAsserter.percentage(y2Str) ? StringParser.percentage(y2Str) : SVGPropertyParser.value(y2Str)
 		let svgGradient:SVGGradient = Utils.gradient(xml)
-		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors/*svgGradient.opacities*/,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,svgGradient.gradientTransform)
+		return SVGLinearGradient(svgGradient.offsets,svgGradient.colors,x1,y1,x2,y2,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,svgGradient.gradientTransform)
 	}
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
@@ -36,7 +36,7 @@ class SVGGradientParser {
 		let fyStr:String? = SVGPropertyParser.property(xml,"fy")
         let fy:CGFloat = fyStr != nil && StringAsserter.percentage(fyStr!) ? StringParser.percentage(fyStr!) : SVGPropertyParser.value(fyStr)
 		let svgGradient:SVGGradient = Utils.gradient(xml)
-		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,/*svgGradient.opacities,*/svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform/**/)
+		return SVGRadialGradient(svgGradient.offsets,svgGradient.colors,svgGradient.gradientUnits,svgGradient.spreadMethod,svgGradient.id,cx,cy,r,fx,fy,svgGradient.gradientTransform)
 	}
 }
 private class Utils{
