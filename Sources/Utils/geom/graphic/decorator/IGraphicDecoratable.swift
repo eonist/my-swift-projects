@@ -17,11 +17,11 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func drawLine()
     func stylizeLine()
     func draw()/*Setup the geometry and init the display process of fill and line*/
-    /*Size & position*/
-    /*
-    func getSize()->CGSize
-    func getPosition()->CGPoint
-    func setSize(size:CGSize)
-    func setPosition(position:CGPoint)
-    */
 }
+/*Size & position*/
+/*
+ func getSize()->CGSize
+ func getPosition()->CGPoint
+ func setSize(size:CGSize)
+ func setPosition(position:CGPoint)
+ */
