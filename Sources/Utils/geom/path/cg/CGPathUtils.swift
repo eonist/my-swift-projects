@@ -79,11 +79,9 @@ private class BasicPathDataParser{
      * Returns the pathDataIndex based on the PARAM: commandIndex
      */
     static func index(_ commands:[Int],_ commandIndex:Int) -> Int {
-        var pathDataIndex:Int = 0
-        (0..<commandIndex).indices.forEach{ _ in
-            pathDataIndex += BasicCommandParser.commandLength(commands[i])
+        return (0..<commandIndex).indices.reduce(0){ pathDataIndex,i in
+            return pathDataIndex + BasicCommandParser.commandLength(commands[i])
         }
-        return pathDataIndex
     }
     /**
      * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
