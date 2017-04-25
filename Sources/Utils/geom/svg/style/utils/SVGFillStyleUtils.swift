@@ -5,20 +5,19 @@ class SVGFillStyleUtils{
      * Converts SVGStyle to IFillStyle
      */
     static func fillStyle(_ style:SVGStyle,_ shape:Shape)-> IFillStyle?{
-        Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
-        Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
-        var fillStyle:IFillStyle?
+        //Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
+        //Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
         if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
-            fillStyle = FillStyle(color)
+            return FillStyle(color)
         }else if(style.fill != nil && style.fill is ISVGGradient){
-            fillStyle = SVGFillStyleUtils.gradientFillStyle(style, shape)
+            return SVGFillStyleUtils.gradientFillStyle(style, shape)
         }else{
             //clear
             //Swift.print("no fill")
             //fatalError("not implemented yet")
+            return nil
         }
-        return fillStyle
     }
     /**
      * Converts SVGStyle to IGradientFillStyle
