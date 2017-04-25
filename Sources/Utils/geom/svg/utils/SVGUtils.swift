@@ -26,6 +26,7 @@ class SVGUtils {
 	}
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
+     * TODO: It could be faster to use Character array to test with instead of RegEx
 	 */
     static func pathData(_ path:SVGPath)->String {
         let cmds:[String] = path.commands
@@ -113,9 +114,9 @@ class SVGUtils {
 	  */
 	 static func group(_ group:SVGGroup) -> XML {
 		 var xml:XML = "<g></g>".xml
-		 xml = id(xml,group);
+		 xml = id(xml,group)
 		 /*xml = style(xml,group); not supported yet*/
-		 for i in 0..<group.items.count{
+        group.items.reduce(xml){
 			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement
 			 var child:XML
              if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
@@ -124,6 +125,7 @@ class SVGUtils {
              else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
              else{ fatalError("type not supported: " + "\(svgGraphic)")}
              xml.appendChild(child)
+            return xml
 		 }
 		 return xml
 	 }
