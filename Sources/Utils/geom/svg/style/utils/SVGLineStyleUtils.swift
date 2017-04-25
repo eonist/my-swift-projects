@@ -13,16 +13,15 @@ class SVGLineStyleUtils{
         }
     }
     static func colorLineStyle(_ style:SVGStyle)->ILineStyle{
-        let thickness = SVGStyleUtils.strokeWidth(style.strokeWidth!)//let strokeWidth:CGFloat
-        let miterLimit = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
-        let lineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
-        let lineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
+        let thickness:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
+        let miterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
+        let lineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
+        let lineJoin:CGLineJoin = SVGStyleUtils.lineJoin(style.strokeLineJoin)
         let strokeOpacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1/*<-- this line is new, used to be done inline*/
-        let color = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clear//if color is NaN or nil then set this to clear color
+        let color:NSColor = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clear//if color is NaN or nil then set this to clear color
         return LineStyle(thickness, color, lineCap, lineJoin, miterLimit)
     }
     private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
-        //Swift.print("gradient")
         let lineStyle:ILineStyle = colorLineStyle(svgStyle)
         let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
         let gradient:IGradient = graphicsGradient.gradient()
