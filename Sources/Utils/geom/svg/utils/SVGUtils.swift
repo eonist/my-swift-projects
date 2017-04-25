@@ -53,8 +53,7 @@ class SVGUtils {
                 return result + command + " "
 			}
 		}
-		/*pathData = */pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
-		return pathData
+		return pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 	}
 	/**
 	 * Returns the root node for the SVG XML document
