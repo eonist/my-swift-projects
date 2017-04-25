@@ -30,7 +30,7 @@ class SVGContainer:InteractiveView2, ISVGContainer{
      * Asserts and returns an svg item by PARAM: id
      */
     func getItem(_ id:String)->ISVGElement?{
-        return items.first(where: {item.id == id}) 
+        return items.first(where: {$0.id == id})
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
