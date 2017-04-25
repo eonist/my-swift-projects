@@ -136,14 +136,14 @@ class SVGParser {
      * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polygon(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolygon? {
-        if(!xml.hasAttribute(SVGConstants.points)) {return nil}
-        let pointsString:String = xml[SVGConstants.points]!
-        var points:[CGPoint] = []
-        var parameters:[CGFloat] = SVGPathParser.parameters(pointsString);
-        for i in stride(from: 0, to: parameters.count, by: 2) {/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
-            points.append(CGPoint(parameters[i],parameters[i+1]))
+        if let pointsString:String = xml[SVGConstants.points]{
+            let parameters:[CGFloat] = SVGPathParser.parameters(pointsString)
+            let points:[CGPoint] = stride(from: 0, to: parameters.count, by: 2).map { i in/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
+                CGPoint(parameters[i],parameters[i+1])
+            }
+            return SVGPolygon(points,style,id)
         }
-        return SVGPolygon(points,style,id)
+        return nil
     }
     /**
      * Returns an SVGCircle element derived from the circle data in PARAM: xml with the PARAM: style and PARAM: id
@@ -172,8 +172,7 @@ class SVGParser {
      */
     static func describeAll(_ svg:SVGContainer){
         Swift.print("SVGParser.describeAll()")
-        for i in 0..<svg.items.count{
-            let svgElement:ISVGElement = svg.items[i]
+        svg.items.forEach{ svgElement in
             if(svgElement is SVGPath){
                 Swift.print((svgElement as! SVGPath).commands);
                 Swift.print((svgElement as! SVGPath).parameters);

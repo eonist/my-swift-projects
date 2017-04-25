@@ -7,8 +7,7 @@ class SVGModifier {
      * NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
 	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
-		for i in 0..<svg.items.count{
-			let svgGraphic = svg.items[i]
+		svg.items.forEach { svgGraphic in
 			if(svgGraphic is SVGLine){
 				(svgGraphic as! SVGLine).x1 += offset.x
 				(svgGraphic as! SVGLine).x2 += offset.x
@@ -22,7 +21,6 @@ class SVGModifier {
                 (svgGraphic as! SVGCircle).cy += offset.y
             }else{
                 fatalError("type not supported yet")
-                //type not supported yet
             }
 		}
 	}
