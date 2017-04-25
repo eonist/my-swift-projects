@@ -4,7 +4,7 @@ import Foundation
  */
 class SVGPolyLine:SVGGraphic,ISVGPolyLine{
     var points:[CGPoint]
-    init(_ points:[CGPoint], _ style:SVGStyle? = nil, _ id : String? = nil) {
+    init(_ points:[CGPoint], _ style:SVGStyle? = nil, _ id:String? = nil) {
         self.points = points
         super.init(style, id)
     }
@@ -15,15 +15,15 @@ class SVGPolyLine:SVGGraphic,ISVGPolyLine{
      * NOTE: we don't call fill because we only need to draw a stroke
      */
     override func draw()  {
-        Swift.print("SVGPolyline.draw" + "\(points)")
+        //Swift.print("SVGPolyline.draw" + "\(points)")
         //TODO: you do not close the polyline?!?!?
         let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
-        Swift.print("boundingBox: " + "\(boundingBox)")
+        //Swift.print("boundingBox: " + "\(boundingBox)")
         let path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
         /*line*/
         let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(path, style!)// + boundingBox.origin
         let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
-        Swift.print("linePathOffset: " + "\(linePathOffset)")
+        //Swift.print("linePathOffset: " + "\(linePathOffset)")
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
         lineShape.path = CGPathParser.lines(points,false,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)
