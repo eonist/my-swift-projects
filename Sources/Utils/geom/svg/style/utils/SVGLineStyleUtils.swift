@@ -46,12 +46,9 @@ class SVGLineStyleUtils{
 }
 
 private class Utils{
-    /**
-     *
-     */
     static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient {
-        var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(linearGradient.x1,linearGradient.y1).copy()/* :nil*/
-        var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(linearGradient.x2,linearGradient.y2).copy()/* :nil*/
+        var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1).copy()/* :nil*/
+        var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2).copy()/* :nil*/
         if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
             if(gradient.gradientTransform != nil){
                 p1 = p1.applying(gradient.gradientTransform!)
@@ -71,7 +68,6 @@ private class Utils{
         return LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
     }
     static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient {
-        //Swift.print("radialGradient: " + "\(radialGradient)")
         let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
         let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
         var transformation:CGAffineTransform = CGAffineTransform.identity
