@@ -37,23 +37,23 @@ class SVGUtils {
 				i += 2
                 return result + command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 			}else if(command.test("[h,H,v,V]")){
-				pathData += command + String(parameters[index]) + " "
 				i += 1
-			}else if(command.test("[s,S,q,Q]")){
-				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
+                return result + command + String(parameters[index]) + " "
+            }else if(command.test("[s,S,q,Q]")){
 				i += 1
+                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
 			}else if(command.test("[c,C]")){
-				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
 				i += 1
+                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
 			}else if(command.test("[a,A]")){
-				pathData += command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
 				i += 1
+                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
 			}else if(command.test("[z,Z]")){
-				pathData += command + " "
 				i += 1
+                return result + command + " "
 			}
 		}
-		pathData = pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
+		/*pathData = */pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 		return pathData
 	}
 	/**
