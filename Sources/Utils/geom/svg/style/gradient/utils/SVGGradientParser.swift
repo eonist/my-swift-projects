@@ -45,21 +45,16 @@ private class Utils{
      * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
 	 */
 	static func gradient(_ xml:XML)->SVGGradient{
-        
         /*userSpaceOnUse*/
         let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? ""/*<--temp*/
         let id:String = SVGPropertyParser.id(xml)
         //Swift.print("id: " + "\(id)")
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
-        
-        
-        
 		var offsets:[CGFloat] = []
 		var colors:[CGColor] = []
-		//var opacities:[CGFloat] = []
-        xml.children?.forEach{
-            let child:XML = $1 as! XML
+        xml.children?.forEach {
+            let child:XML = $0 as! XML
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -72,14 +67,10 @@ private class Utils{
 			let style:String? = SVGPropertyParser.property(child,"style")
 			// :TODO: if style is present then dont check for color etc
 			if(style != nil){
-				// Swift.print("style: " + style);
 				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style!)
-//				ObjectParser.describe(inlineStyle);
 				let stopColorProperty:String = inlineStyle["stop-color"]!
-				// Swift.print("stopColorProperty: " + stopColorProperty);
                 stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"])
                 hexColor = StringParser.color(stopColorProperty)
-				// Swift.print("stopOpacity: " + stopOpacity);
 			} else{
                 stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
 				hexColor = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
@@ -90,13 +81,7 @@ private class Utils{
             offsets.append(offset)
             colors.append(stopColor)
 		}
-		
-        //Swift.print("gradientUnits: " + "\(gradientUnits)")
-		
-        //Swift.print("SVGGradientParser.gradient() gradientTransform: " + "\(gradientTransform)")
-		//return /**/
-        
-        return SVGGradient([],[],spreadMethod,id,gradientUnits,gradientTransform)
+        return SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)
 	}
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
