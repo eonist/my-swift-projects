@@ -6,8 +6,8 @@ import Cocoa
  */
 class SVGContainer:InteractiveView2, ISVGContainer{
     var id:String
-    var items:Array<ISVGElement> = []
-    init(_ items:Array<ISVGElement>, _ id:String) {
+    var items:[ISVGElement] = []
+    init(_ items:[ISVGElement], _ id:String) {
         self.id = id;
         super.init(frame: NSRect(0,0,0,0))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         /*
@@ -21,9 +21,8 @@ class SVGContainer:InteractiveView2, ISVGContainer{
      * PARAM: item (SVGGraphic and elements like SVGLinearGradient)
      */
     func add(_ element:ISVGElement) {
-        if(element is NSView) {
-            //Swift.print("SVGContainer.add() element is NSView")
-            addSubview(element as! NSView)
+        if let element = element as? NSView {
+            addSubview(element)
         }
         items.append(element)
     }
