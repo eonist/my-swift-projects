@@ -34,9 +34,9 @@ class SVGLineStyleUtils{
     static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
         guard let gradient:SVGGradient = style.stroke as? SVGGradient else {fatalError("shape.stroke is not SVGGradient")}
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse"/*The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.*/
-        if(){/*gradient is SVGRadialGradient */
-            var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
-            var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
+        if let linearGradient = gradient as? SVGLinearGradient {/*gradient is SVGRadialGradient */
+            var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(linearGradient.x1,linearGradient.y1).copy()/* :nil*/
+            var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(linearGradient.x2,linearGradient.y2).copy()/* :nil*/
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
                 if(gradient.gradientTransform != nil){
                     p1 = p1.applying(gradient.gradientTransform!)
@@ -54,7 +54,7 @@ class SVGLineStyleUtils{
                 //fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")
             }
             return LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
-        }else{/*radial*/
+        }else if let rg = gradient as? SVGRadialGradient{/*radial*/
             let radialGradient:SVGRadialGradient = gradient as! SVGRadialGradient
             let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
             let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
@@ -68,6 +68,8 @@ class SVGLineStyleUtils{
             let startRadius:CGFloat = 0
             let endRadius:CGFloat = radialGradient.r
             return RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
+        }else{
+            fatalError("gradient type not supported")
         }
     }
 }
