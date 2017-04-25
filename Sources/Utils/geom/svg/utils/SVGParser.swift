@@ -90,10 +90,11 @@ class SVGParser {
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
     static func path(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPath? {
-        if(!xml.hasAttribute(SVGConstants.data)) {return nil}
-        let pathDefinition:String = xml[SVGConstants.data]!
-        let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition)//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
-        return SVGPath(svgPathData.commands,svgPathData.parameters,style,id)
+        if let pathDefinition = xml[SVGConstants.data]{
+            let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition)//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
+            return SVGPath(svgPathData.commands,svgPathData.parameters,style,id)
+        }
+        return nil
     }
     /**
      * Returns an SVGRect element derived from the rectangle data in PARAM: xml with the PARAM: style and PARAM: id
