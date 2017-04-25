@@ -3,6 +3,7 @@ import Foundation
  * This class has methods that converts xml data into SVGGradient instances
  */
 class SVGGradientParser {
+    static var gradientTransformPattern:String = "(?<=^matrix\\().+?(?=\\)$)"
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
 	 * PARAM: xml (<linearGradient id="skyline"><stop offset="0" style="stop-color:blue"/><stop offset="1" style="stop-color:red"/></linearGradient>)
@@ -43,6 +44,8 @@ private class Utils{
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
      * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
+     * TODO: possibly itterate the offset if its null (see Element framework on how to do this)
+     * TODO: if style is present then dont check for color etc
 	 */
 	static func gradient(_ xml:XML)->SVGGradient{
         /*userSpaceOnUse*/
@@ -58,14 +61,11 @@ private class Utils{
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
-			// :TODO: possibly itterate the offset if its null (see Element framework on how to do this)
-			// Swift.print("offset: " + offset);
 			let hexColor:UInt
             var stopOpacity:CGFloat
 			//var stopOpacity:CGFloat
 			/*0-1*/
 			let style:String? = SVGPropertyParser.property(child,"style")
-			// :TODO: if style is present then dont check for color etc
 			if(style != nil){
 				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style!)
 				let stopColorProperty:String = inlineStyle["stop-color"]!
@@ -77,7 +77,6 @@ private class Utils{
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)//Double();
-            
             offsets.append(offset)
             colors.append(stopColor)
 		}
@@ -86,11 +85,10 @@ private class Utils{
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
      */
-    static func gradientTransform(_ xml:XMLElement)->CGAffineTransform? {
+    static func gradientTransform(_ xml:XML)->CGAffineTransform? {
         var gradientTransform:CGAffineTransform? = nil
-        let gradientTransformString:String? = SVGPropertyParser.property(xml,"gradientTransform")
-        if(gradientTransformString != nil){
-            let matrixString:String = gradientTransformString!.match("(?<=^matrix\\().+?(?=\\)$)")[0]
+        if let gradientTransformString = SVGPropertyParser.property(xml,"gradientTransform"){
+            let matrixString:String = gradientTransformString.match(SVGGradientParser.gradientTransformPattern)[0]
             let matrixStringArray:[String] = matrixString.split(" ")
             let matrixArray:[CGFloat] = matrixStringArray.map {CGFloat(Double($0)!)}//<--todo: use $0.cgFloat here
             gradientTransform = CGAffineTransform(matrixArray[0],matrixArray[1],matrixArray[2],matrixArray[3],matrixArray[4],matrixArray[5])//Swift 3 was->CGAffineTransformMake
