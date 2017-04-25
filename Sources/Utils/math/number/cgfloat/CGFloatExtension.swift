@@ -9,6 +9,7 @@ extension CGFloat {
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}
     var string:String{return String(describing: self)}
+    var str:String{return String(describing: self)}/*shorthand*/
     var isNegative:Bool{return NumberAsserter.negative(self,0)}
     var isPositive:Bool{return NumberAsserter.positive(self,0)}
     var positive:CGFloat{return abs(self)}//new

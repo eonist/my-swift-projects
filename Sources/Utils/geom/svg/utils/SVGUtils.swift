@@ -55,7 +55,6 @@ class SVGUtils {
                 default:
                     fatalError("command not supported: \(cmd)")
             }
-           
         }.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
     }
 	/**
