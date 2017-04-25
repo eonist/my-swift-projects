@@ -3,6 +3,7 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
+    static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
 	/**
 	 * Returns an SVGPathData instance from PARAM: data (which is derived directly from the SVG XML formated data
 	 * PARAM: data ( M-60-45 L   25.00px,20)
@@ -11,24 +12,14 @@ class SVGPathParser {
 	static func pathData(_ data:String)->SVGPathData {
 		var parameters:[CGFloat] = []
 		var commands:[String] = []
-        ///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
-		let pattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"//Capturing groups: ?P<cmnd>,?P<params>
-        let matches = data.matches(pattern)
-        //Swift.print("SVGPathParser.pathData matches.count: " + "\(matches.count)")
-        for match:NSTextCheckingResult in matches {/*Loops through the pattern*///TODO: use marches.forEach instead
-            //Swift.print("SVGPathParser.pathData() match.numberOfRanges: " + "\(match.numberOfRanges)")
-            //let content = (data as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+        let matches = data.matches(pathPattern)
+        matches {/*Loops through the pattern*///TODO: use marches.forEach instead
             let cmnd = match.value(data,1)/*capturing group 1*/
-            //Swift.print("cmnd: >" + cmnd+"<");
-            commands.append(cmnd)//command()
+            commands.append(cmnd)
             let params = match.value(data,2)/*capturing group 2*/
-            //Swift.print("params: >" + params+"<");
             let array:[CGFloat] = SVGPathParser.parameters(params)
-            //Swift.print("pathData.parameters: " + array);
             parameters += array//<---this is the same as concat
         }
-//		Swift.print("pathData.commands: " + commands);
-//		Swift.print("pathData.parameters: " + parameters);
 		return SVGPathData(commands,parameters)
 	}
     /**
