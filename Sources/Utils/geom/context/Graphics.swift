@@ -64,7 +64,7 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      * NOTE: this method can be called pre context
      */
-    public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = NSColor.black, _ lineCap:CGLineCap = CGLineCap.butt, _ lineJoin:CGLineJoin =  CGLineJoin.miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:Array<CGFloat> = []){
+    public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:[CGFloat] = []){
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
         context!.setStrokeColor(color.cgColor)
