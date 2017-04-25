@@ -53,6 +53,8 @@ private class Utils{
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
         
+        let SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)
+        
 		var offsets:[CGFloat] = []
 		var colors:[CGColor] = []
 		var opacities:[CGFloat] = []
@@ -92,7 +94,7 @@ private class Utils{
         //Swift.print("gradientUnits: " + "\(gradientUnits)")
 		
         //Swift.print("SVGGradientParser.gradient() gradientTransform: " + "\(gradientTransform)")
-		return SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)/**/
+		//return /**/
 	}
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
