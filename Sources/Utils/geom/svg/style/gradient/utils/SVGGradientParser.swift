@@ -58,7 +58,7 @@ private class Utils{
 		//var offsets:[CGFloat] = []
 		//var colors:[CGColor] = []
 		//var opacities:[CGFloat] = []
-        let arrays:(offsets:[CGFloat],colors:[CGColor]) = xml.children?.reduce(([],[])){
+        let arrays:(offsets:[CGFloat],colors:[CGColor]) = xml.children?.reduce((offsets:[],colors:[])){
             let child:XML = $1 as! XML
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
@@ -87,8 +87,8 @@ private class Utils{
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)//Double();
             
-            
-            return ($0.0 + offset, $0.1 + stopColor)
+            $0.offsets
+            return ($0.offsets += offset, $0.colors += stopColor)
 			//opacities.append(stopOpacity)
 		} ?? ([],[])
 		
