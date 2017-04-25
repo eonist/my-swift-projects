@@ -25,7 +25,7 @@ class SVGUtils {
 		}
 	}
     enum CMD:String{
-        case:
+        case ML String =
     }
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
