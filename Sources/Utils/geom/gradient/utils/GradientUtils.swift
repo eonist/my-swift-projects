@@ -36,11 +36,8 @@ class GradientUtils{
      * Linear
      */
     static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->LinearGraphicsGradient{
-        //Swift.print("gradient.rotation: " + "\(gradient.rotation)")
         //TODO:// Extract the bellow lines to GradientUtils in IGradient
         let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
-        //Swift.print("points.start: " + "\(points.start)")
-        //Swift.print("points.end: " + "\(points.end)")
         return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
     }
     /**
