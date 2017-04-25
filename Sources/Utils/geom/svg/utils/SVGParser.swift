@@ -50,7 +50,6 @@ class SVGParser {
         if let container = container as? SVGGroup, let containerStyle = container.style{
             SVGStyleModifier.merge(style, containerStyle)/*parent style is inherited down to sub elements*/
         }
-
         let id:String = SVGPropertyParser.id(xml)
         switch(xml.localName!){
             case SVGConstants.rect: element = rect(xml,style,id)

@@ -2,7 +2,7 @@ import Foundation
 
 class SVGStyleModifier {
     /**
-     * Merges if a value isnt present already
+     * Merges if a value isn't present already
      * TODO: a boolean flag should toggle overide if a value exists already
      */
     static func merge(_ a:SVGStyle,_ b:SVGStyle){
