@@ -9,7 +9,7 @@ extension CGRect {
      * Clones CGRect
      * EXAMPLE: CGRect(0,0,100,100).clone()
      */
-    func clone()->CGRect{//remove this
+    func clone()->CGRect{//remove this, use copy instead
         return CGRect(self.origin.x,self.origin.y,self.width,self.height)
     }
     /**
@@ -23,7 +23,6 @@ extension CGRect {
      * EXAMPLE: CGRect(0,0,100,100).path
      */
     var path:CGMutablePath{return CGRectParser.path(self)}
-    /*Convenient extensions*/
     /*Initialization*/
     init(_ pos:CGPoint,_ size:CGSize){ self.init(origin: pos, size: size)}
     init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
