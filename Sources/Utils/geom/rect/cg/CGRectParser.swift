@@ -39,7 +39,6 @@ class CGRectParser{
      */
     static func path(_ rect:CGRect)->CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
-        //Swift.print(CGRectParser.path() + String(path))
         path.move(to:CGPoint(rect.origin.x, rect.origin.y))//was-> CGPathMoveToPoint
         path.addLine(to: CGPoint(rect.origin.x + rect.size.width, rect.origin.y))// ***** Segment 1 *****
         path.addLine(to: CGPoint(rect.origin.x + rect.size.width,rect.origin.y + rect.size.height))// ***** Segment 2 *****
