@@ -131,7 +131,7 @@ public class Graphics{
                 break;
         }
         endOuterShadow()
-        applyInnerShadow(path: path)/*init inner shadow*/
+        applyInnerShadow(path:path)/*init inner shadow*/
     }
     /**
      * NOTE: apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
