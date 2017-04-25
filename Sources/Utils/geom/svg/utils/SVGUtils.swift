@@ -27,35 +27,43 @@ class SVGUtils {
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
-	static func pathData(_ path:SVGPath)->String {
-		let cmds:[String] = path.commands
-		let params:[CGFloat] = path.parameters
-		var i:Int = 0
-		return cmds.reduce(""){ res,cmd in
+    static func pathData(_ path:SVGPath)->String {
+        let cmds:[String] = path.commands
+        let params:[CGFloat] = path.parameters
+        var i:Int = 0
+        return cmds.reduce(""){ res,cmd in
             let index = i
-			if(cmd.test("[m,M,l,L,t,T]")) {
-				i += 2
-                return res + cmd + (params[index]) + " " + (params[index + 1]) + " "
-			}else if(cmd.test("[h,H,v,V]")){
-				i += 1
-                return res + cmd + (params[index]) + " "
+            switch someVal{
+                case 1:
+                    printin("one")
+                case 3...8:
+                    printin("range from 3 to 8")
+                default:
+                    break;
+            }
+            if(cmd.test("[m,M,l,L,t,T]")) {
+                i += 2
+                return res + cmd + params[index].string + " " + params[index + 1].string + " "
+            }else if(cmd.test("[h,H,v,V]")){
+                i += 1
+                return res + cmd + params[index].string + " "
             }else if(cmd.test("[s,S,q,Q]")){
-				i += 1
-                return res + cmd + (params[index]) + " " + (params[index+1]) + " " + (params[index+2]) + " " + (params[index+3]) + " "
-			}else if(cmd.test("[c,C]")){
-				i += 1
-                return res + cmd + (params[index]) + " " + (params[index+1]) + " " + (params[index+2]) + " " + (params[index+3]) + " " + (params[index+4]) + " " + (params[index+5]) + " ";
-			}else if(cmd.test("[a,A]")){
-				i += 1
-                return res + cmd + (params[index]) + " " + (params[index+1]) + " " + (params[index+2]) + " " + (params[index+3]) + " " + (params[index+4]) + " " + (params[index+5]) + " " + (params[index+6]) + " ";
-			}else if(cmd.test("[z,Z]")){
-				i += 1
+                i += 1
+                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " "
+            }else if(cmd.test("[c,C]")){
+                i += 1
+                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " "
+            }else if(cmd.test("[a,A]")){
+                i += 1
+                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " " + params[index+6].string + " "
+            }else if(cmd.test("[z,Z]")){
+                i += 1
                 return res + cmd + " "
             }else{
                 fatalError("command not supported: \(cmd)")
             }
-		}.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
-	}
+        }.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
+    }
 	/**
 	 * Returns the root node for the SVG XML document
 	 */
