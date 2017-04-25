@@ -53,8 +53,8 @@ class SVGModifier {
 	 * NOTE: this method is recursive
 	 */
 	static func style(_ element:ISVGElement,_ style:SVGStyle) {
-        if(element is SVGView) {(element as! SVGView).style = style}
-        if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
+        if let element = element as? SVGView {element.style = style}
+        if let element = element as? SVGGraphic {SVGModifier.update(element)}
         if let element = element as? SVGContainer {
             element.items.forEach{ item in
                 if(item is ISVGView) {SVGModifier.style(item, style)}
