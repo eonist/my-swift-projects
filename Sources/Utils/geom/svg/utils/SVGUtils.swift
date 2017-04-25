@@ -29,9 +29,9 @@ class SVGUtils {
 	 */
 	static func pathData(_ path:SVGPath)->String {
 		let commands:[String] = path.commands
-		var parameters:[CGFloat] = path.parameters
+		let parameters:[CGFloat] = path.parameters
 		var i:Int = 0
-		let pathData:String = commands.reduce(""){ result,command in
+		return commands.reduce(""){ result,command in
             let index = i
 			if(command.test("[m,M,l,L,t,T]")) {
 				i += 2
@@ -51,9 +51,10 @@ class SVGUtils {
 			}else if(command.test("[z,Z]")){
 				i += 1
                 return result + command + " "
-			}
-		}
-		return pathData.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
+            }else{
+                fatalError("command not supported: \(command)")
+            }
+		}.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 	}
 	/**
 	 * Returns the root node for the SVG XML document
