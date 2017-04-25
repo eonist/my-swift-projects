@@ -10,9 +10,9 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
         super.init(decoratable)
     }
     override func fill() {
-        if(dropShadow != nil && dropShadow!.inner){/*Inner*/
+        if let dropShadow = dropShadow, dropShadow.inner {/*Inner*/
             graphic.fillShape.graphics.dropShadow = dropShadow
-        }else if(dropShadow != nil && !dropShadow!.inner){/*Outer*/
+        }else if let dropShadow = dropShadow, !dropShadow.inner {/*Outer*/
             graphic.layer!.shadowColor = dropShadow!.color.cgColor//don't forget about the graphic.layer!.shadowPath
             graphic.layer!.shadowOpacity = dropShadow!.color.alphaComponent.float
             //Swift.print("dropShadow!.blurRadius: " + "\(dropShadow!.blurRadius)")
