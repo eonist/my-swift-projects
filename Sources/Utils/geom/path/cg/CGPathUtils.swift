@@ -80,7 +80,7 @@ private class BasicPathDataParser{
      */
     static func index(_ commands:[Int],_ commandIndex:Int) -> Int {
         var pathDataIndex:Int = 0
-        for i in 0..<commandIndex{
+        (0..<commandIndex).indices.forEach{ _ in
             pathDataIndex += BasicCommandParser.commandLength(commands[i])
         }
         return pathDataIndex
