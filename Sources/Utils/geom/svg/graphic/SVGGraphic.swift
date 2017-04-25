@@ -35,7 +35,7 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
      * NOTE: this is a delegate method for the shapes in Graphic
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets it's call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
-    func draw(_ layer: CALayer, in ctx: CGContext) {/*The context is passed from the layers, so that we get access to the context from this class and the classes that inherit this class*/
+    func draw(_ layer:CALayer, in ctx:CGContext) {/*The context is passed from the layers, so that we get access to the context from this class and the classes that inherit this class*/
         //Swift.print("SVGGraphic.drawLayer()")
         if(layer === fillShape){
             //Swift.print("fillShape: ")
@@ -95,10 +95,8 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
         /*if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
             drawLine()
             drawFill()
-        }*/
-        
+        }*/   
     }
-    
     /**
      * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
      */
@@ -127,13 +125,11 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
         //Swift.print("hitTest in graphic" + "\(aPoint)")
         //you have to convert the aPoint to localspace
-        
         let localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
         //Swift.print("localPoint: " + "\(localPoint)")
         //Swift 3 upgrade, caution used different contains method before, but the bellow should work
         let isPointInside:Bool = fillShape.path.contains(localPoint)//CGPathContainsPoint(fillShape.path,nil,,true)
         //Swift.print("isPointInside: " + "\(isPointInside)")
-        
         return isPointInside ? self : nil/*return nil will tell the parent that there was no hit on this view*/
     }
     /**
