@@ -7,8 +7,8 @@ import Cocoa
  */
 class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecoratable, and then changed to SizeableDec..was positionalDec etc, then changed back to positional, then changed to SizeableDecorator again after a bug surfaced*/ {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
     override func beginFill(){
-        if(graphic.fillStyle is IGradientFillStyle){
-            let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
+        if let fillStyle:IGradientFillStyle = graphic.fillStyle as? IGradientFillStyle{
+            let gradient = fillStyle.gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
             let boundingBox:CGRect = graphic.fillShape.path.boundingBox /*creates a boundingbox derived from the bounds of the path*/
             let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
@@ -22,8 +22,8 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      */
     override func applyLineStyle() {
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        if(getGraphic().lineStyle is IGradientLineStyle){
-            let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
+        if let lineStyle:IGradientLineStyle = getGraphic().lineStyle as?  IGradientLineStyle{
+            let gradient:IGradient = lineStyle.gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
             var boundingBox:CGRect = graphic.lineShape.path.boundingBox /*this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc*/
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
