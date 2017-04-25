@@ -1,6 +1,7 @@
 import Foundation
 
 class SVGStyleParser {
+    static var inlineStylePattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
 	/**
 	 * TODO: why do we need the PARAM: container here?
 	 */
@@ -21,10 +22,10 @@ class SVGStyleParser {
 	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
     static func inlineStyle(_ style:String)->[String:String] {//TODO: use tuples instead?
-        var inlineStyles:[String:String] = [String:String]()
-		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
-        let matches = style.matches(pattern)
-        for match:NSTextCheckingResult in matches {//Loops through the pattern
+        
+    
+        let matches = style.matches(inlineStylePattern)
+        let inlineStyles:[String:String] = matches.reduce() { interim,match in /*Loops through the pattern*/
             let name = match.value(style,1)/*capturing group 1*/
             let value = match.value(style,2)/*capturing group 2*/
             inlineStyles[name] = value
