@@ -25,10 +25,8 @@ class SVGPath:SVGGraphic{
      * TODO: Try to find a different way to find the boundingBox.origin for the linsehape.frame, this would be better for the cpu. as you could then have all code within the if statments
      */
     override func draw()  {
-        //Swift.print("SVGPath.draw()");
         let path:CGMutablePath = SVGPathUtils.drawPath(CGMutablePath(), commands, parameters);/*draws the fill*/
         let boundingBox:CGRect = path.boundingBoxOfPath/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        /*fill*/
         if(style!.fill != nil){/*Fill*/
             fillShape.frame = boundingBox
             let offset = CGPoint(-boundingBox.x,-boundingBox.y)
@@ -36,7 +34,6 @@ class SVGPath:SVGGraphic{
             fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
         }
         if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
-            /*line*/
             let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin            
             let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
             lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()

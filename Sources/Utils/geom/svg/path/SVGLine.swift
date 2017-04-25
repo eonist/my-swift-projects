@@ -3,8 +3,9 @@ import Foundation
  * This class creates a straight line
  * TODO: a line can only have a stroke, since it cant be continued as a path would
  * EXAMPLE: <line x1="75" y1="95" x2="135" y2="85" style="stroke: black;" />
+ * TODO: simplify by using points , and add id
  */
-class SVGLine:SVGGraphic{ //TODO: simplify by using points , and add id{
+class SVGLine:SVGGraphic{
     var x1:CGFloat
     var y1:CGFloat
     var x2:CGFloat
@@ -21,15 +22,14 @@ class SVGLine:SVGGraphic{ //TODO: simplify by using points , and add id{
     }
     /**
      * NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
+     * TODO: you have to set the frame here
      */
     override func draw() {
         let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth!, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
         let offset:CGPoint = PointParser.difference(lineOffsetRect.lineFrameRect.origin, boundingBox.origin)
-        //Swift.print("offset: " + "\(offset)")
         lineShape.path = CGPathParser.line(p1 + offset - boundingBox.origin,p2 + offset - boundingBox.origin)/*<-we offset the original points to make them relative to the frame*/
-        //TODO: you have to set the frame here
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
