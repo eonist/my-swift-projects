@@ -13,15 +13,11 @@ class SVGPathUtils {
         var prevM:CGPoint!/*previous MoveTo pos*/
         var prevC:CGPoint!/*previous ControlPoint*/
         for e in 0..<commands.count{
-            //Swift.print("commands.count: " + "\(commands.count)")
-            //Swift.print("params.count: " + "\(params.count)")
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
-            //Swift.print("SVGPathUtils.drawPath() isLowerCase: " + "\(isLowerCase)")
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             switch(command.lowercased()){
                 case SVGPathCommand.m: //moveTo
-                    //Swift.print("moveTo")
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
                     path.move(to:pos)//was->CGPathMoveToPoint
@@ -43,12 +39,9 @@ class SVGPathUtils {
                     i += 1
                     break;
                 case SVGPathCommand.c://curveTo
-                    //Swift.print("curveTo: " + " i: \(i) params: " + "\(params)")
                     pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
-                    //Swift.print("controlP1: " + "\(controlP1)")
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
-                    //Swift.print("prevC: " + "\(prevC)")
                     path.addCurve(to: pos, control1: controlP1, control2: prevC)//swift 3, was-> CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6
                     break;
@@ -72,7 +65,6 @@ class SVGPathUtils {
                     i += 2
                     break;
                 case SVGPathCommand.z:
-                    //Swift.print("close path")
                     path.closeSubpath()
                     path.move(to: prevM)/*<--unsure if this is needed?*///CGPathMoveToPoint(path, nil, .x, prevM.y)
                     break;/*closes it self to the prev MT pos*/
@@ -103,7 +95,6 @@ class SVGPathUtils {
         let path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
-        //var prevM:CGPoint/*previous MoveTo pos*/
         var prevC:CGPoint!/*previous ControlPoint*/
         for e in 0..<commands.count{
             let command:String = commands[e]
