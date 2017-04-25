@@ -22,18 +22,14 @@ class SVGStyleUtils {
         else{fatalError("this strokeLineJoin type is not supported")}
     }
     static func miterLimit(_ miterLimit:CGFloat)->CGFloat{
-        return !miterLimit.isNaN ? miterLimit : 10/*<--was 1.414*/;
+        return !miterLimit.isNaN ? miterLimit : 10/*<--was 1.414*/
     }
     static func strokeWidth(_ strokeWidth:CGFloat)->CGFloat{
         return !(strokeWidth.isNaN) ? strokeWidth : 0
     }
     static func strokeColor(_ strokeColor:Double,_ strokeOpacity:CGFloat)->NSColor{
-        //Swift.print("style.stroke: " + "\(style.stroke)")
         let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : Double(0x000000)
-        //Swift.print("colorVal: " + "\(colorVal)")
-        //Swift.print("strokeOpacity: " + "\(strokeOpacity)")
         let strokeOpacityVal:CGFloat = !(strokeOpacity.isNaN) ? strokeOpacity : 1;
-        //Swift.print("strokeOpacityVal: " + "\(strokeOpacityVal)")
         let color:NSColor = NSColorParser.nsColor(UInt(colorVal), strokeOpacityVal)
         return color
     }
@@ -56,7 +52,6 @@ class SVGStyleUtils {
      */
     static func graphicStyle(_ svgGraphic:ISVGGraphic)->IGraphicStyle{
         let fillStyle:IFillStyle? = svgGraphic.style != nil ? SVGFillStyleUtils.fillStyle(svgGraphic.style!, svgGraphic.fillShape) : nil
-        Swift.print("SVGStyleUtils.graphicStyle()  fillStyle: " + "\(fillStyle)")
         let lineStyle:ILineStyle? = svgGraphic.style != nil ? SVGLineStyleUtils.lineStyle(svgGraphic.style!, svgGraphic.lineShape) : nil
         return GraphicStyle(fillStyle,lineStyle)
     }
