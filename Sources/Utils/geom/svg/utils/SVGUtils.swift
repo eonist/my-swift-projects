@@ -24,13 +24,6 @@ class SVGUtils {
             return $0
 		}
 	}
-    enum CMD:String{
-        case mlt = "[m,M,l,L,t,T]"
-        case hv = "[h,H,v,V]"
-        func test(cmd:String) -> Bool{
-            return cmd.test(self.rawValue)
-        }
-    }
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
