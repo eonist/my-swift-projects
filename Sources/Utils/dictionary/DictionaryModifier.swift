@@ -26,6 +26,14 @@ class DictionaryModifier{
         for keyB in b.keys{c[keyB] = b[keyB]}//assigns the items in b to the return object, if they already exist s they are overriden
 		return c
 	}
+    /**
+     * Converts tuples to dict
+     */
+    static func dict<K,V>(_ tuples:[(K,V)])->[K:V]{
+        var dict:[K:V] = [K:V]()
+        tuples.forEach {dict[$0.0] = $0.1}
+        return dict
+    }
 }
 
 
