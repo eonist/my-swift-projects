@@ -72,12 +72,12 @@ class SVGParser {
      * TODO: impliment support for Desc and title elements to be added to group <desc>House with door</desc>
      */
     static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
-        let group = SVGGroup(elements,style,id)
-        let elements:[SVGElement] = xml.children?.map{
-            let child:XML = $0 as! XML
+        let group:SVGGroup = SVGGroup([],style,id)
+        let elements:[SVGElement] = xml.children?.mapReduce{
+            let child:XML = $1 as! XML
             if let elm = element(child,group) {group.add(elm)}
         } ?? []
-        return
+        
         return group
     }
     /**
