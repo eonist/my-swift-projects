@@ -17,10 +17,8 @@ class SVGPathDataParser {
 	 * NOTE: traverses the entire pathData array until it hits the commandIndex, while it counts each pathData integer it traverses. This count is then returned
 	 */
 	static func index(_ commands:[String],_ commandIndex:Int)->Int {
-		var pathDataIndex:Int = 0
-        for i in 0..<commandIndex{
-            pathDataIndex += SVGCommandParser.commandLength(commands[i])
+        return (0..<commandIndex).indices.reduce(0){
+            $0 + SVGCommandParser.commandLength(commands[$1])
         }
-		return pathDataIndex
 	}
 }
