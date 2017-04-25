@@ -110,9 +110,9 @@ class SVGParser {
     }
     /**
      * Returns an SVGLine element derived from the line data in PARAM: xml with the PARAM: style and PARAM: id
+     * TODO: ⚠️️ should return nil if there is no def ?!?
      */
     static func line(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGLine {
-        // :TODO: should return nil if there is no def ?!?
         let x1:CGFloat = SVGPropertyParser.digit(xml,"x1")
         let y1:CGFloat = SVGPropertyParser.digit(xml,"y1")
         let x2:CGFloat = SVGPropertyParser.digit(xml,"x2")
@@ -123,14 +123,14 @@ class SVGParser {
      * Returns an SVGPolyLine element derived from the polyline data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polyLine(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
-        if(!xml.hasAttribute(SVGConstants.points)) {return nil}
-        let pointsString:String = xml[SVGConstants.points]!
-        var points:[CGPoint] = []
-        var parameters:[CGFloat] = SVGPathParser.parameters(pointsString)
-        for i in stride(from: 0, to: parameters.count, by: 2){
-            points.append(CGPoint(parameters[i],parameters[i+1]))
+        if let pointsString:String = xml[SVGConstants.points]{
+            let params:[CGFloat] = SVGPathParser.parameters(pointsString)
+            let points:[CGPoint] = stride(from: 0, to: params.count, by: 2).map{ i in
+                CGPoint(params[i],params[i+1])
+            }
+            return SVGPolyLine(points,style,id)
         }
-        return SVGPolyLine(points,style,id)
+        return nil
     }
     /**
      * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
