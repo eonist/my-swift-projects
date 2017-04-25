@@ -9,17 +9,19 @@ extension CGSize {
     
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
-            if(dir == .hor){
-                return self.width
-            }else if(dir == .ver){
-                return self.height
-            }else{fatalError("not supported")}
+            switch dir{
+                case .hor:
+                    return self.width
+                case .ver:
+                    return self.height
+            }
         }set {
-            if(dir == .hor){
-                self.width = newValue
-            }else if(dir == .ver){
-                self.height = newValue
-            }else{fatalError("not supported")}
+            switch dir{
+                case .hor:
+                    self.width = newValue
+                case .ver:
+                    self.height = newValue
+            }
         }
     }
 }
