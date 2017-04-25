@@ -15,9 +15,7 @@ class Gradient:IGradient {
     init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
         if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
-            //Swift.print(colors.count)
             self.locations = CGFloatParser.interpolatedRange(0,  1,  colors.count)
-            //Swift.print(self.locations)
         }else{
             self.locations = locations
         }
