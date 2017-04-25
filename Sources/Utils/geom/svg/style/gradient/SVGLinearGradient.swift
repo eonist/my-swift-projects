@@ -7,12 +7,12 @@ class SVGLinearGradient:SVGGradient {
     var y1:CGFloat
     var x2:CGFloat//x2, y2 /*The x2 and y2 (end point) of the vector defining the direction of the gradient.*/
     var y2:CGFloat
-	init(_ offsets:[CGFloat],_ colors:[CGColor], /*opacities:Array<CGFloat>,*/ _ x1:CGFloat, _ y1:CGFloat, _ x2:CGFloat,_ y2:CGFloat, _ gradientUnits:String, _ spreadMethod:String, _ id:String,_ gradientTransform:CGAffineTransform? = nil/**/) {
+	init(_ offsets:[CGFloat],_ colors:[CGColor], _ x1:CGFloat, _ y1:CGFloat, _ x2:CGFloat,_ y2:CGFloat, _ gradientUnits:String, _ spreadMethod:String, _ id:String,_ gradientTransform:CGAffineTransform? = nil) {
 		self.x1 = x1
 		self.y1 = y1
 		self.x2 = x2
 		self.y2 = y2
-		super.init(offsets, colors, /*opacities,*/ spreadMethod, id, gradientUnits,gradientTransform)
+		super.init(offsets, colors, spreadMethod, id, gradientUnits,gradientTransform)
 	}
 }
 /**
