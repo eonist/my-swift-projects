@@ -3,6 +3,8 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
+    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
+    static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
     static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
 	/**
 	 * Returns an SVGPathData instance from PARAM: data (which is derived directly from the SVG XML formated data
@@ -29,16 +31,10 @@ class SVGPathParser {
 	 * TODO: write more examples in this comment section
 	 */
 	static func parameters(_ parameters:String)->[CGFloat] {
-        //(?<=^|\,|\s|px|\b)\-?\d*?(\.?)((?1)\d+?)(?=px|\s|\,|\-|$)
-        let beginning:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
         let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
-        let end:String = "(?=px|\\s|\\,|\\-|$)"
-        let pattern:String = beginning + middle + end
-        //Swift.print("pattern: " + "\(pattern)")
+        let pattern:String = paramStartPattern + middle + paramEndPattern
 		let stringArray:[String] = parameters.match(pattern);
-        //Swift.print("stringArray: " + "\(stringArray)")
-        //Swift.print("SVGPathParser.parameters() stringArray.count: " + "\(stringArray.count)")
-        let array:[CGFloat] = stringArray.map {CGFloat(Double($0)!)}//<--temp fix, converts the values in the array to CGFloat
+        let array:[CGFloat] = stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
         return array
 	}
 	/**
