@@ -33,35 +33,29 @@ class SVGUtils {
         var i:Int = 0
         return cmds.reduce(""){ res,cmd in
             let index = i
-            switch someVal{
-                case 1:
-                    printin("one")
-                case 3...8:
-                    printin("range from 3 to 8")
+            switch true{
+                case cmd.test("[m,M,l,L,t,T]"):
+                    i += 2
+                    return res + cmd + params[index].string + " " + params[index + 1].string + " "
+                case cmd.test("[h,H,v,V]"):
+                    i += 1
+                    return res + cmd + params[index].string + " "
+                case cmd.test("[s,S,q,Q]"):
+                    i += 1
+                    return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " "
+                case cmd.test("[c,C]"):
+                    i += 1
+                    return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " "
+                case cmd.test("[a,A]"):
+                    i += 1
+                    return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " " + params[index+6].string + " "
+                case cmd.test("[z,Z]"):
+                    i += 1
+                    return res + cmd + " "
                 default:
-                    break;
+                    fatalError("command not supported: \(cmd)")
             }
-            if(cmd.test("[m,M,l,L,t,T]")) {
-                i += 2
-                return res + cmd + params[index].string + " " + params[index + 1].string + " "
-            }else if(cmd.test("[h,H,v,V]")){
-                i += 1
-                return res + cmd + params[index].string + " "
-            }else if(cmd.test("[s,S,q,Q]")){
-                i += 1
-                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " "
-            }else if(cmd.test("[c,C]")){
-                i += 1
-                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " "
-            }else if(cmd.test("[a,A]")){
-                i += 1
-                return res + cmd + params[index].string + " " + params[index+1].string + " " + params[index+2].string + " " + params[index+3].string + " " + params[index+4].string + " " + params[index+5].string + " " + params[index+6].string + " "
-            }else if(cmd.test("[z,Z]")){
-                i += 1
-                return res + cmd + " "
-            }else{
-                fatalError("command not supported: \(cmd)")
-            }
+           
         }.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
     }
 	/**
