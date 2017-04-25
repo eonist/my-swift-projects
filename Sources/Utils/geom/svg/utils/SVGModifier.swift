@@ -55,9 +55,9 @@ class SVGModifier {
 	static func style(_ element:ISVGElement,_ style:SVGStyle) {
         if(element is SVGView) {(element as! SVGView).style = style}
         if(element is SVGGraphic) {SVGModifier.update(element as! SVGGraphic)}
-        if(element is SVGContainer) {
-            for i in 0..<(element as! SVGContainer).items.count{//swift3 upgrade
-                if((element as! SVGContainer).items[i] is ISVGView) {SVGModifier.style((element as! SVGContainer).items[i], style)}
+        if let element = element as? SVGContainer {
+            element.items.forEach{ item in
+                if(item is ISVGView) {SVGModifier.style(item, style)}
             }
         }
 	}
