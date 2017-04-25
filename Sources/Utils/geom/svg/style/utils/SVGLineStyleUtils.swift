@@ -33,7 +33,7 @@ class SVGLineStyleUtils{
      */
     static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
         let gradient:SVGGradient = (style.stroke! as! SVGGradient)
-        let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";//The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
+        let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse"/*The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.*/
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         if(gradient is SVGLinearGradient){/*gradient is SVGRadialGradient */
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
