@@ -22,7 +22,7 @@ class SVGPathUtils {
             switch(command.lowercased()){
                 case SVGPathCommand.m: //moveTo
                     //Swift.print("moveTo")
-                    pos += CGPoint(params[i],params[i+1]);
+                    pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
                     path.move(to:pos)//was->CGPathMoveToPoint
                     i += 2
@@ -176,7 +176,7 @@ class SVGPathUtils {
                 prevP = pos.copy()
             }
         }
-        return path;
+        return path
     }
     /**
      * Returns an Rectangle instance with data derived from a svgRect
