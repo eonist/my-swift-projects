@@ -100,7 +100,6 @@ class SVGPathParser {
 				prevP = pos.copy()
 			}
 		}
-//		Swift.print("positions: " + positions);
 		return positions
 	}
 	/**
