@@ -28,31 +28,31 @@ class SVGUtils {
 	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
 	static func pathData(_ path:SVGPath)->String {
-		let commands:[String] = path.commands
-		let parameters:[CGFloat] = path.parameters
+		let cmds:[String] = path.commands
+		let params:[CGFloat] = path.parameters
 		var i:Int = 0
-		return commands.reduce(""){ result,command in
+		return cmds.reduce(""){ res,cmd in
             let index = i
-			if(command.test("[m,M,l,L,t,T]")) {
+			if(cmd.test("[m,M,l,L,t,T]")) {
 				i += 2
-                return result + command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
-			}else if(command.test("[h,H,v,V]")){
+                return res + cmd + String(params[index]) + " " + String(params[index + 1]) + " "
+			}else if(cmd.test("[h,H,v,V]")){
 				i += 1
-                return result + command + String(parameters[index]) + " "
-            }else if(command.test("[s,S,q,Q]")){
+                return res + cmd + String(params[index]) + " "
+            }else if(cmd.test("[s,S,q,Q]")){
 				i += 1
-                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " "
-			}else if(command.test("[c,C]")){
+                return res + cmd + String(params[index]) + " " + String(params[index+1]) + " " + String(params[index+2]) + " " + String(params[index+3]) + " "
+			}else if(cmd.test("[c,C]")){
 				i += 1
-                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " ";
-			}else if(command.test("[a,A]")){
+                return res + cmd + String(params[index]) + " " + String(params[index+1]) + " " + String(params[index+2]) + " " + String(params[index+3]) + " " + String(params[index+4]) + " " + String(params[index+5]) + " ";
+			}else if(cmd.test("[a,A]")){
 				i += 1
-                return result + command + String(parameters[index]) + " " + String(parameters[index+1]) + " " + String(parameters[index+2]) + " " + String(parameters[index+3]) + " " + String(parameters[index+4]) + " " + String(parameters[index+5]) + " " + String(parameters[index+6]) + " ";
-			}else if(command.test("[z,Z]")){
+                return res + cmd + String(params[index]) + " " + String(params[index+1]) + " " + String(params[index+2]) + " " + String(params[index+3]) + " " + String(params[index+4]) + " " + String(params[index+5]) + " " + String(params[index+6]) + " ";
+			}else if(cmd.test("[z,Z]")){
 				i += 1
-                return result + command + " "
+                return res + cmd + " "
             }else{
-                fatalError("command not supported: \(command)")
+                fatalError("command not supported: \(cmd)")
             }
 		}.replace("\\s*?$", "")/*Removes the ending whitespace, if it exists*/
 	}
