@@ -174,7 +174,7 @@ class CGPointParser{
     static func rectangle(_ points:Array<CGPoint>)->CGRect{
         var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
-        for point : CGPoint in points {
+        points.forEach { point in
             if(point.x > max.x) {max.x = point.x}
             else if(point.x < min.x){ min = CGPoint(point.x,min.y)}
             if(point.y > max.y){ max.y = point.y}
@@ -201,7 +201,7 @@ class CGPointParser{
      */
     static func median(_ points:[CGPoint]) -> CGPoint{
         var median:CGPoint = CGPoint()
-        for point:CGPoint in points {
+        points.forEach { point in
             median.x += point.x//TODO: possibly use point.add?, you can also just do median += point here
             median.y += point.y
         }
