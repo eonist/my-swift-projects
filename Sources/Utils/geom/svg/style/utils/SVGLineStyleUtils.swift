@@ -32,13 +32,9 @@ class SVGLineStyleUtils{
      * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the SVGGradient.transformation, instead you have to scale the gradient that is attached to the indeviduel SVGGraphic, and you have to take into consideration that the strokeThickness is now different than the new relative size. Even though its the same, the relative difference between the strokeThickness and the size of the shape is different. So you have to recalculate the gradient.transformation matrix a little bit. Probably by insetting it by some relative value
      */
     static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
-        if let gradient:SVGGradient = style.stroke as? SVGGradient{
-            
-        }
-        let gradient:SVGGradient = style.stroke! as! SVGGradient
+        guard let gradient:SVGGradient = style.stroke as? SVGGradient else {fatalError("shape.stroke is not SVGGradient")}
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse"/*The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.*/
-        //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
-        if(gradient is SVGLinearGradient){/*gradient is SVGRadialGradient */
+        if(){/*gradient is SVGRadialGradient */
             var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x1,(gradient as! SVGLinearGradient).y1).copy()/* :nil*/
             var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint((gradient as! SVGLinearGradient).x2,(gradient as! SVGLinearGradient).y2).copy()/* :nil*/
             if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
