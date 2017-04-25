@@ -28,11 +28,10 @@ class SVGUtils {
 	 * Returns pathData from PARAM: path (SVGPath instance)
 	 */
 	static func pathData(_ path:SVGPath)->String {
-		var pathData:String = ""
 		let commands:[String] = path.commands
 		var parameters:[CGFloat] = path.parameters
 		var index:Int = 0
-		for command:String in commands {
+		let pathData:String = commands.reduce(""){
 			if(command.test("[m,M,l,L,t,T]")) {
 				pathData += command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 				index += 2
