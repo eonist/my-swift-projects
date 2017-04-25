@@ -73,13 +73,12 @@ class SVGParser {
      */
     static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id)
-        let elements:[SVGElement] = xml.children?.map{ child -> [SVGElement?] in
+        group.items = xml.children?.map{ child -> ISVGElement? in
                 let child:XML = child as! XML
                 return element(child,group)
-            }.flatMap{ optiionalChild -> 
+            }.flatMap{
                 return $0
         } ?? []
-        
         return group
     }
     /**
@@ -94,8 +93,8 @@ class SVGParser {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
         let pathDefinition:String = xml[SVGConstants.data]!
 		//print("SVGParser.path() pathDefinition: " + pathDefinition);
-        let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition);//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
-        return SVGPath(svgPathData.commands,svgPathData.parameters,style,id);
+        let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition)//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
+        return SVGPath(svgPathData.commands,svgPathData.parameters,style,id)
     }
     /**
      * Returns an SVGRect element derived from the rectangle data in PARAM: xml with the PARAM: style and PARAM: id
