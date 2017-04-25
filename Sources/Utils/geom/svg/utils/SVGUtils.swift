@@ -113,38 +113,34 @@ class SVGUtils {
 	  * TODO: remeber groups can have style applied inline cant they?
 	  */
 	 static func group(_ group:SVGGroup) -> XML {
-		 var xml:XML = "<g></g>".xml
-		 xml = id(xml,group)
+		 let xml:XML = id("<g></g>".xml,group)
 		 /*xml = style(xml,group); not supported yet*/
-        group.items.reduce(xml){
-			 let svgGraphic:ISVGElement = group.items[i] as ISVGElement
-			 var child:XML
-             if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
-             else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
-             else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
-             else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
-             else{ fatalError("type not supported: " + "\(svgGraphic)")}
-             xml.appendChild(child)
-            return xml
+        return group.items.reduce(xml){
+            let svgGraphic:ISVGElement = $1 as ISVGElement
+            var child:XML
+            if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
+            else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
+            else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
+            else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
+            else{ fatalError("type not supported: " + "\(svgGraphic)")}
+            xml.appendChild(child)
+            return $0
 		 }
-		 return xml
 	 }
 	 /**
 	  * Returns the id from a ISVG instance
 	  * TODO: move to an internal class
 	  */
 	 static func id(_ xml:XMLElement,_ svg:ISVGElement)->XML {
-         if(svg.id != ""/*<-this was nil*/) {xml["id"] = svg.id}
+         if(svg.id != "") {xml["id"] = svg.id}
 		 return xml
 	 }
 	 /**
 	  * Returns an XML instance with style properties derived from PARAM: xml
 	  * TODO: move to an internal class
+      * TODO: ⚠️️ this method is missing support for gradient (Get clues from the legacy SVGPropertyParser)
 	  */
 	 static func style(_ xml:XMLElement,_ graphic:SVGGraphic)->XML {
-        
-         //this method is missing support for gradient (Get clues from the legacy SVGPropertyParser)
-        
          xml["fill"] = graphic.style!.fill is Double && !((graphic.style!.fill as! Double).isNaN) ? "#"+HexParser.hexString(UInt(graphic.style!.fill as! Double)):"none"
 		 xml["stroke"] = graphic.style!.stroke is Double && !(graphic.style!.stroke as! Double).isNaN ? "#"+HexParser.hexString(UInt(graphic.style!.stroke as! Double)):"none"
          if(graphic.style!.strokeWidth != nil && !graphic.style!.strokeWidth!.isNaN && graphic.style!.strokeWidth! != 1) {xml["stroke-width"] = "\(graphic.style!.strokeWidth!)"}/*if strokeWidth is 1 then you dont have to include it in the svg, this is considered a default value if stroke is avialbale*/
