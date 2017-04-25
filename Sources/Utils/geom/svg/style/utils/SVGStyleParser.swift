@@ -24,8 +24,9 @@ class SVGStyleParser {
     static func inlineStyle(_ style:String)->[String:String] {//TODO: use tuples instead?
         
     
+        var interim = interim
         let matches = style.matches(inlineStylePattern)
-        let inlineStyles:[String:String] = matches.reduce([String:String]) { interim,match in /*Loops through the pattern*/
+        let inlineStyles:[String:String] = matches.reduce([String:String]()) { ( interim: [String: String], match: NSTextCheckingResult) -> [String: String] in /*Loops through the pattern*/
             let name = match.value(style,1)/*capturing group 1*/
             let value = match.value(style,2)/*capturing group 2*/
             interim[name] = value
