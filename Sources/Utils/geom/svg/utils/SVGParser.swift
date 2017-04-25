@@ -73,7 +73,7 @@ class SVGParser {
      */
     static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id)
-        group.items = xml.children?.map{ child -> ISVGElement? in
+        group.items = xml.children?.lazy.map{ child -> ISVGElement? in
                 let child:XML = child as! XML
                 return element(child,group)
             }.flatMap{
@@ -92,7 +92,6 @@ class SVGParser {
     static func path(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPath? {
         if(!xml.hasAttribute(SVGConstants.data)) {return nil}
         let pathDefinition:String = xml[SVGConstants.data]!
-		//print("SVGParser.path() pathDefinition: " + pathDefinition);
         let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition)//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
         return SVGPath(svgPathData.commands,svgPathData.parameters,style,id)
     }
