@@ -2,16 +2,15 @@ import Cocoa
 
 class SVGLineStyleUtils{
     static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
-        var lineStyle:ILineStyle?
         if(svgStyle.stroke is Double) {
-            lineStyle = colorLineStyle(svgStyle)
+            return colorLineStyle(svgStyle)
         }else if(svgStyle.stroke is SVGGradient){
-            lineStyle = gradientLineStyle(svgStyle,shape)
+            return gradientLineStyle(svgStyle,shape)
         }else{/*clear*/
             //Swift.print("no stroke")
             //fatalError("not implemented yet " + "\(style!.stroke)")
+            return nil
         }
-        return lineStyle
     }
     static func colorLineStyle(_ style:SVGStyle)->ILineStyle{
         var lineStyle:ILineStyle = LineStyle()

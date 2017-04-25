@@ -3,7 +3,7 @@ import Foundation
 class SVGStyleModifier {
     /**
      * Merges if a value isn't present already
-     * TODO: a boolean flag should toggle overide if a value exists already
+     * TODO: ⚠️️ a boolean flag should toggle overide if a value exists already
      */
     static func merge(_ a:SVGStyle,_ b:SVGStyle){
         if((!(a.fill is Double) && !(b.fill is Double)) || ((a.fill as! Double).isNaN && !(b.fill as! Double).isNaN)) {a.fill = b.fill}/*Fill*/
