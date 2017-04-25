@@ -5,8 +5,7 @@ class SVGStyleParser {
 	 * TODO: why do we need the PARAM: container here?
 	 */
 	static func style(_ prop:Any,_ container:ISVGContainer)->SVGStyle {
-		var inlineStyle:Dictionary<String, String> = SVGStyleParser.inlineStyle(String(describing: prop))
-		//ObjectDescriber.describe(inlineStyle)
+        let inlineStyle:[String:String] = SVGStyleParser.inlineStyle(String(describing: prop))
 		let fill:Any? = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
 		let fillRule:String? = inlineStyle["fill-rule"]
@@ -21,8 +20,8 @@ class SVGStyleParser {
 	/**
 	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
-	static func inlineStyle(_ style:String)->Dictionary<String, String> {//TODO: use tuples instead?
-        var inlineStyles:Dictionary<String, String> = Dictionary<String, String>()
+    static func inlineStyle(_ style:String)->[String:String] {//TODO: use tuples instead?
+        var inlineStyles:[String:String] = [String:String]()
 		let pattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
         let matches = style.matches(pattern)
         for match:NSTextCheckingResult in matches {//Loops through the pattern
