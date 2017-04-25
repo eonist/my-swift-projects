@@ -73,7 +73,7 @@ class SVGParser {
      */
     static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id)
-        let elements:[SVGElement] = xml.children?.mapReduce{
+        let elements:[SVGElement] = xml.children?.mapReduce(group.items){
             let child:XML = $1 as! XML
             if let elm = element(child,group) {group.add(elm)}
         } ?? []
