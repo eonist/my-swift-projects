@@ -71,5 +71,14 @@ class SVGLineStyleUtils{
         }else{
             fatalError("gradient type not supported")
         }
+        
+        switch someVal{
+        case 1:
+            printin("one")
+        case 3...8:
+            printin("range from 3 to 8")
+        default:
+            break;
+        }
     }
 }
