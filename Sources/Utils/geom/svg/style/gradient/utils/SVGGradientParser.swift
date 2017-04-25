@@ -53,11 +53,11 @@ private class Utils{
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
         
-        let SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)
+        let gradient = SVGGradient([],[],spreadMethod,id,gradientUnits,gradientTransform)
         
 		var offsets:[CGFloat] = []
 		var colors:[CGColor] = []
-		var opacities:[CGFloat] = []
+		//var opacities:[CGFloat] = []
         xml.children?.forEach{
             let child:XML = $0 as! XML
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
@@ -88,7 +88,7 @@ private class Utils{
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)//Double();
 			offsets.append(offset)
 			colors.append(stopColor)
-			opacities.append(stopOpacity)
+			//opacities.append(stopOpacity)
 		}
 		
         //Swift.print("gradientUnits: " + "\(gradientUnits)")
