@@ -25,7 +25,7 @@ class CGPointAsserter {
      * NOTE: but both x and y cant be the same in both points
      */
     static func less(_ p1:CGPoint, _ p2:CGPoint) -> Bool {
-    return (p1.x <= p2.x && p1.y < p2.y) || (p1.x < p2.x && p1.y <= p2.y)
+        return (p1.x <= p2.x && p1.y < p2.y) || (p1.x < p2.x && p1.y <= p2.y)
     }
     /**
      * Asserts if p1 is more than p2  (but eigther x OR y can be equal to the other x or y)
@@ -109,11 +109,8 @@ class CGPointAsserter {
      */
     static func oppositeDirectional(_ bisectorP1:CGPoint,_ bisectorP2:CGPoint,_ aP1:CGPoint,_ aP2:CGPoint,_ bP1:CGPoint,_ bP2:CGPoint) -> Bool {
         let bisectorAngle:CGFloat = Trig.angle(bisectorP1, bisectorP2)
-        //print("bisectorAngle: " + bisectorAngle)
         let angleA:CGFloat = Trig.angle(aP1,aP2)
-        //print("angleA: " + angleA)
         let angleB:CGFloat = Trig.angle(bP1,bP2)
-        //print("angleB: " + angleB)
         return Trig.isOppositeDirectional(bisectorAngle, angleA, angleB)//TODO: we could do the asserting with slope instead of trig, just consider infinity and -infinity and NaN as results of slope
     }
     /**
