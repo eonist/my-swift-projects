@@ -34,8 +34,8 @@ class SVGContainer:InteractiveView2, ISVGContainer{
             if(item.id/*["id"]*/ == id) {
                 return item
             }
-        };
-        return nil;
+        }
+        return nil
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
