@@ -13,8 +13,7 @@ class SVGPolygon:SVGGraphic,ISVGPolyLine{
      * NOTE: this method calls two sub methods so that SVGPolyLine can use this class as a base method
      */
     override func draw() {
-        /*Fill*/
-        let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
+        let boundingBox:CGRect = PointParser.rectangle(points)/*Fill, We need the bounding box in order to set the frame*/
         if(style!.fill != nil){/*Fill*/
             fillShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
             fillShape.frame = boundingBox/*The positioning happens in the frame*/
