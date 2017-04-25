@@ -36,21 +36,17 @@ class SVGStyleParser {
 	 * PARAM: container the parent container of the svg element querried for
 	 */
     static func fill(_ property:Any?,_ container:ISVGContainer)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
-        //Swift.print("SVGStyleParser.fill() property: " + "\(property)")
-        var property = property//swift 3 upgrade, can probably be removed
-        if(property == nil) {
-            property = nil
-        }else if(property! is String && (property as! String) == "none") {
-            property = Double.nan
+        if(property! is String && (property as! String) == "none") {
+            return Double.nan
         }else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
-            property = Double(StringParser.color(property as! String))
-        }else{/*url(#three_stops);*/
+            return Double(StringParser.color(property as! String))
+        }else if(property != nil){/*url(#three_stops);*/
 			let url:String = String(describing: property!).match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
             //Swift.print("url: " + "\(url)")
-			property = container.getItem(url)/*SVGLinearGradient*/
+			return container.getItem(url)/*SVGLinearGradient*/
             //Swift.print("property: " + "\(property)")
 		}
-		return property
+        return nil
 	}
 	/**
 	 * TODO: needs support for 3 letter hex color, you have code for this, find it
