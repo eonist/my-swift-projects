@@ -61,15 +61,12 @@ class SVGFillStyleUtils{
         //Swift.print("gradient.colors: " + gradient.colors);
         //Swift.print("gradient.opacities: " + gradient.opacities);
         //Swift.print("gradient.offsets: " + gradient.offsets);
-        /**
-         * NOTE: there is no need for transform in the LinearGraphicsGradient, all matrix transformation can be applied to the points
-         * NOTE: you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
-         */
+        
         switch gradient{
             case let linearGradient as SVGLinearGradient:/*gradient is SVGRadialGradient */
-            
+                return Utils.linearGradient(shape, linearGradient, userSpaceOnUse)
             case let radialGradient as SVGRadialGradient:/*gradient is SVGRadialGradient */
-            
+                return Utils.radialGradient(shape, radialGradient, userSpaceOnUse)
             default:
                 fatalError("gradient type not supported")
         }
@@ -78,12 +75,12 @@ class SVGFillStyleUtils{
 
 private class Utils{
     /**
-     *
+     * NOTE: there is no need for transform in the LinearGraphicsGradient, all matrix transformation can be applied to the points
+     * NOTE: you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
+     * TODO: ⚠️️ Add support for relative values, see old code, you need to use the bounding box etc and test how relative values work in svg etc
      */
     static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient{
         //let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
-        
-        //TODO: add support for relative values, see old code, you need to use the bounding box etc and test how relative values work in svg etc
         var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1).copy()/* :nil*/
         var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2).copy()/* :nil*/
         //Swift.print("p1: " + "\(p1)")
