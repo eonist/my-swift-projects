@@ -1,13 +1,12 @@
 import Foundation
 /**
  * The responsibility of this class is to provide access to the position of the SizeableGraphic
- * TODO: ⚠️️ if let woudl be better but will it work?
  */
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
             //Swift.print("decoratable: " + "\(decoratable)")
-            if(decoratable is ISizeable){return (decoratable as! ISizeable).size}
+            if let decoratable = decoratable as? ISizeable{return decoratable.size}
             else{return CGSize(0,0)/*<- bug fix, GradientSKin needs size to get the trackingArea working was --> *//*fatalError("Must subclass SizeableGraphic")*/}
         }
         set{
