@@ -39,15 +39,14 @@ private class Utils{
      * Returns point on a CubicCurve for PARAM: t (0-1)
      */
     static func point(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint,_ d:CGPoint,_ t:CGFloat)->CGPoint{
-        var point:CGPoint = CGPoint(x:0,y:0)
         let mt:CGFloat  = 1-t
         let mt2:CGFloat = mt*mt
         let mt3:CGFloat = mt2*mt
         /*fx(t) = x1 * (1-t)³ + x2 * 3 * (1-t)²t + x3 * 3 * (1-t)t² + x4 * t³*/
-        point.x = a.x*mt3 + b.x*3*mt2*t + c.x*3*mt*t*t + d.x*t*t*t
+        let x:CGFloat = a.x*mt3 + b.x*3*mt2*t + c.x*3*mt*t*t + d.x*t*t*t
         /*fy(t) = y1 * (1-t)³ + y2 * 3 * (1-t)²t + y3 * 3 * (1-t)t² + y4 * t³*/
-        point.y = a.y*mt3 + b.y*3*mt2*t + c.y*3*mt*t*t + d.y*t*t*t
-        return point
+        let y:CGFloat = a.y*mt3 + b.y*3*mt2*t + c.y*3*mt*t*t + d.y*t*t*t
+        return CGPoint(x,y)
     }
     /**
      * Cubic Equation Calculator
