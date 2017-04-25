@@ -10,10 +10,10 @@ extension IGraphicsGradient{
      * Convert
      */
     func gradient()->IGradient{
-        if(self is LinearGraphicsGradient){
-            return (self as! LinearGraphicsGradient).linearGradient()
-        }else if(self is RadialGraphicsGradient){
-            return (self as! RadialGraphicsGradient).radialGradient()
+        if let gradient = (self as? LinearGraphicsGradient){
+            return gradient.linearGradient()
+        }else if let gradient = (self as? RadialGraphicsGradient){
+            return gradient.radialGradient()
         }else{
             fatalError("type not supported")
         }
