@@ -33,7 +33,7 @@ class SVGUtils {
 		var index:Int = 0
 		let pathData:String = commands.reduce(""){
 			if(command.test("[m,M,l,L,t,T]")) {
-				pathData += command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
+				$0 command + String(parameters[index]) + " " + String(parameters[index + 1]) + " "
 				index += 2
 			}else if(command.test("[h,H,v,V]")){
 				pathData += command + String(parameters[index]) + " "
