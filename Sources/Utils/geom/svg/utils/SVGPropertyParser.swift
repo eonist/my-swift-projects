@@ -5,21 +5,20 @@ class SVGPropertyParser {
 	 * NOTE: could also be named attributeValue or value
 	 * PARAM: key is the that matches the returned value among the attributes in the xml item
 	 */
-	static func property(_ xml:XMLElement,_ key:String)->String? {
-		return xml.hasAttribute(/*"@"+*/key) ? xml[/*"@"+*/key] : nil
+	static func property(_ xml:XML,_ key:String)->String? {
+		return xml.hasAttribute(key) ? xml[key] : nil
 	}
 	/**
 	 * Returns a Number instance or if the property is null then NaN is returned
 	 */
 	static func value(_ property:Any?) -> CGFloat {
-        //Swift.print("SVGPropertyParser.value() property: " + "\(property)")
-		return property == nil ? CGFloat.nan : CGFloat(Double((property as! String))!)//<-may be wrong conversion wrapping, also make a converter for ANy to CGFloat already
+		return property == nil ? CGFloat.nan : (property as! String).cgFloat//<-may be wrong conversion wrapping, also make a converter for ANy to CGFloat already
 	}
 	/**
 	 * Returns NaN if no value is found and removes suffix "px" if found and also casts the value as a Number instance
 	 * TODO: needs a re-write that doesnt include returning an associative array
 	 */
-	static func digit(_ xml:XMLElement,_ key:String)->CGFloat{
+	static func digit(_ xml:XML,_ key:String)->CGFloat{
 		let prop:Any? = property(xml, key)
         if(prop == nil) {return NaN}
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
@@ -27,7 +26,7 @@ class SVGPropertyParser {
     /**
      * NEW
      */
-    static func viewBox(_ xml:XMLElement)->CGRect{
+    static func viewBox(_ xml:XML)->CGRect{
         let prop:String? = property(xml,"viewBox")
         if(prop != nil){
             let values:[CGFloat] = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
@@ -38,7 +37,7 @@ class SVGPropertyParser {
 	/**
 	 * Returns the id attribute if it exists in an xml item, returns an empty string if no id attribute is found
 	 */
-	static func id(_ xml:XMLElement)->String {
+	static func id(_ xml:XML)->String {
 		return xml.hasAttribute("id") ? xml["id"]! : ""
 	}
 	/**
@@ -46,7 +45,7 @@ class SVGPropertyParser {
 	 * NOTE: svg styles can have fill-opacity and also opacity, opacity applies to both stroke and fill
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
-	static func style(_ xml:XMLElement,_ container:ISVGContainer)->SVGStyle {
+	static func style(_ xml:XML,_ container:ISVGContainer)->SVGStyle {
 		var style:SVGStyle
 		let prop:String? = property(xml,"style")
         if(prop != nil) {style = SVGStyleParser.style(prop!,container)}//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
