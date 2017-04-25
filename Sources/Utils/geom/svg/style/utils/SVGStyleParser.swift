@@ -22,10 +22,10 @@ class SVGStyleParser {
 	 * PARAM: style (fill: red; stroke:black; stroke-width: 2;)
 	 */
     static func inlineStyle(_ style:String)->[String:String] {//TODO: use tuples instead?
-        
+        var inlineStyles:[String:String] = [String:String]()
     
         let matches = style.matches(inlineStylePattern)
-        let inlineStyles:[String:String] = matches.reduce() { interim,match in /*Loops through the pattern*/
+        matches.reduce() { interim,match  in  //Loops through the pattern
             let name = match.value(style,1)/*capturing group 1*/
             let value = match.value(style,2)/*capturing group 2*/
             inlineStyles[name] = value
