@@ -1,5 +1,4 @@
 import Foundation
-@testable import Utils
 @testable import Element
 
 /**
@@ -22,12 +21,17 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func draw()/*Setup the geometry and init the display process of fill and line*/
 }
 extension IGraphicDecoratable{
-   
     func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }
+    func lineStyle(_ depth:Int) -> Any{
+        return StylePropertyParser.lineStyle(self,depth)
+    }
+    func lineOffset(_ depth:Int) -> Any {
+        return StylePropertyParser.lineOffsetType(self,depth)
+    }
 }
-/*Size & position*/
+//Size  position
 /*
  func getSize()->CGSize
  func getPosition()->CGPoint
