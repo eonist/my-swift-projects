@@ -3,7 +3,7 @@ import Foundation
 protocol IGradient {
     var colors:[CGColor]{get set}
     var locations:[CGFloat]{get set}
-    var rotation:CGFloat{get set}
+    var rotation:CGFloat{get set}/*between -π and π*/
 }
 extension IGradient{
     func copy() -> IGradient {
