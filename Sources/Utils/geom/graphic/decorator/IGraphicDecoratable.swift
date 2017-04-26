@@ -24,10 +24,10 @@ extension IGraphicDecoratable{
     func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }
-    func lineStyle(_ depth:Int) -> Any{
+    func lineStyle(_ depth:Int) -> ILineStyle{
         return StylePropertyParser.lineStyle(self,depth)
     }
-    func lineOffset(_ depth:Int) -> Any {
+    func lineOffsetType(_ depth:Int) -> Any {
         return StylePropertyParser.lineOffsetType(self,depth)
     }
 }
