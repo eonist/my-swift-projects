@@ -1,5 +1,5 @@
 import Foundation
-@testable import Element
+
 
 /**
  * These are the methods the GraphicDecoratable must implement
@@ -20,17 +20,7 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func stylizeLine()
     func draw()/*Setup the geometry and init the display process of fill and line*/
 }
-extension IGraphicDecoratable{
-    func fillStyle(_ depth:Int) -> IFillStyle{
-        return StylePropertyParser.fillStyle(self,depth)
-    }
-    func lineStyle(_ depth:Int) -> ILineStyle{
-        return StylePropertyParser.lineStyle(self,depth)
-    }
-    func lineOffsetType(_ depth:Int) -> Any {
-        return StylePropertyParser.lineOffsetType(self,depth)
-    }
-}
+
 //Size  position
 /*
  func getSize()->CGSize
