@@ -22,9 +22,8 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func draw()/*Setup the geometry and init the display process of fill and line*/
 }
 extension IGraphicDecoratable{
-    // StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth)
-
-    func fillStyle(_ depth:Int) -> Any{
+   
+    func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }
 }
