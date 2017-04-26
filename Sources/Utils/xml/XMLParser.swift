@@ -80,6 +80,7 @@ public class XMLParser{
             attribs.forEach{
                 dict[$0.name!] = $0.stringValue!
             }
+            return dict
         }
         return [:]
     }
@@ -95,8 +96,8 @@ public class XMLParser{
      * NOTE: returns an empty array if the index is out of bound
      * NOTE: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    static func siblingAttributes(_ child:XML, _ index:[Int])->[[String:String]] {// :TODO: rename to objAt
-        let xml:XML? = childAt(child, index)
+    static func siblingAttributes(_ child:XML, _ idx3d:[Int])->[[String:String]] {// :TODO: rename to objAt
+        let xml:XML? = childAt(child, idx3d)
         let result:[[String:String]] = xml?.children?.map{return ($0 as! XML).attribs} ?? []
         return result
     }
