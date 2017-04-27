@@ -5,12 +5,12 @@ import Foundation
  * EXAMPLE: Margin().top//0
  * TODO: ⚠️️ Use Generics for these Margin, Fillet,Padding classes 
  */
-class Margin{
+struct Margin{
     var top:CGFloat = 0
     var right:CGFloat = 0
     var bottom:CGFloat = 0
     var left:CGFloat = 0
-    required init(_ args:Any...){
+    init(_ args:Any...){
         switch(args.count){
             case 1: left = args[0] as! CGFloat; right = args[0] as! CGFloat; top = args[0] as! CGFloat; bottom = args[0] as! CGFloat; break;
             case 2: top = args[0] as! CGFloat; bottom = args[0] as! CGFloat;left = args[1] as! CGFloat; right = args[1] as! CGFloat; break;
