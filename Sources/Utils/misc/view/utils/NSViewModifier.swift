@@ -25,8 +25,9 @@ class NSViewModifier {
     /**
      * New
      */
-    static func rotate(_ view:NSView,_ rotation:CGFloat){
-        view.frameCenterRotation = rotation
+    static func rotate(_ view:NSView,_ rotation:CGFloat,_ pivot:CGPoint){
+        view.rotate(byDegrees: rotation)
+        
     }
     /**
      * Removes all children in an NSView
