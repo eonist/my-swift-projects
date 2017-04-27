@@ -26,8 +26,9 @@ class NSViewModifier {
      * New
      */
     static func rotate(_ view:NSView,_ rotation:CGFloat,_ pivot:CGPoint){
-        view.frame.origin = CGPoint()
+        view.frame.origin = CGPoint(view.frame.origin.x-pivot.x,view.frame.origin.y-pivot.y)
         view.rotate(byDegrees: rotation)
+        view.frame.origin = CGPoint(view.frame.origin.x+pivot.x,view.frame.origin.y+pivot.y)
         
     }
     /**
