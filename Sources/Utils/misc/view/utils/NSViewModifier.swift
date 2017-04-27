@@ -24,7 +24,7 @@ class NSViewModifier {
     }
     /**
      * New
-     * NOTE: you can do this with view.setBoundsOrigin(pivot) + view.rotate(byDegrees: rotation) (But you have to take into account that If your flipping the coordinate sys, then you have to consider that aswell)
+     * NOTE: You can do this with view.setBoundsOrigin(pivot) + view.rotate(byDegrees: rotation) (But you have to take into account that If your flipping the coordinate sys, then you have to consider that aswell)
      */
     static func rotate(_ view:NSView,_ rotation:CGFloat,_ pivot:CGPoint){
         //Swift.print("rotate via pivot pivot: \(pivot)")
