@@ -29,11 +29,14 @@ class NSViewModifier {
         Swift.print("rotate via pivot")
         //view.frame.origin =
         //view.anchor = CGPointMake(0.5, 0.5)
-        let offset = CGPoint(view.frame.origin.x-pivot.x,view.frame.origin.y-pivot.y)
-        view.setBoundsOrigin(offset)
-        view.rotate(byDegrees: rotation)
-        let np = CGPoint(view.frame.origin.x+pivot.x,view.frame.origin.y+pivot.y)
-        view.setBoundsOrigin(np)
+        /*let offset = CGPoint(view.frame.origin.x-pivot.x,view.frame.origin.y-pivot.y)
+         view.setBoundsOrigin(offset)
+         view.rotate(byDegrees: rotation)
+         let np = CGPoint(view.frame.origin.x+pivot.x,view.frame.origin.y+pivot.y)
+         view.setBoundsOrigin(np)*/
+        view.layer?.anchorPoint = CGPoint(0.5, 0.5)
+        view.layer?.position = CGPoint(-pivot.x,-pivot.y)
+        //view.rotate(byDegrees: rotation)
         //view.frame.origin =
         
     }
