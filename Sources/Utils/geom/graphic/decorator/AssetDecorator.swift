@@ -5,7 +5,18 @@ import Cocoa
  */
 class AssetDecorator:SizeableDecorator{
     var asset:SVGAsset?
-    var assetURL:String
+    var _hasUpdated:Bool = false
+    var _assetURL:String
+    var assetURL:String {
+        get{
+            return _assetURL
+        }set{
+            if(_assetURL != newValue){
+                
+            }
+            _assetURL = newValue
+        }
+    }
     init(_ decoratable:IGraphicDecoratable,_ iconURL:String) {//this should be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         assetURL = iconURL
         //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
