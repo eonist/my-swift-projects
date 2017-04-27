@@ -23,10 +23,10 @@ class NSViewModifier {
         view.frame.origin = point
     }
     /**
-     *
+     * New
      */
-    static func rotate(){
-        
+    static func centerRotate(_ view:NSView,_ rotation:CGFloat){
+        view.frameCenterRotation = rotation
     }
     /**
      * Removes all children in an NSView
