@@ -39,7 +39,7 @@ class NSViewModifier {
         //view.point = CGPoint(50,50)
         //view.layer?.anchorPoint = CGPoint(0.5, 0.5)
         view.layer?.position = CGPoint(-50,-50)
-        view.layer?.addAnimation(rotation, forKey: nil)
+        view.layer?.transform
         //view.rotate(byDegrees: rotation)
         //view.frame.origin =
         
