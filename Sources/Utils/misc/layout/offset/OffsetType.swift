@@ -3,7 +3,7 @@ import Foundation
  * TODO: redesign this class like TRBL
  * TODO: ⚠️️ this should probably use Generics, to get rid of the casting
  */
-class OffsetType:Equatable,ILayout{
+struct OffsetType:Equatable,ILayout{
     static var center:String = "center"// :TODO: move this to a class called OffsetType
     static var outside:String = "outside"
     static var inside:String = "inside"
@@ -11,7 +11,7 @@ class OffsetType:Equatable,ILayout{
     var right:String
     var top:String
     var bottom:String
-    required init(_ args:Any...){
+    init(_ args:Any...){
         switch(args.count){
             case 0: left = OffsetType.center; right = OffsetType.center; top = OffsetType.center; bottom = OffsetType.center
             case 1: left = args[0] as! String; right = args[0] as! String; top = args[0] as! String; bottom = args[0] as! String;
