@@ -5,15 +5,13 @@ import Cocoa
  */
 class AssetDecorator:SizeableDecorator{
     var asset:SVGAsset?
-    var _hasUpdated:Bool = false
+    var _hasAssetURLUpdated:Bool = false
     var _assetURL:String
     var assetURL:String {
         get{
             return _assetURL
         }set{
-            if(_assetURL != newValue){
-                
-            }
+            _hasAssetURLUpdated = _assetURL != newValue
             _assetURL = newValue
         }
     }
