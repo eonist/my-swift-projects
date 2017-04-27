@@ -23,10 +23,11 @@ class SVGAsset:InteractiveView2 {
      * TODO: Explain what this method does
      */
     func draw(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
-        //Swift.print("SVGAsset.drawFill() width: " + String(width) + " height: " + String(height) + " x: " + String(x) + " y: " + String(y))
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---why is this working? could be because you have tested only with square svg files
-        //Swift.print("svg.width: " + "\(svg.width)")
-        //Swift.print("svg.height: " + "\(svg.height)")
+        Swift.print("svg.width: " + "\(svg.width)")
+        Swift.print("svg.height: " + "\(svg.height)")
+        Swift.print("width: " + "\(width)")
+        Swift.print("height: " + "\(height)")
         //Swift.print("scale: " + "\(scale)")
         SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.setFrameOrigin(CGPoint(x,y))
