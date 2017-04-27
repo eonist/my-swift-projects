@@ -1,6 +1,6 @@
 import Foundation
 
-class DecoratorParser {
+class DecoratorUtils {
     /**
      * Returns a Decorator instance from PARAM: decoratable by Class type PARAM: classType if it exists, if it doesnt it returns nil
      * NOTE: Parses through the hirarchy of decorators to see if there is a match, then returns this match, 
@@ -13,6 +13,13 @@ class DecoratorParser {
             current = current.getDecoratable()
         }
         return nil
+    }
+    /**
+     * Asserts if PARAM: decoratable has a Decorator instance of "Class type" PARAM: classType
+     * NOTE: parses throught the hirarchy of decorators to see if there is a match
+     */
+    static func hasDecoratable(_ decoratable:IGraphicDecoratable,_ classType:AnyClass) -> Bool {
+        return DecoratorUtils.decoratable(decoratable, classType) != nil
     }
 }
 private class Utils{
