@@ -38,11 +38,11 @@ class NSViewModifier {
          //view.setBoundsOrigin(np)
         //view.point = CGPoint(50,50)
         //view.layer?.anchorPoint = CGPoint(0.5, 0.5)
-        view.layer?.position = CGPoint(-50,-50)
-        view.layer?.transform
+        //view.layer?.position = CGPoint(-50,-50)
+        //view.layer?.transform
         //view.rotate(byDegrees: rotation)
         //view.frame.origin =
-        
+        view.layer?.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(M_PI_2))) 
     }
     /**
      * Removes all children in an NSView
