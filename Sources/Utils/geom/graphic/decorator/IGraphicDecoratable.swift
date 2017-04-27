@@ -24,17 +24,11 @@ extension IGraphicDecoratable where Self:IPositional, Self:ISizeable{
     var frame:CGRect {return CGRect(self.pos, self.size)}
 }
 extension IGraphicDecoratable{
-    /**
-     *
-     */
-    func has(_ classType:AnyClass){
-       // return DecoratorAsserter.hasDecoratable(self, classType)
+    func has(_ classType:AnyClass) -> Bool{
+       return DecoratorAsserter.hasDecoratable(self, classType)
     }
-    /**
-     *
-     */
-    func get(){
-        
+    func get(_ classType:AnyClass) -> IGraphicDecoratable?{
+        return DecoratorParser.decoratable(self, classType)
     }
 }
 //Size  position
