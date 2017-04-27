@@ -20,21 +20,14 @@ class SVGAsset:InteractiveView2 {
         addSubview(svg)
     }
     /**
-     *
+     * You only scale when you init the svg
      */
     func scale(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat){
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---why is this working? could be because you have tested only with square svg files
-        Swift.print("svg.width: " + "\(svg.width)")
-        Swift.print("svg.height: " + "\(svg.height)")
-        Swift.print("width: " + "\(width)")
-        Swift.print("height: " + "\(height)")
-        //Swift.print("scale: " + "\(scale)")
         SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.setFrameOrigin(CGPoint(x,y))
     }
     func applyStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
-        //if(fillStyle != nil){FillStyleParser.describe(fillStyle!)}
-        //if(lineStyle != nil){LineStyleParser.describe(lineStyle!)}
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
         SVGModifier.style(svg, svgStyle)
     }
@@ -45,15 +38,15 @@ private class Utils{
      * NOTE: This method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
      */
     static func svgStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
-        let fill:Any? = fillStyle != nil ? fillStyle!.color.hexVal : nil
-        let fillOpacity:CGFloat? = fillStyle != nil ? fillStyle!.color.alphaComponent : nil
+        let fill:Any? = fillStyle?.color.hexVal ?? nil
+        let fillOpacity:CGFloat? = fillStyle?.color.alphaComponent ?? nil
         let fillRule:String? = nil
-        let strokeWidth:CGFloat? = lineStyle != nil ? lineStyle!.thickness : nil
+        let strokeWidth:CGFloat? = lineStyle?.thickness ?? nil
         let stroke:Any? = lineStyle != nil && lineStyle?.color != NSColor.clear/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil
-        let strokeOpacity:CGFloat? = lineStyle != nil ? lineStyle!.color.alphaComponent : nil
+        let strokeOpacity:CGFloat? = lineStyle?.color.alphaComponent ?? nil
         let strokeLineCap:String? = lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil
         let strokeLineJoin:String? = lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin) : nil
-        let strokeMiterLimit:CGFloat? = lineStyle != nil ? lineStyle!.miterLimit : nil
+        let strokeMiterLimit:CGFloat? = lineStyle?.miterLimit ?? nil
         return SVGStyle(fill,fillOpacity,fillRule,strokeWidth,stroke,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit)
     }
 }
