@@ -29,7 +29,7 @@ class NSViewModifier {
         Swift.print("rotate via pivot pivot: \(pivot)")
         let pivot = CGPoint(50,50)
         Swift.print("view.frame.size: " + "\(view.frame.size)")
-        
+        Swift.print("view.frame: " + "\(view.frame)")
         //view.frame.origin =
         //view.anchor = CGPointMake(0.5, 0.5)
         //let offset = CGPoint(view.frame.origin.x-pivot.x,view.frame.origin.y-pivot.y)
