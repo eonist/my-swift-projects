@@ -30,3 +30,7 @@ class Padding {
         }
     }
 }
+extension Padding{
+    var hor:CGFloat {left + right}
+    var ver:CGFloat {top + bottom}
+}
