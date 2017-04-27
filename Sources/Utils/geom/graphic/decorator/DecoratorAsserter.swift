@@ -1,5 +1,4 @@
 import Foundation
-@testable import Utils
 
 class DecoratorAsserter {
     /**

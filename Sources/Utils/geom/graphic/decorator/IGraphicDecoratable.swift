@@ -27,8 +27,8 @@ extension IGraphicDecoratable{
     func has(_ classType:AnyClass) -> Bool{
        return DecoratorAsserter.hasDecoratable(self, classType)
     }
-    func get(_ classType:AnyClass) -> IGraphicDecoratable?{
-        return DecoratorParser.decoratable(self, classType)
+    func get<T:IGraphicDecoratable>(_ classType:T.Type) -> T?{
+        return DecoratorParser.decoratable(self, classType) as? T
     }
 }
 //Size  position
