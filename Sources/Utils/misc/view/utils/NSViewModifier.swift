@@ -42,7 +42,7 @@ class NSViewModifier {
         //view.layer?.transform
         //view.rotate(byDegrees: rotation)
         //view.frame.origin =
-        view.layer?.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(M_PI_2))) 
+        view.layer?.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(M_PI_2/2)))
     }
     /**
      * Removes all children in an NSView
