@@ -43,7 +43,7 @@ class NSViewModifier {
         //view.rotate(byDegrees: rotation)
         //view.frame.origin =
         var transform = CGAffineTransform.identity
-        transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
+        transform.rotateAroundPoint(CGFloat(M_PI_2/2), pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
         //return point.applying(transform)
         //CGAffineTransform(rotationAngle: CGFloat(M_PI_2/2)))
         view.layer?.setAffineTransform(transform)
