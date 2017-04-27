@@ -28,6 +28,10 @@ class AssetDecorator:SizeableDecorator{
             if(asset != nil) {asset!.removeFromSuperview()}/*temp solution, find a more elegant solution than removing*/
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
         }
+        
+        //Continue here: 🏀
+            //seems to scale strangly. figure it out
+        
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
