@@ -57,7 +57,7 @@ class SVGModifier {
         if let element = element as? SVGGraphic {SVGModifier.update(element)}
         if let element = element as? SVGContainer {
             element.items.forEach{ item in
-                if(item is ISVGView) {SVGModifier.style(item, style)}
+                if let item = item as? ISVGView {SVGModifier.style(item, style)}
             }
         }
 	}
