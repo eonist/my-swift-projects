@@ -28,6 +28,8 @@ class NSViewModifier {
     static func rotate(_ view:NSView,_ rotation:CGFloat,_ pivot:CGPoint){
         Swift.print("rotate via pivot pivot: \(pivot)")
         let pivot = CGPoint(50,50)
+        Swift.print("view.frame.size: " + "\(view.frame.size)")
+        
         //view.frame.origin =
         //view.anchor = CGPointMake(0.5, 0.5)
         //let offset = CGPoint(view.frame.origin.x-pivot.x,view.frame.origin.y-pivot.y)
@@ -47,9 +49,9 @@ class NSViewModifier {
         //CGFloat(degrees * Double.pi / 180)
         
         var transform = CGAffineTransform.identity
-        let radians:CGFloat = rotation / 180.0 * CGFloat.pi//CGFloat(M_PI_2/2)
-        transform.rotateAroundPoint(radians, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
+        let radians:CGFloat = rotation / 180.0 * CGFloat.pi
         
+        transform = CGTransform.rotateAroundPoint(transform, radians,pivot)
         
         view.layer?.setAffineTransform(transform)
     }
