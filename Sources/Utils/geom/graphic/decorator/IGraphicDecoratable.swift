@@ -21,7 +21,7 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func draw()/*Setup the geometry and init the display process of fill and line*/
 }
 extension IGraphicDecoratable where Self:IPositional, Self:ISizeable{
-    var frame:CGRect {return CGRect()}
+    var frame:CGRect {return CGRect(self.pos, self.size)}
 }
 //Size  position
 /*
