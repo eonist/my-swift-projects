@@ -23,6 +23,12 @@ class NSViewModifier {
         view.frame.origin = point
     }
     /**
+     *
+     */
+    static func rotate(){
+        
+    }
+    /**
      * Removes all children in an NSView
      * TODO: rename to removeAll
      * TODO: it could actually be faster to define the number of children first and then just deleting index 0
@@ -51,9 +57,7 @@ class NSViewModifier {
         return subView
     }
     static func removeSubviewAt(_ view:NSView, _ at:Int){
-        if let item = view.subviews[safe:at]{
-            item.removeFromSuperview()
-        }
+        if let item = view.subviews[safe:at]{item.removeFromSuperview()}
     }
     /**
      * NOTE: Removes in the backward direction over the array
