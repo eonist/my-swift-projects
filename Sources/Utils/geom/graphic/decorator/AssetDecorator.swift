@@ -7,7 +7,7 @@ class AssetDecorator:SizeableDecorator{
     var asset:SVGAsset?
     var _hasAssetURLUpdated:Bool = true
     var _assetURL:String
-    var assetURL:String {
+    var assetURL:String {//use will set did set instead?
         get{
             return _assetURL
         }set{
@@ -23,22 +23,17 @@ class AssetDecorator:SizeableDecorator{
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied*/
     }
     override func draw() {
-        Swift.print("AssetDecorator.draw() _hasAssetURLUpdated: \(_hasAssetURLUpdated)")
+        //Swift.print("AssetDecorator.draw() _hasAssetURLUpdated: \(_hasAssetURLUpdated)")
         if(_hasAssetURLUpdated){
             if(asset != nil) {asset!.removeFromSuperview()}/*temp solution, find a more elegant solution than removing*/
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
-            asset!.scale(x, y, width, height)//0, 0, graphic.width, graphic.height
+            asset!.scale(x, y, width, height)
         }
-        
-        //Continue here: 🏀
-            //seems to scale strangly. figure it out
-        
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
     override func drawFill() {
-        Swift.print("drawFill.width: " + "\(width)")
-        
+      /*this method must be overridden*/
     }
     override func drawLine() {
         /*this method must be overridden*/
