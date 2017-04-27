@@ -25,7 +25,7 @@ class NSViewModifier {
     /**
      * New
      */
-    static func centerRotate(_ view:NSView,_ rotation:CGFloat){
+    static func rotate(_ view:NSView,_ rotation:CGFloat){
         view.frameCenterRotation = rotation
     }
     /**
