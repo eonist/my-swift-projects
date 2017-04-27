@@ -31,6 +31,6 @@ class Padding {
     }
 }
 extension Padding{
-    var hor:CGFloat {left + right}
-    var ver:CGFloat {top + bottom}
+    var hor:CGFloat {return left + right}
+    var ver:CGFloat {return top + bottom}
 }
