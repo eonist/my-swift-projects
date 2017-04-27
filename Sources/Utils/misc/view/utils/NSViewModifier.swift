@@ -23,17 +23,6 @@ class NSViewModifier {
         view.frame.origin = point
     }
     /**
-     * New
-     * NOTE: You can do this with view.setBoundsOrigin(pivot) + view.rotate(byDegrees: rotation) (But you have to take into account that If your flipping the coordinate sys, then you have to consider that aswell)
-     */
-    static func rotate(_ view:NSView,_ rotation:CGFloat,_ pivot:CGPoint){
-        //Swift.print("rotate via pivot pivot: \(pivot)")
-        var transform = CGAffineTransform.identity
-        let radians:CGFloat = rotation / 180.0 * CGFloat.pi
-        transform = CGTransform.rotateAroundPoint(transform, radians,pivot)
-        view.layer?.setAffineTransform(transform)
-    }
-    /**
      * Removes all children in an NSView
      * TODO: rename to removeAll
      * TODO: it could actually be faster to define the number of children first and then just deleting index 0
