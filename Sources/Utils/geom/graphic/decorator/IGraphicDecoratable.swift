@@ -23,6 +23,20 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
 extension IGraphicDecoratable where Self:IPositional, Self:ISizeable{
     var frame:CGRect {return CGRect(self.pos, self.size)}
 }
+extension IGraphicDecoratable{
+    /**
+     *
+     */
+    func has(_ classType:AnyClass){
+       // return DecoratorAsserter.hasDecoratable(self, classType)
+    }
+    /**
+     *
+     */
+    func get(){
+        
+    }
+}
 //Size  position
 /*
  func getSize()->CGSize
