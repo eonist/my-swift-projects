@@ -29,7 +29,7 @@ class AssetDecorator:SizeableDecorator{
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
             asset!.scale(x, y, width, height)
         }
-        asset.svg.frame.origin = CGPoint(x,y)
+        asset?.svg.frame.origin = CGPoint(x,y)
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
