@@ -25,7 +25,7 @@ class SVGAsset:InteractiveView2 {
     func scale(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat){
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---why is this working? could be because you have tested only with square svg files
         SVGModifier.scale(svg, CGPoint(0,0), scale)
-        svg.setFrameOrigin(CGPoint(x,y))
+        svg.frame.origin = CGPoint(x,y)
     }
     func applyStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
