@@ -2,7 +2,7 @@ import Cocoa
 /*
  * TODO: this solution isn't perfect but it works for now. See legacy code for a better solution, the svg should become the graphic maybe?
  * NOTE: asset is svg for now but in the future it should support png
- * TODO: ⚠️️ To add reSize on style/state change 
+ * TODO: ⚠️️ To add reSize on style/state change you need to store the init size of SVGAsset to scale correctly
  */
 class AssetDecorator:SizeableDecorator{
     var asset:SVGAsset?
