@@ -2,6 +2,7 @@ import Cocoa
 /*
  * TODO: this solution isn't perfect but it works for now. See legacy code for a better solution, the svg should become the graphic maybe?
  * NOTE: asset is svg for now but in the future it should support png
+ * TODO: ⚠️️ To add reSize on style/state change 
  */
 class AssetDecorator:SizeableDecorator{
     var asset:SVGAsset?
@@ -29,7 +30,7 @@ class AssetDecorator:SizeableDecorator{
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
             asset!.scale(x, y, width, height)
         }
-        asset?.svg.frame.origin = CGPoint(x,y)
+        asset?.svg.frame.origin = CGPoint(x,y)//offset
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
