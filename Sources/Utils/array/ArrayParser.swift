@@ -1,4 +1,8 @@
 import Foundation
+/**
+ * TODO: Make Unique that uses Set
+ * More inspiration here: https://appventure.me/2015/11/30/reduce-all-the-things/
+ */
 class ArrayParser{
     /**
      * NOTE: This method compares value not reference
@@ -76,7 +80,7 @@ class ArrayParser{
     /**
      * Returns a list unique with all the unique Int from PARAM: ints
      * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
-     * TODO: there are probably more functional ways of doing this method 🤖
+     * TODO: there are probably more functional ways of doing this method 🤖 yes there is use reduce or set
      */
     static func unique(_ ints:[Int])->[Int]{//use comparable instead of int, see RangeAsserter for example for how to implement that
         var uniqueList:[Int] = []
