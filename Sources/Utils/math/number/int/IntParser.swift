@@ -53,8 +53,9 @@ class IntParser{
     /**
      * Returns the max int value in PARAM: ints
      * EXAMPLE: max([1, 2, 3, 10, 100])
+     * NOTE: NAtive [1, 5, 2, 9, 4].minElement() ? might be better?
      */
-    static func max(_ ints:Array<Int>)->Int{
+    static func max(_ ints:[Int])->Int{
         var maxInt = ints[0]
         for int in ints {if maxInt < int {maxInt = int}}
         return maxInt
