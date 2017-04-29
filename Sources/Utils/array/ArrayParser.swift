@@ -109,6 +109,7 @@ class ArrayParser{
     /**
      * Returns a new array with every item in PARAM: array sorted according a custom method provided in PARAM: contition
      * NOTE: leaves the original array intact
+     * NOTE: there is also Native: .sort and .sortInPlace 
      * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */
     static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
