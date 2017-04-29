@@ -66,7 +66,7 @@ class ArrayModifier{
      * RETURNS: The items from startIndex to endIndex
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      * NOTE: you can also use the native [1,2,3,4,5][0..<3]//[1,2,3]
-     * TODO: should probably be moved to ArrayParser?
+     * TODO: ⚠️️ should probably be moved to ArrayParser?
      */
     static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->[T]{//TODO:Rename this to just slice, soon!
         return Array(array[startIndex..<endIndex])
