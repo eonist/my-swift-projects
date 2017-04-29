@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: Make Unique that uses Set
+ */
 public class CGFloatParser{
     /**
      * Returns the number with a set number of PARAM: decimalCount
