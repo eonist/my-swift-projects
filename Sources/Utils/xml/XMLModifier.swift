@@ -92,7 +92,7 @@ public class XMLModifier {
      * EXAMPLE: replaceChildAt(xml, 0, child)
      */
     static func replaceAt(_ xml:XML,_ index:Int,_ replacement:XML) -> XML {
-        xml.replaceChild(at: index, with: replacement)//upgraded to swift 3
+        xml.replaceChild(at: index, with: replacement)/*upgraded to 🔶 3*/
         return xml
     }    
 }
@@ -120,7 +120,6 @@ sortByName,
 sortByAttribute;
 
 */
-
  /**
   * Adding attributes to an element: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSXMLElement_Class/
   * more here: https://gist.github.com/brentdax/caaaa134c500e00efd36
