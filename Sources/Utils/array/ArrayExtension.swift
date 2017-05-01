@@ -42,6 +42,9 @@ extension Array {
     mutating func shiftAppend(_ item:Element) -> [Element]{/*Convenience*/
         return ArrayModifier.shiftAppend(&self, item)
     }
+    mutating func displace( _ from:Int, _ to:Int) -> [Element]{/*Convenience*/
+        return ArrayModifier.displace(&self, from, to)
+    }
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
      * NOTE: If you need a mutating concatination behaviour use the += operator

@@ -53,10 +53,10 @@ class ArrayModifier{
       * TODO: You could probably use the native: array.replaceRange instead
       * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
 	  */
-    static func splice2<T>(_ array:inout [T],_ startIndex:Int,_ deleteCount:Int,_ values:[T] = [])->[T]{
-        let returnArray  = slice2(array, startIndex, startIndex + deleteCount)
-        array.removeSubrange(startIndex..<startIndex + deleteCount)
-        if(values.count > 0 ){array.insert(contentsOf: values, at: startIndex)}
+    static func splice2<T>(_ arr:inout [T],_ startIdx:Int,_ delCount:Int,_ values:[T] = [])->[T]{
+        let returnArray  = slice2(arr, startIdx, startIdx + delCount)
+        arr.removeSubrange(startIdx..<startIdx + delCount)
+        if(values.count > 0 ){arr.insert(contentsOf: values, at: startIdx)}
         return returnArray
     }
     /**
@@ -76,9 +76,10 @@ class ArrayModifier{
      * RETURNS: (returns the original array for convenience, usefull for chaining methods)
      * TODO: this can probably be written simpler and more optimized, or could it?  It looks pretty efficient if you think about it
      * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
-     * There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing the (indexSwap method may require more or less memory, testing is needed)
+     * NOTE: There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing the (indexSwap method may require more or less memory, testing is needed) (unlike swap move is only 1-way)
+     * TODO: ⚠️️ Use a splice method that doesnt return (more optimized this way)
      */
-    static func move<T>(_ array:inout [T], _ from:Int, _ to:Int) -> [T] {
+    static func displace<T>(_ array:inout [T], _ from:Int, _ to:Int) -> [T] {
         var from = from
         var to = to
         if(to < from) {
@@ -311,7 +312,7 @@ class ArrayModifier{
     }
     /**
      * Swaps two items in PARAM: vector at PARAM: index1 PARAM: index2
-     * NOTE: there is also the ArrayModifier.move method which is similar
+     * NOTE: there is also the ArrayModifier.move method which is similar (it similar but doesnt do a 2-way swap)
      */
     static func indexSwap<T>(_ array:inout [T],_ index1:Int,_ index2:Int) -> [T] {
         if(index1 != -1 && index2 != -1) {
@@ -388,13 +389,13 @@ class ArrayModifier{
      * ArrayModifier.numericSort(&arr)
      * Swift.print(arr)//0, 1, 2, 4, 5
      */
-    static func numericSort(_ array:inout Array<Int>) -> Array<Int>{
+    static func numericSort(_ array:inout [Int]) -> [Int]{
         for i in 1..<array.count{
             var e:Int = i
             while(e > 0 && array[i] < array[e-1]){
                 e -= 1
             }
-            _ = ArrayModifier.move(&array, i, e)
+            _ = ArrayModifier.displace(&array, i, e)
         }
         return array
     }
@@ -452,4 +453,5 @@ class ArrayModifier{
         array.append(item)
         return array
     }
+    
 }
