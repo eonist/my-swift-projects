@@ -96,13 +96,13 @@ extension DataProvider{
         self.items = []
         onEvent(DataProviderEvent(DataProviderEvent.removeAll,0,itemsCount,self));
     }
+    typealias SortCondition = ([String:String], [String:String]) -> Bool
     /**
      * Sorts
      */
     func sort(_ sortType:Int, _ key:String, _ ascending:Bool = true){
-        //let condition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}
+        let condition:SortCondition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}
         self.items.sort(by: condition)
-        //self.items.sortOn("title", sortType);
         //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
     }
     /**
