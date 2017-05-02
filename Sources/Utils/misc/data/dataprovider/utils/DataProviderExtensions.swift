@@ -63,7 +63,6 @@ extension DataProvider{
      * PARAM: item is an Object instance as {title:"title"}
      */
     func add(_ item:[String:String], _ index:Int){
-        //Swift.print("DataProvider.addItemAt()")
         ArrayModifier.addAt(&self.items, item, index)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
     }
@@ -98,23 +97,13 @@ extension DataProvider{
     }
     typealias SortCondition = ([String:String], [String:String]) -> Bool
     /**
-     * Sorts
-     */
-    func sort(_ sortType:Int, _ key:String, _ ascending:Bool = true){
-        let condition:SortCondition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}
-        self.items.sort(by:condition)
-        onEvent(DataProviderEvent(DataProviderEvent.sort, 0,self.items.count,self));
-    }
-    /**
      * Sorts items by the key provided in ascending or descending order
      * EXAMPLE: DataProvider([["date":"0214","title":"a"],["date":"0216","title":"b"],["date":"0114","title":"c"]]).sort("date").items.forEach{Swift.print($0["title"])}//c,a,b
      */
-    func sort(_ key:String,_ ascending:Bool = true)->DataProvider{/*names:AnyObject, _ options:Int = 0,_ args:AnyObject...*/
-        self.items.sort { (a, b) -> Bool in
-            return ascending ? a[key]! < b[key]! : a[key]! > b[key]!//Toggles ascending and descending
-        }//self.items.sortOn(names, options,args);
-        onEvent(DataProviderEvent(DataProviderEvent.sort, /*[_items],*/ 0,self.items.count,self))
-        return self/*For chaining purpouse*/
+    func sort(_ key:String, _ ascending:Bool = true){
+        let condition:SortCondition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}//Toggles ascending and descending
+        self.items.sort(by:condition)
+        onEvent(DataProviderEvent(DataProviderEvent.sort, 0,self.items.count,self));
     }
     /**
      * Update data in dataProvider item at PARAM index
@@ -148,5 +137,5 @@ extension DataProvider{
     func addItem(_ item:[String:String]) {add(item)}
     func addItemAt(_ item:[String:String], _ index:Int){add(item,index)}
     func removeItemAt(_ index:Int)->[String:String] {return remove(index)}
-    func removeItem(_ item:[String:String])->[String:String] {return remove(item)}
+    func removeItem(_ item:[String:String])->[String:String]? {return remove(item)}
 }
