@@ -85,7 +85,9 @@ extension DataProvider{
      * RETURNS: the removed item
      */
     func remove(_ item:[String:String])->[String:String] {
-        let index:Int = self.items.index{$0 == item} ?? -1//-1 indicates no result found
+        guard let index:Int = self.items.index(where: {$0 == item}) else {
+            
+        }
         onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))
         return self.items.splice2(index,1)[0]
     }
