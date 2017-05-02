@@ -84,9 +84,9 @@ extension DataProvider{
      * Removes the item passed through the PARAM item
      * RETURNS: the removed item
      */
-    func remove(_ item:[String:String])->[String:String] {
+    func remove(_ item:[String:String]) -> [String:String] {
         guard let index:Int = self.items.index(where: {$0 == item}) else {
-            
+            //
         }
         onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))
         return self.items.splice2(index,1)[0]
