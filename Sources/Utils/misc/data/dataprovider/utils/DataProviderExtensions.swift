@@ -99,8 +99,9 @@ extension DataProvider{
     /**
      * Sorts
      */
-    func sort(_ sortType:Int, _ key:String, ){
-        self.items.sort(by: {$0[key]! < $1[key]!})
+    func sort(_ sortType:Int, _ key:String, _ ascending:Bool = true){
+        //let condition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}
+        self.items.sort(by: condition)
         //self.items.sortOn("title", sortType);
         //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
     }
