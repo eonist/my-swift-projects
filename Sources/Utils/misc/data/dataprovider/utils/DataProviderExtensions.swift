@@ -96,9 +96,9 @@ extension DataProvider{
         self.items = []
         onEvent(DataProviderEvent(DataProviderEvent.removeAll,0,itemsCount,self));
     }
-    func sort(_ sortType:Int){
+    func sort(_ sortType:Int, _ key:String){
         fatalError("not implemented yet")
-        self.items.sorted(by: <#T##([String : String], [String : String]) -> Bool#>)
+        self.items.sorted(by: $0[key])
         //self.items.sortOn("title", sortType);
         //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
     }
