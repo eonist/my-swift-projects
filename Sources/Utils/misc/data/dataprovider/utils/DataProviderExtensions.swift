@@ -71,17 +71,14 @@ extension DataProvider{
      * Removes an item at a spesific index
      */
     func remove(_ index:Int)->[String:String] {
-        //Swift.print("removeItemAt.index: " + "\(index)")
-        var removedItem:[String:String]
-        if (index < items.count) {
-            //Swift.print("removed at: " + "\(index)")
-            removedItem = items[index]
-            items.removeAt(index)
-        }else {(fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))}
+        guard let item:[String:String] = items[safe:index] else{
+            (fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))
+        }
+        items.removeAt(index)
         let start:Int = index// == 0 ? 0 : index - 1
         let end:Int = index+1
-        super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))
-        return removedItem
+        super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))//we dont want this
+        return item
     }
     /**
      * Removes the item passed through the PARAM item
