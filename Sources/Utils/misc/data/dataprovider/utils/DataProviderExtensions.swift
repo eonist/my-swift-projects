@@ -96,9 +96,11 @@ extension DataProvider{
         self.items = []
         onEvent(DataProviderEvent(DataProviderEvent.removeAll,0,itemsCount,self));
     }
-    func sort(_ sortType:Int, _ key:String){
-        fatalError("not implemented yet")
-        self.items.sorted(by: $0[key])
+    /**
+     * Sorts
+     */
+    func sort(_ sortType:Int, _ key:String, ){
+        self.items.sort(by: {$0[key]! < $1[key]!})
         //self.items.sortOn("title", sortType);
         //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
     }
