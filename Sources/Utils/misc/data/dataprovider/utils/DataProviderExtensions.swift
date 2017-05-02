@@ -77,7 +77,7 @@ extension DataProvider{
         items.removeAt(index)
         let start:Int = index// == 0 ? 0 : index - 1
         let end:Int = index+1
-        super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))//we dont want this
+        super.onEvent(DataProviderEvent(DataProviderEvent.remove, start,end,self))// ⚠️️ we dont wan't this here, this is the responsibility of the caller no?
         return item
     }
     /**
