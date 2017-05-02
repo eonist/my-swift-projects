@@ -103,7 +103,7 @@ extension DataProvider{
     func sort(_ sortType:Int, _ key:String, _ ascending:Bool = true){
         let condition:SortCondition = ascending ? {$0[key]! < $1[key]!} : {$0[key]! > $1[key]!}
         self.items.sort(by:condition)
-        //onEvent(DataProviderEvent(DataProviderEvent.sort/*, [self.items]*/, 0,self.items.count,self));
+        onEvent(DataProviderEvent(DataProviderEvent.sort, 0,self.items.count,self));
     }
     /**
      * Sorts items by the key provided in ascending or descending order
