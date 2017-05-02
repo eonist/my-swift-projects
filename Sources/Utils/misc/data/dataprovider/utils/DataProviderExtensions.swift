@@ -84,18 +84,17 @@ extension DataProvider{
      * Removes the item passed through the PARAM item
      * RETURNS: the removed item
      */
-    func remove(_ item:[String:String]) -> [String:String] {
+    func remove(_ item:[String:String]) -> [String:String]? {
         guard let index:Int = self.items.index(where: {$0 == item}) else {
-            //
+            return nil
         }
         onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))
-        return self.items.splice2(index,1)[0]
+        return self.items.remove(at: index)//was splice2(index,1)[0]
     }
     func removeAll(){
-        //let tempItems = self.items// :TODO: is this necessary, maybe use some form of clone?
         let itemsCount = count
         self.items = []
-        onEvent(DataProviderEvent(DataProviderEvent.removeAll, /*tempItems,*/ 0,itemsCount,self));
+        onEvent(DataProviderEvent(DataProviderEvent.removeAll,0,itemsCount,self));
     }
     func sort(_ sortType:Int){
         fatalError("not implemented yet")
