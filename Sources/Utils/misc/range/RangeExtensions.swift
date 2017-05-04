@@ -11,8 +11,8 @@ extension Range {
         //TODO:  try ->return self.indices.count or self.underestimateCount()
         self.init(start..<end/*<-CountableRange<Int>*/)//which->converts to Range<Int>
     }
-    var start:Bound {return self.lowerBound}
-    var end:Bound {return self.upperBound}
+    var start:Bound {return self.lowerBound}//(0..<4).lowerBound -> 0
+    var end:Bound {return self.upperBound}//(0..<4).upperBound -> 4
     var length:Int {return (self.upperBound as! Int) - (self.lowerBound as! Int)}/*convenince*/
     var numOfIndecies:Int {return length + 1}
 }
