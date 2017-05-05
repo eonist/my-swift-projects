@@ -74,7 +74,7 @@ extension DataProvider{
             (fatalError("\(ClassParser.type(self))" + " no item at the index of " + "\(index)"))
         }
         items.removeAt(index)
-        super.onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))// ⚠️️ we dont wan't this here, this is the responsibility of the caller no?
+        super.onEvent(DataProviderEvent(DataProviderEvent.remove, index,index+1,self))// ⚠️️ We dont wan't this here, this is the responsibility of the caller no?
         return item
     }
     /**
