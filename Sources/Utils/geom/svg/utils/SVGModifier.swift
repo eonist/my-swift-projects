@@ -30,7 +30,7 @@ class SVGModifier {
 	 * NOTE: this method is recursive
      * NOTE: The stroke thickness isnt scaled, is this correct or?
      * NOTE: When you scale an Element and the Element has a SVGGradient asits fill or line, then the original SVGGradient isnt scaled per se, so if you want the gradient to follow the shape then either also scale the gradient (make sure the gradient isnt attached to other shapes) or make sure the gradient uses non-absolute values, like objectBounidngbox as the gradientUnits and % values for the x1,y2,x2,y2 values etc, one could also imagine a system were you scale only the gradient attached to the Element, that would require some more code though and is not needed for the imidiate usecase
-	 * EXAMPLE SVGModifier.scale(svg, new Point(0,0), new Point(0.5,0.5));
+	 * EXAMPLE SVGModifier.scale(svg, Point(0,0), Point(0.5,0.5))
 	 */
 	static func scale(_ element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
         switch(true){
@@ -45,7 +45,7 @@ class SVGModifier {
 			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
-        if(element is ISVGGraphic) {SVGModifier.update(element as! SVGGraphic)}//<---this may need to not use a protocol for casting
+        if let element = element as? SVGGraphic {SVGModifier.update(element)}
 	}
 	/**
 	 * Styles an PARAM: element with PARAM: style
