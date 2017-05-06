@@ -26,6 +26,7 @@ class SVGModifier {
 	}
 	/**
 	 * Scales SVG elements at PARAM: pivot to PARAM: scale (0-1) 
+     * NOTE: Scales the data not NSView.scale property
 	 * PARAM: scalePoint (0 - 1)
 	 * NOTE: this method is recursive
      * NOTE: The stroke thickness isnt scaled, is this correct or?
