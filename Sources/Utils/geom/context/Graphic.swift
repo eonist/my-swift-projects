@@ -16,7 +16,6 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     var selector:SelectorCallBack/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
     
-    
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
