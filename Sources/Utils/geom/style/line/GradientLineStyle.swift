@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: ⚠️️ Convert to struct
+ */
 class GradientLineStyle:LineStyle,IGradientLineStyle {
     var gradient:IGradient
     init(_ gradient:IGradient,_ thickness:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10) {
