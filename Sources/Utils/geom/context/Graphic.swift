@@ -76,12 +76,3 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension Graphic{
-    /**
-     * Convenince implicit setter
-     */
-    /*func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
-     self.fillStyle = fillStyle
-     self.lineStyle = lineStyle
-     }*/
-}
