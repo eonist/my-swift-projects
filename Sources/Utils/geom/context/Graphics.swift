@@ -63,7 +63,6 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      * NOTE: this method can be called pre context
      */
-    typealias LineStyle = (lineWidth:CGFloat,color:NSColor,lineCap:CGLineCap,lineJoin:CGLineJoin,miterLimit:CGFloat)
     public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:[CGFloat] = []){
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
@@ -114,12 +113,12 @@ public class Graphics{
     public func drawFill(_ path:CGPath){
         context!.addPath(path)/*Adds the path to the context*/
         beginOuterShadow(path)
-        switch true{
-            case (fillMode == FillMode.None):/*no fill*/
+        switch fillMode{
+            case FillMode.None:/*no fill*/
                 break;
-            case (fillMode == FillMode.Color):/*fill*/
+            case FillMode.Color:/*fill*/
                 context!.drawPath(using: CGPathDrawingMode.fill)
-            case (fillMode == FillMode.Gradient):/*gradientFill*/
+            case FillMode.Gradient:/*gradientFill*/
                 context!.saveGState()/*we only want to apply a temporary clip*/
                 context!.clip() /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
@@ -136,12 +135,12 @@ public class Graphics{
      */
     public func drawLine(_ path:CGPath){
         context!.addPath(path)/*Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)*/
-        switch true {
-            case (strokeMode == StrokeMode.None):/*no stroke*/
+        switch strokeMode {
+            case StrokeMode.None:/*no stroke*/
                 break
-            case (strokeMode == StrokeMode.Color):/*color stroke*/
+            case StrokeMode.Color:/*color stroke*/
                 context!.drawPath(using: CGPathDrawingMode.stroke)
-            case (strokeMode == StrokeMode.Gradient):/*gradient stroke*/
+            case StrokeMode.Gradient:/*gradient stroke*/
                 Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient, lineWidth)
             default:
                 fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
