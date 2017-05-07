@@ -197,13 +197,15 @@ private class Utils{
 }
 extension Graphics{
     func beginOuterShadow(_ path:CGPath){
-        if(dropShadow != nil && !dropShadow!.inner){/*Has outer drop shadow*/
+        if let dropShadow = dropShadow, !dropShadow.inner{/*Has outer drop shadow*/
             context!.saveGState()/*Initates the GState so that subsequent drawing also gets a shade*/
-            dropShadow!.shadow.set()/*<-- Don't use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
+            dropShadow.shadow.set()/*<--Don't use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
     }
     func endOuterShadow(){
-        if(dropShadow != nil && !dropShadow!.inner){context!.restoreGState()}/*Stops drawing the shadow on subsequent drawing*/
+        if let dropShadow = dropShadow, !dropShadow.inner{
+            context!.restoreGState()
+        }/*Stops drawing the shadow on subsequent drawing*/
     }
     func applyInnerShadow(path:CGPath){
         if(dropShadow != nil && dropShadow!.inner){
