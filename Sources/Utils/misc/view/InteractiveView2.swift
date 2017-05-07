@@ -94,8 +94,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * This method exists for the sake of convenience
      */
     func mouseUp(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseUp(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+           parent.mouseUp(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
