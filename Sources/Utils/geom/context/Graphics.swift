@@ -190,8 +190,8 @@ private class Utils{
      */
     static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,_ gradient:RadialGraphicsGradient){
         context.saveGState()/*Save the current context, begin drawing the radial gradient*/
-        if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*Transform the current context, so that radial gradient can have a squeezed look*/
-        context.drawRadialGradient(cgGradient!, startCenter: gradient.startCenter, startRadius: gradient.startRadius, endCenter: gradient.endCenter, endRadius: gradient.endRadius, options: [CGGradientDrawingOptions.drawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
+        if let transformation = gradient.transformation {context.concatenate(transformation)}/*Transform the current context, so that radial gradient can have a squeezed look*/
+        context.drawRadialGradient(cgGradient!, startCenter: gradient.startCenter, startRadius: gradient.startRadius, endCenter: gradient.endCenter, endRadius: gradient.endRadius, options:[CGGradientDrawingOptions.drawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
         context.restoreGState()/*Restore the context that was saved, end drawing the radial gradient*/
     }
 }
@@ -208,15 +208,15 @@ extension Graphics{
         }/*Stops drawing the shadow on subsequent drawing*/
     }
     func applyInnerShadow(path:CGPath){
-        if(dropShadow != nil && dropShadow!.inner){
+        if let dropShadow = dropShadow, dropShadow.inner {
             context!.saveGState()/*init the gState*/
             context!.addPath(path)/*add The clipping path to the context*/
             context!.clip()/*The clipping ensures that the shadow is within its shape that it tries to cast an inset shadow on*/
-            context!.setAlpha(dropShadow!.color.cgColor.alpha)//this can be simpler
+            context!.setAlpha(dropShadow.color.cgColor.alpha)//this can be simpler
             context!.beginTransparencyLayer(auxiliaryInfo: nil)
-            context!.setShadow(offset: dropShadow!.offset, blur: dropShadow!.blurRadius, color: dropShadow!.opaqueColor.cgColor)/*This is where the setting of the shadow happens*/
+            context!.setShadow(offset: dropShadow.offset, blur: dropShadow.blurRadius, color: dropShadow.opaqueColor.cgColor)/*This is where the setting of the shadow happens*/
             context!.setBlendMode(CGBlendMode.sourceOut)/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
-            context!.setFillColor(dropShadow!.color.alpha(1.0).cgColor)//this can be made more optimized
+            context!.setFillColor(dropShadow.color.alpha(1.0).cgColor)//this can be made more optimized
             context!.addPath(path)
             context!.fillPath()
             context!.endTransparencyLayer()
