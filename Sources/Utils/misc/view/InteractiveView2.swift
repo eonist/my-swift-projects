@@ -162,13 +162,9 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
              Swift.print("match: " + "\(match)")
              return match*/
             for view in subviews.reversed() {
-                let hitView = view.hitTest(aPoint)
-                //Swift.print("view: " + "\(view)" + "hitView: " + "\(hitView)")
-                if(hitView != nil){
-                    //Swift.print("hitView: " + "\(hitView!.superview!.superview)")
-                    Swift.print("hitView: " + "\(hitView)")
+                if let hitView:NSView = view.hitTest(aPoint){
                     return hitView
-                }//<--if the view is a skin then return the self, so that the mouseEnter mouseExit methods work
+                }
             }
             return nil
             //
