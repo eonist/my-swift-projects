@@ -29,6 +29,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
         event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
+        self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
@@ -107,7 +108,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
-                mouseMoved(MouseEvent(event,self/*,self*/))
+                mouseMoved(MouseEvent(event,self))
             }
             else if(isMouseOver){mouseOut(MouseEvent(event,self));isMouseOver = false}//mouse move on the "invisible" parth of the view
         }
@@ -118,9 +119,9 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      */
     override func mouseEntered(with event: NSEvent){
         //Swift.print("\(self.dynamicType)" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
-        //im not sure if the bellow code is perfectly stable in all cases, more testing needed
+        //I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         if(!hasMouseEntered && viewUnderMouse === self){
-            hasMouseEntered = true/*optimization*/
+            hasMouseEntered = true/*Optimization*/
             isMouseOver = true
             mouseOver(MouseEvent(event,self))
         }/*mouse move on visible view*/
@@ -156,18 +157,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
-            
-            //return subviews.reversed().first(where: {view.hitTest(aPoint) != nil}) ?? nil
-            
-            for view in subviews.reversed() {
-                let hitView = view.hitTest(aPoint)
-                //Swift.print("view: " + "\(view)" + "hitView: " + "\(hitView)")
-                if(hitView != nil){
-                    //Swift.print("hitView: " + "\(hitView!.superview!.superview)")
-                    return hitView
-                }//<--if the view is a skin then return the self, so that the mouseEnter mouseExit methods work
-            }
-            return nil/*if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
+            return subviews.reversed().first(where: {$0.hitTest(aPoint) != nil})/*if non-nil then a point was found within its hittable area, if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
         }/*else (aka not interactive)*/
         return nil
     }
