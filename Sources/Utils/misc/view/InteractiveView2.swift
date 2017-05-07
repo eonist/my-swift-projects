@@ -44,7 +44,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      */
     func mouseMoved(_ event:MouseEvent){
         if let parent = self.superview as? IInteractiveView{
-            parent.mouseMoved(event.setImmediate(self) as! MouseEvent)
+            parent.mouseMoved(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
@@ -52,24 +52,24 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseOver(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseOver(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseOut(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseOut(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
      * Same as regular mouseDown event except this also includes the origin
      */
     func mouseDown(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseDown(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseDown(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
@@ -77,8 +77,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * NOTE: bubbling=true was added to make Stepper class dragable
      */
     func mouseUpInside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseUpInside(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseUpInside(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
@@ -86,8 +86,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(_ event: MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseUpOutside(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseUpOutside(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
     }
     /**
