@@ -23,10 +23,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         super.init(frame:NSRect())
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
-        
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
-        //self.setDelegate(self)
     }
     /**
      * Stops implicit animation from happening
@@ -36,17 +34,14 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
     func action(for layer: CALayer, forKey event: String) -> CAAction? {//<---this method is probably not needed
-        //Swift.print("actionForLayer layer: " + "\(layer)" + " event: " + "\(event)")
-        return NSNull()//super.actionForLayer(layer, forKey: event)//
+        return NSNull()
     }
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        //Swift.print("hitTest in graphic" + "\(aPoint)")
-        //you have to convert the aPoint to localspace
-        var localPoint = localPos()//convertPoint(aPoint, fromView: self.window?.contentView)//convertPoint(winMousePos, fromView: nil)//
+        var localPoint = localPos()/*you have to convert the aPoint to localspace*/
         //Swift.print("localPoint: " + "\(localPoint)")
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldnt but they do so this is a quick fix. Resolve this later and do it better
         let isPointInside:Bool = fillShape.path.contains(localPoint)//swift 3 upgrade was->, a different contains method is used now may cause error//CGPathContainsPoint
