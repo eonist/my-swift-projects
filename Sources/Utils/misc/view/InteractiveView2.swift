@@ -157,18 +157,19 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
-            let match:NSView? = subviews.reversed().map{$0}.first(where: {$0.hitTest(aPoint) != nil})/*if non-nil then a point was found within its hittable area, if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
-            Swift.print("match: " + "\(match)")
-            return match
+            let match:NSView? = subviews.reversed().lazy.map{$0}.first(where: {$0.hitTest(aPoint) != nil})/*if non-nil then a point was found within its hittable area, if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
+             Swift.print("match: " + "\(match)")
+             return match/**/
             /*for view in subviews.reversed() {
              let hitView = view.hitTest(aPoint)
              //Swift.print("view: " + "\(view)" + "hitView: " + "\(hitView)")
              if(hitView != nil){
              //Swift.print("hitView: " + "\(hitView!.superview!.superview)")
+             Swift.print("hitView: " + "\(hitView)")
              return hitView
              }//<--if the view is a skin then return the self, so that the mouseEnter mouseExit methods work
              }
-             return nil/**/*/
+             return nil*//**//**/
             //
         }/*else (aka not interactive)*/
         return nil
