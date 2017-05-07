@@ -104,6 +104,7 @@ public class Graphics{
      * NOTE: This method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
     public func draw(_ path:CGPath){
+        Swift.print("Graphics.draw()")
         drawFill(path)
         drawLine(path)
     }

@@ -18,9 +18,7 @@ class AssetDecorator:SizeableDecorator{
     }
     init(_ decoratable:IGraphicDecoratable,_ iconURL:String) {//this should be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         _assetURL = iconURL
-        //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
-        //asset = graphic.addSubView(SVGAsset(assetURL))
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied, this may not be the case anymore*/
     }
     override func draw() {
@@ -30,7 +28,7 @@ class AssetDecorator:SizeableDecorator{
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
             asset!.scale(x, y, width, height)
         }
-        asset?.svg.frame.origin = CGPoint(x,y)//offset
+        asset?.svg.frame.origin = CGPoint(x,y)/*offset*/
         if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
