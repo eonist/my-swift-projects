@@ -45,15 +45,14 @@ public class Graphics{
      * TODO: add support for CGContextSetRGBFillColor in the future
      */
     public func fill(_ color:NSColor){
-        //Swift.print("Graphics.fill()" + "\(color)")
         fillMode = FillMode.Color
-        context!.setFillColor(color.cgColor)//swift 3 upgrade
+        context!.setFillColor(color.cgColor)
     }
     /*
      * Initiate gradient filling
      * NOTE: this method can be called pre context
      */
-    public func gradientFill(_ gradient:IGraphicsGradient/*IGradient*/){
+    public func gradientFill(_ gradient:IGraphicsGradient){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
