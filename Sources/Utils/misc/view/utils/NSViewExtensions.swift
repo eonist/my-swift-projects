@@ -71,8 +71,11 @@ extension NSView {
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
     var point:CGPoint {
         get{
-            
+            if "\(type(of: self))" == "Container" {
+                fatalError("find the bug")
                 Swift.print("p")
+            }
+            
             
             return frame.origin
         } set{frame.origin = newValue}}
