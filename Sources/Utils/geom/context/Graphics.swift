@@ -22,7 +22,7 @@ import Cocoa
 public class Graphics{
     enum FillMode:Int {case None = 0, Color, Gradient}
     enum StrokeMode:Int {case None = 0, Color, Gradient}
-    public var context:CGContext?//let graphicsContext:NSGraphicsContext
+    public var context:CGContext?
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
     var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
@@ -32,8 +32,7 @@ public class Graphics{
     var dropShadow:DropShadow?
     var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
     public init(){
-        if(NSGraphicsContext.current() != nil){
-            let graphicsContext = NSGraphicsContext.current()!
+        if let graphicsContext = NSGraphicsContext.current() {
             self.context = graphicsContext.cgContext/* Get the handle to the current context */
         }
     }
@@ -71,7 +70,7 @@ public class Graphics{
         context!.setLineCap(lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
         context!.setLineJoin(lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
         context!.setMiterLimit(miterLimit)/*The default Quartz miter limit is 10*/
-        if(lengths.count > 0) {context!.setLineDash(phase: phase, lengths: lengths)}/*Add dash if lengths are specified*/
+        if(lengths.count > 0) {context!.setLineDash(phase:phase, lengths:lengths)}/*Add dash if lengths are specified*/
     }
     /**
      * Set the current  gradient line style
