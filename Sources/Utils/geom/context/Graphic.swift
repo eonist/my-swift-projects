@@ -7,12 +7,13 @@ import QuartzCore
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  */
 class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
+    typealias SelectorCallBack = ((_ layer:CALayer, _ ctx:CGContext) -> ())?
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType
-    var selector: ((_ layer:CALayer, _ ctx:CGContext) -> ())?/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
+    var selector:SelectorCallBack/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
     
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
