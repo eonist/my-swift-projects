@@ -69,16 +69,7 @@ extension NSView {
         return NSViewAsserter.contains(self, view)
     }
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
-    var point:CGPoint {
-        get{
-            if "\(type(of: self))" == "Container" {
-                fatalError("find the bug")
-                Swift.print("p")
-            }
-            
-            
-            return frame.origin
-        } set{frame.origin = newValue}}
+    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
     /**
      * Returns localPosition in a view (converts a global position to a local position)
