@@ -122,8 +122,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         if(!hasMouseEntered && viewUnderMouse === self){
             hasMouseEntered = true/*optimization*/
             isMouseOver = true
-            mouseOver(MouseEvent(event,self/*,self*/))
-        }//mouse move on visible view
+            mouseOver(MouseEvent(event,self))
+        }/*mouse move on visible view*/
         //super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
@@ -151,12 +151,12 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     }
     /**
      * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
-     * NOTE: why is this needed? because normal hitTesting doesnt work if the frame size is zero. or if a subView is outside the frame.
+     * NOTE: why is this needed? because normal hitTesting doesn't work if the frame size is zero. or if a subView is outside the frame.
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
+        Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
-            for i in (0..<self.subviews.count).reversed(){/*swift 3 upgraded*/
+            for i in (0..<self.subviews.count).reversed(){
                 let view = self.subviews[i]
                 let hitView = view.hitTest(aPoint)/*if true then a point was found within its hittable area*/
                 //Swift.print("view: " + "\(view)" + "hitView: " + "\(hitView)")
