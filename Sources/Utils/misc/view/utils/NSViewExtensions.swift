@@ -71,6 +71,9 @@ extension NSView {
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
     var point:CGPoint {
         get{
+            
+                Swift.print("p")
+            
             return frame.origin
         } set{frame.origin = newValue}}
     var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
