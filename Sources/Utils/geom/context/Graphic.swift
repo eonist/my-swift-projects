@@ -66,11 +66,10 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: the only way to update trackingArea is to remove it and add a new one
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      * PARAM: owner is the instance that receives the interaction event
+     * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
-    override func updateTrackingAreas() {//TODO:you dont have to store the trackingarea in this class you can get and set the trackingarea from NSView
-        //Swift.print("updateTrackingArea: " + "\(fillShape.frame)")
-        //Swift.print("\(NSViewParser.parents(self))" + ".updateTrackingArea: " + "\(fillShape.frame)")
-        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+    override func updateTrackingAreas() {
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
         trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
@@ -81,9 +80,8 @@ extension Graphic{
     /**
      * Convenince implicit setter
      */
-    func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
-        //self.fillShape.fillStyle = fillStyle;
-        self.fillStyle = fillStyle
-        self.lineStyle = lineStyle
-    }
+    /*func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
+     self.fillStyle = fillStyle
+     self.lineStyle = lineStyle
+     }*/
 }
