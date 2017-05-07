@@ -70,7 +70,7 @@ public class Graphics{
         context!.setLineWidth(lineWidth)
         context!.setLineCap(lineCap)/*Butt is the default, CGLineCap.Square,CGLineCap.Round,CGLineCap.Butt*/
         context!.setLineJoin(lineJoin)/*Miter is the default, CGLineJoin.Round,CGLineJoin.Bevel,CGLineJoin.Miter*/
-        context!.setMiterLimit(miterLimit)//The default Quartz miter limit is 10
+        context!.setMiterLimit(miterLimit)/*The default Quartz miter limit is 10*/
         if(lengths.count > 0) {context!.setLineDash(phase: phase, lengths: lengths)}/*Add dash if lengths are specified*/
     }
     /**
@@ -98,12 +98,10 @@ public class Graphics{
      */
     public func stopStroke(){
         strokeMode = StrokeMode.None
-        //CGContextSetFillColorWithColor(context,NSColor.clearColor().CGColor)
-        //test the end fill theory
     }
     /**
-     * NOTE: you may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
-     * NOTE: this method can only be called indirectly, the systm must init the call, and you must request a call from the system
+     * NOTE: You may need to implement the Tranceparency group scheme to get shadow and transperancy to play nice with the gradient and gradient stroke etc
+     * NOTE: This method can only be called indirectly, the systm must init the call, and you must request a call from the system
      */
     public func draw(_ path:CGPath){
         drawFill(path)
@@ -136,8 +134,7 @@ public class Graphics{
      * NOTE: apperantly you dont need to add the path a second time when stroking, this may not be the case if you ad dropshadow etc
      */
     public func drawLine(_ path:CGPath){
-        //the change to the bellow line is need in order to get the fill and line working together
-        /*if(dropShadow != nil) {*/context!.addPath(path)/*}*///Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)
+        context!.addPath(path)/*Adds a new path to the context if a dropshadow is present (this may only be the case for inner, and you may mitigate this by doing GState save and restore, though this is less performant i think)*/
         switch true {
             case (strokeMode == StrokeMode.None):/*no stroke*/
                 break
@@ -157,17 +154,11 @@ private class Utils{
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
     class func drawGradientFill(_ path:CGPath,_ context:CGContext,_ gradient:IGraphicsGradient, _ cgGradient:CGGradient?){
-        //let boundingBox:CGRect = CGPathGetBoundingBox(path) /*creates a boundingbox derived from the bounds of the path*/
-        //Swift.print("Graphics.drawGradientFill() boundingBox: " + String(boundingBox))
-        
-        //CGContextSaveGState(context)//why is this here again?
-        
         if(gradient is LinearGraphicsGradient) {/*Linear*/
-            drawAxialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! LinearGraphicsGradient)
+            drawAxialGradient(path, context, cgGradient, gradient as! LinearGraphicsGradient)
         }else if(gradient is RadialGraphicsGradient){/*Radial*/
-            drawRadialGradient(path, context, cgGradient, /*boundingBox,*/ gradient as! RadialGraphicsGradient)
+            drawRadialGradient(path, context, cgGradient, gradient as! RadialGraphicsGradient)
         }else{fatalError("type not supported: " + "\(gradient)")}
-        //CGContextRestoreGState(context)//why is this here again?
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
