@@ -168,9 +168,9 @@ private class Utils{
         context.replacePathWithStrokedPath()//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
         context.clip() //create a mask for the gradient to be drawn into
         if(lineGradient is LinearGraphicsGradient) {
-            drawAxialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! LinearGraphicsGradient)
+            drawAxialGradient(path, context, cgLineGradient, lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
-            drawRadialGradient(path, context, cgLineGradient, /*boundingBox,*/ lineGradient as! RadialGraphicsGradient)
+            drawRadialGradient(path, context, cgLineGradient, lineGradient as! RadialGraphicsGradient)
         }else{fatalError("this type is not supported: " + "\(lineGradient)")}
         context.restoreGState()//restore the graphic mask
     }
@@ -178,7 +178,7 @@ private class Utils{
      * Axial gradient "Linear"
      * NOTE: If you don't need to set the p1 and p2 radius then use: CGContextDrawLinearGradient(c: CGContext?, _ gradient: CGGradient?, _ startPoint: CGPoint, _ endPoint: CGPoint, _ options: CGGradientDrawingOptions)
      */
-    static func drawAxialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,/* _ boundingBox:CGRect, */_ gradient:LinearGraphicsGradient){
+    static func drawAxialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,_ gradient:LinearGraphicsGradient){
         context.drawLinearGradient(cgGradient!, start: gradient.p1, end: gradient.p2, options: [CGGradientDrawingOptions.drawsBeforeStartLocation,CGGradientDrawingOptions.drawsAfterEndLocation])//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
     }
     /**
@@ -188,13 +188,11 @@ private class Utils{
      * TODO: You may consider drawing the elliptical shape from the top left to get better edge rendering. 
      * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
-    static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?, /*_ boundingBox:CGRect,*/_ gradient:RadialGraphicsGradient){
-        /*begin drawing the radial gradient*/
-        context.saveGState()/*save the current context*/
+    static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,_ gradient:RadialGraphicsGradient){
+        context.saveGState()/*save the current context, begin drawing the radial gradient*/
         if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
         context.drawRadialGradient(cgGradient!, startCenter: gradient.startCenter, startRadius: gradient.startRadius, endCenter: gradient.endCenter, endRadius: gradient.endRadius, options: [CGGradientDrawingOptions.drawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        context.restoreGState()/*restore the context that was saved*/
-        /*end drawing the radial gradient*/
+        context.restoreGState()/*restore the context that was saved, end drawing the radial gradient*/
     }
 }
 extension Graphics{
