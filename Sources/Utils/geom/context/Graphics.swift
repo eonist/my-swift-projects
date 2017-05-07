@@ -164,15 +164,15 @@ private class Utils{
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
     static func drawGradientStroke(_ path:CGPath,_ context:CGContext,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradient?, _ lineWidth:CGFloat){
-        context.saveGState()/*store the graphic state so that the mask call bellow doesnt become the permanant mask*/
-        context.replacePathWithStrokedPath()//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
+        context.saveGState()/*Store the graphic state so that the mask call bellow doesnt become the permanant mask*/
+        context.replacePathWithStrokedPath()/*Here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes*/
         context.clip()/*Create a mask for the gradient to be drawn into*/
         if(lineGradient is LinearGraphicsGradient) {
             drawAxialGradient(path, context, cgLineGradient, lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
             drawRadialGradient(path, context, cgLineGradient, lineGradient as! RadialGraphicsGradient)
         }else{fatalError("this type is not supported: " + "\(lineGradient)")}
-        context.restoreGState()/*restore the graphic mask*/
+        context.restoreGState()/*Restore the graphic mask*/
     }
     /**
      * Axial gradient "Linear"
