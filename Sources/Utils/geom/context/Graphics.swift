@@ -63,6 +63,7 @@ public class Graphics{
      * NOTE: there are also these: //CGContextSetLineDash, CGContextSetStrokeColorSpace,CGContextSetStrokePattern,CGContextSetStrokePattern
      * NOTE: this method can be called pre context
      */
+    typealias LineStyle = (lineWidth:CGFloat,color:NSColor,lineCap:CGLineCap,lineJoin:CGLineJoin,miterLimit:CGFloat)
     public func line(_ lineWidth:CGFloat = 1,_ color:NSColor = .black, _ lineCap:CGLineCap = .butt, _ lineJoin:CGLineJoin =  .miter, _ miterLimit:CGFloat = 10,_ phase:CGFloat = 0, _ lengths:[CGFloat] = []){
         strokeMode = StrokeMode.Color
         self.lineWidth = lineWidth
