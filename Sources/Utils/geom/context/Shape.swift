@@ -20,7 +20,7 @@ class Shape:CALayer{
         super.setNeedsDisplay()
     }
     override func draw(in ctx:CGContext) {
-        super.draw(in: ctx)
+        super.draw(in:ctx)
     }
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

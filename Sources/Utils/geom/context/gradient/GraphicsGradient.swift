@@ -1,6 +1,7 @@
 import Foundation
 /**
  * PARAM: transformation: we need transformation as this is the only way to achieve the squashed gradient look
+ * TODO: ⚠️️ Convert to struct
  */
 public class GraphicsGradient:IGraphicsGradient{
     public var colors:[CGColor]
@@ -8,10 +9,8 @@ public class GraphicsGradient:IGraphicsGradient{
     public var transformation:CGAffineTransform?
     init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [],_ transformation:CGAffineTransform? = nil){
         self.colors = colors
-        if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
-            //Swift.print(colors.count)
+        if (locations.count == 0) {//TODO: add support for nil aswell
             self.locations = CGFloatParser.interpolatedRange(0,  1,  colors.count)
-            //Swift.print(self.locations)
         }else{
             self.locations = locations
         }
