@@ -157,7 +157,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
-            for view in subviews.reversed() {/*cant use functional programing bc we need to return result*/
+            for view in subviews.reversed() {/*⚠️️ Can't use functional programing here bc we need to return result*/
                 if let hitView:NSView = view.hitTest(aPoint){
                     return hitView/*if non-nil then a point was found within its hittable area*/
                 }//if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc
