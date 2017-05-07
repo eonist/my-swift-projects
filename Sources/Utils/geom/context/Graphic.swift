@@ -1,37 +1,26 @@
 import Cocoa
 import QuartzCore
 /**
- * IMPORTANT: You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
+ * IMPORTANT: ⚠️️ You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
  * NOTE: Example is in the Graphics class
  * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
- * TODO: Write an example
  */
 class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
-    //let delegate = LayerDelegate()
-    lazy var fillShape:Shape = Shape()//TODO:Graphic.init(): dont use lazy, they could be the problem to alot of things, casting problems etc
-    lazy var lineShape:Shape = Shape()//{get{return fillShape}set{fillShape = newValue}}/*Shape()*/
-    var fillStyle:IFillStyle? //{get{return fillShape.fillStyle}set{fillShape.fillStyle = newValue}}
+    lazy var fillShape:Shape = Shape()
+    lazy var lineShape:Shape = Shape()
+    var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType
-    //the bellow line was upgraded to swift 3
     var selector: ((_ layer:CALayer, _ ctx:CGContext) -> ())?/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
-    //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view, not needed when you use layer-hosted
-    //override var wantsUpdateLayer:Bool {return true}
+    
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
-        //Swift.print("Graphic.init()")
         self.fillStyle = fillStyle
-        //self.fillShape = FillShape(fillStyle)
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
         super.init(frame:NSRect())
-        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.onSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
-        //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
-        //layer = CALayer()//TempCALayer(layer: layer!)
-        //layer!.masksToBounds = false//this is needed!!!
-        
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         
