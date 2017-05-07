@@ -42,10 +42,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         var localPoint = localPos()/*you have to convert the aPoint to localspace*/
-        //Swift.print("localPoint: " + "\(localPoint)")
-        localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldnt but they do so this is a quick fix. Resolve this later and do it better
-        let isPointInside:Bool = fillShape.path.contains(localPoint)//swift 3 upgrade was->, a different contains method is used now may cause error//CGPathContainsPoint
-        //Swift.print("isPointInside: " + "\(isPointInside)")
+        localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
+        let isPointInside:Bool = fillShape.path.contains(localPoint)
         return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
     }
     /**
@@ -60,9 +58,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * 6. Which then calls all the methods for form and apperance 
      * 7. which eventually calls Graphics and finalizes the design.
      */
-    func draw(_ layer: CALayer, in ctx:CGContext) {//swift 3 -> this may be the solution: super.layer?.draw(in: context)
+    func draw(_ layer: CALayer, in ctx:CGContext) {
         selector!(layer, ctx)/*call the selector*/
-        //updateTrackingArea()
     }
     /**
      * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
