@@ -16,6 +16,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     var selector:SelectorCallBack/*⚠️️ IMPORTANT ⚠️️: This holds any method assigned to it that has it's type signature*/
     var trackingArea:NSTrackingArea?
     
+    
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()){
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
@@ -25,6 +26,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
+        self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay
     }
     /**
      * Stops implicit animation from happening
