@@ -157,10 +157,10 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         //Swift.print("hitTest: " + "\(self)" + " isInteractive: " + "\(isInteractive)")
         if(isInteractive){
             
-            return subviews.reversed().lazy.map{return $0}.first(where: {$0 == 2})
+            //return subviews.reversed().first(where: {view.hitTest(aPoint) != nil}) ?? nil
             
             for view in subviews.reversed() {
-                let hitView = view.hitTest(aPoint)/*if true then a point was found within its hittable area*/
+                let hitView = view.hitTest(aPoint)
                 //Swift.print("view: " + "\(view)" + "hitView: " + "\(hitView)")
                 if(hitView != nil){
                     //Swift.print("hitView: " + "\(hitView!.superview!.superview)")
