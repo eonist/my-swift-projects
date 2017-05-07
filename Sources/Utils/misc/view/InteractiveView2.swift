@@ -26,6 +26,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     override init(frame frameRect:NSRect) {
         super.init(frame:frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
         self.wantsLayer = true/*if true then view is layer backed*/
+        self.layerContentsRedrawPolicy = .onSetNeedsDisplay//= NSViewLayerContentsRedrawOnSetNeedsDisplay
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
         event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
