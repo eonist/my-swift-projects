@@ -1,7 +1,7 @@
 import Foundation
 /**
  * PARAM: transformation: we need transformation as this is the only way to achieve the squashed gradient look
- * TODO: ⚠️️ Convert to struct
+ * TODO: ⚠️️ Convert to struct, then use decoration to add linear and radial
  */
 public class GraphicsGradient:IGraphicsGradient{
     public var colors:[CGColor]

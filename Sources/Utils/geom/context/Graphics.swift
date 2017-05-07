@@ -18,6 +18,7 @@ import Cocoa
  * graphics.line(12)//Stylize the line
  * graphics.fill(NSColor.blueColor())//Stylize the fill
  * graphics.draw(path)//draw everything
+ * TODO: Convert to struct?
  */
 public class Graphics{
     enum FillMode:Int {case None = 0, Color, Gradient}
