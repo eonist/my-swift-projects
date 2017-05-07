@@ -43,8 +43,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
-        if(self.superview is IInteractiveView){
-            (self.superview as! IInteractiveView).mouseMoved(event.setImmediate(self) as! MouseEvent)
+        if let parent = self.superview as? IInteractiveView{
+            parent.mouseMoved(event.setImmediate(self) as! MouseEvent)
         }/*informs the parent that an event occured*/
     }
     /**
