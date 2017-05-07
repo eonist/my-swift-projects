@@ -164,15 +164,15 @@ private class Utils{
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
     static func drawGradientStroke(_ path:CGPath,_ context:CGContext,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradient?, _ lineWidth:CGFloat){
-        context.saveGState()//store the graphic state so that the mask call bellow doesnt become the permanant mask
+        context.saveGState()/*store the graphic state so that the mask call bellow doesnt become the permanant mask*/
         context.replacePathWithStrokedPath()//here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes
-        context.clip() //create a mask for the gradient to be drawn into
+        context.clip()/*Create a mask for the gradient to be drawn into*/
         if(lineGradient is LinearGraphicsGradient) {
             drawAxialGradient(path, context, cgLineGradient, lineGradient as! LinearGraphicsGradient)
         }else if(lineGradient is RadialGraphicsGradient){
             drawRadialGradient(path, context, cgLineGradient, lineGradient as! RadialGraphicsGradient)
         }else{fatalError("this type is not supported: " + "\(lineGradient)")}
-        context.restoreGState()//restore the graphic mask
+        context.restoreGState()/*restore the graphic mask*/
     }
     /**
      * Axial gradient "Linear"
@@ -189,27 +189,23 @@ private class Utils{
      * TODO: You should research the internet for ideas on how to imporve the code in this method, speed and rendering and less code etc. This works for now though
      */
     static func drawRadialGradient(_ path:CGPath,_ context:CGContext,_ cgGradient:CGGradient?,_ gradient:RadialGraphicsGradient){
-        context.saveGState()/*save the current context, begin drawing the radial gradient*/
-        if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*transform the current context, so that radial gradient can have a squeezed look*/
+        context.saveGState()/*Save the current context, begin drawing the radial gradient*/
+        if(gradient.transformation != nil) {context.concatenate(gradient.transformation!)}/*Transform the current context, so that radial gradient can have a squeezed look*/
         context.drawRadialGradient(cgGradient!, startCenter: gradient.startCenter, startRadius: gradient.startRadius, endCenter: gradient.endCenter, endRadius: gradient.endRadius, options: [CGGradientDrawingOptions.drawsAfterEndLocation])/*Draw the actual radial graphics*///CGGradientDrawingOptions.DrawsBeforeStartLocation,CGGradientDrawingOptions.DrawsAfterEndLocation//CGGradientDrawingOptions.DrawsBeforeStartLocation or CGGradientDrawingOptions.DrawsAfterEndLocation
-        context.restoreGState()/*restore the context that was saved, end drawing the radial gradient*/
+        context.restoreGState()/*Restore the context that was saved, end drawing the radial gradient*/
     }
 }
 extension Graphics{
     func beginOuterShadow(_ path:CGPath){
-        if(dropShadow != nil && !dropShadow!.inner){/*has outer drop shadow*/
-            context!.saveGState()/*initates the GState so that subsequent drawing also gets a shade*/
-            dropShadow!.shadow.set()/*<- dont use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
+        if(dropShadow != nil && !dropShadow!.inner){/*Has outer drop shadow*/
+            context!.saveGState()/*Initates the GState so that subsequent drawing also gets a shade*/
+            dropShadow!.shadow.set()/*<-- Don't use this if you plan to use this method with CALAyer, see how it is done with innerShadow. One can also do CGContextSetShadowWithColor*/
         }
     }
     func endOuterShadow(){
-        if(dropShadow != nil && !dropShadow!.inner){context!.restoreGState()}//stops drawing the shadow on subsequent drawing
+        if(dropShadow != nil && !dropShadow!.inner){context!.restoreGState()}/*Stops drawing the shadow on subsequent drawing*/
     }
     func applyInnerShadow(path:CGPath){
-        /*
-        let context = graphics.context
-        let dropShadow = graphics.dropShadow
-        */
         if(dropShadow != nil && dropShadow!.inner){
             context!.saveGState()/*init the gState*/
             context!.addPath(path)/*add The clipping path to the context*/
@@ -217,7 +213,6 @@ extension Graphics{
             context!.setAlpha(dropShadow!.color.cgColor.alpha)//this can be simpler
             context!.beginTransparencyLayer(auxiliaryInfo: nil)
             context!.setShadow(offset: dropShadow!.offset, blur: dropShadow!.blurRadius, color: dropShadow!.opaqueColor.cgColor)/*This is where the setting of the shadow happens*/
-            //dropShadow!.opaqueShadow.set()/*<-- dont use this, since you need to ref context if you use CALayer. This is where the setting of the shadow happens*/
             context!.setBlendMode(CGBlendMode.sourceOut)/*The blend mode creates the hole in the shadow so that it appears like an inner shadow*/
             context!.setFillColor(dropShadow!.color.alpha(1.0).cgColor)//this can be made more optimized
             context!.addPath(path)
