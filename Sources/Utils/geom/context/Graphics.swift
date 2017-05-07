@@ -123,9 +123,6 @@ public class Graphics{
                 context!.clip() /*create a mask for the gradient to be drawn into, we do this here since the GradientStroke uses drawGradientFill call aswell*/
                 Utils.drawGradientFill(path, context!, gradient, cgGradient)
                 context!.restoreGState()/*we only want to apply a temporary clip*/
-            default:
-                fatalError("THIS DRAW METHOD IS NOT SUPPORTED: fillMode: " + "\(fillMode)" + " strokeMode: " + "\(strokeMode)")
-                break;
         }
         endOuterShadow()
         applyInnerShadow(path:path)/*init inner shadow*/
@@ -142,9 +139,6 @@ public class Graphics{
                 context!.drawPath(using: CGPathDrawingMode.stroke)
             case StrokeMode.Gradient:/*gradient stroke*/
                 Utils.drawGradientStroke(path, context!, lineGradient, cgLineGradient, lineWidth)
-            default:
-                fatalError("THIS STROKE METHOD IS NOT SUPPORTED" +  " strokeMode: " + "\(strokeMode)")
-                break;
         }
     }
 }
@@ -154,11 +148,14 @@ private class Utils{
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
     class func drawGradientFill(_ path:CGPath,_ context:CGContext,_ gradient:IGraphicsGradient, _ cgGradient:CGGradient?){
-        if(gradient is LinearGraphicsGradient) {/*Linear*/
-            drawAxialGradient(path, context, cgGradient, gradient as! LinearGraphicsGradient)
-        }else if(gradient is RadialGraphicsGradient){/*Radial*/
-            drawRadialGradient(path, context, cgGradient, gradient as! RadialGraphicsGradient)
-        }else{fatalError("type not supported: " + "\(gradient)")}
+        switch gradient{
+            case is LinearGraphicsGradient:/*Linear*/
+                drawAxialGradient(path, context, cgGradient, gradient as! LinearGraphicsGradient)
+            case is RadialGraphicsGradient:/*Radial*/
+                drawRadialGradient(path, context, cgGradient, gradient as! RadialGraphicsGradient)
+            default:
+                fatalError("type not supported: " + "\(gradient)")
+        }
     }
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
