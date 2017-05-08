@@ -151,7 +151,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         viewUnderMouse === self ? mouseUpInside(MouseEvent(event,self)) : mouseUpOutside(MouseEvent(event,self))/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
     }
     /**
-     * NOTE: looping backwards is very important as its the only way to target the front-most views in the stack
+     * NOTE: looping backwards is very important as it's the only way to target the front-most views in the stack
      * NOTE: why is this needed? because normal hitTesting doesn't work if the frame size is zero. or if a subView is outside the frame.
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {

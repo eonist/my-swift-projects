@@ -59,7 +59,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * 6. Which then calls all the methods for form and apperance 
      * 7. which eventually calls Graphics and finalizes the design.
      */
-    func draw(_ layer: CALayer, in ctx:CGContext) {
+    func draw(_ layer:CALayer, in ctx:CGContext) {
         selector!(layer, ctx)/*call the selector*/
     }
     /**
