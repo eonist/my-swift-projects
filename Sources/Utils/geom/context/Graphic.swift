@@ -34,7 +34,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: this method is also called on every frame of the animation it seems
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
-    func action(for layer: CALayer, forKey event: String) -> CAAction? {//<---this method is probably not needed
+    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
         return NSNull()
     }
     /**
