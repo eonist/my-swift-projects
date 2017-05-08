@@ -50,8 +50,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         
         Swift.print("localPos(): " + "\(localPos())")
         
-        let rect = window?.convertToScreen(NSRect(0,0,100,50))
-        Swift.print("rect: " + "\(rect)")
+        let p = self.convert(frame.origin, to: window!.contentView!)
+        Swift.print("p: " + "\(p)")
         
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
