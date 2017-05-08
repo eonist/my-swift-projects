@@ -42,9 +42,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        var localPoint = self.convert(aPoint,from:nil)
-        //var localPoint = localPos()/*you have to convert the aPoint to localspace*/
-        Swift.print("Graphic.hitTest: \(type(of: self)) localPoint: " + "\(localPoint)")
+        var localPoint = self.convert(aPoint,from:nil)/*you have to convert the aPoint to localspace*/
+        //Swift.print("Graphic.hitTest: \(type(of: self)) localPoint: " + "\(localPoint)")
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
         return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
