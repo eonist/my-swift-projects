@@ -156,7 +156,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         let p = aPoint + layer!.position
-        Swift.print("hitTest() \(type(of: self)) aPoint: " + "\(aPoint) p: \(p) layer!.position: " + "\(layer!.position)")
+        //Swift.print("hitTest() \(type(of: self)) aPoint: " + "\(aPoint) p: \(p) layer!.position: " + "\(layer!.position)")
         if(isInteractive){
             return subviews.reversed().lazy.flatMap{$0.hitTest(p)}.first/*if non-nil then a point was found within its hittable area,if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
         };return nil/*else (aka not interactive)*/
