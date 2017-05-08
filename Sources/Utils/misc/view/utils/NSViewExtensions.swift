@@ -97,13 +97,13 @@ extension NSView {
      * Returns a localPoint (UNTESTED)
      */
     func globalToLocal(_ p:CGPoint) -> CGPoint{
-        return convert(p, from:self)//Swift 3
+        return convert(p, from:self)
     }
     /**
      * Returns a globalPoint (UNTESTED)
      */
     func localToGlobal(_ p:CGPoint) -> CGPoint{
-        return convert(p, to:self)//Swift 3
+        return convert(p, to:self)
     }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
