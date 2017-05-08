@@ -165,7 +165,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
     override func resetCursorRects() {
         if(hasHandCursor){
             let cursor:NSCursor = NSCursor.pointingHand()
-            addCursorRect(frame, cursor: cursor)
+            addCursorRect(frame, cursor:cursor)
             cursor.setOnMouseEntered(true)
         }else{super.resetCursorRects()}
     }
