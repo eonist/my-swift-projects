@@ -56,9 +56,9 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * 2. it calls draw(...) 
      * 3. since a delegate is attached to the CALAyer the draw(...) calls Graphic.draw(...) 
      * 4. which then calls the attached selector 
-     * 5. which calls all the way up to the decorator chain to the last decorator. 
+     * 5. which calls all the way up to the decorator chain to the last decorator.
      * 6. Which then calls all the methods for form and apperance 
-     * 7. which eventually calls Graphics and finalizes the design.
+     * 7. which eventually calls Graphics and finalizes the design
      */
     func draw(_ layer:CALayer, in ctx:CGContext) {
         selector!(layer, ctx)/*call the selector*/
@@ -73,7 +73,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
     override func updateTrackingAreas() {
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
         trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
