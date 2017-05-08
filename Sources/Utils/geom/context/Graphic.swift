@@ -63,7 +63,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         selector!(layer, ctx)/*call the selector*/
     }
     /**
-     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we don't need to use bounds.
      * NOTE: the only way to update trackingArea is to remove it and add a new one
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      * PARAM: owner is the instance that receives the interaction event
