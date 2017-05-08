@@ -43,7 +43,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         Swift.print("self.frame.origin: " + "\(self.frame.origin)")
-        let temp = self.convert(aPoint,to:nil)
+        let temp = self.convert(aPoint,from:nil)
         Swift.print("temp: " + "\(temp)")
         var localPoint = self.convert(aPoint,from:self)/*you have to convert the aPoint to localspace*/
         Swift.print("Graphic.hitTest: aPoint: \(aPoint) \(type(of: self)) localPoint: " + "\(localPoint)")
