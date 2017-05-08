@@ -54,6 +54,9 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
          Swift.print("localPoint4: " + "\(localPoint4)")*/
         
         let p5 = window?.mouseLocationOutsideOfEventStream
+        
+        let p7 = p5 - window?.frame.
+        
         Swift.print("p5: " + "\(p5)")
         let p6 = self.superview?.convert(aPoint, to: self)
         Swift.print("p6: " + "\(p6)")
