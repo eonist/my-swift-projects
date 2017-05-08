@@ -58,6 +58,10 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         let p6 = self.superview?.convert(aPoint, to: self)
         Swift.print("p6: " + "\(p6)")
         
+        Swift.print("localPos(): " + "\(localPos())")
+        
+        
+        
         
         Swift.print("Graphic.hitTest: aPoint: \(aPoint) \(type(of: self)) localPoint: " + "\(localPoint)")
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
