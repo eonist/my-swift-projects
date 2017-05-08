@@ -46,11 +46,11 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         /* let temp = self.convert(aPoint,from:nil)
          Swift.print("temp: " + "\(temp)")*/
         var localPoint = self.convert(self.frame.origin,from:nil)/*you have to convert the aPoint to localspace*/
-        let localPoint2 = window!.contentView?.convert(self.frame.origin, to: nil)
+        let localPoint2 = self.convert(self.frame.origin, to: nil)
          Swift.print("localPoint2: " + "\(localPoint2)")
-         let localPoint3 = window!.contentView?.convert(self.frame.origin, to: self)
+         let localPoint3 = self.convert(self.frame.origin, to: window!.contentView!)
          Swift.print("localPoint3: " + "\(localPoint3)")
-         let localPoint4 = window!.contentView?.convert(self.frame.origin, from: self)
+         let localPoint4 = self.convert(self.frame.origin, from: window!.contentView!)
          Swift.print("localPoint4: " + "\(localPoint4)")
         
         let p5 = window?.mouseLocationOutsideOfEventStream
