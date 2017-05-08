@@ -68,6 +68,13 @@ extension NSView {
     func contains<T:NSView>(_ view:T)->Bool{
         return NSViewAsserter.contains(self, view)
     }
+    /**
+     * Returns index of a subView, returns -1 if nothing is found
+     * TODO: ⚠️️ use Int? instead of -1 and rename to index
+     */
+    func indexOf<T:NSView>(_ subView:T)->Int{
+        return NSViewParser.indexOf(self, subView)
+    }
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
     var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
     var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
@@ -85,9 +92,7 @@ extension NSView {
     func globalPoint()->CGPoint{
         return (window?.mouseLocationOutsideOfEventStream)!
     }
-    func indexOf<T:NSView>(_ subView:T)->Int{
-        return NSViewParser.indexOf(self, subView)
-    }
+    
     /**
      * Returns a localPoint (UNTESTED)
      */
