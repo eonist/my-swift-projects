@@ -156,14 +156,8 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         if(isInteractive){
-            return subviews.reversed().lazy.flatMap{$0.hitTest(aPoint)}.first
-            for view in subviews.reversed() {/*⚠️️ Can't use functional programing here bc we need to return result*/
-                if let hitView:NSView = view.hitTest(aPoint){
-                    return hitView/*if non-nil then a point was found within its hittable area*/
-                }//if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc
-            }
-        }/*else (aka not interactive)*/
-        return nil
+            return subviews.reversed().lazy.flatMap{$0.hitTest(aPoint)}.first/*if non-nil then a point was found within its hittable area,if no hitView is found return nil, the parent hitTest will then continue its search through its siblings etc*/
+        };return nil/*else (aka not interactive)*/
     }
     /**
      * Enables the hand cursor on enter
