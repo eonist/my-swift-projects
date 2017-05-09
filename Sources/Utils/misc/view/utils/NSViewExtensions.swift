@@ -68,6 +68,12 @@ extension NSView {
     func localToGlobal(_ p:CGPoint) -> CGPoint{
         return convert(p, to:self)
     }
+    /**
+     * New
+     */
+    func flipY(_ p:CGPoint)->CGPoint{
+        return CGPoint(p.x, WinParser.height(window!) - p.y)
+    }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
     //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
