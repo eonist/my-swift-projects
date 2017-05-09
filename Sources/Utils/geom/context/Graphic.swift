@@ -54,7 +54,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * Converts global p to local p
      */
     func globToLoc(_ p:CGPoint)->CGPoint{
-        let flippedPoint = convert(p, from: self.window?.contentView)//self.convert(p,from:nil)/*Converts the point to flipped geometry*/
+        
+        let flippedPoint = localPos()//convert(p, from: self.window?.contentView)//self.convert(p,from:nil)/*Converts the point to flipped geometry*/
         Swift.print("flippedPoint: " + "\(flippedPoint)")
         let offset = globalPos()
         let localPoint = flippedPoint - offset
