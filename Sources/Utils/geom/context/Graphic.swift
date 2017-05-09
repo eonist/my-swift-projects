@@ -45,14 +45,17 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         var localPoint = self.convert(aPoint,from:nil)/*you have to convert the aPoint to localspace*/
         Swift.print("Graphic.hitTest: aPoint: \(aPoint) \(type(of: self)) localPoint: " + "\(localPoint)")
         Swift.print("")
-        Swift.print("self.convert(aPoint,to:nil): " + "\(self.convert(aPoint,to:nil))")
-        Swift.print("self.convert(aPoint,from:self): " + "\(self.convert(aPoint,from:self))")
-        Swift.print("self.convert(aPoint,to:self): " + "\(self.convert(aPoint,to:self))")
-        Swift.print("window!.contentView!.convert(aPoint,from:self): " + "\(window!.contentView!.convert(aPoint,from:self))")
-        Swift.print("window!.contentView!.convert(aPoint,to:self): " + "\(window!.contentView!.convert(aPoint,to:self))")
-        Swift.print("window!.contentView!.convert(aPoint,from:nil): " + "\(window!.contentView!.convert(aPoint,from:nil))")
-        Swift.print("window!.contentView!.convert(aPoint,to:nil): " + "\(window!.contentView!.convert(aPoint,to:nil))")
         
+        if let parent:NSView = self.superview{
+            Swift.print("parent: " + "\(parent)")
+            if let parentParent:NSView = parent.superview{
+                Swift.print("parentParent: " + "\(parentParent)")
+                if let parentParentParent:NSView = parentParent.superview{
+                    Swift.print("parentParentParent: " + "\(parentParentParent)")
+                    
+                }
+            }
+        }
         
         /*let origin = window!.contentView!.convert(frame.origin, from:self )
          Swift.print("origin: " + "\(origin)")*/
