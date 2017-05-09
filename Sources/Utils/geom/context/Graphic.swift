@@ -43,6 +43,9 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         var localPoint = globToLoc(aPoint)
+        
+        Swift.print("aPoint: " + "\(aPoint)")
+        Swift.print("localPoint: " + "\(localPoint)")
         localPoint -= fillShape.frame.origin//<--Quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
         return isPointInside ? self : super.hitTest(aPoint)/*Return nil will tell the parent that there was no hit on this view*/
@@ -68,7 +71,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
             //Swift.print("\(parent).frame.origin: " + "\(parent?.frame.origin)")
             parent = parent?.superview
         }
-        //Swift.print("offset: " + "\(offset)")
+        Swift.print("offset: " + "\(offset)")
         return offset
     }
     /**
