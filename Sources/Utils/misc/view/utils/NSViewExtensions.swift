@@ -2,43 +2,6 @@ import Cocoa
 //todo rename to convertPointToView etc. dont use the hiTest prefix
 extension NSView {
     /**
-     * Asserts if locationInWindow is within the NSView frame
-     * NOTE: seem to work different if the view isnt flipped (which some arent) try the alternate method with the "fromView" param
-     * TODO: upgrade the type with a generic
-     */
-    func hitTestToView(_ locationInWindow:NSPoint, _ toView:NSView? = nil)->Bool{
-        let mousePos:NSPoint = convert(locationInWindow, to: toView)
-        /*
-        Swift.print("hitTestToView.locationInWindow: " + String(locationInWindow))
-        Swift.print("hitTestToView.mousePos(): " + String(mousePos))
-        Swift.print("hitTestToView.frame: " + String(frame))
-        */
-        return NSPointInRect(mousePos, frame)
-    }
-    /**
-     * TODO: upgrade the type with a generic
-     */
-    func hitTestFromView(_ locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
-        let mousePos:NSPoint = convert(locationInWindow, from: fromView)
-        /*
-        Swift.print("hitTestFromView.locationInWindow: " + String(locationInWindow))
-        Swift.print("hitTestFromView.mousePos(): " + String(mousePos))
-        Swift.print("hitTestFromView.frame: " + String(frame))
-        */
-        return NSPointInRect(mousePos, frame)
-    }
-    /**
-     * TODO: upgrade the type with a generic
-     */
-    func hitTestFromViewRelativeToFrame(_ locationInWindow:NSPoint, _ fromView:NSView? = nil)->Bool{
-        let mousePos:NSPoint = convert(locationInWindow, from: fromView)/*converts the mouse pos from a wrongly flipped view to a correctly flipped view*/
-        Swift.print("hitTestFromView.locationInWindow: " + String(describing: locationInWindow))
-        Swift.print("hitTestFromView.mousePos(): " + String(describing: mousePos))
-        Swift.print("hitTestFromView.frame: " + String(describing: frame))
-        /**/
-        return NSPointInRect(mousePos + frame.origin, frame)
-    }
-    /**
      * Convenince method that returns the view aswell (by utilising generics)
      */
     func addSubView<T:NSView>(_ view: T)->T{
