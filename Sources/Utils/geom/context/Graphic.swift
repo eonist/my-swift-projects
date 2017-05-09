@@ -59,7 +59,8 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         var offset:CGPoint = CGPoint()
         var parent:NSView? = self.superview
         while parent?.superview != nil {
-            Swift.print("parent: " + "\(parent)")
+            //Swift.print("parent: " + "\(parent)")
+            Swift.print("\(parent).frame.origin: " + "\(parent?.frame.origin)")
             parent = parent?.superview
         }
         
