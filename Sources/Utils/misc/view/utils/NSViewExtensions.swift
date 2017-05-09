@@ -72,7 +72,7 @@ extension NSView {
      * New
      */
     func flipY(_ p:CGPoint)->CGPoint{
-        return CGPoint(p.x, WinParser.height(window!) - p.y)
+        return CGPoint(p.x, WinParser.height(window!) - p.y)/*flips the window y coordinates*/
     }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
