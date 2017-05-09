@@ -70,9 +70,33 @@ extension NSView {
     }
     /**
      * New
+     * NOTE: convert(p,nil) usualy converts flipped geometry, but when using layer.position it wont work
      */
     func flipY(_ p:CGPoint)->CGPoint{
         return CGPoint(p.x, WinParser.height(window!) - p.y)/*flips the window y coordinates*/
+    }
+    /**
+     * New
+     * Converts global p to local p
+     */
+    func globToLoc(_ p:CGPoint)->CGPoint{
+        let flippedPoint = flipY(p)
+        let offset = globalPos()
+        let localPoint = flippedPoint - offset
+        return localPoint
+    }
+    /**
+     * New
+     * Returns the globalPoint of the self.frame.origin (where is this view in the POV of 0,0 of the upper most view)
+     */
+    func globalPos()->CGPoint{
+        var offset:CGPoint = CGPoint()
+        var parent:NSView? = self.superview
+        while parent?.superview != nil {
+            offset += parent!.layer!.position
+            parent = parent?.superview
+        }
+        return offset
     }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
