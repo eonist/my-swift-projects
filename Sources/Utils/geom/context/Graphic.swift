@@ -54,11 +54,11 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * Converts global p to local p
      */
     func globToLoc(_ p:CGPoint)->CGPoint{
-        Swift.print("p: " + "\(p)")
+        //Swift.print("p: " + "\(p)")
         Swift.print(window!.mouseLocationOutsideOfEventStream)
         //Swift.print("winMousePos: " + "\()")
         let flippedPoint = flipY(p)//convert(p, from: self.window?.contentView)//self.convert(p,from:nil)/*Converts the point to flipped geometry*/
-        Swift.print("flippedPoint: " + "\(flippedPoint)")
+        //Swift.print("flippedPoint: " + "\(flippedPoint)")
         let offset = globalPos()
         let localPoint = flippedPoint - offset
         return localPoint
@@ -75,7 +75,7 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
             //Swift.print("\(parent).frame.origin: " + "\(parent?.frame.origin)")
             parent = parent?.superview
         }
-        Swift.print("offset: " + "\(offset)")
+        //Swift.print("offset: " + "\(offset)")
         return offset
     }
     /**
