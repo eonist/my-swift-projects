@@ -1,7 +1,8 @@
 import Cocoa
 typealias ViewModifier = NSViewModifier//<---Legacy support
 /**
- * TODO: make a method with the NSView.sortSubviewsUsingFunction method. 
+ * TODO: make a method with the NSView.sortSubviewsUsingFunction method
+ * NOTE: to set position use .point = CGPoint()
  */
 class NSViewModifier {
     static func applyColor(_ view:NSView,_ nsFillColor:NSColor = NSColor.clear,_ nsLineColor:NSColor = NSColor.clear,_ lineWidth:Int = 0){
@@ -14,13 +15,6 @@ class NSViewModifier {
             view.layer!.borderColor = cgLineColor
             view.layer!.borderWidth = CGFloat(lineWidth)
         }
-    }
-    /**
-     * Sets the position of an NSView instance
-     * TODO: make the same method for size
-     */
-    static func position(_ view:NSView,_ point:CGPoint){
-        view.frame.origin = point
     }
     /**
      * Removes all children in an NSView

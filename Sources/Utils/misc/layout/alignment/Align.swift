@@ -16,7 +16,7 @@ class Align {
      */
     static func align(_ view:NSView, _ canvasSize:CGSize, _ canvasAlignment:String = Alignment.topLeft,_ viewAlignment:String = Alignment.topLeft, _ offset:CGPoint = CGPoint()) {
         let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(view.w, view.h), canvasSize, canvasAlignment, viewAlignment, offset)
-        NSViewModifier.position(view, alignmentPoint)
+        view.point = alignmentPoint
     }
     /**
      * Returns the point from where to align target PARAM: objectSize within PARAM: canvasSize at PARAM: objectAlignment and PARAM: canvasAlignment and PARAM: offset
