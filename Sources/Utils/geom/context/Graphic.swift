@@ -46,15 +46,20 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         Swift.print("Graphic.hitTest: aPoint: \(aPoint) \(type(of: self)) localPoint: " + "\(localPoint)")
         Swift.print("")
         
-        if let parent:NSView = self.superview{
+        /*if let parent:NSView = self.superview{
+         Swift.print("parent: " + "\(parent)")
+         if let parentParent:NSView = parent.superview{
+         Swift.print("parentParent: " + "\(parentParent)")
+         if let parentParentParent:NSView = parentParent.superview{
+         Swift.print("parentParentParent: " + "\(parentParentParent)")
+         
+         }
+         }
+         }*/
+        var parent:NSView? = self.superview
+        while parent?.superview != nil {
             Swift.print("parent: " + "\(parent)")
-            if let parentParent:NSView = parent.superview{
-                Swift.print("parentParent: " + "\(parentParent)")
-                if let parentParentParent:NSView = parentParent.superview{
-                    Swift.print("parentParentParent: " + "\(parentParentParent)")
-                    
-                }
-            }
+            parent = parent?.superview
         }
         
         /*let origin = window!.contentView!.convert(frame.origin, from:self )
