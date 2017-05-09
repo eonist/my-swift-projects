@@ -42,15 +42,19 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-    
-        let flippedPoint = self.convert(aPoint,from:nil)/*Converts the point to flipped geometry*/
-        let offset = globalPos()
-        var localPoint = flippedPoint - offset
-        Swift.print("Graphic.hitTest: aPoint: \(aPoint) \(type(of: self)) localPoint: " + "\(localPoint)")
-        
+        var localPoint = globToLoc(aPoint)
         localPoint -= fillShape.frame.origin//<--quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
-        return isPointInside ? self : super.hitTest(aPoint)/*return nil will tell the parent that there was no hit on this view*/
+        return isPointInside ? self : super.hitTest(aPoint)/*Return nil will tell the parent that there was no hit on this view*/
+    }
+    /**
+     * Converts global p to local p
+     */
+    func globToLoc(_ p:CGPoint)->CGPoint{
+        let flippedPoint = self.convert(p,from:nil)/*Converts the point to flipped geometry*/
+        let offset = globalPos()
+        let localPoint = flippedPoint - offset
+        return localPoint
     }
     /**
      * Returns the globalPoint of the self.frame.origin (where is this view in the POV of 0,0 of the upper most view)
