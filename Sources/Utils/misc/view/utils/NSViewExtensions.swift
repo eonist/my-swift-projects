@@ -98,6 +98,13 @@ extension NSView {
         }
         return offset
     }
+    /**
+     * New
+     */
+    var layerPos:CGPoint?{
+        get{return self.layer?.position}
+        set{self.layer?.position = newValue!}
+    }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
     //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
