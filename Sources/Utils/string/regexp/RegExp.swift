@@ -50,7 +50,7 @@ public class RegExp{
      *     let value = $0.value(str, 2)/*capturing group 2*/
      * }//Outputs: name: green, value: 00FF00...and so on
      */
-    static func matches(_ text: String!, _ pattern: String!, _ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {
+    static func matches(_ text:String!, _ pattern:String!, _ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: options)
             let nsString = text as NSString
