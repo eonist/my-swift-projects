@@ -1,6 +1,5 @@
 import Foundation
 
-
 class SVGPathUtils {
     static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
