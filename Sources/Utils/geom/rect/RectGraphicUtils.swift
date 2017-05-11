@@ -14,10 +14,11 @@ class RectGraphicUtils {
         }
         return fillFrameRect
     }
+    typealias LineOffset = (lineFrameRect:CGRect,lineRect:CGRect)
     /**
      * TODO: ⚠️️ move l,r,t,b into dedicated methods ? 
      */
-    static func lineOffsetRect(_ rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect){
+    static func lineOffsetRect(_ rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->LineOffset{
         var lineFrameRect:CGRect = rect.copy()
         var lineRect:CGRect = CGRect(0,0,rect.width,rect.height)
         /*Left*/
