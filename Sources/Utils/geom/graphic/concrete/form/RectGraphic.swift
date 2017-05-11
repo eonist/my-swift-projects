@@ -27,7 +27,9 @@ class RectGraphic:SizeableGraphic{
             Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
             Swift.print("after")
+            Swift.print("🍌 lineOffsetRect.lineRect.path: " + "\(lineOffsetRect.lineRect.path)")
             graphic.lineShape.path = lineOffsetRect.lineRect.path
+            Swift.print("after setting path")
         }
     }
 }
