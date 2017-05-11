@@ -15,6 +15,9 @@ enum SVGPathCommand:String {
     case z = "z"/*Return to last Move*/
 }
 extension SVGPathCommand{
+    /**
+     * Possibly a bug in swift
+     */
     static func make(rawValue: SVGPathCommand.RawValue) -> SVGPathCommand? {
         return SVGPathCommand.init(rawValue: rawValue)
     }

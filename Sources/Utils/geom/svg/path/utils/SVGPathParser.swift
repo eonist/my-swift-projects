@@ -65,7 +65,7 @@ class SVGPathParser {
 			let isLowerCase:Bool = StringAsserter.lowerCase(command)
 			var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
             let cmd:String = command.lowercased()
-			switch SVGPathCommand.init(rawValue:cmd) {
+			switch SVGPathCommand.make(rawValue:cmd) {
 				case .some(.m), .some(.l): /*lineTo,moveTo*/
 					pos += CGPoint(params[i+0],params[i+1])
 					i += 2
