@@ -5,7 +5,7 @@ class SVGGradientModifier {
 	 * Scales PARAM: gradient at PARAM: pivot with PARAM: scalar (0-1)
 	 * NOTE: works for SVGRadialGradient and SVGLinearGradient
 	 */
-	static func scale(_ gradient:SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
+	static func scale(_ gradient:inout SVGGradient,_ pivot:CGPoint,_ scale:CGPoint) {
         scaleGradient(&gradient.gradientTransform,pivot,scale)
     }
     static func scaleGradient(_ gradientTransform:inout CGAffineTransform?,_ pivot:CGPoint,_ scale:CGPoint){

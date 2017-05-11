@@ -4,7 +4,8 @@ import Foundation
  * TODO: add fx="98.7581" fy="63.338"
  * NOTE: to scale the outer circle radius you have to use matrix transformations and then scale it, adjust the inner circle radius if you want this to remain the same size
  */
-class SVGRadialGradient:SVGGradient {
+struct SVGRadialGradient:SVGGradientDecoratable {
+    var gradient:ISVGGradient
     var cx:CGFloat/*inner circle center x position*/
     var cy:CGFloat/*inner circle center y position*/
     var r:CGFloat/*radius represents the half the width and hight of the inner circle*/
@@ -16,6 +17,6 @@ class SVGRadialGradient:SVGGradient {
         self.r = r
         self.fx = fx
         self.fy = fy
-        super.init(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)
+        self.gradient = SVGGradient.init(offsets, colors, spreadMethod, id, gradientUnits, gradientTransform)
     }
 }
