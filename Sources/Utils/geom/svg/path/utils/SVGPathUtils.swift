@@ -1,20 +1,7 @@
 import Foundation
-enum SVGPathCommands:String {
-    case m = "m"/*Move*/
-    case l = "l"/*Line*/
-    case c = "c"/*Cubic-Curve*/
-    case s = "s"/*smooth Cubic curve command*/
-    case q = "q"/*Quad-curve*/
-    case t = "t"/*smooth quadratic curve command*/
-    case a = "a"/*Arc*/
-    case h = "h"/*Horizontal*/
-    case v = "v"/*Vertical*/
-    case z = "z"/*Return to last Move*/
-}
+
 
 class SVGPathUtils {
-   
-
     static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
@@ -25,7 +12,7 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             let cmd:String = command.lowercased()
-            switch SVGPathCommands.init(rawValue:cmd) {
+            switch SVGPathCommand.init(rawValue:cmd) {
                 case .some(.m): //moveTo
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
@@ -109,15 +96,15 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             let cmd:String = command.lowercased()
-            switch(true){
-                case cmd == SVGPathCommand.m: /*moveTo*/
+            switch SVGPathCommand.init(rawValue:cmd)  {
+                case .some(.m): /*moveTo*/
                     pos += CGPoint(params[i],params[i+1])
                     //prevM = pos.copy()
                     path.commands.append(PathCommand.moveTo)
                     path.pathData += [pos.x,pos.y]/*<-- used to be path.pathData.append(pos.x,pos.y);*/
                     i += 2
                     break;
-                case cmd == SVGPathCommand.l:/*lineTo*/
+                case .some(.l):/*lineTo*/
                     pos += CGPoint(params[i],params[i+1])
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]

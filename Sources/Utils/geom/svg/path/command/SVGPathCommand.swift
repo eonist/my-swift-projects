@@ -17,6 +17,6 @@ enum SVGPathCommand:String {
 
 extension SVGPathCommand{
     init?(rawValue: SVGPathCommand.RawValue) {
-        
+        return nil
     }
 }
