@@ -23,6 +23,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         graphic.fillShape.setNeedsDisplay()/*if the fillStyle is nil, we want the possible last drawing to disapear*/
         if(getGraphic().lineStyle != nil){drawLine()}/*👈 setup the line geometry, draw the lineShape*/
         graphic.lineShape.setNeedsDisplay()
+        Swift.print("draw complete")
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)

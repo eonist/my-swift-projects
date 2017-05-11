@@ -17,13 +17,16 @@ class RectGraphic:SizeableGraphic{
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
         let fillFrame:CGRect = graphic.lineStyle != nil ? RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*Position and set the size of the frame*/
+        Swift.print("after drawFill")
     }
     override func drawLine(){
         Swift.print("drawLine")
         if let lineStyle = graphic.lineStyle {/*<---TODO: I don't think this check is needed, as this check is already done in the GraphicDecoratable class, so remove it when your working with this again*/
             let lineOffsetRect:RectGraphicUtils.LineOffset = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
+            Swift.print("lineOffsetRect: " + "\(lineOffsetRect)")
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
             graphic.lineShape.path = lineOffsetRect.lineRect.path
         }
+        Swift.print("after drawLine")
     }
 }
