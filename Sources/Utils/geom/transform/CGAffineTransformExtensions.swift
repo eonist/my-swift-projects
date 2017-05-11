@@ -1,4 +1,7 @@
 import Foundation
+/**
+ * Make an alias named Transform even?
+ */
 typealias CGTransform = CGAffineTransform/*Convenience*/
 extension CGAffineTransform {
     mutating func rotate(_ rotation:CGFloat){/*Convenience*/

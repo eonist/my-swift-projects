@@ -20,10 +20,10 @@ class CGPointModifier {
      * PARAM: rotation must be between -PI and +PI
      */
     static func safeRotatePoint(_ pivot:CGPoint, _ point:CGPoint, _ rotation:CGFloat)->CGPoint {
-        let pointAngle:CGFloat = Trig.angle(pivot, point)//find the angle of point
-        let distance:CGFloat = PointParser.distance(pivot, point)//length of point and pivotPoint
-        let rot:CGFloat = Trig.normalize2(pointAngle + rotation)//sum of pointAngle and rotation, normalize this aka clamp between (-π and π)
-        return pivot + PointParser.safePolar(distance, rot)//use Point.polar
+        let pointAngle:CGFloat = Trig.angle(pivot, point)/*find the angle of point*/
+        let distance:CGFloat = PointParser.distance(pivot, point)/*length of point and pivotPoint*/
+        let rot:CGFloat = Trig.normalize2(pointAngle + rotation)/*sum of pointAngle and rotation, normalize this aka clamp between (-π and π)*/
+        return pivot + PointParser.safePolar(distance, rot)/*use Point.polar*/
     }
     /**
      * UNTESTED, but should work
@@ -33,8 +33,8 @@ class CGPointModifier {
      */
     static func rotatePoint(_ point:CGPoint, _ pivot:CGPoint, _ rotation:CGFloat) -> CGPoint {
         var transform = CGAffineTransform.identity
-        transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation);
-        return point.applying(transform)//matrix.transformPoint(point)
+        transform.rotateAroundPoint(rotation, pivot)
+        return point.applying(transform)
     }
     /**
      * Untested, but should work
@@ -48,7 +48,7 @@ class CGPointModifier {
      * Returns points rotated around a pivot point
      * NOTE: does not modifiy the original points
      * PARAM: rotation: in radians (suppers radian values from -∞ to +∞)
-     * TODO: make a similar method that takes initPoints and points, this way you avoid recrating a new array everytime
+     * TODO: ⚠️️make a similar method that takes initPoints and points, this way you avoid recrating a new array everytime
      */
     static func rotatePoints(_ points:[CGPoint], _ pivot:CGPoint, _ rotation:CGFloat) -> [CGPoint] {
         var rotatedPoints:[CGPoint] = []
