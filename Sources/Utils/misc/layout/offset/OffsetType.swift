@@ -13,7 +13,7 @@ struct OffsetType:Equatable,ILayout{
     var bottom:String
     init(_ args:Any...){
         switch(args.count){
-            case 0: left = OffsetType.inside; right = OffsetType.inside; top = OffsetType.inside; bottom = OffsetType.inside
+            case 0: left = OffsetType.center; right = OffsetType.center; top = OffsetType.center; bottom = OffsetType.center
             case 1: left = args[0] as! String; right = args[0] as! String; top = args[0] as! String; bottom = args[0] as! String;
             case 2: left = args[0] as! String; right = args[0] as! String;top = args[1] as! String; bottom = args[1] as! String;
             case 3: left = args[0] as! String;right = args[1] as! String;top = args[2] as! String;bottom = OffsetType.center;
