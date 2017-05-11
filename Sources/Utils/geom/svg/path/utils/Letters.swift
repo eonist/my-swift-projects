@@ -1,5 +1,7 @@
 import Foundation
 
-class Letters {
-
+enum Letters:String {
+    case a = "a"
+    case b = "b"
 }
+
