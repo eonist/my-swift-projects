@@ -19,6 +19,7 @@ class RectGraphicUtils {
      * TODO: ⚠️️ move l,r,t,b into dedicated methods ? 
      */
     static func lineOffsetRect(_ rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->LineOffset{
+        Swift.print("offsetType: " + "\(offsetType)")
         var lineFrameRect:CGRect = rect.copy()
         var lineRect:CGRect = CGRect(0,0,rect.width,rect.height)
         /*Left*/
