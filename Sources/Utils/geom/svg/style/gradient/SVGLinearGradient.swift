@@ -16,7 +16,6 @@ class SVGLinearGradient:SVGGradientDecoratable {
 		self.gradient = SVGGradient.init(offsets, colors, spreadMethod, id, gradientUnits, gradientTransform)
 	}
 }
-
 /**
  * Convenience
  */
