@@ -1,5 +1,4 @@
 import Foundation
-
 /**
  * Radial gradient:
  * Fill the current clipping region of `context' with a radial gradient
@@ -23,7 +22,7 @@ class RadialGradientUtils{
         let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
         let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
         let endFocusPoint:CGPoint = endCenter.polarPoint(minRadius, 0)/*Since we do the scaling, rotation and offseting on the context we dont have to worry about rotating the geometry etc*/
-        let focalRatio:CGFloat = gradient.startCenter!.y/*from -1 to 1*/
+        let focalRatio:CGFloat = gradient.startCenter!.y/*From -1 to 1*/
         let startCenter:CGPoint = endCenter.interpolate(endFocusPoint, focalRatio)
         let startRadius:CGFloat = 0.0/*This is less important when your using a focal point system, can be used when you implement the 2 point gradient system*/
         let endRadius:CGFloat = minRadius/*The radius of the gradient*/
