@@ -87,8 +87,8 @@ class CGPointModifier {
     /**
      * Use this when you want to scale the points directly
      */
-    static func scalePoints(_ points:inout Array<CGPoint>,_ pivot:CGPoint,_ scale:CGPoint) {
-        for i in 0..<points.count{
+    static func scalePoints(_ points:inout [CGPoint],_ pivot:CGPoint,_ scale:CGPoint) {
+        points.indices.forEach { i in
             points[i] = PointModifier.scale(points[i],pivot,scale)
         }
     }
