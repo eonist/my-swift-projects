@@ -39,8 +39,7 @@ class GradientUtils{
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
     static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:LinearGradient)->LinearGraphicsGradient{
-        
-        let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
+        let points:GradientBoxUtils.Line = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
         return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
     }
     /**
