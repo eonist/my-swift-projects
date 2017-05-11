@@ -2,7 +2,7 @@ import Foundation
 /**
  * The SVG commands represented here are from the official SVG syntax
  */
-public enum SVGPathCommand:String {
+enum SVGPathCommand:String {
     case m = "m"/*Move*/
     case l = "l"/*Line*/
     case c = "c"/*Cubic-Curve*/
