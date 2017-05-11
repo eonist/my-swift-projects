@@ -14,7 +14,3 @@ enum SVGPathCommand:String {
     case v = "v"/*Vertical*/
     case z = "z"/*Return to last Move*/
 }
-
-func == (left:String, right:SVGPathCommand) -> Bool {
-    return left == right.rawValue
-}
