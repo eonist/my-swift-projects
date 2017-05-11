@@ -14,17 +14,12 @@ struct Gradient:IGradient {
     var transformation:CGAffineTransform?
     init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [], _ rotation:CGFloat = 1.5707963267949/*4.71238898038469*/, _ transformation:CGAffineTransform? = nil){/*,*/
         self.colors = colors
-        if (locations.count == 0/* && colors.count > 0*/) {//add support for nil aswell
+        if (locations.count == 0/* && colors.count > 0*/) {/*add support for nil aswell*/
             self.locations = CGFloatParser.interpolatedRange(0,  1,  colors.count)
         }else{
             self.locations = locations
         }
         self.rotation = rotation
         self.transformation = transformation
-    }
-}
-extension IGradient{
-    init(_ gradient:IGradient){
-        self.init(gradient.colors,gradient.locations,gradient.rotation)
     }
 }

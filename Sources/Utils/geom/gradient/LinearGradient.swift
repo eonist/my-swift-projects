@@ -14,3 +14,9 @@ extension LinearGradient:UnWrappable{
         return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
     }
 }
+
+extension LinearGradient{
+    init(_ gradient:IGradient){
+        self.init(gradient.colors,gradient.locations,gradient.rotation)
+    }
+}

@@ -19,6 +19,12 @@ extension RadialGradient{
     var locations:[CGFloat] {get {return gradient.locations}set{gradient.locations = newValue}}
     var rotation:CGFloat {get {return gradient.rotation}set{gradient.rotation = newValue}}
 }
+extension RadialGradient{
+    init(_ gradient:IGradient){
+        self.init(gradient.colors,gradient.locations,gradient.rotation)
+    }
+}
+
 extension RadialGradient:UnWrappable{
     static func unWrap<T>(_ xml:XML) -> T? {
         let linearGradient:LinearGradient? = LinearGradient.unWrap(xml)
