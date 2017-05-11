@@ -10,3 +10,6 @@ protocol ISVGGradient:ISVGElement {
     var gradientUnits:String{get set} /*If the gradientUnits attribute has the value objectBoundingBox, the coordinates are taken as a percentage of bounding box's dimensions (this is the default). If the value is set to userSpaceOnuse, the coordinates are taken to be in the coordinate system used by the object that is being filled.*/
     var gradientTransform:CGAffineTransform?{get set}/*You can transform (e.g. rotate) the gradient before it is applied. See SVG Transformation for more details.*/
 }
+extension ISVGGradient{
+    
+}
