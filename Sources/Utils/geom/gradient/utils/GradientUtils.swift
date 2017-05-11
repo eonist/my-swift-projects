@@ -28,17 +28,18 @@ class GradientUtils{
      * Returns IGraphicsGradient for IGradient
      */
     static func graphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
-        if(gradient is LinearGradient){return linearGraphicsGradient(boundingBox,gradient)}
-        else if let radialGradient = gradient as? RadialGradient {
+        if let radialGradient = gradient as? RadialGradient {
             return radialGraphicsGradient(boundingBox,radialGradient)
-        }
-        else{fatalError("this type is not supported: " + "\(gradient)")}/*future support for Canonical gradient*/
+        }else if let linearGradient = gradient as? LinearGradient {
+            return linearGraphicsGradient(boundingBox,linearGradient)
+        }else{fatalError("this type is not supported: " + "\(gradient)")}/*future support for Canonical gradient*/
     }
     /**
      * Linear
+     * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
-    static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->LinearGraphicsGradient{
-        //TODO:// Extract the bellow lines to GradientUtils in IGradient
+    static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:LinearGradient)->LinearGraphicsGradient{
+        
         let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
         return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
     }
