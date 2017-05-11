@@ -5,7 +5,7 @@ import Foundation
   * NOTE: why do we use Double and not CGFloat for the color? I dont know, either works, why not use UInt? because UInt doesnt support NaN, May revert to using CGFloat in the future
   * TODO: impliment stroke-dasharray
   */
-class SVGStyle {
+struct SVGStyle {
     var fill:Any?/*The fill color or SVGLinearGradient instance*/
     var fillOpacity:CGFloat?/*A number ranging from 0.0 to 1.0; 0.0 is entirely transparent, 1.0 is entirely opaque.*/
     var fillRule:String?/*not implimented yet, This attribute can have the values "nonzero" or "evenodd", which apply different rules for determining whether a point is inside or outside a shape. These rules generate different effects only when a shape has intersecting lines or "holes" in it. Details are in "Filling Polygons That Have Intersecting Lines" earlier in this chapter.*/
