@@ -35,19 +35,15 @@ class SVGModifier {
 	 */
 	static func scale(_ element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
         switch(element){
-        case let element as SVGPolyLine:PointModifier.scalePoints(&element.points, pivot, scale)/*SVGPolyLine,SVGPolygon*/
-        case let element as SVGPolygon:PointModifier.scalePoints(&element.points, pivot, scale)
-        case let element as SVGRect:SVGRectModifier.scale(element, pivot, scale)
-        case let element as SVGLine:SVGLineModifier.scale(element,pivot,scale)
-            
-        case let element as SVGPath:SVGPathModifier.scale(element , pivot, scale);break;
-        case let element as SVGCircle:SVGCircleModifier.scale(element, pivot, scale);break;
-        
-        case let element as SVGEllipse:SVGEllipseModifier.scale(element, pivot, scale);break;
-        case let element as SVGContainer:SVGContainerModifier.scale(element ,pivot,scale);break;
-            
-        
-			case var element as SVGGradient:SVGGradientModifier.scale(&element , pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
+            case let element as SVGPolyLine:PointModifier.scalePoints(&element.points, pivot, scale)/*SVGPolyLine,SVGPolygon*/
+            case let element as SVGPolygon:PointModifier.scalePoints(&element.points, pivot, scale)
+            case let element as SVGRect:SVGRectModifier.scale(element, pivot, scale)
+            case let element as SVGLine:SVGLineModifier.scale(element,pivot,scale)
+            case let element as SVGPath:SVGPathModifier.scale(element , pivot, scale)
+            case let element as SVGCircle:SVGCircleModifier.scale(element, pivot, scale)
+            case let element as SVGEllipse:SVGEllipseModifier.scale(element, pivot, scale)
+            case let element as SVGContainer:SVGContainerModifier.scale(element ,pivot,scale)
+            case var element as SVGGradient:SVGGradientModifier.scale(&element , pivot, scale)/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
         if let element = element as? SVGGraphic {SVGModifier.update(element)}
