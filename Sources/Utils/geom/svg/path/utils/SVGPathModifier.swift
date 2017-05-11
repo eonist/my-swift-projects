@@ -25,8 +25,7 @@ class SVGPathModifier {
                     path.parameters[i] = p.x
                     path.parameters[i+1] = p.y
                     i += 2
-                    break;
-                case .some(.x):
+                case .some(.h):
                     p = PointModifier.scale(CGPoint(params[i],0), pivot, scalePoint)
                     path.parameters[i] = p.x
                     i += 1
