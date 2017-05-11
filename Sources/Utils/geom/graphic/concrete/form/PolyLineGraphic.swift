@@ -25,13 +25,11 @@ class PolyLineGraphicUtils{
      * NOTE: Rename to pathByPoints?, as swift supports method overloading, you don't need that speccific naming
      */
     static func path(_ points:[CGPoint]) -> IPath {
-        var commands:[Int] = [PathCommand.moveTo]
-        var pathData:[CGFloat] = [points[0].x,points[0].y]
-        for i in 1..<points.count{//swift 3 update
-            commands.append(PathCommand.lineTo)
+        return (1..<points.count).indices.reduce(Path([PathCommand.moveTo],[points[0].x,points[0].y])) { path,i in
+            path.commands.append(PathCommand.lineTo)
             let p:CGPoint = points[i]
-            pathData += [p.x,p.y]
+            path.pathData += [p.x,p.y]
+            return path
         }
-        return Path(commands, pathData)
     }
 }
