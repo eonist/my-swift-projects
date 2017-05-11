@@ -13,7 +13,7 @@ class SVGLinearGradient:ISVGGradient {
 		self.y1 = y1
 		self.x2 = x2
 		self.y2 = y2
-		self.gradient = SVGGradient.init(offsets, colors, spreadMethod, id, gradientUnits,gradientTransform)
+		self.gradient = SVGGradient.init(offsets, colors, spreadMethod, id, gradientUnits, gradientTransform)
 	}
 }
 /**
