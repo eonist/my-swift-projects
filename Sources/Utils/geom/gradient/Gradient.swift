@@ -23,3 +23,8 @@ struct Gradient:IGradient {
         self.transformation = transformation
     }
 }
+extension Gradient{
+    init(_ gradient:IGradient){
+        self.init(gradient.colors,gradient.locations,gradient.rotation)
+    }
+}

@@ -1,6 +1,6 @@
 import Foundation
 
-class RadialGradient:IGradient {
+struct RadialGradient:IGradient {
     var gradient:Gradient
     var startCenter:CGPoint?/*should be 0.5,0.5 to mimic the focal ratio radial system*/
     var endCenter:CGPoint?/*y = focalRatio (-1 to +1) */
@@ -15,9 +15,6 @@ class RadialGradient:IGradient {
     }
 }
 extension RadialGradient{
-    convenience init(_ gradient:IGradient){
-        self.init(gradient.colors,gradient.locations,gradient.rotation)
-    }
     var colors:[CGColor] {get {return gradient.colors}set{gradient.colors = newValue}}
     var locations:[CGFloat] {get {return gradient.locations}set{gradient.locations = newValue}}
     var rotation:CGFloat {get {return gradient.rotation}set{gradient.rotation = newValue}}
