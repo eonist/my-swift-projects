@@ -18,7 +18,7 @@ extension SVGPathCommand{
     /**
      * Possibly a bug in swift
      */
-    static func make(rawValue: SVGPathCommand.RawValue) -> SVGPathCommand? {
+    static func initiate(rawValue: SVGPathCommand.RawValue) -> SVGPathCommand? {
         return SVGPathCommand.init(rawValue: rawValue)
     }
 }
