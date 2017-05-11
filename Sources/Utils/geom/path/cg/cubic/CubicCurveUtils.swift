@@ -30,8 +30,7 @@ class CubicCurveUtils {
         /*So we need to solve At³ + Bt² + Ct + D = 0*/
         let t:CGFloat =  Utils.cubic(A,B,C,D)
         /*Replace the t on Bezier function and get x,y */
-        let p:CGPoint = Utils.point(p0,c0,c1,p1,t)
-        return p
+        return Utils.point(p0,c0,c1,p1,t)
     }
 }
 private class Utils{
