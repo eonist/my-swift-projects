@@ -135,7 +135,7 @@ private class BasicCommandParser{
      * // :TODO: Isn't this function superflousouse since you can just trace the actual command and get the same value?
      */
     static func commandLength(_ command:Int)->Int {
-        if(command == PathCommand.close || command == PathCommand.NO_OP) {return 0}
+        if(command == PathCommand.close || command == PathCommand.noOp) {return 0}
         else if(command == PathCommand.curveTo) {return 4}
         else if(command == PathCommand.arcTo) {return 9}
         else if(command == PathCommand.cubicCurveTo) {return 8}
