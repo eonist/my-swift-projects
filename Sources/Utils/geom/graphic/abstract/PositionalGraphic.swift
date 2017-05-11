@@ -2,7 +2,7 @@ import Foundation
 
 class PositionalGraphic:GraphicDecoratable,IPositional {
     var pos:CGPoint
-    init(_ pos:CGPoint,_ decoratable: IGraphicDecoratable) {
+    init(_ pos:CGPoint,_ decoratable:IGraphicDecoratable) {
         self.pos = pos
         super.init(decoratable)
     }

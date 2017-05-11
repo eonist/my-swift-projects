@@ -10,16 +10,16 @@ class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGr
      * NOTE: Color can't be uint since uint can't be NaN, use Double as a differntiator
      */
     override func beginFill(){
-        if(fillStyle != nil && fillStyle!.color != NSColor.clear ) {/*Updates only if fillStyle is of class FillStyle*/
-            fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
+        if let fillStyle = fillStyle, fillStyle.color != NSColor.clear{/*Updates only if fillStyle is of class FillStyle*/
+            fillShape.graphics.fill(fillStyle.color)/*Stylize the fill*/
         }
     }
     override func stylizeFill(){
         GraphicsModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     override func applyLineStyle() {
-        if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
-            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit,lineStyle!.phase,lineStyle!.lengths)
+        if let lineStyle = lineStyle {/*Updates only if lineStyle of class LineStyle*/
+            lineShape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit,lineStyle.phase,lineStyle.lengths)
         }
     }
     override func stylizeLine(){

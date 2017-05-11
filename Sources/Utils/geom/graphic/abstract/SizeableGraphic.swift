@@ -40,11 +40,15 @@ extension SizeableGraphic{
     convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
-    //TODO: is this init really needed?
+    /**
+     * TODO: ⚠️️ is this init really needed?
+     */
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable:IGraphicDecoratable){
         self.init(CGPoint(0,0),CGSize(width,height),decoratable)
     }
-    //TODO: I think the two bellow init methods can be merged into one, do it and test explorer if it works
+    /**
+     * TODO: ⚠️️ I think the two bellow init methods can be merged into one, do it and test explorer if it works
+     */
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
@@ -55,48 +59,3 @@ extension SizeableGraphic{
         self.init(rect.origin,rect.size,decoratable)
     }
 }
-
-
-/*
-//DEPRECATED CODE:
-
-/*Gradient fill initializers*/
-/*Color fill initializers*/
-
-
-/*
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle?, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and Gradient stroke*/
-//Swift.print("Init with none Fill and gradient line")
-self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
-}
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle, _ gradientLineStyle:GradientLineStyle?, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and Gradient stroke*/
-//Swift.print("Init with gradientFill and none line")
-self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
-}
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:FillStyle, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/* Gradient fill and color stroke*/
-//Swift.print("Init with color Fill and gradient line")
-self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(fillStyle,gradientLineStyle,lineOffset)))
-}
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/* Gradient fill and color stroke*/
-//Swift.print("Init with gradientFill and color line")
-self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,lineStyle,lineOffset)))
-}
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle/*?*/, _ gradientLineStyle:GradientLineStyle/*?*/, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and Gradient stroke*/
-//Swift.print("Init with gradientFill and gradientLineStyle")
-self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
-}
-
-/*Color fill initializers*/
-convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-//Swift.print("Init with Fill")
-self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle,lineOffset))
-}
-convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
-}
-convenience init(_ width:CGFloat, _ height:CGFloat, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
-}
-*/
-
-*/
