@@ -110,10 +110,10 @@ private class BasicPathDataParser{
      * // :TODO: for the close case we could also iterate backward to find the last MT???
      */
     static func endAt(_ pathData:[CGFloat], _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
-        if(commandType == PathCommand.MOVE_TO || commandType == PathCommand.LINE_TO || commandType == PathCommand.WIDE_MOVE_TO || commandType == PathCommand.WIDE_LINE_TO) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
-        else if(commandType == PathCommand.ARC_TO) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
-        else if(commandType == PathCommand.CURVE_TO) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
-        else if(commandType == PathCommand.CLOSE) {return CGPoint(NaN,NaN)}/*used to be null*/
+        if(commandType == PathCommand.moveTo || commandType == PathCommand.lineTo || commandType == PathCommand.wideMoveTo || commandType == PathCommand.wideLineTo) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
+        else if(commandType == PathCommand.arcTo) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
+        else if(commandType == PathCommand.curveTo) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
+        else if(commandType == PathCommand.close) {return CGPoint(NaN,NaN)}/*used to be null*/
         else {fatalError("PathCommand not yet supported")}//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
     }
     /**
@@ -135,38 +135,10 @@ private class BasicCommandParser{
      * // :TODO: Isn't this function superflousouse since you can just trace the actual command and get the same value?
      */
     static func commandLength(_ command:Int)->Int {
-        if(command == PathCommand.CLOSE || command == PathCommand.NO_OP) {return 0}
-        else if(command == PathCommand.CURVE_TO) {return 4}
-        else if(command == PathCommand.ARC_TO) {return 9}
-        else if(command == PathCommand.CUBIC_CURVE_TO) {return 8}
+        if(command == PathCommand.close || command == PathCommand.NO_OP) {return 0}
+        else if(command == PathCommand.curveTo) {return 4}
+        else if(command == PathCommand.arcTo) {return 9}
+        else if(command == PathCommand.cubicCurveTo) {return 8}
         else {return 2}/*MOVE_TO LINE_TO WIDE_MOVE_TO WIDE_LINE_TO*/
     }
 }
-/*
-private class Utils{
-    /**
-     * Very temp, remove if the other solution works
-     * //⚠️️ This is probably deperecated
-     */
-    static func arcTo(_ path:IPath,cgPath:CGMutablePath,index:Int,prevEnd:CGPoint){
-        //CGPathAddArcToPoint(cgPath, nil, prevEnd.x, prevEnd.y, path.pathData[index+5], path.pathData[index+6], path.pathData[index+0])
-        let center:CGPoint = CGPoint(path.pathData[index+7],path.pathData[index+8])
-        let start:CGPoint = prevEnd.copy()
-        let end:CGPoint = CGPoint(path.pathData[index+5],path.pathData[index+6])
-        let startAngle:CGFloat = TrigParser.angle(center, start)
-        
-        Swift.print("CGPathUtils.compile() startAngle: " + "\(startAngle)")
-        let endAngle:CGFloat = TrigParser.angle(center, end)
-        
-        Swift.print("CGPathUtils.compile() endAngle: " + "\(endAngle)")
-        let clockwise:Bool =  path.pathData[index+4] == 1
-        Swift.print("CGPathUtils.compile() clockwise: " + "\(clockwise)")
-        let delta = TrigParser.angleSpan2(startAngle, endAngle, clockwise)//use angleSpan to find the diff between start and end angles
-        Swift.print("CGPathUtils.compile() delta: " + "\(delta)")
-        
-        //CGPathAddArc(cgPath, nil, center.x,center.y, path.pathData[index+0]/*<-radius*/, startAngle,endAngle ,clockwise/**//*<-clockwise*/)
-        cgPath.addRelativeArc(center: center, radius: path.pathData[index+0], startAngle: startAngle, delta: delta/*, nil*/)
-        //CGPathAddLineToPoint(cgPath,nil,path.pathData[index+5],path.pathData[index+6])
-    }
-}
-*/
