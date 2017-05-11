@@ -1,6 +1,7 @@
 import Foundation
 /**
  * The responsibility of this class is to provide access to the position of the SizeableGraphic
+ * TODO: ⚠️️ Probably use if let in this class
  */
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
