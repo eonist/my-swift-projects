@@ -13,14 +13,14 @@ class SVGPathParser {
 	 */
 	static func pathData(_ data:String)->SVGPathData {
         let matches = data.matches(pathPattern)
-        return matches.reduce(SVGPathData([],[])) { /*Loops through the pattern*///TODO: use marches.forEach instead
-            let match:NSTextCheckingResult = $1
+        return matches.reduce(SVGPathData([],[]))  { pathData,match in /*Loops through the pattern*///TODO: use marches.forEach instead
+            var pathData = pathData
             let cmnd = match.value(data,1)/*capturing group 1*/
-            $0.commands.append(cmnd)
+            pathData.commands.append(cmnd)
             let params = match.value(data,2)/*capturing group 2*/
             let array:[CGFloat] = SVGPathParser.parameters(params)
-            $0.parameters += array//<---this is the same as concat
-            return $0
+            pathData.parameters += array//<---this is the same as concat
+            return pathData
         }
 	}
     /**
@@ -28,10 +28,10 @@ class SVGPathParser {
 	 * NOTE: cant make this private since polyline and polygon uses this method
      * EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
-	 * TODO: write more examples in this comment section
+	 * TODO: ⚠️️ write more examples in this comment section
 	 */
 	static func parameters(_ parameters:String)->[CGFloat] {
-        let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
+        let middle:String = RegExpPattern.digitAssertPattern
         let pattern:String = paramStartPattern + middle + paramEndPattern
 		let stringArray:[String] = parameters.match(pattern);
         let array:[CGFloat] = stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
