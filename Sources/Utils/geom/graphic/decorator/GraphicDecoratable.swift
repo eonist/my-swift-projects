@@ -85,8 +85,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * This method results in the setting of the "line-path" to the graphics instance
      */
     override func drawLine(){
+        Swift.print("🍊 decoratable.drawLine() before")
         decoratable.drawLine()
-        Swift.print("decoratable.drawLine() after")
+        Swift.print("🍏 decoratable.drawLine() after")
     }
     /**
      * This method results the actual drawing of the stroke to the context (based on what is attached on the graphics instance at the moment)
