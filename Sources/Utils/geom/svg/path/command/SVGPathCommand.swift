@@ -14,9 +14,3 @@ enum SVGPathCommand:String {
     case v = "v"/*Vertical*/
     case z = "z"/*Return to last Move*/
 }
-
-extension SVGPathCommand{
-    init?(rawValue: SVGPathCommand.RawValue) {
-        return nil
-    }
-}

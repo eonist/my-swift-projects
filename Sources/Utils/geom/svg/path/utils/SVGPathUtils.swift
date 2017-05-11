@@ -116,13 +116,13 @@ class SVGPathUtils {
                     path.pathData += [pos.x,pos.y]
                     i += 1
                     break;
-                case cmd == SVGPathCommand.v:/*verticalLineTo*/
+                case .some(.v):/*verticalLineTo*/
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
                     i += 1
                     break;
-                case cmd == SVGPathCommand.c:/*cubicCurveTo*/
+                case .some(.c):/*cubicCurveTo*/
                     pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1])
                     prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
@@ -130,7 +130,7 @@ class SVGPathUtils {
                     path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
                     i += 6
                     break;
-                case cmd == SVGPathCommand.s:/*smoothCubicCurveTo*/
+                case .some(.s):/*smoothCubicCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
@@ -138,21 +138,21 @@ class SVGPathUtils {
                     path.pathData += [cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y]
                     i += 4
                     break;
-                case cmd == SVGPathCommand.q:/*quadCurveTo*/
+                case .some(.q):/*quadCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     path.commands.append(PathCommand.curveTo)
                     path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                     i += 4
                     break;
-                case cmd == SVGPathCommand.t://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
+                case .some(.t)://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     path.commands.append(PathCommand.curveTo)
                     path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                     i += 2
                     break;
-                case cmd == SVGPathCommand.z: path.commands.append(PathCommand.close); break;/*closes it self to the prev MT pos*/
+                case .some(.z): path.commands.append(PathCommand.close); break;/*closes it self to the prev MT pos*/
 					/*case PathCommand.ARC_TO:
 						DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
 						i += 7;
