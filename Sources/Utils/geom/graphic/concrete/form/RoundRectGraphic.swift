@@ -25,9 +25,6 @@ class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!)
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
             graphic.lineShape.path = CGPathParser.roundRect(lineOffsetRect.lineRect.x,lineOffsetRect.lineRect.y,lineOffsetRect.lineRect.width,lineOffsetRect.lineRect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//lineOffsetRect.lineRect.path
-            /*mask*/
-            //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType)
-            //fatalError("the above lines needs to be updated, RectGraphicUtils.offsetRect etc")
         }
     }
 }

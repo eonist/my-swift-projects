@@ -19,9 +19,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * ⚠️️IMPORTANT⚠️️: It's the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        if(getGraphic().fillStyle != nil){drawFill();}/*👈 setup the fill geometry, draw the fileShape*/
+        if(getGraphic().fillStyle != nil){drawFill()}/*👈 setup the fill geometry, draw the fileShape*/
         graphic.fillShape.setNeedsDisplay()/*if the fillStyle is nil, we want the possible last drawing to disapear*/
-        if(getGraphic().lineStyle != nil){drawLine();}/*👈 setup the line geometry, draw the lineShape*/
+        if(getGraphic().lineStyle != nil){drawLine()}/*👈 setup the line geometry, draw the lineShape*/
         graphic.lineShape.setNeedsDisplay()
     }
     /**
