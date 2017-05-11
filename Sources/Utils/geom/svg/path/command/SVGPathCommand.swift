@@ -1,7 +1,6 @@
 import Foundation
 /**
  * The SVG commands represented here are from the official SVG syntax
- * TODO: Great candidate for enum 👌
  */
 enum SVGPathCommand:String {
     case m = "m"/*Move*/
@@ -16,7 +15,6 @@ enum SVGPathCommand:String {
     case z = "z"/*Return to last Move*/
 }
 
-
-func == (left: String, right: SVGPathCommand) -> Bool {
+func == (left:String, right:SVGPathCommand) -> Bool {
     return left == right.rawValue
 }

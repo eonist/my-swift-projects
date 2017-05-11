@@ -19,9 +19,8 @@ class SVGPathModifier {
         var a2:CGPoint
         for e in 0..<commands.count{
             let command:String = commands[e]
-            let cmd:String = command.lowercased()
-            switch(true){
-                case cmd == SVGPathCommand.l, cmd == SVGPathCommand.m:
+            switch(command.lowercased()){
+                case SVGPathCommand.l.rawValue, SVGPathCommand.m.rawValue:
                     p = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint)
                     path.parameters[i] = p.x
                     path.parameters[i+1] = p.y
