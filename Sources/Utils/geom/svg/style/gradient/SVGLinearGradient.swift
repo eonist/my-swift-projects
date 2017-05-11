@@ -20,7 +20,14 @@ protocol SVGGradientDecoratable:ISVGGradient{
     var gradient:ISVGGradient {get set}
 }
 extension SVGGradientDecoratable{
-    
+    var element:ISVGElement {get{return } set{}}
+    /*
+     var offsets:[CGFloat]{get set}
+     var colors:[CGColor]{get set}
+     var spreadMethod:String{get set}
+     var gradientUnits:String{get set}
+     var gradientTransform:CGAffineTransform?
+     */
 }
 /**
  * Convenience
