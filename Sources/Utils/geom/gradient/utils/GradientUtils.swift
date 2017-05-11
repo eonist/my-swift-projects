@@ -29,7 +29,7 @@ class GradientUtils{
      */
     static func graphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
         if(gradient is LinearGradient){return linearGraphicsGradient(boundingBox,gradient)}
-        else if radialGradient = gradient as? RadialGradient {
+        else if let radialGradient = gradient as? RadialGradient {
             return radialGraphicsGradient(boundingBox,radialGradient)
         }
         else{fatalError("this type is not supported: " + "\(gradient)")}/*future support for Canonical gradient*/
@@ -47,7 +47,7 @@ class GradientUtils{
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
     static func radialGraphicsGradient(_ boundingBox:CGRect,_ gradient:RadialGradient)->RadialGraphicsGradient{
-        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient as! RadialGradient)/*Creates and configs the radial gradient*/
+        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
         return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
     }
 }
