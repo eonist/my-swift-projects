@@ -28,14 +28,13 @@ class SVGPathParser {
 	 * NOTE: cant make this private since polyline and polygon uses this method
      * EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
-	 * TODO: ⚠️️ write more examples in this comment section
+	 * TODO: ⚠️️ Write more examples in this comment section
 	 */
 	static func parameters(_ parameters:String)->[CGFloat] {
         let middle:String = RegExpPattern.digitAssertPattern
         let pattern:String = paramStartPattern + middle + paramEndPattern
-		let stringArray:[String] = parameters.match(pattern);
-        let array:[CGFloat] = stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
-        return array
+		let stringArray:[String] = parameters.match(pattern)
+        return stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
 	}
 	/**
 	 * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
@@ -50,9 +49,9 @@ class SVGPathParser {
 	}
 	/**
 	 * Returns all points in PARAM: path
-	 * TODO: impliment native quad to 
-	 * TODO: add support for zZ ?!? do we need to?
-	 * TODO: cubic and quad curve may have more params and they may have t and s  impliment this
+	 * TODO: ⚠️️ Impliment native quad to
+	 * TODO: ⚠️️ Add support for zZ ?!? do we need to?
+	 * TODO: ⚠️️ Cubic and quad curve may have more params and they may have t and s  impliment this
 	 */
 	static func points(_ path:SVGPath)->[CGPoint] {
 		var commands:Array = path.commands
@@ -96,7 +95,7 @@ class SVGPathParser {
                 default:break;
 			}
 			positions.append(pos)
-			if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
+			if(e < commands.count-1) {
 				prevP = pos.copy()
 			}
 		}
