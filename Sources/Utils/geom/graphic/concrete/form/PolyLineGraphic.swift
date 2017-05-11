@@ -4,7 +4,7 @@ class PolyLineGraphic:PathGraphic{
     var points:[CGPoint]
     init(_ points:[CGPoint], _ decoratable:IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.points = points
-        let path:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
+        let path:IPath = PolyLineGraphicUtils.path(points)/*Convert points to a Path*/
         super.init(path, decoratable)
     }
     func setPoints(points:[CGPoint]) {
@@ -22,7 +22,7 @@ extension PolyLineGraphic{
 }
 class PolyLineGraphicUtils{
     /**
-     * NOTE: rename to pathByPoints?, as swift supports method overloading, you don't need that speccific naming
+     * NOTE: Rename to pathByPoints?, as swift supports method overloading, you don't need that speccific naming
      */
     static func path(_ points:[CGPoint]) -> IPath {
         var commands:[Int] = [PathCommand.moveTo]
