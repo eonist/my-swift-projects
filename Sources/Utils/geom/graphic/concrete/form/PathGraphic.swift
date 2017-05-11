@@ -19,10 +19,10 @@ class PathGraphic:SizeableDecorator{
         graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
     override func drawLine() {
-        var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
+        var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*Regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
         graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
-        let offset = CGPoint(-boundingBox.x,-boundingBox.y)/*we get the amount of offset need to set the path in (0,0) inside the frame*/
-        var offsetPath:CGMutablePath = cgPath.clone()/*we clone the path so that the original isnt modified*/
+        let offset = CGPoint(-boundingBox.x,-boundingBox.y)/*We get the amount of offset need to set the path in (0,0) inside the frame*/
+        var offsetPath:CGMutablePath = cgPath.clone()/*We clone the path so that the original isnt modified*/
         graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
 }
