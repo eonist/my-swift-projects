@@ -38,15 +38,15 @@ private class Utils{
      * NOTE: This method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
      */
     static func svgStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
-        let fill:Any? = fillStyle?.color.hexVal ?? nil
-        let fillOpacity:CGFloat? = fillStyle?.color.alphaComponent ?? nil
+        let fill:Any? = fillStyle?.color.hexVal
+        let fillOpacity:CGFloat? = fillStyle?.color.alphaComponent
         let fillRule:String? = nil
-        let strokeWidth:CGFloat? = lineStyle?.thickness ?? nil
+        let strokeWidth:CGFloat? = lineStyle?.thickness
         let stroke:Any? = lineStyle != nil && lineStyle?.color != NSColor.clear/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil
-        let strokeOpacity:CGFloat? = lineStyle?.color.alphaComponent ?? nil
+        let strokeOpacity:CGFloat? = lineStyle?.color.alphaComponent
         let strokeLineCap:String? = lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil
         let strokeLineJoin:String? = lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin) : nil
-        let strokeMiterLimit:CGFloat? = lineStyle?.miterLimit ?? nil
+        let strokeMiterLimit:CGFloat? = lineStyle?.miterLimit
         return SVGStyle(fill,fillOpacity,fillRule,strokeWidth,stroke,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit)
     }
 }

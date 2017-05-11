@@ -5,7 +5,7 @@ import Cocoa
  * TODO: why isnt this a decorator? if you find the answere then add to a NOTE: in this description
  * TODO: look into making ISIzeableGraohic and IPositionalGraphic again that extends the functionality you need but doesnt have the init stuff
  */
-class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecoratable, and then changed to SizeableDec..was positionalDec etc, then changed back to positional, then changed to SizeableDecorator again after a bug surfaced*/ {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
+class GradientGraphic:SizeableDecorator/*<--Recently changed from GraphicDecoratable, and then changed to SizeableDec..was positionalDec etc, then changed back to positional, then changed to SizeableDecorator again after a bug surfaced*/ {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
     override func beginFill(){
         if let fillStyle:IGradientFillStyle = graphic.fillStyle as? IGradientFillStyle{
             let gradient = fillStyle.gradient
@@ -21,7 +21,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      * NOTE: We could renamed this method to applyGradientLinestyle, but as it needs to override it cant be renamed!
      */
     override func applyLineStyle() {
-        super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+        super.applyLineStyle()/*Call the BaseGraphic to set the stroke-width, cap, joint etc*/
         if let lineStyle:IGradientLineStyle = getGraphic().lineStyle as?  IGradientLineStyle{
             let gradient:IGradient = lineStyle.gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc

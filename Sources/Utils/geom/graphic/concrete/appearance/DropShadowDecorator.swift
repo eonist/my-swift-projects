@@ -1,9 +1,9 @@
 import Cocoa
 /**
  * NOTE: It isn't ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
- * TODO: Why did you stop using the Graphics outer shadow and start using the layer outer shadow?
+ * TODO: ⚠️️ Why did you stop using the Graphics outer shadow and start using the layer outer shadow?
  */
-class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
+class DropShadowDecorator:SizeableDecorator{//TODO: ⚠️️ probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
     var dropShadow:DropShadow?
     init(_ decoratable: IGraphicDecoratable,_ dropShadow:DropShadow?) {
         self.dropShadow = dropShadow
@@ -25,7 +25,6 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
             graphic.layer!.shadowRadius = 0.0
             graphic.layer!.shadowOffset = CGSize(0, 0)
         }
-        //Swift.print(graphic.graphics.dropShadow)
         super.fill()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
