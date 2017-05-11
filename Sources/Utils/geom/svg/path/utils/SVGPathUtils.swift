@@ -79,7 +79,7 @@ class SVGPathUtils {
                     i += 7
                     break
                 */
-                default: break;
+                default: break;//or use case .none: fatalErr 
             }
             if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
                 prevP = pos.copy()
