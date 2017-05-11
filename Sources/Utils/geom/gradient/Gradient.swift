@@ -7,7 +7,7 @@ import Foundation
  * NOTE: Linear and Radial should support both absolute and relative values that operate on the path boundingbox
  * TODO: Find that medium article on axial gradient. the one that looks like a "spread out patonefan"
  */
-class Gradient:IGradient {
+struct Gradient:IGradient {
     var colors:[CGColor]
     var locations:[CGFloat]/*Same as color stops between 0 & 1*/
     var rotation:CGFloat/*Must be between -π and π or it will fail*/ /*<---this doesnt belong here, you apply rotations in the matrix*/

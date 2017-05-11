@@ -3,9 +3,9 @@ import Foundation
  * NOTE: There is no TopLeft or BottomRight etc in the CSS sepcs so no need to have more complex relative positioning in this class
  * NOTE: Why do we have this class when its basically the same as Gradient? Because the alternative is to ad another value to to Gradient to represent Gradient Type.
  */
-class LinearGradient:Gradient {
-    override init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [],_ rotation:CGFloat = 1.5707963267949, _ transformation:CGAffineTransform? = nil){
-        super.init(colors, locations,rotation,transformation)
+struct LinearGradient:IGradient {
+    init(_ colors:[CGColor] = [], _ locations:[CGFloat] = [],_ rotation:CGFloat = 1.5707963267949, _ transformation:CGAffineTransform? = nil){
+        let gradient = Gradient.init(colors, locations,rotation,transformation)
     }
 }
 extension LinearGradient{
