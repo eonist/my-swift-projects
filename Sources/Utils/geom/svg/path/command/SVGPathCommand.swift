@@ -15,3 +15,8 @@ enum SVGPathCommand:String {
     case z = "z"/*Return to last Move*/
 }
 
+extension SVGPathCommand{
+    init?(rawValue: SVGPathCommand.RawValue) {
+        
+    }
+}

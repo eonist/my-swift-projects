@@ -78,19 +78,19 @@ class SVGPathParser {
 					pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
 					i += 1
 					break;
-				case cmd == SVGPathCommand.c:/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
+				case .some(.c):/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
 					pos += CGPoint(params[i+4],params[i+5])
 					i += 6
 					break;
-				case cmd == SVGPathCommand.s:/*smooth Cubic curve command*/
+				case .some(.s):/*smooth Cubic curve command*/
 					pos += CGPoint(params[i+2],params[i+3])
 					i += 4
 					break;
-				case cmd == SVGPathCommand.q:/*quadCurveTo*/
+				case .some(.q):/*quadCurveTo*/
 					pos += CGPoint(params[i+2],params[i+3])
 					i += 4
 					break;
-				case cmd == SVGPathCommand.t:/*smooth quadratic curve command*/
+				case .some(.t):/*smooth quadratic curve command*/
 					pos += CGPoint(params[i],params[i+1])
 					i += 2
 					break;
