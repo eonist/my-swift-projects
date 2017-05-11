@@ -178,6 +178,7 @@ class SVGPathUtils {
         return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
     }
 }
+
 /**
 CGPathAddCurveToPoint
 NOTE: more info like the bellow here: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
