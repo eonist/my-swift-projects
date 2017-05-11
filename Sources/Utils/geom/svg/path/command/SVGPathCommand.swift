@@ -1,6 +1,7 @@
 import Foundation
 /**
  * The SVG commands represented here are from the official SVG syntax
+ * NOTE: ⚠️️ You dont need the cases to use this method. Works with .init(rawValue:str) alone
  */
 enum SVGPathCommand:String {
     case m = "m"/*Move*/
