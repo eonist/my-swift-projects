@@ -6,8 +6,12 @@ import Cocoa
  */
 class EllipseGraphic:SizeableGraphic{
     override func drawFill() {
-        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
-        graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
+        let fillFrame:CGRect = {
+            if let lineStyle = graphic.lineStyle {
+                return RectGraphicUtils.fillFrame(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
+            };return CGRect(x,y,width,height)
+        }()
+        graphic.fillShape.frame = fillFrame/*Position and set the size of the frame*/
         graphic.fillShape.path = CGPathParser.ellipse(CGRect(0,0,width,height))
     }
     override func drawLine() {
