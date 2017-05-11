@@ -60,8 +60,9 @@ class CGPointModifier {
     /**
      * Scales PARAM: p at PARAM: pivot with PARAM: scale
      * EXAMPLE: PointModifier.scale(CGPoint(0,0), CGPoint(40,40), CGPoint(2,2))//Output: (-40.0, -40.0)
+     * PARAM: scale: 0-1
      */
-    static func scale(_ p:CGPoint,_ pivot:CGPoint,_ scale:CGPoint/*0-1*/)->CGPoint{
+    static func scale(_ p:CGPoint,_ pivot:CGPoint,_ scale:CGPoint)->CGPoint{
         var transform:CGAffineTransform = CGAffineTransform.identity
         transform.scaleFromPoint(scale.x, scale.y, pivot)
         return p.applying(transform)//swift 3 was-->CGPointApplyAffineTransform

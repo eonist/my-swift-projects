@@ -39,7 +39,6 @@ class SVGPathModifier {
                     c1 = PointModifier.scale(CGPoint(params[i],params[i+1]), pivot, scalePoint)
                     c2 = PointModifier.scale(CGPoint(params[i+2],params[i+3]), pivot, scalePoint)
                     a2 = PointModifier.scale(CGPoint(params[i+4],params[i+5]), pivot, scalePoint)
-                    //Swift.print(e+" scale.c c1: "+c1 + " c2:"+c2+" a2:" + a2);
                     path.parameters[i] = c1.x
                     path.parameters[i+1] = c1.y
                     path.parameters[i+2] = c2.x
