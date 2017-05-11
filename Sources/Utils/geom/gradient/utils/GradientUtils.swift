@@ -23,7 +23,7 @@ class GradientUtils{
         }else{fatalError("this type is not supported: " + "\(gradient)")}/*Future support for Canonical gradient*/
     }
     /**
-     * Linear
+     * Linear Gradient
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
     static func linearGraphicsGradient(_ boundingBox:CGRect,_ gradient:LinearGradient)->LinearGraphicsGradient{
@@ -31,7 +31,7 @@ class GradientUtils{
         return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
     }
     /**
-     * Radial
+     * Radial Gradient
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
     static func radialGraphicsGradient(_ boundingBox:CGRect,_ gradient:RadialGradient)->RadialGraphicsGradient{
