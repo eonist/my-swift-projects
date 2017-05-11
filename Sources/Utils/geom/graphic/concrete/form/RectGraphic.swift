@@ -21,6 +21,8 @@ class RectGraphic:SizeableGraphic{
     }
     override func drawLine(){
         Swift.print("drawLine")
+        Swift.print("graphic.lineStyle: " + "\(graphic.lineStyle)")
+        Swift.print("graphic.lineStyle == nil: " + "\(graphic.lineStyle == nil)")
         if let lineStyle = graphic.lineStyle {/*<---TODO: I don't think this check is needed, as this check is already done in the GraphicDecoratable class, so remove it when your working with this again*/
             Swift.print(CGRect(x,y,width,height))
             let lineOffsetRect:RectGraphicUtils.LineOffset = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
