@@ -110,7 +110,7 @@ class SVGPathUtils {
                     path.pathData += [pos.x,pos.y]
                     i += 2
                     break;
-                case cmd == SVGPathCommand.h:/*horizontalLineTo*/
+                case .some(.h):/*horizontalLineTo*/
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.commands.append(PathCommand.lineTo)
                     path.pathData += [pos.x,pos.y]
