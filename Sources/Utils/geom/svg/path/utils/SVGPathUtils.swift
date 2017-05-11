@@ -3,7 +3,7 @@ import Foundation
  * NOTE: Info about CATransform: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
  */
 class SVGPathUtils {
-    static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
+    static func drawPath(_ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
         var prevM:CGPoint!/*previous MoveTo pos*/
@@ -13,10 +13,10 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             switch SVGPathCommand(rawValue:Character(command.lowercased())) {
-                case .some(.m): /*moveTo*/
+                case .some(.m):/*moveTo*/
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
-                    path.move(to:pos)//was->CGPathMoveToPoint
+                    path.move(to:pos)
                     i += 2
                     break;
                 case .some(.l):/*lineTo*/
@@ -34,27 +34,27 @@ class SVGPathUtils {
                     path.addLine(to: pos)
                     i += 1
                     break;
-                case .some(.c)://curveTo
+                case .some(.c):/*curveTo*/
                     pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
                     path.addCurve(to: pos, control1: controlP1, control2: prevC)//swift 3, was-> CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6
                     break;
-                case .some(.s)://smoothCurveTo
+                case .some(.s):/*smoothCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
                     path.addCurve(to: pos, control1: cP1, control2: prevC)//swift 3, was->CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
                     i += 4//<---shouldn't this also be 6, maybe not actually, there is no i+4 or i+5!?!
                     break;
-                case .some(.q): //quadCurveTo
+                case .some(.q):/*quadCurveTo*/
                     pos += CGPoint(params[i+2],params[i+3])
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                     i += 4
                     break;
-                case .some(.t)://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
+                case .some(.t):/*smoothQuadCurveTo*/ /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
