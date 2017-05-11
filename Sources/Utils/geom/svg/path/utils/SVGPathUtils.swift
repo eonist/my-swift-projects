@@ -1,24 +1,7 @@
 import Foundation
 
 class SVGPathUtils {
-    /**
-     * Draws a path on PARAM: graphics with data from PARAM: parameters
-     * NOTE: this method also handles the uppercase and lowercase difference in the SVG syntax
-     * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
-     * TODO: impliment quadTo
-     */
-    enum SVGPathCommand:String {//del
-        case m = "m"/*Move*/
-        case l = "l"/*Line*/
-        case c = "c"/*Cubic-Curve*/
-        case s = "s"/*smooth Cubic curve command*/
-        case q = "q"/*Quad-curve*/
-        case t = "t"/*smooth quadratic curve command*/
-        case a = "a"/*Arc*/
-        case h = "h"/*Horizontal*/
-        case v = "v"/*Vertical*/
-        case z = "z"/*Return to last Move*/
-    }
+   
 
     static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
@@ -30,7 +13,7 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             let cmd:String = command.lowercased()
-            switch SVGPathCommands.init(rawValue:cmd) {
+            switch SVGPathCommand.init(rawValue:cmd) {
                 case .some(.m): //moveTo
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
