@@ -42,7 +42,7 @@ class UnWrapUtils{
             return DropShadow.unWrap(xml)!
         }else if(type == String(describing: RadialGradient.self)){
             return RadialGradient.unWrap(xml)!
-        }else if(type == String(describing: LinearGradient.self)){
+        }else if(type == String(describing: )){
             return LinearGradient.unWrap(xml)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
