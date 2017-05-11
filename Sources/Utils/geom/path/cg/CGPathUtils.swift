@@ -142,6 +142,7 @@ private class BasicCommandParser{
         else {return 2}/*MOVE_TO LINE_TO WIDE_MOVE_TO WIDE_LINE_TO*/
     }
 }
+/*
 private class Utils{
     /**
      * Very temp, remove if the other solution works
@@ -168,3 +169,4 @@ private class Utils{
         //CGPathAddLineToPoint(cgPath,nil,path.pathData[index+5],path.pathData[index+6])
     }
 }
+*/

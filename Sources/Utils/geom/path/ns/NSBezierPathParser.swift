@@ -10,7 +10,7 @@ class NSBezierPathParser {
         }
         let path = CGMutablePath()
         var didClosePath = false
-        for i in 0...nsBezierPath.elementCount-1 {//TODO: why isn't this: 0..<.elementCount?
+        for i in 0...nsBezierPath.elementCount-1 {//TODO: ⚠️️ why isn't this: 0..<.elementCount?
             var points = [NSPoint](repeating: NSZeroPoint, count: 3)
             switch nsBezierPath.element(at: i, associatedPoints: &points) {
                 case .moveToBezierPathElement:path.move(to:points[0])//swift 3 updated
