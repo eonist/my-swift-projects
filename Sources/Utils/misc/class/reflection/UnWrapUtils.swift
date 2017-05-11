@@ -38,11 +38,11 @@ class UnWrapUtils{
         if(type == "Array"){
             let val:[Any] = anyArray(xml)
             return val
-        }else if(type == String(describing:DropShadow.self)){
+        }else if(type == "\(DropShadow.self)"){
             return DropShadow.unWrap(xml)!
-        }else if(type == String(describing: RadialGradient.self)){
+        }else if(type == "\(RadialGradient.self)"){
             return RadialGradient.unWrap(xml)!
-        }else if(type == String(describing: )){
+        }else if(type == "\(LinearGradient.self)"){
             return LinearGradient.unWrap(xml)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
