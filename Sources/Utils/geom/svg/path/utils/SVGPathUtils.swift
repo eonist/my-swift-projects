@@ -24,52 +24,52 @@ class SVGPathUtils {
                     path.move(to:pos)//was->CGPathMoveToPoint
                     i += 2
                     break;
-                case cmd == SVGPathCommand.l: //lineTo
+                case .some(.l): //lineTo
                     pos += CGPoint(params[i],params[i+1])
                     path.addLine(to:pos)//swift 3 was: CGPathAddLineToPoint
                     i += 2
                     break;
-                case cmd == SVGPathCommand.h://horizontalLineTo
+                case .some(.h)://horizontalLineTo
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.addLine(to: pos)//swift3-> was: CGPathAddLineToPoint
                     i += 1
                     break;
-                case cmd == SVGPathCommand.v://verticalLineTo
+                case .some(.v)://verticalLineTo
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                     path.addLine(to: pos)//swift 3
                     i += 1
                     break;
-                case cmd == SVGPathCommand.c://curveTo
+                case .some(.c)://curveTo
                     pos += CGPoint(params[i+4],params[i+5])
                     let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     prevC = isLowerCase ? CGPoint(prevP.x + params[i+2],prevP.y+params[i+3]) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
                     path.addCurve(to: pos, control1: controlP1, control2: prevC)//swift 3, was-> CGPathAddCurveToPoint(path, nil, controlP1.x, controlP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, controlP1, prevC, pos);
                     i += 6
                     break;
-                case cmd == SVGPathCommand.s://smoothCurveTo
+                case .some(.s)://smoothCurveTo
                     pos += CGPoint(params[i+2],params[i+3])
                     let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y);/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
                     path.addCurve(to: pos, control1: cP1, control2: prevC)//swift 3, was->CGPathAddCurveToPoint(path, nil, cP1.x, cP1.y, prevC.x, prevC.y, pos.x, pos.y)//CubicCurveModifier.cubicCurveTo(graphics, prevP, cP1, prevC, pos);
                     i += 4//<---shouldn't this also be 6, maybe not actually, there is no i+4 or i+5!?!
                     break;
-                case cmd == SVGPathCommand.q: //quadCurveTo
+                case .some(.q): //quadCurveTo
                     pos += CGPoint(params[i+2],params[i+3])
                     prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                     path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                     i += 4
                     break;
-                case cmd == SVGPathCommand.t://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
+                case .some(.t)://smoothQuadCurveTo /*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                     pos += CGPoint(params[i],params[i+1])
                     prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                     path.addQuadCurve(to: pos, control: prevC)//swift 3, was->CGPathAddQuadCurveToPoint(path, nil, prevC.x, prevC.y, pos.x, pos.y)
                     i += 2
                     break;
-                case cmd == SVGPathCommand.z:
+                case .some(.z):
                     path.closeSubpath()
                     path.move(to: prevM)/*<--unsure if this is needed?*///CGPathMoveToPoint(path, nil, .x, prevM.y)
                     break;/*closes it self to the prev MT pos*/
-                case cmd == SVGPathCommand.a:
+                case .some(.a):
                     fatalError("arc is not supported yet, contact maintainer")
                     //you need the ellipse from point and center formula to get this working, if you need this to work contact the author and the author will add support
                     /*
