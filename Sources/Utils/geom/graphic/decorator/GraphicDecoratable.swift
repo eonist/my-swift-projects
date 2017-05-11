@@ -86,6 +86,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func drawLine(){
         decoratable.drawLine()
+        Swift.print("decoratable.drawLine() after")
     }
     /**
      * This method results the actual drawing of the stroke to the context (based on what is attached on the graphics instance at the moment)
