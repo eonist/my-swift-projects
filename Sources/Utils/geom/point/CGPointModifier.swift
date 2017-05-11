@@ -52,7 +52,7 @@ class CGPointModifier {
      */
     static func rotatePoints(_ points:[CGPoint], _ pivot:CGPoint, _ rotation:CGFloat) -> [CGPoint] {
         var rotatedPoints:[CGPoint] = []
-        var transform = CGAffineTransform.identity//Swift 3
+        var transform = CGAffineTransform.identity
         transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation)
         for point:CGPoint in points { rotatedPoints.append(point.applying(transform))}
         return rotatedPoints

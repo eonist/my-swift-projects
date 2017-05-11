@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * NOTE: Info about CATransform: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
+ */
 class SVGPathUtils {
     static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
@@ -96,7 +98,6 @@ class SVGPathUtils {
             switch SVGPathCommand(rawValue:Character(command.lowercased())) {
                 case .some(.m): /*moveTo*/
                     pos += CGPoint(params[i],params[i+1])
-                    //prevM = pos.copy()
                     path.commands.append(PathCommand.moveTo)
                     path.pathData += [pos.x,pos.y]/*<-- used to be path.pathData.append(pos.x,pos.y);*/
                     i += 2
@@ -170,23 +171,3 @@ class SVGPathUtils {
         return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
     }
 }
-
-/**
-CGPathAddCurveToPoint
-NOTE: more info like the bellow here: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
-The mutable path to change. The path must not be empty.
-m
-A pointer to an affine transformation matrix, or NULL if no transformation is needed. If specified, Quartz applies the transformation to the curve before it is added to the path.
-cp1x
-The x-coordinate of the first control point.
-cp1y
-The y-coordinate of the first control point.
-cp2x
-The x-coordinate of the second control point.
-cp2y
-The y-coordinate of the second control point.
-x
-The x-coordinate of the end point of the curve.
-y
-The y-coordinate of the end point of the curve.
-*/
