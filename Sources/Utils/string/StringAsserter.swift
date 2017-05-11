@@ -1,5 +1,8 @@
 class StringAsserter{
-	/*
+    private static var digitPattern:String = "^-?\\d*?\\.?\\d*?(px)?$"
+    private static var metricPattern:String = "^-?\\d*?\\.?\\d*?(ems|%)?$"
+    private static var colorPattern:String = "^#?([a-fA-F0-9]{3}){1,2}$"
+    /**
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
 	 */
 	static func isWrappedWith(_ string:String, _ char:Character)->Bool{
@@ -27,7 +30,7 @@ class StringAsserter{
         //Swift.print("StringAsserter.boolean()"+"\(Bool(string == "true").dynamicType)")
         return string.test("^(true|false)$")
     }
-    /*
+    /**
      * Check if string contains another string
      */
     static func contains(_ a:String, _ b:String)->Bool{
@@ -37,16 +40,16 @@ class StringAsserter{
      * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 20%, 0.2)
      */
     static func digit(_ string:String)->Bool{
-        return string.test("^-?\\d*?\\.?\\d*?(px)?$")
+        return string.test(digitPattern)
     }
     static func metric(_ string:String) -> Bool{
-        return string.test("^-?\\d*?\\.?\\d*?(ems|%)?$")
+        return string.test(metricPattern)
     }
     static func color(_ string:String) -> Bool {
-        return string.test("^#?([a-fA-F0-9]{3}){1,2}$")
+        return string.test(colorPattern)
     }
     static func webColor(_ string:String)->Bool {
-        return WebColors.webColors.has(string)//was regexp, is now array assert because probably faster
+        return WebColors.webColors.has(string)/*was regexp, is now array assert because probably faster*/
     }
     /**
      * Asserts if a string is in lower case
