@@ -7,6 +7,8 @@ class SVGPathUtils {
      * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
      * TODO: impliment quadTo
      */
+    
+
     static func drawPath(/*inout*/ _ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
@@ -17,8 +19,7 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             let cmd:String = command.lowercased()
-            let match:SVGPathCommand = SVGPathCommand.init(rawValue:cmd)
-            switch match {
+            switch SVGPathCommands.init(rawValue:cmd) {
                 case .some(.m): //moveTo
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
