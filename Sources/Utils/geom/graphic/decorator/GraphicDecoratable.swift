@@ -21,11 +21,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func draw() {
         if(getGraphic().fillStyle != nil){drawFill()}/*👈 setup the fill geometry, draw the fileShape*/
         graphic.fillShape.setNeedsDisplay()/*if the fillStyle is nil, we want the possible last drawing to disapear*/
-        Swift.print("🍊 decoratable.drawLine() before")
         if(getGraphic().lineStyle != nil){drawLine()}/*👈 setup the line geometry, draw the lineShape*/
-        Swift.print("🍏 decoratable.drawLine() after")
         graphic.lineShape.setNeedsDisplay()
-        Swift.print("draw complete")
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
