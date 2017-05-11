@@ -22,13 +22,13 @@ class UnWrapUtils{
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
         if(type == String(describing:CGFloat.self)){
             return CGFloat.unWrap(strVal)!
-        }else if(type == String(describing: Double.self)){
+        }else if(type == "\(Double.self)"){
             return Double.unWrap(strVal)!
-        }else if(type == String(describing: NSColor.self)){
+        }else if(type == "\(NSColor.self)"){
             return NSColor.unWrap(strVal)!
-        }else if(type == String(describing: Bool.self)){
+        }else if(type == "\(Bool.self)"){
             return Bool.unWrap(strVal)!
-        }else if(type == String(describing: String.self)){
+        }else if(type == "\(String.self)"){
             return String.unWrap(strVal)!
         }else{
             fatalError("type not supported yet: " + "\(type)")
