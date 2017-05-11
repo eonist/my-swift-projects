@@ -92,7 +92,7 @@ class SVGPathUtils {
      * TODO: may not work 100%
      */
     static func path(_ commands:[String],_ params:[CGFloat])->IPath {
-        let path:IPath = Path()
+        var path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
         var prevC:CGPoint!/*previous ControlPoint*/
