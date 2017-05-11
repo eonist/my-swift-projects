@@ -18,18 +18,10 @@ class RectGraphic:SizeableGraphic{
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
     }
     override func drawLine(){
-        if(graphic.lineStyle != nil){/*<---TODO: I dont think this check is needed, as this check is already done in the GraphicDecoratable class, so remove it when your working with this again*/
-            //let graphicRect:CGRect = CGRect(0, 0, width, height)
-            //let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
-            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType)
-            //let offsetRects = RectGraphicUtil.offsetRect(graphic.fillShape.frame.copy(), graphic.lineStyle!, graphic.lineOffsetType)
-            //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
+        if let lineStyle = graphic.lineStyle {/*<---TODO: I dont think this check is needed, as this check is already done in the GraphicDecoratable class, so remove it when your working with this again*/
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
-            //Swift.print("offsetRects.lineRect: " + "\(lineOffsetRect.lineRect)")
-            graphic.lineShape.path = lineOffsetRect.lineRect.path//rect.path
-            //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
-            //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!)
-            //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height)/*draw the mask line*/
+            graphic.lineShape.path = lineOffsetRect.lineRect.path
         }
     }
 }
