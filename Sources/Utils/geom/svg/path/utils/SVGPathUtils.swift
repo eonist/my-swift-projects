@@ -11,25 +11,25 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             switch SVGPathCommand.initiate(rawValue:command.lowercased()) {
-                case .some(.m): //moveTo
+                case .some(.m): /*moveTo*/
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
                     path.move(to:pos)//was->CGPathMoveToPoint
                     i += 2
                     break;
-                case .some(.l): //lineTo
+                case .some(.l):/*lineTo*/
                     pos += CGPoint(params[i],params[i+1])
                     path.addLine(to:pos)//swift 3 was: CGPathAddLineToPoint
                     i += 2
                     break;
-                case .some(.h)://horizontalLineTo
+                case .some(.h):/*horizontalLineTo*/
                     pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                     path.addLine(to: pos)//swift3-> was: CGPathAddLineToPoint
                     i += 1
                     break;
-                case .some(.v)://verticalLineTo
+                case .some(.v):/*verticalLineTo*/
                     pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
-                    path.addLine(to: pos)//swift 3
+                    path.addLine(to: pos)
                     i += 1
                     break;
                 case .some(.c)://curveTo
