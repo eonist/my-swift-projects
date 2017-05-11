@@ -46,9 +46,9 @@ class SVGParser {
      */
     static func element(_ xml:XML,_ container:ISVGContainer)->ISVGElement? {
         var element:ISVGElement?
-        let style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
+        var style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if let container = container as? SVGGroup, let containerStyle = container.style{
-            SVGStyleModifier.merge(style, containerStyle)/*parent style is inherited down to sub elements*/
+            SVGStyleModifier.merge(&style, containerStyle)/*parent style is inherited down to sub elements*/
         }
         let id:String = SVGPropertyParser.id(xml)
         switch(xml.localName!){
