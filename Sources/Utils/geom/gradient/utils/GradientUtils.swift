@@ -17,11 +17,14 @@ class GradientUtils{
      */
     static func graphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
         if let radialGradient = gradient as? RadialGradient {
-            return radialGraphicsGradient(boundingBox,radialGradient)
+            return Utils.radialGraphicsGradient(boundingBox,radialGradient)
         }else if let linearGradient = gradient as? LinearGradient {
-            return linearGraphicsGradient(boundingBox,linearGradient)
+            return Utils.linearGraphicsGradient(boundingBox,linearGradient)
         }else{fatalError("this type is not supported: " + "\(gradient)")}/*Future support for Canonical gradient*/
     }
+    
+}
+private class Utils{
     /**
      * Linear Gradient
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
