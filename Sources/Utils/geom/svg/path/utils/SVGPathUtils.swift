@@ -12,7 +12,8 @@ class SVGPathUtils {
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
             let cmd:String = command.lowercased()
-            switch SVGPathCommand.init(rawValue:cmd) {
+            let match:SVGPathCommand? = SVGPathCommand.init(rawValue:cmd)
+            switch match {
                 case .some(.m): //moveTo
                     pos += CGPoint(params[i],params[i+1])
                     prevM = pos.copy()
