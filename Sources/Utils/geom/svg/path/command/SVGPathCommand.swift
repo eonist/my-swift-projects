@@ -14,11 +14,8 @@ enum SVGPathCommand:String {
     case v = "v"/*Vertical*/
     case z = "z"/*Return to last Move*/
 }
-/*extension SVGPathCommand{
- /**
- * Possibly a bug in swift
- */
- static func initiate(rawValue: SVGPathCommand.RawValue) -> SVGPathCommand? {
- return SVGPathCommand.init(rawValue: rawValue)
- }
- }*/
+extension SVGPathCommand{
+    init?(rawValue: SVGPathCommand.RawValue) {
+        return nil
+    }
+}
