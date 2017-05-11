@@ -32,7 +32,7 @@ class SVGLineStyleUtils{
      * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the SVGGradient.transformation, instead you have to scale the gradient that is attached to the indeviduel SVGGraphic, and you have to take into consideration that the strokeThickness is now different than the new relative size. Even though its the same, the relative difference between the strokeThickness and the size of the shape is different. So you have to recalculate the gradient.transformation matrix a little bit. Probably by insetting it by some relative value
      */
     static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
-        guard let gradient:SVGGradient = style.stroke as? SVGGradient else {fatalError("shape.stroke is not SVGGradient")}
+        guard let gradient:ISVGGradient = style.stroke as? ISVGGradient else {fatalError("shape.stroke is not SVGGradient")}
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse"/*The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.*/
         switch gradient{
             case let linearGradient as SVGLinearGradient:/*gradient is SVGRadialGradient */

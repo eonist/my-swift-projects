@@ -34,7 +34,7 @@ class SVGModifier {
 	 * EXAMPLE SVGModifier.scale(svg, Point(0,0), Point(0.5,0.5))
 	 */
 	static func scale(_ element:ISVGElement,_ pivot:CGPoint, _ scale:CGPoint) {
-        switch(true){
+        switch(element){
 			case element is SVGPolyLine:PointModifier.scalePoints(&(element as! SVGPolyLine).points, pivot, scale);/*SVGPolyLine,SVGPolygon*/break;
             case element is SVGPolygon:PointModifier.scalePoints(&(element as! SVGPolygon).points, pivot, scale);break;
 			case element is SVGRect:SVGRectModifier.scale(element as! SVGRect, pivot, scale);break;
@@ -43,7 +43,7 @@ class SVGModifier {
 			case element is SVGCircle:SVGCircleModifier.scale(element as! SVGCircle, pivot, scale);break;
 			case element is SVGEllipse:SVGEllipseModifier.scale(element as! SVGEllipse, pivot, scale);break;
 			case element is SVGContainer:SVGContainerModifier.scale(element as! SVGContainer,pivot,scale);break;
-			case element is SVGGradient:SVGGradientModifier.scale(element as! SVGGradient, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
+			case let element as SVGGradient:SVGGradientModifier.scale(element, pivot, scale);break;/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
             default: break;
 		}
         if let element = element as? SVGGraphic {SVGModifier.update(element)}

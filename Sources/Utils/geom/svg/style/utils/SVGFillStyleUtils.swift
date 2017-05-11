@@ -46,7 +46,7 @@ class SVGFillStyleUtils{
      * TODO: there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
      * TODO: unless you offset it first! try this
      */
-    static func fillGraphicGradient(_ shape:Shape,_ gradient:SVGGradient)->IGraphicsGradient{
+    static func fillGraphicGradient(_ shape:Shape,_ gradient:ISVGGradient)->IGraphicsGradient{
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //Swift.print("gradientType: " + gradientType);
