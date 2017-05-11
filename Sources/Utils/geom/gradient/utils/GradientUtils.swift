@@ -35,7 +35,7 @@ class GradientUtils{
      * TODO: ⚠️️ Extract the bellow lines to GradientUtils in IGradient
      */
     static func radialGraphicsGradient(_ boundingBox:CGRect,_ gradient:RadialGradient)->RadialGraphicsGradient{
-        let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
+        let rg:RadialGradientUtils.RadialGrad = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
         return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
     }
 }
