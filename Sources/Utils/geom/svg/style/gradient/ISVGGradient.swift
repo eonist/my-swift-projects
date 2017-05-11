@@ -12,5 +12,5 @@ protocol ISVGGradient:ISVGElement {
     var gradientTransform:CGAffineTransform?{get set}/*You can transform (e.g. rotate) the gradient before it is applied. See SVG Transformation for more details.*/
 }
 extension ISVGGradient{
-    override var id: String {get {return element.id} set {element.id = newValue}}
+    var id: String {get {return element.id} set {element.id = newValue}}
 }

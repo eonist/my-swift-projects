@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: add an example here
  */
-class SVGLinearGradient:ISVGGradient {
+class SVGLinearGradient:SVGGradientDecoratable {
     var gradient:ISVGGradient
     var x1:CGFloat/*The x1 and y1 (starting point) of the vector defining the direction of the gradient. Specified as percentages (%) of x1,y1 and x2,y2 of the shape the gradient is applied to. (Note: You should be able to use absolute numbers, but this doesn't seem to work in the browsers).*/
     var y1:CGFloat
@@ -20,14 +20,12 @@ protocol SVGGradientDecoratable:ISVGGradient{
     var gradient:ISVGGradient {get set}
 }
 extension SVGGradientDecoratable{
-    var element:ISVGElement {get{return } set{}}
-    /*
-     var offsets:[CGFloat]{get set}
-     var colors:[CGColor]{get set}
-     var spreadMethod:String{get set}
-     var gradientUnits:String{get set}
-     var gradientTransform:CGAffineTransform?
-     */
+    var element:ISVGElement {get{return gradient.element} set{gradient.element = newValue}}
+    var offsets:[CGFloat] {get{return gradient.offsets} set{gradient.offsets = newValue}}
+    var colors:[CGColor] {get{return gradient.colors} set{gradient.colors = newValue}}
+    var spreadMethod:String {get{return gradient.spreadMethod} set{gradient.spreadMethod = newValue}}
+    var gradientUnits:String {get{return gradient.gradientUnits} set{gradient.gradientUnits = newValue}}
+    var gradientTransform:CGAffineTransform? {get{return gradient.gradientTransform} set{gradient.gradientTransform = newValue}}
 }
 /**
  * Convenience
