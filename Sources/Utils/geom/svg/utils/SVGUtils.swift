@@ -115,8 +115,8 @@ class SVGUtils {
 	 static func group(_ group:SVGGroup) -> XML {
 		 let xml:XML = id("<g></g>".xml,group)
 		 /*xml = style(xml,group); not supported yet*/
-        return group.items.reduce(xml){
-            let svgGraphic:ISVGElement = $1 as ISVGElement
+        return group.items.reduce(xml){ result,item in
+            let svgGraphic:ISVGElement = item
             let child:XML = {
                 switch svgGraphic{
                 case let svgGraphic as SVGLine:
@@ -132,7 +132,7 @@ class SVGUtils {
                 }
             }()
             xml.appendChild(child)
-            return $0
+            return result
 		 }
 	 }
 	 /**
