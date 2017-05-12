@@ -1,12 +1,8 @@
 import Foundation
-
+/**
+ * NOTE: Info about CATransform: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
+ */
 class SVGPathUtils {
-    /**
-     * Draws a path on PARAM: graphics with data from PARAM: parameters
-     * NOTE: this method also handles the uppercase and lowercase difference in the SVG syntax
-     * TODO: the relative stuff is beta, might need a more robust solution like checking what the last command was and querrying lastPosition(commandINdex,commands,pathdata)
-     * TODO: impliment quadTo
-     */
     static func drawPath(_ path:CGMutablePath, _ commands:[String],_ params:[CGFloat])->CGMutablePath{//TODO: rename to compilePath?
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
@@ -90,43 +86,41 @@ class SVGPathUtils {
      * Returns a Path instance with data derived from commands and PARAM: params (which contains numbers, as in pathData)
      * TODO: may not work 100%
      */
-    static func path(_ commands:Array<String>,_ params:Array<CGFloat>)->IPath {
+    static func path(_ commands:[String],_ params:[CGFloat])->IPath {
         var path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
-        //var prevM:CGPoint/*previous MoveTo pos*/
         var prevC:CGPoint!/*previous ControlPoint*/
         for e in 0..<commands.count{
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()/*the current end pos*/
-            switch(command.lowercased()){
-            case SVGPathCommands.m: //moveTo
+            switch SVGPathCommand(rawValue:Character(command.lowercased())) {
+            case .some(.m): /*moveTo*/
                 pos += CGPoint(params[i],params[i+1])
-                //prevM = pos.copy()
                 path.commands.append(PathCommand.moveTo)
                 path.pathData += [pos.x,pos.y]/*<-- used to be path.pathData.append(pos.x,pos.y);*/
                 i += 2
                 break;
-            case SVGPathCommands.l:/*lineTo*/
+            case .some(.l):/*lineTo*/
                 pos += CGPoint(params[i],params[i+1])
                 path.commands.append(PathCommand.lineTo)
                 path.pathData += [pos.x,pos.y]
                 i += 2
                 break;
-            case SVGPathCommands.h:/*horizontalLineTo*/
+            case .some(.h):/*horizontalLineTo*/
                 pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                 path.commands.append(PathCommand.lineTo)
                 path.pathData += [pos.x,pos.y]
                 i += 1
                 break;
-            case SVGPathCommands.v:/*verticalLineTo*/
+            case .some(.v):/*verticalLineTo*/
                 pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                 path.commands.append(PathCommand.lineTo)
                 path.pathData += [pos.x,pos.y]
                 i += 1
                 break;
-            case SVGPathCommands.c:/*cubicCurveTo*/
+            case .some(.c):/*cubicCurveTo*/
                 pos += CGPoint(params[i+4],params[i+5])
                 let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1])
                 prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
@@ -134,7 +128,7 @@ class SVGPathUtils {
                 path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
                 i += 6
                 break;
-            case SVGPathCommands.s:/*smoothCubicCurveTo*/
+            case .some(.s):/*smoothCubicCurveTo*/
                 pos += CGPoint(params[i+2],params[i+3])
                 let cP1:CGPoint = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                 prevC = isLowerCase ? CGPoint(CGFloat(params[i])+prevP.x,CGFloat(params[i+1])+prevP.y) : CGPoint(params[i],params[i+1])
@@ -142,21 +136,21 @@ class SVGPathUtils {
                 path.pathData += [cP1.x,cP1.y, prevC.x,prevC.y, pos.x,pos.y]
                 i += 4
                 break;
-            case SVGPathCommands.q:/*quadCurveTo*/
+            case .some(.q):/*quadCurveTo*/
                 pos += CGPoint(params[i+2],params[i+3])
                 prevC = isLowerCase ? CGPoint(prevP.x+params[i],prevP.y+params[i+1]) : CGPoint(params[i],params[i+1])
                 path.commands.append(PathCommand.curveTo)
                 path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                 i += 4
                 break;
-            case SVGPathCommands.t://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
+            case .some(.t)://smoothCubicCurveTo/*the new control point x2, y2 is calculated from the curve's starting point x, y and the previous control point x1, y1 with these formulas:*/
                 pos += CGPoint(params[i],params[i+1])
                 prevC = CGPoint(2 * prevP.x - prevC.x,2 * prevP.y - prevC.y)/*x2 = 2 * x - x1 and y2 = 2 * y - y1*/
                 path.commands.append(PathCommand.curveTo)
                 path.pathData += [prevC.x,prevC.y, pos.x,pos.y]
                 i += 2
                 break;
-            case SVGPathCommands.z: path.commands.append(PathCommand.close); break;/*closes it self to the prev MT pos*/
+            case .some(.z): path.commands.append(PathCommand.close); break;/*closes it self to the prev MT pos*/
                 /*case PathCommand.ARC_TO:
                  DisplayArc4Modifier.arcTo(graphics, path.params[i], path.params[i+1], path.params[i+2], path.params[i+3],path.params[i+4], path.params[i+5],path.params[i+6]);
                  i += 7;
@@ -167,7 +161,7 @@ class SVGPathUtils {
                 prevP = pos.copy()
             }
         }
-        return path;
+        return path
     }
     /**
      * Returns an Rectangle instance with data derived from a svgRect
@@ -177,22 +171,3 @@ class SVGPathUtils {
         return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
     }
 }
-/**
- CGPathAddCurveToPoint
- NOTE: more info like the bellow here: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGPath/#//apple_ref/c/func/CGPathAddCurveToPoint
- The mutable path to change. The path must not be empty.
- m
- A pointer to an affine transformation matrix, or NULL if no transformation is needed. If specified, Quartz applies the transformation to the curve before it is added to the path.
- cp1x
- The x-coordinate of the first control point.
- cp1y
- The y-coordinate of the first control point.
- cp2x
- The x-coordinate of the second control point.
- cp2y
- The y-coordinate of the second control point.
- x
- The x-coordinate of the end point of the curve.
- y
- The y-coordinate of the end point of the curve.
- */
