@@ -121,6 +121,7 @@ class StringParser{
     static func percentage(_ value:String)->CGFloat{
         return value.match(".*?(?=%)")[0].cgFloat
     }
+    private static var digitPattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
      * RETURN: a Numberor a String type
@@ -129,8 +130,7 @@ class StringParser{
      * TODO: this could probably be simpler if you just added a none capturing group and used regexp.match
      */
     static func digit(_ string:String)->CGFloat{
-        let pattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"// :TODO: possible rewrite: \-?\d*?(\.?)((?1)\d+?(?=px) or alike
-        let matches = RegExp.matches(string, pattern)
+        let matches = RegExp.matches(string, digitPattern)
         let match:NSTextCheckingResult = matches[0]
         let value:String = RegExp.value(string, match, 1)
         return value.cgFloat
@@ -138,20 +138,18 @@ class StringParser{
     static func boolean(_ string:String) -> Bool {
         return string == "true"
     }
+    private static var colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
      */
     static func color(_ hexColor:String) -> UInt{
-        //Swift.print("StringParser.hexColor: " + "\(hexColor)")
-        let colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
-        if(RegExp.test(hexColor,colorHexPattern)){//asserts if the color is in the correct hex format
+        if(hexColor.test(colorHexPattern)){/*asserts if the color is in the correct hex format*/
             var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
             if hex.characters.count == 3 {
                 hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters.last!,hex.characters.last!])//upgraded to swift 3
-            } //convert shorthand hex to hex
-            //Swift.print("StringParser.hexColor() hex: " + "\(hex)")
-            return ("0x"+hex).uint//<- added the 0x recently
+            }/*Convert shorthand hex to hex*/
+            return ("0x"+hex).uint
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
             //Swift.print("uintColor: " + "\(uintColor)")
