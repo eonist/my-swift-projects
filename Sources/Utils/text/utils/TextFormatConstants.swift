@@ -16,7 +16,7 @@ enum TextFormatConstants:String {
     case leading = "leading"/*line-spacing*/
 }
 extension TextFormatConstants{
-    var textFormatPropertyNames:[String] {
+    static var textFormatPropertyNames:[String] {
         return [
             TextFormatConstants.size.rawValue,
             TextFormatConstants.font.rawValue,
