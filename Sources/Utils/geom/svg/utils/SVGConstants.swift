@@ -1,19 +1,19 @@
 import Foundation
 /**
- * These constants represents the names in the SVG specification 
+ * These constants represents the names in the SVG specification
  * TODO:  Enum please
  */
-class SVGConstants {
-	static var rect:String = "rect"
-	static var circle:String = "circle"
-	static var ellipse:String = "ellipse"
-	static var path:String = "path"
-	static var polyLine:String = "polyline"
-	static var polygon:String = "polygon"
-	static var line:String = "line"
-	static var group:String = "g"
-	static var data:String = "d"
-	static var points:String = "points"
-	static var linearGradient:String = "linearGradient"
-	static var radialGradient:String = "radialGradient"
+enum SVGConstants:String {
+    case rect = "rect"
+    case circle = "circle"
+    case ellipse = "ellipse"
+    case path = "path"
+    case polyLine = "polyline"
+    case polygon = "polygon"
+    case line = "line"
+    case group = "g"
+    case data = "d"
+    case points = "points"
+    case linearGradient = "linearGradient"
+    case radialGradient = "radialGradient"
 }

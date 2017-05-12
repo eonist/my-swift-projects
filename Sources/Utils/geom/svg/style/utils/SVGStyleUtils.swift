@@ -31,8 +31,7 @@ class SVGStyleUtils {
     static func strokeColor(_ strokeColor:Double,_ strokeOpacity:CGFloat)->NSColor{
         let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : 0x000000.double
         let strokeOpacityVal:CGFloat = !(strokeOpacity.isNaN) ? strokeOpacity : 1
-        let color:NSColor = colorVal.color.alpha(strokeOpacityVal)
-        return color
+        return colorVal.color.alpha(strokeOpacityVal)
     }
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
