@@ -60,6 +60,6 @@ class SVGPropertyParser {
             if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             return SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
         }
-        return SVGStyleParser.style(prop!,container)//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
+        return SVGStyleParser.style(prop,container)//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
 	}
 }

@@ -59,7 +59,7 @@ class SVGPathParser {
         var positions:[CGPoint] = []
         var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
-        (0..<commands.count).indicies.forEach { e in
+        (0..<commands.count).indices.forEach { e in
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
