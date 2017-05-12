@@ -100,7 +100,7 @@ class SVGPathUtils {
      * TODO: may not work 100%
      */
     static func path(_ commands:Array<String>,_ params:Array<CGFloat>)->IPath {
-        let path:IPath = Path()
+        var path:IPath = Path()
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
         //var prevM:CGPoint/*previous MoveTo pos*/
@@ -139,7 +139,7 @@ class SVGPathUtils {
                 pos += CGPoint(params[i+4],params[i+5])
                 let controlP1:CGPoint = isLowerCase ? CGPoint(prevP.x + CGFloat(params[i]),prevP.y+CGFloat(params[i+1])) : CGPoint(params[i],params[i+1])
                 prevC = isLowerCase ? CGPoint(prevP.x+CGFloat(params[i+2]),prevP.y+CGFloat(params[i+3])) : CGPoint(params[i+2],params[i+3])/*aka controlP2*/
-                path.commands.append(PathCommand.CUBIC_CURVE_TO)
+                path.commands.append(PathCommand.cubicCurveTo)
                 path.pathData += [controlP1.x,controlP1.y, prevC.x,prevC.y, pos.x,pos.y]
                 i += 6
                 break;
