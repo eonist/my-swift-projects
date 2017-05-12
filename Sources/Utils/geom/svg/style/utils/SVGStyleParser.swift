@@ -1,7 +1,8 @@
 import Foundation
 
 class SVGStyleParser {
-    static var inlineStylePattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
+    private static var fillPattern:String = "(?<=^url\\(\\#).+?(?=\\)$)"
+    private static var inlineStylePattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
 	/**
 	 * TODO: why do we need the PARAM: container here?
 	 */
@@ -23,13 +24,13 @@ class SVGStyleParser {
 	 */
     static func inlineStyle(_ style:String)->[String:String] {//TODO: use tuples instead?
         let matches = style.matches(inlineStylePattern)
-        return matches.reduce([String:String]()) { /*Loops through the pattern*/
-            var interim:[String:String] = $0
-            let match:NSTextCheckingResult = $1
+        return matches.reduce([String:String]()) { result,match in/*Loops through the pattern*/
+            var result:[String:String] = result
+            let match:NSTextCheckingResult = match
             let name = match.value(style,1)/*capturing group 1*/
             let value = match.value(style,2)/*capturing group 2*/
-            interim[name] = value
-            return interim
+            result[name] = value
+            return result
         }
 	}
 	/**
@@ -44,7 +45,7 @@ class SVGStyleParser {
         }else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
             return Double(StringParser.color(property as! String))
         }else {/*url(#three_stops);*/
-			let url:String = "\(property)".match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
+			let url:String = "\(property)".match(fillPattern)[0]
 			return container.getItem(url)/*SVGLinearGradient*/
 		}
 	}
