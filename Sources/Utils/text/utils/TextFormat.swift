@@ -23,38 +23,38 @@ extension TextFormat{
     subscript(key: String) -> Any {
         get {
             switch TextFormatConstants(rawValue:key){
-                case TextFormatConstants.background:return background
-                case TextFormatConstants.backgroundColor:return backgroundColor
-                case TextFormatConstants.selectable:return selectable
-                case TextFormatConstants.color:return color
-                case TextFormatConstants.align:return align
-                case TextFormatConstants.font:return font
-                case TextFormatConstants.size:return size
-                case TextFormatConstants.type:return type
-                case TextFormatConstants.border:return border
-                case TextFormatConstants.multiline:return multiline
-                case TextFormatConstants.wordWrap:return wordWrap
-                case TextFormatConstants.scrollable:return scrollable
-                case TextFormatConstants.leading:return leading
+                case .background?:return background
+                case .backgroundColor?:return backgroundColor
+                case .selectable?:return selectable
+                case .color?:return color
+                case .align?:return align
+                case .font?:return font
+                case .size?:return size
+                case .type?:return type
+                case .border?:return border
+                case .multiline?:return multiline
+                case .wordWrap?:return wordWrap
+                case .scrollable?:return scrollable
+                case .leading?:return leading
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
         set {
             //Swift.print("TextFormat.set() newValue: " + "\(newValue)")
             switch key{
-                case TextFormatConstants.background:background = newValue as! Bool
-                case TextFormatConstants.backgroundColor:backgroundColor = newValue as! NSColor
-                case TextFormatConstants.selectable:selectable = newValue as! Bool
-                case TextFormatConstants.color:color = newValue as! NSColor
-                case TextFormatConstants.align:align = newValue as! String
-                case TextFormatConstants.font:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
-                case TextFormatConstants.size:size = newValue as! CGFloat
-                case TextFormatConstants.type:type = newValue as! String
-                case TextFormatConstants.border:border = newValue as! Bool
-                case TextFormatConstants.multiline:multiline = newValue as! Bool
-                case TextFormatConstants.wordWrap:wordWrap = newValue as! Bool
-                case TextFormatConstants.scrollable:scrollable = newValue as! Bool
-                case TextFormatConstants.leading:leading = newValue as! CGFloat
+                case .background?:background = newValue as! Bool
+                case .backgroundColor?:backgroundColor = newValue as! NSColor
+                case .selectable?:selectable = newValue as! Bool
+                case .color?:color = newValue as! NSColor
+                case .align?:align = newValue as! String
+                case .font?:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
+                case .size?:size = newValue as! CGFloat
+                case .type?:type = newValue as! String
+                case .border?:border = newValue as! Bool
+                case .multiline?:multiline = newValue as! Bool
+                case .wordWrap?:wordWrap = newValue as! Bool
+                case .scrollable?:scrollable = newValue as! Bool
+                case .leading?:leading = newValue as! CGFloat
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
