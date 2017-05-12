@@ -22,7 +22,7 @@ struct TextFormat {
 extension TextFormat{
     subscript(key: String) -> Any {
         get {
-            switch key{
+            switch TextFormatConstants(rawValue:key){
                 case TextFormatConstants.background:return background
                 case TextFormatConstants.backgroundColor:return backgroundColor
                 case TextFormatConstants.selectable:return selectable
