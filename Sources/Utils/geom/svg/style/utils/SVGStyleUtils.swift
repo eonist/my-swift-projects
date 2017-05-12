@@ -22,16 +22,12 @@ class SVGStyleUtils {
     }
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
         let strokeLineJoin:String = lineJoin != nil && lineJoin != "" ? lineJoin! : "miter";
-        switch LineJoin(rawValue:strokeLineJoin){
-            case .miter?:
-                return CGLineJoin.miter
-            case .round?:
-                return CGLineJoin.round
-            case .bevel?:
-                return CGLineJoin.bevel
-            default:
-                fatalError("this strokeLineJoin type is not supported")
+        
+        guard let hashValue:Int = LineJoin(rawValue:strokeLineJoin)?.hashValue, let lineJoin = CGLineJoin(rawValue:Int32(hashValue)) else{
+            fatalError("this strokeLineJoin type is not supported")
         }
+        return lineJoin
+      
     }
     static func miterLimit(_ miterLimit:CGFloat)->CGFloat{
         return !miterLimit.isNaN ? miterLimit : 10/*<--was 1.414*/
