@@ -13,11 +13,11 @@ class SVGPathParser {
 	 */
 	static func pathData(_ data:String)->SVGPathData {
         let matches = data.matches(pathPattern)
-        return matches.reduce(SVGPathData([],[]))  { pathData,match in /*Loops through the pattern*///TODO: use marches.forEach instead
+        return matches.reduce(SVGPathData([],[]))  {pathData,match in /*Loops through the pattern*///TODO: use marches.forEach instead
             var pathData = pathData
-            let cmnd = match.value(data,1)/*capturing group 1*/
+            let cmnd = match.value(data,1)/*Capturing group 1*/
             pathData.commands.append(cmnd)
-            let params = match.value(data,2)/*capturing group 2*/
+            let params = match.value(data,2)/*Capturing group 2*/
             let array:[CGFloat] = SVGPathParser.parameters(params)
             pathData.parameters += array//<---this is the same as concat
             return pathData
