@@ -24,18 +24,13 @@ public class XMLAsserter {
      * valid XML.
      */
     static func validXML(_ xmlStr:String)->Bool{
-        //Swift.print("XMLAsserter.validXML UNTESTED")
-        let xmlDoc:XMLDoc? = try? XMLDoc(xmlString: xmlStr, options: 0)
-        if(xmlDoc == nil){return false}
-        if(xmlDoc?.kind != XMLNode.Kind.element){return false;}
+        guard let xmlDoc:XMLDoc = try? XMLDoc(xmlString: xmlStr, options: 0) else{
+            return false
+        }
+        if(xmlDoc.kind != XMLNode.Kind.element){return false}
         return true
     }
     static func equals(_ a:XML,_ b:XML)->Bool {
-        //Swift.print("XMLAsserter.equals() UNTESTED")
-        //Swift.print("a.XMLString")
-        Swift.print(a.xmlString)
-        //Swift.print("b.XMLString")
-        Swift.print(b.xmlString)/**/
         return a.xmlString == b.xmlString
     }
     /**
@@ -45,7 +40,7 @@ public class XMLAsserter {
      */
     static func hasSimpleContent(_ node:XML)->Bool{
         if(node.childCount == 1){
-            return node.children![0].kind == XMLNode.Kind.text//swift 3 update.
+            return node.children![0].kind == XMLNode.Kind.text
         }
         return false
     }
