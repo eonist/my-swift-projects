@@ -29,10 +29,10 @@ class SVGRect:SVGGraphic {
      * NOTE: It is an error to provide negative values for either width or height.
      * NOTE: If you specify only one of rx or ry, they are presumed to be equal.
      * NOTE: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
-     * TODO: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle. 
+     * TODO: ⚠️️ The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
+     * TODO: ⚠️️ You can set the frame to the rect, no need for the fancy frame creation method
      */
     override func draw() {
-        //Swift.print("SVGRect.draw() width: " + "\(self.width)" + "height:" + "\(self.height)")
         if(width <= 0 && height <= 0) {/*None*/
             return
         }else{
@@ -40,7 +40,7 @@ class SVGRect:SVGGraphic {
             if(style!.fill != nil){/*Fill*/
                 fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(CGRect(0,0,width,height), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
                 let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || (style!.stroke != nil && style!.stroke! is SVGGradient) ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
-                //TODO: you can set the frame to the rect, no need for the fancy frame creation method
+                
                 fillShape.frame = fillFrame/*,position and set the size of the frame*/
             }
             if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
