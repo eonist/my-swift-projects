@@ -3,7 +3,7 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
-    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
+    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
     static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
     static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
 	/**
