@@ -1,9 +1,10 @@
 import Foundation
 /**
  * SVG class is where pther svg elemnts is added
- * // :TODO: impliment xmlns:xlink,viewBox,enable-background,xml:space,
+ * TODO: impliment xmlns:xlink,viewBox,enable-background,xml:space,
  * //preserveAspectRatio="xMinYMin meet"
  * //viewBox="0 0 90 90"
+ * TODO: ⚠️️ Add xml.namespaceDeclarations().toString();
  * EXAMPLE:
  * <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="768px" height="768px">
  * 		<rect x="64" y="64" fill="#0000FF" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
@@ -28,7 +29,7 @@ class SVGParser {
             return !height.isNaN ? height : viewBox.height//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         }()
         let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
-        let nameSpace:String = ""//xml.namespaceDeclarations().toString();//TODO: implement this later
+        let nameSpace:String = ""
         let id:String = SVGPropertyParser.id(xml)
         let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id)
         let children:[XMLNode] = xml.children!
