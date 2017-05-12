@@ -51,16 +51,11 @@ class SVGStyleUtils {
      * New
      */
     static func graphicStyle(_ svgGraphic:ISVGGraphic)->IGraphicStyle{
-        let fillStyle:IFillStyle? = {
-            if let style = svgGraphic.style{
-                return SVGFillStyleUtils.fillStyle(style, svgGraphic.fillShape)
-            };return nil
-        }()
-        let lineStyle:ILineStyle? = {
-            if let style = svgGraphic.style {
-                return SVGLineStyleUtils.lineStyle(style, svgGraphic.lineShape)
-            };return nil
-        }()
+        guard let style = svgGraphic.style else{
+            return GraphicStyle()
+        }
+        let fillStyle:IFillStyle? = SVGFillStyleUtils.fillStyle(style, svgGraphic.fillShape)
+        let lineStyle:ILineStyle? = SVGLineStyleUtils.lineStyle(style, svgGraphic.lineShape)
         return GraphicStyle(fillStyle,lineStyle)
     }
 }
