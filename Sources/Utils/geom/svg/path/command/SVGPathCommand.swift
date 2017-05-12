@@ -3,7 +3,7 @@ import Foundation
  * The SVG commands represented here are from the official SVG syntax
  * NOTE: ⚠️️ You dont need the cases to use this method. Works with .init(rawValue:str) alone
  */
-enum SVGPathCommands:Character {
+enum SVGPathCommand:Character {
     case m = "m"/*Move*/
     case l = "l"/*Line*/
     case c = "c"/*Cubic-Curve*/
@@ -15,7 +15,7 @@ enum SVGPathCommands:Character {
     case v = "v"/*Vertical*/
     case z = "z"/*Return to last Move*/
 }
-class SVGPathCommand {
+class SVGPathCommands {
     static var m:String = "m"/*Move*/
     static var l:String = "l"/*Line*/
     static var c:String = "c"/*Cubic-Curve*/
