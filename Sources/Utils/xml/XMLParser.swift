@@ -97,8 +97,9 @@ public class XMLParser{
      */
     static func siblingAttributes(_ child:XML, _ idx3d:[Int])->[[String:String]] {// :TODO: rename to objAt
         let xml:XML? = childAt(child, idx3d)
-        let result:[[String:String]] = xml?.children?.map{return ($0 as! XML).attribs} ?? []
-        return result
+        return xml?.children?.map{
+            return ($0 as! XML).attribs
+        } ?? []
     }
     /**
      * Returns child from PARAM: children at PARAM: index
