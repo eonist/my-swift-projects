@@ -87,49 +87,30 @@ private class BasicPathDataParser{
      * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
      * PARAM: index the index of the command
      * NOTE: this is cpu intensive to call if you are iterating over an array
+     * TODO: ⚠️️ START USING END2 which supports CLOSE
      */
     static func end(_ path:IPath, _ commandIndex:Int) -> CGPoint {// :TODO: rename to position?!? or maybe point?
-        //START USING END2 which supports CLOSE
         let command:Int = path.commands[commandIndex]
         let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
         return endAt(path.pathData, pathDataIndex, command)
-        
-        /*
-        var pathData:Vector.<Number> = pathDataAt(path, commandIndex);
-        if(command == PathCommand.MOVE_TO || command == PathCommand.LINE_TO || command == PathCommand.WIDE_MOVE_TO || command == PathCommand.WIDE_LINE_TO) return new Point(pathData[0],pathData[1]);
-        else if(command == PathCommand.ARC_TO) return new Point(pathData[5],pathData[6]);
-        else if(command == PathCommand.CURVE_TO) return new Point(pathData[2],pathData[3]);
-        else {
-        throw new Error("PathCommand not yet supported");
-        return null;//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
-        }
-        */
     }
     /**
      * NOTE: the CLOSE case should probably be dealt with by the caller
      * TODO: for the close case we could also iterate backward to find the last MT???
      */
     static func endAt(_ pathData:[CGFloat], _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
-        
         switch PathCommand(rawValue:commandType){
             case .moveTo?,.lineTo?,.wideMoveTo?,.wideLineTo?:
-                Swift.print()
+                return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])
             case .arcTo?:
-                Swift.print()
+                return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])
             case .curveTo?:
-                Swift.print()
+                return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])
             case .close?:
-                Swift.print()
+                return CGPoint(NaN,NaN)/*used to be nil*/
             default:
-                fatalError("PathCommand not yet supported")
+                fatalError("PathCommand not yet supported")//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
         }
-        
-        
-        if(commandType == PathCommand.moveTo.rawValue || commandType == PathCommand.lineTo.rawValue || commandType == PathCommand.wideMoveTo.rawValue || commandType == PathCommand.wideLineTo.rawValue) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
-        else if(commandType == PathCommand.arcTo.rawValue) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
-        else if(commandType == PathCommand.curveTo.rawValue) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
-        else if(commandType == PathCommand.close.rawValue) {return CGPoint(NaN,NaN)}/*used to be null*/
-        else {fatalError("PathCommand not yet supported")}//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
     }
     /**
      * Returns a IArc5 instance derived from PARAM: pathData at PARAM: index
