@@ -16,6 +16,14 @@ class TextFieldParser {
      */
     static func alignment(_ alignType:String) -> NSTextAlignment{
         let align:NSTextAlignment
+        switch alignType{
+        case "left":
+            printin("one")
+        case 3...8:
+            printin("range from 3 to 8")
+        default:
+            break;
+        }
         if(alignType == "left"){align = NSTextAlignment.left}
         else if(alignType == "right"){align = NSTextAlignment.right}
         else if(alignType == "center"){align = NSTextAlignment.center}
