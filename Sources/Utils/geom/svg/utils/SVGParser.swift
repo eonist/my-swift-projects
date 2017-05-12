@@ -28,12 +28,11 @@ class SVGParser {
             let height = SVGPropertyParser.digit(xml,"height")
             return !height.isNaN ? height : viewBox.height//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
         }()
-        let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
+        let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"))
         let nameSpace:String = ""
         let id:String = SVGPropertyParser.id(xml)
         let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id)
-        let children:[XMLNode] = xml.children!
-        children.forEach{
+        xml.children?.forEach{
             if let elm = element($0 as! XML,doc) {doc.add(elm)}//print("Import - child.toXMLString(): " + child.toXMLString());
         }
         return doc
