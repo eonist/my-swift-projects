@@ -116,8 +116,12 @@ private class BasicPathDataParser{
                 Swift.print()
             case .arcTo?:
                 Swift.print()
+            case .curveTo?:
+                Swift.print()
+            case .close?:
+                Swift.print()
             default:
-                break;
+                fatalError("PathCommand not yet supported")
         }
         
         
