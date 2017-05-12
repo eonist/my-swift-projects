@@ -54,9 +54,10 @@ private class Utils{
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
         /*var offsets:[CGFloat] = []
          var colors:[CGColor] = []*/
-        let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce(([],[])) {//(offsets:[],colors:[])
+        let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce((offsets:[],colors:[])) {//(offsets:[],colors:[])
             guard let child:XML = $1 as? XML else{fatalError("error")}
-			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
+			var result = $0
+            let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100
 			/*offset is number between 0-1 or offset is percentage %*/
 			let hexColor:UInt
@@ -75,10 +76,10 @@ private class Utils{
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)
-            offsets.append(offset)
-            colors.append(stopColor)
+            result.offsets.append(offset)
+            result.colors.append(stopColor)
 		}
-        return SVGGradient(offsets,colors,spreadMethod,id,gradientUnits,gradientTransform)
+        return SVGGradient(offsetsAndColors.offsets,offsetsAndColors.colors,spreadMethod,id,gradientUnits,gradientTransform)
 	}
     /**
      * Returns an Matrix instance with GradientTransform data derived from PARAM: xml
