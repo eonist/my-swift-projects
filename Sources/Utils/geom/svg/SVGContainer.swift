@@ -15,7 +15,7 @@ class SVGContainer:InteractiveView2, ISVGContainer{
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
         */
-        for item : ISVGElement in items { add(item) }
+        for item:ISVGElement in items {add(item)}
     }
     /**
      * PARAM: item (SVGGraphic and elements like SVGLinearGradient)
