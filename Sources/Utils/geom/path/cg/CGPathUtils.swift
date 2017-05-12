@@ -14,21 +14,21 @@ class CGPathUtils {
         let cmdLen:Int = path.commands.count
         for i in 0..<cmdLen{
             let command:Int = path.commands[i]
-            switch(command){
-                case PathCommand.moveTo:
+            switch(PathCommand(rawValue:command)){
+                case .moveTo?:
                     prevMT = CGPoint(path.pathData[idx], path.pathData[idx + 1])
                     prevEnd = prevMT.copy()
                     cgPath.move(to: CGPoint(prevEnd.x,prevEnd.y))
                     idx += 2
-                case PathCommand.lineTo:
+                case .lineTo?:
                     prevEnd = CGPoint(path.pathData[idx], path.pathData[idx + 1])
                     cgPath.addLine(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]))
                     idx += 2
-                case PathCommand.curveTo:/*quad*/
+                case .curveTo?:/*quad*/
                     prevEnd = CGPoint(path.pathData[idx + 0], path.pathData[idx + 1])
                     cgPath.addQuadCurve(to: CGPoint(path.pathData[idx],path.pathData[idx + 1]), control: CGPoint(path.pathData[idx + 2],path.pathData[idx + 3]))//swift 3->was: CGPathAddQuadCurveToPoint
                     idx += 4
-                case PathCommand.cubicCurveTo:/*cubic*/
+                case .cubicCurveTo?:/*cubic*/
                     prevEnd = CGPoint(path.pathData[idx + 0], path.pathData[idx + 1])
                     //the bellow could be wrong
                     //Swift.print("path.pathData.count: " + "\(path.pathData.count)" + " index: " + "\(index)")
@@ -39,7 +39,7 @@ class CGPathUtils {
                      * NOTE: At the moment i dont think this takes largeFlag into account
                      * NOTE: Arc-path-data-structure: xRadii,yRadii,rotation,largeArcFlag,sweepFlag,end.x,end.y,center.x,center.y
                      */
-                case PathCommand.arcTo:
+                case .arcTo?:
                     //Swift.print("prevEnd: " + "\(prevEnd)")
                     //Swift.print("CGPathUtils.compile() arcTo: x:" + "\(path.pathData[index+5])" + " y:" + "\(path.pathData[index+6])")
                     //Swift.print("path.pathData[index+0]: " + "\(path.pathData[index+0])")
@@ -52,7 +52,7 @@ class CGPathUtils {
                     DisplayArcUtils.arcTo(cgPath,arc)
                     prevEnd = arc.end.copy()/*<--I think this should be start*/
                     idx += 9
-                case PathCommand.close:/*for the closed path support*/
+                case .close?:/*for the closed path support*/
                     if(prevEnd != prevMT) {/*<--draw a line to the prevMT if end isnt above prevMT*/
                         //Swift.print("ADD AN EXTRA CLOSE LINE")
                         cgPath.addLine(to: CGPoint(prevMT.x,prevMT.y))//Swift 3 was->CGPathAddLineToPoint
