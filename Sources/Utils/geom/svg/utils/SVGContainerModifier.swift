@@ -9,8 +9,6 @@ class SVGContainerModifier {
 		let size:CGSize = CGSize(container.frame.width * scale.x, container.frame.height * scale.y)
 		container.frame.origin = position
 		container.frame.size = size
-        //fatalError("uncomment the line bellow")
-        //for var i = 0; i < container.items.count; ++i{SVGModifier.scale(container.items[i], pivot, scale)}
         container.items.forEach{SVGModifier.scale($0, pivot, scale)}
 	}
 }
