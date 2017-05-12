@@ -193,9 +193,6 @@ public class XMLParser{
      * NOTE: the format can then be converted back to xml and vis verca
      * EXAMPLE: toDictionary(try! XML("<name><color>blue</color><title>Worker</title></name>"))//Output: ["name":[["color":["blue"]],["title":["Worker"]]]]
      */
-    
-    //Swift 3 update: This method was changed from using AnyObject to Any
-    
     static func toDictionary(_ xml:XML)->[String:Any]{
         var root = [String:Any]()
         let attributes = XMLParser.attributes(xml)//<--use attribs instead

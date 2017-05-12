@@ -34,7 +34,7 @@ class StringAsserter{
      * Check if string contains another string
      */
     static func contains(_ a:String, _ b:String)->Bool{
-        return a.range(of: b) != nil//upgraded to swift 3 syntax
+        return a.range(of: b) != nil
     }
     /**
      * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 20%, 0.2)
