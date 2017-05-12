@@ -45,14 +45,13 @@ class SVGParser {
      * TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
     static func element(_ xml:XML,_ container:ISVGContainer)->ISVGElement? {
-        
         var style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if let container = container as? SVGGroup, let containerStyle = container.style{
             SVGStyleModifier.merge(&style, containerStyle)/*parent style is inherited down to sub elements*/
         }
         let id:String = SVGPropertyParser.id(xml)
-        
-        switch(SVGConstants(rawValue:xml.localName!)){
+        let type = SVGConstants(rawValue:xml.localName!)
+        switch(type){
             case .rect?: return rect(xml,style,id)
             case .polyLine?:  return polyLine(xml,style,id)!
             case .polygon?: return polygon(xml,style,id)!
@@ -65,8 +64,6 @@ class SVGParser {
             case .radialGradient?: return SVGGradientParser.radialGradient(xml)
             default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export <defs></defs>*/
         }
-
-        return element
     }
     /**
      * Returns a Group instance comprised of svg elements derived from PARAM: xml
@@ -92,7 +89,7 @@ class SVGParser {
      * // :TODO: remember to differentiate between Uppercase and lower case
      */
     static func path(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPath? {
-        if let pathDefinition = xml[SVGConstants.data]{
+        if let pathDefinition = xml[SVGConstants.data.rawValue]{
             let svgPathData:SVGPathData = SVGPathParser.pathData(pathDefinition)//[PathCommand.MOVE_TO,PathCommand.CURVE_TO], [0,0,100,0,200,200]
             return SVGPath(svgPathData.commands,svgPathData.parameters,style,id)
         }
