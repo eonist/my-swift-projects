@@ -52,11 +52,8 @@ private class Utils{
         let id:String = SVGPropertyParser.id(xml)
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
-        /*var offsets:[CGFloat] = []
-         var colors:[CGColor] = []*/
         let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce((offsets:[],colors:[])) { result,childNode in //(offsets:[],colors:[])
             guard let child:XML = childNode as? XML else{fatalError("error")}
-			//var result = result
             let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -87,7 +84,7 @@ private class Utils{
         if let gradientTransformString = SVGPropertyParser.property(xml,"gradientTransform"){
             let matrixString:String = gradientTransformString.match(SVGGradientParser.gradientTransformPattern)[0]
             let matrixStringArray:[String] = matrixString.split(" ")
-            let matrixArr:[CGFloat] = matrixStringArray.map {$0.cgFloat}//<--todo: use $0.cgFloat here
+            let matrixArr:[CGFloat] = matrixStringArray.map {$0.cgFloat}//<--Todo: use $0.cgFloat here
             return CGAffineTransform(matrixArr[0],matrixArr[1],matrixArr[2],matrixArr[3],matrixArr[4],matrixArr[5])//Swift 3 was->CGAffineTransformMake
         }
         return nil
