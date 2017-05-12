@@ -11,25 +11,20 @@ class TextFieldParser {
         let font = NSFont(descriptor: fontDescriptor, size: size)
         return font!
     }
-    /**
-     *
-     */
     static func alignment(_ alignType:String) -> NSTextAlignment{
-        let align:NSTextAlignment
         switch alignType{
-        case "left":
-            printin("one")
-        case 3...8:
-            printin("range from 3 to 8")
-        default:
-            break;
+            case "left":
+                return NSTextAlignment.left
+            case "right":
+                return NSTextAlignment.right
+            case "center":
+                return NSTextAlignment.center
+            case "justified":
+                return NSTextAlignment.justified
+            case "natural":
+                return NSTextAlignment.natural
+            default:
+                fatalError("ALIGN TYPE NOT SUPPORTED: " + alignType)
         }
-        if(alignType == "left"){align = NSTextAlignment.left}
-        else if(alignType == "right"){align = NSTextAlignment.right}
-        else if(alignType == "center"){align = NSTextAlignment.center}
-        else if(alignType == "justified"){align = NSTextAlignment.justified}
-        else if(alignType == "natural"){align = NSTextAlignment.natural}
-        else {fatalError("ALIGN TYPE NOT SUPPORTED: " + alignType)}
-        return align
     }
 }
