@@ -57,42 +57,42 @@ class SVGPathParser {
         var commands:[String] = path.commands
         var params:[CGFloat] = path.parameters
         var positions:[CGPoint] = []
-        var i:Int = 0;/*parameterIndex*/
+        var i:Int = 0/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
-        for e in 0..<commands.count{
+        (0..<commands.count).indicies.forEach { e in
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
             switch SVGPathCommand(rawValue:Character(command.lowercased())) {
-            case .some(.m), .some(.l): /*lineTo,moveTo*/
-                pos += CGPoint(params[i+0],params[i+1])
-                i += 2
-                break;
-            case .some(.h):/*horizontalLineTo*/
-                pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
-                i += 1
-                break;
-            case .some(.v):/*verticalLineTo*/
-                pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
-                i += 1
-                break;
-            case .some(.c):/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
-                pos += CGPoint(params[i+4],params[i+5])
-                i += 6
-                break;
-            case .some(.s):/*smooth Cubic curve command*/
-                pos += CGPoint(params[i+2],params[i+3])
-                i += 4
-                break;
-            case .some(.q):/*quadCurveTo*/
-                pos += CGPoint(params[i+2],params[i+3])
-                i += 4
-                break;
-            case .some(.t):/*smooth quadratic curve command*/
-                pos += CGPoint(params[i],params[i+1])
-                i += 2
-                break;
-            default:break;
+                case .m?, .l?: /*lineTo,moveTo*/
+                    pos += CGPoint(params[i+0],params[i+1])
+                    i += 2
+                    break;
+                case .h?:/*horizontalLineTo*/
+                    pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
+                    i += 1
+                    break;
+                case .v?:/*verticalLineTo*/
+                    pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
+                    i += 1
+                    break;
+                case .c?:/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
+                    pos += CGPoint(params[i+4],params[i+5])
+                    i += 6
+                    break;
+                case .s?:/*smooth Cubic curve command*/
+                    pos += CGPoint(params[i+2],params[i+3])
+                    i += 4
+                    break;
+                case .q?:/*quadCurveTo*/
+                    pos += CGPoint(params[i+2],params[i+3])
+                    i += 4
+                    break;
+                case .t?:/*smooth quadratic curve command*/
+                    pos += CGPoint(params[i],params[i+1])
+                    i += 2
+                    break;
+                default:break;
             }
             positions.append(pos)
             if(e < commands.count-1) {
