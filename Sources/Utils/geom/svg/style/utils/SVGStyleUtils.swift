@@ -15,7 +15,18 @@ class SVGStyleUtils {
         else{fatalError("this lineCap type is not supported")}
     }
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
-        let strokeLineJoin = lineJoin != nil && lineJoin != "" ? lineJoin : "miter";
+        let strokeLineJoin:String = lineJoin != nil && lineJoin != "" ? lineJoin : "miter";
+        switch CGLineJoin(rawValue:strokeLineJoin){
+            case .miter?:
+                print("one")
+            case .round?:
+                print("range from 3 to 8")
+            case .bevel?:
+                print("range from 3 to 8")
+            default:
+                break;
+        }
+        
         if(strokeLineJoin == "miter"){return CGLineJoin.miter}
         else if(strokeLineJoin == "round"){return CGLineJoin.round}
         else if(strokeLineJoin == "bevel"){return CGLineJoin.bevel}
