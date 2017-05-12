@@ -3,8 +3,8 @@ import Foundation
 public class XMLModifier {
     /**
      * Adds PARAM: child to PARAM: xml at an array index PARAM: index
-     * TODO: needs some refactoring can we use hasComplexContent as an asserter? research
-     * TODO: rename to addAt?
+     * TODO: ⚠️️ needs some refactoring can we use hasComplexContent as an asserter? research
+     * TODO: ⚠️️ rename to addAt?
      */
     static func addChildAt(_ xml:XML,_ idx3d:[Int],_ child:XML) -> XML {// :
         let i = idx3d.slice2(0,idx3d.count-1)
@@ -93,7 +93,7 @@ public class XMLModifier {
      * EXAMPLE: replaceChildAt(xml, 0, child)
      */
     static func replaceAt(_ xml:XML,_ index:Int,_ replacement:XML) -> XML {
-        xml.replaceChild(at: index, with: replacement)/*upgraded to 🔶 3*/
+        xml.replaceChild(at: index, with: replacement)
         return xml
     }    
 }
