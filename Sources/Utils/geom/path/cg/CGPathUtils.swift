@@ -127,14 +127,21 @@ private class BasicPathDataParser{
 private class BasicCommandParser{
     /**
      * Returns the number of parameters for a specific command type
-     * // :TODO: Include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
-     * // :TODO: Isn't this function superflousouse since you can just trace the actual command and get the same value?
+     * // :TODO: ⚠️️ Include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
+     * // :TODO: ⚠️️ Isn't this function superflousouse since you can just trace the actual command and get the same value?
      */
     static func commandLength(_ command:Int)->Int {
-        if(command == PathCommand.close || command == PathCommand.noOp) {return 0}
-        else if(command == PathCommand.curveTo) {return 4}
-        else if(command == PathCommand.arcTo) {return 9}
-        else if(command == PathCommand.cubicCurveTo) {return 8}
-        else {return 2}/*MOVE_TO LINE_TO WIDE_MOVE_TO WIDE_LINE_TO*/
+        switch PathCommand(rawValue:command){
+            case .close?,.noOp?:
+                return 0
+            case .curveTo?:
+                return 4
+            case .arcTo?:
+                return 9
+            case .cubicCurveTo?:
+                return 8
+            default:/*MOVE_TO LINE_TO WIDE_MOVE_TO WIDE_LINE_TO*/
+                return 2
+        }
     }
 }
