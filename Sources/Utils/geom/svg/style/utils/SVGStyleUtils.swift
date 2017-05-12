@@ -26,7 +26,7 @@ class SVGStyleUtils {
         guard let lineJoin:SVGLineJoin = SVGLineJoin(rawValue:strokeLineJoin) else{
             fatalError("this strokeLineJoin type is not supported: \(strokeLineJoin)")
         }
-        return CGLineJoin.lineJoin(lineJoin)
+        return SVGLineJoin.lineJoin(lineJoin)
       
     }
     static func miterLimit(_ miterLimit:CGFloat)->CGFloat{

@@ -5,15 +5,15 @@ enum SVGLineJoin:String{
     case round = "round"
     case bevel = "bevel"
 }
-extension CGLineJoin{
+extension SVGLineJoin{
     static func lineJoin(_ lineJoin:SVGLineJoin) -> CGLineJoin {
         switch lineJoin {
-        case .miter:
-            return .miter
-        case .round:
-            return .round
-        case .bevel:
-            return .bevel
+            case .miter:
+                return .miter
+            case .round:
+                return .round
+            case .bevel:
+                return .bevel
         }
     }
 }
