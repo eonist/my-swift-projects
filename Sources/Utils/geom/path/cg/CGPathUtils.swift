@@ -107,7 +107,7 @@ private class BasicPathDataParser{
     }
     /**
      * NOTE: the CLOSE case should probably be dealt with by the caller
-     * // :TODO: for the close case we could also iterate backward to find the last MT???
+     * TODO: for the close case we could also iterate backward to find the last MT???
      */
     static func endAt(_ pathData:[CGFloat], _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
         
