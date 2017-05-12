@@ -1,10 +1,7 @@
 import Foundation
 /**
- * TODO: Set the values to the actual int not a pointer, one les cycle to call
- * TODO: Use uint?
- * TODO: Rename to noOp,moveTo,lineTo etc. 
- * TODO: This is a great candidate for enum <--speed 👌
- * TODO: Or extend Int and get .syntaxt power
+ * TODO: ⚠️️ Set the values to the actual int not a pointer, one les cycle to call
+ * TODO: ⚠️️ you can do case noOp,moveTo, etc
  */
 enum PathCommand:Int {
     case noOp = 0/*0 Represents the default "do nothing" command.*/
