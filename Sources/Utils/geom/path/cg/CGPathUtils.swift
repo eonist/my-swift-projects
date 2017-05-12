@@ -114,14 +114,14 @@ private class BasicPathDataParser{
     }
     /**
      * Returns a IArc5 instance derived from PARAM: pathData at PARAM: index
-     * PARAM: pathDataIndex is the index in the pathData not the commandIndex
+     * PARAM: i: is the pathDataIndex is the index in the pathData not the commandIndex
      * PARAM: start is the start position of the prev command
      * NOTE: this function is used in the SelectPath4 draw functions
      * NOTE: the Function PathParser.arcAt does the same thing but by looking at the commandIndex instead
      * TODO: the start is the end of prev command
      */
-    static func arcAt(_ pathData:[CGFloat],_ pathDataIndex:Int,_ start:CGPoint)->IArc {
-        return Arc(start, pathData[pathDataIndex], pathData[pathDataIndex+1], pathData[pathDataIndex+2], Bool(pathData[pathDataIndex+3]), Bool(pathData[pathDataIndex+4]), CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6]), CGPoint(pathData[pathDataIndex+7],pathData[pathDataIndex+8]))
+    static func arcAt(_ pathData:[CGFloat],_ i:Int,_ start:CGPoint)->IArc {
+        return Arc(start, pathData[i], pathData[i+1], pathData[i+2], Bool(pathData[i+3]), Bool(pathData[i+4]), CGPoint(pathData[i+5],pathData[i+6]), CGPoint(pathData[i+7],pathData[i+8]))
     }
 }
 private class BasicCommandParser{
