@@ -156,19 +156,18 @@ public class XMLParser{
             return children.lazy.filter(){
                 return ($0 as? XML) != nil//we could do filter.map if it could be combinable with lazy?
                 }.map{
-                    let let child:XML = $0 as? XML{//at this point your garantueed that the child is XML
-                        var item:[Any] = []
-                        let attribs = child.attribs
-                        if(!attribs.isEmpty){
-                            item.append(attribs)
-                        }
-                        if(child.stringValue != nil && child.stringValue!.count > 0) {
-                            item.append(child.stringValue!)
-                        }else if(child.hasComplexContent) {
-                            item.append(arr(child))
-                        }
-                        return item
-                    }else{fatalError("can't happen")}
+                    let child:XML = $0 as! XML//at this point your garantueed that the child is XML
+                    var item:[Any] = []
+                    let attribs = child.attribs
+                    if(!attribs.isEmpty){
+                        item.append(attribs)
+                    }
+                    if(child.stringValue != nil && child.stringValue!.count > 0) {
+                        item.append(child.stringValue!)
+                    }else if(child.hasComplexContent) {
+                        item.append(arr(child))
+                    }
+                    return item
             }
         }
         return []
