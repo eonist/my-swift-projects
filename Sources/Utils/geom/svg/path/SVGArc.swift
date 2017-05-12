@@ -2,7 +2,7 @@ import Foundation
 /**
  * This class creates an arc
  * EXAMPLE: <path id="instance4200" d="M300 340 a80 80 0 0 1 160 0" stroke="#0000FF" fill="none"/>
- * TODO: candidate for struct
+ * TODO: Candidate for struct
  */
 class SVGArc:SVGGraphic {
     var start:CGPoint/*absolute*/
