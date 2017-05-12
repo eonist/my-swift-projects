@@ -153,16 +153,14 @@ class StringParser{
             }/*Convert shorthand hex to hex*/
             return ("0x"+hex).uint
         }else{
-            let uintColor:UInt = ColorTypes.color(hexColor)
-            return uintColor
+            return ColorTypes.color(hexColor)
         }
     }
     /**
      * Returns NSColor for variouse literal color formats 
      */
     static func nsColor(_ hexColor:String)->NSColor{
-        let hex:UInt = StringParser.color(hexColor)
-        return NSColorParser.nsColor(hex)
+        return StringParser.color(hexColor).color
     }
     /**
      * Returns a file path, excluding the file name and file-suffix
