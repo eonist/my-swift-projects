@@ -117,12 +117,20 @@ class SVGUtils {
 		 /*xml = style(xml,group); not supported yet*/
         return group.items.reduce(xml){
             let svgGraphic:ISVGElement = $1 as ISVGElement
-            var child:XML
-            if(svgGraphic is SVGLine) {child = line(svgGraphic as! SVGLine)}
-            else if(svgGraphic is SVGRect) {child = rect(svgGraphic as! SVGRect)}
-            else if(svgGraphic is SVGPath) {child = path(svgGraphic as! SVGPath)}
-            else if(svgGraphic is SVGGroup) {child = SVGUtils.group(svgGraphic as! SVGGroup)}
-            else{ fatalError("type not supported: " + "\(svgGraphic)")}
+            let child:XML = {
+                switch svgGraphic{
+                case let svgGraphic as SVGLine:
+                    return line(svgGraphic)
+                case let svgGraphic as SVGRect:
+                    return rect(svgGraphic)
+                case let svgGraphic as SVGPath:
+                    return path(svgGraphic)
+                case let svgGraphic as SVGGroup:
+                    return SVGUtils.group(svgGraphic)
+                default:
+                    fatalError("type not supported: " + "\(svgGraphic)")
+                }
+            }()
             xml.appendChild(child)
             return $0
 		 }
