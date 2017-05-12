@@ -27,7 +27,7 @@ class SVGPropertyParser {
      * Returns viewBox
      */
     static func viewBox(_ xml:XML)->CGRect{
-        if let prop:String? = property(xml,"viewBox"){
+        if let prop:String = property(xml,"viewBox"){
             let values:[CGFloat] = prop.split(" ").map {$0.cgFloat}/*the map casts the array to cgFloat type*/
             return CGRect(values[0],values[1],values[2],values[3])
         }
