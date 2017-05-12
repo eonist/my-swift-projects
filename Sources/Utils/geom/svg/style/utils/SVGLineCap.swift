@@ -1,5 +1,19 @@
 import Foundation
 
-class SVGLineCap {
-
+enum SVGLineCap:String{
+    case butt = "butt"
+    case round = "round"
+    case square = "square"
+}
+extension SVGLineJoin{
+    static func lineCap(_ lineCap:SVGLineCap) -> CGLineCap {
+        switch lineCap {
+            case .butt:
+                return .butt
+            case .round:
+                return .round
+            case .square:
+                return .square
+        }
+    }
 }
