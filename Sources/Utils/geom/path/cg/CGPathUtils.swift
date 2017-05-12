@@ -127,8 +127,8 @@ private class BasicPathDataParser{
 private class BasicCommandParser{
     /**
      * Returns the number of parameters for a specific command type
-     * // :TODO: ⚠️️ Include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
-     * // :TODO: ⚠️️ Isn't this function superflousouse since you can just trace the actual command and get the same value?
+     * TODO: ⚠️️ Include GraphicsPathCommand.CUBIC_CURVE_TO when that is due for implimentation
+     * TODO: ⚠️️ Isn't this function superflousouse since you can just trace the actual command and get the same value?
      */
     static func commandLength(_ command:Int)->Int {
         switch PathCommand(rawValue:command){
