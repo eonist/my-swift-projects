@@ -6,8 +6,8 @@ class SVGPathModifier {
     /**
      * Scales PARAM: path at PARAM: pivot with PARAM: scalePoint
      * NOTE: I guess the reason to use scalePoint and not a scalar value (0-1) is because scalePoint is more precise
-     * TODO: discuss why you use scalePoint and not scalar value in more detail.
-     * TODO: create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
+     * TODO: ⚠️️ discuss why you use scalePoint and not scalar value in more detail.
+     * TODO: ⚠️️ create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
     static func scale(_ path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
         var i:Int = 0;/*parameterIndex*/
@@ -17,7 +17,7 @@ class SVGPathModifier {
         var c1:CGPoint
         var c2:CGPoint
         var a2:CGPoint
-        for e in 0..<commands.count{
+        (0..<commands.count).indicies.forEach { e in 
             let command:String = commands[e]
             switch(SVGPathCommand(rawValue:Character(command.lowercased()))){
             case .some(.l), .some(.m):
