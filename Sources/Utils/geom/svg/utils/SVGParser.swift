@@ -45,25 +45,27 @@ class SVGParser {
      * TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
     static func element(_ xml:XML,_ container:ISVGContainer)->ISVGElement? {
-        var element:ISVGElement?
+        
         var style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if let container = container as? SVGGroup, let containerStyle = container.style{
             SVGStyleModifier.merge(&style, containerStyle)/*parent style is inherited down to sub elements*/
         }
         let id:String = SVGPropertyParser.id(xml)
+        
         switch(SVGConstants(rawValue:xml.localName!)){
-            case .rect?: element = rect(xml,style,id)
-            case .polyLine?: element =  polyLine(xml,style,id)!
-            case .polygon?: element = polygon(xml,style,id)!
-            case .path?: element = path(xml,style,id)!
-            case .line?: element = line(xml,style,id)
-            case .circle?: element = circle(xml,style,id)
-            case .ellipse?: element = ellipse(xml,style,id)
-            case .group?: element = group(xml,style,id)
-            case .linearGradient?: element = SVGGradientParser.linearGradient(xml)
-            case .radialGradient?: element = SVGGradientParser.radialGradient(xml)
+            case .rect?: return rect(xml,style,id)
+            case .polyLine?:  return polyLine(xml,style,id)!
+            case .polygon?: return polygon(xml,style,id)!
+            case .path?: return path(xml,style,id)!
+            case .line?: return line(xml,style,id)
+            case .circle?: return circle(xml,style,id)
+            case .ellipse?: return ellipse(xml,style,id)
+            case .group?: return group(xml,style,id)
+            case .linearGradient?: return SVGGradientParser.linearGradient(xml)
+            case .radialGradient?: return SVGGradientParser.radialGradient(xml)
             default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export <defs></defs>*/
         }
+
         return element
     }
     /**
