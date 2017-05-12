@@ -24,12 +24,11 @@ class SVGPropertyParser {
 		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
 	}
     /**
-     * NEW
+     * Returns viewBox
      */
     static func viewBox(_ xml:XML)->CGRect{
-        let prop:String? = property(xml,"viewBox")
-        if(prop != nil){
-            let values:[CGFloat] = prop!.split(" ").map {($0).cgFloat}//the map casts the array to cgFloat type
+        if let prop:String? = property(xml,"viewBox"){
+            let values:[CGFloat] = prop.split(" ").map {$0.cgFloat}/*the map casts the array to cgFloat type*/
             return CGRect(values[0],values[1],values[2],values[3])
         }
         return CGRect(NaN,NaN,NaN,NaN)
