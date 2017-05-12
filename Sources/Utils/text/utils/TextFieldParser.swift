@@ -11,6 +11,9 @@ class TextFieldParser {
         let font = NSFont(descriptor: fontDescriptor, size: size)
         return font!
     }
+    /**
+     *
+     */
     static func alignment(_ alignType:String) -> NSTextAlignment{
         let align:NSTextAlignment
         if(alignType == "left"){align = NSTextAlignment.left}
