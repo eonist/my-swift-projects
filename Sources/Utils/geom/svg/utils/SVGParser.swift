@@ -62,7 +62,7 @@ class SVGParser {
             case .group?: return group(xml,style,id)
             case .linearGradient?: return SVGGradientParser.linearGradient(xml)
             case .radialGradient?: return SVGGradientParser.radialGradient(xml)
-            default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export <defs></defs>*/
+            default: fatalError("SVG Element type not supported: \(xml.localName!)")/*IS can export <defs></defs>*/
         }
     }
     /**
@@ -122,7 +122,7 @@ class SVGParser {
      * Returns an SVGPolyLine element derived from the polyline data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polyLine(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolyLine? {
-        if let pointsString:String = xml[SVGConstants.points]{
+        if let pointsString:String = xml[SVGConstants.points.rawValue]{
             let params:[CGFloat] = SVGPathParser.parameters(pointsString)
             let points:[CGPoint] = stride(from: 0, to: params.count, by: 2).map{ i in
                 CGPoint(params[i],params[i+1])
@@ -135,7 +135,7 @@ class SVGParser {
      * Returns an SVGPolygon element derived from the polygon data in PARAM: xml with the PARAM: style and PARAM: id
      */
     static func polygon(_ xml:XML,_ style:SVGStyle,_ id:String)->SVGPolygon? {
-        if let pointsString:String = xml[SVGConstants.points]{
+        if let pointsString:String = xml[SVGConstants.points.rawValue]{
             let parameters:[CGFloat] = SVGPathParser.parameters(pointsString)
             let points:[CGPoint] = stride(from: 0, to: parameters.count, by: 2).map { i in/*<--this line was upgraded to wift 3.0, stride instead of c-loop*/
                 CGPoint(parameters[i],parameters[i+1])
