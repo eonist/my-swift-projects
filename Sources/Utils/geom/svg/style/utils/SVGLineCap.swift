@@ -5,7 +5,7 @@ enum SVGLineCap:String{
     case round = "round"
     case square = "square"
 }
-extension SVGLineJoin{
+extension SVGLineCap{
     static func lineCap(_ lineCap:SVGLineCap) -> CGLineCap {
         switch lineCap {
             case .butt:

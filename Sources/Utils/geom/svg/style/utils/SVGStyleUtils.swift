@@ -8,9 +8,11 @@ class SVGStyleUtils {
      * TODO: try to find a method in swift that can extract enum values by providing a string
      */
     static func lineCap(_ lineCap:String?)->CGLineCap{
-        let strokeLineCap = lineCap != nil && lineCap != "" ? lineCap : "butt"/*<-this was none, but it doesnt need to be since we wont extract this value from */
-        guard let lineCap:SVGLineCap = 
-        
+        let strokeLineCap:String = lineCap != nil && lineCap != "" ? lineCap! : "butt"/*<-this was none, but it doesnt need to be since we wont extract this value from */
+        guard let lineCap:SVGLineCap = SVGLineCap(rawValue:strokeLineCap) else {
+            fatalError("this lineCap type is not supported: \(strokeLineCap)")
+        }
+        return SVGLineCap.lineCap(lineCap)
         
         if(strokeLineCap == "butt"){return CGLineCap.butt}
         else if(strokeLineCap == "round"){return CGLineCap.round}
