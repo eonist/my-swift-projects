@@ -15,8 +15,9 @@ class CGPointParser{
     /**
      * Returns a point in a polar cordinate system by PARAM: len and PARAM: angle (in a safe way)
      * PARAM: angle must be between -PI and PI use:  Angle.normalized2(angle)
-     * TODO: compact this method
-     * TODO: why is this safe and regular polar isn't?
+     * TODO: ⚠️️ compact this method
+     * TODO: ⚠️️ why is this safe and regular polar isn't?
+     * TODO: ⚠️️ use switch
      */
     static func safePolar(_ len:CGFloat, _ angle:CGFloat)->CGPoint {
         var x:CGFloat = cos(angle) * len
