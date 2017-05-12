@@ -4,22 +4,7 @@ import Cocoa
  * NOTE: these methods provide a central place to convert values from the svg value scheme to the quartz value scheme
  */
 
-enum SVGLineJoin:String{
-    case miter = "miter"
-    case round = "round"
-    case bevel = "bevel"
-}
-extension CGLineJoin{
-    static func lineJoin(_ lineJoin:SVGLineJoin) -> CGLineJoin {
-        switch lineJoin {
-        case .miter:
-            return .miter
-        case .round:
-            return .round
-        case .bevel:
-            return .bevel
-    }
-}
+
 
 class SVGStyleUtils {
     /**
