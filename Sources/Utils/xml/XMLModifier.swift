@@ -3,9 +3,10 @@ import Foundation
 public class XMLModifier {
     /**
      * Adds PARAM: child to PARAM: xml at an array index PARAM: index
-     * // :TODO: needs some refactoring can we use hasComplexContent as an asserter? research
+     * TODO: needs some refactoring can we use hasComplexContent as an asserter? research
+     * TODO: rename to addAt?
      */
-    static func addChildAt(_ xml:XML,_ idx3d:[Int],_ child:XML) -> XML {// :TODO: rename to addAt?
+    static func addChildAt(_ xml:XML,_ idx3d:[Int],_ child:XML) -> XML {// :
         let i = idx3d.slice2(0,idx3d.count-1)
         let parent:XML? = XMLParser.childAt(xml, i)
         let lastIdx:Int = idx3d.count-1

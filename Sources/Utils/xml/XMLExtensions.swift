@@ -54,7 +54,7 @@ extension XML {
     func childByIndex(_ index:Int)->XML?{/*Convenience*/
         return self.child(at: index) as? XML
     }
-    var attribs:[String:String] {//Convenience, the name attributes is occupied so attribs it is
+    var attribs:[String:String] {/*Convenience, the name attributes is occupied so attribs it is*/
        return XMLParser.attribs(self)
     }
     func addAt(_ child:XML,_ index:Int)->XML{/*Convenience*/
@@ -84,15 +84,6 @@ extension XML {
     //DEPRECATED:
     //func value()->String?{return XMLParser.value(self)}/*Convenience*/
 }
-/**
- * Multiplies a string
- * EXAMPLE: NSXMLElement("<items><items/>") += "<coffe><coffe/>" //<items><coffe><coffe/><items/>
- */
-//DEPRECATED in swift 3:
-/*public func += (left: XMLElement, right: XMLElement) -> XMLElement {/*Convenience*/
-    left.appendChild(right)
-    return left
-}*/
 /*swift 3 doesn't like unused returns thats why this complimentary method exists*/
 public func += (left:XMLElement, right:XMLElement) {/*Convenience*/
     left.appendChild(right)
