@@ -115,20 +115,19 @@ class SVGUtils {
 	 static func group(_ group:SVGGroup) -> XML {
 		 let xml:XML = id("<g></g>".xml,group)
 		 /*xml = style(xml,group); not supported yet*/
-        return group.items.reduce(xml){ result,item in
-            let svgGraphic:ISVGElement = item
+        return group.items.reduce(xml){ result,svgGraphic in
             let child:XML = {
                 switch svgGraphic{
-                case let svgGraphic as SVGLine:
-                    return line(svgGraphic)
-                case let svgGraphic as SVGRect:
-                    return rect(svgGraphic)
-                case let svgGraphic as SVGPath:
-                    return path(svgGraphic)
-                case let svgGraphic as SVGGroup:
-                    return SVGUtils.group(svgGraphic)
-                default:
-                    fatalError("type not supported: " + "\(svgGraphic)")
+                    case let svgGraphic as SVGLine:
+                        return line(svgGraphic)
+                    case let svgGraphic as SVGRect:
+                        return rect(svgGraphic)
+                    case let svgGraphic as SVGPath:
+                        return path(svgGraphic)
+                    case let svgGraphic as SVGGroup:
+                        return SVGUtils.group(svgGraphic)
+                    default:
+                        fatalError("type not supported: " + "\(svgGraphic)")
                 }
             }()
             xml.appendChild(child)
