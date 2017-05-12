@@ -9,9 +9,15 @@ enum LineJoin:String{
     case round = "round"
     case bevel = "bevel"
 }
-extension CGLineCap{
-    func str(_ string:LineJoin) -> CGLineCap {
-        <#function body#>
+extension CGLineJoin{
+    func lineJoin(_ lineJoin:LineJoin) -> CGLineJoin {
+        switch lineJoin {
+        case .miter:
+            return .miter
+        case .round:
+            return .round
+        case .bevel:
+            return .bevel
     }
 }
 
@@ -29,7 +35,7 @@ class SVGStyleUtils {
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
         let strokeLineJoin:String = lineJoin != nil && lineJoin != "" ? lineJoin! : "miter"
         
-        guard let hashValue:Int = LineJoin(rawValue:strokeLineJoin)?.hashValue, let lineJoin = CGLineJoin(rawValue:Int32(hashValue)) else{
+        guard let hashValue:Int = LineJoin(rawValue:strokeLineJoin)?.hashValue else{
             fatalError("this strokeLineJoin type is not supported")
         }
         return lineJoin
