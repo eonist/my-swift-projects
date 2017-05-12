@@ -142,6 +142,8 @@ class StringParser{
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
+     * TODO: //green, blue, orange etc// :TODO: support for all of w3c color types
+     * TODO: move this to a method named webColor?
      */
     static func color(_ hexColor:String) -> UInt{
         if(hexColor.test(colorHexPattern)){/*asserts if the color is in the correct hex format*/
@@ -152,8 +154,7 @@ class StringParser{
             return ("0x"+hex).uint
         }else{
             let uintColor:UInt = ColorTypes.color(hexColor)
-            //Swift.print("uintColor: " + "\(uintColor)")
-            return uintColor//green, blue, orange etc// :TODO: support for all of w3c color types// :TODO: move this to a method named webColor?
+            return uintColor
         }
     }
     /**
