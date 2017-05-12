@@ -56,7 +56,7 @@ private class Utils{
          var colors:[CGColor] = []*/
         let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce((offsets:[],colors:[])) { result,childNode in //(offsets:[],colors:[])
             guard let child:XML = childNode as? XML else{fatalError("error")}
-			var result = result
+			//var result = result
             let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100
 			/*offset is number between 0-1 or offset is percentage %*/
@@ -76,9 +76,7 @@ private class Utils{
 			}
             if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)
-            result.offsets.append(offset)
-            result.colors.append(stopColor)
-            return result
+            return (result.offsets + [offset], result.colors + [stopColor])
 		}
         return SVGGradient(offsetsAndColors.offsets,offsetsAndColors.colors,spreadMethod,id,gradientUnits,gradientTransform)
 	}
