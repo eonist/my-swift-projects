@@ -110,11 +110,10 @@ class SVGUtils {
 	 /**
 	  * Returns an XML instance with SVGGroup data derived from PARAM: group
 	  * NOTE: this method is recursive
-	  * TODO: remeber groups can have style applied inline cant they?
+	  * TODO: ⚠️️ Remember groups can have style applied inline cant they? xml = style(xml,group); not supported yet
 	  */
 	 static func group(_ group:SVGGroup) -> XML {
-		 let xml:XML = id("<g></g>".xml,group)
-		 /*xml = style(xml,group); not supported yet*/
+        let xml:XML = id("<g></g>".xml,group)
         return group.items.reduce(xml){ result,svgGraphic in
             let child:XML = {
                 switch svgGraphic{
