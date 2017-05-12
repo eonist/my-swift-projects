@@ -15,11 +15,11 @@ class SVGModifier {
                     svgGraphic.y1 += offset.y
                     svgGraphic.y2 += offset.y
                 case is SVGRect:
-                    (svgGraphic as! SVGRect).frame.x += offset.x
-                    (svgGraphic as! SVGRect).frame.y += offset.y
+                    svgGraphic.frame.x += offset.x
+                    svgGraphic.frame.y += offset.y
                 case is SVGCircle:
-                    (svgGraphic as! SVGCircle).cx += offset.x
-                    (svgGraphic as! SVGCircle).cy += offset.y
+                    svgGraphic.cx += offset.x
+                    svgGraphic.cy += offset.y
                 default:
                     fatalError("type not supported yet")
             }
