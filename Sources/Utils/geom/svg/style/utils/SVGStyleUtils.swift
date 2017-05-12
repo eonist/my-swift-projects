@@ -9,6 +9,12 @@ enum LineJoin:String{
     case round = "round"
     case bevel = "bevel"
 }
+extension CGLineCap{
+    func str(_ string:LineJoin) -> CGLineCap {
+        <#function body#>
+    }
+}
+
 class SVGStyleUtils {
     /**
      * TODO: try to find a method in swift that can extract enum values by providing a string
