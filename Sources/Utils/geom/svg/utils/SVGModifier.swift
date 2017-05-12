@@ -8,20 +8,22 @@ class SVGModifier {
 	 */
 	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
 		svg.items.forEach { svgGraphic in
-			if(svgGraphic is SVGLine){
-				(svgGraphic as! SVGLine).x1 += offset.x
-				(svgGraphic as! SVGLine).x2 += offset.x
-				(svgGraphic as! SVGLine).y1 += offset.y
-				(svgGraphic as! SVGLine).y2 += offset.y
-			}else if(svgGraphic is SVGRect){
-				(svgGraphic as! SVGRect).frame.x += offset.x
-				(svgGraphic as! SVGRect).frame.y += offset.y
-            }else if(svgGraphic is SVGCircle){
-                (svgGraphic as! SVGCircle).cx += offset.x
-                (svgGraphic as! SVGCircle).cy += offset.y
-            }else{
-                fatalError("type not supported yet")
+            switch svgGraphic{
+                case  let svgGraphic as SVGLine:
+                    svgGraphic.x1 += offset.x
+                    svgGraphic.x2 += offset.x
+                    svgGraphic.y1 += offset.y
+                    svgGraphic.y2 += offset.y
+                case is SVGRect:
+                    (svgGraphic as! SVGRect).frame.x += offset.x
+                    (svgGraphic as! SVGRect).frame.y += offset.y
+                case is SVGCircle:
+                    (svgGraphic as! SVGCircle).cx += offset.x
+                    (svgGraphic as! SVGCircle).cy += offset.y
+                default:
+                    fatalError("type not supported yet")
             }
+			
 		}
 	}
 	/**
