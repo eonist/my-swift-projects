@@ -55,12 +55,9 @@ private class Utils{
         let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce((offsets:[],colors:[])) { result,childNode in //(offsets:[],colors:[])
             guard let child:XML = childNode as? XML else{fatalError("error")}
             let offsetStr:String = SVGPropertyParser.property(child,"offset")!
-            let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100
-			/*offset is number between 0-1 or offset is percentage %*/
+            let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100/*offset is number between 0-1 or offset is percentage %*/
 			let hexColor:UInt
             var stopOpacity:CGFloat
-			//var stopOpacity:CGFloat
-			/*0-1*/
 			let style:String? = SVGPropertyParser.property(child,"style")
 			if(style != nil){
 				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style!)
