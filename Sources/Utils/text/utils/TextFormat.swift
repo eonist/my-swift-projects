@@ -40,8 +40,7 @@ extension TextFormat{
             }
         }
         set {
-            //Swift.print("TextFormat.set() newValue: " + "\(newValue)")
-            switch key{
+            switch TextFormatConstants(rawValue:key){
                 case .background?:background = newValue as! Bool
                 case .backgroundColor?:backgroundColor = newValue as! NSColor
                 case .selectable?:selectable = newValue as! Bool

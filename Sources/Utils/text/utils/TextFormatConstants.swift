@@ -17,5 +17,5 @@ enum TextFormatConstants:String {
 }
 
 extension TextFormatConstants{
-    var textFormatPropertyNames:[String] = [.size.rawValue,.font.rawValue,.align.rawValue,.selectable.rawValue,.background.rawValue,.backgroundColor.rawValue,.color.rawValue,.type.rawValue,.border.rawValue,.multiline.rawValue,.wordWrap.rawValue,.scrollable.rawValue,leading.rawValue]
+    var textFormatPropertyNames:[String] {return [TextFormatConstants.sizeTextFormatConstants.rawValue,TextFormatConstants.fontTextFormatConstants.rawValue,TextFormatConstants.alignTextFormatConstants.rawValue,TextFormatConstants.selectableTextFormatConstants.rawValue,TextFormatConstants.backgroundTextFormatConstants.rawValue,TextFormatConstants.backgroundColorTextFormatConstants.rawValue,TextFormatConstants.colorTextFormatConstants.rawValue,TextFormatConstants.typeTextFormatConstants.rawValue,TextFormatConstants.borderTextFormatConstants.rawValue,TextFormatConstants.multilineTextFormatConstants.rawValue,TextFormatConstants.wordWrapTextFormatConstants.rawValue,TextFormatConstants.scrollableTextFormatConstants.rawValue,leadingTextFormatConstants.rawValue]}
 }
