@@ -29,7 +29,7 @@ class SVGStyleUtils {
         return !(strokeWidth.isNaN) ? strokeWidth : 0
     }
     static func strokeColor(_ strokeColor:Double,_ strokeOpacity:CGFloat)->NSColor{
-        let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : Double(0x000000)
+        let colorVal:Double = !(strokeColor.isNaN) ? strokeColor : 0x000000.double
         let strokeOpacityVal:CGFloat = !(strokeOpacity.isNaN) ? strokeOpacity : 1
         let color:NSColor = NSColorParser.nsColor(colorVal.uint, strokeOpacityVal)
         return color
