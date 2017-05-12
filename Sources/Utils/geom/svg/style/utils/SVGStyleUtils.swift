@@ -9,6 +9,9 @@ class SVGStyleUtils {
      */
     static func lineCap(_ lineCap:String?)->CGLineCap{
         let strokeLineCap = lineCap != nil && lineCap != "" ? lineCap : "butt"/*<-this was none, but it doesnt need to be since we wont extract this value from */
+        guard let lineCap:SVGLineCap = 
+        
+        
         if(strokeLineCap == "butt"){return CGLineCap.butt}
         else if(strokeLineCap == "round"){return CGLineCap.round}
         else if(strokeLineCap == "square"){return CGLineCap.square}
