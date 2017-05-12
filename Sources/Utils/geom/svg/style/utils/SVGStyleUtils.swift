@@ -18,11 +18,7 @@ class SVGStyleUtils {
         else{fatalError("this lineCap type is not supported")}
     }
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
-        let strokeLineJoin:String = {
-            guard let lineJoin = lineJoin, lineJoin != "" else{
-                return "miter"
-            };return lineJoin
-        }()
+        let strokeLineJoin:String = lineJoin != nil && lineJoin! != "" ? lineJoin! : "miter"
         guard let lineJoin:SVGLineJoin = SVGLineJoin(rawValue:strokeLineJoin) else{
             fatalError("this strokeLineJoin type is not supported: \(strokeLineJoin)")
         }
