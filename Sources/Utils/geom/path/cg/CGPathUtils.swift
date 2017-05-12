@@ -110,10 +110,21 @@ private class BasicPathDataParser{
      * // :TODO: for the close case we could also iterate backward to find the last MT???
      */
     static func endAt(_ pathData:[CGFloat], _ pathDataIndex:Int, _ commandType:Int) -> CGPoint{// :TODO: move somewhere else? and rename?
-        if(commandType == PathCommand.moveTo || commandType == PathCommand.lineTo || commandType == PathCommand.wideMoveTo || commandType == PathCommand.wideLineTo) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
-        else if(commandType == PathCommand.arcTo) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
-        else if(commandType == PathCommand.curveTo) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
-        else if(commandType == PathCommand.close) {return CGPoint(NaN,NaN)}/*used to be null*/
+        
+        switch PathCommand(rawValue:commandType){
+            case .moveTo?,.lineTo?,.wideMoveTo?,.wideLineTo?:
+                Swift.print()
+            case .arcTo?:
+                Swift.print()
+            default:
+                break;
+        }
+        
+        
+        if(commandType == PathCommand.moveTo.rawValue || commandType == PathCommand.lineTo.rawValue || commandType == PathCommand.wideMoveTo.rawValue || commandType == PathCommand.wideLineTo.rawValue) {return CGPoint(pathData[pathDataIndex],pathData[pathDataIndex+1])}
+        else if(commandType == PathCommand.arcTo.rawValue) {return CGPoint(pathData[pathDataIndex+5],pathData[pathDataIndex+6])}
+        else if(commandType == PathCommand.curveTo.rawValue) {return CGPoint(pathData[pathDataIndex+2],pathData[pathDataIndex+3])}
+        else if(commandType == PathCommand.close.rawValue) {return CGPoint(NaN,NaN)}/*used to be null*/
         else {fatalError("PathCommand not yet supported")}//PathCommand.CUBIC_CURVE_TO// :TODO: not supported yet
     }
     /**
