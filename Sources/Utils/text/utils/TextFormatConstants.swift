@@ -15,7 +15,6 @@ enum TextFormatConstants:String {
     case scrollable = "scrollable"
     case leading = "leading"/*line-spacing*/
 }
-
 extension TextFormatConstants{
     var textFormatPropertyNames:[String] {return [TextFormatConstants.size.rawValue,TextFormatConstants.font.rawValue,TextFormatConstants.align.rawValue,TextFormatConstants.selectable.rawValue,TextFormatConstants.background.rawValue,TextFormatConstants.backgroundColor.rawValue,TextFormatConstants.color.rawValue,TextFormatConstants.type.rawValue,TextFormatConstants.border.rawValue,TextFormatConstants.multiline.rawValue,TextFormatConstants.wordWrap.rawValue,TextFormatConstants.scrollable.rawValue,TextFormatConstants.leading.rawValue]}
 }
