@@ -17,8 +17,8 @@ class SVGParser {
      */
     static func svg(_ xml:XML)->SVG {
         let viewBox:CGRect = SVGPropertyParser.viewBox(xml)//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
-        let x:CGFloat = SVGPropertyParser.digit(xml,"x");
-        let y:CGFloat = SVGPropertyParser.digit(xml,"y");
+        let x:CGFloat = SVGPropertyParser.digit(xml,"x")
+        let y:CGFloat = SVGPropertyParser.digit(xml,"y")
         let width:CGFloat = {
             let width = SVGPropertyParser.digit(xml,"width")
             return !width.isNaN ? width : viewBox.width//<--a fix for when the svg doc doesnt have width and height properties, then resort to using the viewBox.width and height
@@ -29,8 +29,8 @@ class SVGParser {
         }()
         let version:CGFloat = SVGPropertyParser.value(SVGPropertyParser.property(xml, "version"));
         let nameSpace:String = ""//xml.namespaceDeclarations().toString();//TODO: implement this later
-        let id:String = SVGPropertyParser.id(xml);
-        let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id);
+        let id:String = SVGPropertyParser.id(xml)
+        let doc:SVG = SVG([],x,y,width,height,version,nameSpace,id)
         let children:[XMLNode] = xml.children!
         children.forEach{
             if let elm = element($0 as! XML,doc) {doc.add(elm)}//print("Import - child.toXMLString(): " + child.toXMLString());
