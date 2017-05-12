@@ -1,18 +1,21 @@
 import Foundation
 
-class TextFormatConstants {
-    static var selectable:String = "selectable"
-    static var background:String = "background"
-    static var backgroundColor:String = "backgroundColor"
-    static var color:String = "color"
-    static var align:String = "align"
-    static var font:String = "font"
-    static var size:String = "size"
-    static var type:String = "type"/*static and input*/
-    static var border:String = "border"
-    static var multiline:String = "multiline"
-    static var wordWrap:String = "wordWrap"
-    static var scrollable:String = "scrollable"
-    static var leading:String = "leading"/*line-spacing*/
-    static var textFormatPropertyNames:[String] = [size,font,align,selectable,background,backgroundColor,color,type,border,multiline,wordWrap,scrollable,leading]
+enum TextFormatConstants:String {
+    case selectable = "selectable"
+    case background = "background"
+    case backgroundColor = "backgroundColor"
+    case color = "color"
+    case align = "align"
+    case font = "font"
+    case size = "size"
+    case type = "type"/*static and input*/
+    case border = "border"
+    case multiline = "multiline"
+    case wordWrap = "wordWrap"
+    case scrollable = "scrollable"
+    case leading = "leading"/*line-spacing*/
+}
+
+extension TextFormatConstants{
+    var textFormatPropertyNames:[String] = [.size.rawValue,.font.rawValue,.align.rawValue,.selectable.rawValue,.background.rawValue,.backgroundColor.rawValue,.color.rawValue,.type.rawValue,.border.rawValue,.multiline.rawValue,.wordWrap.rawValue,.scrollable.rawValue,leading.rawValue]
 }
