@@ -9,7 +9,7 @@ class SVGModifier {
 	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
 		svg.items.forEach { svgGraphic in
             switch svgGraphic{
-                case  let svgGraphic as SVGLine:
+                case let svgGraphic as SVGLine:
                     svgGraphic.x1 += offset.x
                     svgGraphic.x2 += offset.x
                     svgGraphic.y1 += offset.y
