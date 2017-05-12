@@ -17,7 +17,7 @@ class SVGPathModifier {
         var c1:CGPoint
         var c2:CGPoint
         var a2:CGPoint
-        (0..<commands.count).indicies.forEach { e in 
+        (0..<commands.count).indicies.forEach { e in
             let command:String = commands[e]
             switch(SVGPathCommand(rawValue:Character(command.lowercased()))){
             case .some(.l), .some(.m):

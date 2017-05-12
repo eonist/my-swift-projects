@@ -3,9 +3,9 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
-    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
-    static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
-    static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
+    private static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
+    private static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
+    private static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
     /**
      * Returns an SVGPathData instance from PARAM: data (which is derived directly from the SVG XML formated data
      * PARAM: data ( M-60-45 L   25.00px,20)
@@ -13,7 +13,7 @@ class SVGPathParser {
      */
     static func pathData(_ data:String)->SVGPathData {
         let matches = data.matches(pathPattern)
-        return matches.reduce(SVGPathData([],[]))  {pathData,match in /*Loops through the pattern*///TODO: use marches.forEach instead
+        return matches.reduce(SVGPathData([],[])) {pathData,match in /*Loops through the pattern*///TODO: use marches.forEach instead
             var pathData = pathData
             let cmnd = match.value(data,1)/*Capturing group 1*/
             pathData.commands.append(cmnd)
@@ -54,8 +54,8 @@ class SVGPathParser {
      * TODO: ⚠️️ Cubic and quad curve may have more params and they may have t and s  impliment this
      */
     static func points(_ path:SVGPath)->[CGPoint] {
-        var commands:Array = path.commands
-        var params:Array = path.parameters
+        var commands:[String] = path.commands
+        var params:[CGFloat] = path.parameters
         var positions:[CGPoint] = []
         var i:Int = 0;/*parameterIndex*/
         var prevP:CGPoint = CGPoint()
