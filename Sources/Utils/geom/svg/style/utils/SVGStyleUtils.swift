@@ -4,13 +4,13 @@ import Cocoa
  * NOTE: these methods provide a central place to convert values from the svg value scheme to the quartz value scheme
  */
 
-enum LineJoin:String{
+enum SVGLineJoin:String{
     case miter = "miter"
     case round = "round"
     case bevel = "bevel"
 }
 extension CGLineJoin{
-    static func lineJoin(_ lineJoin:LineJoin) -> CGLineJoin {
+    static func lineJoin(_ lineJoin:SVGLineJoin) -> CGLineJoin {
         switch lineJoin {
         case .miter:
             return .miter
@@ -33,12 +33,13 @@ class SVGStyleUtils {
         else{fatalError("this lineCap type is not supported")}
     }
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
-        guard let strokeLineJoin:String = lineJoin , lineJoin != "" else{
-            //? lineJoin! : "miter"
-        }
-        
-        guard let lineJoin:LineJoin = LineJoin(rawValue:strokeLineJoin) else{
-            fatalError("this strokeLineJoin type is not supported")
+        let strokeLineJoin:String = {
+            guard let lineJoin = lineJoin, lineJoin != "" else{
+                return "miter"
+            };return lineJoin
+        }()
+        guard let lineJoin:SVGLineJoin = SVGLineJoin(rawValue:strokeLineJoin) else{
+            fatalError("this strokeLineJoin type is not supported: \(strokeLineJoin)")
         }
         return CGLineJoin.lineJoin(lineJoin)
       
