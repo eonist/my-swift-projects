@@ -3,9 +3,6 @@ import Cocoa
  * DISCUSSION: Probably move this into a more central place, but in the spirit of moving on!, Or not since its probably only related to how svg names these variables
  * NOTE: these methods provide a central place to convert values from the svg value scheme to the quartz value scheme
  */
-
-
-
 class SVGStyleUtils {
     /**
      * TODO: try to find a method in swift that can extract enum values by providing a string
