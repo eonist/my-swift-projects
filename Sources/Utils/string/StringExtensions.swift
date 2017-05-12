@@ -6,7 +6,7 @@ extension String {
     //init(_ value:Any) doesnt work as String("hello".reversed()) must go through 
     init(_ value:CGFloat){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Int){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
-    init(_ value:Bool){ self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
+    init(_ value:Bool){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     
     var tildePath:String {return NSString(string: self).expandingTildeInPath}/*Convenince*/
     /**

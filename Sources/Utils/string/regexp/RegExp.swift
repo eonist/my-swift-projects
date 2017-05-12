@@ -80,7 +80,6 @@ public class RegExp{
             let stringlength = str.characters.count
             let regex = try NSRegularExpression(pattern:pattern , options: options)
             let modString = regex.stringByReplacingMatches(in: str, options: [], range: NSMakeRange(0, stringlength), withTemplate: replacement)
-            //print(modString)
             return modString
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
