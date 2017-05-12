@@ -76,13 +76,12 @@ public class XMLParser{
      */
     static func attribs(_ child:XML) -> [String:String]{
         if let attribs = child.attributes{
-            var dict:[String:String] = [:]
-            attribs.forEach{
-                dict[$0.name!] = $0.stringValue!
+            return attribs.reduce([:]){ dict, attrib in
+                var dict = dict
+                dict[attrib.name!] = attrib.stringValue!
+                return dict
             }
-            return dict
-        }
-        return [:]
+        };return [:]
     }
     /**
      * Returns a key/value object with the attributes at the PARAM: index in PARAM database
