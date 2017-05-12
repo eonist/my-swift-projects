@@ -46,7 +46,6 @@ class SVGStyleParser {
         }else {/*url(#three_stops);*/
 			let url:String = "\(property)".match("(?<=^url\\(\\#).+?(?=\\)$)")[0]
 			return container.getItem(url)/*SVGLinearGradient*/
-            //Swift.print("property: " + "\(property)")
 		}
 	}
 	/**
@@ -64,16 +63,16 @@ class SVGStyleParser {
             Swift.print("style.fill: " + "\(style.fill)")
             Swift.print("style.fillOpacity: " + "\(style.fillOpacity)")
         }else if(style.fill is SVGLinearGradient) {
-            let linearGradient:SVGLinearGradient = style.fill as! SVGLinearGradient;
-            Swift.print("linearGradient.colors: " + "\(linearGradient.colors)");
-            //Swift.print("linearGradient.opacities: " + "\(linearGradient.opacities)");
-            Swift.print("linearGradient.offsets: " + "\(linearGradient.offsets)");
-            Swift.print("linearGradient.gradientUnits: " + "\(linearGradient.gradientUnits)");
-            Swift.print("linearGradient.spreadMethod: " + "\(linearGradient.spreadMethod)");
-            Swift.print("linearGradient.x1: " + "\(linearGradient.x1)");
-            Swift.print("linearGradient.y1: " + "\(linearGradient.y1)");
-            Swift.print("linearGradient.x2: " + "\(linearGradient.x2)");
-            Swift.print("linearGradient.y2: " + "\(linearGradient.y2)");
+            let linearGradient:SVGLinearGradient = style.fill as! SVGLinearGradient
+            Swift.print("linearGradient.colors: " + "\(linearGradient.colors)")
+            //Swift.print("linearGradient.opacities: " + "\(linearGradient.opacities)")
+            Swift.print("linearGradient.offsets: " + "\(linearGradient.offsets)")
+            Swift.print("linearGradient.gradientUnits: " + "\(linearGradient.gradientUnits)")
+            Swift.print("linearGradient.spreadMethod: " + "\(linearGradient.spreadMethod)")
+            Swift.print("linearGradient.x1: " + "\(linearGradient.x1)")
+            Swift.print("linearGradient.y1: " + "\(linearGradient.y1)")
+            Swift.print("linearGradient.x2: " + "\(linearGradient.x2)")
+            Swift.print("linearGradient.y2: " + "\(linearGradient.y2)")
         }else{
             Swift.print("style.fill: " + "\(style.fill)")
         }
