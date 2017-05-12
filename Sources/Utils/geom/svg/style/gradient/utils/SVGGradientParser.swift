@@ -48,16 +48,14 @@ private class Utils{
      * TODO: if style is present then dont check for color etc
 	 */
 	static func gradient(_ xml:XML)->SVGGradient{
-        /*userSpaceOnUse*/
         let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? ""/*<--temp*/
         let id:String = SVGPropertyParser.id(xml)
-        //Swift.print("id: " + "\(id)")
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
 		var offsets:[CGFloat] = []
 		var colors:[CGColor] = []
         xml.children?.forEach {
-            let child:XML = $0 as! XML
+            guard let child:XML = $0 as? XML else{fatalError("error")}
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
 			/*offset is number between 0-1 or offset is percentage %*/
