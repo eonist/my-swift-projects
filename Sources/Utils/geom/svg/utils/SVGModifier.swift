@@ -14,10 +14,10 @@ class SVGModifier {
                     svgGraphic.x2 += offset.x
                     svgGraphic.y1 += offset.y
                     svgGraphic.y2 += offset.y
-                case is SVGRect:
+                case let svgGraphic as SVGRect:
                     svgGraphic.frame.x += offset.x
                     svgGraphic.frame.y += offset.y
-                case is SVGCircle:
+                case let svgGraphic as SVGCircle:
                     svgGraphic.cx += offset.x
                     svgGraphic.cy += offset.y
                 default:
