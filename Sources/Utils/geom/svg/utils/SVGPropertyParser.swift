@@ -19,9 +19,10 @@ class SVGPropertyParser {
 	 * TODO: needs a re-write that doesnt include returning an associative array
 	 */
 	static func digit(_ xml:XML,_ key:String)->CGFloat{
-		let prop:Any? = property(xml, key)
-        if(prop == nil) {return NaN}
-		return StringParser.digit(prop as! String)//removes the px suffix and casts the value as a Number
+        guard let prop:Any = property(xml, key) else{
+            return NaN
+        }
+        return StringParser.digit(prop as! String)/*removes the px suffix and casts the value as a Number*/
 	}
     /**
      * Returns viewBox
@@ -45,23 +46,20 @@ class SVGPropertyParser {
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
 	static func style(_ xml:XML,_ container:ISVGContainer)->SVGStyle {
-		var style:SVGStyle
-		let prop:String? = property(xml,"style")
-        if(prop != nil) {style = SVGStyleParser.style(prop!,container)}//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
-		else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
-			let fill:Any? = SVGStyleParser.fill(property(xml,"fill"), container)
-			var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
-			let fillRule:String? = property(xml,"fill-rule")
-			let stroke:Any? = SVGStyleParser.stroke(property(xml,"stroke"),container)
-			let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
-			var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
-			let strokeLineCap:String? = property(xml,"stroke-linecap")
-			let strokeLineJoin:String? = property(xml,"stroke-linejoin")
-			let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
+        guard let prop:String = property(xml,"style") else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
+            let fill:Any? = SVGStyleParser.fill(property(xml,"fill"), container)
+            var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))
+            let fillRule:String? = property(xml,"fill-rule")
+            let stroke:Any? = SVGStyleParser.stroke(property(xml,"stroke"),container)
+            let strokeWidth:CGFloat = SVGPropertyParser.value(property(xml,"stroke-width"))
+            var strokeOpacity:CGFloat = SVGPropertyParser.value(property(xml,"stroke-opacity"))
+            let strokeLineCap:String? = property(xml,"stroke-linecap")
+            let strokeLineJoin:String? = property(xml,"stroke-linejoin")
+            let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
             if(strokeOpacity.isNaN){strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
-			style = SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
+            return SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
         }
-		return style
+        return SVGStyleParser.style(prop!,container)//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer
 	}
 }
