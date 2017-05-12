@@ -23,7 +23,6 @@ class SVGModifier {
                 default:
                     fatalError("type not supported yet")
             }
-			
 		}
 	}
 	/**
