@@ -10,14 +10,14 @@ class SVGPathModifier {
      * TODO: ⚠️️ create a method in NumberModifer named scale that takes value:Number,pivot:Number,scale:Number
      */
     static func scale(_ path:SVGPath,_ pivot:CGPoint,_ scalePoint:CGPoint) {
-        var i:Int = 0;/*parameterIndex*/
+        var i:Int = 0/*parameterIndex*/
         var commands:[String] = path.commands
         var params:[CGFloat] = path.parameters
         var p:CGPoint
         var c1:CGPoint
         var c2:CGPoint
         var a2:CGPoint
-        (0..<commands.count).indices.forEach { e in
+        for e in 0..<commands.count {
             let command:String = commands[e]
             switch(SVGPathCommand(rawValue:Character(command.lowercased()))){
                 case .l?, .m?:
