@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: add an example here
  */
-class SVGLinearGradient:SVGGradientDecoratable {
+struct SVGLinearGradient:SVGGradientDecoratable {
     var gradient:ISVGGradient
     var x1:CGFloat/*The x1 and y1 (starting point) of the vector defining the direction of the gradient. Specified as percentages (%) of x1,y1 and x2,y2 of the shape the gradient is applied to. (Note: You should be able to use absolute numbers, but this doesn't seem to work in the browsers).*/
     var y1:CGFloat
