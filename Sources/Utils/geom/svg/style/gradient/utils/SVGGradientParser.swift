@@ -52,12 +52,12 @@ private class Utils{
         let id:String = SVGPropertyParser.id(xml)
         let gradientTransform:CGAffineTransform? = Utils.gradientTransform(xml)
         let gradientUnits:String = SVGPropertyParser.property(xml,"gradientUnits")!
-		var offsets:[CGFloat] = []
-		var colors:[CGColor] = []
-        xml.children?.forEach {
-            guard let child:XML = $0 as? XML else{fatalError("error")}
+        /*var offsets:[CGFloat] = []
+         var colors:[CGColor] = []*/
+        let offsetsAndColors:(offsets:[CGFloat],colors:[CGColor]) = xml.children!.reduce(([],[])) {//(offsets:[],colors:[])
+            guard let child:XML = $1 as? XML else{fatalError("error")}
 			let offsetStr:String = SVGPropertyParser.property(child,"offset")!
-            let offset:CGFloat = StringAsserter.digit(offsetStr) ? CGFloat(Double(offsetStr)!) /** 255*/ : StringParser.percentage(offsetStr) / 100 /** 255*/;
+            let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100
 			/*offset is number between 0-1 or offset is percentage %*/
 			let hexColor:UInt
             var stopOpacity:CGFloat
