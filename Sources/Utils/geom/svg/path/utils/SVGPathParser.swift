@@ -3,7 +3,7 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
-    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"//
+    static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
     static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
     static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
     /**
@@ -28,14 +28,13 @@ class SVGPathParser {
      * NOTE: cant make this private since polyline and polygon uses this method
      * EXAMPLE: SVGPathParser.parameters("3.0-185.12-89.2")//[3.0, -185.12, -89.2]
      * EXAMPLE: SVGPathParser.parameters("-75,53.571-147.029,36.822-185-89.748")//[-75.0, 53.571, -147.029, 36.822, -185.0, -89.748]
-     * TODO: write more examples in this comment section
+     * TODO: ⚠️️ Write more examples in this comment section
      */
     static func parameters(_ parameters:String)->[CGFloat] {
-        let middle:String = RegExpPattern.digitAssertPattern//"\\-?\\d+?"//
+        let middle:String = RegExpPattern.digitAssertPattern
         let pattern:String = paramStartPattern + middle + paramEndPattern
-        let stringArray:[String] = parameters.match(pattern);
-        let array:[CGFloat] = stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
-        return array
+        let stringArray:[String] = parameters.match(pattern)
+        return stringArray.map {$0.cgFloat}//<--temp fix, converts the values in the array to CGFloat
     }
     /**
      * Returns the destination end position of a given command at PARAM: commandIndex in PARAM: commands
@@ -50,9 +49,9 @@ class SVGPathParser {
     }
     /**
      * Returns all points in PARAM: path
-     * TODO: impliment native quad to
-     * TODO: add support for zZ ?!? do we need to?
-     * TODO: cubic and quad curve may have more params and they may have t and s  impliment this
+     * TODO: ⚠️️ Impliment native quad to
+     * TODO: ⚠️️ Add support for zZ ?!? do we need to?
+     * TODO: ⚠️️ Cubic and quad curve may have more params and they may have t and s  impliment this
      */
     static func points(_ path:SVGPath)->[CGPoint] {
         var commands:Array = path.commands
@@ -64,39 +63,39 @@ class SVGPathParser {
             let command:String = commands[e]
             let isLowerCase:Bool = StringAsserter.lowerCase(command)
             var pos:CGPoint = isLowerCase ? prevP.copy() : CGPoint()
-            switch(command.lowercased()){
-            case SVGPathCommands.m,SVGPathCommands.l: /*lineTo,moveTo*/
+            switch SVGPathCommand(rawValue:Character(command.lowercased())) {
+            case .some(.m), .some(.l): /*lineTo,moveTo*/
                 pos += CGPoint(params[i+0],params[i+1])
                 i += 2
                 break;
-            case SVGPathCommands.h:/*horizontalLineTo*/
+            case .some(.h):/*horizontalLineTo*/
                 pos += CGPoint(params[i],isLowerCase ? 0 : prevP.y)
                 i += 1
                 break;
-            case SVGPathCommands.v:/*verticalLineTo*/
+            case .some(.v):/*verticalLineTo*/
                 pos += CGPoint(isLowerCase ? 0 : prevP.x,params[i])
                 i += 1
                 break;
-            case SVGPathCommands.c:/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
+            case .some(.c):/*cubicCurveTo*/ // :TODO: this hasn't been tested!!
                 pos += CGPoint(params[i+4],params[i+5])
                 i += 6
                 break;
-            case SVGPathCommands.s:/*smooth Cubic curve command*/
+            case .some(.s):/*smooth Cubic curve command*/
                 pos += CGPoint(params[i+2],params[i+3])
                 i += 4
                 break;
-            case SVGPathCommands.q:/*quadCurveTo*/
+            case .some(.q):/*quadCurveTo*/
                 pos += CGPoint(params[i+2],params[i+3])
                 i += 4
                 break;
-            case SVGPathCommands.t:/*smooth quadratic curve command*/
+            case .some(.t):/*smooth quadratic curve command*/
                 pos += CGPoint(params[i],params[i+1])
                 i += 2
                 break;
             default:break;
             }
             positions.append(pos)
-            if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
+            if(e < commands.count-1) {
                 prevP = pos.copy()
             }
         }
