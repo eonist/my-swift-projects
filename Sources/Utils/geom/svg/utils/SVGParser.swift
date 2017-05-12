@@ -51,17 +51,17 @@ class SVGParser {
             SVGStyleModifier.merge(&style, containerStyle)/*parent style is inherited down to sub elements*/
         }
         let id:String = SVGPropertyParser.id(xml)
-        switch(xml.localName!){
-            case SVGConstants.rect: element = rect(xml,style,id)
-            case SVGConstants.polyLine: element =  polyLine(xml,style,id)!
-            case SVGConstants.polygon: element = polygon(xml,style,id)!
-            case SVGConstants.path: element = path(xml,style,id)!
-            case SVGConstants.line: element = line(xml,style,id)
-            case SVGConstants.circle: element = circle(xml,style,id)
-            case SVGConstants.ellipse: element = ellipse(xml,style,id)
-            case SVGConstants.group: element = group(xml,style,id)
-            case SVGConstants.linearGradient: element = SVGGradientParser.linearGradient(xml)
-            case SVGConstants.radialGradient: element = SVGGradientParser.radialGradient(xml)
+        switch(SVGConstants(rawValue:xml.localName!)){
+            case .rect?: element = rect(xml,style,id)
+            case .polyLine?: element =  polyLine(xml,style,id)!
+            case .polygon?: element = polygon(xml,style,id)!
+            case .path?: element = path(xml,style,id)!
+            case .line?: element = line(xml,style,id)
+            case .circle?: element = circle(xml,style,id)
+            case .ellipse?: element = ellipse(xml,style,id)
+            case .group?: element = group(xml,style,id)
+            case .linearGradient?: element = SVGGradientParser.linearGradient(xml)
+            case .radialGradient?: element = SVGGradientParser.radialGradient(xml)
             default: Swift.print("SVG Element type not supported: " + xml.localName!)/*IS can export <defs></defs>*/
         }
         return element
