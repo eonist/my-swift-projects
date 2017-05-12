@@ -10,7 +10,7 @@ enum LineJoin:String{
     case bevel = "bevel"
 }
 extension CGLineJoin{
-    func lineJoin(_ lineJoin:LineJoin) -> CGLineJoin {
+    static func lineJoin(_ lineJoin:LineJoin) -> CGLineJoin {
         switch lineJoin {
         case .miter:
             return .miter
@@ -33,12 +33,14 @@ class SVGStyleUtils {
         else{fatalError("this lineCap type is not supported")}
     }
     static func lineJoin(_ lineJoin:String?)->CGLineJoin{
-        let strokeLineJoin:String = lineJoin != nil && lineJoin != "" ? lineJoin! : "miter"
+        guard let strokeLineJoin:String = lineJoin , lineJoin != "" else{
+            //? lineJoin! : "miter"
+        }
         
-        guard let hashValue:Int = LineJoin(rawValue:strokeLineJoin)?.hashValue else{
+        guard let lineJoin:LineJoin = LineJoin(rawValue:strokeLineJoin) else{
             fatalError("this strokeLineJoin type is not supported")
         }
-        return lineJoin
+        return CGLineJoin.lineJoin(lineJoin)
       
     }
     static func miterLimit(_ miterLimit:CGFloat)->CGFloat{
