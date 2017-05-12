@@ -35,7 +35,7 @@ class SVGStyleUtils {
     }
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
-     * NOTE: if there is no strokeMiterLimit, then 10 is set as the default miter limit in LineStyle, this isnt always applied, and if its not there then we still need a value to work with, we could include it in the parsing of the svg, but then it would be exportable, which is undesired behaviour
+     * NOTE: if there is no strokeMiterLimit, then 10 is set as the default miter limit in LineStyle, this isn't always applied, and if its not there then we still need a value to work with, we could include it in the parsing of the svg, but then it would be exportable, which is undesired behaviour
      * TODO: if thre is no value the 0 can be used to calc the bounding box, this should be detected before the bounding box call though, as you dont need to calc the boundingbox if the stroke is 0
      */
     static func boundingBox(_ path:CGPath,_ style:SVGStyle)->CGRect{
