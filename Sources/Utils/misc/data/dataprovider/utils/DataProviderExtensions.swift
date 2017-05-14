@@ -62,7 +62,7 @@ extension DataProvider{
      * Adds an item to a spesific index
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func add(_ item:[String:String], _ index:Int, _ updateDP:Bool = true){
+    func add(_ item:[String:String], _ index:Int, _ updateDP:Bool = true/*<-new ⚠️️ to facilitate bulk adding with 1 ui update*/){
         ArrayModifier.addAt(&self.items, item, index)
         if updateDP {super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))}
     }
