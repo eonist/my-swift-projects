@@ -32,7 +32,7 @@ class Align {
     }
     /**
      * Returns the pivot point of an object according to what pivotAlignment it has
-     * EXAMPLE: // :TODO: write an example
+     * EXAMPLE: write an example
      */
     static func point(_ size:CGSize, _ alignment:String) -> CGPoint {
         switch alignment{

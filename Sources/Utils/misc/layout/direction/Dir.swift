@@ -4,7 +4,7 @@ public enum Dir {
     case hor, ver
 }
 /**
- * Alternative: let value:CGFloat = CGSize()[.hor]
+ * NOTE: Alternate Idea: let value:CGFloat = CGSize()[.hor]
  * EXAMPLE: let value:CGFloat = Dir.hor.val(CGSize())
  */
 extension Dir{
