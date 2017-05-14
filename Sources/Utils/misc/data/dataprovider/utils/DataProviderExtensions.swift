@@ -54,7 +54,7 @@ extension DataProvider{
      * Adds an item to the end of the Items Array
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func add(_ item:[String:String]) {
+    func add(_ item:[String:String], _ updateDP:Bool = true) {
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,self.items.count-1,self.items.count,self))
     }
