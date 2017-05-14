@@ -47,14 +47,14 @@ extension DataProvider{
      * PARAM: items is an Array comprised of objects
      */
     func add(_ items:[[String:String]]) {
-        self.items += items//concats
+        self.items += items/*concats*/
         super.onEvent(DataProviderEvent(DataProviderEvent.add, self.items.count - items.count, self.items.count,self))
     }
     /**
      * Adds an item to the end of the Items Array
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func add(_ item:[String:String], _ updateDP:Bool = true) {
+    func add(_ item:[String:String]) {
         self.items.append(item)
         super.onEvent(DataProviderEvent(DataProviderEvent.add,self.items.count-1,self.items.count,self))
     }
@@ -62,9 +62,9 @@ extension DataProvider{
      * Adds an item to a spesific index
      * PARAM: item is an Object instance as {title:"title"}
      */
-    func add(_ item:[String:String], _ index:Int){
+    func add(_ item:[String:String], _ index:Int, _ updateDP:Bool = true){
         ArrayModifier.addAt(&self.items, item, index)
-        super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))
+        if updateDP {super.onEvent(DataProviderEvent(DataProviderEvent.add,index,index+1,self))}
     }
     /**
      * Removes an item at a spesific index
