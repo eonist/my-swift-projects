@@ -122,8 +122,8 @@ public class XMLParser{
         }else if(index.count == 1 && xml.child(at: index.first!) != nil) {//XMLParser.childAt(xml!.children!, index[0])
             return xml.childByIndex(index[0])
         }// :TODO: if index.length is 1 you can just ref index
-        else if(index.count > 1 && xml.children!.count > 0) {
-            return XMLParser.childAt(xml.children![index.first!] as? XML,index.slice2(1,index.count))
+        else if let children = xml.children, index.count > 1 && children.count > 0 {
+            return XMLParser.childAt(children[index.first!] as? XML,index.slice2(1,index.count))
         }
         return nil
     }
