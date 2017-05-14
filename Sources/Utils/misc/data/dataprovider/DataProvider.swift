@@ -27,7 +27,9 @@ import Foundation
  * TODO: ⚠️️ Make it in POP ⚠️️
  */
 typealias DP = DataProvider
-
+/**
+ * COnvert to struct, EventSender can be implemented as protocol and extension and var etc
+ */
 class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO:Maybe make this public getter private setter
     var count:Int{return self.items.count}
