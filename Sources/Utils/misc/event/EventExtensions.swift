@@ -36,7 +36,7 @@ extension Event{
  * Convenience operators (So you can write less code)
  * EXAMPLE: if(event == (Button.Event,btn1)){/*do something here*/}
  */
-func == (l:Event , r:AnyObject) -> Bool {/*immediate*/
+func == (l:Event , r:AnyObject?) -> Bool {/*immediate*/
     return l.immediate === r
 }
 func == (l:Event , r:(eventType:String,immediate:AnyObject?)) -> Bool {/*immediate*/
@@ -48,6 +48,6 @@ func === (l:Event , r:AnyObject?) -> Bool {/*origin*/
 func === (l:Event , r:(eventType:String,origin:AnyObject?)) -> Bool {/*origin*/
     return l.type == r.eventType && l.origin === r.origin
 }
-func == (l:Event , r:String?) -> Bool {/*immediate*/
+func == (l:Event , r:String) -> Bool {//??
     return l.type == r
 }
