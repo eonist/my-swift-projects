@@ -32,8 +32,8 @@ extension Event{
         return self.type == type && self.immediate === immediate
     }
     /**
-     * New
-     * NOTE: Is used to assert if child has ancestry to PARAM: parent
+     * Assert if child has ancestry to PARAM: parent
+     * NOTE: This way we dont have to store the entire stack in the event.
      */
     func isChildOf(_ parent:NSView?) -> Bool {
         if let origin:NSView = self.origin as? NSView {
