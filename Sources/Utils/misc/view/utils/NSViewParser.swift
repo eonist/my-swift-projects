@@ -48,18 +48,6 @@ class NSViewParser {
         return nil
     }
     /**
-     *
-     */
-    static func hasParent(_ child:NSView,_ parentToMatch:NSView)->Bool{
-        if let superView = child.superview{
-            if superView === parentToMatch {
-                return true
-            }
-            return hasParent(superView,parentToMatch)/*traverse further up the hierarchy*/
-        }
-        return false/*Return false if no parent match*/
-    }
-    /**
      * Returns the array index of PARAM: item from PARAM: parent
      * NOTE: this function is recursive
      * TODO: ⚠️️ Rename to indexMap? or depth or map?, since index should be index of a NSView, maybe idx3d?
