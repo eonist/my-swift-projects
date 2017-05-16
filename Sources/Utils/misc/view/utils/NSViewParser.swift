@@ -50,7 +50,7 @@ class NSViewParser {
     /**
      * Returns the array index of PARAM: item from PARAM: parent
      * NOTE: this function is recursive
-     * TODO: ⚠️️ rename to indexMap? or depth or map?, since index should be index of a NSView
+     * TODO: ⚠️️ Rename to indexMap? or depth or map?, since index should be index of a NSView, maybe idx3d?
      * EXAMPLE: index(self,subSubSubChild)
      */
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
