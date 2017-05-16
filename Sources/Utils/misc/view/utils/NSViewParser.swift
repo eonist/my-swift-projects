@@ -40,18 +40,24 @@ class NSViewParser {
      */
     static func parentOfType<T>(_ view:NSView,_ classType:T.Type)->T? {
         if let superView = view.superview{
-            if view.superview as? T != nil{
+            if superView as? T != nil{
                 return parentOfType(superView,classType)
             }
-            return view.superview as? T
+            return superView as? T
         }
         return nil
     }
     /**
-     * 
+     *
      */
-    static func parent(_ child:NSView,_ match:NSView){
-        
+    static func hasParent(_ child:NSView,_ parentToMatch:NSView)->Bool{
+        if let superView = child.superview{
+            if superView === parentToMatch {
+                return true
+            }
+            return hasParent(superView,parentToMatch)
+        }
+        return false
     }
     /**
      * Returns the array index of PARAM: item from PARAM: parent
