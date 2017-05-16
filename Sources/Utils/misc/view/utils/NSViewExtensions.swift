@@ -98,6 +98,9 @@ extension NSView {
         }
         return offset
     }
+    func hasParent(_ parent:NSView)->Bool{/*Convenience*/
+        return NSViewAsserter.hasParent(self, parent)
+    }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
     //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
@@ -112,6 +115,7 @@ extension NSView {
     //func getSubviewAt(_ i:Int)->NSView{return NSViewParser.getSubViewAt(self, i)}//favour getSubViewAt method instead, as its optional
     func getSubViewAt(_ i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
+    
 }
 //these won't work since swift 3 i think, use .w and .h instead (aperantly .width is used too may places, you need to refactor it out first, same with height)
 //var width:CGFloat{return frame.width}//TODO:implement later
