@@ -1,4 +1,7 @@
 import Cocoa
+extension Bool{
+    var str:String {return self.description}
+}
 /**
  * Convenince extensions for often used string methods
  */
