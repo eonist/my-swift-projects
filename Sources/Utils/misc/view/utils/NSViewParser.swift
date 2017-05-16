@@ -11,7 +11,7 @@ class NSViewParser {
         return view.subviews.filter() {$0 as? T != nil}.map{$0 as! T}
     }
     /**
-     * Returns a list of parents (this works, tested)
+     * Returns a list of parents
      */
     static func parents(_ view:NSView)->[NSView]{
         var parents:[NSView] = []
@@ -50,7 +50,8 @@ class NSViewParser {
     /**
      * Returns the array index of PARAM: item from PARAM: parent
      * NOTE: this function is recursive
-     * // :TODO: rename to indexMap? or depth or map?, since index should be index of a NSView
+     * TODO: ⚠️️ rename to indexMap? or depth or map?, since index should be index of a NSView
+     * EXAMPLE: index(self,subSubSubChild)
      */
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
         if(parent === child) {return []}
