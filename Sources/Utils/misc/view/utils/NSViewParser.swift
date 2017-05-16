@@ -36,7 +36,7 @@ class NSViewParser {
     }
     /**
      * Returns the first parent of PARAM: view that is of type PARAM: classType
-     * @Note this method is recursive, and looks through parents of parents and so on until it finds a match for the classType
+     * NOTE: this method is recursive, and looks through parents of parents and so on until it finds a match for the classType
      */
     static func parentOfType<T>(_ view:NSView,_ classType:T.Type)->T? {
         if let superView = view.superview{
