@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 extension Event{
     /**
@@ -30,6 +30,9 @@ extension Event{
      */
     func assert(_ type:String, immediate:AnyObject?) -> Bool{
         return self.type == type && self.immediate === immediate
+    }
+    func isChildOf(_ parent:NSView) -> Bool {
+        return //(event.origin as? NSView)?.hasParent(nameTextInput)
     }
 }
 /**
