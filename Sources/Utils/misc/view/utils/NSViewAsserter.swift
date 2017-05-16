@@ -10,8 +10,8 @@ class NSViewAsserter {
     /**
      * Asserts if a child has a speccific pattern
      */
-    static func hasParent(_ child:NSView,_ parentToMatch:NSView)->Bool{
-        if let superView = child.superview{
+    static func hasParent(_ child:NSView?,_ parentToMatch:NSView?)->Bool{
+        if let superView = child?.superview{
             if superView === parentToMatch {
                 return true
             }

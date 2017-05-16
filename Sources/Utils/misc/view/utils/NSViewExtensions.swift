@@ -98,7 +98,7 @@ extension NSView {
         }
         return offset
     }
-    func hasParent(_ parent:NSView)->Bool{/*Convenience*/
+    func hasParent(_ parent:NSView?)->Bool{/*Convenience*/
         return NSViewAsserter.hasParent(self, parent)
     }
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
