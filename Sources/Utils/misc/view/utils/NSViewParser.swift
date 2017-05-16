@@ -55,9 +55,9 @@ class NSViewParser {
             if superView === parentToMatch {
                 return true
             }
-            return hasParent(superView,parentToMatch)
+            return hasParent(superView,parentToMatch)/*traverse further up the hierarchy*/
         }
-        return false
+        return false/*Return false if no parent match*/
     }
     /**
      * Returns the array index of PARAM: item from PARAM: parent
