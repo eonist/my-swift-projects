@@ -48,9 +48,9 @@ class NSViewParser {
         return nil
     }
     /**
-     *
+     * 
      */
-    static func parent(){
+    static func parent(_ child:NSView,_ match:NSView){
         
     }
     /**
