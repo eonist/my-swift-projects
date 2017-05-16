@@ -1,7 +1,4 @@
 import Cocoa
-extension Bool{
-    var str:String {return self.description}
-}
 /**
  * Convenince extensions for often used string methods
  */
@@ -78,6 +75,9 @@ extension String {
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
+}
+extension Bool{
+    var str:String {return self.description}
 }
 /**
  * Multiplies a string
