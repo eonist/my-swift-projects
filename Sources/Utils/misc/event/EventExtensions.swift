@@ -31,8 +31,14 @@ extension Event{
     func assert(_ type:String, immediate:AnyObject?) -> Bool{
         return self.type == type && self.immediate === immediate
     }
-    func isChildOf(_ parent:NSView) -> Bool {
-        return //(event.origin as? NSView)?.hasParent(nameTextInput)
+    /**
+     * New
+     */
+    func isChildOf(_ parent:NSView?) -> Bool {
+        if let origin:NSView = self.origin as? NSView {
+            return origin.hasParent(parent)
+        }
+        return false
     }
 }
 /**
