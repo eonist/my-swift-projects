@@ -33,6 +33,7 @@ extension Event{
     }
     /**
      * New
+     * NOTE: Is used to assert if child has ancestry to PARAM: parent
      */
     func isChildOf(_ parent:NSView?) -> Bool {
         if let origin:NSView = self.origin as? NSView {
