@@ -3,7 +3,7 @@ class FileParser{
 	/**
 	 * Returns string content from a file at file location "path"
      * PARAM path is the file path to the file
-     * NOTE: remember to expand the path with the .tilde call, if its a tilde path
+     * IMPORTANT: ⚠️️ Remember to expand the path with the .tilde call, if its a tilde path
      * TODO:  What format is the path?
      * let path = "//Users/<path>/someFile.xml"
      * var err: NSError?
@@ -12,10 +12,10 @@ class FileParser{
      */
 	static func content(_ path:String)->String?{
         do {
-            let content = try String(contentsOfFile: path, encoding: String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
+            let content = try String(contentsOfFile:path, encoding:String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
             return content
         } catch {
-            Swift.print("Could not load: " + "\(path)")// contents could not be loaded
+            //Swift.print("Could not load: " + "\(path)")// contents could not be loaded
             return nil
         }
 	}

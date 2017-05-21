@@ -67,6 +67,7 @@ extension String {
     var xml:XML {return XML(self)}/*Convenince*/
     var url:URL {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
+    var content:String? {return FileParser.content(self.tildePath)}
 
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
         return StringParser.array(self, cast)
