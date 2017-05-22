@@ -193,7 +193,7 @@ class ArrayParser{
     static func mapReduce<T,V,U>(_ arr:[T], _ initVal:V, _ closure:@escaping (_ interim: V,_ item:T)->V)->U{
         var retVal = initVal
         arr.forEach{
-            retVal = closure(retVal,$0)
+            retVal = closure(retVal,$0)//TODO: Needs to exit early no?
         }
         return retVal as! U
     }
