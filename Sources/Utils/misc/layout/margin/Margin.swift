@@ -32,3 +32,7 @@ struct Margin{
         }
     }
 }
+extension Margin{
+    var hor:CGFloat {return left + right}
+    var ver:CGFloat {return top + bottom}
+}

@@ -17,7 +17,7 @@ class Border{
     /**
      * TODO: Could this be added through an extension?
      */
-    init(_ args:Array<CGFloat>){
+    init(_ args:[CGFloat]){
         switch(args.count){
             case 1: left = args[0]; right = args[0]; top = args[0]; bottom = args[0]; break;
             case 2: top = args[0]; bottom = args[0];left = args[1]; right = args[1]; break;
@@ -26,4 +26,8 @@ class Border{
             default:break;
         }
     }
+}
+extension Border{
+    var hor:CGFloat {return left + right}
+    var ver:CGFloat {return top + bottom}
 }
