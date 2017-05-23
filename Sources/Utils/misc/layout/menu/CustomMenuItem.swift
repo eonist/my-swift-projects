@@ -1,5 +1,21 @@
-import Foundation
+import Cocoa
 
-class CustomMenuItem {
-
+class CustomMenuItem:NSMenuItem{
+    init(_ title:String = "", _ keyEquivalent:String = "") {
+        super.init(title: title, action: ObjectiveC.Selector(("onSelect:")), keyEquivalent: keyEquivalent)
+        target = self/*target specifies where the selector should work, in this case in this class scope*/
+        //self.enabled = true
+    }
+    func onSelect(event:AnyObject) {
+        //override in subclass (optional)
+    }
+    /**
+     * Return true if you want to enable the menu item, false will disable it
+     * NOTE: add assertion logic here
+     */
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        //override in subclass (optional)
+        return true
+    }
+    required init(coder decoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
