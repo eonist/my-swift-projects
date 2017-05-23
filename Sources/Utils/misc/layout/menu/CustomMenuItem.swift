@@ -2,9 +2,9 @@ import Cocoa
 
 class CustomMenuItem:NSMenuItem{
     init(_ title:String = "", _ keyEquivalent:String = "") {
-        super.init(title: title, action: ObjectiveC.Selector(("onSelect:")), keyEquivalent: keyEquivalent)
+        super.init(title: title, action:#selector(onSelect), keyEquivalent: keyEquivalent)
         target = self/*target specifies where the selector should work, in this case in this class scope*/
-        //self.enabled = true
+        self.isEnabled = true
     }
     func onSelect(event:AnyObject) {
         //override in subclass (optional)
