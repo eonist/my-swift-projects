@@ -33,12 +33,21 @@ class JSONParser{
     static func arr(_ json:Any?)->[Any]?{
         return json as? [Any]
     }
+    /**
+     * Dict
+     */
     static func dict(_ json:Any?)->[String: Any]?{
         return json as? [String: Any]
     }
+    /**
+     * Int
+     */
     static func int(_ json:Any?)->Int?{
         return json as? Int
     }
+    /**
+     * String
+     */
     static func str(_ json:Any?)->String?{
         return json as? String
     }
