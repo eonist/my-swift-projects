@@ -6,7 +6,7 @@
 - [GraphicsLib](#graphicslib) 
 - [SVGLib](#svglib) 
 - [XMLLib](#xmllib) 
-- [JSONLib](#xmllib) 
+- [JSONLib](#jsonlib) 
 - [RegExpLib](#regexplib) 
 - [MathLib](#mathlib) 
 - [SQLLiteLib](#sqllitelib) 
