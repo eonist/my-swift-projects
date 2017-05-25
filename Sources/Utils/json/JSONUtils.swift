@@ -4,7 +4,7 @@ enum JSONType {
     case arr
     case int
     case dict
-    case dictArr
+    case dictArr/*An array of dictionaries*/
     case str
 }
 extension JSONType{
