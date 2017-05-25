@@ -6,6 +6,7 @@
 - [GraphicsLib](#graphicslib) 
 - [SVGLib](#svglib) 
 - [XMLLib](#xmllib) 
+- [JSONLib](#xmllib) 
 - [RegExpLib](#regexplib) 
 - [MathLib](#mathlib) 
 - [SQLLiteLib](#sqllitelib) 
@@ -112,6 +113,15 @@ file["date"] = "2022-10-02"
 file.stringValue = "/Desktop/temp.jpg"
 xml.firstNode("files").appendChild(file)
 print(xml.XMLString)//Output: "<data><files><file date=\"2022-10-02\">/Desktop/temp.jpg</file></files></data>"
+```
+
+<img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib.svg">
+
+- Makes parsing and motifying JSON data easier (CRUD)
+- Supports parsing and modifying at deep indices 
+
+```swift
+
 ```
 
 ## **FileLib** 
