@@ -26,6 +26,10 @@ extension JSONType{
         }
     }
 }
+/**
+ * NOTE: See TreeConverter.tree(json) for how you can convert json into data object you can more easily traverse, you can then do JSON -> Tree -> XML
+ * TODO: ⚠️️ You can also 
+ */
 class JSONParser{
     /**
      * Array with any
