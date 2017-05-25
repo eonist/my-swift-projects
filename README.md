@@ -115,13 +115,18 @@ xml.firstNode("files").appendChild(file)
 print(xml.XMLString)//Output: "<data><files><file date=\"2022-10-02\">/Desktop/temp.jpg</file></files></data>"
 ```
 
+## **JSONLib** 
+
 <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib.svg">
 
 - Makes parsing and modifying JSON data easier (CRUD)
 - Supports parsing and modifying at deep indices 
 
 ```swift
-
+JSONParser
+JSONAsserter
+JSONType
+JSONUtils
 ```
 
 ## **FileLib** 
