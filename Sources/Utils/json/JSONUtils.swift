@@ -27,6 +27,9 @@ extension JSONType{
     }
 }
 class JSONParser{
+    /**
+     * Array with any
+     */
     static func arr(_ json:Any?)->[Any]?{
         return json as? [Any]
     }
@@ -39,6 +42,9 @@ class JSONParser{
     static func str(_ json:Any?)->String?{
         return json as? String
     }
+    /**
+     * Array with dict
+     */
     static func dictArr(_ json:Any?)->[[String:Any]]?{
         return json as? [[String:Any]]//array with dict
     }
