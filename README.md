@@ -117,7 +117,7 @@ print(xml.XMLString)//Output: "<data><files><file date=\"2022-10-02\">/Desktop/t
 
 <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib.svg">
 
-- Makes parsing and motifying JSON data easier (CRUD)
+- Makes parsing and modifying JSON data easier (CRUD)
 - Supports parsing and modifying at deep indices 
 
 ```swift
