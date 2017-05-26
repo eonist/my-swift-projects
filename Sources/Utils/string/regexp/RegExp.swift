@@ -88,8 +88,9 @@ public class RegExp{
     }
     /**
      * Extracts associated capture groups from the RegExp.matches result
-     * TODO: Would be great if .rawValue was done inside this method, can be done with <T> possibly look at the apple docs about enumerations
+     * TODO: ⚠️️ Would be great if .rawValue was done inside this method, can be done with <T> possibly look at the apple docs about enumerations
      * EXAMPLE: RegExp.value(fullString,match,StatusParts.second.rawValue)
+     * TODO: ⚠️️ you should check if there is content in the range first, if ther eis not return nilor error
      */
     static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
         return (str as NSString).substring(with: result.rangeAt(key))
