@@ -29,7 +29,7 @@ public class RegExp{
      * //todo: then if it is outof bound return eigther an empty array or nil
      * //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
      */
-    static func match(_ text: String!, _ pattern: String!, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
+    static func match(_ text:String, _ pattern:String, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
     }
     /**
