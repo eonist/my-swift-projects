@@ -21,8 +21,7 @@ class FlexBoxModifier{
         switch type{
         case .flexStart:
             Swift.print("flexStart")
-            //interim x
-            //+= item size
+            
         case .flexEnd:
             Swift.print("flexEnd")
         case .center:
@@ -31,6 +30,20 @@ class FlexBoxModifier{
             Swift.print("spacebetween")
         case .spaceAround:
             Swift.print("spaceAround")
+        }
+    }
+}
+class FlexBoxJustifyUtils{
+    /**
+     *
+     */
+    static func justifyFlexStart(_ items:[ISizeable]){
+        //interim x
+        //+= item size
+        var x = 0
+        items.forEach{ item in
+            item.x = x
+            x += item.size
         }
     }
 }
