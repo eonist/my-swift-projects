@@ -74,6 +74,9 @@ class JustifyUtils{
     /**
      * Same as spaceBetween but does not pit to sides but rather add equal spacing there as well
      */
-    static func spaceAround(){
+    static func spaceAround<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+        //totW
+        //totVoid
+        //
     }
 }
