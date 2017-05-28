@@ -21,7 +21,7 @@ class FlexBoxModifier{
     /**
      *
      */
-    static func alignItems<T:IPositional>(_ items:[T], _ type:FlexBoxType.AlignItems, _ container:CGRect) where T:ISizeable{
+    static func alignItems<T:Flexible>(_ items:[T], _ type:FlexBoxType.AlignItems, _ container:CGRect) {
         
     }
 }
@@ -34,7 +34,7 @@ private class JustifyUtils{
     /**
      * Aligns from start to end
      */
-    static func flexStart<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func flexStart<T:Flexible>(_ items:[T], _ container:CGRect){
         var x:CGFloat = container.x//interim x
         items.forEach{ item in
             item.x = x
@@ -44,7 +44,7 @@ private class JustifyUtils{
     /**
      * Aligns from end to start
      */
-    static func flexEnd<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func flexEnd<T:Flexible>(_ items:[T], _ container:CGRect) {
         var x:CGFloat = container.width/*interim x*/
         items.reversed().forEach{ item in/*Move backwards*/
             x -= item.width
@@ -54,7 +54,7 @@ private class JustifyUtils{
     /**
      * Aligns one item after the other and centers their total position
      */
-    static func center<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func center<T:Flexible>(_ items:[T], _ container:CGRect) {
         //find the totalW of all items
         let totW:CGFloat = items.reduce(0){$0 + $1.size.width}
         //Use Align.center to find x
@@ -67,7 +67,7 @@ private class JustifyUtils{
     /**
      * Aligns all items from the absolute start to absolute end and adds equa spacing between them
      */
-    static func spaceBetween<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func spaceBetween<T:Flexible>(_ items:[T], _ container:CGRect) {
         let totW:CGFloat = items.reduce(0){$0 + $1.size.width}/*find the totalW of all items*/
         let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
         let numOfVoids:CGFloat = CGFloat(items.count - 1)/*then divide this voidSpace with .count - 1 and*/
@@ -81,7 +81,7 @@ private class JustifyUtils{
     /**
      * Same as spaceBetween but does not pit to sides but rather add equal spacing there as well
      */
-    static func spaceAround<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func spaceAround<T:Flexible>(_ items:[T], _ container:CGRect) {
         let totW:CGFloat = items.reduce(0){$0 + $1.size.width}/*find the totalW of all items*/
         let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
         let numOfVoids:CGFloat = CGFloat(items.count)/*then divide this voidSpace with .count - 1 and*/
