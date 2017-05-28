@@ -10,11 +10,12 @@ enum FlexWrapType:String{
 struct FlexContainer{
     var flexibles:[Flexible]
     var wrapType:FlexWrapType
-    
+    //var flexDir:FlowFlexDirType,row,collumn,reverseRow,collumnReverse
 }
 struct FlexItem{
     var flexible:Flexible
-    var grow:Int = 0
-    var shring:Int = 1
+    var grow:Int = 0/*The element will not grow if there's space available. It will only use the space it needs.*/
+    var shrink:Int = 1/*If there's not enough space available in the container's main axis, the element will shrink by a factor of 1, and will wrap its content.*/
+    var 
 }
 typealias Flexible = IPositional & ISizeable
