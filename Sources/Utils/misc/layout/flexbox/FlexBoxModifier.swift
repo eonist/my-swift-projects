@@ -45,9 +45,12 @@ class JustifyUtils{
     /**
      *
      */
-    static func center(){
+    static func center<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
         //find the totalW of all items
+        let totW:CGFloat = items.reduce(0){$0 + $1.size.width}
         //Use Align.center to find x
+        let p:CGPoint = Align.alignmentPoint(CGSize(totW,0), container.size, Alignment.centerCenter, Alignment.centerCenter, CGPoint())
+        
         //create new Rect
         //Use justifyFlexStart and lay items out left to right with new rect as offset
     }
