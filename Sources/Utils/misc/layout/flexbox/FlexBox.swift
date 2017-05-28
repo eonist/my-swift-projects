@@ -35,15 +35,13 @@ class FlexBoxModifier{
 }
 class FlexBoxJustifyUtils{
     /**
-     *
+     * Aligns from start to end
      */
-    static func justifyFlexStart(_ items:[ISizeable]){
-        //interim x
-        //+= item size
-        var x = 0
+    static func justifyFlexStart<T:IPositional>(_ items:[T]) where T:ISizeable{
+        var x:CGFloat = 0//interim x
         items.forEach{ item in
             item.x = x
-            x += item.size
+            x += item.width
         }
     }
 }
