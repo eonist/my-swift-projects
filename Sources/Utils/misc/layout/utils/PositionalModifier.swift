@@ -18,7 +18,7 @@ class PositionalModifier {
      * IMPORTANT: ⚠️️ PARAMS must be of equal array size
      */
     static func position(_ positionals:[IPositional],_ positions:[CGPoint]) {
-        for i in 0..<positionals.count {
+        (0..<positionals.count).indices.forEach { i in
             positionals[i].setPosition(positions[i])
         }
     }
@@ -26,7 +26,7 @@ class PositionalModifier {
      * IMPORTANT: ⚠️️ PARAMS must be of equal array size
      */
     static func transform(_ positionals:[IPositional], _ initPositions:[CGPoint], _ matrix:CGTransform) {
-        for i in 0..<positionals.count{//<-recently updated to swift 3 style for loop syntax
+        (0..<positionals.count).indices.forEach { i in//<-recently updated to swift 3 style for loop syntax
             positionals[i].setPosition(matrix.transformPoint(initPositions[i])) 
         }
     }
