@@ -4,7 +4,7 @@ class FlexBoxModifier{
     /**
      * TODO: Possibly use FlexItem here that decorates something
      */
-    static func justifyContent<T:IPositional>(_ items:[T], _ type:FlexBoxType.Justify, _ container:CGRect) where T:ISizeable{
+    static func justifyContent<T:Flexible>(_ items:[T], _ type:FlexBoxType.Justify, _ container:CGRect){
         switch type{
             case .flexStart:
                 JustifyUtils.flexStart(items,container)
