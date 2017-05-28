@@ -7,28 +7,34 @@ class FlexBoxModifier{
     static func justifyContent<T:IPositional>(_ items:[T], _ type:FlexBoxType.Justify, _ container:CGRect) where T:ISizeable{
         switch type{
             case .flexStart:
-                //Swift.print("flexStart")
-                JustifyUtils.justifyFlexStart(items,container)
+                JustifyUtils.flexStart(items,container)
             case .flexEnd:
-                //Swift.print("flexEnd")
-                JustifyUtils.justifyFlexEnd(items, container)
+                JustifyUtils.flexEnd(items, container)
             case .center:
-                //Swift.print("center")
                 JustifyUtils.center(items,container)
             case .spaceBetween:
-                //Swift.print("spacebetween")
                 JustifyUtils.spaceBetween(items,container)
             case .spaceAround:
-                Swift.print("spaceAround")
                 JustifyUtils.spaceAround(items,container)
         }
     }
+    /**
+     *
+     */
+    static func alignItems<T:IPositional>(_ items:[T], _ type:FlexBoxType.AlignItems, _ container:CGRect) where T:ISizeable{
+        
+    }
 }
-class JustifyUtils{
+private class AlignItems{
+    static func flexStart(){
+        
+    }
+}
+private class JustifyUtils{
     /**
      * Aligns from start to end
      */
-    static func justifyFlexStart<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func flexStart<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
         var x:CGFloat = container.x//interim x
         items.forEach{ item in
             item.x = x
@@ -38,7 +44,7 @@ class JustifyUtils{
     /**
      * Aligns from end to start
      */
-    static func justifyFlexEnd<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+    static func flexEnd<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
         var x:CGFloat = container.width/*interim x*/
         items.reversed().forEach{ item in/*Move backwards*/
             x -= item.width
@@ -56,7 +62,7 @@ class JustifyUtils{
         //create new Rect
         let newRect = CGRect(p.x,container.y,container.width,container.height)
         //Use justifyFlexStart and lay items out left to right with new rect as offset
-        justifyFlexStart(items, newRect)
+        flexStart(items, newRect)
     }
     /**
      * Aligns all items from the absolute start to absolute end and adds equa spacing between them
