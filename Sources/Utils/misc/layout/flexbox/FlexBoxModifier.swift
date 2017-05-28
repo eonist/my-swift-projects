@@ -60,6 +60,9 @@ class JustifyUtils{
      *
      */
     static func spacebetween<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
-        
+        //totW
+        //find totVoid by doing w - totw
+        //then divide this voidSpace with .count - 1 and 
+        //iterate of each item 
     }
 }
