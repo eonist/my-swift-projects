@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: Rename to Sizable
+ */
 protocol ISizeable:class {//<--new extends class, so that it can be casted correctly without becomming a copy
     var size:CGSize {get set}
     func setSizeValue(_ size:CGSize)

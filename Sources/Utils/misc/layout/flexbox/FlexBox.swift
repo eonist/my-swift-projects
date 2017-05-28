@@ -15,9 +15,9 @@ enum FlexBoxType{
 }
 class FlexBoxModifier{
     /**
-     *
+     * TODO: Possibly use FlexItem here that decorates something 
      */
-    static func justifyContent(_ items:[SizeableGraphic], _ type:FlexBoxType.Justify){
+    static func justifyContent(_ items:[IPositional], _ type:FlexBoxType.Justify){
         switch type{
         case .flexStart:
             Swift.print("flexStart")
