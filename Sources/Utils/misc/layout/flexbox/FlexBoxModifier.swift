@@ -56,4 +56,10 @@ class JustifyUtils{
         //Use justifyFlexStart and lay items out left to right with new rect as offset
         justifyFlexStart(items, newRect)
     }
+    /**
+     *
+     */
+    static func spacebetween<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+        
+    }
 }
