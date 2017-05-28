@@ -1,5 +1,6 @@
 import Foundation
-
+//FlexContainer
+//flexItem
 class FlexBox {
 
 }
@@ -8,5 +9,5 @@ enum FlexBoxType:String{
     case flexStart = "flexStart"
     case center = "center"
     case spacebetween = "spaceBetween"
-    case spaceAround = "spaceAround"   
+    case spaceAround = "spaceAround"
 }
