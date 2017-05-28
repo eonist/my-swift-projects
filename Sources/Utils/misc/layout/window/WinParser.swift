@@ -31,6 +31,12 @@ class WinParser {
         return NSWindow.contentRect(forFrameRect: window.frame, styleMask: window.styleMask).width
     }
     /**
+     * New
+     */
+    static func size(_ window:NSWindow) -> CGSize{
+        return CGSize(width(window),height(window))
+    }
+    /**
      * Returns the first window in NSApp of a spedific class or protocol type
      * NOTE: there is also window.isMemberOfClass which could work, but it wont work for protocols
      * CAUTION: The type provided must be absolute. Meaning storing a type and then using it here wont work, only direct access to the class type will work like: String.self
