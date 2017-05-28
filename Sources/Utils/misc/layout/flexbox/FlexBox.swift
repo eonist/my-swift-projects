@@ -15,7 +15,14 @@ class FlexBoxModifier{
     /**
      *
      */
-    static func justifyContent(){
-        
+    static func justifyContent(_ items:[SizeableGraphic], _ type:FlexBoxType){
+        switch type{
+        case .flexStart:
+            print("one")
+        case .flexEnd:
+            Swift.print("flexEnd")
+        default:
+            break;
+        }
     }
 }
