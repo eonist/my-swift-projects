@@ -1,6 +1,7 @@
 import Foundation
-//FlexContainer ->
-//FlexItem -> init size, size,
+//Continue here 🏀
+    //Figure out shrink and grow. and if 100% works etc
+    //figure out direction, will items strech then? etc
 class FlexBox {}
 enum FlexWrapType:String{
     case noWrap = "noWrap"
@@ -12,6 +13,9 @@ struct FlexContainer{
     var wrapType:FlexWrapType
     //var flexDir:FlowFlexDirType,row,collumn,reverseRow,collumnReverse
 }
+/**
+ * TODO: Needs init size, size
+ */
 struct FlexItem{
     var flexible:Flexible
     var grow:Int = 0/*The element will not grow if there's space available. It will only use the space it needs.*/
