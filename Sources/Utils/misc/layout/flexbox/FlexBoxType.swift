@@ -8,6 +8,9 @@ enum FlexBoxType{
         case spaceBetween = "spaceBetween"/*Aligns all items from the absolute start to absolute end and adds equa spacing between them*/
         case spaceAround = "spaceAround"/*Same as spaceBetween but does not pit to sides but rather add equal spacing there as well*/
     }
+    /**
+     * TODO: ⚠️️ Add AlignSelf, which works on flexItem 
+     */
     enum AlignItems:String{/*align-items, applies to flexContainers*/
         case flexStart = "flexStart"
         case flexEnd = "flexEnd"
