@@ -2,7 +2,8 @@ import Foundation
 
 class FlexBoxModifier{
     /**
-     * TODO: Possibly use FlexItem here that decorates something
+     * TODO: ⚠️️ Possibly use FlexItem here that decorates something
+     * Positions items along the x axis
      */
     static func justifyContent<T:Flexible>(_ items:[T], _ type:FlexBoxType.Justify, _ container:CGRect){
         switch type{
@@ -19,14 +20,23 @@ class FlexBoxModifier{
         }
     }
     /**
-     *
+     * Vertically aligns a row of items
      */
     static func alignItems<T:Flexible>(_ items:[T], _ type:FlexBoxType.AlignItems, _ container:CGRect) {
-        
+        switch type{
+            case .flexStart:
+                JustifyUtils.flexStart(items,container)
+            case .flexEnd:
+                JustifyUtils.flexEnd(items, container)
+            case .center:
+                JustifyUtils.center(items,container)
+            case .stretch:
+                JustifyUtils.spaceBetween(items,container)
+        }
     }
 }
 private class AlignItems{
-    static func flexStart(){
+    static func flexStart<T:Flexible>(_ items:[T], _ container:CGRect){
         
     }
 }
