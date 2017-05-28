@@ -20,6 +20,7 @@ class FlexBoxModifier{
                 JustifyUtils.spaceBetween(items,container)
             case .spaceAround:
                 Swift.print("spaceAround")
+                JustifyUtils.spaceAround(items,container)
         }
     }
 }
@@ -75,8 +76,15 @@ class JustifyUtils{
      * Same as spaceBetween but does not pit to sides but rather add equal spacing there as well
      */
     static func spaceAround<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
-        //totW
-        //totVoid
-        //
+        let totW:CGFloat = items.reduce(0){$0 + $1.size.width}/*find the totalW of all items*/
+        let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
+        let numOfVoids:CGFloat = CGFloat(items.count)/*then divide this voidSpace with .count - 1 and*/
+        let itemVoid:CGFloat = totVoid / numOfVoids/*iterate of each item and inserting itemVoid in + width*/
+        let edgeVoid:CGFloat = itemVoid/2
+        var x:CGFloat = container.x+edgeVoid//interim x
+        items.forEach{ item in
+            item.x = x
+            x += item.width + itemVoid
+        }
     }
 }
