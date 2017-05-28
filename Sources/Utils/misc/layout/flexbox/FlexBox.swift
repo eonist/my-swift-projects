@@ -16,6 +16,6 @@ struct FlexItem{
     var flexible:Flexible
     var grow:Int = 0/*The element will not grow if there's space available. It will only use the space it needs.*/
     var shrink:Int = 1/*If there's not enough space available in the container's main axis, the element will shrink by a factor of 1, and will wrap its content.*/
-    var 
+    //var flexBasis:CGFloat "auto" or px,ems auto means get width from child width. text,img etc
 }
 typealias Flexible = IPositional & ISizeable
