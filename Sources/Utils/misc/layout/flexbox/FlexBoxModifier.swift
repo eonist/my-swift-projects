@@ -31,16 +31,16 @@ class JustifyUtils{
             x += item.width
         }
     }
+    /**
+     * Aligns from end to start
+     */
     static func justifyFlexEnd<T:IPositional>(_ items:[T], _ containerSize:CGSize) where T:ISizeable{
-        
-        //move backwards?
         if let last = items.last{
-            var x:CGFloat = containerSize.width - last.width//interim x
-            items.reversed().forEach{ item in
+            var x:CGFloat = containerSize.width - last.width/*interim x*/
+            items.reversed().forEach{ item in/*Move backwards*/
                 item.x = x
-                x += item.width
+                x -= item.width
             }
         }
-        
     }
 }
