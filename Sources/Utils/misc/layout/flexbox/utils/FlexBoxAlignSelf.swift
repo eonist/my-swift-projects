@@ -1,6 +1,9 @@
 import Foundation
 
 class FlexBoxAlignSelf{
+    /**
+     *
+     */
     static func flexStart<T:Flexible>(_ item:T, _ container:CGRect){
         //for each, set item y to container y
         item.pos = Align.alignmentPoint(item.size, container.size, Alignment.top, Alignment.top)
@@ -24,5 +27,7 @@ class FlexBoxAlignSelf{
      */
     static func stretch<T:Flexible>(_ item:T, _ container:CGRect){
         //for each, set item.y to container.y, set item.height to container.height
+        item.pos = Align.alignmentPoint(item.size, container.size, Alignment.top, Alignment.top)
+        item.height = container.size.height
     }
 }
