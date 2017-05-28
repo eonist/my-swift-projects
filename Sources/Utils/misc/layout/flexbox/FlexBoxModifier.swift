@@ -15,9 +15,9 @@ class FlexBoxModifier{
             case .center:
                 //Swift.print("center")
                 JustifyUtils.center(items,container)
-            case .spacebetween:
+            case .spaceBetween:
                 //Swift.print("spacebetween")
-                JustifyUtils.spacebetween(items,container)
+                JustifyUtils.spaceBetween(items,container)
             case .spaceAround:
                 Swift.print("spaceAround")
         }
@@ -60,15 +60,11 @@ class JustifyUtils{
     /**
      * Aligns all items from the absolute start to absolute end and adds equa spacing between them
      */
-    static func spacebetween<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
-        //find the totalW of all items
-        let totW:CGFloat = items.reduce(0){$0 + $1.size.width}
-        //find totVoid by doing w - totw
-        let totVoid:CGFloat = container.width - totW
-        //then divide this voidSpace with .count - 1 and 
-        let numOfVoids:CGFloat = CGFloat(items.count - 1)
-        let itemVoid:CGFloat = totVoid / numOfVoids
-        //iterate of each item and inserting itemVoid in + width
+    static func spaceBetween<T:IPositional>(_ items:[T], _ container:CGRect) where T:ISizeable{
+        let totW:CGFloat = items.reduce(0){$0 + $1.size.width}/*find the totalW of all items*/
+        let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
+        let numOfVoids:CGFloat = CGFloat(items.count - 1)/*then divide this voidSpace with .count - 1 and*/
+        let itemVoid:CGFloat = totVoid / numOfVoids/*iterate of each item and inserting itemVoid in + width*/
         var x:CGFloat = container.x//interim x
         items.forEach{ item in
             item.x = x
