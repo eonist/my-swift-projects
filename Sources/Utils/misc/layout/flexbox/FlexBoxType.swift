@@ -11,7 +11,7 @@ enum FlexBoxType{
     /**
      * TODO: ⚠️️ Add AlignSelf, which works on flexItem 
      */
-    enum AlignItems:String{/*align-items, applies to flexContainers*/
+    enum AlignSelf:String{/*align-items, applies to flexContainers*/
         case flexStart = "flexStart"
         case flexEnd = "flexEnd"
         case center = "center"
