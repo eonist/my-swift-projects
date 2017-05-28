@@ -1,6 +1,6 @@
 import Foundation
-//FlexContainer
-//flexItem
+//FlexContainer ->
+//FlexItem -> init size, size,
 class FlexBox {
 
 }
@@ -17,12 +17,12 @@ class FlexBoxModifier{
     /**
      * TODO: Possibly use FlexItem here that decorates something 
      */
-    static func justifyContent(_ items:[IPositional], _ type:FlexBoxType.Justify){
+    static func justifyContent(_ items:[ISizeable], _ type:FlexBoxType.Justify){
         switch type{
         case .flexStart:
             Swift.print("flexStart")
             //interim x
-            //
+            //+= item size
         case .flexEnd:
             Swift.print("flexEnd")
         case .center:
