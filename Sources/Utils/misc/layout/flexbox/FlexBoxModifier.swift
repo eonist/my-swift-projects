@@ -7,10 +7,11 @@ class FlexBoxModifier{
     static func justifyContent<T:IPositional>(_ items:[T], _ type:FlexBoxType.Justify, _ containerSize:CGSize) where T:ISizeable{
         switch type{
             case .flexStart:
-                Swift.print("flexStart")
+                //Swift.print("flexStart")
                 JustifyUtils.justifyFlexStart(items)
             case .flexEnd:
-                Swift.print("flexEnd")
+                //Swift.print("flexEnd")
+                JustifyUtils.justifyFlexEnd(items, containerSize)
             case .center:
                 Swift.print("center")
             case .spacebetween:
@@ -35,12 +36,10 @@ class JustifyUtils{
      * Aligns from end to start
      */
     static func justifyFlexEnd<T:IPositional>(_ items:[T], _ containerSize:CGSize) where T:ISizeable{
-        if let last = items.last{
-            var x:CGFloat = containerSize.width - last.width/*interim x*/
-            items.reversed().forEach{ item in/*Move backwards*/
-                item.x = x
-                x -= item.width
-            }
+        var x:CGFloat = containerSize.width/*interim x*/
+        items.reversed().forEach{ item in/*Move backwards*/
+            x -= item.width
+            item.x = x
         }
     }
 }
