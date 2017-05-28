@@ -11,3 +11,11 @@ enum FlexBoxType:String{
     case spacebetween = "spaceBetween"/*Aligns all items from the absolute start to absolute end and adds equa spacing between them*/
     case spaceAround = "spaceAround"/*Same as spaceBetween but does not pit to sides but rather add equal spacing there as well*/
 }
+class FlexBoxModifier{
+    /**
+     *
+     */
+    static func justifyContent(){
+        
+    }
+}
