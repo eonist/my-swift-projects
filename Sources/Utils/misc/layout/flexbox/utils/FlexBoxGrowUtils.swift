@@ -4,7 +4,7 @@ class FlexBoxGrowUtils {
     /**
      * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
      */
-    static func grow(_ items:[FlexItem],_ container:CGRect){
+    static func grow(_ items:[FlexBoxItem],_ container:CGRect){
         let occupiedSpace:CGFloat = items.lazy.filter{ $0.grow == 0 }.reduce(0){$0 + $1.initFlexible.width}/*finds all items that has grow set to 0*/
         let remainder:CGFloat = container.width - occupiedSpace
         let totGrow:CGFloat = items.reduce(0){$0 + $1.grow}/*sum of all grow numbers*/

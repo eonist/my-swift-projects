@@ -5,7 +5,7 @@ class FlexBoxModifier{
      *
      */
     static func flex(_ container:FlexBoxContainer){
-        FlexBoxGrowUtils.grow(container.flexItems,container.rect)
+        FlexBoxGrowUtils.grow(container.flexBoxItems,container.rect)
         FlexBoxModifier.justifyContent(container.flexBoxItems, container.justifyContent, container.rect)
         FlexBoxModifier.alignItems(container.flexBoxItems , container.alignItems, container.rect)
     }
