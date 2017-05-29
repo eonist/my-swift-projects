@@ -9,7 +9,11 @@ class FlexBoxGrowUtils {
         let remainder:CGFloat = container - occupiedSpace
         let totGrow:CGFloat = items.reduce(0){$0 + $1.grow}/*sum of all grow numbers*/
         let growUnit:CGFloat = remainder/totGrow/*the amount of px 1 grow unit takes up*/
-        
+        items.forEach{ item in
+            if item.grow > 0 {//only apply to items that has grow
+                item.flexible.width = 
+            }
+        }
     }
 }
 //The way I understand it (Grow):
