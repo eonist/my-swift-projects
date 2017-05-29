@@ -20,7 +20,8 @@ struct FlexContainer{
  * TODO: Needs init size, size
  * Grow: defined how much of the remainder of the space it should use. Canvas: 400, text: 300 : button.grow:1 = 100, grow:2 = 50?
  * Flex-basis: When flex-direction is row, flex-basis controls width, But when flex-direction is column, flex-basis controls height.
- * IMPORTANT: ⚠️️ Set grow and shring to 0 if you want to fix the width of an item
+ * IMPORTANT: ⚠️️ Set grow and shrink to 0 if you want to fix the width of an item
+ * IMPORTANT: ⚠️️ set basis to 25% and grow 1. And then add 3 tiems. each of them will actually take up 33.3%, and a fourth and they take up 25%
  */
 struct FlexItem{
     var flexible:Flexible
