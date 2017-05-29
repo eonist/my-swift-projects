@@ -4,11 +4,9 @@ class FlexBoxGrowUtils {
     /**
      * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
      */
-    static func grow(_ items:[FlexItem]){
-        let occupiedSpace:CGFloat = items.reduce(0){
-            $0 + $1
-            //find all items that has grow set to 0 or 
-        }
+    static func grow(_ items:[FlexItem],_ container:CGRect){
+        let occupiedSpace:CGFloat = items.lazy.filter{ $0.grow == 0 }.reduce(0){$0 + $1}/*finds all items that has grow set to 0*/
+        let remainder:
     }
 }
 //The way I understand it (Grow):
