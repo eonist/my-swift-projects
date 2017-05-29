@@ -39,13 +39,13 @@ class FlexBoxModifier{
     static func alignSelf(_ item:FlexBoxItem, _ type:FlexBoxType.AlignType, _ container:CGRect){
         switch type{
             case .flexStart:
-                FlexBoxAlignSelf.flexStart(item.flexible,container)
+                FlexBoxAlignSelf.flexStart(item,container)
             case .flexEnd:
-                FlexBoxAlignSelf.flexEnd(item.flexible, container)
+                FlexBoxAlignSelf.flexEnd(item, container)
             case .center:
-                FlexBoxAlignSelf.center(item.flexible,container)
+                FlexBoxAlignSelf.center(item,container)
             case .stretch:
-                FlexBoxAlignSelf.stretch(item.flexible,container)
+                FlexBoxAlignSelf.stretch(item,container)
         }
     }
 }
