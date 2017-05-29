@@ -2,7 +2,7 @@ import Foundation
 
 class FlexBoxModifier{
     /**
-     * Applies all flex adjsutments
+     * Applies all flex adjustments
      */
     static func flex(_ container:FlexBoxContainer){
         FlexBoxGrowUtils.grow(container.flexBoxItems,container.rect)
