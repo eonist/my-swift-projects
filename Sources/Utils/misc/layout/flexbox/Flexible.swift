@@ -1,5 +1,3 @@
 import Foundation
 
-class Flexible {
-
-}
+typealias Flexible = IPositional & ISizeable
