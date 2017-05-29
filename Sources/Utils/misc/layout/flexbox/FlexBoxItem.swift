@@ -7,6 +7,7 @@ import Foundation
  * IMPORTANT: ⚠️️ set basis to 25% and grow 1. And then add 3 tiems. each of them will actually take up 33.3%, and a fourth and they take up 25%
  */
 struct FlexItem{
+    var initFlexible:CGRect//stores the init frame of the flexible
     var flexible:Flexible
     /**
      * Grow: defined how much of the remainder of the space it should use. Canvas: 400, text: 300 : button.grow:1 = 100, grow:2 = 50?
@@ -22,6 +23,7 @@ struct FlexItem{
     var basis:CGFloat? = nil//nil means auto
     //var flexBasis:CGFloat "auto" or px,ems auto means get width from child width. text,img etc
     init(_ flexible:Flexible,_ grow:CGFloat,_ basis:CGFloat, _ shrink:CGFloat){
+        self.initFlexible = CGRect(flexible.x,flexible.y,flexible.width,flexible.height)
         self.flexible = flexible
         self.grow = grow
         self.basis = basis

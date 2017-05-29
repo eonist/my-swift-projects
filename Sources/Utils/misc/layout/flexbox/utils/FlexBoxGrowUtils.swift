@@ -2,7 +2,7 @@ import Foundation
 
 class FlexBoxGrowUtils {
     /**
-     *
+     * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
      */
     static func grow(_ items:[FlexItem]){
         
