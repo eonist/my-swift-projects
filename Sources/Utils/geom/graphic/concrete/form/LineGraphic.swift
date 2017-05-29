@@ -41,23 +41,4 @@ class LineGraphic:SizeableDecorator {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension LineGraphic{
-    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
-        self.init(p1,p2, BaseGraphic(nil,lineStyle))
-    }
-    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ gradientlineStyle:GradientLineStyle) {
-        self.init(p1,p2, GradientGraphic(BaseGraphic(nil,gradientlineStyle)))
-    }
-}
-/**
- * NOTE: sets p1 to the position
- * NOTE: sets p2 to the relative position of p1 to p2
- */
-/*
-override func setPosition(position:CGPoint){
-p2.x = position.x + NumberParser.relativeDifference(p1.x, p2.x)
-p2.y = position.y + NumberParser.relativeDifference(p1.y, p2.y)
-p1.x = position.x
-p1.y = position.y
-}
-*/
+
