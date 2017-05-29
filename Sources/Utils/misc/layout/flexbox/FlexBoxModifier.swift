@@ -36,16 +36,16 @@ class FlexBoxModifier{
     /**
      * Vertically aligns a single item
      */
-    static func alignSelf<T:Flexible>(_ item:T, _ type:FlexBoxType.AlignType, _ container:CGRect){
+    static func alignSelf(_ item:FlexBoxItem, _ type:FlexBoxType.AlignType, _ container:CGRect){
         switch type{
             case .flexStart:
-                FlexBoxAlignSelf.flexStart(item,container)
+                FlexBoxAlignSelf.flexStart(item.flexible,container)
             case .flexEnd:
-                FlexBoxAlignSelf.flexEnd(item, container)
+                FlexBoxAlignSelf.flexEnd(item.flexible, container)
             case .center:
-                FlexBoxAlignSelf.center(item,container)
+                FlexBoxAlignSelf.center(item.flexible,container)
             case .stretch:
-                FlexBoxAlignSelf.stretch(item,container)
+                FlexBoxAlignSelf.stretch(item.flexible,container)
         }
     }
 }
