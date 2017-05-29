@@ -30,13 +30,13 @@ class FlexBoxModifier{
     /**
      * Vertically aligns a row of items
      */
-    static func alignItems<T:Flexible>(_ items:[T], _ type:FlexBoxType.AlignItems, _ container:CGRect) {
+    static func alignItems<T:Flexible>(_ items:[T], _ type:FlexBoxType.AlignType, _ container:CGRect) {
         items.forEach{alignSelf($0,type,container)}
     }
     /**
      * Vertically aligns a single item
      */
-    static func alignSelf<T:Flexible>(_ item:T, _ type:FlexBoxType.AlignSelf, _ container:CGRect){
+    static func alignSelf<T:Flexible>(_ item:T, _ type:FlexBoxType.AlignType, _ container:CGRect){
         switch type{
             case .flexStart:
                 FlexBoxAlignSelf.flexStart(item,container)
