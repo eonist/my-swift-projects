@@ -26,6 +26,7 @@ struct FlexItem{
     /**
      * Grow: defined how much of the remainder of the space it should use. Canvas: 400, text: 300 : button.grow:1 = 100, grow:2 = 50?
      * NOTE: flex-grow:0 simply means that the item won't be resized during item size calculation to accommodate flex container's full main axis size.
+     * CONCEPT: if you have 3 items in a 300px container. and they are grow:1 then their space will be: 1/3 aka 100px. If 1 is grow:2 then its width will be 300/2 aka 150px, and the two other will be 
      */
     var grow:Int = 0/*The element will not grow if there's space available. It will only use the space it needs.*/
     var shrink:Int = 1/*If there's not enough space available in the container's main axis, the element will shrink by a factor of 1, and will wrap its content.*/
