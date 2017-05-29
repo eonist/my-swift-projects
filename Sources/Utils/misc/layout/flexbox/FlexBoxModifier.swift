@@ -46,5 +46,4 @@ class FlexBoxModifier{
                 FlexBoxAlignSelf.stretch(item,container)
         }
     }
-    
 }
