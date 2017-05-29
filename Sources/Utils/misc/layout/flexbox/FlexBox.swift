@@ -4,6 +4,7 @@ import Foundation
     //figure out direction, will items strech then? etc
 /**
  * display:flex;
+ * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
  */
 class FlexBox {}
 enum FlexWrapType:String{
