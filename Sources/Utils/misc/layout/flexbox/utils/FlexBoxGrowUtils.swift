@@ -7,7 +7,9 @@ class FlexBoxGrowUtils {
     static func grow(_ items:[FlexItem],_ container:CGRect){
         let occupiedSpace:CGFloat = items.lazy.filter{ $0.grow == 0 }.reduce(0){$0 + $1}/*finds all items that has grow set to 0*/
         let remainder:CGFloat = container - occupiedSpace
-        let totGrow
+        let totGrow:CGFloat = items.reduce(0){$0 + $1.grow}/*sum of all grow numbers*/
+        let growUnit:CGFloat = remainder/totGrow/*the amount of px 1 grow unit takes up*/
+        
     }
 }
 //The way I understand it (Grow):
