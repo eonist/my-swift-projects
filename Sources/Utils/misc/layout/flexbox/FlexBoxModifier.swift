@@ -6,14 +6,14 @@ class FlexBoxModifier{
      */
     static func flex(_ container:FlexBoxContainer){
         FlexBoxGrowUtils.grow(container.flexItems,container.rect)
-        FlexBoxModifier.justifyContent(container.flexibles, container.justifyContent, container.rect)
-        FlexBoxModifier.alignItems(container.flexibles , container.alignItems, container.rect)
+        FlexBoxModifier.justifyContent(container.flexBoxItems, container.justifyContent, container.rect)
+        FlexBoxModifier.alignItems(container.flexBoxItems , container.alignItems, container.rect)
     }
     /**
      * TODO: ⚠️️ Possibly use FlexItem here that decorates something
      * Positions items along the x axis
      */
-    static func justifyContent<T:Flexible>(_ items:[T], _ type:FlexBoxType.Justify, _ container:CGRect){
+    static func justifyContent(_ items:[FlexBoxItem], _ type:FlexBoxType.Justify, _ container:CGRect){
         switch type{
             case .flexStart:
                 JustifyUtils.flexStart(items,container)
@@ -30,7 +30,7 @@ class FlexBoxModifier{
     /**
      * Vertically aligns a row of items
      */
-    static func alignItems<T:Flexible>(_ items:[T], _ type:FlexBoxType.AlignType, _ container:CGRect) {
+    static func alignItems(_ items:[FlexBoxItem], _ type:FlexBoxType.AlignType, _ container:CGRect) {
         items.forEach{alignSelf($0,type,container)}
     }
     /**

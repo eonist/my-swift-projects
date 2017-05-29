@@ -14,7 +14,3 @@ struct FlexBoxContainer{
         self.alignItems = alignItems
     }
 }
-
-extension FlexBoxContainer{
-    var flexibles:[Flexible] {return flexBoxItems.map{$0.flexible}}
-}
