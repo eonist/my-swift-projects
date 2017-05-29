@@ -23,7 +23,7 @@ extension ISizeable{
         get{
             if(self.size.width.isNaN){fatalError("height can't be NaN")}
             return self.size.height
-        } set{
+        }set{
             if(newValue.isNaN){fatalError("height can't be NaN")}
             self.size.height = newValue
         }
