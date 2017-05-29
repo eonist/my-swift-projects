@@ -19,3 +19,8 @@ enum FlexBoxType{
         case stretch = "stretch"
     }
 }
+enum FlexWrapType:String{
+    case noWrap = "noWrap"
+    case wrap = "wrap"
+    //wrapReverse, not supported yet
+}
