@@ -6,8 +6,8 @@ class FlexBoxModifier{
      */
     static func flex(_ container:FlexBoxContainer){
         FlexBoxGrowUtils.grow(container.flexItems,container.rect)
-        FlexBoxModifier.justifyContent(container.flexBoxItems.map{return $0.flexible}, container.justifyContent, container.rect)
-        FlexBoxModifier.alignItems(container.flexBoxItems.map{return $0.flexible} , container.alignItems, container.rect)
+        FlexBoxModifier.justifyContent(container.flexibles, container.justifyContent, container.rect)
+        FlexBoxModifier.alignItems(container.flexibles , container.alignItems, container.rect)
     }
     /**
      * TODO: ⚠️️ Possibly use FlexItem here that decorates something
