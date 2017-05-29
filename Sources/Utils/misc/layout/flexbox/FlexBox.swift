@@ -19,6 +19,7 @@ struct FlexContainer{
 /**
  * TODO: Needs init size, size
  * Grow: defined how much of the remainder of the space it should use. Canvas: 400, text: 300 : button.grow:1 = 100, grow:2 = 50?
+ * Flex-basis: When flex-direction is row, flex-basis controls width, But when flex-direction is column, flex-basis controls height.
  */
 struct FlexItem{
     var flexible:Flexible
