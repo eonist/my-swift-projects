@@ -8,11 +8,10 @@ import Cocoa
  */
 class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
     var fillet:Fillet
-    init(_ decoratable: IGraphicDecoratable,_ fillet:Fillet) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
+    init(_ decoratable:IGraphicDecoratable,_ fillet:Fillet) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         self.fillet = fillet
         super.init(decoratable)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
         let fillFrame = graphic.lineStyle != nil ? RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
@@ -27,4 +26,5 @@ class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
             graphic.lineShape.path = CGPathParser.roundRect(lineOffsetRect.lineRect.x,lineOffsetRect.lineRect.y,lineOffsetRect.lineRect.width,lineOffsetRect.lineRect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//lineOffsetRect.lineRect.path
         }
     }
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
