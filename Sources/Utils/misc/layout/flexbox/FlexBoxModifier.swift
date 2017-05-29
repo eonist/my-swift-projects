@@ -2,6 +2,12 @@ import Foundation
 
 class FlexBoxModifier{
     /**
+     *
+     */
+    static func flex(_ container:FlexBoxContainer){
+        
+    }
+    /**
      * TODO: ⚠️️ Possibly use FlexItem here that decorates something
      * Positions items along the x axis
      */
