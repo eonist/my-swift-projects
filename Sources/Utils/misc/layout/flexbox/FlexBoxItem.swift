@@ -6,7 +6,7 @@ import Foundation
  * IMPORTANT: ⚠️️ Set grow and shrink to 0 if you want to fix the width of an item
  * IMPORTANT: ⚠️️ set basis to 25% and grow 1. And then add 3 tiems. each of them will actually take up 33.3%, and a fourth and they take up 25%
  */
-struct FlexItem{
+struct FlexBoxItem{
     var initFlexible:CGRect//stores the init frame of the flexible
     var flexible:Flexible
     /**
