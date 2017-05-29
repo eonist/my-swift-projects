@@ -24,6 +24,6 @@ class FlexBoxAlignSelf{
      */
     static func stretch<T:Flexible>(_ item:T, _ container:CGRect){
         item.y = Align.alignmentPoint(item.size, container.size, Alignment.topCenter, Alignment.topCenter,container.topLeft).y
-        item.height = container.size.height
+        item.size = CGSize(item.size.width,container.size.height)
     }
 }

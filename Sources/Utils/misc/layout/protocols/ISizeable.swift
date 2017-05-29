@@ -21,7 +21,7 @@ extension ISizeable{
     }
     var height:CGFloat{
         get{
-            if(self.size.width.isNaN){fatalError("height can't be NaN")}
+            if(self.size.height.isNaN){fatalError("height can't be NaN")}
             return self.size.height
         }set{
             if(newValue.isNaN){fatalError("height can't be NaN")}
