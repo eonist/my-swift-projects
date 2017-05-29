@@ -5,7 +5,10 @@ class FlexBoxGrowUtils {
      * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
      */
     static func grow(_ items:[FlexItem]){
-        let remainder:CGFloat = 
+        let occupiedSpace:CGFloat = items.reduce(0){
+            $0 + $1
+            //find all items that has grow set to 0 or 
+        }
     }
 }
 //The way I understand it (Grow):
