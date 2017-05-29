@@ -22,7 +22,7 @@ struct FlexItem{
      */
     var basis:CGFloat? = nil//nil means auto
     //var flexBasis:CGFloat "auto" or px,ems auto means get width from child width. text,img etc
-    init(_ flexible:Flexible,_ grow:CGFloat = 1,_ basis:CGFloat = nil, _ shrink:CGFloat = 0){
+    init(_ flexible:Flexible,_ grow:CGFloat = 1,_ basis:CGFloat? = nil, _ shrink:CGFloat = 0){
         self.initFlexible = FlexibleUtils.rect(flexible)
         self.flexible = flexible
         self.grow = grow
