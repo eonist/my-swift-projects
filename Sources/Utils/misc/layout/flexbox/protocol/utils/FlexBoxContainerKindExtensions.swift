@@ -1,5 +1,11 @@
 import Foundation
 
-class FlexBoxContainerKindExtensions {
-
+extension FlexBoxContainerKind{
+    /**
+     * New
+     */
+    func flex(){
+        FlexBoxModifier.flex(self)
+    }
 }
+//var config:(justifyContent:FlexBoxType.Justify,alignItems:FlexBoxType.AlignType)
