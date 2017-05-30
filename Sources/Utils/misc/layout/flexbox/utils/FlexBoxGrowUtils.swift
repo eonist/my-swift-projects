@@ -4,8 +4,8 @@ class FlexBoxGrowUtils {
     /**
      * NOTE: has flex formulas: https://chriswrightdesign.com/experiments/flexbox-adventures/
      */
-    static func grow(_ items:[FlexBoxItem],_ container:CGRect){
-        let occupiedSpace:CGFloat = items.lazy.filter{ $0.grow == 0 }.reduce(0){$0 + $1.initFlexible.width}/*finds all items that has grow set to 0*/
+    static func grow(_ items:[FlexBoxItemKind],_ container:CGRect){
+        let occupiedSpace:CGFloat = items.lazy.filter{ $0.grow == 0 }.reduce(0){$0 + $1.initRect.width}/*finds all items that has grow set to 0*/
         let remainder:CGFloat = container.width - occupiedSpace
         let totGrow:CGFloat = items.reduce(0){$0 + $1.grow}/*sum of all grow numbers*/
         let growUnit:CGFloat = remainder/totGrow/*the amount of px that one grow unit takes up*/

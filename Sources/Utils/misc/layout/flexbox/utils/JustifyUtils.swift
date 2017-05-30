@@ -4,7 +4,7 @@ class JustifyUtils{
     /**
      * Aligns from start to end
      */
-    static func flexStart(_ items:[FlexBoxItem], _ container:CGRect){
+    static func flexStart(_ items:[FlexBoxItemKind], _ container:CGRect){
         var x:CGFloat = container.x//interim x
         items.forEach{ item in
             item.flexible.x = x
@@ -14,7 +14,7 @@ class JustifyUtils{
     /**
      * Aligns from end to start
      */
-    static func flexEnd(_ items:[FlexBoxItem], _ container:CGRect) {
+    static func flexEnd(_ items:[FlexBoxItemKind], _ container:CGRect) {
         var x:CGFloat = container.width/*interim x*/
         items.reversed().forEach{ item in/*Move backwards*/
             x -= item.flexible.width
@@ -24,7 +24,7 @@ class JustifyUtils{
     /**
      * Aligns one item after the other and centers their total position
      */
-    static func center(_ items:[FlexBoxItem], _ container:CGRect) {
+    static func center(_ items:[FlexBoxItemKind], _ container:CGRect) {
         //find the totalW of all items
         let totW:CGFloat = items.reduce(0){$0 + $1.flexible.size.width}
         //Use Align.center to find x
@@ -37,7 +37,7 @@ class JustifyUtils{
     /**
      * Aligns all items from the absolute start to absolute end and adds equa spacing between them
      */
-    static func spaceBetween(_ items:[FlexBoxItem], _ container:CGRect) {
+    static func spaceBetween(_ items:[FlexBoxItemKind], _ container:CGRect) {
         let totW:CGFloat = items.reduce(0){$0 + $1.flexible.size.width}/*find the totalW of all items*/
         let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
         let numOfVoids:CGFloat = CGFloat(items.count - 1)/*then divide this voidSpace with .count - 1 and*/
@@ -51,7 +51,7 @@ class JustifyUtils{
     /**
      * Same as spaceBetween but does not pit to sides but rather add equal spacing there as well
      */
-    static func spaceAround(_ items:[FlexBoxItem], _ container:CGRect) {
+    static func spaceAround(_ items:[FlexBoxItemKind], _ container:CGRect) {
         let totW:CGFloat = items.reduce(0){$0 + $1.flexible.size.width}/*find the totalW of all items*/
         let totVoid:CGFloat = container.width - totW/*find totVoid by doing w - totw*/
         let numOfVoids:CGFloat = CGFloat(items.count)/*then divide this voidSpace with .count - 1 and*/

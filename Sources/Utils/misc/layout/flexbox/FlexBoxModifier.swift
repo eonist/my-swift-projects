@@ -4,7 +4,7 @@ class FlexBoxModifier{
     /**
      * Applies all flex adjustments
      */
-    static func flex(_ container:FlexBoxContainer){
+    static func flex(_ container:FlexBoxContainerKind){
         FlexBoxGrowUtils.grow(container.flexBoxItems,container.rect)
         FlexBoxModifier.justifyContent(container.flexBoxItems, container.justifyContent, container.rect)
         FlexBoxModifier.alignItems(container.flexBoxItems , container.alignItems, container.rect)
@@ -13,7 +13,7 @@ class FlexBoxModifier{
      * TODO: ⚠️️ Possibly use FlexItem here that decorates something
      * Positions items along the x axis
      */
-    static func justifyContent(_ items:[FlexBoxItem], _ type:FlexBoxType.Justify, _ container:CGRect){
+    private static func justifyContent(_ items:[FlexBoxItemKind], _ type:FlexBoxType.Justify, _ container:CGRect){
         switch type{
             case .flexStart:
                 JustifyUtils.flexStart(items,container)
@@ -30,13 +30,13 @@ class FlexBoxModifier{
     /**
      * Vertically aligns a row of items
      */
-    static func alignItems(_ items:[FlexBoxItem], _ type:FlexBoxType.AlignType, _ container:CGRect) {
+    private static func alignItems(_ items:[FlexBoxItemKind], _ type:FlexBoxType.AlignType, _ container:CGRect) {
         items.forEach{alignSelf($0,type,container)}
     }
     /**
      * Vertically aligns a single item
      */
-    static func alignSelf(_ item:FlexBoxItem, _ type:FlexBoxType.AlignType, _ container:CGRect){
+    private static func alignSelf(_ item:FlexBoxItemKind, _ type:FlexBoxType.AlignType, _ container:CGRect){
         switch type{
             case .flexStart:
                 FlexBoxAlignSelf.flexStart(item,container)
