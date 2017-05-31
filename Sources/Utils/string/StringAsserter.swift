@@ -37,11 +37,14 @@ class StringAsserter{
         return a.range(of: b) != nil
     }
     /**
-     * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 20%, 0.2)
+     * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 0.2)
      */
     static func digit(_ string:String)->Bool{
         return string.test(digitPattern)
     }
+    /**
+     * 2ems,20% etc
+     */
     static func metric(_ string:String) -> Bool{
         return string.test(metricPattern)
     }
