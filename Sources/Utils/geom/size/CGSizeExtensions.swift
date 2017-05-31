@@ -6,7 +6,6 @@ extension CGSize {
     init(_ width:Int,_ height:Int){self.width = CGFloat(width);self.height = CGFloat(height)}
     var w:CGFloat {set {self.width = newValue} get {return self.width}}
     var h:CGFloat {set {self.height = newValue} get {return self.height}}
-    
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
             switch dir{
@@ -23,6 +22,11 @@ extension CGSize {
                     self.height = newValue
             }
         }
+    }
+    func clip(_ min:CGSize,_ max:CGSize)->CGSize{
+        let w:CGFloat = self.width.clip(min.width, max.width)
+        let h:CGFloat = self.height.clip(min.height, max.height)
+        return CGSize(w,h)
     }
 }
 public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,a.height + b.height)}
