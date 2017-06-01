@@ -33,7 +33,7 @@ extension Event{
     }
     /**
      * Assert if child has ancestry to PARAM: parent
-     * NOTE: This way we dont have to store the entire stack in the event.
+     * NOTE: This way we don't have to store the entire stack in the event.
      */
     func isChildOf(_ parent:NSView?) -> Bool {
         if let origin:NSView = self.origin as? NSView {
