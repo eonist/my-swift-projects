@@ -30,7 +30,9 @@ class TextFieldModifier {
      * Beta
      */
     static func size(_ textField:TextField,_ width:CGFloat,_ height:CGFloat) {
-        /*Swift.print("width: " + "\(width)")
+        Swift.print("TextFieldModifier.size.width: " + "\(width)")
+            
+        /*)
          Swift.print("textField.superview?.frame.width: " + "\(textField.superview?.frame.width)")
          Swift.print("textField.superview?.superview?.frame.width: " + "\(textField.superview?.superview?.frame.width)")*/
         textField.frame.w = width/*SkinParser.width(this);*/
