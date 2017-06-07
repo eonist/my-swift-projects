@@ -30,6 +30,7 @@ class TextFieldModifier {
      * Beta
      */
     static func size(_ textField:TextField,_ width:CGFloat,_ height:CGFloat) {
+        Swift.print("width: " + "\(width)")
         textField.frame.w = width/*SkinParser.width(this);*/
         textField.frame.h = height/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
