@@ -31,6 +31,7 @@ class JSONParser{
     }
     /**
      * Array with dict
+     * EXAMPLE: JSONParser.dictArr("[{\"title\":\"doctor\"}]".json)?.forEach{print("\(JSONParser.dict($0)?["title"])")} //doctor
      */
     static func dictArr(_ json:Any?)->[[String:Any]]?{
         return json as? [[String:Any]]//array with dict
