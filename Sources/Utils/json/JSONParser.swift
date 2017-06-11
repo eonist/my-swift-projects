@@ -43,7 +43,12 @@ class JSONParser{
      */
     static func json(_ str:String) -> Any?{
         guard let data:Data = str.data(using: String.Encoding.utf8, allowLossyConversion: false) else{return nil}
-        let json:Any? = try? JSONSerialization.jsonObject(with: data, options: [])
-        return json
+        if let json:Any = try? JSONSerialization.jsonObject(with: data, options: []) {
+            return json
+        }else {
+            //Swift.print("data: " + "\(data)")
+            return nil
+        }
+        
     }
 }
