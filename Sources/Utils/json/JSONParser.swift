@@ -13,6 +13,7 @@ class JSONParser{
     }
     /**
      * Dict
+     * EXAMPLE: JSONParser.dict("{\"title\":\"doctor\"}".json)["title"] //Output: doctor
      */
     static func dict(_ json:Any?)->[String: Any]?{
         return json as? [String: Any]
@@ -37,7 +38,8 @@ class JSONParser{
         return json as? [[String:Any]]//array with dict
     }
     /**
-     * New
+     * Converts json string to json object
+     * "{\"title\":\"doctor\"}".json //Output: a JSON object
      */
     static func json(_ str:String) -> Any?{
         guard let data:Data = str.data(using: String.Encoding.utf8, allowLossyConversion: false) else{return nil}
