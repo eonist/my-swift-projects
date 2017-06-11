@@ -35,4 +35,12 @@ class JSONParser{
     static func dictArr(_ json:Any?)->[[String:Any]]?{
         return json as? [[String:Any]]//array with dict
     }
+    /**
+     * New
+     */
+    static func json(_ str:String) -> Any?{
+        guard let data:Data = str.data(using: String.Encoding.utf8, allowLossyConversion: false) else{return nil}
+        let json:Any? = try? JSONSerialization.jsonObject(with: data, options: [])
+        return json
+    }
 }
