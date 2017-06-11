@@ -71,12 +71,7 @@ extension String {
     var count:Int{return self.characters.count}/*Convenince*/
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
-    var json:Any? {
-        guard let data:Data = self.data(using: String.Encoding.utf8, allowLossyConversion: false) else{return nil}
-        let json:Any? = try? JSONSerialization.jsonObject(with: data, options: [])
-        return json
-    }
-    
+    var json:Any? {return JSONParser.json(self)}
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
