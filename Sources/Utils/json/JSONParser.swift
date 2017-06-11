@@ -47,7 +47,8 @@ class JSONParser{
             return json
         }else {
             //Swift.print("data: " + "\(data)")
-            return nil
+            fatalError("JSON is format wrongly: \(str)")
+            //return nil
         }
         
     }
