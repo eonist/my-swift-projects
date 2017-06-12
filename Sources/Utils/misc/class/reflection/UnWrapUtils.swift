@@ -27,32 +27,19 @@ class UnWrapUtils{
      */
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
         switch true{
-            case type == "\(CGFloat.self)"):
+            case type == "\(CGFloat.self)":
                 return CGFloat.unWrap(strVal)!
             case type == "\(Double.self)":
                 return Double.unWrap(strVal)!
             case type == "\(NSColor.self)":
                 return NSColor.unWrap(strVal)!
-            case type == "\(Bool.self)"):
+            case type == "\(Bool.self)":
                 return Bool.unWrap(strVal)!
-            case type == "\(String.self)"):
+            case type == "\(String.self)":
                 return String.unWrap(strVal)!
             default:
                 fatalError("type not supported yet: " + "\(type)")
         }
-        /*if(type == "\(CGFloat.self)"){
-         return CGFloat.unWrap(strVal)!
-         }else if(type == "\(Double.self)"){
-         return Double.unWrap(strVal)!
-         }else if(type == "\(NSColor.self)"){
-         return NSColor.unWrap(strVal)!
-         }else if(type == "\(Bool.self)"){
-         return Bool.unWrap(strVal)!
-         }else if(type == "\(String.self)"){
-         return String.unWrap(strVal)!
-         }else{
-         fatalError("type not supported yet: " + "\(type)")
-         }*/
     }
     /**
      *
