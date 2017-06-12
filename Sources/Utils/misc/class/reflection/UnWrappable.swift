@@ -56,14 +56,16 @@ extension UnWrappable{
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dict:[K:T] = [:]
-        if let child:XML = xml.firstNode(key){
-            child.children?.forEach {
-                let subChild:XML = $0 as! XML
-                let first = subChild.children!.first!
+        guard let child:XML = xml.firstNode(key) else {return dict}
+        if child.hasChildren {
+            dict = XMLParser.children(child).reduce(dict) {
+                var acc:[K:T] = $0
+                let first = $1.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
-                let last:XML = subChild.children!.last! as! XML/*We cast NSXMLNode to XML*/
+                let last:XML = $1.children!.last! as! XML/*We cast NSXMLNode to XML*/
                 let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
-                dict[key] = value
+                acc[key] = value
+                return acc
             }
         }
         return dict
@@ -72,6 +74,10 @@ extension UnWrappable{
      * New 
      * TODO: could be called from the method above
      */
+    
+    //Continue here: 🏀
+        //reformat the bellow:
+    
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dictionary:[K:T] = [:]
         xml.children?.forEach {
@@ -79,12 +85,6 @@ extension UnWrappable{
             let first = child.children!.first!
             let key:K = K.unWrap(first.stringValue!)!
             let last:XML = child.children!.last! as! XML/*we cast NSXMLNode to XML*/
-            /* Swift.print("last: " + "\(last)")
-             Swift.print("last: " + "\(last.xmlString)")
-             Swift.print("last.value: " + "\(last.value)")
-             Swift.print("last.hasSimpleContent: " + "\(last.hasSimpleContent)")
-             Swift.print("last.hasComplexContent: " + "\(last.hasComplexContent)")
-             */
             let value:T? = last.hasComplexContent ?  T.unWrap(last) : T.unWrap(last.value)
             dictionary[key] = value
         }
