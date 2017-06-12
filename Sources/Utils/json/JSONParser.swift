@@ -46,10 +46,7 @@ class JSONParser{
         if let json:Any = try? JSONSerialization.jsonObject(with: data, options: []) {
             return json
         }else {
-            //Swift.print("data: " + "\(data)")
             fatalError("JSON is format wrongly: \(str)")
-            //return nil
         }
-        
     }
 }
