@@ -2,7 +2,7 @@ import Cocoa
 
 class UnWrapUtils{
     /**
-     * Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
+     * NOTE: Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */
     static func any(_ xml:XML,_ key:String) -> Any{//<--if you make this optional, it will cause problems unwrapping the value later, could be because Any is optional by nature?!?
         guard let child:XML = xml.firstNode(key) else{fatalError("nothing in first node")}
@@ -13,13 +13,14 @@ class UnWrapUtils{
      */
     private static func any(_ xml:XML) -> Any{
         guard let type:String = XMLParser.attribute(xml, "type") else {fatalError("has no attrib type")}
-        if(xml.hasSimpleContent){
-            let strVal:String = xml.value
-            return simpleAny(strVal,type)
-        }else if(xml.hasComplexContent){
-            return complexAny(xml,type)
-        }else{
-            fatalError("type not supported: " + "\(type)")
+        switch true{
+            case xml.hasSimpleContent:
+                let strVal:String = xml.value
+                return simpleAny(strVal,type)
+            case xml.hasComplexContent:
+                return complexAny(xml,type)
+            default:
+                fatalError("type not supported: " + "\(type)")
         }
     }
     /**
