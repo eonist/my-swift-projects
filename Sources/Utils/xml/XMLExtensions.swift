@@ -38,6 +38,9 @@ extension XML {
     var hasSimpleContent:Bool{
         return XMLAsserter.hasSimpleContent(self)
     }
+    var hasChildren:Bool{
+        return XMLAsserter.hasChildren(self)
+    }
     func valueAt(_ index:[Int])->String?{/*Convenience*/
         return XMLParser.valueAt(self, index)
     }

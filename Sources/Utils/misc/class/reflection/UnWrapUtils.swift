@@ -64,6 +64,6 @@ class UnWrapUtils{
      * Support for Array<Any?>
      */
     static func anyArray(_ xml:XML) -> [Any]{
-        return xml.childCount > 0 ? XMLParser.children(xml).map{any($0)} : [Any]()
+        return xml.hasChildren ? XMLParser.children(xml).map{any($0)} : [Any]()
     }
 }
