@@ -42,7 +42,7 @@ class UnWrapUtils{
         }
     }
     /**
-     *
+     * Array,DropShadow,RadialGradient,RadialGradient,LinearGradient
      */
     private static func complexAny(_ xml:XML,_ type:String)->Any{
         switch true{
@@ -62,13 +62,11 @@ class UnWrapUtils{
     /**
      * Support for Array<Any?>
      */
-    static func anyArray(_ xml:XML/*,_ key:String*/) -> [Any]{
+    static func anyArray(_ xml:XML) -> [Any]{
         var array:[Any] = [Any]()
-        //let child:XML = xml.firstNode(key)!//<--this should probably be asserted first, but should we return nil or empty array then?
         if(xml.childCount > 0){
             XMLParser.children(xml).forEach{
-                //let type:String = XMLParser.attribute(xml.firstNode("value")!, "type")!
-                array.append(any($0))//$0.hasComplexContent ? .. : nil
+                array.append(any($0))
             }
         }
         return array
