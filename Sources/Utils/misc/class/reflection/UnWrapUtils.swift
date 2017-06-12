@@ -45,17 +45,18 @@ class UnWrapUtils{
      *
      */
     private static func complexAny(_ xml:XML,_ type:String)->Any{
-        if(type == "Array"){
-            let val:[Any] = anyArray(xml)
-            return val
-        }else if(type == "\(DropShadow.self)"){
-            return DropShadow.unWrap(xml)!
-        }else if(type == "\(RadialGradient.self)"){
-            return RadialGradient.unWrap(xml)!
-        }else if(type == "\(Gradient.self)" || type == "LinearGradient"){ /*<-- LinearGradient is a temp fix, remove later*/
-            return LinearGradient.unWrap(xml)!
-        }else{
-            fatalError("type not supported yet: " + "\(type)")
+        switch true{
+            case type == "Array":
+                let val:[Any] = anyArray(xml)
+                return val
+            case type == "\(DropShadow.self)":
+                return DropShadow.unWrap(xml)!
+            case type == "\(RadialGradient.self)":
+                return RadialGradient.unWrap(xml)!
+            case type == "\(Gradient.self)" || type == "\(LinearGradient.self)":
+                return LinearGradient.unWrap(xml)!
+            default:
+                fatalError("type not supported yet: " + "\(type)")
         }
     }
     /**
