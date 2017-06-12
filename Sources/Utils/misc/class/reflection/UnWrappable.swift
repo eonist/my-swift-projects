@@ -31,19 +31,13 @@ extension UnWrappable{
      * IMPORTANT: ⚠️️ Type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?{
-        //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
-        //let type:String = xml.firstNode(key)!["type"]!/*<--type not important anymore since we use T, actually, what if the type is Any*/
-        //Swift.print("type: " + "\(type)")
-        if(xml.firstNode(key) != nil){
-            if(xml.hasSimpleContent){/*<--simple node content: Text*/
-                let value:String = xml.firstNode(key)!.value/*<--first child node that has the key*/
-                return T.unWrap(value)//<--use T to your advantage when converting the value (A protocol extension switch, polymorphism)
-            }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
-                let child = xml.firstNode(key)!
-                return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
-            }
+        guard let child:XML = xml.firstNode(key) else {return nil}//TODO: ⚠️️ Possibly throw error
+        if(xml.hasSimpleContent){/*<--simple node content: Text*/
+            let value:String = child.value/*<--first child node that has the key*/
+            return T.unWrap(value)//<--use T to your advantage when converting the value (A protocol extension switch, polymorphism)
+        }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
+            return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
         }
-        return nil
     }
     /**
      * For arrays (doesn't work with Array<Any> only where the type is known)
