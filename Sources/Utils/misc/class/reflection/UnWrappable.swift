@@ -56,19 +56,10 @@ extension UnWrappable{
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         guard let child:XML = xml.firstNode(key),child.hasChildren else{ return [:] }
-        return XMLParser.children(child).reduce([:]) {
-            var acc:[K:T] = $0
-            let first = $1.children!.first!
-            let key:K = K.unWrap(first.stringValue!)!
-            let last:XML = $1.children!.last! as! XML/*We cast NSXMLNode to XML*/
-            let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
-            acc[key] = value
-            return acc
-        }
+        return unWrapDict(child)
     }
     /**
      * New 
-     * TODO: could be called from the method above
      */
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         guard let children:[XML] = xml.children as? [XML], children.count > 0 else { return [:] }
