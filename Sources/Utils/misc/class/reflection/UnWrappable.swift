@@ -70,13 +70,9 @@ extension UnWrappable{
      * New 
      * TODO: could be called from the method above
      */
-    
-    //Continue here: 🏀
-        //reformat the bellow:
-    
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        if !xml.hasChildren { return [:] }
-        return XMLParser.children(xml).reduce([:]) {
+        guard let children:[XML] = xml.children as? [XML], children.count > 0 else { return [:] }
+        return children.reduce([:]) {
             var acc:[K:T] = $0
             let first = $1.children!.first!
             let key:K = K.unWrap(first.stringValue!)!
