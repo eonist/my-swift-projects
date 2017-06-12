@@ -26,8 +26,7 @@ public class XMLParser{
         return nil
     }
     /**
-     * Unlike .children which returns [XMLNode?] this method returns: [XML] which is simpler to work with 
-     * NOTE: use xml.hasChildren to assert first
+     * Unlike .children which returns [XMLNode?] this method returns: [XML] which is simpler to work with
      */
     static func children(_ xml:XML)->[XML]{
         return xml.children as! [XML]
@@ -62,7 +61,7 @@ public class XMLParser{
      * NOTE: There is also .XMLString and a few abrivations of that method
      */
     static func string(_ child:XML)->String{
-        return String(describing: child)
+        return "\(child)"
     }
     /**
      * Returns string Content of an xml
