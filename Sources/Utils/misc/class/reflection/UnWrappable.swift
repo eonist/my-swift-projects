@@ -44,13 +44,10 @@ extension UnWrappable{
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
-        guard let child:XML = xml.firstNode(key) else{return [T?]()}
-        if child.hasChildren {
+        if let child:XML = xml.firstNode(key), child.hasChildren {
             return XMLParser.children(child).map {$0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0)}
-        }else{
-            return [T?]()
         }
-        
+        return [T?]()
     }
     /**
      * Dictionary
