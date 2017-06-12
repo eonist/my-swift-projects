@@ -38,6 +38,7 @@ extension UnWrappable{
         }else if(xml.hasComplexContent){/*<--complex node:Has child nodes*/
             return child.hasComplexContent ? T.unWrap(child) : child.hasSimpleContent ? T.unWrap(child.value) : nil
         }
+        return nil
     }
     /**
      * For arrays (doesn't work with Array<Any> only where the type is known)
