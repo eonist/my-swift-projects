@@ -95,11 +95,11 @@ public class XMLParser{
      * NOTE: returns an empty array if the index is out of bound
      * NOTE: to access the actual xml child at the specific index use native xml notation or use the XMLparser.childAt(index) function
      */
-    static func siblingAttributes(_ child:XML, _ idx3d:[Int])->[[String:String]] {// :TODO: rename to objAt
-        let xml:XML? = childAt(child, idx3d)
-        return xml?.children?.map{
-            return ($0 as! XML).attribs
-        } ?? []
+    static func siblingAttributes(_ child:XML, _ idx3d:[Int])->[[String:String]] {
+        if let xml:XML = childAt(child, idx3d), xml.hasChildren {
+            return XMLParser.children(xml).map{$0.attribs}
+        }
+        return []
     }
     /**
      * Returns child from PARAM: children at PARAM: index
