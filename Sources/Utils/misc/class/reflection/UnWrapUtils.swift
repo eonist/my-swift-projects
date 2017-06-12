@@ -26,7 +26,21 @@ class UnWrapUtils{
      * CGFloat,Double,NSColor,Bool,String
      */
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
-        if(type == String(describing:CGFloat.self)){
+        switch type{
+            case "\(CGFloat.self)"):
+                return CGFloat.unWrap(strVal)!
+            case "\(Double.self)":
+                return Double.unWrap(strVal)!
+            case "\(NSColor.self)":
+                return NSColor.unWrap(strVal)!
+            case "\(Bool.self)"):
+                return Bool.unWrap(strVal)!
+            case "\(String.self)"):
+                return String.unWrap(strVal)!
+            default:
+                fatalError("type not supported yet: " + "\(type)")
+        }
+        if(type == "\(CGFloat.self)"){
             return CGFloat.unWrap(strVal)!
         }else if(type == "\(Double.self)"){
             return Double.unWrap(strVal)!
