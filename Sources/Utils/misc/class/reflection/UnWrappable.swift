@@ -60,7 +60,7 @@ extension UnWrappable{
         var dict:[K:T] = [:]
         guard let child:XML = xml.firstNode(key) else {return dict}
         if child.hasChildren {
-            XMLParser.children(child).forEach {
+            dict = XMLParser.children(child).reduce(dict) {
                 let first = $0.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
                 let last:XML = $0.children!.last! as! XML/*We cast NSXMLNode to XML*/
