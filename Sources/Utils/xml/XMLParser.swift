@@ -159,9 +159,7 @@ public class XMLParser{
                     let child:XML = $0 as! XML//at this point your garantueed that the child is XML
                     var item:[Any] = []
                     let attribs = child.attribs
-                    if(!attribs.isEmpty){
-                        item.append(attribs)
-                    }
+                    if !attribs.isEmpty {item.append(attribs)}
                     if(child.stringValue != nil && child.stringValue!.count > 0) {
                         item.append(child.stringValue!)
                     }else if(child.hasComplexContent) {
