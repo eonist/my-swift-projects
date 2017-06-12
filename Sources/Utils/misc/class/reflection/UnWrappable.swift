@@ -45,13 +45,10 @@ extension UnWrappable{
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
         guard let child:XML = xml.firstNode(key) else{return [T?]()}
-        if child.hasChildren {
-            
-            let arr: [T?] =     XMLParser.children(xml).map {$0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0)}
-            return arr
-        }else{
-            return [T?]()
-        }
+        return child.children?.map {
+            guard let subChild:XML = $0 as? XML else{fatalError("SubChild must be XML")}
+            return subChild.hasSimpleContent ? T.unWrap(subChild.value) : T.unWrap(subChild) //$0.hasComplexContent ? .. : nil
+        } ?? [T?]()
     }
     /**
      * Dictionary
