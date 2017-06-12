@@ -75,14 +75,12 @@ extension UnWrappable{
     }
     /**
      * Support for Array with Dictionaries like: [Dictionary<String,String>]
-     * TODO: You could porbably do this simpler with AnyDictionary
+     * TODO: ⚠️️ You could porbably do this simpler with AnyDictionary
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
         if let child:XML = xml.firstNode(key), child.hasChildren{
-            return XMLParser.children(child).map {
-                let subChild:XML = $0 as! XML
-                return unWrapDict(subChild)
-            } ?? [[K:T]?]()
+            return XMLParser.children(child).map {unWrapDict($0)}
         }
+        return [[K:T]?]()
     }
 }
