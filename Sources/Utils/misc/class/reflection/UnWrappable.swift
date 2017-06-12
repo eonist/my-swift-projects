@@ -44,12 +44,11 @@ extension UnWrappable{
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
-        guard let child:XML = xml.firstNode(key) else{return [T?]()}
-        if child.hasChildren {
-            return XMLParser.children(xml).map{$0.hasSimpleContent ? T.unWrap($0.value) : T.unWrap($0)}
-        }else{
-            return [T?]()
-        }
+        let child:XML? = xml.firstNode(key)
+        return child?.children?.map {
+            guard let subChild:XML = $0 as? XML else{fatalError("SubChild must be XML")}
+            return subChild.hasSimpleContent ? T.unWrap(subChild.value) : T.unWrap(subChild) //$0.hasComplexContent ? .. : nil
+        } ?? [T?]()
     }
     /**
      * Dictionary
@@ -58,16 +57,14 @@ extension UnWrappable{
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dict:[K:T] = [:]
-        guard let child:XML = xml.firstNode(key) else {return dict}
-        if child.hasChildren {
-            dict = XMLParser.children(child).reduce(dict) {
-                var acc:[K:T] = $0
-                let first = $1.children!.first!
+        if let child:XML = xml.firstNode(key){
+            child.children?.forEach {
+                let subChild:XML = $0 as! XML
+                let first = subChild.children!.first!
                 let key:K = K.unWrap(first.stringValue!)!
-                let last:XML = $1.children!.last! as! XML/*We cast NSXMLNode to XML*/
+                let last:XML = subChild.children!.last! as! XML/*We cast NSXMLNode to XML*/
                 let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
-                acc[key] = value
-                return acc
+                dict[key] = value
             }
         }
         return dict
