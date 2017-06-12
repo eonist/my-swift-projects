@@ -58,8 +58,7 @@ extension UnWrappable{
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dict:[K:T] = [:]
-        guard let child:XML = xml.firstNode(key) else {return [:]}
-        
+        guard let child:XML = xml.firstNode(key) else {return dict}
         if child.hasChildren {
             XMLParser.children(child).forEach {
                 let first = $0.children!.first!
@@ -69,8 +68,6 @@ extension UnWrappable{
                 dict[key] = value
             }
         }
-        
-        
         return dict
     }
     /**
