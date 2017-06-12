@@ -26,33 +26,33 @@ class UnWrapUtils{
      * CGFloat,Double,NSColor,Bool,String
      */
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
-        switch type{
-            case "\(CGFloat.self)"):
+        switch true{
+            case type == "\(CGFloat.self)"):
                 return CGFloat.unWrap(strVal)!
-            case "\(Double.self)":
+            case type == "\(Double.self)":
                 return Double.unWrap(strVal)!
-            case "\(NSColor.self)":
+            case type == "\(NSColor.self)":
                 return NSColor.unWrap(strVal)!
-            case "\(Bool.self)"):
+            case type == "\(Bool.self)"):
                 return Bool.unWrap(strVal)!
-            case "\(String.self)"):
+            case type == "\(String.self)"):
                 return String.unWrap(strVal)!
             default:
                 fatalError("type not supported yet: " + "\(type)")
         }
-        if(type == "\(CGFloat.self)"){
-            return CGFloat.unWrap(strVal)!
-        }else if(type == "\(Double.self)"){
-            return Double.unWrap(strVal)!
-        }else if(type == "\(NSColor.self)"){
-            return NSColor.unWrap(strVal)!
-        }else if(type == "\(Bool.self)"){
-            return Bool.unWrap(strVal)!
-        }else if(type == "\(String.self)"){
-            return String.unWrap(strVal)!
-        }else{
-            fatalError("type not supported yet: " + "\(type)")
-        }
+        /*if(type == "\(CGFloat.self)"){
+         return CGFloat.unWrap(strVal)!
+         }else if(type == "\(Double.self)"){
+         return Double.unWrap(strVal)!
+         }else if(type == "\(NSColor.self)"){
+         return NSColor.unWrap(strVal)!
+         }else if(type == "\(Bool.self)"){
+         return Bool.unWrap(strVal)!
+         }else if(type == "\(String.self)"){
+         return String.unWrap(strVal)!
+         }else{
+         fatalError("type not supported yet: " + "\(type)")
+         }*/
     }
     /**
      *
