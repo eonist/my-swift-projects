@@ -55,20 +55,16 @@ extension UnWrappable{
      * TODO: ⚠️️ In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        var dict:[K:T] = [:]
-        guard let child:XML = xml.firstNode(key) else {return dict}
-        if child.hasChildren {
-            dict = XMLParser.children(child).reduce(dict) {
-                var acc:[K:T] = $0
-                let first = $1.children!.first!
-                let key:K = K.unWrap(first.stringValue!)!
-                let last:XML = $1.children!.last! as! XML/*We cast NSXMLNode to XML*/
-                let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
-                acc[key] = value
-                return acc
-            }
+        guard let child:XML = xml.firstNode(key),child.hasChildren else{ return [:] }
+        return XMLParser.children(child).reduce([:]) {
+            var acc:[K:T] = $0
+            let first = $1.children!.first!
+            let key:K = K.unWrap(first.stringValue!)!
+            let last:XML = $1.children!.last! as! XML/*We cast NSXMLNode to XML*/
+            let value:T? = last.hasSimpleContent ? T.unWrap(last.value) : T.unWrap(last)
+            acc[key] = value
+            return acc
         }
-        return dict
     }
     /**
      * New 
