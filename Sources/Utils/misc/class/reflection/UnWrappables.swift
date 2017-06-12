@@ -27,16 +27,21 @@ extension Bool:UnWrappable{
         return value.bool as? T
     }
 }
-extension NSColor:UnWrappable{/*We use 32 bit RGBA values when storing color data (This also stores the alpha value)*/
+extension NSColor:UnWrappable{
+    /**
+     * We use 32 bit RGBA values when storing color data (This also stores the alpha value)
+     * NOTE: turns string values like: FF0000FF into NSColor blue
+     */
     static func unWrap<T>(_ value:String) -> T? {
-        //Swift.print("NSColor.unWrap()")
-        return NSColorParser.color(value) as? T//turns string values like: FF0000FF into NSColor blue
+        return NSColorParser.color(value) as? T
     }
 }
 extension CGColor:UnWrappable{
+    /**
+     * Converts string values like: FF0000FF into CGColor blue
+     */
     static func unWrap<T>(_ value:String) -> T? {
-        //Swift.print("CGColor.unWrap() value: " + "\(value)")
-        return NSColorParser.color(value).cgColor as? T//turns string values like: FF0000FF into CGColor blue
+        return NSColorParser.color(value).cgColor as? T
     }
 }
 extension CGPoint:UnWrappable{
@@ -53,7 +58,6 @@ extension CGSize:UnWrappable{
 }
 extension CGTransform:UnWrappable{
     static func unWrap<T>(_ value:String) -> T? {
-        //Swift.print("CGTransform.unWrap()")
         let identities:[CGFloat] = StringParser.split(value, ",").map{$0.cgFloat}
         let transformation:CGTransform = CGTransform(identities[0], identities[1], identities[2], identities[3], identities[4], identities[5])//swift 3 upgrade -> was->CGAffineTransformMake()
         return transformation as? T

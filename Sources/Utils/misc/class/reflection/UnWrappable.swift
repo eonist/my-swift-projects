@@ -4,6 +4,7 @@ import Cocoa
  * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
  * NOTE: We are accessing the classtype and casting it as UNWrappable and then calling unwrap on the correct type (this requires usage of static methods, but its the most elegant)
  * NOTE: For more complex types see if they them selfs are UnWrappable.
+ * TODO: Contemplate: Renaming everything to Wrap/UnWrap ? (However: Reflections is considered the name for this)
  */
 protocol UnWrappable {
     static func unWrap<T>(_ xml:XML) -> T?
@@ -11,9 +12,6 @@ protocol UnWrappable {
     static func unWrap<T>(_ value:String) -> T?
     //static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?]
 }
-/**
- * TODO: Contemplate: Renaming everything to Fold/UnFold ? Wrap/UnWrap ?
- */
 extension UnWrappable{
     /**
      * This would be similar to an init method (add to custom classes)
@@ -30,7 +28,7 @@ extension UnWrappable{
     /**
      * NOTE: used to unWrap nested values (DropShadow)
      * NOTE: looks at the type and converts that the value into a type
-     * IMPORTANT: type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
+     * IMPORTANT: ⚠️️ Type is not important anymore since we use T, When a variable is of type Any, we should handle this in the unwrap method pertaining to the specific Class
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> T?{
         //Swift.print("Unwrappable.unWrap() key: " + "\(key)")
