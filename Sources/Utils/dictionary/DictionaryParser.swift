@@ -21,6 +21,7 @@ class DictionaryParser{
      * Rturns tuples from PARAM: dict
      * NOTE: is generic
      * EXAMPLE: pairs([1: "Swift", 2: "Generics", 3: "Rule"])//[(2, "Generics"), (3, "Rule"), (1, "Swift")]
+     * NOTE: You can also do the reverse with .reduce see the reduce.md file about dict reduce
      */
     static func pairs<Key, Value>(_ dict: [Key: Value]) -> [(Key, Value)] {
         return Array(dict)
