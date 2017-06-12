@@ -55,11 +55,11 @@ extension UnWrappable{
      * TODO: ⚠️️ In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        guard let child:XML = xml.firstNode(key),child.hasChildren else{ return [:] }
+        guard let child:XML = xml.firstNode(key) else{ return [:] }
         return unWrapDict(child)
     }
     /**
-     * New 
+     * New
      */
     static func unWrapDict<T, K>(_ xml:XML) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         guard let children:[XML] = xml.children as? [XML], children.count > 0 else { return [:] }
@@ -78,10 +78,11 @@ extension UnWrappable{
      * TODO: You could porbably do this simpler with AnyDictionary
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String)-> [[K:T]?] where K:UnWrappable, K:Hashable, T:UnWrappable{
-        let child:XML? = xml.firstNode(key)
-        return child?.children?.map {
-            let subChild:XML = $0 as! XML
-            return unWrapDict(subChild)//$0.hasComplexContent ? .. : nil
-        } ?? [[K:T]?]()
+        if let child:XML = xml.firstNode(key), child.hasChildren{
+            return XMLParser.children(child).map {
+                let subChild:XML = $0 as! XML
+                return unWrapDict(subChild)
+            } ?? [[K:T]?]()
+        }
     }
 }
