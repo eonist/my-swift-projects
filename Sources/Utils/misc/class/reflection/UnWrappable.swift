@@ -44,7 +44,7 @@ extension UnWrappable{
      * For arrays (doesn't work with Array<Any> only where the type is known)
      */
     static func unWrap<T:UnWrappable>(_ xml:XML,_ key:String) -> [T?]{
-        let child:XML? = xml.firstNode(key)
+        let child:XML? = xml.firstNode(key)//possibly do a guard here
         return child?.children?.map {
             guard let subChild:XML = $0 as? XML else{fatalError("SubChild must be XML")}
             return subChild.hasSimpleContent ? T.unWrap(subChild.value) : T.unWrap(subChild) //$0.hasComplexContent ? .. : nil
@@ -53,7 +53,7 @@ extension UnWrappable{
     /**
      * Dictionary
      * Returns a Dictionary (key is UnWrappable and Hashable) (value is Unwrappable)
-     * TODO: In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
+     * TODO: ⚠️️ In the future this method could be simplified by using protcol composition for K and extracting the Dictionary item creation to a new method
      */
     static func unWrap<T, K>(_ xml:XML,_ key:String) -> [K:T] where K:UnWrappable, K:Hashable, T:UnWrappable{
         var dict:[K:T] = [:]
