@@ -4,11 +4,11 @@ class NSViewParser {
     /**
      * Returns an array of all the children in PARAM: view that is of type PARAM: classType
      * NOTE: this works with classes and protocols
-     * IMPORTANT: Remember to use: IA.self and A.self as the type 
+     * IMPORTANT: ⚠️️ Remember to use: IA.self and A.self as the type 
      * TODO: rename to childrenByClassType, maybe not?, I say not!
      */
     static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T] {
-        return view.subviews.filter() {$0 as? T != nil}.map{$0 as! T}
+        return view.subviews.flatMap{$0 as? T}
     }
     /**
      * Returns a list of parents
