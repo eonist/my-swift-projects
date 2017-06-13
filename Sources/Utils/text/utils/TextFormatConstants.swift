@@ -14,6 +14,7 @@ enum TextFormatConstants:String {
     case wordWrap = "wordWrap"
     case scrollable = "scrollable"
     case leading = "leading"/*line-spacing*/
+    case password = "password"
 }
 extension TextFormatConstants{
     static var textFormatPropertyNames:[String] {
@@ -30,7 +31,8 @@ extension TextFormatConstants{
             TextFormatConstants.multiline.rawValue,
             TextFormatConstants.wordWrap.rawValue,
             TextFormatConstants.scrollable.rawValue,
-            TextFormatConstants.leading.rawValue
+            TextFormatConstants.leading.rawValue,
+            TextFormatConstants.password.rawValue
         ]
     }
 }

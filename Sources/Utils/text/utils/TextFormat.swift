@@ -14,6 +14,7 @@ struct TextFormat {
     var wordWrap:Bool = true
     var scrollable:Bool = true
     var leading:CGFloat = NaN
+    var password:Bool = false
     //TODO: autoSize can be implemented, check stackoverflow
 }
 /**
@@ -36,6 +37,7 @@ extension TextFormat{
                 case .wordWrap?:return wordWrap
                 case .scrollable?:return scrollable
                 case .leading?:return leading
+                case .password?:return password
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
@@ -54,6 +56,7 @@ extension TextFormat{
                 case .wordWrap?:wordWrap = newValue as! Bool
                 case .scrollable?:scrollable = newValue as! Bool
                 case .leading?:leading = newValue as! CGFloat
+                case .password?:password = newValue as! Bool
                 default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
             }
         }
