@@ -1,9 +1,10 @@
 import Cocoa
 /**
  * Simplifies interaction with the NSTextField
+ * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to 
  */
 class TextField:NSTextField{
-    var globalMouseDownHandler:Any?//swift 3, was AnyObject?
+    var globalMouseDownHandler:Any?
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
