@@ -1,6 +1,6 @@
 import Cocoa
 
-class SectureTextField:NSTextField {
+class SecureTextField:NSTextField {
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
         return super.hitTest(CGPoint(localPos().x,localPos().y))
     }
