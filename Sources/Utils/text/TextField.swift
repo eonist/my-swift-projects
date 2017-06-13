@@ -30,7 +30,7 @@ class TextField:NSTextField{
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
             if(mouseDownHandler != nil) {
                 NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
-                leftMouseDraggedEventListener = nil//<--this part may not be needed
+                mouseDownHandler = nil//<--this part may not be needed
             }else{
                 fatalError("Should not be possible")
             }
@@ -46,6 +46,7 @@ class TextField:NSTextField{
     }
     override func textDidEndEditing(_ notification: Notification) {
         Swift.print("textDidEndEditing")
+        self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
     }
     override func textDidBeginEditing(_ notification: Notification) {
         Swift.print("textDidBeginEditing")
