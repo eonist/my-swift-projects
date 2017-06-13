@@ -46,7 +46,6 @@ class TextField:NSTextField{
     }
     override func textDidEndEditing(_ notification: Notification) {
         Swift.print("textDidEndEditing")
-        self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
     }
     override func textDidBeginEditing(_ notification: Notification) {
         Swift.print("textDidBeginEditing")
