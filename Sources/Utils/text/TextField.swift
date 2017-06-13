@@ -26,7 +26,20 @@ class TextField:NSTextField{
         }
         return event
     }
+    override func textStorageWillProcessEditing(_ notification: Notification) {
+        Swift.print("textStorageWillProcessEditing")
+    }
+    override func textStorageDidProcessEditing(_ notification: Notification) {
+        Swift.print("textStorageDidProcessEditing")
+    }
+    override func textDidEndEditing(_ notification: Notification) {
+        Swift.print("textDidEndEditing")
+    }
+    override func textDidBeginEditing(_ notification: Notification) {
+        Swift.print("textDidBeginEditing")
+    }
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
+        Swift.print("textShouldEndEditing")
         return super.textShouldEndEditing(textObject)
     }
     override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
@@ -34,6 +47,7 @@ class TextField:NSTextField{
         return super.textShouldBeginEditing(textObject)
     }
     override func textDidChange(_ notification:Notification) {
+        Swift.print("textDidChange")
         if(self.superview is IEventSender){
             //Swift.print("superview is IEventSender")
             (self.superview as! IEventSender).event!(TextFieldEvent(Event.update,self))
