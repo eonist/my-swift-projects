@@ -4,7 +4,7 @@ class TextFieldModifier {
     /**
      * TODO: Border color?
      */
-    static func applyTextFormat(_ textField:TextField,_ textFormat:TextFormat){
+    static func applyTextFormat(_ textField:NSTextField,_ textFormat:TextFormat){
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.isSelectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clear
@@ -29,7 +29,7 @@ class TextFieldModifier {
     /**
      * Beta
      */
-    static func size(_ textField:TextField,_ width:CGFloat,_ height:CGFloat) {
+    static func size(_ textField:NSTextField,_ width:CGFloat,_ height:CGFloat) {
         Swift.print("TextFieldModifier.size.width: " + "\(width)")
             
         /*)
