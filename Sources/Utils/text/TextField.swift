@@ -28,7 +28,12 @@ class TextField:NSTextField{
     func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
         Swift.print("onMouseDownOutside")
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
-            if(mouseDownHandler != nil) {NSEvent.removeMonitor(mouseDownHandler!)}//we remove the evenListener as its done its job
+            if(mouseDownHandler != nil) {
+                NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
+                leftMouseDraggedEventListener = nil//<--this part may not be needed
+            }else{
+                fatalError("Should not be possible")
+            }
             self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
         }
         return event
