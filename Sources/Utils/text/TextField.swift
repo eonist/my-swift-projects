@@ -26,6 +26,13 @@ class TextField:NSTextField{
         }
         return event
     }
+    override func textShouldEndEditing(_ textObject: NSText) -> Bool {
+        return super.textShouldEndEditing(textObject)
+    }
+    override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
+        Swift.print("textShouldBeginEditing")
+        return super.textShouldBeginEditing(textObject)
+    }
     override func textDidChange(_ notification:Notification) {
         if(self.superview is IEventSender){
             //Swift.print("superview is IEventSender")
