@@ -18,9 +18,16 @@ class TextField:NSTextField{
     }
     override func mouseDown(with theEvent:NSEvent) {
         Swift.print("mouseDown")
+        if(mouseDownHandler == nil) {
+            leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler: self.onMouseDownOutside)/*we add a global mouse move event listener*/
+        }
+        else {
+            fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")
+        }
+        
         if(mouseDownHandler == nil){
-            mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler:onMouseDownOutside)
-        }//we add an eventListener that takes care of resigning the edit mode of the textField
+            mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler:onMouseDownOutside)/*we add an eventListener that takes care of resigning the edit mode of the textField*/
+        }
         super.mouseDown(with: theEvent)
     }
     func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
