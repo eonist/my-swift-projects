@@ -4,19 +4,12 @@ import Foundation
  * Examples here: https://gist.github.com/s-aska/e7ad24175fb7b04f78e7
  */
 class KeyChainParser {
-    /**
-     * Returns password for PARAM: accountName
-     * EXAMPLE: KeyChainParser.password("eonist")//123abc
-     */
-    static func password(_ accountName:String)->String?{
-       return load(accountName)?.stringValue
-    }
 	/**
 	 * Returns a keychain item for PARAM: key
      * EXAMPLE: KeyChainParser.load("eonist")?.stringValue//123abc
      * NOTE: SecClass: kSecClassInternetPassword,kSecClassGenericPassword,kSecClassCertificate,kSecClassKey,kSecClassIdentity
 	 */
-    private static func load(_ key:String, _ secClass:CFString = kSecClassGenericPassword) -> Data? {
+    static func load(_ key:String, _ secClass:CFString = kSecClassGenericPassword) -> Data? {
         let query:CFDictionary = [
             kSecClass as String:secClass,
             kSecAttrAccount as String : key,
