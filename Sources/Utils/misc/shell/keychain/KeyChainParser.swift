@@ -27,9 +27,7 @@ class KeyChainParser {
         let status = withUnsafeMutablePointer(to: &dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         //Swift.print("status: " + "\(status)")
         if status == errSecSuccess {
-            if let data = dataTypeRef as? Data {
-                return data
-            }
+            return dataTypeRef as? Data {
         }
         return nil
     }
