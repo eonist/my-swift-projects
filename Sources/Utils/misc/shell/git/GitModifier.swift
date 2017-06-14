@@ -31,7 +31,7 @@ class GitModifier{
     * NOTE: Commit , usually doesnt return anything
     * NOTE: its important that the message is between two single quates
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
-    * TODO: can we also add desscription to a commit?
+    * TODO: Can we also add desscription to a commit?
     * TODO: what does commit -a do? -all?
     * TODO: git commit -m "Title" -m "Description .........." <--this works
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
