@@ -5,9 +5,9 @@ class KeyChainModifier {
      * Save keychain data for key
      * TODO: move to KeyChainModifier.swift
      */
-    static func save(_ key: String, _ data:Data) -> Bool {
+    static func save(_ key: String, _ data:Data, _ secClass:CFString = kSecClassGenericPassword) -> Bool {
         let query = [
-            kSecClass as String : kSecClassGenericPassword as String,
+            kSecClass as String : secClass,
             kSecAttrAccount as String : key,
             kSecValueData as String : data ]  as CFDictionary
         SecItemDelete(query)
@@ -17,8 +17,10 @@ class KeyChainModifier {
     /**
      * Deletes a keychain item for key
      */
-    static func delete(_ key:String) -> Bool {
-        let query:CFDictionary = [ kSecClass as String : kSecClassGenericPassword,kSecAttrAccount as String : key ] as CFDictionary
+    static func delete(_ key:String, _ secClass:CFString = kSecClassGenericPassword) -> Bool {
+        let query:CFDictionary = [
+            kSecClass as String : secClass,
+            kSecAttrAccount as String : key ] as CFDictionary
         let status:OSStatus = SecItemDelete(query)
         return status == noErr
     }
@@ -27,8 +29,8 @@ class KeyChainModifier {
      * TODO: move to KeyChainModifier.swift
      * EXAMPLE: Keychain.clear()
      */
-    static func clear() -> Bool {
-        let query:CFDictionary = [ kSecClass as String : kSecClassGenericPassword ] as CFDictionary
+    static func clear( _ secClass:CFString = kSecClassGenericPassword) -> Bool {
+        let query:CFDictionary = [ kSecClass as String : secClass ] as CFDictionary
         let status:OSStatus = SecItemDelete(query)
         return status == noErr
     }

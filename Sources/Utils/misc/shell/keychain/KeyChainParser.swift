@@ -14,7 +14,7 @@ class KeyChainParser {
 	/**
 	 * Returns a keychain item for PARAM: key
      * EXAMPLE: KeyChainParser.load("eonist")?.stringValue//123abc
-     * NOTE: kSecClassInternetPassword,kSecClassGenericPassword,kSecClassCertificate,kSecClassKey,kSecClassIdentity
+     * NOTE: SecClass: kSecClassInternetPassword,kSecClassGenericPassword,kSecClassCertificate,kSecClassKey,kSecClassIdentity
 	 */
     private static func load(_ key:String, _ secClass:CFString = kSecClassGenericPassword) -> Data? {
         let query:CFDictionary = [
