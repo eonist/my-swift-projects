@@ -49,7 +49,7 @@ class GitParser{
 	 * NOTE: git cherry -v origin/master
 	 * NOTE: this can be used to assert if there are any local commits ready to be pushed, if there are local commits then text will be returned, if there arent then there will be no text
 	 * NOTE: branch: usually "master"
-	 * CAUTION: if you use git add with https login and pass, you need to run "git remote update" in order for the above note to work
+	 * CAUTION: ⚠️️ If you use git add with https login and pass, you need to run "git remote update" in order for the above note to work
 	 * TODO: impliment user and pass when this is needed, use "" if not
 	 */
 	static func cherry(_ localPath:String, _ branch:String)->String{
