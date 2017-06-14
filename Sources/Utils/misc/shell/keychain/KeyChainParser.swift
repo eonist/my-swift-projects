@@ -6,6 +6,7 @@ import Foundation
 class KeyChainParser {
     /**
      * Returns password for PARAM: accountName
+     * EXAMPLE: KeyChainParser.password(repoItem.keyChainItemName)
      */
     static func password(_ accountName:String)->String{
        return load(accountName)!.stringValue
