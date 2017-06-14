@@ -6,16 +6,16 @@ import Foundation
 class KeyChainParser {
     /**
      * Returns password for PARAM: accountName
-     * EXAMPLE: KeyChainParser.password(repoItem.keyChainItemName)
+     * EXAMPLE: KeyChainParser.password("eonist")//123abc
      */
-    static func password(_ accountName:String)->String{
-       return load(accountName)!.stringValue
+    static func password(_ accountName:String)->String?{
+       return load(accountName)?.stringValue
     }
 	/**
 	 * Returns a keychain item for PARAM: key
      * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//loads the password for this account
 	 */	
-    static func load(_ key:String) -> Data? {
+    private static func load(_ key:String) -> Data? {
         let query:CFDictionary = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String:kCFBooleanTrue, kSecMatchLimit as String:kSecMatchLimitOne ] as CFDictionary
         //Swift.print("query: " + "\(query)")
         var dataTypeRef:AnyObject?
