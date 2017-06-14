@@ -3,7 +3,7 @@ import Foundation
 class KeyChainModifier {
     /**
      * Save keychain data for key
-     * TODO: move to KeyChainModifier.swift
+     * EXAMPLE: KeyChainModifier.save("Antilion", "abc123".dataValue)
      */
     static func save(_ key: String, _ data:Data, _ secClass:CFString = kSecClassGenericPassword) -> Bool {
         let query = [
@@ -26,7 +26,6 @@ class KeyChainModifier {
     }
     /**
      * What does this method do? research needed
-     * TODO: move to KeyChainModifier.swift
      * EXAMPLE: Keychain.clear()
      */
     static func clear( _ secClass:CFString = kSecClassGenericPassword) -> Bool {
