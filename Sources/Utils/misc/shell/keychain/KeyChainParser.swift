@@ -17,7 +17,11 @@ class KeyChainParser {
      * NOTE: kSecClassInternetPassword,kSecClassGenericPassword,kSecClassCertificate,kSecClassKey,kSecClassIdentity
 	 */
     private static func load(_ key:String) -> Data? {
-        let query:CFDictionary = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String:kCFBooleanTrue, kSecMatchLimit as String:kSecMatchLimitOne ] as CFDictionary
+        let query:CFDictionary = [
+            kSecClass as String:kSecClassGenericPassword,
+            kSecAttrAccount as String : key,
+            kSecReturnData as String:kCFBooleanTrue,
+            kSecMatchLimit as String:kSecMatchLimitOne ] as CFDictionary
         //Swift.print("query: " + "\(query)")
         var dataTypeRef:AnyObject?
         let status = withUnsafeMutablePointer(to: &dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
