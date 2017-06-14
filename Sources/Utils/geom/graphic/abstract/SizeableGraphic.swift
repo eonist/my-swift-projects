@@ -9,7 +9,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         super.init(position,decoratable)
     }
     /*
-    override func draw() {
+    override func draw() {//swift 3 MTKView now occupies draw(), consider renaming it to render()
         super.draw()
         //graphic.updateTrackingArea(NSRect(pos,size))
     }

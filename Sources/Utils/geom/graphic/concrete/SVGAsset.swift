@@ -23,7 +23,7 @@ class SVGAsset:InteractiveView2 {
      * You only scale when you init the svg
      */
     func scale(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat){
-        let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---why is this working? could be because you have tested only with square svg files
+        let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---Why is this working? could be because you have tested only with square svg files
         SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.frame.origin = CGPoint(x,y)
     }

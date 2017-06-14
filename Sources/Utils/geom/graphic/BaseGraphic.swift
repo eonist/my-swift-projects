@@ -2,7 +2,7 @@ import Cocoa
 /**
  * The BaseGraphic class is an Element DataObject class that holds the lineshape, lineStyle and fillStyle
  * TODO: ⚠️️Possibly get rid of the setters for the fillStyle and Line style and use implicit setFillStyle and setLineStyle?
- * NOTE: We dont need a line mask, just subclass the Graphics class so it supports masking of the line aswell (will require some effort)
+ * NOTE: We don't need a line mask, just subclass the Graphics class so it supports masking of the line aswell (will require some effort)
  */
 class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGraphicDecoratable*/
     override var graphic:BaseGraphic {return self}
