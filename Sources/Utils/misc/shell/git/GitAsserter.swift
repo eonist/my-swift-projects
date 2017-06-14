@@ -45,7 +45,6 @@ class GitAsserter{
 	static func hasUnMergedPaths(_ localPath:String)->Bool{
 		//Swift.print("hasUnMergePaths")
         let result = GitParser.unMergedFiles(localPath)
-        //Swift.print("result: " + "\(result)")
 		return result.count > 0
 	}
 }
