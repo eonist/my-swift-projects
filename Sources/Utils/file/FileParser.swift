@@ -75,16 +75,16 @@ extension FileParser{
      * IMPORTANT: Remember to expand the "path" with the tildePath call before you call xml(path)
      */
     static func xml(_ path:String)->XML {
-        let content = FileParser.content(path)
+        guard let content:String = FileParser.content(path) else {fatalError("Must have content")}
         do {
-            let xmlDoc:XMLDoc = try XMLDoc(xmlString: content!, options: 0)
+            let xmlDoc:XMLDoc = try XMLDoc(xmlString:content, options: 0)
             if let rootElement:XML = xmlDoc.rootElement(){
                 return rootElement
             }
         }catch let error as NSError {
             print ("Error: \(error.domain)")
         }
-        fatalError("Should not happen")
+        fatalError("There was an error see log")
     }
 	private static func modalExample(){
 		let myFileDialog:NSOpenPanel = NSOpenPanel()/*open modal panel*/
