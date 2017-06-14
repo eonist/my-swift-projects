@@ -4,6 +4,7 @@
 | First Header  | Second Header | Test | Test | Test | Test |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [GraphicsLib](https://github.com/gitsync/GraphicsLib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GraphicsLib.svg">  | [GitLib](https://github.com/gitsync/GitLib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GitLib.svg">  |  [KeyChainLib](https://github.com/gitsync/KeyChainLib/)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/KeyChainLib.svg"> |
+| [SVGLib](https://github.com/gitsync/SVGLib)   |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SvgLib.svg"> | [JSONLib](https://github.com/gitsync/JSONLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib.svg">  | [RegExpLib](https://github.com/gitsync/RegExpLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/RegExpLib.svg">  |
 | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
 
 General swift utils:  
