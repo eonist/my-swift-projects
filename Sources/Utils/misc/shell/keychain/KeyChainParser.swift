@@ -13,7 +13,7 @@ class KeyChainParser {
     }
 	/**
 	 * Returns a keychain item for PARAM: key
-     * EXAMPLE: KeyChainParser.load("eonist")!.stringValue//loads the password for this account
+     * EXAMPLE: KeyChainParser.load("eonist")?.stringValue//123abc
 	 */	
     private static func load(_ key:String) -> Data? {
         let query:CFDictionary = [kSecClass as String:kSecClassGenericPassword,kSecAttrAccount as String : key,kSecReturnData as String:kCFBooleanTrue, kSecMatchLimit as String:kSecMatchLimitOne ] as CFDictionary
