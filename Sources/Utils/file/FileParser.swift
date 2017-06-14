@@ -76,7 +76,7 @@ extension FileParser{
      */
     static func xml(_ path:String)->XML {
         let content = FileParser.content(path)
-        let xmlDoc:XMLDoc = try! XMLDoc(xmlString: content!, options: 0)
+        let xmlDoc:XMLDoc? = try? XMLDoc(xmlString: content!, options: 0)
         if let rootElement:XML = xmlDoc.rootElement(){
             return rootElement
         }
