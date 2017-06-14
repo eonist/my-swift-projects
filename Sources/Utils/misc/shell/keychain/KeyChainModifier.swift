@@ -5,7 +5,7 @@ class KeyChainModifier {
      * Save keychain data for key
      * TODO: move to KeyChainModifier.swift
      */
-    static func save(_ key: String, _ data:NSData) -> Bool {
+    static func save(_ key: String, _ data:Data) -> Bool {
         let query = [kSecClass as String : kSecClassGenericPassword as String, kSecAttrAccount as String : key,  kSecValueData as String   : data ]  as CFDictionary
         SecItemDelete(query)
         let status:OSStatus = SecItemAdd(query as CFDictionary, nil)
