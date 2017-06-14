@@ -18,6 +18,15 @@
 - [Utils](#utils)
 - [FileWatcher](#filewatcher)
 
+| Name | | Name | |
+| - | -| - |
+| GraphicsLib  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GraphicsLib.svg">  | GitLib  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GitLib.svg">  |  KeyChainLib |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/KeyChainLib.svg"> |
+| SVGLib  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SvgLib.svg"> | JSONLib | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib.svg">  | RegExpLib | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/RegExpLib.svg">  |
+| MathLib  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/MathLib.svg">  | XMLLib  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/XMLLib.svg"> | AnimLib | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/AnimLib.svg">  |
+|  FileWatcher |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileWatcher.svg"> | FileLib | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">  | ColorLib |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/ColorLib.svg"> |
+
+
+
 
 ## **GraphicsLib**
 
@@ -278,20 +287,5 @@ extension Temp:UnWrappable{
 }
 
 ```
-
-## **Utils** 
-
-- Other basic programming utilities for working with array, dictionary, numbers, strings etc
-
-
-## Progress:
-
-**2017-mar** 
-- Cleaned up DateExtensions
-- RubberBand now supports X & Y axis  
-
-## Support
-Please, don't hesitate to file an issue if you have questions.
-
 
 [MIT License](http://opensource.org/licenses/MIT) 
