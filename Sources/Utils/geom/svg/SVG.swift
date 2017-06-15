@@ -1,6 +1,6 @@
 import Foundation
 /**
- * SVG class is where other svg elements are added
+ * SVG class is where other svg elements are added 
  * TODO: ⚠️️Implement xmlns:xlink,viewBox,enable-background,xml:space
  * //preserveAspectRatio="xMinYMin meet"
  * //viewBox="0 0 90 90"
