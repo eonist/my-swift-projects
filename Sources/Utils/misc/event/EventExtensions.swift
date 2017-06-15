@@ -3,7 +3,7 @@ import Cocoa
 extension Event{
     /**
      * The immediate previouse sender of event
-     * NOTE: we return the event as its convenient when chaining method calls, great for attaching self to incoming events
+     * NOTE: We return the event as its convenient when chaining method calls, great for attaching self to incoming events
      */
     func setImmediate(_ immediate:AnyObject)->Event{
         self.immediate = immediate
