@@ -2,7 +2,7 @@ import Foundation
 
 /**
  * NOTE: See TreeConverter.tree(json) for how you can convert json into data object you can more easily traverse, you can then do JSON -> Tree -> XML
- * TODO: ⚠️️ You can also look at the XML classes and reflection classes for how to make more json <-> convert methods
+ * TODO: ⚠️️You can also look at the XML classes and reflection classes for how to make more json <-> convert methods
  */
 class JSONParser{
     /**
