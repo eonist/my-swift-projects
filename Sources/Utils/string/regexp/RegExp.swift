@@ -26,8 +26,8 @@ public class RegExp{
      * EXAMPLE: RegExp.match("hello world","(\\b\\w+\\b)")//hello, world
      * Example: RegExpParser.match("abc 123 abc 123 abc 123 xyz", "[a-zA-Z]{3}")//["abc", "abc", "abc", "xyz"]
      * TODO: ⚠️️ Probably return optional array?
-     * //todo: then if it is outof bound return eigther an empty array or nil
-     * //todo: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
+     * TODO: then if it is outof bound return eigther an empty array or nil
+     * TODO: then only do substringwithrange if NSRange is not NSOutOfBoundRange type
      */
     static func match(_ text:String, _ pattern:String, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
