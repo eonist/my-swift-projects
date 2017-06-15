@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: ⚠️️ Investigate how to add bool
+ */
 enum JSONType {
     case arr
     case int
