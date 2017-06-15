@@ -1,5 +1,5 @@
 import Foundation
-typealias CommitData = (hash:String,author:String,date:String,subject:String,body:String)/*convenience*/
+
 class GitLogParser {
     static var debugCounter:Int = 0
     /**
