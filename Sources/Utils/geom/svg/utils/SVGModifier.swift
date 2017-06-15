@@ -3,8 +3,8 @@ import Foundation
 class SVGModifier {
 	/**
 	 * Offsets each item in a svg by PARAM: offset (Point)
-	 * TODO: add support for other SVG elements as well, use switch method instead of if
-     * NOTE this method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
+	 * TODO: Add support for other SVG elements as well, use switch method instead of if
+     * NOTE This method is incomplete, needs a call to update and support for fusing the gradient to the svg item after the change, since reference gradients may be used for other items. so we cant change this
 	 */
 	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
 		svg.items.forEach { svgGraphic in
