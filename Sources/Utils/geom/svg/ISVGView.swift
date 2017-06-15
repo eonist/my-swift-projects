@@ -1,6 +1,6 @@
 import Foundation
 /**
- * Interface for SVGView
+ * Protocol for SVGView
  */
 protocol ISVGView:ISVGElement{
     var style:SVGStyle?{get set}
