@@ -13,7 +13,7 @@ extension CommitData{
      * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
      * NOTE: the log data is formated using --pretty=format
      */
-    static func commitData(_ input:String) -> CommitData{
+    static func conform(_ input:String) -> CommitData{
         /*Divide*/
         let firstIdx:Int = input.indexOf("\n")
         let firstPart:String = input.subString(0,firstIdx)
