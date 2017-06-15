@@ -33,8 +33,7 @@ public class XMLParser{
     }
     /**
      * Retuns the first xml node that has the name of the speccified nodename
-     * XMLParser.firstNode(<p>text</p>,"p")
-     * @output:text
+     * XMLParser.firstNode(<p>text</p>,"p")//output:text
      */
     static func firstNode(_ xml:XML, _ nodeName:String) -> XML? {
         return xml.elements(forName:nodeName).count > 0 ? xml.elements(forName: nodeName)[0] : nil
@@ -312,8 +311,8 @@ extension XMLParser{
                 let name:String = node.name!
                 let value:String = node.stringValue!
                 //print("name: " + name + " " + "value:"+value)
-                attribute["name"] = name//👈the problem is here.
-                attribute["value"] = value//👈the problem is here.
+                attribute["name"] = name//the problem is here.
+                attribute["value"] = value//the problem is here.
                 attributes.append(attribute)
             }
         }
