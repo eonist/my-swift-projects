@@ -40,8 +40,7 @@ extension DataProvider{
 /**
  * TODO: Implement support for xmlString as an init argument, is that needed? just do: string.xml
  */
-//Modifier
-extension DataProvider{
+extension DataProvider{/*Modifier*/
     /**
      * Adds an array to the exisiting items array
      * PARAM: items is an Array comprised of objects

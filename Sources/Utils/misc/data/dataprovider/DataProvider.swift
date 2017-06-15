@@ -38,7 +38,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
      * Constructs the DataProvider class
      * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.
      * EXAMPLE: Array syntax: [{title:"orange", property:harry}, {title:"blue", property:"no"}]; //property is optional
-     * TODO: Possibly add support for ...args see PointParser.sum function for similar functionality
+     * TODO: ⚠️️ Possibly add support for ...args see PointParser.sum function for similar functionality
      */
     init(_ items:[[String:String]] = []){
         self.items = items
@@ -58,7 +58,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: move methods into parser
     }
     /**
      * Creates a DP from an file url string
-     * IMPORTANT: Remember to "tildeExpand" the fileURLStr before you pass it to the method
+     * IMPORTANT: ⚠️️ Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
     convenience init(_ fileURLStr:String){
         let xml = FileParser.xml(fileURLStr)
