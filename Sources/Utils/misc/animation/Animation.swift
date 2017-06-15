@@ -1,10 +1,10 @@
 import Cocoa
 /**
  * NOTE: This view class serves as a basis for frame animation. 
- * NOTE: override the onFrame method to do frame animations
+ * NOTE: Override the onFrame method to do frame animations
  * NOTE: Start and stop with CVDisplayLinkStart(displayLink) and CVDisplayLinkStop(displayLink) and CVDisplayLinkIsRunning(displayLink) to assert if the displayLink is running
- * TODO: you can probably use NSObject instead of NSView. As NSObject has the performSelector method
- * TODO: package these classes as its own lib. Kinetic. Bump. mc2. Other names?
+ * TODO: You can probably use NSObject instead of NSView. As NSObject has the performSelector method
+ * TODO: Package these classes as its own lib. Kinetic. Bump. mc2. Other names?
  */
 class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()//TODO: rename to .shared
@@ -21,7 +21,7 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      *
      */
     func onFrameOnMainThread(){
-        for animator in animators{animator.onFrame()}//TODO: 👉 animators.forEach{$.onFrame()}
+        for animator in animators{animator.onFrame()}//TODO:  animators.forEach{$.onFrame()}
         /*while drawCalls.count > 0{
         if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
         }*/
