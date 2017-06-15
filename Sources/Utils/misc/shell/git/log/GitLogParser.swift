@@ -27,7 +27,7 @@ class GitLogParser {
         //Swift.print("fourthPart: " + "\(fourthPart)")
         let fifthPart:String = input.subString(fourthIdx+1,input.count)
         //Swift.print("fifthPart: " + "\(fifthPart)")
-        var commitData:CommitData = (firstPart,secondPart,thirdPart,fourthPart,fifthPart)
+        var commitData:CommitData = CommitData(firstPart,secondPart,thirdPart,fourthPart,fifthPart)
         commitData.hash = commitData.hash.subString("Hash:".count, commitData.hash.count)
         commitData.author = commitData.author.subString("Author:".count, commitData.author.count)
         commitData.date = commitData.date.subString("Date:".count, commitData.date.count)
