@@ -23,7 +23,7 @@ extension JSONType{
             case JSONAsserter.isArr(json):
                 return .arr
             default:
-                fatalError("type not supported: \(type(of:json))")
+                fatalError("Type not supported: \(type(of:json))")
                 break;
         }
     }
