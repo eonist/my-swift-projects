@@ -13,7 +13,7 @@ class JSONUtils{
                 describe(value)
             }
         }else if let arr = JSONParser.arr(json) {
-            Swift.print("Arr.count: " + "\(arr.count)")
+            Swift.print("Arr.count: " + "\Arr.count)")
             arr.forEach{ child in
                 describe(child)
             }
