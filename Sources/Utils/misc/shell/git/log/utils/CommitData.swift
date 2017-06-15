@@ -1,9 +1,9 @@
 import Foundation
 
 struct CommitData {
-    var hash:String
-    var author:String
-    var date:String
-    var subject:String
-    var body:String
+    let hash:String
+    let author:String
+    let date:String
+    let subject:String
+    let body:String
 }
