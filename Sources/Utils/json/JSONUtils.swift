@@ -18,7 +18,7 @@ class JSONUtils{
                 describe(child)
             }
         }else{
-            fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
+            fatalError("Type not supported: \(type(of:json)) type \(JSONType.type(json))")
         }
     }
 }
