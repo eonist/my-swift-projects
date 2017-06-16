@@ -1,6 +1,6 @@
 import Foundation
 /**
- * TODO: ⚠️️ Investigate how to add bool
+ * TODO: ⚠️️ Investigate how to add bool, look in the api doc maybe?
  */
 enum JSONType {
     case arr
