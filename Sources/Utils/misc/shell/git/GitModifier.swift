@@ -9,7 +9,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
-        let shellScript:String = Git.path + "git add" + " " + fileName
+        let shellScript:String = Git.path + Git.git + " " + Git.add + " " + fileName
         return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -27,7 +27,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
     static func commit(_ localRepoPath:String, _ msg:GitMsg)->String{
-    	let shellScript:String = Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
+    	let shellScript:String = Git.path + Git.git + " " + Git.commit + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
     	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -44,7 +44,7 @@ class GitModifier{
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
    static func reset(_ localRepoPath:String, _ fileName:String)->String{
-    let shellScript:String = Git.path + "git reset" + " " + fileName
+    let shellScript:String = Git.path + Git.git + " " + Git.reset + " " + fileName
    	return ShellUtils.run(shellScript,localRepoPath)
    }
    
@@ -60,7 +60,7 @@ class GitModifier{
     */
    static func pull(_ repo:GitRepo, _ key:GitKey)->String{
        let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
-       let shellScript:String = Git.path + "git pull" + " " + remoteLocation + " " + repo.branch
+       let shellScript:String = Git.path + Git.git + " " + Git.pull + " " + remoteLocation + " " + repo.branch
        return ShellUtils.run(shellScript,repo.localPath)
    }
     /**
