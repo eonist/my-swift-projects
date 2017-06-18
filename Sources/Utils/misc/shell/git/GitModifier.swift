@@ -120,7 +120,7 @@ class GitModifier{
     * NOTE: git clone <repo> <directory>
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
-       let shellScript:String = Git.path + "git clone " + remotePath + " " + localPath
+       let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
        return ShellUtils.run(shellScript)
    }
    
@@ -129,7 +129,7 @@ class GitModifier{
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
    static func gitRemoteUpdate(_ localRepoPath:String)->String{
-       let shellScript:String = Git.path + "git remote update"
+       let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.update
        return ShellUtils.run(shellScript,localRepoPath)
    }
    
@@ -143,11 +143,10 @@ class GitModifier{
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
     static func fetch(_ repo:GitRepo)->String{
-       var shellScript:String = Git.path + "git fetch " + "origin"
+       var shellScript:String = Git.path + Git.git + " " + Git.fetch + " " + Git.origin
        if(repo.branch != " "){ shellScript += " " + repo.branch}
        return ShellUtils.run(shellScript,repo.localPath)
    }
-    
    /**
     * Merging is Git's way of putting a forked history back together again
     * PARAM: fromBranch the branch you want to apply to the PARAM: into_branch
@@ -166,7 +165,7 @@ class GitModifier{
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(_ localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
-       let shellScript:String = Git.path + "git merge " + intoBranch + " " + fromBranch
+       let shellScript:String = Git.path + Git.git + " " + Git.merge + intoBranch + " " + fromBranch
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
