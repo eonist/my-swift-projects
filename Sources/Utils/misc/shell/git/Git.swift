@@ -19,5 +19,6 @@ class Git {
     static var clone:String = "clone"
     static var update:String = "update"
     static var fetch:String = "fetch"
-    static var checkout:String = "checkout"
+    static var checkOut:String = "checkout"
+    static var merge:String = "merge"
 }

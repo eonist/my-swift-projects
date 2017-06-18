@@ -188,7 +188,7 @@ class GitModifier{
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
     */
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
-		var shellScript:String = Git.path + "git checkout " + loc
+		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
         if (filePath != " "){ shellScript  += " " + filePath }
 		return ShellUtils.run(localRepoPath,shellScript)
 	}

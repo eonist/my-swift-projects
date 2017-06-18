@@ -23,8 +23,7 @@ class GitParser{
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
 	static func log(_ localPath:String, _ cmd:String)->String{
-		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git log " + cmd
-		//Swift.print("shellScript: " + "\(shellScript)")
+		let shellScript:String = Git.path + "git log " + cmd
 		return ShellUtils.run(shellScript,localPath)
 	}
     /**
