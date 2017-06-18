@@ -53,12 +53,12 @@ class GitModifier{
     * NOTE: the original git cmd is "git pull origin master"
     * NOTE: "https://user:pass@github.com/user/repo.git"
     * NOTE: returns "Already up-to-date." if there are nothing to pull from remote
-    * TODO: Do we need login and pass for pulling? - for private repos, yes
+    * TODO: ⚠️️ Do we need login and pass for pulling? - for private repos, yes
     * NOTE: In the simplest terms, git pull does a git fetch followed by a git merge.
-    * TODO: what is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
+    * TODO: ⚠️️ What is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   static func pull(_ repo:GitRepo, _ key:GitKey)->String{ //--TODO: add branch here
+   static func pull(_ repo:GitRepo, _ key:GitKey)->String{
        let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
        let shellScript:String = Git.path + "git pull" + " " + remoteLocation + " " + repo.branch
        return ShellUtils.run(shellScript,repo.localPath)
@@ -79,8 +79,8 @@ class GitModifier{
      * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
      * NOTE: remove remote feature branch: git push origin --delete <branch-name>
      * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
-     * TODO: maybe add try error when doing the shell part
-     * TODO: add branch as a param
+     * TODO: ⚠️️ maybe add try error when doing the shell part
+     * TODO: ⚠️️ add branch as a param
      */
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
