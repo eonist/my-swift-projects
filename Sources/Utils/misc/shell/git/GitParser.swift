@@ -11,7 +11,7 @@ class GitParser{
 	 */
 	static func status(_ localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
-		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git status" + " " + option
+		let shellScript:String = Git.path + "git status" + " " + option
 		return ShellUtils.run(shellScript,localPath)
 	}
 	/**
@@ -23,7 +23,7 @@ class GitParser{
 	 * NOTE: "git log --oneline origin/master..master" commits the local branch is ahead of remote
 	 */
 	static func log(_ localPath:String, _ cmd:String)->String{
-		let shellScript:String = Git.path + "git log " + cmd
+		let shellScript:String = Git.path + Git.git + " " + Git.log + " " + cmd
 		return ShellUtils.run(shellScript,localPath)
 	}
     /**
