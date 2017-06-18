@@ -11,7 +11,7 @@ class GitParser{
 	 */
 	static func status(_ localPath:String, _ option:String)->String{
 		//--log "localPath: " + localPath
-		let shellScript:String = Git.path + "git status" + " " + option
+		let shellScript:String = Git.path + Git.git + " " + Git.status + " " + option
 		return ShellUtils.run(shellScript,localPath)
 	}
 	/**
