@@ -168,32 +168,16 @@ class GitModifier{
        //log "shellScript: " + shellScript
        return ShellUtils.run(shellScript)
    }
-   /**
-    * Config
-    * NOTE: set your name: git config --global user.name "your-user-name"
-    * NOTE: set your email: git config --global user.email youEXAMPLE:.com
-    * NOTE: git config --global core.editor "vi", or use nano or atom, see gitsync on github in the wiki: dev tips
-    */
-   static func config(){
-       //--complete this method
-   }
+   
    /**
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
    static func gitRemoteUpdate(_ localRepoPath:String)->String{
-       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote update"
+       let shellScript:String = Git.path + "git remote update"
        return ShellUtils.run(shellScript,localRepoPath)
    }
-   /**
-    * NOTE: git remote -v (List the remote connections you have to other repositories. include the URL of each connection.)
-    * NOTE: git remote add <name> <url> (Create a new connection to a remote repository. After adding a remote, you�ll be able to use <name> as a shortcut)
-    * NOTE: git remote rm <name> (Remove the connection to the remote repository called <name>.)
-    * NOTE: git remote rename <old-name> <new-name> (Rename a remote connection from <old-name> to <new-name>.)
-    */
-   static func remote(){
-       //--complete this method
-   }
+   
    /**
     * Fetch
     * NOTE: Fetching is what you do when you want to see what everybody else has been working on. Since fetched content is represented as a remote branch, it has absolutely no effect on your local development work. This makes fetching a safe way to review commits before integrating them with your local repository.
@@ -253,38 +237,7 @@ class GitModifier{
        //Swift.print("shellScript: " + "\(shellScript)")
        return ShellUtils.run(shellScript,localRepoPath)
    }
-   /**
-    * rebase
-    * NOTE: it seems rebasing is almost the same as merging, but with rebasing you also get the opertunity to squash commits into fewer commits, so when the rebasing is complete, the commit history looks will look simpler than with merging.
-    * NOTE: The golden rule of git rebase is to never use it on public branches.
-    * NOTE: One of the best ways to incorporate rebasing into your workflow is to clean up local, in-progress features. By periodically performing an interactive rebase, you can make sure each commit in your feature is focused and meaningful. This lets you write your code without worrying about breaking it up into isolated commits�you can fix it up after the fact.
-    * NOTE: you can also squash together commits without merging: "git checkout feature" then "git rebase -i HEAD~3" By specifying HEAD~3 as the new base, you�re not actually moving the branch�you�re just interactively re-writing the 3 commits that follow it. Note that this will not incorporate upstream changes into the feature branch.
-    * NOTE: If you would prefer a clean, linear history free of unnecessary merge commits, you should reach for git rebase instead of git merge when integrating changes from another branch.
-    * NOTE: you switch to the branch you want to rebase and then do "git rebase master"
-    * TODO: try "git rebase -i" see if it works as a commit squassher
-    */
-   static func rebase(){
-        //--complete this method
-   }
-   /**
-    * stash
-    * NOTE: plain old `git stash` won't touch files that are untracked. For this, you need to use `git stash -u`
-    * NOTE: stash vs branch merge: branch merge creates an extra commit, use stash when your in the middle of some unfinished feature and you need to pause it where it is
-    * NOTE: stash vs branch rebase: the jury is still out, need more research into rebase, but it could resolve the extra commit problem
-    * NOTE: use names for each stash: git stash save Major refactor of foo before interruption
-    * NOTE: apply stash: git stash apply stash@{1}
-    * NOTE: applies the latest stash and removes it: git stash pop
-    * NOTE: remove stashes: stash drop stash@{1}
-    * NOTE: list all stashes: git stash list
-    * NOTE: stash also removes all files in your directory as if you just did a "git reset --hard"
-    * NOTE: when you apply your stash again, you may get file conflicts, resolve this as you would resolve a branch merge
-    * TODO: test if you can use theirs and ours as you would in a regular merge
-    * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
-    */
-    static func stash(_ title:String){
-        //--TODO: if no title is provided store the stash without title: by not including the save syntax
-        //--"git stash -u save " + title
-    }
+   
    /**
     * Checkout
     * PARAM: localRepoPath: path to the repository to operate on, must be absolute not relative
@@ -305,10 +258,58 @@ class GitModifier{
     * NOTE: after a merge you can use: "git checkout --thiers *" or "git checkout --ours *"
     */
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
-		//log ("GitModifier's check_out(" + loc + " " + filePath + ")")
-		var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git checkout " + loc
+		var shellScript:String = Git.path + "git checkout " + loc
         if (filePath != " "){ shellScript  += " " + filePath }
-		//--log "shellScript: " + shellScript
 		return ShellUtils.run(localRepoPath,shellScript)
 	}
+    /**
+     * rebase
+     * NOTE: it seems rebasing is almost the same as merging, but with rebasing you also get the opertunity to squash commits into fewer commits, so when the rebasing is complete, the commit history looks will look simpler than with merging.
+     * NOTE: The golden rule of git rebase is to never use it on public branches.
+     * NOTE: One of the best ways to incorporate rebasing into your workflow is to clean up local, in-progress features. By periodically performing an interactive rebase, you can make sure each commit in your feature is focused and meaningful. This lets you write your code without worrying about breaking it up into isolated commits�you can fix it up after the fact.
+     * NOTE: you can also squash together commits without merging: "git checkout feature" then "git rebase -i HEAD~3" By specifying HEAD~3 as the new base, you�re not actually moving the branch�you�re just interactively re-writing the 3 commits that follow it. Note that this will not incorporate upstream changes into the feature branch.
+     * NOTE: If you would prefer a clean, linear history free of unnecessary merge commits, you should reach for git rebase instead of git merge when integrating changes from another branch.
+     * NOTE: you switch to the branch you want to rebase and then do "git rebase master"
+     * TODO: try "git rebase -i" see if it works as a commit squassher
+     */
+    static func rebase(){
+        //--complete this method
+    }
+    /**
+     * stash
+     * NOTE: plain old `git stash` won't touch files that are untracked. For this, you need to use `git stash -u`
+     * NOTE: stash vs branch merge: branch merge creates an extra commit, use stash when your in the middle of some unfinished feature and you need to pause it where it is
+     * NOTE: stash vs branch rebase: the jury is still out, need more research into rebase, but it could resolve the extra commit problem
+     * NOTE: use names for each stash: git stash save Major refactor of foo before interruption
+     * NOTE: apply stash: git stash apply stash@{1}
+     * NOTE: applies the latest stash and removes it: git stash pop
+     * NOTE: remove stashes: stash drop stash@{1}
+     * NOTE: list all stashes: git stash list
+     * NOTE: stash also removes all files in your directory as if you just did a "git reset --hard"
+     * NOTE: when you apply your stash again, you may get file conflicts, resolve this as you would resolve a branch merge
+     * TODO: test if you can use theirs and ours as you would in a regular merge
+     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
+     */
+    static func stash(_ title:String){
+        //--TODO: if no title is provided store the stash without title: by not including the save syntax
+        //--"git stash -u save " + title
+    }
+    /**
+     * Config
+     * NOTE: set your name: git config --global user.name "your-user-name"
+     * NOTE: set your email: git config --global user.email youEXAMPLE:.com
+     * NOTE: git config --global core.editor "vi", or use nano or atom, see gitsync on github in the wiki: dev tips
+     */
+    static func config(){
+        //--complete this method
+    }
+    /**
+     * NOTE: git remote -v (List the remote connections you have to other repositories. include the URL of each connection.)
+     * NOTE: git remote add <name> <url> (Create a new connection to a remote repository. After adding a remote, you�ll be able to use <name> as a shortcut)
+     * NOTE: git remote rm <name> (Remove the connection to the remote repository called <name>.)
+     * NOTE: git remote rename <old-name> <new-name> (Rename a remote connection from <old-name> to <new-name>.)
+     */
+    static func remote(){
+        //--complete this method
+    }
 }
