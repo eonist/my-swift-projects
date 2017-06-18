@@ -61,7 +61,6 @@ class GitParser{
 	 */
 	static func unMergedFiles(_ localPath:String)->[String]{
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
-        //Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
 		return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
 	}
 	/*
@@ -72,12 +71,7 @@ class GitParser{
 	 * NOTE: git diff returns a result if a file is changed (the returned result will contain the lines that changed with a "-" preceding the line that is removed and a "+" preceding the line that is added)
 	 */
     static func diff(_ localRepoPath:String, _ cmd:String)->String{
-		let shellScript:String =  /*"cd " + localRepoPath + ";" + */Git.path + Git.git + " " + Git.diff + cmd
+		let shellScript:String = Git.path + Git.git + " " + Git.diff + " " + cmd
 		return ShellUtils.run(shellScript,localRepoPath)
 	}
-    /**
-     * ⚠️️DEPRECATED⚠️️: Use GitParser.log instead
-     * NOTE: the do_log name is used because applescript has reserved the log word for its own log method
-     */
-    static func doLog(_ localPath:String, _ cmd:String)->String{return log(localPath, cmd)}
 }
