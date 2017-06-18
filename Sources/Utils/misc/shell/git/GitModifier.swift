@@ -148,48 +148,7 @@ class GitModifier{
        if(repo.branch != " "){ shellScript += " " + repo.branch}
        return ShellUtils.run(shellScript,repo.localPath)
    }
-    /*
-     * The opposite of the add action
-     * "git reset"
-     */
-    static func revert(){
-        //--complete this method
-    }
-    /*
-     * --rm --remove files, research this
-     */
-    static func remove(){
-        //--complete this method
-    }
-    /**
-     * Clean
-     * NOTE: git clean -n --Perform a "dry run" of git clean. This will show you which files are going to be removed without actually doing it.
-     * NOTE: git clean -f --Remove untracked files from the current directory. The -f (force) flag is required unless the clean.requireForce configuration option is set to false (it's true by default). This will not remove untracked folders or files specified by .gitignore.
-     * NOTE: git clean -f <path> --Remove untracked files, but limit the operation to the specified path.
-     * NOTE: git clean -df --Remove untracked files and untracked directories from the current directory.
-     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
-     */
-    static func clean(){
-        //--complete this method
-    }
-   /**
-    * branch
-    * NOTE: to delete a branch do: "git branch -d some-branch" (if you just merged the branch in, if not use -D)
-    * NOTE: to delete a branch from a remote repo: "git push origin --delete some_branch" Delete the specified branch. This is a �safe� operation in that Git prevents you from deleting the branch if it has unmerged changes.
-    * NOTE: you can check which branches you have open by doing "git branch"
-    * NOTE: Remote branches are just like local branches, except they represent commits from somebody else�s repository. You can check out a remote branch just like a local one, but this puts you in a detached HEAD state (just like checking out an old commit). You can think of them as read-only branches. 
-    * NOTE: you can inspect these branches with the usual git checkout and git log commands. If you approve the changes a remote branch contains, you can merge it into a local branch with a normal git merge.
-    * NOTE: git branch -r
-    * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
-    * NOTE: Delete your local feature branch: "git branch --delete <branch-name>"
-    * # origin/master
-    * # origin/develop
-    * # origin/some-feature
-    * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
-    */
-   static func branch(_ targetBranch:String, _ deleteFlag:String){
-       //--complete this method
-   }
+    
    /**
     * Merging is Git's way of putting a forked history back together again
     * PARAM: fromBranch the branch you want to apply to the PARAM: into_branch
@@ -208,10 +167,9 @@ class GitModifier{
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(_ localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
-       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git merge " + intoBranch + " " + fromBranch
+       let shellScript:String = Git.path + "git merge " + intoBranch + " " + fromBranch
        return ShellUtils.run(shellScript,localRepoPath)
    }
-   
    /**
     * Checkout
     * PARAM: localRepoPath: path to the repository to operate on, must be absolute not relative
@@ -236,6 +194,48 @@ class GitModifier{
         if (filePath != " "){ shellScript  += " " + filePath }
 		return ShellUtils.run(localRepoPath,shellScript)
 	}
+    /*
+     * The opposite of the add action
+     * "git reset"
+     */
+    static func revert(){
+        //--complete this method
+    }
+    /*
+     * --rm --remove files, research this
+     */
+    static func remove(){
+        //--complete this method
+    }
+    /**
+     * Clean
+     * NOTE: git clean -n --Perform a "dry run" of git clean. This will show you which files are going to be removed without actually doing it.
+     * NOTE: git clean -f --Remove untracked files from the current directory. The -f (force) flag is required unless the clean.requireForce configuration option is set to false (it's true by default). This will not remove untracked folders or files specified by .gitignore.
+     * NOTE: git clean -f <path> --Remove untracked files, but limit the operation to the specified path.
+     * NOTE: git clean -df --Remove untracked files and untracked directories from the current directory.
+     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
+     */
+    static func clean(){
+        //--complete this method
+    }
+    /**
+     * branch
+     * NOTE: to delete a branch do: "git branch -d some-branch" (if you just merged the branch in, if not use -D)
+     * NOTE: to delete a branch from a remote repo: "git push origin --delete some_branch" Delete the specified branch. This is a �safe� operation in that Git prevents you from deleting the branch if it has unmerged changes.
+     * NOTE: you can check which branches you have open by doing "git branch"
+     * NOTE: Remote branches are just like local branches, except they represent commits from somebody else�s repository. You can check out a remote branch just like a local one, but this puts you in a detached HEAD state (just like checking out an old commit). You can think of them as read-only branches.
+     * NOTE: you can inspect these branches with the usual git checkout and git log commands. If you approve the changes a remote branch contains, you can merge it into a local branch with a normal git merge.
+     * NOTE: git branch -r
+     * NOTE: git checkout -b new_branch_name_here (Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running )
+     * NOTE: Delete your local feature branch: "git branch --delete <branch-name>"
+     * # origin/master
+     * # origin/develop
+     * # origin/some-feature
+     * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
+     */
+    static func branch(_ targetBranch:String, _ deleteFlag:String){
+        //--complete this method
+    }
     /**
      * rebase
      * NOTE: it seems rebasing is almost the same as merging, but with rebasing you also get the opertunity to squash commits into fewer commits, so when the rebasing is complete, the commit history looks will look simpler than with merging.
