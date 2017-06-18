@@ -21,4 +21,7 @@ class Git {
     static var fetch:String = "fetch"
     static var checkOut:String = "checkout"
     static var merge:String = "merge"
+    /**/
+    static var log:String = "log"
+    static var status:String = "status"
 }
