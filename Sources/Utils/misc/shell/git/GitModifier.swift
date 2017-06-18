@@ -79,7 +79,7 @@ class GitModifier{
      * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
      * NOTE: remove remote feature branch: git push origin --delete <branch-name>
      * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
-     * TODO: ⚠️️ maybe add try error when doing the shell part     
+     * TODO: ⚠️️ maybe add try error when doing the shell part
      */
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
@@ -88,13 +88,12 @@ class GitModifier{
         let retVal = ShellUtils.run(shellScript,repo.localPath)
         return retVal
     }
-   
    /**
     * Initialize
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
     static func initialize(_ localRepoPath:String)->String{
-        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git init"
+        let shellScript:String = Git.path + "git init"
         return ShellUtils.run(shellScript,localRepoPath)
     }
    /**
@@ -104,8 +103,7 @@ class GitModifier{
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
    static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
-       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
-       //log "shellScript: " + shellScript
+       let shellScript:String = Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
