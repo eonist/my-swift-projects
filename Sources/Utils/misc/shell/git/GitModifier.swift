@@ -59,17 +59,7 @@ class GitModifier{
     let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript,localRepoPath)
    }
-   /*
-    * Clean
-    * NOTE: git clean -n --Perform a "dry run" of git clean. This will show you which files are going to be removed without actually doing it.
-    * NOTE: git clean -f --Remove untracked files from the current directory. The -f (force) flag is required unless the clean.requireForce configuration option is set to false (it's true by default). This will not remove untracked folders or files specified by .gitignore.
-    * NOTE: git clean -f <path> --Remove untracked files, but limit the operation to the specified path.
-    * NOTE: git clean -df --Remove untracked files and untracked directories from the current directory.
-    * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
-    */
-   static func clean(){
-       //--complete this method
-   }
+   
    /**
     * Downloads the current from the remote git to the local git (git pull = git fetch + git merge)
     * NOTE: the original git cmd is "git pull origin master"
@@ -82,8 +72,7 @@ class GitModifier{
     */
    static func pull(_ repo:GitRepo, _ key:GitKey)->String{ //--TODO: add branch here
        let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
-       let targetBranch:String = repo.branch //--master branch
-       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git pull" + " " + remoteLocation + " " + targetBranch
+       let shellScript:String = Git.path + "git pull" + " " + remoteLocation + " " + repo.branch
        return ShellUtils.run(shellScript,repo.localPath)
    }
     /**
@@ -108,33 +97,17 @@ class GitModifier{
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
         let remoteLoc:String = "https://\(key.user):\(key.pass)@\(repo.remotePath)"  //--https://user:pass@github.com/user/repo.git--"origin"
-        Swift.print("remoteLoc: " + "\(remoteLoc)")
         let shellScript:String = "\(Git.path)git push \(remoteLoc) \(repo.branch)"
-        Swift.print("shellScript: " + "\(shellScript)")
         let retVal = ShellUtils.run(shellScript,repo.localPath)
-        //Swift.print("🔦 GitModifier.push complete")
         return retVal
     }
-   /*
-    * The opposite of the add action
-    * "git reset"
-    */
-   static func revert(){
-       //--complete this method
-   }
-   /*
-    * --rm --remove files, research this
-    */
-   static func remove(){
-       //--complete this method
-   }
+   
    /**
     * Initialize
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
     static func initialize(_ localRepoPath:String)->String{
         let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git init"
-        //log "shellScript: " + shellScript
         return ShellUtils.run(shellScript,localRepoPath)
     }
    /**
@@ -154,8 +127,7 @@ class GitModifier{
     * NOTE: git remote rm origin
     */
    static func detachRemoteRepo(_ localRepoPath:String)->String{
-       let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git remote rm origin"
-       //log "shellScript: " + shellScript
+       let shellScript:String = Git.path + "git remote rm origin"
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
@@ -165,7 +137,6 @@ class GitModifier{
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
        let shellScript:String = Git.path + "git clone " + remotePath + " " + localPath
-       //log "shellScript: " + shellScript
        return ShellUtils.run(shellScript)
    }
    
@@ -188,14 +159,34 @@ class GitModifier{
     * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
     */
     static func fetch(_ repo:GitRepo)->String{
-       //--log "fetch()"
-       //log ("GitModifier's fetch(" + branch + ")")
-       //--condition
-       var shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git fetch " + "origin"
+       var shellScript:String = Git.path + "git fetch " + "origin"
        if(repo.branch != " "){ shellScript += " " + repo.branch}
-       //--log "shellScript: " + shellScript
        return ShellUtils.run(shellScript,repo.localPath)
    }
+    /*
+     * The opposite of the add action
+     * "git reset"
+     */
+    static func revert(){
+        //--complete this method
+    }
+    /*
+     * --rm --remove files, research this
+     */
+    static func remove(){
+        //--complete this method
+    }
+    /**
+     * Clean
+     * NOTE: git clean -n --Perform a "dry run" of git clean. This will show you which files are going to be removed without actually doing it.
+     * NOTE: git clean -f --Remove untracked files from the current directory. The -f (force) flag is required unless the clean.requireForce configuration option is set to false (it's true by default). This will not remove untracked folders or files specified by .gitignore.
+     * NOTE: git clean -f <path> --Remove untracked files, but limit the operation to the specified path.
+     * NOTE: git clean -df --Remove untracked files and untracked directories from the current directory.
+     * NOTE: git clean -xf --Remove untracked files from the current directory as well as any files that Git usually ignores.
+     */
+    static func clean(){
+        //--complete this method
+    }
    /**
     * branch
     * NOTE: to delete a branch do: "git branch -d some-branch" (if you just merged the branch in, if not use -D)
@@ -232,9 +223,7 @@ class GitModifier{
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(_ localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
-       //log ("GitModifier's merge()")
        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git merge " + intoBranch + " " + fromBranch
-       //Swift.print("shellScript: " + "\(shellScript)")
        return ShellUtils.run(shellScript,localRepoPath)
    }
    
