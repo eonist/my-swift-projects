@@ -38,8 +38,7 @@ class GitParser{
 	 * Returns https://github.com/user/repository.git
 	 */
 	static func originUrl(_ localPath:String)->String{
-		let shellScript:String = Git.path + "git config --get remote.origin.url"
-		//--log "shellScript: " + shellScript
+		let shellScript:String = Git.path + Git.git + " " + Git.config + " --get remote.origin.url"
 		return ShellUtils.run(shellScript,localPath)
 	}
 	/**
@@ -51,8 +50,8 @@ class GitParser{
 	 * TODO: impliment user and pass when this is needed, use "" if not
 	 */
 	static func cherry(_ localPath:String, _ branch:String)->String{
-		let loc:String = "origin" //--"https://" + user_name + ":" + user_password + "@" + remote_repo_url
-		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git cherry" + " -v " + loc + "/" + branch
+		let loc:String = Git.origin /*--"https://" + user_name + ":" + user_password + "@" + remote_repo_url*/
+		let shellScript:String = Git.path + Git.git + " " + Git.cherry  + " -v " + loc + "/" + branch
 		return ShellUtils.run(shellScript,localPath)//--TODO: whats the -v, verbose?
 	}
 	/**
