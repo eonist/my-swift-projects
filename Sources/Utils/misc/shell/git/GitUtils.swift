@@ -43,7 +43,7 @@ class GitUtils{
      * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
      */
     static func commitCount(_ localRepoPath:String) -> String{
-        let shellScript:String = Git.path + Git.git + " " +  "rev-list HEAD --count"
+        let shellScript:String = Git.path + Git.git + " " + "rev-list HEAD --count"
         var result:String = ShellUtils.run(shellScript,localRepoPath)
         result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
         return result
@@ -53,7 +53,7 @@ class GitUtils{
      * NOTE: Short hash and long hash works (for more precision use long hash)
      */
     static func commitCount(_ localRepoPath:String,_ hash1:String,_ hash2:String)->String{
-        let shellScript:String = Git.path + "git rev-list "+hash1+" ^"+hash2+" --count"
+        let shellScript:String = Git.path + Git.git + " " + "rev-list "+hash1+" ^"+hash2+" --count"
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         return result
     }
@@ -63,11 +63,9 @@ class GitUtils{
      * PARAM: after: "2016-10-12 00:00:00" (git date format)
      */
     static func commitCount(_ localRepoPath:String, after:String)->String{
-        let cmd = "git log --after=\"" + after + logFormat
-        let shellScript:String = cmd
+        let shellScript:String = Git.git + " " + Git.log + " " + "--after=\"" + after + logFormat
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         //result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
-        //Swift.print("result: " + "\(result)")
         return result
     }
     /**
@@ -75,8 +73,7 @@ class GitUtils{
      * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
      */
     static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
-        let cmd = "git log --since=\""+since+"\" --until=\""+until + logFormat
-        //let cmd:String = "git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""
+        let cmd = "git log --since=\""+since+"\" --until=\""+until + logFormat/*"git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""*/
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         return result
