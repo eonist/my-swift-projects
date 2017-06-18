@@ -84,7 +84,7 @@ class GitModifier{
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
         let remoteLoc:String = "https://\(key.user):\(key.pass)@\(repo.remotePath)"  //--https://user:pass@github.com/user/repo.git--"origin"
-        let shellScript:String = "\(Git.path)git push \(remoteLoc) \(repo.branch)"
+        let shellScript:String = "\(Git.path + Git.git + " " + Git.push + " " + remoteLoc) \(repo.branch)"
         let retVal = ShellUtils.run(shellScript,repo.localPath)
         return retVal
     }
