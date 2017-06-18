@@ -9,7 +9,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
-        let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
+        let shellScript:String = Git.path + "git add" + " " + fileName
         return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -44,7 +44,7 @@ class GitModifier{
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
    static func reset(_ localRepoPath:String, _ fileName:String)->String{
-    let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git reset" + " " + fileName
+    let shellScript:String = Git.path + "git reset" + " " + fileName
    	return ShellUtils.run(shellScript,localRepoPath)
    }
    
