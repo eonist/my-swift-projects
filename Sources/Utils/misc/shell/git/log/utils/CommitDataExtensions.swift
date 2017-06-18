@@ -24,11 +24,20 @@ extension CommitData{
         let fifthPart:String = input.subString(fourthIdx+1,input.count)
         /*Strip*/
         let hash = firstPart.subString((CommitData.hash + ":").count, firstPart.count)
-        let author = secondPart.subString((CommitData.hash + ":").count, secondPart.count)
+        let author = secondPart.subString((CommitData.author + ":").count, secondPart.count)
         let date = thirdPart.subString((CommitData.date + ":").count, thirdPart.count)
         let subject = fourthPart.subString((CommitData.subject + ":").count, fourthPart.count)
         let body = fifthPart.subString((CommitData.body + ":").count, fifthPart.count)
-        let commitData:CommitData = CommitData(hash:hash,author:author,date:date,subject:subject,body:body)
-        return commitData
+        return CommitData(hash:hash,author:author,date:date,subject:subject,body:body)
+    }
+    /**
+     * describe
+     */
+    static func describe(_ commitData:CommitData){
+         Swift.print("commitData.hash: " + "\(commitData.hash)")
+         Swift.print("commitData.author: " + "\(commitData.author)")
+         Swift.print("commitData.date: " + "\(commitData.date)")
+         Swift.print("commitData.subject: " + "\(commitData.subject)")
+         Swift.print("commitData.body: " + "\(commitData.body)")
     }
 }
