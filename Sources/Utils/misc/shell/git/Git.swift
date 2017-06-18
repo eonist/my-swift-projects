@@ -24,4 +24,6 @@ class Git {
     /**/
     static var log:String = "log"
     static var status:String = "status"
+    static var show:String = "show"
+    static var config:String = "config"
 }

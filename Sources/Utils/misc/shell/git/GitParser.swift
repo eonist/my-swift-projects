@@ -31,15 +31,14 @@ class GitParser{
      * EXAMPLE: git show head~9 --pretty=format:"%ci" --no-patch (output: 2015-12-03 16:59:09 +0100)
      */
     static func show(_ localPath:String, _ cmd:String)->String{
-        let shellScript:String = Git.path + "git show " + cmd
-        //Swift.print("shellScript: " + "\(shellScript)")
+        let shellScript:String = Git.path + Git.git + " " + Git.show + " " + cmd
         return ShellUtils.run(shellScript,localPath)
     }
 	/**
 	 * Returns https://github.com/user/repository.git
 	 */
 	static func originUrl(_ localPath:String)->String{
-		let shellScript:String = /*"cd " + localPath + ";" + */Git.path + "git config --get remote.origin.url"
+		let shellScript:String = Git.path + "git config --get remote.origin.url"
 		//--log "shellScript: " + shellScript
 		return ShellUtils.run(shellScript,localPath)
 	}
