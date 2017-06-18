@@ -7,7 +7,7 @@ class ShellUtils{
 	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
 	 * TODO: add some explination about what happens here, line for line
-	 * IMPORTANT: spaces that is not intended to split arguments must be encoded before use (blank space -> %20)
+	 * IMPORTANT: ⚠️️ spaces that is not intended to split arguments must be encoded before use (blank space -> %20)
      * EXAMPLE: ShellUtils.run("git log --oneline")
      * EXAMPLE: ShellUtils.run("git version",FilePathParser.userHomePath())//git version 2.5.4 (Apple Git-61)
 	 */
