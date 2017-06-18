@@ -31,7 +31,7 @@ class WinParser {
         return NSWindow.contentRect(forFrameRect: window.frame, styleMask: window.styleMask).width
     }
     /**
-     * New
+     * Example: WinParser.size(NSApp.windows.first!)//CGSize(400,600) etc
      */
     static func size(_ window:NSWindow) -> CGSize{
         return CGSize(width(window),height(window))
