@@ -82,7 +82,6 @@ class GitModifier{
      * TODO: ⚠️️ maybe add try error when doing the shell part
      */
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
-        //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
         let remoteLoc:String = "https://\(key.user):\(key.pass)@\(repo.remotePath)"
         let shellScript:String = "\(Git.path + Git.git + " " + Git.push + " " + remoteLoc) \(repo.branch)"
         let retVal = ShellUtils.run(shellScript,repo.localPath)
@@ -93,7 +92,7 @@ class GitModifier{
     * NOTE: used to be named "init" but this is occupied by swif it self, so initialize it is
     */
     static func initialize(_ localRepoPath:String)->String{
-        let shellScript:String = Git.path + "git init"
+        let shellScript:String = Git.path + Git.git + " " + Git.initiate
         return ShellUtils.run(shellScript,localRepoPath)
     }
    /**
