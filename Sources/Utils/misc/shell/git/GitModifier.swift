@@ -102,7 +102,7 @@ class GitModifier{
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
    static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
-       let shellScript:String = Git.path + "git remote add origin" + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
+       let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.add + " " + Git.origin + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
@@ -111,7 +111,7 @@ class GitModifier{
     * NOTE: git remote rm origin
     */
    static func detachRemoteRepo(_ localRepoPath:String)->String{
-       let shellScript:String = Git.path + "git remote rm origin"
+       let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + Git.rm + " " + Git.origin
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
