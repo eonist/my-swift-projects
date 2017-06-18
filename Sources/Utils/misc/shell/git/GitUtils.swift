@@ -43,7 +43,7 @@ class GitUtils{
      * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
      */
     static func commitCount(_ localRepoPath:String) -> String{
-        let shellScript:String = Git.path + "git rev-list HEAD --count"
+        let shellScript:String = Git.path + Git.git + " " +  "rev-list HEAD --count"
         var result:String = ShellUtils.run(shellScript,localRepoPath)
         result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
         return result
