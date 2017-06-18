@@ -7,6 +7,7 @@ class Git {
     static var path:String = "/usr/bin/"/*To execute git commands we need to call the git commands from this path*/
     /**/
     static var git:String = "git"
+    /*Modifier*/
     static var add:String = "add"
     static var commit:String = "commit"
     static var reset:String = "reset"
@@ -21,9 +22,11 @@ class Git {
     static var fetch:String = "fetch"
     static var checkOut:String = "checkout"
     static var merge:String = "merge"
-    /**/
+    /*Parsing*/
     static var log:String = "log"
     static var status:String = "status"
     static var show:String = "show"
     static var config:String = "config"
+    static var cherry:String = "cherry"
+    static var diff:String = "diff"
 }
