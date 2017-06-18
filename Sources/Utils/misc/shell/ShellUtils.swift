@@ -56,6 +56,8 @@ class ShellUtils{
         //Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
     }
+}
+extension ShellUtils{/*BETA*/
     /**
      * BETA
      * NOTE: supports piping
