@@ -64,7 +64,6 @@ class GitUtils{
      */
     static func commitCount(_ localRepoPath:String, after:String)->String{
         let cmd = "git log --after=\"" + after + logFormat
-        //Swift.print("cmd: " + "\(cmd)")
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
         //result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
@@ -77,12 +76,9 @@ class GitUtils{
      */
     static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
         let cmd = "git log --since=\""+since+"\" --until=\""+until + logFormat
-        //
         //let cmd:String = "git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""
-        //Swift.print(cmd)
         let shellScript:String = cmd
         let result:String = ShellUtils.unsafeRun(shellScript,localRepoPath)
-        //Swift.print("result.count: " + "\(result.count)")
         return result
     }
 }

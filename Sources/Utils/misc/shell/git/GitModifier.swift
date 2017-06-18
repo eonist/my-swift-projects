@@ -132,7 +132,6 @@ class GitModifier{
        let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.update
        return ShellUtils.run(shellScript,localRepoPath)
    }
-   
    /**
     * Fetch
     * NOTE: Fetching is what you do when you want to see what everybody else has been working on. Since fetched content is represented as a remote branch, it has absolutely no effect on your local development work. This makes fetching a safe way to review commits before integrating them with your local repository.
@@ -165,7 +164,7 @@ class GitModifier{
     * NOTE: "git merge --abort" tries to revert back to your state before you ran the merge. The only cases where it may not be able to do this perfectly would be if you had unstashed, uncommitted changes in your working directory when you ran it, otherwise it should work fine.
     */
    static func merge(_ localRepoPath:String, _ intoBranch:String, _ fromBranch:String)->String{
-       let shellScript:String = Git.path + Git.git + " " + Git.merge + intoBranch + " " + fromBranch
+       let shellScript:String = Git.path + Git.git + " " + Git.merge + " " + intoBranch + " " + fromBranch
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
