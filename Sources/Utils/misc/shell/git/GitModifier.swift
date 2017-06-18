@@ -79,8 +79,7 @@ class GitModifier{
      * NOTE: you can also do "git push" if you are already switched into the branch you want to push and there is only one remote repo attached to the local repo
      * NOTE: remove remote feature branch: git push origin --delete <branch-name>
      * EXAMPLE: GitUtils's push(localRepoPath, "github.com/user-name/repo-name.git", userName, userPassword)
-     * TODO: ⚠️️ maybe add try error when doing the shell part
-     * TODO: ⚠️️ add branch as a param
+     * TODO: ⚠️️ maybe add try error when doing the shell part     
      */
     static func push(_ repo:GitRepo, _ key:GitKey)->String{
         //Swift.print("🚀 GitModifier's push(" + "localPath: \(repo.localPath) , remotePath:  \(repo.remotePath), user: \(key.user), pass: \(key.pass), branch:  \(repo.branch) )")
