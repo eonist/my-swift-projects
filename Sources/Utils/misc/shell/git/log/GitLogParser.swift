@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ *
+ */
 class GitLogParser {
     static var debugCounter:Int = 0
     /**
