@@ -1,6 +1,6 @@
 import Foundation
 /**
- *
+ * TODO: ⚠️️ You can probably move this method into the folder where GitSync.swift is
  */
 class GitLogParser {
     static var debugCounter:Int = 0

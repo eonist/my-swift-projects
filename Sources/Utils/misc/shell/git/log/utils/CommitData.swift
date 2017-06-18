@@ -8,6 +8,7 @@ struct CommitData {
     let body:String
 }
 extension CommitData{
+    
     /**
      * Returns a ComitData instance that is populated with auther, date, subject, body
      * EXAMPLE: GitLogParser.commitData("Hash:4caecd \n Author:Eonist \n Date:2015-12-03 16:59:09 +0100 \n Subject:'abc' \n Body:'123'")//Output: a CommitData instance
