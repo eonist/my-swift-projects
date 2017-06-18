@@ -1,9 +1,5 @@
 import Foundation
 
-typealias GitKey = (user:String,  pass:String)
-typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
-typealias GitMsg = (title:String,  desc:String)
-
 class GitModifier{
    /**
     * Add a file or many files to a commit
@@ -13,13 +9,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
-        //log ("GitModifier's add(" + localRepoPath + fileName + ")")
-        //if (!StringAsserter.isWrappedWith(fileName, "\"") && !StringAsserter.isWrappedWith(fileName, "\'")) { //--avoids quoting a fileName that is already quoated, this can happen when git removes a file
-        //fileName = StringModifier.wrapWith(fileName,"'")
-        //}
         let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git add" + " " + fileName
-        //--log "shellScript: " + shellScript
-        //Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
@@ -37,9 +27,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
     static func commit(_ localRepoPath:String, _ msg:GitMsg)->String{
-    	//log ("GitModifier's commit(" + message_title + ")")
-    	let shellScript:String = /*"cd " + localRepoPath + ";" + */Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
-        //Swift.print("shellScript: " + "\(shellScript)")
+    	let shellScript:String = Git.path + "git commit" + " -m '" + msg.title.encode()! + "' -m '" + msg.desc.encode()! + "'"
     	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
