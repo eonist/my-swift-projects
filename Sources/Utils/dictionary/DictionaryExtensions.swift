@@ -20,7 +20,6 @@ extension Dictionary where Value:Comparable {
         return self.values.sorted()
     }
     var sortedByValue:[(Key,Value)] {return DictionaryParser.sortByValue(self)}
-    
 }
 /**
  * ⚠️️ Untested
