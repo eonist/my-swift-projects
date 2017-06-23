@@ -1,8 +1,8 @@
 import Cocoa
 
 class CustomMenuItem:NSMenuItem{
-    init(_ title:String = "", _ keyEquivalent:String = "") {
-        super.init(title: title, action:#selector(self.onSelect), keyEquivalent: keyEquivalent)
+    init(_ title:String = "", _ keyEquivalent:String = "", _ actionMethod:Selector?) {
+        super.init(title: title, action:actionMethod ?? #selector(self.onSelect),  keyEquivalent: keyEquivalent)
         target = self/*target specifies where the selector should work, in this case in this class scope*/
         self.isEnabled = true
     }
