@@ -13,9 +13,9 @@ class CustomMenuItem:NSMenuItem{
      * Return true if you want to enable the menu item, false will disable it
      * NOTE: add assertion logic here
      */
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    override func validateMenuItem(_ menuItem:NSMenuItem) -> Bool {
         //override in subclass (optional)
         return true
     }
-    required init(coder decoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder decoder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
