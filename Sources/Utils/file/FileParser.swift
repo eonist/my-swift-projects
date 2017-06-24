@@ -75,7 +75,7 @@ extension FileParser{
      * IMPORTANT: Remember to expand the "path" with the tildePath call before you call xml(path)
      */
     static func xml(_ path:String)->XML {
-        guard let content:String = FileParser.content(path) else {fatalError("Must have content")}
+        guard let content:String = FileParser.content(path) else {fatalError("Must have content: path: \(path)")}
         do {
             let xmlDoc:XMLDoc = try XMLDoc(xmlString:content, options: 0)
             if let rootElement:XML = xmlDoc.rootElement(){
