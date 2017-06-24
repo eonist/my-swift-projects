@@ -103,7 +103,7 @@ extension Array {
     subscript(safe index: Index) -> Iterator.Element? {
         if indices.contains(index) { return self[index] }
         return nil
-     }
+    }
     func mapReduce<V,U>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->U{
         return ArrayParser.mapReduce(self,result,closure)
     }
