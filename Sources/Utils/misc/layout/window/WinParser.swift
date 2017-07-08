@@ -16,19 +16,19 @@ class WinParser {
         }
     }
     /**
-     * NOTE: returns the window height (including the titleBar height)
-     * NOTE: to return window height not including the titleBar height, the use window!.frame.height
-     * NOTE: this method can also be used if you diff this method and the frame.height to get the titlebar height
-     * NOTE: to get the width of a window yu can use: window!.frame.width
+     * NOTE: Returns the window height (including the titleBar height)
+     * NOTE: To return window height not including the titleBar height, the use window!.frame.height
+     * NOTE: This method can also be used if you diff this method and the frame.height to get the titlebar height
+     * NOTE: To get the width of a window yu can use: window!.frame.width
      */
     static func height(_ window:NSWindow)->CGFloat{
-        return NSWindow.contentRect(forFrameRect: window.frame, styleMask: window.styleMask).height
+        return NSWindow.contentRect(forFrameRect:window.frame, styleMask: window.styleMask).height
     }
     /**
      * New
      */
     static func width(_ window:NSWindow)->CGFloat{
-        return NSWindow.contentRect(forFrameRect: window.frame, styleMask: window.styleMask).width
+        return NSWindow.contentRect(forFrameRect:window.frame, styleMask: window.styleMask).width
     }
     /**
      * Example: WinParser.size(NSApp.windows.first!)//CGSize(400,600) etc
