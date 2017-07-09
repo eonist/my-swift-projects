@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*Convenient extensions*/
 extension CGSize {
     init(_ width:CGFloat,_ height:CGFloat){self.width = width;self.height = height}
