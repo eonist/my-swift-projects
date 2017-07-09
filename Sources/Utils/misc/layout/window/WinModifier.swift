@@ -10,6 +10,12 @@ class WinModifier {
         //win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
     }
     /**
+     * 
+     */
+    static func size(_ win:NSWindow, _ size:CGSize){
+        win.setContentSize(CGSize(200,200))
+    }
+    /**
      * Aligns a window to an alignment type
      * IMPORTANT: The screen aligns from the bottom up (so use bottom for top and top for bottom) (you could fix this, it probably only requires a minus sign herer and there)
      */
