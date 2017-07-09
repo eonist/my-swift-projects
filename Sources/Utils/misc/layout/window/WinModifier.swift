@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * You can resize a window by doing: win.setContentSize(CGSize(100,100))
+ */
 class WinModifier {
     /**
      * Positions a window to PARAM: position
@@ -8,12 +10,6 @@ class WinModifier {
     static func position(_ win:NSWindow, _ position:CGPoint){
         win.setFrameOrigin(position)
         //win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
-    }
-    /**
-     * 
-     */
-    static func size(_ win:NSWindow, _ size:CGSize){
-        win.setContentSize(CGSize(200,200))
     }
     /**
      * Aligns a window to an alignment type
