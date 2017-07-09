@@ -6,7 +6,7 @@ class WinModifier {
      * CAUTION: the coordinate space of the y is flipped, so you have to substract the screen height etc before passing the position point
      */
     static func position(_ win:NSWindow, _ position:CGPoint){
-        win.setFrameOrigin(CGPoint(position.x,position.y))
+        win.setFrameOrigin(position)
         //win.setFrame(NSRect(position.x,position.y,win.frame.width,win.frame.height), display: true)/*<--unsure what the display var does*/
     }
     /**
