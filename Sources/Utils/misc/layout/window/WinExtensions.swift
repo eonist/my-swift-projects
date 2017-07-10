@@ -24,7 +24,7 @@ extension NSWindow {
         return CGPoint(pos.x, abs(pos.y + -NSScreen.main()!.visibleFrame.height) - self.frame.size.height)/*flip the y coordinate back*/
     }
     /*New*/
-    var size:CGSize {
+    var size:CGSize {/*Convenience*/
         get{return WinParser.size(self)}
         set{self.setContentSize(CGSize(newValue.width,newValue.height))}
     }
