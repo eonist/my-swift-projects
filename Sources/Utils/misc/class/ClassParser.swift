@@ -57,7 +57,7 @@ class ClassParser {
     static func classType(_ instance:Any)->Any.Type{return ClassParser.type(instance)}
 }
 extension ClassParser{
-    static func type(_ instance:Any)->String{/*Convenience*/
+    static func stringType(_ instance:Any)->String{/*Convenience*/
         return String(describing: ClassParser.classType(instance))
     }
 }

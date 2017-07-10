@@ -92,7 +92,7 @@ extension FileParser{
 		let thePath = myFileDialog.url?.path/*Get the path to the file chosen in the NSOpenPanel*/
 		if (thePath != nil) {/*Make sure that a path was chosen*/
 			let theContent = FileParser.content(thePath!)
-			Swift.print("theContent: " + "\(theContent)")
+			Swift.print("theContent: " + "\(theContent!)")
 		}	
 	}
 }
