@@ -61,8 +61,8 @@ class SVGStyleParser {
     static func describe(_ style:SVGStyle) {
         Swift.print("SVGParser.describe() ");
         if(style.fill is Double) {
-            Swift.print("style.fill: " + "\(style.fill)")
-            Swift.print("style.fillOpacity: " + "\(style.fillOpacity)")
+            Swift.print("style.fill: " + "\(style.fill!)")
+            Swift.print("style.fillOpacity: " + "\(style.fillOpacity!)")
         }else if(style.fill is SVGLinearGradient) {
             let linearGradient:SVGLinearGradient = style.fill as! SVGLinearGradient
             Swift.print("linearGradient.colors: " + "\(linearGradient.colors)")
@@ -75,13 +75,13 @@ class SVGStyleParser {
             Swift.print("linearGradient.x2: " + "\(linearGradient.x2)")
             Swift.print("linearGradient.y2: " + "\(linearGradient.y2)")
         }else{
-            Swift.print("style.fill: " + "\(style.fill)")
+            Swift.print("style.fill: " + "\(style.fill!)")
         }
-        Swift.print("style.fillRule: " + "\(style.fillRule)")
-        Swift.print("style.strokeWidth: " + "\(style.strokeWidth)")
-        Swift.print("style.stroke: " + "\(style.stroke)")
-        Swift.print("style.strokeLineCap: " + "\(style.strokeLineCap)")
-        Swift.print("style.strokeLineJoin: " + "\(style.strokeLineJoin)")
-        Swift.print("style.strokeMiterLimit: " + "\(style.strokeMiterLimit)")
+        Swift.print("style.fillRule: " + "\(style.fillRule!)")
+        Swift.print("style.strokeWidth: " + "\(style.strokeWidth!)")
+        Swift.print("style.stroke: " + "\(style.stroke!)")
+        Swift.print("style.strokeLineCap: " + "\(style.strokeLineCap!)")
+        Swift.print("style.strokeLineJoin: " + "\(style.strokeLineJoin!)")
+        Swift.print("style.strokeMiterLimit: " + "\(style.strokeMiterLimit!)")
     }
 }

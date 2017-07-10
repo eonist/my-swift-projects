@@ -37,7 +37,7 @@ class KeyChainUtils {
      * Convenience method
      */
     static func stringValue(_ data:Data)->String{
-        return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as! String
+        return NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
     }
 }
 extension String {

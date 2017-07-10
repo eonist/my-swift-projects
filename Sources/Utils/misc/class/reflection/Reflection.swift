@@ -145,7 +145,7 @@ private class Utils{
         return string
     }
     static func basicValueType(_ value:Any)->String{
-        var type:String = ClassParser.type(value)//was type(of:)
+        var type:String = ClassParser.stringType(value)//was type(of:)
         type = type == String(describing: Double.self) ? String(describing: CGFloat.self) : type//<-temp fix, seems mirror can't get the correct type when Any is a cgFloat it will return Double, this isnt pretty, but since we dont use any Doubles it might work for now
         return type
     }
@@ -235,7 +235,7 @@ private class Utils{
      */
     static func extractClassType(_ value:Any)->String{
         //Swift.print("extractClassType")
-        let str:String = ClassParser.type(value)
+        let str:String = ClassParser.stringType(value)
         let arr1 = str.characters.split{$0 == "<"}.map(String.init)
         let arr2 = arr1[1].characters.split{$0 == ">"}.map(String.init)
         return arr2[0]
