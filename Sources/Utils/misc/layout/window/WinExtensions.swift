@@ -34,7 +34,7 @@ extension NSSavePanel{
      * Creates An NSSavePanel instance
      * NOTE: the initialize word is used instead of init, as init requires much more code to get working
      */
-    static func initialize(_ allowedFileTypes:Array<String> = ["xml"], _ title:String = "Save As", _ canCreateDirectories:Bool = true)->NSSavePanel{
+    static func initialize(_ allowedFileTypes:[String] = ["xml"], _ title:String = "Save As", _ canCreateDirectories:Bool = true)->NSSavePanel{
         let savePanel = NSSavePanel()
         savePanel.canCreateDirectories = canCreateDirectories
         savePanel.allowedFileTypes = allowedFileTypes//["css","html","pdf","png"]
