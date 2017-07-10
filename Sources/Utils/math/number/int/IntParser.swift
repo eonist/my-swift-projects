@@ -8,8 +8,8 @@ class IntParser{
     }
     /**
      * Returns a normalized integer value
-     * NOTE: great for iterating int arrays
-     * NOTE: can be used for looping items in an array
+     * NOTE: Great for iterating int arrays
+     * NOTE: Can be used for looping items in an array
      * EXAMPLE:
      * print(IntParser.normalize(3, 7))//3
      * print(IntParser.normalize(-3, 7))//4
