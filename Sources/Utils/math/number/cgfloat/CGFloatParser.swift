@@ -92,7 +92,7 @@ public class CGFloatParser{
      * print(distance(-5,2));//7
      * print(distance(5,2));//3
      * print(distance(5,-2));//7
-     * TODO: do a bulk test to see which is faster, then maybe deprecate this method
+     * TODO: ⚠️️ Do a bulk test to see which is faster, then maybe deprecate this method
      */
     static func distance(_ a:CGFloat,_ b:CGFloat)->CGFloat {
         if(a.isNegative && b.isNegative) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
