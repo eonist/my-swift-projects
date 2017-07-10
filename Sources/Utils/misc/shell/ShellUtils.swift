@@ -47,10 +47,10 @@ class ShellUtils{
         //Swift.print("task.launch()")
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
-        let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String/*decode the date to a string*/
+        let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String/*decode the date to a string*/
         /*Error*/
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
-        let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue) as! String
+        let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue)! as String
         _ = errorStr
         //Swift.print("errorStr: " + "\(errorStr)")
         //Swift.print("🚪➡️️exe end")
@@ -83,7 +83,7 @@ extension ShellUtils{/*BETA*/
         task.launch()
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*/
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue) as! String
+        let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String
         return (output, task.terminationStatus)
     }
 }

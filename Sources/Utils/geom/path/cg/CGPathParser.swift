@@ -41,7 +41,7 @@ class CGPathParser{
         let circlePath:CGMutablePath = CGMutablePath()
         let circleCenter:CGPoint = CGPoint(x: cx, y: cy)
         let circleRadius:CGFloat  = radius
-        let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * M_PI)
+        let startingAngle:CGFloat  = 0.0, endingAngle = CGFloat(2 * Double.pi)
         /*Construct the circle path counterclockwise*/
         circlePath.addArc(center: circleCenter, radius: circleRadius, startAngle: startingAngle, endAngle: endingAngle, clockwise: false)//swift 3, CGPathAddArc
         circlePath.closeSubpath()
