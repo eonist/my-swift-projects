@@ -23,6 +23,11 @@ extension NSWindow {
     func unFlipScreenPosition(_ pos:CGPoint)->CGPoint{
         return CGPoint(pos.x, abs(pos.y + -NSScreen.main()!.visibleFrame.height) - self.frame.size.height)/*flip the y coordinate back*/
     }
+    /*New*/
+    var size:CGSize {
+        get{return WinParser.size(self)}
+        set{self.setContentSize(CGSize(newValue.width,newValue.height))}
+    }
 }
 extension NSSavePanel{
     /**
