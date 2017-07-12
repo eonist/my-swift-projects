@@ -92,7 +92,7 @@ extension NSView {
     func globalPos()->CGPoint{
         var offset:CGPoint = CGPoint()
         var parent:NSView? = self.superview
-        while parent?.superview != nil && parent?.layer != nil{
+        while parent?.superview != nil {
             offset += parent!.layer!.position
             parent = parent?.superview
         }
