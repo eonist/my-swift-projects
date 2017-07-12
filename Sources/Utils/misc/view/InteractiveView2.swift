@@ -9,6 +9,7 @@ import Cocoa
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * TODO: why arent the mouse methods calling a central method?
  */
+typealias InteractiveView = InteractiveView2//legacy support
 class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with appcode
     var event:EventCallBack/*This holds any method assigned to it that has its type*/
     var eventCall:EventCallBack {
