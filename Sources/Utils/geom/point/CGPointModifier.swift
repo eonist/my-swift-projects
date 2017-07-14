@@ -53,7 +53,7 @@ class CGPointModifier {
     static func rotatePoints(_ points:[CGPoint], _ pivot:CGPoint, _ rotation:CGFloat) -> [CGPoint] {
         var rotatedPoints:[CGPoint] = []
         var transform = CGAffineTransform.identity
-        transform.rotateAroundPoint(rotation, pivot)//MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation)
+        transform.rotateAroundPoint(rotation, pivot)//was MatrixModifier.rotateAroundExternalPoint(matrix, pivot, rotation)
         for point:CGPoint in points { rotatedPoints.append(point.applying(transform))}
         return rotatedPoints
     }
@@ -65,7 +65,7 @@ class CGPointModifier {
     static func scale(_ p:CGPoint,_ pivot:CGPoint,_ scale:CGPoint)->CGPoint{
         var transform:CGAffineTransform = CGAffineTransform.identity
         transform.scaleFromPoint(scale.x, scale.y, pivot)
-        return p.applying(transform)//swift 3 was-->CGPointApplyAffineTransform
+        return p.applying(transform)
     }
     /**
      * Scales an array of points from PARAM: pivotPoint to PARAM: xScale and PARAM: yScale
