@@ -12,9 +12,9 @@ class PathGraphic:SizeableDecorator{
         super.init(decoratable)
     }
     override func drawFill() {
-        fillBoundingBox = cgPath.boundingBoxOfPath/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
+        fillBoundingBox = cgPath.boundingBoxOfPath/*There is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         graphic.fillShape.frame = fillBoundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
-        let offset = CGPoint(-fillBoundingBox.x,-fillBoundingBox.y)/*we get the amount of offset need to set the path in (0,0) inside the frame*/
+        let offset = CGPoint(-fillBoundingBox.x,-fillBoundingBox.y)/*We get the amount of offset need to set the path in (0,0) inside the frame*/
         var offsetPath:CGMutablePath = cgPath.clone()/*We clone the path so that the original isn't modified*/
         graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*We translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
@@ -22,7 +22,7 @@ class PathGraphic:SizeableDecorator{
         var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*Regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
         graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)/*We get the amount of offset need to set the path in (0,0) inside the frame*/
-        var offsetPath:CGMutablePath = cgPath.clone()/*We clone the path so that the original isnt modified*/
-        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
+        var offsetPath:CGMutablePath = cgPath.clone()/*We clone the path so that the original isn't modified*/
+        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*We translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
 }
