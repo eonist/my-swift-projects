@@ -5,7 +5,7 @@ import Foundation
  */
 class PathGraphic:SizeableDecorator{
     var path:IPath
-    lazy var cgPath:CGMutablePath = CGPathUtils.compile(CGMutablePath(), self.path)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/
+    lazy var cgPath:CGMutablePath = CGPathUtils.compile(CGMutablePath(), self.path)/*This is lazy because both drawFill and drawLine uses it, its risky but convenient*/
     lazy var fillBoundingBox:CGRect = self.cgPath.boundingBoxOfPath/*This is lazy because both drawFill and drawLine uses it, it's risky because it can cause unrelated errors that are hard to debug, but convenient*/
     init(_ path:IPath, _ decoratable:IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.path = path
@@ -15,8 +15,8 @@ class PathGraphic:SizeableDecorator{
         fillBoundingBox = cgPath.boundingBoxOfPath/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         graphic.fillShape.frame = fillBoundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
         let offset = CGPoint(-fillBoundingBox.x,-fillBoundingBox.y)/*we get the amount of offset need to set the path in (0,0) inside the frame*/
-        var offsetPath:CGMutablePath = cgPath.clone()/*we clone the path so that the original isn't modified*/
-        graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
+        var offsetPath:CGMutablePath = cgPath.clone()/*We clone the path so that the original isn't modified*/
+        graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*We translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
     override func drawLine() {
         var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*Regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
