@@ -2,7 +2,7 @@ import Foundation
 
 class PolyLineGraphicUtils{
     /**
-     * Returns compiles a Path instance that conceptually is a PolyLine by iterating over an array of points in PARAM: points
+     * Compiles and returns a Path instance that conceptually is a PolyLine by iterating over an array of points in PARAM: points
      * NOTE: Rename to pathByPoints?, 🚫 as swift supports method overloading, you don't need that specific naming, the context given by this class name also maginfies its readability
      */
     static func path(_ points:[CGPoint]) -> IPath {
