@@ -3,8 +3,8 @@ import Cocoa
  * NOTE: This view class serves as a basis for frame animation. 
  * NOTE: Override the onFrame method to do frame animations
  * NOTE: Start and stop with CVDisplayLinkStart(displayLink) and CVDisplayLinkStop(displayLink) and CVDisplayLinkIsRunning(displayLink) to assert if the displayLink is running
- * TODO: You can probably use NSObject instead of NSView. As NSObject has the performSelector method
- * TODO: Package these classes as its own lib. Kinetic. Bump. mc2. Other names?
+ * TODO: ⚠️️ You can probably use NSObject instead of NSView. As NSObject has the performSelector method
+ * TODO: ⚠️️ Package these classes as its own lib. Kinetic. Bump. mc2. Other names? 🚫 👉 I think Animation is an appropriate name 👈
  */
 class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()//TODO: rename to .shared
@@ -25,7 +25,7 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
         /*while drawCalls.count > 0{
         if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
         }*/
-        //CATransaction.flush()/*if you dont flush your animation wont animate and you get this message: CoreAnimation: warning, deleted thread with uncommitted CATransaction; set CA_DEBUG_TRANSACTIONS=1 in environment to log backtraces.*/
+        //CATransaction.flush()/*If you don't flush your animation wont animate and you get this message: CoreAnimation: warning, deleted thread with uncommitted CATransaction; set CA_DEBUG_TRANSACTIONS=1 in environment to log backtraces.*/
     }
     /**
      * Note: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
