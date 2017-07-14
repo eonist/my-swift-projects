@@ -123,7 +123,7 @@ extension NSView {
 
 /**
  * Disable implicit animation
- * EXAMPLE: disableAnim{view.isHidden = true}//Default animation is now disabled
+ * EXAMPLE: disableAnim{view.isHidden = true}//Default animation is now disabled, Basically whatever you put inside the closure is not animated
  */
 func disableAnim(_ closure:()->Void){
     CATransaction.begin()
