@@ -14,11 +14,11 @@ class GradientGraphic:SizeableDecorator/*<--Recently changed from GraphicDecorat
             let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{
-            super.beginFill()/*do regular color fill*/
+            super.beginFill()/*Do regular color fill*/
         }//fatalError("NOT CORRECT fillStyle")
     }
     /**
-     * NOTE: We could renamed this method to applyGradientLinestyle, but as it needs to override it cant be renamed!
+     * NOTE: We could renamed this method to applyGradientLinestyle, but as it needs to override it can't be renamed!
      */
     override func applyLineStyle() {
         super.applyLineStyle()/*Call the BaseGraphic to set the stroke-width, cap, joint etc*/
