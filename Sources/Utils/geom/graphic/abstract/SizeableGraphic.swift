@@ -26,7 +26,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
 }
 /**
  * Convenience init methods
- * TODO: Add explination and example code for each init
+ * TODO: ⚠️️ Add explination and example code for each init, and maybe move to it's own class
  */
 extension SizeableGraphic{
     /**
