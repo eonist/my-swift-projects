@@ -1,9 +1,9 @@
 import Cocoa
 /**
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
- * TODO: take a look at other animation libs
+ * TODO: Take a look at other animation libs
  * TODO: Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
- * TODO: seek,reverse,repeate,autoRepeat
+ * TODO: Seek,reverse,repeate,autoRepeat
  * TODO: Implement a way so that the animator can be reused so that you can target it and disable it
  */
 class Animator:BaseAnimation{
