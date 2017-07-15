@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * NOTE: this rubberBand tween is cheating a bit. The perfect way to implement this would be to add a half circle easing curve
- * NOTE: I think essentialy this is a 👉 SpringSolver 👈. You can find an example of the SpringSolver in books and also in facebook pop
+ * NOTE: I think essentialy this is a 👉 SpringSolver 👈. You can find an example of the SpringSolvers in books and also in the facebook pop lib
  * PARAM: maskRect: represents the visible part of the content
  * PARAM: contentRect: represents the total size of the content
  * TODO: ⚠️️ Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring? Elastic?
@@ -11,7 +11,6 @@ import Cocoa
  * NOTE: spring: the strength of the spring
  * NOTE: limit: the max distance the displacement friction like the effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
  * NOTE: epsilon: twips 20th of a pixel
- * IMPORTANT: Use
  */
 class RubberBand:Mover{//TODO: rename to Elastic
     typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat,epsilon:CGFloat)
@@ -32,7 +31,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
         super.init(Animation.sharedInstance, callBack, 0, 0)
     }
     override func onFrame(){
-        if(hasStopped){/*stop the frameTicker here*/
+        if hasStopped {/*stop the frameTicker here*/
             stop()/*<---never stop the CVDisplayLink before you start another. Since you can't start a CVDisplayLink within a CVDisplayLinkStart block*/
         }else{/*only move the view if the mover is not stopped*/
             updatePosition()/*tick the mover on every frame*/
@@ -45,10 +44,10 @@ class RubberBand:Mover{//TODO: rename to Elastic
      * TODO: ⚠️️ Add a isDirectlyManipulating flag to the function arg instead of having a class scoped bool flag!?!?
      */
     override func updatePosition(_ direct:Bool = false) {
-        if(value > maskFrame.min){applyTopBoundary(direct)}/*the top of the item-container passed the mask-container top checkPoint*/
+        if value > maskFrame.min {applyTopBoundary(direct)}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
-            if(!direct){/*Only apply friction and velocity when not directly manipulating the value*/
+            if !direct {/*Only apply friction and velocity when not directly manipulating the value*/
                 applyFriction()
             }
             checkForStop(direct)/*Assert if the movement is close to stopping, if it is then stop it*/
