@@ -48,7 +48,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
         if(value > maskFrame.min){applyTopBoundary(direct)}/*the top of the item-container passed the mask-container top checkPoint*/
         else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
-            if(!direct){/*only apply friction and velocity when not directly manipulating the value*/
+            if(!direct){/*Only apply friction and velocity when not directly manipulating the value*/
                 applyFriction()
             }
             checkForStop(direct)/*Assert if the movement is close to stopping, if it is then stop it*/
@@ -132,6 +132,7 @@ private class CustomFriction{
         return limit * multiplier
     }
 }
+/*Deprecations*/
 extension RubberBand{
     //legacy
     convenience init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
@@ -151,7 +152,7 @@ extension RubberBand{
     //DEPRECATED
     var isDirectlyManipulating:Bool {get{fatalError("not supported anymore")}set{_ = newValue;fatalError("deprecated");}}/*toggles the directManipulation mode*/
 }
-extension RubberBand{//convenience
+extension RubberBand{//Convenience
     var friction:CGFloat {return config.friction}
     var springEasing:CGFloat {return config.springEasing}
     var spring:CGFloat {return config.spring}
