@@ -3,7 +3,7 @@ import Foundation
  * Elastic
  */
 class Elastic {
-    private static func easeIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    static func easeIn(_ t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         var t = t
         var a: CGFloat? = nil
         var p: CGFloat? = nil
