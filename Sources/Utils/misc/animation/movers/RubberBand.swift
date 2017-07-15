@@ -1,15 +1,15 @@
 import Cocoa
 /**
  * NOTE: this rubberBand tween is cheating a bit. The perfect way to implement this would be to add a half circle easing curve
- * NOTE: I think essentialy this is a SpringSolver. You can find an example of the SpringSolver in books and also in facebook pop
+ * NOTE: I think essentialy this is a 👉 SpringSolver 👈. You can find an example of the SpringSolver in books and also in facebook pop
  * PARAM: maskRect: represents the visible part of the content
  * PARAM: contentRect: represents the total size of the content
- * TODO: Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring? Elastic?
- * TODO: integrate temp values inside rubberband or make a tempvalue struct
+ * TODO: ⚠️️ Rename to ElasticSpringSolver? or ElasticBand? ElasticSpring? Elastic?
+ * TODO: ⚠️️ Integrate temp values inside rubberband or make a tempvalue struct
  * NOTE: friction: This value is the strength of the friction when the item is floating freely
- * NOTE: springEasing: the easeOut effect on the spring (aka the dampener)
+ * NOTE: springEasing: the easeOut effect on the spring (also known as the dampener)
  * NOTE: spring: the strength of the spring
- * NOTE: limit: the max distance the displacement friction like effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
+ * NOTE: limit: the max distance the displacement friction like the effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
  * NOTE: epsilon: twips 20th of a pixel
  * IMPORTANT: Use
  */
