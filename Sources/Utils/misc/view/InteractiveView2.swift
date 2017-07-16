@@ -78,7 +78,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * Handles actions and drawing states for the release event.
      * NOTE: bubbling=true was added to make Stepper class dragable
      */
-    func mouseUpInside(_ event: MouseEvent){
+    func mouseUpInside(_ event:MouseEvent){
         if let parent = self.superview as? IInteractiveView{
             parent.mouseUpInside(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
