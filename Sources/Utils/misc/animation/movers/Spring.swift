@@ -5,7 +5,7 @@ class Spring:BaseAnimation {
     var spring:CGFloat = 0.02
     var friction:CGFloat = 0.95
     var targetX:CGFloat = 0
-    var vx:CGFloat = 0/*velocity*/
+    var velocityX:CGFloat = 0/*velocity*/
  
     var value:CGFloat = 0/*the value that should be applied to the target*/
 
@@ -19,9 +19,9 @@ class Spring:BaseAnimation {
     func updatePosition(_ direct:Bool = false) {
         let dx:CGFloat = targetX - value
         let ax:CGFloat = dx * spring
-        vx += ax
-        vx *= friction
-        value += vx
+        velocityX += ax
+        velocityX *= friction
+        value += velocityX
     }
     override func onFrame(){
         updatePosition()
