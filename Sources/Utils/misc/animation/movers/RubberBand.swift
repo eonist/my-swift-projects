@@ -116,7 +116,7 @@ extension RubberBand{
  */
 private class CustomFriction{
     /**
-     * NOTE: the vertical limit is the point where the value almost doesn't move at all
+     * NOTE: The vertical limit is the point where the value almost doesn't move at all
      * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
      */
     static func constraintValueWithLog(_ value:CGFloat, _ limit:CGFloat) -> CGFloat {
@@ -131,7 +131,10 @@ private class CustomFriction{
         return limit * multiplier
     }
 }
-/*Deprecations*/
+/*
+ * Deprecations
+ * TODO: you can probably uncomment the methods bellow
+ */
 extension RubberBand{
     //legacy
     convenience init(_ animatable:Animatable,_ callBack:@escaping FrameTick, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
