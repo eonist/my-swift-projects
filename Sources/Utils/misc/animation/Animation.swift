@@ -10,7 +10,6 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
     static let sharedInstance = Animation()//TODO: rename to .shared
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
     var animators:[BaseAnimation] = []
-    //var drawCalls:Array<()->Void> = []
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
      */
@@ -21,21 +20,18 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
      *
      */
     func onFrameOnMainThread(){
-        for animator in animators{animator.onFrame()}//TODO:  animators.forEach{$.onFrame()}
-        /*while drawCalls.count > 0{
-        if(drawCalls.count > 0){drawCalls.removeFirst()()}//the extra assert was needed strangly enough, or els bugs started to appear after some time with stress testing
-        }*/
-        //CATransaction.flush()/*If you don't flush your animation wont animate and you get this message: CoreAnimation: warning, deleted thread with uncommitted CATransaction; set CA_DEBUG_TRANSACTIONS=1 in environment to log backtraces.*/
+        for animator in animators{animator.onFrame()}
     }
     /**
-     * Note: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
+     * NOTE: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
+     * NOTE: This method fires 60FPS
      */
     func setUpDisplayLink() -> CVDisplayLink {
         var displayLink:CVDisplayLink?
         var status = kCVReturnSuccess
         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
         //Swift.print("status: " + "\(status)")
-        /* Set up DisplayLink. This method fires 60FPS*/
+        /* Set up DisplayLink. */
         func displayLinkOutputCallback( displayLink: CVDisplayLink,_ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>,_ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>,_ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn{
             //Swift.print("displayLink is setup")
             unsafeBitCast(displayLinkContext, to: Animation.self).onFrame()//drawRect(unsafeBitCast(displayLinkContext, NSOpenGLView.self).frame)
