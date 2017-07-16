@@ -2,7 +2,7 @@ import Foundation
 
 class Spring:BaseAnimation {
     
-    //continue here:
+    //continue here: 🏀
         //consider using two springs for x and y, or making a spring that sets a point
         //also make a stop metod that stops the anim if the velocity goes bellow a number, also sets final point to target point etc
         //you can even make multiple spring classes or use generics to support point,size,cgfloat etc, or some other solution
