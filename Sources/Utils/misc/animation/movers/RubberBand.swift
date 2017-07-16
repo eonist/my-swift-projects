@@ -95,7 +95,7 @@ extension RubberBand{
             velocity += (dist * spring)
             velocity *= springEasing
             value += velocity
-            if(dist.isNear(0, 1)){checkForStop(direct)}/*checks if dist is near 0, with an epsilon of 1px*/
+            if dist.isNear(0, 1) {checkForStop(direct)}/*Checks if dist is near 0, with an epsilon of 1px*/
             result = value
         }
     }
