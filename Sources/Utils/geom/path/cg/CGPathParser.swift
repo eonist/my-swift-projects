@@ -68,7 +68,7 @@ class CGPathParser{
      * EXAMPLE: CGPathParser.ellipse(100,200)
      * IMPORTANT: ⚠️️ The ellipse is drawn from top left position
      * Note: you may add convenience methods for drawing ellipses from the center later
-     * TODO: impliment the transformation param
+     * TODO: ⚠️️ impliment the transformation param, its currently inactive
      */
     static func ellipse(_ w:CGFloat = 100,_ h:CGFloat = 100,_ x:CGFloat = 0,_ y:CGFloat = 0, _ transformation:CGAffineTransform? = nil)->CGMutablePath{
         let ellipsePath:CGMutablePath  = CGMutablePath()
@@ -98,7 +98,7 @@ class CGPathParser{
      * TODO: Move this method somewhere else?
      */
     static func boundingBox(_ path:CGPath,_ lineStyle:ILineStyle)->CGRect{
-        let outlinePath:CGPath? = path.copy(strokingWithWidth: lineStyle.thickness, lineCap: lineStyle.lineCap, lineJoin: lineStyle.lineJoin, miterLimit: lineStyle.miterLimit)//swift 3 upgrade, used -> CGPathCreateCopyByStrokingPath
+        let outlinePath:CGPath? = path.copy(strokingWithWidth:lineStyle.thickness, lineCap:lineStyle.lineCap, lineJoin:lineStyle.lineJoin, miterLimit:lineStyle.miterLimit)//swift 3 upgrade, used -> CGPathCreateCopyByStrokingPath
         var boundingBox:CGRect = outlinePath!.boundingBoxOfPath/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         if(boundingBox.x.isInfinite){boundingBox = CGRect(path.currentPoint,boundingBox.size)}/*<--fix for paths that have zero width or height*/
         return boundingBox
