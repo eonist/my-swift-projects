@@ -145,6 +145,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(with event: NSEvent) {
+        Swift.print("mouseDown")
         mouseDown(MouseEvent(event,self))
     }
     override func mouseUp(with event:NSEvent) {
