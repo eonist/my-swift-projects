@@ -11,7 +11,7 @@ class EllipseGraphic:SizeableGraphic{
                 return RectGraphicUtils.fillFrame(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
             };return CGRect(x,y,width,height)
         }()
-        graphic.fillShape.frame = fillFrame/*Position and set the size of the frame*/
+        graphic.fillShape.frame = fillFrame/*Position and sets the size of the frame*/
         graphic.fillShape.path = CGPathParser.ellipse(CGRect(0,0,width,height))
     }
     override func drawLine() {

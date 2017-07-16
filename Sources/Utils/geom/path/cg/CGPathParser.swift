@@ -66,7 +66,7 @@ class CGPathParser{
 
     /**
      * EXAMPLE: CGPathParser.ellipse(100,200)
-     * IMPORTANT: ellipse is drawn from top left position
+     * IMPORTANT: ⚠️️ The ellipse is drawn from top left position
      * Note: you may add convenience methods for drawing ellipses from the center later
      * TODO: impliment the transformation param
      */
