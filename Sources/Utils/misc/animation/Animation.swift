@@ -33,19 +33,14 @@ class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in 
         //Swift.print("status: " + "\(status)")
         /* Set up DisplayLink. */
         func displayLinkOutputCallback( displayLink: CVDisplayLink,_ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>,_ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>,_ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn{
-            //Swift.print("displayLink is setup")
-            unsafeBitCast(displayLinkContext, to: Animation.self).onFrame()//drawRect(unsafeBitCast(displayLinkContext, NSOpenGLView.self).frame)
+            unsafeBitCast(displayLinkContext, to: Animation.self).onFrame()
             return kCVReturnSuccess
         }
-        
-        //(displayLink!, displayLinkOutputCallback, UnsafeMutableRawPointer(unsafeAddressOf(self)))//
         let outputStatus = CVDisplayLinkSetOutputCallback(displayLink!, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
         _ = outputStatus
-        //Swift.print("outputStatus: " + "\(outputStatus)")
         let displayID = CGMainDisplayID()
         let displayIDStatus = CVDisplayLinkSetCurrentCGDisplay(displayLink!, displayID)
         _ = displayIDStatus
-        //Swift.print("displayIDStatus: " + "\(displayIDStatus)")
         return displayLink!
     }
 }
