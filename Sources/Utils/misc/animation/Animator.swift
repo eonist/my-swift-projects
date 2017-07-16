@@ -9,14 +9,14 @@ import Cocoa
 typealias FrameTick = (CGFloat)->Void
 typealias EasingEquation = (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat
 class Animator:BaseAnimation{
-    let fps:CGFloat = 60//<--TODO: this should be derived from a device variable
+    let fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
     var duration:CGFloat/*In seconds*/
     var from:CGFloat/*From this value*/
     var to:CGFloat/*To this value*/
     var callBack:FrameTick/*the closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var framesToEnd:CGFloat/*totFrameCount*/
     var currentFrameCount:CGFloat = 0/*curFrameCount*/
-    var easing:(CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat/*variable for holding the easing method*/
+    var easing:EasingEquation/*variable for holding the easing method*/
     //isActive used by the AnimatiableView to assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
     init(_ animatable:IAnimatable, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping  EasingEquation = Linear.ease){
         self.duration = duration
@@ -32,9 +32,8 @@ class Animator:BaseAnimation{
      */
     override func onFrame(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        callBack(val)//call the property method
+        callBack(val)
         if(currentFrameCount == framesToEnd){
-            //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             stop()
             super.onEvent(AnimEvent(AnimEvent.completed,self))
         }
