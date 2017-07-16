@@ -2,6 +2,10 @@ import Foundation
 
 class Spring:BaseAnimation {
     
+    //continue here:
+        //consider using two springs for x and y, or making a spring that sets a point
+        //also 
+    
     var spring:CGFloat = 0.02
     var friction:CGFloat = 0.95
     var targetX:CGFloat = 0
