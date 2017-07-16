@@ -1,5 +1,4 @@
 import Cocoa
-
 /**
  * TODO: ⚠️️ Implement the immidiate when it's needed.
  * NOTE: origin could in the future be a protocol IInteractiveElement for instance or IInteractive or IInteractiveView
