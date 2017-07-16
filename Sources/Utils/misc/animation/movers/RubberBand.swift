@@ -134,7 +134,7 @@ private class CustomFriction{
 /*Deprecations*/
 extension RubberBand{
     //legacy
-    convenience init(_ animatable:IAnimatable,_ callBack:@escaping CallBack, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    convenience init(_ animatable:IAnimatable,_ callBack:@escaping FrameTick, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         let config:Config = (friction,springEasing,spring,limit,0.15)
         self.init(callBack, maskFrame,contentFrame, config)
         /*self.velocity = velocity
