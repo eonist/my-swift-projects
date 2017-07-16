@@ -14,7 +14,7 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
      * Fires on every screen refresh at 60 FPS, or device speed
      */
     func onFrame(){
-        self.performSelector(onMainThread: #selector(Animation.onFrameOnMainThread), with: nil, waitUntilDone: false)//upgreaded to swift 3
+        self.performSelector(onMainThread: #selector(Animation.onFrameOnMainThread), with:nil, waitUntilDone:false)//upgreaded to swift 3
     }
     /**
      *
