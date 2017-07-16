@@ -87,7 +87,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * Handles actions and drawing states for the mouseUpOutside event.
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
-    func mouseUpOutside(_ event: MouseEvent){
+    func mouseUpOutside(_ event:MouseEvent){
         if let parent = self.superview as? IInteractiveView{
             parent.mouseUpOutside(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
@@ -105,7 +105,7 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
      * NOTE: there is also mouseDragged, you could forward it to a generic method, and do the same with mouseMoved. so that there wouldnt be duplicate code. since they have the same functionality. you could then use: if(NSEvent.pressedMouseButtons() == 1 << 0){"left is pressed"} to detect if mouse was dragged. or not. Maybe keeping these methods seperatly improves readbility, optimization etc
      * NOTE: mouseMoved doesnt work if the leftmouse button is pressed, then mouseDragged is used instead
      */
-    override func mouseMoved(with event: NSEvent) {
+    override func mouseMoved(with event:NSEvent) {
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
@@ -145,7 +145,6 @@ class InteractiveView2:FlippedView,IInteractiveView{//TODO: rename this with app
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(with event: NSEvent) {
-        Swift.print("mouseDown")
         mouseDown(MouseEvent(event,self))
     }
     override func mouseUp(with event:NSEvent) {
