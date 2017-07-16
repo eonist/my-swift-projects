@@ -24,7 +24,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
     var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
     var hasStopped:Bool = true/*indicates that the motion has stopped*/
     
-    init(_ callBack:@escaping CallBack,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
+    init(_ callBack:@escaping FrameTick,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
