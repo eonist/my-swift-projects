@@ -4,8 +4,8 @@ import Cocoa
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
 class BaseAnimation:EventSender {
-    var animatable:IAnimatable/*Reference to where the displayLink resides*/
-    init(_ animatable:IAnimatable){
+    var animatable:Animatable/*Reference to where the displayLink resides*/
+    init(_ animatable:Animatable){
         self.animatable = animatable
     }
     func onFrame(){

@@ -6,7 +6,7 @@ import Cocoa
  * TODO: ⚠️️ You can probably use NSObject instead of NSView. As NSObject has the performSelector method
  * TODO: ⚠️️ Package these classes as its own lib. Kinetic. Bump. mc2. Other names? 🚫 👉 I think Animation is an appropriate name 👈
  */
-class Animation:NSView,IAnimatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
+class Animation:NSView,Animatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()//TODO: rename to .shared
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
     var animators:[BaseAnimation] = []
