@@ -43,7 +43,7 @@ extension NSView {
     var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
     /**
      * Returns localPosition in a view (converts a global position to a local position)
-     * TODO: hopefully this method also works if the view is not 0,0 in the window
+     * TODO: ⚠️️ hopefully this method also works if the view is not 0,0 in the window
      * Returns the local mouse position in the views coordinate system 0,0
      */
     func localPos()->CGPoint{

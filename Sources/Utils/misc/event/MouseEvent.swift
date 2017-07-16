@@ -21,6 +21,9 @@ class MouseEvent:Event{
  * Add convenince variables and methods here:
  */
 extension MouseEvent{
+    /**
+     * IMPORTANT: ⚠️️ This is the position unFlipped coordinatespace (aka bottom left in macOs)
+     */
     var loc:CGPoint{return event!.locationInWindow}
     var shiftKey:Bool {return self.event!.shiftKey}/*Convenience*/
     var commandKey:Bool {return self.event!.commandKey}/*Convenience*/
