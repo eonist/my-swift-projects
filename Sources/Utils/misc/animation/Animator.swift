@@ -6,8 +6,8 @@ import Cocoa
  * TODO: ⚠️️ Seek,reverse,repeate,autoRepeat
  * TODO: ⚠️️ Implement a way so that the animator can be reused so that you can target it and disable it
  */
-typealias FrameTick = (CGFloat)->Void
-typealias EasingEquation = (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat
+typealias FrameTick = (CGFloat)->Void/*call back signature */
+typealias EasingEquation = (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat/*Easing equation signature*/
 class Animator:BaseAnimation{
     let fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
     var duration:CGFloat/*In seconds*/

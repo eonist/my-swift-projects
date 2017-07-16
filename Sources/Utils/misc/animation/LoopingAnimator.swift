@@ -8,7 +8,7 @@ import Foundation
 class LoopingAnimator:Animator{
     var repeatCount:Int/*<--zero means infinite, not at the moment it seems*/
     var curRepeatCount:Int = 0
-    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping (CGFloat)->Void, _ easing:@escaping (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat = Linear.ease){
+    init(_ animatable:IAnimatable, _ repeatCount:Int = 0,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
         self.repeatCount = repeatCount
         super.init(animatable, duration, from, to, callBack, easing)
     }
