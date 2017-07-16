@@ -1,11 +1,11 @@
 import Cocoa
 /**
- * t: time (current frame) this can also be actual time
- * b: begin (the value it is at the begining)
- * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
- * d: duration (total frames in anim) this can also be actual time
- * TODO://Elastic, Circular, Back, bounce, Quibic +++
- * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing work
+ * PARAM: t: time (current frame) this can also be actual time
+ * PARAM: b: begin (the value it is at the begining)
+ * PARAM: c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
+ * PARAM: d: duration (total frames in anim) this can also be actual time
+ * TODO: ⚠️️ Complete the: Elastic, Circular, Back, bounce, Quibic +++
+ * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing works
  */
 class Easing{
     static var back:Back.Type {return Back.self}

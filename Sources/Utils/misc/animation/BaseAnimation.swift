@@ -24,6 +24,6 @@ class BaseAnimation:EventSender {
     func stop(){
         animatable.animators.removeAt(animatable.animators.indexOf(self))
         if(animatable.animators.count == 0 && CVDisplayLinkIsRunning(animatable.displayLink)){CVDisplayLinkStop(animatable.displayLink)}/*stops the frame ticker if there is no active running animators*/
-        super.onEvent(AnimEvent(AnimEvent.stopped,self))
+        super.onEvent(AnimEvent(AnimEvent.stopped,self))/*Notify listners the animation has stopped*/
     }
 }

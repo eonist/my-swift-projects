@@ -17,13 +17,12 @@ class LoopingAnimator:Animator{
      */
     override func onFrame(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        callBack(val)//call the callBack method
+        callBack(val)/*call the FrameTick method*/
         if(currentFrameCount >= framesToEnd){
-            //Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
-            self.currentFrameCount = 0//<--reset
+            self.currentFrameCount = 0/*reset*/
             if(curRepeatCount >= repeatCount){/*The loop ended*/
-                curRepeatCount = 0//<--reset
-                stop()//<--stop animation
+                curRepeatCount = 0/*reset*/
+                stop()/*stop animation*/
                 super.onEvent(AnimEvent(AnimEvent.completed,self))
             }
             curRepeatCount += 1
