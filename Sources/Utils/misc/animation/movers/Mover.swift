@@ -11,6 +11,12 @@ class Mover:BaseAnimation {
         super.init(animatable)
     }
     func updatePosition(_ direct:Bool = false) {
+        let dx:CGFloat = targetX - (ellipse.graphic.point.x)
+        let ax:CGFloat = dx * spring
+        vx += ax
+        vx *= friction
+        ellipse.graphic.point.x += vx
+        
         value += velocity
     }
     override func onFrame(){
