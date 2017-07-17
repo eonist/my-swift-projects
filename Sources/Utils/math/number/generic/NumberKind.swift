@@ -29,5 +29,5 @@ func multiply<T:NumberKind>(x: T, y: T) -> T {
     return x * y
 }
 func * <T:NumberKind>(left: T, right: T) -> T {
-    return left * (right)
+    return multiply(x:left,y:right)
 }
