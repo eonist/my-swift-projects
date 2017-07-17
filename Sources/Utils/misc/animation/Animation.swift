@@ -30,7 +30,7 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
         var displayLink:CVDisplayLink?
         var status = kCVReturnSuccess
         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
-        //Swift.print("status: " + "\(status)")
+
         /* Set up DisplayLink. */
         func displayLinkOutputCallback(displayLink:CVDisplayLink,_ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>,_ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>,_ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn{
             unsafeBitCast(displayLinkContext, to:Animation.self).onFrame()
@@ -46,6 +46,5 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
         }else{
             fatalError("unable to setup displayLink")
         }
-        
     }
 }
