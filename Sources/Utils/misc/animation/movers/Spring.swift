@@ -11,7 +11,7 @@ class Spring<T:NumberKind>:BaseAnimation {
     var value:T/*The value that should be applied to the target*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var stopAssert:T
+    var stopVelocity:T
     
     init(callBack:@escaping FrameTick,  _ config:(spring:T, friction:T) , _ initVals:(value:T,targetValue:T,velocity:T,stopVelocity:T)) {
         self.value = initVals.value/*Set the init value*/
@@ -19,7 +19,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         self.velocity = initVals.velocity
         self.callBack = callBack
         self.config = config
-        self.stopVelocity = stopVelocity
+        self.stopVelocity = initVals.stopVelocity
         super.init()
     }
     func updatePosition() {
@@ -28,11 +28,10 @@ class Spring<T:NumberKind>:BaseAnimation {
         velocity = velocity + a
         velocity = velocity * config.friction
         value = value + velocity
-        if stopAssert(velocity) {stop()}
+        if assertStop {stop()}
     }
-    var assertStop:T {
-        let velocity:CGFloat = velocity as! CGFloat
-        return velocity.isNear(0, 10e-5)
+    var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5)
     }
     override func onFrame(){
         updatePosition()
