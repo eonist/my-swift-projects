@@ -1,15 +1,15 @@
 import Foundation
 
-class Spring:<T>,BaseAnimation {
+class Spring<T:NumberKind>:BaseAnimation {
     /*Config values*/
     var config:(spring:CGFloat,friction:CGFloat)
     /*Interim values*/
-    var targetValue:CGFloat = 0/*Where it should go*/
+    var targetValue:T /*Where it should go*/
     var velocity:CGFloat = 0/*Velocity*/
     var value:T/*The value that should be applied to the target*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    init(_ animatable:Animatable, _ callBack:@escaping FrameTick,_ value:CGFloat = 0, config:(spring:CGFloat, friction:CGFloat) = (spring:0.02,friction:0.90)) {
+    init(_ animatable:Animatable, _ callBack:@escaping FrameTick, config:(spring:CGFloat, friction:CGFloat) = (spring:0.02,friction:0.90), _ value:T) {
         self.value = value/*Set the init value*/
         self.callBack = callBack
         self.config = config
