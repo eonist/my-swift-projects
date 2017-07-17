@@ -2,6 +2,7 @@ import Foundation
 /**
  * Experimental
  * TODO: ⚠️️ Add more operators etc
+ * NOTE: These methods only seem to work when a method with generic properties is involved
  */
 protocol NumberKind {
     static func +(lhs: Self, rhs: Self) -> Self
@@ -28,14 +29,3 @@ func divide<T:NumberKind>(x: T, y: T) -> T {
 func multiply<T:NumberKind>(x: T, y: T) -> T {
     return x * y
 }
-
-let a:CGFloat = 5.0
-let b:Int = 10
-
-let c = a * b
-
-/*func * <T:NumberKind>(left: T, right: T) -> T {
- return multiply(x:left,y:right)
- }
- */
-
