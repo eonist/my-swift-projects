@@ -164,7 +164,7 @@ class ArrayParser{
      * let ranArr = ArrayParser.uniqueRandom(0, 4)
      * print(ranArr)//[3, 1, 0, 4, 2]
      * NOTE: There is also IntParser.random
-     * TODO: ⚠️️ Use functional programming
+     * TODO: ⚠️️ Use functional programming or write an example that utilizes functional programming
      */
     static func uniqueRandom(_ min:Int, _ max:Int) -> [Int] {
         var numbers:[Int] = []
