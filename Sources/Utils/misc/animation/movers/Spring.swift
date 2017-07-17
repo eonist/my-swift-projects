@@ -17,7 +17,7 @@ class Spring:BaseAnimation {
         self.friction = friction
         super.init(animatable)
     }
-    func updatePosition(_ direct:Bool = false) {
+    func updatePosition() {
         let dx:CGFloat = targetValue - value
         let ax:CGFloat = dx * spring
         velocity += ax
@@ -25,8 +25,8 @@ class Spring:BaseAnimation {
         value += velocity
     }
     func checkForStop() {
-        //Swift.print( "\(value.toFixed(3))" + " checkForStop " + "\((lastValue).toFixed(3))")
-        if value.toFixed(3) == targetValue.toFixed(3) {//this could be easier solved with a epsilon value assert
+        if value.toFixed(3) == targetValue.toFixed(3) {//this could also be solved with a epsilon value assert
+            Swift.print("checkForStop.stop()"")
             stop()
         }
     }
