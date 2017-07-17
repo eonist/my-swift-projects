@@ -23,9 +23,10 @@ class Spring:BaseAnimation {
         velocity += ax
         velocity *= friction
         value += velocity
+        checkForStop()
     }
     func checkForStop() {
-        if value.toFixed(3) == targetValue.toFixed(3) {//this could also be solved with a epsilon value assert
+        if velocity.isNear(0, <#T##epsilon: CGFloat##CGFloat#>) {//this could also be solved with a epsilon value assert
             Swift.print("checkForStop.stop()")
             stop()
         }
