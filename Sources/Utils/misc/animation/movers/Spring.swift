@@ -5,7 +5,7 @@ class Spring<T:NumberKind>:BaseAnimation {
     /*Config values*/
     var config:(spring:T,friction:T)
     /*Interim values*/
-    var targetValue:T /*Where it should go*/
+    var targetValue:T /*Where value should go to*/
     var velocity:T/*Velocity*/
     var value:T/*The value that should be applied to the target*/
     /*Event related*/
@@ -38,5 +38,5 @@ class Spring<T:NumberKind>:BaseAnimation {
 }
 
 //Continue here:
-    //Figure out FrameTick in gerics
+    //Figure out FrameTick in gerics ✅
     //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc
