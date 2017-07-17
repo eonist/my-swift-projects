@@ -1,5 +1,5 @@
 import Foundation
-var π = CGFloat(Double.pi/2)/*Global variable*/
+var π = CGFloat(Double.pi)/*Global variable*/
 var π2 = CGFloat(Double.pi/2)/*Global variable,pi/2*/
 var π4 = CGFloat(Double.pi/4)/*Global variable,pi/4*/
 var ㎭ = π/180/*Global variable*/
