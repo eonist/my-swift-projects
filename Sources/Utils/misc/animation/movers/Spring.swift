@@ -31,7 +31,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         if assertStop {stop()}
     }
     var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5)
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     override func onFrame(){
         updatePosition()

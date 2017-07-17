@@ -9,10 +9,12 @@ protocol NumberKind {
     static func -(lhs: Self, rhs: Self) -> Self
     static func /(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Self, rhs: Self) -> Self
+    func isNear(_ value:Self, _ epsilon:CGFloat)->Bool
 }
-extension Int:NumberKind {}
+
 extension CGFloat:NumberKind {}
 extension CGPoint:NumberKind {}
+//extension Int:NumberKind {}
 //extension Float: NumberKind {}
 //extension Double: NumberKind {}
 //extension UInt: NumberKind {}
