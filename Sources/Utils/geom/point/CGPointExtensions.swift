@@ -30,6 +30,7 @@ extension CGPoint{
     func divide(_ p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
     /*Asserters*/
     func equals(_ p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
+    func isNear(_ p:CGPoint,_ epsilon:CGFloat) -> Bool {return PointAsserter.nearEquals(self, p, epsilon)}
     
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
