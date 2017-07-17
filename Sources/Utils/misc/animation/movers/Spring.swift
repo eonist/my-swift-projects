@@ -42,4 +42,8 @@ extension Spring{
 }
 //Continue here:
     //Figure out FrameTick in gerics ✅
-    //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc
+    //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc ✅
+    //try doing Spring<CGPoint> 👈
+
+
+
