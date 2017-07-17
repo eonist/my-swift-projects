@@ -1,6 +1,6 @@
 import Foundation
 
-class Spring:BaseAnimation {
+class Spring:<T>,BaseAnimation {
     /*Config values*/
     var config:(spring:CGFloat,friction:CGFloat)
     /*Interim values*/
