@@ -8,10 +8,9 @@ class AdvanceArrayParser {
      * EXAMPLE: childAt([["red","green"],[["four","five"],[1,2,3]]],[1,0,1])//five?
      */
     static func childAt(_ children:[AnyObject],_ index:[Int])->AnyObject?{
-        //Swift.print("children: " + "\(children)")
         if(index.count == 0 && children.count >= 1){return children as AnyObject?}/*returns the root*/
         else if(index.count == 1 && children.count >= index[0]){return children[index[0]]}/*the index is at its end point, cut of the branch*/
-        else if(index.count > 1 && children.count > 0) {return AdvanceArrayParser.childAt(children[index[0]] as! Array<AnyObject>,index.slice2(1,index.count))}/*here is where the recursive magic happens*/
+        else if(index.count > 1 && children.count > 0) {return AdvanceArrayParser.childAt(children[index[0]] as! [AnyObject],index.slice2(1,index.count))}/*here is where the recursive magic happens*/
         return nil
     }
     /**
