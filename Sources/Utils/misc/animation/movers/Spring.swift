@@ -27,11 +27,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         velocity = velocity + ax
         velocity = velocity * config.friction
         value = value + velocity
-        checkForStop()
-    }
-    func checkForStop() {
-        //Swift.print("velocity: " + "\(velocity)")
-        
+        if stopAssert(velocity) {stop()}
     }
     override func onFrame(){
         updatePosition()
