@@ -14,8 +14,10 @@ class Spring<T:NumberKind>:BaseAnimation {
     
     var stopAssert:(T)->Bool
     
-    init(_ animatable:Animatable, _ callBack:@escaping FrameTick, config:(spring:T, friction:T)/* = (spring:0.02,friction:0.90)*/, initValues:(value:T,targetValue:T)) {
-        self.value = value/*Set the init value*/
+    init(_ animatable:Animatable, _ callBack:@escaping FrameTick, config:(spring:T, friction:T)/* = (spring:0.02,friction:0.90)*/, initVals:(value:T,targetValue:T,velocity:T)) {
+        self.value = initVals.value/*Set the init value*/
+        self.targetValue = initVals.targetValue
+        self.velocity = initVals.velocity
         self.callBack = callBack
         self.config = config
         self.stopAssert = Spring.defaultStopAssert
