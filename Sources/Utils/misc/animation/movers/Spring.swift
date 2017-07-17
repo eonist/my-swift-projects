@@ -35,7 +35,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         callBack(value)
     }
 }
-extension Spring where T:CGFloat{
+extension Spring {
     static func defaultStopAssert(_ velocity:T)->Bool {
         let velocity:CGFloat = velocity as! CGFloat
         return velocity.isNear(0, 10e-5)
