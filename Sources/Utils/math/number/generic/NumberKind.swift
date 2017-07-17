@@ -9,6 +9,7 @@ protocol NumberKind {
     static func -(lhs: Self, rhs: Self) -> Self
     static func /(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Self, rhs: Self) -> Self
+    
 }
 extension Int:NumberKind {}
 extension CGFloat:NumberKind {}
