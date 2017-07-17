@@ -6,7 +6,7 @@ class Spring:BaseAnimation {
     /*Interim values*/
     var targetValue:CGFloat = 0/*Where it should go*/
     var velocity:CGFloat = 0/*Velocity*/
-    var value:CGFloat/*The value that should be applied to the target*/
+    var value:T/*The value that should be applied to the target*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     init(_ animatable:Animatable, _ callBack:@escaping FrameTick,_ value:CGFloat = 0, config:(spring:CGFloat, friction:CGFloat) = (spring:0.02,friction:0.90)) {
@@ -16,11 +16,11 @@ class Spring:BaseAnimation {
         super.init(animatable)
     }
     func updatePosition() {
-        let dx:CGFloat = targetValue - value
-        let ax:CGFloat = dx * config.spring
-        velocity += ax
-        velocity *= config.friction
-        value += velocity
+        let dx = targetValue - value
+        let ax = dx * config.spring
+        velocity = velocity + ax
+        velocity = velocity * config.friction
+        value = value + velocity
         checkForStop()
     }
     func checkForStop() {
