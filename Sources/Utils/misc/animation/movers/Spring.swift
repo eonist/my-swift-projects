@@ -10,7 +10,8 @@ class Spring<T:NumberKind>:BaseAnimation {
     var value:T/*The value that should be applied to the target*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var stopAssert:(T)->Bool = {velocity in
+    var stopAssert:(T)->Bool
+    func defaultStopAssert(_ velocity:CGFloat) -> Bool{
         if velocity.isNear(0, 10e-5) {
             //Swift.print("checkForStop.stop()")
             stop()
