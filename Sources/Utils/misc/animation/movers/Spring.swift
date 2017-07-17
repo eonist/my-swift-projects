@@ -24,6 +24,12 @@ class Spring:BaseAnimation {
         velocity *= friction
         value += velocity
     }
+    func checkForStop() {
+        //Swift.print( "\(value.toFixed(3))" + " checkForStop " + "\((lastValue).toFixed(3))")
+        if value.toFixed(3) == targetValue.toFixed(3) {//this could be easier solved with a epsilon value assert
+            stop()
+        }
+    }
     override func onFrame(){
         updatePosition()
         callBack(value)
