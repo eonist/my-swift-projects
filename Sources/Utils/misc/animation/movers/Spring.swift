@@ -18,7 +18,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         self.value = value/*Set the init value*/
         self.callBack = callBack
         self.config = config
-        stopAssert = defaultStopAssert
+        stopAssert = Spring.defaultStopAssert
         super.init(animatable)
     }
     func updatePosition() {
@@ -38,7 +38,12 @@ class Spring<T:NumberKind>:BaseAnimation {
         callBack(value)
     }
 }
-extension
+extension Spring{
+    static func defaultStopAssert(_ velocity:T)->Bool {
+        let velocity:CGFloat = velocity as! CGFloat
+        return velocity.isNear(0, 10e-5)
+    }
+}
 //Continue here:
     //Figure out FrameTick in gerics ✅
     //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc
