@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: override stop and set the stop there instead
+ */
 class Friction:Mover{
     var frictionStrength:CGFloat/*This value is the strength of the friction*/
     var lastValue:CGFloat = 0/*this value is a temporary value that is used when checking if the motion is about to stop*/
