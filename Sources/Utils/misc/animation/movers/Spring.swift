@@ -1,6 +1,7 @@
 import Foundation
 
 class Spring<T:NumberKind>:BaseAnimation {
+    typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     /*Config values*/
     var config:(spring:T,friction:T)
     /*Interim values*/
