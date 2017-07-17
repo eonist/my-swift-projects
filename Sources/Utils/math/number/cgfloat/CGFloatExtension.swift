@@ -54,10 +54,12 @@ public func + (left: CGFloat, right: Double) -> CGFloat {
 public func + (left: Double, right: CGFloat) -> CGFloat {
     return CGFloat(left) + right
 }
-//public func * (left: Int, right: CGFloat) -> CGFloat {
-//    return CGFloat(left) * right
-//}
-
+public func * (left: Int, right: CGFloat) -> CGFloat {
+    return CGFloat(left) * right
+}
+public func * (left: NumberKind, right: NumberKind) -> NumberKind {
+    return left * (right)
+}
 infix operator %%/*<--infix operator is required for custom infix char combos*/
 /**
  * Brings back simple modulo syntax (was removed in swift 3)
