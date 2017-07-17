@@ -23,9 +23,9 @@ class Spring<T:NumberKind>:BaseAnimation {
         super.init(animatable)
     }
     func updatePosition() {
-        let dx = (targetValue - value)
-        let ax = dx * config.spring
-        velocity = velocity + ax
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
         velocity = velocity * config.friction
         value = value + velocity
         if stopAssert(velocity) {stop()}
