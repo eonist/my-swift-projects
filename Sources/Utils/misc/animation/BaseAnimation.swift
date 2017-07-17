@@ -5,7 +5,7 @@ import Cocoa
  */
 class BaseAnimation:EventSender {
     var animatable:Animatable/*Reference to where the displayLink resides*/
-    init(_ animatable:Animatable){
+    init(_ animatable:Animatable = Animation.sharedInstance){
         self.animatable = animatable
     }
     func onFrame(){
