@@ -9,9 +9,9 @@ class Spring:BaseAnimation {
     
     var spring:CGFloat
     var friction:CGFloat
-    var targetX:CGFloat = 0
+    
+    var targetX:CGFloat = 0/*where it should go*/
     var velocityX:CGFloat = 0/*velocity*/
- 
     var value:CGFloat/*the value that should be applied to the target*/
 
     var callBack:FrameTick/*the closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
