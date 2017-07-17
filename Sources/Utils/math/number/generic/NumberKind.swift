@@ -12,7 +12,7 @@ protocol NumberKind {
 }
 extension Int:NumberKind {}
 extension CGFloat:NumberKind {}
-//extension CGPoint:NumberKind {}
+extension CGPoint:NumberKind {}
 //extension Float: NumberKind {}
 //extension Double: NumberKind {}
 //extension UInt: NumberKind {}
