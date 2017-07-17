@@ -20,7 +20,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         self.callBack = callBack
         self.config = config
         self.stopAssert = stopAssert
-        super.init(Animation.sharedInstance,)
+        super.init()
     }
     func updatePosition() {
         let d = (targetValue - value)
