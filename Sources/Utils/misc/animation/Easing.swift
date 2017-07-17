@@ -21,15 +21,14 @@ class Easing{
     static var sine:Sine.Type {return Sine.self}
 }
 
-
 /**
-* NOTE: If you decrease the decimal variable you increase the friction effect
-*/
+ * NOTE: If you decrease the decimal variable you increase the friction effect
+ */
+
 /*
 static func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
 let distToGoal:CGFloat = NumberParser.relativeDifference(value, to)
 let val:CGFloat = 0.2 * distToGoal
 return val
 }
-
 */
