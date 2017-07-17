@@ -1,17 +1,11 @@
 import Foundation
 
 class Spring:BaseAnimation {
-    
-    //continue here: 🏀
-        //consider using two springs for x and y, or making a spring that sets a point
-        //also make a stop metod that stops the anim if the velocity goes bellow a number, also sets final point to target point etc
-        //you can even make multiple spring classes or use generics to support point,size,cgfloat etc, or some other solution
-    
     var spring:CGFloat
     var friction:CGFloat
     
-    var targetX:CGFloat = 0/*where it should go*/
-    var velocityX:CGFloat = 0/*velocity*/
+    var targetValue:CGFloat = 0/*where it should go*/
+    var velocity:CGFloat = 0/*velocity*/
     var value:CGFloat/*the value that should be applied to the target*/
 
     var callBack:FrameTick/*the closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
@@ -23,11 +17,11 @@ class Spring:BaseAnimation {
         super.init(animatable)
     }
     func updatePosition(_ direct:Bool = false) {
-        let dx:CGFloat = targetX - value
+        let dx:CGFloat = targetValue - value
         let ax:CGFloat = dx * spring
-        velocityX += ax
-        velocityX *= friction
-        value += velocityX
+        velocity += ax
+        velocity *= friction
+        value += velocity
     }
     override func onFrame(){
         updatePosition()
