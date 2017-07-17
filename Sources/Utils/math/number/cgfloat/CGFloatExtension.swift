@@ -57,8 +57,8 @@ public func + (left: Double, right: CGFloat) -> CGFloat {
 public func * (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) * right
 }
-public func * (left: NumberKind, right: NumberKind) -> NumberKind {
-    return left * (right)
+public func * (left: CGFloat, right: Int) -> CGFloat {
+    return left * CGFloat(right)
 }
 infix operator %%/*<--infix operator is required for custom infix char combos*/
 /**
