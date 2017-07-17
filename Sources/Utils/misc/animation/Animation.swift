@@ -36,11 +36,16 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
             unsafeBitCast(displayLinkContext, to:Animation.self).onFrame()
             return kCVReturnSuccess
         }
-        let outputStatus = CVDisplayLinkSetOutputCallback(displayLink!, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
-        _ = outputStatus
-        let displayID = CGMainDisplayID()
-        let displayIDStatus = CVDisplayLinkSetCurrentCGDisplay(displayLink!, displayID)
-        _ = displayIDStatus
-        return displayLink!
+        if let displayLink = displayLink {
+            let outputStatus = CVDisplayLinkSetOutputCallback(displayLink, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
+            _ = outputStatus
+            let displayID = CGMainDisplayID()
+            let displayIDStatus = CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID)
+            _ = displayIDStatus
+            return displayLink
+        }else{
+            fatalError("unable to setup displayLink")
+        }
+        
     }
 }
