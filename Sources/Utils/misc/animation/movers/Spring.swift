@@ -18,7 +18,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         self.value = value/*Set the init value*/
         self.callBack = callBack
         self.config = config
-        stopAssert = Spring.defaultStopAssert
+        self.stopAssert = Spring.defaultStopAssert
         super.init(animatable)
     }
     func updatePosition() {
