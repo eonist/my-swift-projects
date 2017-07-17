@@ -37,4 +37,4 @@ class Spring<T:NumberKind>:BaseAnimation {
 }
 
 //Continue here:
-    //Figure out FrameTick in gerics
+    //Figure out FrameTick in gerics, and then try to subbClass this Spring class
