@@ -28,6 +28,12 @@ func divide<T:NumberKind>(x: T, y: T) -> T {
 func multiply<T:NumberKind>(x: T, y: T) -> T {
     return x * y
 }
+
+let a:CGFloat = 5.0
+let b:Int = 10
+
+let c = a * b
+
 /*func * <T:NumberKind>(left: T, right: T) -> T {
  return multiply(x:left,y:right)
  }
