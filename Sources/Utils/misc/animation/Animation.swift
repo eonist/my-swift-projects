@@ -9,7 +9,7 @@ import Cocoa
 class Animation:NSView,Animatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()//TODO: rename to .shared
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
-    var animators:[BaseAnimation] = []
+    var animators:[BaseAnimation] = []/*Stores the animators*/
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
      */
@@ -17,10 +17,10 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
         self.performSelector(onMainThread: #selector(Animation.onFrameOnMainThread), with:nil, waitUntilDone:false)//upgreaded to swift 3
     }
     /**
-     *
+     * Tick every animator on every frame tick
      */
     func onFrameOnMainThread(){
-        for animator in animators{animator.onFrame()}
+        animators.forEach{$0.onFrame()}
     }
     /**
      * NOTE: It seems that you can't move this method into a static class method. Either internally in the same file or externally in another file
@@ -30,7 +30,6 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
         var displayLink:CVDisplayLink?
         var status = kCVReturnSuccess
         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
-
         /* Set up DisplayLink. */
         func displayLinkOutputCallback(displayLink:CVDisplayLink,_ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>,_ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>,_ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn{
             unsafeBitCast(displayLinkContext, to:Animation.self).onFrame()
