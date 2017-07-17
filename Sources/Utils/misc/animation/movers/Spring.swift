@@ -11,19 +11,14 @@ class Spring<T:NumberKind>:BaseAnimation {
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
-    func defaultStopAssert(velocity:T) -> Bool{
-        let velocity:CGFloat = velocity as! CGFloat
-        if velocity.isNear(0, 10e-5) {
-            //Swift.print("checkForStop.stop()")
-            stop()
-        }
-    }
-    var stopAssert:(T)->Bool = defaultStopAssert
+    
+    var stopAssert:(T)->Bool
     
     init(_ animatable:Animatable, _ callBack:@escaping FrameTick, config:(spring:T, friction:T)/* = (spring:0.02,friction:0.90)*/, _ value:T) {
         self.value = value/*Set the init value*/
         self.callBack = callBack
         self.config = config
+        stopAssert = defaultStopAssert
         super.init(animatable)
     }
     func updatePosition() {
@@ -43,7 +38,7 @@ class Spring<T:NumberKind>:BaseAnimation {
         callBack(value)
     }
 }
-
+extension
 //Continue here:
     //Figure out FrameTick in gerics ✅
     //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc
