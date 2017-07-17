@@ -26,8 +26,9 @@ class Spring:BaseAnimation {
         checkForStop()
     }
     func checkForStop() {
-        if velocity.isNear(0, <#T##epsilon: CGFloat##CGFloat#>) {//this could also be solved with a epsilon value assert
-            Swift.print("checkForStop.stop()")
+        //Swift.print("velocity: " + "\(velocity)")
+        if velocity.isNear(0, 10e-5) {
+            //Swift.print("checkForStop.stop()")
             stop()
         }
     }

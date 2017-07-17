@@ -22,6 +22,7 @@ class Friction:Mover{
     }
     /**
      * Basically stops listening for the onFrame event
+     * TODO: its easier andbetter to assert stillness by doing velocity.isNear(0,epsilon_value)
      */
     func checkForStop() {
         //Swift.print( "\(value.toFixed(3))" + " checkForStop " + "\((lastValue).toFixed(3))")
