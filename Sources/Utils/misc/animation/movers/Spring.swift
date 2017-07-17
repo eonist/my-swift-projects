@@ -35,18 +35,18 @@ class Spring<T:NumberKind>:BaseAnimation {
         callBack(value)
     }
 }
-extension Spring {
-    static func defaultStopAssert<T>(_ velocity:T)->Bool where Spring == CGFloat{
+extension Spring where T:CGFloat{
+    func defaultStopAssert<>(_ velocity:T)->Bool {
         let velocity:CGFloat = velocity as! CGFloat
         return velocity.isNear(0, 10e-5)
     }
 }
-//extension Spring where T:CGPoint{
-    /*static func defaultStopAssert(_ velocity:T)->Bool {
-     let velocity:CGPoint = velocity as! CGPoint
-     return velocity.x.isNear(0, 10e-5) && velocity.y.isNear(0, 10e-5)
-     }*/
-//}
+extension Spring where T:CGPoint{
+    func defaultStopAssert(_ velocity:T)->Bool {
+        let velocity:CGPoint = velocity as! CGPoint
+        return velocity.x.isNear(0, 10e-5) && velocity.y.isNear(0, 10e-5)
+    }
+}
 //Continue here:
     //Figure out FrameTick in gerics ✅
     //and add epsilon value to config and zero variable to test against, this differs from CGFloat and CGPoint etc ✅
