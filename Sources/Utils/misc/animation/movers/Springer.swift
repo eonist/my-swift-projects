@@ -2,7 +2,7 @@ import Foundation
 
 class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     /*Signatures*/
-    typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
+    //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
@@ -24,9 +24,6 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
         velocity = velocity * config.friction
         value = value + velocity
         if assertStop {stop()}
-    }
-    var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     override func onFrame(){
         updatePosition()
