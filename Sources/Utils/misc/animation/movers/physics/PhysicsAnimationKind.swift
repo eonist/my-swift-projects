@@ -31,24 +31,22 @@ extension PhysicsAnimationKind{
 /**
  * Convenient when initializing
  */
-extension PhysicsAnimationKind{
-    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
-        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat> {
+    static var initConfig:(CGFloat,CGFloat) {
+        return (0.02,0.90)
     }
     static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
 }
-extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat> {
-    
-    static var initConfig:(CGFloat,CGFloat) {
-        return (0.02,0.90)
-    }
-}
+/**
+ * Convenient when initializing
+ */
 extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint> {
-    
     static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
-
+    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
+        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+    }
 }
