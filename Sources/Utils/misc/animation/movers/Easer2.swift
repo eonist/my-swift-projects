@@ -3,7 +3,7 @@ import Foundation
 class Easer2:BaseAnimator {
     typealias InitValues = (value:CGFloat,targetValue:CGFloat,velocity:CGFloat,stopVelocity:CGFloat)
     /*Config values*/
-    var easing:CGFloat
+    var easing:CGFloat/*Amount of easing*/
     /*Interim values*/
     var targetValue:CGFloat /*Where value should go to*/
     var velocity:CGFloat/*Velocity*/
@@ -30,7 +30,7 @@ class Easer2:BaseAnimator {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     override func onFrame(){
-        updatePosition()
+        super.onFrame()
         callBack(value)
     }
 }
