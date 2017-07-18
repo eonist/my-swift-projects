@@ -1,5 +1,5 @@
 import Foundation
 
-class BaseAnimation2 {
+class BaseAnimation2:BaseAnimatable {
 
 }
