@@ -34,7 +34,7 @@ extension Springer{
     var initPointConfig:(CGPoint,CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
-    var initConfig:(CGPoint,CGPoint) {
+    var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
 }
