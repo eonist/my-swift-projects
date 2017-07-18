@@ -1,5 +1,9 @@
 import Foundation
-
+/**
+ * NOTE: This class was attempted with regular OOP but it was not scalable, every time you subclassed the BaseClass you would have setup all the var's again
+ * NOTE: The FrameTick and the InitValues typaliases are the same in Springer and Easer so we just reuse them
+ * TODO: ⚠️️ The math can be refactored if you add += *= to ArithmeticKind
+ */
 class Easer<T:ArithmeticKind>:BaseAnimation {
     /*Config values*/
     var easing:T
