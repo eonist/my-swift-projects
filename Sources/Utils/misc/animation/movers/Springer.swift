@@ -6,7 +6,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
-    var initValues:InitValues
+    var initValues:InitValues//default: (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     var config:Config//default: (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
@@ -30,14 +30,11 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
         callBack(value)
     }
 }
-
-extension PhysicsAnimationKind where Self:CGFloat{
-    func defaultInitValues() -> (CGFloat,CGFloat,CGFloat,CGFloat){
-        return (0,0,0,0)
+extension Springer{
+    var initPointConfig:(CGPoint,CGPoint) {
+        return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
-}
-extension PhysicsAnimationKind where Self:CGPoint{
-    func defaultInitValues() -> (CGPoint,CGPoint,CGPoint,CGPoint){
-        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+    var initConfig:(CGPoint,CGPoint) {
+        return (0.02,0.90)
     }
 }
