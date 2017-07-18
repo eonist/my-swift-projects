@@ -12,7 +12,7 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
     /*CallBack related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
-    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
+    init(_ callBack:@escaping (Any)->Void,  _ initValues:InitValues, _ config:Config) {
         self.initValues = initValues
         self.callBack = callBack
         self.config = config
