@@ -1,9 +1,7 @@
 import Foundation
 
 class Springer<T>:BaseAnimation,PhysicsAnimationKind {
-    func updatePosition(_ val: T) {
-        <#code#>
-    }
+   
 
     //typealias argType = T
     /*Signatures*/
@@ -23,7 +21,7 @@ class Springer<T>:BaseAnimation,PhysicsAnimationKind {
         super.init()
     }
     override func onFrame(){
-        self.updatePosition(value)
+        //self.updatePosition(value)
         self.callBack(value)
     }
 }
