@@ -6,7 +6,7 @@ import Foundation
  */
 class Easer<T>:BaseAnimation,PhysicsAnimationKind {
     typealias argType = T
-    var easing:T//CGPoint(0.2,0.2)
+    var easing:T
     var initValues:InitValues
     var callBack:FrameTickSignature
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:argType) {
@@ -32,4 +32,17 @@ class NumberEaser:Easer<CGFloat> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
+    static var defaultEasing:CGFloat = (0.2)
+    static var defaultEasing:CGPoint = CGPoint(0.2)
+}
+class PointEaser:Easer<CGPoint> {
+    override func updatePosition() {
+        velocity = (targetValue - value) * easing
+        value = value + velocity
+        if assertStop {stop()}
+    }
+    var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+    }
+    static var defaultEasing:CGPoint = CGPoint(0.2,0.2)
 }
