@@ -5,7 +5,7 @@ import Foundation
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
  */
 typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose*/
-class EventSender:IEventSender {
+class EventSender:EventSendable {
     var event:EventCallBack = {return {(event:Event) -> Void in}}()/*this holds any method assigned to it that has its type*/
     /*private static var eventCall:EventCallBack {//TODO:this should probably be private
         return {
