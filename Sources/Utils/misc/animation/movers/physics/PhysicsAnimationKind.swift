@@ -3,7 +3,7 @@ import Foundation
  * TODO: Try to get rid of the :class by making the var's mutable somehow
  */
 protocol PhysicsAnimationKind:class{
-    associatedtype argType:ArithmeticKind
+    associatedtype argType
     typealias FrameTick = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
     //var config:(spring:argType,friction:argType) {get set}
@@ -25,14 +25,14 @@ extension PhysicsAnimationKind{
     var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
     var value:argType {get{return initValues.value}set{initValues.value = newValue}}
     var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
-    var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
-    }
 }
 /**
  * Convenient when initializing
  */
 extension PhysicsAnimationKind where argType == CGFloat{
+    var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+    }
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
