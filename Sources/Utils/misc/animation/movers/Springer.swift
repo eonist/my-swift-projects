@@ -31,12 +31,12 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     }
 }
 
-extension Springer where Springer:CGFloat{
+extension PhysicsAnimationKind where Self:CGFloat{
     func defaultInitValues() -> (CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
 }
-extension Springer where Self:CGPoint{
+extension PhysicsAnimationKind where Self:CGPoint{
     func defaultInitValues() -> (CGPoint,CGPoint,CGPoint,CGPoint){
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
