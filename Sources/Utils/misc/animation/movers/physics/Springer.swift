@@ -8,7 +8,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     /*Config values*/
     var initValues:InitValues//default: (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     var config:Config//default: (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
-    /*Event related*/
+    /*CallBack related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
     init(_ callBack:@escaping FrameTick,  _ initValues:InitValues, _ config:Config) {
