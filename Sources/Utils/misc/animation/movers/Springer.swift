@@ -5,6 +5,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
+    var initValues:InitValues
     var config:Config//default: (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     /*Interim values*/
     var targetValue:T /*Where value should go to*/
@@ -14,13 +15,14 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var stopVelocity:T
     
-    init(_ callBack:@escaping FrameTick,  _ config:Config , _ initVals:InitValues) {
-        self.value = initVals.value/*Set the init value*/
-        self.targetValue = initVals.targetValue
-        self.velocity = initVals.velocity
+    init(_ callBack:@escaping FrameTick,  _ config:Config , _ initValues:InitValues) {
+        self.initValues = initValues
+        self.value = initValues.value/*Set the init value*/
+        self.targetValue = initValues.targetValue
+        self.velocity = initValues.velocity
+        self.stopVelocity = initValues.stopVelocity
         self.callBack = callBack
         self.config = config
-        self.stopVelocity = initVals.stopVelocity
         super.init()
     }
     func updatePosition() {
