@@ -5,12 +5,12 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
     /*Signatures*/
     typealias Config = (spring:argType,friction:argType)
     /*Config values*/
-    var initValues:(value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)//default: (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
-    var config:Config//default: (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
+    var initValues:InitValues
+    var config:Config
     /*CallBack related*/
-    var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
-    init(_ callBack:@escaping (argType)->Void,  _ initValues:InitValues, _ config:Config) {
+    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
         self.initValues = initValues
         self.callBack = callBack
         self.config = config
@@ -41,10 +41,22 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
 
 class PointSpringer:BaseAnimation,PhysicsAnimationKind{
     typealias argType = CGPoint
+    typealias Config = (spring:argType,friction:argType)
+    var initValues:InitValues
+    var config:Config
+    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
-        super.init(callBack,initValues,config)
+        self.initValues = initValues
+        self.callBack = callBack
+        self.config = config
+        super.init()
     }
-    func updatePosition(_ val:CGPoint) {
+    override func onFrame(){
+        self.updatePosition()
+        self.callBack(value)
+    }
+    func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
         velocity = velocity + a
@@ -52,7 +64,7 @@ class PointSpringer:BaseAnimation,PhysicsAnimationKind{
         value = value + velocity
         if assertStop {stop()}
     }
-    override var assertStop:Bool {
+    var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
