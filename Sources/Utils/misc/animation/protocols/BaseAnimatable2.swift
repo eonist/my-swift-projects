@@ -1,7 +1,5 @@
 import Cocoa
 
-protocol BaseAnimatable {
+protocol BaseAnimatable2 {
     var onFrame:()->Void {get}
-    var animators:[BaseAnimation]{get set}
-    var displayLink:CVDisplayLink{get}
 }

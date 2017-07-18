@@ -1,5 +1,5 @@
 import Foundation
 
-class BaseAnimatable {
-
+protocol BaseAnimatable {
+    var onFrameTick:()->Void {get set}
 }
