@@ -35,7 +35,6 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
         return (0,0,0,0)
     }
 }
-
 class PointSpringer:BaseAnimation,PhysicsAnimationKind{
     typealias argType = CGPoint
     typealias Config = (spring:argType,friction:argType)
