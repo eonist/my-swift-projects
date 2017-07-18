@@ -1,6 +1,6 @@
 import Foundation
 
-protocol PhysicsAnimationKind {
+protocol PhysicsAnimationKind:class {
     associatedtype argType
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
     /**/
