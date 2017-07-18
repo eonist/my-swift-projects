@@ -18,6 +18,7 @@ protocol PhysicsAnimationKind:class{
     /*Core Methods*/
     func updatePosition()->Void
     var assertStop:Bool {get}
+    func stop()->Void
 }
 extension PhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}

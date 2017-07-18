@@ -28,9 +28,7 @@ class Springer<T>:BaseAnimation,SpringKind {
 /**
  * Convenient when initializing
  */
-extension Springer{
-    
-}
+
 protocol SpringKind:PhysicsAnimationKind{
     var config:(spring:argType,friction:argType) {get set}
 }
