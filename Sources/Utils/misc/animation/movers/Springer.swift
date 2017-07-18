@@ -2,7 +2,7 @@ import Foundation
 
 class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     /*Signatures*/
-    //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
+    typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
