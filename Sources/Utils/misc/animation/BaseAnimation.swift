@@ -3,7 +3,7 @@ import Cocoa
  * TODO: Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
-class BaseAnimation:EventSender {
+class BaseAnimation:EventSender,BaseAnimatable {
     var animatable:Animatable/*Reference to where the displayLink resides*/
     init(_ animatable:Animatable = Animation.sharedInstance){
         self.animatable = animatable
