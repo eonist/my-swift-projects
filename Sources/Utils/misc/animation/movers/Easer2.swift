@@ -1,6 +1,7 @@
 import Foundation
 
-class Easer2:BaseAnimation {
+class Easer2:BaseAnimator {
+    typealias InitValues = (value:CGFloat,targetValue:CGFloat,velocity:CGFloat,stopVelocity:CGFloat)
     /*Config values*/
     var easing:CGFloat
     /*Interim values*/
@@ -11,7 +12,7 @@ class Easer2:BaseAnimation {
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var stopVelocity:CGFloat
     
-    init(_ callBack:@escaping FrameTick,  _ easing:CGFloat , _ initVals:(value:CGFloat,targetValue:CGFloat,velocity:CGFloat,stopVelocity:CGFloat)) {
+    init(_ callBack:@escaping FrameTick,  _ easing:CGFloat , _ initVals:InitValues) {
         self.value = initVals.value/*Set the init value*/
         self.targetValue = initVals.targetValue
         self.velocity = initVals.velocity
@@ -20,12 +21,12 @@ class Easer2:BaseAnimation {
         self.stopVelocity = initVals.stopVelocity
         super.init()
     }
-    func updatePosition() {
+    override func updatePosition() {
         velocity = (targetValue - value) * easing
         value = value + velocity
-        if assertStop {stop()}
+        super.updatePosition()
     }
-    var assertStop:Bool {
+    override var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     override func onFrame(){
