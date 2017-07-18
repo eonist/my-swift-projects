@@ -9,17 +9,17 @@ class Easer2:BaseAnimator {
     var targetValue:CGFloat /*Where value should go to*/
     var velocity:CGFloat/*Velocity*/
     var value:CGFloat/*The value that should be applied to the target*/
+    var stopVelocity:CGFloat/*The velocity value that is considered standstill*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var stopVelocity:CGFloat
     
-    init(_ callBack:@escaping FrameTick = {_ in},  _ easing:CGFloat = 0 , _ initVals:InitValues = Easer2.defaultInitValues) {
+    init(_ callBack:@escaping FrameTick = {_ in},  _ easing:CGFloat = 0.2 , _ initVals:InitValues = Easer2.defaultInitValues) {
         self.value = initVals.value/*Set the init value*/
         self.targetValue = initVals.targetValue
         self.velocity = initVals.velocity
+        self.stopVelocity = initVals.stopVelocity
         self.callBack = callBack
         self.easing = easing
-        self.stopVelocity = initVals.stopVelocity
         super.init()
     }
     override func updatePosition() {
