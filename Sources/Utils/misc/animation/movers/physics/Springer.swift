@@ -43,7 +43,9 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
 
 class PointSpringer:Springer{
     typealias argType = CGPoint
-    
+    init(_ callBack:@escaping (argType)->Void,  _ initValues:InitValues, _ config:Config) {
+        super.init(callBack,initValues,config)
+    }
     func updatePosition(_ val:CGPoint) {
         let d = (targetValue - value)
         let a = d * config.spring
