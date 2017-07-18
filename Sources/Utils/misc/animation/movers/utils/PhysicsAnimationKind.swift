@@ -13,5 +13,7 @@ protocol PhysicsAnimationKind {
     var stopVelocity:argType {get set}
 }
 extension PhysicsAnimationKind{
-    
+    //Continue here:
+        //Derive vars from the tuples
+        //see if you can derive some of the methods aswell?
 }
