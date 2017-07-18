@@ -40,5 +40,4 @@ extension Springer{
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
-    
 }

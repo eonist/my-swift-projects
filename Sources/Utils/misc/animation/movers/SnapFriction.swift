@@ -1,6 +1,6 @@
 import Foundation
 /**
- * This was used in roulet like animation-test, it works bubt shoud be considered an experiment
+ * This was used in roulet like animation-test, it works but should be considered an experiment, ad probably deleted at some point
  */
 class SnapFriction:Friction {
     var snap:CGFloat
