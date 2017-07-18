@@ -5,7 +5,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation {
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
-    var config:(spring:T,friction:T)
+    var config:Config
     /*Interim values*/
     var targetValue:T /*Where value should go to*/
     var velocity:T/*Velocity*/
