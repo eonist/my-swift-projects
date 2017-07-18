@@ -12,7 +12,7 @@ class BaseAnimation:EventSender,BaseAnimatable {
         fatalError("Must be overwritten in subclass")
     }
     func onFrame(){
-        
+        fatalError("Must be overwritten in subclass")
     }
     /**
      * Start the animation
