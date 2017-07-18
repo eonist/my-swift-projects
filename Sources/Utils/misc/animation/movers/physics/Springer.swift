@@ -1,6 +1,18 @@
 import Foundation
-
-class Springer:BaseAnimation,PhysicsAnimationKind {
+class Springer<T>:BaseAnimation,PhysicsAnimationKind{
+    typealias argType = T
+    typealias Config = (spring:argType,friction:argType)/*Signatures*/
+    var initValues:InitValues
+    var config:Config/*Config values*/
+    var callBack:FrameTickSignature
+    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
+        self.initValues = initValues
+        self.callBack = callBack
+        self.config = config
+        super.init()
+    }
+}
+class NumberSpringer:BaseAnimation,PhysicsAnimationKind {
     typealias argType = CGFloat
     typealias Config = (spring:argType,friction:argType)/*Signatures*/
     var initValues:InitValues
@@ -35,6 +47,7 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
         return (0,0,0,0)
     }
 }
+
 class PointSpringer:BaseAnimation,PhysicsAnimationKind{
     typealias argType = CGPoint
     typealias Config = (spring:argType,friction:argType)
