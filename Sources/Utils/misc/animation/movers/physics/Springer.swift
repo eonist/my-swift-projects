@@ -22,9 +22,26 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
         self.updatePosition()
         self.callBack(value)
     }
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+    }
+    var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+    }
+    static var initConfig:(CGFloat,CGFloat) {
+        return (0.02,0.90)
+    }
+    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
+        return (0,0,0,0)
+    }
 }
 
-class PointSpringer:Springer,PhysicsAnimationKind{
+class PointSpringer:Springer{
     typealias argType = CGPoint
     
     func updatePosition(_ val:CGPoint) {
@@ -34,6 +51,15 @@ class PointSpringer:Springer,PhysicsAnimationKind{
         velocity = velocity * config.friction
         value = value + velocity
         if assertStop {stop()}
+    }
+    override var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+    }
+    static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
+        return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
+    }
+    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
+        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
 }
 /**
