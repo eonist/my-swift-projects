@@ -1,18 +1,17 @@
 import Foundation
 
-class Easer2<T:NumberKind>:BaseAnimation {
-    typealias FrameTick = (T)->Void/*Generic call back signature, use Spring.FrameTick outside this class*/
+class Easer2:BaseAnimation {
     /*Config values*/
-    var easing:T
+    var easing:CGFloat
     /*Interim values*/
-    var targetValue:T /*Where value should go to*/
-    var velocity:T/*Velocity*/
-    var value:T/*The value that should be applied to the target*/
+    var targetValue:CGFloat /*Where value should go to*/
+    var velocity:CGFloat/*Velocity*/
+    var value:CGFloat/*The value that should be applied to the target*/
     /*Event related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var stopVelocity:T
+    var stopVelocity:CGFloat
     
-    init(_ callBack:@escaping FrameTick,  _ easing:T , _ initVals:(value:T,targetValue:T,velocity:T,stopVelocity:T)) {
+    init(_ callBack:@escaping FrameTick,  _ easing:CGFloat , _ initVals:(value:CGFloat,targetValue:CGFloat,velocity:CGFloat,stopVelocity:CGFloat)) {
         self.value = initVals.value/*Set the init value*/
         self.targetValue = initVals.targetValue
         self.velocity = initVals.velocity
