@@ -4,9 +4,10 @@ import Foundation
  */
 protocol PhysicsAnimationKind:class{
     associatedtype argType
+    /*Signatures*/
     typealias FrameTick = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
-    
+    /**/
     var initValues:InitValues {get set}
     /**/
     var targetValue:argType {get set} /*Where value should go to*/
