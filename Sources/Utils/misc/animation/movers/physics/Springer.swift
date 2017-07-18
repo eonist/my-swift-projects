@@ -1,6 +1,10 @@
 import Foundation
 
 class Springer<T>:BaseAnimation,PhysicsAnimationKind {
+    func updatePosition(_ val: T) {
+        <#code#>
+    }
+
     //typealias argType = T
     /*Signatures*/
     //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
