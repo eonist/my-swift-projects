@@ -28,14 +28,3 @@ extension PhysicsAnimationKind{
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
 }
-/**
- * Convenient when initializing
- */
-extension PhysicsAnimationKind{
-    static var defaultInitPointValues:(CGPoint,CGPoint,CGPoint,CGPoint){
-        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
-    }
-    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
-        return (0,0,0,0)
-    }
-}

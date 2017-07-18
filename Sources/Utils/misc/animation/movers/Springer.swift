@@ -40,4 +40,10 @@ extension Springer{
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
+    static var defaultInitPointValues:(CGPoint,CGPoint,CGPoint,CGPoint){
+        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+    }
+    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
+        return (0,0,0,0)
+    }
 }
