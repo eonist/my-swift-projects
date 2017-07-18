@@ -51,14 +51,7 @@ extension PhysicsAnimationKind where argType == CGFloat, Self == Springer{
  * Core method for Springer<CGPoint>
  */
 extension PhysicsAnimationKind where argType == CGPoint, Self == Springer{
-    func updatePosition(_ val:CGPoint) {
-        let d = (targetValue - value)
-        let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
-        if assertStop {stop()}
-     }
+    
 }
 /**
  * Convenient when initializing
