@@ -6,7 +6,7 @@ protocol PhysicsAnimationKind:class{
     associatedtype argType
     typealias FrameTick = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
-    //var config:(spring:argType,friction:argType) {get set}
+    
     var initValues:InitValues {get set}
     /**/
     var targetValue:argType {get set} /*Where value should go to*/
@@ -18,13 +18,29 @@ protocol PhysicsAnimationKind:class{
     /*Core Methods*/
     //func updatePosition()->Void
     //var assertStop:Bool {get}
-    func stop()->Void
+    //func stop()->Void
 }
+/**
+ * Getters and setters
+ */
 extension PhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
     var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
     var value:argType {get{return initValues.value}set{initValues.value = newValue}}
     var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
+}
+/**
+ * Core method for Springer<CGFloat>
+ */
+extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat>{
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+    }
 }
 /**
  * Convenient when initializing
@@ -40,19 +56,7 @@ extension PhysicsAnimationKind where argType == CGFloat{
         return (0,0,0,0)
     }
 }
-/**
- * 
- */
-extension SpringKind where argType == CGFloat, Self == Springer<CGFloat>{
-    func updatePosition() {
-        let d = (targetValue - value)
-        let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
-        if assertStop {stop()}
-    }
-}
+
 /**
  * Convenient when initializing
  */
