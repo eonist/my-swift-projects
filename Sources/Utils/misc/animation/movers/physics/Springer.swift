@@ -21,7 +21,7 @@ class Springer<T>:BaseAnimation,PhysicsAnimationKind {
         super.init()
     }
     override func onFrame(){
-        //self.updatePosition(value)
+        self.updatePosition()
         self.callBack(value)
     }
 }

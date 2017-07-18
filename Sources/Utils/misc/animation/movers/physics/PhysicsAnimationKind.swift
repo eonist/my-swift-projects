@@ -16,7 +16,7 @@ protocol PhysicsAnimationKind:class{
     /*Event related*/
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     /*Core Methods*/
-    //func updatePosition(_ val:argType)->Void
+    func updatePosition()->Void
     //var assertStop:Bool {get}
     //func stop()->Void
 }
@@ -29,28 +29,36 @@ extension PhysicsAnimationKind{
     var value:argType {get{return initValues.value}set{initValues.value = newValue}}
     var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
 }
+extension PhysicsAnimationKind {
+    func updatePosition() {
+        fatalError("default implementation")
+    }
+}
 /**
  * Core method for Springer<CGFloat>
  */
 extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat>{
-    /*func updatePosition(_ val:CGFloat) {
-     let d = (targetValue - value)
-     let a = d * config.spring
-     velocity = velocity + a
-     velocity = velocity * config.friction
-     value = value + velocity
-     if assertStop {stop()}
-     }*/
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+     }
 }
+/**
+ * Core method for Springer<CGPoint>
+ */
 extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint>{
-    /*func updatePosition(_ val:CGPoint) {
-     let d = (targetValue - value)
-     let a = d * config.spring
-     velocity = velocity + a
-     velocity = velocity * config.friction
-     value = value + velocity
-     if assertStop {stop()}
-     }*/
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+     }
 }
 /**
  * Convenient when initializing
