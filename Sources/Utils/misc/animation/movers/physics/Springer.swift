@@ -1,7 +1,7 @@
 import Foundation
 
 class Springer:BaseAnimation,PhysicsAnimationKind {
-    typealias argType = CGFloat
+    //typealias argType = CGFloat
     /*Signatures*/
     //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     //typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
@@ -12,7 +12,7 @@ class Springer:BaseAnimation,PhysicsAnimationKind {
     /*CallBack related*/
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
-    init(_ callBack:@escaping FrameTick,  _ initValues:InitValues, _ config:Config) {
+    init(_ callBack:@escaping (argType)->Void,  _ initValues:InitValues, _ config:Config) {
         self.initValues = initValues
         self.callBack = callBack
         self.config = config
