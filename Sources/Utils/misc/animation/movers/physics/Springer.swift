@@ -1,6 +1,6 @@
 import Foundation
 
-class Springer<T>:BaseAnimation,PhysicsAnimationKind {
+class Springer<T>:BaseAnimation,SpringKind {
     typealias argType = T
 
     /*Signatures*/
@@ -30,4 +30,19 @@ class Springer<T>:BaseAnimation,PhysicsAnimationKind {
  */
 extension Springer{
     
+}
+protocol SpringKind:PhysicsAnimationKind{
+    var config:(spring:argType,friction:argType) {get set}
+}
+
+extension SpringKind where argType == CGFloat{
+   
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+    }
 }
