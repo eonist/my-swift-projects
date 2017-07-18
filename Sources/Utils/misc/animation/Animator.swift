@@ -1,5 +1,6 @@
 import Cocoa
 /**
+ * NOTE: this animation class is more like stock animation, less interuptable than "physics based animation"
  * TODO: ⚠️️ You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
  * TODO: ⚠️️ Take a look at other animation libs
  * TODO: ⚠️️ Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
@@ -7,7 +8,7 @@ import Cocoa
  * TODO: ⚠️️ Implement a way so that the animator can be reused so that you can target it and disable it
  */
 typealias FrameTick = (CGFloat)->Void/*call back signature */
-typealias EasingEquation = (CGFloat,CGFloat,CGFloat,CGFloat)->CGFloat/*Easing equation signature*/
+typealias EasingEquation = (_ t:CGFloat,_ b:CGFloat,_ c:CGFloat,_ d:CGFloat)->CGFloat/*Easing equation signature*/
 class Animator:BaseAnimation{
     let fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
     var duration:CGFloat/*In seconds*/
