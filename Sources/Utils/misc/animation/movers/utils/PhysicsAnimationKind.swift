@@ -6,7 +6,6 @@ protocol PhysicsAnimationKind:class{
     associatedtype argType
     typealias FrameTick = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
-    /**/
     //var config:(spring:argType,friction:argType) {get set}
     var initValues:InitValues {get set}
     /**/
@@ -16,6 +15,8 @@ protocol PhysicsAnimationKind:class{
     var stopVelocity:argType {get set}
     /*Event related*/
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    /*Core Methods*/
+    func updatePosition()->Void
 }
 extension PhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
