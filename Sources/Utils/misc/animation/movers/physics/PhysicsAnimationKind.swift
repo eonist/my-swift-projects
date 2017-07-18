@@ -31,13 +31,17 @@ extension PhysicsAnimationKind{
 /**
  * Convenient when initializing
  */
-extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat> {
+extension PhysicsAnimationKind where argType == CGFloat {
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
     static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
+    
+}
+
+extension Springer where argType == CGFloat{
     func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
