@@ -29,13 +29,13 @@ extension PhysicsAnimationKind{
     }
 }
 /**
- * Convenient when initing
+ * Convenient when initializing
  */
 extension PhysicsAnimationKind{
-    func defaultInitPointValues() -> (CGPoint,CGPoint,CGPoint,CGPoint){
+    static var defaultInitPointValues:(CGPoint,CGPoint,CGPoint,CGPoint){
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
-    func defaultInitValues() -> (CGFloat,CGFloat,CGFloat,CGFloat){
+    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
 }

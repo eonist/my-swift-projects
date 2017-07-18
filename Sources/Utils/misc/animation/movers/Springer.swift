@@ -30,11 +30,14 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
         callBack(value)
     }
 }
+/**
+ * Convenient when initializing
+ */
 extension Springer{
-    var initPointConfig:(CGPoint,CGPoint) {
+    static var initPointConfig:(CGPoint,CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
-    var initConfig:(CGFloat,CGFloat) {
+    static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
 }
