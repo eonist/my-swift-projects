@@ -2,12 +2,9 @@ import Foundation
 
 class Springer:BaseAnimation,PhysicsAnimationKind {
     typealias argType = CGFloat
-    /*Signatures*/
-    typealias Config = (spring:argType,friction:argType)
-    /*Config values*/
+    typealias Config = (spring:argType,friction:argType)/*Signatures*/
     var initValues:InitValues
-    var config:Config
-    /*CallBack related*/
+    var config:Config/*Config values*/
     var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
@@ -56,6 +53,8 @@ class PointSpringer:BaseAnimation,PhysicsAnimationKind{
         self.updatePosition()
         self.callBack(value)
     }
+}
+extension PointSpringer{
     func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
