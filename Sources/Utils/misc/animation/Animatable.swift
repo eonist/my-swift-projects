@@ -5,6 +5,6 @@ import Cocoa
 typealias IAnimatable = Animatable/*legacy support*/
 protocol Animatable:class {
     func onFrame()
-    var animators:[BaseAnimatable]{get set}
+    var animators:[BaseAnimation]{get set}
     var displayLink:CVDisplayLink{get}
 }
