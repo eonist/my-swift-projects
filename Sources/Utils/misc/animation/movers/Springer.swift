@@ -15,7 +15,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var stopVelocity:T
     
-    init(_ callBack:@escaping FrameTick,  _ config:Config , _ initValues:InitValues) {
+    init(_ callBack:@escaping FrameTick,  _ initValues:InitValues, _ config:Config , ) {
         self.initValues = initValues
         self.value = initValues.value/*Set the init value*/
         self.targetValue = initValues.targetValue
