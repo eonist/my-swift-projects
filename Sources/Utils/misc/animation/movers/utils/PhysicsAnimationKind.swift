@@ -4,7 +4,7 @@ protocol PhysicsAnimationKind {
     associatedtype argType
     /**/
     //var config:(spring:argType,friction:argType) {get set}
-    var initValues:InitValues {get set}
+    var initValues:(value:argType,targetValue:argType,velocity:argType,stopVelocity:argType) {get set}
     /**/
     var targetValue:argType {get set} /*Where value should go to*/
     var velocity:argType {get set}/*Velocity*/
@@ -14,7 +14,7 @@ protocol PhysicsAnimationKind {
     var stopVelocity:argType {get set}
 }
 extension PhysicsAnimationKind{
-    var targetValue:
+    var targetValue:argType {get{return init}set{}}
     //Continue here:
         //Derive vars from the tuples
         //see if you can derive some of the methods aswell?
