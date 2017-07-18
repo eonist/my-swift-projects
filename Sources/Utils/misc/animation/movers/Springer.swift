@@ -5,7 +5,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias Config = (spring:T,friction:T)
     /*Config values*/
-    var config:Config
+    var config:Config//default: (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     /*Interim values*/
     var targetValue:T /*Where value should go to*/
     var velocity:T/*Velocity*/

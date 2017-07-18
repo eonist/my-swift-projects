@@ -6,7 +6,7 @@ import Foundation
  */
 class Easer<T:ArithmeticKind>:BaseAnimation {
     /*Config values*/
-    var easing:T
+    var easing:T//CGPoint(0.2,0.2)
     /*Interim values*/
     var targetValue:T /*Where value should go to*/
     var velocity:T/*Velocity*/
