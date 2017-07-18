@@ -17,14 +17,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
         self.config = config
         super.init()
     }
-    func updatePosition() {
-        let d = (targetValue - value)
-        let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
-        if assertStop {stop()}
-    }
+    
     override func onFrame(){
         updatePosition()
         callBack(value)

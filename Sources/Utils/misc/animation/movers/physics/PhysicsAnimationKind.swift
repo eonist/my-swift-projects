@@ -38,6 +38,14 @@ extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloa
     static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+    }
 }
 /**
  * Convenient when initializing
