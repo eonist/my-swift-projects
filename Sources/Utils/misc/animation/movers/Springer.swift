@@ -29,23 +29,16 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
         updatePosition()
         callBack(value)
     }
-    
+}
+/**
+ * Convenient when initializing
+ */
+extension Springer{
     static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
-    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
-        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
-    }
-    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
-        return (0,0,0,0)
-    }
-}
-/**
- * Convenient when initializing
- */
-extension Springer{
     
 }
