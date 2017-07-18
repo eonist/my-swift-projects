@@ -40,10 +40,15 @@ extension PhysicsAnimationKind{
     }
 }
 extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat> {
-    static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
-        return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
-    }
+    
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
+}
+extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint> {
+    
+    static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
+        return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
+    }
+
 }
