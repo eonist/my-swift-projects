@@ -2,6 +2,7 @@ import Foundation
 
 class Easer2:BaseAnimator {
     typealias InitValues = (value:CGFloat,targetValue:CGFloat,velocity:CGFloat,stopVelocity:CGFloat)
+    static var defaultInitValues:InitValues = (0,0,0,0)
     /*Config values*/
     var easing:CGFloat/*Amount of easing*/
     /*Interim values*/
@@ -12,7 +13,7 @@ class Easer2:BaseAnimator {
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var stopVelocity:CGFloat
     
-    init(_ callBack:@escaping FrameTick,  _ easing:CGFloat , _ initVals:InitValues) {
+    init(_ callBack:@escaping FrameTick = {_ in},  _ easing:CGFloat = 0 , _ initVals:InitValues = Easer2.defaultInitValues) {
         self.value = initVals.value/*Set the init value*/
         self.targetValue = initVals.targetValue
         self.velocity = initVals.velocity
