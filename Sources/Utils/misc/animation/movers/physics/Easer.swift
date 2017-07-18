@@ -6,7 +6,7 @@ import Foundation
  */
 class Easer<T>:BaseAnimation,PhysicsAnimationKind {
     typealias argType = T
-    var easing:T
+    var easing:argType
     var initValues:InitValues
     var callBack:FrameTickSignature
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:argType) {
