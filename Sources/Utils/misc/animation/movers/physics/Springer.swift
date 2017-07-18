@@ -11,25 +11,29 @@ class Springer<T>:BaseAnimation,PhysicsAnimationKind{
         self.config = config
         super.init()
     }
-}
-class NumberSpringer:BaseAnimation,PhysicsAnimationKind {
-    typealias argType = CGFloat
-    typealias Config = (spring:argType,friction:argType)/*Signatures*/
-    var initValues:InitValues
-    var config:Config/*Config values*/
-    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    
-    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
-        self.initValues = initValues
-        self.callBack = callBack
-        self.config = config
-        super.init()
-    }
     override func onFrame(){
         self.updatePosition()
         self.callBack(value)
     }
     func updatePosition() {
+        fatalError("Must be overriden in subClass")
+    }
+}
+class NumberSpringer:Springer<CGFloat> {
+    //typealias argType = CGFloat
+//    typealias Config = (spring:argType,friction:argType)/*Signatures*/
+//    var initValues:InitValues
+//    var config:Config/*Config values*/
+//    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    
+    /*init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
+     self.initValues = initValues
+     self.callBack = callBack
+     self.config = config
+     super.init()
+     }*/
+    
+    override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
         velocity = velocity + a
