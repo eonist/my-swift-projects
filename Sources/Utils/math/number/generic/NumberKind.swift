@@ -4,7 +4,7 @@ import Foundation
  * TODO: ⚠️️ Add more operators etc
  * NOTE: These methods only seem to work when a method with generic properties is involved
  */
-protocol NumberKind {
+protocol ArithmeticKind {
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
     static func /(lhs: Self, rhs: Self) -> Self
@@ -12,23 +12,23 @@ protocol NumberKind {
     func isNear(_ value:Self, _ epsilon:CGFloat)->Bool
 }
 
-extension CGFloat:NumberKind {}
-extension CGPoint:NumberKind {}
+extension CGFloat:ArithmeticKind {}
+extension CGPoint:ArithmeticKind {}
 //extension Int:NumberKind {}
 //extension Float: NumberKind {}
 //extension Double: NumberKind {}
 //extension UInt: NumberKind {}
 
 
-func add<T:NumberKind>(x: T, y: T) -> T {
+func add<T:ArithmeticKind>(x: T, y: T) -> T {
     return x + y
 }
-func substract<T: NumberKind>(x: T, y: T) -> T {
+func substract<T: ArithmeticKind>(x: T, y: T) -> T {
     return x - y
 }
-func divide<T:NumberKind>(x: T, y: T) -> T {
+func divide<T:ArithmeticKind>(x: T, y: T) -> T {
     return x / y
 }
-func multiply<T:NumberKind>(x: T, y: T) -> T {
+func multiply<T:ArithmeticKind>(x: T, y: T) -> T {
     return x * y
 }
