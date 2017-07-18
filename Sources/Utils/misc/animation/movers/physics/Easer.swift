@@ -32,8 +32,8 @@ class NumberEaser:Easer<CGFloat> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-    static var defaultEasing:CGFloat = (0.2)
-    static var defaultValues:InitValues = (0,0,0,0)
+    static var initConfig:CGFloat = (0.2)
+    static var initValues:InitValues = (0,0,0,0)
 }
 class PointEaser:Easer<CGPoint> {
     override func updatePosition() {
@@ -44,6 +44,6 @@ class PointEaser:Easer<CGPoint> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-    static var defaultEasing:CGPoint = CGPoint(0.2,0.2)
-    static var defaultValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+    static var initConfig:CGPoint = CGPoint(0.2,0.2)
+    static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
 }
