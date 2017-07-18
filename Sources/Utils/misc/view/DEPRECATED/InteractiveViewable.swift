@@ -1,6 +1,6 @@
 import Foundation
-
-protocol IInteractiveView:IEventSender {
+typealias IInteractiveView = InteractiveViewable
+protocol InteractiveViewable:IEventSender {
     //func onEvent(event:Event)
     func mouseMoved(_ event:MouseEvent)
     func mouseOver(_ event:MouseEvent)
