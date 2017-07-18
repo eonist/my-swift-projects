@@ -28,3 +28,4 @@ extension PhysicsAnimationKind{
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
 }
+
