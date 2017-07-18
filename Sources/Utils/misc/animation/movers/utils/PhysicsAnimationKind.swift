@@ -1,6 +1,6 @@
 import Foundation
 
-protocol PhysicsAnimationKind:class {
+protocol PhysicsAnimationKind {
     associatedtype argType
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
     /**/
@@ -8,7 +8,7 @@ protocol PhysicsAnimationKind:class {
     var initValues:InitValues {get set}
     /**/
     var targetValue:argType {get set} /*Where value should go to*/
-    var velocity:argType {get set}/*Velocity*/
+    var velocity:argType {mutating get mutating set}/*Velocity*/
     var value:argType {get set}/*The value that should be applied to the target*/
     var stopVelocity:argType {get set}
     /*Event related*/
@@ -16,7 +16,7 @@ protocol PhysicsAnimationKind:class {
 }
 extension PhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
-    var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
+    var velocity:argType {mutating get{return initValues.velocity}mutating set{initValues.velocity = newValue}}
     var value:argType {get{return initValues.value}set{initValues.value = newValue}}
     var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
 }
