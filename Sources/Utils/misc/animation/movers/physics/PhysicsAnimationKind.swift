@@ -16,8 +16,8 @@ protocol PhysicsAnimationKind:class{
     /*Event related*/
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     /*Core Methods*/
-    func updatePosition()->Void
-    var assertStop:Bool {get}
+    //func updatePosition()->Void
+    //var assertStop:Bool {get}
     func stop()->Void
 }
 extension PhysicsAnimationKind{
@@ -46,7 +46,7 @@ extension PhysicsAnimationKind where argType == CGFloat{
 /**
  * Convenient when initializing
  */
-/*
+
 extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint> {
     static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
@@ -55,4 +55,3 @@ extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoin
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
 }
-*/
