@@ -9,22 +9,27 @@ class Easer<T>:BaseAnimation,PhysicsAnimationKind {
     var easing:T//CGPoint(0.2,0.2)
     var initValues:InitValues
     var callBack:FrameTickSignature
-    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:T) {
+    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:argType) {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
         super.init()
     }
+    override func onFrame(){
+        self.updatePosition()
+        self.callBack(value)
+    }
     func updatePosition() {
+        fatalError("Must be overriden in subClass")
+    }
+}
+class NumberEaser:Easer<CGFloat> {
+    override func updatePosition() {
         velocity = (targetValue - value) * easing
         value = value + velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
-    }
-    override func onFrame(){
-        updatePosition()
-        callBack(value)
     }
 }
