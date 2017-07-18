@@ -8,9 +8,11 @@ class BaseAnimation:EventSender,BaseAnimatable {
     init(_ animatable:Animatable = Animation.sharedInstance){
         self.animatable = animatable
     }
-    var onFrameTick:()->Void = onFrame
-    func onFrame(){
+    var onFrameTick:()->Void = {
         fatalError("Must be overwritten in subclass")
+    }
+    func onFrame(){
+        
     }
     /**
      * Start the animation
