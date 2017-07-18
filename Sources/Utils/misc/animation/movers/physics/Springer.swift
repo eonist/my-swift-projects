@@ -52,26 +52,24 @@ class NumberSpringer:Springer<CGFloat> {
     }
 }
 
-class PointSpringer:BaseAnimation,PhysicsAnimationKind{
-    typealias argType = CGPoint
-    typealias Config = (spring:argType,friction:argType)
-    var initValues:InitValues
-    var config:Config
-    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+class PointSpringer:Springer<CGPoint> {
+//    typealias argType = CGPoint
+//    typealias Config = (spring:argType,friction:argType)
+//    var initValues:InitValues
+//    var config:Config
+//    var callBack:FrameTickSignature/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     
-    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
-        self.initValues = initValues
-        self.callBack = callBack
-        self.config = config
-        super.init()
-    }
-    override func onFrame(){
-        self.updatePosition()
-        self.callBack(value)
-    }
-}
-extension PointSpringer{
-    func updatePosition() {
+//    init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ config:Config) {
+//        self.initValues = initValues
+//        self.callBack = callBack
+//        self.config = config
+//        super.init()
+//    }
+//    override func onFrame(){
+//        self.updatePosition()
+//        self.callBack(value)
+//    }
+    override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
         velocity = velocity + a
@@ -89,6 +87,9 @@ extension PointSpringer{
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
 }
+//extension PointSpringer{
+//    
+//}
 /**
  * Convenient when initializing
  */
