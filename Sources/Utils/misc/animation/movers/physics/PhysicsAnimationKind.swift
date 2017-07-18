@@ -39,14 +39,23 @@ extension PhysicsAnimationKind where argType == CGFloat{
     static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
         return (0,0,0,0)
     }
-    
 }
-
-
+/**
+ * 
+ */
+extension SpringKind where argType == CGFloat, Self == Springer<CGFloat>{
+    func updatePosition() {
+        let d = (targetValue - value)
+        let a = d * config.spring
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value = value + velocity
+        if assertStop {stop()}
+    }
+}
 /**
  * Convenient when initializing
  */
-
 extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint> {
     static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))

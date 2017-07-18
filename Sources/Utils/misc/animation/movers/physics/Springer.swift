@@ -27,15 +27,5 @@ class Springer<T>:BaseAnimation,SpringKind {
  * Convenient when initializing
  */
 protocol SpringKind:PhysicsAnimationKind{
-    var config:(spring:argType,friction:argType) {get set}
-}
-extension SpringKind where argType == CGFloat{
-    func updatePosition() {
-        let d = (targetValue - value)
-        let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
-        if assertStop {stop()}
-    }
+    //var config:(spring:argType,friction:argType) {get set}
 }
