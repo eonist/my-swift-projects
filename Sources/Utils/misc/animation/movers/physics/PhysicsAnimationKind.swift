@@ -16,7 +16,7 @@ protocol PhysicsAnimationKind:class{
     /*Event related*/
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     /*Core Methods*/
-    func updatePosition(_ val:argType)->Void
+    func updatePosition()->Void
     //var assertStop:Bool {get}
     //func stop()->Void
 }
@@ -37,8 +37,8 @@ extension PhysicsAnimationKind{
 /**
  * Core method for Springer<CGFloat>
  */
-extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat>{
-    func updatePosition(_ val:CGFloat) {
+extension PhysicsAnimationKind where argType == CGFloat, Self == Springer{
+    func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
         velocity = velocity + a
@@ -50,7 +50,7 @@ extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloa
 /**
  * Core method for Springer<CGPoint>
  */
-extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint>{
+extension PhysicsAnimationKind where argType == CGPoint, Self == Springer{
     func updatePosition(_ val:CGPoint) {
         let d = (targetValue - value)
         let a = d * config.spring
@@ -63,7 +63,7 @@ extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoin
 /**
  * Convenient when initializing
  */
-extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloat>{
+extension PhysicsAnimationKind where argType == CGFloat, Self == Springer{
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
@@ -78,7 +78,7 @@ extension PhysicsAnimationKind where argType == CGFloat, Self == Springer<CGFloa
 /**
  * Convenient when initializing
  */
-extension PhysicsAnimationKind where argType == CGPoint, Self == Springer<CGPoint> {
+extension PhysicsAnimationKind where argType == CGPoint, Self == Springer {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
