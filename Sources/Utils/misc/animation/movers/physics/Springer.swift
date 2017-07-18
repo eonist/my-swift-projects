@@ -2,7 +2,6 @@ import Foundation
 
 class Springer<T>:BaseAnimation,SpringKind {
     typealias argType = T
-
     /*Signatures*/
     //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     //typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
@@ -19,7 +18,6 @@ class Springer<T>:BaseAnimation,SpringKind {
         self.config = config
         super.init()
     }
-    
     override func onFrame(){
         //self.updatePosition()
         //self.callBack(value)
@@ -28,13 +26,10 @@ class Springer<T>:BaseAnimation,SpringKind {
 /**
  * Convenient when initializing
  */
-
 protocol SpringKind:PhysicsAnimationKind{
     var config:(spring:argType,friction:argType) {get set}
 }
-
 extension SpringKind where argType == CGFloat{
-   
     func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
