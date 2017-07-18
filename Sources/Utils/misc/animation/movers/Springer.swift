@@ -36,7 +36,7 @@ class Springer<T:ArithmeticKind>:BaseAnimation,PhysicsAnimationKind {
     static var initConfig:(CGFloat,CGFloat) {
         return (0.02,0.90)
     }
-    static var defaultInitPointValues:(CGPoint,CGPoint,CGPoint,CGPoint){
+    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
     static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
