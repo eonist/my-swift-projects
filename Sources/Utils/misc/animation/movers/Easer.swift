@@ -1,6 +1,6 @@
 import Foundation
 
-class Easer<T:NumberKind>:BaseAnimation {
+class Easer<T:ArithmeticKind>:BaseAnimation {
     typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     /*Config values*/
     var easing:T

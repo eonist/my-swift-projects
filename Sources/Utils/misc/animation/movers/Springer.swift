@@ -1,7 +1,9 @@
 import Foundation
 
-class Springer<T:NumberKind>:BaseAnimation {
+class Springer<T:ArithmeticKind>:BaseAnimation {
     typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
+    typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
+    typealias Config = (spring:T,friction:T)
     /*Config values*/
     var config:(spring:T,friction:T)
     /*Interim values*/
@@ -12,7 +14,7 @@ class Springer<T:NumberKind>:BaseAnimation {
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var stopVelocity:T
     
-    init(_ callBack:@escaping FrameTick,  _ config:(spring:T, friction:T) , _ initVals:(value:T,targetValue:T,velocity:T,stopVelocity:T)) {
+    init(_ callBack:@escaping FrameTick,  _ config:Config , _ initVals:InitValues) {
         self.value = initVals.value/*Set the init value*/
         self.targetValue = initVals.targetValue
         self.velocity = initVals.velocity

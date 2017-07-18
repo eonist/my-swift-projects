@@ -1,7 +1,7 @@
 import Foundation
 /**
  * Experimental
- * TODO: ⚠️️ Add more operators etc
+ * TODO: ⚠️️ Add more operators *= -= += /= etc
  * NOTE: These methods only seem to work when a method with generic properties is involved
  */
 protocol ArithmeticKind {
