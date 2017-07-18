@@ -37,7 +37,12 @@ class NumberSpringer:Springer<CGFloat> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-    
+    static var initConfig:(CGFloat,CGFloat) {/*Convenient default init values*/
+        return (0.02,0.90)
+    }
+    static var initValues:(CGFloat,CGFloat,CGFloat,CGFloat){/*Convenient default init values*/
+        return (0,0,0,0)
+    }
 }
 /**
  * Springer for CGPoint
@@ -54,21 +59,11 @@ class PointSpringer:Springer<CGPoint> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-}
-/**
- * Convenient default init values
- */
-extension Springer{
-    static var initConfig:(CGFloat,CGFloat) {
-        return (0.02,0.90)
-    }
-    static var defaultInitValues:(CGFloat,CGFloat,CGFloat,CGFloat){
-        return (0,0,0,0)
-    }
-    static var initPointConfig:(spring:CGPoint,friction:CGPoint) {
+    static var initConfig:(spring:CGPoint,friction:CGPoint) {/*Convenient default init values*/
         return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
     }
-    static var defaultInitPointValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){
+    static var initValues:(value:CGPoint,targetValue:CGPoint,velocity:CGPoint,stopVelocity:CGPoint){/*Convenient default init values*/
         return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
     }
 }
+
