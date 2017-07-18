@@ -1,7 +1,7 @@
 import Foundation
 
-class Springer/*<T:ArithmeticKind>*/:BaseAnimation,PhysicsAnimationKind {
-    typealias argType = type
+class Springer<T>:BaseAnimation,PhysicsAnimationKind {
+    typealias argType = T
 
     /*Signatures*/
     //typealias FrameTick = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
@@ -21,8 +21,8 @@ class Springer/*<T:ArithmeticKind>*/:BaseAnimation,PhysicsAnimationKind {
     }
     
     override func onFrame(){
-        updatePosition()
-        callBack(value)
+        //self.updatePosition()
+        //self.callBack(value)
     }
 }
 /**
