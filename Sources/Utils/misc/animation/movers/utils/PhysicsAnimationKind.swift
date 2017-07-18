@@ -1,5 +1,5 @@
 import Foundation
 
-class PhysicsAnimationKind {
+protocol PhysicsAnimationKind {
 
 }
