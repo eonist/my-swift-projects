@@ -28,5 +28,5 @@ class BaseAnimation:EventSender {
     }
 }
 extension BaseAnimation{
-    var hasStopped:Bool {return animatable.animators.indexOf(self) != -1}
+    var stopped:Bool {return animatable.animators.indexOf(self) == -1}
 }
