@@ -60,10 +60,10 @@ class PointSpringer:Springer<CGPoint> {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     static var initConfig:Config {/*Convenient default init values*/
-        return (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
+        return (spring:CGPoint(0.02,0.02),friction:CGPoint(0.90,0.90))
     }
     static var initValues:InitValues{/*Convenient default init values*/
-        return (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+        return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
     }
 }
 
