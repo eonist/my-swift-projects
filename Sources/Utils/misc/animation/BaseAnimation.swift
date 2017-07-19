@@ -27,3 +27,6 @@ class BaseAnimation:EventSender {
         super.onEvent(AnimEvent(AnimEvent.stopped,self))/*Notify listners the animation has stopped*/
     }
 }
+extension BaseAnimation{
+    var hasStopped:Bool {return animatable.animators.indexOf(self) != -1}
+}
