@@ -26,7 +26,7 @@ class Easer<T>:BaseAnimation,PhysicsAnimationKind {
 class NumberEaser:Easer<CGFloat> {
     override func updatePosition() {
         velocity = (targetValue - value) * easing
-        value = value + velocity
+        value += velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
