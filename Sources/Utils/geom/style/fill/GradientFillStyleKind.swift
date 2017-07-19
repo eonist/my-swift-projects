@@ -1,10 +1,10 @@
 import Foundation
 
 typealias IGradientFillStyle = GradientFillStyleKind/*Legacy support*/
-protocol GradientFillStyleKind:IFillStyle{
+protocol GradientFillStyleKind:FillStyleKind{
     var gradient:IGradient{get set}
 }
-extension IGradientFillStyle{
+extension GradientFillStyleKind{
     func copy() -> GradientFillStyle {
         return GradientFillStyle(self.gradient.copy(),(self).color)
     }

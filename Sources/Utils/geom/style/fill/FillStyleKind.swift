@@ -1,12 +1,13 @@
 import Cocoa
 
-protocol IFillStyle{
+typealias IFillStyle = FillStyleKind/*Legacy support*/
+protocol FillStyleKind{
     var color:NSColor {get set}
 }
 /**
  * Convenience method for the Graphics class
  */
-extension IFillStyle {
+extension FillStyleKind {
     var cgColor:CGColor {return CGColorParser.cgColor(color)}
     func copy() -> IFillStyle {
         return FillStyleParser.clone(self)

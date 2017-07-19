@@ -1,7 +1,7 @@
 import Foundation
 
-typealias IGraphicStyle = GraphicStyleKind/*Legacy support*/
-protocol GraphicStyleKind {
+typealias IGraphicStyle = GraphicStylable/*Legacy support*/
+protocol GraphicStylable {
     var fillStyle:IFillStyle? {get set}
     var lineStyle:ILineStyle? {get set}
 }
