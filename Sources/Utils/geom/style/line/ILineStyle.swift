@@ -1,6 +1,6 @@
 import Cocoa
-
-protocol ILineStyle{
+typealias ILineStyle = LineStylable
+protocol LineStylable{
     var color:NSColor {get set}
     var thickness:CGFloat {get set}
     var lineCap:CGLineCap {get set}//TODO: rename to capStyle?
@@ -9,20 +9,20 @@ protocol ILineStyle{
     var phase:CGFloat {get set}
     var lengths:[CGFloat] {get set}
 }
-extension ILineStyle{
-    func copy() -> ILineStyle {
+extension LineStylable{
+    func copy() -> LineStylable {
         return LineStyleParser.clone(self)
     }
-    func mix(_ color:NSColor)->ILineStyle{
+    func mix(_ color:NSColor)->LineStylable{
         var c = copy()
         c.color = color
         return c
     }
-    mutating func alpha(_ alpha:CGFloat)->ILineStyle{/*Convenience*/
+    mutating func alpha(_ alpha:CGFloat)->LineStylable{/*Convenience*/
         self.color = self.color.alpha(alpha)
         return self
     }
-    mutating func color(_ color:NSColor)->ILineStyle{/*Convenience*/
+    mutating func color(_ color:NSColor)->LineStylable{/*Convenience*/
         self.color = color
         return self
     }
