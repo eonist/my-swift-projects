@@ -52,7 +52,7 @@ public class Graphics{
      * Initiate gradient filling
      * NOTE: this method can be called pre context
      */
-    public func gradientFill(_ gradient:IGraphicsGradient){
+    public func gradientFill(_ gradient:GraphicsGradientKind){
         fillMode = FillMode.Gradient
         self.gradient = gradient
         self.cgGradient = GradientUtils.cgGradient(gradient)
@@ -79,7 +79,7 @@ public class Graphics{
      * NOTE: this method can be called pre context
      * TODO: Contemplate including lineWidth etc in this call
      */
-    public func gradientLine(_ gradient:IGraphicsGradient){
+    public func gradientLine(_ gradient:GraphicsGradientKind){
         strokeMode = StrokeMode.Gradient
         lineGradient = gradient
         cgLineGradient = GradientUtils.cgGradient(gradient)
