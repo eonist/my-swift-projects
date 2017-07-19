@@ -14,7 +14,7 @@ extension GradientLineStyle{/*Convenient*/
         self.init(gradient,lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin, lineStyle.miterLimit);
     }
 }
-extension IGradientLineStyle{
+extension GradientLineStylable{
     func copy() -> GradientLineStyle {
         return GradientLineStyle(gradient.copy(),thickness,color,lineCap,lineJoin,miterLimit)
     }
