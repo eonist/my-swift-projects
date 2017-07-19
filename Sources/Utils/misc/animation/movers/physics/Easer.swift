@@ -2,7 +2,7 @@ import Foundation
 /**
  * NOTE: This class was attempted with regular OOP but it was not scalable, every time you subclassed the BaseClass you would have setup all the var's again
  * NOTE: The FrameTick and the InitValues typaliases are the same in Springer and Easer so we just reuse them
- * TODO: ⚠️️ The math can be refactored if you add += *= to ArithmeticKind
+ * NOTE: This is the Base class
  */
 class Easer<T>:BaseAnimation,PhysicsAnimationKind {
     typealias argType = T
@@ -23,6 +23,9 @@ class Easer<T>:BaseAnimation,PhysicsAnimationKind {
         fatalError("Must be overriden in subClass")
     }
 }
+/**
+ * Easer for CGFloat
+ */
 class NumberEaser:Easer<CGFloat> {
     override func updatePosition() {
         velocity = (targetValue - value) * easing
@@ -32,9 +35,12 @@ class NumberEaser:Easer<CGFloat> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-    static var initConfig:CGFloat = (0.2)
-    static var initValues:InitValues = (0,0,0,0)
+    static var initConfig:CGFloat = (0.2)/*Convenient*/
+    static var initValues:InitValues = (0,0,0,0)/*Convenient*/
 }
+/**
+ * Easer for CGPoint
+ */
 class PointEaser:Easer<CGPoint> {
     override func updatePosition() {
         velocity = (targetValue - value) * easing
@@ -44,6 +50,6 @@ class PointEaser:Easer<CGPoint> {
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
-    static var initConfig:CGPoint = CGPoint(0.2,0.2)
-    static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+    static var initConfig:CGPoint = CGPoint(0.2,0.2)/*Convenient*/
+    static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))/*Convenient*/
 }

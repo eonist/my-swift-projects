@@ -19,7 +19,7 @@ protocol PhysicsAnimationKind:class{
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
 }
 /**
- * Getters and setters
+ * Getters and setters for the value tuples
  */
 extension PhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
