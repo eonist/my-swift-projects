@@ -12,19 +12,19 @@ protocol ISizeable:class {//<--new extends class, so that it can be casted corre
 extension ISizeable{
     var width:CGFloat{
         get{
-            if(self.size.width.isNaN){fatalError("width can't be NaN")}
+            if self.size.width.isNaN {fatalError("width can't be NaN")}
             return self.size.width
         }set{
-            if(newValue.isNaN){fatalError("width can't be NaN")}
+            if newValue.isNaN {fatalError("width can't be NaN")}
             self.size.width = newValue
         }
     }
     var height:CGFloat{
         get{
-            if(self.size.height.isNaN){fatalError("height can't be NaN")}
+            if self.size.height.isNaN {fatalError("height can't be NaN")}
             return self.size.height
         }set{
-            if(newValue.isNaN){fatalError("height can't be NaN")}
+            if newValue.isNaN {fatalError("height can't be NaN")}
             self.size.height = newValue
         }
     }
