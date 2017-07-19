@@ -1,11 +1,12 @@
 import Foundation
 
-public protocol IGraphicsGradient {
+typealias IGraphicsGradient = GraphicsGradientKind
+public protocol GraphicsGradientKind {
     var colors:[CGColor]{get set}
     var locations:[CGFloat]{get set}/*same as color stops*/
     var transformation:CGAffineTransform?{get set}
 }
-extension IGraphicsGradient{
+extension GraphicsGradientKind{
     /**
      * Convert
      */
