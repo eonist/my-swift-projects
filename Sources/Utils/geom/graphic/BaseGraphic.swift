@@ -7,7 +7,7 @@ import Cocoa
 class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGraphicDecoratable*/
     override var graphic:BaseGraphic {return self}
     /**
-     * NOTE: Color can't be uint since uint can't be NaN, use Double as a differntiator
+     * NOTE: Color can't be UInt since UInt can't be NaN, use Double as a differntiator
      */
     override func beginFill(){
         if let fillStyle = fillStyle, fillStyle.color != NSColor.clear{/*Updates only if fillStyle is of class FillStyle*/
@@ -15,7 +15,7 @@ class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGr
         }
     }
     override func stylizeFill(){
-        GraphicsModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
+        GraphicsModifier.stylize(fillShape.path,fillShape.graphics)/*Realize style on the graphic*/
     }
     override func applyLineStyle() {
         if let lineStyle = lineStyle {/*Updates only if lineStyle of class LineStyle*/
