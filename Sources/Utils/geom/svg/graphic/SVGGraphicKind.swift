@@ -1,6 +1,6 @@
 import Foundation
-
-protocol ISVGGraphic:ISVGView {/*<--extends ISVGView to inherit the style getter and setter*/
+typealias ISVGGraphic = SVGGraphicKind
+protocol SVGGraphicKind:SVGViewable {/*<--extends ISVGView to inherit the style getter and setter*/
     var fillShape:Shape{get set}
     var lineShape:Shape{get set}
     func draw()
