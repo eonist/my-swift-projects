@@ -1,6 +1,6 @@
 import Foundation
 /**
- * Interface for SVGContainer
+ * Protocol for SVGContainer
  */
 typealias ISVGContainer = SVGContainable/*Legacy support*/
 protocol SVGContainable:SVGElementKind{
