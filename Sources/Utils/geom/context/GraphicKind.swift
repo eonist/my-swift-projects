@@ -1,5 +1,6 @@
 import Cocoa
 
+typealias IGraphic = GraphicKind
 protocol IGraphic {
     var fillShape:Shape{get}
     var lineShape:Shape{get}
