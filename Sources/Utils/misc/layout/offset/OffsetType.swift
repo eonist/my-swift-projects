@@ -3,7 +3,7 @@ import Foundation
  * TODO: redesign this class like TRBL
  * TODO: ⚠️️ this should probably use Generics, to get rid of the casting
  */
-struct OffsetType:Equatable,ILayout{
+struct OffsetType:Equatable,LayoutKind{
     static var center:String = "center"// :TODO: move this to a class called OffsetType
     static var outside:String = "outside"
     static var inside:String = "inside"

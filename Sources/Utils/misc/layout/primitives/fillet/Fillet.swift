@@ -6,7 +6,7 @@ import Foundation
  * TODO: this should probably use GEnerics, to get rid of the casting, research this
  * TODO: Definitly a candidate for struct
  */
-class Fillet:ILayout {
+class Fillet:LayoutKind {
     var topLeft:CGFloat
     var topRight:CGFloat
     var bottomLeft:CGFloat
