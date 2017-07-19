@@ -2,7 +2,7 @@ import Foundation
 /**
  * This is basically Polygon without the fill part
  */
-class SVGPolyLine:SVGGraphic,ISVGPolyLine{
+class SVGPolyLine:SVGGraphic,SVGPolyLine{
     var points:[CGPoint]
     init(_ points:[CGPoint], _ style:SVGStyle? = nil, _ id:String? = nil) {
         self.points = points
