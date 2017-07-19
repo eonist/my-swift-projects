@@ -1,7 +1,7 @@
 import Cocoa
 
 typealias IGraphic = GraphicKind
-protocol IGraphic {
+protocol GraphicKind {
     var fillShape:Shape{get}
     var lineShape:Shape{get}
     var lineStyle:ILineStyle?{get set}
