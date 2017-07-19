@@ -1,6 +1,7 @@
 import Foundation
 
-protocol IArc {
+typealias IArc = ArcKind
+protocol ArcKind {
     var start:CGPoint{get set}
     var xRadii:CGFloat{get set}
     var yRadii:CGFloat{get set}
