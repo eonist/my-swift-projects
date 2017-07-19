@@ -29,9 +29,9 @@ class NumberSpringer:Springer<CGFloat> {
     override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
+        velocity += a
+        velocity *= config.friction
+        value +=  velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
@@ -51,9 +51,9 @@ class PointSpringer:Springer<CGPoint> {
     override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
-        velocity = velocity + a
-        velocity = velocity * config.friction
-        value = value + velocity
+        velocity +=  a
+        velocity *=  config.friction
+        value += velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
