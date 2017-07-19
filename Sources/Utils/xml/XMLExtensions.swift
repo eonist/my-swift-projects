@@ -4,7 +4,7 @@ typealias XML = XMLElement/*Convenience, Makes refering to NSXMLElement simpler,
 typealias XMLDoc = XMLDocument/*Convenience*/
 extension XML {
     /**
-     * Convenience
+     * Convenience initializer
      */
     convenience init(_ xmlString:String){//<---recently removed the throw, and changed try to try!
         try! self.init(xmlString:xmlString)
