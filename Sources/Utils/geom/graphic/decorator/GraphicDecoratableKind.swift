@@ -1,12 +1,12 @@
 import Foundation
 
-
+typealias IGraphicDecoratable = GraphicDecoratableKind
 /**
  * These are the methods the GraphicDecoratable must implement
  * Differs from IBaseGraphic in that IBaseGraphic has some variables that the decoratables isnt dependent on when it comes to the creation procedure
  */
-protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
-    func getDecoratable()->IGraphicDecoratable
+protocol GraphicDecoratableKind:class{/*<--Explain why this extends class*/
+    func getDecoratable()->GraphicDecoratableKind
     var graphic:BaseGraphic{get}
     func getGraphic() -> BaseGraphic/*Don't revert this variable to a protocol*/
     /*Design*/
@@ -20,14 +20,14 @@ protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func stylizeLine()
     func draw()/*Setup the geometry and init the display process of fill and line*/
 }
-extension IGraphicDecoratable where Self:IPositional, Self:ISizeable{
+extension GraphicDecoratableKind where Self:IPositional, Self:ISizeable{
     var frame:CGRect {return CGRect(self.pos, self.size)}
 }
-extension IGraphicDecoratable{
+extension GraphicDecoratableKind{
     /**
      * NOTE: Returns the actual type! 🎉
      */
-    func get<T:IGraphicDecoratable>(_ classType:T.Type) -> T?{
+    func get<T:GraphicDecoratableKind>(_ classType:T.Type) -> T?{
         return DecoratorUtils.decoratable(self, classType) as? T
     }
 }
