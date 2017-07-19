@@ -1,5 +1,5 @@
 import Cocoa
-
+/*
 class ClosableModifier {
     /**
      * Closes the children of PARAM: view that extends the protocol IClosable
@@ -9,3 +9,6 @@ class ClosableModifier {
         for closable:IClosable in closables{closable.close()}
     }
 }
+ */
+
+//delete if not used
