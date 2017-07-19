@@ -10,7 +10,7 @@ extension GraphicsGradientKind{
     /**
      * Convert
      */
-    func gradient()->IGradient{
+    func gradient()->GradientKind{
         if let gradient = (self as? LinearGraphicsGradient){
             return gradient.linearGradient()
         }else if let gradient = (self as? RadialGraphicsGradient){
