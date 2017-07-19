@@ -23,7 +23,7 @@ class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGr
         }
     }
     override func stylizeLine(){
-        GraphicsModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
+        GraphicsModifier.stylizeLine(lineShape.path,lineShape.graphics)/*Realize style on the graphic*/
     }
     override func getGraphic()->BaseGraphic{
         return self
