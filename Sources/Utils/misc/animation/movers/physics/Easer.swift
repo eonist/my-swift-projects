@@ -13,7 +13,7 @@ class Easer<T>:BaseAnimation,PhysicsAnimationKind {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
-        super.init()
+        super.init()    
     }
     override func onFrame(){
         self.updatePosition()
