@@ -123,7 +123,7 @@ class TrigParser {
     static func flip(_ angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {
         let verticalAngle:CGFloat = angle * axisMultiplier.y
         var horisontalAngle:CGFloat = Trig.normalize2(verticalAngle - Trig.hpi) * axisMultiplier.x//Rotate to vertical alignment
-        horisontalAngle = Trig.normalize2(horisontalAngle + Trig.hpi)//rotate back to original alignment
+        horisontalAngle = Trig.normalize2(horisontalAngle + Trig.hpi)/*rotate back to original alignment*/
         return horisontalAngle
     }
     /**
