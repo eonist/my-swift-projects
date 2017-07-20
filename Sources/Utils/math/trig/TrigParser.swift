@@ -15,7 +15,7 @@ class TrigParser {
      * Returns a radian to be between 0 and Math.PI*2 Radian (0 - 6.28)
      * PARAM: theta: An radian in degrees typically 0 - Math.PI*2
      * NOTE: we use "while" function type here because angle could be very low at which point Math.PI*2 needs to be contrinuasly added until its above 0 )
-     * TODO: use modulo like normalize2 does, is that faster ? do an optimization test.
+     * TODO: ⚠️️ Use modulo like normalize2 does, is that faster ? do an optimization test.
      */
     static func normalize(_ angle:CGFloat)->CGFloat {
         var angle = angle
@@ -115,10 +115,10 @@ class TrigParser {
      * EXAMPLE: Angle.flip(Angle.polarAngle(20, 20), -1, -1);//Output: -2.356194490192345 (the result is now flipped in the x and y axis)
      * EXAMPLE: Angle.flip(Angle.polarAngle(20, 20), 1, -1);//Output: -0.7853981633974483 (the result is now flipped in the y axis)
      * EXAMPLE: Angle.flip(Angle.polarAngle(20, -20), -1, 1);//Output: -2.356194490192345 (the result is now flipped in the x axis)
-     * TODO: this should ultimatly use yAxisMultplier and xAxisMultiplier as two seperate variables or?
-     * TODO: this can be optimized, see the proto site
-     * TODO: should use yMultiplier:int xMultiplier:int
-     * TODO: if you flip with -1,-1 you could also just do normalize2(angle - PI), this could be an optimization
+     * TODO: ⚠️️ this should ultimatly use yAxisMultplier and xAxisMultiplier as two seperate variables or?
+     * TODO: ⚠️️ this can be optimized, see the proto site
+     * TODO: ⚠️️ should use yMultiplier:int xMultiplier:int
+     * TODO: ⚠️️ if you flip with -1,-1 you could also just do normalize2(angle - PI), this could be an optimization
      */
     static func flip(_ angle:CGFloat,_ axisMultiplier:CGPoint) -> CGFloat {
         let verticalAngle:CGFloat = angle * axisMultiplier.y
