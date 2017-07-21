@@ -36,10 +36,10 @@ class Animator:BaseAnimation{
      */
     override func onFrame(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        callBack(val)
+        callBack(val)/*Call the callBack onFrame method*/
         if(currentFrameCount == framesToEnd){
-            stop()
-            super.onEvent(AnimEvent(AnimEvent.completed,self))
+            stop()/*Stop the animation*/
+            super.onEvent(AnimEvent(AnimEvent.completed,self))/*Notify listeners that the animation completed*/
         }
         self.currentFrameCount += 1
     }
