@@ -12,7 +12,7 @@ class Animator2 {
     func onComplete() -> Self{
         return self
     }
-    var onFrameTick:()->Void = {return onFrame}
+    //var onFrameTick:()->Void = {return onFrame}
     /**
      *
      */
