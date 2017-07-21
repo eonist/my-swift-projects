@@ -12,10 +12,11 @@ class Animator2 {
     func onComplete() -> Self{
         return self
     }
+    var onFrameTick:()->Void = {return onFrame}
     /**
      *
      */
-    var onFrame:(_ value:CGFloat) -> Animator2{
+    func onFrame(_ value:CGFloat) -> Self{
         return self
     }
     /**
