@@ -11,34 +11,27 @@ import Cocoa
  */
 typealias FrameTick = (CGFloat)->Void/*the callBack signature for onFrame ticks*/
 extension Animator {
+    typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat)
     static var fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
     var duration:CGFloat {get{return initValues.duration}set{initValues.duration = newValue}}/*In seconds*/
     var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
     var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
+    
 }
 class Animator:BaseAnimation{
-    
-    
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    
     var currentFrameCount:CGFloat = 0/*curFrameCount*///TODO:⚠️️ what is this?
     var easing:EasingEquation/*Variable for holding the easing method*/
-    /
-    
-    typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat)
     var initValues:InitValues
-    init(onFrame:@escaping FrameTick, initValues:InitValues, easing:EasingEquation){
-        //derive the AnimProxy here
-        //write getters and setters for the initValues
-        //move the cur init to a convenient init inside an extension
+    init(onFrame:@escaping FrameTick, initValues:InitValues, easing:@escaping EasingEquation){
+        self.callBack = onFrame
+        self.initValues = initValues
+        self.easing = easing
         super.init(AnimProxy.sharedInstance)
     }
     
-    convenience init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
-        let initValues:InitValues = (duration:duration,from:from,to:to)
-        self.init(onFrame: callBack, initValues: initValues, easing: easing)
-    }
+    
     /**
      * Fires on every frame tick
      */
@@ -50,5 +43,12 @@ class Animator:BaseAnimation{
             super.onEvent(AnimEvent(AnimEvent.completed,self))
         }
         self.currentFrameCount += 1
+    }
+}
+//DEPRECATED
+extension Animator {
+    convenience init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
+        let initValues:InitValues = (duration:duration,from:from,to:to)
+        self.init(onFrame: callBack, initValues: initValues, easing: easing)
     }
 }
