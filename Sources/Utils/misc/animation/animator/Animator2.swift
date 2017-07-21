@@ -4,13 +4,9 @@ import Foundation
  */
 class Animator2 {
     typealias FrameTick = () -> (CGFloat) -> Animator2 /*Makes the return type less verbose*/
-    var onFrameTick:FrameTick = {
-        return {
-            (value:CGFloat) -> Animator2 in
-        }
-    }()
+    var onFrameTick:FrameTick
     init(){
-        
+        onFrameTick = self.onFrame
     }
     /**
      *
