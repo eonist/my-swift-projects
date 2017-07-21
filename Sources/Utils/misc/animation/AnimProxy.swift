@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: Override the onFrame method to do frame animations
  * NOTE: Start and stop with CVDisplayLinkStart(displayLink) and CVDisplayLinkStop(displayLink) and CVDisplayLinkIsRunning(displayLink) to assert if the displayLink is running
  * TODO: ⚠️️ You can probably use NSObject instead of NSView. As NSObject has the performSelector method
- * TODO: ⚠️️ Package these classes as it's own lib. Kinetic. Bump. mc2. Other names? 🚫 👉 I think Animation is an appropriate name 👈
+ * TODO: ⚠️️ Package these classes as it's own lib. Kinetic. Bump. mc2. Other names? 🚫 👉 I think Animation is an appropriate name 👈 maybe AnimManager? or AnimProxy?
  */
 class Animation:NSView,Animatable{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
     static let sharedInstance = Animation()//TODO: rename to .shared
@@ -14,10 +14,10 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
      * Fires on every screen refresh at 60 FPS, or device speed
      */
     func onFrame(){
-        self.performSelector(onMainThread: #selector(Animation.onFrameOnMainThread), with:nil, waitUntilDone:false)//upgreaded to swift 3
+        self.performSelector(onMainThread: #selector(/*TODO:⚠️️ the Animation. can probably be omitted->*/Animation.onFrameOnMainThread), with:nil, waitUntilDone:false)//upgreaded to swift 3
     }
     /**
-     * Tick every animator on every frame tick
+     * Tick every animator on every frame tick (This is called on the MainThread)
      */
     func onFrameOnMainThread(){
         animators.forEach{$0.onFrame()}
@@ -36,11 +36,9 @@ class Animation:NSView,Animatable{/*apparently the class needs to be NSView in o
             return kCVReturnSuccess
         }
         if let displayLink = displayLink {
-            let outputStatus = CVDisplayLinkSetOutputCallback(displayLink, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
-            _ = outputStatus
+            /*let outputStatus */  _ = CVDisplayLinkSetOutputCallback(displayLink, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
             let displayID = CGMainDisplayID()
-            let displayIDStatus = CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID)
-            _ = displayIDStatus
+            /*let displayIDStatus*/_ = CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID)
             return displayLink
         }else{
             fatalError("unable to setup displayLink")

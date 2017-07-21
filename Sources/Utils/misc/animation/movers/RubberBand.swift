@@ -12,23 +12,21 @@ import Cocoa
  * NOTE: limit: the max distance the displacement friction like the effect can travle, the vertical limit is the distance where the value almost doesn't move at all while directly manipulating,the illusion that the surface under the thumb is slipping
  * NOTE: epsilon: twips 20th of a pixel
  */
+
 class RubberBand:Mover{//TODO: rename to Elastic
-    typealias Config = (friction:CGFloat,springEasing:CGFloat,spring:CGFloat,limit:CGFloat,epsilon:CGFloat)
-    typealias Frame = (min:CGFloat,len:CGFloat)//basically: (y, height) or (x, width) So that the springsolve can support x and y axis, but what about z?
-    static var defaultConfig:Config = (friction:0.98, springEasing:0.2, spring:0.4, limit:100, epsilon:0.15)/*Constants*/
     /*Initial values*/
-    var maskFrame:Frame/*represents the visible part of the content*/
-    var contentFrame:Frame/*represents the total size of the content*/
-    var config:Config
+    var maskFrame:Frame/*Represents the visible part of the content*/
+    var contentFrame:Frame/*Represents the total size of the content*/
+    var config:Config/*The init settings of the RubberbBand*/
     /*Interim values*/
-    var result:CGFloat = 0/*output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
-    var hasStopped:Bool = true/*indicates that the motion has stopped*/
+    var result:CGFloat = 0/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
+    var hasStopped:Bool = true/*Indicates that the motion has stopped*///TODO: try to move this into the mover
     
     init(_ callBack:@escaping FrameTick,_ maskFrame:Frame, _ contentFrame:Frame,_ config:Config) {
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
-        super.init(Animation.sharedInstance, callBack, 0, 0)
+        super.init(AnimProxy.sharedInstance, callBack, 0, 0)
     }
     override func onFrame(){
         if hasStopped {/*stop the frameTicker here*/
@@ -63,6 +61,13 @@ class RubberBand:Mover{//TODO: rename to Elastic
     }
 }
 extension RubberBand{
+    static var defaultConfig:Config = (/*Constants*/
+        friction:0.98,/*Degrades the velocity over time utill stop*/
+        springEasing:0.2,
+        spring:0.4,
+        limit:100,
+        epsilon:0.15/*When the velocity is bellow this value stop the animation*/
+    )
     /**
      * When the min val reaches beyond max
      * PARAM: direct: toggles the directManipulation mode
@@ -137,14 +142,14 @@ private class CustomFriction{
  */
 extension RubberBand{
     //legacy
-    convenience init(_ animatable:Animatable,_ callBack:@escaping FrameTick, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    convenience init(_ animatable:AnimProxyKind,_ callBack:@escaping FrameTick, _ maskFrame:Frame, _ contentFrame:Frame, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         let config:Config = (friction,springEasing,spring,limit,0.15)
         self.init(callBack, maskFrame,contentFrame, config)
         /*self.velocity = velocity
          self.value = value*/
     }
     //DEPRECATED,Legacy support
-    convenience init(_ animatable:Animatable,_ callBack:@escaping FrameTick, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
+    convenience init(_ animatable:AnimProxyKind,_ callBack:@escaping FrameTick, _ maskRect:CGRect, _ contentRect:CGRect, _ value:CGFloat = 0, _ velocity:CGFloat = 0, _ friction:CGFloat = 0.98, _ springEasing:CGFloat = 0.2,_ spring:CGFloat = 0.4, _ limit:CGFloat = 100){
         self.init(animatable, callBack, (maskRect.y,maskRect.height),(contentRect.y,contentRect.height),value,velocity,friction,springEasing,spring,limit)
     }
     //DEPRECATED,Legacy support
@@ -154,7 +159,7 @@ extension RubberBand{
     //DEPRECATED
     var isDirectlyManipulating:Bool {get{fatalError("not supported anymore")}set{_ = newValue;fatalError("deprecated");}}/*toggles the directManipulation mode*/
 }
-extension RubberBand{//Convenience
+extension RubberBand{/*Convenience accessors*/
     var friction:CGFloat {return config.friction}
     var springEasing:CGFloat {return config.springEasing}
     var spring:CGFloat {return config.spring}

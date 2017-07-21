@@ -7,6 +7,7 @@ import Cocoa
  * TODO: ⚠️️ Complete the: Elastic, Circular, Back, bounce, Quibic +++
  * NOTE: robertpenner.com has lots of tutorials and pdfs on how easing works
  */
+typealias EasingEquation = (_ t:CGFloat,_ b:CGFloat,_ c:CGFloat,_ d:CGFloat)->CGFloat/*Easing equation signature*/
 class Easing{
     static var back:Back.Type {return Back.self}
     static var bounce:Bounce.Type {return Bounce.self}
@@ -20,15 +21,13 @@ class Easing{
     static var quint:Quint.Type {return Quint.self}
     static var sine:Sine.Type {return Sine.self}
 }
-
 /**
  * NOTE: If you decrease the decimal variable you increase the friction effect
  */
-
 /*
 static func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
-let distToGoal:CGFloat = NumberParser.relativeDifference(value, to)
-let val:CGFloat = 0.2 * distToGoal
-return val
+    let distToGoal:CGFloat = NumberParser.relativeDifference(value, to)
+    let val:CGFloat = 0.2 * distToGoal
+    return val
 }
 */
