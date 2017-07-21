@@ -23,20 +23,21 @@ class Animator:BaseAnimation{
     
     typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat,stopVelocity:CGFloat)
     var initValues:InitValues
-    init(_ callBack:@escaping FrameTick, initValues:InitValues /*onFrame,initValues,easing*/){
+    init(onFrame:@escaping FrameTick, initValues:InitValues, easing:EasingEquation){
         //derive the AnimProxy here
         //write getters and setters for the initValues
         //move the cur init to a convenient init inside an extension
+        super.init(AnimProxy.sharedInstance)
     }
     
-    init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
+    convenience init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
         self.duration = duration
         self.from = from
         self.to = to
         self.callBack = callBack
         self.easing = easing
         framesToEnd = fps * duration
-        super.init(animatable)
+        init()
     }
     /**
      * Fires on every frame tick
