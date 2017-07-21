@@ -5,11 +5,8 @@ import Foundation
 class Animator2 {
     typealias FrameTick = ((CGFloat) -> Animator2)?
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
-    var onFrameTick:FrameTick = {
-        func onLocalFrame(_ value:CGFloat) -> Animator2{
-            return self
-        }
-        return onLocalFrame
+    lazy var onFrameTick:FrameTick = {
+        return self.onFrame
     }()
     init(){
         self.onFrameTick = onFrame
