@@ -7,6 +7,7 @@ import Cocoa
  * TODO: ⚠️️ Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
  * TODO: ⚠️️ Seek,reverse,repeate,autoRepeat
  * TODO: ⚠️️ Implement a way so that the animator can be reused so that you can target it and disable it
+ * TODO: ⚠️️ Unify the variables and the init method
  */
 typealias FrameTick = (CGFloat)->Void/*the callBack signature for onFrame ticks*/
 class Animator:BaseAnimation{
