@@ -30,8 +30,6 @@ class Animator:BaseAnimation{
         self.easing = easing
         super.init(AnimProxy.sharedInstance)
     }
-    
-    
     /**
      * Fires on every frame tick
      */
