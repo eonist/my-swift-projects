@@ -1,5 +1,6 @@
 import Cocoa
 /**
+ * FrameAnimator serves as the Core Animator in this Animation library
  * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone, also callbacks works better when setting up chaining
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */

@@ -16,18 +16,18 @@ class Animator2 {
      *
      */
     func onFrame() -> Self{
-        
+        return self
     }
     /**
      *
      */
-    func onStop(){
-        
+    func onStop()-> Self{
+        return self
     }
     /**
      *
      */
-    func onStart(){
-        
+    func onStart()-> Self{
+        return self
     }
 }
