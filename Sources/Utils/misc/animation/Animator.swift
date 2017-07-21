@@ -29,7 +29,7 @@ class Animator:BaseAnimation{
         }
         self.currentFrameCount += 1
     }
-    //DEPRECATED
+    /*DEPRECATED*/
     init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
         initValues = (duration:duration,from:from,to:to)
         self.frameTick = callBack
