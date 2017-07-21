@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone
+ * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone, also callbacks works better when setting up chaining
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
 class BaseAnimation:EventSender {
@@ -33,7 +33,7 @@ class BaseAnimation:EventSender {
 extension BaseAnimation{
     /**
      * Assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
-     * TODO: Name this hasStopped or isActive
+     * TODO: ⚠️️ Name this hasStopped or isActive
      */
     var stopped:Bool {return animProxy.animators.indexOf(self) == -1}
 }
