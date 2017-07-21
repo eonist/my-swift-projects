@@ -11,18 +11,20 @@ import Cocoa
  */
 typealias FrameTick = (CGFloat)->Void/*the callBack signature for onFrame ticks*/
 extension Animator {
-    
-}
-class Animator:BaseAnimation{
-    let fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
+    static var fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
     var duration:CGFloat {get{return initValues.duration}set{initValues.duration = newValue}}/*In seconds*/
     var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
+    var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
+}
+class Animator:BaseAnimation{
+    
+    
     var callBack:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var framesToEnd:CGFloat {return fps * duration}/*totFrameCount*/
+    
     var currentFrameCount:CGFloat = 0/*curFrameCount*///TODO:⚠️️ what is this?
     var easing:EasingEquation/*Variable for holding the easing method*/
-    //isActive used by the AnimatiableView to assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
+    /
     
     typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat)
     var initValues:InitValues
