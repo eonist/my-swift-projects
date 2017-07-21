@@ -11,6 +11,7 @@ import Cocoa
  */
 typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appcode
+    /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = {/*This holds any method assigned to it that has its type*/
         return {/*returns closure that will take care of propagating the event to the parent*/
             (event:Event) -> Void in if(self.superview is IEventSender){
@@ -30,7 +31,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
         layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
         //the bellow could probably be added via lazy
-        //event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
+        //event = eventCall
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
