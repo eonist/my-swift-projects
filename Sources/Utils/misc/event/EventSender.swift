@@ -6,7 +6,7 @@ import Foundation
  */
 typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose*/
 class EventSender:EventSendable {
-    var event:EventCallBack = {return {(event:Event) -> Void in}}()/*this holds any method assigned to it that has its type, basically it holds an empty method at init to avoid optional etc*/
+    var event:EventCallBack = {return {(event:Event) -> Void in}}()/*This holds any method assigned to it that has its type, basically it holds an empty method at init to avoid optional etc*/
     /*private static var eventCall:EventCallBack {//TODO:this should probably be private
         return {
             (event:Event) -> Void in /*Swift.print("\(ClassParser.type(self))  event handler missing,  event.type: \(event.type) event.origin: \(ClassParser.type(event.origin))" )*//*Empty call so that if no event handler is attached it doesnt throw an error*/
