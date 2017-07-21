@@ -1,9 +1,9 @@
 import Foundation
 /**
- * TODO: Try to get rid of the :class by making the var's mutable somehow
+ * TODO: ⚠️️ Try to get rid of the :class by making the var's mutable somehow
  * This class exists so that Springer and Easer can have fewer vars, by instead accessing vars through getters and setters that derive their values from tuples 
  */
-protocol PhysicsAnimationKind:class{
+protocol PhysicsAnimationKind:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     associatedtype argType
     /*Signatures*/
     typealias FrameTickSignature = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
