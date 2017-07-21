@@ -29,6 +29,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
+        //the bellow could probably be added 
         event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
