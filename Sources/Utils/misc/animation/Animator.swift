@@ -22,7 +22,8 @@ class Animator:BaseAnimation{
     //isActive used by the AnimatiableView to assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
     
     typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat,stopVelocity:CGFloat)
-    init(/*onFrame,initValues,easing*/){
+    var initValues:InitValues
+    init(_ callBack:@escaping FrameTick, initValues:InitValues /*onFrame,initValues,easing*/){
         //derive the AnimProxy here
         //write getters and setters for the initValues
         //move the cur init to a convenient init inside an extension
