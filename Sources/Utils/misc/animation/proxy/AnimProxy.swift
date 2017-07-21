@@ -1,6 +1,7 @@
 import Cocoa
 /**
- * NOTE: This view class serves as a basis for frame animation. 
+ * You can only setup 1 CVDisplayLink as such you can only have 1 AnimProxy class to controll it
+ * NOTE: This view class serves as a basis for frame animation.
  * NOTE: Override the onFrame method to do frame animations
  * NOTE: Start and stop with CVDisplayLinkStart(displayLink) and CVDisplayLinkStop(displayLink) and CVDisplayLinkIsRunning(displayLink) to assert if the displayLink is running
  * TODO: ⚠️️ You can probably use NSObject instead of NSView. As NSObject has the performSelector method

@@ -9,7 +9,7 @@ class BaseAnimation:EventSender {
         self.animProxy = animatable
     }
     /**
-     * This is called from the Animation.onFrameOnMainThread method
+     * This is called from the AnimProxy.onFrameOnMainThread method
      */
     func onFrame(){
         fatalError("Must be overwritten in subclass")
