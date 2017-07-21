@@ -21,6 +21,11 @@ class Animator:BaseAnimation{
     var easing:EasingEquation/*Variable for holding the easing method*/
     //isActive used by the AnimatiableView to assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
     
+    typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat,stopVelocity:CGFloat)
+    init(/*onFrame,initValues,easing*/){
+        //
+    }
+    
     init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
         self.duration = duration
         self.from = from
