@@ -11,6 +11,7 @@ import Cocoa
  */
 typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appcode
+    //TODO: ⚠️️ I think you can make event lazy and just put the content of eventCall inside it 👌
     var event:EventCallBack/*This holds any method assigned to it that has its type*/
     var eventCall:EventCallBack {
         return {
@@ -27,7 +28,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
     override init(frame frameRect:NSRect) {
         super.init(frame:frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
         self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
         //the bellow could probably be added via lazy
         event = eventCall/*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
