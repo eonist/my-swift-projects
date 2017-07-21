@@ -15,7 +15,7 @@ class Animator2 {
     /**
      *
      */
-    func onFrame() -> Self{
+    var onFrame:(_ value:CGFloat) -> Animator2{
         return self
     }
     /**
