@@ -23,7 +23,9 @@ class Animator:BaseAnimation{
     
     typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat,stopVelocity:CGFloat)
     init(/*onFrame,initValues,easing*/){
-        //
+        //derive the AnimProxy here
+        //write getters and setters for the initValues
+        //move the cur init to a convenient init inside an extension
     }
     
     init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
