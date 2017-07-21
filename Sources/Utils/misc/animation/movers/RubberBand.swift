@@ -26,7 +26,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
         self.config = config
-        super.init(AnimProxy.sharedInstance, callBack, 0, 0)
+        super.init(AnimProxy.shared, callBack, 0, 0)
     }
     override func onFrame(){
         if hasStopped {/*stop the frameTicker here*/

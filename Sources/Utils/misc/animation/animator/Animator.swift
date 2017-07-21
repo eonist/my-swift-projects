@@ -15,7 +15,7 @@ class Animator:FrameAnimator {
         self.frameTick = onFrame
         self.initValues = initValues
         self.easing = easing
-        super.init(AnimProxy.sharedInstance)
+        super.init(AnimProxy.shared)
     }
     /**
      * Fires on every frame tick

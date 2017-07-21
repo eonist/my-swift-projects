@@ -7,15 +7,15 @@ import Cocoa
  * TODO: ⚠️️ You can probably use NSObject instead of NSView. As NSObject has the performSelector method
  * TODO: ⚠️️ Package these classes as it's own lib. Kinetic. Bump. mc2. Other names? 🚫 👉 I think Animation is an appropriate name 👈 maybe AnimManager? or 👉 AnimProxy? 👈 👌
  */
-class AnimProxy:NSView,AnimProxyKind{/*apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: you can delete the IAnimatable
-    static let sharedInstance = AnimProxy()//TODO: ⚠️️ rename to .shared
+class AnimProxy:NSObject,AnimProxyKind{/*Apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: ⚠️️ you can probably delete the IAnimatable, as nothing extends this class anyway
+    static let shared = AnimProxy()
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
     var animators:[FrameAnimator] = []/*Stores the animators*/
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
      */
     func onFrame(){
-        self.performSelector(onMainThread: #selector(/*TODO:⚠️️ the Animation. can probably be omitted->*/AnimProxy.onFrameOnMainThread), with:nil, waitUntilDone:false)//upgreaded to swift 3
+        self.performSelector(onMainThread: #selector(onFrameOnMainThread), with:nil, waitUntilDone:false)
     }
     /**
      * Tick every animator on every frame tick (This is called on the MainThread)

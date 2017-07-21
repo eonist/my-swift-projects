@@ -6,7 +6,7 @@ import Cocoa
  */
 class FrameAnimator:EventSender {//rename to FrameAnimator
     var animProxy:AnimProxyKind/*Reference to where the displayLink resides*/
-    init(_ animatable:AnimProxyKind = AnimProxy.sharedInstance){
+    init(_ animatable:AnimProxyKind = AnimProxy.shared){
         self.animProxy = animatable
     }
     /**
