@@ -25,7 +25,7 @@ class Animator:BaseAnimation{
     var currentFrameCount:CGFloat = 0/*curFrameCount*///TODO:⚠️️ what is this?
     var easing:EasingEquation/*Variable for holding the easing method*/
     var initValues:InitValues
-    init(onFrame:@escaping FrameTick, initValues:InitValues = Animator.initValues, easing:@escaping EasingEquation = ){
+    init(onFrame:@escaping FrameTick, initValues:InitValues = Animator.initValues, easing:@escaping EasingEquation = Easing.linear.ease){
         self.callBack = onFrame
         self.initValues = initValues
         self.easing = easing
