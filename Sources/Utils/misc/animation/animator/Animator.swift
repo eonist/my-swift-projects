@@ -6,7 +6,7 @@ import Cocoa
  * TODO: ⚠️️ Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
  * TODO: ⚠️️ Seek,reverse,repeate,autoRepeat
  */
-class Animator:Animation {
+class Animator: FrameAnimator {
     var frameTick:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is need in order to know when the animation is complete*/
     var easing:EasingEquation/*Variable for holding the easing method*/
