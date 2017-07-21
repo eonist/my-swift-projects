@@ -17,7 +17,7 @@ class LoopingAnimator:Animator{
      */
     override func onFrame(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        callBack(val)/*call the FrameTick method*/
+        onFrame(val)/*call the FrameTick method*/
         if(currentFrameCount >= framesToEnd){
             self.currentFrameCount = 0/*reset*/
             if(curRepeatCount >= repeatCount){/*The loop ended*/
