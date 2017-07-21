@@ -9,6 +9,37 @@ import Cocoa
  * TODO: ⚠️️ Implement a way so that the animator can be reused so that you can target it and disable it
  * TODO: ⚠️️ Unify the variables and the init method
  */
+class Animator:BaseAnimation{
+    var frameTick:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    var currentFrameCount:CGFloat = 0/*curFrameCount, this is need in order to know when the animation is complete*/
+    var easing:EasingEquation/*Variable for holding the easing method*/
+    var initValues:InitValues/*Stores the intial config values for the animation, duration,fromValue, toValue*/
+    init(onFrame:@escaping FrameTick = {_ in}, initValues:InitValues = Animator.initValues, easing:@escaping EasingEquation = Easing.linear.ease){
+        self.frameTick = onFrame
+        self.initValues = initValues
+        self.easing = easing
+        super.init(AnimProxy.sharedInstance)
+    }
+    /**
+     * Fires on every frame tick
+     */
+    override func onFrame(){
+        let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
+        frameTick(val)/*Call the callBack onFrame method*/
+        if(currentFrameCount == framesToEnd){
+            stop()/*Stop the animation*/
+            super.onEvent(AnimEvent(AnimEvent.completed,self))/*Notify listeners that the animation completed*/
+        }
+        self.currentFrameCount += 1
+    }
+    //DEPRECATED
+    init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
+        initValues = (duration:duration,from:from,to:to)
+        self.frameTick = callBack
+        self.easing = easing
+        super.init(animatable)
+    }
+}
 typealias FrameTick = (CGFloat)->Void/*the callBack signature for onFrame ticks*/
 extension Animator {
     typealias InitValues = (duration:CGFloat,from:CGFloat,to:CGFloat)/*Signature for initValues*/
@@ -19,35 +50,4 @@ extension Animator {
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
     var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
     
-}
-class Animator:BaseAnimation{
-    var onFrame:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
-    var currentFrameCount:CGFloat = 0/*curFrameCount, this is need in order to know when the animation is complete*/
-    var easing:EasingEquation/*Variable for holding the easing method*/
-    var initValues:InitValues/*Stores the intial config values for the animation, duration,fromValue, toValue*/
-    init(onFrame:@escaping FrameTick = {_ in}, initValues:InitValues = Animator.initValues, easing:@escaping EasingEquation = Easing.linear.ease){
-        self.onFrame = onFrame
-        self.initValues = initValues
-        self.easing = easing
-        super.init(AnimProxy.sharedInstance)
-    }
-    /**
-     * Fires on every frame tick
-     */
-    override func onFrame(){
-        let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        onFrame(val)/*Call the callBack onFrame method*/
-        if(currentFrameCount == framesToEnd){
-            stop()/*Stop the animation*/
-            super.onEvent(AnimEvent(AnimEvent.completed,self))/*Notify listeners that the animation completed*/
-        }
-        self.currentFrameCount += 1
-    }
-    //DEPRECATED
-    init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
-        initValues = (duration:duration,from:from,to:to)
-        self.onFrame = callBack
-        self.easing = easing
-        super.init(animatable)
-    }
 }
