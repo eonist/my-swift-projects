@@ -30,10 +30,7 @@ class Animator:BaseAnimation{
         self.easing = easing
         super.init(AnimProxy.sharedInstance)
     }
-    init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
-        let initVals:InitValues = (duration:duration,from:from,to:to)
-        self.init(onFrame: callBack, initValues: initVals, easing: easing)
-    }
+    
     /**
      * Fires on every frame tick
      */
@@ -46,8 +43,11 @@ class Animator:BaseAnimation{
         }
         self.currentFrameCount += 1
     }
-}
-//DEPRECATED
-extension Animator {
-    
+    //DEPRECATED
+    init(_ animatable:AnimProxyKind, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ callBack:@escaping FrameTick, _ easing:@escaping EasingEquation = Linear.ease){
+        initValues = (duration:duration,from:from,to:to)
+        self.callBack = callBack
+        self.easing = easing
+        super.init(animatable)
+    }
 }
