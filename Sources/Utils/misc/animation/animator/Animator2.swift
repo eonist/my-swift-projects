@@ -3,10 +3,10 @@ import Foundation
  * .onComplete .onFrame .onStop .onStart
  */
 class Animator2 {
-    typealias FrameTick = () -> (CGFloat) -> Animator2 /*Makes the return type less verbose*/
+    typealias FrameTick = (CGFloat) -> Animator2 /*Makes the return type less verbose*/
     var onFrameTick:FrameTick
     init(){
-        onFrameTick = self.onFrame
+        self.onFrameTick = onFrame
     }
     /**
      *
@@ -18,7 +18,7 @@ class Animator2 {
     /**
      *
      */
-    func onFrame(_ value:CGFloat) -> Self{
+    func onFrame(_ value:CGFloat) -> Animator2{
         return self
     }
     /**
