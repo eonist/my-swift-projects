@@ -3,7 +3,7 @@ import Cocoa
  * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone, also callbacks works better when setting up chaining
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
-class BaseAnimation:EventSender {
+class Animation:EventSender {
     var animProxy:AnimProxyKind/*Reference to where the displayLink resides*/
     init(_ animatable:AnimProxyKind = AnimProxy.sharedInstance){
         self.animProxy = animatable
@@ -30,7 +30,7 @@ class BaseAnimation:EventSender {
         super.onEvent(AnimEvent(AnimEvent.stopped,self))/*Notify listners the animation has stopped*/
     }
 }
-extension BaseAnimation{
+extension Animation {
     /**
      * Assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
      * TODO: ⚠️️ Name this hasStopped or isActive

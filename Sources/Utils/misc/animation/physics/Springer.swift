@@ -2,7 +2,7 @@ import Foundation
 /**
  * Base class That Springer classes can subClass
  */
-class Springer<T>:BaseAnimation,PhysicsAnimationKind{
+class Springer<T>: Animation,PhysicsAnimationKind{
     typealias argType = T
     typealias Config = (spring:argType,friction:argType)/*Signatures*/
     var initValues:InitValues

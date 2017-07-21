@@ -4,7 +4,7 @@ import Foundation
  * NOTE: The FrameTick and the InitValues typaliases are the same in Springer and Easer so we just reuse them
  * NOTE: This is the Base class
  */
-class Easer<T>:BaseAnimation,PhysicsAnimationKind {
+class Easer<T>: Animation,PhysicsAnimationKind {
     typealias argType = T
     var easing:argType
     var initValues:InitValues
