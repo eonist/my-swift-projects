@@ -33,7 +33,12 @@ class Animator2:FrameAnimator {
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
-            completed?.start()//start the next animation if there is one attached
+            if let completed = completed as? Animator2 {//enables completed to be different callbacks
+                completed.start()//start the next animation if there is one attached
+            }else if let completed = completed as? () -> Void {
+                completed()
+            }
+            
         }
         self.currentFrameCount += 1
     }
@@ -47,7 +52,7 @@ class Animator2:FrameAnimator {
 //    
 //    lazy var completed:Completed = {_,_ in return self}
 //    typealias Completed = () -> Void
-    var completed:Animator2?
+    var completed:Any?//any enables completed to be different callbacks
     
 //    /**
 //     * ⚠️️ too many onComplet methods can clutter up the code. you  can just launch another Animator with zero animation

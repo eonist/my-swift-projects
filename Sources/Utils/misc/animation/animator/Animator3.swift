@@ -12,7 +12,7 @@ import Foundation
     //do some things, fetch data etc
  }.completed = LoopAnim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
     //onFrame anim here, rotate 360deg , this animation is repeated 3 times
- }.onComplete = {
+ }.complete = {
     //this is the final complete call in the chain
  }
  anim1.start()//initiates the animation chain
