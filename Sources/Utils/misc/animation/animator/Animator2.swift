@@ -33,11 +33,7 @@ class Animator2:FrameAnimator {
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
-            if let completed = completed as? Animator2 {//enables completed to be different callbacks
-                completed.start()//start the next animation if there is one attached
-            }else if let completed = completed as? () -> Void {
-                completed()
-            }
+            onComplete()
             
         }
         self.currentFrameCount += 1
@@ -47,7 +43,16 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
-    
+    /**
+     * So that subclasses can also reuse the logic
+     */
+    func onComplete(){
+        if let completed = completed as? Animator2 {//enables completed to be different callbacks
+            completed.start()//start the next animation if there is one attached
+        }else if let completed = completed as? () -> Void {
+            completed()
+        }
+    }
 //    typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
 //    
 //    lazy var completed:Completed = {_,_ in return self}
