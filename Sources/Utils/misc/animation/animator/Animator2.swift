@@ -38,7 +38,7 @@ class Animator2:FrameAnimator {
         self.currentFrameCount += 1
     }
     func pause(durInSec:CGFloat, closure: () -> Void) -> Self {
-        
+        sleep(durInSec.int.uint32)//pause
         closure()/*Call the method*/
         return self
      }
@@ -56,14 +56,6 @@ class Animator2:FrameAnimator {
 //        closure()
 //        return self/*Always return self so we can chain*/
 //    }
-    
-    /**
-     *
-     */
-    func onStop()-> Self{
-        return self
-    }
-    
     /**
      *
      */
