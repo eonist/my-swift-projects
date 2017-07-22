@@ -63,7 +63,10 @@ class Animator2:FrameAnimator {
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
-            completed as? Animator2 != nil ? (completed as! Animator2).start() : (completed as! () -> Void)()//enables completed to be different callbacks
+            
+            _ = onComplete{
+                completed as? Animator2 != nil ? (completed as! Animator2).start() : (completed as! () -> Void)()//enables completed to be different callbacks
+            }
         }
         self.currentFrameCount += 1
     }
@@ -78,7 +81,11 @@ class Animator2:FrameAnimator {
     /**
      *
      */
-    
+    func onComplete(closure: () -> Void) -> Self{
+        closure()
+        
+        return self
+    }
     
 //    typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
 //    
