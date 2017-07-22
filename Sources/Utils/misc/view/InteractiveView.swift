@@ -19,7 +19,6 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
             }
         }
     }()
-    //var eventCall:EventCallBack
     var isInteractive:Bool = true/*Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well*/
     var isMouseOver:Bool = false/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
@@ -29,9 +28,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
         super.init(frame:frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
-        layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they wont mask*/
-        //the bellow could probably be added via lazy
-        //event = eventCall
+        layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they won't mask*/
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
