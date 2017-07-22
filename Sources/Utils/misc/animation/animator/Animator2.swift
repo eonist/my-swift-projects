@@ -1,53 +1,14 @@
 import Foundation
 @testable import Utils
-/*
- 
- let anim1 = Anim(dur:2.75,from:0,to:1) {
-    //onFrame anim here, move X forward
- }.pause(at:1.25,for:2){//pauses the anim for a little bit
-    //do some things, fetch data etc
- }.completed = LoopAnim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
-    //onFrame anim here, rotate 360deg , this animation is repeated 3 times
- }.complete = {
-    //this is the final complete call in the chain
- }
- anim1.start()//initiates the animation chain
- 
- 
- */
-
-/**
- * .onComplete .onFrame .onStop .onStart
- add spring and ease as well
- animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {
- $0.x = finalValue
- }
- case 4:
- spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {
- 
- also loop?
- 
- where do you start? at the end!
- 
- //it would be cool to have background thread support
- //if you need to stop the entire anim chain you need to store each successive anim in an array and stop the one that is running, you can create utilitity methods that does this for you
- //Later you can maybe create a class that is called AnimSeq, which can sequence anim from a json file, akin to your legacy project
- 
- 
- 
- //continue here: 🏀
- 
-    //Animate a ball 👈
-    //look at other Libs and Future promis hydra etc
- 
- 
- 
- */
 
 /**
  * NOTE: remember this needs to support many different animators and also simultan animations, so it cant be too intertwined
  * TODO: make FrameAnimator2 that does not extend EventSender
  * TODO: LoopAnimator2
+ * TODO: if you need to stop the entire anim chain you need to store each successive anim in an array and stop the one that is running, you can create utilitity methods that does this for you
+ * TODO: Later you can maybe create a class that is called AnimSeq, which can sequence anim from a json file, akin to your legacy project
+ * TODO: API like: spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {}
+ * TODO: API like: animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {$0.x = finalValue}
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
@@ -117,3 +78,16 @@ extension Animator2 {
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
     var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
 }
+/*
+ 
+ let anim1 = Anim(dur:2.75,from:0,to:1) {
+ //onFrame anim here, move X forward
+ }.pause(at:1.25,for:2){//pauses the anim for a little bit
+ //do some things, fetch data etc
+ }.completed = LoopAnim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
+ //onFrame anim here, rotate 360deg , this animation is repeated 3 times
+ }.completed = {
+ //this is the final complete call in the chain
+ }
+ anim1.start()//initiates the animation chain
+ */
