@@ -48,6 +48,10 @@ class Animator2:FrameAnimator {
     var frameTick:FrameTick
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
+
+    typealias Completed = () -> Void
+    //
+    var completed:Completed = {}
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
     init(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
@@ -64,18 +68,10 @@ class Animator2:FrameAnimator {
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
-            onComplete()
+            completed()
         }
         self.currentFrameCount += 1
     }
-//    typealias Chain = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
-    /**
-     *
-     */
-//    func initiate(_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Self{
-//        Animator2()
-//        return self
-//    }
     /**
      * TODO: ⚠️️ Consider adding support for pauseing at a time in the anim?
      */
@@ -84,6 +80,13 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
+    /**
+     *
+     */
+    func onComplete(closure: @escaping Completed) -> Self{
+        completed = closure//assign the closure
+        return self
+    }
     /**
      *
      */
@@ -98,43 +101,6 @@ class Animator2:FrameAnimator {
     func resume() {
         start()
     }
-    /**
-     *
-     */
-    func onComplete(closure: @escaping Completed) -> Self{
-        completed = closure//assign the closure
-        return self
-    }
-    
-    //typealias Completed = (_ closure: () -> Void) -> Animator2
-    typealias Completed = () -> Void
-//    
-    var completed:Completed?// = {_,_ in return self}
-//    typealias Completed = () -> Void
-   
-    
-//    /**
-//     * ⚠️️ too many onComplet methods can clutter up the code. you  can just launch another Animator with zero animation
-//     */
-//    func onComplete(closure: () -> Void) -> Self{
-//        closure()
-//        return self/*Always return self so we can chain*/
-//    }
-    /**
-     *
-     */
-//    func onFrame(closure: () -> Void) -> Self{
-//        closure()/*execute the closure*/
-//        return self/*Always return self so we can chain*/
-//    }
-    
-    /**
-     *
-     */
-//    func onFrame(_ value:CGFloat) -> Animator2{
-//        return self
-//    }
-    
 }
 
 extension Animator2 {
