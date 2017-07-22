@@ -36,10 +36,10 @@ class Animator2:FrameAnimator {
         }
         self.currentFrameCount += 1
     }
-    /*func pause(durInSec:CGFloat, closure: (Int) -> Void) -> Self {
-     closure(value)/*Call the method*/
-     return self
-     }*/
+    func pause(durInSec:CGFloat, closure: () -> Void) -> Self {
+        closure()/*Call the method*/
+        return self
+     }
     
     typealias Completed = () -> Void
     lazy var completed:Completed = {_ in }
