@@ -1,6 +1,6 @@
 import Foundation
 
-protocol FrameAnimatable {
+protocol FrameAnimatable:class {
     var animProxy:AnimProxyKind {get set}
     func onFrame()
     func start()

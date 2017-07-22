@@ -7,6 +7,6 @@ typealias IAnimatable = AnimProxyKind/*legacy support*/
 typealias Animatable = AnimProxyKind
 protocol AnimProxyKind:class {
     func onFrame()
-    var animators:[FrameAnimator]{get set}
+    var animators:[FrameAnimatable]{get set}
     var displayLink:CVDisplayLink{get}
 }
