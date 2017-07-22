@@ -75,6 +75,10 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
+    /**
+     *
+     */
+    
     
 //    typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
 //    
