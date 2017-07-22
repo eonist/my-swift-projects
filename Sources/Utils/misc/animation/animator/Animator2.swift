@@ -48,7 +48,7 @@ class Animator2:FrameAnimator {
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
-    init(initValues:Animator.InitValues, closure: @escaping FrameTick) {
+    init(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
         self.frameTick = closure
         //return TestingClass()
@@ -74,10 +74,10 @@ class Animator2:FrameAnimator {
     /**
      *
      */
-    func initiate(_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Self{
-        Animator2()
-        return self
-    }
+//    func initiate(_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Self{
+//        Animator2()
+//        return self
+//    }
     /**
      * TODO: ⚠️️ Consider adding support for pauseing at a time in the anim?
      */
