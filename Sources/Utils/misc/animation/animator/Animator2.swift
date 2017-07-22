@@ -3,6 +3,13 @@ import Foundation
 /**
  * .onComplete .onFrame .onStop .onStart
  add spring and ease as well
+ animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {
+ $0.x = finalValue
+ }
+ case 4:
+ spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {
+ 
+ also loop?
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
