@@ -10,6 +10,8 @@ import Foundation
  spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {
  
  also loop?
+ 
+ where do you start? at the end!
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
