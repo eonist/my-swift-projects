@@ -90,7 +90,7 @@ class Animator2:FrameAnimator {
     /**
      *
      */
-    func pause(closure: (_ animRef:Animator) -> Void) -> Self{
+    func pause(closure: (_ animRef:Animator2) -> Void) -> Self{
         stop()
         //closure()//execute the closure
         return self
