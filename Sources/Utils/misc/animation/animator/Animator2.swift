@@ -37,10 +37,9 @@ class Animator2:FrameAnimator {
     func start(initValues:Animator.InitValues, closure: @escaping FrameTick){
         self.frameTick = closure
     }
-//    typealias Completed = () -> Animator2
-//    lazy var completed:Completed = {
-//        Swift.print("completed")
-//    }
+    typealias Completed = (_ closure: () -> Void) -> Animator2
+    lazy var completed = onComplete
+    
     func onComplete(closure: () -> Void) -> Self{
         closure()/*execute the closure*/
         return self/*Always return self so we can chain*/
