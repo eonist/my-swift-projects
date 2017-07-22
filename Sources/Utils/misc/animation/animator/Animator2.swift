@@ -39,33 +39,11 @@ class Animator2:FrameAnimator2 {
         self.currentFrameCount += 1
     }
     /**
-     * TODO: ⚠️️ Consider adding support for pauseing at a time in the anim?
-     */
-    func wait(duration:CGFloat, closure: () -> Void) -> Self {
-        sleep(duration.int.uint32)//pause
-        closure()/*Call the method*/
-        return self
-     }
-    /**
      *
      */
     func onComplete(closure: @escaping Completed) -> Self{
         completed = closure//assign the closure
         return self
-    }
-    /**
-     *
-     */
-    func pause(closure: (_ animRef:Animator2) -> Void) -> Self{
-        stop()
-        //closure()//execute the closure
-        return self
-    }
-    /**
-     *
-     */
-    func resume() {
-        start()
     }
 }
 
