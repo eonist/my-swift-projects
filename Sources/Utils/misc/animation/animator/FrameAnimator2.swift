@@ -6,7 +6,7 @@ import Cocoa
  * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone, also callbacks works better when setting up chaining
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
-class FrameAnimator2 {/*Rename to FrameAnimator*/
+class FrameAnimator2:FrameAnimatable {/*Rename to FrameAnimator*/
     var animProxy:AnimProxyKind/*Reference to where the displayLink resides*/
     init(_ animatable:AnimProxyKind = AnimProxy.shared){
         self.animProxy = animatable
@@ -32,11 +32,5 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
         if(animProxy.animators.isEmpty && CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStop(animProxy.displayLink)}/*stops the frame ticker if there is no active running animators*/
     }
 }
-extension FrameAnimator2 {
-    /**
-     * Assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
-     * TODO: ⚠️️ Name this hasStopped or isActive
-     */
-    var stopped:Bool {return animProxy.animators.indexOf(self) == -1}
-}
+
 
