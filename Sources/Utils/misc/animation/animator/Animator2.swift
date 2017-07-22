@@ -1,5 +1,4 @@
 import Foundation
-@testable import Utils
 
 /**
  * NOTE: remember this needs to support many different animators and also simultan animations, so it cant be too intertwined
@@ -24,7 +23,7 @@ class Animator2:FrameAnimator2 {
         self.frameTick = closure
         self.easing = easing
         //return TestingClass()
-        super.init(AnimProxy.shared)
+        super.init(AnimProxy2.shared)
     }
     /**
      * Fires on every frame tick

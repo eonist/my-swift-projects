@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Utils
 
 /**
  * FrameAnimator serves as the Core Animator in this Animation library
@@ -7,8 +6,8 @@ import Cocoa
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
 class FrameAnimator2 {/*Rename to FrameAnimator*/
-    var animProxy:AnimProxyKind/*Reference to where the displayLink resides*/
-    init(_ animatable:AnimProxyKind = AnimProxy.shared){
+    var animProxy:AnimProxyKind2/*Reference to where the displayLink resides*/
+    init(_ animatable:AnimProxyKind2 = AnimProxy2.shared){
         self.animProxy = animatable
     }
     /**
