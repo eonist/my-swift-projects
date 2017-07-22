@@ -71,7 +71,7 @@ class Animator2:FrameAnimator {
         }
         self.currentFrameCount += 1
     }
-    typealias Chain = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
+//    typealias Chain = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
     /**
      *
      */
@@ -90,19 +90,21 @@ class Animator2:FrameAnimator {
     /**
      *
      */
-    func pause() -> Self{
+    func pause(closure: (_ animRef:Animator) -> Void) -> Self{
+        stop()
+        //closure()//execute the closure
         return self
     }
     /**
      *
      */
-    func resume() -> Self{
-        return self
+    func resume() {
+        start()
     }
-    func chain(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
-        let animation = Animator2.init(initValues:initValues,closure:closure)
-        return animation
-    }
+//    func chain(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
+//        let animation = Animator2.init(initValues:initValues,closure:closure)
+//        return animation
+//    }
     /**
      *
      */
@@ -115,7 +117,7 @@ class Animator2:FrameAnimator {
      *
      */
     func onComplete(closure: () -> Void) -> Self{
-        closure()
+        closure()//execute the closure
         
         return self
     }
