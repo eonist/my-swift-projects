@@ -2,6 +2,7 @@ import Foundation
 @testable import Utils
 /**
  * .onComplete .onFrame .onStop .onStart
+ add spring and ease as well
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
