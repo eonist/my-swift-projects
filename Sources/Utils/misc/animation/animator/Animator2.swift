@@ -74,8 +74,8 @@ class Animator2:FrameAnimator {
     /**
      *
      */
-    func chain(closure:Chain) -> Self{
-        closure()
+    func initiate(_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Self{
+        Animator2()
         return self
     }
     /**
