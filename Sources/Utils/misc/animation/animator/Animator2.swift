@@ -3,12 +3,13 @@ import Foundation
 /**
  * .onComplete .onFrame .onStop .onStart
  */
-class Animator2 {
+class Animator2:FrameAnimator {
     var frameTick:FrameTick
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
     init(initValues:Animator.InitValues, closure: @escaping FrameTick) {
         self.frameTick = closure
         //return TestingClass()
+        super.init(AnimProxy.shared)
     }
     /*func pause(durInSec:CGFloat, closure: (Int) -> Void) -> Self {
      closure(value)/*Call the method*/
@@ -23,14 +24,14 @@ class Animator2 {
         
         self.frameTick = closure
     }
-    typealias Completed = () -> Animator2
-    lazy var completed:Completed = {
-        Swift.print("completed")
-    }
-//    func onComplete(closure: () -> Void) -> Self{
-//        closure()/*execute the closure*/
-//        return self/*Always return self so we can chain*/
+//    typealias Completed = () -> Animator2
+//    lazy var completed:Completed = {
+//        Swift.print("completed")
 //    }
+    func onComplete(closure: () -> Void) -> Self{
+        closure()/*execute the closure*/
+        return self/*Always return self so we can chain*/
+    }
     /**
      *
      */
