@@ -86,6 +86,7 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
+    
     func chain(closure: () -> Animator2) -> Animator2{
         return closure()
         
