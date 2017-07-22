@@ -32,7 +32,7 @@ class Animator2:FrameAnimator {
         frameTick(0)/*Call the callBack onFrame method*/
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
-            completed()//the animation completed, call the completed closure
+            _ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
         }
         self.currentFrameCount += 1
     }
@@ -43,7 +43,7 @@ class Animator2:FrameAnimator {
     
     typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
     
-    lazy var completed:Completed = {}
+    lazy var completed:Completed = {_,_ in return self}
     
     
     /**
