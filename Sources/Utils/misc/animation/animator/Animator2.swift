@@ -98,28 +98,16 @@ class Animator2:FrameAnimator {
     func resume() {
         start()
     }
-//    func chain(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
-//        let animation = Animator2.init(initValues:initValues,closure:closure)
-//        return animation
-//    }
     /**
      *
      */
-//    func chain(closure: () -> Animator2) -> Animator2{
-//        return closure()
-//        
-//        //return self
-//    }
-    /**
-     *
-     */
-    func onComplete(closure: () -> Void) -> Self{
-        closure()//execute the closure
-        
+    func onComplete(closure: @escaping Completed) -> Self{
+        completed = closure//assign the closure
         return self
     }
     
-    typealias Completed = (_ closure: () -> Void) -> Animator2
+    //typealias Completed = (_ closure: () -> Void) -> Animator2
+    typealias Completed = () -> Void
 //    
     var completed:Completed?// = {_,_ in return self}
 //    typealias Completed = () -> Void
