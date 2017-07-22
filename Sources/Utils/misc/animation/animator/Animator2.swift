@@ -22,8 +22,7 @@ class Animator2:FrameAnimator {
         frameTick(0)/*Call the callBack onFrame method*/
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
-            
-            super.onEvent(AnimEvent(AnimEvent.completed,self))/*Notify listeners that the animation completed*/
+            completed()//the animation completed, call the completed closure
         }
         self.currentFrameCount += 1
     }
@@ -37,11 +36,11 @@ class Animator2:FrameAnimator {
     func start(initValues:Animator.InitValues, closure: @escaping FrameTick){
         self.frameTick = closure
     }
-    typealias Completed = (_ closure: () -> Void) -> Animator2
-    lazy var completed = onComplete
+    typealias Completed = () -> Void
+    lazy var completed:Completed = {_ in }
     
-    func onComplete(closure: () -> Void) -> Self{
-        closure()/*execute the closure*/
+    func onComplete(closure: @escaping Completed) -> Self{
+        completed = closure/*assign the closure*/
         return self/*Always return self so we can chain*/
     }
     /**
