@@ -70,7 +70,7 @@ class Animator2:FrameAnimator {
     /**
      * TODO: ⚠️️ Consider adding support for pauseing at a time in the anim?
      */
-    func pause(duration:CGFloat, closure: () -> Void) -> Self {
+    func wait(duration:CGFloat, closure: () -> Void) -> Self {
         sleep(duration.int.uint32)//pause
         closure()/*Call the method*/
         return self
