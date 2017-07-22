@@ -33,6 +33,7 @@ class Animator2:FrameAnimator {
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
+            completed?.start()
         }
         self.currentFrameCount += 1
     }
@@ -45,12 +46,13 @@ class Animator2:FrameAnimator {
 //    
 //    lazy var completed:Completed = {_,_ in return self}
     typealias Completed = () -> Void
-    lazy var completed:Animator2 = {
-        Swift.print("completed")
-    }
+    var completed:Animator2?
     
-    func onComplete(initValues:Animator.InitValues, closure: @escaping FrameTick) -> Self{
-        self.frameTick = closure
+    /**
+     * cleanUp
+     */
+    func onComplete(closure: () -> Void) -> Self{
+        closure()
         return self/*Always return self so we can chain*/
     }
     
