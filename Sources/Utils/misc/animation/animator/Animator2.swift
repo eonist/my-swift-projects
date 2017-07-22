@@ -45,7 +45,7 @@ class Animator2:FrameAnimator {
 //    
 //    lazy var completed:Completed = {_,_ in return self}
     typealias Completed = () -> Void
-    lazy var completed:Completed = {
+    lazy var completed:Animator2 = {
         Swift.print("completed")
     }
     
