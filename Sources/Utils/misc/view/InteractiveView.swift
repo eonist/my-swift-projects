@@ -24,7 +24,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
     var isMouseOver:Bool = false/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
     var hasHandCursor:Bool = false//TODO: ⚠️️ Consider removing this, its clutters up the method, add handCursor flag in subClass when needed
-    /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view
+    /*this can probably be removed--->*/override var wantsDefaultClipping:Bool{return false}/*<--yepp remove this, once more UI components are tested*///avoids clipping the view, so dont remove?
     override init(frame frameRect:NSRect) {
         super.init(frame:frameRect)//<--maybe: MTLSystemCreateDefaultDevice()
         self.wantsLayer = true/*if true then view is layer backed*/
