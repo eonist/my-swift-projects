@@ -1,5 +1,12 @@
 import Foundation
-
-class AnimProxyKind2 {
-
+/**
+ * TODO: ⚠️️ This should possibly be renamed to IAnimatableView
+ * TODO: ⚠️️ This protocol may not even be needed as you dont extend AnimProxy
+ */
+typealias IAnimatable = AnimProxyKind/*legacy support*/
+typealias Animatable = AnimProxyKind
+protocol AnimProxyKind2:class {
+    func onFrame()
+    var animators:[FrameAnimator]{get set}
+    var displayLink:CVDisplayLink{get}
 }
