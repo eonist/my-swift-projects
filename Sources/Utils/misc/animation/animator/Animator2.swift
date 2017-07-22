@@ -16,7 +16,7 @@ import Foundation
  //continue here: 🏀
     //make FrameAnimator2 that does not extend EventSender
     //make LoopAnimator2
-    //Animate a ball
+    //Animate a ball 👈
     //look at other Libs and Future promis hydra etc
  
  
