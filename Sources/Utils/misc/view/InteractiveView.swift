@@ -12,13 +12,11 @@ import Cocoa
 typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
-    lazy var event:EventCallBack = {/*This holds any method assigned to it that has its type*/
-        return { event in /*returns closure that will take care of propagating the event to the parent*/
-            if let superView:IEventSender = self.superview as? IEventSender {
-                superView.onEvent(event)
-            }
+    lazy var event:EventCallBack = { event in /*returns closure that will take care of propagating the event to the parent*/
+        if let superView:IEventSender = self.superview as? IEventSender {
+            superView.onEvent(event)
         }
-    }()
+    }
     var isInteractive:Bool = true/*Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well*/
     var isMouseOver:Bool = false/*you should hit test this on init*/
     var hasMouseEntered:Bool = false/*you should hit test this on init*/
@@ -41,7 +39,7 @@ class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appc
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
      * NOTE: It could be possible to only call this method if a bool value was true. Optimization
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
-     * TODO: when you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
+     * TODO: ⚠️️ When you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
         if let parent = self.superview as? IInteractiveView{
