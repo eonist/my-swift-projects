@@ -40,12 +40,7 @@ class Animator2:FrameAnimator {
      closure(value)/*Call the method*/
      return self
      }*/
-    /**
-     *
-     */
-    func start(initValues:Animator.InitValues, closure: @escaping FrameTick){
-        self.frameTick = closure
-    }
+    
     typealias Completed = () -> Void
     lazy var completed:Completed = {_ in }
     
