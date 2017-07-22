@@ -15,7 +15,7 @@ import Foundation
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
-    var currentFrameCount:CGFloat = 0/*curFrameCount, this is need in order to know when the animation is complete*/
+    var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
     init(initValues:Animator.InitValues, closure: @escaping FrameTick) {
