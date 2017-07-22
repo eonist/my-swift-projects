@@ -43,11 +43,10 @@ class Animator2:FrameAnimator {
     
     typealias Completed = () -> Void
     lazy var completed:Completed = {_ in }
+    typealias Completed2 = (CGFloat) -> Void
+    lazy var completed:Completed2 = {value in }
     
-    func onComplete(closure: @escaping Completed) -> Self{
-        completed = closure/*assign the closure*/
-        return self/*Always return self so we can chain*/
-    }
+    
     /**
      *
      */
