@@ -42,6 +42,7 @@ import Foundation
     //look at other Libs and Future promis hydra etc
  
  
+ 
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
@@ -86,17 +87,18 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
-    func chainAndInit(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
-        return Animator2.init(initValues:initValues,closure:closure)
+    func chain(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
+        let animation = Animator2.init(initValues:initValues,closure:closure)
+        return animation
     }
     /**
      *
      */
-    func chain(closure: () -> Animator2) -> Animator2{
-        return closure()
-        
-        //return self
-    }
+//    func chain(closure: () -> Animator2) -> Animator2{
+//        return closure()
+//        
+//        //return self
+//    }
     /**
      *
      */
