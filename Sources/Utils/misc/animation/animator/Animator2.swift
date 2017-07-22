@@ -46,6 +46,13 @@ class Animator2:FrameAnimator {
     /**
      *
      */
+    func onStop()-> Self{
+        return self
+    }
+    
+    /**
+     *
+     */
 //    func onFrame(closure: () -> Void) -> Self{
 //        closure()/*execute the closure*/
 //        return self/*Always return self so we can chain*/
@@ -57,18 +64,7 @@ class Animator2:FrameAnimator {
 //    func onFrame(_ value:CGFloat) -> Animator2{
 //        return self
 //    }
-    /**
-     *
-     */
-    func onStop()-> Self{
-        return self
-    }
-    /**
-     *
-     */
-    func onStart()-> Self{
-        return self
-    }
+    
 }
 
 extension Animator2 {
