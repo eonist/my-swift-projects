@@ -23,10 +23,14 @@ class Animator2 {
         
         self.frameTick = closure
     }
-    func onComplete(closure: () -> Void) -> Self{
-        closure()/*execute the closure*/
-        return self/*Always return self so we can chain*/
+    typealias Completed = () -> Void
+    lazy var completed:Completed = {
+        Swift.print("completed")
     }
+//    func onComplete(closure: () -> Void) -> Self{
+//        closure()/*execute the closure*/
+//        return self/*Always return self so we can chain*/
+//    }
     /**
      *
      */
