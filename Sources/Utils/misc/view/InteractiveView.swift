@@ -13,9 +13,9 @@ typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = {/*This holds any method assigned to it that has its type*/
-        return {/*returns closure that will take care of propagating the event to the parent*/
-            (event:Event) -> Void in if(self.superview is IEventSender){
-                (self.superview as! IEventSender).onEvent(event)
+        return { event in /*returns closure that will take care of propagating the event to the parent*/
+            if let superView:IEventSender = self.superview as? IEventSender {
+                superView.onEvent(event)
             }
         }
     }()
