@@ -41,9 +41,9 @@ class Animator2:FrameAnimator {
         return self
      }
     
-    typealias Finished = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
+    typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
     
-    lazy var finished:Finished = {}
+    lazy var completed:Completed = {}
     
     
     /**
