@@ -29,8 +29,8 @@ class Animator2:FrameAnimator2 {
      * Fires on every frame tick
      */
     override func onFrame(){
-        //let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        frameTick(0)/*Call the callBack onFrame method*/
+        let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
+        frameTick(val)/*Call the callBack onFrame method*/
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
