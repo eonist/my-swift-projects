@@ -1,4 +1,5 @@
-import Foundation
+import Cocoa
+@testable import Utils
 
 /**
  * FrameAnimator serves as the Core Animator in this Animation library
@@ -31,7 +32,7 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
         if(animProxy.animators.isEmpty && CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStop(animProxy.displayLink)}/*stops the frame ticker if there is no active running animators*/
     }
 }
-extension FrameAnimator {
+extension FrameAnimator2 {
     /**
      * Assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
      * TODO: ⚠️️ Name this hasStopped or isActive

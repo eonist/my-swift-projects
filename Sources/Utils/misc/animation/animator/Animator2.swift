@@ -22,6 +22,7 @@ class Animator2:FrameAnimator2 {
     init(initValues:Animator.InitValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
         self.frameTick = closure
+        self.easing = easing
         //return TestingClass()
         super.init(AnimProxy.shared)
     }
