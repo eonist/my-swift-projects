@@ -87,6 +87,18 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
+    /**
+     *
+     */
+    func pause() -> Self{
+        return self
+    }
+    /**
+     *
+     */
+    func resume() -> Self{
+        return self
+    }
     func chain(initValues:Animator.InitValues, closure: @escaping FrameTick = {_ in}) -> Animator2 {
         let animation = Animator2.init(initValues:initValues,closure:closure)
         return animation
