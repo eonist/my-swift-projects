@@ -4,7 +4,7 @@ import Foundation
  * NOTE: you can also create eventHandelers inside nested methods. (unlike postEvent which cant do this)
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
  */
-typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose*/
+typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose, ⚠️️ i'm not sure why there is a ? sign at the end*/
 class EventSender:EventSendable {
     var event:EventCallBack = {return {event in}}()/*This holds any method assigned to it that has its type, basically it holds an empty method at init to avoid optional etc*/
     /*private static var eventCall:EventCallBack {//TODO:this should probably be private
