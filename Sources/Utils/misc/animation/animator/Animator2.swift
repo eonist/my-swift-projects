@@ -23,7 +23,7 @@ class Animator2 {
         
         self.frameTick = closure
     }
-    typealias Completed = () -> Void
+    typealias Completed = () -> Animator2
     lazy var completed:Completed = {
         Swift.print("completed")
     }
