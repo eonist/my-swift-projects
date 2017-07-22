@@ -86,13 +86,18 @@ class Animator2:FrameAnimator {
         closure()/*Call the method*/
         return self
      }
+    func chain(closure: () -> Animator2) -> Animator2{
+        return closure()
+        
+        //return self
+    }
     /**
      *
      */
     func onComplete(closure: () -> Void) -> Self{
-        return closure()
+        closure()
         
-        //return self
+        return self
     }
     
 //    typealias Completed = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
