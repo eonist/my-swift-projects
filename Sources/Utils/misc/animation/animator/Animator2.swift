@@ -42,13 +42,10 @@ class Animator2:FrameAnimator {
      }
     
     typealias Completed = () -> Void
-    typealias CompletedSignature = ((Completed) -> ())
-    var completed:CompletedSignature  = {return onComplete}
     
-    func onComplete(closure: Completed) -> Self{
-        //completed = closure/*assign the closure*/
-        return self/*Always return self so we can chain*/
-    }
+    lazy var completed:Completed = {}
+    
+    
     /**
      *
      */
