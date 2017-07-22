@@ -14,14 +14,11 @@ class Animator2:FrameAnimator {
     /*func pause(durInSec:CGFloat, closure: (Int) -> Void) -> Self {
      closure(value)/*Call the method*/
      return self
-     
      }*/
-    
     /**
      *
      */
     func start(initValues:Animator.InitValues, closure: @escaping FrameTick){
-        
         self.frameTick = closure
     }
 //    typealias Completed = () -> Animator2
