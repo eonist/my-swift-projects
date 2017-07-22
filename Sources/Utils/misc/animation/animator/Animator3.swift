@@ -10,7 +10,7 @@ import Foundation
     //onFrame anim here, move X forward
  }.pause(at:1.25,for:2){//pauses the anim for a little bit
     //do some things, fetch data etc
- }.completed = Anim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
+ }.completed = LoopAnim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
     //onFrame anim here, rotate 360deg , this animation is repeated 3 times
  }.onComplete = {
     //this is the final complete call in the chain
