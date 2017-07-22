@@ -70,6 +70,14 @@ class Animator2:FrameAnimator {
         }
         self.currentFrameCount += 1
     }
+    typealias Chain = (_ initValues:Animator.InitValues, _ closure: @escaping FrameTick) -> Animator2
+    /**
+     *
+     */
+    func chain(closure:Chain) -> Self{
+        closure()
+        return self
+    }
     /**
      * TODO: ⚠️️ Consider adding support for pauseing at a time in the anim?
      */
