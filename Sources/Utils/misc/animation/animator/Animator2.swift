@@ -10,7 +10,7 @@ import Foundation
  * TODO: API like: spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {}
  * TODO: API like: animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {$0.x = finalValue}
  */
-class Animator2:FrameAnimator {
+class Animator2:FrameAnimator2 {
     var frameTick:FrameTick
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
