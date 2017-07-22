@@ -12,6 +12,12 @@ import Foundation
  also loop?
  
  where do you start? at the end!
+ 
+ //continue here: 🏀
+    //make FrameAnimator2 that does not extend EventSender
+    //
+ 
+ 
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
