@@ -36,13 +36,18 @@ import Foundation
  
  
  //continue here: 🏀
-    //make FrameAnimator2 that does not extend EventSender
-    //make LoopAnimator2
+ 
     //Animate a ball 👈
     //look at other Libs and Future promis hydra etc
  
  
  
+ */
+
+/**
+ * NOTE: remember this needs to support many different animators and also simultan animations, so it cant be too intertwined
+ * TODO: make FrameAnimator2 that does not extend EventSender
+ * TODO: LoopAnimator2
  */
 class Animator2:FrameAnimator {
     var frameTick:FrameTick
