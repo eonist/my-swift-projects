@@ -34,7 +34,7 @@ protocol Advancable{
     func isNear(a:argType,b:argType,epsilon:argType) -> Bool
 }
 
-extension CGFloat:Advanceable{
+extension CGFloat:Advancable{
     typealias argType = CGFloat
     func isNear(a: CGFloat, b: CGFloat, epsilon: CGFloat) -> Bool {
         return a.isNear(b, epsilon)
