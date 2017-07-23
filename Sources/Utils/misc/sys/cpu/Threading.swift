@@ -16,6 +16,7 @@ var bgQueue:DispatchQueue {return bg}/*DEPRECATED*/
 
 /**
  * Helps sleep whatever is defined within the PARAM: closure with-out blocking the app
+ * TODO: You can put this method another place maybe?
  */
 func bgSleep(_ sleepDurInSec:CGFloat, _ closure:@escaping ()->Void){
     bg.async{
