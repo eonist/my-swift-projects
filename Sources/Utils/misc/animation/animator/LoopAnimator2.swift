@@ -32,9 +32,14 @@ class LoopAnimator2:Animator2{
 }
 extension LoopAnimator2{
     struct InitValues2{
-        var duration:CGFloat
-        var from:CGFloat
-        var to:CGFloat
-        
+        var duration:CGFloat {get{return initValues.duration}set{initValues.duration = newValue}}/*In seconds*/
+        var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
+        var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
+        var initValues:Animator2.InitValues2
+        var repeatCount:Int
+        init(duration:CGFloat,from:CGFloat,to:CGFloat,repeatCount:Int){
+            self.initValues = Animator2.InitValues2(duration:duration,from:from,to:to)
+            self.repeatCount = repeatCount
+        }
     }
 }
