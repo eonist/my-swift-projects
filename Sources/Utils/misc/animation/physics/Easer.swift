@@ -59,6 +59,21 @@ protocol Easable{
     func add(x: argType, y: argType) -> argType
     func substract(x: argType, y: argType) -> argType
     func multiply(x: argType, y: argType) -> argType
-    func isNear(value:argType,epsilon:argType)
+    func isNear(a:argType,b:argType,epsilon:argType) -> Bool
 }
 
+extension CGFloat:Easable{
+    typealias argType = CGFloat
+    func isNear(a: CGFloat, b: CGFloat, epsilon: CGFloat) -> Bool {
+        return a.isNear(b, epsilon)
+    }
+    func multiply(x: CGFloat, y: CGFloat) -> CGFloat {
+        return x * y
+    }
+    func substract(x: CGFloat, y: CGFloat) -> CGFloat {
+        return x - y
+    }
+    func add(x: CGFloat, y: CGFloat) -> CGFloat {
+        return x + y
+    }
+}
