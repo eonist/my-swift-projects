@@ -23,60 +23,18 @@ class ColorParser {
     }
    
     /**
-     * NOTE: you can use CIColor if you want to avoid the forced unwrap when using colorspace. See RGBParser for code
+     * Interpolates between two NSColors
      */
     static func interpolate(_ from:NSColor,_ to:NSColor,_ scalar:CGFloat) ->NSColor{
         func interpolate(_ start:CGFloat,_ end:CGFloat,_ scalar:CGFloat)->CGFloat{
             return start + (end - start) * scalar;
-            
         }
         let fromRGBColor:NSColor = from.usingColorSpace(.genericRGB)!
         let toRGBColor:NSColor = to.usingColorSpace(.genericRGB)!
-        
         let red:CGFloat = interpolate(scalar, fromRGBColor.redComponent, toRGBColor.redComponent)
         let green:CGFloat = interpolate(scalar, fromRGBColor.greenComponent, toRGBColor.greenComponent)
         let blue:CGFloat = interpolate(scalar, fromRGBColor.blueComponent, toRGBColor.blueComponent)
-        
-//        
-//        if let ciColor:CIColor = CIColor(color: nsColor){
-//            return RGBA(ciColor.red * 255,ciColor.green * 255,ciColor.blue * 255,ciColor.alpha * 255)//<--you could just do: color.redComponent.uint etc, nopp you can't, redComponent requires colorspace etc see: http://stackoverflow.com/questions/15682923/convert-nscolor-to-rgb/34115587#34115587
-//        }
-//        
-//        + (NSColor *)interpolateFrom:(NSColor *)fromColor to:(NSColor *)toColor percentage:(float)percentage
-//        {
-//            NSColor *fromRGBColor = [fromColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
-//            NSColor *toRGBColor = [toColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
-//            
-//            float red = XBInterpolate(percentage, [fromRGBColor redComponent], [toRGBColor redComponent]);
-//            float green = XBInterpolate(percentage, [fromRGBColor greenComponent], [toRGBColor greenComponent]);
-//            float blue = XBInterpolate(percentage, [fromRGBColor blueComponent], [toRGBColor blueComponent]);
-//            float alpha = XBInterpolate(percentage, [fromRGBColor alphaComponent], [toRGBColor alphaComponent]);
-//            
-//            return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
-//        }
-//        let ciColor:CIColor = CIColor(color: nsColor)!
-//        return RGB(ciColor.red*255,ciColor.green*255,ciColor.blue*255)
-        
-//        a.redComponent
-//
-        
-//
-//        a.inter
-//            - (UIColor *)colorByInterpolatingWith:(UIColor *)color factor:(CGFloat)factor {
-//                factor = MIN(MAX(t, 0.0), 1.0);
-//                
-//                const CGFloat *startComponent = CGColorGetComponents(self.CGColor);
-//                const CGFloat *endComponent = CGColorGetComponents(color.CGColor);
-//                
-//                float startAlpha = CGColorGetAlpha(self.CGColor);
-//                float endAlpha = CGColorGetAlpha(color.CGColor);
-//                
-//                float r = startComponent[0] + (endComponent[0] - startComponent[0]) * factor;
-//                float g = startComponent[1] + (endComponent[1] - startComponent[1]) * factor;
-//                float b = startComponent[2] + (endComponent[2] - startComponent[2]) * factor;
-//                float a = startAlpha + (endAlpha - startAlpha) * factor;
-//                
-//                return [UIColor colorWithRed:r green:g blue:b alpha:a];
-//        }
+        let alpha:CGFloat = interpolate(scalar, fromRGBColor.alphaComponent, toRGBColor.alphaComponent)
+        return NSColor.init(calibratedRed: red, green: green, blue: blue, alpha: alpha)
     }
 }
