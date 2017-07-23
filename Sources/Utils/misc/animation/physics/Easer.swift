@@ -53,3 +53,7 @@ class PointEaser:Easer<CGPoint> {
     static var initConfig:CGPoint = CGPoint(0.2,0.2)/*Convenient*/
     static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))/*Convenient*/
 }
+
+protocol Easable{
+    //
+}
