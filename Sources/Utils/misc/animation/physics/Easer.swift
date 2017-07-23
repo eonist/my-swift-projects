@@ -36,7 +36,7 @@ class NumberEaser:Easer<CGFloat> {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     static var initConfig:CGFloat = (0.2)/*Convenient*/
-    static var initValues:InitValues = (0,0,0,0)/*Convenient*/
+    static var initValues:InitValues = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
 }
 /**
  * Easer for CGPoint
@@ -51,5 +51,5 @@ class PointEaser:Easer<CGPoint> {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
     static var initConfig:CGPoint = CGPoint(0.2,0.2)/*Convenient*/
-    static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))/*Convenient*/
+    static var initValues:InitValues = (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))/*Convenient*/
 }
