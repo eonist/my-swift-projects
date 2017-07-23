@@ -117,25 +117,25 @@ extension NSColorParser{
      */
     static func interpolate(_ from:NSColor,_ to:NSColor,_ scalar:CGFloat) ->NSColor{
         func interpolate(_ start:CGFloat,_ end:CGFloat,_ scalar:CGFloat)->CGFloat{
-            return CGFloatParser.interpolate(start, end, scalar)
+            return start + (end - start) * scalar
         }
         let fromRGBColor:NSColor = from.usingColorSpace(.genericRGB)!
         let toRGBColor:NSColor = to.usingColorSpace(.genericRGB)!
-        Swift.print("fromRGBColor.redComponent: " + "\(fromRGBColor.redComponent)")
-        Swift.print("fromRGBColor.greenComponent: " + "\(fromRGBColor.greenComponent)")
-        Swift.print("fromRGBColor.blueComponent: " + "\(fromRGBColor.blueComponent)")
-        
-        Swift.print("toRGBColor.redComponent): " + "\(toRGBColor.redComponent))")
-        Swift.print("toRGBColor.greenComponent: " + "\(toRGBColor.greenComponent)")
-        Swift.print("toRGBColor.blueComponent: " + "\(toRGBColor.blueComponent)")
-        let red:CGFloat = interpolate(scalar, fromRGBColor.redComponent, toRGBColor.redComponent)
-        let green:CGFloat = interpolate(scalar, fromRGBColor.greenComponent, toRGBColor.greenComponent)
-        let blue:CGFloat = interpolate(scalar, fromRGBColor.blueComponent, toRGBColor.blueComponent)
-        let alpha:CGFloat = interpolate(scalar, fromRGBColor.alphaComponent, toRGBColor.alphaComponent)
+//        Swift.print("fromRGBColor.redComponent: " + "\(fromRGBColor.redComponent)")
+//        Swift.print("fromRGBColor.greenComponent: " + "\(fromRGBColor.greenComponent)")
+//        Swift.print("fromRGBColor.blueComponent: " + "\(fromRGBColor.blueComponent)")
+//        
+//        Swift.print("toRGBColor.redComponent): " + "\(toRGBColor.redComponent))")
+//        Swift.print("toRGBColor.greenComponent: " + "\(toRGBColor.greenComponent)")
+//        Swift.print("toRGBColor.blueComponent: " + "\(toRGBColor.blueComponent)")
+        let red:CGFloat = interpolate(fromRGBColor.redComponent, toRGBColor.redComponent,scalar)
+        let green:CGFloat = interpolate(fromRGBColor.greenComponent, toRGBColor.greenComponent,scalar)
+        let blue:CGFloat = interpolate(fromRGBColor.blueComponent, toRGBColor.blueComponent,scalar)
+        let alpha:CGFloat = interpolate(fromRGBColor.alphaComponent, toRGBColor.alphaComponent,scalar)
         //return NSColor.init(calibratedRed: red, green: green, blue: blue, alpha: alpha)
-        Swift.print("red: " + "\(red)")
-        Swift.print("green: " + "\(green)")
-        Swift.print("blue: " + "\(blue)")
+//        Swift.print("red: " + "\(red)")
+//        Swift.print("green: " + "\(green)")
+//        Swift.print("blue: " + "\(blue)")
         return NSColor.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
