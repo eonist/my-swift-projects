@@ -13,11 +13,11 @@ class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimKind2 {
         super.init()
     }
     override func onFrame(){
-        self.updatePosition()
+        self.updatePosition(value)
         self.callBack(value)
     }
-    func updatePosition() {
-        velocity = targetValue.substract(value).multiply(easing)
+    func updatePosition<T:Advancable>(_ value:T) {
+        let velocity = targetValue.substract(value).multiply(easing)
         value = value.add(velocity)
         if assertStop {stop()}
     }
