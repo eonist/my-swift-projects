@@ -62,5 +62,4 @@ extension Animator2{
         var from:CGFloat
         var to:CGFloat
     }
-    
 }

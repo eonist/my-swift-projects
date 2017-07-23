@@ -8,7 +8,7 @@ import Foundation
 class LoopAnimator2:Animator2{
     var repeatCount:Int/*<--zero means infinite, not at the moment it seems*/
     var curRepeatCount:Int = 0
-    init(initValues:Animator.InitValues, _ repeatCount:Int = 0, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
+    init(initValues:LoopAnimator2.InitValues2, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.repeatCount = repeatCount
         super.init(initValues: initValues, easing: easing, closure: closure)
     }
