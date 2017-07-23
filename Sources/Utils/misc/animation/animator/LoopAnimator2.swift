@@ -35,5 +35,6 @@ extension LoopAnimator2{
         var duration:CGFloat
         var from:CGFloat
         var to:CGFloat
+        
     }
 }
