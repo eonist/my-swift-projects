@@ -21,14 +21,19 @@ class ColorParser {
         let color:CGColor  = CGColor(red: r, green: g, blue: b, alpha: 1.0)
         return color
     }
-    CGFloat XBInterpolate(CGFloat value, CGFloat start, CGFloat end)
-    {
-    return start + (end - start) * value;
-    }
+   
     /**
      *
      */
-    static func interpolate(_ a:NSColor,_ b:NSColor) ->NSColor{
+    static func interpolate(_ from:NSColor,_ to:NSColor) ->NSColor{
+        func interpolate(value:CGFloat,start:CGFloat,end:CGFloat)->CGFloat{
+            return start + (end - start) * value;
+            
+        }
+        if let ciColor:CIColor = CIColor(color: nsColor){
+            return RGBA(ciColor.red * 255,ciColor.green * 255,ciColor.blue * 255,ciColor.alpha * 255)//<--you could just do: color.redComponent.uint etc, nopp you can't, redComponent requires colorspace etc see: http://stackoverflow.com/questions/15682923/convert-nscolor-to-rgb/34115587#34115587
+        }
+        
         + (NSColor *)interpolateFrom:(NSColor *)fromColor to:(NSColor *)toColor percentage:(float)percentage
         {
             NSColor *fromRGBColor = [fromColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
