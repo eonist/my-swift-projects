@@ -55,5 +55,7 @@ class PointEaser:Easer<CGPoint> {
 }
 
 protocol Easable{
-    var velocity:
+    associatedtype argType
+    var velocity:argType {get}
+    var value:argType {get}
 }
