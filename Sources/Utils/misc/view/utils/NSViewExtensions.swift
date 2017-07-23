@@ -123,7 +123,7 @@ extension NSView {
 
 /**
  * Disable implicit animation
- * TODO: Figure out how to disaple auto anim in NSViews
+ * TODO: Figure out how to disaple auto anim in NSViews i think its: layer.actions = ["sublayers":NSNull()] 
  * EXAMPLE: disableAnim{view.isHidden = true}//Default animation is now disabled, Basically whatever you put inside the closure is not animated
  */
 func disableAnim(_ closure:()->Void){
