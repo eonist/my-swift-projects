@@ -6,11 +6,11 @@ import Foundation
  * PARAM: callBack: is the callback ref that is called on every "frame tick"
  */
 class LoopAnimator2:Animator2{
-    var repeatCount:Int/*<--zero means infinite, not at the moment it seems*/
+    var repeatCount:Int {return }/*<--zero means infinite, not at the moment it seems*/
     var curRepeatCount:Int = 0
-    init(initValues:LoopAnimator2.InitValues2, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
+    init(initValues:LoopAnimator2.InitLoopValues2, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.repeatCount = repeatCount
-        super.init(initValues: initValues, easing: easing, closure: closure)
+        super.init(initValues: initValues.initValues, easing: easing, closure: closure)
     }
     /**
      * Fires on every frame tick
@@ -31,7 +31,7 @@ class LoopAnimator2:Animator2{
     }
 }
 extension LoopAnimator2{
-    struct InitValues2{
+    struct InitLoopValues2{
         var duration:CGFloat {get{return initValues.duration}set{initValues.duration = newValue}}/*In seconds*/
         var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
         var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/

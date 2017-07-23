@@ -56,10 +56,10 @@ extension Animator2 {
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
     var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
 }
-extension Animator2{
-    struct InitValues2{
-        var duration:CGFloat
-        var from:CGFloat
-        var to:CGFloat
-    }
-}
+//extension Animator2{
+//    struct InitValues2{
+//        var duration:CGFloat
+//        var from:CGFloat
+//        var to:CGFloat
+//    }
+//}
