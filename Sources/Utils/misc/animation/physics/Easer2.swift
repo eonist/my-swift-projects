@@ -1,7 +1,7 @@
 import Foundation
 
 
-class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimationKind {
+class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimKind2 {
     typealias argType = T
     var easing:argType
     var initValues:InitValues
@@ -17,8 +17,8 @@ class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimationKind {
         self.callBack(value)
     }
     func updatePosition() {
-        velocity = (targetValue - value) * easing
-        value += velocity
+        velocity = targetValue.substract(value).multiply(easing)
+        value = value.add(velocity)
         if assertStop {stop()}
     }
     var assertStop:Bool {
@@ -28,24 +28,24 @@ class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimationKind {
 
 protocol Advancable{
     associatedtype argType
-    func add(value: argType) -> argType
-    func substract(value: argType) -> argType
-    func multiply(value: argType) -> argType
-    func isNear(value:argType,epsilon:argType) -> Bool
+    func add(_ value: argType) -> argType
+    func substract(_ value: argType) -> argType
+    func multiply(_ value: argType) -> argType
+    func isNear(_ value:argType,_ epsilon:argType) -> Bool
 }
 
 extension CGFloat:Advancable{
     typealias argType = CGFloat
-    func isNear(value: CGFloat, epsilon: CGFloat) -> Bool {
+    func isNear(_ value: CGFloat, _ epsilon: CGFloat) -> Bool {
         return self.isNear(value, epsilon)
     }
-    func multiply(value: CGFloat) -> CGFloat {
+    func multiply(_ value: CGFloat) -> CGFloat {
         return self * value
     }
-    func substract(value: CGFloat) -> CGFloat {
+    func substract(_ value: CGFloat) -> CGFloat {
         return self - value
     }
-    func add(value: CGFloat) -> CGFloat {
+    func add(_ value: CGFloat) -> CGFloat {
         return self + value
     }
 }
