@@ -25,11 +25,23 @@ class ColorParser {
      *
      */
     static func interpolate(_ a:NSColor,_ b:NSColor) ->NSColor{
+        + (NSColor *)interpolateFrom:(NSColor *)fromColor to:(NSColor *)toColor percentage:(float)percentage
+        {
+            NSColor *fromRGBColor = [fromColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+            NSColor *toRGBColor = [toColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+            
+            float red = XBInterpolate(percentage, [fromRGBColor redComponent], [toRGBColor redComponent]);
+            float green = XBInterpolate(percentage, [fromRGBColor greenComponent], [toRGBColor greenComponent]);
+            float blue = XBInterpolate(percentage, [fromRGBColor blueComponent], [toRGBColor blueComponent]);
+            float alpha = XBInterpolate(percentage, [fromRGBColor alphaComponent], [toRGBColor alphaComponent]);
+            
+            return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+        }
 //        let ciColor:CIColor = CIColor(color: nsColor)!
 //        return RGB(ciColor.red*255,ciColor.green*255,ciColor.blue*255)
         
-        a.redComponent
-        
+//        a.redComponent
+//
         
 //
 //        a.inter
