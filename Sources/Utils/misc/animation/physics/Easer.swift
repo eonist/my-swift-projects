@@ -54,7 +54,7 @@ class PointEaser:Easer<CGPoint> {
     static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))/*Convenient*/
 }
 
-protocol Easable{
+protocol Advanceable{
     associatedtype argType
     func add(x: argType, y: argType) -> argType
     func substract(x: argType, y: argType) -> argType
@@ -62,7 +62,7 @@ protocol Easable{
     func isNear(a:argType,b:argType,epsilon:argType) -> Bool
 }
 
-extension CGFloat:Easable{
+extension CGFloat:Advanceable{
     typealias argType = CGFloat
     func isNear(a: CGFloat, b: CGFloat, epsilon: CGFloat) -> Bool {
         return a.isNear(b, epsilon)
