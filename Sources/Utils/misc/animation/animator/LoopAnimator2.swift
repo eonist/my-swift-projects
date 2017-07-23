@@ -2,6 +2,7 @@ import Foundation
 /**
  * Makes it possible to create looping animations, n-loops or infinite-loops
  * NOTE: use stop() to stop the animation if the animation is infinite, with n-loops the animation stops when the last repeat has run
+ * NOTE: we don't use structs as init values because structs look like this: SomeStruct(from:0...) bbut tupples + typealias looks simpler (from:0...) more like method args would
  * PARAM: duration: in seconds
  * PARAM: callBack: is the callback ref that is called on every "frame tick"
  */
@@ -32,15 +33,4 @@ class LoopAnimator2:Animator2{
 }
 extension LoopAnimator2{
     typealias InitLoopValues = (duration:CGFloat,from:CGFloat,to:CGFloat,repeatCount:Int)/*Signature for initValues*/
-//    struct InitLoopValues2{
-//        var duration:CGFloat {get{return initValues.duration}set{initValues.duration = newValue}}/*In seconds*/
-//        var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
-//        var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
-//        var initValues:Animator2.InitValues2
-//        var repeatCount:Int
-//        init(duration:CGFloat,from:CGFloat,to:CGFloat,repeatCount:Int){
-//            self.initValues = Animator2.InitValues2(duration:duration,from:from,to:to)
-//            self.repeatCount = repeatCount
-//        }
-//    }
 }
