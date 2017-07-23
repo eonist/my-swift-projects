@@ -21,4 +21,10 @@ class ColorParser {
         let color:CGColor  = CGColor(red: r, green: g, blue: b, alpha: 1.0)
         return color
     }
+    /**
+     *
+     */
+    static func interpolate(_ a:NSColor,_ b:NSColor) ->NSColor{
+        a.inter
+    }
 }
