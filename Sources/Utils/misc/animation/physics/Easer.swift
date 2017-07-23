@@ -53,27 +53,3 @@ class PointEaser:Easer<CGPoint> {
     static var initConfig:CGPoint = CGPoint(0.2,0.2)/*Convenient*/
     static var initValues:InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))/*Convenient*/
 }
-
-protocol Advanceable{
-    associatedtype argType
-    func add(x: argType, y: argType) -> argType
-    func substract(x: argType, y: argType) -> argType
-    func multiply(x: argType, y: argType) -> argType
-    func isNear(a:argType,b:argType,epsilon:argType) -> Bool
-}
-
-extension CGFloat:Advanceable{
-    typealias argType = CGFloat
-    func isNear(a: CGFloat, b: CGFloat, epsilon: CGFloat) -> Bool {
-        return a.isNear(b, epsilon)
-    }
-    func multiply(x: CGFloat, y: CGFloat) -> CGFloat {
-        return x * y
-    }
-    func substract(x: CGFloat, y: CGFloat) -> CGFloat {
-        return x - y
-    }
-    func add(x: CGFloat, y: CGFloat) -> CGFloat {
-        return x + y
-    }
-}
