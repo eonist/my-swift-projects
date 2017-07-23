@@ -12,3 +12,16 @@ func async(_ queue:DispatchQueue , _ block:@escaping () -> Void) -> Void {return
 //DEPRECATED
 var mainQueue:DispatchQueue {return main}/*DEPRECATED*/
 var bgQueue:DispatchQueue {return bg}/*DEPRECATED*/
+
+
+/**
+ * Helps sleep whatever is defined within the PARAM: closure with-out blocking the app
+ */
+func bgSleep(_ sleepDurInSec:CGFloat, _ closure:@escaping ()->Void){
+    bg.async{
+        sleep(sleepDurInSec.int.uint32)/*start anim after N sec, but doesn't block the app*/
+        main.async{
+            closure()/*executes the closure*/
+        }
+    }
+}
