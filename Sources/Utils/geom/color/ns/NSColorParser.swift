@@ -125,7 +125,11 @@ extension NSColorParser{
         let green:CGFloat = interpolate(scalar, fromRGBColor.greenComponent, toRGBColor.greenComponent)
         let blue:CGFloat = interpolate(scalar, fromRGBColor.blueComponent, toRGBColor.blueComponent)
         let alpha:CGFloat = interpolate(scalar, fromRGBColor.alphaComponent, toRGBColor.alphaComponent)
-        return NSColor.init(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+        //return NSColor.init(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+        Swift.print("red: " + "\(red)")
+        Swift.print("green: " + "\(green)")
+        Swift.print("blue: " + "\(blue)")
+        return NSColor.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
 }
