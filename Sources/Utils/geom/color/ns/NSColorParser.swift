@@ -121,6 +121,13 @@ extension NSColorParser{
         }
         let fromRGBColor:NSColor = from.usingColorSpace(.genericRGB)!
         let toRGBColor:NSColor = to.usingColorSpace(.genericRGB)!
+        Swift.print("fromRGBColor.redComponent: " + "\(fromRGBColor.redComponent)")
+        Swift.print("fromRGBColor.greenComponent: " + "\(fromRGBColor.greenComponent)")
+        Swift.print("fromRGBColor.blueComponent: " + "\(fromRGBColor.blueComponent)")
+        
+        Swift.print("toRGBColor.redComponent): " + "\(toRGBColor.redComponent))")
+        Swift.print("toRGBColor.greenComponent: " + "\(toRGBColor.greenComponent)")
+        Swift.print("toRGBColor.blueComponent: " + "\(toRGBColor.blueComponent)")
         let red:CGFloat = interpolate(scalar, fromRGBColor.redComponent, toRGBColor.redComponent)
         let green:CGFloat = interpolate(scalar, fromRGBColor.greenComponent, toRGBColor.greenComponent)
         let blue:CGFloat = interpolate(scalar, fromRGBColor.blueComponent, toRGBColor.blueComponent)
