@@ -6,6 +6,12 @@ class PhysicsAnimator<T:Advancable>:FrameAnimator {
     var easing:T
     var initValues:InitValues
     var callBack:FrameTickSignature
+    
+    var targetValue:T {get{return initValues.targetValue}set{initValues.targetValue = newValue}} /*Where value should go to*/
+    var velocity:T {get{return initValues.velocity}set{initValues.velocity = newValue}}/*Velocity*/
+    var value:T {get{return initValues.value}set{initValues.value = newValue}}/*The value that should be applied to the target*/
+    var stopVelocity:T {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
+    
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:T) {
         self.initValues = initValues
         self.callBack = callBack
@@ -13,11 +19,11 @@ class PhysicsAnimator<T:Advancable>:FrameAnimator {
         super.init()
     }
     override func onFrame(){
-        self.updatePosition(value)
+        self.updatePosition()
         self.callBack(value)
     }
-    func updatePosition<T:Advancable>(_ value:T) {
-        let velocity = targetValue.substract(value).multiply(easing)
+    func updatePosition() {
+        velocity = targetValue.substract(value).multiply(easing)
         value = value.add(velocity)
         if assertStop {stop()}
     }
