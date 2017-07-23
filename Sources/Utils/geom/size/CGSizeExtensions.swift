@@ -28,6 +28,10 @@ extension CGSize {
         let h:CGFloat = self.height.clip(min.height, max.height)
         return CGSize(w,h)
     }
+    static func interpolate(_ a:CGSize, _ b:CGSize, _ scalar:CGFloat) -> CGSize{/*Convenience*/
+        return CGSize(CGFloatParser.interpolate(a.w, b.h, scalar), CGFloatParser.interpolate(a.w, b.h, scalar))
+    }
+    
 }
 public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,a.height + b.height)}
 public func -(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width - b.width,a.height - b.height)}
