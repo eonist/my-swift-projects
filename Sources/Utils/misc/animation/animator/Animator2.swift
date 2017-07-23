@@ -56,16 +56,10 @@ extension Animator2 {
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
     var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
 }
-/*
- 
- let anim1 = Anim(dur:2.75,from:0,to:1) {
- //onFrame anim here, move X forward
- }.pause(at:1.25,for:2){//pauses the anim for a little bit
- //do some things, fetch data etc
- }.completed = LoopAnim(dur:2.75,from:0,to:1,repeat:3){//adds a new anim block to the completed callBack
- //onFrame anim here, rotate 360deg , this animation is repeated 3 times
- }.completed = {
- //this is the final complete call in the chain
- }
- anim1.start()//initiates the animation chain
- */
+extension Animator2{
+    struct InitValues2{
+        var duration:CGFloat
+        var from:CGFloat
+        var to:CGFloat
+    }
+}
