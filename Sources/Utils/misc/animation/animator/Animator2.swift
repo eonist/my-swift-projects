@@ -39,7 +39,7 @@ class Animator2:FrameAnimator2 {
         self.currentFrameCount += 1
     }
     /**
-     * NOTE: we need onComplete in addition to complete because complete can't return self, so chaining wont work
+     * NOTE: we need onComplete in addition to complete because complete can't return self, so chaining won't work
      */
     func onComplete(closure: @escaping Completed) -> Self{
         completed = closure//assign the closure
