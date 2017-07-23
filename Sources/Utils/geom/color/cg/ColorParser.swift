@@ -23,7 +23,7 @@ class ColorParser {
     }
    
     /**
-     * NOTE: you can use CIColor if you want to avoid the forced unwrap
+     * NOTE: you can use CIColor if you want to avoid the forced unwrap when using colorspace. See RGBParser for code
      */
     static func interpolate(_ from:NSColor,_ to:NSColor,_ scalar:CGFloat) ->NSColor{
         func interpolate(_ start:CGFloat,_ end:CGFloat,_ scalar:CGFloat)->CGFloat{
@@ -33,7 +33,9 @@ class ColorParser {
         let fromRGBColor:NSColor = from.usingColorSpace(.genericRGB)!
         let toRGBColor:NSColor = to.usingColorSpace(.genericRGB)!
         
-        let  red:CGFloat = interpolate(scalar, fromRGBColor.redComponent, toRGBColor.redComponent)
+        let red:CGFloat = interpolate(scalar, fromRGBColor.redComponent, toRGBColor.redComponent)
+        let green:CGFloat = interpolate(scalar, fromRGBColor.greenComponent, toRGBColor.greenComponent)
+        let blue:CGFloat = interpolate(scalar, fromRGBColor.blueComponent, toRGBColor.blueComponent)
         
 //        
 //        if let ciColor:CIColor = CIColor(color: nsColor){
