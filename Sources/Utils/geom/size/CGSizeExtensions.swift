@@ -28,8 +28,8 @@ extension CGSize {
         let h:CGFloat = self.height.clip(min.height, max.height)
         return CGSize(w,h)
     }
-    static func interpolate(_ a:CGSize, _ b:CGSize, _ scalar:CGFloat) -> CGSize{/*Convenience*/
-        return CGSize(a.w.interpolate(b.h, scalar), a.w.interpolate(b.h, scalar))
+    func interpolate(_ to:CGSize, _ scalar:CGFloat) -> CGSize{/*Convenience*/
+        return CGSize(self.w.interpolate(to.h, scalar), self.w.interpolate(to.h, scalar))
     }
     
 }
