@@ -30,3 +30,10 @@ class LoopAnimator2:Animator2{
         self.currentFrameCount += 1
     }
 }
+extension LoopAnimator2{
+    struct InitValues2{
+        var duration:CGFloat
+        var from:CGFloat
+        var to:CGFloat
+    }
+}
