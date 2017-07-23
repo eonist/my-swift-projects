@@ -1,7 +1,7 @@
 import Foundation
 
 
-class Easer2<T>:FrameAnimator,PhysicsAnimationKind {
+class Easer2<T:Advancable>:FrameAnimator,PhysicsAnimationKind {
     typealias argType = T
     var easing:argType
     var initValues:InitValues
@@ -17,11 +17,16 @@ class Easer2<T>:FrameAnimator,PhysicsAnimationKind {
         self.callBack(value)
     }
     func updatePosition() {
-        fatalError("Must be overriden in subClass")
+        velocity = (targetValue - value) * easing
+        value += velocity
+        if assertStop {stop()}
+    }
+    var assertStop:Bool {
+        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
 }
 
-protocol Advanceable{
+protocol Advancable{
     associatedtype argType
     func add(x: argType, y: argType) -> argType
     func substract(x: argType, y: argType) -> argType
