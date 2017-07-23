@@ -21,7 +21,7 @@ extension CGPoint{
     func distance(_ p:CGPoint) -> CGFloat { return CGPoint.distance(self,p) }//distance from self to p
     func polarPoint(_ radius:CGFloat, _ angle:CGFloat) -> CGPoint { return self + CGPoint.polarPoint(radius, angle) }//polarPoint from self
     //func polar(radius:CGFloat, _ angle:CGFloat) -> CGPoint { return polarPoint(radius, angle) }//convenience and legacy support
-    func interpolate(_ p:CGPoint,_ scalar:CGFloat) -> CGPoint { return CGPoint.interpolate(self,p,scalar) }//interpolate from self to b by scalar
+    func interpolate(_ to:CGPoint,_ scalar:CGFloat) -> CGPoint { return CGPoint.interpolate(self,to,scalar) }//interpolate from self to b by scalar
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
     func add(_ p:CGPoint)->CGPoint{return PointParser.add(self, p)}
