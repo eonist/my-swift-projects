@@ -19,14 +19,11 @@ class PhysicsAnimator<T:Advancable>:FrameAnimator {
         super.init()
     }
     override func onFrame(){
-        self.updatePosition()
+        Advancable.updatePosition(velocity: velocity, value: value, targetValue: targetValue, easing: easing)
+        if assertStop {stop()}
         self.callBack(value)
     }
-    func updatePosition() {
-        velocity = targetValue.substract(value).multiply(easing)
-        value = value.add(velocity)
-        if assertStop {stop()}
-    }
+    
     var assertStop:Bool {
         return velocity.isNear(stopVelocity, 10e-5.cgFloat)
     }
