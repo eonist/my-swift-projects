@@ -5,7 +5,7 @@ import Foundation
  * This class exists so that Springer and Easer can have fewer vars, by instead accessing vars through getters and setters that derive their values from tuples
  */
 protocol PhysicsAnimKind2:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
-    associatedtype argType
+    associatedtype argType:Advancable
     /*Signatures*/
     typealias FrameTickSignature = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
