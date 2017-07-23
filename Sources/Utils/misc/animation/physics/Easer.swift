@@ -55,5 +55,5 @@ class PointEaser:Easer<CGPoint> {
 }
 
 protocol Easable{
-    //
+    var velocity:
 }
