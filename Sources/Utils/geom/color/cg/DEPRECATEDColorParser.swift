@@ -1,4 +1,3 @@
 import Cocoa
 
-class ColorParser {
-    }
+class ColorParser {}
