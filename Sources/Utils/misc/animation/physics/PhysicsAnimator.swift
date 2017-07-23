@@ -1,6 +1,8 @@
 import Foundation
 
 class PhysicsAnimator<T:Advancable>:FrameAnimator {
+    typealias FrameTickSignature = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
+    typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     var easing:T
     var initValues:InitValues
     var callBack:FrameTickSignature
