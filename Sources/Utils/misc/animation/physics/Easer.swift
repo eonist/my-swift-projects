@@ -8,7 +8,7 @@ class Easer<T>:FrameAnimator,PhysicsAnimationKind {
     typealias argType = T
     var easing:argType
     var initValues:InitValues
-    var callBack:FrameTickSignature
+    var callBack:FrameTickSignature//rename to onFrameTick,onFrameCallback?
     init(_ callBack:@escaping FrameTickSignature,  _ initValues:InitValues, _ easing:argType) {
         self.initValues = initValues
         self.callBack = callBack
