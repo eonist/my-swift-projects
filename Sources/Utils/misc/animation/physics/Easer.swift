@@ -56,19 +56,9 @@ class PointEaser:Easer<CGPoint> {
 
 protocol Easable{
     associatedtype argType
-//    var velocity:argType {get}
-//    var value:argType {get}
-    func add<T:ArithmeticKind>(x: T, y: T) -> T {
-    return x + y
-    }
-    func substract<T: ArithmeticKind>(x: T, y: T) -> T {
-    return x - y
-    }
-    func divide<T:ArithmeticKind>(x: T, y: T) -> T {
-    return x / y
-    }
-    func multiply<T:ArithmeticKind>(x: T, y: T) -> T {
-    return x * y
-    }
-
+    func add(x: argType, y: argType) -> argType
+    func substract(x: argType, y: argType) -> argType
+    func multiply(x: argType, y: argType) -> argType
+    func isNear(value:argType,epsilon:argType)
 }
+
