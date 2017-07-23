@@ -21,6 +21,10 @@ class ColorParser {
         let color:CGColor  = CGColor(red: r, green: g, blue: b, alpha: 1.0)
         return color
     }
+    CGFloat XBInterpolate(CGFloat value, CGFloat start, CGFloat end)
+    {
+    return start + (end - start) * value;
+    }
     /**
      *
      */
