@@ -10,7 +10,7 @@ class CGPointParser{
      * TODO: using Math.abs could be more optimized? this optimization needs research. check the proto site
      */
     static func interpolate(_ a:CGPoint, _ b:CGPoint, _ scalar:CGFloat)->CGPoint {
-        return CGPoint(CGFloatParser.interpolate(a.x, b.x, scalar), CGFloatParser.interpolate(a.y, b.y, scalar))
+        return CGPoint(a.x.interpolate(b.x, scalar), a.y.interpolate(b.y, scalar))
     }
     /**
      * Returns a point in a polar cordinate system by PARAM: len and PARAM: angle (in a safe way)

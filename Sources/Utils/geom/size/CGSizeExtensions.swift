@@ -29,7 +29,7 @@ extension CGSize {
         return CGSize(w,h)
     }
     static func interpolate(_ a:CGSize, _ b:CGSize, _ scalar:CGFloat) -> CGSize{/*Convenience*/
-        return CGSize(CGFloatParser.interpolate(a.w, b.h, scalar), CGFloatParser.interpolate(a.w, b.h, scalar))
+        return CGSize(a.w.interpolate(b.h, scalar), a.w.interpolate(b.h, scalar))
     }
     
 }
