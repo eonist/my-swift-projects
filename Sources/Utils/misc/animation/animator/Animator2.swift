@@ -18,7 +18,7 @@ class Animator2:FrameAnimator2 {
     //
     var completed:Completed = {}
     //(CGFloat) -> Animator2 /*Makes the return type less verbose*/
-    init(initValues:Animator.InitValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
+    init(initValues:Animator2.InitValues = Animator2.initValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
         self.frameTick = closure
         self.easing = easing
