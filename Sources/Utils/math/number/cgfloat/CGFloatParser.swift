@@ -55,7 +55,7 @@ public class CGFloatParser{
      * PARAM: fraction: interpolation value (between 0 - 1) could also be named scalar
      * EXAMPLE: interpolate(5, 15, 0.5) //10
      */
-    static func interpolate(_ a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {//<--was Double, cgfloat makes more sense
+    static func interpolate(_ a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {
         return fraction * (b - a) + a
     }
     /**
