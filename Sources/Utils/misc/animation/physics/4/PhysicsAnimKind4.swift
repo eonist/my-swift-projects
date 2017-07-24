@@ -1,5 +1,8 @@
 import Foundation
-
+/**
+ * TODO: Rename initValues to config, as initvalues could indicate the start values, which it is not
+ * TODO: Consider using other names from regex proposal
+ */
 protocol PhysicsAnimKind4:class {
     associatedtype T: Advancable4
     typealias FrameTickSignature = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/

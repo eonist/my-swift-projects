@@ -11,7 +11,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         self.easing = easing
         super.init()
     }
-    override func onFrame(){
+    override func onFrame() {
         self.updatePosition(value)
         self.callBack(value)
     }
