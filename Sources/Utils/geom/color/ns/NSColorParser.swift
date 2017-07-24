@@ -114,6 +114,7 @@ extension NSColorParser{
     
     /**
      * Interpolates between two NSColors 
+     
      */
     static func interpolate(_ from:NSColor,_ to:NSColor,_ scalar:CGFloat) ->NSColor{
         func interpolate(_ start:CGFloat,_ end:CGFloat,_ scalar:CGFloat)->CGFloat{
