@@ -32,7 +32,7 @@ extension Easer4{
     static var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) {
         return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
     }/*Convenient*/
-    static var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {
+    static var initNumberValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {
         return (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
     }
 }
