@@ -5,14 +5,14 @@ class Springer4<T:Advancable4>:Easer4<T> {
     var config:Config/*Config values*/
     init(_ initValues:Easer4.InitValues, _ config:Config,_ callBack:@escaping Easer4<T>.FrameTickSignature) {
         self.config = config
-        super.init(initValues,config)
+        super.init(initValues,config,config.spring,callBack)
     }
     override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
-        velocity += a
-        velocity *= config.friction
-        value +=  velocity
+        velocity = velocity + a
+        velocity = velocity * config.friction
+        value =  value + velocity
         if assertStop {stop()}
     }
 }
