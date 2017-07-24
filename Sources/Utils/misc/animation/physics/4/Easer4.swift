@@ -29,13 +29,14 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
 
 extension Easer4{
     //typealias InitValues = (value:Self,targetValue:Self,velocity:Self,stopVelocity:Self)
-    static var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) {
-        return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
-    }/*Convenient*/
-    static var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {
-        return (value:0,targetValue:1,velocity:0,stopVelocity:0)/*Convenient*/
-    }
     
-    static var initConfig:CGFloat { return (0.2) }
-    static var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }/*Convenient*/
 }
+ var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) {
+    return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
+}/*Convenient*/
+ var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {
+    return (value:0,targetValue:1,velocity:0,stopVelocity:0)/*Convenient*/
+}
+
+ var initConfig:CGFloat { return (0.2) }
+ var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }/*Convenient*/
