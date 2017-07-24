@@ -17,6 +17,6 @@ class Springer4<T:Advancable4>:Easer4<T> {
     }
 }
 /*Convenient default init values*/
-var initSpringerConfig:Springer4<CGPoint>.Config = (0.02,0.90)
+var initSpringerConfig:Springer4<CGFloat>.Config = (0.02,0.90)
 var initPointSpringerConfig:Springer4<CGPoint>.Config = (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
    
