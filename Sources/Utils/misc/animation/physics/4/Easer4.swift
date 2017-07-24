@@ -22,11 +22,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
 
     }
     var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+        return velocity.isNear(stopVelocity, T.defaultEpsilon)
     }
-    override func updatePosition() {
-    }
-    var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
-    }
+    
 }
