@@ -20,6 +20,13 @@ extension CGFloat: Advancable3 {
         return abs(self - value) < epsilon//TODO: 
     }
 }
+extension CGPoint: Advancable3 {
+    static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
+    
+    func isNear(_ value:  CGPoint, within epsilon: CGPoint) -> Bool {
+        return self.isNear(value,epsilon.x)
+    }
+}
 
 //extension CGFloat:Advancable3{
 //    typealias argType = CGFloat
