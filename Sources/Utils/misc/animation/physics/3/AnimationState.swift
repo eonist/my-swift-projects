@@ -6,7 +6,3 @@ struct AnimationState<T> {
     let target: T
     let stopVelocity: T
 }
-
-struct CompositeAnimationState<T,V:AnimationState<V>> {
-    
-}
