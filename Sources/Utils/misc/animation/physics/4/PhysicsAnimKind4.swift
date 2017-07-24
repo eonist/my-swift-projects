@@ -16,3 +16,13 @@ protocol PhysicsAnimKind4:class {
     /*Event related*/
     var callBack:(argType)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
 }
+
+/**
+ * Getters and setters for the value tuples
+ */
+extension PhysicsAnimKind4{
+    var targetValue:T {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
+    var velocity:T {get{return initValues.velocity}set{initValues.velocity = newValue}}
+    var value:T {get{return initValues.value}set{initValues.value = newValue}}
+    var stopVelocity:T {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
+}
