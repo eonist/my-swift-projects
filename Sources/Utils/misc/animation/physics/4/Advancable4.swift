@@ -11,7 +11,7 @@ protocol Advancable4 {
     //static func assertStop(velocity:argType,stopVelocity:argType) -> Bool
 }
 extension Advancable4{
-    static func assertStop(velocity:argType,stopVelocity:argType) -> Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
-    }
+//    static func assertStop(velocity:argType,stopVelocity:argType) -> Bool {
+//        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+//    }
 }
