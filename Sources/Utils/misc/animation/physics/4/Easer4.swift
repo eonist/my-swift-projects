@@ -27,7 +27,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     }
 }
 /*Convenient*/
-var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) {
+var initPointValues: Easer4<CGPoint>.InitValues {
     return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
 }
 var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {

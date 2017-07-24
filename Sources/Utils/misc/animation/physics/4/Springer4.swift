@@ -17,9 +17,10 @@ class Springer4<T:Advancable4>:Easer4<T> {
     }
 }
 /*Convenient*/
-var initPointSpringerConfig:(spring:CGPoint,friction:CGPoint) {/*Convenient default init values*/
-    return (spring:CGPoint(0.02,0.02),friction:CGPoint(0.90,0.90))
-}
-var initSpringerConfig:(spring:CGFloat,friction:CGFloat) {/*Convenient default init values*/
+
+var initSpringerConfig:Springer4<CGPoint>.Config {/*Convenient default init values*/
     return (spring:0.02,friction:0.90)
+}
+var initPointSpringerConfig:Springer4<CGPoint>.Config {/*Convenient default init values*/
+    return (spring:CGPoint(0.02,0.02),friction:CGPoint(0.90,0.90))
 }
