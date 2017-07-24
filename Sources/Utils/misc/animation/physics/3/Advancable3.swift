@@ -5,6 +5,8 @@ protocol Advancable3{
     static func -(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Self, rhs: Self) -> Self
     
+    static var defaultEpsilon: Self { get }
+    
     func isNear(_ value: Self, within epsilon: Self) -> Bool
 //    
 //    static func updatePosition(velocity:argType,value:argType,targetValue:argType,easing:argType) -> (value:argType,velocity:argType)
