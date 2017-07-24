@@ -15,19 +15,19 @@ extension Advancable4{
 //        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
 //    }
 }
-/*
- extension CGFloat: Advancable4 {
- static let defaultEpsilon: CGFloat = 10e-5
- static let defaultConfig:CGFloat = (0.2)/*Convenient*/
- static let initValues:PhysicsAnimKind4.InitValues = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
- 
- func isNear(_ value:  CGFloat, within epsilon: CGFloat) -> Bool {
- return self.isNear(value,epsilon)
- }
- }
- extension CGPoint: Advancable4 {
- //static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
- func isNear(_ value:  CGPoint, within epsilon: CGPoint) -> Bool {
- return self.isNear(value,epsilon.x)
- }
- }*/
+
+extension CGFloat: Advancable4 {
+    static let defaultEpsilon: CGFloat = 10e-5
+    static let defaultConfig:CGFloat = (0.2)/*Convenient*/
+    static let initValues:PhysicsAnimKind4.InitValues = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
+    
+    func isNear(_ value:  CGFloat, within epsilon: CGFloat) -> Bool {
+        return self.isNear(value,epsilon)
+    }
+}
+extension CGPoint: Advancable4 {
+    //static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
+    func isNear(_ value:  CGPoint, within epsilon: CGPoint) -> Bool {
+        return self.isNear(value,epsilon.x)
+    }
+}

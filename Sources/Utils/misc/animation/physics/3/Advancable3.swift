@@ -1,5 +1,5 @@
 import Foundation
-/*
+
 protocol Advancable3{
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
@@ -27,7 +27,7 @@ extension CGPoint: Advancable3 {
         return self.isNear(value,epsilon.x)
     }
 }
-*/
+
 //extension CGFloat:Advancable3{
 //    typealias argType = CGFloat
 //    func isNear(_ value: argType, _ epsilon: argType) -> Bool {
