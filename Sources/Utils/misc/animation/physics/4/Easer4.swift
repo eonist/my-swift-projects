@@ -2,8 +2,9 @@ import Foundation
 
 class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
+    typealias FrameTickSignature = (T)->Void
     var easing:T
-    var initValues:Easer4.InitValues
+    var initValues:InitValues
     var callBack:FrameTickSignature
     
     init(_ initValues:Easer4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
@@ -13,12 +14,12 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         super.init()
     }
     override func onFrame() {
-        self.updatePosition(value)
+        self.updatePosition()
         self.callBack(value)
     }
     func updatePosition() {
         velocity = (targetValue - value) * easing
-        value += velocity
+        value = value + velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
