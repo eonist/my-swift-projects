@@ -22,6 +22,7 @@ extension CGFloat: Advancable4 {
     }
 }
 extension CGPoint: Advancable4 {
+    static var defaultConfig: CGPoint = CGPoint(0.2,0.2)
     static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
     //static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
     func isNear(_ value:  CGPoint, within epsilon: CGPoint) -> Bool {
