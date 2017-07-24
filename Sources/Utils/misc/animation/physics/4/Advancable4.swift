@@ -9,7 +9,7 @@ protocol Advancable4 {
     
     static var defaultEpsilon: Self { get }
     static var defaultConfig: Self { get }
-    func isNear(_ value: Self, within epsilon: Self) -> Bool
+    func isNear(_ value: Self, _ epsilon: Self) -> Bool
     //static func updatePosition(velocity:argType,value:argType,targetValue:argType,easing:argType) -> (value:argType,velocity:argType)
     //static func assertStop(velocity:argType,stopVelocity:argType) -> Bool
 }
