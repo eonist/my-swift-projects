@@ -39,10 +39,10 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
  */
 extension PhysicsAnimKind3{
     
-    func advance(_ current: AnimationState<T>, towards target: AnimationState<T>, damping: T) -> AnimationState<T> {
+    func advance(_ initial:AnimationState<T>,  current: AnimationState<T>, target: AnimationState<T>, damping: T) -> AnimationState<T> {
         let velocity = (target.value - current.value) * damping
         let value = target.value + current.velocity
-        return AnimationState(value: value, velocity: velocity)
+        return AnimationState(value: value, velocity: velocity, target: target, stopVelocity: initial.stopVelocity)
     }
     
 
