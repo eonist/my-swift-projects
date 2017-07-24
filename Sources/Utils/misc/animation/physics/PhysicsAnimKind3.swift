@@ -1,11 +1,6 @@
 import Foundation
 
-struct AnimationState<T> {
-    let value: T
-    let velocity: T
-    let target: T
-    let stopVelocity: T
-}
+
 
 /**
  * TODO: ⚠️️ Try to get rid of the :class by making the var's mutable somehow
