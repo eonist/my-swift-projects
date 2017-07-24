@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Advancable4 {
-    //typealias InitValues = (value:Self,targetValue:Self,velocity:Self,stopVelocity:Self)
+    
     
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
@@ -34,5 +34,3 @@ extension CGPoint: Advancable4 {
         return self.isNear(value,epsilon.x)
     }
 }
-var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) = (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))/*Convenient*/
-var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
