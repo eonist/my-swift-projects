@@ -26,7 +26,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         return velocity.isNear(value:stopVelocity, epsilon:T.defaultEpsilon)
     }
 }
-/*CGFloat*/
+/*Convenient default init values*/
 var initConfig:CGFloat { return (0.2) }
 var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
 /*CGPoint*/

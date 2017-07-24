@@ -16,11 +16,7 @@ class Springer4<T:Advancable4>:Easer4<T> {
         if assertStop {stop()}
     }
 }
-/*Convenient*/
-
-var initSpringerConfig:Springer4<CGPoint>.Config {/*Convenient default init values*/
-    return (spring:0.02,friction:0.90)
-}
-var initPointSpringerConfig:Springer4<CGPoint>.Config {/*Convenient default init values*/
-    return (spring:CGPoint(0.02,0.02),friction:CGPoint(0.90,0.90))
-}
+/*Convenient default init values*/
+var initSpringerConfig:Springer4<CGPoint>.Config = (0.02,0.90)
+var initPointSpringerConfig:Springer4<CGPoint>.Config = (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
+   
