@@ -114,7 +114,7 @@ extension NSColorParser{
     
     /**
      * Interpolates between two NSColors 
-     
+     * TODO: ⚠️️ interpolating between gray and black at scalar 0 yields a darker tone than gray. Try fixing this by looking at the components, or maybe even using the CIColor trick
      */
     static func interpolate(_ from:NSColor,_ to:NSColor,_ scalar:CGFloat) ->NSColor{
         func interpolate(_ start:CGFloat,_ end:CGFloat,_ scalar:CGFloat)->CGFloat{
