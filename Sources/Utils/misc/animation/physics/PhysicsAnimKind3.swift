@@ -42,7 +42,8 @@ extension PhysicsAnimKind3{
     func advance(_ initial:AnimationState<T>,  current: AnimationState<T>, target: AnimationState<T>, damping: T) -> AnimationState<T> {
         let velocity = (target.value - current.value) * damping
         let value = target.value + current.velocity
-        return AnimationState(value: value, velocity: velocity, target: target, stopVelocity: initial.stopVelocity)
+        //(value: value, velocity: velocity, target: target, stopVelocity: initial.stopVelocity)
+        return AnimationState(value: value, velocity: velocity, target: target.target, stopVelocity: initial.stopVelocity)
     }
     
 
