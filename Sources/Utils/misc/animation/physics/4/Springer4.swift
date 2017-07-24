@@ -1,9 +1,9 @@
 import Foundation
 
-class Springer4<T: Advancable4>:Easer4 {
+class Springer4<T:Advancable4>:Easer4<T> {
     typealias Config = (spring:T,friction:T)/*Signatures*/
     var config:Config/*Config values*/
-    init(_ initValues:InitValues, _ config:Config,_ callBack:@escaping FrameTickSignature) {
+    init(_ initValues:InitValues, _ config:Config,_ callBack:@escaping Easer4<T>.FrameTickSignature) {
         self.config = config
         super.init()
     }
