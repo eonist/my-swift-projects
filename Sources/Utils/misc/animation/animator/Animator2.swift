@@ -14,7 +14,6 @@ class Animator2:FrameAnimator2 {
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
     var easing:EasingEquation/*Variable for holding the easing method*/
-    typealias Completed = () -> Void
     var completed:Completed = {}
     init(initValues:Animator2.InitValues = Animator2.initValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
@@ -45,6 +44,7 @@ class Animator2:FrameAnimator2 {
 }
 
 extension Animator2 {
+    typealias Completed = () -> Void
     typealias InitValues = (dur:CGFloat,from:CGFloat,to:CGFloat)/*Signature for initValues*/
     static var initValues:InitValues = (dur:0.5,from:0,to:1)/*Default init values*/
     static var fps:CGFloat = 60//<--TODO: ⚠️️ this should be derived from a device variable
