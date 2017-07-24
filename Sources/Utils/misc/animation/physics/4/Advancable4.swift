@@ -16,7 +16,7 @@ protocol Advancable4 {
 }
 
 extension CGFloat: Advancable4 {
-    static var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
+    
 
     static let defaultEpsilon: CGFloat = 10e-5
     static let defaultConfig:CGFloat = (0.2)/*Convenient*/
@@ -27,7 +27,6 @@ extension CGFloat: Advancable4 {
     }
 }
 extension CGPoint: Advancable4 {
-    static var initValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) = (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))/*Convenient*/
     static var defaultConfig: CGPoint = CGPoint(0.2,0.2)
     static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
     //static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
@@ -35,3 +34,5 @@ extension CGPoint: Advancable4 {
         return self.isNear(value,epsilon.x)
     }
 }
+var initPointValues: (value: CGPoint, targetValue: CGPoint, velocity: CGPoint, stopVelocity: CGPoint) = (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))/*Convenient*/
+var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
