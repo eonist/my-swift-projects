@@ -1,8 +1,8 @@
 import Foundation
 
-class Easer4<T: Advancable3> FrameAnimator, PhysicsAnimKind4{
+class Easer4<T: Advancable4> FrameAnimator, PhysicsAnimKind4{
     
     var easing:T
-    var initValues:InitValues
+    var initValues:PhysicsAnimKind4.InitValues
     var callBack:FrameTickSignature
 }
