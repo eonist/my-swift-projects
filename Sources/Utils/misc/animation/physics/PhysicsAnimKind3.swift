@@ -18,7 +18,7 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     var current: AnimationState<T> { get set }
     var target: AnimationState<T> { get }
     
-    func advance(_ current: AnimationState<T>, towards target: AnimationState<T>, damping: T) -> AnimationState<T>
+    func advance(_ initial:AnimationState<T>, current: AnimationState<T>, target: AnimationState<T>, damping: T) -> AnimationState<T>
     
     var callback: (T) -> () {get set}
     /*Signatures*/
