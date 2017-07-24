@@ -1,11 +1,12 @@
 import Foundation
 
 class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
+    typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     var easing:T
-    var initValues:PhysicsAnimKind4.InitValues
+    var initValues:Easer4.InitValues
     var callBack:FrameTickSignature
     
-    init(_ initValues:PhysicsAnimKind4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
+    init(_ initValues:Easer4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
