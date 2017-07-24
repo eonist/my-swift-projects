@@ -1,6 +1,11 @@
 import Foundation
 
-import Foundation
+struct AnimationState<T> {
+    let value: T
+    let velocity: T
+    let target: T
+    let stopVelocity: T
+}
 
 /**
  * TODO: ⚠️️ Try to get rid of the :class by making the var's mutable somehow
@@ -8,6 +13,12 @@ import Foundation
  */
 protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     associatedtype T: Advancable3
+    
+    var initial: AnimationState<T> { get }
+    var current: AnimationState<T> { get set }
+    var target: AnimationState<T> { get }
+    
+    var callback: (T) -> () {get set}
     /*Signatures*/
 //    typealias FrameTickSignature = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
 //    typealias InitValues = (value:argType,targetValue:argType,velocity:argType,stopVelocity:argType)
@@ -25,9 +36,9 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
  * Getters and setters for the value tuples
  */
 extension PhysicsAnimKind3{
-    var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
-    var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
-    var value:argType {get{return initValues.value}set{initValues.value = newValue}}
-    var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
+//    var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
+//    var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
+//    var value:argType {get{return initValues.value}set{initValues.value = newValue}}
+//    var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
 }
 
