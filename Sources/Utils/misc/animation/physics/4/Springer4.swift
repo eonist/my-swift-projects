@@ -3,9 +3,9 @@ import Foundation
 class Springer4<T:Advancable4>:Easer4<T> {
     typealias Config = (spring:T,friction:T)/*Signatures*/
     var config:Config/*Config values*/
-    init(_ initValues:Easer4.InitValues, _ config:Config,_ callBack:@escaping Easer4<T>.FrameTickSignature) {
+    init(_ initValues:Easer4<T>.InitValues, _ config:Config,_ callBack:@escaping Easer4<T>.FrameTickSignature) {
         self.config = config
-        super.init(initValues,config,config.spring,callBack)
+        super.init(initValues,config.spring,callBack)
     }
     override func updatePosition() {
         let d = (targetValue - value)
