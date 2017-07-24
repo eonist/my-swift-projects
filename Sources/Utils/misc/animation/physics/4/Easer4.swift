@@ -26,12 +26,9 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         return velocity.isNear(value:stopVelocity, epsilon:T.defaultEpsilon)
     }
 }
-/*Convenient*/
-var initPointValues: Easer4<CGPoint>.InitValues {
-    return (value:CGPoint(0,0),targetValue:CGPoint(0,0),velocity:CGPoint(0,0),stopVelocity:CGPoint(0,0))
-}
-var initValues: (value: CGFloat, targetValue: CGFloat, velocity: CGFloat, stopVelocity: CGFloat) {
-    return (value:0,targetValue:1,velocity:0,stopVelocity:0)/*Convenient*/
-}
+/*CGFloat*/
 var initConfig:CGFloat { return (0.2) }
-var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }/*Convenient*/
+var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
+/*CGPoint*/
+var initPointValues: Easer4<CGPoint>.InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
+var initValues: Easer4<CGFloat>.InitValues = (0,0,0,0)
