@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Base class That Springer classes itcan subClass
+ */
 class Springer4<T:Advancable4>:Easer4<T> {
     typealias Config = (spring:T,friction:T)/*Signatures*/
     var config:Config/*Config values*/

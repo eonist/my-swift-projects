@@ -1,6 +1,6 @@
 import Foundation
 /**
- * Base class That Springer classes can subClass
+ * That Springer class
  */
 class Springer<T>: FrameAnimator,PhysicsAnimationKind{
     typealias argType = T
