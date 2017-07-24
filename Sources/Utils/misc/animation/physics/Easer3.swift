@@ -1,5 +1,6 @@
 import Foundation
 
-class Easer3 {
+class Easer3<T: Advancable>: FrameAnimator, PhysicsAnimation {
     
+
 }
