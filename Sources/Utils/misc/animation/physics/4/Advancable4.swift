@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Advancable4 {
-    typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
+    //typealias InitValues = (value:Self,targetValue:Self,velocity:Self,stopVelocity:Self)
     
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
@@ -17,17 +17,19 @@ protocol Advancable4 {
 extension CGFloat: Advancable4 {
     static let defaultEpsilon: CGFloat = 10e-5
     static let defaultConfig:CGFloat = (0.2)/*Convenient*/
-    static let initValues:Advancable4.InitValues = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
+    static let initValues = (value:0,targetValue:0,velocity:0,stopVelocity:0)/*Convenient*/
     
     func isNear(_ value:  CGFloat, _ epsilon: CGFloat) -> Bool {
         return self.isNear(value,epsilon)
     }
 }
 extension CGPoint: Advancable4 {
+   
+
     static var defaultConfig: CGPoint = CGPoint(0.2,0.2)
     static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
     //static let defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
-    func isNear(_ value:  CGPoint, within epsilon: CGPoint) -> Bool {
+    func isNear(_ value:  CGPoint, _ epsilon: CGPoint) -> Bool {
         return self.isNear(value,epsilon.x)
     }
 }
