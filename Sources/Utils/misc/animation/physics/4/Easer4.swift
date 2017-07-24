@@ -1,11 +1,14 @@
 import Foundation
-
+/**
+ * NOTE: The FrameTick and the InitValues typaliases are the same in Springer and Easer so we just reuse them
+ * NOTE: This is the Base class
+ */
 class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias FrameTickSignature = (T)->Void
     var easing:T
     var initValues:InitValues
-    var callBack:FrameTickSignature
+    var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
     init(_ initValues:Easer4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
         self.initValues = initValues
