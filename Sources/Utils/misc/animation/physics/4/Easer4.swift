@@ -6,7 +6,8 @@ import Foundation
 class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias FrameTickSignature = (T)->Void
-    var easing:T
+    var epsilon: T = T.defaultEpsilon
+    var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
     var initValues:InitValues
     var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
@@ -26,7 +27,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         if assertStop {stop()}
     }
     var assertStop:Bool {
-        return velocity.isNear(value:stopVelocity, epsilon:T.defaultEpsilon)
+        return velocity.isNear(value:stopVelocity, epsilon:epsilon)
     }
 }
 /*Convenient default init values*/
