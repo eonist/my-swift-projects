@@ -18,6 +18,8 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     var current: AnimationState<T> { get set }
     var target: AnimationState<T> { get }
     
+    func advance(_ current: AnimationState<T>, towards target: AnimationState<T>, damping: T) -> AnimationState<T>
+    
     var callback: (T) -> () {get set}
     /*Signatures*/
 //    typealias FrameTickSignature = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
@@ -36,6 +38,14 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
  * Getters and setters for the value tuples
  */
 extension PhysicsAnimKind3{
+    
+    func advance(_ current: AnimationState<T>, towards target: AnimationState<T>, damping: T) -> AnimationState<T> {
+        let velocity = (target.value - current.value) * damping
+        let value = target.value + current.velocity
+        return AnimationState(value: value, velocity: velocity)
+    }
+    
+
 //    var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
 //    var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
 //    var value:argType {get{return initValues.value}set{initValues.value = newValue}}
