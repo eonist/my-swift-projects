@@ -7,7 +7,7 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     var initValues:InitValues
     var callBack:FrameTickSignature
     
-    init(_ initValues:Easer4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
+    init(_ initValues:Easer4.InitValues, _ easing:T = initConfig, _ callBack:@escaping FrameTickSignature) {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
