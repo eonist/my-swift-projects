@@ -22,6 +22,7 @@ class CGFloatModifier {
     /**
      * NOTE: This is an alternative: let duration = String(format: "%.01f", 3.32323242)
      * NOTE: a problem with CGFloat is that all CGFloat values have a trailing decimalpoint. (Even if you return 10, then end value will be 10.0) a way around this is to convert to a string, then your probably better of using the method mentioned above
+     * PARAM: places: decimalPlaces
      */
     static func toFixed(_ value:CGFloat, _ places:Int) -> CGFloat {
         let divisor = pow(10, CGFloat(places))
