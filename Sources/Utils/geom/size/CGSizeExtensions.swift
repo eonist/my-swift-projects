@@ -37,3 +37,6 @@ public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,
 public func -(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width - b.width,a.height - b.height)}
 public func +=( a: inout CGSize, b: CGSize) {a.width += b.width;a.height += b.height}/*modifies a by adding b*/
 public func -=( a: inout CGSize, b: CGSize) {a.width -= b.width;a.height -= b.height}/*modifies a by subtracting b*/
+public func * (a: CGSize, b: CGSize) -> CGSize {return CGSize(a.w*b.w, a.h*b.h)}
+public func * (a: CGSize, b: CGFloat) -> CGSize {return CGSize(a.w*b, a.h*b)}
+//TODO: add more  
