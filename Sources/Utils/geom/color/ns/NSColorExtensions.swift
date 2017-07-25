@@ -20,6 +20,7 @@ extension NSColor{
     /**
      * Interpolates between two NSColors
      * EXAMPLE: NSColor.green.interpolate(.blue, 0.5)
+     * NOTE: there is also native: NSColor.green.blended(withFraction: 0.5, of: .blue)
      */
     func interpolate(_ to:NSColor,_ scalar:CGFloat)->NSColor{
         return NSColorParser.interpolate(self, to, scalar)
