@@ -1,5 +1,4 @@
 import Foundation
-
 typealias IInteractiveView = InteractiveViewable
 protocol InteractiveViewable:EventSendable {
     //func onEvent(event:Event)
