@@ -10,7 +10,7 @@ import Cocoa
  * TODO: why arent the mouse methods calling a central method?
  */
 typealias InteractiveView2 = InteractiveView//legacy support
-class InteractiveView:FlippedView,IInteractiveView{//TODO: rename this with appcode
+class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = { event in /*returns closure that will take care of propagating the event to the parent*/
         if let superView:IEventSender = self.superview as? IEventSender {
