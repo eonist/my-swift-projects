@@ -10,9 +10,11 @@ protocol EventSendable:class {
 }
 extension EventSendable{
     /**
-     *
+     * New
      */
-    func addHandler(){
-        //{event in if let event = event as? ForceTouchEvent {onViewEvent(event)}}
+    func addHandler<T>(_ type:T.Type, _ handler:(T)->Void){
+        if let event = event as? T {
+            handler(event)
+        }
     }
 }
