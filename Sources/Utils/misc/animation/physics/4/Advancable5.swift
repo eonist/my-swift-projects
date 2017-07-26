@@ -22,10 +22,10 @@ extension CGPoint: Advancable5 {
     }
 }
 extension CGSize: Advancable5 {
-    static var defaultEasing:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
-    static var defaultState:AnimState5<CGRect>  {
-        return AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
-    }
+    static var defaultEasing:CGRect =  CGRect(0.2,0.2,0.2,0.2) 
+    static var defaultState:AnimState5<CGRect>  =  AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
+        
+    
     static var defaultEpsilon: CGSize = CGSize(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
     func isNear( value:  CGSize,  epsilon: CGSize) -> Bool {
         return self.isNear(value,epsilon.w)
