@@ -12,17 +12,17 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     var epsilon: T = T.defaultEpsilon
     var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
     var state:AnimState5<T>
-    var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
+    var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
-    init(_ initValues:AnimState5, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
-        self.initValues = initValues
-        self.callBack = callBack
+    init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
+        self.state = state
+        self.onFrame = onFrame
         self.easing = easing
         super.init()
     }
     override func onFrameTick() {
         self.updatePosition()
-        self.callBack(state.value)
+        self.onFrame(state.value)
     }
     func updatePosition() {
         state.velocity = (state.targetValue - state.value) * easing
@@ -30,12 +30,6 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
         if assertStop {stop()}
     }
     var assertStop:Bool {
-        return velocity.isNear(value:state.stopVelocity, epsilon:epsilon)
+        return state.velocity.isNear(value:state.stopVelocity, epsilon:epsilon)
     }
 }
-/*Convenient default init values*/
-var initConfig:CGFloat { return (0.2) }
-var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
-/*CGPoint*/
-var initPointValues: Easer4<CGPoint>.InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
-var initValues: Easer4<CGFloat>.InitValues = (0,0,0,0)

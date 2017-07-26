@@ -2,7 +2,7 @@ import Foundation
 
 /**
  * NOTE: remember this needs to support many different animators and also simultan animations, so it cant be too intertwined
- * TODO: make FrameAnimator2 that does not extend EventSender
+ * TODO: ⚠️️ make FrameAnimator2 that does not extend EventSender
  * TODO: LoopAnimator2
  * TODO: if you need to stop the entire anim chain you need to store each successive anim in an array and stop the one that is running, you can create utilitity methods that does this for you
  * TODO: Later you can maybe create a class that is called AnimSeq, which can sequence anim from a json file, akin to your legacy project
@@ -10,23 +10,23 @@ import Foundation
  * TODO: API like: animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {$0.x = finalValue}
  */
 class Animator2:FrameAnimator2 {
-    var frameTick:FrameTick
+    var onFrame:FrameTick
     var currentFrameCount:CGFloat = 0/*curFrameCount, this is needed in order to know when the animation is complete*/
     var initValues:InitValues
     var easing:EasingEquation/*Variable for holding the easing method*/
     var completed:Completed = {}
-    init(initValues:Animator2.InitValues = Animator2.initValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
+    init(initValues:Animator2.InitValues = Animator2.initValues, easing:@escaping EasingEquation = Easing.linear.ease, onFrame: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
-        self.frameTick = closure
+        self.onFrame = onFrame
         self.easing = easing
         super.init(AnimProxy2.shared)
     }
     /**
      * Fires on every frame tick
      */
-    override func onFrame(){
+    override func onFrameTick(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
-        frameTick(val)/*Call the callBack onFrame method*/
+        onFrame(val)/*Call the callBack onFrame method*/
         if(currentFrameCount == framesToEnd){
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
