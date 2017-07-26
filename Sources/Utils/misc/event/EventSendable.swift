@@ -14,7 +14,7 @@ extension EventSendable{
      */
     func addHandler<T>(_ handler:(T)->Void){
         if let event = event as? T {
-            handler(event)
+            event = handler
         }
     }
 }
