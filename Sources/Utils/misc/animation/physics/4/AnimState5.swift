@@ -7,7 +7,8 @@ struct AnimState5<T:Advancable5> {
     var targetValue: T/*Where the value want to go*/
     var velocity: T/*speed of the animation*/
     var stopVelocity: T/*usually when velocity reaches zero, but this can sometimes be other values*/
-    init(_ value: T,_ targetValue: T,_ velocity: T,_ stopVelocity:T){
+    var epsilon: T = T.defaultEpsilon
+    init(_ value: T,_ targetValue: T,_ velocity: T,_ stopVelocity:T? = T.defaultStopVelocity, epsilon:T.defaultEpsilon){
         self.value = value
         self.targetValue = targetValue
         self.velocity = velocity
