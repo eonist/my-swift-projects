@@ -15,6 +15,7 @@ class Animator2:FrameAnimator2 {
     var initValues:InitValues
     var easing:EasingEquation/*Variable for holding the easing method*/
     var completed:Completed = {}
+    //TODO: ⚠️️Make a struct for the initValues instead, because: autocomplete
     init(initValues:Animator2.InitValues = Animator2.initValues, easing:@escaping EasingEquation = Easing.linear.ease, onFrame: @escaping FrameTick = {_ in}) {
         self.initValues = initValues
         self.onFrame = onFrame
