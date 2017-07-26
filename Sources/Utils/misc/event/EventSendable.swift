@@ -8,3 +8,11 @@ protocol EventSendable:class {
     var event:EventCallBack{get set}
     func onEvent(_ event:Event)
 }
+extension EventSendable{
+    /**
+     *
+     */
+    func addHandler(){
+        //{event in if let event = event as? ForceTouchEvent {onViewEvent(event)}}
+    }
+}
