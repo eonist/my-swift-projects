@@ -32,3 +32,8 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
         return state.velocity.isNear(value:state.stopVelocity, epsilon:state.epsilon)
     }
 }
+struct DefaultEasing{
+    static var easing:CGFloat { return (0.2) }
+    static var pointEasing:CGPoint { return CGPoint(0.2,0.2) }
+    static var rectEasing:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
+}
