@@ -7,7 +7,7 @@ import Foundation
 class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     typealias FrameTickSignature = (T)->Void
     var epsilon: T = T.defaultEpsilon
-    
+    var stopVelocity: T = T.defaultStopVelocity
     var easing:T/*This can be customized by setting the value but not via init*/
     var state:AnimState5<T>
     
