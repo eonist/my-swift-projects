@@ -1,6 +1,6 @@
 import Foundation
 
-struct AnimationState4<T> {
+struct AnimationConfig4<T> {
     let value: T
     let targetValue: T
     let velocity: T
