@@ -6,6 +6,9 @@ protocol Advancable5 {
     static func *(lhs: Self, rhs: Self) -> Self
     static var defaultEpsilon: Self { get }
     static var defaultStopVelocity: Self { get }
+    static var defaultValue: Self {get}
+    static var defaultVelocity: Self {get}
+    static var defaultTargetValue: Self {get}
     func isNear( value: Self, epsilon: Self) -> Bool
 }
 
