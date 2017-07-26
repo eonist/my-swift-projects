@@ -24,7 +24,7 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     func updatePosition() {
         state.velocity = (state.targetValue - state.value) * easing
         state.value = state.value + state.velocity
-        if assertStop {stop()}
+        if assertStop {state.value = state.targetValue;onFrameTick();stop()}
     }
     var assertStop:Bool {
         return state.velocity.isNear(value:state.stopVelocity, epsilon:epsilon)
