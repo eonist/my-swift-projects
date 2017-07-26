@@ -1,10 +1,10 @@
 import Foundation
 
 struct AnimState5<T> {
-    let value: T
-    let targetValue: T
-    let velocity: T
-    let stopVelocity: T
+    var value: T
+    var targetValue: T
+    var velocity: T
+    var stopVelocity: T
 }
 
 extension AnimState5 {
