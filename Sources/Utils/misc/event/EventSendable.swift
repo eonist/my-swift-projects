@@ -12,7 +12,7 @@ extension EventSendable{
     /**
      * New
      */
-    func addHandler<T>(_ type:T.Type, _ handler:(T)->Void){
+    func addHandler<T>(_ handler:(T)->Void){
         if let event = event as? T {
             handler(event)
         }
