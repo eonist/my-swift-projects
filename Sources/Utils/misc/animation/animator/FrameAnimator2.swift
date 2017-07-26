@@ -13,7 +13,7 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
     /**
      * This is called from the AnimProxy.onFrameOnMainThread method
      */
-    func onFrame(){
+    func onFrameTick(){
         fatalError("Must be overwritten in subclass")
     }
     /**
