@@ -6,15 +6,15 @@ import Foundation
  * NOTE: This is the Base class
  * TODO: Maybe make a base class for Easer and Springer that they both can extend? that way you could change between them on a whim
  */
-class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
-    typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
+class Easer5<T: Advancable5>:FrameAnimator, PhysicsAnimKind5{
+    
     typealias FrameTickSignature = (T)->Void
     var epsilon: T = T.defaultEpsilon
     var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
     var initValues:InitValues
     var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
-    init(_ initValues:Easer4.InitValues, _ easing:T, _ callBack:@escaping FrameTickSignature) {
+    init(_ initValues:AnimaState5, _ easing:T, _ callBack:@escaping FrameTickSignature) {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
