@@ -1,10 +1,12 @@
 import Foundation
-
+/**
+ * TODO:  considerremoving stopVelocity or make it optional
+ */
 struct AnimState5<T> {
     var value: T/*the current value of the animation*/
     var targetValue: T/*Where the value want to go*/
     var velocity: T/*speed of the animation*/
-    var stopVelocity: T/**/
+    var stopVelocity: T/*usually when velocity reaches zero, but this can sometimes be other values*/
     init(_ value: T,_ targetValue: T,_ velocity: T,_ stopVelocity:T){
         self.value = value
         self.targetValue = targetValue
