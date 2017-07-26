@@ -11,10 +11,14 @@ protocol EventSendable:class {
 extension EventSendable{
     /**
      * New
+     * 1. Assigns a closure, 
+     * 2. event is only passed on if event type match
      */
-    func addHandler<T>(_ handler:(T)->Void){
-        if let event = event as? T {
-            event = handler
+    func addHandler<T>(_ handler:@escaping (T)->Void){
+        event = { argEvent in
+            if let e = argEvent as? T {
+                handler(e)
+            }
         }
     }
 }
