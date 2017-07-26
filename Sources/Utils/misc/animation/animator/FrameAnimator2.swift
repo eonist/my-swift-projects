@@ -20,8 +20,10 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
      * Start the animation
      */
     func start(){
-        animProxy.animators.append(self)/*Add your self to the list of animators that gets the onFrame call*/
-        if(!CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStart(animProxy.displayLink)}/*start the displayLink if it isn't already running*/
+        if stopped {/*Aka you dont have to start it if its already running*/
+            animProxy.animators.append(self)/*Add your self to the list of animators that gets the onFrame call*/
+            if(!CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStart(animProxy.displayLink)}/*start the displayLink if it isn't already running*/
+        }
     }
     /**
      * Stop the animation
