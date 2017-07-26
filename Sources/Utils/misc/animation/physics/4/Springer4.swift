@@ -15,7 +15,10 @@ class Springer4<T:Advancable4>:Easer4<T> {
         velocity = velocity + a
         velocity = velocity * config.friction
         value =  value + velocity
-        if assertStop {stop()}
+        if assertStop {
+            state.value = state.targetValue//set the final value
+            stop()
+        }
     }
 }
 /*Convenient default init values*/
