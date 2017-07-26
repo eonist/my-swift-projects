@@ -1,6 +1,4 @@
 import Foundation
-
-import Foundation
 /**
  * NOTE: The FrameTick and the InitValues typaliases are the same in Springer and Easer so we just reuse them
  * NOTE: This is the Base class
