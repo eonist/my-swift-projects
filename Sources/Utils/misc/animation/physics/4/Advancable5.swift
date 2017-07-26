@@ -45,7 +45,6 @@ extension CGSize: Advancable5 {
 extension CGRect: Advancable5 {
     static var defaultEasing:CGRect = CGRect(0.2,0.2,0.2,0.2)
     static let defaultStopVelocity: CGRect = CGRect(0,0,0,0)
-    static var defaultState:AnimState5<CGRect>  =  AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
     static var defaultEpsilon: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
     static let defaultValue: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
     static let defaultVelocity: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
