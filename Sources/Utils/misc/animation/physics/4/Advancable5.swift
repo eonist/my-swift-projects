@@ -14,7 +14,7 @@ protocol Advancable5 {
 }
 
 extension CGFloat: Advancable5 {
-    static var defaults: AnimState5<CGFloat>  = AnimState5<CGFloat>()
+    static var defaults: AnimState5<CGFloat>  = AnimState5<CGFloat>(0,0,0,0,0)
 //    static let defaultEpsilon: CGFloat = 10e-5
 //    static let defaultStopVelocity: CGFloat = 0
 //    static let defaultValue: CGFloat = 0
@@ -25,6 +25,7 @@ extension CGFloat: Advancable5 {
     }
 }
 extension CGPoint: Advancable5 {
+    static var defaults: AnimState5<CGPoint>  = AnimState5<CGPoint>(CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
 //    static var defaultEpsilon: CGPoint = CGPoint(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
 //    static let defaultStopVelocity: CGPoint = CGPoint(0,0)
 //    static let defaultValue: CGPoint = CGPoint(0,0)
@@ -35,7 +36,7 @@ extension CGPoint: Advancable5 {
     }
 }
 extension CGSize: Advancable5 {
-    
+    static var defaults: AnimState5<CGSize>  = AnimState5<CGSize>(CGSize(0,0),CGSize(0,0),CGSize(0,0),CGSize(0,0),CGSize(0,0))
     
 //    static var defaultEpsilon: CGSize = CGSize(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
 //    static let defaultStopVelocity: CGSize = CGSize(0,0)
