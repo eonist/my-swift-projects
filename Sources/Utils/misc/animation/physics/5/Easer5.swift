@@ -7,7 +7,6 @@ import Foundation
  * TODO: Maybe make a base class for Easer and Springer that they both can extend? that way you could change between them on a whim
  */
 class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
-    
     typealias FrameTickSignature = (T)->Void
     var epsilon: T = T.defaultEpsilon
     var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
