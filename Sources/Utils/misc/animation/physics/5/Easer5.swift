@@ -8,8 +8,11 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     typealias FrameTickSignature = (T)->Void
     var epsilon: T = T.defaultEpsilon
     var stopVelocity: T = T.defaultStopVelocity
-    var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
+    var easing:T/*This can be customized by setting the value but not via init*/
     var state:AnimState5<T>
+    
+    //continue here put everything inside AnimConfig
+    
     var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
