@@ -4,11 +4,12 @@ protocol Advancable5 {
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Self, rhs: Self) -> Self
-    static var defaultEpsilon: Self { get }
-    static var defaultStopVelocity: Self { get }
-    static var defaultValue: Self {get}
-    static var defaultVelocity: Self {get}
-    static var defaultTargetValue: Self {get}
+    static var defaults:AnimState5<Self> {get}
+//    static var defaultEpsilon: Self { get }
+//    static var defaultStopVelocity: Self { get }
+//    static var defaultValue: Self {get}
+//    static var defaultVelocity: Self {get}
+//    static var defaultTargetValue: Self {get}
     func isNear( value: Self, epsilon: Self) -> Bool
 }
 
@@ -33,6 +34,8 @@ extension CGPoint: Advancable5 {
     }
 }
 extension CGSize: Advancable5 {
+    
+    
     static var defaultEpsilon: CGSize = CGSize(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
     static let defaultStopVelocity: CGSize = CGSize(0,0)
     static let defaultValue: CGSize = CGSize(0,0)
@@ -43,6 +46,8 @@ extension CGSize: Advancable5 {
     }
 }
 extension CGRect: Advancable5 {
+    static var defaultState:AnimState5<CGRect>  =  AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect(), CGRect())
+    
     static var defaultEasing:CGRect = CGRect(0.2,0.2,0.2,0.2)
     static let defaultStopVelocity: CGRect = CGRect(0,0,0,0)
     static var defaultEpsilon: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
