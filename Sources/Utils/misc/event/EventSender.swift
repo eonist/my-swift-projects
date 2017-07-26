@@ -3,6 +3,7 @@ import Foundation
  * NOTE: if you "hi-jack" an event its possible to forward the original event to the instance onEvent so that it may continue its propegation
  * NOTE: you can also create eventHandelers inside nested methods. (unlike postEvent which cant do this)
  * NOTE: to propegate instances that are not InteractiveView you can hi-jack the event variable in children. that way you can create structures that send events.
+ * TODO: ⚠️️ In the future make the eventcallback look like: ((T:Event) -> ())?
  */
 typealias EventCallBack = ((Event) -> ())?/*Makes the return type less verbose, ⚠️️ i'm not sure why there is a ? sign at the end*/
 class EventSender:EventSendable {
