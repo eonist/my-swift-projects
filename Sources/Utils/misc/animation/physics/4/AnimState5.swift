@@ -24,5 +24,8 @@ extension AnimState5 {
     
     static var initConfig:CGFloat { return (0.2) }
     static var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
-    
+    static var initRectConfig:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
+    static var initRectValues:AnimState5<CGRect>  {
+        return AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
+    }
 }

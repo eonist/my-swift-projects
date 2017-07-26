@@ -22,9 +22,6 @@ extension CGPoint: Advancable5 {
     }
 }
 extension CGSize: Advancable5 {
-    static var defaultEasing:CGRect =  CGRect(0.2,0.2,0.2,0.2) 
-    static var defaultState:AnimState5<CGRect>  =  AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
-        
     
     static var defaultEpsilon: CGSize = CGSize(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
     func isNear( value:  CGSize,  epsilon: CGSize) -> Bool {
@@ -32,6 +29,8 @@ extension CGSize: Advancable5 {
     }
 }
 extension CGRect: Advancable5 {
+    static var defaultEasing:CGRect = CGRect(0.2,0.2,0.2,0.2)
+    static var defaultState:AnimState5<CGRect>  =  AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
     static var defaultEpsilon: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
     func isNear( value:  CGRect,  epsilon: CGRect) -> Bool {
         return self.size.isNear(value.size,epsilon.size.w) && self.origin.isNear(value.origin,epsilon.origin.x)
