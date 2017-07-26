@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO:  considerremoving stopVelocity or make it optional
  */
-struct AnimState5<T> {
+struct AnimState5<T:Advancable5> {
     var value: T/*the current value of the animation*/
     var targetValue: T/*Where the value want to go*/
     var velocity: T/*speed of the animation*/
