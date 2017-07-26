@@ -10,5 +10,5 @@ protocol PhysicsAnimKind5:class {
     associatedtype T: Advancable5
     typealias FrameTickSignature = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     var state:AnimState5<T> {get set}
-    var callBack:(T)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
+    var onFrame:(T)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
 }

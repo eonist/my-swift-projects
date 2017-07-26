@@ -11,7 +11,7 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     typealias FrameTickSignature = (T)->Void
     var epsilon: T = T.defaultEpsilon
     var easing:T = T.defaultEpsilon/*This can be customized by setting the value but not via init*/
-    var initValues:AnimState5
+    var state:AnimState5<T>
     var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
     init(_ initValues:AnimState5, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
@@ -22,15 +22,15 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     }
     override func onFrameTick() {
         self.updatePosition()
-        self.callBack(value)
+        self.callBack(state.value)
     }
     func updatePosition() {
-        velocity = (targetValue - value) * easing
-        value = value + velocity
+        state.velocity = (state.targetValue - state.value) * easing
+        state.value = state.value + state.velocity
         if assertStop {stop()}
     }
     var assertStop:Bool {
-        return velocity.isNear(value:stopVelocity, epsilon:epsilon)
+        return velocity.isNear(value:state.stopVelocity, epsilon:epsilon)
     }
 }
 /*Convenient default init values*/
