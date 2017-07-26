@@ -16,13 +16,13 @@ extension CGFloat: Advancable5 {
     }
 }
 extension CGPoint: Advancable5 {
-    static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
+    static var defaultEpsilon: CGPoint = CGPoint(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
     func isNear( value:  CGPoint,  epsilon: CGPoint) -> Bool {
         return self.isNear(value,epsilon.x)
     }
 }
 extension CGSize: Advancable5 {
-    static var defaultEpsilon: CGSize = CGSize(10e-5,10e-5)
+    static var defaultEpsilon: CGSize = CGSize(CGFloat.defaultEpsilon,CGFloat.defaultEpsilon)
     func isNear( value:  CGSize,  epsilon: CGSize) -> Bool {
         return self.isNear(value,epsilon.w)
     }
