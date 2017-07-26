@@ -14,7 +14,7 @@ class Easer5<T: Advancable5>:FrameAnimator, PhysicsAnimKind5{
     var initValues:InitValues
     var callBack:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     
-    init(_ initValues:AnimaState5, _ easing:T, _ callBack:@escaping FrameTickSignature) {
+    init(_ initValues:AnimaState5, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.initValues = initValues
         self.callBack = callBack
         self.easing = easing
