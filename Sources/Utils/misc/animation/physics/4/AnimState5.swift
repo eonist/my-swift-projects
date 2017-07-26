@@ -5,6 +5,12 @@ struct AnimState5<T> {
     var targetValue: T
     var velocity: T
     var stopVelocity: T
+    init(value: T,targetValue: T,velocity: T,stopVelocity:T){
+        self.value = value
+        self.targetValue = targetValue
+        self.velocity = velocity
+        self.stopVelocity = stopVelocity
+    }
 }
 
 extension AnimState5 {

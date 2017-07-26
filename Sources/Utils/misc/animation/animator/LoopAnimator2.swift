@@ -11,7 +11,7 @@ class LoopAnimator2:Animator2{
     var curRepeatCount:Int = 0
     init(initValues:LoopAnimator2.InitLoopValues = LoopAnimator2.initLoopValues, easing:@escaping EasingEquation = Easing.linear.ease, closure: @escaping FrameTick = {_ in}) {
         self.repeatCount = initValues.repeatCount
-        super.init(initValues: (initValues.duration,initValues.from,initValues.to), easing: easing, closure: closure)
+        super.init(initValues: (initValues.duration,initValues.from,initValues.to), easing: easing, onFrame: closure)
     }
     /**
      * Fires on every frame tick
