@@ -27,3 +27,13 @@ extension CGSize: Advancable5 {
         return self.w.isNear(value.w,epsilon.w) && self.h.isNear(value.h,epsilon.h)
     }
 }
+extension CGRect: Advancable5 {
+    static func +(lhs: CGRect, rhs: CGRect) -> CGRect {
+        <#code#>
+    }
+
+    static var defaultEpsilon: CGRect = CGRect(CGPoint.defaultEpsilon,CGSize.defaultEpsilon)
+    func isNear( value:  CGRect,  epsilon: CGRect) -> Bool {
+        return self.w.isNear(value.w,epsilon.w) && self.h.isNear(value.h,epsilon.h)
+    }
+}
