@@ -18,18 +18,16 @@ struct AnimState5<T:Advancable5> {
 }
 extension AnimState5 {
     //default states
-    static var initValues:AnimState5<CGFloat>  {
-        return AnimState5<CGFloat>.init(0, 0, 0, 0)
-    }
-    static var initPointValues:AnimState5<CGPoint>  {
-        return AnimState5<CGPoint>(CGPoint(0,0), CGPoint(0,0), CGPoint(0,0), CGPoint(0,0))
-    }
-    static var initRectValues:AnimState5<CGRect>  {
-        return AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
-    }
+//    static var initValues:AnimState5<CGFloat>  {
+//        return AnimState5<CGFloat>.init(0, 0, 0, 0)
+//    }
+//    static var initPointValues:AnimState5<CGPoint>  {
+//        return AnimState5<CGPoint>(CGPoint(0,0), CGPoint(0,0), CGPoint(0,0), CGPoint(0,0))
+//    }
+//    static var initRectValues:AnimState5<CGRect>  {
+//        return AnimState5<CGRect>(CGRect(), CGRect(), CGRect(), CGRect())
+//    }
     //default configs
-    static var initConfig:CGFloat { return (0.2) }
-    static var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
-    static var initRectConfig:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
+    
     
 }
