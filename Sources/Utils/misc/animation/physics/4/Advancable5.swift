@@ -12,14 +12,14 @@ protocol Advancable5 {
 
 extension CGFloat: Advancable5 {
     static let defaultEpsilon: CGFloat = 10e-5
-    static let defaultConfig:CGFloat = (0.2)/*Convenient*/
+    //static let defaultConfig:CGFloat = (0.2)/*Convenient*/
     func isNear( value:  CGFloat,  epsilon: CGFloat) -> Bool {
         return self.isNear(value,epsilon)
     }
 }
 extension CGPoint: Advancable5 {
     static var defaultConfig: CGPoint = CGPoint(0.2,0.2)
-    static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
+    //static var defaultEpsilon: CGPoint = CGPoint(10e-5,10e-5)
     func isNear( value:  CGPoint,  epsilon: CGPoint) -> Bool {
         return self.isNear(value,epsilon.x)
     }
