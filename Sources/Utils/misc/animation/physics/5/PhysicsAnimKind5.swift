@@ -1,5 +1,5 @@
 import Foundation
 
-class PhysicsAnimKind {
+class PhysicsAnimKind5 {
 
 }
