@@ -6,6 +6,7 @@ extension CGSize {
     init(_ width:Int,_ height:Int){self.width = CGFloat(width);self.height = CGFloat(height)}
     var w:CGFloat {set {self.width = newValue} get {return self.width}}
     var h:CGFloat {set {self.height = newValue} get {return self.height}}
+    func isNear(_ p:CGSize,_ epsilon:CGFloat) -> Bool {return PointAsserter.nearEquals(CGPoint(self.w,self.h), CGPoint(p.w,p.h), epsilon)}
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
             switch dir{
