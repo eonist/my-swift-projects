@@ -9,6 +9,7 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     var easing:T/*This can be customized by setting the value but not via init*/
     var state:AnimState5<T>
     var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
+    var onComplete:()->Void = {}
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.state = state
