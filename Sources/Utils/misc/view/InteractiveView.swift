@@ -42,6 +42,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * TODO: ⚠️️ When you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
+        Swift.print("mouseMoved")
         if let parent = self.superview as? IInteractiveView{
             parent.mouseMoved(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
@@ -103,7 +104,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: mouseMoved doesnt work if the leftmouse button is pressed, then mouseDragged is used instead
      */
     override func mouseMoved(with event:NSEvent) {
-        Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
+        //Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
