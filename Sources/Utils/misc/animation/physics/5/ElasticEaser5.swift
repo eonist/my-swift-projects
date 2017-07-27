@@ -2,6 +2,7 @@ import Foundation
 @testable import Utils
 /**
  * NOTE: Another name for this could be: RubberBand or ConstrainedEaser
+ * TODO: ⚠️️ maskFrame.y must be 0 . untill you add support for it to be a value > 0 or < 0
  */
 class ElasticEaser5:Easer5<CGRect> {
     var direct:Bool = false
@@ -20,11 +21,11 @@ class ElasticEaser5:Easer5<CGRect> {
         if direct {
             if value.y < maskFrame.min {
                 Swift.print("applyTopBoundary")
-                //applyTopBoundary()
+                applyTopBoundary()
             }
-            else if((value.y + contentFrame.len) > maskFrame.len){
+            else if (value.y + contentFrame.len) > maskFrame.len {
                 Swift.print("applyBottomBoundary")
-                //applyBottomBoundary()
+                applyBottomBoundary()
             }
         }else{
             super.updatePosition()
