@@ -107,7 +107,6 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         //Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
-                Swift.print("mouseMove.underView")
                 if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
                 mouseMoved(MouseEvent(event,self))
             }
@@ -119,7 +118,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseEntered(with event: NSEvent){
-        Swift.print("\(type(of: self))" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
+        //Swift.print("\(type(of: self))" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         //I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         if(!hasMouseEntered && viewUnderMouse === self){
             hasMouseEntered = true/*Optimization*/
@@ -133,7 +132,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseExited(with event: NSEvent){
-        Swift.print("\(type(of: self))" + ".mouseExited: event.locationInWindow: " + "\(event.locationInWindow)")
+        //Swift.print("\(type(of: self))" + ".mouseExited: event.locationInWindow: " + "\(event.locationInWindow)")
         
         //⚠️️ I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         
