@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: Another name for this could be: RubberBand or ConstrainedEaser
  */
