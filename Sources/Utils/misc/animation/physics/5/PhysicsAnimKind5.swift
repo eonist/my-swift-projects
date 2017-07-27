@@ -12,3 +12,12 @@ protocol PhysicsAnimKind5:class {
     var state:AnimState5<T> {get set}
     var onFrame:(T)->Void {get set}/*The closure method that is called on every "frame-tick" and changes the property, you can use a var closure or a regular method, probably even an inline closure*/
 }
+/**
+ * Getters and setters for easier access to state
+ */
+extension PhysicsAnimKind5{
+    var targetValue:T {get{return state.targetValue}set{state.targetValue = newValue}}
+    var velocity:T {get{return state.velocity}set{state.velocity = newValue}}
+    var value:T {get{return state.value}set{state.value = newValue}}
+    var stopVelocity:T {get{return state.stopVelocity}set{state.stopVelocity = newValue}}
+}

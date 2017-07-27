@@ -3,7 +3,7 @@ import Cocoa
 extension NSEvent {
     /**
      * Returns localPosition in a view (converts a global position to a local position)
-     * TODO: hopefully this method also works if the view is not 0,0 in the window
+     * TODO: ⚠️️ hopefully this method also works if the view is not 0,0 in the window
      */
     func localPos(_ view:NSView)->CGPoint{
         return view.convert(self.locationInWindow,from:nil)
@@ -16,15 +16,6 @@ extension NSEvent {
     static func cmdKey()->Bool{/*Convenience*/
         return NSEvent.modifierFlags().contains(NSEventModifierFlags.shift)
     }
-    /**
-     * Asserts if the eventMonitor exists before removing it and setting the reference to nil
-     */
-    func removeMonitor(_ eventMonitor:inout Any?) {
-        if(eventMonitor != nil){
-            NSEvent.removeMonitor(eventMonitor!)
-            eventMonitor = nil
-        }
-    }
 
     var scrollingDelta:CGPoint {return CGPoint(self.scrollingDeltaX,self.scrollingDeltaY)}/*Convenience*/
     var delta:CGPoint {return CGPoint(self.deltaX,self.deltaY)}/*Convenience*/
@@ -34,13 +25,35 @@ extension NSEvent {
 }
 
 /**
- * This is on the idea stage for now
+ * Simplifies monitoring NSEvents
+ * NOTE: Handling and setting up event monitoring is error prone and a big hassle, this extension simplifies this process. It doesn1t fit all cases but for simple interaction monitoring it's pretty use-ful
+ * NSEventMask types: leftMouseDown,leftMouseUp,rightMouseDown,rightMouseUp,mouseMoved,leftMouseDragged,rightMouseDragged,mouseEntered,mouseExited,keyDown,keyUp,flagsChanged,appKitDefined,systemDefined,applicationDefined,periodic,cursorUpdate,scrollWheel,tabletPoint,tabletProximity,otherMouseDown,otherMouseUp,otherMouseDragged
+ * NSEventMask gesture types: gesture,magnify,swipe,rotate,beginGesture,endGesture
+ * TODO: ⚠️️ You might want to add propegates:Bool flag that blocks further event-propegation etc
+ * NOTE: Put `var monitor:Any?` in the scope of your class or function
  */
-class EventMonitor{
+extension NSEvent{
+    typealias CallBack = (NSEvent)->Void
     /**
-     * Makes adding event monitors less verbose
+     * EXAMPLE: NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
      */
-    func addLocalMonitor(_ mask: NSEventMask,_  block: @escaping (NSEvent) -> NSEvent?) -> Any?{
-        return NSEvent.addLocalMonitorForEvents(matching:mask, handler:block)
+    static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEventMask, _ callBack:@escaping CallBack){
+        if(monitor == nil) {
+            monitor = NSEvent.addLocalMonitorForEvents(matching: [eventMask], handler: {event -> NSEvent in callBack(event);return event})/*The closure returns the event so the event can propegate internally in the NSApp*/
+        }else {
+            removeMonitor(&monitor)//remove event handler before adding a new one
+            addMonitor(&monitor, eventMask, callBack)//try adding the eventHandler again
+        }
+    }
+    /**
+     * Asserts if the eventMonitor exists before removing it and setting the reference to nil
+     * EXAMPLE: NSEvent.removeMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
+     */
+    static func removeMonitor(_  monitor:inout Any?){
+        if(monitor != nil){
+            NSEvent.removeMonitor(monitor!)
+            monitor = nil/*<--this part may not be needed*/
+        }
     }
 }
+
