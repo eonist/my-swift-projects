@@ -30,24 +30,23 @@ extension NSEvent {
  * NSEventMask types: leftMouseDown,leftMouseUp,rightMouseDown,rightMouseUp,mouseMoved,leftMouseDragged,rightMouseDragged,mouseEntered,mouseExited,keyDown,keyUp,flagsChanged,appKitDefined,systemDefined,applicationDefined,periodic,cursorUpdate,scrollWheel,tabletPoint,tabletProximity,otherMouseDown,otherMouseUp,otherMouseDragged
  * NSEventMask gesture types: gesture,magnify,swipe,rotate,beginGesture,endGesture
  * TODO: ⚠️️ You might want to add propegates:Bool flag that blocks further event-propegation etc
- * NOTE: Put `var monitor:Any?` in the scope of your class or function
  */
 extension NSEvent{
     typealias CallBack = (NSEvent)->Void
     /**
-     * EXAMPLE: NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
+     * EXAMPLE: var monitor:Any?;NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
      */
     static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEventMask, _ callBack:@escaping CallBack){
         if(monitor == nil) {
             monitor = NSEvent.addLocalMonitorForEvents(matching: [eventMask], handler: {event -> NSEvent in callBack(event);return event})/*The closure returns the event so the event can propegate internally in the NSApp*/
         }else {
-            removeMonitor(&monitor)//remove event handler before adding a new one
+            removeMonitor(&monitor)/*remove event handler before adding a new one*/
             addMonitor(&monitor, eventMask, callBack)//try adding the eventHandler again
         }
     }
     /**
      * Asserts if the eventMonitor exists before removing it and setting the reference to nil
-     * EXAMPLE: NSEvent.removeMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
+     * EXAMPLE: var monitor:Any?;NSEvent.removeMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
      */
     static func removeMonitor(_  monitor:inout Any?){
         if(monitor != nil){
