@@ -36,10 +36,10 @@ class ElasticEaser5:Easer5<CGRect> {
      */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary")
-        let distToGoal:CGFloat = value.y - maskFrame.min
+        let distToGoal:CGFloat = value.y /*- maskFrame.min*/
         if(direct){/*surface is slipping the further you pull*/
             //result = value
-            value.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            value.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit /*- maskFrame.min*/ /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }/*else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
