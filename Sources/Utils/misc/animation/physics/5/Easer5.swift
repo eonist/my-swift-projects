@@ -14,8 +14,8 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.state = state
-        self.onFrame = onFrame
         self.easing = easing
+        self.onFrame = onFrame
         super.init()
     }
     override func onFrameTick() {
