@@ -21,7 +21,7 @@ class Elastic5:Easer5<CGRect> {
                 applyTopBoundary()
             }
             else if((value.y + contentFrame.len) < maskFrame.len){
-                //applyBottomBoundary()
+                applyBottomBoundary()
             }
         }else{
             super.updatePosition()
@@ -35,13 +35,14 @@ class Elastic5:Easer5<CGRect> {
         //Swift.print("applyTopBoundary")
         let distToGoal:CGFloat = value.y - maskFrame.min
         if(direct){/*surface is slipping the further you pull*/
-            result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
-        }else{/*Springs back to limit*/
+            result = value
+            result.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+        }/*else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
             if(value.isNear(maskFrame.min, 1)){checkForStop(direct)}
             result = value
-        }
+        }*/
     }
 }
