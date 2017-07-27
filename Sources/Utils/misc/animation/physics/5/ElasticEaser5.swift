@@ -9,9 +9,9 @@ class ElasticEaser5:Easer5<CGRect> {
     var maskFrame:Frame/*Represents the visible part of the content*/
     var contentFrame:Frame/*Represents the total size of the content*/
     var limit:CGFloat = 100
-    var result:T/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
-    init(_ state:AnimState5, _ easing:T,  _ contentFrame:Frame,_ maskFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
-        self.result = state//set init result
+    //var result:AnimState5<T>/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
+    init(_ state:AnimState5<T>, _ easing:T,  _ contentFrame:Frame,_ maskFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
+        //self.result = state//set init result
         self.contentFrame = contentFrame
         self.maskFrame = maskFrame
         super.init(state,easing,onFrame)
@@ -38,8 +38,8 @@ class ElasticEaser5:Easer5<CGRect> {
         //Swift.print("applyTopBoundary")
         let distToGoal:CGFloat = value.y - maskFrame.min
         if(direct){/*surface is slipping the further you pull*/
-            result = value
-            result.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            //result = value
+            value.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }/*else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
@@ -57,8 +57,8 @@ class ElasticEaser5:Easer5<CGRect> {
         if(direct){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value.y/*goes from 0 to -100*/
-            result = value
-            result.y = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
+            //result = value
+            value.y = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }/*else{/*Springs back to limit*/
             let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
