@@ -103,6 +103,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: mouseMoved doesnt work if the leftmouse button is pressed, then mouseDragged is used instead
      */
     override func mouseMoved(with event:NSEvent) {
+        Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
