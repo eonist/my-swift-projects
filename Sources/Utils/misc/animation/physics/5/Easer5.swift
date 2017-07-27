@@ -20,20 +20,20 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     }
     override func onFrameTick() {
         self.updatePosition()
-        self.onFrame(state.value)
+        self.onFrame(value)
     }
     func updatePosition() {
-        state.velocity = (state.targetValue - state.value) * easing
-        state.value = state.value + state.velocity
+        velocity = (targetValue - value) * easing
+        value = value + velocity
         if assertStop {
-            state.value = state.targetValue//set the final value
+            value = targetValue//set the final value
             stop()/*stop the animation*/
             onComplete()
             onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
         }
     }
     var assertStop:Bool {
-        return state.velocity.isNear(value:state.stopVelocity, epsilon:state.epsilon)
+        return state.velocity.isNear(value:stopVelocity, epsilon:epsilon)
     }
 }
 
