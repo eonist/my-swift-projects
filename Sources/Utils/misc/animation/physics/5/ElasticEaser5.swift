@@ -6,23 +6,23 @@ import Foundation
 class ElasticEaser5:Easer5<CGRect> {
     var direct:Bool = false
     typealias Frame = (min:CGFloat,len:CGFloat)//TODO:rename to  boundries
-    var boundaryFrame:Frame/*Represents the visible part of the content*/
+    var maskFrame:Frame/*Represents the visible part of the content*/
     var contentFrame:Frame/*Represents the total size of the content*/
     var limit:CGFloat = 100
-    private(set) public var result:T/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
-    init(_ state:AnimState5<T>, _ easing:T, _ maskFrame:Frame, _ contentFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
-        self.result = state.value//set init result
-        self.boundaryFrame = maskFrame
+    var result:T/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
+    init(_ state:AnimState5<T>, _ easing:T,  _ contentFrame:Frame,_ maskFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
+        self.result = state//set init result
         self.contentFrame = contentFrame
+        self.maskFrame = maskFrame
         super.init(state,easing,onFrame)
     }
     override func updatePosition() {
         if direct {
-            if value.y < boundaryFrame.min {
+            if value.y < maskFrame.min {
                 Swift.print("applyTopBoundary")
                 //applyTopBoundary()
             }
-            else if((value.y + contentFrame.len) > boundaryFrame.len){
+            else if((value.y + contentFrame.len) > maskFrame.len){
                 Swift.print("applyBottomBoundary")
                 //applyBottomBoundary()
             }
@@ -36,10 +36,10 @@ class ElasticEaser5:Easer5<CGRect> {
      */
     func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary")
-        let distToGoal:CGFloat = value.y - boundaryFrame.min
+        let distToGoal:CGFloat = value.y - maskFrame.min
         if(direct){/*surface is slipping the further you pull*/
             result = value
-            result.y = boundaryFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - boundaryFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            result.y = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }/*else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
@@ -55,7 +55,7 @@ class ElasticEaser5:Easer5<CGRect> {
     func applyBottomBoundary(){
         //Swift.print("applyBottomBoundary")
         if(direct){/*surface is slipping the further you pull*/
-            let totLen = (contentFrame.len - boundaryFrame.len)/*tot length of items - length of mask*/
+            let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value.y/*goes from 0 to -100*/
             result = value
             result.y = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
