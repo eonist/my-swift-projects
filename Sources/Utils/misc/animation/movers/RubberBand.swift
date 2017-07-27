@@ -123,6 +123,8 @@ class CustomFriction{
     /**
      * NOTE: The vertical limit is the point where the value almost doesn't move at all
      * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
+     * NOTE: value ranges from 0 to 100, then limit should be 100, if value ranges from 0 to -100 then limit should be -100
+     * NOTE: You need to use correct ranges of values in order for this to work. Think relative values
      */
     static func constraintValueWithLog(_ value:CGFloat, _ limit:CGFloat) -> CGFloat {
         let multiplier = log10(1.0 + value/limit)
