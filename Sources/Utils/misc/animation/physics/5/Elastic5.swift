@@ -7,6 +7,8 @@ class Elastic5:Easer5<CGRect> {
     typealias Frame = (min:CGFloat,len:CGFloat)//TODO:rename to  boundries
     var maskFrame:Frame/*Represents the visible part of the content*/
     var contentFrame:Frame/*Represents the total size of the content*/
+    var limit:CGFloat = 100
+    var result:CGFloat = 0/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
     init(_ state:AnimState5<T>, _ easing:T, _ maskFrame:Frame, _ contentFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
         self.maskFrame = maskFrame
         self.contentFrame = contentFrame
@@ -28,9 +30,9 @@ class Elastic5:Easer5<CGRect> {
      * When the min val reaches beyond max
      * PARAM: direct: toggles the directManipulation mode
      */
-    func applyTopBoundary(_ direct:Bool){/*Surface is slipping the further you pull*/
+    func applyTopBoundary(){/*Surface is slipping the further you pull*/
         //Swift.print("applyTopBoundary")
-        let distToGoal:CGFloat = value - maskFrame.min
+        let distToGoal:CGFloat = value.y - maskFrame.min
         if(direct){/*surface is slipping the further you pull*/
             result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
