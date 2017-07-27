@@ -26,7 +26,9 @@ extension NSEvent {
 
 /**
  * Simplifies monitoring NSEvents
- * NOTE: Handling and setting up event monitoring is error prone and a big hassle, this extension simplifies this process. It doesn1t fit all cases but for simple interaction monitoring it's pretty use-ful
+ * NOTE: Handling and setting up event monitoring is error prone and a big hassle, this extension simplifies this process. It doesn't fit all cases but for simple interaction monitoring it's pretty use-ful
+ * NOTE: The big pay-off is that you dont have to check if monitor has already been added and remove it and set it to nil etc. You just have to deal with 2 methods and everything else is handled for you
+ * NOTE: You can also remove and add repeatedly with-out worrying if something was already added etc. Error-proof
  * NSEventMask types: leftMouseDown,leftMouseUp,rightMouseDown,rightMouseUp,mouseMoved,leftMouseDragged,rightMouseDragged,mouseEntered,mouseExited,keyDown,keyUp,flagsChanged,appKitDefined,systemDefined,applicationDefined,periodic,cursorUpdate,scrollWheel,tabletPoint,tabletProximity,otherMouseDown,otherMouseUp,otherMouseDragged
  * NSEventMask gesture types: gesture,magnify,swipe,rotate,beginGesture,endGesture
  * TODO: ⚠️️ You might want to add propegates:Bool flag that blocks further event-propegation etc
