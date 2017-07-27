@@ -27,6 +27,7 @@ class ElasticEaser5:Easer5<CGRect> {
                 Swift.print("applyBottomBoundary")
                 applyBottomBoundary()
             }else{
+                Swift.print("apply no boundry")
                 super.updatePosition()
             }
         }else{
@@ -46,8 +47,13 @@ class ElasticEaser5:Easer5<CGRect> {
             Swift.print("distToGoal: " + "\(distToGoal)")
             Swift.print("limit: " + "\(limit)")
             let constrainedValue:CGFloat = /*maskFrame.min + */CustomFriction.constraintValueWithLog(distToGoal,limit /*- maskFrame.min*/ /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
-            
             Swift.print("constrainedValue: " + "\(constrainedValue)")
+            
+            //Continue here: 🏀
+                //I think you need to use virtual value and a real one. as your setting and trying to manipulate the same value,
+            
+            
+            
             value.y = constrainedValue
         }/*else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
