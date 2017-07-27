@@ -6,10 +6,11 @@ import Foundation
  */
 class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     typealias FrameTickSignature = (T)->Void
+    typealias OnComplete = () -> Void
     var easing:T/*This can be customized by setting the value but not via init*/
     var state:AnimState5<T>
     var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
-    var onComplete:()->Void = {}//add external onComplete closures when needed
+    var onComplete:OnComplete = {}//add external onComplete closures when needed
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.state = state
@@ -26,8 +27,9 @@ class Easer5<T: Advancable5>:FrameAnimator2, PhysicsAnimKind5{
         state.value = state.value + state.velocity
         if assertStop {
             state.value = state.targetValue//set the final value
-            stop()//stop the animation
+            stop()/*stop the animation*/
             onComplete()
+            onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
         }
     }
     var assertStop:Bool {
