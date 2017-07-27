@@ -42,7 +42,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * TODO: ⚠️️ When you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
-        Swift.print("\(type(of: self))" + "mouseMoved(): event.locationInWindow" + "\(event.event!.locationInWindow.str)")
+        //Swift.print("\(type(of: self))" + "mouseMoved(): event.locationInWindow" + "\(String(describing: event.event!.locationInWindow))")
         if let parent = self.superview as? IInteractiveView{
             parent.mouseMoved(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
