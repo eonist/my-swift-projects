@@ -71,9 +71,12 @@ class ElasticEaser5:Easer5<CGRect> {
         //Swift.print("applyBottomBoundary")
         if(direct){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
-            let normalizedValue:CGFloat = totLen + value.y/*goes from 0 to -100*/
+            Swift.print("totLen: " + "\(totLen)")
+            let normalizedValue:CGFloat = totLen + targetValue.y/*goes from 0 to -100*/
+            Swift.print("normalizedValue: " + "\(normalizedValue)")
             //result = value
-            value.y = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
+            let constrainedValue:CGFloat = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
+            value.y = constrainedValue
         }/*else{/*Springs back to limit*/
             let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
