@@ -10,7 +10,7 @@ class ElasticEaser5:Easer5<CGRect> {
     var contentFrame:Frame/*Represents the total size of the content*/
     var limit:CGFloat = 100
     var result:T/*Output value, this is the value that external callers can use, its the var value after friction etc has been applied, it cannot be set from outside but can only be read from outside*/
-    init(_ state:AnimState5<T>, _ easing:T,  _ contentFrame:Frame,_ maskFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
+    init(_ state:AnimState5, _ easing:T,  _ contentFrame:Frame,_ maskFrame:Frame, _ onFrame:@escaping FrameTickSignature) {
         self.result = state//set init result
         self.contentFrame = contentFrame
         self.maskFrame = maskFrame
