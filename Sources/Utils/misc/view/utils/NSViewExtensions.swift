@@ -45,6 +45,7 @@ extension NSView {
      * Returns localPosition in a view (converts a global position to a local position)
      * TODO: ⚠️️ hopefully this method also works if the view is not 0,0 in the window
      * Returns the local mouse position in the views coordinate system 0,0
+     * NOTE: can also be used on window.content.localPos to get the pos in a a window
      */
     func localPos()->CGPoint{
         return self.convert((window?.mouseLocationOutsideOfEventStream)!,from:nil)
