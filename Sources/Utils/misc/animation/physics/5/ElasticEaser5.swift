@@ -22,10 +22,12 @@ class ElasticEaser5:Easer5<CGRect> {
             if targetValue.y < maskFrame.min {
                 Swift.print("applyTopBoundary")
                 applyTopBoundary()
+                
             }
             else if (targetValue.y + contentFrame.len) > maskFrame.len {
                 Swift.print("applyBottomBoundary")
                 applyBottomBoundary()
+                
             }else{
                 Swift.print("apply no boundry: targetValue: \(targetValue.y)")
                 super.updatePosition()
