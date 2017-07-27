@@ -26,6 +26,8 @@ class ElasticEaser5:Easer5<CGRect> {
             else if (value.y + contentFrame.len) > maskFrame.len {
                 Swift.print("applyBottomBoundary")
                 applyBottomBoundary()
+            }else{
+                super.updatePosition()
             }
         }else{
             super.updatePosition()
