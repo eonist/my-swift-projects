@@ -2,6 +2,7 @@ import Cocoa
 /**
  * TODO: ⚠️️ Implement the immidiate when it's needed.
  * NOTE: origin could in the future be a protocol IInteractiveElement for instance or IInteractive or IInteractiveView
+ * NOTE: mouseEvent doesnt set the type because they arent propegated through the onEvent call
  */
 class MouseEvent:Event{
     static var over:String = "mouseEventOver"
@@ -12,7 +13,7 @@ class MouseEvent:Event{
     static var enter:String = "mouseEventEnter"
     static var exit:String = "mouseEventExit"
     weak var event:NSEvent?
-    init(_ type:String,_ event:NSEvent, _ origin:NSView){
+    init(_ event:NSEvent, _ origin:NSView){
         self.event = event
         super.init("", origin)
     }

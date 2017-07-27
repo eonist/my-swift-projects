@@ -108,7 +108,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
                 Swift.print("mouseMove.underView")
-                if(!isMouseOver){mouseOver(MouseEvent(MouseEvent.event,self));isMouseOver = true}
+                if(!isMouseOver){mouseOver(MouseEvent(event,self));isMouseOver = true}
                 mouseMoved(MouseEvent(event,self))
             }
             else if(isMouseOver){mouseOut(MouseEvent(event,self));isMouseOver = false}//mouse move on the "invisible" parth of the view
