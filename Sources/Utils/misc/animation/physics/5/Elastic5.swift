@@ -15,13 +15,17 @@ class Elastic5<T:Advancable5>:Easer5<T> {
         self.contentFrame = contentFrame
         super.init(state,easing,onFrame)
     }
-    override func updatePosition() {
-        if direct {
-            if value > maskFrame.min {applyTopBoundary()}
-            else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary()}
-        }else{
-            super.updatePosition()
-        }
+    override func updatePosition() where T == CGRect {
+//        if direct {
+//            if value > maskFrame.min {
+//                applyTopBoundary()
+//            }
+//            else if((value + contentFrame.len) < maskFrame.len){
+//                applyBottomBoundary()
+//            }
+//        }else{
+//            super.updatePosition()
+//        }
         
     }
 }
