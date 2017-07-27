@@ -18,7 +18,7 @@ class Elastic5:Easer5<CGRect> {
     override func updatePosition() {
         if direct {
             if value.y > maskFrame.min {
-//                applyTopBoundary()
+                applyTopBoundary()
             }
             else if((value.y + contentFrame.len) < maskFrame.len){
                 //applyBottomBoundary()
@@ -31,17 +31,17 @@ class Elastic5:Easer5<CGRect> {
      * When the min val reaches beyond max
      * PARAM: direct: toggles the directManipulation mode
      */
-//    func applyTopBoundary(){/*Surface is slipping the further you pull*/
-//        //Swift.print("applyTopBoundary")
-//        let distToGoal:CGFloat = value.y - maskFrame.min
-//        if(direct){/*surface is slipping the further you pull*/
-//            result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
-//        }else{/*Springs back to limit*/
-//            velocity -= (distToGoal * spring)
-//            velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
-//            value += velocity
-//            if(value.isNear(maskFrame.min, 1)){checkForStop(direct)}
-//            result = value
-//        }
-//    }
+    func applyTopBoundary(){/*Surface is slipping the further you pull*/
+        //Swift.print("applyTopBoundary")
+        let distToGoal:CGFloat = value.y - maskFrame.min
+        if(direct){/*surface is slipping the further you pull*/
+            result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+        }else{/*Springs back to limit*/
+            velocity -= (distToGoal * spring)
+            velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
+            value += velocity
+            if(value.isNear(maskFrame.min, 1)){checkForStop(direct)}
+            result = value
+        }
+    }
 }
