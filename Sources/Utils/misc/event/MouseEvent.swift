@@ -12,7 +12,7 @@ class MouseEvent:Event{
     static var enter:String = "mouseEventEnter"
     static var exit:String = "mouseEventExit"
     weak var event:NSEvent?
-    init(_ event:NSEvent, _ origin:NSView){
+    init(_ type:String,_ event:NSEvent, _ origin:NSView){
         self.event = event
         super.init("", origin)
     }
