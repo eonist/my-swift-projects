@@ -19,15 +19,15 @@ class ElasticEaser5:Easer5<CGRect> {
     }
     override func updatePosition() {
         if direct {
-            if value.y < maskFrame.min {
+            if targetValue.y < maskFrame.min {
                 Swift.print("applyTopBoundary")
                 applyTopBoundary()
             }
-            else if (value.y + contentFrame.len) > maskFrame.len {
+            else if (targetValue.y + contentFrame.len) > maskFrame.len {
                 Swift.print("applyBottomBoundary")
                 applyBottomBoundary()
             }else{
-                Swift.print("apply no boundry: value.y: \(value.y)")
+                Swift.print("apply no boundry: targetValue: \(targetValue.y)")
                 super.updatePosition()
             }
         }else{
@@ -43,7 +43,7 @@ class ElasticEaser5:Easer5<CGRect> {
         
         if(direct){/*surface is slipping the further you pull*/
             //result = value
-            let distToGoal:CGFloat = value.y /*- maskFrame.min*/
+            let distToGoal:CGFloat = targetValue.y /*- maskFrame.min*/
             Swift.print("distToGoal: " + "\(distToGoal)")
             Swift.print("limit: " + "\(-limit)")
             let constrainedValue:CGFloat = /*maskFrame.min + */CustomFriction.constraintValueWithLog(distToGoal,-limit /*- maskFrame.min*/ /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
