@@ -119,7 +119,7 @@ extension RubberBand{
 /**
  * Creates the displacement friction effect. Like you finger is slightly losing its grip
  */
-private class CustomFriction{
+class CustomFriction{
     /**
      * NOTE: The vertical limit is the point where the value almost doesn't move at all
      * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
