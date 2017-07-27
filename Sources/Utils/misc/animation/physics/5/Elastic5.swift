@@ -17,11 +17,13 @@ class Elastic5:Easer5<CGRect> {
     }
     override func updatePosition() {
         if direct {
-            if value.y > maskFrame.min {
-                applyTopBoundary()
+            if value.y < maskFrame.min {
+                Swift.print("applyTopBoundary")
+                //applyTopBoundary()
             }
-            else if((value.y + contentFrame.len) < maskFrame.len){
-                applyBottomBoundary()
+            else if((value.y + contentFrame.len) > maskFrame.len){
+                Swift.print("applyBottomBoundary")
+                //applyBottomBoundary()
             }
         }else{
             super.updatePosition()
