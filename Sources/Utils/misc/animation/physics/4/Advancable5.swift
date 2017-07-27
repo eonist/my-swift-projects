@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Advancable5 {
+protocol Advancable5/*:Comparable*/ {
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Self, rhs: Self) -> Self

@@ -2,7 +2,7 @@ import Foundation
 /**
  * NOTE: Another name for this could be: RubberBand or ConstrainedEaser
  */
-class Elastic5<T:Advancable5>:Easer5<T> {
+class Elastic5<CGRect>:Easer5<CGRect> {
     var direct:Bool = false
     typealias Frame = (min:T,len:T)//TODO:rename to  boundries
     var maskFrame:Frame/*Represents the visible part of the content*/
