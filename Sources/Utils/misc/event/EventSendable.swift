@@ -13,6 +13,7 @@ extension EventSendable{
      * New
      * 1. Assigns a closure, 
      * 2. event is only passed on if event type match
+     * EXAMPLE: promptBtn.addHandler { (event:ButtonEvent) in print(event.type)}
      */
     func addHandler<T>(_ handler:@escaping (T)->Void){
         event = { argEvent in
@@ -22,7 +23,7 @@ extension EventSendable{
         }
     }
     /**
-     * New
+     * New,convenient
      */
     func removeHandler(){
         event = {event in}//assign empty closure
