@@ -14,9 +14,10 @@ class StringModifier{
     }
     /**
      * New
+     * NOTE: there is also: name.substring(to: name.index(before: input.endIndex))
      */
-    static func dropLast(_ input:String){
-        input.
+    static func removeLastChar(_ input: inout String){
+        input.remove(at: input.index(before: input.endIndex))
     }
     /**
      *	Removes all instances of the remove string in the input string
