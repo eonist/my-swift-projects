@@ -11,7 +11,7 @@ protocol FrameAnimatable2{
  * TODO: ⚠️️⚠️️⚠️️ Make a local stopped flag, so you dont have to itrate animProxy.animations so many times
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
-class FrameAnimator2 {/*Rename to FrameAnimator*/
+class FrameAnimator2:FrameAnimatable2 {/*Rename to FrameAnimator*/
     var animProxy:AnimProxyKind2/*Reference to where the displayLink resides*/
     init(_ animatable:AnimProxyKind2 = AnimProxy2.shared){
         self.animProxy = animatable

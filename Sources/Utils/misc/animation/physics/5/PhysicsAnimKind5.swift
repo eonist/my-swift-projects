@@ -6,7 +6,7 @@ import Foundation
  * TODO: ⚠️️ Rename initValues to config, as initvalues could indicate the start values, which it is not
  * TODO: ⚠️️ Consider using other names from regex proposal
  */
-protocol PhysicsAnimKind5:class {
+protocol PhysicsAnimKind5:class,FrameAnimatable2 {
     associatedtype T: Advancable5
     typealias FrameTickSignature = (T)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
     var state:AnimState5<T> {get set}
@@ -17,11 +17,12 @@ protocol PhysicsAnimKind5:class {
  */
 extension PhysicsAnimKind5{
     /**
-     *
+     * New,convenient when chaining
      */
-//    func setTargetValue(targetValue)-> {
-//        
-//    }
+    func setTargetValue(_ targetValue:T) -> Self{
+        self.targetValue = targetValue
+        return self
+    }
     var targetValue:T {get{return state.targetValue}set{state.targetValue = newValue}}
     var velocity:T {get{return state.velocity}set{state.velocity = newValue}}
     var value:T {get{return state.value}set{state.value = newValue}}
