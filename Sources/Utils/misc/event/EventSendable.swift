@@ -15,10 +15,15 @@ extension EventSendable{
      * 2. event is only passed on if event type match
      * EXAMPLE: promptBtn.addHandler { (event:ButtonEvent) in print(event.type)}
      */
-    func addHandler<T>(_ handler:@escaping (T)->Void){
+    func addHandler<T:Event>(_ handler:@escaping (T)->Void, _ type:String? = nil){
         event = { argEvent in
             if let e = argEvent as? T {
-                handler(e)
+                if type == nil {
+                    handler(e)
+                }else if let type = type, argEvent.type == type {
+                    handler(e)
+                }
+                
             }
         }
     }
