@@ -1,8 +1,14 @@
 import Cocoa
 
+protocol FrameAnimatable2{
+    var animProxy:AnimProxyKind2 {get}
+    func start()
+    func stop()
+    var stopped:Bool {get}
+}
 /**
  * FrameAnimator serves as the Core Animator in this Animation library
- * TODO: ⚠️️ Consider not using EventSender in the animation lib and instead setup callbacks so that it can work standalone, also callbacks works better when setting up chaining
+ * TODO: ⚠️️⚠️️⚠️️ Make a local stopped flag, so you dont have to itrate animProxy.animations so many times
  * NOTE: We use EventSender for in-frequent events such as onComplete or onStop and we use a regular callback method as its very frequent
  */
 class FrameAnimator2 {/*Rename to FrameAnimator*/
@@ -13,7 +19,7 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
     /**
      * This is called from the AnimProxy.onFrameOnMainThread method
      */
-    func onFrameTick(){
+    func onFrameTick(){//TODO: ⚠️️ should be marked overridable
         fatalError("Must be overwritten in subclass")
     }
     /**
@@ -36,7 +42,7 @@ class FrameAnimator2 {/*Rename to FrameAnimator*/
 extension FrameAnimator2 {
     /**
      * Assert if an animator is active or not, you can also check if the Animator is nil to check if is active or not
-     * TODO: ⚠️️ Name this hasStopped or isActive
+     * TODO: ⚠️️ Name this hasStopped
      */
     var stopped:Bool {return animProxy.animators.indexOf(self) == -1}
 }
