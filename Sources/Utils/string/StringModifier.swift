@@ -13,6 +13,12 @@ class StringModifier{
         return StringModifier.replaceFirst(input, match, "")
     }
     /**
+     * New
+     */
+    static func dropLast(_ input:String){
+        input.
+    }
+    /**
      *	Removes all instances of the remove string in the input string
      *	RETURN: A String with the remove string removed
      *	PARAM: input: The string that will be checked for instances of remove string
