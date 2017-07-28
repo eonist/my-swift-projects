@@ -2,11 +2,11 @@ import Foundation
 @testable import Utils
 /**
  * NOTE: Another name for this could be: RubberBand or ConstrainedEaser
- * TODO: ⚠️️ maskFrame.y must be 0 . untill you add support for it to be a value > 0 or < 0
+ * TODO: ⚠️️ maskFrame.y must be 0 . until you add support for it to be a value > 0 or < 0
  */
 class ElasticEaser5:Easer5<CGRect> {
     var direct:Bool = false
-    typealias Frame = (min:CGFloat,len:CGFloat)//TODO:rename to  boundries
+    typealias Frame = (min:CGFloat,len:CGFloat)//TODO:⚠️️ rename to  boundries
     var maskFrame:Frame/*Represents the visible part of the content*/
     var contentFrame:Frame/*Represents the total size of the content*/
     var limit:CGFloat = 100
@@ -20,16 +20,16 @@ class ElasticEaser5:Easer5<CGRect> {
     override func updatePosition() {
         if direct {
             if targetValue.y < maskFrame.min {
-                Swift.print("applyTopBoundary")
+//                Swift.print("applyTopBoundary")
                 applyTopBoundary()
                 
             }
             else if (targetValue.y + contentFrame.len) > maskFrame.len {
-                Swift.print("applyBottomBoundary")
+//                Swift.print("applyBottomBoundary")
                 applyBottomBoundary()
                 
             }else{
-                Swift.print("apply no boundry: targetValue: \(targetValue.y)")
+//                Swift.print("apply no boundry: targetValue: \(targetValue.y)")
                 super.updatePosition()
             }
         }else{
@@ -46,10 +46,10 @@ class ElasticEaser5:Easer5<CGRect> {
         if(direct){/*surface is slipping the further you pull*/
             //result = value
             let distToGoal:CGFloat = targetValue.y /*- maskFrame.min*/
-            Swift.print("distToGoal: " + "\(distToGoal)")
-            Swift.print("limit: " + "\(-limit)")
-            let constrainedValue:CGFloat = /*maskFrame.min + */CustomFriction.constraintValueWithLog(distToGoal,-limit /*- maskFrame.min*/ /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
-            Swift.print("constrainedValue: " + "\(constrainedValue)")
+//            Swift.print("distToGoal: " + "\(distToGoal)")
+//            Swift.print("limit: " + "\(-limit)")
+            let constrainedValue:CGFloat = /*maskFrame.min + */CustomFriction.constrainedValueWithLog10(distToGoal,-limit /*- maskFrame.min*/ /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+//            Swift.print("constrainedValue: " + "\(constrainedValue)")
             
             //Continue here: 🏀
                 //I think you need to use virtual value and a real one. as your setting and trying to manipulate the same value,
@@ -73,16 +73,16 @@ class ElasticEaser5:Easer5<CGRect> {
         //Swift.print("applyBottomBoundary")
         if(direct){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
-            Swift.print("totLen: " + "\(totLen)")
+//            Swift.print("totLen: " + "\(totLen)")
             let normalizedValue:CGFloat = totLen + targetValue.y/*goes from 0 to -100*/
-            Swift.print("normalizedValue: " + "\(normalizedValue)")
+//            Swift.print("normalizedValue: " + "\(normalizedValue)")
             //result = value
-            let constrainedValue:CGFloat =  CustomFriction.constraintValueWithLog(normalizedValue,limit)//<--Creates the illusion that the surface under the thumb is slipping
+            let constrainedValue:CGFloat =  CustomFriction.constrainedValueWithLog10(normalizedValue,limit)//<--Creates the illusion that the surface under the thumb is slipping
             
-            Swift.print("constrainedValue: " + "\(constrainedValue)")
+//            Swift.print("constrainedValue: " + "\(constrainedValue)")
             
             let valueY = -totLen + constrainedValue
-            Swift.print("valueY: " + "\(valueY)")
+//            Swift.print("valueY: " + "\(valueY)")
             value.y = valueY
         }/*else{/*Springs back to limit*/
             let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/

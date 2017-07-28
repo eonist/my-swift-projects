@@ -17,6 +17,16 @@ extension CGFloat {
     func clip(_ min:CGFloat,_ max:CGFloat)->CGFloat{return NumberParser.clip(self, min, max)}/*Convenince*/
     func interpolate(_ to:CGFloat, _ scalar:CGFloat) -> CGFloat{return CGFloatParser.interpolate(self,to,scalar)}
     func roundTo(_ closest:CGFloat)->CGFloat{return CGFloatModifier.roundTo(self, closest)}/*Convenince*/
+    /**
+     * CGFloat(10).min(5)//5
+     * CGFloat(10).min(15)//10
+     */
+    func min(_ min:CGFloat) -> CGFloat{
+        return Swift.min(self, min)
+    }
+    func max(_ max:CGFloat) -> CGFloat{
+        return Swift.max(self, max)
+    }
 }
 extension Sequence where Iterator.Element == CGFloat {
     var average:CGFloat {return CGFloatParser.average(self as! [CGFloat])}

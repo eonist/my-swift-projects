@@ -76,7 +76,7 @@ extension RubberBand{
         //Swift.print("applyTopBoundary")
         let distToGoal:CGFloat = value - maskFrame.min
         if(direct){/*surface is slipping the further you pull*/
-            result = maskFrame.min + CustomFriction.constraintValueWithLog(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
+            result = maskFrame.min + CustomFriction.constrainedValueWithLog10(distToGoal,limit - maskFrame.min /*topMargin*/)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
@@ -94,7 +94,7 @@ extension RubberBand{
         if(direct){/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value/*goes from 0 to -100*/
-            result = -totLen + CustomFriction.constraintValueWithLog(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
+            result = -totLen + CustomFriction.constrainedValueWithLog10(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
         }else{/*Springs back to limit*/
             let dist = maskFrame.len - (value + contentFrame.len)/*distanceToGoal*/
             velocity += (dist * spring)
@@ -116,28 +116,7 @@ extension RubberBand{
         }
     }
 }
-/**
- * Creates the displacement friction effect. Like you finger is slightly losing its grip
- */
-class CustomFriction{
-    /**
-     * NOTE: The vertical limit is the point where the value almost doesn't move at all
-     * NOTE: This metod also works with negative values. Just make sure that both the value and the limit is negative.
-     * NOTE: value ranges from 0 to 100, then limit should be 100, if value ranges from 0 to -100 then limit should be -100
-     * NOTE: You need to use correct ranges of values in order for this to work. Think relative values
-     */
-    static func constraintValueWithLog(_ value:CGFloat, _ limit:CGFloat) -> CGFloat {
-        let multiplier = log10(1.0 + value/limit)
-        return limit * multiplier
-    }
-    /**
-     * NOTE: If you decrease the decimal variable you increase the friction effect
-     */
-    static func constraintValue(_ value:CGFloat, _ limit:CGFloat) -> CGFloat {
-        let multiplier = 0.2 * (value/limit)
-        return limit * multiplier
-    }
-}
+
 /*
  * Deprecations
  * TODO: you can probably uncomment the methods bellow
