@@ -24,7 +24,7 @@ extension EventSendable{
     /**
      * New
      */
-    func removeHandler<T>(_ handler: inout (T)->Void){
-        handler = {event in}//assign empty closure
+    func removeHandler(){
+        event = {event in}//assign empty closure
     }
 }
