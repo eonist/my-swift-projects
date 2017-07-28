@@ -16,6 +16,12 @@ protocol PhysicsAnimKind5:class {
  * Getters and setters for easier access to state
  */
 extension PhysicsAnimKind5{
+    /**
+     *
+     */
+//    func setTargetValue(targetValue)-> {
+//        
+//    }
     var targetValue:T {get{return state.targetValue}set{state.targetValue = newValue}}
     var velocity:T {get{return state.velocity}set{state.velocity = newValue}}
     var value:T {get{return state.value}set{state.value = newValue}}
