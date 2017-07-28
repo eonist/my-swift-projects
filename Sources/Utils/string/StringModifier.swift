@@ -14,12 +14,7 @@ class StringModifier{
     }
     /**
      * New
-     */
-    static func removeLastChar(_ input: inout String){
-        input.remove(at: input.index(before: input.endIndex))
-    }
-    /**
-     * New
+     * NOTE there is also inline: input.remove(at: input.index(before: input.endIndex))
      */
     static func removeLastChar(_ input:String) -> String{
         return input.substring(to: input.index(before: input.endIndex))
