@@ -104,7 +104,23 @@ class StringParser{
      */
     static func trim(_ str:String,_ left:Character,_ right:Character)->String{
         var str = str
+        str = trimLeft(str,right)
+        str = trimRight(str,right)
+        return str
+    }
+    /**
+     * New
+     */
+    static func trimLeft(_ str:String,_ left:Character)->String{
+        var str = str
         if(str.characters.first == left){str = String(str.characters.dropFirst())}
+        return str
+    }
+    /**
+     * New
+     */
+    static func trimRight(_ str:String,_ right:Character)->String{
+        var str = str
         if(str.characters.last == right){str = String(str.characters.dropLast())}
         return str
     }

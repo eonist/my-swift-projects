@@ -43,6 +43,12 @@ extension String {
     func trim(_ leftAndRight:Character)->String{/*Convenince*/
         return StringParser.trim(self, leftAndRight)
     }
+    func trimRight(_ right:Character)->String{/*Convenince*/
+        return StringParser.trimRight(self, right)
+    }
+    func trimLeft(_ left:Character)->String{/*Convenince*/
+        return StringParser.trimLeft(self, left)
+    }
     func insertCharsAt(_ charsAndIndicies:[(char:Character,index:Int)])->String{
         return StringModifier.insertCharsAt(self, charsAndIndicies)
     }
