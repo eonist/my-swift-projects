@@ -72,6 +72,7 @@ extension String {
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
     var json:Any? {return JSONParser.json(self)}
+    func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
