@@ -11,18 +11,18 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     var state:AnimState5<T>
     var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     var onComplete:OnComplete = {}//add external onComplete closures when needed
-    var updatePos:(()->Void) = {_ in}//might have to make this lazy
+//    var updatePos:(()->Void) = {_ in}//might have to make this lazy
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.state = state
         self.easing = easing
         self.onFrame = onFrame
         super.init()
-        self.updatePos = updatePosition
+//        self.updatePos = updatePosition
     }
     override func onFrameTick() {
         self.updatePosition()
-        self.updatePos()
+//        self.updatePos()
         self.onFrame(value)
     }
     func updatePosition() {
