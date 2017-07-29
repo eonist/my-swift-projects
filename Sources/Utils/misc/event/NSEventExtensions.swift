@@ -34,11 +34,11 @@ extension NSEvent {
  * TODO: ⚠️️ You might want to add propegates:Bool flag that blocks further event-propegation etc
  */
 extension NSEvent{
-    typealias CallBack = (NSEvent)->Void
+    typealias EventHandler = (NSEvent)->Void
     /**
      * EXAMPLE: var monitor:Any?;NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
      */
-    static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEventMask, _ callBack:@escaping CallBack){
+    static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEventMask, _ callBack:@escaping EventHandler){
         if(monitor == nil) {
             monitor = NSEvent.addLocalMonitorForEvents(matching: [eventMask], handler: {event -> NSEvent in callBack(event);return event})/*The closure returns the event so the event can propegate internally in the NSApp*/
         }else {
