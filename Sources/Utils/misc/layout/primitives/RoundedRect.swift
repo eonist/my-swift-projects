@@ -28,7 +28,7 @@ extension RoundedRect{
 extension RoundedRect:Advancable5 {
     static var defaults:AnimState5<RoundedRect>  =  AnimState5<RoundedRect>(RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(10e-5,10e-5,10e-5,10e-5,Fillet()))
     func isNear( value:  RoundedRect,  epsilon: RoundedRect) -> Bool {
-        return self.size.isNear(value.size,epsilon.size.w) && self.origin.isNear(value.origin,epsilon.origin.x)
+        return self.size.isNear(value.size,epsilon.size.w) && self.origin.isNear(value.origin,epsilon.origin.x) && 
     }
 }
 func +(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin + b.origin,a.size + b.size,a.fillet+b.fillet)}
