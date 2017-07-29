@@ -11,30 +11,33 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
     var state:AnimState5<T>
     var onFrame:FrameTickSignature//TODO: ⚠️️ rename to onFrameTick,onFrameCallback?
     var onComplete:OnComplete = {}//add external onComplete closures when needed
+    var updatePos:()->Void?
     
     init(_ state:AnimState5<T>, _ easing:T, _ onFrame:@escaping FrameTickSignature) {
         self.state = state
         self.easing = easing
         self.onFrame = onFrame
+        
         super.init()
+        self.updatePos = updatePosition
     }
+    
     override func onFrameTick() {
         self.updatePosition()
+        
         self.onFrame(value)
     }
     
-    
-
-    var updatePosition:()->Void = { [unowned self] in
-        self.velocity = (self.targetValue - self.value) * self.easing
-        self.value = self.value + self.velocity
-        if self.assertStop {
-            self.value = self.targetValue//set the final value
-            self.stop()/*stop the animation*/
-            self.onComplete()
-            self.onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
+    func updatePosition() {
+        velocity = (targetValue - value) * easing
+        value = value + velocity
+        if assertStop {
+            value = targetValue//set the final value
+            stop()/*stop the animation*/
+            onComplete()
+            onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
         }
-    }()
+    }
     var assertStop:Bool {
         return state.velocity.isNear(value:stopVelocity, epsilon:epsilon)
     }
