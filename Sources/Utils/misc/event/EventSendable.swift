@@ -17,11 +17,9 @@ extension EventSendable{
      */
     func addHandler<T:Event>(type:String? = nil,_ handler:@escaping (T)->Void){
         event = { argEvent in
-            if let e = argEvent as? T {
-                if type == nil || (type != nil && e.type == type!){
-                    handler(e)
-                }
-            }
+            guard let e = argEvent as? T else {return}
+            guard type == nil || (type != nil && e.type == type!) else {return}
+            handler(e)
         }
     }
     /**
