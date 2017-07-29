@@ -23,7 +23,9 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
         self.onFrame(value)
     }
     
-    func updatePos(){ /*[unowned self] in*/
+    
+
+    var updatePosition:()->Void = { [unowned self] in
         self.velocity = (self.targetValue - self.value) * self.easing
         self.value = self.value + self.velocity
         if self.assertStop {
@@ -32,10 +34,7 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
             self.onComplete()
             self.onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
         }
-    }
-
-    var updatePosition:()->Void = updatePos
-    
+    }()
     var assertStop:Bool {
         return state.velocity.isNear(value:stopVelocity, epsilon:epsilon)
     }
