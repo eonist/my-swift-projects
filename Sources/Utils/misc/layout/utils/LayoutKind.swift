@@ -3,5 +3,5 @@
  */
 typealias ILayout = LayoutKind//legacy support
 protocol LayoutKind{
-    init(_ params:Self...)
+    init(_ params:Any...)
 }

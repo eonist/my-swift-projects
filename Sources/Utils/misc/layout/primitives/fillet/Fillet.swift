@@ -6,15 +6,15 @@ import Foundation
  * TODO: this should probably use GEnerics, to get rid of the casting, research this
  * TODO: ⚠️️ Definitly a candidate for struct
  */
-class Fillet<T:LayoutKind> {
-    var topLeft:T
-    var topRight:T
-    var bottomLeft:T
-    var bottomRight:T
-    required convenience init(_ args:T...) {//TODO:you may need to add the _ char infront of args
-        self.init(args)/*<-- it looks complicated but it's just array casting, see research docs for the explination*/
+class Fillet:LayoutKind {
+    var topLeft:CGFloat
+    var topRight:CGFloat
+    var bottomLeft:CGFloat
+    var bottomRight:CGFloat
+    required convenience init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
+        self.init(args.map {"\($0)".cgFloat})/*<-- it looks complicated but it's just array casting, see research docs for the explination*/
     }
-    init(_ args:[T]){
+    init(_ args:[CGFloat]){
         switch(args.count){
             case 0: topLeft = 0; topRight = 0; bottomLeft = 0; bottomRight = 0; break;
             case 1: topLeft = args[0];topRight = args[0];bottomLeft = args[0];bottomRight = args[0]; break;
