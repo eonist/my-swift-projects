@@ -21,7 +21,7 @@ extension PhysicsAnimKind5{
      */
     func setTargetValue(_ targetValue:T) -> Self{//rename to setTarget
         self.targetValue = targetValue
-        return self
+        return self/*Enables chaining*/
     }
     var targetValue:T {get{return state.targetValue}set{state.targetValue = newValue}}
     var velocity:T {get{return state.velocity}set{state.velocity = newValue}}
