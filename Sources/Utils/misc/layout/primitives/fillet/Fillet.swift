@@ -4,7 +4,7 @@ import Foundation
  * NOTE: the double init setup was needed in order to support passig in int values and then have them be converted to CGFloat
  * TODO: refactor to be TRBL or?
  * TODO: this should probably use GEnerics, to get rid of the casting, research this
- * TODO: Definitly a candidate for struct
+ * TODO: ⚠️️ Definitly a candidate for struct
  */
 class Fillet:LayoutKind {
     var topLeft:CGFloat
@@ -12,7 +12,7 @@ class Fillet:LayoutKind {
     var bottomLeft:CGFloat
     var bottomRight:CGFloat
     required convenience init(_ args:Any...) {//TODO:you may need to add the _ char infront of args
-        self.init(args.map {"\($0)".cgFloat})/*<-- it looks complicated but its just array casting, see research docs for the explination*/
+        self.init(args.map {"\($0)".cgFloat})/*<-- it looks complicated but it's just array casting, see research docs for the explination*/
     }
     init(_ args:[CGFloat]){
         switch(args.count){
