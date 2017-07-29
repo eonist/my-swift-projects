@@ -20,13 +20,11 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
         super.init()
         self.updatePos = updatePosition
     }
-    
     override func onFrameTick() {
         self.updatePosition()
         self.updatePos()
         self.onFrame(value)
     }
-    
     func updatePosition() {
         velocity = (targetValue - value) * easing
         value = value + velocity
