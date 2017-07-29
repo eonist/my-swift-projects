@@ -2,13 +2,14 @@ import Foundation
 @testable import Utils
 
 class Constrainer{
-    static func updatePosition(_ direct:Bool, _ closure:()->Void){
-        
+    static func updatePosition<T>(_ direct:Bool, easer:Easer5<T>){
+        //Continue here: 🏀
+            //add code
     }
-    private static func applyTopBoundary(){
+    private static func applyTopBoundary<T>(_ direct:Bool, easer:Easer5<T>){
     
     }
-    private static func applyBottomBoundary(){
+    private static func applyBottomBoundary<T>(_ direct:Bool, easer:Easer5<T>){
         
     }
 }
