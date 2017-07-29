@@ -33,7 +33,7 @@ class Easer5<T:Advancable5>:FrameAnimator2, PhysicsAnimKind5{
             onComplete = {}/*resets onComplete closure, onComplete can only happen one time*/
         }
     }
-    var updatePosition:()->Void = updatePos
+    var updatePosition:()->Void  = updatePos()
     
     var assertStop:Bool {
         return state.velocity.isNear(value:stopVelocity, epsilon:epsilon)
