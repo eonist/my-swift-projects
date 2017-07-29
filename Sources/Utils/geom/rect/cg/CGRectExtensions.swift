@@ -1,9 +1,11 @@
 import Foundation
 
-protocol CGRectKind{
-    
-}
-extension CGRectKind{
+/**
+ * Move the logic into CGRectModifier and CGRectParser and CGRectAsserter
+ * For rect.isWithin(point) use: rect.contains(point)
+ * RESEARCH: lots of Convenient CGRect methods here: https://github.com/nschum/SwiftCGRectExtensions/blob/master/CGRectExtensions/CGRectExtensions.swift
+ */
+extension CGRect {
     /**
      * Clones CGRect
      * EXAMPLE: CGRect(0,0,100,100).clone()
@@ -58,16 +60,16 @@ extension CGRectKind{
     subscript(key:String) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{
-            case Alignment.topLeft:return topLeft
-            case Alignment.topRight:return topRight
-            case Alignment.bottomRight:return bottomRight
-            case Alignment.bottomLeft:return bottomLeft
-            case Alignment.top:return top
-            case Alignment.bottom:return bottom
-            case Alignment.left:return left
-            case Alignment.right:return right
-            case Alignment.center:return center
-            default:fatalError("UNSUPORTED CORNER TYPE: " + key)
+               case Alignment.topLeft:return topLeft
+               case Alignment.topRight:return topRight
+               case Alignment.bottomRight:return bottomRight
+               case Alignment.bottomLeft:return bottomLeft
+               case Alignment.top:return top
+               case Alignment.bottom:return bottom
+               case Alignment.left:return left
+               case Alignment.right:return right
+               case Alignment.center:return center
+               default:fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
         set {
@@ -108,14 +110,6 @@ extension CGRectKind{
     func expand(_ dx:CGFloat,_ dy:CGFloat)->CGRect{
         return CGRect(self.x,self.y,self.width + dx, self.height + dy)
     }
-}
-/**
- * Move the logic into CGRectModifier and CGRectParser and CGRectAsserter
- * For rect.isWithin(point) use: rect.contains(point)
- * RESEARCH: lots of Convenient CGRect methods here: https://github.com/nschum/SwiftCGRectExtensions/blob/master/CGRectExtensions/CGRectExtensions.swift
- */
-extension CGRect {
-    
 }
 public func +(a: CGRect, b: CGPoint) -> CGRect { return CGRect(a.x+b.x, a.y+b.y,a.width,a.height)}//Adds the coordinates of point p to the coordinates of this point to create a new point
 public func +=(a: inout CGRect, b: CGPoint) {a.x += b.x;a.y += b.y;}//modifies a by adding b, could also have used: offsetBy()
