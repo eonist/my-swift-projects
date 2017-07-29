@@ -15,4 +15,7 @@ extension RoundedRect{
     init(_ origin:CGPoint,_ size:CGSize,_ fillet:Fillet){
         self.init(CGRect(origin,size), fillet)
     }
+    init(_ x:CGFloat,_ y:CGFloat,_ w:CGFloat,_ h:CGFloat,_ fillet:Fillet){
+        self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
+    }
 }
