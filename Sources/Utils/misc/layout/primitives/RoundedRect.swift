@@ -13,6 +13,8 @@ extension RoundedRect{
     var size: CGSize {get{return rect.size} set{rect.size = newValue}}
     var x: CGFloat {get{return rect.x} set{rect.x = newValue}}
     var y: CGFloat {get{return rect.y} set{rect.y = newValue}}
+    var w: CGFloat {get{return rect.w} set{rect.w = newValue}}
+    var h: CGFloat {get{return rect.h} set{rect.h = newValue}}
     init(_ origin:CGPoint = CGPoint(),_ size:CGSize = CGSize(),_ fillet:Fillet = Fillet()){
         self.init(CGRect(origin,size), fillet)
     }
@@ -20,7 +22,6 @@ extension RoundedRect{
         self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
     }
 }
-
 extension RoundedRect:Advancable5 {
     static var defaults:AnimState5<RoundedRect>  =  AnimState5<RoundedRect>(RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(10e-5,10e-5,10e-5,10e-5,Fillet()))
     func isNear( value:  RoundedRect,  epsilon: RoundedRect) -> Bool {
