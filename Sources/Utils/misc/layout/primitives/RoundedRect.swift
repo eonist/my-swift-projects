@@ -11,6 +11,8 @@ struct RoundedRect{
 extension RoundedRect{
     var origin: CGPoint {get{return rect.origin} set{rect.origin = newValue}}
     var size: CGSize {get{return rect.size} set{rect.size = newValue}}
+    var x: CGFloat {get{return rect.x} set{rect.x = newValue}}
+    var y: CGFloat {get{return rect.y} set{rect.y = newValue}}
     init(_ origin:CGPoint = CGPoint(),_ size:CGSize = CGSize(),_ fillet:Fillet = Fillet()){
         self.init(CGRect(origin,size), fillet)
     }
