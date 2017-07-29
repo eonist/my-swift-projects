@@ -2,7 +2,7 @@ import Foundation
 @testable import Utils
 
 class Constrainer{
-    static func updatePosition(){
+    static func updatePosition(_ direct:Bool){
         
     }
     private static func applyTopBoundary(){
