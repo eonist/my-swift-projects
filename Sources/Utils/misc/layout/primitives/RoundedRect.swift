@@ -21,6 +21,11 @@ extension RoundedRect{
     init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ w:CGFloat = 0,_ h:CGFloat = 0,_ fillet:Fillet = Fillet()){
         self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
     }
+    enum DefaultEasing{
+        static var value:CGFloat { return (0.2) }
+        static var point:CGPoint { return CGPoint(0.2,0.2) }
+        static var rect:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
+    }
 }
 extension RoundedRect:Advancable5 {
     static var defaults:AnimState5<RoundedRect>  =  AnimState5<RoundedRect>(RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(), RoundedRect(10e-5,10e-5,10e-5,10e-5,Fillet()))
