@@ -1,9 +1,10 @@
 import Foundation
 
-class RoundedRect:CGRect{
+struct RoundedRect{
+    var rect:CGRect
     var fillet:Fillet
     init(_ rect:CGRect,_ fillet:Fillet) {
+        self.rect = rect
         self.fillet = fillet
-        super.init(rect.x,rect.y,rect.w,rect.h)
     }
 }
