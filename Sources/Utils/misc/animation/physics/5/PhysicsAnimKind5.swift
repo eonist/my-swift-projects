@@ -19,7 +19,7 @@ extension PhysicsAnimKind5{
     /**
      * New,convenient when chaining
      */
-    func setTargetValue(_ targetValue:T) -> Self{
+    func setTargetValue(_ targetValue:T) -> Self{//rename to setTarget
         self.targetValue = targetValue
         return self
     }
