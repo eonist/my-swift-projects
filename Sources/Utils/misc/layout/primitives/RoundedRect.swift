@@ -25,6 +25,6 @@ extension RoundedRect:Advancable5 {
         return self.size.isNear(value.size,epsilon.size.w) && self.origin.isNear(value.origin,epsilon.origin.x)
     }
 }
-func +(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin + b.origin,a.size + b.size)}
-func -(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin - b.origin,a.size - b.size)}
-func *(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin * b.origin,a.size * b.size)}
+func +(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin + b.origin,a.size + b.size,a.fillet+b.fillet)}
+func -(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin - b.origin,a.size - b.size,a.fillet-b.fillet)}
+func *(a: RoundedRect, b: RoundedRect) -> RoundedRect { return RoundedRect(a.origin * b.origin,a.size * b.size,a.fillet*b.fillet)}
