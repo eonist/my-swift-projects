@@ -22,9 +22,7 @@ extension RoundedRect{
         self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
     }
     enum DefaultEasing{
-        static var value:CGFloat { return (0.2) }
-        static var point:CGPoint { return CGPoint(0.2,0.2) }
-        static var rect:CGRect { return CGRect(0.2,0.2,0.2,0.2) }
+        static var easing:RoundedRect { return RoundedRect(0.2,0.2,0.2,0.2,Fillet(0.2)) }
     }
 }
 extension RoundedRect:Advancable5 {
