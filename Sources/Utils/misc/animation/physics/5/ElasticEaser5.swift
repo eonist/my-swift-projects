@@ -1,5 +1,17 @@
 import Foundation
 @testable import Utils
+
+class Constrainer{
+    static func updatePosition(){
+        
+    }
+    private static func applyTopBoundary(){
+    
+    }
+    private static func applyBottomBoundary(){
+        
+    }
+}
 /**
  * NOTE: Another name for this could be: RubberBand or ConstrainedEaser
  * TODO: ⚠️️ maskFrame.y must be 0 . until you add support for it to be a value > 0 or < 0
