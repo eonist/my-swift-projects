@@ -40,6 +40,7 @@ extension CGRect {
     var h:CGFloat {set {size.height = newValue} get {return size.height} }
     /*Corners*/
     var topLeft:CGPoint {get {return self.origin} }
+    var point:CGPoint {get {return self.origin} }
     var bottomLeft:CGPoint {get {return CGPoint(self.minX, self.maxY)}}
     var bottomRight:CGPoint {get {return CGPoint(self.maxX, self.maxY)}}
     var topRight:CGPoint {get {return CGPoint(self.maxX, self.minY)}}
