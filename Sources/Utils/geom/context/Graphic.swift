@@ -6,10 +6,8 @@ import QuartzCore
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  */
-class Graphic:InteractiveView,GraphicKind,CALayerDelegate,CAAction{
-    func run(forKey event: String, object anObject: Any, arguments dict: [AnyHashable : Any]?) {
-        //
-    }
+class Graphic:InteractiveView,GraphicKind,CALayerDelegate{
+    
 //swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
     typealias SelectorCallBack = ((_ layer:CALayer, _ ctx:CGContext) -> ())?
     lazy var fillShape:Shape = Shape()
