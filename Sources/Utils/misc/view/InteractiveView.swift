@@ -37,6 +37,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
     func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
+        layer.action(forKey: event) = NSNull()
         return NSNull()
     }
     /**
