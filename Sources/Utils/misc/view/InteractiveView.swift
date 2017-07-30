@@ -13,9 +13,8 @@ typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = { event in /*returns closure that will take care of propagating the event to the parent*/
-        if let superView:IEventSender = self.superview as? IEventSender {
-            superView.onEvent(event)
-        }
+        guard let superView:IEventSender = self.superview as? IEventSender else {return}
+        superView.onEvent(event)
     }
     var isInteractive:Bool = true/*Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well*/
     var isMouseOver:Bool = false/*you should hit test this on init*/
