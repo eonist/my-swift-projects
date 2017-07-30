@@ -26,15 +26,39 @@ class Graphic:InteractiveView,GraphicKind,CALayerDelegate{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         
+//        layer?.actions = [
+//            "sublayers":NSNull(),
+//            "content":NSNull(),
+//            "onOrderOut":NSNull(),
+//            "bounds":NSNull(),
+//            "hidden":NSNull(),
+//            "position":NSNull()
+//        ]
+//        
+//        
+//        fillShape.actions = [
+//            "sublayers":NSNull(),
+//            "content":NSNull(),
+//            "onOrderOut":NSNull(),
+//            "bounds":NSNull(),
+//            "hidden":NSNull(),
+//            "position":NSNull()
+//        ]
+//        
+//        lineShape.actions = [
+//            "sublayers":NSNull(),
+//            "content":NSNull(),
+//            "onOrderOut":NSNull(),
+//            "bounds":NSNull(),
+//            "hidden":NSNull(),
+//            "position":NSNull()
+//        ]
+        
+        
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
-//    CAAction protocol (with an empty runActionForKey:object:arguments:
-    /**
-     *
-     */
-    
     /**
      * Stops implicit animation from happening
      * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.

@@ -27,17 +27,15 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they won't mask*/
         
-//        layer.actions = ["sublayers":NSNull()]
-//        
-//        NSDictionary *newActions = @{
-//            @"onOrderIn": [NSNull null],
-//            @"onOrderOut": [NSNull null],
-//            @"sublayers": [NSNull null],
-//            @"contents": [NSNull null],
-//            @"bounds": [NSNull null]
-//        };
-//        
-//        layer.actions = newActions;
+        layer?.actions = [
+            "sublayers":NSNull(),
+            "content":NSNull(),
+            "onOrderOut":NSNull(),
+            "bounds":NSNull(),
+            "hidden":NSNull(),
+            "position":NSNull()
+        ]
+        
         
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
