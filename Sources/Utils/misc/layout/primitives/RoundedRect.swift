@@ -19,6 +19,7 @@ struct RoundedRect{
 extension RoundedRect{
     var origin: CGPoint {get{return CGPoint(self.x,self.y)} set{self.x = newValue.x;self.y = newValue.y}}
     var size: CGSize {get{return CGSize(w,h)} set{self.w = newValue.w;self.h = newValue.h}}
+    var rect:CGRect {get{return CGRect(origin,size)} set{origin = newValue.origin;size = newValue.size}}
 //    var x: CGFloat {get{return rect.x} set{rect.x = newValue}}
 //    var y: CGFloat {get{return rect.y} set{rect.y = newValue}}
 //    var w: CGFloat {get{return rect.w} set{rect.w = newValue}}
@@ -27,7 +28,7 @@ extension RoundedRect{
         self.init(CGRect(origin,size), fillet)
     }
     init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ w:CGFloat = 0,_ h:CGFloat = 0,_ fillet:CGFloat = 0){
-        self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
+        self.init(CGRect(CGPoint(x,y),CGSize(w,h)), fillet)
     }
     enum DefaultEasing{
         static var easing:RoundedRect { return RoundedRect(0.2,0.2,0.2,0.2,0.2) }
