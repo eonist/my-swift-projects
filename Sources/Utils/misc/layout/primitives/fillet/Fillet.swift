@@ -25,6 +25,6 @@ class Fillet:LayoutKind {
         }
     }
 }
-//func +(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft+b.topLeft,a.topRight+b.topRight,a.bottomLeft+b.bottomLeft,a.bottomRight+b.bottomRight)}
-//func -(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft-b.topLeft,a.topRight-b.topRight,a.bottomLeft-b.bottomLeft,a.bottomRight-b.bottomRight)}
-//func *(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft*b.topLeft,a.topRight*b.topRight,a.bottomLeft*b.bottomLeft,a.bottomRight*b.bottomRight)}
+func +(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft+b.topLeft,a.topRight+b.topRight,a.bottomLeft+b.bottomLeft,a.bottomRight+b.bottomRight)}
+func -(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft-b.topLeft,a.topRight-b.topRight,a.bottomLeft-b.bottomLeft,a.bottomRight-b.bottomRight)}
+func *(a: Fillet, b: Fillet) -> Fillet { return Fillet(a.topLeft*b.topLeft,a.topRight*b.topRight,a.bottomLeft*b.bottomLeft,a.bottomRight*b.bottomRight)}
