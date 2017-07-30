@@ -1,10 +1,18 @@
 import Foundation
 
-class RoundedRect{
-    var rect:CGRect
+struct RoundedRect{
+    //var rect:CGRect
+    var x:CGFloat
+    var y:CGFloat
+    var w:CGFloat
+    var h:CGFloat
     var fillet:CGFloat
     init(_ rect:CGRect = CGRect(),_ fillet:CGFloat = 0) {
-        self.rect = rect
+        self.x = rect.x
+        self.y = rect.y
+        self.w = rect.w
+        self.h = rect.h
+        
         self.fillet = fillet
     }
 }
@@ -15,10 +23,10 @@ extension RoundedRect{
     var y: CGFloat {get{return rect.y} set{rect.y = newValue}}
     var w: CGFloat {get{return rect.w} set{rect.w = newValue}}
     var h: CGFloat {get{return rect.h} set{rect.h = newValue}}
-    convenience init(_ origin:CGPoint = CGPoint(),_ size:CGSize = CGSize(),_ fillet:CGFloat = 0){
+    init(_ origin:CGPoint = CGPoint(),_ size:CGSize = CGSize(),_ fillet:CGFloat = 0){
         self.init(CGRect(origin,size), fillet)
     }
-    convenience init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ w:CGFloat = 0,_ h:CGFloat = 0,_ fillet:CGFloat = 0){
+    init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ w:CGFloat = 0,_ h:CGFloat = 0,_ fillet:CGFloat = 0){
         self.init(CGRect(CGPoint(x,y),CGSize()), fillet)
     }
     enum DefaultEasing{
