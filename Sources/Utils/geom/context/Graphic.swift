@@ -41,9 +41,9 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: this method is also called on every frame of the animation it seems
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
-    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
-        return NSNull()
-    }
+//    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
+//        return NSNull()
+//    }
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
