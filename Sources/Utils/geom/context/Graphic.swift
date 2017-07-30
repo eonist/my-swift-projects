@@ -26,49 +26,11 @@ class Graphic:InteractiveView,GraphicKind,CALayerDelegate{
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         
-//        layer?.actions = [
-//            "sublayers":NSNull(),
-//            "content":NSNull(),
-//            "onOrderOut":NSNull(),
-//            "bounds":NSNull(),
-//            "hidden":NSNull(),
-//            "position":NSNull()
-//        ]
-//        
-//        
-//        fillShape.actions = [
-//            "sublayers":NSNull(),
-//            "content":NSNull(),
-//            "onOrderOut":NSNull(),
-//            "bounds":NSNull(),
-//            "hidden":NSNull(),
-//            "position":NSNull()
-//        ]
-//        
-//        lineShape.actions = [
-//            "sublayers":NSNull(),
-//            "content":NSNull(),
-//            "onOrderOut":NSNull(),
-//            "bounds":NSNull(),
-//            "hidden":NSNull(),
-//            "position":NSNull()
-//        ]
-        
-        
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
-    /**
-     * Stops implicit animation from happening
-     * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
-     * NOTE: this is a delegate method for the shapes in Graphic
-     * NOTE: this method is also called on every frame of the animation it seems
-     * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
-     */
-    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
-        return NSNull()
-    }
+    
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape

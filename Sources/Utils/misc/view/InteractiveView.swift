@@ -10,7 +10,10 @@ import Cocoa
  * TODO: why arent the mouse methods calling a central method?
  */
 typealias InteractiveView2 = InteractiveView//legacy support
-class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with appcode
+class InteractiveView:FlippedView,InteractiveViewable,CALayerDelegate,CAAction{//TODO: rename this with appcode
+    func run(forKey event: String, object anObject: Any, arguments dict: [AnyHashable : Any]?) {
+        //
+    }
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = { event in /*returns closure that will take care of propagating the event to the parent*/
         guard let superView:IEventSender = self.superview as? IEventSender else {return}
@@ -27,17 +30,27 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they won't mask*/
         
-        layer?.actions = [
-            "sublayers":NSNull(),
-            "content":NSNull(),
-            "onOrderOut":NSNull(),
-            "bounds":NSNull(),
-            "hidden":NSNull(),
-            "position":NSNull()
-        ]
+//        layer?.actions = [
+//            "sublayers":NSNull(),
+//            "content":NSNull(),
+//            "onOrderOut":NSNull(),
+//            "bounds":NSNull(),
+//            "hidden":NSNull(),
+//            "position":NSNull()
+//        ]
         
         
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
+    }
+    /**
+     * Stops implicit animation from happening
+     * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
+     * NOTE: this is a delegate method for the shapes in Graphic
+     * NOTE: this method is also called on every frame of the animation it seems
+     * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
+     */
+    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
+        return NSNull()
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
