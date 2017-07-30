@@ -30,7 +30,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         layer?.actions = ["sublayers":NSNull()]
         layer?.actions = ["content":NSNull()]
         
-        self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
+        self.layerContentsRedrawPolicy = .never/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
