@@ -27,13 +27,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we don't get clipping of children*/
         layer?.masksToBounds = false/*This is the variable that makes subchildren mask its parents frame, set it to false and they won't mask*/
-        layer?.actions = ["sublayers":NSNull()]
-        layer?.actions = ["content":NSNull()]
-        
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
-    }
-    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
-        return NSNull()
     }
     /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 

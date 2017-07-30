@@ -6,7 +6,7 @@ import QuartzCore
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  */
-class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
+class Graphic:InteractiveView,GraphicKind,CALayerDelegate{//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
     typealias SelectorCallBack = ((_ layer:CALayer, _ ctx:CGContext) -> ())?
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
@@ -23,13 +23,6 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
         super.init(frame:NSRect())
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
-        layer?.actions = ["sublayers":NSNull()]
-        fillShape.actions = ["sublayers":NSNull()]
-        lineShape.actions = ["sublayers":NSNull()]
-        layer?.actions = ["content":NSNull()]
-        fillShape.actions = ["content":NSNull()]
-        lineShape.actions = ["content":NSNull()]
-        
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
@@ -41,9 +34,9 @@ class Graphic:InteractiveView2,IGraphic,CALayerDelegate{//swift 3 update, NSView
      * NOTE: this method is also called on every frame of the animation it seems
      * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
      */
-//    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
-//        return NSNull()
-//    }
+    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
+        return NSNull()
+    }
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
