@@ -23,9 +23,7 @@ class Graphic:InteractiveView,GraphicKind,CALayerDelegate{//swift 3 update, NSVi
         super.init(frame:NSRect())
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
-        disableAnim {
-            ""
-        }
+        
         self.fillShape.delegate = self/* ⚠️️ IMPORTANT ⚠️️: this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
