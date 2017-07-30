@@ -30,17 +30,6 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
-     * Stops implicit animation from happening
-     * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
-     * NOTE: this is a delegate method for the shapes in Graphic
-     * NOTE: this method is also called on every frame of the animation it seems
-     * NOTE: since swift 3, MTKView now implements actionForLayer, not NSView it self (MTKView extends NSView) MTKView is Metal
-     */
-    func action(for layer:CALayer, forKey event:String) -> CAAction? {//<---this method is probably not needed
-        layer.action(forKey: event) = NSNull()
-        return NSNull()
-    }
-    /**
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
      */
     func onEvent(_ event:Event){
