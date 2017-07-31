@@ -20,6 +20,7 @@ class FileParser{
 	}
     /**
      * FileParser.resourceContent("example","txt")
+     * Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
      */
     static func resourceContent(_ fileName:String, _ fileExtension:String)->String?{
         if let filepath = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
