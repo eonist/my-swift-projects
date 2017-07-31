@@ -15,7 +15,6 @@ class FileParser{
             let content = try String(contentsOfFile:path, encoding:String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
             return content
         } catch {
-            //Swift.print("Could not load: " + "\(path)")// contents could not be loaded
             return nil
         }
 	}
