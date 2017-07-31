@@ -2,6 +2,7 @@ import Foundation
 class FilePathParser {
     /**
      * Returns the path to where you can save your app's files. Here it is:
+     * Output: /Users/James/Documents
      */
     static func appDocPath()->String{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
