@@ -20,13 +20,13 @@ class FileParser{
         }
 	}
     /**
-     * resourceContent("example","txt")
+     * FileParser.resourceContent("example","txt")
      */
     static func resourceContent(_ fileName:String, _ fileExtension:String)->String?{
         if let filepath = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
             return content(filepath)
         } else {
-            return ""// example.txt not found!
+            return nil// example.txt not found!
         }
     }
     /**
