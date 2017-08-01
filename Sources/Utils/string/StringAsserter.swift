@@ -1,7 +1,10 @@
 class StringAsserter{
-    private static var digitPattern:String = "^-?\\d*?\\.?\\d*?(px)?$"
-    private static var metricPattern:String = "^-?\\d*?\\.?\\d*?(ems|%)?$"
-    private static var colorPattern:String = "^#?([a-fA-F0-9]{3}){1,2}$"
+    enum Pattern{
+        static let digit:String = "^-?\\d*?\\.?\\d*?(px)?$"
+        static let metric:String = "^-?\\d*?\\.?\\d*?(ems|%)?$"
+        static let color:String = "^#?([a-fA-F0-9]{3}){1,2}$"
+    }
+    
     /**
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
 	 */
