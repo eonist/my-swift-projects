@@ -1,5 +1,11 @@
 import Cocoa
 class StringParser{
+    enum Pattern{
+        static let digit:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
+        static let path:String = "^.*?\\/(?=\\w*?\\.\\w*?$)"
+        static let fileName:String = "^.*?\\/(\\w*?\\.\\w*?$)"
+        static let colorHex:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
+    }
     /**
      * Returns encode text (escaped)
      * Caution: encode does not handle the double quote char very well
@@ -137,7 +143,7 @@ class StringParser{
     static func percentage(_ value:String)->CGFloat{
         return value.match(".*?(?=%)")[0].cgFloat
     }
-    private static var digitPattern:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
+    
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
      * RETURN: a Numberor a String type
@@ -146,7 +152,7 @@ class StringParser{
      * TODO: ⚠️️ This could probably be simpler if you just added a none capturing group and used regexp.match
      */
     static func digit(_ string:String)->CGFloat{
-        let matches = RegExp.matches(string, digitPattern)
+        let matches = RegExp.matches(string, Pattern.digit)
         let match:NSTextCheckingResult = matches[0]
         let value:String = RegExp.value(string, match, 1)
         return value.cgFloat
@@ -154,7 +160,7 @@ class StringParser{
     static func boolean(_ string:String) -> Bool {
         return string == "true"
     }
-    private static var colorHexPattern:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
+    
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
@@ -162,8 +168,8 @@ class StringParser{
      * TODO: move this to a method named webColor?
      */
     static func color(_ hexColor:String) -> UInt{
-        if(hexColor.test(colorHexPattern)){/*asserts if the color is in the correct hex format*/
-            var hex:String = RegExp.match(hexColor, colorHexPattern)[0]
+        if(hexColor.test(Pattern.colorHex)){/*asserts if the color is in the correct hex format*/
+            var hex:String = RegExp.match(hexColor, Pattern.colorHex)[0]
             if hex.characters.count == 3 {
                 hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters.last!,hex.characters.last!])//upgraded to swift 3
             }/*Convert shorthand hex to hex*/
@@ -186,12 +192,16 @@ class StringParser{
      * NOTE: you can also do this another way:
      * var match : Array = input.split(".");
      * var path:String = String(match[0]).substring(0, String(match[0]).lastIndexOf("/"));
+     * NOTE: There is also a native way if you look through NSURL
      */
     static func path(_ url:String)->String {
-        return url.match("^.*?\\/(?=\\w*?\\.\\w*?$)")[0]
+        return url.match(Pattern.path)[0]
     }
+    /**
+     * NOTE: There is also a native way if you look through NSURL
+     */
     static func fileName(_ url:String)->String {
-        return url.match("^.*?\\/(\\w*?\\.\\w*?$)")[1]
+        return url.match(Pattern.fileName)[1]
     }
     /**
      * Works with \n and \r
