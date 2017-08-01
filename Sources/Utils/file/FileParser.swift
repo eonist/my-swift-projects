@@ -84,7 +84,7 @@ extension FileParser{
         }catch let error as NSError {
             print ("Error: \(error.domain)")
         }
-        fatalError("There was an error see log")
+        fatalError("There was an error see log, path:\(path)")
     }
 	private static func modalExample(){
 		let myFileDialog:NSOpenPanel = NSOpenPanel()/*open modal panel*/
