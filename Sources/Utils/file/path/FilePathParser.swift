@@ -4,14 +4,14 @@ class FilePathParser {
      * Returns the path to where you can save your app's files. Here it is:
      * Output: /Users/James/Documents
      */
-    static func appDocPath()->String{
+    static func appDocPath() -> String{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return paths[0]
     }
     /**
      * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
-    static func path(_ stringPath:String)->URL{//TODO: this should be ->URL?
+    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?
         let url = URL(string: stringPath)
         return url!
     }

@@ -73,7 +73,11 @@ extension String {
     var bool:Bool {return StringParser.boolean(self)}
     var nsColor:NSColor{return StringParser.nsColor(self)}
     var int:Int{return Int(self)!}
+    /*from relative to absolute URL*/
     var tildePath:String {return NSString(string: self).expandingTildeInPath}/*Convenince*/
+    /*from absolute to relative URL*/
+    var tildify:String {return NSString(string:self).abbreviatingWithTildeInPath}/*Convenince*/
+    
     var count:Int{return self.characters.count}/*Convenince*/
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
