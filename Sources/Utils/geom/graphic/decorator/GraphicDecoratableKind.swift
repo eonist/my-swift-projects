@@ -1,6 +1,6 @@
 import Foundation
 
-typealias IGraphicDecoratable = GraphicDecoratableKind
+typealias IGraphicDecoratable = GraphicDecoratableKind/*<- Because GraphicDecoratable was taken*/
 /**
  * These are the methods the GraphicDecoratable must implement
  * Differs from IBaseGraphic in that IBaseGraphic has some variables that the decoratables isnt dependent on when it comes to the creation procedure
