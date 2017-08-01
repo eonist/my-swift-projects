@@ -43,16 +43,16 @@ class StringAsserter{
      * Asserts if a string is a digit (10, 20px, -20px, 0.2px, -.2, 0.2)
      */
     static func digit(_ string:String)->Bool{
-        return string.test(digitPattern)
+        return string.test(Pattern.digit)
     }
     /**
      * 2ems,20% etc
      */
     static func metric(_ string:String) -> Bool{
-        return string.test(metricPattern)
+        return string.test(Pattern.metric)
     }
     static func color(_ string:String) -> Bool {
-        return string.test(colorPattern)
+        return string.test(Pattern.color)
     }
     static func webColor(_ string:String)->Bool {
         return WebColors.webColors.has(string)/*was regexp, is now array assert because probably faster*/
