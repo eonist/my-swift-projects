@@ -60,7 +60,7 @@ class StringAsserter{
     /**
      * New, naive approche
      */
-    static func isFilePath(path:String,pathSeperator:String = "/") -> Bool{
+    static func isFilePath(_ path:String,pathSeperator:String = "/") -> Bool{
         return path.hasPrefix(pathSeperator) || path.hasPrefix(".."+pathSeperator)
     }
     /**
