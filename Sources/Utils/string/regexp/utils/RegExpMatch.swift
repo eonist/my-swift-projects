@@ -8,3 +8,29 @@ class RegExpMatch {
         print(RegExp.match(str,datePattern))/*4/8/03,10-6-2004,01-01-01*/
     }
 }
+
+
+/*
+ Add from legacy:
+ 
+ startsWithAp,
+ endsWithEs,
+ startOfString,
+ endOfString,
+ startsHasAndEndsWith,
+ lowerCaseWords,
+ hexadecimal,
+ emails,
+ dates,
+ btag,
+ btags,
+ htag,
+ xmlOpening,
+ isEmptyAfterHtml,
+ comments,
+ ip,
+ validIp,
+ year,
+ repeatingWords,
+ wordWrappedWith,
+ optionalEnd;*/
