@@ -143,6 +143,16 @@ public class RegExpParser{
     static func rgbHexaDecimals(_ input:String)-> [String] {
         return input.match("(?<=#)[0-9A-Fa-f]{6}")
     }
+    /**
+     * Computes and returns each html link from @param url
+     * @param input: a string that contains an URL
+     * @example:
+     * htmlLinks("this website does searches: http://www.google.com");//http://www.google.com
+     */
+    static func htmlLinks(input:String) -> [String] {
+        var pattern:RegExp = RegExpPattern.urlPattern()
+        return input.match(pattern)
+    }
 }
 /*
 	Add these from legacy:
