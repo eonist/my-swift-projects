@@ -58,6 +58,11 @@ extension String {
     func idx(_ index:Int) -> String.Index{
         return StringParser.idx(self, index)
     }
+    func stringRange(_ str:String,_ beginning:Int, end:Int) -> Range<String.Index>{
+        let startIndex = str.idx(beginning)
+        let endIndex = str.idx(end/*-beginning*/)//<--this was a bug
+        return startIndex..<endIndex
+    }
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
         return StringParser.array(self, cast)
     }

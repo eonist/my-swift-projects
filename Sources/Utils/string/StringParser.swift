@@ -58,9 +58,7 @@ class StringParser{
 	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
 	 */
     static func subString(_ str:String,_ beginning:Int,_ end:Int)->String{
-        let startIndex = str.idx(beginning)
-        let endIndex = str.idx(end/*-beginning*/)//<--this was a bug
-        let range = startIndex..<endIndex//Range(start:startIndex,end:endIndex)
+        let range = str.stringRange(str, beginning, end)
         return str.substring(with:range)
     }
     /**
