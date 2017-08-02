@@ -7,6 +7,12 @@ public class RegExpParser{
          * NOTE: works with: "12-30-1968" and "12/30/1968" syntax
          */
         static let usDate:String = "(\\d\\d)[-\\/](\\d\\d)[-\\/](\\d\\d(?:\\d\\d)?)"//g
+        static let contentBetweenTitleTags:String = "(?<=<[tT][iI][tT][lL][eE]>).*(?=<\\/[tT][iI][tT][lL][eE]>)"
+        static let usPrices = "(?<=\\$)[0-9.]+"
+        static let nonUsPrices = "\\b(?<!\\$)\\d+\\b"
+        static let emails = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
+        static let words = "\\b\\w+\\b"
+        static let rgbHexaDecimals = "(?<=#)[0-9A-Fa-f]{6}"
     }
     
     /**
@@ -44,7 +50,7 @@ public class RegExpParser{
      * @Note: For more html parsing see RegExpMatcher and RegExpModifier
      */
     static func contentBetweenTitleTags(_ input:String) -> [String] {
-        return input.match("(?<=<[tT][iI][tT][lL][eE]>).*(?=<\\/[tT][iI][tT][lL][eE]>)")
+        return input.match(Pattern.contentBetweenTitleTags)
     }
     /**
      * Computes and returns an array comprised of dollar price amounts (excluding "$" character) from @param input
@@ -57,15 +63,15 @@ public class RegExpParser{
      *	usPrices(text);//Output: 23.45,5.31,899.00,69.96
      */
     static func usPrices(_ input:String)-> [String] {
-        return input.match("(?<=\\$)[0-9.]+")
+        return input.match(Pattern.usPrices)
     }
     /**
      * Computes and retruns an array comprised of digits not preceeded by the "$" character from @param input
      * @example:
      * nonUsPrices("<I paid $30 for 100 apples, 50 oranges, and 60 pears. I saved $5 on this order.");//100,50,60
      */
-    static func nonUsPrices(_ input:String) -> [String] {
-        return input.match("\\b(?<!\\$)\\d+\\b");
+    static func nonUsPrices (_ input:String) -> [String] {
+        return input.match(Pattern.nonUsPrices);
     }
     /**
      * Computes and returns lowercase words between @param rangeStart and @param rangeEnd
@@ -104,7 +110,7 @@ public class RegExpParser{
      * Tip:// simpler: \\w+@\\w+\\.\\w+
      */
     static func emails(_ input:String)-> [String] {
-        let pattern:String = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
+        let pattern:String = Pattern.emails
         return input.match(pattern)
     }
     /**
@@ -113,7 +119,7 @@ public class RegExpParser{
      * words("The German people.")//Outputs: The, German, people
      */
     static func words(_ input:String)-> [String] {
-        return input.match("\\b\\w+\\b");/*alternativ pattern: /[a-z]+ig/;*/
+        return input.match(Pattern.words)/*alternativ pattern: /[a-z]+ig/;*/
     }
     /**
      * Returns all words startingWith @param firstCharacter subseeds with any of the characters passed through @param subseedingCharacters and ends with the character @param endCharacter
@@ -141,7 +147,7 @@ public class RegExpParser{
      * rgbHexaDecimals("<BODY BGCOLOR=#336633 TEXT=#FFFFFF MARGINWIDTH=0 MARGINHEIGHT=0 TOPMARGIN=0 LEFTMARGIN=0>");//output: 336633,FFFFFF
      */
     static func rgbHexaDecimals(_ input:String)-> [String] {
-        return input.match("(?<=#)[0-9A-Fa-f]{6}")
+        return input.match(Pattern.rgbHexaDecimals)
     }
     /**
      * Computes and returns each html link from @param url
@@ -168,17 +174,17 @@ public class RegExpParser{
      * usZipCodes("11111 22222 33333- 44444-4444");
      */
     static func usZipCodes(input:String)-> [String] {
-        var pattern3:String = ""
-            pattern3 += "\\d{5}" //5 digits
-            pattern3 += "(" //Group1 start
-            pattern3 += "?" //if the subseeding condition is met
-            pattern3 += "(" //Group2 start
-            pattern3 += "?=-" //Math "-" if it exists (but not consume)
-            pattern3 += ")" //Group2 end
-            pattern3 += "-" //Subseeded by "-" (if group2 condition is met)
-            pattern3 += "\\d{4}" //Subseeded by 4 digits (if group2 condition is met)
-        pattern3 += ")"//Group1 end
-        return input.match(pattern3)
+        var pattern:String = ""
+            pattern += "\\d{5}" //5 digits
+            pattern += "(" //Group1 start
+            pattern += "?" //if the subseeding condition is met
+            pattern += "(" //Group2 start
+            pattern += "?=-" //Math "-" if it exists (but not consume)
+            pattern += ")" //Group2 end
+            pattern += "-" //Subseeded by "-" (if group2 condition is met)
+            pattern += "\\d{4}" //Subseeded by 4 digits (if group2 condition is met)
+        pattern += ")"//Group1 end
+        return input.match(pattern)
     }
     /**
      * Computes and retuns an array comprised of objects containing a name and a value from @param input
