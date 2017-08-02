@@ -33,6 +33,20 @@ public class RegExpModifier{
     static func replaceEmail(_ input:String, replacementEmail:String) -> String {
         return input.replace(Pattern.replaceEmail, replacementEmail);
     }
+    /**
+     * Returns the an obscured email of first instance of an email in the @param input
+     * @example:
+     * obscureEmail("The following was posted by user@domain.com.")// The following was posted by user AT domain DOT com
+     */
+    static func obscureEmail(input:String) -> String {
+        var obscuredEmail:String = input.replace(Pattern.obscureEmail, replacer);
+        func replacer(_ match:String):String {
+            var string:String = match.replace("@", " AT ");
+            string = string.replace(/\./g, " DOT ");
+            return string;
+        }
+        return obscuredEmail;
+    }
 }
 
 /*
