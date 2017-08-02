@@ -82,29 +82,19 @@ public class RegExpParser{
      * getLowerCaseWordsInString("test this 123"))//test, this
      * getLowerCaseWordsInString("test this").length)//2
      */
-    static func lowerCaseWords(input:String)-> [String] {
+    static func lowerCaseWords(_ input:String)-> [String] {
         let pattern:String = "\\b[a-z]+\\b"//Adding i-flag here would omitt the lowercase rule
         return input.match(pattern)
     }
     /**
      * Computes and returns an array with lowercaseWords from @param input
      */
-    static func lowerCaseWordsWithExecution(input:String)-> [String] {
-        var pattern:String = "\\b[a-z]+\\b"
-        var words: [String] = []
-        var lastIndex:Int = -1;
-        while(lastIndex != 0){
-            var word:String = pattern.exec(input);
-            lastIndex = pattern.lastIndex;
-            if(word != null) words.push(word);
-        }
-        return words;
-        
-        RegExp.matches(str, pattern).forEach {
+    static func lowerCaseWordsWithExecution(_ input:String)-> [String] {
+        let pattern:String = "\\b[a-z]+\\b"
+        return RegExp.matches(input, pattern).map {
             Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
-            let content = (str as NSString).substringWithRange($0.rangeAtIndex(0))/*the entire match*/
-            let name = $0.value(str, 1)/*capturing group 1*/
-            let value = $0.value(str, 2)/*capturing group 2*/
+            let word:String = $0.value(input, 1)/*capturing group 1*/
+            return word
         }//Outputs: name: green, value: 00FF00...and so on
     }
 }
