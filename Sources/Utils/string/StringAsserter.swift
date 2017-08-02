@@ -57,12 +57,7 @@ class StringAsserter{
     static func webColor(_ string:String)->Bool {
         return WebColors.webColors.has(string)/*was regexp, is now array assert because probably faster*/
     }
-    /**
-     * New, naive approche
-     */
-    static func isFilePath(_ path:String,pathSeperator:String = "/") -> Bool{
-        return path.hasPrefix(pathSeperator) || path.hasPrefix(".."+pathSeperator)
-    }
+    
     /**
      * Asserts if a string is in lower case
      */

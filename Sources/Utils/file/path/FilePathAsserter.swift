@@ -7,4 +7,10 @@ class FilePathAsserter {
     static func isAbsolute(path:String, pathSeperator:String = "/") -> Bool{
         return path.hasPrefix(pathSeperator)
     }
+    /**
+     * New, naive approche
+     */
+    static func isFilePath(_ path:String,pathSeperator:String = "/") -> Bool{
+        return path.hasPrefix(pathSeperator) || path.hasPrefix(".."+pathSeperator)
+    }
 }
