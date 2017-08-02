@@ -21,32 +21,32 @@ enum RegExpPattern {
      */
     static func urlPattern() -> String {
         let patternString:String =  "\\b"+//the border between a word character and a non word charactre
-									"("+//Group1 start
-										"(" +//Group2 staret
-											"https?" +//http or https (? makes the sMatches the previouse expression if it exists)
-											"|" +//or
-											"telenet" +
-											"|" +//or
-											"gopher" +
-											"|" +//or
-											"file" +
-											"|" +//or
-											"wais" +
-											"|" +//or
-											"ftp" +
-										")" +//Group2 end
-										"\\:"+//Subseeded by ":"
-										"[\\w\\/\\#~:.\\?+=&%@!\\-]+?" + //subseeded by one of the characters and must Match 1 or more times, but as few times as possible (Lazy)
-									")"+//Group1 end
-									"(" +//Group3 Start
-										"?="+
-										"[\\.\\:\\?\\-]*"+		//for possible punct char,  match 0 or more occurrences of the preceding item (Greedy quantifier)
-										"(" +//Start of group4
-											"?:[^\\w/\\#~:.?+=&%@!\\-]"+//Invalid characters, Non-capturing group - Groups subpattern, but do not capture subMatch (does not consume the subseeding pattern)
-											"|" +//or
-											"$" +// end of string
-										")"+//Group4 end			
-									")"//Group3 end
+									patternString + "("//Group1 start
+										patternString + "(" //Group2 staret
+											patternString + "https?" //http or https (? makes the sMatches the previouse expression if it exists)
+											patternString + "|" //or
+											patternString + "telenet" 
+											patternString + "|" //or
+											patternString + "gopher" 
+											patternString + "|" //or
+											patternString + "file" 
+											patternString + "|" //or
+											patternString + "wais" 
+											patternString + "|" //or
+											patternString + "ftp" 
+										patternString + ")" //Group2 end
+										patternString + "\\:"//Subseeded by ":"
+										patternString + "[\\w\\/\\#~:.\\?+=&%@!\\-]+?"  //subseeded by one of the characters and must Match 1 or more times, but as few times as possible (Lazy)
+									patternString + ")"//Group1 end
+									patternString + "(" //Group3 Start
+										patternString + "?="
+										patternString + "[\\.\\:\\?\\-]*"		//for possible punct char,  match 0 or more occurrences of the preceding item (Greedy quantifier)
+										patternString + "(" //Start of group4
+											patternString + "?:[^\\w/\\#~:.?+=&%@!\\-]"//Invalid characters, Non-capturing group - Groups subpattern, but do not capture subMatch (does not consume the subseeding pattern)
+											patternString + "|" //or
+											patternString + "$" // end of string
+										patternString + ")"//Group4 end			
+									patternString + ")"//Group3 end
 		return patternString
     }
 }
