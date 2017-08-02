@@ -131,10 +131,17 @@ public class RegExpParser{
      * Returns all sentences after \n ("newline break") from @param input
      * @Note: alternative pattern: /.+/s
      */
-    static func sentences(input:String)-> [String] {
-        var pattern:RegExp = /^[A-z .,]+/mg;//alternative: /.+/s;//Uses the s-flag which  is:  dot matches newline
-        var sentences-> [String] = input.match(pattern);
-        return sentences;
+    static func sentences(_ input:String)-> [String] {
+        let pattern = "^[A-z .,]"//alternative: /.+/s;//Uses the s-flag which  is:  dot matches newline
+        return input.match(pattern)
+    }
+    /**
+     * Computes and returns each word with a hexadecimal rgb value from @param input
+     * @example:
+     * rgbHexaDecimals("<BODY BGCOLOR=#336633 TEXT=#FFFFFF MARGINWIDTH=0 MARGINHEIGHT=0 TOPMARGIN=0 LEFTMARGIN=0>");//output: 336633,FFFFFF
+     */
+    static func rgbHexaDecimals(_ input:String)-> [String] {
+        return input.match("(?<=#)[0-9A-Fa-f]{6}")
     }
 }
 /*
