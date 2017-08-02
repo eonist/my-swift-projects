@@ -169,6 +169,7 @@ class StringParser{
      */
     static func color(_ hexColor:String) -> UInt{
         if(hexColor.test(Pattern.colorHex)){/*asserts if the color is in the correct hex format*/
+            //⚠️️⚠️️⚠️️⚠️️TODO: use native firstMatch instead of the bellow line, its way faster⚠️️⚠️️⚠️️⚠️️
             var hex:String = RegExp.match(hexColor, Pattern.colorHex)[0]
             if hex.characters.count == 3 {
                 hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters.last!,hex.characters.last!])//upgraded to swift 3

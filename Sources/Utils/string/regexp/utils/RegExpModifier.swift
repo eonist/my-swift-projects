@@ -31,6 +31,7 @@ public class RegExpModifier{
      */
     static func removeWrappingWhitespace(_ input:String)->String {
         // :TODO: ⚠️️ the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
+        //⚠️️⚠️️⚠️️⚠️️TODO: use native firstMatch instead of the bellow line, its way faster⚠️️⚠️️⚠️️⚠️️
         return RegExp.match(input, Pattern.removeWrappingWhitespace)[0]
     }
     /**
