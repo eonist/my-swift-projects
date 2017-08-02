@@ -35,7 +35,7 @@ public class RegExpParser{
      * @Note: More url patterns in RegExpDescriber.url
      * @Note also see RegExpParser.htmlLinks
      */
-    static func urlProtocol(input:String) -> Array<String> {
+    static func urlProtocol(_ input:String) -> Array<String> {
         return input.match(".+(?=:)")
     }
     /**
@@ -43,7 +43,7 @@ public class RegExpParser{
      * contentBetweenTitleTags("<HEAD> <TITLE>John Forta's Homepage</TITLE> </HEAD>");//John Forta's Homepage
      * @Note: For more html parsing see RegExpMatcher and RegExpModifier
      */
-    static func contentBetweenTitleTags(input:String) -> [String] {
+    static func contentBetweenTitleTags(_ input:String) -> [String] {
         return input.match("(?<=<[tT][iI][tT][lL][eE]>).*(?=<\\/[tT][iI][tT][lL][eE]>)")
     }
     /**
@@ -56,8 +56,26 @@ public class RegExpParser{
      *						"Total items found: 4";
      *	usPrices(text);//Output: 23.45,5.31,899.00,69.96
      */
-    static func usPrices(input:String)-> [String] {
-        return (input.match(/(?<=\$)[0-9.]+/g));
+    static func usPrices(_ input:String)-> [String] {
+        return input.match("(?<=\\$)[0-9.]+")
+    }
+    /**
+     * Computes and retruns an array comprised of digits not preceeded by the "$" character from @param input
+     * @example:
+     * nonUsPrices("<I paid $30 for 100 apples, 50 oranges, and 60 pears. I saved $5 on this order.");//100,50,60
+     */
+    static func nonUsPrices(_ input:String) -> [String] {
+        return input.match("\\b(?<!\\$)\\d+\\b");
+    }
+    /**
+     * Computes and returns lowercase words between @param rangeStart and @param rangeEnd
+     * @example:
+     */
+    static func lowerCaseWordsWithinRange(_ input:String, rangeStart:String, rangeEnd:String)-> [String] {
+        var patternString:String = "\\b[a-z]{" + rangeStart+ "," + rangeEnd + "}\\b";
+        var pattern:RegExp = new RegExp(patternString,"g");
+        var matches:[String] = input.match(pattern);
+        return matches
     }
 }
 /*
