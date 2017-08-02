@@ -91,12 +91,14 @@ public class RegExp{
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer){
        
-        RegExp.matches(str, pattern).forEach {
+        let result:String = RegExp.matches(str, pattern).reversed().reduce("") {
+            
             Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
             let content = (str as NSString).substring(with: $0.rangeAt(0))/*the entire match*/
             let name = $0.value(str, 1)/*capturing group 1*/
             let value = $0.value(str, 2)/*capturing group 2*/
         }
+        
     }
     /**
      * Extracts associated capture groups from the RegExp.matches result
