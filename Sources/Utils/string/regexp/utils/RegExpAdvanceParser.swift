@@ -33,4 +33,23 @@ class RegExpAdvanceParser {
         let pattern = "i(?:s|p){2}";// ?: removes the s | p character from the exec parsing
         return input.matches(pattern)
     }
+    /**
+     * Computes and returns all words that has a digit that are seperated by @param seperator and equal what is on eigther side of the @param seperator character(s)
+     * @example
+     * equalDigits("1 = 1, 2 = 3, 4 = 4, 4 = 2", " = ");//Output: 1 = 1, 4 = 4
+     * @Note This only suports the exact seperator , to make it more dynamic more regExp code needs to be added, But this is out of this methods scope
+     */
+    static func equalDigit(_ input:String, seperator:String) -> [String] {
+        let pattern:String = "(\\d)" + seperator + "\\1";
+        return input.match(pattern)
+    }
+    /**
+     * Computes and returns all words that has a double digit that are seperated by @param seperator and equal what is on eigther side of the @param seperator character(s)
+     * @example
+     * equalDigits("10 = 10, 2 = 30, 4 = 4, 4 = 2");//Output: 10 = 10
+     */
+    static func equalDigits(_ input:String, seperator:String)-> [String] {
+        var pattern:String = "(\\d{2})" + seperator + "\\1";
+        return input.match(pattern)
+    }
 }
