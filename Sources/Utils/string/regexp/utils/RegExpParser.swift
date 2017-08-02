@@ -72,10 +72,19 @@ public class RegExpParser{
      * @example:
      */
     static func lowerCaseWordsWithinRange(_ input:String, rangeStart:String, rangeEnd:String)-> [String] {
-        var patternString:String = "\\b[a-z]{" + rangeStart+ "," + rangeEnd + "}\\b";
-        var pattern:RegExp = new RegExp(patternString,"g");
-        var matches:[String] = input.match(pattern);
-        return matches
+        let patternString:String = "\\b[a-z]{" + rangeStart + "," + rangeEnd + "}\\b"
+        return input.match(patternString)
+    }
+    /**
+     * Computes and returns an array with lowercase words from @param input
+     * @example:
+     * getLowerCaseWordsInString("Test this out"))//this, out
+     * getLowerCaseWordsInString("test this 123"))//test, this
+     * getLowerCaseWordsInString("test this").length)//2
+     */
+    static func lowerCaseWords(input:String)-> [String] {
+        let pattern:String = "\\b[a-z]+\\b"//Adding i-flag here would omitt the lowercase rule
+        return input.match(pattern)
     }
 }
 /*
