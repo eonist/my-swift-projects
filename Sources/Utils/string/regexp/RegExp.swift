@@ -113,32 +113,3 @@ extension NSTextCheckingResult{
         return RegExp.value(str, self, key)
     }
 }
-/*
-Research:
-
-**Wrappers:**
-http://benscheirman.com/2014/06/regex-in-swift/
-
-https://github.com/glaurent/SwiftRegExp/blob/master/RegExp.swift
-
-https://gist.github.com/ningsuhen/dc6e589be7f5a41e7794
-
-//matches:
-http://stackoverflow.com/questions/27880650/swift-extract-regex-matches
-
-//comprehensive tutorial:
-http://www.raywenderlich.com/86205/nsregularexpression-swift-tutorial
-
-//uses an infix =- as a shortcut to regexp match:
-https://github.com/kasei/SwiftRegex/blob/master/SwiftRegex/SwiftRegex.swift
-http://nomothetis.svbtle.com/clean-regular-expressions-using-conversions
-
-//Extension: has a replacer method:
-https://gist.github.com/ningsuhen/dc6e589be7f5a41e7794
-
-//find individual groups:
-http://stackoverflow.com/questions/9601551/extract-parts-from-regular-expression-with-nsregularexpression?rq=1
-
-//named capturing groups (sort of)
-http://stackoverflow.com/questions/24814974/named-capture-groups-with-nsregularexpression?lq=1
-*/
