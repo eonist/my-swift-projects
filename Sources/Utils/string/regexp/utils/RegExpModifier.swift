@@ -64,7 +64,7 @@ public class RegExpModifier{
      * emailLink("Hello, john@forta.com is my email address.");//Hello, <A HREF=mailto:john@forta.com>ben@forta.com</A> is my email address.
      */
     public static func emailLink(input:String)->String {
-        return input.replace(Pattern.emialLink, "<A HREF=mailto:$1>$1</A>")
+        return input.replace(Pattern.emailLink, "<A HREF=mailto:$1>$1</A>")
     }
     /**
      * Returns the first instance of an email replaced with @param replacementEmail from @param input
