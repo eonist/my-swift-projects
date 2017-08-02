@@ -13,4 +13,10 @@ class FilePathAsserter {
     static func isFilePath(_ path:String,pathSeperator:String = "/") -> Bool{
         return path.hasPrefix(pathSeperator) || path.hasPrefix(".."+pathSeperator)
     }
+    /**
+     *
+     */
+    static func isTildePath(_ path:String) -> Bool{
+        return path.hasPrefix("~")
+    }
 }
