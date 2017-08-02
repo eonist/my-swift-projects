@@ -70,7 +70,7 @@ class RegExpAdvanceParser {
      * functionElements[1];//Output: public
      */
     static func functionElements(_ input:String)-> [String] {
-        var pattern:RegExp = /(?P<modifier>[a-z]+) function (?P<functionName>[a-zA-Z]+)\(\):(?P<returnType>[a-zA-Z]+)/g;
-        return pattern.exec(input);
+        var pattern = "([a-z]+) function ([a-zA-Z]+)\\(\\):([a-zA-Z]+)"//modifier,functionName,returnType
+        return input.matches(pattern)
     }
 }
