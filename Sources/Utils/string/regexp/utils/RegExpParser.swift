@@ -168,8 +168,8 @@ public class RegExpParser{
      * usZipCodes("11111 22222 33333- 44444-4444");
      */
     static func usZipCodes(input:String)-> [String] {
-        var pattern3:String = ""    
-            pattern3 += "\\d{5}" +//5 digits
+        var pattern3:String = ""
+            pattern3 += "\\d{5}" //5 digits
             pattern3 += "(" //Group1 start
             pattern3 += "?" //if the subseeding condition is met
             pattern3 += "(" //Group2 start
@@ -179,6 +179,29 @@ public class RegExpParser{
             pattern3 += "\\d{4}" //Subseeded by 4 digits (if group2 condition is met)
         pattern3 += ")"//Group1 end
         return input.match(pattern3)
+    }
+    /**
+     * Computes and retuns an array comprised of objects containing a name and a value from @param input
+     * @param input a string containing css properties
+     * @example cssProoperties("color:blue;thickness:2;font:Helvetica;");//[{name:color,value:blue},{name:thickness,value:2},{name:font,value:helvetica}]
+     */
+    static func cssProperties(_ input:String)-> [String] {
+        var cssProperties:[String] = []
+        var pattern = "(\\w*?)\\:(.*?)\\;"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        
+        var matches:[String] = input.matches(pattern).map {//Loops through the pattern
+            let name = $0.value(input, 1)/*capturing group 1*/
+            let value = $0.value(input, 2)/*capturing group 2*/
+            
+            lastIndex = pattern.lastIndex;
+            if(match != null){
+                var name:String = match["name"];
+                var value:* = match["value"];
+                cssProperties.push({name:name,value:value});
+            }
+        }
+        
+        return cssProperties
     }
 }
 /*
