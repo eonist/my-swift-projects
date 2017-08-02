@@ -1,13 +1,17 @@
 import Foundation
 
 public class RegExpModifier{
+    enum Pattern {
+        static let removeComments = "\\/\\*.*?\\*\\/"
+        static let removeWrappingWhitespace = "[^\\s]+?(?<=\\b)(.|\\n)*?(?=$|\\s*?$)"
+        static let replaceEmail = "((?:\\w|[_.\\-])+)@(?:((?:\\w|-)+)\\.)+\\w{2,4}+"
+    }
     /**
      * PARAM: input: a Css String such as "P{color:#00FF00;}"
      * RETURN: a Comment free css string
      */
     static func removeComments(_ string:String)->String {
-        let pattern:String = "\\/\\*.*?\\*\\/";
-        let output:String = RegExp.replace(string,pattern, "")
+        let output:String = RegExp.replace(string,Pattern.removeComments, "")
         return output
     }
     /**
@@ -19,8 +23,7 @@ public class RegExpModifier{
      */
     static func removeWrappingWhitespace(_ input:String)->String {
         // :TODO: ⚠️️ the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
-        let pattern:String = "[^\\s]+?(?<=\\b)(.|\\n)*?(?=$|\\s*?$)"
-        return RegExp.match(input, pattern)[0]
+        return RegExp.match(input, Pattern.removeWrappingWhitespace)[0]
     }
 }
 
