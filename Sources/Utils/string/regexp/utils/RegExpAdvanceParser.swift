@@ -87,4 +87,32 @@ class RegExpAdvanceParser {
         let pattern = "[a-zA-Z]+(?=\\.[a-z]+)"
         return input.match(pattern)
     }
+    /**
+     * Returns a file name
+     * @example fileName("/some/path/file2.pdf");//output: file2
+     */
+    static func fileName(_ input:String) -> [String] {
+        let pattern = "[a-zA-Z0-9]+(?=\\.[a-z]+)"
+        return input.match(pattern)
+    }
+    /**
+     * Computes and retuns files except files with the fie type @param fileTypeException from @param input.
+     * @example:
+     * filesExcept("copy the program.exe and files. the run.bat, and doc the document.txt.","txt")//Output:program.exe,run.bat
+     * @Note: (?!\\."+exception+") with: (?!\\."+exception1+"|?!\\."+expetion2)// Results in ability to have more expetions
+     */
+    static func filesExcept(_ input:String, fileTypeException:String)-> [String] {
+        let patternString:String = "[a-z]+(?!\\."+fileTypeException+")\\.([a-z]+)"
+        return input.match(patternString)
+    }
+    /**
+     * Computes and returns the last charcter(s) after @param last
+     * @param last: the last instance of a character or characters
+     * @example:
+     * RegExpAdvanceParser.charactersAfterLast("lib.icon.HomeIcon","\\.")//Output: HomeIcon
+     */
+    static func charactersAfterLast(_ input:String, last:String) -> [String] {
+        var patternString:String = "\\b(?<="+last+")[A-z]+$";//literalPattern: /\b(?<=\.)[A-z]+$/g
+        return input.match(patternString)
+    }
 }
