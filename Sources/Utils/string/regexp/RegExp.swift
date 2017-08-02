@@ -85,7 +85,7 @@ public class RegExp{
             return ""
         }
     }
-    typealias Replacer = (_ match:String)->String
+    typealias Replacer = (_ match:String)->String?//if nil is returned then replacer closure didnt want to replace the match
     /**
      *
      */
