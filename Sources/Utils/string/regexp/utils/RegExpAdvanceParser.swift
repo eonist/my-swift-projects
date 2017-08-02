@@ -128,7 +128,48 @@ class RegExpAdvanceParser {
     /**
      * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
      */
-    static func imgLink():void {
-        
+    /**
+     * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
+     */
+    static func imgLink() {
+        //locate all <IMG> tags in your text; in addition, if any <IMG> tags are links (enclosed between <A> and </A> tags), 
+        //you need to match the complete link tags as well.
+        //The syntax for this type of condition is (?(backreference)true). 
+        //The ? starts the condition, the backreference is specified within parentheses, 
+        //and the expression to be evaluated only if the backreference is present immediately follows.
+        var test9:String = "<!-- Nav bar --> "+
+                            "<TD>"+
+                            "<A HREF=/home><IMG SRC=/images/home.gif></A>"+
+                            "<IMG SRC=/images/spacer.gif>"+
+                            "<A HREF=/search><IMG SRC=/images/search.gif></A>"+
+                            "<IMG SRC=/images/spacer.gif>"+
+                            "<A HREF=/help><IMG SRC=/images/help.gif></A>"+
+                            "</TD>";
+        var pattern2:String =   pattern += "(" //Group1 start
+                                    pattern += "<" //"<"
+                                    pattern += "[Aa]" //Subseed by A or a
+                                    pattern += "\\s+" //Subseeded by any whitespace
+                                    pattern += "[^>]+" //1 or more "^" is at the start of the string
+                                    pattern += ">" //Subseeded with ">"
+                                    pattern += "\\s*" //Subseeded 0 or more of whitespace
+                                pattern += ")" //Group1 end
+                                pattern += "?" //MAtches the previouse group if it exists
+                                pattern += "<" //Subseeded with "<"
+                                pattern += "[Ii]" //Subseeded I or i
+                                pattern += "[Mm]" //Subseeded M or m
+                                pattern += "[Gg]" //Subseeded G or g
+                                pattern += "\\s+" //Subseeded 1 or more whitespace
+                                pattern += "[^>]+" //1 or more "^" is at the start of the string
+                                pattern += ">" //Subseeded with ">"
+                                pattern += "(" //Group2 start
+                                    pattern += "?(\1)" //Checks if the first group exists
+                                    pattern += "\\s*" //Subseeded by 0 or more whitespace
+                                    pattern += "<" //Subsseded by "<"
+                                    pattern += "\/" //Subsseded by "/"
+                                    pattern += "[Aa]" //Subseed by A or a
+                                    pattern += ">" //Subseeded with ">"
+                                ")";//Group2 end
+        trace(test9.match(new RegExp(pattern2,"g")));
+        //Output <A HREF=/home><IMG SRC=/images/home.gif></A>,<IMG SRC=/images/spacer.gif>,<A HREF=/search><IMG SRC=/images/search.gif></A>,<IMG SRC=/images/spacer.gif>,<A HREF=/help><IMG SRC=/images/help.gif></A>
     }
 }
