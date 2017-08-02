@@ -16,6 +16,12 @@ public class RegExpModifier{
         return input.replace(Pattern.removeComments, "")
     }
     /**
+     * Retuns @param input with punctuation replaced by @param replacement
+     */
+    static func replacePunctuation(_ input:String,replacement:String) -> String {
+        return input.replace("[.]", replacement)
+    }
+    /**
      * Returns the PARAM: input without whitespace on the left and right side
      * NOTE: writing this function is not easy, check proto website for inspiration
      * NOTE: StringModifier.trimWhiteSpace can also be used. could be faster
@@ -51,6 +57,15 @@ public class RegExpModifier{
         return input.match("[^\040].*?(?=\040|$)")[0]
     }
     /**
+     * Returns an html email link from @param input
+     * @param input: a string containing atleast 1 email
+     * @example:
+     * emailLink("Hello, john@forta.com is my email address.");//Hello, <A HREF=mailto:john@forta.com>ben@forta.com</A> is my email address.
+     */
+    public static function emailLink(input:String):String {
+    return input.replace(/(\w+[\w\.]*@[\w\.]+\.\w+)/, "<A HREF=mailto:$1>$1</A>");
+    }
+    /**
      * Returns the first instance of an email replaced with @param replacementEmail from @param input
      * @example :
      * replaceEmail("The following was posted by user@domain.com.", "<email>@<domain>.com")//The following was posted by <email>@<domain>.com.
@@ -84,6 +99,23 @@ public class RegExpModifier{
      */
     static func singleQuotation(input:String) -> String {
         return input.replace("([^\"]*)", "\'$1\'")
+    }
+    /**
+     * Returns @param input with the content between h1 tags, replaced by @param replacement
+     * @example:
+     * var text:String = "<BODY> "+
+     *						"<H1>Welcome to my Homepage</H1>" +
+     *						" Content is divided into two sections:<BR> " +
+     * 						"<H2>ColdFusion</H2> " +
+     *						"Information about Macromedia ColdFusion." +
+     *						"<H2>Wireless</H2> " +
+     *						"Information about Bluetooth, 802.11, and more. " +
+     *						"<H2>This is not valid HTML</H3> " +
+     *						"</BODY>"
+     * replaceContentBetween(text,"WELCOME TO MY HOMEPAGE")
+     */
+    static func replaceContentBetweenHTags(_ input:String, replacement:String) -> String {
+        return input.replace("(<[Hh]1>)(.*?)(<\\/[Hh]1>)", replacement);
     }
 }
 
