@@ -12,15 +12,13 @@ class FilePathParser {
      * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
     static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?
-        let url = URL(string: stringPath)
-        return url!
+        return URL(string: stringPath)!
     }
     /**
      * EXAMPLE: path(NSURL("file:///Users/Me/Desktop/Doc.txt"))//Users/Me/Desktop/Doc.txt
      */
     static func path(_ url:URL)->String{
-        let url = url.path
-        return url
+        return url.path
     }
     /**
      * EXAMPLE: stringPath(path("file:///Users/Me/Desktop/Doc.txt"))//"file:///Users/Me/Desktop/Doc.txt"
