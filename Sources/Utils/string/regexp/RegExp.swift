@@ -103,6 +103,12 @@ public class RegExp{
         guard let range = input.range(of: pattern, options:.regularExpression) else{return nil}
         return input.distance(from:input.startIndex,to:range.lowerBound)
     }
+    /**
+     * Coming soon
+     */
+    static func exec(){
+        //TODO: ⚠️️ research enumerateMatches, it takes a method and enumerate all matches.
+    }
 }
 extension NSTextCheckingResult{
     func value(_ str:String, _ key:Int)->String{//Convenience
