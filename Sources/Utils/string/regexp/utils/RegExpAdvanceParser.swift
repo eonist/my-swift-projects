@@ -128,9 +128,6 @@ class RegExpAdvanceParser {
     /**
      * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
      */
-    /**
-     * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
-     */
     static func imgLink() {
         //locate all <IMG> tags in your text; in addition, if any <IMG> tags are links (enclosed between <A> and </A> tags), 
         //you need to match the complete link tags as well.
@@ -144,7 +141,7 @@ class RegExpAdvanceParser {
                             str += "<A HREF=/search><IMG SRC=/images/search.gif></A>"
                             str += "<IMG SRC=/images/spacer.gif>"
                             str += "<A HREF=/help><IMG SRC=/images/help.gif></A>"
-                            str += "</TD>";
+                            str += "</TD>"
         var pattern:String = ""
             pattern += "(" //Group1 start
                 pattern += "<" //"<"
