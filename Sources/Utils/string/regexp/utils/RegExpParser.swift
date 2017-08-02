@@ -107,6 +107,35 @@ public class RegExpParser{
         let pattern:String = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
         return input.match(pattern)
     }
+    /**
+     * Returns all words in a string
+     * @example:
+     * words("The German people.")//Outputs: The, German, people
+     */
+    static func words(_ input:String)-> [String] {
+        return input.match("\\b\\w+\\b");/*alternativ pattern: /[a-z]+ig/;*/
+    }
+    /**
+     * Returns all words startingWith @param firstCharacter subseeds with any of the characters passed through @param subseedingCharacters and ends with the character @param endCharacter
+     * @param startingCharacter:
+     * @param anySubseedingCharacters:
+     * @param endingCharacter:
+     * @example
+     * wordsThatStartSubseedAndEndWith("but bat samba bit nothing bet","b","aeiou","t")//Output: but,bat,bit,bet
+     */
+    static func wordsThatStartSubseedAndEndWith(_ input:String, startingCharacter:String, anySubseedingCharacters:String, endingCharacter:String)-> [String] {
+        let patternString:String = "\\b"+startingCharacter + "[" + anySubseedingCharacters + "]" + endingCharacter+"\\b";
+        return input.match(patternString);
+    }
+    /**
+     * Returns all sentences after \n ("newline break") from @param input
+     * @Note: alternative pattern: /.+/s
+     */
+    static func sentences(input:String)-> [String] {
+        var pattern:RegExp = /^[A-z .,]+/mg;//alternative: /.+/s;//Uses the s-flag which  is:  dot matches newline
+        var sentences-> [String] = input.match(pattern);
+        return sentences;
+    }
 }
 /*
 	Add these from legacy:
