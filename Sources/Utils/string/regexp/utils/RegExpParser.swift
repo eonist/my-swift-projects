@@ -160,7 +160,7 @@ public class RegExpParser{
      */
     static func indexOfWordStartingWith(_ input:String, startingWith:String) -> Int {
         var pattern = "\\b" + startingWith + "[a-z]"
-        return input.in
+        return input.sub
     }
 }
 /*

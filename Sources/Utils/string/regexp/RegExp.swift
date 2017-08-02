@@ -31,6 +31,15 @@ public class RegExp{
     static func match(_ text:String, _ pattern:String, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
     }
+    
+    /**
+     *
+     */
+    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive){
+        if let range = input.range(of: pattern, options:.regularExpression)
+        //return range.start
+        
+    }
     /**
      * Similar to Exec in other languages
      * NOTE: NSRegExp uses the ICU regexp syntax: http://userguide.icu-project.org/strings/regexp
