@@ -90,11 +90,14 @@ public class RegExp{
      * New, replaces with a closure
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
+        Swift.print("RegExp.replace")
         var str = str
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.rangeAt(1)
-            let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
+            Swift.print("range: " + "\(range)")
             let match:String = $0.value(str, 1)/*capturing group 1*/
+            Swift.print("match: " + "\(match)")
+            let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
             if let replacment:String = replacer(match) {
                 str.replaceSubrange(stringRange, with: replacment)
             }
