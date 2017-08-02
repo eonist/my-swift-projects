@@ -96,6 +96,7 @@ public class RegExp{
             let range:NSRange = $1.rangeAt(1)
             //startIndex..<endIndex
             //range.toRange()!.lowerBound..<range.toRange()!.upperBound
+            str.index(str.startIndex, offsetBy: index)
             str.replaceSubrange(, with: "")
 //            replaceSubrange(range, with: "")
         }
