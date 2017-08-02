@@ -25,6 +25,9 @@ extension String {
     func replace(_ pattern:String,_ replacement:String)->String{/*Convenince*/
         return RegExp.replace(self,pattern, replacement)
     }
+    func search(_ pattern:String)->Int?{/*Convenince*/
+        return RegExp.search(self,pattern)
+    }
     func encode()->String?{/*Convenince*/
         return StringParser.encode(self)
     }

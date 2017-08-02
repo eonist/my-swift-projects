@@ -32,16 +32,7 @@ public class RegExp{
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
     }
     
-    /**
-     *
-     */
-    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> Int?{
-        guard let range = input.range(of: pattern, options:.regularExpression) else{return nil}
-        
-        
-        return range.start
-        
-    }
+    
     /**
      * Similar to Exec in other languages
      * NOTE: NSRegExp uses the ICU regexp syntax: http://userguide.icu-project.org/strings/regexp
@@ -104,6 +95,13 @@ public class RegExp{
      */
     static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
         return (str as NSString).substring(with: result.rangeAt(key))
+    }
+    /**
+     * New, finds first index of pattern in string
+     */
+    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> Int?{
+        guard let range = input.range(of: pattern, options:.regularExpression) else{return nil}
+        return input.distance(from:input.startIndex,to:range.lowerBound)
     }
 }
 extension NSTextCheckingResult{
