@@ -25,7 +25,7 @@ class RegExpAdvanceParser {
      * wordPrecededFollowedOrFollowedSubseed("mississippi", "i", "s", "p", 2))//Outputs: iss
      * @Note:To match the whole word you need to add more regular expression, but that is out of the scope of this method
      */
-    static func wordPrecededFollowedOrFollowedSubseed(_ input:String, startingWith:String, subseedingWith1:String, subseedingWith2:String,nOccurencesOfPresedingString:String)-> [String] {
+    static func wordPrecededFollowedOrFollowedSubseed(_ input:String, startingWith:String, subseedingWith1:String, subseedingWith2:String,nOccurencesOfPresedingString:String)-> [NSTextCheckingResult] {
         print("startingWith: " + startingWith);
         print("subseedingWith1: " + subseedingWith1);
         print("subseedingWith2: " + subseedingWith2);
