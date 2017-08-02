@@ -91,16 +91,12 @@ public class RegExp{
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
         var str = str
-        let result:String = RegExp.matches(str, pattern).reversed().reduce("") {
-//            $1.value(str, 1)
-            let range:NSRange = $1.rangeAt(1)
-            //startIndex..<endIndex
-            //range.toRange()!.lowerBound..<range.toRange()!.upperBound
-            str.index(str.startIndex, offsetBy: index)
-            str.replaceSubrange(, with: "")
-//            replaceSubrange(range, with: "")
+        RegExp.matches(str, pattern).reversed().forEach() {
+            let range:NSRange = $0.rangeAt(1)
+            let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
+            str.replaceSubrange(stringRange, with: "")
         }
-        return result
+        return str
     }
     /**
      * Extracts associated capture groups from the RegExp.matches result
