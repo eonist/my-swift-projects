@@ -38,6 +38,27 @@ public class RegExpParser{
     static func urlProtocol(input:String) -> Array<String> {
         return input.match(".+(?=:)")
     }
+    /**
+     * Computes and returns the content between two title tags from @param input
+     * contentBetweenTitleTags("<HEAD> <TITLE>John Forta's Homepage</TITLE> </HEAD>");//John Forta's Homepage
+     * @Note: For more html parsing see RegExpMatcher and RegExpModifier
+     */
+    static func contentBetweenTitleTags(input:String) -> [String] {
+        return input.match("(?<=<[tT][iI][tT][lL][eE]>).*(?=<\\/[tT][iI][tT][lL][eE]>)")
+    }
+    /**
+     * Computes and returns an array comprised of dollar price amounts (excluding "$" character) from @param input
+     * @example:
+     * 	var text:String =  "ABC01: $23.45 " +
+     *						"HGG42: $5.31 " +
+     *						"CFMX1: $899.00 " +
+     *						"XTC99: $69.96 " +
+     *						"Total items found: 4";
+     *	usPrices(text);//Output: 23.45,5.31,899.00,69.96
+     */
+    static func usPrices(input:String)-> [String] {
+        return (input.match(/(?<=\$)[0-9.]+/g));
+    }
 }
 /*
 	Add these from legacy:
