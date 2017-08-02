@@ -158,9 +158,9 @@ public class RegExpParser{
      * @example:
      * indexOfWordStartingWith("Something happened last winter","la");//19
      */
-    static func indexOfWordStartingWith(_ input:String, startingWith:String):int {
-        var pattern:RegExp = new RegExp("\\b"+startingWith+"[a-z]");
-        return input.search(pattern);
+    static func indexOfWordStartingWith(_ input:String, startingWith:String) -> Int {
+        var pattern = "\\b" + startingWith + "[a-z]"
+        return input.in
     }
 }
 /*
