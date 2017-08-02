@@ -92,7 +92,7 @@ public class RegExp{
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
         let result:String = RegExp.matches(str, pattern).reversed().reduce("") {
             $1.value(str, 1)
-            str.repl
+            str.replaceSubrange(<#T##bounds: Range<String.Index>##Range<String.Index>#>, with: <#T##String#>)
         }
         return result
     }
