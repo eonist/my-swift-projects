@@ -49,7 +49,28 @@ class RegExpAdvanceParser {
      * equalDigits("10 = 10, 2 = 30, 4 = 4, 4 = 2");//Output: 10 = 10
      */
     static func equalDigits(_ input:String, seperator:String)-> [String] {
-        var pattern:String = "(\\d{2})" + seperator + "\\1";
+        let pattern:String = "(\\d{2})" + seperator + "\\1";
         return input.match(pattern)
+    }
+    /**
+     * Computes and returns words that has two digits mirroring each other seperated by @param seperator
+     * @example
+     * mirroringDigits("12 = 21, 12 = 12"," = "));//Output: 12 = 21
+     */
+    static func mirroringDigits(_ input:String, seperator:String)-> [String] {
+        let pattern:String = "(\\d)(\\d)" + seperator + "\\2\\1";
+        return input.match(pattern)
+    }
+    /**
+     * Computes and returns an combined itterative and Associative array from @param input
+     * @example:
+     * var functionElements:* = functionElements("public function example():void")
+     * functionElements.functionName;//Output: example
+     * functionElements[0];//Output: public function example():void
+     * functionElements[1];//Output: public
+     */
+    static func functionElements(_ input:String)-> [String] {
+        var pattern:RegExp = /(?P<modifier>[a-z]+) function (?P<functionName>[a-zA-Z]+)\(\):(?P<returnType>[a-zA-Z]+)/g;
+        return pattern.exec(input);
     }
 }
