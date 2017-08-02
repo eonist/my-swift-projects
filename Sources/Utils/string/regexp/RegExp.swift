@@ -87,14 +87,17 @@ public class RegExp{
     }
     typealias Replacer = (_ match:String)->String?//if nil is returned then replacer closure didnt want to replace the match
     /**
-     *
+     * New, replaces with a closure
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
         var str = str
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.rangeAt(1)
             let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
-            str.replaceSubrange(stringRange, with: "")
+            let match:String = $0.value(str, 1)/*capturing group 1*/
+            if let replacment:String = replacer(match) {
+                str.replaceSubrange(stringRange, with: replacment)
+            }
         }
         return str
     }
