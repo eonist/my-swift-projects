@@ -5,14 +5,14 @@ public class RegExpModifier{
         static let removeComments = "\\/\\*.*?\\*\\/"
         static let removeWrappingWhitespace = "[^\\s]+?(?<=\\b)(.|\\n)*?(?=$|\\s*?$)"
         static let replaceEmail = "((?:\\w|[_.\\-])+)@(?:((?:\\w|-)+)\\.)+\\w{2,4}+"
+        static let obscureEmail = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
     }
     /**
      * PARAM: input: a Css String such as "P{color:#00FF00;}"
      * RETURN: a Comment free css string
      */
-    static func removeComments(_ string:String)->String {
-        let output:String = RegExp.replace(string,Pattern.removeComments, "")
-        return output
+    static func removeComments(_ input:String)->String {
+        return input.replace(Pattern.removeComments, "")
     }
     /**
      * Returns the PARAM: input without whitespace on the left and right side
@@ -24,6 +24,14 @@ public class RegExpModifier{
     static func removeWrappingWhitespace(_ input:String)->String {
         // :TODO: ⚠️️ the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
         return RegExp.match(input, Pattern.removeWrappingWhitespace)[0]
+    }
+    /**
+     * Returns the first instance of an email replaced with @param replacementEmail from @param input
+     * @example :
+     * replaceEmail("The following was posted by user@domain.com.", "<email>@<domain>.com")//The following was posted by <email>@<domain>.com.
+     */
+    static func replaceEmail(_ input:String, replacementEmail:String) -> String {
+        return input.replace(Pattern.replaceEmail, replacementEmail);
     }
 }
 
