@@ -185,45 +185,13 @@ public class RegExpParser{
      * @param input a string containing css properties
      * @example cssProoperties("color:blue;thickness:2;font:Helvetica;");//[{name:color,value:blue},{name:thickness,value:2},{name:font,value:helvetica}]
      */
-    static func cssProperties(_ input:String)-> [String] {
-        var cssProperties:[String] = []
-        var pattern = "(\\w*?)\\:(.*?)\\;"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
-        
-        var matches:[String] = input.matches(pattern).map {//Loops through the pattern
+    static func cssProperties(_ input:String)-> [(name:String,value:String)] {
+        let pattern = "(\\w*?)\\:(.*?)\\;"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        return input.matches(pattern).map {//Loops through the pattern
             let name = $0.value(input, 1)/*capturing group 1*/
             let value = $0.value(input, 2)/*capturing group 2*/
-            
-            lastIndex = pattern.lastIndex;
-            if(match != null){
-                var name:String = match["name"];
-                var value:* = match["value"];
-                cssProperties.push({name:name,value:value});
-            }
+            return (name:name,value:value)
         }
-        
-        return cssProperties
     }
 }
-/*
-	Add these from legacy:
-	match,
-	associatedMatch,
-	urlProtocol,
-	contentBetweenTitleTags,
-	usPrices,
-	nonUsPrices,
-	lowerCaseWordsWithinRange,
-	lowerCaseWords,
-	lowerCaseWordsWithExecution,
-	emails,
-	words,
-	wordsThatStartSubseedAndEndWith,
-	sentences,
-	rgbHexaDecimals,
-	computerDate,
-	htmlLinks,
-	indexOfWordStartingWith,
-	split,
-	usZipCodes,
-	cssProperties;/*Great example off associative and array use*/
-	*/
+    
