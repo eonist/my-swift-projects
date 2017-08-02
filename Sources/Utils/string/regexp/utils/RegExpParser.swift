@@ -97,6 +97,16 @@ public class RegExpParser{
             return word
         }//Outputs: name: green, value: 00FF00...and so on
     }
+    /**
+     * Returns all email instances in a string
+     * @example
+     * emails("emails: user@domain.com, user@server.com");// user@domain.com, user@server.com
+     * Tip:// simpler: \\w+@\\w+\\.\\w+
+     */
+    static func emails(_ input:String)-> [String] {
+        let pattern:String = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
+        return input.match(pattern)
+    }
 }
 /*
 	Add these from legacy:
