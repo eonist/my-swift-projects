@@ -93,8 +93,10 @@ public class RegExp{
         var str = str
         let result:String = RegExp.matches(str, pattern).reversed().reduce("") {
 //            $1.value(str, 1)
-            let range = $1.rangeAt(1)
-            str.replaceSubrange
+            let range:NSRange = $1.rangeAt(1)
+            //startIndex..<endIndex
+            //range.toRange()!.lowerBound..<range.toRange()!.upperBound
+            str.replaceSubrange(, with: "")
 //            replaceSubrange(range, with: "")
         }
         return result
