@@ -112,7 +112,23 @@ class RegExpAdvanceParser {
      * RegExpAdvanceParser.charactersAfterLast("lib.icon.HomeIcon","\\.")//Output: HomeIcon
      */
     static func charactersAfterLast(_ input:String, last:String) -> [String] {
-        var patternString:String = "\\b(?<="+last+")[A-z]+$";//literalPattern: /\b(?<=\.)[A-z]+$/g
+        let patternString:String = "\\b(?<=" + last + ")[A-z]+$"//literalPattern: /\b(?<=\.)[A-z]+$/g
         return input.match(patternString)
+    }
+    /**
+     * Computes and returns the character(s) before the @param last
+     * @param last: the last instance of a character or characters
+     * @example:
+     * RegExpAdvanceParser.charactersAfterLast("lib.icon.HomeIcon","\\.")//Output: lib.icon
+     */
+    static func charactersBeforeLast(_ input:String, last:String) -> [String] {
+        let patternString:String = "\\.+?(?=" + last + "[A-z]+$)"//literalPattern: /.+?(?=\.[A-z]+$)/g
+        return input.match(patternString)
+    }
+    /**
+     * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
+     */
+    static func imgLink():void {
+        
     }
 }
