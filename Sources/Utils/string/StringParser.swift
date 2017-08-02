@@ -88,8 +88,8 @@ class StringParser{
      * New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found
      */
     static func indexOf(_ a:String,_ b:String)->Int{
-        let range:Range<String.Index>? = StringRangeParser.rangeOf(a,b)
-        return range != nil ? a.distance(from:a.startIndex,to:range!.lowerBound) : -1
+        guard let range:Range<String.Index> = StringRangeParser.rangeOf(a,b) else {return -1}
+        return a.distance(from:a.startIndex,to:range.lowerBound)
     }
     /**
      * Returns str sans the first char

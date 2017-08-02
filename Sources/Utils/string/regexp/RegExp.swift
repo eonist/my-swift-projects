@@ -35,9 +35,11 @@ public class RegExp{
     /**
      *
      */
-    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive){
-        if let range = input.range(of: pattern, options:.regularExpression)
-        //return range.start
+    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> Int?{
+        guard let range = input.range(of: pattern, options:.regularExpression) else{return nil}
+        
+        
+        return range.start
         
     }
     /**
