@@ -11,14 +11,15 @@ class FilePathModifier {
     }
     /**
      * PARAM: baseURL: must be absolute: "Users/John/Desktop/temp"
+     * RETURN: asolute paths aka: Users/John/... (use path.tildify to make them user agnostic)
      * EXAMPLE: Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp
      * EXAMPLE: Swift.print(expand("~/Desktop/test.txt"))///Users/John/Desktop/test.txt
      * EXAMPLE: Swift.print(expand("/temp/colors/star.svg",baseURL:"/Users/John/Desktop"))///Users/John/Desktop/temp/colors/star.svg
      * EXAMPLE: Swift.print(expand("star.svg",baseURL:"/Users/John/Desktop"))///Users/John/Desktop/star.svg
      * IMPORTANT: ⚠️️ Tilde paths can't have backlash syntax like ../../ etc
      */
-    static func expand(_ filePath:String, baseURL:String = "", returnRelative:Bool = false) -> String{
-        let expandedFilePath:String = {
+    static func expand(_ filePath:String, baseURL:String = "") -> String{
+        
             if FilePathAsserter.isTildePath(filePath) {
                 return filePath.tildePath
             }else if FilePathAsserter.isBacklash(filePath) {//isRelative
@@ -30,7 +31,6 @@ class FilePathModifier {
             }else{//must be just I.E: "star.svg"
                 return baseURL + "/" + filePath
             }
-        }()
-        expandedFilePath.
+        
     }
 }
