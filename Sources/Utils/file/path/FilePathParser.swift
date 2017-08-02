@@ -54,7 +54,7 @@ class FilePathParser {
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
      * Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
      */
-    static func resourcePath()->String{
+    static var resourcePath:String{
         return Bundle.main.resourcePath!
     }
     /**
