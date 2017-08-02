@@ -40,12 +40,12 @@ public class RegExpModifier{
      */
     static func obscureEmail(input:String) -> String {
         var obscuredEmail:String = input.replace(Pattern.obscureEmail, replacer);
-        func replacer(_ match:String):String {
-            var string:String = match.replace("@", " AT ");
-            string = string.replace(/\./g, " DOT ");
+        func replacer(_ match:String) -> String {
+            var string:String = match.replace("@", " AT ")
+            string = string.replace("\\./g", " DOT ")
             return string;
         }
-        return obscuredEmail;
+        return obscuredEmail
     }
 }
 
