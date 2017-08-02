@@ -168,7 +168,7 @@ public class RegExpParser{
      * usZipCodes("11111 22222 33333- 44444-4444");
      */
     static func usZipCodes(input:String)-> [String] {
-        var pattern3:String = ""
+        var pattern3:String = ""    
             pattern3 += "\\d{5}" +//5 digits
             pattern3 += "(" //Group1 start
             pattern3 += "?" //if the subseeding condition is met
