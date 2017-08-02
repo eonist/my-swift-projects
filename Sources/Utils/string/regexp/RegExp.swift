@@ -106,6 +106,7 @@ public class RegExp{
      */
     static func exec(){
         //TODO: ⚠️️ research enumerateMatches, it takes a method and enumerate all matches.
+        //NSRegularExpression.replacementString has an offset, which I think you can use
     }
 }
 extension NSTextCheckingResult{
