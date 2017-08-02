@@ -17,17 +17,20 @@ class FilePathModifier {
      * EXAMPLE: Swift.print(expand("star.svg",baseURL:"/Users/John/Desktop"))///Users/John/Desktop/star.svg
      * IMPORTANT: ⚠️️ Tilde paths can't have backlash syntax like ../../ etc
      */
-    static func expand(_ filePath:String, baseURL:String = "") -> String{
-        if FilePathAsserter.isTildePath(filePath) {
-            return filePath.tildePath
-        }else if FilePathAsserter.isBacklash(filePath) {//isRelative
-            return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
-        }else if FileAsserter.exists(filePath){//absolute path that exists
-            return filePath
-        }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
-            return baseURL + filePath
-        }else{//must be just I.E: "star.svg"
-            return baseURL + "/" + filePath
-        }
+    static func expand(_ filePath:String, baseURL:String = "", returnRelative:Bool = false) -> String{
+        let expandedFilePath:String = {
+            if FilePathAsserter.isTildePath(filePath) {
+                return filePath.tildePath
+            }else if FilePathAsserter.isBacklash(filePath) {//isRelative
+                return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
+            }else if FileAsserter.exists(filePath){//absolute path that exists
+                return filePath
+            }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
+                return baseURL + filePath
+            }else{//must be just I.E: "star.svg"
+                return baseURL + "/" + filePath
+            }
+        }()
+        expandedFilePath.
     }
 }
