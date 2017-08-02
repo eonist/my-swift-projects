@@ -149,9 +149,18 @@ public class RegExpParser{
      * @example:
      * htmlLinks("this website does searches: http://www.google.com");//http://www.google.com
      */
-    static func htmlLinks(input:String) -> [String] {
-        var pattern:RegExp = RegExpPattern.urlPattern
+    static func htmlLinks(_ input:String) -> [String] {
+        let pattern = RegExpPattern.urlPattern
         return input.match(pattern)
+    }
+    /**
+     * Computes and returnes the index of the first word that starts with @param startingWith from @param input
+     * @example:
+     * indexOfWordStartingWith("Something happened last winter","la");//19
+     */
+    static func indexOfWordStartingWith(_ input:String, startingWith:String):int {
+        var pattern:RegExp = new RegExp("\\b"+startingWith+"[a-z]");
+        return input.search(pattern);
     }
 }
 /*
