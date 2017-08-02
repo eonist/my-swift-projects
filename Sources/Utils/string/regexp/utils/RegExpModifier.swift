@@ -26,6 +26,15 @@ public class RegExpModifier{
         return RegExp.match(input, Pattern.removeWrappingWhitespace)[0]
     }
     /**
+     * Returns @param input without space characters on the left and right side of it self
+     * @Note supports only single spaces.
+     * @Note the space character in unicode: \040
+     * @example: "test ", "   test" , "  test  " or "test"//test
+     */
+    static func removeWrappingSpaces(input:String) -> String {
+        return input.match("[^\040].*?(?=\040|$)")[0]
+    }
+    /**
      * Returns the first instance of an email replaced with @param replacementEmail from @param input
      * @example :
      * replaceEmail("The following was posted by user@domain.com.", "<email>@<domain>.com")//The following was posted by <email>@<domain>.com.
@@ -50,6 +59,15 @@ public class RegExpModifier{
             return string;
         }
         return obscuredEmail
+    }
+    /**
+     * Returns words with single quotation marks from the @param input
+     * @param input: words with dubble quotationmarks
+     * replaces all quotion (quotation mark followed by word followed by quotation mark) into curly quotes
+     *
+     */
+    static func singleQuotation(input:String) -> String {
+        return input.replace("([^\"]*)", "\'$1\'")
     }
 }
 
