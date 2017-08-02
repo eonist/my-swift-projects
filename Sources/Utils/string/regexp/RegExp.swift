@@ -109,24 +109,31 @@ public class RegExp{
         //NSRegularExpression.replacementString has an offset, which I think you can use
     }
     
-//    static func replaceMatches<T: Sequence>(in source:String, matches:T, using replacer:(Match) -> String?) -> String where T.Iterator.Element : Match {
-//        
-//        
-//        
-//        var result = ""
-//        var lastRange:StringRange = source.startIndex ..< source.startIndex
-//        for match in matches {
-//            result += source.substring(with: lastRange.upperBound ..< match.range.lowerBound)
-//            if let replacement = replacer(match) {
-//                result += replacement
-//            } else {
-//                result += source.substring(with: match.range)
-//            }
-//            lastRange = match.range
-//        }
-//        result += source.substring(from: lastRange.upperBound)
-//        return result
-//    }
+    static func replaceMatches<T: Sequence>(in source:String, matches:T, using replacer:(Match) -> String?) -> String where T.Iterator.Element : Match {
+        
+        "str".matches("(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
+            Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
+            let content = (str as NSString).substringWithRange($0.rangeAtIndex(0))/*the entire match*/
+            let name = $0.value("", 1)/*capturing group 1*/
+            
+            (str as NSString).substring(with: result.rangeAt(key))
+            
+        }
+        
+        var result = ""
+        var lastRange:StringRange = source.startIndex ..< source.startIndex
+        for match in matches {
+            result += source.substring(with: lastRange.upperBound ..< match.range.lowerBound)
+            if let replacement = replacer(match) {
+                result += replacement
+            } else {
+                result += source.substring(with: match.range)
+            }
+            lastRange = match.range
+        }
+        result += source.substring(from: lastRange.upperBound)
+        return result
+    }
     
     
     /**
