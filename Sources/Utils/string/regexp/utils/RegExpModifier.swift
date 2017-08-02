@@ -39,7 +39,11 @@ public class RegExpModifier{
      * obscureEmail("The following was posted by user@domain.com.")// The following was posted by user AT domain DOT com
      */
     static func obscureEmail(input:String) -> String {
-        var obscuredEmail:String = input.replace(Pattern.obscureEmail, replacer);
+        let matches = input.matches(Pattern.obscureEmail)
+        let obscuredEmail:String = matches.reduce("") {
+            let match:String = $0.1.value(input, 1)
+            return replacer(match)
+        }
         func replacer(_ match:String) -> String {
             var string:String = match.replace("@", " AT ")
             string = string.replace("\\./g", " DOT ")
