@@ -90,9 +90,12 @@ public class RegExp{
      *
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
+        var str = str
         let result:String = RegExp.matches(str, pattern).reversed().reduce("") {
-            $1.value(str, 1)
-            str.replaceSubrange(<#T##bounds: Range<String.Index>##Range<String.Index>#>, with: <#T##String#>)
+//            $1.value(str, 1)
+            let range = $1.rangeAt(1)
+            str.replaceSubrange
+//            replaceSubrange(range, with: "")
         }
         return result
     }
