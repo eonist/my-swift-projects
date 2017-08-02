@@ -64,18 +64,27 @@ class RegExpAdvanceParser {
     /**
      * Computes and returns an combined itterative and Associative array from @param input
      * @example:
-     * var functionElements:* = functionElements("public func example():void")
+     * var functionElements:* = functionElements("public func example()->Void")
      * functionElements.functionName;//Output: example
      * functionElements[0];//Output: public func example():void
      * functionElements[1];//Output: public
      */
     static func functionElements(_ input:String)-> [(modifier:String,functionName:String,returnType:String)] {
-        let pattern = "([a-z]+) func ([a-zA-Z]+)\\(\\):([a-zA-Z]+)"//modifier,functionName,returnType
+        let pattern = "([a-z]+) func ([a-zA-Z]+)\\(\\)->([a-zA-Z]+)"//modifier,functionName,returnType
         return input.matches(pattern).map{
             let modifier = $0.value(input, 1)/*capturing group 1*/
             let functionName = $0.value(input, 2)/*capturing group 2*/
             let returnType = $0.value(input, 3)/*capturing group 3*/
             return (modifier,functionName,returnType)
         }
+    }
+    /**
+     * Returns every file name (excluding file type) from @param input
+     * @example:
+     * fileNames("bananna.exe, informatics.bat is so cool try alure.pdf")//Output: bananna,informatics,alure
+     */
+    static func fileNames(_ input:String)-> [String] {
+        let pattern = "[a-zA-Z]+(?=\\.[a-z]+)"
+        return input.match(pattern)
     }
 }
