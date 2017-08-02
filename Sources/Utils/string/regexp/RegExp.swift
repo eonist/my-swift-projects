@@ -66,8 +66,8 @@ public class RegExp{
      * Replaces all matches with the replacment string
      * Returns Value A string with matching regular expressions replaced by the template string.
      * NOTE: you can use this call replaceMatchesInString to modify the original string, must use nsmutablestring to do this
-     * NOTE: NSRegularExpression. https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
-     * IMPORTANT: ⚠️️ by using "$1" or "$2" etc
+     * NOTE: ⚠️️ NSRegularExpression has lots of good info -> https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/index.html
+     * IMPORTANT: ⚠️️ by using "$1" or "$2" etc you can replace with the match
      * PARAM: string The string to search for values within.
      * PARAM: options: The matching options to use. See NSMatchingOptions for possible values.
      * PARAM: range: The range of the string to search.
