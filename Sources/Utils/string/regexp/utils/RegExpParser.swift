@@ -158,9 +158,27 @@ public class RegExpParser{
      * @example:
      * indexOfWordStartingWith("Something happened last winter","la");//19
      */
-    static func indexOfWordStartingWith(_ input:String, startingWith:String) -> Int {
+    static func indexOfWordStartingWith(_ input:String, startingWith:String) -> Int? {
         let pattern = "\\b" + startingWith + "[a-z]"
         return input.search(pattern)
+    }
+    /**
+     * Computes and returns U.S. ZIP codes. These may be five-digit ZIP codes formatted as 12345 or ZIP+4 codes formatted as 12345-6789. (The hyphen is used only if the additional four digits are present.)
+     * @example:
+     * usZipCodes("11111 22222 33333- 44444-4444");
+     */
+    static func usZipCodes(input:String)-> [String] {
+        var pattern3:String = ""
+            pattern3 += "\\d{5}" +//5 digits
+            pattern3 += "(" //Group1 start
+            pattern3 += "?" //if the subseeding condition is met
+            pattern3 += "(" //Group2 start
+            pattern3 += "?=-" //Math "-" if it exists (but not consume)
+            pattern3 += ")" //Group2 end
+            pattern3 += "-" //Subseeded by "-" (if group2 condition is met)
+            pattern3 += "\\d{4}" //Subseeded by 4 digits (if group2 condition is met)
+        pattern3 += ")"//Group1 end
+        return input.match(pattern3)
     }
 }
 /*
