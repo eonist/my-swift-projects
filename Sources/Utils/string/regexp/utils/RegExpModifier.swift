@@ -4,6 +4,7 @@ public class RegExpModifier{
     enum Pattern {
         static let removeComments = "\\/\\*.*?\\*\\/"
         static let removeWrappingWhitespace = "[^\\s]+?(?<=\\b)(.|\\n)*?(?=$|\\s*?$)"
+        static let removeWrappingSpaces = "[^\040].*?(?=\040|$)"
         static let replaceEmail = "((?:\\w|[_.\\-])+)@(?:((?:\\w|-)+)\\.)+\\w{2,4}+"
         static let obscureEmail = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
     }
@@ -24,6 +25,21 @@ public class RegExpModifier{
     static func removeWrappingWhitespace(_ input:String)->String {
         // :TODO: ⚠️️ the bellow is wrong , it can be (?<=^|\s)(-|\n)(?=$|\s)  // you dont need to test if there is multiple whitespaces just 1
         return RegExp.match(input, Pattern.removeWrappingWhitespace)[0]
+    }
+    /**
+     * Returns @param input without the last whitespacecharcter
+     * @Note: If the input has no whitespace at the end the input is returned as is
+     */
+    static func removeEndingWhiteSpace(_ input:String) -> String {
+        return input.replace("\\s*?$", "")
+    }
+    /**
+     * Returns a @param input without dubble or more whitespace
+     * @param replacement: the single white space, can be zero whitespace aswell
+     * @example: singularWhitespace("       A  C  B");//Output: " A C B"
+     */
+    static func singularWhitespace(_ input:String, replacement:String = " ") -> String {
+        return input.replace("\\s\\s*?(?=\\S|$)", replacement)
     }
     /**
      * Returns @param input without space characters on the left and right side of it self
