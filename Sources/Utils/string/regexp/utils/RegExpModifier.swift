@@ -7,6 +7,7 @@ public class RegExpModifier{
         static let removeWrappingSpaces = "[^\040].*?(?=\040|$)"
         static let replaceEmail = "((?:\\w|[_.\\-])+)@(?:((?:\\w|-)+)\\.)+\\w{2,4}+"
         static let obscureEmail = "(?:\\w|[_.\\-])+@(?:(?:\\w|-)+\\.)+\\w{2,4}"
+        static let emailLink = "(\\w+[\\w\\.]*@[\\w\\.]+\\.\\w+)"
     }
     /**
      * PARAM: input: a Css String such as "P{color:#00FF00;}"
@@ -62,8 +63,8 @@ public class RegExpModifier{
      * @example:
      * emailLink("Hello, john@forta.com is my email address.");//Hello, <A HREF=mailto:john@forta.com>ben@forta.com</A> is my email address.
      */
-    public static function emailLink(input:String):String {
-    return input.replace(/(\w+[\w\.]*@[\w\.]+\.\w+)/, "<A HREF=mailto:$1>$1</A>");
+    public static func emailLink(input:String)->String {
+        return input.replace(Pattern.emialLink, "<A HREF=mailto:$1>$1</A>")
     }
     /**
      * Returns the first instance of an email replaced with @param replacementEmail from @param input
@@ -90,6 +91,15 @@ public class RegExpModifier{
             return string;
         }
         return obscuredEmail
+    }
+    /**
+     * Returns a telephone number conformed to (313) 555-1234 from @param input
+     * @param input: a string containing atleast 1 telephone number formated like xxx-xxx-xxxx
+     * @example:
+     * conformUsTeleNr(313-555-1234 248-555-9999 810-555-9000);//(313) 555-1234, (248) 555-9999, (810) 555-9000
+     */
+    static func conformUsTeleNr(input:String)->String {
+        return input.replace("(\\d{3})(-)(\\d{3})(-)(\\d{4})", "($1) $3-$5")
     }
     /**
      * Returns words with single quotation marks from the @param input
@@ -119,20 +129,3 @@ public class RegExpModifier{
     }
 }
 
-/*
-Add these from legacy:
-
-replace,
-replacePunctuation,
-emailLink,
-conformUsTeleNr,
-replaceUrl,
-replaceEmail,
-obscureEmail,
-singleQuotation,
-removeWrappingWhitespace,
-removeWrappingSpaces,
-singularWhitespace,
-replaceContentBetweenHTags;
-
-*/
