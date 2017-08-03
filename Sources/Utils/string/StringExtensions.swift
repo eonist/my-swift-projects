@@ -96,6 +96,7 @@ extension String {
     var double:Double{return Double(self)!}
     var json:Any? {return JSONParser.json(self)}
     func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
+    var isLowerCased:Bool {return StringAsserter.lowerCase(self)}
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
