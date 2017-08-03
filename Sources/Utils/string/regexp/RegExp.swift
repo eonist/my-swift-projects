@@ -111,6 +111,7 @@ public class RegExp{
      * TODO: ⚠️️ you should check if there is content in the range first, if ther eis not return nilor error
      */
     static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
+        str.substring(with: result.rangeAt(key))
         return (str as NSString).substring(with: result.rangeAt(key))
     }
     /**
