@@ -1,8 +1,9 @@
 import Foundation
-
+/**
+ * There is also tildify which makes file paths user agnostic (~ instad of hardocded user)
+ */
 class FilePathModifier {
     /**
-     * Makes file paths user agnostic (~ instad of hardocded user)
      * EXAMPLE: FilePathModifier.normalize("/Users/John/Desktop/temp/../test.txt".tildePath)///Users/John/Desktop/test.txt
      */
     static func normalize(_ urlStr:String) -> String{
@@ -20,18 +21,16 @@ class FilePathModifier {
      * IMPORTANT: ⚠️️ Tilde paths can't have backlash syntax like ../../ etc
      */
     static func expand(_ filePath:String, baseURL:String = "") -> String{
-        
-            if FilePathAsserter.isTildePath(filePath) {
-                return filePath.tildePath
-            }else if FilePathAsserter.isBacklash(filePath) {//isRelative
-                return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
-            }else if FileAsserter.exists(filePath){//absolute path that exists
-                return filePath
-            }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
-                return baseURL + filePath
-            }else{//must be just I.E: "star.svg"
-                return baseURL + "/" + filePath
-            }
-        
+        if FilePathAsserter.isTildePath(filePath) {
+            return filePath.tildePath
+        }else if FilePathAsserter.isBacklash(filePath) {//isRelative
+            return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
+        }else if FileAsserter.exists(filePath){//absolute path that exists
+            return filePath
+        }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
+            return baseURL + filePath
+        }else{//must be just I.E: "star.svg"
+            return baseURL + "/" + filePath
+        }
     }
 }

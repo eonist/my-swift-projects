@@ -91,7 +91,10 @@ extension String {
     var int:Int{return Int(self)!}
     /*from relative to absolute URL*/
     var tildePath:String {return NSString(string: self).expandingTildeInPath}/*Convenince*/
-    /*from absolute to relative URL*/
+    /**
+     * Makes file paths user agnostic (~ instad of hardocded user)
+     * NOTE: from absolute to relative URL
+     */
     var tildify:String {return NSString(string:self).abbreviatingWithTildeInPath}/*Convenince*/
     
     var count:Int{return self.characters.count}/*Convenince*/
