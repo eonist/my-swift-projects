@@ -2,6 +2,7 @@ import Foundation
 
 class FilePathModifier {
     /**
+     * Makes file paths user agnostic (~ instad of hardocded user)
      * EXAMPLE: FilePathModifier.normalize("/Users/John/Desktop/temp/../test.txt".tildePath)///Users/John/Desktop/test.txt
      */
     static func normalize(_ urlStr:String) -> String{
