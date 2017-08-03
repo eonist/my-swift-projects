@@ -95,9 +95,9 @@ public class RegExp{
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.rangeAt(1)
             Swift.print("range: " + "\(range)")
-            let match:String = $0.value(str, 1)//TODO: reuse the stringRange to get the subrange here
-            Swift.print("match: " + "\(match)")
             let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
+            let match:String = str.substring(with: stringRange)//TODO: reuse the stringRange to get the subrange here
+            Swift.print("match: " + "\(match)")
             if let replacment:String = replacer(match) {
                 str.replaceSubrange(stringRange, with: replacment)
             }
@@ -111,7 +111,6 @@ public class RegExp{
      * TODO: ⚠️️ you should check if there is content in the range first, if ther eis not return nilor error
      */
     static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
-        str.substring(with: result.rangeAt(key))
         return (str as NSString).substring(with: result.rangeAt(key))
     }
     /**
