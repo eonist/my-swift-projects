@@ -185,11 +185,11 @@ class StringParser{
      * Returns a file path, excluding the file name and file-suffix
      * PARAM: input: usually formated like: /Users/James/Downloads/PanelView.png
      * RETURN: a string formatted like: /Users/James/Downloads/
-     * EXAMPLE: path(file://Users/User/Desktop/main.css);//file://Users/User/Desktop/
+     * EXAMPLE: path(Users/User/Desktop/main.css);//Users/User/Desktop/
      * NOTE: you can also do this another way:
      * var match : Array = input.split(".");
      * var path:String = String(match[0]).substring(0, String(match[0]).lastIndexOf("/"));
-     * NOTE: There is also a native way if you look through NSURL
+     * NOTE: ⚠️️ There is also a native way if you look through NSURL
      */
     static func path(_ url:String)->String {
         return url.match(Pattern.path)[0]
