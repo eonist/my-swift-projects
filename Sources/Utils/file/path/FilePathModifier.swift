@@ -24,7 +24,7 @@ class FilePathModifier {
         if FilePathAsserter.isTildePath(filePath) {
             return filePath.tildePath
         }else if FilePathAsserter.isBacklash(filePath) {//isRelative
-            Swift.print("isBacklash")
+            Swift.print("isBacklash: \(baseURL + filePath)")
             return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
         }else if FileAsserter.exists(filePath){//absolute path that exists
             return filePath
