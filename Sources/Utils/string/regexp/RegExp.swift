@@ -88,16 +88,17 @@ public class RegExp{
     typealias Replacer = (_ match:String)->String?//if nil is returned then replacer closure didnt want to replace the match
     /**
      * New, replaces with a closure
+     * TODO: ⚠️️ Try to performance test if accumulative substring is faster (you += before the match + the match and so on)
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
-        Swift.print("RegExp.replace")
+//        Swift.print("RegExp.replace")
         var str = str
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.rangeAt(1)
-            Swift.print("range: " + "\(range)")
+//            Swift.print("range: " + "\(range)")
             let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
             let match:String = str.substring(with: stringRange)//TODO: reuse the stringRange to get the subrange here
-            Swift.print("match: " + "\(match)")
+//            Swift.print("match: " + "\(match)")
             if let replacment:String = replacer(match) {
                 str.replaceSubrange(stringRange, with: replacment)
             }
