@@ -95,7 +95,7 @@ public class RegExp{
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.rangeAt(1)
             Swift.print("range: " + "\(range)")
-            let match:String = $0.value(str, 1)/*capturing group 1*/
+            let match:String = $0.value(str, 1)//TODO: reuse the stringRange to get the subrange here
             Swift.print("match: " + "\(match)")
             let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
             if let replacment:String = replacer(match) {
