@@ -25,7 +25,7 @@ extension String {
     func replace(_ pattern:String,_ replacement:String)->String{/*Convenince*/
         return RegExp.replace(self,pattern, replacement)
     }
-    func replace(pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:RegExp.Replacer) -> String {
+    func replace(_ pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:RegExp.Replacer) -> String {
         return RegExp.replace(self, pattern: pattern, options: options, replacer: replacer)
     }
     func search(_ pattern:String)->Int?{/*Convenince*/
