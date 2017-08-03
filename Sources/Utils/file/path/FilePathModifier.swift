@@ -12,7 +12,7 @@ class FilePathModifier {
         return FilePathParser.path(normalizedURL)
     }
     /**
-     * PARAM: baseURL: must be absolute: "Users/John/Desktop/temp"
+     * PARAM: baseURL: must be absolute: "Users/John/Desktop/temp" (no / char at the end)
      * RETURN: asolute paths aka: Users/John/... (use path.tildify to make them user agnostic)
      * EXAMPLE: Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp
      * EXAMPLE: Swift.print(expand("~/Desktop/test.txt"))///Users/John/Desktop/test.txt
@@ -24,8 +24,8 @@ class FilePathModifier {
         if FilePathAsserter.isTildePath(filePath) {
             return filePath.tildePath
         }else if FilePathAsserter.isBacklash(filePath) {//isRelative
-            Swift.print("isBacklash: \(baseURL + filePath)")
-            return FilePathModifier.normalize(baseURL + filePath)//returns absolute path
+//            Swift.print("isBacklash: \(baseURL + filePath)")
+            return FilePathModifier.normalize(baseURL + "/" + filePath)//returns absolute path
         }else if FileAsserter.exists(filePath){//absolute path that exists
             return filePath
         }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
