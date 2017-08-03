@@ -89,6 +89,7 @@ public class RegExp{
     /**
      * New, replaces with a closure
      * TODO: ⚠️️ Try to performance test if accumulative substring is faster (you += before the match + the match and so on)
+     * EXAMPLE: Swift.print("bad wolf, bad dog, Bad sheep".replace(pattern: "\\b([bB]ad)\\b"){return $0.isLowerCased ? $0 : $0.lowercased()})//bad wolf, bad dog, bad sheep
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
 //        Swift.print("RegExp.replace")
