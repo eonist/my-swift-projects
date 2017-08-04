@@ -3,8 +3,12 @@ import Foundation
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
     var index:Int = 0
-    init(onComplete:CompletionHandler, onAllComplete:CompletionHandler){
-        
+    private var complete:CompletionHandler
+    init(onComplete:@escaping CompletionHandler, onAllComplete:CompletionHandler){
+        self.complete = onComplete
+    }
+    func onComplete(){
+        complete()//execute the closure
     }
 }
 let repos = RepoUtils.repoListFlattenedOverridden/*creates array from xml or cache*/
