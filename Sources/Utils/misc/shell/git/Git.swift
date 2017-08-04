@@ -3,30 +3,30 @@ import Foundation
 /**
  * NOTE: Was /usr/local/git/bin/ but that was a fix for an early 🐛
  */
-class Git {
-    static var path:String = "/usr/bin/"/*To execute git commands we need to call the git commands from this path*/
+enum Git {
+    static let path:String = "/usr/bin/"/*To execute git commands we need to call the git commands from this path*/
     /**/
-    static var git:String = "git"
+    static let git:String = "git"
     /*Modifier*/
-    static var add:String = "add"
-    static var commit:String = "commit"
-    static var reset:String = "reset"
-    static var pull:String = "pull"
-    static var push:String = "push"
-    static var initiate:String = "init"
-    static var rm:String = "rm"
-    static var origin:String = "origin"
-    static var remote:String = "remote"
-    static var clone:String = "clone"
-    static var update:String = "update"
-    static var fetch:String = "fetch"
-    static var checkOut:String = "checkout"
-    static var merge:String = "merge"
+    static let add:String = "add"
+    static let commit:String = "commit"
+    static let reset:String = "reset"
+    static let pull:String = "pull"
+    static let push:String = "push"
+    static let initiate:String = "init"
+    static let rm:String = "rm"
+    static let origin:String = "origin"
+    static let remote:String = "remote"
+    static let clone:String = "clone"
+    static let update:String = "update"
+    static let fetch:String = "fetch"
+    static let checkOut:String = "checkout"
+    static let merge:String = "merge"
     /*Parsing*/
-    static var log:String = "log"
-    static var status:String = "status"
-    static var show:String = "show"
-    static var config:String = "config"
-    static var cherry:String = "cherry"
-    static var diff:String = "diff"
+    static let log:String = "log"
+    static let status:String = "status"
+    static let show:String = "show"
+    static let config:String = "config"
+    static let cherry:String = "cherry"
+    static let diff:String = "diff"
 }
