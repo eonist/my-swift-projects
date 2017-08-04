@@ -29,12 +29,14 @@ class GitUtils{
 	 * NOTE:  same as clone but differs in that it clones into an existing folder
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com
 	 */
-	static func manualClone(_ locaPath:String, remotePath:String){
+	static func manualClone(_ locaPath:String, _ remotePath:String){
 //        fatalError("fix this")
-        GitModifier.initialize(locaPath)
-		//--"git init" <--Installs the invisible .git folder
+        _ = GitModifier.initialize(locaPath)//<--Installs the invisible .git folder
+		//--"git init"
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
-		//--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
+		_ = GitModifier.attachRemoteRepo(locaPath, remotePath)
+        //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
+        
 		//--"git fetch origin master" <--Download the latest .git data
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
