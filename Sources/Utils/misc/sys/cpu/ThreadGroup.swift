@@ -5,7 +5,7 @@ class ThreadGroup {
     private var index:Int = 0//currentIndex
     private var allComplete:CompletionHandler
     private var count:Int//when count reaches this count, onAllComplete is executed
-    init(_ count:Int,onAllComplete:@escaping CompletionHandler){
+    init(_ count:Int,onAllComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
         self.count = count
         self.allComplete = onAllComplete
     }
