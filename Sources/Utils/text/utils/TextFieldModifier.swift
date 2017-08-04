@@ -18,11 +18,11 @@ class TextFieldModifier {
         textField.isBordered = textFormat.border//<--This doesn't work in Live Edit mode
         //textField.maximumNumberOfLines = 1//<---cant get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
-        Swift.print("textFormat.leading: " + "\(textFormat.leading)")
+//        Swift.print("textFormat.leading: " + "\(textFormat.leading)")
         let leadingYOffset:CGFloat = textFormat.leading.isNaN ? 0 : textFormat.size - textFormat.leading
-        Swift.print("leadingYOffset: " + "\(leadingYOffset)")
+//        Swift.print("leadingYOffset: " + "\(leadingYOffset)")
         textField.bounds.origin += CGPoint(0,leadingYOffset)
-        Swift.print("textField.bounds.origin: " + "\(textField.bounds.origin)")
+//        Swift.print("textField.bounds.origin: " + "\(textField.bounds.origin)")
         //textField.lineBreakMode = .ByWordWrapping
         //Swift.print("textFormat.wordWrap: " + "\(textFormat.wordWrap)")
         textField.cell?.wraps = textFormat.wordWrap//wordwrap enables the text to be in one line basically, this could probably be set when setting the paragraphstyle
@@ -34,7 +34,7 @@ class TextFieldModifier {
      * Beta
      */
     static func size(_ textField:NSTextField,_ width:CGFloat,_ height:CGFloat) {
-        Swift.print("TextFieldModifier.size.width: " + "\(width)")
+//        Swift.print("TextFieldModifier.size.width: " + "\(width)")
             
         /*)
          Swift.print("textField.superview?.frame.width: " + "\(textField.superview?.frame.width)")
