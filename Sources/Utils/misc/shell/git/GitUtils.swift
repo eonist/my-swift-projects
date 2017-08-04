@@ -30,6 +30,7 @@ class GitUtils{
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com
 	 */
 	static func manualClone(_ locaPath:String, _ remotePath:String){
+        fatalError("fix this")
 		//--"git init" <--Installs the invisible .git folder
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
 		//--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
