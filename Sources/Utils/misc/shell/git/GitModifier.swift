@@ -120,10 +120,10 @@ class GitModifier{
     * NOTE: git clone <repo> <directory>
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
-       let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
-       return ShellUtils.run(shellScript)
+        let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
+        Swift.print("GitModifier.clone() shellScript: \(shellScript)")
+        return ShellUtils.run(shellScript)
    }
-   
    /**
     * NOTE: brings your remote refs up to date
     * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
