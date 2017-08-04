@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Sometimes DispatchGroup doesn't work when you need nested groups etc. ThreadGroup is simple in design and can work as a substitute. 
+ */
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
     private var index:Int = 0//currentIndex
