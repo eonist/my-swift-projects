@@ -69,9 +69,9 @@ extension TextFormat{
         let textColor:NSColor = self.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
         textParagraph.maximumLineHeight = self.leading.isNaN ? 0 : self.leading/*this sets the MAXIMUM height of the lines to 12points*/
-        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
+//        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
         textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
-        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
+//        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
         let attribs = [NSFontAttributeName:font,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
