@@ -33,7 +33,9 @@ class ThreadGroup {
     /**
      *
      */
-    func async(closure:()->Void){
-        
+    func async(_ que:DispatchQueue, closure:()->Void){
+        que.async {
+            closure()
+        }
     }
 }
