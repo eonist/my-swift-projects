@@ -2,9 +2,11 @@ import Foundation
 
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
-    var index:Int = 0
+    private var index:Int = 0
     private var allComplete:CompletionHandler
-    init(onAllComplete:@escaping CompletionHandler){
+    private var count:Int
+    init(_ count:Int,onAllComplete:@escaping CompletionHandler){
+        self.count = count
         self.allComplete = onAllComplete
     }
     func onComplete(){
