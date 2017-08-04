@@ -26,6 +26,7 @@ class ThreadGroup {
         
         main.async {
             self.index += 1
+            Swift.print("self.index: " + "\(self.index) " + " self.count: " + "\(self.count)")
             if self.index == self.count {
                 self.onComplete()
             }
