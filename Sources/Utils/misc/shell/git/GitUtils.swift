@@ -39,8 +39,9 @@ class GitUtils{
         let gitRepo:GitRepo = (localPath:localPath,  remotePath:remotePath,  branch:branch)
         _ = GitModifier.fetch(gitRepo)
 		//--"git fetch origin master" <--Download the latest .git data
-        GitModifier.checkOut(localPath, branch, <#T##filePath: String##String#>)
+        _ = GitModifier.checkOut(localPath, branch, "*")
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
+        _ = GitModifier.fetch(gitRepo)
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
 	}
     /**

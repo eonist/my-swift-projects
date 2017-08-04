@@ -139,7 +139,8 @@ class GitModifier{
     * NOTE: git fetch <remote> (Fetch all of the branches from the repository. This also downloads all of the required commits and files from the other repository.)
     * NOTE: git fetch <remote> <branch> (Same as the above command, but only fetch the specified branch.)
     * NOTE: you can switch to the fetched branch with: "git checkout origin/master" then do "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
-    * TODO: does this work here: "git checkout --theirs *"  or "git checkout --ours *" 
+    * TODO: ⚠️️ does this work here: "git checkout --theirs *"  or "git checkout --ours *"
+    * TODO: ⚠️️ add branch support i suppose
     */
     static func fetch(_ repo:GitRepo)->String{
        var shellScript:String = Git.path + Git.git + " " + Git.fetch + " " + Git.origin
