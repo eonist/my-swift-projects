@@ -5,7 +5,7 @@ import Foundation
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
     private var index:Int = 0//currentIndex
-    private var allComplete:CompletionHandler
+    var allComplete:CompletionHandler
     private var count:Int = 0//when count reaches this count, onAllComplete is executed
     init(onAllComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
 //      self.count = count
