@@ -15,7 +15,7 @@ class ThreadGroup {
         count += 1
     }
     /**
-     * IMPORTANT: onComplete must be called on the main thread
+     * IMPORTANT: onComplete must be called on the main thread (It could be that)
      */
     func leave(){
         index += 1
