@@ -17,7 +17,7 @@ class ThreadGroup {
     /**
      * IMPORTANT: onComplete must be called on the main thread
      */
-    func exit(){
+    func leave(){
         index += 1
         if index == count {
             allComplete()
