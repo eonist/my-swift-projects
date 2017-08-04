@@ -43,7 +43,7 @@ class GitUtils{
         _ = GitModifier.fetch(gitRepo)
         Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
-        _ = GitModifier.checkOut(localPath, branch, "*")
+        _ = GitModifier.checkOut(localPath, "origin/"+branch, "*")
         Swift.print("checkOut.completed")
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
         _ = GitModifier.fetch(gitRepo)
