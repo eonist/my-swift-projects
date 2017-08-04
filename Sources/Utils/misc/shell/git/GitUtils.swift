@@ -30,6 +30,7 @@ class GitUtils{
 	 * TODO: this method is wrong see git workflows on gitsyncs github.com
 	 */
     static func manualClone(_ localPath:String, _ remotePath:String, _ branch:String = "master"){
+        Swift.print("manualClone started")
 //        fatalError("fix this")
         _ = GitModifier.initialize(localPath)//<--Installs the invisible .git folder
 		//--"git init"
@@ -43,6 +44,7 @@ class GitUtils{
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
         _ = GitModifier.fetch(gitRepo)
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
+        Swift.print("manualClone finished")
 	}
     /**
      * Returns the commit count
