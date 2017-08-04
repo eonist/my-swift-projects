@@ -5,26 +5,35 @@ import Foundation
  */
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
-    private var index:Int = 0//currentIndex
+    //private var index:Int = 0//currentIndex
+    private (set) var index : Int32 = 0
     var onComplete:CompletionHandler
-    private var count:Int = 0//when count reaches this count, onAllComplete is executed
+    private var count:Int32 = 0//when count reaches this count, onAllComplete is executed
     init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
 //      self.count = count
         self.onComplete = onComplete
     }
     func enter(){
-        count += 1
+        OSAtomicIncrement32(&count)
     }
     /**
      * IMPORTANT: onComplete must be called on the main thread (It could be that you dont need to use main thread to increment int)
      */
     func leave(que:DispatchQueue = main){
-        que.async{
-            self.index += 1
-            if self.index == self.count {
-                self.onComplete()
-            }
+        OSAtomicIncrement32(&index)
+        if self.index == self.count {
+            self.onComplete()
         }
+        
+//        que.async{
+//            self.index += 1
+//
+//        }
     }
-    
+    /**
+     *
+     */
+    func async(closure:()->Void){
+        
+    }
 }
