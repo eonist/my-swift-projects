@@ -17,7 +17,7 @@ class ThreadGroup {
     /**
      * IMPORTANT: onComplete must be called on the main thread (It could be that you dont need to use main thread to increment int)
      */
-    func leave(){
+    func leave(que:DispatchQueue){
         index += 1
         if index == count {
             onComplete()
