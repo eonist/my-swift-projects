@@ -33,16 +33,21 @@ class GitUtils{
         Swift.print("manualClone started")
 //        fatalError("fix this")
         _ = GitModifier.initialize(localPath)//<--Installs the invisible .git folder
+        Swift.print("initialize.completed")
 		//--"git init"
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
 		_ = GitModifier.attachRemoteRepo(localPath, remotePath)
+        Swift.print("attachRemoteRepo.completed")
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = (localPath:localPath,  remotePath:remotePath,  branch:branch)
         _ = GitModifier.fetch(gitRepo)
+        Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
         _ = GitModifier.checkOut(localPath, branch, "*")
+        Swift.print("checkOut.completed")
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
         _ = GitModifier.fetch(gitRepo)
+        Swift.print("fetch2.completed")
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
         Swift.print("manualClone finished")
 	}
