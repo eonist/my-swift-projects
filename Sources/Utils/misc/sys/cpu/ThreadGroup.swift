@@ -10,7 +10,6 @@ class ThreadGroup {
     var onComplete:CompletionHandler
     private var count:Int32 = 0//when count reaches this count, onAllComplete is executed
     init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
-//      self.count = count
         self.onComplete = onComplete
     }
     func enter(){
@@ -23,19 +22,6 @@ class ThreadGroup {
         OSAtomicIncrement32(&index)
         if self.index == self.count {
             self.onComplete()
-        }
-        
-//        que.async{
-//            self.index += 1
-//
-//        }
-    }
-    /**
-     *
-     */
-    func async(_ que:DispatchQueue, closure:()->Void){
-        que.async {
-            closure()
         }
     }
 }
