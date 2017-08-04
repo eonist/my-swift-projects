@@ -12,11 +12,14 @@ class ThreadGroup {
     init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
         self.onComplete = onComplete
     }
+    /**
+     * Seems to work in both bg and main threads
+     */
     func enter(){
         OSAtomicIncrement32(&count)/*OSAtom... makes Int threadsafe*/
     }
     /**
-     * IMPORTANT: onComplete must be called on the main thread (It could be that you dont need to use main thread to increment int)
+     * Seems to work in both bg and main threads
      */
     func leave(que:DispatchQueue = main){
         OSAtomicIncrement32(&index)
