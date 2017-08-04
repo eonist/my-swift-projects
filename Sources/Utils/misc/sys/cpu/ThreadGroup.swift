@@ -13,7 +13,7 @@ class ThreadGroup {
         self.onComplete = onComplete
     }
     func enter(){
-        OSAtomicIncrement32(&count)
+        OSAtomicIncrement32(&count)/*OSAtom... makes Int threadsafe*/
     }
     /**
      * IMPORTANT: onComplete must be called on the main thread (It could be that you dont need to use main thread to increment int)
