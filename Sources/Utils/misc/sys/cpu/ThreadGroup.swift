@@ -5,7 +5,7 @@ import Foundation
  */
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
-    private (set) var index : Int = 0
+    var index : Int = 0
     var onComplete:CompletionHandler
     private var count:Int = 0//when count reaches this count, onAllComplete is executed
     init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
@@ -26,7 +26,7 @@ class ThreadGroup {
         
         main.async {
             self.index += 1
-            Swift.print("self.index: " + "\(self.index) " + " self.count: " + "\(self.count)")
+//            Swift.print("self.index: " + "\(self.index) " + " self.count: " + "\(self.count)")
             if self.index == self.count {
                 self.onComplete()
             }
