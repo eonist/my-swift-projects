@@ -15,7 +15,7 @@ class ThreadGroup {
         count += 1
     }
     /**
-     * IMPORTANT: onComplete must be called on the main thread (It could be that)
+     * IMPORTANT: onComplete must be called on the main thread (It could be that you dont need to use main thread to increment int)
      */
     func leave(){
         index += 1
