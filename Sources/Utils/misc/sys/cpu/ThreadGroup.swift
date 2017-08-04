@@ -5,11 +5,11 @@ import Foundation
 class ThreadGroup {
     typealias CompletionHandler = ()->Void
     private var index:Int = 0//currentIndex
-    var allComplete:CompletionHandler
+    var onComplete:CompletionHandler
     private var count:Int = 0//when count reaches this count, onAllComplete is executed
-    init(onAllComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
+    init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
 //      self.count = count
-        self.allComplete = onAllComplete
+        self.onComplete = onComplete
     }
     func enter(){
         count += 1
@@ -20,7 +20,7 @@ class ThreadGroup {
     func leave(){
         index += 1
         if index == count {
-            allComplete()
+            onComplete()
         }
     }
 }
