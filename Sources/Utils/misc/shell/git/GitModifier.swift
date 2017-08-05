@@ -58,11 +58,12 @@ class GitModifier{
     * TODO: ⚠️️ What is git pull --rebase <remote>. Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
     * NOTE: you can also do "git pull" if you are already switched into the branch you want to pull and there is only one remote repo attached to the local repo
     */
-   static func pull(_ repo:GitRepo, _ key:GitKey)->String{
-       let remoteLocation:String = "https://" + key.user + ":" + key.pass + "@" + repo.remotePath
-       let shellScript:String = Git.path + Git.git + " " + Git.pull + " " + remoteLocation + " " + repo.branch
-       return ShellUtils.run(shellScript,repo.localPath)
-   }
+    static func pull(_ repo:GitRepo, _ key:GitKey?)->String{
+        let credentials:String = key != nil ? key!.user + ":" + key!.pass + "@" : ""
+        let remoteLocation:String = "https://" + credentials + repo.remotePath
+        let shellScript:String = Git.path + Git.git + " " + Git.pull + " " + remoteLocation + " " + repo.branch
+        return ShellUtils.run(shellScript,repo.localPath)
+    }
     /**
      * Uploads the current from the local git commits to the remote git
      * PARAM: from_where: "master"
