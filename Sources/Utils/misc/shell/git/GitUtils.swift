@@ -41,7 +41,7 @@ class GitUtils{
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = (localPath:localPath,  remotePath:remotePath,  branch:branch)
         
-        
+        _ = GitModifier.pull(gitRepo)
 //        _ = GitModifier.fetch(gitRepo)
 //        Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
