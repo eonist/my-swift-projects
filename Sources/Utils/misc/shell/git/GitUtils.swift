@@ -1,9 +1,9 @@
 class GitUtils{
 	/**
 	 * Manual pull
-	 * CAUTION: It's best practice to always commit any uncommited files before you attempt to pull
-	 * CAUTION: Remember to wrap this method in a try error clause, so that you can handle merge conflicts
-	 * NOTE: the goal of this method is to arrive at the same state as the remote branch
+	 * CAUTION: ⚠️️ It's best practice to always commit any uncommited files before you attempt to pull
+	 * CAUTION: ⚠️️ Remember to wrap this method in a try error clause, so that you can handle merge conflicts
+	 * NOTE: the goal of this method is to arrive at the same state as the remote branch (git clone )
 	 * TODO: add support for different local and remote branch name
 	 */
     static func manualPull(_ repo:GitRepo) -> Bool{
