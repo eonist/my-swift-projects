@@ -1,8 +1,13 @@
 import Foundation
 
-typealias GitKey = (user:String,  pass:String)
-//typealias GitRepo = (localPath:String,  remotePath:String,  branch:String)
-//typealias GitMsg = (title:String,  desc:String)
+struct GitKey{
+    var user:String,  pass:String
+    init(_ user:String,_ pass:String){self.user = user;self.pass = pass;}
+}
+struct GitRepo{
+    var localPath:String,  remotePath:String, branch:String
+    init(_ localPath:String,_ remotePath:String,_ branch:String){self.localPath = localPath;self.remotePath = remotePath;self.branch = branch;}
+}
 
 class GitTypes{
     /**
