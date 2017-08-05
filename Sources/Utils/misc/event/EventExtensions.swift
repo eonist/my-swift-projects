@@ -26,6 +26,12 @@ extension Event{
         return self.type == type && self.origin === origin
     }
     /**
+     * new
+     */
+    func assert(_ type:String, id:String) -> Bool{
+        return self.type == type && self.origin.id == id
+    }
+    /**
      * Convenience method for asserting event target
      */
     func assert(_ type:String, immediate:AnyObject?) -> Bool{
