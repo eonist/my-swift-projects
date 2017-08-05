@@ -40,14 +40,16 @@ class GitUtils{
         Swift.print("attachRemoteRepo.completed")
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = (localPath:localPath,  remotePath:remotePath,  branch:branch)
-        _ = GitModifier.fetch(gitRepo)
-        Swift.print("fetch1.completed")
+        
+        
+//        _ = GitModifier.fetch(gitRepo)
+//        Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
-        _ = GitModifier.checkOut(localPath, "origin/"+branch, "")
-        Swift.print("checkOut.completed")
+//        _ = GitModifier.checkOut(localPath, "origin/"+branch, "")
+//        Swift.print("checkOut.completed")
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
-        _ = GitModifier.fetch(gitRepo)
-        Swift.print("fetch2.completed")
+//        _ = GitModifier.fetch(gitRepo)
+//        Swift.print("fetch2.completed")
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
         Swift.print("manualClone finished")
 	}
