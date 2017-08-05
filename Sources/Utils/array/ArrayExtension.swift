@@ -107,6 +107,9 @@ extension Array {
     func mapReduce<V,U>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->U{
         return ArrayParser.mapReduce(self,result,closure)
     }
+    var optional:Array? {
+        return self.isEmpty ? nil : self
+    }
 }
 /**
  * NOTE: only applicable to Array<AnyObject>
