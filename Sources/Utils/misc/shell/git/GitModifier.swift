@@ -51,7 +51,7 @@ class GitModifier{
    /**
     * Downloads the current from the remote git to the local git (git pull = git fetch + git merge)
     * NOTE: the original git cmd is "git pull origin master"
-    * NOTE: "https://user:pass@github.com/user/repo.git" 
+    * NOTE: "https://user:pass@github.com/user/repo.git"
     * NOTE: returns "Already up-to-date." if there are nothing to pull from remote
     * TODO: ⚠️️ Do we need login and pass for pulling? - for private repos, yes
     * NOTE: In the simplest terms, git pull does a git fetch followed by a git merge.

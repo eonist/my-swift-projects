@@ -17,7 +17,7 @@ class GitAsserter{
 	}
 	/**
 	 * Asserts if a remote branch is ahead of a local branch
-     * NOTE: We use this command: "git log --oneline master..origin/master" to view the commit ids of the commits that the remote repo is ahead of local repo
+     * NOTE: We use this command: " " to view the commit ids of the commits that the remote repo is ahead of local repo
 	 */
 	static func isRemoteBranchAhead(_ localPath:String, _ branch:String)->Bool{
 		//Swift.print("GitAsserter's is_remote_branch_ahead()")
