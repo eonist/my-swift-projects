@@ -107,6 +107,9 @@ extension Array {
     func mapReduce<V,U>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->U{
         return ArrayParser.mapReduce(self,result,closure)
     }
+    /**
+     * Sometimes you wan't to do stuff only if an array has something: if let arr = [].optional {...}
+     */
     var optional:Array? {
         return self.isEmpty ? nil : self
     }
