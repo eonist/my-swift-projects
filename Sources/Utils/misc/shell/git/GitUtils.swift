@@ -16,7 +16,7 @@ class GitUtils{
 			//Swift.print("remote branch is ahead, so there is something to merge")
 			let result = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
             _ = result
-            //Swift.print("⚠️️⚠️️⚠️️ result: " + "\(result)")
+            Swift.print("⚠️️⚠️️⚠️️ manualPull.result: " + "\(result)")
             return true
         }else{
 			//Swift.print("nothing to merge, local branch is up-to-date")
