@@ -1,4 +1,5 @@
-import Foundation
+/*
+ import Foundation
 
 class Easer3<T: Advancable3>: FrameAnimator, PhysicsAnimKind3 {
     let initial: AnimationState<T>
@@ -35,3 +36,4 @@ class Easer3<T: Advancable3>: FrameAnimator, PhysicsAnimKind3 {
         return current.isNear(target, within: self.epsilon)
     }
 }
+*/
