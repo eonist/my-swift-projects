@@ -1,3 +1,4 @@
+/*
 import Foundation
 
 struct AnimationState<T> {
@@ -6,3 +7,4 @@ struct AnimationState<T> {
     let target: T
     let stopVelocity: T
 }
+*/
