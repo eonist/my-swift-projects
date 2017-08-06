@@ -6,6 +6,7 @@ import Foundation
  * TODO: ⚠️️ Try to get rid of the :class by making the var's mutable somehow
  * This class exists so that Springer and Easer can have fewer vars, by instead accessing vars through getters and setters that derive their values from tuples
  */
+/*
 protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     associatedtype T: Advancable3
     
@@ -17,9 +18,11 @@ protocol PhysicsAnimKind3:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     
     var callback: (T) -> () {get set}
 }
+ */
 /**
  * Getters and setters for the value tuples
  */
+/*
 extension PhysicsAnimKind3{
     
     func advance(_ initial:AnimationState<T>,  current: AnimationState<T>, target: AnimationState<T>, damping: T) -> AnimationState<T> {
@@ -36,3 +39,4 @@ extension PhysicsAnimKind3{
 //    var stopVelocity:argType {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
 }
 
+*/

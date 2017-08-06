@@ -4,6 +4,7 @@ import Foundation
  * NOTE: This is the Base class
  * TODO: Maybe make a base class for Easer and Springer that they both can extend? that way you could change between them on a whim
  */
+/*
 class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
     typealias InitValues = (value:T,targetValue:T,velocity:T,stopVelocity:T)
     typealias FrameTickSignature = (T)->Void
@@ -31,9 +32,15 @@ class Easer4<T: Advancable4>:FrameAnimator, PhysicsAnimKind4{
         return velocity.isNear(value:stopVelocity, epsilon:epsilon)
     }
 }
+ */
 /*Convenient default init values*/
+/*
 var initConfig:CGFloat { return (0.2) }
 var initPointConfig:CGPoint { return CGPoint(0.2,0.2) }
+ */
 /*CGPoint*/
+/*
 var initPointValues: Easer4<CGPoint>.InitValues = (CGPoint(0,0),CGPoint(0,0),CGPoint(0,0),CGPoint(0,0))
 var initValues: Easer4<CGFloat>.InitValues = (0,0,0,0)
+
+*/
