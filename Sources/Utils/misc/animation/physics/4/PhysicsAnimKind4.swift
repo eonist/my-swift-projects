@@ -30,4 +30,4 @@ extension PhysicsAnimKind4{
     var value:T {get{return initValues.value}set{initValues.value = newValue}}
     var stopVelocity:T {get{return initValues.stopVelocity}set{initValues.stopVelocity = newValue}}
 }
-*/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+*/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbvvvbbbbbnbbbnbbnbnbbvnvb bnvb 
