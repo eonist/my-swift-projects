@@ -2,12 +2,14 @@ import Foundation
 /**
  * Sometimes DispatchGroup doesn't work when you need nested groups etc. Mixing async and sync code eetc 
  * ThreadGroup is simple in design and can work as a substitute.
+ * this is an experiment for now. revisit if needed
  */
-class ThreadGroup {
+/*
+ class ThreadGroup {
     typealias CompletionHandler = ()->Void
     var index : Int = 0
     var onComplete:CompletionHandler
-    private var count:Int = 0//when count reaches this count, onAllComplete is executed
+    var count:Int = 0//when count reaches this count, onAllComplete is executed
     init(onComplete:@escaping CompletionHandler = {fatalError("must have completion handler attached")}){
         self.onComplete = onComplete
     }
@@ -28,3 +30,4 @@ class ThreadGroup {
         }
     }
 }
+*/

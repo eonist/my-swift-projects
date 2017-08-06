@@ -62,7 +62,7 @@ class GitModifier{
         let credentials:String = key != nil ? key!.user + ":" + key!.pass + "@" : ""
         let remoteLocation:String = "https://" + credentials + repo.remotePath
         let shellScript:String = Git.path + Git.git + " " + Git.pull + " " + remoteLocation + " " + repo.branch
-        Swift.print("shellScript: " + "\(shellScript)")
+//        Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,repo.localPath)
     }
     /**
@@ -149,7 +149,7 @@ class GitModifier{
        var shellScript:String = Git.path + Git.git + " " + Git.fetch + " " + Git.origin
         
        if(repo.branch != " "){ shellScript += " " + repo.branch}
-        Swift.print("shellScript: " + "\(shellScript)")
+//        Swift.print("shellScript: " + "\(shellScript)")
        return ShellUtils.run(shellScript,repo.localPath)
    }
    /**
@@ -195,7 +195,7 @@ class GitModifier{
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
         if (filePath != " "){ shellScript  += " " + filePath }
-        Swift.print("shellScript: " + "\(shellScript)")
+//        Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(localRepoPath,shellScript)
 	}
     /*
