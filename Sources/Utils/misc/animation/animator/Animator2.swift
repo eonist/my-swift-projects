@@ -6,8 +6,8 @@ import Foundation
  * TODO: ⚠️️ LoopAnimator2
  * TODO: ⚠️️ If you need to stop the entire anim chain you need to store each successive anim in an array and stop the one that is running, you can create utilitity methods that does this for you
  * TODO: ⚠️️ Later you can maybe create a class that is called AnimSeq, which can sequence anim from a json file, akin to your legacy project
- * TODO: ⚠️️ API like: spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {}
- * TODO: ⚠️️ API like: animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {$0.x = finalValue} 
+ * TODO: ⚠️️ API like: spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {} 
+ * TODO: ⚠️️ API like: animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {$0.x = finalValue}
  */
 class Animator2:FrameAnimator2 {
     var onFrame:FrameTick

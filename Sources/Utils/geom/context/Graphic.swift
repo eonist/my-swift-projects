@@ -2,7 +2,7 @@ import Cocoa
 import QuartzCore
 /**
  * IMPORTANT: ⚠️️ You need to set the size of the frame to something, or else the graphics will be clipped. You can get a rect for For Paths and lines by using the native boundingbox methods or custom boundingbox methods
- * NOTE: you can set the position by calling: graphic.frame.origin = CGPoint()
+ * NOTE: You can set the position by calling: graphic.frame.origin = CGPoint()
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  */

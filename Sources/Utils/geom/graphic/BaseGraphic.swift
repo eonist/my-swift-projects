@@ -28,5 +28,5 @@ class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*Was extending AbstractGr
     override func getGraphic()->BaseGraphic{
         return self
     }
-    override func getDecoratable()->IGraphicDecoratable{return self}/*new*/
+    override func getDecoratable()->IGraphicDecoratable{return self}/*New*/
 }

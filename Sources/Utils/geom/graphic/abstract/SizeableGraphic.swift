@@ -1,6 +1,6 @@
 import Cocoa
 /*
- * All SizableGraphics are also positionable
+ * All SizableGraphics are also Positionable
  */
 class SizeableGraphic:PositionalGraphic,ISizeable {
     var size:CGSize
