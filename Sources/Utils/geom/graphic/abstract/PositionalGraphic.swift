@@ -20,3 +20,4 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         self.pos = position
     }
 }
+
