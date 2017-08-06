@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: This animation class is more like stock animation, less interuptable than "physics based animation"
  * TODO: ⚠️️ Take a look at other animation libs 👈
  * TODO: ⚠️️ Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
- * TODO: ⚠️️ Seek,reverse,repeate,autoRepeat
+ * TODO: ⚠️️ seek,reverse,repeate,autoRepeat
  */
 class Animator:FrameAnimator {
     var frameTick:FrameTick/*The closure method that is called on every "frame-tick" and that changes the property, you can use a var closure or a regular method, probably even an inline closure*/
