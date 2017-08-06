@@ -13,5 +13,4 @@ A collection of my swift util libs:
 
 
 
-
 [MIT License](http://opensource.org/licenses/MIT) 
