@@ -12,25 +12,19 @@ class ThreadGroup {
         self.onComplete = onComplete
     }
     /**
-     * Seems to work in both bg and main threads
+     * you enter 
      */
     func enter(){
-        main.async {
-            self.count += 1
-        }
+        self.count += 1
     }
     /**
      * Seems to work in both bg and main threads
      */
     func leave(){
-        
-        main.async {
-            self.index += 1
+        self.index += 1
 //            Swift.print("self.index: " + "\(self.index) " + " self.count: " + "\(self.count)")
-            if self.index == self.count {
-                self.onComplete()
-            }
+        if self.index == self.count {
+            self.onComplete()
         }
-        
     }
 }
