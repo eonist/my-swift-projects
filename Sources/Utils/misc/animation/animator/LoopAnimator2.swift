@@ -32,6 +32,6 @@ class LoopAnimator2:Animator2{
     }
 }
 extension LoopAnimator2{
-    typealias InitLoopValues = (duration:CGFloat,from:CGFloat,to:CGFloat,repeatCount:Int)/*Signature for initValues*/
+    typealias InitLoopValues = (duration:CGFloat,from:CGFloat,to:CGFloat,repeatCount:Int)/*Typalias signature for initValues*/
     static var initLoopValues:InitLoopValues = (duration:0.5,from:0,to:1,repeatCount:3)/*Default init values*/
 }
