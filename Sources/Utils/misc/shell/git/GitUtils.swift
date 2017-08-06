@@ -11,7 +11,7 @@ class GitUtils{
 		//Swift.print("GitUtils.manualPull()")
 		_ = GitModifier.fetch(repo)//--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(repo.localPath, repo.branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
-		//Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
+		Swift.print("isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			//Swift.print("remote branch is ahead, so there is something to merge")
 			let result = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
