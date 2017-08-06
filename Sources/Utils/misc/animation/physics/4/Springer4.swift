@@ -2,6 +2,7 @@ import Foundation
 /**
  * Base class That Springer classes itcan subClass
  */
+/*
 class Springer4<T:Advancable4>:Easer4<T> {
     typealias Config = (spring:T,friction:T)/*Signatures*/
     var config:Config/*Config values*/
@@ -21,7 +22,10 @@ class Springer4<T:Advancable4>:Easer4<T> {
         }
     }
 }
+ */
 /*Convenient default init values*/
+/*
 var initSpringerConfig:Springer4<CGFloat>.Config = (0.02,0.90)
 var initPointSpringerConfig:Springer4<CGPoint>.Config = (CGPoint(0.02,0.02),CGPoint(0.90,0.90))
    
+*/

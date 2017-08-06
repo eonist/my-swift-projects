@@ -1,7 +1,5 @@
 import Foundation
-
-import Foundation
-
+/*
 protocol Advancable4 {
     static func +(lhs: Self, rhs: Self) -> Self
     static func -(lhs: Self, rhs: Self) -> Self
@@ -26,3 +24,5 @@ extension CGPoint: Advancable4 {
         return self.isNear(value,epsilon.x)
     }
 }
+
+ */
