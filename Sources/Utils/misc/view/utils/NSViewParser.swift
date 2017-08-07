@@ -7,7 +7,7 @@ class NSViewParser {
      * IMPORTANT: ⚠️️ Remember to use: IA.self and A.self as the type 
      * TODO: rename to childrenByClassType, maybe not?, I say not!
      */
-    static func childrenOfType<T>(_ view:NSView, _ type:T.Type)->[T] {
+    static func childrenOfType<T>(_ view:NSView, _ type:T.Type? = nil)->[T] {
         return view.subviews.flatMap{$0 as? T}
     }
     /**
