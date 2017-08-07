@@ -61,8 +61,8 @@ class ArrayModifier{
     }
     /**
      * Old-school implementation of slice
-     * IMPORTANT: This method does NOT alter the original array
-     * IMPORTANT: let arr:[Int] = [1,2,3,4,5]; arr.slice2(0,arr.count)//1,2,3,4,5. if you use .count-1 then you get all but the last
+     * IMPORTANT: ⚠️️ This method does NOT alter the original array
+     * IMPORTANT: ⚠️️ let arr:[Int] = [1,2,3,4,5]; arr.slice2(0,arr.count)//1,2,3,4,5. if you use .count-1 then you get all but the last
      * RETURNS: The items from startIndex to endIndex
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
      * NOTE: ⚠️️ you can also use the native [1,2,3,4,5][0..<3]//[1,2,3]
