@@ -195,7 +195,7 @@ class GitModifier{
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
         if (filePath != " "){ shellScript  += " " + filePath }
-//        Swift.print("shellScript: " + "\(shellScript)")
+        Swift.print("shellScript: " + "\(shellScript)")
 		return ShellUtils.run(localRepoPath,shellScript)
 	}
     /*
