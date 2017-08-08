@@ -196,7 +196,9 @@ class GitModifier{
 		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
         if (filePath != " "){ shellScript  += " " + filePath }
         Swift.print("shellScript: " + "\(shellScript)")
-		return ShellUtils.run(localRepoPath,shellScript)
+		let retVal = ShellUtils.run(localRepoPath,shellScript)
+        Swift.print("retVal: " + "\(retVal)")
+        return retVal
 	}
     /*
      * The opposite of the add action
