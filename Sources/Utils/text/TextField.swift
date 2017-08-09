@@ -10,6 +10,7 @@ class TextField:NSTextField{
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
      */
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
+        Swift.print("TextField.hitTest aPoint: \(aPoint)")
         //Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
         //let tempPos = self.convertPoint(aPoint,fromView:nil)
         //Swift.print("tempPos: " + "\(tempPos)")
@@ -51,7 +52,7 @@ class TextField:NSTextField{
         //Swift.print("textDidBeginEditing \(self.stringValue)")
     }
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
-        //Swift.print("textShouldEndEditing")
+        Swift.print("textShouldEndEditing")
         return super.textShouldEndEditing(textObject)
     }
     override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
@@ -59,12 +60,12 @@ class TextField:NSTextField{
         return super.textShouldBeginEditing(textObject)
     }
     override func textDidChange(_ notification:Notification) {
-        //Swift.print("textDidChange \(self.stringValue)")
-        if(self.superview is IEventSender){
-            //Swift.print("superview is IEventSender")
-            (self.superview as! IEventSender).event!(TextFieldEvent(Event.update,self))
+        Swift.print("textDidChange \(self.stringValue)")
+        if(self.superview is EventSendable){
+            Swift.print("superview is EventSendable")
+            (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
         }else{
-            //Swift.print("superview is NOT IEventSender")
+            Swift.print("superview is NOT EventSendable")
         }
         super.textDidChange(notification)
     }
