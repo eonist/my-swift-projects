@@ -5,6 +5,7 @@ class TextFieldModifier {
      * TODO: Border color?
      */
     static func applyTextFormat(_ textField:NSTextField,_ textFormat:TextFormat){
+        Swift.print("TextFieldModifier.applyTextFormat")
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.isSelectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clear
