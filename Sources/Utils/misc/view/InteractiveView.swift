@@ -120,7 +120,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
     override func mouseEntered(with event: NSEvent){
         //Swift.print("\(type(of: self))" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         //I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
-        if(!hasMouseEntered && viewUnderMouse === self){
+        if !hasMouseEntered && viewUnderMouse === self {
             hasMouseEntered = true/*Optimization*/
             isMouseOver = true
             mouseOver(MouseEvent(event,self))
@@ -136,7 +136,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
         
         //⚠️️ I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         
-        if(hasMouseEntered && isMouseOver){
+        if hasMouseEntered && isMouseOver {
             hasMouseEntered = false/*optimization*/
             isMouseOver = false
             mouseOut(MouseEvent(event,self))
