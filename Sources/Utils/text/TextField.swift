@@ -27,7 +27,7 @@ class TextField:NSTextField,Trackable{
         
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         
-        self.selectText(self)
+        
         
         customizeCursorColor(NSColor.blue)
         //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];
