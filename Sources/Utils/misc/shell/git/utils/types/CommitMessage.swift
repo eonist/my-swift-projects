@@ -8,3 +8,8 @@ struct CommitMessage{
         self.description = desc
     }
 }
+extension CommitMessage{
+    var dummyData:CommitMessage {
+        return CommitMessage("Fixed bug","Lots of bugs")
+    }
+}
