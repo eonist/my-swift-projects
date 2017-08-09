@@ -72,7 +72,7 @@ class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
      * PARAM: owner is the instance that receives the interaction event
      * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
-    override func updateTrackingAreas() {//move this to interactiveView i think
+    override func updateTrackingAreas() {//TODO: ⚠️️ move this to interactiveView i think
         createTrackingArea([.activeAlways, .mouseMoved,.mouseEnteredAndExited])//TODO: should probaly not have mouseMoved here
         super.updateTrackingAreas()
     }
