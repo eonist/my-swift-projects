@@ -21,9 +21,9 @@ class GitModifier{
     * NOTE: Commit , usually doesnt return anything
     * NOTE: its important that the message is between two single quates
     * NOTE: There is no "extended description" concept in git. Only the commit message. What happens is that the commit message can have a single line or multiple lines External tools or websites such as git-cola or GitHub can interpret multiple lines commit messages as: The first line is a short description All the other lines are an extended description For one line messages, only the "short description" is defined.
-    * TODO: Can we also add desscription to a commit?
-    * TODO: what does commit -a do? -all?
-    * TODO: git commit -m "Title" -m "Description .........." <--this works
+    * TODO: ⚠️️ Can we also add desscription to a commit?
+    * TODO: ⚠️️ what does commit -a do? -all?
+    * TODO: ⚠️️ git commit -m "Title" -m "Description .........." <--this works
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
     static func commit(_ localRepoPath:String, _ msg:CommitMessage)->String{
@@ -237,7 +237,7 @@ class GitModifier{
      * # origin/master
      * # origin/develop
      * # origin/some-feature
-     * TODO: try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
+     * TODO: ⚠️️ try this: "git branch branchname origin/branchname" -- this should make a local branch based of a remote branch
      */
     static func branch(_ targetBranch:String, _ deleteFlag:String){
         //--complete this method
@@ -250,7 +250,7 @@ class GitModifier{
      * NOTE: you can also squash together commits without merging: "git checkout feature" then "git rebase -i HEAD~3" By specifying HEAD~3 as the new base, you�re not actually moving the branch�you�re just interactively re-writing the 3 commits that follow it. Note that this will not incorporate upstream changes into the feature branch.
      * NOTE: If you would prefer a clean, linear history free of unnecessary merge commits, you should reach for git rebase instead of git merge when integrating changes from another branch.
      * NOTE: you switch to the branch you want to rebase and then do "git rebase master"
-     * TODO: try "git rebase -i" see if it works as a commit squassher
+     * TODO: ⚠️️ try "git rebase -i" see if it works as a commit squassher
      */
     static func rebase(){
         //--complete this method
@@ -267,8 +267,8 @@ class GitModifier{
      * NOTE: list all stashes: git stash list
      * NOTE: stash also removes all files in your directory as if you just did a "git reset --hard"
      * NOTE: when you apply your stash again, you may get file conflicts, resolve this as you would resolve a branch merge
-     * TODO: test if you can use theirs and ours as you would in a regular merge
-     * TODO: create 2 methods for stash, stash and stash_by_id, stash_at
+     * TODO: ⚠️️ test if you can use theirs and ours as you would in a regular merge
+     * TODO: ⚠️️ create 2 methods for stash, stash and stash_by_id, stash_at
      */
     static func stash(_ title:String){
         //--TODO: if no title is provided store the stash without title: by not including the save syntax

@@ -31,7 +31,7 @@ class FileParser{
     }
     /**
      * NOTE: make sure the file exists with: FileAsserter.exists("some path here")
-     * PARAM: cant be tildePath, must be absolute Users/John/...
+     * PARAM: can't be tildePath, must be absolute Users/John/...
      */
     static func modificationDate(_ filePath:String)->NSDate{
         let fileURL:NSURL = NSURL(fileURLWithPath:filePath)
