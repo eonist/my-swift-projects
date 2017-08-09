@@ -7,17 +7,6 @@ import Cocoa
 class TextField:NSTextField{
 //    var mouseDownHandler:Any?
     var trackingArea:NSTrackingArea?
-    /**
-     *
-     */
-    func createTrackingArea(){
-        if let trackingArea = self.trackingArea {
-            self.removeTrackingArea(trackingArea)/*remove old trackingArea if it exists*/
-            let newTrackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
-            self.trackingArea = newTrackingArea
-            self.addTrackingArea(newTrackingArea)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-        }
-    }
     var monitor:Any?
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
