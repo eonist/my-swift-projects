@@ -4,7 +4,7 @@ import Cocoa
  * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to
  * characterIndexForPoint
  */
-class TextField:NSTextField,Trackable{
+class TextField:NSTextField{
 //    var mouseDownHandler:Any?
     var trackingArea:NSTrackingArea?
     var monitor:Any?
@@ -53,11 +53,11 @@ class TextField:NSTextField,Trackable{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        self.createTrackingArea([.activeAlways,.mouseEnteredAndExited])
-        
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
+        trackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
-    
     override func mouseEntered(with event: NSEvent) {
 //        Swift.print("mouseEntered")
         if self.isSelectable {
@@ -112,7 +112,7 @@ class TextField:NSTextField,Trackable{
     override func textDidChange(_ notification:Notification) {
 //        Swift.print("textDidChange \(self.stringValue)")
         if(self.superview is EventSendable){
-//            Swift.print("superview is EventSendable")
+            Swift.print("superview is EventSendable")
             (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
         }else{
 //            Swift.print("superview is NOT EventSendable")
