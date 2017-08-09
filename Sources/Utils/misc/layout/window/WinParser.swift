@@ -77,7 +77,7 @@ class WinParser {
      * NOTE: there are also: win.isAccessibilityHidden(),isAccessibilityMinimized(),isAccessibilityModal(),isAccessibilityExpanded()
      */
     static func focusedWindow()->NSWindow? {
-        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})!
+        return Utils.performAction(NSApp.windows, {$0.isAccessibilityFocused()})
     }
 }
 private class Utils{

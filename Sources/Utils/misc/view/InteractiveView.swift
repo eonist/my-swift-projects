@@ -12,7 +12,7 @@ import Cocoa
 typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
-    lazy var event:EventCallBack = { event in /*returns closure that will take care of propagating the event to the parent*/
+    lazy var event:EventCallBack = { (event:Event) in /*returns closure that will take care of propagating the event to the parent*/
         guard let superView:IEventSender = self.superview as? IEventSender else {return}
         superView.onEvent(event)
     }
@@ -101,7 +101,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
     /**
      * MouseMoved
      * NOTE: there is also mouseDragged, you could forward it to a generic method, and do the same with mouseMoved. so that there wouldnt be duplicate code. since they have the same functionality. you could then use: if(NSEvent.pressedMouseButtons() == 1 << 0){"left is pressed"} to detect if mouse was dragged. or not. Maybe keeping these methods seperatly improves readbility, optimization etc
-     * NOTE: mouseMoved doesnt work if the leftmouse button is pressed, then mouseDragged is used instead
+     * NOTE: mouseMoved doesn't work if the leftmouse button is pressed, then mouseDragged is used instead
      */
     override func mouseMoved(with event:NSEvent) {
         //Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"

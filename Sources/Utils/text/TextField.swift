@@ -4,7 +4,9 @@ import Cocoa
  * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to
  */
 class TextField:NSTextField{
-    var mouseDownHandler:Any?
+//    var mouseDownHandler:Any?
+    var trackingArea:NSTrackingArea?
+    var monitor:Any?
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
@@ -18,31 +20,57 @@ class TextField:NSTextField{
         return retVal
     }
     /**/
-//    override func mouseDown(with theEvent:NSEvent) {
-//        Swift.print("mouseDown")
-//        if(mouseDownHandler == nil) {
-//            mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler: self.onMouseDownOutside)/*we add a global mouse move event listener*/
-//        }else {
-//            fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")
-//        }
-//        super.mouseDown(with: theEvent)
-//    }
+    override func mouseDown(with theEvent:NSEvent) {
+        Swift.print("TextField.mouseDown")
+        NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
+        super.mouseDown(with: theEvent)
+    }
     /**/
-//    func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
-//        Swift.print("onMouseDownOutside")
-//        let p = window?.mouseLocationOutsideOfEventStream//self.locationInWindow
-//        if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
-//            if(mouseDownHandler != nil) {
-//                NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
-//                mouseDownHandler = nil//<--this part may not be needed
-//            }else{
-//                fatalError("Should not be possible")
-//            }
-//            self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
-//        }
+    func onMouseDownOutside(_ event:NSEvent) -> Void/*NSEvent?*/{
+        Swift.print("TextField.onMouseDownOutside event.type: \(event.type)")
+        let p = window?.mouseLocationOutsideOfEventStream//self.locationInWindow
+        if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
+            Swift.print("you click outside")
+            NSEvent.removeMonitor(&self.monitor)//we remove the evenListener as its done its job
+            
+//            self.window!.makeFirstResponder(self.window!.contentView)//resigns the NSTextField caret focus
+//            resignFirstResponder()
+//            self.window?.selectNextKeyView(self.superview)
+            Swift.print("self.window!.firstResponder: " + "\(self.window!.firstResponder)")
+            
+            
+        }
 //        return event
+    }
+    /**
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we don't need to use bounds.
+     * NOTE: the only way to update trackingArea is to remove it and add a new one
+     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
+     * PARAM: owner is the instance that receives the interaction event
+     * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
+     */
+    override func updateTrackingAreas() {
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
+        trackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+        super.updateTrackingAreas()
+    }
+    override func mouseEntered(with event: NSEvent) {
+        Swift.print("mouseEntered")
+         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
+    }
+    override func mouseExited(with event: NSEvent) {
+        Swift.print("mouseExited")
+        window?.endEditing(for: nil)
+    }
+//    override func becomeFirstResponder() -> Bool {
+//        Swift.print("TextField.becomeFirstResponder: ")
+//        return super.becomeFirstResponder()
 //    }
-    
+//    override func resignFirstResponder() -> Bool {
+//        Swift.print("TextField.resignFirstResponder: ")
+//        return super.resignFirstResponder()
+//    }
     override func textStorageWillProcessEditing(_ notification: Notification) {
         Swift.print("textStorageWillProcessEditing")
     }
@@ -52,6 +80,9 @@ class TextField:NSTextField{
     override func textDidEndEditing(_ notification: Notification) {
         Swift.print("textDidEndEditing")
         
+    }
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        Swift.print("controlTextDidEndEditing")
     }
     override func textDidBeginEditing(_ notification: Notification) {
         Swift.print("textDidBeginEditing \(self.stringValue)")
