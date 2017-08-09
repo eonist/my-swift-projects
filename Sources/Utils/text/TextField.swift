@@ -26,11 +26,8 @@ class TextField:NSTextField,Trackable{
         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
         
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
-        
-        
         super.mouseDown(with: theEvent)
     }
-   
     /**/
     func onMouseDownOutside(_ event:NSEvent) -> Void/*NSEvent?*/{
 //        Swift.print("TextField.onMouseDownOutside event.type: \(event.type)")
@@ -38,17 +35,14 @@ class TextField:NSTextField,Trackable{
         if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
 //            Swift.print("you click outside")
             NSEvent.removeMonitor(&self.monitor)//we remove the evenListener as its done its job
-            if self.isEditable {
-                window?.endEditing(for: nil)
-            }
-        }
+            
 //            self.window!.makeFirstResponder(self.window!.contentView)//resigns the NSTextField caret focus
 //            resignFirstResponder()
 //            self.window?.selectNextKeyView(self.superview)
 //            Swift.print("self.window!.firstResponder: " + "\(self.window!.firstResponder)")
             
             
-        
+        }
 //        return event
     }
     /**
@@ -77,7 +71,9 @@ class TextField:NSTextField,Trackable{
 //        Swift.print("mouseExited")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.arrow())
-            
+            if self.isEditable {
+                window?.endEditing(for: nil)
+            }
         }
         
     }
@@ -90,36 +86,36 @@ class TextField:NSTextField,Trackable{
 //        return super.resignFirstResponder()
 //    }
     override func textStorageWillProcessEditing(_ notification: Notification) {
-        Swift.print("textStorageWillProcessEditing")
+//        Swift.print("textStorageWillProcessEditing")
     }
     override func textStorageDidProcessEditing(_ notification: Notification) {
-        Swift.print("textStorageDidProcessEditing")
+//        Swift.print("textStorageDidProcessEditing")
     }
     override func textDidEndEditing(_ notification: Notification) {
-        Swift.print("textDidEndEditing")
+//        Swift.print("textDidEndEditing")
         
     }
     override func controlTextDidEndEditing(_ obj: Notification) {
-        Swift.print("controlTextDidEndEditing")
+//        Swift.print("controlTextDidEndEditing")
     }
     override func textDidBeginEditing(_ notification: Notification) {
-        Swift.print("textDidBeginEditing \(self.stringValue)")
+//        Swift.print("textDidBeginEditing \(self.stringValue)")
     }
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
-        Swift.print("textShouldEndEditing")
+//        Swift.print("textShouldEndEditing")
         return super.textShouldEndEditing(textObject)
     }
     override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
-        Swift.print("textShouldBeginEditing \(self.stringValue)")
+//        Swift.print("textShouldBeginEditing \(self.stringValue)")
         return super.textShouldBeginEditing(textObject)
     }
     override func textDidChange(_ notification:Notification) {
 //        Swift.print("textDidChange \(self.stringValue)")
         if(self.superview is EventSendable){
-            Swift.print("superview is EventSendable")
+//            Swift.print("superview is EventSendable")
             (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
         }else{
-            Swift.print("superview is NOT EventSendable")
+//            Swift.print("superview is NOT EventSendable")
         }
         super.textDidChange(notification)
     }
