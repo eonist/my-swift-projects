@@ -26,6 +26,10 @@ class TextField:NSTextField,Trackable{
         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
         
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
+        
+        self.selectText(self)
+        self.currentEditor()?.selectedRange = NSRange(location: 0,length: 10)
+        //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];
         super.mouseDown(with: theEvent)
     }
     /**/
@@ -35,14 +39,15 @@ class TextField:NSTextField,Trackable{
         if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
 //            Swift.print("you click outside")
             NSEvent.removeMonitor(&self.monitor)//we remove the evenListener as its done its job
-            self.selectText(<#T##sender: Any?##Any?#>)
+            
+        }
 //            self.window!.makeFirstResponder(self.window!.contentView)//resigns the NSTextField caret focus
 //            resignFirstResponder()
 //            self.window?.selectNextKeyView(self.superview)
 //            Swift.print("self.window!.firstResponder: " + "\(self.window!.firstResponder)")
             
             
-        }
+        
 //        return event
     }
     /**
