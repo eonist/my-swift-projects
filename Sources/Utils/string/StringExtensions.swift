@@ -89,11 +89,14 @@ extension String {
     var bool:Bool {return StringParser.boolean(self)}
     var nsColor:NSColor{return StringParser.nsColor(self)}
     var int:Int{return Int(self)!}
-    /*from relative to absolute URL*/
+    /**
+     * from user agnostic to absolute URL
+     */
     var tildePath:String {return NSString(string: self).expandingTildeInPath}/*Convenince*/
     /**
-     * Makes file paths user agnostic (~ instad of hardocded user)
-     * NOTE: from absolute to relative URL
+     * Makes file paths user agnostic (~ instad of hardcoded user)
+     * NOTE: from absolute to "relative" URL
+     * EXAMPLE: "Users/John/Desktop".tildify//Output:~/Desktop
      */
     var tildify:String {return NSString(string:self).abbreviatingWithTildeInPath}/*Convenince*/
     
