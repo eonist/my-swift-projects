@@ -31,7 +31,7 @@ class TextField:NSTextField,Trackable{
         
 //        customizeCursorColor(NSColor.blue)
         let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
-                fieldEditor.insertionPointColor = cursorColor
+//                fieldEditor.insertionPointColor = cursorColor
         fieldEditor.updateInsertionPointStateAndRestartTimer(true)
         
         //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];

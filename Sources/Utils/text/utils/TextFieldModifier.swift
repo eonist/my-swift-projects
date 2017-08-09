@@ -44,4 +44,10 @@ class TextFieldModifier {
         textField.frame.h = height/*SkinParser.height(this);*/
         //textField.setTextFormat(StylePropertyParser.textFormat(this));
     }
+    /**
+     * NOTE: Use self.selectText(self) to select all text
+     */
+    func setTextSelection(_ textField:NSTextField, _ start:Int,_ end:Int){
+        textField.currentEditor()?.selectedRange = NSRange(location: 0,length: 10)
+    }
 }
