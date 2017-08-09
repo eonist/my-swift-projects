@@ -1,4 +1,5 @@
 import Cocoa
+
 class FileAsserter{
     /**
      * EXAMPLE: FileAsserter.exists("~/Desktop/del.txt".tildePath)//true or false (remember to expand the tildePath)
@@ -9,13 +10,11 @@ class FileAsserter{
     /**
      * New
      */
-    static func hasContent() -> Bool{
-        return {
-            if let content = FileParser.contentOfDir(repoItem.localPath){
-                return !content.isEmpty
-            }else {
-                return false
-            }
+    static func hasContent(_ filePath:String) -> Bool{
+        if let content:[String] = FileParser.contentOfDir(filePath){
+            return !content.isEmpty
+        }else {
+            return false
         }
     }
 }
