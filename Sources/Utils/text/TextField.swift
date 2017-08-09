@@ -40,7 +40,9 @@ class TextField:NSTextField,Trackable{
 //            resignFirstResponder()
 //            self.window?.selectNextKeyView(self.superview)
 //            Swift.print("self.window!.firstResponder: " + "\(self.window!.firstResponder)")
-            
+            if self.isEditable {
+                window?.endEditing(for: nil)
+            }
             
         }
 //        return event
@@ -58,9 +60,7 @@ class TextField:NSTextField,Trackable{
                 Swift.print("mouseExited")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.arrow())
-            if self.isEditable {
-                window?.endEditing(for: nil)
-            }
+            
         }
         
     }
