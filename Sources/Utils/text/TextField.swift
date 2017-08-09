@@ -22,6 +22,7 @@ class TextField:NSTextField{
     /**/
     override func mouseDown(with theEvent:NSEvent) {
         Swift.print("TextField.mouseDown")
+        self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         super.mouseDown(with: theEvent)
     }
@@ -57,14 +58,11 @@ class TextField:NSTextField{
     }
     override func mouseEntered(with event: NSEvent) {
         Swift.print("mouseEntered")
-        let cursor:NSCursor = NSCursor.iBeam()
-        addCursorRect(frame, cursor:cursor)
-//        cursor.setOnMouseEntered(true)
-//         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
+        addCursorRect(frame, cursor:NSCursor.iBeam())
+//
     }
     override func mouseExited(with event: NSEvent) {
-        let cursor:NSCursor = NSCursor.arrow()  
-        addCursorRect(frame, cursor:cursor)
+        addCursorRect(frame, cursor:NSCursor.arrow())
         Swift.print("mouseExited")
         window?.endEditing(for: nil)
     }
