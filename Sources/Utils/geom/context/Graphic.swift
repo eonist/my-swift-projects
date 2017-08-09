@@ -6,7 +6,7 @@ import QuartzCore
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
  */
-class Graphic:InteractiveView,GraphicKind,CALayerDelegate{
+class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
     
 //swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
     typealias SelectorCallBack = ((_ layer:CALayer, _ ctx:CGContext) -> ())?
@@ -72,10 +72,8 @@ class Graphic:InteractiveView,GraphicKind,CALayerDelegate{
      * PARAM: owner is the instance that receives the interaction event
      * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
-    override func updateTrackingAreas() {
-        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
-        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+    override func updateTrackingAreas() {//move this to interactiveView i think
+        createTrackingArea([.activeAlways, .mouseMoved,.mouseEnteredAndExited])//TODO: should probaly not have mouseMoved here
         super.updateTrackingAreas()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
