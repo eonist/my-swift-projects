@@ -1,5 +1,5 @@
 import Foundation
 
-class TextFieldKind {
-
+protocol TextFieldKind {
+    
 }

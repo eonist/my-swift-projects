@@ -27,16 +27,20 @@ class TextField:NSTextField,Trackable{
         
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         
+        Swift.print("isEnabled: " + "\(isEnabled)")
         
+//        customizeCursorColor(NSColor.blue)
+        let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
+                fieldEditor.insertionPointColor = cursorColor
+        fieldEditor.updateInsertionPointStateAndRestartTimer(true)
         
-        customizeCursorColor(NSColor.blue)
         //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];
         //super.mouseDown(with: theEvent)
     }
-    func customizeCursorColor(_ cursorColor: NSColor) {
-        let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
-        fieldEditor.insertionPointColor = cursorColor
-    }
+//    func customizeCursorColor(_ cursorColor: NSColor) {
+//        let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
+//        fieldEditor.insertionPointColor = cursorColor
+//    }
     
     
 
