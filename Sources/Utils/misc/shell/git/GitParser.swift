@@ -3,7 +3,7 @@ class GitParser{
 	/**
 	 * Returns current git status
 	 * PARAM: localPath is the path to the target repository on your local machine (posix path)
-	 * NOTE: ~/someProject/someProject.git (use the ~ char if you want to access the users homve folder in OSX)
+	 * NOTE: ~/someProject/someProject.git (use the ~ char if you want to access the users home folder in macOS)
 	 * NOTE: the cd is to move manouver into the local repository path, the ; char ends the call so you can make another call
 	 * NOTE: To obtaine a more meaningfull list of items, create a metod that compiles a multidim accociative array derived from the text based staus
 	 * NOTE: Appending -s simplifies the ret msg or you can also use --porcelain which does the same
