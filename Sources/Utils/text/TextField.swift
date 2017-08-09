@@ -10,12 +10,12 @@ class TextField:NSTextField{
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
      */
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
-        Swift.print("TextField.hitTest aPoint: \(aPoint)")
-        //Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
+        Swift.print("TextField: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
         //let tempPos = self.convertPoint(aPoint,fromView:nil)
         //Swift.print("tempPos: " + "\(tempPos)")
-        
-        return super.hitTest(CGPoint(localPos().x,localPos().y))
+        let retVal = super.hitTest(CGPoint(localPos().x,localPos().y))
+        Swift.print("retVal: " + "\(retVal)")   
+        return retVal
     }
     /*override func mouseDown(with theEvent:NSEvent) {
         Swift.print("mouseDown")
@@ -40,23 +40,23 @@ class TextField:NSTextField{
         return event
     }*/
     override func textStorageWillProcessEditing(_ notification: Notification) {
-        //Swift.print("textStorageWillProcessEditing")
+        Swift.print("textStorageWillProcessEditing")
     }
     override func textStorageDidProcessEditing(_ notification: Notification) {
-        //Swift.print("textStorageDidProcessEditing")
+        Swift.print("textStorageDidProcessEditing")
     }
     override func textDidEndEditing(_ notification: Notification) {
-        //Swift.print("textDidEndEditing")
+        Swift.print("textDidEndEditing")
     }
     override func textDidBeginEditing(_ notification: Notification) {
-        //Swift.print("textDidBeginEditing \(self.stringValue)")
+        Swift.print("textDidBeginEditing \(self.stringValue)")
     }
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
         Swift.print("textShouldEndEditing")
         return super.textShouldEndEditing(textObject)
     }
     override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
-        //Swift.print("textShouldBeginEditing \(self.stringValue)")
+        Swift.print("textShouldBeginEditing \(self.stringValue)")
         return super.textShouldBeginEditing(textObject)
     }
     override func textDidChange(_ notification:Notification) {
