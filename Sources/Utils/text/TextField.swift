@@ -29,9 +29,15 @@ class TextField:NSTextField,Trackable{
         
         self.selectText(self)
         self.currentEditor()?.selectedRange = NSRange(location: 0,length: 10)
+        customizeCursorColor(NSColor.blue)
         //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];
-        super.mouseDown(with: theEvent)
+        //super.mouseDown(with: theEvent)
     }
+    func customizeCursorColor(_ cursorColor: NSColor) {
+        let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
+        fieldEditor.insertionPointColor = cursorColor
+    }
+
     /**/
     func onMouseDownOutside(_ event:NSEvent) -> Void/*NSEvent?*/{
 //        Swift.print("TextField.onMouseDownOutside event.type: \(event.type)")
