@@ -6,11 +6,7 @@ import Cocoa
  */
 class TextField:NSTextField{
 //    var mouseDownHandler:Any?
-    var trackingArea:NSTrackingArea {
-        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
-        trackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-    }
+    var trackingArea:NSTrackingArea?
     var monitor:Any?
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
@@ -57,7 +53,9 @@ class TextField:NSTextField{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        
+        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
+        trackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         super.updateTrackingAreas()
     }
     override func mouseEntered(with event: NSEvent) {
