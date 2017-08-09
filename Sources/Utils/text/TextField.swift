@@ -77,15 +77,15 @@ class TextField:NSTextField,Trackable{
         super.updateTrackingAreas()
     }
     
-   
-    override func becomeFirstResponder() -> Bool {
-        Swift.print("TextField.becomeFirstResponder: ")
-        return super.becomeFirstResponder()
-    }
-    override func resignFirstResponder() -> Bool {
-        Swift.print("TextField.resignFirstResponder: ")
-        return super.resignFirstResponder()
-    }
+//   
+//    override func becomeFirstResponder() -> Bool {
+//        Swift.print("TextField.becomeFirstResponder: ")
+//        return super.becomeFirstResponder()
+//    }
+//    override func resignFirstResponder() -> Bool {
+//        Swift.print("TextField.resignFirstResponder: ")
+//        return super.resignFirstResponder()
+//    }
     override func textStorageWillProcessEditing(_ notification: Notification) {
         Swift.print("textStorageWillProcessEditing")
     }
