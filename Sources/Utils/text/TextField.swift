@@ -57,11 +57,13 @@ class TextField:NSTextField,Trackable{
     //        addCursorRect(frame, cursor:NSCursor.arrow())
     //    }
     override func mouseExited(with event: NSEvent) {
-                Swift.print("mouseExited")
+                Swift.print("TextField.mouseExited")
 //        if self.isSelectable {
-            addCursorRect(frame, cursor:NSCursor.arrow())
+        
             discardCursorRects()
-        resetCursorRects()
+            resetCursorRects()
+        addCursorRect(frame, cursor:NSCursor.arrow())
+        Swift.print("set arrow cursor")
 //        }
         
     }
@@ -73,7 +75,7 @@ class TextField:NSTextField,Trackable{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        self.createTrackingArea([.activeAlways,.mouseEnteredAndExited])
+        self.createTrackingArea([.activeAlways,.mouseEnteredAndExited,.mouseMoved])
         
         super.updateTrackingAreas()
     }
