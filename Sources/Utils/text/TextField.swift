@@ -59,7 +59,7 @@ class TextField:NSTextField{
         super.updateTrackingAreas()
     }
     override func mouseEntered(with event: NSEvent) {
-        Swift.print("mouseEntered")
+//        Swift.print("mouseEntered")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.iBeam())
         }
@@ -68,7 +68,7 @@ class TextField:NSTextField{
 //        addCursorRect(frame, cursor:NSCursor.arrow())
 //    }
     override func mouseExited(with event: NSEvent) {
-        Swift.print("mouseExited")
+//        Swift.print("mouseExited")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.arrow())
             if self.isEditable {
