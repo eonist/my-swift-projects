@@ -10,7 +10,7 @@ class TextField:NSTextField{
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
      */
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
-        Swift.print("TextField: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
+//        Swift.print("TextField: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
         //let tempPos = self.convertPoint(aPoint,fromView:nil)
         //Swift.print("tempPos: " + "\(tempPos)")
         let retVal = super.hitTest(CGPoint(localPos().x,localPos().y))
@@ -30,7 +30,8 @@ class TextField:NSTextField{
     /**/
     func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
         Swift.print("onMouseDownOutside")
-        if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
+        let p = window?.mouseLocationOutsideOfEventStream//self.locationInWindow
+        if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
             if(mouseDownHandler != nil) {
                 NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
                 mouseDownHandler = nil//<--this part may not be needed
