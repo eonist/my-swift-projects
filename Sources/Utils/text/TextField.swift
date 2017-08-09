@@ -28,7 +28,7 @@ class TextField:NSTextField,Trackable{
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         
         self.selectText(self)
-        self.currentEditor()?.selectedRange = NSRange(location: 0,length: 10)
+        
         customizeCursorColor(NSColor.blue)
         //[[textField currentEditor] setSelectedRange:NSMakeRange([[textField stringValue] length], 0)];
         //super.mouseDown(with: theEvent)
@@ -37,6 +37,8 @@ class TextField:NSTextField,Trackable{
         let fieldEditor = self.window?.fieldEditor(true, for: self) as! NSTextView
         fieldEditor.insertionPointColor = cursorColor
     }
+    
+    
 
     /**/
     func onMouseDownOutside(_ event:NSEvent) -> Void/*NSEvent?*/{
@@ -45,7 +47,9 @@ class TextField:NSTextField,Trackable{
         if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
 //            Swift.print("you click outside")
             NSEvent.removeMonitor(&self.monitor)//we remove the evenListener as its done its job
-            
+            if self.isEditable {
+                window?.endEditing(for: nil)
+            }
         }
 //            self.window!.makeFirstResponder(self.window!.contentView)//resigns the NSTextField caret focus
 //            resignFirstResponder()
@@ -82,9 +86,7 @@ class TextField:NSTextField,Trackable{
 //        Swift.print("mouseExited")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.arrow())
-            if self.isEditable {
-                window?.endEditing(for: nil)
-            }
+            
         }
         
     }
