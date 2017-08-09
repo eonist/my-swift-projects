@@ -9,7 +9,7 @@ struct CommitMessage{
     }
 }
 extension CommitMessage{
-    var dummyData:CommitMessage {
+    static var dummyData:CommitMessage {
         return CommitMessage("Fixed bug","Lots of bugs")
     }
 }
