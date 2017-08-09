@@ -1,8 +1,9 @@
 import Cocoa
 /**
  * Simplifies interaction with the NSTextField
- * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to
+ * TODO: ⚠️️ Text carat is not showing. Try creating a bare NSTextField and figure it out, its probalt due to textattribution
  * characterIndexForPoint could be handy
+ *
  */
 class TextField:NSTextField,Trackable{
 //    var mouseDownHandler:Any?
