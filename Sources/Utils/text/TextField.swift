@@ -2,6 +2,7 @@ import Cocoa
 /**
  * Simplifies interaction with the NSTextField
  * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to
+ * characterIndexForPoint
  */
 class TextField:NSTextField{
 //    var mouseDownHandler:Any?
@@ -23,6 +24,7 @@ class TextField:NSTextField{
     override func mouseDown(with theEvent:NSEvent) {
         Swift.print("TextField.mouseDown")
         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
+        
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         super.mouseDown(with: theEvent)
     }
@@ -58,13 +60,22 @@ class TextField:NSTextField{
     }
     override func mouseEntered(with event: NSEvent) {
         Swift.print("mouseEntered")
-        addCursorRect(frame, cursor:NSCursor.iBeam())
-//
+        if self.isSelectable {
+            addCursorRect(frame, cursor:NSCursor.iBeam())
+        }
     }
+//    override func resetCursorRects() {
+//        addCursorRect(frame, cursor:NSCursor.arrow())
+//    }
     override func mouseExited(with event: NSEvent) {
-        addCursorRect(frame, cursor:NSCursor.arrow())
         Swift.print("mouseExited")
-        window?.endEditing(for: nil)
+        if self.isSelectable {
+            addCursorRect(frame, cursor:NSCursor.arrow())
+            if self.isEditable {
+                window?.endEditing(for: nil)
+            }
+        }
+        
     }
 //    override func becomeFirstResponder() -> Bool {
 //        Swift.print("TextField.becomeFirstResponder: ")

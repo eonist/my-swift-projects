@@ -17,7 +17,7 @@ enum TextFormatConstants:String {
     case password = "password"
 }
 extension TextFormatConstants{
-    static var textFormatPropertyNames:[String] {
+    static let textFormatPropertyNames:[String] = {
         return [
             TextFormatConstants.size.rawValue,
             TextFormatConstants.font.rawValue,
@@ -34,5 +34,5 @@ extension TextFormatConstants{
             TextFormatConstants.leading.rawValue,
             TextFormatConstants.password.rawValue
         ]
-    }
+    }()
 }
