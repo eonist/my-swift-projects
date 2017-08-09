@@ -53,7 +53,7 @@ class TextField:NSTextField{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        
+        [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited]
         super.updateTrackingAreas()
     }
     override func mouseEntered(with event: NSEvent) {
@@ -130,10 +130,10 @@ extension Trackable{
     /**
      * New
      */
-    mutating func createTrackingArea(){
+    mutating func createTrackingArea(_ options:NSTrackingAreaOptions = [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited]){
         if let trackingArea = self.trackingArea {
             self.removeTrackingArea(trackingArea)/*remove old trackingArea if it exists*/
-            let newTrackingArea = NSTrackingArea(rect: self.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
+            let newTrackingArea = NSTrackingArea(rect: self.frame, options: options, owner: self, userInfo: nil)
             self.trackingArea = newTrackingArea
             self.addTrackingArea(newTrackingArea)//<--This will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         }
