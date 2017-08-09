@@ -35,7 +35,7 @@ class TextField:NSTextField,Trackable{
         if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
 //            Swift.print("you click outside")
             NSEvent.removeMonitor(&self.monitor)//we remove the evenListener as its done its job
-            
+            self.selectText(<#T##sender: Any?##Any?#>)
 //            self.window!.makeFirstResponder(self.window!.contentView)//resigns the NSTextField caret focus
 //            resignFirstResponder()
 //            self.window?.selectNextKeyView(self.superview)
