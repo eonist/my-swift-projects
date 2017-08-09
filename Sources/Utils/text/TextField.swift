@@ -26,9 +26,11 @@ class TextField:NSTextField,Trackable{
         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
         
         NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
+        
+        
         super.mouseDown(with: theEvent)
     }
-
+   
     /**/
     func onMouseDownOutside(_ event:NSEvent) -> Void/*NSEvent?*/{
 //        Swift.print("TextField.onMouseDownOutside event.type: \(event.type)")
@@ -88,36 +90,36 @@ class TextField:NSTextField,Trackable{
 //        return super.resignFirstResponder()
 //    }
     override func textStorageWillProcessEditing(_ notification: Notification) {
-//        Swift.print("textStorageWillProcessEditing")
+        Swift.print("textStorageWillProcessEditing")
     }
     override func textStorageDidProcessEditing(_ notification: Notification) {
-//        Swift.print("textStorageDidProcessEditing")
+        Swift.print("textStorageDidProcessEditing")
     }
     override func textDidEndEditing(_ notification: Notification) {
-//        Swift.print("textDidEndEditing")
+        Swift.print("textDidEndEditing")
         
     }
     override func controlTextDidEndEditing(_ obj: Notification) {
-//        Swift.print("controlTextDidEndEditing")
+        Swift.print("controlTextDidEndEditing")
     }
     override func textDidBeginEditing(_ notification: Notification) {
-//        Swift.print("textDidBeginEditing \(self.stringValue)")
+        Swift.print("textDidBeginEditing \(self.stringValue)")
     }
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
-//        Swift.print("textShouldEndEditing")
+        Swift.print("textShouldEndEditing")
         return super.textShouldEndEditing(textObject)
     }
     override func textShouldBeginEditing(_ textObject: NSText) -> Bool {
-//        Swift.print("textShouldBeginEditing \(self.stringValue)")
+        Swift.print("textShouldBeginEditing \(self.stringValue)")
         return super.textShouldBeginEditing(textObject)
     }
     override func textDidChange(_ notification:Notification) {
 //        Swift.print("textDidChange \(self.stringValue)")
         if(self.superview is EventSendable){
-//            Swift.print("superview is EventSendable")
+            Swift.print("superview is EventSendable")
             (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
         }else{
-//            Swift.print("superview is NOT EventSendable")
+            Swift.print("superview is NOT EventSendable")
         }
         super.textDidChange(notification)
     }
