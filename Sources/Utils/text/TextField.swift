@@ -58,10 +58,11 @@ class TextField:NSTextField,Trackable{
     //    }
     override func mouseExited(with event: NSEvent) {
                 Swift.print("mouseExited")
-        if self.isSelectable {
+//        if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.arrow())
-            
-        }
+            discardCursorRects()
+        resetCursorRects()
+//        }
         
     }
     /**
