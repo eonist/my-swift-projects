@@ -4,7 +4,7 @@ import Cocoa
  * TODO: ⚠️️ There are some mouseOut/focusOut problems with this UI component, its probably due to
  * characterIndexForPoint
  */
-class TextField:NSTextField{
+class TextField:NSTextField,Trackable{
 //    var mouseDownHandler:Any?
     var trackingArea:NSTrackingArea?
     var monitor:Any?
@@ -53,7 +53,8 @@ class TextField:NSTextField{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited]
+        self.createTrackingArea([.activeAlways, .mouseMoved,.mouseEnteredAndExited])
+        
         super.updateTrackingAreas()
     }
     override func mouseEntered(with event: NSEvent) {
@@ -119,18 +120,18 @@ class TextField:NSTextField{
     }
 }
 
-protocol Trackable{
+protocol Trackable:class{
     var trackingArea:NSTrackingArea? {get set}
     func removeTrackingArea(_ trackingArea:NSTrackingArea)
     func addTrackingArea(_ trackingArea:NSTrackingArea)
-    func createTrackingArea() -> Void
+//    func createTrackingArea() -> Void
     var frame:NSRect {get}
 }
 extension Trackable{
     /**
      * New
      */
-    mutating func createTrackingArea(_ options:NSTrackingAreaOptions = [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited]){
+    func createTrackingArea(_ options:NSTrackingAreaOptions = [.activeAlways, .mouseMoved,.mouseEnteredAndExited]){
         if let trackingArea = self.trackingArea {
             self.removeTrackingArea(trackingArea)/*remove old trackingArea if it exists*/
             let newTrackingArea = NSTrackingArea(rect: self.frame, options: options, owner: self, userInfo: nil)
