@@ -18,30 +18,31 @@ class TextField:NSTextField{
         return retVal
     }
     /**/
-    override func mouseDown(with theEvent:NSEvent) {
-        Swift.print("mouseDown")
-        if(mouseDownHandler == nil) {
-            mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler: self.onMouseDownOutside)/*we add a global mouse move event listener*/
-        }else {
-            fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")
-        }
-        super.mouseDown(with: theEvent)
-    }
+//    override func mouseDown(with theEvent:NSEvent) {
+//        Swift.print("mouseDown")
+//        if(mouseDownHandler == nil) {
+//            mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler: self.onMouseDownOutside)/*we add a global mouse move event listener*/
+//        }else {
+//            fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")
+//        }
+//        super.mouseDown(with: theEvent)
+//    }
     /**/
-    func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
-        Swift.print("onMouseDownOutside")
-        let p = window?.mouseLocationOutsideOfEventStream//self.locationInWindow
-        if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
-            if(mouseDownHandler != nil) {
-                NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
-                mouseDownHandler = nil//<--this part may not be needed
-            }else{
-                fatalError("Should not be possible")
-            }
-            self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
-        }
-        return event
-    }
+//    func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
+//        Swift.print("onMouseDownOutside")
+//        let p = window?.mouseLocationOutsideOfEventStream//self.locationInWindow
+//        if(hitTest(p!) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
+//            if(mouseDownHandler != nil) {
+//                NSEvent.removeMonitor(mouseDownHandler!)//we remove the evenListener as its done its job
+//                mouseDownHandler = nil//<--this part may not be needed
+//            }else{
+//                fatalError("Should not be possible")
+//            }
+//            self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
+//        }
+//        return event
+//    }
+    
     override func textStorageWillProcessEditing(_ notification: Notification) {
         Swift.print("textStorageWillProcessEditing")
     }
@@ -50,6 +51,7 @@ class TextField:NSTextField{
     }
     override func textDidEndEditing(_ notification: Notification) {
         Swift.print("textDidEndEditing")
+        
     }
     override func textDidBeginEditing(_ notification: Notification) {
         Swift.print("textDidBeginEditing \(self.stringValue)")
