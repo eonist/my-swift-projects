@@ -14,10 +14,11 @@ class TextField:NSTextField{
         //let tempPos = self.convertPoint(aPoint,fromView:nil)
         //Swift.print("tempPos: " + "\(tempPos)")
         let retVal = super.hitTest(CGPoint(localPos().x,localPos().y))
-        Swift.print("retVal: " + "\(retVal)")   
+//        Swift.print("retVal: " + "\(retVal)")
         return retVal
     }
-    /*override func mouseDown(with theEvent:NSEvent) {
+    /**/
+    override func mouseDown(with theEvent:NSEvent) {
         Swift.print("mouseDown")
         if(mouseDownHandler == nil) {
             mouseDownHandler = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown], handler: self.onMouseDownOutside)/*we add a global mouse move event listener*/
@@ -25,8 +26,9 @@ class TextField:NSTextField{
             fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")
         }
         super.mouseDown(with: theEvent)
-    }*/
-    /*func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
+    }
+    /**/
+    func onMouseDownOutside(_ event:NSEvent) -> NSEvent?{
         Swift.print("onMouseDownOutside")
         if(hitTest(event.localPos(self)) == nil){//if you click outside the NSTextField then this will take care of resiging the caret of the text
             if(mouseDownHandler != nil) {
@@ -38,7 +40,7 @@ class TextField:NSTextField{
             self.window?.makeFirstResponder(nil)//resigns the NSTextField caret focus
         }
         return event
-    }*/
+    }
     override func textStorageWillProcessEditing(_ notification: Notification) {
         Swift.print("textStorageWillProcessEditing")
     }
