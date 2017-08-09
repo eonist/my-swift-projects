@@ -48,7 +48,7 @@ class TextField:NSTextField{
      * NOTE: the only way to update trackingArea is to remove it and add a new one
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      * PARAM: owner is the instance that receives the interaction event
-     * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
+     * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}/*remove old trackingArea if it exists*/
