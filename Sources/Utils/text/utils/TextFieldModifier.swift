@@ -5,7 +5,7 @@ class TextFieldModifier {
      * TODO: Border color?
      */
     static func applyTextFormat(_ textField:NSTextField,_ textFormat:TextFormat){
-        Swift.print("TextFieldModifier.applyTextFormat")
+//        Swift.print("TextFieldModifier.applyTextFormat")
         textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
         textField.isSelectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clear
@@ -17,7 +17,7 @@ class TextFieldModifier {
         textField.isEditable = textFormat.type == "input"
         textField.focusRingType = NSFocusRingType.none//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
         textField.isBordered = textFormat.border//<--This doesn't work in Live Edit mode
-        //textField.maximumNumberOfLines = 1//<---cant get these to work yet
+        //textField.maximumNumberOfLines = 1//<---can't get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
 //        Swift.print("textFormat.leading: " + "\(textFormat.leading)")
         let leadingYOffset:CGFloat = textFormat.leading.isNaN ? 0 : textFormat.size - textFormat.leading
