@@ -29,7 +29,7 @@ class ShellUtils{
         //TODO: This line bellow was $0.encode().decode() to allow % chars, But if your input is already encoded to support space, then you get double encoded content.
         arguments = arguments.map {$0.decode()!}
         //Swift.print("block of interest start")
-        arguments.forEach{Swift.print("$0: >\($0)<")}
+//        arguments.forEach{Swift.print("$0: >\($0)<")}
         //Swift.print("block of interest end")
         let task = Process()
 //        Swift.print("Process(): ")
