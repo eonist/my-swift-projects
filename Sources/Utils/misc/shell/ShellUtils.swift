@@ -14,7 +14,7 @@ class ShellUtils{
     static func run(_ input: String, _ cd:String = "") /*throws*/ -> String {
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
         _ = terminationStatus
-//        Swift.print("terminationStatus: " + "\(terminationStatus)")
+        Swift.print("terminationStatus: " + "\(terminationStatus)")
         return output
     }
     /**
