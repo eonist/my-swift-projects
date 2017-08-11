@@ -1,5 +1,9 @@
 import Foundation
-
+/**
+ * PARAM: remotePath: github.com/john/demo.git
+ * PARAM: localPath: Users/John/dev/demo
+ * PARAM: master
+ */
 struct GitRepo{
     var localPath:String, remotePath:String, branch:String
     init(_ localPath:String,_ remotePath:String,_ branch:String){
@@ -10,18 +14,18 @@ struct GitRepo{
 }
 extension GitRepo{
     /**
-     * New
+     * Creates a GitRepo instance by removing the https:// from the remotePath
      * PARAM: remotePath: https://github.com/john/demo.git
      * PARAM: localPath: Users/John/dev/demo
      */
-    static func gitRepo(localPath:String, remotePath:String, branch:String)-> GitRepo {
+    static func gitRepo(_ localPath:String, _ remotePath:String, _ branch:String)-> GitRepo {
         let remotePath:String = {
-            if self.remote.test("^https://.+$") {
-                return self.remote.subString(8, self.remote.count)}/*support for partial and full url,strip away the https://, since this will be added later*/
+            if remotePath.test("^https://.+$") {
+                return remotePath.subString(8, remotePath.count)}/*support for partial and full url,strip away the https://, since this will be added later*/
             else {
-                return self.remote
+                return remotePath
             }
         }()
-        return GitRepo(self.local, remotePath, self.branch)
-    }//temp
+        return GitRepo(localPath, remotePath, branch)
+    }
 }
