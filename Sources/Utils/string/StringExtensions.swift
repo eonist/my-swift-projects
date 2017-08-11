@@ -107,6 +107,24 @@ extension String {
     func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
     var isLowerCased:Bool {return StringAsserter.lowerCase(self)}
 }
+
+/**
+ * Asserters
+ */
+extension String{
+    func beginsWith(_ prefix:String)->Bool{
+        return self.hasPrefix(prefix)
+    }
+    func endsWith(_ suffix:String)->Bool{
+        return self.hasSuffix(suffix)
+    }
+}
+/**
+ * Parsers
+ */
+/**
+ * Modifiers
+ */
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
 }

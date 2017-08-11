@@ -4,7 +4,7 @@ class StringParser{
         static let digit:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
         static let path:String = "^.*?\\/(?=\\w*?\\.\\w*?$)"
         static let fileName:String = "^.*?\\/(\\w*?\\.\\w*?$)"
-        static let colorHex:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$";
+        static let colorHex:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$"
     }
     /**
      * Returns encode text (escaped)

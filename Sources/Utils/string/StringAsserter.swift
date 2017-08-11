@@ -23,7 +23,7 @@ class StringAsserter{
     /**
      * Asserts if PARAM: str ends with PARAM: suffix
      */
-    static func endWith(_ str:String, _ suffix:String)->Bool{
+    static func endsWith(_ str:String, _ suffix:String)->Bool{
         return str.hasSuffix(suffix)
     }
     /**
