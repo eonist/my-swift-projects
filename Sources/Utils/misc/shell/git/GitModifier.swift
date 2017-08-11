@@ -122,7 +122,6 @@ class GitModifier{
     * NOTE: Cloning automatically creates a remote connection called "origin" pointing back to the original repository.
     * NOTE: git clone <repo> <directory>
     * NOTE: this will create the folders if they dont exist, even nested
-    * IMPORTANT: ⚠️️ This method cant clone into existing folders. Use GitUtils.manualClone for this
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
         let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
