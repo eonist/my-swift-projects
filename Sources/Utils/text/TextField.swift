@@ -59,16 +59,19 @@ class TextField:NSTextField,Trackable{
         super.mouseEntered(with: event)
        
     }
+    override func resetCursorRects() {
+        //
+    }
     //    override func resetCursorRects() {
     //        addCursorRect(frame, cursor:NSCursor.arrow())
     //    }
     override func mouseExited(with event: NSEvent) {
-        Swift.print("mouseExited self.isSelectable:\(self.isSelectable)")
-//        let arrowCursor = NSCursor.arrow()
-//        
-//        addCursorRect(frame, cursor:arrowCursor)
-        resetCursorRects()
-        discardCursorRects()
+        Swift.print("mouseExited self.isSelectable:\(self.isSelectable  )")
+        let arrowCursor = NSCursor.arrow()
+        
+        addCursorRect(frame, cursor:arrowCursor)
+//        resetCursorRects()
+//        discardCursorRects()
         
         super.mouseExited(with: event)
 //                Swift.print("TextField.mouseExited")
