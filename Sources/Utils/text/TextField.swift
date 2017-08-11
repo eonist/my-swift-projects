@@ -9,6 +9,23 @@ class TextField:NSTextField,Trackable{
 //    var mouseDownHandler:Any?
     var trackingArea:NSTrackingArea?
     var monitor:Any?
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        if self.isSelectable {
+            let textCursor = NSCursor.iBeam()
+            textCursor.setOnMouseExited(false)
+            textCursor.setOnMouseEntered(true)
+            addCursorRect(frame, cursor:textCursor)
+        }
+        
+        
+        let arrowCursor = NSCursor.arrow()
+        arrowCursor.setOnMouseExited(true)
+        arrowCursor.setOnMouseEntered(false)
+        addCursorRect(frame, cursor:arrowCursor)
+    }
+    
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
     /**
      * NOTE: You must use InteractiveView as a parent for this class to work
      * NOTE: the hitTesting bellow is the only combination I found that will give a correct hit. the x can also be derived from the
@@ -50,18 +67,7 @@ class TextField:NSTextField,Trackable{
     }
     override func mouseEntered(with event: NSEvent) {
 //                Swift.print("mouseEntered")
-        if self.isSelectable {
-            let textCursor = NSCursor.iBeam()
-            textCursor.setOnMouseExited(false)
-            textCursor.setOnMouseEntered(true)
-            addCursorRect(frame, cursor:textCursor)
-        }
         
-        
-        let arrowCursor = NSCursor.arrow()
-        arrowCursor.setOnMouseExited(true)
-        arrowCursor.setOnMouseEntered(false)
-        addCursorRect(frame, cursor:arrowCursor)
     }
     //    override func resetCursorRects() {
     //        addCursorRect(frame, cursor:NSCursor.arrow())
