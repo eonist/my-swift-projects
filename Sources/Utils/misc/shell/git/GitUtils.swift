@@ -43,7 +43,7 @@ class GitUtils{
         let gitRepo:GitRepo = GitRepo.gitRepo(localPath,  remotePath,  branch)
         
         _ = GitModifier.fetch(gitRepo)
-        _ = GitModifier.checkOut(localPath, "origin/"+branch, "")
+        _ = GitModifier.checkOut(localPath, branch, "")
 //        _ = GitModifier.pull(gitRepo)//downloads files
         
 //        Swift.print("fetch1.completed")
