@@ -105,6 +105,7 @@ class GitModifier{
     */
    static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
        let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.add + " " + Git.origin + " " + remoteRepoPath//<-this could be the " sign
+        //StringModifier.wrapWith(remoteRepoPath, "'")
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
