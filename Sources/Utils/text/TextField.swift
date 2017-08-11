@@ -49,37 +49,19 @@ class TextField:NSTextField,Trackable{
         }
 //        return event
     }
-//    override func cursorUpdate(with event: NSEvent) {
-//        Swift.print("cursorUpdate")
-//    }
     override func mouseEntered(with event: NSEvent) {
-                Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
+        Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
         if self.isSelectable {
-//            discardCursorRects()
-//            let textCursor =
-            
-            addCursorRect(frame, cursor:NSCursor.iBeam())
+            addCursorRect(frame, cursor:NSCursor.iBeam())//sets the default text cursor
         }
         super.mouseEntered(with: event)
        
     }
-    override func resetCursorRects() {
-        //
-    }
-    //    override func resetCursorRects() {
-    //        addCursorRect(frame, cursor:NSCursor.arrow())
-    //    }
+   
     override func mouseExited(with event: NSEvent) {
         Swift.print("mouseExited self.isSelectable:\(self.isSelectable  )")
-//        discardCursorRects()
-//        cursorUpdate(with: event)
-//        let arrowCursor =
-        
-//        addCursorRect(frame, cursor:NSCursor.arrow())
-        resetCursorRects()
-        cursorUpdate(with: event)
-
-//        super.mouseExited(with: event)
+        resetCursorRects()//reset to default mouse Cursor
+        cursorUpdate(with: event)//<-- ⚠️️ this is important to call or you might get stuck ibeam cursors
     }
     /**
      * NOTE: you should use bounds for the rect but we dont rotate the frame so we don't need to use bounds.
