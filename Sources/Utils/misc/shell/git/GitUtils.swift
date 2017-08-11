@@ -62,7 +62,8 @@ class GitUtils{
     static func commitCount(_ localRepoPath:String) -> String{
         let shellScript:String = Git.path + Git.git + " " + "rev-list HEAD --count"
         var result:String = ShellUtils.run(shellScript,localRepoPath)
-        result = result.trim("\n")/*the result sometimes has a trailing line-break, this must be removed*/
+        guard result.isEmpty else{return "0"}
+        guard result.endsWith("\n") ? result.trimRight("\n") : result/*the result sometimes has a trailing line-break, this must be removed*/
         return result
     }
     /**
