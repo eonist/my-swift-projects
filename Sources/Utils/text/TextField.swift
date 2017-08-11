@@ -50,7 +50,7 @@ class TextField:NSTextField,Trackable{
 //        return event
     }
     override func mouseEntered(with event: NSEvent) {
-        Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
+//        Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
         if self.isSelectable {
             addCursorRect(frame, cursor:NSCursor.iBeam())//sets the default text cursor
         }
@@ -59,7 +59,7 @@ class TextField:NSTextField,Trackable{
     }
    
     override func mouseExited(with event: NSEvent) {
-        Swift.print("mouseExited self.isSelectable:\(self.isSelectable  )")
+//        Swift.print("mouseExited self.isSelectable:\(self.isSelectable  )")
         resetCursorRects()//reset to default mouse Cursor
         cursorUpdate(with: event)//<-- ⚠️️ this is important to call or you might get stuck ibeam cursors
     }
