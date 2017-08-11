@@ -61,8 +61,9 @@ class TextField:NSTextField,Trackable{
 //                Swift.print("TextField.mouseExited")
 //        if self.isSelectable {
         
-            discardCursorRects()
+//            discardCursorRects()
             resetCursorRects()
+         
             addCursorRect(frame, cursor:NSCursor.arrow())
 //            Swift.print("set arrow cursor")
 //        }
