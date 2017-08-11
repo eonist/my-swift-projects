@@ -28,7 +28,7 @@ class GitUtils{
 	/**
 	 * Manually clone a git to a local folder
 	 * NOTE:  same as clone but differs in that it clones into an existing folder
-	 * TODO: this method is wrong see git workflows on gitsyncs github.com
+	 * TODO: ⚠️️ this method is wrong see git workflows on gitsyncs github.com
 	 */
     static func manualClone(_ localPath:String, _ remotePath:String, _ branch:String = "master"){
         Swift.print("manualClone started")
@@ -42,7 +42,7 @@ class GitUtils{
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = .init(localPath,  remotePath,  branch)
         
-        _ = GitModifier.pull(gitRepo)
+        _ = GitModifier.pull(gitRepo)//downloads files
 //        _ = GitModifier.fetch(gitRepo)
 //        Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
