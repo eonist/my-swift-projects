@@ -46,7 +46,18 @@ class FileModifier{
         }
         return false
     }
-    
+    static func createDir(_ path:String){
+        
+//        
+//        let documentsPath1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
+//        let logsPath = documentsPath1.appendingPathComponent("data")
+//        print(logsPath!)
+        do {
+            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            NSLog("Unable to create directory \(error.debugDescription)")
+        }
+    }
     /**
      * Deletes a file at PARAM: path
      */
