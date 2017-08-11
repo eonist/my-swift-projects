@@ -42,11 +42,13 @@ class GitUtils{
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = GitRepo.gitRepo(localPath,  remotePath,  branch)
         
-        _ = GitModifier.pull(gitRepo)//downloads files
-//        _ = GitModifier.fetch(gitRepo)
+        _ = GitModifier.fetch(gitRepo)
+        _ = GitModifier.checkOut(localPath, "origin/"+branch, "")
+//        _ = GitModifier.pull(gitRepo)//downloads files
+        
 //        Swift.print("fetch1.completed")
 		//--"git fetch origin master" <--Download the latest .git data
-//        _ = GitModifier.checkOut(localPath, "origin/"+branch, "")
+//
 //        Swift.print("checkOut.completed")
 		//--"git checkout master" <-- Switches to the master branch (if you are already there then skip this)
 //        _ = GitModifier.fetch(gitRepo)
