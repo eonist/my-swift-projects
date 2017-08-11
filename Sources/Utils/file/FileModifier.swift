@@ -46,6 +46,7 @@ class FileModifier{
         }
         return false
     }
+    
     /**
      * Deletes a file at PARAM: path
      */
