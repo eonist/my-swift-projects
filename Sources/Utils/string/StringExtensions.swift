@@ -7,6 +7,24 @@ extension String {
     init(_ value:CGFloat){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Int){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Bool){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
+}
+/**
+ * Asserters
+ */
+extension String{
+    var bool:Bool {return StringParser.boolean(self)}
+    var isLowerCased:Bool {return StringAsserter.lowerCase(self)}
+    func beginsWith(_ prefix:String)->Bool{
+        return self.hasPrefix(prefix)
+    }
+    func endsWith(_ suffix:String)->Bool{
+        return self.hasSuffix(suffix)
+    }
+}
+/**
+ * Parsers
+ */
+extension String{
     /**
      * EXAMPLE: "this is cool".split(" ")//output: ["this","is","cool"]
      */
@@ -46,6 +64,7 @@ extension String {
     func indexOf(_ b:String)->Int{/*Convenince*/
         return StringParser.indexOf(self, b)
     }
+    
     func trim(_ leftAndRight:Character)->String{/*Convenince*/
         return StringParser.trim(self, leftAndRight)
     }
@@ -54,9 +73,6 @@ extension String {
     }
     func trimLeft(_ left:Character)->String{/*Convenince*/
         return StringParser.trimLeft(self, left)
-    }
-    func insertCharsAt(_ charsAndIndicies:[(char:Character,index:Int)])->String{
-        return StringModifier.insertCharsAt(self, charsAndIndicies)
     }
     func idx(_ index:Int) -> String.Index{
         return StringParser.idx(self, index)
@@ -74,6 +90,7 @@ extension String {
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
         return StringParser.array(self, cast)
     }
+    
     /**
      * CAUTION: if you do "0xFF0000FF".uint it will give the wrong value, use UInt(Double("")!) instead for cases like that
      */
@@ -86,9 +103,15 @@ extension String {
     var url:URL {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
     var content:String? {return FileParser.content(self.tildePath)}
-    var bool:Bool {return StringParser.boolean(self)}
+    
     var nsColor:NSColor{return StringParser.nsColor(self)}
     var int:Int{return Int(self)!}
+    
+    
+    var count:Int{return self.characters.count}/*Convenince*/
+    var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
+    var double:Double{return Double(self)!}
+    var json:Any? {return JSONParser.json(self)}
     /**
      * from user agnostic to absolute URL
      */
@@ -99,32 +122,16 @@ extension String {
      * EXAMPLE: "Users/John/Desktop".tildify//Output:~/Desktop
      */
     var tildify:String {return NSString(string:self).abbreviatingWithTildeInPath}/*Convenince*/
-    
-    var count:Int{return self.characters.count}/*Convenince*/
-    var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
-    var double:Double{return Double(self)!}
-    var json:Any? {return JSONParser.json(self)}
-    func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
-    var isLowerCased:Bool {return StringAsserter.lowerCase(self)}
 }
-
-/**
- * Asserters
- */
-extension String{
-    func beginsWith(_ prefix:String)->Bool{
-        return self.hasPrefix(prefix)
-    }
-    func endsWith(_ suffix:String)->Bool{
-        return self.hasSuffix(suffix)
-    }
-}
-/**
- * Parsers
- */
 /**
  * Modifiers
  */
+extension String{
+    func insertCharsAt(_ charsAndIndicies:[(char:Character,index:Int)])->String{
+        return StringModifier.insertCharsAt(self, charsAndIndicies)
+    }
+    func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
+}
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
 }
