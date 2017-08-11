@@ -51,8 +51,17 @@ class TextField:NSTextField,Trackable{
     override func mouseEntered(with event: NSEvent) {
 //                Swift.print("mouseEntered")
         if self.isSelectable {
-           
+            let textCursor = NSCursor.iBeam()
+            textCursor.setOnMouseExited(false)
+            textCursor.setOnMouseEntered(true)
+            addCursorRect(frame, cursor:textCursor)
         }
+        
+        
+        let arrowCursor = NSCursor.arrow()
+        arrowCursor.setOnMouseExited(true)
+        arrowCursor.setOnMouseEntered(false)
+        addCursorRect(frame, cursor:arrowCursor)
     }
     //    override func resetCursorRects() {
     //        addCursorRect(frame, cursor:NSCursor.arrow())
