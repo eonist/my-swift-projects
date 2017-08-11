@@ -40,7 +40,7 @@ class GitUtils{
 		_ = GitModifier.attachRemoteRepo(localPath, remotePath)
         Swift.print("attachRemoteRepo.completed")
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
-        let gitRepo:GitRepo = .init()
+        let gitRepo:GitRepo = GitRepo.gitRepo(localPath,  remotePath,  branch)
         
         _ = GitModifier.pull(gitRepo)//downloads files
 //        _ = GitModifier.fetch(gitRepo)
