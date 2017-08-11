@@ -15,10 +15,10 @@ extension String{
     var bool:Bool {return StringParser.boolean(self)}
     var isLowerCased:Bool {return StringAsserter.lowerCase(self)}
     func beginsWith(_ prefix:String)->Bool{
-        return self.hasPrefix(prefix)
+        return StringAsserter.beginsWith(self, prefix)
     }
     func endsWith(_ suffix:String)->Bool{
-        return self.hasSuffix(suffix)
+        return StringAsserter.endsWith(self,suffix)
     }
 }
 /**

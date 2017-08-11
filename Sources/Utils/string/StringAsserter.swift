@@ -11,6 +11,9 @@ class StringAsserter{
 	static func isWrappedWith(_ string:String, _ char:Character)->Bool{
 		return (string.characters.first == char) && (string.characters.last == char)
 	}
+    static func isWrappedWith(_ string:String, _ str:String)->Bool{
+        return string.endsWith(str) && string.beginsWith(str)
+    }
 	/**
 	 *	Asserts whether the specified string begins with the spcified prefix.
 	 *	PARAM: string: The string that the prefix will be checked against.
