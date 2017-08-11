@@ -39,7 +39,9 @@ class GitParser{
 	 */
 	static func originUrl(_ localPath:String)->String{
 		let shellScript:String = Git.path + Git.git + " " + Git.config + " --get remote.origin.url"
-		return ShellUtils.run(shellScript,localPath).trimRight("\n")//<--new, may crash if ther eis no originURL etc
+		let retVal = ShellUtils.run(shellScript,localPath)
+        .trimRight("\n")//<--new, may crash if ther eis no originURL etc    
+        return
 	}
 	/**
 	 * Cherry
