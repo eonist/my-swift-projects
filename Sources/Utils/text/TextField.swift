@@ -55,10 +55,10 @@ class TextField:NSTextField,Trackable{
     override func mouseEntered(with event: NSEvent) {
                 Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
         if self.isSelectable {
-            discardCursorRects()
-            let textCursor = NSCursor.iBeam()
+//            discardCursorRects()
+//            let textCursor =
             
-            addCursorRect(frame, cursor:textCursor)
+            addCursorRect(frame, cursor:NSCursor.iBeam())
         }
         super.mouseEntered(with: event)
        
@@ -71,25 +71,15 @@ class TextField:NSTextField,Trackable{
     //    }
     override func mouseExited(with event: NSEvent) {
         Swift.print("mouseExited self.isSelectable:\(self.isSelectable  )")
-        discardCursorRects()
-        cursorUpdate(with: event)
-        let arrowCursor = NSCursor.arrow()
+//        discardCursorRects()
+//        cursorUpdate(with: event)
+//        let arrowCursor =
         
-        addCursorRect(frame, cursor:arrowCursor)
-//        resetCursorRects()
-//
-        cursorUpdate(with: event)
+//        addCursorRect(frame, cursor:NSCursor.arrow())
         resetCursorRects()
-        super.mouseExited(with: event)
-//                Swift.print("TextField.mouseExited")
-//        if self.isSelectable {
-        
-//            discardCursorRects()
-//            resetCursorRects()
-        
-//            Swift.print("set arrow cursor")
-//        }
-        
+        cursorUpdate(with: event)
+
+//        super.mouseExited(with: event)
     }
     /**
      * NOTE: you should use bounds for the rect but we dont rotate the frame so we don't need to use bounds.
