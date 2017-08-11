@@ -20,6 +20,9 @@ extension String{
     func endsWith(_ suffix:String)->Bool{
         return StringAsserter.endsWith(self,suffix)
     }
+    func isWrappedWith(_ str:String)->Bool{
+        return StringAsserter.isWrappedWith(self, str)
+    }
 }
 /**
  * Parsers
