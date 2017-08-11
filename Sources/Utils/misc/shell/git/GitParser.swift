@@ -40,8 +40,8 @@ class GitParser{
 	static func originUrl(_ localPath:String)->String{
 		let shellScript:String = Git.path + Git.git + " " + Git.config + " --get remote.origin.url"
 		var retVal = ShellUtils.run(shellScript,localPath)
-        retVal = retVal.endsWith("\n") ? retVal.trimRight("\n") : retVal//<--new, may crash if ther eis no originURL etc
         retVal = retVal.endsWith("\n") ? retVal.trimRight("\n") : retVal
+        retVal = retVal.isWrappedWith("'") ? retVal.trim("'") : retVal
         return retVal
 	}
 	/**
