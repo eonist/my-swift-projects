@@ -63,11 +63,12 @@ class TextField:NSTextField,Trackable{
     //        addCursorRect(frame, cursor:NSCursor.arrow())
     //    }
     override func mouseExited(with event: NSEvent) {
-        
+        Swift.print("mouseExited")
 //        let arrowCursor = NSCursor.arrow()
 //        
 //        addCursorRect(frame, cursor:arrowCursor)
         resetCursorRects()
+        discardCursorRects()
         
         super.mouseExited(with: event)
 //                Swift.print("TextField.mouseExited")
