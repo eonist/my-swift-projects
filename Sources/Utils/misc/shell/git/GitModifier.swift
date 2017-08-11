@@ -126,7 +126,7 @@ class GitModifier{
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
         let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
-//        Swift.print("GitModifier.clone() shellScript: \(shellScript)")
+        Swift.print("GitModifier.clone() shellScript: \(shellScript)")
         return ShellUtils.run(shellScript)
    }
    /**
