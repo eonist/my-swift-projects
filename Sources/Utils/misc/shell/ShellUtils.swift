@@ -14,7 +14,7 @@ class ShellUtils{
     static func run(_ input: String, _ cd:String = "") /*throws*/ -> String {
         let (output, terminationStatus) = ShellUtils.exc(input,cd)
         _ = terminationStatus
-        Swift.print("terminationStatus: " + "\(terminationStatus)")
+//        Swift.print("terminationStatus: " + "\(terminationStatus)")
         return output
     }
     /**
@@ -23,16 +23,16 @@ class ShellUtils{
      * IMPORTANT: if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
      */
     static func exc(_ input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
-        Swift.print("🚪⬅️️exc start. input: " + "\(input) cd: \(cd)")
+//        Swift.print("🚪⬅️️exc start. input: " + "\(input) cd: \(cd)")
         var arguments = input.components(separatedBy: " ")//<--you can also use split here
-        Swift.print("arguments.count: " + "\(arguments.count)")
+//        Swift.print("arguments.count: " + "\(arguments.count)")
         //TODO: This line bellow was $0.encode().decode() to allow % chars, But if your input is already encoded to support space, then you get double encoded content.
         arguments = arguments.map {$0.decode()!}
         //Swift.print("block of interest start")
         arguments.forEach{Swift.print("$0: >\($0)<")}
         //Swift.print("block of interest end")
         let task = Process()
-        Swift.print("Process(): ")
+//        Swift.print("Process(): ")
         task.currentDirectoryPath = cd
         task.launchPath = "/usr/bin/env"
         task.arguments = arguments
@@ -44,7 +44,7 @@ class ShellUtils{
         let errpipe = Pipe()
         task.standardError = errpipe
         task.launch()
-        Swift.print("task.launch()")
+//        Swift.print("task.launch()")
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String/*decode the date to a string*/
@@ -52,8 +52,8 @@ class ShellUtils{
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
         let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue)! as String
         _ = errorStr
-        Swift.print("errorStr: " + "\(errorStr)")
-        Swift.print("🚪➡️️exe end")
+//        Swift.print("errorStr: " + "\(errorStr)")
+//        Swift.print("🚪➡️️exe end")
         return (output, task.terminationStatus)
     }
 }
