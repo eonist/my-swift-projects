@@ -104,7 +104,7 @@ class GitModifier{
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
     */
    static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
-       let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.add + " " + Git.origin + " " + StringModifier.wrapWith(remoteRepoPath, "'")//<-this could be the " sign
+       let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.add + " " + Git.origin + " " + remoteRepoPath//<-this could be the " sign
        return ShellUtils.run(shellScript,localRepoPath)
    }
    /**
