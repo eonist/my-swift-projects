@@ -102,6 +102,7 @@ class GitModifier{
     * NOTE: git remote add origin https://github.com/user/test.git
     * NOTE: git remote add john http://dev.example.com/john.git (YOu can also add other teammates git repos to the same repo as above)
     * NOTE: to retrive the origin url: "git config --get remote.origin.url"
+    * NOTE: There is also: git remote set-url origin <URL>
     */
    static func attachRemoteRepo(_ localRepoPath:String, _ remoteRepoPath:String)->String{
        let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.add + " " + Git.origin + " " + remoteRepoPath//<-this could be the " sign

@@ -18,7 +18,7 @@ class SimpleTimer {/*was named Timer, but since swift 3, NSTimer is now Timer*/
     var target:AnyObject
     var selector:ObjectiveC.Selector
     
-    init(_ interval:TimeInterval,_ repeats:Bool = false,_ target:AnyObject,_ selector:ObjectiveC.Selector){
+    init( interval:TimeInterval, repeats:Bool = false, target:AnyObject, selector:ObjectiveC.Selector){
         self.interval = interval
         self.repeats = repeats
         self.target = target
