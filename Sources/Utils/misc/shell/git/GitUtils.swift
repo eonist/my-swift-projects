@@ -61,11 +61,12 @@ class GitUtils{
      * CAUTION: returns count +1
      * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
      */
-    static func commitCount(_ localRepoPath:String) -> String{
+    static func commitCount(_ localRepoPath:String) -> Int{
         let shellScript:String = Git.path + Git.git + " " + "rev-list HEAD --count"
         let result:String = ShellUtils.run(shellScript,localRepoPath)
-        if result.isEmpty {return "0"}
-        return result.endsWith("\n") ? result.trimRight("\n") : result/*the result sometimes has a trailing line-break, this must be removed*/
+        if result.isEmpty {return 0}
+        let retVal:String = result.endsWith("\n") ? result.trimRight("\n") : result/*the result sometimes has a trailing line-break, this must be removed*/
+        return retVal.int - 1
     }
     /**
      * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H"
