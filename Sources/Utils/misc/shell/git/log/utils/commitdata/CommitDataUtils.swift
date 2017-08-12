@@ -18,11 +18,11 @@ class CommitDataUtils {
         let fourthPart:String = input.subString(thirdIdx+1,fourthIdx)
         let fifthPart:String = input.subString(fourthIdx+1,input.count)
         /*Strip*/
-        let hash = firstPart.subString((CommitData.hash + ":").count, firstPart.count)
-        let author = secondPart.subString((CommitData.author + ":").count, secondPart.count)
-        let date = thirdPart.subString((CommitData.date + ":").count, thirdPart.count)
-        let subject = fourthPart.subString((CommitData.subject + ":").count, fourthPart.count)
-        let body = fifthPart.subString((CommitData.body + ":").count, fifthPart.count)
+        let hash = firstPart.subString((CommitData.DataType.hash + ":").count, firstPart.count)
+        let author = secondPart.subString((CommitData.DataType.author + ":").count, secondPart.count)
+        let date = thirdPart.subString((CommitData.DataType.date + ":").count, thirdPart.count)
+        let subject = fourthPart.subString((CommitData.DataType.subject + ":").count, fourthPart.count)
+        let body = fifthPart.subString((CommitData.DataType.body + ":").count, fifthPart.count)
         return CommitData(hash:hash,author:author,date:date,subject:subject,body:body)
     }
     
