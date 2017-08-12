@@ -30,7 +30,6 @@ class SimpleTimer {/*was named Timer, but since swift 3, NSTimer is now Timer*/
         if(timer != nil){timer!.invalidate()}
     }
     @objc func update() {//method must be in the public or scope
-        Swift.print("tick")
         tick()
     }
 }
