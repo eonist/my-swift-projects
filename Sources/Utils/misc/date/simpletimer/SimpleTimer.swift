@@ -1,7 +1,7 @@
 import Foundation
 /**
  * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow) 
- * NOTE: Or easier: let d = CACurrentMediaTime(); /*Do heavy computing*/let d1 = CACurrentMediaTime()-d; print(d1)//0.452 sec
+ * NOTE: Or even easier: let d = CACurrentMediaTime(); /*Do heavy computing*/let d1 = CACurrentMediaTime()-d; print(d1)//0.452 sec
  * EXAMPLE: SimpleTimer(interval: 3,repeats: true){print("tick")}.start()
  * IMPORTANT: ⚠️️ @objc func update() {Swift.print("tick")}//method must be in the public or scope
  * IMPORTANT: ⚠️️ because your object has a property to store the timer, and the timer calls a method on the object, you have a strong reference cycle that means neither object can be freed. To fix this, make sure you invalidate the timer when you're done with it, such as when your view is about to disappear: timer.invalidate()
