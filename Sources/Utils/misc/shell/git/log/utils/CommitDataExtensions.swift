@@ -31,7 +31,7 @@ extension CommitData{
         return CommitData(hash:hash,author:author,date:date,subject:subject,body:body)
     }
     /**
-     * describe
+     * Describe
      */
     static func describe(_ commitData:CommitData){
          Swift.print("commitData.hash: " + "\(commitData.hash)")
