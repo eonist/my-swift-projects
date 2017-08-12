@@ -148,7 +148,6 @@ class GitModifier{
     */
     static func fetch(_ repo:GitRepo)->String{
        var shellScript:String = Git.path + Git.git + " " + Git.fetch + " " + Git.origin
-        
        if(repo.branch != " "){ shellScript += " " + repo.branch}
 //        Swift.print("shellScript: " + "\(shellScript)")
        return ShellUtils.run(shellScript,repo.localPath)
@@ -196,9 +195,9 @@ class GitModifier{
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
         if (filePath != " "){ shellScript  += " " + filePath }
-        Swift.print("checkOut.shellScript: " + "\(shellScript)")
+//        Swift.print("checkOut.shellScript: " + "\(shellScript)")
 		let retVal = ShellUtils.run(shellScript,localRepoPath)
-        Swift.print("checkOut.retVal: " + "\(retVal)")
+//        Swift.print("checkOut.retVal: " + "\(retVal)")
         return retVal
 	}
     /*

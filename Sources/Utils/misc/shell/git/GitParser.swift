@@ -65,9 +65,9 @@ class GitParser{
 	static func unMergedFiles(_ localPath:String)->[String]{
 //        Swift.print("unMergedFiles")
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
-        Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
+//        Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
         let retVal = StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
-        Swift.print("retVal.count: " + "\(retVal.count)")
+//        Swift.print("retVal.count: " + "\(retVal.count)")
 		return retVal
 	}
 	/*
