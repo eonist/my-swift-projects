@@ -46,4 +46,10 @@ extension Date {
     var day:Int {return Calendar.current.component(.day, from:self)}
     var month:Int {return Calendar.current.component(.month, from:self)}
     var year:Int {return Calendar.current.component(.year, from:self)}
+    
+    /**
+     * let date = NSDate(); sleep(3); date.secsSinceStart//3.0
+     */
+    var secsSinceStart:Double{return abs(self.timeIntervalSinceNow)}
+    
 }
