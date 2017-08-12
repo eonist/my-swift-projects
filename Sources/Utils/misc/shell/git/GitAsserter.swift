@@ -45,4 +45,10 @@ class GitAsserter{
         let result = GitParser.unMergedFiles(localPath)
 		return !result.isEmpty
 	}
+    /**
+     * Implement when needed
+     */
+    static func doesRemoteExist(){
+        //git ls-remote --exit-code https://github.com/gitsync/SQLiteLib.git
+    }
 }
