@@ -46,7 +46,7 @@ class GitAsserter{
 		return !result.isEmpty
 	}
     /**
-     * Implement when needed
+     * TODO: ⚠️️ Implement when needed ref: https://stackoverflow.com/questions/12170459/check-if-git-remote-exists-before-first-push
      */
     static func doesRemoteExist(){
         //git ls-remote --exit-code https://github.com/gitsync/SQLiteLib.git
