@@ -9,11 +9,11 @@ import Foundation
 class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = ()->Void
     var timer:Timer?
-    var interval:TimeInterval /*seconds*/
+    var interval:TimeInterval /*in seconds*/
     var repeats:Bool
     var tick:Tick
     
-    init( interval:TimeInterval, repeats:Bool = false, onTick:@escaping Tick){/*, target:AnyObject*//*, selector:ObjectiveC.Selector*/
+    init( interval:TimeInterval, repeats:Bool = false, onTick:@escaping Tick){
         self.interval = interval
         self.repeats = repeats
         self.tick = onTick
@@ -24,7 +24,10 @@ class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer
     func stop(){
         if(timer != nil){timer!.invalidate()}
     }
-    @objc func update() {//method must be in the public or scope
+    /**
+     * this method must be in the public or scope
+     */
+    @objc func update() {
         tick()
     }
 }
