@@ -8,18 +8,18 @@ class GitUtils{
 	 * TODO: add support for different local and remote branch name
 	 */
     static func manualPull(_ repo:GitRepo) -> Bool{
-		Swift.print("GitUtils.manualPull()")
+//		Swift.print("GitUtils.manualPull()")
 		_ = GitModifier.fetch(repo)//--git fetch origin master, retrive the latest repo info
 		let isRemoteBranchAhead:Bool = GitAsserter.isRemoteBranchAhead(repo.localPath, repo.branch) //--use the git log oneline thing here	--git log --oneline master..origin/master (to view the commit ids of the commits that the remote repo is ahead of local repo )
-		Swift.print("GitUtils.GitUtils.manualPull isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
+//		Swift.print("GitUtils.GitUtils.manualPull isRemoteBranchAhead: " + "\(isRemoteBranchAhead)")
 		if isRemoteBranchAhead { //--asserts if a merge isneeded
 			//Swift.print("remote branch is ahead, so there is something to merge")
 			let result = GitModifier.merge(repo.localPath, repo.branch, "origin/" + repo.branch) //--git merge master origin/master (merges the changes from remote that you just fetched)
             _ = result
-            Swift.print("⚠️️⚠️️⚠️️ GitUtils.manualPull.result: " + "\(result)")
+//            Swift.print("⚠️️⚠️️⚠️️ GitUtils.manualPull.result: " + "\(result)")
             return true
         }else{
-			Swift.print("GitUtils.manualPull nothing to merge, local branch is up-to-date")
+//			Swift.print("GitUtils.manualPull nothing to merge, local branch is up-to-date")
             return false
 		}
         //fatalError("handle the result first, success or error and return this as bool")
@@ -31,14 +31,14 @@ class GitUtils{
 	 * TODO: ⚠️️ this method is wrong see git workflows on gitsyncs github.com
 	 */
     static func manualClone(_ localPath:String, _ remotePath:String, _ branch:String = "master"){
-        Swift.print("manualClone started")
+//        Swift.print("manualClone started")
 //        fatalError("fix this")
         _ = GitModifier.initialize(localPath)//<--Installs the invisible .git folder
-        Swift.print("initialize.completed")
+//        Swift.print("initialize.completed")
 		//--"git init"
 		//--TODO: do reasearch with different posix paths ~/testing/ vs Users/Joe/testing vs macintosh hd/ user / etc, and how to convert between them
 		_ = GitModifier.attachRemoteRepo(localPath, remotePath)
-        Swift.print("attachRemoteRepo.completed")
+//        Swift.print("attachRemoteRepo.completed")
         //--"git remote add origin https://github.com/user/testing.git" <-- attach a remote repo
         let gitRepo:GitRepo = GitRepo.gitRepo(localPath,  remotePath,  branch)
         
@@ -54,7 +54,7 @@ class GitUtils{
 //        _ = GitModifier.fetch(gitRepo)
 //        Swift.print("fetch2.completed")
 		//--"git fetch origin master" <-- Do this Again to download the latest .git data  , since your ahead sort of
-        Swift.print("manualClone finished")
+//        Swift.print("manualClone finished")
 	}
     /**
      * Returns the commit count
