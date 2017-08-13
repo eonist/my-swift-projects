@@ -156,7 +156,7 @@ public class RegExpParser{
      * htmlLinks("this website does searches: http://www.google.com");//http://www.google.com
      */
     static func htmlLinks(_ input:String) -> [String] {
-        let pattern = RegExpPattern.urlPattern
+        let pattern = RegExpAdvanceParser.Pattern.urlPattern
         return input.match(pattern)
     }
     /**
