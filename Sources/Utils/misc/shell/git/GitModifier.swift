@@ -27,7 +27,7 @@ class GitModifier{
     * EXAMPLE: GitUtils's commit(localRepoPath, "changes made")
     */
     static func commit(_ localRepoPath:String, _ msg:CommitMessage)->String{
-    	let shellScript:String = Git.path + Git.git + " " + Git.commit + " -m '" + msg.title.encode()! + "' -m '" + msg.description.encode()! + "'"
+    	let shellScript:String = Git.path + Git.git + " " + Git.commit + " -m " + msg.title.encode()! + " -m " + msg.description.encode()! + ""
     	return ShellUtils.run(shellScript,localRepoPath)
    }
    /*
