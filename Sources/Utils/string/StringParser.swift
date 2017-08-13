@@ -115,15 +115,16 @@ class StringParser{
      */
     static func trimLeft(_ str:String,_ left:Character)->String{
         var str = str
-        if(str.characters.first == left){str = String(str.characters.dropFirst())}
+        if str.characters.first == left {str = String(str.characters.dropFirst())}
         return str
     }
     /**
      * New
+     * TODO: ⚠️️ Create trimRight for str as well
      */
     static func trimRight(_ str:String,_ right:Character)->String{
         var str = str
-        if(str.characters.last == right){str = String(str.characters.dropLast())}
+        if str.characters.last == right {str = String(str.characters.dropLast())}
         return str
     }
     /**
