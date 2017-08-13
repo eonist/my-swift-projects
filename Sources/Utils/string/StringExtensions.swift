@@ -134,6 +134,12 @@ extension String{
         return StringModifier.insertCharsAt(self, charsAndIndicies)
     }
     func removeLastChar() -> String {return StringModifier.removeLastChar(self)}
+    /**
+     * NOTE: remember to tildeExpand the filePath
+     */
+    func write(filePath:String) -> Bool{
+        return FileModifier.write(filePath, self)
+    }
 }
 extension NSString{
     var string:String {return String(self)}/*Convenience*/
