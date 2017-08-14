@@ -48,14 +48,14 @@ class FileWatcher{
   
   private let eventCallback:FSEventStreamCallback = {(
       stream:ConstFSEventStreamRef, contextInfo:UnsafeMutableRawPointer?, numEvents:Int,
-      eventPaths:UnsafeMutableRawPointer, eventFlags:UnsafePointer<FSEventStreamEventFlags>?,
-      eventIds:UnsafePointer<FSEventStreamEventId>?
+      eventPaths:UnsafeMutableRawPointer, eventFlags:UnsafePointer<FSEventStreamEventFlags>,
+      eventIds:UnsafePointer<FSEventStreamEventId>
     ) in
     let fileSystemWatcher = Unmanaged<FileWatcher>.fromOpaque(contextInfo!).takeUnretainedValue()
     let paths = Unmanaged<CFArray>.fromOpaque(eventPaths).takeUnretainedValue() as! [String]
     
     for index in 0..<numEvents {
-      fileSystemWatcher.callback?(FileWatcherEvent(eventIds![index], paths[index], eventFlags![index]))
+      fileSystemWatcher.callback?(FileWatcherEvent(eventIds[index], paths[index], eventFlags[index]))
     }
   }
   
