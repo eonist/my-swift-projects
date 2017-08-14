@@ -40,7 +40,7 @@ class AnimProxy:NSObject,AnimProxyKind{/*Apparently the class needs to be NSView
             /*let displayIDStatus*/_ = CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID)
             return displayLink
         }else{
-            fatalError("unable to setup displayLink")
+            fatalError("unable to setup displayLink: status: \(status)")
         }
     }
 }
