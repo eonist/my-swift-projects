@@ -95,7 +95,7 @@ class RGBParser {
             let temp1:CGFloat = l*2 - temp2
             for i in 0..<3{
                 switch(i) {
-                    case 0: temp3 = h+1/3
+                    case 0: temp3 = h+1.0/3
                     case 1: temp3 = h
                     case 2: temp3 = h-1/3
                     default:fatalError("can't happen");

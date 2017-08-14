@@ -6,7 +6,7 @@ class RangeParser {
     /**
      * Returns the minimum or smallest value in the range.
      */
-    static func min<T:Comparable>(_ range:Range<T>)->T {
+    static func min<T>(_ range:Range<T>)->T {
         return Swift.min(range.start, range.end)
     }
     static func describe<T>(_ range:Range<T>) {
@@ -16,7 +16,7 @@ class RangeParser {
     /**
      * Returns The maximum or largest value in the range.
      */
-    static func max<T:Comparable>(_ range:Range<T>)->T {
+    static func max<T>(_ range:Range<T>)->T {
         return Swift.max(range.start, range.end)
     }
     /**
