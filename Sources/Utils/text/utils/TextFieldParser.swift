@@ -7,7 +7,7 @@ class TextFieldParser {
     static func font(_ fontName:String,_ size:CGFloat) -> NSFont{
         //let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()//NSMutableParagraphStyle.defaultParagraphStyle()
         //paragraphStyle.lineSpacing = 10.0//other paragraph options: paragraphSpacing,alignment,firstLineHeadIndent,lineBreakMode,minimumLineHeight,maximumLineHeight,baseWritingDirection,lineHeightMultiple,paragraphSpacingBefore
-        let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontNameAttribute:fontName/*,NSParagraphStyleAttributeName:paragraphStyle*/])//NSForegroundColorAttributeName:NSColor.redColor(),
+        let fontDescriptor:NSFontDescriptor = NSFontDescriptor(fontAttributes: [NSFontDescriptor.AttributeName.name:fontName/*,NSParagraphStyleAttributeName:paragraphStyle*/])//NSForegroundColorAttributeName:NSColor.redColor(),
         let font = NSFont(descriptor: fontDescriptor, size: size)
         return font!
     }

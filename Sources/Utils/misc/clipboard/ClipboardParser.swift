@@ -6,11 +6,11 @@ class ClipboardParser {
      * PARAM: textFormat ClipboardFormats.TEXT_FORMAT etc
      */
     static func stringData(_ dataType:String) -> String {
-        let pasteboard = NSPasteboard.general()
-        let data:String = pasteboard.string(forType: dataType)!
+        let pasteboard = NSPasteboard.general
+        let data:String = pasteboard.string(forType: NSPasteboard.PasteboardType(rawValue: dataType))!
         return data
     }
     static func getString()->String{
-        return stringData(NSPasteboardTypeString)
+        return stringData(NSPasteboard.PasteboardType.string.rawValue)
     }
 }

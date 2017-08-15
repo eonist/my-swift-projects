@@ -73,7 +73,7 @@ class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
      * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {//TODO: ⚠️️ move this to interactiveView i think
-        createTrackingArea([.activeAlways, .mouseMoved,.mouseEnteredAndExited])//TODO: should probaly not have mouseMoved here
+        createTrackingArea([NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.mouseEnteredAndExited])//TODO: should probaly not have mouseMoved here
         super.updateTrackingAreas()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

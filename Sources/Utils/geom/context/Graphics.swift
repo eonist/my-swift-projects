@@ -33,7 +33,7 @@ public class Graphics{
     var dropShadow:DropShadow?
     var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
     public init(){
-        if let graphicsContext = NSGraphicsContext.current() {
+        if let graphicsContext = NSGraphicsContext.current {
             self.context = graphicsContext.cgContext/* Get the handle to the current context */
         }
     }

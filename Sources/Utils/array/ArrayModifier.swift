@@ -183,7 +183,7 @@ class ArrayModifier{
      * EXAMPLE: print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
      * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
      */
-    static func removeManyByKey<T>(_ array:inout [[String:T]],_ many:[T],_ key:String) -> [[String:T]] where T:Equatable, T:Comparable {
+    static func removeManyByKey<T>(_ array:inout [[String:T]],_ many:[T],_ key:String) -> [[String:T]] where T:Comparable {
         var i:Int = 0
         while (i < array.count){//<--swift 3 support -> was simple c-style for loop
             let dict:[String:T] = array[i]
@@ -202,7 +202,7 @@ class ArrayModifier{
      * NOTE: the array is returned for the sake of convenience
      */
     static func randomize<T>(_ array:inout [T] ) -> [T] {
-        array.sort { Bool in
+        array.sort { Bool,arg  in
             return ( Int(arc4random()) * 2 ) * 2 - 1 > 0
         }
         return array
@@ -362,7 +362,7 @@ class ArrayModifier{
      * EXAMPLE: var arr:Array = ["a","b","b","c","b","d","c"]
      * EXAMPLE: let arr:[String] = ["a","b","b","c","b","d","c"];var z:[String] = [] Swift.print(arr.forEach{if(z.index(of: $0) == nil) {z.append($0)}})//["a", "b", "c", "d"]
      */
-    static func removeDuplicates<T>(_ array:[T]) -> [T] where T:Equatable, T:Comparable{
+    static func removeDuplicates<T>(_ array:[T]) -> [T] where T:Comparable{
         var result:[T] = []
         array.forEach{
             if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists

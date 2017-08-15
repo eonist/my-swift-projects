@@ -83,7 +83,7 @@ public class RegExpModifier{
     static func obscureEmail(input:String) -> String {
         let matches = input.matches(Pattern.obscureEmail)
         let obscuredEmail:String = matches.reduce("") {
-            let match:String = $0.1.value(input, 1)
+            let match:String = $1.value(input, 1)
             return replacer(match)
         }
         func replacer(_ match:String) -> String {

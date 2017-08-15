@@ -9,8 +9,8 @@ class GestureUtils{
      */
     static func twoFingersTouches(_ view:NSView, _ event:NSEvent)->[String:NSTouch]?{
         var twoFingersTouches:[String:NSTouch]? = nil//NSMutualDictionary was used before and didn't require casting id to string, revert if sideeffects manifest
-        if(event.type == NSEventType.gesture){// could maybe be: EventTypeBeginGesture
-            let touches:Set<NSTouch> = event.touches(matching:NSTouchPhase.any, in: view)//touchesMatchingPhase:NSTouchPhaseAny inView:self
+        if(event.type == NSEvent.EventType.gesture){// could maybe be: EventTypeBeginGesture
+            let touches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.any, in: view)//touchesMatchingPhase:NSTouchPhaseAny inView:self
             if(touches.count == 2){
                 twoFingersTouches = [String:NSTouch]()
                 for touch in touches {//
@@ -31,7 +31,7 @@ class GestureUtils{
      * 3. Measure the distance between .began and .ended and assert if it is within threshold
      */
     static func swipe(_ view:NSView, _ event:NSEvent, _ twoFingersTouches:[String:NSTouch]?) -> SwipeType{
-        let endingTouches:Set<NSTouch> = event.touches(matching: NSTouchPhase.ended, in: view)
+        let endingTouches:Set<NSTouch> = event.touches(matching: NSTouch.Phase.ended, in: view)
         if(endingTouches.count > 0 && twoFingersTouches != nil){
             let beginningTouches:[String:NSTouch] = twoFingersTouches!/*copy the twoFingerTouches data*/
             var magnitudes:[CGFloat] = []/*magnitude definition: the great size or extent of something.*/

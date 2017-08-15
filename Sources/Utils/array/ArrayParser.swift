@@ -17,7 +17,7 @@ class ArrayParser{
      * EXAMPLE: ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
      * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
      */
-    static func index<T>(_ array : [T], _ value:T)->Int where T:Equatable, T:Comparable{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
+    static func index<T>(_ array : [T], _ value:T)->Int where T:Comparable{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         return array.index(of: value) ?? -1
     }
     /**
@@ -52,7 +52,7 @@ class ArrayParser{
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
-    static func difference<T>(_ a:[T], _ b:[T] )->[T] where T:Equatable, T:Comparable{
+    static func difference<T>(_ a:[T], _ b:[T] )->[T] where T:Comparable{
         var diff:[T] = []
         for item in a { if (ArrayParser.index(b,item) == -1) {diff.append(item)}}
         for item in b { if (ArrayParser.index(a,item) == -1) {diff.append(item)}}

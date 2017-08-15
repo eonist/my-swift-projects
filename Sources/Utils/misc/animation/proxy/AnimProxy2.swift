@@ -18,7 +18,7 @@ class AnimProxy2:NSObject,AnimProxyKind2{/*Apparently the class needs to be NSVi
     /**
      * Tick every animator on every frame tick (This is called on the MainThread)
      */
-    func onFrameOnMainThread(){
+    @objc func onFrameOnMainThread(){
         animators.forEach{$0.onFrameTick()}
     }
     /**

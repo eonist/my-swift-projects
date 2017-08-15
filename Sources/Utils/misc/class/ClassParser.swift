@@ -26,7 +26,7 @@ class ClassParser {
      * Example: let someObj : typeof(anotheraObj) = typeof(anotheraObj)(arguments here)//this creates an instance from the class of another instance
      */
     static func getClass(_ instance:Any!)->String{
-        return String(describing:type(of: self)).components(separatedBy:".").last!//swift 3 update, could work!?!?
+        return String(describing:Swift.type(of: self)).components(separatedBy:".").last!//swift 3 update, could work!?!?
         //return _stdlib_getDemangledTypeName(instance).componentsSeparatedByString(".").last!//This call is subjected to change in future versions of swift
         //return typeOf(instance)
     }
@@ -45,7 +45,7 @@ class ClassParser {
      * instance = classType.init("abc")
      */
     static func type(_ instance:Any)->Any.Type{//was: -> any
-        return type(of: instance)
+        return Swift.type(of: instance)
     }
     /**
      * Untested

@@ -24,7 +24,7 @@ public class XMLAsserter {
      * valid XML.
      */
     static func validXML(_ xmlStr:String)->Bool{
-        guard let xmlDoc:XMLDoc = try? XMLDoc(xmlString: xmlStr, options: 0) else{
+        guard let xmlDoc:XMLDoc = try? XMLDoc(xmlString: xmlStr, options: XMLNode.Options(rawValue: 0)) else{
             return false
         }
         if(xmlDoc.kind != XMLNode.Kind.element){return false}

@@ -124,7 +124,7 @@ class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
      */
     override func updateTrackingAreas() {
         if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingAreaOptions.activeAlways, NSTrackingAreaOptions.mouseMoved,NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.mouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -27,7 +27,7 @@ class TextField:NSTextField,Trackable{
 //        Swift.print("TextField.mouseDown")
         self.window!.makeFirstResponder(self)//resigns the NSTextField caret focus
         
-        NSEvent.addMonitor(&monitor,.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
+        NSEvent.addMonitor(&monitor,NSEvent.EventTypeMask.leftMouseDown,onMouseDownOutside)/*we add a global mouse move event listener*/
         super.mouseDown(with: theEvent)
     }
     /**/
@@ -52,7 +52,7 @@ class TextField:NSTextField,Trackable{
     override func mouseEntered(with event: NSEvent) {
 //        Swift.print("mouseEntered self.isSelectable: \(self.isSelectable)")
         if self.isSelectable {
-            addCursorRect(frame, cursor:NSCursor.iBeam())//sets the default text cursor
+            addCursorRect(frame, cursor:NSCursor.iBeam)//sets the default text cursor
         }
         super.mouseEntered(with: event)
        
@@ -71,7 +71,7 @@ class TextField:NSTextField,Trackable{
      * TODO: ⚠️️ you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {
-        self.createTrackingArea([.activeAlways,.mouseEnteredAndExited])
+        self.createTrackingArea([NSTrackingArea.Options.activeAlways,NSTrackingArea.Options.mouseEnteredAndExited])
         super.updateTrackingAreas()
     }
     

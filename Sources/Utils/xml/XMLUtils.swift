@@ -44,7 +44,7 @@ class XMLUtils {
     static func xmlByURL(_ URL:String)->XMLDoc?{//# must use param naming
         let result:String = NetworkParser.string(URL)
         if(result == "success"){
-            let xmlDoc:XMLDoc = try! XMLDoc(xmlString: result, options: 0)
+            let xmlDoc:XMLDoc = try! XMLDoc(xmlString: result, options: XMLNode.Options(rawValue: 0))
             return xmlDoc
         }else{
             //print(result.error)

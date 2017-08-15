@@ -108,7 +108,7 @@ extension Array {
         return ArrayParser.mapReduce(self,result,closure)
     }
     /**
-     * Sometimes you wan't to do stuff only if an array has something: if let arr = [].optional {...}
+     * Sometimes you wan't to do stuff only if an array has items: if let arr = [].optional {...}
      */
     var optional:Array? {
         return self.isEmpty ? nil : self
@@ -122,7 +122,7 @@ extension Array where Element:AnyObject{
         return ArrayParser.indexOf(self,item)
     }
 }
-extension Array where Element:Equatable, Element:Comparable{
+extension Array where Element:Comparable{
     func index(_ value:Element)->Int{
         return ArrayParser.index(self, value)
     }
@@ -139,7 +139,7 @@ extension Array where Element:Equatable{
  * [1,2,3].string//"123"
  * one can also use .joined but reduce does the same I suppose
  */
-extension Array where Element:Integer{
+extension Array where Element:BinaryInteger{
     var string:String {return self.map{"\($0)"}.reduce(""){$0+$1}}
 }
 //extension Array where Element:ExpressibleByStringLiteral{
@@ -186,7 +186,7 @@ extension Collection {
     func recursiveFlatmap<T>() -> [T] {
         var results = [T]()
         for element in self {
-            if let sublist = element as? [Self.Generator.Element] {/*Array*/
+            if let sublist = element as? [Self.Iterator.Element] {/*Array*/
                 results += sublist.recursiveFlatmap()
             } else if let element = element as? T {/*Item*/
                 results.append(element)

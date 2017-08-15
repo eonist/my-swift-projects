@@ -30,7 +30,7 @@ class ArrayAsserter {
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "f"))//true
      * EXAMPLE: Swift.print(ArrayAsserter.has(["e","f","g"], "a"))//false
      */
-    static func has<T>(_ arr : [T], _ value:T)->Bool where T:Equatable, T:Comparable {//the <T: Equatable> part ensures that the types can use the equal operator ==
+    static func has<T>(_ arr : [T], _ value:T)->Bool where T:Comparable {//the <T: Equatable> part ensures that the types can use the equal operator ==
         return ArrayParser.index(arr, value) != -1
     }
     /**
@@ -73,7 +73,7 @@ class ArrayAsserter {
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
      * TODO: create add this method to ArrayExtensions
      */
-    static func equals<T>(_ a:[T], _ b:[T]) -> Bool where T:Equatable, T:Comparable{
+    static func equals<T>(_ a:[T], _ b:[T]) -> Bool where T:Comparable{
         if(a.count != b.count) { return false }
         for i in 0..<a.count{
             if(a[i] != b[i]) {return false}

@@ -26,23 +26,23 @@ extension NSTouch {
         return CGPoint(touchPos.x * touchArea.width,touchPos.y * touchArea.height) + touchAreaPos
     }
 }
-extension NSTouchPhase{
+extension NSTouch.Phase{
     /**
      * Great when logging phaseType
      * TODO: Would it be possible to return .began.rawValue instead?
      */
     var type:String{
-        if(self == .began){
+        if(self == NSTouch.Phase.began){
             return "began"
-        }else if(self == .moved){
+        }else if(self == NSTouch.Phase.moved){
             return "moved"
-        }else if(self == .stationary){
+        }else if(self == NSTouch.Phase.stationary){
             return "stationary"
-        }else if(self == .ended){
+        }else if(self == NSTouch.Phase.ended){
             return "ended"
-        }else if(self == .cancelled){
+        }else if(self == NSTouch.Phase.cancelled){
             return "cancelled"
-        }else if(self == .touching){
+        }else if(self == NSTouch.Phase.touching){
             return "touching"
         }else{
             return "no match"
@@ -52,19 +52,19 @@ extension NSTouchPhase{
 /**
  * TODO: Would it be possible to return .began.rawValue instead?
  */
-extension NSEventPhase{
+extension NSEvent.Phase{
     var type:String{
-        if(self == .began){
+        if(self == NSEvent.Phase.began){
             return "began"
-        }else if(self == .stationary){
+        }else if(self == NSEvent.Phase.stationary){
             return "stationary"
-        }else if(self == .changed){
+        }else if(self == NSEvent.Phase.changed){
             return "changed"
-        }else if(self == .ended){
+        }else if(self == NSEvent.Phase.ended){
             return "ended"
-        }else if(self == .cancelled){
+        }else if(self == NSEvent.Phase.cancelled){
             return "cancelled"
-        }else if(self == .mayBegin){
+        }else if(self == NSEvent.Phase.mayBegin){
             return "mayBegin"
         }else{
             return "no match"

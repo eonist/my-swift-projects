@@ -73,7 +73,7 @@ extension TextFormat{
         textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
 //        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
-        let attribs = [NSFontAttributeName:font,NSForegroundColorAttributeName:textColor,NSParagraphStyleAttributeName:textParagraph]
+        let attribs = [NSAttributedStringKey.font:font,NSAttributedStringKey.foregroundColor:textColor,NSAttributedStringKey.paragraphStyle:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
         return attrString
     }

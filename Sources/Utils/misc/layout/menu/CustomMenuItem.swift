@@ -6,7 +6,7 @@ class CustomMenuItem:NSMenuItem{
         target = self/*target specifies where the selector should work, in this case in this class scope*/
         self.isEnabled = true
     }
-    func onSelect(event:AnyObject) {
+    @objc func onSelect(event:AnyObject) {
         Swift.print("override in superClass")
     }
     /**

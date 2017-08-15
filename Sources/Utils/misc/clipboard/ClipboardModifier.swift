@@ -12,11 +12,11 @@ import Cocoa
  */
 class ClipboardModifier {
     static func setStringData(_ string:String,_ clipboardFormat:String)  {
-        let thePasteboard = NSPasteboard.general()
+        let thePasteboard = NSPasteboard.general
         thePasteboard.clearContents()/*Clear any previous data, since a sys clipboard can have 2 version of the same data etc*/
-        thePasteboard.setString(string, forType: clipboardFormat)
+        thePasteboard.setString(string, forType: NSPasteboard.PasteboardType(rawValue: clipboardFormat))
     }
     static func setString(string:String){
-        return setStringData(string, NSPasteboardTypeString)
+        return setStringData(string, NSPasteboard.PasteboardType.string.rawValue)
     }
 }

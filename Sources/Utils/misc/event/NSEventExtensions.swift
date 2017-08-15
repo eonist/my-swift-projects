@@ -8,13 +8,13 @@ extension NSEvent {
     func localPos(_ view:NSView)->CGPoint{
         return view.convert(self.locationInWindow,from:nil)
     }
-    var shiftKey:Bool {return self.modifierFlags.contains(NSEventModifierFlags.shift)}/*Convenience*/
-    var commandKey:Bool {return self.modifierFlags.contains(NSEventModifierFlags.command)}/*Convenience*/
-    var altKey:Bool {return self.modifierFlags.contains(NSEventModifierFlags.option)}/*Convenience*/
-    var ctrlKey:Bool {return self.modifierFlags.contains(NSEventModifierFlags.control)}/*Convenience*/
+    var shiftKey:Bool {return self.modifierFlags.contains(NSEvent.ModifierFlags.shift)}/*Convenience*/
+    var commandKey:Bool {return self.modifierFlags.contains(NSEvent.ModifierFlags.command)}/*Convenience*/
+    var altKey:Bool {return self.modifierFlags.contains(NSEvent.ModifierFlags.option)}/*Convenience*/
+    var ctrlKey:Bool {return self.modifierFlags.contains(NSEvent.ModifierFlags.control)}/*Convenience*/
     //Bonus: There is also FunctionKeyMask
     static func cmdKey()->Bool{/*Convenience*/
-        return NSEvent.modifierFlags().contains(NSEventModifierFlags.shift)
+        return NSEvent.modifierFlags.contains(NSEvent.ModifierFlags.shift)
     }
 
     var scrollingDelta:CGPoint {return CGPoint(self.scrollingDeltaX,self.scrollingDeltaY)}/*Convenience*/
@@ -38,7 +38,7 @@ extension NSEvent{
     /**
      * EXAMPLE: var monitor:Any?;NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
      */
-    static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEventMask, _ callBack:@escaping CallBack){
+    static func addMonitor(_  monitor:inout Any?,_ eventMask:NSEvent.EventTypeMask, _ callBack:@escaping CallBack){
         if(monitor == nil) {
             monitor = NSEvent.addLocalMonitorForEvents(matching: [eventMask], handler: {event -> NSEvent in callBack(event);return event})/*The closure returns the event so the event can propegate internally in the NSApp*/
         }else {

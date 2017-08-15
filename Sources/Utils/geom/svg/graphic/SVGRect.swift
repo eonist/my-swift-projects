@@ -29,7 +29,7 @@ class SVGRect:SVGGraphic {
      * NOTE: It is an error to provide negative values for either width or height.
      * NOTE: If you specify only one of rx or ry, they are presumed to be equal.
      * NOTE: The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
-     * TODO: ⚠️️ The maximum number you may specify for rx (the x-radius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
+     * TODO: ⚠️️ The maximum number you may specify for rx (the x-rad@objc @objc ius) is one-half the width of the rectangle; the maximum value of ry (the y-radius) is one-half the height of the rectangle.
      * TODO: ⚠️️ You can set the frame to the rect, no need for the fancy frame creation method
      */
     override func draw() {
@@ -61,6 +61,7 @@ class SVGRect:SVGGraphic {
  */
 extension SVGRect{
     var position:CGPoint {get{return CGPoint(xVal,yVal)}set {xVal = newValue.x;yVal = newValue.y}}
-    /*the override is new->*/override var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
+    /*the override is new->*/
+    override var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
     var rect:CGRect {return CGRect(xVal,yVal,width,height)}
 }

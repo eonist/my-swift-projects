@@ -90,15 +90,16 @@ class RGBParser {
             r = round(l/240*255);g = r;b = r;
         }else {
             h /= 240; l /= 240; s /= 240;
-            var temp4:CGFloat;var temp3:CGFloat;
+            var temp4:CGFloat;
+            var temp3:CGFloat;
             let temp2:CGFloat = (l < 0.5) ? l*(s+1) : l+s-l*s
             let temp1:CGFloat = l*2 - temp2
             for i in 0..<3{
                 switch(i) {
-                    case 0: temp3 = h+1/3
+                    case 0: temp3 = h + 1.0 / 3
                     case 1: temp3 = h
-                    case 2: temp3 = h-1/3
-                    default:fatalError("can't happen");
+                    case 2: temp3 = h-1.0/3
+                    default:fatalError("can't happen")
                 }
                 if(temp3 < 0) {temp3 += 1}
                 else if(temp3 > 1) {temp3 -= 1}

@@ -89,16 +89,17 @@ public class RegExp{
     /**
      * New, replaces with a closure
      * TODO: ⚠️️ Try to performance test if accumulative substring is faster (you += before the match + the match and so on)
-     * EXAMPLE: Swift.print("bad wolf, bad dog, Bad sheep".replace(pattern: "\\b([bB]ad)\\b"){return $0.isLowerCased ? $0 : $0.lowercased()})//bad wolf, bad dog, bad sheep
+     * EXAMPLE: Swift.print("bad wolf, bad dog, Bad sheep".replace("\\b([bB]ad)\\b"){return $0.isLowerCased ? $0 : $0.lowercased()})
      */
     static func replace(_ str:String, pattern:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive,replacer:Replacer) -> String{
 //        Swift.print("RegExp.replace")
         var str = str
         RegExp.matches(str, pattern).reversed().forEach() {
-            let range:NSRange = $0.rangeAt(1)
+            let range:NSRange = $0.range(at: 1)
 //            Swift.print("range: " + "\(range)")
-            let stringRange:Range<String.Index> = str.stringRange(str, range.location, len: range.length)
-            let match:String = str.substring(with: stringRange)//TODO: reuse the stringRange to get the subrange here
+            
+            let stringRange = str.stringRange(str, range.location, len:range.length)
+            let match:String = StringParser.subStr(str, range.location, range.length)//swift 4 upgrade, was: str.substring(with: stringRange) //TODO: ⚠️️ reuse the stringRange to get the subrange here
 //            Swift.print("match: " + "\(match)")
             if let replacment:String = replacer(match) {
                 str.replaceSubrange(stringRange, with: replacment)
@@ -113,7 +114,7 @@ public class RegExp{
      * TODO: ⚠️️ you should check if there is content in the range first, if ther eis not return nilor error
      */
     static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
-        return (str as NSString).substring(with: result.rangeAt(key))
+        return (str as NSString).substring(with: result.range(at: key))
     }
     /**
      * New, finds first index of pattern in string

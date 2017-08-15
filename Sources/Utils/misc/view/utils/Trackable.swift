@@ -11,7 +11,7 @@ extension Trackable{
     /**
      * New
      */
-    func createTrackingArea(_ options:NSTrackingAreaOptions = [.activeAlways, .mouseMoved,.mouseEnteredAndExited]){
+    func createTrackingArea(_ options:NSTrackingArea.Options = [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.mouseEnteredAndExited]){
         if let trackingArea = self.trackingArea {
             self.removeTrackingArea(trackingArea)/*remove old trackingArea if it exists*/
         }

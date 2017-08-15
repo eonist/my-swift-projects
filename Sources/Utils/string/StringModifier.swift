@@ -17,7 +17,8 @@ class StringModifier{
      * NOTE there is also inline: input.remove(at: input.index(before: input.endIndex))
      */
     static func removeLastChar(_ input:String) -> String{
-        return input.substring(to: input.index(before: input.endIndex))
+        let retVal = input[..<input.index(before: input.endIndex)]
+        return String(retVal)//Swift 4 upgrade, was: input.substring(to: input.index(before: input.endIndex))
     }
     /**
      *	Removes all instances of the remove string in the input string
