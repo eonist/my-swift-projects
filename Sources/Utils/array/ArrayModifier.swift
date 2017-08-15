@@ -142,6 +142,18 @@ class ArrayModifier{
         return -1
     }
     /**
+     * New
+     */
+    /*
+    static func remove<T>(_ array:[T], instance:T) -> Int{
+        if let i = array.index(where: {$0 === instance}){
+            array.remove(at: i)
+            return i
+        }
+        return -1
+    }
+ */
+    /**
      * NOTE: compres and deletes reference "===" not "=="
      */
     static func delete<T>(_ arr:inout [T], _ obj:inout T)->T{
