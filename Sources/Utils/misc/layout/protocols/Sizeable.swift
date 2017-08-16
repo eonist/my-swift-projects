@@ -13,7 +13,7 @@ protocol Sizable:class {//<--new extends class, so that it can be casted correct
 extension Sizable{
     var width:CGFloat{
         get{
-            if self.size.width.isNaN {fatalError("width can't be NaN")}
+            if self.size.width.isNaN {fatalError("width can't be NaN self.parents: \(NSViewParser.parents((self as! RectGraphic).graphic))")}
             return self.size.width
         }set{
             if newValue.isNaN {fatalError("width can't be NaN")}

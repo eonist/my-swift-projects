@@ -11,7 +11,7 @@ class FilePathParser {
     /**
      * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
-    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?
+    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?, most definitly!!!!
         return URL(string: stringPath)!
     }
     /**
