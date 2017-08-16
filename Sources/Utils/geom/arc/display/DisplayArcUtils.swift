@@ -62,7 +62,7 @@ class DisplayArcUtils {
             let sAngle:CGFloat = BasicEllipseMath.advanceEllipticalAngle(r.x*r.x, r.x*r.x, TrigParser.normalize2(Trig.angle(center, s)-rot))
             //Swift.print("sAngle: " + sAngle)
             //Swift.print("Angle.angle(center, end): " + Angle.angle(center, end))
-            let leveledEnd:CGPoint = rot == 0 ? end : PointModifier.rot(end, center, rot)
+            let leveledEnd:CGPoint = rot == 0 ? end : CGPointModifier.rot(end, center, rot)
             let projectedEnd:CGPoint = CGPoint(leveledEnd.x,TrigParser.y(leveledEnd.x, r.x, center))
             var circularEndAngle:CGFloat = Trig.normalize2(Trig.angle(center,projectedEnd)) + rot
             circularEndAngle *= largeArcFlag ? 1 : -1

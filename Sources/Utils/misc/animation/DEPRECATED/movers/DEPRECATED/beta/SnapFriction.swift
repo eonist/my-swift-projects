@@ -5,7 +5,7 @@ import Foundation
 class SnapFriction:Friction {
     var snap:CGFloat
     var minVelocity:CGFloat = 0.8
-    init(_ view:IAnimatable,  _ callBack:@escaping FrameTick,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98, _ snap:CGFloat = 0,_ minVelocity:CGFloat = 0.8){
+    init(_ view:AnimProxyKind,  _ callBack:@escaping FrameTick,_ value:CGFloat, _ velocity:CGFloat = 0, _ frictionStrength:CGFloat = 0.98, _ snap:CGFloat = 0,_ minVelocity:CGFloat = 0.8){
         self.snap = snap
         self.minVelocity = minVelocity
         super.init(view, callBack, value, velocity, frictionStrength)

@@ -5,7 +5,7 @@ import Foundation
  * NOTE: to scale the outer circle radius you have to use matrix transformations and then scale it, adjust the inner circle radius if you want this to remain the same size
  */
 struct SVGRadialGradient:SVGGradientDecoratable {
-    var gradient:ISVGGradient
+    var gradient:SVGGradientKind
     var cx:CGFloat/*inner circle center x position*/
     var cy:CGFloat/*inner circle center y position*/
     var r:CGFloat/*radius represents the half the width and hight of the inner circle*/

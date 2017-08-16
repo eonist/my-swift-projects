@@ -7,7 +7,7 @@ class CGPathUtils {
      * TODO: Create an extension for CGPath so you can do cgPath.lineTo(0,0) etc, much cleaner
      * NOTE: the CGPathAddArc method doesnt seem to support drawing from negative area to positive area. The CGPathAddRelativeArc method supports this
      */
-    static func compile(_ cgPath:CGMutablePath, _ path:IPath) -> CGMutablePath{
+    static func compile(_ cgPath:CGMutablePath, _ path:PathKind) -> CGMutablePath{
         var idx:Int = 0/*pathDataIndex*/
         var prevMT:CGPoint = CGPoint()/*for the closed path support*/
         var prevEnd:CGPoint = CGPoint()
@@ -68,7 +68,7 @@ class CGPathUtils {
 }
 
 private class BasicPathParser{
-    static func arcAt(_ path:IPath,_ commandIndex:Int) -> IArc{
+    static func arcAt(_ path:PathKind,_ commandIndex:Int) -> IArc{
         let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
         let start:CGPoint = commandIndex > 0 ? BasicPathDataParser.end(path, commandIndex-1) : CGPoint()
         return BasicPathDataParser.arcAt(path.pathData, pathDataIndex, start)
@@ -89,7 +89,7 @@ private class BasicPathDataParser{
      * NOTE: this is cpu intensive to call if you are iterating over an array
      * TODO: ⚠️️ START USING END2 which supports CLOSE
      */
-    static func end(_ path:IPath, _ commandIndex:Int) -> CGPoint {// :TODO: rename to position?!? or maybe point?
+    static func end(_ path:PathKind, _ commandIndex:Int) -> CGPoint {// :TODO: rename to position?!? or maybe point?
         let command:Int = path.commands[commandIndex]
         let pathDataIndex:Int = BasicPathDataParser.index(path.commands, commandIndex)
         return endAt(path.pathData, pathDataIndex, command)

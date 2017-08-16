@@ -1,5 +1,5 @@
 import Cocoa
-typealias ILineStyle = LineStylable
+
 protocol LineStylable{
     var color:NSColor {get set}
     var thickness:CGFloat {get set}

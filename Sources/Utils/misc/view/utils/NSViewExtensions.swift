@@ -9,7 +9,7 @@ extension NSView {
         return view
     }
     func addSubViewAt<T:NSView>(_ view:T, _ i:Int)->T{
-        _ = ViewModifier.addSubviewAt(self, view, i)
+        _ = NSViewModifier.addSubviewAt(self, view, i)
         return view
     }
     /**
@@ -17,13 +17,13 @@ extension NSView {
      */
     func addSubviewAt<T:NSView>(_ view: T,_ i:Int){
         //Swift.print("\(self.dynamicType)" + ".addSubviewAt() i: " + "\(i)")
-        _ = ViewModifier.addSubviewAt(self, view, i)
+        _ = NSViewModifier.addSubviewAt(self, view, i)
     }
     /**
      * TODO: Probably upgrade this to use Generics and deprecate it
      */
     func removeSubviewAt(_ i:Int){
-        ViewModifier.removeSubviewAt(self, i)
+        NSViewModifier.removeSubviewAt(self, i)
     }
     /**
      * Asserts if PARAM: view is a subView of PARAM: parent

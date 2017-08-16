@@ -25,10 +25,10 @@ class SVGLine:SVGGraphic{
      * TODO: you have to set the frame here
      */
     override func draw() {
-        let boundingBox:CGRect = PointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
+        let boundingBox:CGRect = CGPointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, style!.strokeWidth!, OffsetType(OffsetType.center))
         lineShape.frame = lineOffsetRect.lineFrameRect
-        let offset:CGPoint = PointParser.difference(lineOffsetRect.lineFrameRect.origin, boundingBox.origin)
+        let offset:CGPoint = CGPointParser.difference(lineOffsetRect.lineFrameRect.origin, boundingBox.origin)
         lineShape.path = CGPathParser.line(p1 + offset - boundingBox.origin,p2 + offset - boundingBox.origin)/*<-we offset the original points to make them relative to the frame*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -45,7 +45,7 @@ class SVGPropertyParser {
 	 * NOTE: svg styles can have fill-opacity and also opacity, opacity applies to both stroke and fill
 	 * SVGStyle should maybe have a master opacity value, for when you export svg again
 	 */
-	static func style(_ xml:XML,_ container:ISVGContainer)->SVGStyle {
+	static func style(_ xml:XML,_ container:SVGContainable)->SVGStyle {
         guard let prop:String = property(xml,"style") else{/*if no style is present in the xml, then derive the SVGStyle from fill,stroke etc. if these values are not present, a default value will be returned NaN, empty string, null etc whatever is appropriate*/
             let fill:Any? = SVGStyleParser.fill(property(xml,"fill"), container)
             var fillOpacity:CGFloat = SVGPropertyParser.value(property(xml,"fill-opacity"))

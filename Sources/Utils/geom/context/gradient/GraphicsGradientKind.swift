@@ -1,6 +1,6 @@
 import Foundation
 
-typealias IGraphicsGradient = GraphicsGradientKind
+//typealias GraphicsGradientKind = GraphicsGradientKind
 public protocol GraphicsGradientKind {
     var colors:[CGColor]{get set}
     var locations:[CGFloat]{get set}/*same as color stops*/

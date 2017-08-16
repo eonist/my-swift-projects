@@ -12,7 +12,7 @@ class SVGUtils {
 	static func xml(_ svg:SVG)->XML {// :TODO: refactor to one or loop?
 		let xml:XML = SVGUtils.svg(svg)
 		return svg.items.reduce(xml){
-			let svgElement:ISVGElement = $1
+			let svgElement:SVGElementKind = $1
             let child:XML = {
                 if(svgElement is SVGLine) {return line(svgElement as! SVGLine)}
                 else if(svgElement is SVGRect) {return rect(svgElement as! SVGRect)}
@@ -137,7 +137,7 @@ class SVGUtils {
 	  * Returns the id from a ISVG instance
 	  * TODO: move to an internal class
 	  */
-	 static func id(_ xml:XMLElement,_ svg:ISVGElement)->XML {
+	 static func id(_ xml:XMLElement,_ svg:SVGElementKind)->XML {
          if(svg.id != "") {xml["id"] = svg.id}
 		 return xml
 	 }

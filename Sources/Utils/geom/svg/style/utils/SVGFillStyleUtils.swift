@@ -4,13 +4,13 @@ class SVGFillStyleUtils{
     /**
      * Converts SVGStyle to IFillStyle
      */
-    static func fillStyle(_ style:SVGStyle,_ shape:Shape)-> IFillStyle?{
+    static func fillStyle(_ style:SVGStyle,_ shape:Shape)-> FillStyleKind?{
         //Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
         //Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
         if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
             return FillStyle(color)
-        }else if(style.fill != nil && style.fill is ISVGGradient){
+        }else if(style.fill != nil && style.fill is SVGGradientKind){
             return SVGFillStyleUtils.gradientFillStyle(style, shape)
         }else{
             //clear
@@ -22,11 +22,11 @@ class SVGFillStyleUtils{
     /**
      * Converts SVGStyle to IGradientFillStyle
      */
-    static func gradientFillStyle(_ style:SVGStyle,_ shape:Shape)->IGradientFillStyle{
+    static func gradientFillStyle(_ style:SVGStyle,_ shape:Shape)->GradientFillStyleKind{
         let svgGradient:SVGGradient = style.fill as! SVGGradient
-        let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
+        let graphicsGradient:GraphicsGradientKind = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
         let gradient:IGradient = graphicsGradient.gradient()
-        let gradientFillStyle:IGradientFillStyle = GradientFillStyle(gradient)
+        let gradientFillStyle:GradientFillStyleKind = GradientFillStyle(gradient)
         return gradientFillStyle
     }
     static func fillColor(_ style:SVGStyle)->NSColor{
@@ -46,7 +46,7 @@ class SVGFillStyleUtils{
      * TODO: there is also: gradientTransform="rotate(90, 50, 30)" the origin of the rotation would be 50, 30
      * TODO: unless you offset it first! try this
      */
-    static func fillGraphicGradient(_ shape:Shape,_ gradient:ISVGGradient)->IGraphicsGradient{
+    static func fillGraphicGradient(_ shape:Shape,_ gradient:SVGGradientKind)->GraphicsGradientKind{
         //let gradientType = gradient is SVGLinearGradient ? GradientType.Linear : GradientType.Radial;
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse";////The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.
         //Swift.print("gradientType: " + gradientType);
@@ -79,7 +79,7 @@ private class Utils{
      * NOTE: you need to be able to derive variables from the svg graphic instance that reflect what should be in the export so base your setting of the gradient on this
      * TODO: ⚠️️ Add support for relative values, see old code, you need to use the bounding box etc and test how relative values work in svg etc
      */
-    static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient{
+    static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind{
         //let gradient:SVGLinearGradient = gradient as! SVGLinearGradient
         var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1).copy()/* :nil*/
         var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2).copy()/* :nil*/
@@ -111,7 +111,7 @@ private class Utils{
             //Swift.print("p2: " + "\(p2)")
         }
         //Swift.print("points after offset: " + "\([p1,p2])")
-        let linearGraphicsGradient:IGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
+        let linearGraphicsGradient:GraphicsGradientKind = LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
         //Gradient(gradient.colors,gradient.offsets,0,nil,nil,nil,nil,p1,p2,!userSpaceOnUse/*,gradient.gradientTransform*/)
         //fatalError("implment the bellow first")
         return linearGraphicsGradient
@@ -120,7 +120,7 @@ private class Utils{
      * NOTE: it seems you can do the offseting in the matrix transformation
      * TODO: lets try to scale radial gradient aswell
      */
-    static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient{
+    static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind{
         //Swift.print("drawRadialGradient()")
         //Swift.print("radialGradient.gradientTransform: " + "\(radialGradient.gradientTransform)")
         let startRadius:CGFloat = 0

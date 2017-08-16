@@ -6,7 +6,7 @@ class SVGStyleParser {
 	/**
 	 * TODO: why do we need the PARAM: container here?
 	 */
-	static func style(_ prop:Any,_ container:ISVGContainer)->SVGStyle {
+	static func style(_ prop:Any,_ container:SVGContainable)->SVGStyle {
         let inlineStyle:[String:String] = SVGStyleParser.inlineStyle(String(describing: prop))
 		let fill:Any? = SVGStyleParser.fill(inlineStyle["fill"], container)
 		let fillOpacity:CGFloat = SVGPropertyParser.value(inlineStyle["fill-opacity"])
@@ -36,7 +36,7 @@ class SVGStyleParser {
 	/**
 	 * PARAM: container the parent container of the svg element querried for
 	 */
-    static func fill(_ property:Any?,_ container:ISVGContainer)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
+    static func fill(_ property:Any?,_ container:SVGContainable)->Any? {/*<-this makes the value non optional can also be achived by creating a temp var*/ //TODO:compact this method once its bug tested//<-- this doesnt have to be Any! it can be Any?
         guard let property = property else{
             return nil//if property is nil return nil
         }
@@ -52,7 +52,7 @@ class SVGStyleParser {
 	/**
 	 * TODO: needs support for 3 letter hex color, you have code for this, find it
 	 */
-	static func stroke(_ property:Any?, _ container:ISVGContainer)->Any? {//<-- this doesn't have to be Any! it can be Any?
+	static func stroke(_ property:Any?, _ container:SVGContainable)->Any? {//<-- this doesn't have to be Any! it can be Any?
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
     /**

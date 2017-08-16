@@ -3,7 +3,7 @@ import Cocoa
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
  * TODO: You need to think how you can add trackingareas to all svg children aswell and subsequent hitTest, just get the bounds and assert isWithinPath in a tree-search
  */
-class SVGAsset:InteractiveView2 {
+class SVGAsset:InteractiveView {
     var svg:SVG
     var path:String
     init(_ path:String) {
@@ -27,7 +27,7 @@ class SVGAsset:InteractiveView2 {
         SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.frame.origin = CGPoint(x,y)
     }
-    func applyStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
+    func applyStyle(_ fillStyle:FillStyleKind?,_ lineStyle:LineStylable?){
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
         SVGModifier.style(svg, svgStyle)
     }
@@ -37,7 +37,7 @@ private class Utils{
     /**
      * NOTE: This method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
      */
-    static func svgStyle(_ fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
+    static func svgStyle(_ fillStyle:FillStyleKind?,_ lineStyle:LineStylable?)->SVGStyle{
         let fill:Any? = fillStyle?.color.hexVal
         let fillOpacity:CGFloat? = fillStyle?.color.alphaComponent
         let fillRule:String? = nil

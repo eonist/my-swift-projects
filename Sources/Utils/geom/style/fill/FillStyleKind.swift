@@ -1,6 +1,5 @@
 import Cocoa
 
-typealias IFillStyle = FillStyleKind/*Legacy support*/
 protocol FillStyleKind{
     var color:NSColor {get set}
 }
@@ -9,7 +8,7 @@ protocol FillStyleKind{
  */
 extension FillStyleKind {
     var cgColor:CGColor {return CGColorParser.cgColor(color)}
-    func copy() -> IFillStyle {
+    func copy() -> FillStyleKind {
         return FillStyleParser.clone(self)
     }
 }

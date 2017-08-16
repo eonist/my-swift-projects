@@ -1,5 +1,5 @@
 import Foundation
-typealias PointParser = CGPointParser//legacy support
+
 
 class CGPointParser{
     /**
@@ -138,7 +138,7 @@ class CGPointParser{
      * NOTE: works similar to directionalAxisDifference, but returns only positive values (distance can only be positive)
      */
     static func directionalAxisDistance(_ pivot:CGPoint,_ point:CGPoint, _ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        let leveledPoint:CGPoint = CGPointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
         return axisDistance(pivot, leveledPoint)
     }
     /**
@@ -159,15 +159,15 @@ class CGPointParser{
      * TODO: rename to localDifference, another sugestion would be axisDifference or leveledDifference
      */
     static func directionalAxisDifference(_ pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return PointParser.difference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
+        let leveledPoint:CGPoint = CGPointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return CGPointParser.difference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
     /**
      * NOTE: same as directionalAxisDifference, but uses the NumerParser.relativeDifference() method
      */
     static func relativeDirectionalAxisDifference(_ pivot:CGPoint,_ point:CGPoint,_ rotation:CGFloat)->CGPoint {
-        let leveledPoint:CGPoint = PointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
-        return PointParser.relativeDifference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
+        let leveledPoint:CGPoint = CGPointModifier.safeRotatePoint(pivot,point, -rotation)/*find the x and y in a correctly angled axis point system by using -angleAxis*/
+        return CGPointParser.relativeDifference(pivot, leveledPoint)/*use the x value and the Point.polar(x,axisangle) to find the p*/
     }
     /**
      * Returns a CGRect that makes derived from PARAM: points (think bounding box of points)
@@ -318,10 +318,10 @@ class CGPointParser{
     static func normalizedIntersection(_ aP1:CGPoint, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
         if(aP1.equals(bP1) || aP1.equals(bP2)){ return aP1}
         else if(aP2.equals(bP1) || aP2.equals(bP2)){ return aP2}
-        else if(PointAsserter.collinear(aP1, aP2, bP1)){ return bP1}
-        else if(PointAsserter.collinear(aP1, aP2, bP2)){ return bP2}
-        else if(PointAsserter.collinear(bP1, bP2, aP1)){ return aP1}
-        else if(PointAsserter.collinear(bP1, bP2, aP2)){ return aP2}
-        else {return PointParser.intersection(aP1, aP2, bP1, bP2)}
+        else if(CGPointAsserter.collinear(aP1, aP2, bP1)){ return bP1}
+        else if(CGPointAsserter.collinear(aP1, aP2, bP2)){ return bP2}
+        else if(CGPointAsserter.collinear(bP1, bP2, aP1)){ return aP1}
+        else if(CGPointAsserter.collinear(bP1, bP2, aP2)){ return aP2}
+        else {return CGPointParser.intersection(aP1, aP2, bP1, bP2)}
     }
 }

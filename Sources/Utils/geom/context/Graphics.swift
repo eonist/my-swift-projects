@@ -26,9 +26,9 @@ public class Graphics{
     public var context:CGContext?
     var fillMode:FillMode = FillMode.None
     var strokeMode:StrokeMode = StrokeMode.None
-    var gradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var gradient:GraphicsGradientKind = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgGradient:CGGradient?/*This value exists because of performance*/
-    var lineGradient:IGraphicsGradient = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
+    var lineGradient:GraphicsGradientKind = GraphicsGradient()/*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/
     var cgLineGradient:CGGradient?/*This value exists because of performance*/
     var dropShadow:DropShadow?
     var lineWidth:CGFloat = 1/*Needed to calculate the size of the Line-Gradient-Box, defualt is left at 1 as is the default in CGContext, There is no way to retrive lineWidth from CGContext*/
@@ -147,7 +147,7 @@ private class Utils{
      * Draws a gradient into the current path in the context
      * TODO: the boundingbox call can be moved up one level if its better for performance, but wait untill you impliment matrix etc
      */
-    class func drawGradientFill(_ path:CGPath,_ context:CGContext,_ gradient:IGraphicsGradient, _ cgGradient:CGGradient?){
+    class func drawGradientFill(_ path:CGPath,_ context:CGContext,_ gradient:GraphicsGradientKind, _ cgGradient:CGGradient?){
         switch gradient{
             case is LinearGraphicsGradient:/*Linear*/
                 drawAxialGradient(path, context, cgGradient, gradient as! LinearGraphicsGradient)
@@ -160,7 +160,7 @@ private class Utils{
     /**
      * Draws a gradient into the current outline of the stroke of the current path in the context
      */
-    static func drawGradientStroke(_ path:CGPath,_ context:CGContext,_ lineGradient:IGraphicsGradient,_ cgLineGradient:CGGradient?, _ lineWidth:CGFloat){
+    static func drawGradientStroke(_ path:CGPath,_ context:CGContext,_ lineGradient:GraphicsGradientKind,_ cgLineGradient:CGGradient?, _ lineWidth:CGFloat){
         context.saveGState()/*Store the graphic state so that the mask call bellow doesnt become the permanant mask*/
         context.replacePathWithStrokedPath()/*Here is where magic happens to create a sort of outline of a stroke, you can also achive the same thing with: CGPathCreateCopyByStrokingPath, by the way the code behind this call is imensly complex. And probably cpu hungry. The more intersecting curves the worse the performance becomes*/
         context.clip()/*Create a mask for the gradient to be drawn into*/

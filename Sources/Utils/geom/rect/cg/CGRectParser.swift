@@ -81,7 +81,7 @@ class CGRectParser{
      */
     static func localRectangle(_ topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
         let points:[CGPoint] = [topLeft, bottomRight]
-        var rotatedPoints:[CGPoint] = PointModifier.rotatePoints(points, CGPoint(), -rotation)
+        var rotatedPoints:[CGPoint] = CGPointModifier.rotatePoints(points, CGPoint(), -rotation)
         return rectangle(rotatedPoints[0], rotatedPoints[1])
     }
     static func rectangle(_ topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{

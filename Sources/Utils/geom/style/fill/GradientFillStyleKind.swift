@@ -1,6 +1,5 @@
 import Foundation
 
-typealias IGradientFillStyle = GradientFillStyleKind/*Legacy support*/
 protocol GradientFillStyleKind:FillStyleKind{
     var gradient:IGradient{get set}
 }

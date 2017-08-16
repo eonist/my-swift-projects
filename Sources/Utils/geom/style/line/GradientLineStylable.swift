@@ -1,6 +1,6 @@
 import Foundation
 typealias IGradientLineStyle = GradientLineStylable
-protocol GradientLineStylable:ILineStyle {
+protocol GradientLineStylable:LineStylable {
     var gradient:IGradient{get set}
 }
 extension GradientLineStylable{

@@ -2,13 +2,13 @@ import Foundation
 /*Class methods:*/
 extension CGPoint{
     static func polarPoint(_ radius:CGFloat, _ angle:CGFloat) -> CGPoint {/*Convenience*/
-        return PointParser.polar(radius, angle)
+        return CGPointParser.polar(radius, angle)
     }
     static func distance(_ a:CGPoint, _ b:CGPoint) -> CGFloat{/*Convenience*/
-        return PointParser.distance(a,b)
+        return CGPointParser.distance(a,b)
     }
     static func interpolate(_ a:CGPoint, _ b:CGPoint, _ scalar:CGFloat) -> CGPoint{/*Convenience*/
-        return PointParser.interpolate(a,b, scalar)
+        return CGPointParser.interpolate(a,b, scalar)
     }
 }
 /*Convenient extensions*/
@@ -24,13 +24,13 @@ extension CGPoint{
     func interpolate(_ to:CGPoint,_ scalar:CGFloat) -> CGPoint { return CGPoint.interpolate(self,to,scalar) }//interpolate from self to b by scalar
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
-    func add(_ p:CGPoint)->CGPoint{return PointParser.add(self, p)}
-    func subtract(_ p:CGPoint) -> CGPoint {return PointParser.subtract(self, p)}
-    func multiply(_ p:CGPoint) -> CGPoint {return PointParser.multiply(self, p)}
-    func divide(_ p:CGPoint) -> CGPoint {return PointParser.divide(self, p)}
+    func add(_ p:CGPoint)->CGPoint{return CGPointParser.add(self, p)}
+    func subtract(_ p:CGPoint) -> CGPoint {return CGPointParser.subtract(self, p)}
+    func multiply(_ p:CGPoint) -> CGPoint {return CGPointParser.multiply(self, p)}
+    func divide(_ p:CGPoint) -> CGPoint {return CGPointParser.divide(self, p)}
     /*Asserters*/
-    func equals(_ p:CGPoint) -> Bool {return PointAsserter.equals(self, p)}
-    func isNear(_ p:CGPoint,_ epsilon:CGFloat) -> Bool {return PointAsserter.nearEquals(self, p, epsilon)}
+    func equals(_ p:CGPoint) -> Bool {return CGPointAsserter.equals(self, p)}
+    func isNear(_ p:CGPoint,_ epsilon:CGFloat) -> Bool {return CGPointAsserter.nearEquals(self, p, epsilon)}
     
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {

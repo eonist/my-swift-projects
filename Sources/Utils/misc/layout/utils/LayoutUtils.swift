@@ -8,9 +8,9 @@ class LayoutUtils {
      * NOTE: remember to pass in the layoutClasstype as this: Fillet.self
      * EXAMPLE: let margin:Margin = instance(4,Margin.self) as! Margin
      */
-    static func instance(_ value:Any, _ layoutClassType:ILayout.Type) -> ILayout{
+    static func instance(_ value:Any, _ layoutClassType:LayoutKind.Type) -> LayoutKind{
         let params:[Any] = value is [Any] ? value as! [Any] : [value]
-        let classType:ILayout.Type = layoutClassType
+        let classType:LayoutKind.Type = layoutClassType
         return {
             switch(params.count){
                 case 1: return classType.init(params[0])

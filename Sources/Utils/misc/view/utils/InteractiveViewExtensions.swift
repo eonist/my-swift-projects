@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: add to private utils class, maybe!?!?
  */
-extension InteractiveView2{
+extension InteractiveView{
     /**
      * Returns a correctly flipped coordinate of the mouse in window space 0,0
      * NOTE: there may be a problem with this if the window has a titleBar, then the height of this may need to be included

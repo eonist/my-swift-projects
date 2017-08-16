@@ -7,9 +7,9 @@ import Cocoa
  * TODO: Remove the getGraphics
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
-    var decoratable:IGraphicDecoratable
+    var decoratable:GraphicDecoratableKind
     override var graphic:BaseGraphic {return decoratable.graphic}
-    init(_ decoratable:IGraphicDecoratable){
+    init(_ decoratable:GraphicDecoratableKind){
         self.decoratable = decoratable
         super.init()/*This doesn't init anything, its just needed to support the setting of self as delegate*/
         graphic.selector = self.handleSelector/*👈 Assigns the selector ⚠️️IMPORTANT⚠️️ It sort of ad-hocks it self down the decorator chain*/
@@ -99,5 +99,5 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func getGraphic() -> BaseGraphic{
         return self.decoratable.getGraphic()
     }
-    override func getDecoratable()->IGraphicDecoratable{return decoratable}/*new*/
+    override func getDecoratable()->GraphicDecoratableKind{return decoratable}/*new*/
 }

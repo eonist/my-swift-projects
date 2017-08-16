@@ -1,5 +1,4 @@
 import Cocoa
-typealias ViewModifier = NSViewModifier//<---Legacy support
 /**
  * TODO: make a method with the NSView.sortSubviewsUsingFunction method
  * NOTE: to set position use .point = CGPoint()

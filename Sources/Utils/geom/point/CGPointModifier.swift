@@ -1,5 +1,4 @@
 import Foundation
-typealias PointModifier = CGPointModifier/*legacy support*/
 
 class CGPointModifier {
     /**
@@ -21,9 +20,9 @@ class CGPointModifier {
      */
     static func safeRotatePoint(_ pivot:CGPoint, _ point:CGPoint, _ rotation:CGFloat)->CGPoint {
         let pointAngle:CGFloat = Trig.angle(pivot, point)/*find the angle of point*/
-        let distance:CGFloat = PointParser.distance(pivot, point)/*length of point and pivotPoint*/
+        let distance:CGFloat = CGPointParser.distance(pivot, point)/*length of point and pivotPoint*/
         let rot:CGFloat = Trig.normalize2(pointAngle + rotation)/*sum of pointAngle and rotation, normalize this aka clamp between (-π and π)*/
-        return pivot + PointParser.safePolar(distance, rot)/*use Point.polar*/
+        return pivot + CGPointParser.safePolar(distance, rot)/*use Point.polar*/
     }
     /**
      * UNTESTED, but should work
@@ -81,7 +80,7 @@ class CGPointModifier {
      */
     static func scalePoints(_ points:[CGPoint],_ pivot:CGPoint,_ scale:CGPoint)->[CGPoint]{
         return points.map{ p in
-            PointModifier.scale(p,pivot,scale)
+            CGPointModifier.scale(p,pivot,scale)
         }
     }
     /**
@@ -89,7 +88,7 @@ class CGPointModifier {
      */
     static func scalePoints(_ points:inout [CGPoint],_ pivot:CGPoint,_ scale:CGPoint) {
         points.indices.forEach { i in
-            points[i] = PointModifier.scale(points[i],pivot,scale)
+            points[i] = CGPointModifier.scale(points[i],pivot,scale)
         }
     }
     /**

@@ -10,7 +10,7 @@ class GradientLineStyle:LineStyle,IGradientLineStyle {
     }
 }
 extension GradientLineStyle{/*Convenient*/
-    convenience init(_ gradient:IGradient,_ lineStyle:ILineStyle) {
+    convenience init(_ gradient:IGradient,_ lineStyle:LineStylable) {
         self.init(gradient,lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin, lineStyle.miterLimit);
     }
 }

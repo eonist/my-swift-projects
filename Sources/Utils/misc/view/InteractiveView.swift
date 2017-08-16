@@ -9,11 +9,10 @@ import Cocoa
  * TODO: Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
  * TODO: why arent the mouse methods calling a central method?
  */
-typealias InteractiveView2 = InteractiveView//legacy support
 class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with appcode
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, one can always assign the default behaviour back */
     lazy var event:EventCallBack = { (event:Event) in /*returns closure that will take care of propagating the event to the parent*/
-        guard let superView:IEventSender = self.superview as? IEventSender else {return}
+        guard let superView:EventSendable = self.superview as? EventSendable else {return}
         superView.onEvent(event)
     }
     var isInteractive:Bool = true/*Toggles the interactive part on and of, Text uses this variable to disable interactivty I.E: TextButton, remember that this effects all descendants as well*/

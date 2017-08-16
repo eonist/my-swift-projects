@@ -35,7 +35,7 @@ class SVGPath:SVGGraphic{
         }
         if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
             let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin            
-            let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
+            let linePathOffset:CGPoint = CGPointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
             lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
             lineShape.path = fillShape.path.clone()
             var lineOffsetPath = fillShape.path.clone()

@@ -1,11 +1,10 @@
 import Foundation
 
-typealias IGraphicStyle = GraphicStylable/*Legacy support*/
 protocol GraphicStylable {
-    var fillStyle:IFillStyle? {get set}
-    var lineStyle:ILineStyle? {get set}
+    var fillStyle:FillStyleKind? {get set}
+    var lineStyle:LineStylable? {get set}
 }
 extension GraphicStylable{/*Convenince*/
-    var fill:IFillStyle? {get{return fillStyle} set{fillStyle = newValue}}
-    var line:ILineStyle? {get{return lineStyle} set{lineStyle = newValue}}
+    var fill:FillStyleKind? {get{return fillStyle} set{fillStyle = newValue}}
+    var line:LineStylable? {get{return lineStyle} set{lineStyle = newValue}}
 }

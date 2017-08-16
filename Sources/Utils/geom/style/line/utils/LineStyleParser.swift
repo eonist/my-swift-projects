@@ -4,7 +4,7 @@ class LineStyleParser {
     /**
      * NOTE: You could also add this as a Descrieable extension on the ILineStyle protocol but, its convenient enough to have it here. 
      */
-    static func describe(_ lineStyle:ILineStyle){
+    static func describe(_ lineStyle:LineStylable){
         Swift.print("LineStyleParser.describe()")
         Swift.print("lineStyle: " + "\(lineStyle)")
         Swift.print("lineStyle.color.hex: " + "\(lineStyle.color.hexString)")
@@ -35,7 +35,7 @@ class LineStyleParser {
     /**
      * Clones PARAM: lineStyle
      */
-    static func clone(_ lineStyle:ILineStyle) -> LineStyle {
+    static func clone(_ lineStyle:LineStylable) -> LineStyle {
         return LineStyle(lineStyle.thickness,lineStyle.color,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit,lineStyle.phase,lineStyle.lengths)
     }
 }

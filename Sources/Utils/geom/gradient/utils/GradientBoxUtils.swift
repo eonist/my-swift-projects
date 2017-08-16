@@ -23,7 +23,7 @@ class GradientBoxUtils{
                 fatalError("Angle is out of the allowed range (-π to π): " + "\(angle)")
                 break;
         }
-        let distPoint = PointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
+        let distPoint = CGPointParser.directionalAxisDistance(rect.center, cornerPoint, angle)
         let end:CGPoint = rect.center.polarPoint(distPoint.x, angle)
         let start:CGPoint = rect.center.polarPoint(-distPoint.x, angle)
         return (start,end)

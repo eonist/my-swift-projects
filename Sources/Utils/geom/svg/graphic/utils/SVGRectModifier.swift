@@ -6,7 +6,7 @@ class SVGRectModifier {
      * TODO: impliment support for scaling the rx and ry values in the SVGRect instance, you have code for this Think fillet classes
      */
     static func scale(_ rect:SVGRect,_ pivot:CGPoint,_ scale:CGPoint) {
-        let pos:CGPoint = PointModifier.scale(rect.position, pivot, scale)
+        let pos:CGPoint = CGPointModifier.scale(rect.position, pivot, scale)
         let size:CGSize = CGSize(rect.width * scale.x, rect.height * scale.y)//TODO:use CGRect scale method instead
         rect.xVal = pos.x
         rect.yVal = pos.y

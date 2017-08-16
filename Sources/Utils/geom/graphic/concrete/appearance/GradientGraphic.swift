@@ -7,11 +7,11 @@ import Cocoa
  */
 class GradientGraphic:SizeableDecorator/*<--Recently changed from GraphicDecoratable, and then changed to SizeableDec..was positionalDec etc, then changed back to positional, then changed to SizeableDecorator again after a bug surfaced*/ {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
     override func beginFill(){
-        if let fillStyle:IGradientFillStyle = graphic.fillStyle as? IGradientFillStyle{
+        if let fillStyle:GradientFillStyleKind = graphic.fillStyle as? GradientFillStyleKind{
             let gradient = fillStyle.gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
             let boundingBox:CGRect = graphic.fillShape.path.boundingBox /*creates a boundingbox derived from the bounds of the path*/
-            let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
+            let graphicsGradient:GraphicsGradientKind = GradientUtils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{
             super.beginFill()/*Do regular color fill*/
@@ -30,7 +30,7 @@ class GradientGraphic:SizeableDecorator/*<--Recently changed from GraphicDecorat
             
             //TODO: The above isn't totally correct, use the outline-stroke method and then get the boundingbox from that, think different caps etc
             
-            let graphicsGradient:IGraphicsGradient = GradientUtils.graphicsGradient(boundingBox, gradient)
+            let graphicsGradient:GraphicsGradientKind = GradientUtils.graphicsGradient(boundingBox, gradient)
             graphic.lineShape.graphics.gradientLine(graphicsGradient)
         }//else{fatalError("NOT CORRECT lineStyle")}
     }

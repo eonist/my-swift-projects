@@ -2,7 +2,6 @@ import Foundation
 /**
  * Protocol for SVGView 
  */
-typealias ISVGView = SVGViewable/*Legacy support*/
-protocol SVGViewable:ISVGElement{
+protocol SVGViewable:SVGElementKind{
     var style:SVGStyle?{get set}
 }

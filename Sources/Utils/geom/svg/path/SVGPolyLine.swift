@@ -16,11 +16,11 @@ class SVGPolyLine:SVGGraphic,SVGPolyLineKind{
      * TODO: ⚠️️ You do not close the polyline?!?!?
      */
     override func draw()  {
-        let boundingBox:CGRect = PointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
+        let boundingBox:CGRect = CGPointParser.rectangle(points)/*We need the bounding box in order to set the frame*/
         let path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
         /*line*/
         let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(path, style!)// + boundingBox.origin
-        let linePathOffset:CGPoint = PointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
+        let linePathOffset:CGPoint = CGPointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
         //let lineOffsetRect = RectGraphicUtils.lineOffsetRect(strokeBoundingBox, style!.strokeWidth, OffsetType(OffsetType.center))
         lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()
         lineShape.path = CGPathParser.lines(points,false,CGPoint(-boundingBox.x,-boundingBox.y) + linePathOffset)

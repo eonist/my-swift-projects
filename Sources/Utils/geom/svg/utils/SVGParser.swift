@@ -44,7 +44,7 @@ class SVGParser {
      * TODO: add Radial gradient support
      * TODO: impliment title and desc elements see svg pdf <title>Grouped Drawing</title>   and   <desc>Stick-figure drawings of a house and people</desc>
      */
-    static func element(_ xml:XML,_ container:ISVGContainer)->ISVGElement? {
+    static func element(_ xml:XML,_ container:SVGContainable)->SVGElementKind? {
         var style:SVGStyle = SVGPropertyParser.style(xml, container)/*Creates the style*/
         if let container = container as? SVGGroup, let containerStyle = container.style{
             SVGStyleModifier.merge(&style, containerStyle)/*parent style is inherited down to sub elements*/
@@ -72,7 +72,7 @@ class SVGParser {
      */
     static func group(_ xml:XML, _ style:SVGStyle, _ id:String) -> SVGGroup {
         let group:SVGGroup = SVGGroup([],style,id)
-        group.items = xml.children?.lazy.map{ child -> ISVGElement? in
+        group.items = xml.children?.lazy.map{ child -> SVGElementKind? in
                 let child:XML = child as! XML
                 return element(child,group)
             }.flatMap{

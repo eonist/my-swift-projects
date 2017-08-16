@@ -5,10 +5,10 @@ import Foundation
  * NOTE: The if else clauses doesn't look good, but swift doesn't allow setting values via protocols that uses extensions for it's functionality, so its eigther this or implementing implicit setter method in each subclass conforming to IPositional
  * TODO: ⚠️️ Probably use if let in this class
  */
-class PositionalDecorator:GraphicDecoratable,IPositional{
+class PositionalDecorator:GraphicDecoratable,Positional{
     var pos:CGPoint{
         get{
-            if(decoratable is IPositional){return (decoratable as! IPositional).pos}
+            if(decoratable is Positional){return (decoratable as! Positional).pos}
             else{fatalError("Must subclass PositionalGraphic")}
         }
         set{

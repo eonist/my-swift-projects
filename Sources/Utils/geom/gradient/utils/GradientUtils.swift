@@ -5,7 +5,7 @@ class GradientUtils{
      * NOTE: we use an array of CGColor instances as aposed to NSColors, support for initiating an gradient with NSColors can be done in utility methods elswehere, this code needs to have as little convenince code as possible
      * NOTE: there exists also a method for component colors named: CGGradientCreateWithColorComponents, see Quartz books for this
      */
-    static func cgGradient(_ gradient:IGraphicsGradient)->CGGradient{
+    static func cgGradient(_ gradient:GraphicsGradientKind)->CGGradient{
         let myColorspace:CGColorSpace = CGColorSpaceCreateDeviceRGB()
         let locations:[CGFloat] = gradient.locations/*should be a CGFloat between 0 and 1*/
         let locationsPointer = UnsafePointer<CGFloat>(locations)
@@ -15,7 +15,7 @@ class GradientUtils{
     /**
      * Returns IGraphicsGradient for IGradient
      */
-    static func graphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
+    static func graphicsGradient(_ boundingBox:CGRect,_ gradient:IGradient)->GraphicsGradientKind{
         if let radialGradient = gradient as? RadialGradient {
             return Utils.radialGraphicsGradient(boundingBox,radialGradient)
         }else if let linearGradient = gradient as? LinearGradient {

@@ -16,7 +16,7 @@ class SVG:SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...som
     var yVal:CGFloat
     var width:CGFloat
     var height:CGFloat
-    init(_ items:[ISVGElement], _ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ version:CGFloat,_ nameSpace:String,_ id:String) {
+    init(_ items:[SVGElementKind], _ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ version:CGFloat,_ nameSpace:String,_ id:String) {
         self.xVal = x
         self.yVal = y
         self.width = width

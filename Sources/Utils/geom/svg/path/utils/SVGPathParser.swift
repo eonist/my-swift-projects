@@ -107,6 +107,6 @@ class SVGPathParser {
      */
     static func rectangle(_ path:SVGPath) -> CGRect {
         let points:[CGPoint] = SVGPathParser.points(path)
-        return PointParser.rectangle(points)
+        return CGPointParser.rectangle(points)
     }
 }

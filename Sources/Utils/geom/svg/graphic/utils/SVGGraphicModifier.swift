@@ -9,23 +9,23 @@ class SVGGraphicModifier {
      * NOTE: miterlimit The limit on the ratio of the miter length to the stroke-width. The value of <miterlimit> must be a <number> greater than or equal to 1.
      */
     static func applyStrokeStyle(_ graphics:Graphics, _ style:SVGStyle){
-        let lineStyle:ILineStyle = SVGLineStyleUtils.colorLineStyle(style)
+        let lineStyle:LineStylable = SVGLineStyleUtils.colorLineStyle(style)
         graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
     }
     /**
      * Applies a gradientStrokeStyle to the Graphics
      */
     static func applyGradientStrokeStyle(_ shape:Shape,_ style:SVGStyle){
-        let lineStyle:ILineStyle = SVGLineStyleUtils.colorLineStyle(style)
+        let lineStyle:LineStylable = SVGLineStyleUtils.colorLineStyle(style)
         shape.graphics.line(lineStyle.thickness, lineStyle.color, lineStyle.lineCap, lineStyle.lineJoin, lineStyle.miterLimit)
-        let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, style)
+        let graphicsGradient:GraphicsGradientKind = SVGLineStyleUtils.lineGraphicsGradient(shape, style)
         shape.graphics.gradientLine(graphicsGradient)
     }
     /**
      * Begins a gradient fill on PARAM: graphics with PARAM: gradient
      */
     static func beginGradientFill(_ shape:Shape,_ gradient:SVGGradient){
-        let graphicsGradient:IGraphicsGradient = SVGFillStyleUtils.fillGraphicGradient(shape, gradient)
+        let graphicsGradient:GraphicsGradientKind = SVGFillStyleUtils.fillGraphicGradient(shape, gradient)
         shape.graphics.gradientFill(graphicsGradient)
     }
 }

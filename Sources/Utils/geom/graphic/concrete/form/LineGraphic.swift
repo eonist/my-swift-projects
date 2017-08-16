@@ -2,7 +2,7 @@ import Foundation
 class LineGraphic:SizeableDecorator {
     var p1:CGPoint;
     var p2:CGPoint;
-    init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ decoratable:IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
+    init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ decoratable:GraphicDecoratableKind = BaseGraphic(nil,LineStyle())) {
         self.p1 = p1
         self.p2 = p2
         super.init(decoratable)
@@ -29,7 +29,7 @@ class LineGraphic:SizeableDecorator {
      * Untested
      */
     override func getSize()->CGSize{
-        let relativeDifference = PointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
+        let relativeDifference = CGPointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
         return CGSize(relativeDifference.x,relativeDifference.y)
     }
     /**

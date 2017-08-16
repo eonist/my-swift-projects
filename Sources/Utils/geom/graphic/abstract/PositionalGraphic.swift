@@ -1,8 +1,8 @@
 import Foundation
 
-class PositionalGraphic:GraphicDecoratable,IPositional {
+class PositionalGraphic:GraphicDecoratable,Positional {
     var pos:CGPoint
-    init(_ pos:CGPoint,_ decoratable:IGraphicDecoratable) {
+    init(_ pos:CGPoint,_ decoratable:GraphicDecoratableKind) {
         self.pos = pos
         super.init(decoratable)
     }

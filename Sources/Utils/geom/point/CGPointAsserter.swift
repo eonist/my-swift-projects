@@ -1,5 +1,4 @@
 import Foundation
-typealias PointAsserter = CGPointAsserter//legacy support
 /**
  * TODO: When needed add these:
  * oppositeDirectional
@@ -138,9 +137,9 @@ class CGPointAsserter {
      * TODO: if two points are equal then the three are colliinear actually
      */
     static func collinear(_ p1:CGPoint,_ p2:CGPoint,_ p3:CGPoint) -> Bool {//TODO: rename to is..., depricate and link, or not?!?!                        
-        let a:CGFloat = PointParser.slope(p2, p3)        
-        let b:CGFloat = PointParser.slope(p2, p1)        
-        let c:CGFloat = PointParser.slope(p3, p1)        
+        let a:CGFloat = CGPointParser.slope(p2, p3)        
+        let b:CGFloat = CGPointParser.slope(p2, p1)        
+        let c:CGFloat = CGPointParser.slope(p3, p1)        
         return (a == b && b == c) || (CGFloatAsserter.isInfinity(a) && CGFloatAsserter.isInfinity(b) && CGFloatAsserter.isInfinity(c))//why do we assert infinity again?
     }
     /**

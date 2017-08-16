@@ -50,12 +50,12 @@ class SVGStyleUtils {
     /**
      * New
      */
-    static func graphicStyle(_ svgGraphic:ISVGGraphic)->IGraphicStyle{
+    static func graphicStyle(_ svgGraphic:SVGGraphicKind)->GraphicStylable{
         guard let style = svgGraphic.style else{
             return GraphicStyle()
         }
-        let fillStyle:IFillStyle? = SVGFillStyleUtils.fillStyle(style, svgGraphic.fillShape)
-        let lineStyle:ILineStyle? = SVGLineStyleUtils.lineStyle(style, svgGraphic.lineShape)
+        let fillStyle:FillStyleKind? = SVGFillStyleUtils.fillStyle(style, svgGraphic.fillShape)
+        let lineStyle:LineStylable? = SVGLineStyleUtils.lineStyle(style, svgGraphic.lineShape)
         return GraphicStyle(fillStyle,lineStyle)
     }
 }

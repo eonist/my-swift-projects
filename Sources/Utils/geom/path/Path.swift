@@ -1,5 +1,5 @@
 import Foundation
-struct Path:IPath {
+struct Path:PathKind {
     var commands:[Int]// :TODO: does this need to be created? isnt it passed through argument
     var pathData:[CGFloat]// :TODO: does this need to be created? isnt it passed through argument
     var rotation:CGFloat/*in degrees*/// :TODO: is this much used?// :TODO: if we can have roation why cant we have matrix?

@@ -6,7 +6,7 @@ import Cocoa
  * 2. You add the path to the Graphics instance (through the draw methods)
  * 3. You call the draw method in the Graphics instance (through the stylize methods)
  */
-class SVGGraphic:SVGView,CALayerDelegate,ISVGGraphic{
+class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
     var fillShape:Shape
     var lineShape:Shape
     var trackingArea:NSTrackingArea?

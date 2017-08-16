@@ -46,7 +46,7 @@ class Win:NSWindow, NSApplicationDelegate, NSWindowDelegate {
         return true
     }
 }
-class WinView:InteractiveView2{
+class WinView:InteractiveView{
     init(_ frame:CGRect) {
         super.init(frame: frame)
     }

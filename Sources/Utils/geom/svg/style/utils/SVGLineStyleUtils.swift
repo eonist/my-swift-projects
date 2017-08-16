@@ -1,7 +1,7 @@
 import Cocoa
 
 class SVGLineStyleUtils{
-    static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->ILineStyle?{
+    static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->LineStylable?{
         if(svgStyle.stroke is Double) {
             return colorLineStyle(svgStyle)
         }else if(svgStyle.stroke is SVGGradient){
@@ -12,7 +12,7 @@ class SVGLineStyleUtils{
             return nil
         }
     }
-    static func colorLineStyle(_ style:SVGStyle)->ILineStyle{
+    static func colorLineStyle(_ style:SVGStyle)->LineStylable{
         let thickness:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
         let miterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         let lineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
@@ -22,8 +22,8 @@ class SVGLineStyleUtils{
         return LineStyle(thickness, color, lineCap, lineJoin, miterLimit)
     }
     private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
-        let lineStyle:ILineStyle = colorLineStyle(svgStyle)
-        let graphicsGradient:IGraphicsGradient = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
+        let lineStyle:LineStylable = colorLineStyle(svgStyle)
+        let graphicsGradient:GraphicsGradientKind = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
         let gradient:IGradient = graphicsGradient.gradient()
         let gradientLineStyle = GradientLineStyle(gradient,lineStyle)
         return gradientLineStyle
@@ -31,8 +31,8 @@ class SVGLineStyleUtils{
     /**
      * TODO: when you scale the lineGradient, remember to consider that you dont scale the lineWidth and so the gradient that is applied may not cover as it should. This means that you cant simply scale the SVGGradient.transformation, instead you have to scale the gradient that is attached to the indeviduel SVGGraphic, and you have to take into consideration that the strokeThickness is now different than the new relative size. Even though its the same, the relative difference between the strokeThickness and the size of the shape is different. So you have to recalculate the gradient.transformation matrix a little bit. Probably by insetting it by some relative value
      */
-    static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->IGraphicsGradient{
-        guard let gradient:ISVGGradient = style.stroke as? ISVGGradient else {fatalError("shape.stroke is not SVGGradient")}
+    static func lineGraphicsGradient(_ shape:Shape,_ style:SVGStyle)->GraphicsGradientKind{
+        guard let gradient:SVGGradientKind = style.stroke as? SVGGradientKind else {fatalError("shape.stroke is not SVGGradient")}
         let userSpaceOnUse:Bool = gradient.gradientUnits == "userSpaceOnUse"/*The gradientUnits attribute takes two familiar values, userSpaceOnUse and objectBoundingBox, which determine whether the gradient scales with the element that references it or not. It determines the scale of x1, y1, x2, y2.*/
         switch gradient{
             case let linearGradient as SVGLinearGradient:/*gradient is SVGRadialGradient */
@@ -46,7 +46,7 @@ class SVGLineStyleUtils{
 }
 
 private class Utils{
-    static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient {
+    static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind {
         var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1).copy()/* :nil*/
         var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2).copy()/* :nil*/
         if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
@@ -67,7 +67,7 @@ private class Utils{
         }
         return LinearGraphicsGradient(gradient.colors,gradient.offsets,nil/*gradient.gradientTransform*/,p1,p2)
     }
-    static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->IGraphicsGradient {
+    static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind {
         let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
         let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
         var transformation:CGAffineTransform = CGAffineTransform.identity

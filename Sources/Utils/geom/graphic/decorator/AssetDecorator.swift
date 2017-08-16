@@ -16,7 +16,7 @@ class AssetDecorator:SizeableDecorator{
             _assetURL = newValue
         }
     }
-    init(_ decoratable:IGraphicDecoratable,_ iconURL:String) {//this should be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
+    init(_ decoratable:GraphicDecoratableKind,_ iconURL:String) {//this should be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         _assetURL = iconURL
         super.init(decoratable)
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied, this may not be the case anymore*/
