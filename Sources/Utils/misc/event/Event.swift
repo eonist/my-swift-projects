@@ -7,7 +7,7 @@ import Foundation
  * TODO: ⚠️️ Origin should be optional
  */
 class Event{
-    static var update:String = EventType.update.rawValue/*Ideally I would name this change but apparently then subclasses can name their const the same*/
+    static var update:String = "eventUpdate"//EventType.update.rawValue/*Ideally I would name this change but apparently then subclasses can name their const the same*/
     var type:String
     var origin:AnyObject/*origin sender of event, this could also be weak if you discover a memory leak*///TODO:this should be of type IEventSender
     var immediate:AnyObject/*previouse sender of event, TODO: ⚠️️ this should be of type IEventSender*/
@@ -17,11 +17,12 @@ class Event{
         self.immediate = origin
     }
 }
-enum EventType:String{
-    case update = "eventUpdate"
-}
-extension Event{
-    func assert(_ type:EventType) -> Bool{
-        return self.type == type.rawValue
-    }
-}
+//enum EventType:String{
+//    case update = "eventUpdate"
+//}
+//extension Event{
+//    func assert(_ type:EventType) -> Bool{
+//        return self.type == type.rawValue
+//    }
+//}
+
