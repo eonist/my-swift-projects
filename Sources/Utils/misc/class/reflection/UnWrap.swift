@@ -1,6 +1,6 @@
 import Cocoa
 
-class UnWrapUtils{
+class UnWrap{
     /**
      * NOTE: Making an extension for "Any" obviously doesn't seem to work, so this is the solution:
      */

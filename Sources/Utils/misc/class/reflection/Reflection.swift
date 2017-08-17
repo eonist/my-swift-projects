@@ -1,20 +1,22 @@
 import Cocoa
 /**
+ * Reflection converts from Class / Struct to XML
  * NOTE: XML is used as the storage syntax. JSON could be used but there was no apparent benefit so XML it is
  * NOTE: JSON can be implimented with not to much effort, but supporting both XML and JSON is more work than it's worth at the moment
+ * TODO: Try make it more generic?
  */
 class Reflection {
     /**
-     * IMPORTANT: Does not work with computed properties like: var something:String{return ""}
-     * IMPORTANT: Does not work with methods
-     * IMPORTANT: only works with regular variables
+     * IMPORTANT: ⚠️️ Does not work with computed properties like: var something:String{return ""}
+     * IMPORTANT: ⚠️️ Does not work with methods
+     * IMPORTANT: ⚠️️ only works with regular variables
      * NOTE: some limitations with inheritance (basially it doesn't work with inheritance, it won't grab the variables of subClasses, it works for variables in the super type)
      * NOTE: inheritance can be supported , by traversing down the hirarchy via: mirror.superclassMirror() see: http://stackoverflow.com/a/36721639/5389500
      * NOTE: works with struct and class
      */
     static func reflect(_ instance:Any)->[(label:String,value:Any)]{//<---Should this method be private? as toXML is the primary method in this class
         var properties = [(label:String,value:Any)]()//<--Array of Duplets with lable and value
-        let mirror = Mirror(reflecting: instance)
+        let mirror = Mirror.init(reflecting: instance)
         //Swift.print("mirror: " + "\(mirror)")
         //Swift.print("mirror.children.count: " + "\(mirror.children.count)")
         mirror.children.forEach{
@@ -33,6 +35,7 @@ class Reflection {
         }
         return properties
     }
+    
     /**
      * Converts an instance to XML
      * NOTE: This is a general solution for saving the state of a class/struct instance

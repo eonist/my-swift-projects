@@ -1,5 +1,6 @@
 import Cocoa
 /**
+ * Unwrap classes and struct from xml to class and struct instances
  * NOTE: you extend the Types you want to unWrap. And use inference similar to the way you made that cast method.
  * NOTE: Using init with extension, protocol and classes is a bit troublesome. So a method is used instead of init
  * NOTE: We are accessing the classtype and casting it as UNWrappable and then calling unwrap on the correct type (this requires usage of static methods, but its the most elegant)

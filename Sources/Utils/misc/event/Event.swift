@@ -17,12 +17,12 @@ class Event{
         self.immediate = origin
     }
 }
-//enum EventType:String{
-//    case update = "eventUpdate"
-//}
-//extension Event{
-//    func assert(_ type:EventType) -> Bool{
-//        return self.type == type.rawValue
-//    }
-//}
+enum EventType:String{
+    case update = "eventUpdate"
+}
+extension Event{
+    func assert(_ type:EventType) -> Bool{
+        return self.type == type.rawValue
+    }
+}
 
