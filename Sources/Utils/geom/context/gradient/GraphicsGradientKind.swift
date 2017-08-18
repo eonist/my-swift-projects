@@ -11,12 +11,23 @@ extension GraphicsGradientKind{
      * Convert
      */
     func gradient()->GradientKind{
-        if let gradient = (self as? LinearGraphicsGradient){
+        switch self{
+        case let gradient as LinearGraphicsGradient:
             return gradient.linearGradient()
-        }else if let gradient = (self as? RadialGraphicsGradient){
+        case let gradient as RadialGraphicsGradient:
             return gradient.radialGradient()
-        }else{
+        default:
             fatalError("type not supported")
         }
     }
+}
+
+public protocol GraphicsGradientDecoratable:GraphicsGradientKind {
+    var gradient:GraphicsGradient {get set}
+}
+
+extension GraphicsGradientDecoratable{
+    public var colors:[CGColor]{get{return gradient.colors} set{gradient.colors = newValue}}
+    public var locations:[CGFloat]{get{return gradient.locations} set{gradient.locations = newValue}}/*same as color stops*/
+    public var transformation:CGAffineTransform?{get{return gradient.transformation} set{gradient.transformation = newValue}}
 }

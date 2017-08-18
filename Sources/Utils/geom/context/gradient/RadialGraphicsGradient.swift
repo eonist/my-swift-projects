@@ -1,6 +1,7 @@
 import Foundation
 
-public class RadialGraphicsGradient:GraphicsGradient{
+public struct RadialGraphicsGradient:GraphicsGradientDecoratable{
+    public var gradient:GraphicsGradient
     public var startCenter:CGPoint
     public var endCenter:CGPoint
     public var startRadius:CGFloat
@@ -10,9 +11,10 @@ public class RadialGraphicsGradient:GraphicsGradient{
         self.endCenter = endCenter
         self.startRadius = startRadius
         self.endRadius = endRadius
-        super.init(colors,locations,transformation)
+        gradient = .init(colors,locations,transformation)
     }
 }
+
 extension RadialGraphicsGradient{
     /**
      * Convert
