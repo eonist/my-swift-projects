@@ -26,6 +26,7 @@ extension GraphicDecoratableKind where Self:Positional, Self:Sizable{
 extension GraphicDecoratableKind{
     /**
      * NOTE: Returns the actual type! 🎉
+     * Looks through the decorators and finds the reference which matches the PARAM: classType
      */
     func get<T:GraphicDecoratableKind>(_ classType:T.Type) -> T?{
         return DecoratorUtils.decoratable(self, classType) as? T

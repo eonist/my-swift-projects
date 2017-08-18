@@ -5,10 +5,9 @@ import QuartzCore
  * NOTE: You can set the position by calling: graphic.frame.origin = CGPoint()
  * NOTE: We extend CALayerDelegate so that we can get back draw(_ layer, ctx) without resorting to use MTKView, as MTKView doesn't seem to work as a CALAyerDelegate with CALayer out of the box, because we probably need to use CAMetalLayer...and other complexities conserning MetalKit
  * NOTE: MetalKit is complicated and not easy to use out of the box. Maybe add it as an experimental branch instead, and experiment with it along side Element
+ * NOTE: swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
  */
 class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
-    
-//swift 3 update, NSView doesn't implement CALayerDelegate anymore so you have to implement it your self
     typealias SelectorCallBack = ((_ layer:CALayer, _ ctx:CGContext) -> ())?
     lazy var fillShape:Shape = Shape()
     lazy var lineShape:Shape = Shape()
@@ -45,8 +44,7 @@ class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        var localPoint = globToLoc(aPoint)
-        localPoint -= fillShape.frame.origin//<--Quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
+        let localPoint = globToLoc(aPoint) - fillShape.frame.origin//<--Quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
         return isPointInside ? self : super.hitTest(aPoint)/*Return nil will tell the parent that there was no hit on this view*/
     }
