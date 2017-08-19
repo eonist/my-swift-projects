@@ -4,7 +4,7 @@ import Cocoa
  */
 class FillStyle:FillStyleKind {
     var color:NSColor
-    init(_ color:NSColor = NSColor.clear){
+    init(_ color:NSColor = .clear){
         self.color = color
     }
 }

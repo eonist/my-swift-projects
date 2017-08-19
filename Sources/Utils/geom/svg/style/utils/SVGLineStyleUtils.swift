@@ -21,10 +21,10 @@ class SVGLineStyleUtils{
         let color:NSColor = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN ? SVGStyleUtils.strokeColor(style.stroke! as! Double, strokeOpacity) : NSColor.clear//if color is NaN or nil then set this to clear color
         return LineStyle(thickness, color, lineCap, lineJoin, miterLimit)
     }
-    private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->IGradientLineStyle{
+    private static func gradientLineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->GradientLineStylable{
         let lineStyle:LineStylable = colorLineStyle(svgStyle)
         let graphicsGradient:GraphicsGradientKind = SVGLineStyleUtils.lineGraphicsGradient(shape, svgStyle)
-        let gradient:IGradient = graphicsGradient.gradient()
+        let gradient:GradientKind = graphicsGradient.gradient()
         let gradientLineStyle = GradientLineStyle(gradient,lineStyle)
         return gradientLineStyle
     }

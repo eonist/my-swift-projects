@@ -3,8 +3,8 @@ import Cocoa
  * TODO: ⚠️️ Convert to struct
  */
 class GradientFillStyle:FillStyle,GradientFillStyleKind{
-    var gradient:IGradient
-    init(_ gradient:IGradient, _ color:NSColor = NSColor.clear){
+    var gradient:GradientKind
+    init(_ gradient:GradientKind, _ color:NSColor = .clear){
         self.gradient = gradient
         super.init(color)
     }

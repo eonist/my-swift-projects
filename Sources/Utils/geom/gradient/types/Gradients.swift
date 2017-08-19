@@ -86,15 +86,15 @@ extension Gradients{/*Color ranges*/
     static func bw(_ alpha:CGFloat = 1.0)->[CGColor]{return [CGColor.cgColor(0x000000).alpha(alpha),CGColor.cgColor(0xFFFFFF).alpha(alpha)]}
 }
 class FancyGradients{
-    static func red()->IGradient{return LinearGradient(Gradients.red())}
-    static func green()->IGradient{return LinearGradient(Gradients.green())}
-    static func orange()->IGradient{return LinearGradient(Gradients.orange())}
-    static func yellow()->IGradient{return LinearGradient(Gradients.yellow())}
-    static func teal()->IGradient{return LinearGradient(Gradients.teal())}
-    static func blue()->IGradient{return LinearGradient(Gradients.blue())}
-    static func violet()->IGradient{return LinearGradient(Gradients.violet())}
-    static func magenta()->IGradient{return LinearGradient(Gradients.magenta())}
-    static func black()->IGradient{return LinearGradient(Gradients.black())}
-    static func silver()->IGradient{return LinearGradient(Gradients.silver())}
-    static func gradients()->Array<(name:String,gradient:IGradient)>{return [("red",red()),("green",green()),("orange",orange()),("yellow",yellow()),("teal",teal()),("blue",blue()),("violet",violet()),("magenta",magenta()),("black",black()),("silver",silver())]}
+    static func red()->GradientKind{return LinearGradient(Gradients.red())}
+    static func green()->GradientKind{return LinearGradient(Gradients.green())}
+    static func orange()->GradientKind{return LinearGradient(Gradients.orange())}
+    static func yellow()->GradientKind{return LinearGradient(Gradients.yellow())}
+    static func teal()->GradientKind{return LinearGradient(Gradients.teal())}
+    static func blue()->GradientKind{return LinearGradient(Gradients.blue())}
+    static func violet()->GradientKind{return LinearGradient(Gradients.violet())}
+    static func magenta()->GradientKind{return LinearGradient(Gradients.magenta())}
+    static func black()->GradientKind{return LinearGradient(Gradients.black())}
+    static func silver()->GradientKind{return LinearGradient(Gradients.silver())}
+    static func gradients()->Array<(name:String,gradient:GradientKind)>{return [("red",red()),("green",green()),("orange",orange()),("yellow",yellow()),("teal",teal()),("blue",blue()),("violet",violet()),("magenta",magenta()),("black",black()),("silver",silver())]}
 }

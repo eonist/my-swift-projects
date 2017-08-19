@@ -22,8 +22,8 @@ class GradientGraphic:SizeableDecorator/*<--Recently changed from GraphicDecorat
      */
     override func applyLineStyle() {
         super.applyLineStyle()/*Call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        if let lineStyle:IGradientLineStyle = getGraphic().lineStyle as?  IGradientLineStyle{
-            let gradient:IGradient = lineStyle.gradient
+        if let lineStyle:GradientLineStylable = getGraphic().lineStyle as?  GradientLineStylable{
+            let gradient:GradientKind = lineStyle.gradient
             //swift 3 update on the bellow line. used CGPathGetBoundingBox....etc
             var boundingBox:CGRect = graphic.lineShape.path.boundingBox /*this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc*/
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/

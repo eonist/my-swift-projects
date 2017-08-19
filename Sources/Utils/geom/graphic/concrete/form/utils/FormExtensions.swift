@@ -12,13 +12,13 @@ extension PolyLineGraphic{
     convenience init(_ points:[CGPoint], _ fillStyle:FillStyleKind?, _ lineStyle:LineStylable?) {
         self.init(points, BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ points:[CGPoint], _ gradientFillStyle:GradientFillStyleKind?, _ gradientlineStyle:IGradientLineStyle?) {
+    convenience init(_ points:[CGPoint], _ gradientFillStyle:GradientFillStyleKind?, _ gradientlineStyle:GradientLineStylable?) {
         self.init(points, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }
 }
 extension PathGraphic{
     convenience init(_ path:PathKind, _ fillStyle:FillStyleKind?, _ lineStyle:LineStylable?) {/*Convenience*/
-        let graphic:GraphicDecoratableKind = fillStyle is GradientFillStyleKind || lineStyle is IGradientLineStyle ? GradientGraphic(BaseGraphic(fillStyle,lineStyle)) : BaseGraphic(fillStyle,lineStyle)
+        let graphic:GraphicDecoratableKind = fillStyle is GradientFillStyleKind || lineStyle is GradientLineStylable ? GradientGraphic(BaseGraphic(fillStyle,lineStyle)) : BaseGraphic(fillStyle,lineStyle)
         self.init(path, graphic)
     }
 }

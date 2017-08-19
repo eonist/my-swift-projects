@@ -1,6 +1,5 @@
 import Foundation
 
-typealias IGradient = GradientKind
 protocol GradientKind {
     var colors:[CGColor]{get set}
     var locations:[CGFloat]{get set}
@@ -8,7 +7,13 @@ protocol GradientKind {
 }
 extension GradientKind{
     func copy() -> GradientKind {
-        if(self is LinearGradient){return LinearGradient(colors,locations,rotation)}
-        else{return RadialGradient(colors,locations,rotation,(self as! RadialGradient).startCenter,(self as! RadialGradient).endCenter,(self as! RadialGradient).startRadius,(self as! RadialGradient).endRadius)}
+        switch self {
+        case is LinearGradient:
+            return LinearGradient(colors,locations,rotation)
+        case let gradient as RadialGradient:
+            return RadialGradient(colors,locations,rotation,gradient.startCenter,gradient.endCenter,gradient.startRadius,gradient.endRadius)
+        default:
+            fatalError("Not available")
+        }
     }
 }

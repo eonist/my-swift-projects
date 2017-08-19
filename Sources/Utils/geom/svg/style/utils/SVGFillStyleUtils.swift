@@ -25,7 +25,7 @@ class SVGFillStyleUtils{
     static func gradientFillStyle(_ style:SVGStyle,_ shape:Shape)->GradientFillStyleKind{
         let svgGradient:SVGGradient = style.fill as! SVGGradient
         let graphicsGradient:GraphicsGradientKind = SVGFillStyleUtils.fillGraphicGradient(shape, svgGradient)
-        let gradient:IGradient = graphicsGradient.gradient()
+        let gradient:GradientKind = graphicsGradient.gradient()
         let gradientFillStyle:GradientFillStyleKind = GradientFillStyle(gradient)
         return gradientFillStyle
     }

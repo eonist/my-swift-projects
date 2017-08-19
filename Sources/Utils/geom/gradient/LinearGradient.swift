@@ -16,7 +16,7 @@ extension LinearGradient:UnWrappable{
 }
 
 extension LinearGradient{
-    init(_ gradient:IGradient){
+    init(_ gradient:GradientKind){
         self.init(gradient.colors,gradient.locations,gradient.rotation)
     }
 }

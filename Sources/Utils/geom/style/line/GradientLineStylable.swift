@@ -1,7 +1,7 @@
 import Foundation
-typealias IGradientLineStyle = GradientLineStylable
+
 protocol GradientLineStylable:LineStylable {
-    var gradient:IGradient{get set}
+    var gradient:GradientKind{get set}
 }
 extension GradientLineStylable{
     func mix(_ colors:[CGColor])->GradientLineStyle{

@@ -3,9 +3,6 @@ import Foundation
 /**
  * NOTE: Set a NSDate to measure the time like this: var startTime:NSDate = NSDate();abs(startTime!.timeIntervalSinceNow)
  * NOTE: Or even easier: let d = CACurrentMediaTime(); /*Do heavy computing*/let d1 = CACurrentMediaTime()-d; print(d1)//0.452 sec
- */
-
-/**
  * EXAMPLE: testPerformance("Adding styles took: "){CSSFileParser.cssString(url)}//Adding styles took 2.4secs
  * PARAM: startTime: performance test start time
  */

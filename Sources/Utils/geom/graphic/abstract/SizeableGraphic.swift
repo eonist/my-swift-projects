@@ -34,7 +34,7 @@ extension SizeableGraphic{
      * NOTE: one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which Graphic should be created.
      */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:FillStyleKind? = nil, _ lineStyle:LineStylable? = nil, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-        let graphic:GraphicDecoratableKind = fillStyle is GradientFillStyleKind || lineStyle is IGradientLineStyle ? GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset)) : BaseGraphic(fillStyle,lineStyle,lineOffset)
+        let graphic:GraphicDecoratableKind = fillStyle is GradientFillStyleKind || lineStyle is GradientLineStylable ? GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset)) : BaseGraphic(fillStyle,lineStyle,lineOffset)
         self.init(CGPoint(x,y),CGSize(width,height),graphic)
     }
     convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
