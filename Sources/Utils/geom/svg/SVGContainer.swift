@@ -1,30 +1,24 @@
 import Cocoa
 /**
  * SVGContainer serves as a Sprite but also has an id and an array that keeps track of the added items
- * TODO: could we omit the _items and just use the display-stack as a record of items added?
- * TODO: we need a remove method to compliment the add method
+ * TODO: ⚠️️ Could we omit the _items and just use the display-stack as a record of items added?
+ * TODO: ⚠️️ We need a remove method to compliment the add method
  */
 class SVGContainer:InteractiveView, SVGContainable{
     var id:String
     var items:[SVGElementKind] = []
     init(_ items:[SVGElementKind], _ id:String) {
-        self.id = id;
-        super.init(frame: NSRect(0,0,0,0))/*<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip*/
-        /*
-        self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!
-        */
-        for item:SVGElementKind in items {add(item)}
+        self.id = id
+        super.init(frame: NSRect.init(0,0,0,0))/*<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip*/
+        items.forEach {add($0)}
     }
     /**
      * PARAM: item (SVGGraphic and elements like SVGLinearGradient)
      */
     func add(_ element:SVGElementKind) {
-        if let element = element as? NSView {
-            addSubview(element)
-        }
         items.append(element)
+        guard let element = element as? NSView else {return}
+        addSubview(element)
     }
     /**
      * Asserts and returns an svg item by PARAM: id
@@ -32,5 +26,5 @@ class SVGContainer:InteractiveView, SVGContainable{
     func getItem(_ id:String)->SVGElementKind?{
         return items.first(where: {$0.id == id})
     }
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -14,11 +14,11 @@ class SVGPolygon:SVGGraphic,SVGPolyLineKind{
      */
     override func draw() {
         let boundingBox:CGRect = CGPointParser.rectangle(points)/*Fill, We need the bounding box in order to set the frame*/
-        if(style!.fill != nil){/*Fill*/
+        if style!.fill != nil {/*Fill*/
             fillShape.path = CGPathParser.lines(points,true,CGPoint(-boundingBox.x,-boundingBox.y))/*<--We offset so that the lines draw from 0,0 relative to the frame*/
             fillShape.frame = boundingBox/*The positioning happens in the frame*/
         }
-        if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
+        if style!.stroke != nil {/*Line,checks if there is a stroke in style*/
             let strokeBoundingBox:CGRect = SVGStyleUtils.boundingBox(fillShape.path, style!)// + boundingBox.origin
             let linePathOffset:CGPoint = CGPointParser.difference(strokeBoundingBox.origin,CGPoint(0,0))
             lineShape.frame = (strokeBoundingBox + boundingBox.origin).copy()

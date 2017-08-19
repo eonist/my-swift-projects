@@ -33,17 +33,16 @@ class SVGRect:SVGGraphic {
      * TODO: ⚠️️ You can set the frame to the rect, no need for the fancy frame creation method
      */
     override func draw() {
-        if(width <= 0 && height <= 0) {/*None*/
+        if width <= 0 && height <= 0 {/*None*/
             return
         }else{
             let rect:CGRect = CGRect(!self.xVal.isNaN ? self.xVal : 0, !self.yVal.isNaN ? self.yVal : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
-            if(style!.fill != nil){/*Fill*/
+            if style!.fill != nil {/*Fill*/
                 fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(CGRect(0,0,width,height), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
                 let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || (style!.stroke != nil && style!.stroke! is SVGGradient) ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
-                
                 fillShape.frame = fillFrame/*,position and set the size of the frame*/
             }
-            if(style!.stroke != nil){/*Line,checks if there is a stroke in style*/
+            if style!.stroke != nil {/*Line,checks if there is a stroke in style*/
                 let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth!, OffsetType(OffsetType.center))
                 lineShape.frame = lineOffsetRect.lineFrameRect
                 lineShape.path = (rx.isNaN && ry.isNaN) ? lineOffsetRect.lineRect.path : CGPathParser.roundRect(lineOffsetRect.lineRect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/

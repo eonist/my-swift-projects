@@ -9,7 +9,7 @@ import Foundation
  * 		<rect x="64" y="64" fill="#0000FF" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
  * </svg>
  */
-class SVG:SVGContainer{// :TODO: (SVG should be split into SVGView and SVG...something els)
+class SVG:SVGContainer{// :TODO: ⚠️️ (SVG should be split into SVGView and SVG...something els)
     var version:CGFloat
     var nameSpace:String
     var xVal:CGFloat

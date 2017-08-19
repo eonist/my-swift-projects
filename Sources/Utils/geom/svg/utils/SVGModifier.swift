@@ -18,7 +18,7 @@ class SVGModifier {
                     svgGraphic.frame.x += offset.x
                     svgGraphic.frame.y += offset.y
                 case let svgGraphic as SVGCircle:
-                    svgGraphic.cx += offset.x
+                    svgGraphic.cX += offset.x
                     svgGraphic.cy += offset.y
                 default:
                     fatalError("type not supported yet")

@@ -14,15 +14,11 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
         fillShape = Shape()
         lineShape = Shape()
         super.init(style,id!)
-        //wantsLayer = true//this avoids calling drawLayer() and enables drawingRect()
-        //layer = CALayer()//TempCALayer(layer: layer!)
-        //layer!.masksToBounds = false//this is needed!!!
         layer?.addSublayer(fillShape)
         layer?.addSublayer(lineShape)
         self.fillShape.delegate = self/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
         self.lineShape.delegate = self//swift 3 upgrade, the casting was not needed before
-        //Swift.print("SVGGraphic.init() style: " + "\(style)")
-        if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
+        if style != nil {/*this should porbably have a more complex assert for the sake of optimization*/
             draw()
             fillShape.setNeedsDisplay()/*setup the fill geometry*//*draw the fileShape*/
             lineShape.setNeedsDisplay()/*setup the line geometry*//*draw the fileShape*/
@@ -36,12 +32,12 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets it's call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     func draw(_ layer:CALayer, in ctx:CGContext) {/*The context is passed from the layers, so that we get access to the context from this class and the classes that inherit this class*/
-        if(layer === fillShape){
+        if layer === fillShape {
             fillShape.graphics.context = ctx
-            if(style != nil){fill()}
-        }else if(layer === lineShape){
+            if style != nil {fill()}
+        }else if layer === lineShape {
             lineShape.graphics.context = ctx
-            if(style != nil){line()}
+            if style != nil {line()}
         }
     }
     func fill(){
@@ -58,10 +54,10 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
-        if(/*style != nil && */style!.fill is Double/* && style!.fill != "none"*/ && !(style!.fill as! Double).isNaN) {
+        if /*style != nil && */let doubleStyle = style?.fill as? Double/* && style!.fill != "none"*/ , doubleStyle.isNaN {
             let color:NSColor = SVGFillStyleUtils.fillColor(style!)
             fillShape.graphics.fill(color)/*Stylize the fill*/
-        }else if(style!.fill != nil && style!.fill! is SVGGradient){//<- may need to use dynamixtype to assert this?!?
+        }else if let fill = style?.fill, fill is SVGGradient {//<- may need to use dynamixtype to assert this?!?
             SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
         }else{
             //clear
@@ -73,9 +69,9 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: we dont check to see if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
-        if(style!.stroke is Double) {/*updates only if lineStyle of class LineStyle*/
+        if style?.stroke is Double {/*updates only if lineStyle of class LineStyle*/
             SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
-        }else if(style!.stroke is SVGGradient){
+        }else if style?.stroke is SVGGradient {
             SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style!)
         }else{/*clear*/
             //fatalError("not implemented yet " + "\(style!.stroke)")
@@ -85,22 +81,7 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
     func draw(){
-        /*if(style != nil){/*this should porbably have a more complex assert for the sake of optimization*/
-            drawLine()
-            drawFill()
-        }*/   
     }
-    /**
-     * drawLine() and drawFill() sets the paths to the fillShape and the LineShape of the Graphic instance (we use Graphic class with 2 layers for stroke and fill so taht we can offset the stroke to be cenetered and not clipped, this requires some offseting of the strokePath so taht it is clipped correctly. We could set stroke unclipped on the layer directly but then we wouldnt have GradientStroke support, which svg needse)
-     */
-    /*
-    func drawLine(){
-        //fatalError("must be overriden in subclass")
-    }
-    func drawFill(){
-        //fatalError("must be overriden in subclass")
-    }
-    */
     func stylizeFill(){
         GraphicsModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
@@ -123,7 +104,7 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
     override func updateTrackingAreas() {
-        if(trackingArea != nil) {self.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
+        if let trackingArea = trackingArea {self.removeTrackingArea(trackingArea)}//remove old trackingArea if it exists
         trackingArea = NSTrackingArea(rect: fillShape.frame, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.mouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
