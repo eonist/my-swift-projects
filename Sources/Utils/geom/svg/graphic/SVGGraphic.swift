@@ -54,11 +54,12 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: we dont check to se if style is not nil, since that is being done by the caller of this method
      */
     func beginFill(){
-        if /*style != nil && */let doubleStyle = style?.fill as? Double/* && style!.fill != "none"*/ , doubleStyle.isNaN {
-            let color:NSColor = SVGFillStyleUtils.fillColor(style!)
+        guard let style = style else {return}
+        if let doubleStyle = style.fill as? Double, !doubleStyle.isNaN {
+            let color:NSColor = SVGFillStyleUtils.fillColor(style)
             fillShape.graphics.fill(color)/*Stylize the fill*/
-        }else if let fill = style?.fill, fill is SVGGradient {//<- may need to use dynamixtype to assert this?!?
-            SVGGraphicModifier.beginGradientFill(fillShape, style!.fill as! SVGGradient)
+        }else if let fill = style.fill as? SVGGradient {
+            SVGGraphicModifier.beginGradientFill(fillShape, fill)
         }else{
             //clear
             //Swift.print("no fill")
@@ -69,19 +70,20 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
      * NOTE: we dont check to see if style is not nil, since that is being done by the caller of this method
      */
     func applyLineStyle(){
-        if style?.stroke is Double {/*updates only if lineStyle of class LineStyle*/
-            SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style!)
-        }else if style?.stroke is SVGGradient {
-            SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style!)
-        }else{/*clear*/
-            //fatalError("not implemented yet " + "\(style!.stroke)")
+        guard let style = style else {return}
+        switch style.stroke {
+        case is Double:/*updates only if lineStyle of class LineStyle*/
+            SVGGraphicModifier.applyStrokeStyle(lineShape.graphics, style)
+        case is SVGGradient:
+            SVGGraphicModifier.applyGradientStrokeStyle(lineShape, style)
+        default:/*clear*/
+            break;//fatalError("not implemented yet " + "\(style!.stroke)")
         }
     }
     /**
      * The draw call is overriden in SVGRect SVGCircle etc and takes care of setting the path to the Shape instances
      */
-    func draw(){
-    }
+    func draw(){}
     func stylizeFill(){
         GraphicsModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
@@ -90,7 +92,7 @@ class SVGGraphic:SVGView,CALayerDelegate,SVGGraphicKind{
     }
     /**
      * This is the last NSView so we dont forward the hitTest to further descendants, however we could forward the hit test one more step to the CALayer
-     * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
+     * TODO: ⚠️️ the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
         let localPoint = localPos()//*you have to convert the aPoint to localspace*/

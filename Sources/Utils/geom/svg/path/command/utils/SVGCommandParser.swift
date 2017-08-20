@@ -9,8 +9,8 @@ class SVGCommandParser {
     static func commandLength(_ command:String)->Int {
         let command = command.lowercased()
         /*if(command == GraphicsPathCommand.NO_OP) return 0;*/
-        if(command == "c") {return 4}
-        else if(command == "a") {return 7}
-        else{ return 2}/*MOVE_TO, LINE_TO, WIDE_MOVE_TO, WIDE_LINE_TO are all 2 commands long*/
+        if command == "c" {return 4}
+        else if command == "a" {return 7}
+        else{return 2}/*MOVE_TO, LINE_TO, WIDE_MOVE_TO, WIDE_LINE_TO are all 2 commands long*/
 	 }
 }

@@ -1,7 +1,6 @@
 import Foundation
 /**
  * These constants represents the names in the SVG specification
- * TODO:  Enum please
  */
 enum SVGConstants:String {
     case rect = "rect"

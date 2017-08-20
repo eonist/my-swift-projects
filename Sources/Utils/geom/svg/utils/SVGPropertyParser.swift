@@ -56,8 +56,8 @@ class SVGPropertyParser {
             let strokeLineCap:String? = property(xml,"stroke-linecap")
             let strokeLineJoin:String? = property(xml,"stroke-linejoin")
             let strokeMiterLimit:CGFloat = SVGPropertyParser.value(property(xml,"stroke-miterlimit"))
-            if(strokeOpacity.isNaN){strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
-            if(fillOpacity.isNaN){fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
+            if strokeOpacity.isNaN {strokeOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
+            if fillOpacity.isNaN {fillOpacity = SVGPropertyParser.value(property(xml,"opacity"))}/*<--new*/
             return SVGStyle(fill, fillOpacity, fillRule, strokeWidth, stroke, strokeOpacity, strokeLineCap, strokeLineJoin, strokeMiterLimit)
         }
         return SVGStyleParser.style(prop,container)//if a style is present in the PARAM: xml, then derive the SVGStyle instance from this combined with the SVGContainer

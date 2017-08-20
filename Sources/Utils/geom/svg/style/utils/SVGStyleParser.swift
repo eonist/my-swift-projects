@@ -42,7 +42,7 @@ class SVGStyleParser {
         }
         if let property = property as? String, property == "none" {
             return Double.nan
-        }else if(StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String)) {
+        }else if StringAsserter.color(property as! String) || StringAsserter.webColor(property as! String) {
             return Double(StringParser.color(property as! String))
         }else {/*url(#three_stops);*/
 			let url:String = "\(property)".match(fillPattern)[0]

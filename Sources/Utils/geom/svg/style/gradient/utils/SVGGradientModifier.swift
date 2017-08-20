@@ -9,7 +9,7 @@ class SVGGradientModifier {
         scaleGradient(&gradient.gradientTransform,pivot,scale)
     }
     static func scaleGradient(_ gradientTransform:inout CGAffineTransform?,_ pivot:CGPoint,_ scale:CGPoint){
-        if(gradientTransform != nil) {/*Scale the current applied matrix*/
+        if gradientTransform != nil {/*Scale the current applied matrix*/
             var transform:CGAffineTransform = CGAffineTransform.identity
             transform.scaleFromPoint(scale.x, scale.y, pivot)
             gradientTransform = gradientTransform!.concatenating(transform)//swift 3 update

@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Decorator over CGRect
+ */
 struct RoundedRect{
     var rect:CGRect
     var fillet:CGFloat
@@ -21,7 +23,7 @@ extension RoundedRect{
     init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ w:CGFloat = 0,_ h:CGFloat = 0,_ fillet:CGFloat = 0){
         self.init(CGRect(CGPoint(x,y),CGSize(w,h)), fillet)
     }
-    enum DefaultEasing{
+    enum DefaultEasing{//TODO: ⚠️️ move this into Anim classes
         static var easing:RoundedRect { return RoundedRect(0.2,0.2,0.2,0.2,0.2) }
     }
 }

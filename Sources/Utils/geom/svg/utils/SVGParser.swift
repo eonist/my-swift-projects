@@ -182,8 +182,8 @@ class SVGParser {
                 Swift.print((svgElement as! SVGPolyLine).points);
             }else if(svgElement is SVGRect){
                 Swift.print("SVGRect: " + "\(svgElement)");
-                Swift.print("width: " + " + \((svgElement as! SVGRect).width)")
-                Swift.print("height: " + "\((svgElement as! SVGRect).height)")
+                Swift.print("width: " + " + \((svgElement as! SVGRect).rect.w)")
+                Swift.print("height: " + "\((svgElement as! SVGRect).rect.h)")
                 Swift.print("x: " + "\((svgElement as! SVGRect).frame.x)")
                 Swift.print("y: " + "\((svgElement as! SVGRect).frame.y)")
             }else if(svgElement is SVGContainer){

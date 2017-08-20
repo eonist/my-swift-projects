@@ -14,11 +14,13 @@ class SVGUtils {
 		return svg.items.reduce(xml){
 			let svgElement:SVGElementKind = $1
             let child:XML = {
-                if(svgElement is SVGLine) {return line(svgElement as! SVGLine)}
-                else if(svgElement is SVGRect) {return rect(svgElement as! SVGRect)}
-                else if(svgElement is SVGPath) {return path(svgElement as! SVGPath)}
-                else if(svgElement is SVGGroup) {return group(svgElement as! SVGGroup)}
-                else {fatalError("type not supported: " + "\(svgElement)")}
+                switch svgElement{
+                case let svgLine as SVGLine:return line(svgLine)
+                case let svgRect as SVGRect:return rect(svgRect)
+                case let svgPath as SVGPath:return path(svgPath)
+                case let svgGroup as SVGGroup:return group(svgGroup)
+                default:fatalError("type not supported: " + "\(svgElement)")
+                }
             }()
             $0.appendChild(child)
             return $0
@@ -26,7 +28,7 @@ class SVGUtils {
 	}
 	/**
 	 * Returns pathData from PARAM: path (SVGPath instance)
-     * TODO: It could be faster to use Character array to test with instead of RegEx
+     * TODO: ⚠️️ It could be faster to use Character array to test with instead of RegEx
 	 */
     static func pathData(_ path:SVGPath)->String {
         let cmds:[String] = path.commands
@@ -91,8 +93,8 @@ class SVGUtils {
 		xml = id(xml,rect);
 		xml["x"] = rect.frame.x.string
 		xml["y"] = rect.frame.y.string
-		xml["width"] = rect.width.string
-		xml["height"] = rect.height.string
+		xml["width"] = rect.rect.w.string
+		xml["height"] = rect.rect.h.string
 		xml = style(xml,rect)
 		xml["stroke-miterlimit"] = rect.style!.strokeMiterLimit!.string
 		return xml
@@ -117,16 +119,11 @@ class SVGUtils {
         return group.items.reduce(xml){ result,svgGraphic in
             let child:XML = {
                 switch svgGraphic{
-                    case let svgGraphic as SVGLine:
-                        return line(svgGraphic)
-                    case let svgGraphic as SVGRect:
-                        return rect(svgGraphic)
-                    case let svgGraphic as SVGPath:
-                        return path(svgGraphic)
-                    case let svgGraphic as SVGGroup:
-                        return SVGUtils.group(svgGraphic)
-                    default:
-                        fatalError("type not supported: " + "\(svgGraphic)")
+                    case let svgGraphic as SVGLine:return line(svgGraphic)
+                    case let svgGraphic as SVGRect:return rect(svgGraphic)
+                    case let svgGraphic as SVGPath:return path(svgGraphic)
+                    case let svgGraphic as SVGGroup:return SVGUtils.group(svgGraphic)
+                    default:fatalError("type not supported: " + "\(svgGraphic)")
                 }
             }()
             xml.appendChild(child)

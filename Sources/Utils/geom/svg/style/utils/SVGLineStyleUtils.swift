@@ -1,10 +1,10 @@
 import Cocoa
 
 class SVGLineStyleUtils{
-    static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape)->LineStylable?{
-        if(svgStyle.stroke is Double) {
+    static func lineStyle(_ svgStyle:SVGStyle,_ shape:Shape) -> LineStylable?{
+        if svgStyle.stroke is Double {
             return colorLineStyle(svgStyle)
-        }else if(svgStyle.stroke is SVGGradient){
+        }else if svgStyle.stroke is SVGGradient {
             return gradientLineStyle(svgStyle,shape)
         }else{/*clear*/
             //Swift.print("no stroke")
@@ -12,7 +12,7 @@ class SVGLineStyleUtils{
             return nil
         }
     }
-    static func colorLineStyle(_ style:SVGStyle)->LineStylable{
+    static func colorLineStyle(_ style:SVGStyle) -> LineStylable{
         let thickness:CGFloat = SVGStyleUtils.strokeWidth(style.strokeWidth!)
         let miterLimit:CGFloat = SVGStyleUtils.miterLimit(style.strokeMiterLimit!)
         let lineCap:CGLineCap = SVGStyleUtils.lineCap(style.strokeLineCap)
@@ -49,8 +49,8 @@ private class Utils{
     static func linearGradient(_ shape:Shape,_ gradient:SVGLinearGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind {
         var p1:CGPoint = /*userSpaceOnUse && !gradient.x1.isNaN && !gradient.y1.isNaN ? */CGPoint(gradient.x1,gradient.y1).copy()/* :nil*/
         var p2:CGPoint = /*userSpaceOnUse && !gradient.x2.isNaN && !gradient.y2.isNaN ? */CGPoint(gradient.x2,gradient.y2).copy()/* :nil*/
-        if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-            if(gradient.gradientTransform != nil){
+        if userSpaceOnUse {/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+            if gradient.gradientTransform != nil {
                 p1 = p1.applying(gradient.gradientTransform!)
                 p2 = p2.applying(gradient.gradientTransform!)
             }
@@ -71,10 +71,10 @@ private class Utils{
         let startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
         let endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
         var transformation:CGAffineTransform = CGAffineTransform.identity
-        if(radialGradient.gradientTransform != nil) {
-            transformation = radialGradient.gradientTransform!.copy()
+        if let gradientTransform = radialGradient.gradientTransform {
+            transformation = gradientTransform.copy()
         }
-        if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+        if userSpaceOnUse {/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
             transformation.concat(CGAffineTransform(translationX: -shape.frame.origin.x, y: -shape.frame.origin.y))//swift 3 upgrade
         }else{fatalError("relative values for gradient stroke isnt implemented yet, see similar code for gradient fill to impliment this")}
         let startRadius:CGFloat = 0

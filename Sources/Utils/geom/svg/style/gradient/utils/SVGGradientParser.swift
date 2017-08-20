@@ -58,17 +58,16 @@ private class Utils{
             let offset:CGFloat = StringAsserter.digit(offsetStr) ? offsetStr.cgFloat : StringParser.percentage(offsetStr) / 100/*offset is number between 0-1 or offset is percentage %*/
 			let hexColor:UInt
             var stopOpacity:CGFloat
-			let style:String? = SVGPropertyParser.property(child,"style")
-			if(style != nil){
-				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style!)
-				let stopColorProperty:String = inlineStyle["stop-color"]!
+			if let style = SVGPropertyParser.property(child,"style") {
+				var inlineStyle:[String:String] = SVGStyleParser.inlineStyle(style)
                 stopOpacity = SVGPropertyParser.value(inlineStyle["stop-opacity"])
+                let stopColorProperty:String = inlineStyle["stop-color"]!
                 hexColor = StringParser.color(stopColorProperty)
 			} else{
                 stopOpacity = SVGPropertyParser.value(SVGPropertyParser.property(child,"stop-opacity"))
 				hexColor = StringParser.color(SVGPropertyParser.property(child,"stop-color")!)
 			}
-            if(stopOpacity.isNaN) {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
+            if stopOpacity.isNaN {stopOpacity = 1}/*Forces stopOpacity to be 1 if its NaN*/
             let stopColor:CGColor = CGColor.cgColor(hexColor, stopOpacity)
             return (result.offsets + [offset], result.colors + [stopColor])
 		}

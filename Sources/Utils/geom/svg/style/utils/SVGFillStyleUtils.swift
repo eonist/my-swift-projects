@@ -5,15 +5,12 @@ class SVGFillStyleUtils{
      * Converts SVGStyle to IFillStyle
      */
     static func fillStyle(_ style:SVGStyle,_ shape:Shape)-> FillStyleKind?{
-        //Swift.print("SVGFillStyleUtils.fillStyle() style: " + "\(style)")
-        //Swift.print("SVGFillStyleUtils.fillStyle() style.fill: " + "\(style.fill)")
-        if(/*style != nil && */style.fill is Double/* && style!.fill != "none"*/ && !(style.fill as! Double).isNaN) {
+        if let fillThatIsDouble = style.fill as? Double, !fillThatIsDouble.isNaN {/* && style!.fill != "none"*/
             let color:NSColor = SVGFillStyleUtils.fillColor(style)
             return FillStyle(color)
-        }else if(style.fill != nil && style.fill is SVGGradientKind){
+        }else if style.fill is SVGGradientKind {
             return SVGFillStyleUtils.gradientFillStyle(style, shape)
-        }else{
-            //clear
+        }else{/*clear*/
             //Swift.print("no fill")
             //fatalError("not implemented yet")
             return nil
@@ -30,10 +27,12 @@ class SVGFillStyleUtils{
         return gradientFillStyle
     }
     static func fillColor(_ style:SVGStyle)->NSColor{
-        let colorVal:Double = !(style.fill as! Double).isNaN ? style.fill as! Double : Double(0x000000)
+        let colorVal:Double = {
+            guard let fillThatIsDouble = style.fill as? Double else {fatalError("fill must be double")}
+            return !fillThatIsDouble.isNaN ? fillThatIsDouble : Double(0x000000)
+        }()
         let opacity:CGFloat = style.fillOpacity != nil && !style.fillOpacity!.isNaN ? style.fillOpacity! : 1
-        let color:NSColor = NSColorParser.nsColor(UInt(colorVal), opacity)
-        return color
+        return NSColorParser.nsColor(UInt(colorVal), opacity)
     }
     /**
      * NOTE: we use the Shape instance here because we need the frame offset to calculate the correct gradient p1 and p2 when using userspace
@@ -91,8 +90,8 @@ private class Utils{
         //Swift.print("points: " + "\([p1,p2])")
         
         //Swift.print("points after: " + "\([p1,p2])")
-        if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-            if(gradient.gradientTransform != nil){
+        if userSpaceOnUse {/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+            if gradient.gradientTransform != nil {
                 //Swift.print("drawAxialGradient() gradient.transformation()")
                 //i think you should do tje matrix in Graphics not here
                 p1 = p1.applying(gradient.gradientTransform!)
@@ -101,7 +100,7 @@ private class Utils{
             p1 -= shape.frame.origin
             p2 -= shape.frame.origin
         }else{/*objectBoundingBox*/
-            if(gradient.gradientTransform != nil){fatalError("not supported yet")}
+            if gradient.gradientTransform != nil {fatalError("not supported yet")}
             let boundingBox:CGRect = shape.path.boundingBox//swift 3-> was: CGPathGetBoundingBox
             p1.x = boundingBox.width * (p1.x / 100)//this code can be compacted into 1 line
             p1.y = boundingBox.height * (p1.y / 100)
@@ -118,51 +117,29 @@ private class Utils{
     }
     /**
      * NOTE: it seems you can do the offseting in the matrix transformation
-     * TODO: lets try to scale radial gradient aswell
+     * TODO: ⚠️️ let's try to scale radial gradient as well
+     * TODO: ⚠️️ we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
      */
     static func radialGradient(_ shape:Shape,_ radialGradient:SVGRadialGradient,_ userSpaceOnUse:Bool)->GraphicsGradientKind{
-        //Swift.print("drawRadialGradient()")
-        //Swift.print("radialGradient.gradientTransform: " + "\(radialGradient.gradientTransform)")
         let startRadius:CGFloat = 0
         var endRadius:CGFloat = radialGradient.r
-        //Swift.print("endRadius: " + "\(endRadius)")
-        
         var startCenter:CGPoint = CGPoint(!radialGradient.fx.isNaN ? radialGradient.fx : radialGradient.cx,!radialGradient.fy.isNaN ? radialGradient.fy : radialGradient.cy)/*if fx or fy isnt found use cx and cy as replacments*/
-        //Swift.print("startCenter: " + "\(startCenter)")
         var endCenter:CGPoint = CGPoint(radialGradient.cx,radialGradient.cy)
-        //Swift.print("endCenter: " + "\(endCenter)")
-        
         var transformation:CGAffineTransform = CGAffineTransform.identity//swift 3,was -> CGAffineTransformIdentity
-        
-        if(userSpaceOnUse){/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
-            //Swift.print("userSpaceOnUse")
-            if(radialGradient.gradientTransform != nil) {
-                //Swift.print("drawRadialGradient() gradient.transformation()")
+        if userSpaceOnUse {/*we offset the p1,p2 to operate in the 0,0 space that the path is drawn in, inside frame*/
+            if radialGradient.gradientTransform != nil {
                 transformation = radialGradient.gradientTransform!.copy()
-                //Swift.print("transformation: " + "\(transformation)")
-                //matrix.concat(gradient.gradientTransform)
-                //startCenter = CGPointApplyAffineTransform(startCenter, gradient.gradientTransform!)
-                //endCenter = CGPointApplyAffineTransform(endCenter, gradient.gradientTransform!)
             }
-            //startCenter -= shape.frame.origin
-            //endCenter -= shape.frame.origin
             transformation.concat(CGAffineTransform(translationX: -shape.frame.origin.x, y: -shape.frame.origin.y))
-            //Swift.print("transformation: " + "\(transformation)")
         }else{/*objectBoundingBox*/
-            //if(radialGradient.gradientTransform != nil) {fatalError("not supported yet")}
-            //TODO: we dont use any transform yet, you need to sort out the scaling first see todolist in the basic svg support article
             let boundingBox:CGRect = shape.path.boundingBox//TODO: reuse frame as the bounding box,swift 3 upgrade
             startCenter.x = boundingBox.width * (startCenter.x / 100)//this code can be compacted into 1 line
             startCenter.y = boundingBox.height * (startCenter.y / 100)
             endCenter.x = boundingBox.width * (endCenter.x / 100)
             endCenter.y = boundingBox.height * (endCenter.y / 100)
-            
             let minAxis:CGFloat = min(boundingBox.width,boundingBox.height)/*We need the smallest axis length, either width or height*/
             let minRadius:CGFloat = minAxis/2/*Radius is half the axis length*/
             endRadius = minRadius * (endRadius/100*2)//needs to be half of minwidth of boundingbox, multiply by 2 since we are using radius not diameter, this can be optimized
-            //Swift.print("endRadius: " + "\(endRadius)")
-            //Swift.print("startCenter: " + "\(startCenter)")
-            //Swift.print("endCenter: " + "\(endCenter)")
         }
         return RadialGraphicsGradient(radialGradient.colors,radialGradient.offsets,transformation/*nil*/,startCenter,endCenter,startRadius,endRadius)
     }

@@ -157,7 +157,7 @@ class SVGPathUtils {
                      break;*/
                 default: fatalError("type not supported: " + "\(command)")
             }
-            if(e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/) {// :TODO: check for z?
+            if e < commands.count-1 /*&& StringAsserter.lowerCase(commands[i+1])*/ {// :TODO: check for z?
                 prevP = pos.copy()
             }
         }
@@ -168,6 +168,6 @@ class SVGPathUtils {
      * NOTE: if the svgRect x and or y is of the value NaN, then these are transfered as 0
      */
     static func rectangle(_ svgRect:SVGRect) -> CGRect {
-        return CGRect(!svgRect.xVal.isNaN ? svgRect.xVal : 0, !svgRect.yVal.isNaN ? svgRect.yVal : 0, svgRect.width, svgRect.height)
+        return CGRect(!svgRect.radius.x.isNaN ? svgRect.radius.x : 0, !svgRect.rect.y.isNaN ? svgRect.rect.y : 0, svgRect.rect.w, svgRect.rect.h)
     }
 }

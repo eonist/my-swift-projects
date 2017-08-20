@@ -6,7 +6,7 @@ import Cocoa
  */
 class SVGContainer:InteractiveView, SVGContainable{
     var id:String
-    var items:[SVGElementKind] = []
+    lazy var items:[SVGElementKind] = []
     init(_ items:[SVGElementKind], _ id:String) {
         self.id = id
         super.init(frame: NSRect.init(0,0,0,0))/*<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip*/

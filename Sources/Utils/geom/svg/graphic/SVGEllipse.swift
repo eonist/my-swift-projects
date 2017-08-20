@@ -6,7 +6,7 @@ import Foundation
 class SVGEllipse:SVGGraphic{
 	var cx:CGFloat/*center x*/
 	var cy:CGFloat/*center y*/
-	var rx:CGFloat
+	var rx:CGFloat/*radius*/
 	var ry:CGFloat
 	init(_ cx:CGFloat,_ cy:CGFloat,_ rx:CGFloat,_ ry:CGFloat,_ style:SVGStyle? = nil,_ id:String? = nil) {
 		self.cx = cx

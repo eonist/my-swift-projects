@@ -8,12 +8,9 @@ enum SVGLineCap:String{
 extension SVGLineCap{
     static func lineCap(_ lineCap:SVGLineCap) -> CGLineCap {
         switch lineCap {
-            case .butt:
-                return .butt
-            case .round:
-                return .round
-            case .square:
-                return .square
+            case .butt:return .butt
+            case .round:return .round
+            case .square:return .square
         }
     }
 }

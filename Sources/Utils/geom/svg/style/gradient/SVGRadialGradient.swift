@@ -1,7 +1,7 @@
 import Foundation
 /*
- * TODO: add an example here
- * TODO: add fx="98.7581" fy="63.338"
+ * TODO: ⚠️️ use c as CGPoint, use f as CGSize
+ * TODO: ⚠️️ add fx="98.7581" fy="63.338"
  * NOTE: to scale the outer circle radius you have to use matrix transformations and then scale it, adjust the inner circle radius if you want this to remain the same size
  */
 struct SVGRadialGradient:SVGGradientDecoratable {

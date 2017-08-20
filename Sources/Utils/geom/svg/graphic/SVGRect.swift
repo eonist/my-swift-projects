@@ -2,25 +2,16 @@ import Foundation
 /*
  * Creates a rectangle instance (with support for rounded corners)
  * EXAMPLE: <rect x="64" y="64" fill="none" stroke="#000000" stroke-miterlimit="10" width="512" height="512"/>
- * // :TODO: possibly replace the subclassing with decoration!?!
  */
 class SVGRect:SVGGraphic {
-    var width:CGFloat
-    var height:CGFloat
-    var xVal:CGFloat
-    var yVal:CGFloat
-    var rx:CGFloat/*for round rect, radius*/
-    var ry:CGFloat/*for round rect, radius*/
+    var rect:CGRect
+    var radius:CGPoint/*for round rect, radius*/
     /**
      * PARAM: fill (is of type Number so that we can test for NaN when parsing to svg xml)
      */
     init(_ width:CGFloat,_ height:CGFloat,_ x:CGFloat,_ y:CGFloat,_ rx:CGFloat,_ ry:CGFloat, _ style:SVGStyle,_ id:String) {
-        self.width = width
-        self.height = height
-        self.xVal = x
-        self.yVal = y
-        self.rx = rx
-        self.ry = ry
+        self.rect = CGRect(x,y,width,height)
+        self.radius = CGPoint(rx,ry)
         super.init(style,id)
     }
     /**
@@ -33,34 +24,42 @@ class SVGRect:SVGGraphic {
      * TODO: ⚠️️ You can set the frame to the rect, no need for the fancy frame creation method
      */
     override func draw() {
-        if width <= 0 && height <= 0 {/*None*/
-            return
-        }else{
-            let rect:CGRect = CGRect(!self.xVal.isNaN ? self.xVal : 0, !self.yVal.isNaN ? self.yVal : 0, self.width, self.height);//we have to do this here since there is no hard ref to self in memory yet.
-            if style!.fill != nil {/*Fill*/
-                fillShape.path = (rx.isNaN && ry.isNaN) ? CGRect(0,0,width,height).path : CGPathParser.roundRect(CGRect(0,0,width,height), !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
-                let fillFrame = (style!.stroke != nil && style!.stroke! is Double && !(style!.stroke! as! Double).isNaN) || (style!.stroke != nil && style!.stroke! is SVGGradient) ?  RectGraphicUtils.fillFrame(rect, style!.strokeWidth!, OffsetType(OffsetType.center)) : rect
-                fillShape.frame = fillFrame/*,position and set the size of the frame*/
-            }
-            if style!.stroke != nil {/*Line,checks if there is a stroke in style*/
-                let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style!.strokeWidth!, OffsetType(OffsetType.center))
-                lineShape.frame = lineOffsetRect.lineFrameRect
-                lineShape.path = (rx.isNaN && ry.isNaN) ? lineOffsetRect.lineRect.path : CGPathParser.roundRect(lineOffsetRect.lineRect, !rx.isNaN ? rx : ry, !ry.isNaN ? ry : rx)/*<--positioned relative to the frame*/
-            }
+        guard self.rect.w > 0 && self.rect.h > 0 else{return}/*None*/
+        let rect:CGRect = CGRect(!self.rect.x.isNaN ? self.rect.x : 0, !self.rect.y.isNaN ? self.rect.y : 0, self.rect.width, self.rect.height);//we have to do this here since there is no hard ref to self in memory yet.
+        guard let style = style else {fatalError("Style not available")}
+        if style.fill != nil  {/*Fill*/
+            fillShape.path = {
+                if radius.x.isNaN && radius.y.isNaN {
+                    return CGRect(0,0,rect.w,rect.h).path
+                }else{
+                    return CGPathParser.roundRect(CGRect(0,0,self.rect.w,self.rect.h), !radius.x.isNaN ? radius.x : radius.y, !radius.y.isNaN ? radius.y : radius.x)/*<--positioned relative to the frame*/
+                }
+            }()
+            fillShape.frame = {/*position and set the size of the frame*/
+                let caseA = style.stroke != nil && style.stroke! is Double && !(style.stroke! as! Double).isNaN
+                let caseB = style.stroke != nil && style.stroke! is SVGGradient
+                if caseA || caseB {
+                    return RectGraphicUtils.fillFrame(rect, style.strokeWidth!, OffsetType(OffsetType.center))
+                }else {
+                    return rect
+                }
+            }()
+        }
+        if style.stroke != nil {/*Line,checks if there is a stroke in style*/
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, style.strokeWidth!, OffsetType(OffsetType.center))
+            lineShape.frame = lineOffsetRect.lineFrameRect
+            lineShape.path = {
+                if radius.x.isNaN && radius.y.isNaN {
+                    return lineOffsetRect.lineRect.path
+                }else {
+                    return CGPathParser.roundRect(lineOffsetRect.lineRect, !radius.x.isNaN ? radius.x : radius.y, !radius.y.isNaN ? radius.y : radius.x)/*<--positioned relative to the frame*/
+                }
+            }()
         }
     }
     func setSize(_ width:CGFloat,_ height:CGFloat) {
-        self.width = width
-        self.height = height
+        self.rect.w = width
+        self.rect.h = height
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-}
-/**
- * Convenience
- */
-extension SVGRect{
-    var position:CGPoint {get{return CGPoint(xVal,yVal)}set {xVal = newValue.x;yVal = newValue.y}}
-    /*the override is new->*/
-    override var size:CGSize {get{return CGSize(width,height)}set {width = newValue.width;height = newValue.height}}
-    var rect:CGRect {return CGRect(xVal,yVal,width,height)}
 }

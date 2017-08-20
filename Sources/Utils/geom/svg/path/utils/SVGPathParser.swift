@@ -43,8 +43,8 @@ class SVGPathParser {
     static func end(_ path:SVGPath, _ index:Int)->CGPoint? {// :TODO: rename to position?!?
         let command:String = path.commands[index].lowercased()
         let parameters:[CGFloat] = SVGPathDataParser.pathData(path, index)
-        if(command == "m" || command == "l") {return CGPoint(parameters[0],parameters[1])}
-        else if(command == "c") {return CGPoint(parameters[2],parameters[3])}
+        if command == "m" || command == "l" {return CGPoint(parameters[0],parameters[1])}
+        else if command == "c" {return CGPoint(parameters[2],parameters[3])}
         else { return nil}//Arc4Parser.end(PathDataParser.arc(pathData));/*PathCommand.ARC_TO*/
     }
     /**
@@ -95,7 +95,7 @@ class SVGPathParser {
                 default:break;
             }
             positions.append(pos)
-            if(e < commands.count-1) {
+            if e < commands.count-1 {
                 prevP = pos.copy()
             }
         }
