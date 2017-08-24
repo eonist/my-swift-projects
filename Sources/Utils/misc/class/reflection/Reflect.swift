@@ -5,7 +5,6 @@ import Cocoa
  * NOTE: JSON can be implimented with not to much effort, but supporting both XML and JSON is more work than it's worth at the moment
  * TODO: ⚠️️ Try make it more generic?
  */
-
 class Reflect {
     /**
      * IMPORTANT: ⚠️️ Does not work with computed properties like: var something:String{return ""}
