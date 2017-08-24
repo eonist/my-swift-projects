@@ -48,9 +48,9 @@ extension NSEvent{
     }
     /**
      * Asserts if the eventMonitor exists before removing it and setting the reference to nil
-     * EXAMPLE: var monitor:Any?;NSEvent.removeMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
+     * EXAMPLE: var monitor:Any?;NSEvent.removeMonitor(monitor,.leftMouseDragged)
      */
-    static func removeMonitor(_  monitor:inout Any?){
+    static func removeMonitor(_ monitor:inout Any?){
         if(monitor != nil){
             NSEvent.removeMonitor(monitor!)
             monitor = nil/*<--this part may not be needed*/
