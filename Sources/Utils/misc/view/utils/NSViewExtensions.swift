@@ -13,7 +13,7 @@ extension NSView {
         return view
     }
     /**
-     * TODO: You can probably deprecated this
+     * TODO: ⚠️️ You can probably deprecated this
      */
     func addSubviewAt<T:NSView>(_ view: T,_ i:Int){
         //Swift.print("\(self.dynamicType)" + ".addSubviewAt() i: " + "\(i)")
@@ -39,8 +39,8 @@ extension NSView {
         return NSViewParser.indexOf(self, subView)
     }
     /*you can't have setPoint() as  a method by having this variable here, something to keep in mind*///pos is occupied by another class
-    var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
-    @objc var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
+    //var point:CGPoint {get{return frame.origin} set{frame.origin = newValue}}
+    //@objc var size:CGSize {get{return frame.size}set{frame.size = newValue}}//new,convenience
     /**
      * Returns localPosition in a view (converts a global position to a local position)
      * TODO: ⚠️️ hopefully this method also works if the view is not 0,0 in the window

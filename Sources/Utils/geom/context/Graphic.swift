@@ -43,6 +43,7 @@ class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
      * TODO: the logic inside this method should be in the Shape, and this method should just forward to the shape
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
+//        Swift.print("hitTest")
         let localPoint = globToLoc(aPoint) - fillShape.frame.origin//<--Quick fix, when margin or offset is applied, they act on the frame not the path. They shouldn't but they do so this is a quick fix. Resolve this later and do it better, one could argu that moving frame is cheaper than rerendering shape
         let isPointInside:Bool = fillShape.path.contains(localPoint)
         return isPointInside ? self : super.hitTest(aPoint)/*Return nil will tell the parent that there was no hit on this view*/
@@ -70,6 +71,7 @@ class Graphic:InteractiveView,GraphicKind,Trackable,CALayerDelegate{
      * TODO:you don't have to store the trackingarea in this class you can get and set the trackingarea from NSView
      */
     override func updateTrackingAreas() {//TODO: ⚠️️ move this to interactiveView i think
+//        Swift.print("updateTrackingAreas")
         createTrackingArea([NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved,NSTrackingArea.Options.mouseEnteredAndExited])//TODO: should probaly not have mouseMoved here
         super.updateTrackingAreas()
     }

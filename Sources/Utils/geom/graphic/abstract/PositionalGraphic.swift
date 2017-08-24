@@ -4,6 +4,7 @@ class PositionalGraphic:GraphicDecoratable,Positional {
     var pos:CGPoint
     init(_ pos:CGPoint,_ decoratable:GraphicDecoratableKind) {
         self.pos = pos
+        decoratable.graphic.frame.origin = pos//new
         super.init(decoratable)
     }
     /**

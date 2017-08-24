@@ -41,6 +41,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * TODO: ⚠️️ When you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
+//        Swift.print("mouseMoved")
         //Swift.print("\(type(of: self))" + "mouseMoved(): event.locationInWindow" + "\(String(describing: event.event!.locationInWindow))")
         if let parent = self.superview as? InteractiveViewable{
             parent.mouseMoved(event.setImmediate(self).cast())
@@ -51,6 +52,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(_ event:MouseEvent){
+//        Swift.print("mouseOver")
         if let parent = self.superview as? InteractiveViewable{
             parent.mouseOver(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
@@ -59,6 +61,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * Only fires if the mouse is "rolls" out of the visible part of this view
      */
     func mouseOut(_ event:MouseEvent){
+//        Swift.print("mouseOut")
         if let parent = self.superview as? InteractiveViewable{
             parent.mouseOut(event.setImmediate(self).cast())
         }/*informs the parent that an event occured*/
@@ -103,6 +106,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: mouseMoved doesn't work if the leftmouse button is pressed, then mouseDragged is used instead
      */
     override func mouseMoved(with event:NSEvent) {
+//        Swift.print("mouseMoved")
         //Swift.print("\(type(of: self))" + ".mouseMoved(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         if(hasMouseEntered){/*Only run the following code when inside the actual TrackingArea*/
             if(viewUnderMouse === self){//mouse move on the "visible" part of the view
@@ -117,6 +121,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseEntered(with event: NSEvent){
+//        Swift.print("mouseEntered")
         //Swift.print("\(type(of: self))" + ".mouseEntered(): event.locationInWindow" + "\(event.locationInWindow)")//+ "\(viewUnderMouse)" + " self: " + "\(self)"
         //I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
         if !hasMouseEntered && viewUnderMouse === self {
@@ -131,6 +136,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
      */
     override func mouseExited(with event: NSEvent){
+//        Swift.print("mouseExited")
         //Swift.print("\(type(of: self))" + ".mouseExited: event.locationInWindow: " + "\(event.locationInWindow)")
         
         //⚠️️ I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
@@ -154,6 +160,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * NOTE: Why is this needed? because normal hitTesting doesn't work if the frame size is zero. or if a subView is outside the frame.
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
+//        Swift.print("hitTest")
         //let p = aPoint + CGPoint(-layer!.position.x,layer!.position.y)
         //Swift.print("hitTest() \(type(of: self)) aPoint: " + "\(aPoint) p: \(p) layer!.position: " + "\(layer!.position)")
         if(isInteractive){
@@ -164,7 +171,7 @@ class InteractiveView:FlippedView,InteractiveViewable{//TODO: rename this with a
      * Enables the hand cursor on enter
      */
     override func resetCursorRects() {
-        if(hasHandCursor){
+        if hasHandCursor {
             let cursor:NSCursor = NSCursor.pointingHand
             addCursorRect(frame, cursor:cursor)
             cursor.setOnMouseEntered(true)

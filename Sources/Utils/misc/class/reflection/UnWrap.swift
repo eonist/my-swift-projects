@@ -10,6 +10,7 @@ class UnWrap{
     }
     /**
      * Determines if the XML is simple or complex aka (Singular or Composit)
+     * TODO: ⚠️️ Use _ where in the switch
      */
     private static func any(_ xml:XML) -> Any{
         guard let type:String = XMLParser.attribute(xml, "type") else {fatalError("has no attrib type")}
@@ -25,6 +26,7 @@ class UnWrap{
     }
     /**
      * CGFloat,Double,NSColor,Bool,String
+     * TODO: ⚠️️ Use _ where in the switch
      */
     private static func simpleAny(_ strVal:String,_ type:String)->Any{
         switch true{
@@ -44,6 +46,7 @@ class UnWrap{
     }
     /**
      * Array,DropShadow,RadialGradient,RadialGradient,LinearGradient
+     * TODO: ⚠️️ Use _ where in the switch
      */
     private static func complexAny(_ xml:XML,_ type:String)->Any{
         switch true{

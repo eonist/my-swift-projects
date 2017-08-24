@@ -19,9 +19,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * ⚠️️IMPORTANT⚠️️: It's the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        if(getGraphic().fillStyle != nil){drawFill()}/*👈 setup the fill geometry, draw the fileShape*/
+        if getGraphic().fillStyle != nil {drawFill()}/*👈 setup the fill geometry, draw the fileShape*/
         graphic.fillShape.setNeedsDisplay()/*if the fillStyle is nil, we want the possible last drawing to disapear*/
-        if(getGraphic().lineStyle != nil){drawLine()}/*👈 setup the line geometry, draw the lineShape*/
+        if getGraphic().lineStyle != nil {drawLine()}/*👈 setup the line geometry, draw the lineShape*/
         graphic.lineShape.setNeedsDisplay()
     }
     /**
@@ -30,12 +30,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     func handleSelector(layer:CALayer,ctx:CGContext) {
         //isDrawing = false//reset if(!isDrawing){}
-        if(layer === graphic.fillShape){
+        if layer === graphic.fillShape {
             graphic.fillShape.graphics.context = ctx/*we set the context so that the Graphics class can alter it, we can only get the ctx from this method*/
-            if(graphic.fillStyle != nil){fill()}
-        }else if(layer === graphic.lineShape){
+            if graphic.fillStyle != nil {fill()}
+        }else if layer === graphic.lineShape {
             graphic.lineShape.graphics.context = ctx
-            if(graphic.lineStyle != nil){line()}
+            if graphic.lineStyle != nil {line()}
         }
     }
     /**

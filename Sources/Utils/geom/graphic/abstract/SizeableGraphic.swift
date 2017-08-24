@@ -6,14 +6,9 @@ class SizeableGraphic:PositionalGraphic,Sizable {
     var size:CGSize
     init(_ position:CGPoint, _ size:CGSize, _ decoratable:GraphicDecoratableKind = BaseGraphic(FillStyle(NSColor.red))) {//TODO:add the last arg through an extension?
         self.size = size
+        decoratable.graphic.frame.size = size//new
         super.init(position,decoratable)
     }
-    /*
-    override func draw() {//swift 3 MTKView now occupies draw(), consider renaming it to render()
-        super.draw()
-        //graphic.updateTrackingArea(NSRect(pos,size))
-    }
-    */
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */
@@ -57,5 +52,8 @@ extension SizeableGraphic{
     }
     convenience init(_ rect:NSRect, _ decoratable: GraphicDecoratableKind){
         self.init(rect.origin,rect.size,decoratable)
+    }
+    convenience init(size:CGSize = CGSize(100,100),pos:CGPoint = CGPoint(0,0), decoratable:GraphicDecoratableKind){
+        self.init(pos,size,decoratable)
     }
 }

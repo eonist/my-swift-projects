@@ -14,7 +14,10 @@ class RectGraphic:SizeableGraphic{
      */
     override func drawFill() {
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
-        let fillFrame:CGRect = graphic.lineStyle != nil ? RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
+        let fillFrame:CGRect = {
+            guard let lineStyle = graphic.lineStyle else {return CGRect(x,y,width,height)}
+            return RectGraphicUtils.fillFrame(CGRect(x,y,width,height), lineStyle.thickness, graphic.lineOffsetType)
+        }()
         graphic.fillShape.frame = fillFrame/*Position and set the size of the frame*/
     }
     override func drawLine(){
