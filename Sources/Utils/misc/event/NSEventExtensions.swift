@@ -16,7 +16,6 @@ extension NSEvent {
     static func cmdKey()->Bool{/*Convenience*/
         return NSEvent.modifierFlags.contains(NSEvent.ModifierFlags.shift)
     }
-
     var scrollingDelta:CGPoint {return CGPoint(self.scrollingDeltaX,self.scrollingDeltaY)}/*Convenience*/
     var delta:CGPoint {return CGPoint(self.deltaX,self.deltaY)}/*Convenience*/
     /*func scrollingDelta(_ dir:Dir)->CGFloat{/*Convenience*/
@@ -34,6 +33,7 @@ extension NSEvent {
  * TODO: ⚠️️ You might want to add propegates:Bool flag that blocks further event-propegation etc
  */
 extension NSEvent{
+    //shouldnt the event be returned in the CallBack?
     typealias CallBack = (NSEvent)->Void//TODO: ⚠️️ Find a more appropriate name than CallBack
     /**
      * EXAMPLE: var monitor:Any?;NSEvent.addMonitor(monitor,.leftMouseDragged) {event in Swift.print(event.type)}
@@ -51,7 +51,7 @@ extension NSEvent{
      * EXAMPLE: var monitor:Any?;NSEvent.removeMonitor(monitor,.leftMouseDragged)
      */
     static func removeMonitor(_ monitor:inout Any?){
-        if(monitor != nil){
+        if monitor != nil {
             NSEvent.removeMonitor(monitor!)
             monitor = nil/*<--this part may not be needed*/
         }
