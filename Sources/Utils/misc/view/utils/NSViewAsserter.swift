@@ -10,12 +10,14 @@ class NSViewAsserter {
     /**
      * Asserts if a child has a speccific pattern
      */
-    static func hasParent(_ child:NSView?,_ parentToMatch:NSView?)->Bool{
+    typealias MatchMethod = (NSView,NSView?)->Bool
+    static let defaultMatchMethod:MatchMethod = { (a,b) in return a === b}
+    static func hasParent(_ child:NSView?,_ parentToMatch:NSView?, matchMethod:MatchMethod = defaultMatchMethod)->Bool{
         if let superView = child?.superview{
-            if superView === parentToMatch {
+            if defaultMatchMethod(superView, parentToMatch) {
                 return true
             }
-            return hasParent(superView,parentToMatch)/*traverse further up the hierarchy*/
+            return hasParent(superView,parentToMatch,matchMethod:matchMethod)/*traverse further up the hierarchy*/
         }
         return false/*Return false if no parent match*/
     }

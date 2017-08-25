@@ -16,7 +16,6 @@ extension NSView {
      * TODO: ⚠️️ You can probably deprecated this
      */
     func addSubviewAt<T:NSView>(_ view: T,_ i:Int){
-        //Swift.print("\(self.dynamicType)" + ".addSubviewAt() i: " + "\(i)")
         _ = NSViewModifier.addSubviewAt(self, view, i)
     }
     /**
