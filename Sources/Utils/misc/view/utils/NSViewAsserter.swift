@@ -14,7 +14,7 @@ class NSViewAsserter {
     static let defaultMatchMethod:MatchMethod = { (a,b) in return a === b}
     static func hasParent(_ child:NSView?,_ parentToMatch:NSView?, matchMethod:MatchMethod = defaultMatchMethod)->Bool{
         if let superView = child?.superview{
-            if defaultMatchMethod(superView, parentToMatch) {
+            if matchMethod(superView, parentToMatch) {
                 return true
             }
             return hasParent(superView,parentToMatch,matchMethod:matchMethod)/*traverse further up the hierarchy*/
