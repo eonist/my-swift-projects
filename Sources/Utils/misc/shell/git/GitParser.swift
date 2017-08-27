@@ -63,12 +63,8 @@ class GitParser{
      * NOTE: basically remote file has changes that never has been applied to local file.
 	 */
 	static func unMergedFiles(_ localPath:String)->[String]{
-//        Swift.print("unMergedFiles")
 		let unmMergedPaths:String = diff(localPath, "--name-only --diff-filter=U")
-//        Swift.print("unmMergedPaths: " + "\(unmMergedPaths)")
-        let retVal = StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
-//        Swift.print("retVal.count: " + "\(retVal.count)")
-		return retVal
+        return StringParser.paragraphs(unmMergedPaths)// :TODO: use some sort of linesToArray method here
 	}
 	/*
 	 * "git diff --name-only --diff-filter=U" --returns a list of unmerged files
