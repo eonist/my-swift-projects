@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * Consider createing a default init that sets these values
+ */
 struct TextFormat {
     var background:Bool = false
     var backgroundColor:NSColor = NSColor.clear
@@ -17,67 +19,7 @@ struct TextFormat {
     var password:Bool = false
     //TODO: autoSize can be implemented, check stackoverflow
 }
-/**
- * TODO: Use reflection instead of the bellow switch
- */
-extension TextFormat{
-    subscript(key: String) -> Any {
-        get {
-            switch TextFormatConstants(rawValue:key){
-                case .background?:return background
-                case .backgroundColor?:return backgroundColor
-                case .selectable?:return selectable
-                case .color?:return color
-                case .align?:return align
-                case .font?:return font
-                case .size?:return size
-                case .type?:return type
-                case .border?:return border
-                case .multiline?:return multiline
-                case .wordWrap?:return wordWrap
-                case .scrollable?:return scrollable
-                case .leading?:return leading
-                case .password?:return password
-                default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
-            }
-        }
-        set {
-            switch TextFormatConstants(rawValue:key){
-                case .background?:background = newValue as! Bool
-                case .backgroundColor?:backgroundColor = newValue as! NSColor
-                case .selectable?:selectable = newValue as! Bool
-                case .color?:color = newValue as! NSColor
-                case .align?:align = newValue as! String
-                case .font?:font = newValue is String ? newValue as! String : StringModifier.combine((newValue as! Array<Any>).map {String(describing:$0)}, " ")//This isnt pretty but it works, the problem is that Font names with 2 names gets parsed into an array of any in CSSPropertyParser
-                case .size?:size = newValue as! CGFloat
-                case .type?:type = newValue as! String
-                case .border?:border = newValue as! Bool
-                case .multiline?:multiline = newValue as! Bool
-                case .wordWrap?:wordWrap = newValue as! Bool
-                case .scrollable?:scrollable = newValue as! Bool
-                case .leading?:leading = newValue as! CGFloat
-                case .password?:password = newValue as! Bool
-                default:fatalError("UNSUPORTED TEXTFORMAT TYPE: " + key)
-            }
-        }
-    }
-    /**
-     * NOTE: you can also set these: paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
-     */
-    static func attributedStringValue(stringValue:String, textFormat:TextFormat) -> NSAttributedString{
-        let font:NSFont = TextFieldParser.font(textFormat.font,textFormat.size)
-        let textColor:NSColor = textFormat.color
-        let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        textParagraph.maximumLineHeight = textFormat.leading.isNaN ? 0 : textFormat.leading/*this sets the MAXIMUM height of the lines to 12points*/
-//        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
-        textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
-//        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
-        textParagraph.alignment = TextFieldParser.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
-        let attribs = [NSAttributedStringKey.font:font,NSAttributedStringKey.foregroundColor:textColor,NSAttributedStringKey.paragraphStyle:textParagraph]
-        let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
-        return attrString
-    }
-}
+
 
 
 /*
