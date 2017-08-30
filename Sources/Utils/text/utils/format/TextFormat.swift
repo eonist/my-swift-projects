@@ -64,15 +64,15 @@ extension TextFormat{
     /**
      * NOTE: you can also set these: paragraphSpacing,alignment,lineBreakMode,minimumLineHeight,paragraphSpacingBefore
      */
-    func attributedStringValue(_ stringValue:String) -> NSAttributedString{
-        let font:NSFont = TextFieldParser.font(self.font,self.size)
-        let textColor:NSColor = self.color
+    static func attributedStringValue(stringValue:String, textFormat:TextFormat) -> NSAttributedString{
+        let font:NSFont = TextFieldParser.font(textFormat.font,textFormat.size)
+        let textColor:NSColor = textFormat.color
         let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        textParagraph.maximumLineHeight = self.leading.isNaN ? 0 : self.leading/*this sets the MAXIMUM height of the lines to 12points*/
+        textParagraph.maximumLineHeight = textFormat.leading.isNaN ? 0 : textFormat.leading/*this sets the MAXIMUM height of the lines to 12points*/
 //        Swift.print("textParagraph.maximumLineHeight: " + "\(textParagraph.maximumLineHeight)")
         textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
 //        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
-        textParagraph.alignment = TextFieldParser.alignment(self.align)//Left,Right,Justified,Natural,Center
+        textParagraph.alignment = TextFieldParser.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
         let attribs = [NSAttributedStringKey.font:font,NSAttributedStringKey.foregroundColor:textColor,NSAttributedStringKey.paragraphStyle:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
         return attrString

@@ -6,7 +6,7 @@ class TextFieldModifier {
      */
     static func applyTextFormat(_ textField:NSTextField,_ textFormat:TextFormat){
 //        Swift.print("TextFieldModifier.applyTextFormat")
-        textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes*/
+        textField.allowsEditingTextAttributes = true/*enables line-spacing and other textAttributes,this is imp, or else textfield defaults back to default textforat in edit mode*/
         textField.isSelectable = textFormat.selectable
         textField.backgroundColor = textFormat.background ? textFormat.backgroundColor : NSColor.clear
         //Swift.print("textField.backgroundColor: " + "\(textField.backgroundColor)")
@@ -15,7 +15,7 @@ class TextFieldModifier {
         //textField.textColor = textFormat.color
         //textField.font = TextFieldParser.font(textFormat.font,textFormat.size)
         textField.isEditable = textFormat.type == "input"
-        textField.focusRingType = NSFocusRingType.none//<- implement suport for this if needed, Personally i dont like it. You can use the focus state instead and have your own focus style applied
+        textField.focusRingType = NSFocusRingType.none//<- implement suport for this if needed, Personally i don't like it. You can use the focus state instead and have your own focus style applied
         textField.isBordered = textFormat.border//<--This doesn't work in Live Edit mode
         //textField.maximumNumberOfLines = 1//<---can't get these to work yet
         textField.usesSingleLineMode = !textFormat.multiline//<---can't get these to work yet, works now in multiline textfields
@@ -34,16 +34,16 @@ class TextFieldModifier {
     /**
      * Beta
      */
-    static func size(_ textField:NSTextField,_ width:CGFloat,_ height:CGFloat) {
-//        Swift.print("TextFieldModifier.size.width: " + "\(width)")
-            
-        /*)
-         Swift.print("textField.superview?.frame.width: " + "\(textField.superview?.frame.width)")
-         Swift.print("textField.superview?.superview?.frame.width: " + "\(textField.superview?.superview?.frame.width)")*/
-        textField.frame.w = width/*SkinParser.width(this);*/
-        textField.frame.h = height/*SkinParser.height(this);*/
-        //textField.setTextFormat(StylePropertyParser.textFormat(this));
-    }
+//    static func size(_ textField:NSTextField,_ width:CGFloat,_ height:CGFloat) {
+////        Swift.print("TextFieldModifier.size.width: " + "\(width)")
+//            
+//        /*)
+//         Swift.print("textField.superview?.frame.width: " + "\(textField.superview?.frame.width)")
+//         Swift.print("textField.superview?.superview?.frame.width: " + "\(textField.superview?.superview?.frame.width)")*/
+//        textField.frame.w = width/*SkinParser.width(this);*/
+//        textField.frame.h = height/*SkinParser.height(this);*/
+//        //textField.setTextFormat(StylePropertyParser.textFormat(this));
+//    }
     /**
      * NOTE: Use self.selectText(self) to select all text
      */
