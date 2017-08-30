@@ -10,7 +10,7 @@ class GitParser{
 	 * NOTE: make the option param optional with an if clause
 	 */
 	static func status(_ localPath:String, _ option:String)->String{
-		//--log "localPath: " + localPath
+		Swift.print("status.localPath: " + "\(localPath)")
 		let shellScript:String = Git.path + Git.git + " " + Git.status + " " + option
 		return ShellUtils.run(shellScript,localPath)
 	}
