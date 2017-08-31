@@ -124,7 +124,7 @@ class GitModifier{
      * PARAM: replacmentRepoRemote: https://github.com/username/repo
      */
     static func replaceRemote(localRepoPath:String, replacementRepoRemote:String)->String{
-        let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + "set-url" + " " + Git.origin + replacementRepoRemote
+        let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + "set-url" + " " + Git.origin + " " + replacementRepoRemote
         Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
     }
