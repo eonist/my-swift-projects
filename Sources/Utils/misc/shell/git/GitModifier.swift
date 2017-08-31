@@ -118,6 +118,16 @@ class GitModifier{
        let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + Git.rm + " " + Git.origin
        return ShellUtils.run(shellScript,localRepoPath)
    }
+    /**
+     * Replaces current remote url
+     * Git terminal syntax: git remote set-url origin https://github.com/username/repo
+     * PARAM: replacmentRepoRemote: https://github.com/username/repo
+     */
+    static func replaceRemote(localRepoPath:String, replacementRepoRemote:String)->String{
+        let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + "set-url" + " " + Git.origin + replacementRepoRemote
+        Swift.print("shellScript: " + "\(shellScript)")
+        return ShellUtils.run(shellScript,localRepoPath)
+    }
    /**
     * Clone
     * NOTE: Cloning automatically creates a remote connection called "origin" pointing back to the original repository.
