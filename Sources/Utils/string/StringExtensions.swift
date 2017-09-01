@@ -156,3 +156,10 @@ public func * (left: String, right: Int) -> String {
         return interim + left
     }
 }
+/**
+ * Error
+ */
+extension String: Error {}/*Then you can just throw a string*/
+extension String: LocalizedError {/*adds error.localizedDescription*/
+    public var errorDescription: String? { return self }
+}
