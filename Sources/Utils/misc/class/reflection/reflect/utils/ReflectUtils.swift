@@ -13,4 +13,15 @@ class ReflectUtils {
             return dict
         }
     }
+    /**
+     * New, can be used in conjunction with Generics, not in use yet
+     */
+//    static func dict(instance:Any) -> [String:Any] {
+//        let result:[(label:String,value:Any)] = Reflect.reflect(instance)
+//        return result.reduce([:]) {
+//            var dict:[String:Any] = $0
+//            dict[$1.label] = $1.value
+//            return dict
+//        }
+//    }
 }

@@ -55,9 +55,9 @@ class ArrayAsserter {
      * IMPORTANT: This method compares reference not value
      */
     static func equals<T>(_ a:[T], _ b:[T]) -> Bool{
-        if(a.count != b.count) { return false }
+        if a.count != b.count  { return false }
         for i in 0..<a.count{
-            if((a[i] as AnyObject) !== (b[i] as AnyObject)) {
+            if (a[i] as AnyObject) !== (b[i] as AnyObject) {
                 return false
             }
         }
@@ -74,9 +74,9 @@ class ArrayAsserter {
      * TODO: create add this method to ArrayExtensions
      */
     static func equals<T>(_ a:[T], _ b:[T]) -> Bool where T:Comparable{
-        if(a.count != b.count) { return false }
+        if a.count != b.count { return false }
         for i in 0..<a.count{
-            if(a[i] != b[i]) {return false}
+            if a[i] != b[i] {return false}
         }
         return true
     }

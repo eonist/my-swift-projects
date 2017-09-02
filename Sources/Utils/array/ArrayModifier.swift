@@ -1,6 +1,9 @@
 import Foundation
-
+/**
+ * There is also: dropLast and dropFirst: Swift.print("arr: " + "\(Array([0,1,2,3].dropLast()))")//[0, 1, 2]
+ */
 class ArrayModifier{
+    
 	/**
 	 * Adds one or more elements to the beginning of an array and returns the new length of the array.
 	 * NOTE: The other elements in the array are moved from their

@@ -1,4 +1,8 @@
 import Cocoa
+
+/**
+ * Swift 4 brings: string.count, string.isEmpty, string.dropFirst(),string.reversed(), string.filter { … }
+ */
 /**
  * Convenince extensions for often used string methods
  */
@@ -111,7 +115,7 @@ extension String{
     var int:Int{return Int(self)!}
     
     
-    var count:Int{return self.characters.count}/*Convenince*/
+    var count:Int{return self.characters.count}/*Since swift 4 There is also native count, But it doesnt return Int*/
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
     var json:Any? {return JSONParser.json(self)}
