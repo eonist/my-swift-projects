@@ -51,6 +51,9 @@ extension XML {
     var string:String{/*Convenience*/
         return XMLParser.string(self)
     }
+    var prettyStr:String {
+        return XMLParser.prettyString(self)
+    }
     func childAt(_ index:[Int])->XML?{/*Convenience*/
         return XMLParser.childAt(self, index)
     }
