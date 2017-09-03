@@ -38,6 +38,7 @@ class FileModifier{
      * NOTE: this method creates a new file if non exists before
      */
     static func write(_ path:String,_ content:String)->Bool{
+        Swift.print("FileModifier.write")
         do {
             try content.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
             return true

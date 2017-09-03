@@ -11,7 +11,7 @@ class FilePathParser {
     /**
      * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
-    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?, most definitly!!!!
+    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?, most definitly!!!!, also rename to url
         return URL(string: stringPath)!
     }
     /**
@@ -43,6 +43,13 @@ class FilePathParser {
         return withExtension ? fileURL.absoluteURL.lastPathComponent : fileURL.absoluteURL.deletingPathExtension().lastPathComponent//was-> absoluteURL.URLByDeletingPathExtension before swift 3 upgrade
     }
     /**
+     * EXAMPLE: fileName("~/Desktop/temp.xml")//temp.xml
+     */
+    static func fileName(path filePath:String,withExtension:Bool = true) -> String{
+        let url:URL = path(filePath)
+        return fileName(url, withExtension)
+    }
+    /**
      * Returns directory
      * EXAMPLE: FilePathParser.directory(fileURL)
      */
@@ -64,6 +71,7 @@ class FilePathParser {
     static func fileExtension(_ filePath:String) -> String{
         return NSString(string:filePath).pathExtension
     }
+ 
 }
 extension FilePathParser{
     /**

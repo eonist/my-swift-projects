@@ -63,6 +63,20 @@ public class XMLParser{
         return "\(child)"
     }
     /**
+     * New
+     * EXAMPLE:  print(XMLParser.prettyString("<A><b>test</b><c>test</c></A>".xml))
+     * Output:
+     * <A>
+     *    <b>test</b>
+     *    <c>test</c>
+     * </A>
+     */
+    static func prettyString(_ xml:XML) ->String{
+        let xmlDoc = XMLDocument(rootElement: xml)
+        let data = xmlDoc.xmlData(options: .nodePrettyPrint)
+        return data.stringValue
+    }
+    /**
      * Returns string Content of an xml
      * EXAMPLE: valueAt("<p>text</p>".xml,[0])//text
      */
@@ -71,7 +85,7 @@ public class XMLParser{
     }
     /**
      * New
-     * TODO:  the return should be "optional" so you can use if let. if there is no attribs then return nil
+     * TODO: ⚠️️ the return should be "optional" so you can use if let. if there is no attribs then return nil
      */
     static func attribs(_ child:XML) -> [String:String]{
         if let attribs = child.attributes{
