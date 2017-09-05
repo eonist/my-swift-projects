@@ -3,9 +3,9 @@ import Foundation
  * variouse methods conserningpathdata both traversing over SVGPath data and svg XML syntax based data
  */
 class SVGPathParser {
-    private static var paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
-    private static var paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
-    private static var pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
+    private static let paramStartPattern:String = "(?<=^|\\,|\\s|px|\\b|\\d)"
+    private static let paramEndPattern:String = "(?=px|\\s|\\,|\\-|$)"
+    private static let pathPattern:String = "([MmLlHhVvCcSsQqTtZzAa])([\\d\\.\\-\\s\\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)"///(?P<cmnd>[MmLlHhVvCcSsQqTtZzAa])(?P<params>[\d\.\-\s\,px]*?)(?=[MmLlHhVvCcSsQqTtZzAa]|$)/g;
     /**
      * Returns an SVGPathData instance from PARAM: data (which is derived directly from the SVG XML formated data
      * PARAM: data ( M-60-45 L   25.00px,20)
