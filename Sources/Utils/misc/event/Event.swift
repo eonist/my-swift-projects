@@ -5,9 +5,10 @@ import Foundation
  * TODO: ⚠️️ Event should extend string or stringconvertible etc. So that one can do onEvent(.update) the subclasses can do .mouseDown etc
  * FUTURE: ⚠️️ The idea with events and enum is that you make Event generic so it can take many types of enums
  * TODO: ⚠️️ Origin should be optional
+ * TODO: ⚠️️ Event could definitly be a Struct, just use the decorator pattern for other event types
  */
 class Event{
-    static var update:String = "eventUpdate"//EventType.update.rawValue/*Ideally I would name this change but apparently then subclasses can name their const the same*/
+    static var update:String = EventType.update.rawValue//EventType.update.rawValue/*Ideally I would name this change but apparently then subclasses can name their const the same*/
     var type:String
     var origin:AnyObject/*origin sender of event, this could also be weak if you discover a memory leak*///TODO:this should be of type IEventSender
     var immediate:AnyObject/*previouse sender of event, TODO: ⚠️️ this should be of type IEventSender*/
