@@ -24,7 +24,7 @@ import Foundation
  * // :TODO: sortOn
  * // :TODO: Do we need a DataProviderItem?
  * // :TODO: create DataProviderItem that extends a proxy class so that it can hold virtual properties, shouuld have title and data as getters and setters
- * TODO: ⚠️️ Make it in POP ⚠️️
+ * TODO: ⚠️️ Maybe make it a struct, and use generics?
  */
 typealias DP = DataProvider
 /**

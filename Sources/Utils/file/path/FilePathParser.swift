@@ -36,7 +36,7 @@ class FilePathParser {
      * RETURNS: fileName
      * EXAMPLE: FilePathParser.fileName(fileURL)
      * NOTE: you can also use: 
-     * let attributes = try! NSURL(fileURLWithPath:"~/Desktop/temp.xml".tildePath).resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
+     * let attributes = try! URL(fileURLWithPath:"~/Desktop/temp.xml".tildePath).resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
      * let filename = attributes[NSURLNameKey] as! String
      */
     static func fileName(_ fileURL:URL, _ withExtension:Bool = true)->String{
