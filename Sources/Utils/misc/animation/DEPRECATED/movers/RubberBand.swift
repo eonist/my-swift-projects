@@ -43,7 +43,7 @@ class RubberBand:Mover{//TODO: rename to Elastic
      */
     override func updatePosition(_ direct:Bool = false) {
         if value > maskFrame.min {applyTopBoundary(direct)}/*the top of the item-container passed the mask-container top checkPoint*/
-        else if((value + contentFrame.len) < maskFrame.len){applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
+        else if (value + contentFrame.len) < maskFrame.len {applyBottomBoundary(direct)}/*the bottom of the item-container passed the mask-container bottom checkPoint*/
         else{/*within the Boundaries*/
             if !direct {/*Only apply friction and velocity when not directly manipulating the value*/
                 applyFriction()
@@ -81,7 +81,7 @@ extension RubberBand{
             velocity -= (distToGoal * spring)
             velocity *= springEasing//TODO: try to apply log10 instead of the regular easing
             value += velocity
-            if(value.isNear(maskFrame.min, 1)){checkForStop(direct)}
+            if value.isNear(maskFrame.min, 1) {checkForStop(direct)}
             result = value
         }
     }
@@ -91,7 +91,7 @@ extension RubberBand{
      */
     func applyBottomBoundary(_ direct:Bool){
         //Swift.print("applyBottomBoundary")
-        if(direct){/*surface is slipping the further you pull*/
+        if direct {/*surface is slipping the further you pull*/
             let totLen = (contentFrame.len - maskFrame.len)/*tot length of items - length of mask*/
             let normalizedValue:CGFloat = totLen + value/*goes from 0 to -100*/
             result = -totLen + CustomFriction.constrainedValueWithLog10(normalizedValue,-limit)//<--Creates the illusion that the surface under the thumb is slipping
@@ -110,7 +110,7 @@ extension RubberBand{
      * PARAM: direct: toggles the directManipulation mode
      */
     func checkForStop(_ direct:Bool) {
-        if(!direct && CGFloatAsserter.isNear(velocity, 0, epsilon)) {
+        if !direct && CGFloatAsserter.isNear(velocity, 0, epsilon) {
             velocity = 0//⚠️️ quick fix, may break things, was added to be able to detect anim stop on bounce-back complete
             hasStopped = true
         }

@@ -51,5 +51,4 @@ extension Date {
      * let date = NSDate(); sleep(3); date.secsSinceStart//3.0
      */
     var secsSinceStart:Double{return abs(self.timeIntervalSinceNow)}
-    
 }

@@ -10,7 +10,7 @@ class CGPathParser{
      */
     static func polyLine(_ points:[CGPoint],_ close:Bool = false,_ offset:CGPoint = CGPoint(0,0))->CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
-        if(points.count > 0) { path.move(to: CGPoint(points[0].x+offset.x, points[0].y+offset.y))}
+        if points.count > 0 { path.move(to: CGPoint(points[0].x+offset.x, points[0].y+offset.y))}
         for i in 1..<points.count{
             //Swift.print("LineTo: x:  \(points[i].x+offset.x) y:  \(points[i].y+offset.y)")
             path.addLine(to: CGPoint(points[i].x+offset.x, points[i].y+offset.y))

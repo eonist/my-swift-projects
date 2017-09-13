@@ -7,7 +7,7 @@ class SecureTextField:NSSecureTextField {
     override func textDidChange(_ notification:Notification) {
         if(self.superview is EventSendable){
             //Swift.print("superview is IEventSender")
-            (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
+            (self.superview as! EventSendable).event(TextFieldEvent(Event.update,self))
         }else{
             //Swift.print("superview is NOT IEventSender")
         }

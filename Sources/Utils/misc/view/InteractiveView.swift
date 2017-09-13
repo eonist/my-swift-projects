@@ -11,7 +11,7 @@ import Cocoa
  */
 class InteractiveView:FlippedView,InteractiveViewable{
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, we can always assign the default behaviour back */
-    lazy var event:EventCallBack = { (event:Event) in /*returns closure that will take care of propagating the event to the parent*/
+    lazy var event:EventSendable.CallBack = { (event:Event) in /*returns closure that will take care of propagating the event to the parent*/
         guard let superView:EventSendable = self.superview as? EventSendable else {return}
         superView.onEvent(event)
     }
@@ -32,7 +32,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
      * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
      */
     func onEvent(_ event:Event){
-        self.event!(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
+        self.event(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
     }
     /**
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)

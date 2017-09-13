@@ -14,7 +14,7 @@ class DateParser {
         let monthsAgo:Int = aComponents.month! - bComponents.month!//cur month - month = 0
         let daysAgo:Int = aComponents.day! - bComponents.day!//cur day - day = 0
         var weeksAgo:Int = 0
-        if(daysAgo >= 7){
+        if daysAgo >= 7 {
             weeksAgo = daysAgo / 7
         }
         let hoursAgo:Int = aComponents.hour! - bComponents.hour!//cur hour - hour = 0
@@ -44,17 +44,17 @@ class DateParser {
      * IMPORTANT: ⚠️️⚠️️⚠️️ if you pass 0 in any of the arguments the returned date is all wrong, use nil and make sure your var is not 0
      */
     static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{
-        if(year == 0 || month == 0 || day == 0){//this may not apply to hour,min,sec so these arent tested
+        if year == 0 || month == 0 || day == 0 {//this may not apply to hour,min,sec so these arent tested
             fatalError("can't be 0")
         }
         let calendar = Calendar.current
         var components = DateComponents()
-        if(year != nil){components.year = year!}
-        if(month != nil){components.month = month!}
-        if(day != nil){components.day = day!}
-        if(hour != nil){components.hour = hour!}
-        if(minute != nil){components.minute = minute!}
-        if(second != nil){components.second = second!}
+        if year != nil {components.year = year!}
+        if month != nil {components.month = month!}
+        if day != nil {components.day = day!}
+        if hour != nil {components.hour = hour!}
+        if minute != nil {components.minute = minute!}
+        if second != nil {components.second = second!}
         return calendar.date(from: components)
     }
     /**

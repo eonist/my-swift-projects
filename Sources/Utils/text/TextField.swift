@@ -59,7 +59,7 @@ class TextField:NSTextField,Trackable{
     override func textDidChange(_ notification:Notification) {
         _ = self.stringValue/*for some strange reason you have to call this variable or the text will be reverted to init state*/
         if self.superview is EventSendable {/*superview is EventSendable*/
-            (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
+            (self.superview as! EventSendable).event(TextFieldEvent(Event.update,self))
         }/*else superview is NOT EventSendable*/
         super.textDidChange(notification)
     }

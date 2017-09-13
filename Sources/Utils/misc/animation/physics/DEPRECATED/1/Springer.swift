@@ -32,10 +32,10 @@ class NumberSpringer:Springer<CGFloat> {
         velocity += a
         velocity *= config.friction
         value +=  velocity
-        if assertStop {stop()}
+        if assertStop {value = targetValue;stop()}//new: sets the final value
     }
     var assertStop:Bool {
-        return velocity.isNear(stopVelocity, 10e-5.cgFloat)
+        return velocity.isNear(stopVelocity, 10e-9.cgFloat)//the epsilon was increased from -5 to -9
     }
     static var initConfig:Config {/*Convenient default init values*/
         return (spring:0.02,friction:0.90)

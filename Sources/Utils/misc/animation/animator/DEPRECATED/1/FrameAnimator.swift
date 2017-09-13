@@ -20,14 +20,14 @@ class FrameAnimator:EventSender {//rename to FrameAnimator
      */
     func start(){
         animProxy.animators.append(self)/*Add your self to the list of animators that gets the onFrame call*/
-        if(!CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStart(animProxy.displayLink)}/*start the displayLink if it isn't already running*/
+        if !CVDisplayLinkIsRunning(animProxy.displayLink) {CVDisplayLinkStart(animProxy.displayLink)}/*start the displayLink if it isn't already running*/
     }
     /**
      * Stop the animation
      */
     func stop(){
         animProxy.animators.removeAt(animProxy.animators.indexOf(self))/*If none exist -1 is returned and none is removed*/
-        if(animProxy.animators.isEmpty && CVDisplayLinkIsRunning(animProxy.displayLink)){CVDisplayLinkStop(animProxy.displayLink)}/*stops the frame ticker if there is no active running animators*/
+        if animProxy.animators.isEmpty && CVDisplayLinkIsRunning(animProxy.displayLink){CVDisplayLinkStop(animProxy.displayLink)}/*stops the frame ticker if there is no active running animators*/
         super.onEvent(AnimEvent(AnimEvent.stopped,self))/*Notify listners the animation has stopped*/
     }
 }

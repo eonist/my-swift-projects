@@ -2,7 +2,7 @@ class DictionaryModifier{
 	/**
 	 * Merges 2 dicts, changes the left array, the right is untouched
      * IMPORTANT: updateValue also creates new key,value pairs if non exist. 
-     * TODO: See legacy code, it has more powerfull dictionary modifiers
+     * TODO: ⚠️️ See legacy code, it has more powerfull dictionary modifiers
 	 * Returns the left dictionary for convenience purposes
 	 */
     static func merge<KeyType,ValueType> (_ left:inout [KeyType:ValueType], _ right: [KeyType:ValueType])-> [KeyType:ValueType]{
