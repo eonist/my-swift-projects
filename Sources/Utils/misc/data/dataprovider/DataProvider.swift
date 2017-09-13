@@ -46,6 +46,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: ⚠️️ move methods i
     }
     /**
      * Returns an item at a spessific index
+     * NOTE: This method is not in an extension because its meant to be overridable
      */
     func item(_ at:Int) -> [String:String]?{
         return self.items[safe:at]
