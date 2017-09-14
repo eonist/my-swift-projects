@@ -159,7 +159,6 @@ class StringParser{
     static func boolean(_ string:String) -> Bool {
         return string == "true"
     }
-    
     /**
      * NOTE: Supports 5 hex color formats: #FF0000,0xFF0000, FF0000, F00,(red,purple,pink and other web colors)
      * Returns an rgb value
@@ -232,5 +231,12 @@ class StringParser{
      */
     static func occurrences(){
         //impliment this
+    }
+    /**
+     * EXAMPLE: pad(value:6,padCount:3,padStr:"0")//"006"
+     */
+    static func pad(value:Int,padCount:Int,padStr:String) -> String{
+        var padChar:String {return padStr * padCount}
+        return value.string.count < padCount ? padChar : value.string
     }
 }
