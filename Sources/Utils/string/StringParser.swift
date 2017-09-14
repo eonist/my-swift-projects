@@ -236,7 +236,7 @@ class StringParser{
      * EXAMPLE: pad(value:6,padCount:3,padStr:"0")//"006"
      */
     static func pad(value:Int,padCount:Int,padStr:String) -> String{
-        var padChar:String {return padStr * padCount}
-        return value.string.count < padCount ? padChar : value.string
+        var padding:String {return padStr * (padCount - value.string.count)}
+        return value.string.count < padCount ? padding + value.string : value.string
     }
 }

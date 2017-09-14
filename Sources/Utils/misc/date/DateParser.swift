@@ -116,6 +116,9 @@ class DateParser {
         let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).day!
         return num ?? 0
     }
+    /**
+     * Returns number of months between two dates
+     */
     static func numOfMonths(_ from:Date,_ to:Date) -> Int{
         let num:Int? = Calendar.current.dateComponents([.month], from: from, to: to).month
         return num ?? 0
