@@ -59,7 +59,7 @@ class GitUtils{
     /**
      * Returns the commit count
      * CAUTION: returns count +1
-     * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count
+     * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count ✅
      */
     static func commitCount(_ localRepoPath:String) -> Int{
         let shellScript:String = Git.path + Git.git + " " + "rev-list HEAD --count"
@@ -69,7 +69,7 @@ class GitUtils{
         return retVal.int - 1
     }
     /**
-     * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H"
+     * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H" ✅
      * NOTE: Short hash and long hash works (for more precision use long hash)
      * ⚠️️ TODO: rename _ hash to hash 
      */
@@ -90,8 +90,9 @@ class GitUtils{
         return result
     }
     /**
-     * NOTE: There is also: --since --before
+     * NOTE: There is also: --since --before //TODO: ⚠️️ figgure out the difference
      * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
+     * PARAM: since and until: must be in this format: "2016-11-21 20:59:59" (aka git time, use GitDateUtils to convert Date to GitDate)
      */
     static func commitCount(_ localRepoPath:String, since:String, until:String)->String{
         let shellScript:String = Git.git + " " + Git.log + " " + "--since=\""+since+"\" --until=\""+until + logFormat/*"git log --since=\"01-Dec-2016 20:59:59\" --until=\"31-Dec-2016 20:59:59\""*/

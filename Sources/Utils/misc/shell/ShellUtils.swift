@@ -60,8 +60,8 @@ class ShellUtils{
 extension ShellUtils{/*BETA*/
     /**
      * BETA
-     * NOTE: supports piping
-     * CAUTION: use this method for hard coded commands, not for commands that the user can insert data
+     * NOTE: ⚠️️ supports piping ⚠️️
+     * CAUTION: ⚠️️ use this method for hard coded commands, not for commands that the user can insert data ⚠️️
      */
     static func unsafeRun(_ input: String, _ cd:String = "") -> String {
         let (output, terminationStatus) = ShellUtils.unsafeExc(input,cd)

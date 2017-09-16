@@ -5,7 +5,7 @@ class GitDateUtils {
      * Formats chronological date to git time-> "2016-11-12 00:00:00"
      * NOTE: YYYYMMDDHHmmss -> YYYY-MM-DD HH:mm:ss
      * Alternative name: chronologicalTime2GitTime
-     * EXAMPLE: gitTime("2016"+"11"+"21"+"20"+"59"+"59")//Output2016-11-21 20:59:59
+     * EXAMPLE: gitTime("2016"+"11"+"21"+"20"+"59"+"59")//Output: 2016-11-21 20:59:59
      */
     static func gitTime(_ chronoTime:String)->String{
         let gitTime = chronoTime.insertCharsAt([("-",4),("-",6),(" ",8),(":",10),(":",12)])
@@ -20,7 +20,7 @@ class GitDateUtils {
         return gitTime
     }
     /**
-     * Returns an NSDate instance for a date that is derived from a commit log item with pretty format and %ci
+     * Returns an NSDate instance for a date that is derived from a commit log item with pretty format and %ci (%cd yields 2017-08-31)
      * PARAM: date: "2015-12-03 16:59:09 +0100"
      * EXAMPLE: GitLogParser.date("2015-12-03 16:59:09 +0100").shortDate//Output: "03/12/2016"
      */
