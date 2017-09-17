@@ -19,8 +19,8 @@ class ShellUtils{
     }
     /**
      * Example: ShellUtils.exc("git log --oneline").output
-     * IMPORTANT: if input has spaces and the space are not seperators of arguments, then you must encode it first: "".encode()!
-     * IMPORTANT: if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
+     * IMPORTANT: ⚠️️ if input has spaces and the space are not seperators of arguments, then you must encode it first: "".encode()!
+     * IMPORTANT: ⚠️️ if your input contains % char, then it must be encoded first -> you can encode parts of strings etc to create the correct input
      */
     static func exc(_ input: String, _ cd:String = "") -> (output:String, exitCode:Int32){
 //        Swift.print("🚪⬅️️exc start. input: " + "\(input) cd: \(cd)")

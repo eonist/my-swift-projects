@@ -1,7 +1,6 @@
 import Foundation
 
 class TimeParser {
-    typealias YearMonth = (year:Int,month:Int)
     /**
      * This method can offset a date with months.
      * Return year and month when offseting with n months
@@ -18,7 +17,7 @@ class TimeParser {
         let yearCount = (monthCount - leftOverMonths) / 12
         let y:Int = year + yearCount
         let m:Int = leftOverMonths + 1//convert from iteratable month to real month value. real month values go from 1 to 12
-        return (year:y,month:m)
+        return .init(year:y,month:m)
     }
     /**
      * Returns number of months between two dates

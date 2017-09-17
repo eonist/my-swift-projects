@@ -1,3 +1,6 @@
+/**
+ * TODO: ⚠️️ Rename to DictParser? or make a typalias at least?
+ */
 class DictionaryParser{
     /**
      * Describes properties in an object
@@ -12,7 +15,7 @@ class DictionaryParser{
     /**
      * New
      */
-    static func xml(_ dict:[String:String],_ nodeName:String = "item")->XML{
+    static func xml(_ dict:[String:String],_ nodeName:String = "item") -> XML{
         let xml:XML = "<\(nodeName)></\(nodeName)>".xml
         xml.setAttributesWith(dict)
         return xml
@@ -30,14 +33,24 @@ class DictionaryParser{
      * New
      * EXAMPLE: ["b":2,"a":1,"c":3].sortedByValue//a:1, b:2, c:3
      */
-    static func sortByValue<Key, Value:Comparable>(_ dict: [Key: Value])->[(Key, Value)]{
+    static func sortByValue<Key, Value:Comparable>(_ dict: [Key: Value]) -> [(Key, Value)]{
         return Array(dict).sorted{$0.1 < $1.1}
     }
     /**
      * New
      * EXAMPLE: ["b":2,"a":1,"c":3].sortedByKey//a:1, b:2, c:3
      */
-    static func sortByKey<Key:Comparable, Value>(_ dict: [Key: Value])->[(Key, Value)]{
+    static func sortByKey<Key:Comparable, Value>(_ dict: [Key: Value]) -> [(Key, Value)]{
         return Array(dict).sorted{$0.0 < $1.0}
+    }
+    /**
+     * Converts tuples to dict
+     */
+    static func dict<K,V>(tuples:[(K,V)])->[K:V]{
+        return tuples.reduce([:]) {
+            var dict:[K:V] = $0
+            dict[$1.0] = $1.1
+            return dict
+        }
     }
 }
