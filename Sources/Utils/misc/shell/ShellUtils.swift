@@ -37,7 +37,7 @@ class ShellUtils{
         task.launchPath = "/usr/bin/env"
         task.arguments = arguments
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
-        //Swift.print("Pipe()")
+//        Swift.print("Pipe()")
         let pipe = Pipe()
         task.standardOutput = pipe
         /*Error*/
@@ -45,15 +45,32 @@ class ShellUtils{
         task.standardError = errpipe
         task.launch()
 //        Swift.print("task.launch()")
-        task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() ???
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output*/
+        
+//        Swift.print("wait")
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output, only supports small outputs*/
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String/*decode the date to a string*/
+        
+//        let output:String = {
+//            var sequentialOutput:String = ""
+//            while (true) {
+//                let data = pipe.fileHandleForReading.readData(ofLength: 1024)//enables reading big outputs.
+//                if data.count <= 0 { break }//breaks out of the while loop
+//                let str = String(data: data, encoding: String.Encoding.utf8)!
+//                sequentialOutput += str
+////                Swift.print("sequentialOutput: " + "\(sequentialOutput)")
+//            }
+//            return sequentialOutput
+//        }()
+        
+        task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() 🚫???
         /*Error*/
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
         let errorStr:String = NSString(data:errdata, encoding:String.Encoding.utf8.rawValue)! as String
         _ = errorStr
 //        Swift.print("errorStr: " + "\(errorStr)")
 //        Swift.print("🚪➡️️exe end")
+//        Swift.print("output: " + "\(output)")
+//        Swift.print("task.terminationStatus: " + "\(task.terminationStatus)")
         return (output, task.terminationStatus)
     }
 }
@@ -81,6 +98,7 @@ extension ShellUtils{/*BETA*/
         let pipe = Pipe()
         task.standardOutput = pipe
         task.launch()
+        //TODO: ⚠️️ moving waitUntilExit bellow output retrieval could enable bigger outputs. Aka big outputs may never complete if its not bellow. ⚠️️
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*/
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String
