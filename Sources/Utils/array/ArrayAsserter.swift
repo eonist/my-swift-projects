@@ -89,4 +89,10 @@ class ArrayAsserter {
         func itemExistsAtIdxBefore()->Bool {return (arr.valid(idx-1) && arr[idx-1] == item)}
         return itemAlreadyExistAtIdx() || itemExistsAtIdxBefore()
     }
+    /**
+     * Asserts if a variable is an Array
+     */
+    static func isArr(arr:Any) -> Bool{
+        return arr is AnyArray
+    }
 }

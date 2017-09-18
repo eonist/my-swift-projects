@@ -17,4 +17,10 @@ class DictionaryAsserter {
         }
         return false
     }
+    /**
+     * Asserts if a variable is a Dictionary
+     */
+    static func isDict(dict:Any) -> Bool{
+        return dict is AnyDict
+    }
 }

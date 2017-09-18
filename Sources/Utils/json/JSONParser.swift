@@ -14,6 +14,7 @@ class JSONParser{
     /**
      * Dict
      * EXAMPLE: JSONParser.dict("{\"title\":\"doctor\"}".json)["title"] //Output: doctor
+     * TODO: ⚠️️ use generics on this. See DictParser etc
      */
     static func dict(_ json:Any?)->[String: Any]?{
         return json as? [String: Any]
@@ -47,6 +48,22 @@ class JSONParser{
             return json
         }else {
             fatalError("JSON is format wrongly: \(str)")
+        }
+    }
+    /**
+     * Dictionary -> "JSON string"
+     * NOTE: the opposite of this is: let decoded = try JSONSerialization.jsonObject(with: jsonData, options: []);if let dictFromJSON = decoded as? [String:String] {}
+     * NOTE: If key is of type int, use recursion or reflection
+     * EXAMPLE: JSONParser.str( ["2": "B", "1": "A", "3": ["1":true]])
+     */
+    static func str<Key, Value>(dict: [Key: Value]) -> String?{
+        do {
+            let jsonData:Data = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)// here "jsonData" is the dictionary encoded in JSON data
+//            Swift.print("jsonData.stringValue: " + "\(jsonData.stringValue)")
+            return jsonData.stringValue
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
 }
