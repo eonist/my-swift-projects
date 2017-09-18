@@ -44,9 +44,9 @@ class ShellUtils{
         let errpipe = Pipe()
         task.standardError = errpipe
         task.launch()
-//        Swift.print("task.launch()")
+        Swift.print("task.launch()")
         
-//        Swift.print("wait")
+//
         let data = pipe.fileHandleForReading.readDataToEndOfFile()/*retrive the date from the nstask output, only supports small outputs*/
         let output:String = NSString(data:data, encoding:String.Encoding.utf8.rawValue)! as String/*decode the date to a string*/
         
@@ -61,7 +61,7 @@ class ShellUtils{
 //            }
 //            return sequentialOutput
 //        }()
-        
+        Swift.print("wait")
         task.waitUntilExit()/*Makes sure it finishes before proceeding. If the task can be asynchronous, you can remove that call and just let the NSTask do it's thing.*///TODO:may need to call this before launch() 🚫???
         /*Error*/
         let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
@@ -71,6 +71,7 @@ class ShellUtils{
 //        Swift.print("🚪➡️️exe end")
 //        Swift.print("output: " + "\(output)")
 //        Swift.print("task.terminationStatus: " + "\(task.terminationStatus)")
+        Swift.print("exit")
         return (output, task.terminationStatus)
     }
 }
