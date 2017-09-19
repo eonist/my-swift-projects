@@ -13,3 +13,24 @@ extension YearMonth{
         return key
     }
 }
+
+
+extension YearMonth{
+    /**
+     * Year
+     * IMPORTANT: ⚠️️ must be in this format: 2016'12
+     */
+    static func year(ym:Int) -> Int{
+        let year = ym.string.subString(0, ym.string.count - 2).int
+//        Swift.print("ymd.string: " + "\(ymd.string)")
+//        Swift.print("year: " + "\(year)")
+        return year
+    }
+    /**
+     * Month
+     * IMPORTANT: ⚠️️ must be in this format: 2016'12
+     */
+    static func month(ym:Int) -> Int{
+        return ym.string.subString(ym.string.count - 2, ym.string.count).int
+    }
+}

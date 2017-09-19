@@ -39,18 +39,24 @@ extension YearMonthDay{
     }
     /**
      * Year
+     * IMPORTANT: ⚠️️ must be in this format: 2016'12'24
      */
     static func year(ymd:Int) -> Int{
-        return ymd.string.subStr(0, ymd.string.count - 4).int
+        let year = ymd.string.subString(0, ymd.string.count - 4).int
+        Swift.print("ymd.string: " + "\(ymd.string)")
+        Swift.print("year: " + "\(year)")
+        return year
     }
     /**
      * Month
+     * IMPORTANT: ⚠️️ must be in this format: 2016'12'24
      */
     static func month(ymd:Int) -> Int{
         return ymd.string.subString(ymd.string.count - 4, ymd.string.count-2).int
     }
     /**
      * Day
+     * IMPORTANT: ⚠️️ must be in this format: 2016'12'24
      */
     static func day(ymd:Int) -> Int{
         return ymd.string.subString(ymd.string.count - 2, ymd.string.count).int
