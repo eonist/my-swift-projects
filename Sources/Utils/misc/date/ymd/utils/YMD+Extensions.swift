@@ -1,23 +1,10 @@
 import Foundation
-/**
- * NOTE: the drawback of making it hashable is that its harder to debug the key
- */
-typealias YMD = YearMonthDay
-struct YearMonthDay/*:Hashable*/ {
-    let year:Int,month:Int,day:Int
-//    var hashValue:Int {//⚠️️  it could be that you need to do padding on the month and day here.
-//        return "(\(year),\(month),\(day))".hashValue
-//    }
-//    static func == (lhs:YearMonthDay, rhs:YearMonthDay) -> Bool {
-//        return lhs.year == rhs.year && lhs.month == rhs.month && lhs.day == rhs.day
-//    }
-}
+
 //Accessors
 extension YearMonthDay{
     var date:Date? {return Date.createDate(self.year, self.month, self.day)}
     var int:Int {return YMD.yearMonthDayKey(ymd: self)}
 }
-
 extension YearMonthDay{
     /**
      * Returns: 2016'12'24
@@ -43,8 +30,8 @@ extension YearMonthDay{
      */
     static func year(ymd:Int) -> Int{
         let year = ymd.string.subString(0, ymd.string.count - 4).int
-        Swift.print("ymd.string: " + "\(ymd.string)")
-        Swift.print("year: " + "\(year)")
+        //        Swift.print("ymd.string: " + "\(ymd.string)")
+        //        Swift.print("year: " + "\(year)")
         return year
     }
     /**
@@ -62,3 +49,4 @@ extension YearMonthDay{
         return ymd.string.subString(ymd.string.count - 2, ymd.string.count).int
     }
 }
+

@@ -1,8 +1,5 @@
 import Foundation
 
-typealias YM = YearMonth
-struct YearMonth {let year:Int,month:Int}
-
 extension YearMonth{
     /**
      * Returns: 2016'12
@@ -22,8 +19,8 @@ extension YearMonth{
      */
     static func year(ym:Int) -> Int{
         let year = ym.string.subString(0, ym.string.count - 2).int
-//        Swift.print("ymd.string: " + "\(ymd.string)")
-//        Swift.print("year: " + "\(year)")
+        //        Swift.print("ymd.string: " + "\(ymd.string)")
+        //        Swift.print("year: " + "\(year)")
         return year
     }
     /**
@@ -34,3 +31,4 @@ extension YearMonth{
         return ym.string.subString(ym.string.count - 2, ym.string.count).int
     }
 }
+
