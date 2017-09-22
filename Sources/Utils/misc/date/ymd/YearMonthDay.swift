@@ -4,7 +4,6 @@ import Foundation
  * NOTE: the drawback of making it hashable is that its harder to debug the key so dont do it
  */
 typealias YMD = YearMonthDay
-struct YearMonthDay/*:Hashable*/ {
+struct YearMonthDay {
     let year:Int,month:Int,day:Int
 }
-
