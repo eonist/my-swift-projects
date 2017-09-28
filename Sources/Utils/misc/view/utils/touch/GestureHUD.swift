@@ -11,9 +11,9 @@ class GestureHUD {
     func touchesBegan(_ event:NSEvent){
         let touches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.began, in: view)
         for touch in touches {//
-            //Swift.print("id: "+"\((touch as! NSTouch).identity)")
+//            Swift.print("touchesBegan id: "+"\((touch as NSTouch).identity)")
             let id:String = "\(touch.identity)"
-            let touchPos = touch.pos(view) - CGPoint(20,20)//set to pivot of circ
+            let touchPos:CGPoint = touch.pos(view) - CGPoint(20,20)//set to pivot of circ
             let ellipse = EllipseGraphic(touchPos.x,touchPos.y,40,40,FillStyle(NSColor.white.alpha(0.5)),nil)
             debugCircDict[id] = ellipse//add the debugCirc to a dictionary that uses the touch.id for key
             view.addSubview(ellipse.graphic)
@@ -22,10 +22,10 @@ class GestureHUD {
     }
     func touchesMoved(_ event:NSEvent){
         let touches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.any, in: view)//touchesMatchingPhase:NSTouchPhaseAny inView:self
-        //Swift.print("touches.count: " + "\(touches.count)")
+//        Swift.print("touches.count: " + "\(touches.count)")
         for touch in touches {
             let id:String = "\(touch.identity)"
-            let touchPos = touch.pos(view) - CGPoint(20,20)//offset pos // touch.normalizedPosition
+            let touchPos:CGPoint = touch.pos(view) - CGPoint(20,20)//offset pos // touch.normalizedPosition
             let ellipse:EllipseGraphic? = debugCircDict[id]
             ellipse?.setPosition(touchPos)
             ellipse?.draw()
@@ -33,7 +33,7 @@ class GestureHUD {
     }
     func touchesEnded(_ event:NSEvent){
         let endingTouches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.ended, in: view)
-        //Swift.print("endingTouches.count: " + "\(endingTouches.count)")
+//        Swift.print("endingTouches.count: " + "\(endingTouches.count)")
         for endingTouch in endingTouches {
             let id:String = "\(endingTouch.identity)"
             let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:id)

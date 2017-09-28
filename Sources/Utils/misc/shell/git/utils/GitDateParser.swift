@@ -6,9 +6,9 @@ class GitDateParser {
      */
     static func commitDates(localRepoPath:String,since:Date,until:Date) -> [YMD]{
         let since:String = GitDateUtils.gitTime(since)
-        Swift.print("since: " + "\(since)")
+//        Swift.print("since: " + "\(since)")
         let until:String = GitDateUtils.gitTime(until)
-        Swift.print("until: " + "\(until)")
+//        Swift.print("until: " + "\(until)")
         let commitDatesStr:String = Utils.commitDates(localRepoPath: localRepoPath, since:since, until:until)
 //        Swift.print("commitDatesStr: " + "\(commitDatesStr)")
         let commitDates:[String] = StringParser.paragraphs(commitDatesStr)
@@ -39,7 +39,7 @@ private class Utils{
      */
     static func commitDates(localRepoPath:String,since:String,until:String) -> String{
         let shellScript:String = "\(Git.path + Git.git) \(Git.log) --since=\"\(since.encode()!)\" --until=\"\(until.encode()!)\" --date=short --pretty=format:\("%cd".encode()!)"
-        Swift.print("shellScript: " + "\(shellScript)")
+//        Swift.print("shellScript: " + "\(shellScript)")
 //        Swift.print("localRepoPath: " + "\(localRepoPath)")
         let result:String = ShellUtils.run(shellScript,localRepoPath)
 //        Swift.print("result: " + "\(result)")
@@ -54,7 +54,7 @@ private class Utils{
 //        Swift.print("shellScript: " + "\(shellScript)")
 //        Swift.print("localRepoPath: " + "\(localRepoPath)")
         let result:String = ShellUtils.run(shellScript,localRepoPath)
-        Swift.print("result: " + "\(result)")
+//        Swift.print("result: " + "\(result)")
         return result
     }
     /**
