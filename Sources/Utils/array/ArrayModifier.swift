@@ -386,6 +386,7 @@ class ArrayModifier{
     }
     /**
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
+     * EXAMPLE: removeDups([1,2,2,3,4,4,4,5],{$0 == $1})//Output: 1,2,3,4,5
      */
     static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         var result:[T] = []

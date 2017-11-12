@@ -43,7 +43,7 @@ class StringModifier{
      */
     static func replaceFirst(_ input:String,_ match:String,_ replacement:String)->String{
         var input = input
-        input.insert(contentsOf: replacement.characters, at: input.range(of:match)!.lowerBound)
+        input.insert(contentsOf: replacement.string, at: input.range(of:match)!.lowerBound)
         input.removeSubrange(input.range(of:match)!)
         return input
     }
@@ -68,7 +68,7 @@ class StringModifier{
      * Example: reverse("hello")//"olleh"
 	 */		
 	static func reverse(_ str:String)->String{
-        return String(str.characters.reversed())//new in swift 2
+        return String(str.string.reversed())//new in swift 2
 	}
 	static func capitalize(_ string:String)->String{
 		return string.capitalized//swift 3 upgrade
@@ -91,7 +91,7 @@ class StringModifier{
      */
     static func capFirstChar(_ str:String)->String{
         let firstChar:Character = CharacterParser.charAt(str, 0)
-        let theRest:String = StringParser.subString(str,str.characters.count,1)
+        let theRest:String = StringParser.subString(str,str.string.count,1)
         return String(firstChar) + theRest
     }
     /**
@@ -126,7 +126,7 @@ class StringModifier{
     static func insertAt(_ a:String,_ b:String,_ i:Int)->String{
         var a = a
         let index = a.idx(i)
-        a.insert(contentsOf: b.characters, at: index)
+        a.insert(contentsOf: b.string, at: index)
         return a
     }
     /**

@@ -166,7 +166,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
         if hasHandCursor {
             let cursor:NSCursor = NSCursor.pointingHand
             addCursorRect(frame, cursor:cursor)
-            cursor.setOnMouseEntered(true)
+//            cursor.setOnMouseEntered(true)
         }else{super.resetCursorRects()}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

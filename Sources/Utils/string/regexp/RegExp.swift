@@ -76,7 +76,7 @@ public class RegExp{
      */
     static func replace(_ str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive)->String{
         do {
-            let stringlength = str.characters.count
+            let stringlength = str.string.count
             let regex = try NSRegularExpression(pattern:pattern , options: options)
             let modString = regex.stringByReplacingMatches(in: str, options: [], range: NSMakeRange(0, stringlength), withTemplate: replacement)
             return modString

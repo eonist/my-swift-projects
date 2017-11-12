@@ -12,14 +12,14 @@ class CharacterModifier {
      * Removes last letter
      */
     static func removeFirst(_ str:inout String)->String{
-        str.remove(at: str.characters.indices.first!)
+        str.remove(at: str.string.indices.first!)
         return str
     }
     /**
      * Removes last letter
      */
     static func removeLast(_ str:inout String)->String{
-        str.remove(at: str.characters.indices.last!)
+        str.remove(at: str.string.indices.last!)
         return str
     }
 }

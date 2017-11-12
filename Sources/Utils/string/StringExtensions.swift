@@ -113,9 +113,15 @@ extension String{
     
     var nsColor:NSColor{return StringParser.nsColor(self)}
     var int:Int{return Int(self)!}
-    
-    
-    var count:Int{return self.characters.count}/*Since swift 4 There is also native count, But it doesnt return Int*/
+
+    /**
+     * Since swift 4 There is also native count, But it doesn't return Int
+     * NOTE: was: var count:Int { return self.characters.count } but chatacters is no more in swift 4.1
+     * EXAMPLE: "abc👌".count//Output: 4
+     */
+    var count:Int {
+        return self.distance(from: self.startIndex, to: self.endIndex)
+    }
     var cgFloat:CGFloat{return CGFloat(Double(self)!)}//TODO:you should also do the same for the Any type
     var double:Double{return Double(self)!}
     var json:Any? {return JSONParser.json(self)}

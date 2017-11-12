@@ -52,7 +52,7 @@ class StringParser{
    static func lastChar(_ string:String)->String {
         //let lastCharIndex:Int = string.characters.count - 1
         //print(lastCharIndex)
-        return String(describing: string.characters.last)//swift 3 upgrade -> was: String()
+        return String(describing: string.string.last)//swift 3 upgrade -> was: String()
     }
     /**
 	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
@@ -77,7 +77,7 @@ class StringParser{
      */
 	static func splitAt(_ str:String, _ index:Int)->[String] {
 		let a:String = subStr(str,0,index)
-		let b:String = subStr(str,index,str.characters.count)
+		let b:String = subStr(str,index,str.string.count)
 		return [a,b]
 	}
     
@@ -94,14 +94,14 @@ class StringParser{
      * NOTE: does not modify the original string
      */
     static func sansPrefix(_ str:String)->String{
-        return String(str.characters.dropFirst())
+        return String(str.string.dropFirst())
     }
     /**
      * Returns str sans the last char
      * NOTE: does not modify the original string
      */
     static func sansSuffix(_ str:String)->String{
-        return String(str.characters.dropLast())
+        return String(str.string.dropLast())
     }
     /**
      * NOTE: only works with Character (make one that supports longer strings later)
@@ -117,7 +117,7 @@ class StringParser{
      */
     static func trimLeft(_ str:String,_ left:Character)->String{
         var str = str
-        if str.characters.first == left {str = String(str.characters.dropFirst())}
+        if str.string.first == left {str = String(str.string.dropFirst())}
         return str
     }
     /**
@@ -126,7 +126,7 @@ class StringParser{
      */
     static func trimRight(_ str:String,_ right:Character)->String{
         var str = str
-        if str.characters.last == right {str = String(str.characters.dropLast())}
+        if str.string.last == right {str = String(str.string.dropLast())}
         return str
     }
     /**
@@ -169,8 +169,8 @@ class StringParser{
         if(hexColor.test(Pattern.colorHex)){/*asserts if the color is in the correct hex format*/
             //⚠️️⚠️️⚠️️⚠️️TODO: use native firstMatch instead of the bellow line, its way faster⚠️️⚠️️⚠️️⚠️️
             var hex:String = RegExp.match(hexColor, Pattern.colorHex)[0]
-            if hex.characters.count == 3 {
-                hex = String([hex.characters.first!,hex.characters.first!,hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters[hex.index(hex.startIndex,offsetBy:1)],hex.characters.last!,hex.characters.last!])//upgraded to swift 3
+            if hex.string.count == 3 {
+                hex = String([hex.string.first!,hex.string.first!,hex.string[hex.index(hex.startIndex,offsetBy:1)],hex.string[hex.index(hex.startIndex,offsetBy:1)],hex.string.last!,hex.string.last!])//upgraded to swift 3
             }/*Convert shorthand hex to hex*/
             return ("0x"+hex).uint
         }else{
@@ -223,7 +223,7 @@ class StringParser{
      * EXAMPLE: "001".array({$0.int}) -> [0,0,1]
      */
     static func array<T>(_ str:String, _ cast:(_ char:Character)->T)->[T]{
-        let arr:[T] = str.characters.map{cast($0)}
+        let arr:[T] = str.string.map{cast($0)}
         return arr
     }
     /**

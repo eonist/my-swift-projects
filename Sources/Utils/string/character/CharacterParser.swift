@@ -4,20 +4,20 @@ class CharacterParser {
      */
     static func successorAt(_ str:String,_ index:Int)->Character{
         let successor = str.index(after: str.idx(index))//upgraded to swift 3-> was: startIndex.advancedBy
-        return str.characters[successor]
+        return str.string[successor]
     }
     /**
      * Returns the char before PARAM: index
      */
     static func predecessorAt(_ str:String,_ index:Int)->Character{
         let predecessor = str.index(before: str.idx(index))
-        return str.characters[predecessor]
+        return str.string[predecessor]
     }
     /**
      * Returns the first occurence of PARAM: char in PARAM: str
      */
     static func indexOf(_ str:String,_ char:Character)->Int{
-        if let strIndex = str.characters.index(of: char) {
+        if let strIndex = str.string.index(of: char) {
             return str.distance(from: str.startIndex, to: strIndex)//<--upgraded to swift 3 support
         }
         else {
@@ -36,13 +36,13 @@ class CharacterParser {
      * Retrieve last letter
      */
     static func last(_ str:String)->Character{
-        return str.characters.last!
+        return str.string.last!
     }
     /**
      * Retrieve first letter
      */
     static func first(_ str:String)->Character{
-        return str.characters.first!
+        return str.string.first!
     }
     /**
      * Returns the PARAM: str in reverse order

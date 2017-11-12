@@ -126,7 +126,7 @@ class TextField2:NSTextField,Trackable{
         //        Swift.print("textDidChange \(self.stringValue)")
         if(self.superview is EventSendable){
             //            Swift.print("superview is EventSendable")
-            (self.superview as! EventSendable).event!(TextFieldEvent(Event.update,self))
+            (self.superview as! EventSendable).event(TextFieldEvent(Event.update,self))
         }else{
             //            Swift.print("superview is NOT EventSendable")
         }

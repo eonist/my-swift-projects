@@ -90,7 +90,7 @@ class DateParser {
      * Returns m,t,w,t,f,s,s for date
      */
     static func shortDayName(_ date:Date)->String{
-        return date.dayName != nil ? String(date.dayName!.characters.first!) : ""
+        return date.dayName != nil ? String(date.dayName!.string.first!) : ""
     }
     /**
      * Jan,Feb,Mar etc

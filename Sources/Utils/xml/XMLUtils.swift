@@ -81,9 +81,9 @@ class XMLUtils {
             var attributeText  = (key + "=" + "\"" + value + "\"")
             attributeText += " " //append a space after each key value pair
         }
-        attributeText.remove(at: attributeText.characters.indices.last!)//remove trailing space
+        attributeText.remove(at: attributeText.string.indices.last!)//remove trailing space
         var xmlText:String = "<" + name + " " + attributeText //beginning of xml text
-        if (content.characters.count > 0) { //has content
+        if content.string.count > 0 { //has content
             xmlText += ">" + content + "</" + name + ">" //end of xml text
         }else {//no content
             xmlText += "/>" //end of xml text

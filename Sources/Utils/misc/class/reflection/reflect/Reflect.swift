@@ -195,8 +195,8 @@ private class Utils{
      */
     static func extractClassType(_ value:Any)->String{
         let str:String = ClassParser.stringType(value)
-        let arr1 = str.characters.split{$0 == "<"}.map(String.init)
-        let arr2 = arr1[1].characters.split{$0 == ">"}.map(String.init)
+        let arr1 = str.string.split{$0 == "<"}.map(String.init)
+        let arr2 = arr1[1].string.split{$0 == ">"}.map(String.init)
         return arr2[0]
     }
     /**

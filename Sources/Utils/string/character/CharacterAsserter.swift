@@ -4,6 +4,6 @@ class CharacterAsserter {
      * EXAMPLE: "testing\n".characters.contains(Character("\n"))//true
      */
     static func contains(_ string:String, char:Character)-> Bool{
-        return string.characters.contains(char)
+        return string.string.contains(char)
     }
 }

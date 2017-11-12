@@ -6,10 +6,10 @@ class StringAsserter{
     }
     
     /**
-	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")--true
+	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")//true
 	 */
 	static func isWrappedWith(_ string:String, _ char:Character)->Bool{
-		return (string.characters.first == char) && (string.characters.last == char)
+		return (string.string.first == char) && (string.string.last == char)
 	}
     static func isWrappedWith(_ string:String, _ str:String)->Bool{
         return string.endsWith(str) && string.beginsWith(str)
@@ -73,4 +73,10 @@ class StringAsserter{
 	static func percentage(_ value:String)->Bool{
 		return value.test(".*?(?=%)")
 	}
+    /**
+     * New
+     */
+    static func within(str:String,min:Int,max:Int) -> Bool{
+        return str.count > min && str.count < max
+    }
 }
