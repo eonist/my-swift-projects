@@ -2,6 +2,7 @@ import Foundation
 class IntParser{
     /**
      * Return a  Random number within a min max value
+     * EXAMPLE: IntParser.random(0,3)//Can return either of: 0,1,2,3
      */
     static func random(_ min:Int, _ max:Int)->Int{//returns an integer between 0 - x
         return Int(arc4random_uniform(UInt32(max)) + UInt32(min))

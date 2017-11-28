@@ -46,7 +46,7 @@ class WinParser {
      * Returns the first window in NSApp of a spedific class or protocol type
      * NOTE: there is also window.isMemberOfClass which could work, but it wont work for protocols
      * CAUTION: The type provided must be absolute. Meaning storing a type and then using it here wont work, only direct access to the class type will work like: String.self
-     * PARAM: strict is a Boolean flag that allows an absolute assert of the class, say if you store the class type in a variable ebfore calling this method and the generic is a subType then the strict flag works well to assert absolutness. (It does not work with protocols, research into protocol supoprt for the strict flag is out of scope for now)
+     * PARAM: strict is a Boolean flag that allows an absolute assert of the class, say if you store the class type in a variable before calling this method and the generic is a subType then the strict flag works well to assert absolutness. (It does not work with protocols, research into protocol supoprt for the strict flag is out of scope for now)
      * NOTE: you only need to use the strict flag if you work with stored class types.
      */
     static func firstWindow<T>(_ type:T.Type, _ strict:Bool = false)-> T? {
@@ -56,6 +56,7 @@ class WinParser {
     }
     /**
      * Returns an array of NSWindow of type T in the current app
+     * EXAMPLE: windowsOfType(CustomWindow.self)
      */
     static func windowsOfType<T>(_ type:T.Type)-> [T] {
         return NSApp.windows.lazy.filter(){$0 as? T != nil}.map{$0 as! T}

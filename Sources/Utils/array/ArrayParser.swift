@@ -199,6 +199,13 @@ class ArrayParser{
         }
         return retVal as! U
     }
+    /**
+     * Array.range(from:1,to:4)//1,2,3
+     * ⚠️️ IMPORTANT: INcludes the to value but does not include the final to value
+     */
+    static func range(from:Int,to:Int) -> [Int]{
+        return (from..<to).map{$0}
+    }
 }
 private class Utils{
     /**

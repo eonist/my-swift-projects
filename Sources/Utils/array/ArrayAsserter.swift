@@ -42,6 +42,7 @@ class ArrayAsserter {
     }
     /**
      * EXAMPLE: ["a","b","c"].has("b",{$0 == $1})//true
+     * NOTE: You can also do: ["a","b","c"].index(where: {$0 == frameData}) != nil
      */
     static func has<T,V>(_ variables:[T],_ match:V,_ method:@escaping (T,V)->Bool) -> Bool  where V:Equatable{
         return ArrayParser.first(variables, match, method) != nil

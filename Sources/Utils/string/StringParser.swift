@@ -8,8 +8,8 @@ class StringParser{
     }
     /**
      * Returns encode text (escaped)
-     * Caution: encode does not handle the double quote char very well
-     * Note: this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
+     * ⚠️️ Caution: encode does not handle the double quote char very well
+     * NOTE: this could also be done by creating a a method that does all the character trickery involved in unescaping/escaping text, but this method leverages the php language to do all this for us
      * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
      * EXAMPLE: "testing this stuff.121".encode//testing%20this%20stuff.121
      */
@@ -76,8 +76,8 @@ class StringParser{
      * NOTE: it may be faster to do it with this: str.substringWithRange(Range(start:str.startIndex , end:str.startIndex.advancedBy(index) ))   and str.substringWithRange(Range(start:str.startIndex.advancedBy(index) , end:str.endIndex ))
      */
 	static func splitAt(_ str:String, _ index:Int)->[String] {
-		let a:String = subStr(str,0,index)
-		let b:String = subStr(str,index,str.string.count)
+		let a:String = subStr(str,0,index)//bug fix, was subStr
+		let b:String = subStr(str,index,str.string.count - index)//bug fix, was subStr
 		return [a,b]
 	}
     
