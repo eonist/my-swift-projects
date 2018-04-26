@@ -54,7 +54,7 @@ class JSONParser{
      * Dictionary -> "JSON string"
      * NOTE: the opposite of this is: let decoded = try JSONSerialization.jsonObject(with: jsonData, options: []);if let dictFromJSON = decoded as? [String:String] {}
      * NOTE: If key is of type int, use recursion or reflection
-     * EXAMPLE: JSONParser.str( ["2": "B", "1": "A", "3": ["1":true]])
+     * EXAMPLE: JSONParser.str( dict:["2": "B", "1": "A", "3": ["1":true]])
      */
     static func str<Key, Value>(dict: [Key: Value]) -> String?{
         do {
