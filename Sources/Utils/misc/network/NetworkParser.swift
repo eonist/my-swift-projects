@@ -1,5 +1,28 @@
 import Cocoa
 class NetworkParser{
+	typealias UrlReqCompleted = (String) -> Void
+	static var onUrlReqCompleted = {  (result:String) /*-> Void */ in Swift.print("result:  \(result)") }
+	/**
+	 * Returns a string for a URL
+	 */
+	static func string(urlStr:String, completion: @escaping UrlReqCompleted = NetworkHelper.onUrlReqCompleted){
+		 guard let url: URL = URL(string: urlStr ) else {fatalError("something wrong with the URL: \(urlStr)")}
+		 let session:URLSession = URLSession.shared
+		 let request = URLRequest.init(url: url)
+		 let task:URLSessionTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+			  guard let _:NSData = data as NSData?, let _:URLResponse = response, error == nil else {
+					print("Task Error: \(String(describing: error?.localizedDescription))")
+					return
+			  }
+			  guard let stringValue = data?.stringValue else {
+					Swift.print("data is not string")
+					return
+			  }
+			  completion(stringValue)
+			  //Swift.print("data:  \(String(describing: data?.stringValue))")
+		 }
+		 task.resume()
+	}
 	/**
 	 * Returns a string for a URL
 	 */
