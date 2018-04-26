@@ -59,6 +59,16 @@ class ArrayParser{
         return diff
     }
     /**
+     * EXAMPLE: diff(["a","b","c"],["a","b","c","d","e","f","g"]);//(b:4,5,6)
+     * EXPERIMENTAL
+     */
+    static func diff<T>(_ a:[T], _ b:[T] )->(a:[Int],b:[Int]) where T:Comparable{
+        var (diffA,diffB):([Int],[Int]) = ([],[])
+        for (i,item) in a.enumerated() { if (b.index(of: item) == nil) {diffA.append(i)}}
+        for (i,item) in b.enumerated() { if (a.index(of: item) == nil) {diffB.append(i)}}
+        return (a:diffA,b:diffB)
+    }
+    /**
      * Returns an array with itmes that are not the same in 2 arrays
      * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
      * IMPORTANT: compares reference not value

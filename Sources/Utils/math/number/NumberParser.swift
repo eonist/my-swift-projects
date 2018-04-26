@@ -2,7 +2,7 @@ import Foundation
 class NumberParser{
     /**
      * Clips a value between min and max
-     * NOTE: the Comparable part is suport for more than or less than operators "<" and ">" Equatable would be "=="
+     * NOTE: the Comparable part is support for more than or less than operators "<" and ">" Equatable would be "=="
      * EXAMPLE:: minMax(100, 200, 400)//Output: 200
      * EXAMPLE:: minMax(500, 200, 400)//Output: 400
      * EXAMPLE:: minMax(300, 200, 400)//Output: 300
@@ -16,7 +16,7 @@ class NumberParser{
      */
     static func decimals<T:Comparable>(_ number:T)->Int {//could also be named decimalPLaces
         var matches:[String] = String(describing:number).split(".")
-        if(matches.count > 1) {return matches[1].count}
+        if matches.count > 1 {return matches[1].count}
         else {return 0}
     }
     /**

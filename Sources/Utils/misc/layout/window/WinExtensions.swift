@@ -33,6 +33,7 @@ extension NSSavePanel{
     /**
      * Creates An NSSavePanel instance
      * NOTE: the initialize word is used instead of init, as init requires much more code to get working
+     * EXAMPLE: see git project
      */
     static func initialize(_ allowedFileTypes:[String] = ["xml"], _ title:String = "Save As", _ canCreateDirectories:Bool = true)->NSSavePanel{
         let panel = NSSavePanel()
@@ -46,6 +47,7 @@ extension NSOpenPanel{
     /**
      * Creates An NSSavePanel instance
      * NOTE: the initialize word is used instead of init, as init requires much more code to get working
+     * EXAMPLE: see git project
      */
     static func initOpenPanel( allowedFileTypes:[String] = ["xml"],  title:String = "Open",  canCreateDirectories:Bool = true)->NSOpenPanel{
         let panel = NSOpenPanel()

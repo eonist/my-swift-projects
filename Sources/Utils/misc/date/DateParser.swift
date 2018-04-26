@@ -31,6 +31,7 @@ class DateParser {
      * NOTE: The purpouse of this method is to provide an easy way to sort dates (as this format is as sortable as it gets)
      * TRIVIA: The name of this time format: ODBC canonical (some argue it's the ISO 8601 format)
      * TRIVIA: The name descendingDate is a name that describes what the format does. It is not the official name (alt: chronologically descending)
+     * NOTE: the reverse is: let formatter = DateFormatter();formatter.dateFormat = "yyyyMMddhhmmss";let dateStr:String =  sortedSections[section];let date = formatter.date(from: dateStr)
      */
     static func descendingDate(_ date:Date) -> String{
         let formatter:DateFormatter = DateFormatter()

@@ -81,6 +81,7 @@ class ArrayModifier{
      * EXAMPLE: ArrayModifier.move([1,2,3,4,5,6,7,8,9], 2, 5) //[1,2,4,5,6,3,7,8,9]
      * NOTE: There is also the ArrayModifier.indexSwap method which is alot simpler and can probably do the same thing the (indexSwap method may require more or less memory, testing is needed) (unlike swap move is only 1-way)
      * TODO: ⚠️️ Use a splice method that doesnt return (more optimized this way)
+     * TODO: you can also do: let itemToMove = listItems[from];listItems.remove(at: from);listItems.insert(itemToMove, at: to )
      */
     static func displace<T>(_ array:inout [T], _ from:Int, _ to:Int) -> [T] {
         var from = from

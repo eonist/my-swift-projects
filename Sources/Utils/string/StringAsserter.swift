@@ -49,6 +49,12 @@ class StringAsserter{
         return string.test(Pattern.digit)
     }
     /**
+     * New
+     */
+    static func int(str:String) -> Bool{
+        return Int(str) != nil
+    }
+    /**
      * 2ems,20% etc
      */
     static func metric(_ string:String) -> Bool{

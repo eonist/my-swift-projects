@@ -43,6 +43,9 @@ class StringParser{
 	static func split(_ string:String,_ delimiter:String)->[String]{
 		return string.components(separatedBy:delimiter)
 	}
+    /**
+     * New
+     */
 	static func firstWord(_ string:String)->String {
        return string.components(separatedBy: " ")[0]
     }

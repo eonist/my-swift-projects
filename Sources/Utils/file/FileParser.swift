@@ -88,7 +88,7 @@ extension FileParser{
         fatalError("There was an error see log, path:\(path)")
     }
     /**
-     * NOTE: you have an extension for NSSavePanel: See NSSavePanel.initialize....
+     * NOTE: you have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
      */
 	private static func modalExample(){
 		let myFileDialog:NSOpenPanel = NSOpenPanel()/*open modal panel*/

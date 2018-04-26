@@ -115,7 +115,12 @@ extension NSView {
     //func getSubviewAt(_ i:Int)->NSView{return NSViewParser.getSubViewAt(self, i)}//favour getSubViewAt method instead, as its optional
     func getSubViewAt(_ i:Int)->NSView?{return NSViewParser.getSubViewAt(self, i)}
     var numSubViews:Int {return subviews.count}/*convenience*/
-    
+    /**
+     * New
+     */
+    func first<T>(ofKind:T.Type? = nil) -> T? {
+        return NSViewParser.first(view: self, ofKind: ofKind)
+    }
 }
 //⚠️️ These won't work since swift 3 i think, use .w and .h instead (aperantly .width is used too may places, you need to refactor it out first, same with height)
 //var width:CGFloat{return frame.width}//TODO:implement later

@@ -67,4 +67,15 @@ class IntParser{
     static func loop(_ index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
         return CGFloatParser.loop(index.cgFloat,start.cgFloat,end.cgFloat).int
     }
+    /**
+     * Returns the number of digits in a number
+     * EXAMPLE: digitCount(99)//2
+     * EXAMPLE: digitCount(9)//1
+     * EXAMPLE: digitCount(999)//3
+     * NOTE: Uses Algebraic math
+     * NOTE: Can also be done by converting to a string and counting chars
+     */
+   static func digitCount(_ n: Int) -> Int {
+       return Int(log2(Double(n)) / log2(10.0)) + 1
+   }
 }

@@ -48,8 +48,6 @@ class FileModifier{
         return false
     }
     static func createDir(_ path:String){
-        
-//        
 //        let documentsPath1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
 //        let logsPath = documentsPath1.appendingPathComponent("data")
 //        print(logsPath!)
