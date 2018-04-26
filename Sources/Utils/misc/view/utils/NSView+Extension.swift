@@ -24,12 +24,7 @@ extension NSView {
     func removeSubviewAt(_ i:Int){
         NSViewModifier.removeSubviewAt(self, i)
     }
-    /**
-     * Asserts if PARAM: view is a subView of PARAM: parent
-     */
-    func contains<T:NSView>(_ view:T)->Bool{
-        return NSViewAsserter.contains(self, view)
-    }
+    
     /**
      * Returns index of a subView, returns -1 if nothing is found
      * TODO: ⚠️️ use Int? instead of -1 and rename to index
@@ -98,9 +93,7 @@ extension NSView {
         }
         return offset
     }
-    func hasParent(_ parent:NSView?)->Bool{/*Convenience*/
-        return NSViewAsserter.hasParent(self, parent)
-    }
+    
     var mouseX:CGFloat{return MouseUtils.point(self).x}/*UNTESTED*/
     var mouseY:CGFloat{return MouseUtils.point(self).y}/*UNTESTED*/
     //swift 3 update: The compiler complaints if the values x,y are used, you could try to use upper-case X and Y?!?, or implement x,y in classes such as BaseGraphic and IElement etc
@@ -138,4 +131,15 @@ func disableAnim(_ closure:()->Void){
     CATransaction.commit()
 }
 
-
+//crossplatform
+extension View{
+    func hasParent(_ parent:View?)->Bool{/*Convenience*/
+        return NSViewAsserter.hasParent(self, parent)
+    }
+    /**
+     * Asserts if PARAM: view is a subView of PARAM: parent
+     */
+    func contains<T:View>(_ view:T)->Bool{
+        return NSViewAsserter.contains(self, view)
+    }
+}

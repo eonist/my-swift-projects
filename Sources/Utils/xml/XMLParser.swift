@@ -74,7 +74,7 @@ public class XMLParser{
     static func prettyString(_ xml:XML) ->String{
         let xmlDoc = XMLDocument(rootElement: xml)
         let data = xmlDoc.xmlData(options: .nodePrettyPrint)
-        return data.stringValue
+        return data.stringValue!//<- make this return optional
     }
     /**
      * Returns string Content of an xml

@@ -1,26 +1,26 @@
 import Foundation
 /**
- * TODO: Use enums!
+ * TODO: ⚠️️ add none?
  */
-class Alignment {
-    static var horisontal:String = "horisontal"
-    static var vertical:String = "vertical"
-    /**/
-    static var left:String = "left"
-    static var right:String = "right"
-    static var top:String = "top"
-    static var bottom:String = "bottom"
-    static var center:String = "center"
-    /**/
-    static var topLeft:String = "topLeft"
-    static var topCenter:String = "topCenter"
-    static var topRight:String = "topRight"
-    static var bottomLeft:String = "bottomLeft"
-    static var bottomCenter:String = "bottomCenter"
-    static var bottomRight:String = "bottomRight"
-    static var centerLeft:String = "centerLeft"
-    static var centerRight:String = "centerRight"
-    static var centerCenter:String = "centerCenter" // :TODO: remove when transitioning to new lib// we have this when we use center in y and x axis? should be remved, or should it be removed?
-    /**/
-    static var none:String = "none"
+enum Alignment:String{//Both axises
+    case topLeft = "topLeft"
+    case topCenter = "topCenter"
+    case topRight = "topRight"
+    case bottomLeft = "bottomLeft"
+    case bottomCenter = "bottomCenter"
+    case bottomRight = "bottomRight"
+    case centerLeft = "centerLeft"
+    case centerRight = "centerRight"
+    case centerCenter = "centerCenter"
+}
+enum Axis:String{//axis alignment
+    case horisontal = "horisontal"
+    case vertical = "vertical"
+}
+enum AlignType:String{//cross alignment
+    case left = "left"
+    case right = "right"
+    case top = "top"
+    case bottom = "bottom"
+    case center = "center"
 }

@@ -5,7 +5,7 @@ class NetworkParser{
 	/**
 	 * Returns a string for a URL
 	 */
-	static func string(urlStr:String, completion: @escaping UrlReqCompleted = NetworkHelper.onUrlReqCompleted){
+	static func string(urlStr:String, completion: @escaping UrlReqCompleted = NetworkParser.onUrlReqCompleted){
 		 guard let url: URL = URL(string: urlStr ) else {fatalError("something wrong with the URL: \(urlStr)")}
 		 let session:URLSession = URLSession.shared
 		 let request = URLRequest.init(url: url)

@@ -2,7 +2,7 @@ import Cocoa
 
 class AdvanceNSViewModifier {
     /**
-     * Adds an DisplayObject instance to PARAM: displayObjectContainer at PARAM: index (array index)
+     * Adds an obj instance to PARAM: objContainer at PARAM: index (array index)
      * TODO: return the DisplayObject
      */
     static func addAt(_ container:NSView, _ item:NSView, _ index:[Int]) {

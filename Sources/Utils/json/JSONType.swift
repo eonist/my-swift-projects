@@ -23,6 +23,7 @@ extension JSONType{
             case JSONAsserter.isArr(json):
                 return .arr
             default:
+                print("Type not supported: \(Swift.type(of:json))")
                 fatalError("Type not supported: \(Swift.type(of:json))")
                 break;
         }

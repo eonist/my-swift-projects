@@ -57,23 +57,23 @@ extension CGRect {
      * TODO: Maybe for x,y,width,height aswell?
      * TODO: Make it enum! it's faster
      */
-    subscript(key:String) -> CGPoint {/*Easy Access to corners*/
+    subscript(key:Alignment) -> CGPoint {/*Easy Access to corners*/
         get {
             switch key{
-               case Alignment.topLeft:return topLeft
-               case Alignment.topRight:return topRight
-               case Alignment.bottomRight:return bottomRight
-               case Alignment.bottomLeft:return bottomLeft
-               case Alignment.top:return top
-               case Alignment.bottom:return bottom
-               case Alignment.left:return left
-               case Alignment.right:return right
-               case Alignment.center:return center
-               default:fatalError("UNSUPORTED CORNER TYPE: " + key)
+            case .topLeft:return topLeft
+            case .topRight:return topRight
+            case .bottomRight:return bottomRight
+            case .bottomLeft:return bottomLeft
+            case .topCenter:return top
+            case .bottomCenter:return bottom
+            case .centerLeft:return left
+            case .centerRight:return right
+            case .centerCenter:return center
+                //            default:fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
         set {
-            fatalError("UNSUPORTED CORNER TYPE: " + key + " WITH VALUE: " + String(describing: newValue))
+            fatalError("UNSUPORTED CORNER TYPE: " + key.rawValue + " WITH VALUE: " + String(describing: newValue))
         }
     }
     /**

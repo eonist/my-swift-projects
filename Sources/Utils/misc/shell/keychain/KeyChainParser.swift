@@ -45,11 +45,11 @@ extension String {
         return KeyChainUtils.dataValue(self)
     }
 }
-extension Data {
-    public var stringValue: String {/*Convenience method*/
-        return KeyChainUtils.stringValue(self)
-    }
-}
+//extension Data {
+//    public var stringValue: String {/*Convenience method*/
+//        return KeyChainUtils.stringValue(self)
+//    }
+//}
 extension KeyChainParser{
     /**
      * Returns password for PARAM: accountName
