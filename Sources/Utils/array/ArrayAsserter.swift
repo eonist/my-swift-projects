@@ -53,7 +53,7 @@ class ArrayAsserter {
      * PARAM b: Array to be compared against
      * RETURN: a boolean indicating if the arrays are equal
      * NOTE: could also be named isEqual,isIdentical
-     * IMPORTANT: This method compares reference not value
+     * IMPORTANT: ⚠️️ This method compares reference not value
      */
     static func equals<T>(_ a:[T], _ b:[T]) -> Bool{
         if a.count != b.count  { return false }
@@ -69,10 +69,10 @@ class ArrayAsserter {
      * NOTE: same as the other equals method but asserts value and not reference
      * NOTE: This method has support for both Equatable and Comparable aswell, similar to Array.index, the equatable part enables support for numeric types and the comparable part enables support for string types
      * NOTE: there are two methods named equals in this class, the correct one will be infered from the POV of the callee
-     * IMPORTANT: This method compares value not reference
+     * IMPORTANT: ⚠️️ This method compares value not reference
      * EXAMPLE: ArrayAsserter.equals(["",""], ["","",""])//false
      * EXAMPLE: ArrayAsserter.equals([1,2], [1,2])//true
-     * TODO: create add this method to ArrayExtensions
+     * TODO: ⚠️️ create add this method to ArrayExtensions
      */
     static func equals<T>(_ a:[T], _ b:[T]) -> Bool where T:Comparable{
         if a.count != b.count { return false }

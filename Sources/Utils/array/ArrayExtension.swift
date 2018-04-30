@@ -1,5 +1,8 @@
 import Foundation
-extension Array {
+/**
+ * Mutating
+ */
+extension Array{
     mutating func shift() ->Element{/*convenience*/
         return ArrayModifier.shift(&self)
     }
@@ -10,7 +13,7 @@ extension Array {
         return ArrayModifier.pushPop(&self, item)
     }
     /**
-     * Enables the Array as a varadic method: 
+     * Enables the Array as a varadic method:
      * NOTE: Variadic functions are functions that have a variable number of arguments (indicated by ... after the argument's type) that can be accessed into their body as an array.
      * CAUTION: renaming appendMany to just append can cause problems with some array's so its probably better to leave it named something different than the native append name
      * EXAMPLE:
@@ -30,9 +33,6 @@ extension Array {
     mutating func prepend(_ item:Element)->Int{/*the name is more descriptive than unshift, easier to reason about*/
         return ArrayModifier.unshift(&self, item)
     }
-    func slice2(_ startIndex:Int, _ endIndex:Int) ->[Element]{/*Convenince*/
-        return ArrayModifier.slice2(self,startIndex,endIndex)
-    }
     /**
      * NOTE: there is also native: removeAtIndex(index: Int) -> Element
      */
@@ -45,6 +45,17 @@ extension Array {
     mutating func displace( _ from:Int, _ to:Int) -> [Element]{/*Convenience*/
         return ArrayModifier.displace(&self, from, to)
     }
+    mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
+        return ArrayModifier.insertAt(&self, item, index)
+    }
+    func slice2(_ startIndex:Int, _ endIndex:Int) ->[Element]{/*Convenince*/
+        return ArrayModifier.slice2(self,startIndex,endIndex)
+    }
+}
+/**
+ * Parsing
+ */
+extension Array {
     /**
      * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
      * NOTE: If you need a mutating concatination behaviour use the += operator
@@ -70,9 +81,6 @@ extension Array {
     func cast<T>(_ type:T.Type? = nil) -> [T]{
         return self.map { $0 as! T }
     }
-    mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
-        return ArrayModifier.insertAt(&self, item, index)
-    }
     /**
      * Asserts if PARAM: idx is within the bounds of the array
      */
@@ -84,6 +92,15 @@ extension Array {
     }
     func removeDups( _ condition:(_ a:Element, _ b:Element)->Bool)->[Element]{
         return ArrayModifier.removeDups(self, condition)
+    }
+    func mapReduce<V,U>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->U{
+        return ArrayParser.mapReduce(self,result,closure)
+    }
+    /**
+     * Sometimes you wan't to do stuff only if an array has items: if let arr = [].optional {...}
+     */
+    var optional:Array? {
+        return self.isEmpty ? nil : self
     }
     var start:Element?{//new
         get{return self.first}
@@ -97,21 +114,12 @@ extension Array {
      * RATIONAL 1: Enhances readability when doing `if let` style coding
      * RATIONAL 2: using if let in conjunction with array avoids out of bound crashing
      * NOTE: Performance wise `self.dropFirst(at).first` is as fast as doing .contain,
-     * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?], TODO: ⚠️️ should we rather do idx >= .count?
+     * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?], TODO: ⚠️️ should we rather do idx < .count?
      * EXAMPLE: if let item = [a,b,c,d][safe:3] {print(item)}
      */
     subscript(safe index: Index) -> Iterator.Element? {
         if indices.contains(index) { return self[index] }
         return nil
-    }
-    func mapReduce<V,U>(_ result:V, _ closure:@escaping (_ interim: V,_ item:Element)->V)->U{
-        return ArrayParser.mapReduce(self,result,closure)
-    }
-    /**
-     * Sometimes you wan't to do stuff only if an array has items: if let arr = [].optional {...}
-     */
-    var optional:Array? {
-        return self.isEmpty ? nil : self
     }
 }
 /**

@@ -75,8 +75,8 @@ class ArrayParser{
      */
     static func difference<T>(_ a:[T], _ b:[T] )->[T] {
         var diff:[T] = []
-        for item in a { if (ArrayParser.indx(b,item) == -1) {diff.append(item)}}
-        for item in b { if (ArrayParser.indx(a,item) == -1) {diff.append(item)}}
+        for item in a { if ArrayParser.indx(b,item) == -1 {diff.append(item)}}
+        for item in b { if ArrayParser.indx(a,item) == -1 {diff.append(item)}}
         return diff
     }
     /**
@@ -130,7 +130,7 @@ class ArrayParser{
         var sortedArray:[T] = []
         array.forEach{
             let index:Int = Utils.index($0, sortedArray, condition)
-            if(index > -1){_ = ArrayModifier.splice2(&sortedArray,index, 1, [$0,sortedArray[index]])}
+            if index > -1{_ = ArrayModifier.splice2(&sortedArray,index, 1, [$0,sortedArray[index]])}
             else{sortedArray.append($0)/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
         }
         return sortedArray
@@ -196,7 +196,7 @@ class ArrayParser{
     static func occurences<T>(_ theList:[T], theItem:T){
         var counter:Int = 0
         theList.forEach{
-            if(($0 as AnyObject) === (theItem as AnyObject)){counter += 1}
+            if ($0 as AnyObject) === (theItem as AnyObject) {counter += 1}
         }
     }
     /**
@@ -213,7 +213,7 @@ class ArrayParser{
     }
     /**
      * Array.range(from:1,to:4)//1,2,3
-     * ⚠️️ IMPORTANT: INcludes the to value but does not include the final to value
+     * ⚠️️ IMPORTANT: Includes the to value but does not include the final to value
      */
     static func range(from:Int,to:Int) -> [Int]{
         return (from..<to).map{$0}
@@ -225,7 +225,7 @@ private class Utils{
      */
     static func index<T>(_ value:T, _ sortedArray:[T],_ condition:(_ a: T, _ b: T)->Bool)->Int{
         for i in 0..<sortedArray.count{
-            if(condition(value,sortedArray[i])) {return i}
+            if condition(value,sortedArray[i]) {return i}
         }
         return -1
     }

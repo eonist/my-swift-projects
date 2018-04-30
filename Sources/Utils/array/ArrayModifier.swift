@@ -133,12 +133,12 @@ class ArrayModifier{
     /**
      * Removes the object from the array and return the index.
      * RETURN: the index of the object, -1 if the object is not in the array
-     * TODO: should return the array not the index?
-     * TODO: can we use indexOf here?
-     * TODO: should we use obj:AnyObject and arr[i] === obj ???
+     * TODO: ⚠️️ should return the array not the index?
+     * TODO: ⚠️️ can we use indexOf here?
+     * TODO: ⚠️️ should we use obj:AnyObject and arr[i] === obj ???
      * IMPORTANT: This compares reference not value
      */
-    static func remove(_ array:inout [AnyObject], _ object:AnyObject)->Int{//this method seems pretty useless if it cant work with instances that arnt equatable
+    static func remove(_ array:inout [AnyObject], _ object:AnyObject)->Int{//⚠️️ this method seems pretty useless if it cant work with instances that arnt equatable
         if let i = array.index(where: {$0 === object}){
             array.remove(at: i)
             return i
@@ -146,25 +146,13 @@ class ArrayModifier{
         return -1
     }
     /**
-     * New
-     */
-    /*
-    static func remove<T>(_ array:[T], instance:T) -> Int{
-        if let i = array.index(where: {$0 === instance}){
-            array.remove(at: i)
-            return i
-        }
-        return -1
-    }
- */
-    /**
      * NOTE: compres and deletes reference "===" not "=="
      */
     static func delete<T>(_ arr:inout [T], _ obj:inout T)->T{
         return arr.remove(at: ArrayParser.idx(&arr, &obj))
     }
     /**
-     * TODO: I think you can also use: array.removeFirst(n: Int)
+     * TODO: ⚠️️ I think you can also use: array.removeFirst(n: Int)
      */
     static func removeAt<T>(_ array:inout [T],_ i:Int)->T{//<--the return statement was recently added
         return array.remove(at: i)//was -> return array.splice2(i, 1)[0]
@@ -173,7 +161,7 @@ class ArrayModifier{
      * Returns PARAM: array with out the items in PARAM: these
      * NOTE: only removed the first instance, if there are duplicates in the PARAM: array then they will not be removed
      * EXAMPLE: print("Result: "+removeThese(["A","B","C","D","F","G"], ["B","C","A","f","F"]));//D,G
-     * IMPORTANT: compares reference not value, create a similar method if you need to compare value
+     * IMPORTANT: ⚠️️ compares reference not value, create a similar method if you need to compare value
      */
     static func removeMany<T>(_ array:inout [T],_ many:[T]) -> [T] {
         many.forEach{
@@ -192,12 +180,12 @@ class ArrayModifier{
         arr.forEach{_ in
             arr.removeLast()/*using removeFirst() also works*/
         }
-        return arr//why are we returning an empty arr?
+        return arr//⚠️️ why are we returning an empty arr?
     }
     /**
      * Returns PARAM: array with out the items in PARAM: these by the PARAM: key
      * EXAMPLE: print("result: " + ArrayParser.describe(removeTheseByKey([{name:"Alf"},{name:"Bert"},{name:"Bill"},{name:"John"},{name:"James"},{name:"Chuck"}], ["Bert","James","Chuck"], "name")));//Alf,Bill,John
-     * IMPORTANT: Compares value not reference, if reference comparing is need then create another method for that case
+     * IMPORTANT: ⚠️️ Compares value not reference, if reference comparing is need then create another method for that case
      */
     static func removeManyByKey<T>(_ array:inout [[String:T]],_ many:[T],_ key:String) -> [[String:T]] where T:Comparable {
         var i:Int = 0
@@ -241,16 +229,16 @@ class ArrayModifier{
      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func mergeInPlaceAt<T>(_ a:inout [T], _ b:inout [T], _ i:Int) -> [T] {
-        if(i == 0) {
+        if i == 0 {
             while(b.count > 0) {
-                _ = a.unshift(b.splice2(b.count-1,1)[0])// :TODO: if splice is faster than unshift then use splice
+                _ = a.unshift(b.splice2(b.count-1,1)[0])// :TODO: ⚠️️  if splice is faster than unshift then use splice
             }
-        }else if(i == a.count) {
-            while(b.count > 0) {
+        }else if i == a.count {
+            while b.count > 0 {
                 _ = a.splice2(a.count,0,b.splice2(0,1))
             }
         }else {
-            while(b.count > 0) {
+            while b.count > 0 {
                 _ = a.splice2(i,0,b.splice2(b.count-1,1))
             }
         }
@@ -267,8 +255,8 @@ class ArrayModifier{
      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func mergeAt<T>(_ a:inout [T], _ b:[T], _ index:Int) -> [T]{
-        if(index == a.count) {a += b}/*if the index is at the end then inout concat the arrays*/
-        else {_ = a.splice2(index, 0,b)}// :TODO: test if this is correct?
+        if index == a.count {a += b}/*if the index is at the end then inout concat the arrays*/
+        else {_ = a.splice2(index, 0,b)}// :TODO: ⚠️️ test if this is correct?
         return a
     }
     /**
@@ -301,12 +289,12 @@ class ArrayModifier{
      */
     static func splitAtEvery<T>(_ array:[T] , _ every:Int = 1 ) -> [[T]] {
         var every = every
-        let copy:[T] = array//Create a copy
+        let copy:[T] = array/*Create a copy*/
         var list:[[T]] = []
-        every = max(every, 1)//Force value to be 1 or more
+        every = max(every, 1)/*Force value to be 1 or more*/
         let len:Int = ceil((copy.count / every).float).int
         var i:Int = 0
-        while (i < len){
+        while i < len {
             let a:Int = i * every
             let b:Int = min(a + every, copy.count)
             let split:[T] = copy.slice2(a, b)
@@ -321,7 +309,7 @@ class ArrayModifier{
     static func swap<T>(_ array:inout [T], _ item1:T, _ item2:T) {
         let index1:Int = ArrayParser.indx(array, item1)
         let index2:Int = ArrayParser.indx(array, item2)
-        if(index1 != -1 && index2 != -1) {
+        if index1 != -1 && index2 != -1 {
             array[index1] = item2
             array[index2] = item1
         }
@@ -331,7 +319,7 @@ class ArrayModifier{
      * NOTE: there is also the ArrayModifier.move method which is similar (it similar but doesnt do a 2-way swap)
      */
     static func indexSwap<T>(_ array:inout [T],_ index1:Int,_ index2:Int) -> [T] {
-        if(index1 != -1 && index2 != -1) {
+        if index1 != -1 && index2 != -1 {
             let a:T = array[index1]
             let b:T = array[index2]
             array[index1] = b
@@ -381,7 +369,7 @@ class ArrayModifier{
     static func removeDuplicates<T>(_ array:[T]) -> [T] where T:Comparable{
         var result:[T] = []
         array.forEach{
-            if(result.index(of: $0) == nil) {result.append($0)}//append if doesn't exists
+            if result.index(of: $0) == nil {result.append($0)}//append if doesn't exists
         }
         return result
     }
@@ -393,7 +381,7 @@ class ArrayModifier{
     static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         var result:[T] = []
         arr.forEach{
-            if(result.first($0, condition) == nil) {result.append($0)}//append if doesn't exists
+            if result.first($0, condition) == nil {result.append($0)}//append if doesn't exists
         }
         return result
     }
@@ -401,7 +389,7 @@ class ArrayModifier{
      * Very simple numeric sorter
      * NOTE: you could also use some sort of bubble sort
      * NOTE: modifies the original array,returns the array (convenient)
-     * TODO: You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
+     * TODO: ⚠️️ You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
      * EXAMPLE:
      * var arr:Array = [5,4,1,2,0]
      * ArrayModifier.numericSort(&arr)
@@ -410,7 +398,7 @@ class ArrayModifier{
     static func numericSort(_ array:inout [Int]) -> [Int]{
         for i in 1..<array.count{
             var e:Int = i
-            while(e > 0 && array[i] < array[e-1]){
+            while e > 0 && array[i] < array[e-1] {
                 e -= 1
             }
             _ = ArrayModifier.displace(&array, i, e)
@@ -421,7 +409,7 @@ class ArrayModifier{
      * Replaces PARAM: searchFor with PARAM: replaceWith (the existing item is deleted)
      * NOTE: on pretext is that the item to search for must already exist in the array or else this method doesnt work
      * NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
-     * IMPORTANT: Compares reference not value, create a similar method if value comparing is important
+     * IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is important
      */
     static func replace<T>(_ array:inout [T], _ searchFor:T, _ replaceWith:T) -> Int {
         let index:Int = ArrayParser.indx(array, searchFor)
@@ -430,12 +418,12 @@ class ArrayModifier{
     }
     /**
      * TODO: Make it work even if the length of the array the_replacements is longer than the matches
-     * IMPORTANT: Compares reference not value, create a similar method if value comparing is needed
+     * IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is needed
      */
     static func replaceMany<T>(_ array:inout [T], _ matches:[T], _ replacments:[T]) -> [T]{
         for i in 0..<matches.count {
             let index:Int = ArrayParser.indx(array, matches[i])//finds index of reference
-            if(index != -1){array[index] = replacments[i]}
+            if index != -1 {array[index] = replacments[i]}
         }
         return array
     }
