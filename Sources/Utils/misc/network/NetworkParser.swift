@@ -22,13 +22,39 @@ class NetworkParser{
     static func str(url: URL, downloadComplete:@escaping DownloadComplete) {
         data(url: url) { data, response, error in
             guard let data = data, error == nil else { downloadComplete(nil,.errorGettingDataFromURL(error,response)); return}
-            //            Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
+            //Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
             guard let stringValue = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {downloadComplete(nil,.dataIsNotString);return}
             downloadComplete(stringValue,nil)
         }
     }
     /**
+     * EXAMPLE
+     * NetworkParser.data(webPath: webPath) { (data:Data?,error:DownloadError?) in
+     *    if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
+     *        Swift.print("str:  \(str)")
+     *    }else{
+     *        Swift.print("error:  \(String(describing: error)) response: \(String(describing: response))")
+     *    }
+     * }
+     */
+    static func data(webPath:String,onComplete:@escaping DataDownloadComplete){
+        guard let url = URL.init(string: webPath) else { onComplete(nil,.invalideWebPath);return}
+        data(url: url) { data, response, error in
+            guard let data = data, error == nil else { onComplete(nil,.errorGettingDataFromURL(error,response)); return}
+            //Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
+            onComplete(data,nil)
+        }
+    }
+    /**
      * Get Data from URL
+     * EXAMPLE:
+     * data(url: url) { data, response, error in
+     *    if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
+     *        Swift.print("str:  \(str)")
+     *    }else{
+     *        Swift.print("error:  \(String(describing: error)) response: \(String(describing: response))")
+     *    }
+     * }
      */
     static func data(url: URL, completion: @escaping URLQuery) {
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -56,6 +82,7 @@ extension NetworkParser{
         case errorGettingDataFromURL(Error?,URLResponse?)
     }
     typealias DownloadComplete = (String?,DownloadError?) -> Void
+    typealias DataDownloadComplete = (Data?,DownloadError?) -> Void
     typealias URLQuery = (Data?, URLResponse?, Error?) -> ()
 }
 
