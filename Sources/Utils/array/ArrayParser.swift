@@ -137,12 +137,14 @@ class ArrayParser{
     }
     /**
      * Returns the first item in PARAM: array that is of PARAM: type
+     * TODO: ⚠️️ rename to first?
      */
     static func firstItemByType<T>(_ array:[Any?], type:T.Type) -> T?{
         return array.first(where: {$0 as? T != nil}) as? T
     }
     /**
      * Returns all items in PARAM: array that is of PARAM: type
+     * NOTE: You can also do: `items.lazy.flatMap{$0 as? NSView}.first`
      */
     static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
         return array.filter(){$0 as? T != nil}.map{ $0 as! T}

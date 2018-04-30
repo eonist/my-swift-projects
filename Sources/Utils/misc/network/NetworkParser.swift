@@ -42,7 +42,7 @@ class NetworkParser{
      * PARAM: url: "https://www.google.com"
      */
     static func stringContent(_ url:String)->String{
-        //TODO: needs research
+        //TODO: ⚠️️ needs research
         if let urlObj = URL(string:url) {
             do {
                 let contents = try NSString(contentsOf: urlObj, usedEncoding: nil)

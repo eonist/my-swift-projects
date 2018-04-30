@@ -1,10 +1,3 @@
-//#if os(OSX)
-//    import AppKit.NSView
-//    typealias ViewType = NSView//ViewType enables you to use the same code for mac and ios
-//#else
-//    import UIKit.UIView
-//    typealias ViewType = UIView
-//#endif
 /**
  * Align is a util class to help align views and graphics. The core principle is based around a stage-pivot and an object pivot. The align type you add to these two pivot deterimins the final position of the object
  * NOTE: The align method only supports NSView/UIView. But use alignmentPoint instead if you have to work with different class types. As it does the same thing as the align method does
@@ -45,14 +38,13 @@ class Align{
         switch align{
         case .topLeft:return CGPoint()
         case .topRight:return CGPoint(size.width,0)
-        case .centerCenter:return CGPoint(round((size.width/2)),round((size.height/2)))///*, Alignment.center*/
+        case .centerCenter:return CGPoint(round((size.width/2)),round((size.height/2)))
         case .centerLeft: return CGPoint(0,round((size.height/2)))
         case .topCenter: return CGPoint(round((size.width/2)),0)
         case .centerRight: return CGPoint(size.width,round((size.height/2)))
         case .bottomRight: return CGPoint(size.width,size.height)
         case .bottomLeft: return CGPoint(0,size.height)
         case .bottomCenter: return CGPoint(round((size.width/2)),size.height)
-//        default:fatalError("No alignment matched the argument:" + "\(align)")
         }
     }
 }
