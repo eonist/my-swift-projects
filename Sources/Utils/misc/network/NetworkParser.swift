@@ -1,6 +1,5 @@
 import Cocoa
 
-
 class NetworkParser{
     /**
      * Return string for WebPath
@@ -37,10 +36,17 @@ class NetworkParser{
      * Get Data from URL
      * EXAMPLE: NetworkParser.data(url:url)
      * NOTE: this onliner also works: URLSession.shared.dataTask(with: url) { data, response, error in completion(data, response, error) }.resume()
+     * For multiple varaiables etc: param1=value1&param2=value2
+     * EXAMPLE: urlStr:"https://www.google.com/dev/push?tx=someValue"
+     * PARAM: httpBody: some servers requires the params to be encoded as data
      */
-    static func data(url: URL, completion: @escaping URLQuery = defaultURLQueryComplete) {
+    static func data(url: URL,  httpMethod:HTTPMethodType = .get, httpBody:Data? = nil, completion: @escaping URLQuery = defaultURLQueryComplete) {
         let session:URLSession = URLSession.shared
-        let request = URLRequest.init(url: url)
+        var request = URLRequest.init(url: url)
+        request.httpMethod = httpMethod.rawValue//get or post
+        if let httpBody = httpBody {
+            request.httpBody = httpBody
+        }
         let task:URLSessionTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
             completion(data, response, error)
         }
@@ -52,6 +58,8 @@ class NetworkParser{
  * Extra
  */
 extension NetworkParser{
+    enum HTTPMethodType:String {case get = "GET"; case post = "POST"}
+    
     enum DownloadError: Error {
         case invalideWebPath
         case dataIsNotString
@@ -92,63 +100,3 @@ extension NetworkParser{
     }
 }
 
-
-//⚠️️ DEPRECATED ⚠️️
-extension NetworkParser{
-    typealias UrlReqCompleted = (String) -> Void
-    static var onUrlReqCompleted = {  (result:String) /*-> Void */ in Swift.print("result:  \(result)") }
-    /**
-     * Returns a string for a URL
-     */
-    static func string(urlStr:String, completion: @escaping UrlReqCompleted = NetworkParser.onUrlReqCompleted){
-        guard let url: URL = URL(string: urlStr ) else {fatalError("something wrong with the URL: \(urlStr)")}
-        let session:URLSession = URLSession.shared
-        let request = URLRequest.init(url: url)
-        let task:URLSessionTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            guard let _:NSData = data as NSData?, let _:URLResponse = response, error == nil else {
-                print("Task Error: \(String(describing: error?.localizedDescription))")
-                return
-            }
-            guard let stringValue = data?.stringValue else {
-                Swift.print("data is not string")
-                return
-            }
-            completion(stringValue)
-            //Swift.print("data:  \(String(describing: data?.stringValue))")
-        }
-        task.resume()
-    }
-
-    /**
-     * Returns a string for a URL
-     */
-    static func string(_ URL:String)->String{
-        //TODO: needs research
-        /*
-         let theURL = NSURL(string: URL)
-         let rssUrlRequest:NSURLRequest = NSURLRequest(URL:theURL!)
-         let queue:NSOperationQueue = NSOperationQueue()
-         //the bellow is sudo code
-         let result = NSURLConnection.sendAsynchronousRequest(, queue: , completionHandler: )
-         return result
-         */
-        return ""
-    }
-    /**
-     * PARAM: url: "https://www.google.com"
-     */
-    static func stringContent(_ url:String)->String{
-        //TODO: ⚠️️ needs research
-        if let urlObj = URL(string:url) {
-            do {
-                let contents = try NSString(contentsOf: urlObj, usedEncoding: nil)
-                print(contents)
-            } catch {
-                // contents could not be loaded
-            }
-        } else {
-            // the URL was bad!
-        }
-        return ""
-    }
-}
