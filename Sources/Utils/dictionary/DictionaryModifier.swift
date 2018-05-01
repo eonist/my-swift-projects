@@ -1,7 +1,7 @@
 class DictionaryModifier{
 	/**
 	 * Merges 2 dicts, changes the left array, the right is untouched
-     * IMPORTANT: updateValue also creates new key,value pairs if non exist. 
+     * IMPORTANT: ⚠️️ updateValue also creates new key,value pairs if non exist. 
      * TODO: ⚠️️ See legacy code, it has more powerfull dictionary modifiers
 	 * Returns the left dictionary for convenience purposes
 	 */
@@ -35,6 +35,3 @@ class DictionaryModifier{
         return dict
     }
 }
-
-
-//Also create an override method? see legacy code?

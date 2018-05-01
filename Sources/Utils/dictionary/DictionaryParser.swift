@@ -4,21 +4,13 @@
 class DictionaryParser{
     /**
      * Describes properties in an object
-     * // :TODO: maybe write a method that works on Class instances aswell? you probably could use that Class method that returns an xml of data about the object
+     * TODO: ⚠️️ maybe write a method that works on Class instances as well? you probably could use that Class method that returns an xml of data about the object
      */
     static func describe<K,V>(_ dictionary:[K:V]) where K:CustomStringConvertible{
         dictionary.forEach{ k,v in
             print("key: \(k) value: \(v)")
             //if(theValue is Dictionary) {describe(theValue)}
         }
-    }
-    /**
-     * New
-     */
-    static func xml(_ dict:[String:String],_ nodeName:String = "item") -> XML{
-        let xml:XML = "<\(nodeName)></\(nodeName)>".xml
-        xml.setAttributesWith(dict)
-        return xml
     }
     /**
      * Rturns tuples from PARAM: dict
@@ -52,5 +44,18 @@ class DictionaryParser{
             dict[$1.0] = $1.1
             return dict
         }
+    }
+}
+/**
+ * Experimental
+ */
+extension DictionaryParser{
+    /**
+     * New
+     */
+    static func xml(_ dict:[String:String],_ nodeName:String = "item") -> XML{
+        let xml:XML = "<\(nodeName)></\(nodeName)>".xml
+        xml.setAttributesWith(dict)
+        return xml
     }
 }
