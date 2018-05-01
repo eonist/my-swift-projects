@@ -6,7 +6,7 @@ class CGRectParser{
     /**
      * Returns a Rectangle instance from any two points (does not have to be topLeft and bottomRight)
      */
-    static func rectangleByPoints(_ p1:CGPoint,_ p2:CGPoint) -> CGRect {
+    static func rectangleByPoints(_ p1:CGPoint, p2:CGPoint) -> CGRect {
         let top:CGFloat = min(p1.y, p2.y)
         let left:CGFloat = min(p1.x, p2.x)
         let bottom:CGFloat = max(p1.y, p2.y)
@@ -24,7 +24,7 @@ class CGRectParser{
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
      */
-    static func roundRect(_ rect:CGRect,  _ radius:CGFloat) -> CGMutablePath{
+    static func roundRect(_ rect:CGRect,   radius:CGFloat) -> CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
         path.move(to:CGPoint(rect.midX, rect.minY))//was-> CGPathMoveToPoint
         path.addArc(tangent1End: CGPoint(rect.maxX, rect.minY), tangent2End: CGPoint(rect.maxX, rect.maxY), radius: radius)//Swift 3 upgrade, was-> CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius)
@@ -79,22 +79,22 @@ class CGRectParser{
     /**
      * TODO: maybe get the local rect with the pivot as center?? how does it work, hmmm
      */
-    static func localRectangle(_ topLeft:CGPoint,_ bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
+    static func localRectangle( topLeft:CGPoint, bottomRight:CGPoint,_ rotation:CGFloat) -> CGRect {
         let points:[CGPoint] = [topLeft, bottomRight]
         var rotatedPoints:[CGPoint] = CGPointModifier.rotatePoints(points, CGPoint(), -rotation)
-        return rectangle(rotatedPoints[0], rotatedPoints[1])
+        return rectangle(topLeft: rotatedPoints[0], bottomRight: rotatedPoints[1])
     }
-    static func rectangle(_ topLeft:CGPoint, _ bottomRight:CGPoint) -> CGRect{
+    static func rectangle( topLeft:CGPoint,  bottomRight:CGPoint) -> CGRect{
         let width:CGFloat = CGFloatParser.difference(topLeft.x, bottomRight.x)
         let height:CGFloat = CGFloatParser.difference(topLeft.y, bottomRight.y)
         return CGRect(topLeft.x, topLeft.y, width, height)
     }
     /**
-     * TODO: create a similar method for localToGlobal
+     * TODO: ⚠️️ create a similar method for localToGlobal
      * NOTE: This method used to be a modifying method but was remade as a parser, as its easier to use this way (make a duplocate method if mutating is need in the future)
      * EXAMPLE: var localRectangle:CGRect = CGRectParaser.globalToLocal(rectangle1.clone(), view)
      */
-    static func globalToLocal(_ globalRectangle:CGRect,_ localView:NSView) -> CGRect {
+    static func globalToLocal(_ globalRectangle:CGRect, localView:NSView) -> CGRect {
         var globalRectangle = globalRectangle
         var localRectangle:CGRect = CGRect(0,0,globalRectangle.width,globalRectangle.height)
         let globalToLocalPoint:CGPoint = localView.globalToLocal(globalRectangle.topLeft)

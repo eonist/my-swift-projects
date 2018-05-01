@@ -96,7 +96,7 @@ extension CGRect {
     /**
      * NOTE: Alters the original CGRect instance
      * Swift 3 update, as of swift 3 CGRect no longer has the offsetInPlace method. This method replaces that functionality.
-     * TODO: could probably be simplified by just copying the origin.x and origin y onto self
+     * TODO: ⚠️️ could probably be simplified by just copying the origin.x and origin y onto self
      */
     mutating func offsetInPlace(_ point:CGPoint)->CGRect{//Convenience
         let offsetRect:CGRect = self.offset(point)
