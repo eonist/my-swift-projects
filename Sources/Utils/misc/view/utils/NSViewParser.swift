@@ -8,7 +8,7 @@ class NSViewParser {
      * TODO: rename to childrenByClassType, maybe not?, I say not!
      */
     static func childrenOfType<T>(_ view:NSView, _ type:T.Type? = nil)->[T] {
-        return view.subviews.flatMap{$0 as? T}
+        return view.subviews.compactMap{$0 as? T}
     }
     /**
      * Returns a list of parents

@@ -8,7 +8,7 @@ class SVGAsset:InteractiveView {
     var path:String
     init(_ path:String) {
         self.path = path
-        let rootElement:XML = FileParser.xml(path.tildePath)
+        guard let rootElement:XML = FileParser.xml(path.tildePath) else {fatalError("err")}
         svg = SVGParser.svg(rootElement)
         super.init(frame:NSRect())
         isInteractive = false/*<-- Very important, as SVG interactivity is currently not supported*/

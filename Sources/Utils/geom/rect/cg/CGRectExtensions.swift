@@ -26,10 +26,10 @@ extension CGRect {
     var path:CGMutablePath{return CGRectParser.path(self)}
     /*Initialization*/
     init(_ pos:CGPoint,_ size:CGSize){ self.init(origin: pos, size: size)}
-    init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
-    init(_ x:Double,_ y:Double,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize( width, height);}//TODO:add initializer to CGSize
-    init(_ x:CGFloat,_ y:CGFloat,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize(width,height);}
-    init(_ x:Int,_ y:Int,_ width:Double,_ height:Double){ self.origin = CGPoint(x,y); self.size = CGSize(width,height);}
+    init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat){ self.init(origin:CGPoint(x,y),size: CGSize( width, height))}//TODO:add initializer to CGSize
+    init(_ x:Double,_ y:Double,_ width:Double,_ height:Double){ self.init(origin:CGPoint(x,y),size: CGSize( width, height))}//TODO:add initializer to CGSize
+    init(_ x:CGFloat,_ y:CGFloat,_ width:Double,_ height:Double){ self.init(origin:CGPoint(x,y),size: CGSize( width, height))}
+    init(_ x:Int,_ y:Int,_ width:Double,_ height:Double){ self.init(origin:CGPoint(x,y),size: CGSize( width, height))}
     /*Position*/
     var x:CGFloat {set {origin.x = newValue} get {return origin.x} }
     var y:CGFloat {set {origin.y = newValue} get {return origin.y} }
@@ -69,7 +69,6 @@ extension CGRect {
             case .centerLeft:return left
             case .centerRight:return right
             case .centerCenter:return center
-                //            default:fatalError("UNSUPORTED CORNER TYPE: " + key)
             }
         }
         set {

@@ -12,8 +12,16 @@ class HexModifier {
     static func blend(_ first:UInt, _ second:UInt, _ ratio:CGFloat) -> UInt {// :TODO: rename?
         var a:CGFloat; var b:CGFloat; var c:CGFloat;
         a = (CGFloat(first & 0xff) * (1 - ratio) + CGFloat(second & 0xff) * ratio)
-        b = (CGFloat((first & 0xff00) >> 8) * (1 - ratio) + CGFloat((second & 0xff00) >> 8) * ratio)
-        c = (CGFloat((first & 0xff0000) >> 16) * (1 - ratio) + CGFloat((second & 0xff0000) >> 16) * ratio)
+        b = {
+            let first = CGFloat((first & 0xff00) >> 8)
+            let second = CGFloat((second & 0xff00) >> 8)
+            return (first * (1 - ratio) + second * ratio)
+        }()
+        c = {
+            let first = CGFloat((first & 0xff0000) >> 16)
+            let second = CGFloat((second & 0xff0000) >> 16)
+            return (first * (1 - ratio) + second * ratio)
+        }()
         return a.uint | (b.uint << 8) | (c.uint << 16)
     }
     /**

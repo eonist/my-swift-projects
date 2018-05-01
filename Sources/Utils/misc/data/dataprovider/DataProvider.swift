@@ -62,7 +62,7 @@ class DataProvider:EventSender,DataProvidable{// :TODO: ⚠️️ move methods i
      * IMPORTANT: ⚠️️ Remember to "tildeExpand" the fileURLStr before you pass it to the method
      */
     convenience init(_ fileURLStr:String){
-        let xml = FileParser.xml(fileURLStr)
+        guard let xml = FileParser.xml(fileURLStr) else {fatalError("err")}
         self.init(XMLParser.toArray(xml))
     }
 }

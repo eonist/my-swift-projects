@@ -107,7 +107,7 @@ extension String{
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
     var xml:XML {return XML(self)}/*Convenince*/
-    var url:URL {return FilePathParser.path(self)}/*Convenince*/
+    var url:URL? {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
     var content:String? {return FileParser.content(self.tildePath)}
     
@@ -148,7 +148,7 @@ extension String{
      * NOTE: remember to tildeExpand the filePath
      */
     func write(filePath:String) -> Bool{
-        return FileModifier.write(filePath, self)
+        return FileModifier.write(filePath, content: self)
     }
 }
 extension NSString{

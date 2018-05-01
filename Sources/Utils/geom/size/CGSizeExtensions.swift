@@ -1,9 +1,9 @@
 import Foundation
 /*Convenient extensions*/
 extension CGSize {
-    init(_ width:CGFloat,_ height:CGFloat){self.width = width;self.height = height}
-    init(_ width:Double,_ height:Double){self.width = CGFloat(width);self.height = CGFloat(height)}
-    init(_ width:Int,_ height:Int){self.width = CGFloat(width);self.height = CGFloat(height)}
+    init(_ width:CGFloat,_ height:CGFloat){self.init(width:width,height:height)}
+    init(_ width:Double,_ height:Double){self.init(width:width,height:height)}
+    init(_ width:Int,_ height:Int){self.init(width:CGFloat(width),height:CGFloat(height))}
     var w:CGFloat {set {self.width = newValue} get {return self.width}}
     var h:CGFloat {set {self.height = newValue} get {return self.height}}
     func isNear(_ p:CGSize,_ epsilon:CGFloat) -> Bool {return CGPointAsserter.nearEquals(CGPoint(self.w,self.h), CGPoint(p.w,p.h), epsilon)}
