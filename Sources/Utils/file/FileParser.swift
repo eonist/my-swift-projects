@@ -12,7 +12,7 @@ class FileParser{
      */
 	static func content(_ path:String)->String?{
         do {
-            let content = try String(contentsOfFile:path, encoding:String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
+            let content:String = try String(contentsOfFile:path, encoding:.utf8)
             return content
         } catch {
             return nil
@@ -22,8 +22,8 @@ class FileParser{
      * FileParser.resourceContent("example","txt")
      * Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
      */
-    static func resourceContent(_ fileName:String, _ fileExtension:String)->String?{
-        if let filepath = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
+    static func resourceContent(_ fileName:String, fileExtension:String)->String?{
+        if let filepath:String = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
             return content(filepath)
         } else {
             return nil// example.txt not found!
@@ -31,12 +31,12 @@ class FileParser{
     }
     /**
      * NOTE: make sure the file exists with: FileAsserter.exists("some path here")
-     * PARAM: can't be tildePath, must be absolute Users/John/...
+     * PARAM: Can't be tildePath, must be absolute Users/John/...
      */
-    static func modificationDate(_ filePath:String)->NSDate{
+    static func modificationDate(_ filePath:String) -> NSDate?{
         let fileURL:NSURL = NSURL(fileURLWithPath:filePath)
-        let attributes = try! fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey])
-        let modificationDate = attributes[URLResourceKey.contentModificationDateKey] as! NSDate
+        guard let attributes = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else {return nil}
+        guard let modificationDate:NSDate = attributes[URLResourceKey.contentModificationDateKey] as? NSDate else {return nil}
         return modificationDate
     }
     /**
@@ -45,8 +45,7 @@ class FileParser{
     static func contentOfDir(_ path:String)->[String]?{
         let fileManager = FileManager.default
         do {
-            let files = try fileManager.contentsOfDirectory(atPath: path)//"."
-            //print(files)
+            let files = try fileManager.contentsOfDirectory(atPath: path)
             return files
         }catch let error as NSError {
             print("Error: \(error)")
@@ -73,19 +72,21 @@ extension FileParser{
     /**
      * Returns an xml instance comprised of the string content at location PARAM: path
      * EXAMPLE: xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
-     * IMPORTANT: Remember to expand the "path" with the tildePath call before you call xml(path)
+     * IMPORTANT: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
      */
-    static func xml(_ path:String)->XML {
+    static func xml(_ path:String) -> XML? {
         guard let content:String = FileParser.content(path) else {fatalError("Must have content: path: \(path)")}
         do {
             let xmlDoc:XMLDoc = try XMLDoc(xmlString:content, options: XMLNode.Options(rawValue: 0))
             if let rootElement:XML = xmlDoc.rootElement(){
                 return rootElement
+            }else {
+                return nil
             }
         }catch let error as NSError {
-            print ("Error: \(error.domain)")
+            print ("Error: \(error.domain) path:\(path)")
+            return nil
         }
-        fatalError("There was an error see log, path:\(path)")
     }
     /**
      * NOTE: you have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
@@ -94,9 +95,10 @@ extension FileParser{
 		let myFileDialog:NSOpenPanel = NSOpenPanel()/*open modal panel*/
 		myFileDialog.runModal()
 		let thePath = myFileDialog.url?.path/*Get the path to the file chosen in the NSOpenPanel*/
-		if (thePath != nil) {/*Make sure that a path was chosen*/
-			let theContent = FileParser.content(thePath!)
-			Swift.print("theContent: " + "\(theContent!)")
+		if let thePath = thePath {/*Make sure that a path was chosen*/
+            if let theContent = FileParser.content(thePath) {
+                Swift.print("theContent: " + "\(theContent)")
+            }
 		}	
 	}
 }
