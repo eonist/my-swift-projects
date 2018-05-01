@@ -1,43 +1,31 @@
 import Cocoa
 
+
 class NetworkParser{
     /**
      * Return string for WebPath
-     * EXAMPLE:
-     *  NetworkParser.str(webPath: webPath) { (string:String?,error:DownloadError?) in
-     *   if let str = string {
-     *      Swift.print("str:  \(str)")
-     *   }else{
-     *       Swift.print("error:  \(String(describing: error))")
-     *   }
-     * }
+     * EXAMPLE: NetworkParser.str(webPath: webPath) //(See defaultDownloadComplete)
      */
-    static func str(webPath:String,onComplete:@escaping DownloadComplete){
+    static func str(webPath:String,onComplete:@escaping DownloadComplete = defaultDownloadComplete){
         guard let url = URL.init(string: webPath) else { onComplete(nil,.invalideWebPath);return}
         str(url: url, downloadComplete: onComplete)
     }
     /**
      * Return string for URL
+     * Example: NetworkParser.str(url: url)
      */
-    static func str(url: URL, downloadComplete:@escaping DownloadComplete) {
+    static func str(url: URL, downloadComplete:@escaping DownloadComplete = defaultDownloadComplete) {
         data(url: url) { data, response, error in
             guard let data = data, error == nil else { downloadComplete(nil,.errorGettingDataFromURL(error,response)); return}
-            //Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
+            //            Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
             guard let stringValue = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {downloadComplete(nil,.dataIsNotString);return}
             downloadComplete(stringValue,nil)
         }
     }
     /**
-     * EXAMPLE
-     * NetworkParser.data(webPath: webPath) { (data:Data?,error:DownloadError?) in
-     *    if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
-     *        Swift.print("str:  \(str)")
-     *    }else{
-     *        Swift.print("error:  \(String(describing: error)) response: \(String(describing: response))")
-     *    }
-     * }
+     * EXAMPLE: NetworkParser.data(webPath: webPath)
      */
-    static func data(webPath:String,onComplete:@escaping DataDownloadComplete){
+    static func data(webPath:String,onComplete:@escaping DataDownloadComplete = defaultDataComplete){
         guard let url = URL.init(string: webPath) else { onComplete(nil,.invalideWebPath);return}
         data(url: url) { data, response, error in
             guard let data = data, error == nil else { onComplete(nil,.errorGettingDataFromURL(error,response)); return}
@@ -47,31 +35,19 @@ class NetworkParser{
     }
     /**
      * Get Data from URL
-     * EXAMPLE:
-     * data(url: url) { data, response, error in
-     *    if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
-     *        Swift.print("str:  \(str)")
-     *    }else{
-     *        Swift.print("error:  \(String(describing: error)) response: \(String(describing: response))")
-     *    }
-     * }
+     * EXAMPLE: NetworkParser.data(url:url)
+     * NOTE: this onliner also works: URLSession.shared.dataTask(with: url) { data, response, error in completion(data, response, error) }.resume()
      */
-    static func data(url: URL, completion: @escaping URLQuery) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+    static func data(url: URL, completion: @escaping URLQuery = defaultURLQueryComplete) {
+        let session:URLSession = URLSession.shared
+        let request = URLRequest.init(url: url)
+        let task:URLSessionTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
             completion(data, response, error)
-            }.resume()
-    }
-}
-class NetworkUtils{
-    /**
-     * Opens an url in the default browser. openURLInDefaultBrowser("https://www.google.com/")
-     */
-    static func openURLInDefaultBrowser(_ url:String){
-        if let url = URL(string: url), NSWorkspace.shared.open(url) {
-            print("default browser was successfully opened")
         }
+        task.resume()
     }
 }
+
 /**
  * Extra
  */
@@ -84,7 +60,38 @@ extension NetworkParser{
     typealias DownloadComplete = (String?,DownloadError?) -> Void
     typealias DataDownloadComplete = (Data?,DownloadError?) -> Void
     typealias URLQuery = (Data?, URLResponse?, Error?) -> ()
+    /**
+     * New
+     */
+    static var defaultDownloadComplete:DownloadComplete = { (string:String?,error:DownloadError?) in
+        if let str = string {
+            Swift.print("str:  \(str)")
+        }else{
+            Swift.print("error:  \(String(describing: error))")
+        }
+    }
+    /**
+     * New
+     */
+    static var defaultURLQueryComplete:URLQuery = { data, response, error in
+        if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
+            Swift.print("str:  \(str)")
+        }else{
+            Swift.print("error:  \(String(describing: error)) response: \(String(describing: response))")
+        }
+    }
+    /**
+     * New
+     */
+    static var defaultDataComplete:DataDownloadComplete = { (data:Data?,error:DownloadError?) in
+        if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
+            Swift.print("str:  \(str)")
+        }else{
+            Swift.print("error:  \(String(describing: error))")
+        }
+    }
 }
+
 
 //⚠️️ DEPRECATED ⚠️️
 extension NetworkParser{
