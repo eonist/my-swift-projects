@@ -1,4 +1,5 @@
 import Foundation
+
 class FileModifier{
 	/**
 	 * PARAM: fromURL: "/path/to/old"
@@ -7,8 +8,7 @@ class FileModifier{
      * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
      * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
 	 */
-	static func move(_
-        fromURL:String,_ toURL:String){
+	static func move(_ fromURL:String, toURL:String) {
 		let fileManager = FileManager.default
         let fromURL:URL = URL(fileURLWithPath: fromURL)
         let toURL:URL = URL(fileURLWithPath: toURL)
@@ -21,7 +21,7 @@ class FileModifier{
     /**
      * Copies a file to another location
      */
-    static func copy(_ fromURL:String,_ toURL:String){
+    static func copy(_ fromURL:String, toURL:String){
         let fileManager = FileManager.default
         let fromURL:URL = URL(fileURLWithPath: fromURL)
         let toURL:URL = URL(fileURLWithPath: toURL)
@@ -37,73 +37,82 @@ class FileModifier{
      * NOTE: this method over-writes data to files that already exists as well
      * NOTE: this method creates a new file if non exists before
      */
-    static func write(_ path:String,_ content:String)->Bool{
-        Swift.print("FileModifier.write")
+    static func write(_ path:String, content:String)->Bool{
+//        Swift.print("FileModifier.write")
         do {
-            try content.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
+            try content.write(toFile:path, atomically:true, encoding:.utf8)
             return true
         } catch {
             print("failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding")
+            return false
         }
-        return false
     }
-    static func createDir(_ path:String){
+    static func createDir(_ path:String) -> Bool{
 //        let documentsPath1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
 //        let logsPath = documentsPath1.appendingPathComponent("data")
 //        print(logsPath!)
         do {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            return true
         } catch let error as NSError {
             NSLog("Unable to create directory \(error.debugDescription)")
+            return false
         }
     }
     /**
      * Deletes a file at PARAM: path
      */
-    static func delete(_ path:String){
+    static func delete(_ path:String) -> Bool{
         let fileManager = FileManager.default
         do {
             try fileManager.removeItem(atPath:path)
+            return true
         }
         catch let error as NSError {
             print("Error: \(error)")
+            return false
         }
     }
     /**
      * Renames a file
      */
-    static func rename(_ fromURL:String,_ toURL:String){
+    static func rename(_ fromURL:String, toURL:String) -> Bool{
         let fileManager = FileManager.default
         do {
             try fileManager.moveItem(atPath: fromURL, toPath: toURL)
+            return true
         }catch let error as NSError {
             print("Error: \(error)")
+            return false
         }
     }
     /**
      * Creates a folder at PARAM path
      */
-    static func createFolder(_ path:String){
+    static func createFolder(_ path:String) -> Bool{
         let fileManager = FileManager.default
         do {
             try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            return true
         }catch let error as NSError {
             print("Error: \(error)")
+            return false
         }
     }
     /**
      * Append text to file
      */
-    static func append(_ path:String,_ text:String ){
-        append(path, text, text.lengthOfBytes(using: String.Encoding.utf8))
+    static func append(_ path:String, text:String) -> Bool{
+        return append(path, text: text, index: text.lengthOfBytes(using:.utf8))
     }
     /**
      * Append text to file at index
      */
-    static func append(_ path:String,_ text:String, _ index:Int){
-        let os:OutputStream = OutputStream(toFileAtPath: path, append: true)!
+    static func append(_ path:String, text:String,  index:Int) -> Bool{
+        guard let os:OutputStream = OutputStream(toFileAtPath: path, append: true) else {return false}
         os.open()
         os.write(text, maxLength: index)
         os.close()
+        return true
     }
 }

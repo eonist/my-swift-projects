@@ -1,35 +1,36 @@
 import Foundation
+
 class FilePathParser {
     /**
      * Returns the path to where you can save your app's files. Here it is:
      * Output: /Users/James/Documents
      */
-    static func appDocPath() -> String{
+    static func appDocPath() -> String?{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return paths[0]
+        return paths.first
     }
     /**
      * EXAMPLE: path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
      */
-    static func path(_ stringPath:String)->URL{//TODO: ⚠️️ this should be ->URL?, most definitly!!!!, also rename to url
-        return URL(string: stringPath)!
+    static func path(_ stringPath:String) -> URL?{
+        return URL(string: stringPath)
     }
     /**
      * EXAMPLE: path(NSURL("file:///Users/Me/Desktop/Doc.txt"))//Users/Me/Desktop/Doc.txt
      */
-    static func path(_ url:URL)->String{
+    static func path(_ url:URL) -> String{
         return url.path
     }
     /**
      * EXAMPLE: stringPath(path("file:///Users/Me/Desktop/Doc.txt"))//"file:///Users/Me/Desktop/Doc.txt"
      */
-    static func stringPath(_ path:URL)->String{
+    static func stringPath(_ path:URL) -> String{
         return path.absoluteString
     }
     /**
      * NOTE: You can also do: NSString(string: self).stringByExpandingTildeInPath
      */
-    static func userHomePath()->String{
+    static func userHomePath() -> String{
         return NSHomeDirectory()
     }
     /**
@@ -45,15 +46,15 @@ class FilePathParser {
     /**
      * EXAMPLE: fileName("~/Desktop/temp.xml")//temp.xml
      */
-    static func fileName(path filePath:String,withExtension:Bool = true) -> String{
-        let url:URL = path(filePath)
+    static func fileName(path filePath:String,withExtension:Bool = true) -> String?{
+        guard let url:URL = path(filePath) else {return nil}
         return fileName(url, withExtension)
     }
     /**
      * Returns directory
      * EXAMPLE: FilePathParser.directory(fileURL)
      */
-    static func directory(_ fileURL:URL)->String{
+    static func directory(_ fileURL:URL) -> String{
         return fileURL.absoluteURL.deletingPathExtension().absoluteString
     }
     /**
@@ -61,8 +62,8 @@ class FilePathParser {
      * NOTE: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
      * Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
      */
-    static var resourcePath:String{
-        return Bundle.main.resourcePath!
+    static var resourcePath:String? {
+        return Bundle.main.resourcePath
     }
     /**
      * fileExtension("~/Desktop/temp.xml")//xml
@@ -77,7 +78,8 @@ extension FilePathParser{
     /**
      * Convenience
      */
-    static func fileName(fileURL:String, _ withExtension:Bool = true) -> String{
-        return fileName(path(fileURL), withExtension)
+    static func fileName(fileURL:String, _ withExtension:Bool = true) -> String?{
+        guard let path = path(fileURL) else {return nil}
+        return fileName(path, withExtension)
     }
 }
