@@ -3,14 +3,14 @@ import Foundation
  * This class creates a straight line
  * TODO: a line can only have a stroke, since it cant be continued as a path would
  * EXAMPLE: <line x1="75" y1="95" x2="135" y2="85" style="stroke: black;" />
- * TODO: simplify by using points , and add id
+ * TODO: ⚠️️ simplify by using points , and add id
  */
 class SVGLine:SVGGraphic{
     var x1:CGFloat
     var y1:CGFloat
     var x2:CGFloat
     var y2:CGFloat
-    init(_ x1:CGFloat,_ y1:CGFloat,_ x2:CGFloat,_ y2:CGFloat,_ style:SVGStyle,_ id:String) {//TODO: figure out if svg supports alpha on line?// :TODO: use p1:Point and p2:Point ?
+    init(_ x1:CGFloat,_ y1:CGFloat,_ x2:CGFloat,_ y2:CGFloat,_ style:SVGStyle,_ id:String) {//TODO: ⚠️️ figure out if svg supports alpha on line?// :TODO: use p1:Point and p2:Point ?
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
@@ -22,7 +22,7 @@ class SVGLine:SVGGraphic{
     }
     /**
      * NOTE: strokeWidth should always be >= 0 if there is a lineStyle (asserting if there is a linestyle is done by the caller of this method)
-     * TODO: you have to set the frame here
+     * TODO: ⚠️️ you have to set the frame here
      */
     override func draw() {
         let boundingBox:CGRect = CGPointParser.cornersToRectangle(CGPoint(x1,y1),CGPoint(x2, y2))

@@ -3,7 +3,7 @@ import Foundation
   * NOTE: Double.NaN represents stroke:"none" and nil represents no value for stroke, this is important when you export
   * NOTE: Same logic goes for Fill
   * NOTE: why do we use Double and not CGFloat for the color? I dont know, either works, why not use UInt? because UInt doesnt support NaN, May revert to using CGFloat in the future
-  * TODO: impliment stroke-dasharray
+  * TODO: ⚠️️ impliment stroke-dasharray
   */
 struct SVGStyle {
     var fill:Any?/*The fill color or SVGLinearGradient instance*/

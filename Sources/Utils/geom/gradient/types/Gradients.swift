@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * FANCY Gradients
- * TODO: Make into enums
+ * TODO: ⚠️️ Make into enums
  */
 class Gradients{
     /*red*/

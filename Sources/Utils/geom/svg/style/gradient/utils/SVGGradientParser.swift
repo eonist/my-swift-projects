@@ -8,7 +8,7 @@ class SVGGradientParser {
 	 * Returns an gradient instance with data derived from PARAM: xml 
 	 * PARAM: xml (<linearGradient id="skyline"><stop offset="0" style="stop-color:blue"/><stop offset="1" style="stop-color:red"/></linearGradient>)
 	 * other attributes: gradientTransform,gradientUnits,xlink:href
-     * TODO: To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+     * TODO: ⚠️️ To support % values for x1,y1,x2,y2  you will need to set said values to :Any and then use FLoat and CGFloat to differenciate between the two different schemes. Then use this scheme to toggle between the two usecases: example: <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
 	 */
 	static func linearGradient(_ xml:XML)->SVGLinearGradient{
 		let x1Str:String = SVGPropertyParser.property(xml,"x1")!
@@ -43,9 +43,9 @@ class SVGGradientParser {
 private class Utils{
 	/**
 	 * Returns an gradient instance with data derived from PARAM: xml 
-     * TODO: If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
-     * TODO: possibly itterate the offset if its null (see Element framework on how to do this)
-     * TODO: if style is present then dont check for color etc
+     * TODO: ⚠️️ If the offset value is: 4.566173e-02, the percentage parser won't understand it. Add support for this?
+     * TODO: ⚠️️ possibly itterate the offset if its null (see Element framework on how to do this)
+     * TODO: ⚠️️ if style is present then dont check for color etc
 	 */
 	static func gradient(_ xml:XML)->SVGGradient{
         let spreadMethod:String = SVGPropertyParser.property(xml,"spreadMethod") ?? ""/*<--temp*/

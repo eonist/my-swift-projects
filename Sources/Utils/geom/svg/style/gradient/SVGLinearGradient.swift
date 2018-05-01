@@ -1,6 +1,6 @@
 import Foundation
 /**
- * TODO: Use p1,p2
+ * TODO: ⚠️️ Use p1,p2
  */
 struct SVGLinearGradient:SVGGradientDecoratable {
     var gradient:SVGGradientKind

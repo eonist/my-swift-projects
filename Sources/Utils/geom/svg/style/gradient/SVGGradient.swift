@@ -1,6 +1,6 @@
 import Foundation
 /*
- * TODO: add an example here
+ * TODO: ⚠️️ add an example here
  * FACT: 1. if you use userSpaceOnUse and % values from 0 to 100% then the svg-view box is used to calculate the position of the start and end gradient points. multiply width and height with 0 to 1 to represent 0% to 100% values
  * FACT: 2. if you use userSpaceOnUse and non-percentage values then the gradient points are set in the coordinatespce of the viewBox (aboslute values)
  * FACT: 3. if you use objectBoundingBox and % values from 0 to 100% then the boundingbox of the path is used to calculate the postion of the gradient start and end. multiply with and height with 0 to 1 to represent 0% to 100% values

@@ -5,7 +5,7 @@ class SVGPathDataParser {
 	 * Returns the pathData variables corrresponding to command index in PARAM: index
 	 * PARAM: index the index of the command
 	 * NOTE: this only returns the pathData corresponding to index until index + 1 (and retuns thr entire path data at that one index)
-	 * TODO: rename to pathDataAt?
+	 * TODO: ⚠️️ rename to pathDataAt?
 	 */
 	static func pathData(_ path:SVGPath, _ index:Int)->[CGFloat] {
 		let pathDataIndex:Int = SVGPathDataParser.index(path.commands, index)

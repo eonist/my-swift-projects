@@ -11,7 +11,7 @@ extension LinearGradient:UnWrappable{
         let locations:[CGFloat?] = unWrap(xml, "locations")
         let rotation:CGFloat = unWrap(xml, "rotation")!
         let transformation:CGTransform? = unWrap(xml, "transformation")
-        return LinearGradient(colors.flatMap{$0}, locations.flatMap{$0}, rotation, transformation) as? T
+        return LinearGradient(colors.compactMap{$0}, locations.compactMap{$0}, rotation, transformation) as? T
     }
 }
 

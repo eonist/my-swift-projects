@@ -9,19 +9,19 @@ class SVGModifier {
 	static func offsetItems(_ svg:SVG, _ offset:CGPoint) {
 		svg.items.forEach { svgGraphic in
             switch svgGraphic{
-                case let svgGraphic as SVGLine:
-                    svgGraphic.x1 += offset.x
-                    svgGraphic.x2 += offset.x
-                    svgGraphic.y1 += offset.y
-                    svgGraphic.y2 += offset.y
-                case let svgGraphic as SVGRect:
-                    svgGraphic.frame.x += offset.x
-                    svgGraphic.frame.y += offset.y
-                case let svgGraphic as SVGCircle:
-                    svgGraphic.cX += offset.x
-                    svgGraphic.cy += offset.y
-                default:
-                    fatalError("type not supported yet")
+            case let svgGraphic as SVGLine:
+                svgGraphic.x1 += offset.x
+                svgGraphic.x2 += offset.x
+                svgGraphic.y1 += offset.y
+                svgGraphic.y2 += offset.y
+            case let svgGraphic as SVGRect:
+                svgGraphic.frame.x += offset.x
+                svgGraphic.frame.y += offset.y
+            case let svgGraphic as SVGCircle:
+                svgGraphic.cX += offset.x
+                svgGraphic.cy += offset.y
+            default:
+                fatalError("type not supported yet")
             }
 		}
 	}
@@ -36,17 +36,17 @@ class SVGModifier {
 	 */
 	static func scale(_ element:SVGElementKind,_ pivot:CGPoint, _ scale:CGPoint) {
         switch(element){
-            case let element as SVGPolyLine:CGPointModifier.scalePoints(&element.points, pivot, scale)/*SVGPolyLine,SVGPolygon*/
-            case let element as SVGPolygon:CGPointModifier.scalePoints(&element.points, pivot, scale)
-            case let element as SVGRect:SVGRectModifier.scale(element, pivot, scale)
-            case let element as SVGLine:SVGLineModifier.scale(element,pivot,scale)
-            case let element as SVGPath:SVGPathModifier.scale(element , pivot, scale)
-            case let element as SVGCircle:SVGCircleModifier.scale(element, pivot, scale)
-            case let element as SVGEllipse:SVGEllipseModifier.scale(element, pivot, scale)
-            case let element as SVGContainer:SVGContainerModifier.scale(element ,pivot,scale)
-            case var element as SVGGradient:SVGGradientModifier.scale(&element , pivot, scale)/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
-            default: break;
-		}
+        case let element as SVGPolyLine:CGPointModifier.scalePoints(&element.points, pivot, scale)/*SVGPolyLine,SVGPolygon*/
+        case let element as SVGPolygon:CGPointModifier.scalePoints(&element.points, pivot, scale)
+        case let element as SVGRect:SVGRectModifier.scale(element, pivot, scale)
+        case let element as SVGLine:SVGLineModifier.scale(element,pivot,scale)
+        case let element as SVGPath:SVGPathModifier.scale(element , pivot, scale)
+        case let element as SVGCircle:SVGCircleModifier.scale(element, pivot, scale)
+        case let element as SVGEllipse:SVGEllipseModifier.scale(element, pivot, scale)
+        case let element as SVGContainer:SVGContainerModifier.scale(element ,pivot,scale)
+        case var element as SVGGradient:SVGGradientModifier.scale(&element , pivot, scale)/*The individual style.gradient.transform instances are scaled so why do we need to scale this? It may be usefull for export purpouses*/
+        default: break;
+        }
         if let element = element as? SVGGraphic {SVGModifier.update(element)}
 	}
 	/**

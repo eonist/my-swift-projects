@@ -4,7 +4,7 @@ class SVGStyleParser {
     private static var fillPattern:String = "(?<=^url\\(\\#).+?(?=\\)$)"
     private static var inlineStylePattern:String = "[^\\s]*?([\\w\\-]+?)\\s*?\\:\\s*?([\\w\\-\\#\\_\\(\\)\\.]+?)\\s*?(\\;|$)"
 	/**
-	 * TODO: why do we need the PARAM: container here?
+	 * TODO: ⚠️️ why do we need the PARAM: container here?
 	 */
 	static func style(_ prop:Any,_ container:SVGContainable)->SVGStyle {
         let inlineStyle:[String:String] = SVGStyleParser.inlineStyle(String(describing: prop))
@@ -50,13 +50,13 @@ class SVGStyleParser {
 		}
 	}
 	/**
-	 * TODO: needs support for 3 letter hex color, you have code for this, find it
+	 * TODO: ⚠️️ needs support for 3 letter hex color, you have code for this, find it
 	 */
 	static func stroke(_ property:Any?, _ container:SVGContainable)->Any? {//<-- this doesn't have to be Any! it can be Any?
         return SVGStyleParser.fill(property, container)/*we use the fill parser here as it has the same features*/
 	}
     /**
-     * TODO: Doesn't this method also exist in the a parser class?
+     * TODO: ⚠️️ Doesn't this method also exist in the a parser class?
      */
     static func describe(_ style:SVGStyle) {
         Swift.print("SVGParser.describe() ");
