@@ -13,6 +13,9 @@ extension Range {
     }
     var start:Bound {return self.lowerBound}//(0..<4).lowerBound -> 0
     var end:Bound {return self.upperBound}//(0..<4).upperBound -> 4
+    /**
+     * ⚠️️ string.distance(from: range.lowerBound, to: range.upperBound) should replace the bellow, test it first
+     */
     var length:Int {return (self.upperBound as! Int) - (self.lowerBound as! Int)}/*convenince*/
     var numOfIndecies:Int {return length + 1}
 }
