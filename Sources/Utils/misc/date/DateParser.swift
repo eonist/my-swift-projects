@@ -4,24 +4,21 @@ class DateParser {
     /**
      * Returns relative time like: 2y, 11m, 3w, 4h, 2d, 5m,  3sec (aka: time ago)
      * NOTE: the approche bellow is Naive. There are more elegant ways of doing this. But this offers more customization in the future
-     * EXAMPLE: DateParser.relativeTime(NSDate(),today.offsetByDays(-3))//Output: [(3,"d")]
+     * EXAMPLE: try? DateParser.relativeTime(from:NSDate(),to:today.offsetByDays(-3))//Output: [(3,"d")] // "\(String(relativeTime.value) + relativeTime.type.rawValue.full)" 3day
      */
-    static func relativeTime(_ a:Date,_ b:Date) -> [(value:Int,type:String)]{
-        let calendar:Calendar = Calendar.current
-        let aComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: a)
-        let bComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: b)
-        let yearsAgo:Int = aComponents.year! - bComponents.year!//cur year - year = 0
-        let monthsAgo:Int = aComponents.month! - bComponents.month!//cur month - month = 0
-        let daysAgo:Int = aComponents.day! - bComponents.day!//cur day - day = 0
-        var weeksAgo:Int = 0
-        if daysAgo >= 7 {
-            weeksAgo = daysAgo / 7
-        }
-        let hoursAgo:Int = aComponents.hour! - bComponents.hour!//cur hour - hour = 0
-        let minutesAgo:Int = aComponents.minute! - bComponents.minute!//cur min - min = 0
-        let secondsAgo:Int = aComponents.second! - bComponents.second!//cur sec - sec = 4
-        //result: 4s ago
-        let timeUnits:[(value:Int,type:String)] = [(yearsAgo,"y"),(monthsAgo,"M"),(weeksAgo,"w"),(daysAgo,"d"),(hoursAgo,"h"),(minutesAgo,"m"),(secondsAgo,"s")]
+    static func relativeTime(from:Date,to:Date)  -> [(value:Int,type:DateType)]{
+        let yearsAgo:Int = numOfYears(from, to)
+        let monthsAgo:Int = numOfMonths(from, to)
+        let daysAgo:Int = numOfDays(from, to)
+        let hoursAgo:Int = numOfHours(from,to)
+        let minutesAgo:Int = numOfMinutes(from, to)
+        let secondsAgo:Int = numOfSeconds(from, to)
+        let weeksAgo:Int = {
+            return daysAgo >= 7 ? daysAgo / 7 : 0
+        }()
+        let timeUnits:[(value:Int,type:DateType)] = {
+            return [(yearsAgo,DateType.y),(monthsAgo,DateType.M),(weeksAgo,DateType.w),(daysAgo,DateType.d),(hoursAgo,DateType.h),(minutesAgo,DateType.m),(secondsAgo,DateType.s)]
+        }()
         return timeUnits.filter(){
             $0.value > 0
         }
@@ -104,18 +101,39 @@ class DateParser {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
     }
-    static func numOfDaysInMonth(_ date:Date)->Int{
-        //parts to NSDate:
+    /**
+     * NOTE: there is also days.location,days.length,range(of: NSCalendar.Unit.day, in: NSCalendar.Unit.month, for: self)
+     */
+    static func numOfDaysInMonth(_ date:Date)->Int?{
         let cal = Calendar.current
-        //range(of: NSCalendar.Unit.day, in: NSCalendar.Unit.month, for: self)
-        let days = cal.range(of: .day, in: .month, for: date)
-        //Swift.print("days: " + "\(days)")
-        //Swift.print("days.location: " + "\(days.location)")
-        //Swift.print("days.length: " + "\(days.length)")
-        return days!.length//swift 3 issue<-fix the RangeExtensions.swift and this will work
+        guard let days = cal.range(of: .day, in: .month, for: date) else {return nil}
+        let length:Int = days.upperBound - days.lowerBound
+        return length
+    }
+    
+    /**
+     * Seconds
+     */
+    static func numOfSeconds(_ from:Date,_ to:Date) -> Int{
+        let num:Int? = Calendar.current.dateComponents([.second], from: from, to: to).second
+        return num ?? 0
+    }
+    /**
+     * Minutes
+     */
+    static func numOfMinutes(_ from:Date,_ to:Date) -> Int{
+        let num:Int? = Calendar.current.dateComponents([.minute], from: from, to: to).minute
+        return num ?? 0
+    }
+    /**
+     * Hours
+     */
+    static func numOfHours(_ from:Date,_ to:Date) -> Int{
+        let num:Int? = Calendar.current.dateComponents([.hour], from: from, to: to).hour
+        return num ?? 0
     }
     static func numOfDays(_ from:Date,_ to:Date) -> Int{
-        let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).day!
+        let num:Int? = Calendar.current.dateComponents([.day], from: from, to: to).day
         return num ?? 0
     }
     /**
@@ -134,5 +152,62 @@ class DateParser {
     static func numOfYears(_ from:Date,_ to:Date) -> Int{
         let num:Int? = Calendar.current.dateComponents([.year], from: from, to: to).year
         return num ?? 0
+    }
+    /**
+     * EXAMPLE: date("2018-05-01T18:38:43.162Z", format:"yyyy-MM-dd'T'HH:mm:ss.SSSz") //2018-05-01 18:38:43 +0000
+     * Format-example: 2018-05-01T18:38:43.162Z (ISO 8601) (standard json)
+     * Z - indicates that the time value is the time in Greenwich, England, or UTC time.
+     */
+    static func date(_ dateStr:String, format:String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        let date = formatter.date(from:dateStr)
+        return date
+    }
+}
+
+extension DateParser {
+    /**
+     * Used in the relativeDate method
+     */
+    enum DateError : Error {
+        case error(String)
+    }
+    /**
+     * Used in the relativeDate method
+     */
+    enum DateType:String{
+        case y = "y"
+        case M = "M"
+        case w = "w"
+        case d = "d"
+        case h = "h"
+        case m = "m"
+        case s = "s"
+        var full:String {
+            switch self {
+            case .y:
+                return "year"
+            case .M:
+                return "month"
+            case .w:
+                return "week"
+            case .d:
+                return "day"
+            case .h:
+                return "hour"
+            case .m:
+                return "minute"
+            case .s:
+                return "second"
+            }
+        }
+        /**
+         * Minutes, Hours, Seconds etc
+         */
+        func rich(value:Int) -> String{
+            let isPlural:Bool = value > 1
+            return isPlural ? self.full + "s" : self.full
+        }
     }
 }

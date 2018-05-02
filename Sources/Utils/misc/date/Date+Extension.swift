@@ -7,7 +7,7 @@ extension Date{
     static func createDate(_ year:Int? = nil,_ month:Int? = nil,_ day:Int? = nil,_ hour:Int? = nil,_ minute:Int? = nil,_ second:Int? = nil)->Date?{/*Convenience*/
         return DateParser.createDate(year, month, day, hour, minute, second)
     }
-    var numOfDaysInMonth:Int{/*Convenience*/
+    var numOfDaysInMonth:Int?{/*Convenience*/
         return DateParser.numOfDaysInMonth(self)
     }
     var dayName:String? {/*Convenience*/
