@@ -1,19 +1,17 @@
 
 #if os(OSX)
-    import AppKit.NSColor
-    public typealias Color = NSColor
-    
-    extension NSColor {
-        public convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-            self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
-        }
-    }
-#else
-    import UIKit.UIColor
-    public typealias Color = UIColor
-#endif
+import AppKit.NSColor
 
-extension Color {
+
+extension NSColor {
+    public convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
+    }
+}
+#else
+import UIKit.UIColor
+
+extension UIColor {
     /**
      * EXAMPLE: let color = UIColor(hex: "ff0000")
      */
@@ -36,3 +34,5 @@ extension Color {
         )
     }
 }
+
+#endif
