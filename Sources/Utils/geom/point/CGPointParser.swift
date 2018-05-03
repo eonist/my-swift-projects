@@ -22,16 +22,16 @@ class CGPointParser{
     static func safePolar(_ len:CGFloat, _ angle:CGFloat)->CGPoint {
         var x:CGFloat = cos(angle) * len
         var y:CGFloat = sin(angle) * len
-        if(angle == 0){
+        if angle == 0 {
             x = len
             y = 0
-        }else if(angle == π || angle == -π){
+        }else if angle == π || angle == -π {
             x = -len
             y = 0
-        }else if(angle == -π/2){
+        }else if angle == -π/2 {
             x = 0
             y = -len
-        }else if(angle == π/2){
+        }else if angle == π/2 {
             x = 0
             y = len
         }else{
@@ -79,8 +79,8 @@ class CGPointParser{
      * Undefined line is vertical
      */
     static func slope(_ p1:CGPoint,_ p2:CGPoint)->CGFloat {
-        let a:CGFloat = (p2.y-p1.y)
-        let b:CGFloat = (p2.x-p1.x)
+        let a:CGFloat = p2.y-p1.y
+        let b:CGFloat = p2.x-p1.x
         //var test:Number = Math.tan(Trig.angle(p1,p2))
         //print("test: " + test)
         return a/b
@@ -176,10 +176,10 @@ class CGPointParser{
         var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         points.forEach { point in
-            if(point.x > max.x) {max.x = point.x}
-            else if(point.x < min.x){ min = CGPoint(point.x,min.y)}
-            if(point.y > max.y){ max.y = point.y}
-            else if(point.y < min.y){ min.y = point.y}
+            if point.x > max.x {max.x = point.x}
+            else if point.x < min.x { min = CGPoint(point.x,min.y) }
+            if point.y > max.y { max.y = point.y}
+            else if point.y < min.y { min.y = point.y}
         }
         return cornersToRectangle(min,max)
     }
@@ -286,7 +286,7 @@ class CGPointParser{
         let dx2:CGFloat = p3.x - x4
         //Swift.print("dx2: " + "\(dx2)")
         var p:CGPoint = CGPoint()
-        if (dx1 == 0 || dx2 == 0){//TODO: not 0 or what?
+        if  dx1 == 0 || dx2 == 0 {//TODO: not 0 or what?
             //print("case a");
             p.x = 0
             p.y = 0
@@ -294,12 +294,12 @@ class CGPointParser{
         }
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
-        if (dx1 == 0){//TODO: not 0 or what?
+        if dx1 == 0{//TODO: not 0 or what?
             //print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
-        }else if (dx2 == 0){//TODO: not 0 or what?
+        }else if dx2 == 0 {//TODO: not 0 or what?
             //print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
@@ -316,12 +316,12 @@ class CGPointParser{
      * NOTE: the lines cant be colinear or equal
      */
     static func normalizedIntersection(_ aP1:CGPoint, _ aP2:CGPoint, _ bP1:CGPoint, _ bP2:CGPoint) -> CGPoint {
-        if(aP1.equals(bP1) || aP1.equals(bP2)){ return aP1}
-        else if(aP2.equals(bP1) || aP2.equals(bP2)){ return aP2}
-        else if(CGPointAsserter.collinear(aP1, aP2, bP1)){ return bP1}
-        else if(CGPointAsserter.collinear(aP1, aP2, bP2)){ return bP2}
-        else if(CGPointAsserter.collinear(bP1, bP2, aP1)){ return aP1}
-        else if(CGPointAsserter.collinear(bP1, bP2, aP2)){ return aP2}
+        if aP1.equals(bP1) || aP1.equals(bP2){ return aP1}
+        else if aP2.equals(bP1) || aP2.equals(bP2){ return aP2}
+        else if CGPointAsserter.collinear(aP1, aP2, bP1){ return bP1}
+        else if CGPointAsserter.collinear(aP1, aP2, bP2){ return bP2}
+        else if CGPointAsserter.collinear(bP1, bP2, aP1){ return aP1}
+        else if CGPointAsserter.collinear(bP1, bP2, aP2){ return aP2}
         else {return CGPointParser.intersection(aP1, aP2, bP1, bP2)}
     }
 }

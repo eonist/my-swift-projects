@@ -1,6 +1,6 @@
 import Foundation
 /**
- * TODO: When needed add these:
+ * TODO: ⚠️️ When needed add these:
  * oppositeDirectional
  * isContraDirectional
  * isNearContraDir
@@ -121,11 +121,11 @@ class CGPointAsserter {
     static func intersects(_ a1:CGPoint ,  _ a2:CGPoint,  _ b1:CGPoint,  _ b2:CGPoint) -> Bool {
         var q:CGFloat = (a1.y - b1.y) * (b2.x - b1.x) - (a1.x - b1.x) * (b2.y - b1.y)
         let d:CGFloat = (a2.x - a1.x) * (b2.y - b1.y) - (a2.y - a1.y) * (b2.x - b1.x)
-        if( d == 0 )  {return false}
+        if d == 0   {return false}
         let r:CGFloat = q / d
         q = (a1.y - b1.y) * (a2.x - a1.x) - (a1.x - b1.x) * (a2.y - a1.y)
         let s:CGFloat = q / d
-        if( r < 0 || r > 1 || s < 0 || s > 1 ) {return false}
+        if  r < 0 || r > 1 || s < 0 || s > 1 {return false}
         return true
     }
     /**
