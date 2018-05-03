@@ -3,7 +3,7 @@ import Foundation
 class DateParser {
     /**
      * Returns relative time like: 2y, 11m, 3w, 4h, 2d, 5m,  3sec (aka: time ago)
-     * NOTE: the approche bellow is Naive. There are more elegant ways of doing this. But this offers more customization in the future
+     * NOTE: the approche bellow is Naive. There are more elegant ways of doing this. But this offers more customization in the future (It has been upgraded, may need additional testing)
      * EXAMPLE: try? DateParser.relativeTime(from:NSDate(),to:today.offsetByDays(-3))//Output: [(3,"d")] // "\(String(relativeTime.value) + relativeTime.type.rawValue.full)" 3day
      */
     static func relativeTime(from:Date,to:Date)  -> [(value:Int,type:DateType)]{
