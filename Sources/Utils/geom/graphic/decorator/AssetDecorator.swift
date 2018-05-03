@@ -22,13 +22,13 @@ class AssetDecorator:SizeableDecorator{
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied, this may not be the case anymore*/
     }
     override func draw() {
-        if(_hasAssetURLUpdated){
+        if _hasAssetURLUpdated {
             if(asset != nil) {asset!.removeFromSuperview()}/*temp solution, find a more elegant solution than removing*/
             asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
             asset!.scale(x, y, width, height)
         }
         asset?.svg.frame.origin = CGPoint(x,y)/*offset*/
-        if(graphic.fillStyle!.color != NSColor.clear) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
+        if graphic.fillStyle!.color != NSColor.clear {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
     override func drawFill() {

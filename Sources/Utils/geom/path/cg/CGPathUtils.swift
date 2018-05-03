@@ -3,8 +3,8 @@ import Foundation
 class CGPathUtils {
     /**
      * Compiles a CGPath from a Path
-     * TODO: should the cgPath be inout? test this theory
-     * TODO: Create an extension for CGPath so you can do cgPath.lineTo(0,0) etc, much cleaner
+     * TODO: ⚠️️ should the cgPath be inout? test this theory
+     * TODO: ⚠️️ Create an extension for CGPath so you can do cgPath.lineTo(0,0) etc, much cleaner
      * NOTE: the CGPathAddArc method doesnt seem to support drawing from negative area to positive area. The CGPathAddRelativeArc method supports this
      */
     static func compile(_ cgPath:CGMutablePath, _ path:PathKind) -> CGMutablePath{
@@ -14,7 +14,7 @@ class CGPathUtils {
         let cmdLen:Int = path.commands.count
         for i in 0..<cmdLen{
             let command:Int = path.commands[i]
-            switch(PathCommand(rawValue:command)){
+            switch PathCommand(rawValue:command) {
                 case .moveTo?:
                     prevMT = CGPoint(path.pathData[idx], path.pathData[idx + 1])
                     prevEnd = prevMT.copy()

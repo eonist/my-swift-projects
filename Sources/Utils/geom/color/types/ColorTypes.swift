@@ -3,12 +3,12 @@ import Foundation
 class ColorTypes{
     /**
      * Returns a color in hex
-     * TODO: Sort alphabetically
-     * TODO: you dont need the break in swift only on the default
+     * TODO: ⚠️️ Sort alphabetically
+     * TODO: ⚠️️ you dont need the break in swift only on the default
      */
     class func color(_ colorType:String) -> UInt {
         var color:UInt
-        switch(colorType) {
+        switch colorType {
             case "blue":
                 color = Colors.BLUE
             case "fuchsia":

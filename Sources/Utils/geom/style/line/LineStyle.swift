@@ -1,7 +1,7 @@
 import Cocoa
 /**
- * TODO: See if you have some method in legacy code for copying linestyles
- * TODO: Candidate for struct. Use IFillStyle as a base protocol
+ * TODO: ⚠️️ See if you have some method in legacy code for copying linestyles
+ * TODO: ⚠️️ Candidate for struct. Use IFillStyle as a base protocol
  */
 class LineStyle:LineStylable {
     var color:NSColor

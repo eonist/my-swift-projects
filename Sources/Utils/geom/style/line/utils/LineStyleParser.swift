@@ -20,16 +20,16 @@ class LineStyleParser {
      * CapType
      */
     static func lineCapType(_ lineCap:CGLineCap)->String{
-        if(lineCap == CGLineCap.butt){return "butt"}
-        else if(lineCap == CGLineCap.round){return "round"}
+        if lineCap == CGLineCap.butt {return "butt"}
+        else if lineCap == CGLineCap.round {return "round"}
         else{return "square"}/*Square*/
     }
     /**
      * JoinType
      */
     static func lineJoinType(_ lineJoin:CGLineJoin)->String{
-        if(lineJoin == CGLineJoin.miter){return "miter"}
-        else if(lineJoin == CGLineJoin.round){return "round"}
+        if lineJoin == CGLineJoin.miter {return "miter"}
+        else if lineJoin == CGLineJoin.round {return "round"}
         else{return "bevel"}/*Bevel*/
     }
     /**

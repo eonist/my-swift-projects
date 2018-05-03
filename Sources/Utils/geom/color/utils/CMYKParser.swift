@@ -30,10 +30,10 @@ class CMYKParser {
         m = 255 - g
         y = 255 - b
         k = 255
-        if (c < k){k=c}
-        if (m < k){k=m}
-        if (y < k){k=y}
-        if (k == 255){
+        if c < k{k=c}
+        if m < k{k=m}
+        if y < k{k=y}
+        if k == 255{
             c=0
             m=0
             y=0

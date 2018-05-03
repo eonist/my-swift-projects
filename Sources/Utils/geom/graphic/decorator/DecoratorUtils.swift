@@ -6,10 +6,10 @@ class DecoratorUtils {
      * NOTE: Parses through the hirarchy of decorators to see if there is a match, then returns this match, 
      */
     static func decoratable(_ decoratable:GraphicDecoratableKind,_ theClassType:AnyClass)->GraphicDecoratableKind? {
-        if(Utils.isInstanceOfClass(decoratable, theClassType)) {return decoratable}
+        if Utils.isInstanceOfClass(decoratable, theClassType) {return decoratable}
         var current:GraphicDecoratableKind = decoratable
-        while(current.getDecoratable() !== current) {
-            if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {return current.getDecoratable()}
+        while current.getDecoratable() !== current {
+            if Utils.isInstanceOfClass(current.getDecoratable(), theClassType) {return current.getDecoratable()}
             current = current.getDecoratable()
         }
         return nil

@@ -8,12 +8,12 @@ import Foundation
 class PositionalDecorator:GraphicDecoratable,Positional{
     var pos:CGPoint{
         get{
-            if(decoratable is Positional){return (decoratable as! Positional).pos}
+            if decoratable is Positional {return (decoratable as! Positional).pos}
             else{fatalError("Must subclass PositionalGraphic")}
         }
         set{
-            if(decoratable is PositionalGraphic){(decoratable as! PositionalGraphic).pos = newValue}
-            else if(decoratable is PositionalDecorator){(decoratable as! PositionalDecorator).pos = newValue}
+            if decoratable is PositionalGraphic {(decoratable as! PositionalGraphic).pos = newValue}
+            else if decoratable is PositionalDecorator {(decoratable as! PositionalDecorator).pos = newValue}
             else{fatalError("Must subclass PositionalGraphic: " + "\(decoratable)")}
         }
     }

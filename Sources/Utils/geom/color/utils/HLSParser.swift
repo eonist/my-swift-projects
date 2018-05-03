@@ -24,11 +24,11 @@ class HLSParser {
         let delta:CGFloat = max-min
         l = (max+min)/2
         s = (max == min) ? 0 : ((l <= 0.5) ? delta/l/2 : delta/(2-l*2))
-        if(r/255 == max) {h = (g-b)/delta/255}
-        else if(g/255 == max) {h = 2+(b-r)/delta/255}
-        else if(b/255 == max) {h = 4+(r-g)/delta/255}
+        if r/255 == max {h = (g-b)/delta/255}
+        else if g/255 == max {h = 2+(b-r)/delta/255}
+        else if b/255 == max {h = 4+(r-g)/delta/255}
         h *= 40
-        if(h < 0) {h += 240}
+        if h < 0 {h += 240}
         h = round(h)
         return HLS(((h.isNaN) ? 0 : h), round(l*240), round(s*240))
     }
