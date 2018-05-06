@@ -7,7 +7,7 @@ class SizeableGraphic:PositionalGraphic,Sizable {
     init(_ position:CGPoint, _ size:CGSize, _ decoratable:GraphicDecoratableKind = BaseGraphic(FillStyle(NSColor.red))) {//TODO:add the last arg through an extension?
         self.size = size
         decoratable.graphic.frame.size = size//new
-        super.init(position,decoratable)
+        super.init(position,decoratable: decoratable)
     }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)

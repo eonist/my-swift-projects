@@ -122,17 +122,17 @@ public class CGFloatParser{
     static func loop(_ index:CGFloat, _ start:CGFloat, _ end:CGFloat) -> CGFloat{// :TODO: start,end,index is easier to understand
         var r:CGFloat
         var direction:CGFloat
-        if(start < end) {direction = +1}/*Analyse the relationship between start and end*/
-        else if(start > end) {direction = -1}
+        if start < end  {direction = +1}/*Analyse the relationship between start and end*/
+        else if start > end {direction = -1}
         else{fatalError("condition not supported")}
-        if(index.isPositive){r = start - (index * direction)}//Analyse the index direction
+        if index.isPositive {r = start - (index * direction)}//Analyse the index direction
         else{r = start + (index * direction)}
         let resultEndDist:CGFloat = CGFloatParser.distance(r, end)
         let startEndDist:CGFloat = CGFloatParser.distance(start,end)
         let remainder:CGFloat = resultEndDist %% startEndDist//Modulo returns the remainder
         var increment:CGFloat
-        if(remainder == 0){increment = 0}
-        else if(index > 0 && resultEndDist > startEndDist){increment = remainder}//Fix the check after && is ugly
+        if remainder == 0 {increment = 0}
+        else if index > 0 && resultEndDist > startEndDist {increment = remainder}//Fix the check after && is ugly
         else {increment = (startEndDist - remainder)}
         r = start + (direction * increment)
         return r

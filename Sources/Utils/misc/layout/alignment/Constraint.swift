@@ -9,7 +9,7 @@ import UIKit
  * EXAMPLE: contentView.layoutMargins = UIEdgeInsetsMake(12,12,12,12)//adds margin to the containing view
  * EXAMPLE: let pos = Constraint.pos(square,to:canvas,targetAlign:.topleft,toAlign:.topleft)
  * EXAMPLE: let size = Constraint.size(square,to:canvas)
- * EXAMPLE: NSLayoutConstraint.activate([anchor.x,anchor.y,size.w,size.h]) 
+ * EXAMPLE: NSLayoutConstraint.activate([anchor.x,anchor.y,size.w,size.h])
  */
 class Constraint{
     /**
@@ -24,14 +24,11 @@ class Constraint{
      * creates a dimensional constraint
      * EXAMPLE: let widthConstraint = Constraint.size(square,to:canvas,axis:.horizontal).w
      */
-    static func size(_ target:UIView,to:UIView) -> (w:NSLayoutConstraint,h:NSLayoutConstraint){
-        let widthConstraint = Constraint.width(target,to:to)
-        let heightConstraint = Constraint.height(target,to:to)
+    static func size(_ view:UIView, to:UIView) -> (w:NSLayoutConstraint,h:NSLayoutConstraint){
+        let widthConstraint = Constraint.width(view,to:to)
+        let heightConstraint = Constraint.height(view,to:to)
         return (widthConstraint,heightConstraint)
     }
-}
-//size
-extension Constraint{
     /**
      * EXAMPLE: let sizeConstraint = Constraint.dim(square,size:CGSize(100,100))
      */
@@ -40,10 +37,14 @@ extension Constraint{
         let heightConstraint = Constraint.height(view, height: size.height, multiplier: multiplier.height)
         return (widthConstraint,heightConstraint)
     }
+}
+//size
+extension Constraint{
+    
     /**
      * New
      */
-    static func width(_ view:UIView,width:CGFloat,multiplier:CGFloat = 1) -> NSLayoutConstraint{
+    static func width(_ view:UIView, width:CGFloat, multiplier:CGFloat = 1) -> NSLayoutConstraint{
         return NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: multiplier, constant: width)//NSLayoutAttribute
     }
     /**
@@ -85,6 +86,11 @@ extension Constraint{
     static func anchor(_ view:UIView, to:UIView, align:VerticalAlign, alignTo:VerticalAlign, offset:CGFloat = 0, useMargin:Bool = false) -> NSLayoutConstraint {/*,offset:CGPoint = CGPoint()*/
         return NSLayoutConstraint(item: view, attribute: Constraint.layoutAttr(align), relatedBy: .equal, toItem: to, attribute: Constraint.layoutAttr(alignTo,useMargin:useMargin), multiplier: 1.0, constant: offset)
     }
+    //    static func anchor(_ view:UIView, align:Alignment, offset:CGPoint = CGPoint()) -> (x:NSLayoutConstraint,y:NSLayoutConstraint){
+    //        let x = NSLayoutConstraint(item: view, attribute: Constraint.layoutAttr(align.horAlign), relatedBy: .equal, toItem: nil, attribute: Constraint.layoutAttr(align.horAlign), multiplier: 1.0, constant: offset.x)
+    //        let y = NSLayoutConstraint(item: view, attribute: Constraint.layoutAttr(align.verAlign), relatedBy: .equal, toItem: nil, attribute: Constraint.layoutAttr(align.verAlign), multiplier: 1.0, constant: offset.y)
+    //        return (x,y)
+    //    }
 }
 //layoutAttri (internal)
 extension Constraint{
@@ -103,6 +109,60 @@ extension Constraint{
         case .bottom: return useMargin ? NSLayoutAttribute.bottomMargin : NSLayoutAttribute.bottom
         case .centerY: return useMargin ? NSLayoutAttribute.centerYWithinMargins : NSLayoutAttribute.centerY
         }
+    }
+}
+/**
+ * Utils when working with constraints
+ */
+extension NSLayoutConstraint{
+    /**
+     * Returns all constraints of kinds
+     * EXAMPLE: NSLayoutConstraint.ofKind(rect.immediateConstraints, kinds: [.width,.height]) //width, height
+     */
+    static func ofKind(_ constraints:[NSLayoutConstraint],kinds:[NSLayoutAttribute]) -> [NSLayoutConstraint]{
+        return kinds.map { kind in
+            return constraints.filter { constraint in
+                return constraint.firstAttribute == kind
+            }
+            }.flatMap({$0})//flattens 2d array to 1d array
+    }
+}
+extension UIView {
+    /**
+     * Deactivates immediate constraints that target this view (self + superview)
+     */
+    func deactivateImmediateConstraints(){
+        NSLayoutConstraint.deactivate(self.immediateConstraints)
+    }
+    /**
+     * Deactivates all constrains that target this view
+     */
+    func deactiveAllConstraints(){
+        NSLayoutConstraint.deactivate(self.allConstraints)
+    }
+    /**
+     * Gets self.constraints + superview?.constraints for this particular view
+     * NOTE: You can use immediateConstraints when you don't want to crawl entire hierarchies.
+     */
+    var immediateConstraints:[NSLayoutConstraint]{
+        let constraints = self.superview?.constraints.filter{
+            $0.firstItem as? UIView === self /*|| $0.secondItem as? UIView === self*/ //<- this removes constraints that other views might have to this view
+            } ?? []
+        return self.constraints + constraints
+    }
+    /**
+     * Crawls up superview hierarchy and gets all constraints that affect this view
+     */
+    var allConstraints:[NSLayoutConstraint] {
+        var view: UIView? = self
+        var constraints:[NSLayoutConstraint] = []
+        while let currentView = view {
+            constraints += currentView.constraints.filter {
+                return $0.firstItem as? UIView === self || $0.secondItem as? UIView === self //<- this removes constraints that other views might have to this view
+            }
+            view = view?.superview
+        }
+        return constraints
     }
 }
 #endif

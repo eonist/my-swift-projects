@@ -1,5 +1,6 @@
 import Foundation
 class IntParser{
+   
     /**
      * Return a  Random number within a min max value
      * EXAMPLE: IntParser.random(0,3)//Can return either of: 0,1,2,3
@@ -8,9 +9,9 @@ class IntParser{
         return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
     }
     /**
-     * Returns a normalized integer value
+     * Returns a normalized integer value (loopy index)
      * NOTE: Great for iterating int arrays
-     * NOTE: Can be used for looping items in an array
+     * NOTE: Can be used for looping items in an array (carousel etc)
      * EXAMPLE:
      * print(IntParser.normalize(3, 7))//3
      * print(IntParser.normalize(-3, 7))//4
@@ -62,7 +63,7 @@ class IntParser{
         return ints.max() ?? ints[0]
     }
     /**
-     * See comment in the forward call
+     * See comment in the forward call (aka use normalize)
      */
     static func loop(_ index:Int, _ start:Int, _ end:Int) -> Int{// :TODO: start,end,index is easier to understand
         return CGFloatParser.loop(index.cgFloat,start.cgFloat,end.cgFloat).int
@@ -78,4 +79,8 @@ class IntParser{
    static func digitCount(_ n: Int) -> Int {
        return Int(log2(Double(n)) / log2(10.0)) + 1
    }
+   /**
+    * random true or flase
+    */
+   var eitherOr:Bool {return arc4random_uniform(2) == 0}
 }
