@@ -111,13 +111,13 @@ public class CGFloatParser{
      * PARAM: index: the current cursor of an infinite loop
      * PARAM: start: the start of the loop
      * PARAM: end: end of the loop
-     * NOTE: take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
+     * IMPORTANT: ⚠️️ take a look at IntParser.normalize(index,len) it may solve some cases simpler, and it could be extended into antoher method that does what this method does but way simpler and faster
      * NOTE: UintParser.normalize alos works well for uint values
      * EXAMPLE:
      * print("test "+(NumberParser.loop(20, 0, 10)));//0
      * print("test "+(NumberParser.loop(-2, -5, 10)));//8
-     * TODO: Could be refactor to be simpler and more efficient
-     * TODO: look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
+     * TODO: ⚠️️ Could be refactor to be simpler and more efficient
+     * TODO: ⚠️️ look at the while loop in Angle.normalize1() it could make this this class simpler by refactoring it the same way
      */
     static func loop(_ index:CGFloat, _ start:CGFloat, _ end:CGFloat) -> CGFloat{// :TODO: start,end,index is easier to understand
         var r:CGFloat
@@ -126,7 +126,7 @@ public class CGFloatParser{
         else if start > end {direction = -1}
         else{fatalError("condition not supported")}
         if index.isPositive {r = start - (index * direction)}//Analyse the index direction
-        else{r = start + (index * direction)}
+        else {r = start + (index * direction)}
         let resultEndDist:CGFloat = CGFloatParser.distance(r, end)
         let startEndDist:CGFloat = CGFloatParser.distance(start,end)
         let remainder:CGFloat = resultEndDist %% startEndDist//Modulo returns the remainder
@@ -138,8 +138,8 @@ public class CGFloatParser{
         return r
     }
     /**
-     * Returns an a array of interpoated numbers between min and max
-     * EXAMPLE: CGFloatParser.interpolatedRange(0,  1,  3)//[0.0, 0.5, 1.0]
+     * Returns an a array of interpolated numbers between min and max
+     * EXAMPLE: CGFloatParser.interpolatedRange(0, 1, 3)//[0.0, 0.5, 1.0]
      */
      static func interpolatedRange(_ min:CGFloat ,_ max:CGFloat,_ length:Int)->[CGFloat]{
         var interpolatedRange:[CGFloat] = []

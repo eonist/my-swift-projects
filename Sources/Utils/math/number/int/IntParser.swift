@@ -1,6 +1,5 @@
 import Foundation
 class IntParser{
-   
     /**
      * Return a  Random number within a min max value
      * EXAMPLE: IntParser.random(0,3)//Can return either of: 0,1,2,3
@@ -23,7 +22,6 @@ class IntParser{
      */
     static func normalize(_ index:Int,_ len:Int) -> Int {
 //        return index >= 0 ? (index < len ? index : index % len) : (len + (index % len))//IMPORTANT: print(IntParser.normalize(-7, 7)) yields 7, which is wrong it should be 0
-       
         if index >= 0 {
             if index < len{
                 return index

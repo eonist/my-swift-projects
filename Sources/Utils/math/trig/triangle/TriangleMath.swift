@@ -7,9 +7,9 @@ import Foundation
  * - Oblique angle: An angle, such as an acute or obtuse angle, that is not a right angle or a multiple of a right angle.
  * - A triangle can only have 1 obtuse angle angle more than 90degrees
  * - AcuteTriangle = no angle is more than 90
- * TODO: possibly Create TanMath, SinMath, CosMath.as classes
- * TODO: gte rid of the AngleMath.to_radian stuff makes the calculations look harder. do the radian conversion when testing
- * TODO: add area of a triangle to this class
+ * TODO: ⚠️️ possibly Create TanMath, SinMath, CosMath.as classes
+ * TODO: ⚠️️ gte rid of the AngleMath.to_radian stuff makes the calculations look harder. do the radian conversion when testing
+ * TODO: ⚠️️ add area of a triangle to this class
  * NOTE: You need 1 side and 2 other parts to define a Triangle
  * NOTE: The Centroid, Circumcenter, and Orthocenter Are Collinear, (meaning they will form a line)
  * NOTE: Angle "A" is the lower left corner, the opposit side is "a" ("hypothenus"), Angle "B" is the top and opposite is side "b" (second longest length), Angle C is the lower right corner and oppistie is the side "c" (shortest length)
@@ -29,7 +29,7 @@ import Foundation
 class TriangleMath {
     /**
      * Returns the point that can be used to bisect an angle in an triangle
-     * TODO: i think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
+     * TODO: ⚠️️ I think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
      */
     static func bisectorPoint(_ anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
         let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
@@ -83,9 +83,9 @@ class TriangleMath {
      * PARAM: angleA is the angle from p1 to p3 (p3 == point C) "the outAngle of a point on a line"
      * PARAM: angleB is the angle from p2 to p3 "the outAngle of a point on a line"
      * NOTE: the distance from p1 to p2 is the side c in a the triangle
-     * TODO: move to Trig.as or pointparser.as
-     * TODO: could we use more Vector math like formulas here? by using slopes etc
-     * TODO: what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
+     * TODO: ⚠️️ move to Trig.as or pointparser.as
+     * TODO: ⚠️️ could we use more Vector math like formulas here? by using slopes etc
+     * TODO: ⚠️️ what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
      */
     static func convergingPoint(_ p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
         let A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
@@ -127,7 +127,7 @@ class TriangleMath {
      * NOTE: Applies to any type of triangle
      * NOTE: other triangle centers include:orthocenter,incenter,circle center, circumcircle, circumcenter
      * NOTE: The euler line goes through: orthocenter, centroid and circumcenter
-     * // :TODO: make functions for the other triangle centers and the euler line
+     * TODO: ⚠️️ make functions for the other triangle centers and the euler line
      */
     static func centeroid(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint)->CGPoint {
         return CGPoint((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3)

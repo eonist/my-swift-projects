@@ -3,7 +3,7 @@ import Foundation
 class DisplayArcUtils {
     /**
      * Draws an Arc in the path (startAngle and endAngle)
-     * TODO: To support rotation you need to work that in to the transformation probaby
+     * TODO: ⚠️️ To support rotation you need to work that in to the transformation probaby
      * NOTE: The CGPathAddArc method doesnt seem to support drawing from negative area to positive area. The CGPathAddRelativeArc method supports this
      */
     static func arcTo(_ path:CGMutablePath,_ arc:IArc) {
@@ -122,7 +122,7 @@ private class BasicEllipseMath {
     /**
      * Returns a eliptical angle ( which is the angle of the elliptical arc prior to the stretch and rotate operations.)
      * PARAM: angle: an circular angle
-     * IMPORTANT: atan2 is when measured counterclockwise from a circle's x axis
+     * IMPORTANT: ⚠️️ atan2 is when measured counterclockwise from a circle's x axis
      * NOTE: can also use atan(y/x); (atan returns funky rotatioin values, i guess clockwise from x axis, test this though)
      * NOTE: this is the same but just as a refrence: Angle.angle(new Point(0,0), new Point(Math.cos(angle) / xAxis,Math.sin(angle) / yAxis))
      */
@@ -133,7 +133,7 @@ private class BasicEllipseMath {
     }
     /**
      * NOTE: use this if you only know the circular angle of a point on a rotated ellipse
-     * // :TODO: the angle should be the last argument
+     * TODO: ⚠️️ the angle should be the last argument
      */
     static func advanceEllipticalAngle(_ xAxis:CGFloat, _ yAxis:CGFloat, _ angle:CGFloat,_ rotation:CGFloat = 0) -> CGFloat {
         return ellipticalAngle(xAxis,yAxis,angle-rotation)

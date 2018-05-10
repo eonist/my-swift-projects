@@ -11,8 +11,8 @@ class CGAffineTransformParser {
     /**
      * Returns a matrix that you can get an objects position clockwise from the pivot, can also futher be manipulated if the input matrix has variables.
      * NOTE: The equivelent code in Matrix Trasform form: //let transform:CGAffineTransform = CGAffineTransformMake(cos(a),sin(a),-sin(a),cos(a),x - x * cos(a)+y * sin(a),y - x * sin(a) - y * cos(a))
-     * TODO: we could return the matrix for method chaining
-     * TODO: rename to just rotate? for simplicity?
+     * TODO: ⚠️️ we could return the matrix for method chaining
+     * TODO: ⚠️️ rename to just rotate? for simplicity?
      */
     static func rotateAroundPoint(_ transform:CGTransform,_ rotation:CGFloat,_ pivot:CGPoint)->CGTransform{
         var transform = transform

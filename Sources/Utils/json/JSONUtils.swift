@@ -2,7 +2,7 @@ import Foundation
 
 class JSONUtils{
     /**
-     *
+     * Describer
      */
     static func describe(_ json:Any?){
         if let str = JSONParser.str(json){

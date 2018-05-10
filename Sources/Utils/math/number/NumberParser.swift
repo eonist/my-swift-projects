@@ -46,7 +46,7 @@ class NumberParser{
             var max = numbers[0]
             numbers.forEach { number in
                 if number > max {max = number}
-                if number < min {min = number }
+                if number < min {min = number}
             }
             return (min, max)
         } else {

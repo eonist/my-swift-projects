@@ -49,8 +49,8 @@ class TrigParser {
      * PARAM: theta: An radian in degrees typically 0 - Math.PI*2
      */
     static func normalize2(_ angle:CGFloat)->CGFloat {
-        if(angle < -π){ return π + (angle %% π)}
-        if(angle > π){ return -π + (angle %% π)}
+        if angle < -π { return π + (angle %% π)}
+        if angle > π { return -π + (angle %% π)}
         return angle
     }
     /**
@@ -91,7 +91,7 @@ class TrigParser {
      * TODO: replace direction with boolean: isClockWise
      */
     static func angleSpan(_ a:CGFloat, _ b:CGFloat, _ direction:String = Trig.clockWise) -> CGFloat{
-        if(direction == Trig.clockWise) {return Trig.normalize(b + (Trig.pi*2-a))}
+        if direction == Trig.clockWise {return Trig.normalize(b + (Trig.pi*2-a))}
         return Trig.normalize(a + (Trig.pi*2-b))/*Direction.COUNTER_CLOCK_WISE*/
     }
     /**

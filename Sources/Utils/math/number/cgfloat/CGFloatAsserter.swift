@@ -28,7 +28,7 @@ class CGFloatAsserter{
      * EXAMPLE: print(NumberAsserter.isNear(-1.8650465545944293 , -1.8650465545944273, NumberAsserter.EPSILON));//true, result is 10e-15 which is less than 10e-12
      */
     static func isNear(_ a:CGFloat,_ b:CGFloat,_ epsilon:CGFloat)->Bool {//this could also be named almostEqual
-        if(a == b){ return true}
+        if a == b { return true}
         else{
             let result:CGFloat = Swift.max(a, b) - Swift.min(a, b)
             return result < epsilon//TODO: we could do <= here

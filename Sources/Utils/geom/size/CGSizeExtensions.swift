@@ -10,17 +10,17 @@ extension CGSize {
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
             switch dir{
-                case .hor:
-                    return self.width
-                case .ver:
-                    return self.height
+            case .hor:
+                return self.width
+            case .ver:
+                return self.height
             }
         }set {
             switch dir{
-                case .hor:
-                    self.width = newValue
-                case .ver:
-                    self.height = newValue
+            case .hor:
+                self.width = newValue
+            case .ver:
+                self.height = newValue
             }
         }
     }
@@ -32,7 +32,6 @@ extension CGSize {
     func interpolate(_ to:CGSize, _ scalar:CGFloat) -> CGSize{/*Convenience*/
         return CGSize(self.w.interpolate(to.w, scalar), self.h.interpolate(to.h, scalar))
     }
-    
 }
 public func +(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width + b.width,a.height + b.height)}
 public func -(a: CGSize, b: CGSize) -> CGSize { return CGSize(a.width - b.width,a.height - b.height)}
@@ -40,4 +39,4 @@ public func +=( a: inout CGSize, b: CGSize) {a.width += b.width;a.height += b.he
 public func -=( a: inout CGSize, b: CGSize) {a.width -= b.width;a.height -= b.height}/*modifies a by subtracting b*/
 public func * (a: CGSize, b: CGSize) -> CGSize {return CGSize(a.w*b.w, a.h*b.h)}
 public func * (a: CGSize, b: CGFloat) -> CGSize {return CGSize(a.w*b, a.h*b)}
-//TODO: add more  
+ 

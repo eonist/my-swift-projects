@@ -8,7 +8,7 @@ class CGAffineTransformModifier {
      */
     static func transformWithPivot(_ transform:inout CGTransform, _ scale:CGPoint, _ rotation:CGFloat, _ offset:CGPoint, _ pivot:CGPoint,_ initRotation:CGFloat = 0) -> CGTransform {
         transform = transform.translatedBy(x: pivot.x, y: pivot.y) /*<-this looks strage, but you sort of set the point here*/ //swift 3, was-> CGAffineTransformTranslate
-        if(initRotation != 0) {transform.rotate( -initRotation)}
+        if initRotation != 0 {transform.rotate(-initRotation)}
         transform.scale(scale.x, scale.y)
         transform.rotate(rotation)
         transform.translate(-pivot.x+offset.x, -pivot.y+offset.y)/*globalToLocal*/
