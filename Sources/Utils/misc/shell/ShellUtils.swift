@@ -4,7 +4,7 @@ class ShellUtils{
         case success,failure
     }
 	/**
-	 * NOTE: a shell library in swift: https://github.com/kareman/SwiftShell
+	 * NOTE: a neat shell library in swift: https://github.com/kareman/SwiftShell
 	 * NOTE: you can do: NSAppleScript(source: "do shell script \"sudo whatever\" with administrator " +"privileges")!.executeAndReturnError(nil)
 	 * TODO: add some explination about what happens here, line for line
 	 * IMPORTANT: ⚠️️ spaces that is not intended to split arguments must be encoded before use (blank space -> %20)
@@ -34,7 +34,7 @@ class ShellUtils{
         let task = Process()
 //        Swift.print("Process(): ")
         task.currentDirectoryPath = cd
-        task.launchPath = "/usr/bin/env"
+        task.launchPath = "/usr/bin/env"//TODO: ⚠️️ use const
         task.arguments = arguments
         task.environment = ["LC_ALL" : "en_US.UTF-8","HOME" : NSHomeDirectory()]
 //        Swift.print("Pipe()")

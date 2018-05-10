@@ -62,7 +62,8 @@ class GitUtils{
      * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count ✅
      */
     static func commitCount(_ localRepoPath:String) -> Int{
-        let shellScript:String = Git.path + Git.git + " " + "rev-list HEAD --count"
+        let cmd:String = "rev-list HEAD --count"
+        let shellScript:String = Git.path + Git.git + " " + cmd
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         if result.isEmpty {return 0}
         let retVal:String = result.endsWith("\n") ? result.trimRight("\n") : result/*the result sometimes has a trailing line-break, this must be removed*/
@@ -78,7 +79,7 @@ class GitUtils{
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         return result
     }
-    static var logFormat:String = "\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
+    static let logFormat:String = "\" --format=oneline | wc -l | tr -d ' ' | tr -d '\n'"//the two last pipes remove space and newLine chars (awk '{$1=$1};1'  could also be used to remove wrapping space chars)
     /**
      * Returns the count from now until the date speccifed in PARAM: after
      * PARAM: after: "2016-10-12 00:00:00" (git date format)

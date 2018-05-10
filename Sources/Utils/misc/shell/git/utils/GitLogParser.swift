@@ -34,7 +34,7 @@ private class Utils{
     static func trim(_ str:String)->String{
         let options:NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]//we need the S-flag (.DotMatches....) to allow for capturing line-breaks with >.*?<
         for match in str.matches(trimPattern,options){//its not pretty but it works
-            if(match.numberOfRanges > 1){
+            if match.numberOfRanges > 1 {
                 return match.value(str, 1)/*capturing group 1*/
             }
         }
@@ -46,14 +46,14 @@ private class Utils{
     static func compact(_ str:String) -> String{
         let parts:[String] = str.split("\n")//split at linebreaks
         guard let firstPart:String = parts.first else{fatalError("first not avilable")}
-        if(firstPart.count > 100){/*the first string is longer than allowed*/
+        if firstPart.count > 100 {/*the first string is longer than allowed*/
             let a:String = firstPart.subStr(0, 100)
             var b:String = firstPart.subString(100, firstPart.count)
             b = b.count > 100 ? b.subStr(0, 100) + "..." : b
             return a + "\n" + b
         }else{/*First part is within allowed length*/
             var secondPart:String = ""
-            if(parts.count > 1){
+            if parts.count > 1 {
                 secondPart = parts[1]
                 secondPart = secondPart.count > 100 ? secondPart.subStr(0, 100) + "..." : secondPart
             }

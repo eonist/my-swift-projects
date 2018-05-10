@@ -5,7 +5,7 @@ class GitModifier{
     * Add a file or many files to a commit
     * PARAM: fileName is the file name you want to add, use * if you want to add all files
     * NOTE: The opposite of add is reset, see the reset method for more info
-    * CAUTION: ⚠️️ When a file is removed, the * char wont work, you have to add the file manually
+    * CAUTION: ⚠️️ When a file is removed, the * char won't work, you have to add the file manually
     * EXAMPLE: GitUtils's add(localRepoPath, "*")
     */
    static func add(_ localRepoPath:String, _ fileName:String)->String{
@@ -43,11 +43,10 @@ class GitModifier{
     * NOTE: "git reset --hard" (Undo changes in tracked files)
     * NOTE: "git clean -df" (Remove untracked files, does not remove .ignored files, use "-xf" for that)
     */
-   static func reset(_ localRepoPath:String, _ fileName:String)->String{
-    let shellScript:String = Git.path + Git.git + " " + Git.reset + " " + fileName
-   	return ShellUtils.run(shellScript,localRepoPath)
-   }
-   
+    static func reset(_ localRepoPath:String, _ fileName:String)->String{
+        let shellScript:String = Git.path + Git.git + " " + Git.reset + " " + fileName
+        return ShellUtils.run(shellScript,localRepoPath)
+    }
    /**
     * Downloads the current from the remote git to the local git (git pull = git fetch + git merge)
     * NOTE: the original git cmd is "git pull origin master"
@@ -158,7 +157,7 @@ class GitModifier{
     */
     static func fetch(_ repo:GitRepo)->String{
        var shellScript:String = Git.path + Git.git + " " + Git.fetch + " " + Git.origin
-       if(repo.branch != " "){ shellScript += " " + repo.branch}
+       if repo.branch != " " { shellScript += " " + repo.branch}
 //        Swift.print("shellScript: " + "\(shellScript)")
        return ShellUtils.run(shellScript,repo.localPath)
    }
