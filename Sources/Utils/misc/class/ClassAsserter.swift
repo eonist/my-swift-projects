@@ -12,6 +12,7 @@ class ClassAsserter{
     /**
      * EXAMPLE: Classes: print(ofType(a,A.self))//true or false
      * EXAMPLE: Protocols: print(ofType(a,IDescribable.self))//true or false
+     * NOTE: you can also do: type(of: "") == type(of: "a")//true
      */
     static func ofType<T>(_ instance:Any?,_ type:T.Type) -> Bool{/*<--we use the ? char so that it can also return a nil*/
         return instance as? T != nil
