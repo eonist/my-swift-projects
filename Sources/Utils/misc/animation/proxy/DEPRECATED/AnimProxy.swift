@@ -8,7 +8,7 @@ import Cocoa
 class AnimProxy:NSObject,AnimProxyKind{/*Apparently the class needs to be NSView in order for the performSelector to work*///<---TODO: ⚠️️ you can probably delete the IAnimatable, as nothing extends this class anyway
     static let shared = AnimProxy()
     lazy var displayLink:CVDisplayLink = self.setUpDisplayLink()/*This is the instance that enables frame animation, lazying this value will probably haunt me later, playing with fire*/
-    lazy var animators:[FrameAnimator] = []/*Stores the animators*/
+    lazy var animators:[DEPRECATEDFrameAnimator] = []/*Stores the animators*/
     /**
      * Fires on every screen refresh at 60 FPS, or device speed
      */

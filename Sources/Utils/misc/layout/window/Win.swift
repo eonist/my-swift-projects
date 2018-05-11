@@ -9,8 +9,8 @@ class Win:NSWindow, NSApplicationDelegate, NSWindowDelegate {
      * NOTE: Remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * NOTE: self.acceptsMouseMovedEvents = true/*<--new, could enable you to use the overide mouseMoved*/
-     * TODO: Implement the max and min sizes into the constructor arguments
-     * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
+     * TODO: ⚠️️ Implement the max and min sizes into the constructor arguments
+     * TODO: ⚠️️ Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:NSWindow.StyleMask = [NSWindow.StyleMask.borderless, NSWindow.StyleMask.resizable, NSWindow.StyleMask.titled,NSWindow.StyleMask.closable,NSWindow.StyleMask.miniaturizable]/*represents the window attributes*/

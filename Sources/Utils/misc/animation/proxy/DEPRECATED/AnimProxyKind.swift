@@ -5,6 +5,6 @@ import Cocoa
  */
 protocol AnimProxyKind:class {
     func onFrame()
-    var animators:[FrameAnimator]{get set}
+    var animators:[DEPRECATEDFrameAnimator]{get set}
     var displayLink:CVDisplayLink{get}
 }

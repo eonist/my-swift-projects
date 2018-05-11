@@ -5,9 +5,9 @@ import Foundation
  * TODO: ⚠️️ This should probably use Generics, to get rid of the casting
  */
 struct OffsetType:Equatable,LayoutKind{
-    static var center:String = "center"// :TODO: move this to a class called OffsetType
-    static var outside:String = "outside"
-    static var inside:String = "inside"
+    static let center:String = "center"// :TODO: move this to a class called OffsetType
+    static let outside:String = "outside"
+    static let inside:String = "inside"
     var left:String
     var right:String
     var top:String

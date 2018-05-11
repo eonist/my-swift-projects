@@ -28,7 +28,7 @@ class Animator2:FrameAnimator2 {
     override func onFrameTick(){
         let val:CGFloat = easing(currentFrameCount, from, to-from, framesToEnd)
         onFrame(val)/*Call the callBack onFrame method*/
-        if(currentFrameCount == framesToEnd){
+        if currentFrameCount == framesToEnd {
             stop()/*Stop the animation*/
             //_ = completed(Animator.initValues, {_ in})//the animation completed, call the completed closure
             completed()
@@ -52,7 +52,7 @@ extension Animator2 {
     var duration:CGFloat {get{return initValues.dur}set{initValues.dur = newValue}}/*In seconds*/
     var from:CGFloat {get{return initValues.from}set{initValues.from = newValue}}/*From this value*/
     var to:CGFloat {get{return initValues.to}set{initValues.to = newValue}}/*To this value*/
-    var framesToEnd:CGFloat {return Animator.fps * duration}/*totFrameCount*/
+    var framesToEnd:CGFloat {return DEPRECATEDAnimator.fps * duration}/*totFrameCount*/
 }
 //extension Animator2{
 //    struct InitValues2{

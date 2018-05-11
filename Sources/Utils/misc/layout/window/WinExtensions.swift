@@ -14,10 +14,10 @@ extension NSWindow {
     func hide(_ win:NSWindow){
         self.orderOut(self)//<- should be self, but nil may work
     }
-    var minimized:Bool{return self.isAccessibilityMinimized()}/*Convenience*/
-    var hidden:Bool{return self.isAccessibilityHidden()}/*Convenience*/
-    var expanded:Bool{return self.isAccessibilityExpanded()}/*Convenience*/
-    var modal:Bool{return self.isAccessibilityModal()}/*Convenience*/
+    var isMinimized:Bool{return self.isAccessibilityMinimized()}/*Convenience*/
+    var isHidden:Bool{return self.isAccessibilityHidden()}/*Convenience*/
+    var isExpanded:Bool{return self.isAccessibilityExpanded()}/*Convenience*/
+    var isModal:Bool{return self.isAccessibilityModal()}/*Convenience*/
     var flippedScreenPosition:CGPoint {return CGPoint(NSEvent.mouseLocation.x,abs(NSEvent.mouseLocation.y + -NSScreen.main!.visibleFrame.height))/*flip the y coordianate:*/}/*Returns the topLeft postion of the win in relation to the screen*/
     var topLeft:CGPoint{return CGPoint(frame.origin.x,NSScreen.main!.visibleFrame.height - self.frame.origin.y - self.frame.size.height)}/*returns the topLeft pos (in a flipped coordinate space aka 0,0 coordinate space)*/
     func unFlipScreenPosition(_ pos:CGPoint)->CGPoint{

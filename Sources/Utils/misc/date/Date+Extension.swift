@@ -46,6 +46,7 @@ extension Date{
     func numOfYears(_ until:Date)->Int{/*Convenience*/
         return DateParser.numOfYears(self, until)
     }
+    var hour:Int {return Calendar.current.component(.hour, from:self)}
     var day:Int {return Calendar.current.component(.day, from:self)}
     var month:Int {return Calendar.current.component(.month, from:self)}
     var year:Int {return Calendar.current.component(.year, from:self)}
@@ -55,3 +56,4 @@ extension Date{
      */
     var secsSinceStart:Double{return abs(self.timeIntervalSinceNow)}
 }
+

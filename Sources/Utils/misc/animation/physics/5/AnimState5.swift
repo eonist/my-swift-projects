@@ -1,7 +1,6 @@
 import Foundation
 /**
  * TODO: ⚠️️ ⚠️️ ⚠️️ consider removing stopVelocity or make it optional, you can increase epsilon to do the same job, etc
- 
  */
 struct AnimState5<T:Advancable5> {
     var value: T/*the current value of the animation*/ //TODO: ⚠️️ rename to initial

@@ -6,9 +6,9 @@ import Foundation
  */
 class SimpleTimer {
     typealias Tick = ()->Void
-    var timer:Timer?
-    var interval:TimeInterval /*in seconds*/
-    var repeats:Bool
+    private var timer:Timer?
+    private var interval:TimeInterval /*in seconds*/
+    private var repeats:Bool
     var tick:Tick
     
     init( interval:TimeInterval, repeats:Bool = false, onTick:@escaping Tick){
@@ -20,7 +20,11 @@ class SimpleTimer {
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(update), userInfo: nil, repeats: true)//swift 3 upgrade
     }
     func stop(){
-        if(timer != nil){timer!.invalidate()}
+        if let timer = timer {timer.invalidate()}
+    }
+    func reset(){
+        stop()
+        start()
     }
     /**
      * This method must be in the public or scope

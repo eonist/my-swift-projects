@@ -5,7 +5,7 @@ import Cocoa
 class WinModifier {
     /**
      * Positions a window to PARAM: position
-     * CAUTION: the coordinate space of the y is flipped, so you have to substract the screen height etc before passing the position point
+     * CAUTION: ⚠️️ the coordinate space of the y is flipped, so you have to substract the screen height etc before passing the position point
      */
     static func position(_ win:NSWindow,  position:CGPoint){
         win.setFrameOrigin(position)
@@ -13,7 +13,7 @@ class WinModifier {
     }
     /**
      * Aligns a window to an alignment type
-     * IMPORTANT: The screen aligns from the bottom up (so use bottom for top and top for bottom) (you could fix this, it probably only requires a minus sign herer and there)
+     * IMPORTANT: ⚠️️ The screen aligns from the bottom up (so use bottom for top and top for bottom) (you could fix this, it probably only requires a minus sign herer and there)
      */
     static func align(_ win:NSWindow, canvasAlignment:Alignment, viewAlignment:Alignment, offset:CGPoint = CGPoint(0,0)) {
         let alignmentPoint:CGPoint = alignPoint(win.frame.size,canvasAlignment: canvasAlignment,viewAlignment: viewAlignment,offset: offset)

@@ -7,7 +7,7 @@ import UIKit
  * Discussion: anchor is a more appropriate name than, pin,pos,pt,edge,put,magnet,align,corner (anchor can represent both corner,edge and center)
  * EXAMPLE: square.translatesAutoresizingMaskIntoConstraints = false (this enables you to set your own constraints)
  * EXAMPLE: contentView.layoutMargins = UIEdgeInsetsMake(12,12,12,12)//adds margin to the containing view
- * EXAMPLE: let pos = Constraint.pos(square,to:canvas,targetAlign:.topleft,toAlign:.topleft)
+ * EXAMPLE: let pos = Constraint.anchor(square,to:canvas,targetAlign:.topleft,toAlign:.topleft)
  * EXAMPLE: let size = Constraint.size(square,to:canvas)
  * EXAMPLE: NSLayoutConstraint.activate([anchor.x,anchor.y,size.w,size.h])
  */
@@ -30,7 +30,7 @@ class Constraint{
         return (widthConstraint,heightConstraint)
     }
     /**
-     * EXAMPLE: let sizeConstraint = Constraint.dim(square,size:CGSize(100,100))
+     * EXAMPLE: let sizeConstraint = Constraint.size(square,size:CGSize(100,100))
      */
     static func size(_ view:UIView, size:CGSize, multiplier:CGSize = CGSize(width:1,height:1)) -> (w:NSLayoutConstraint,h:NSLayoutConstraint){
         let widthConstraint = Constraint.width(view, width: size.width, multiplier: multiplier.width)
@@ -55,7 +55,7 @@ extension Constraint{
     }
     /**
      * Creates a size constraint
-     * EXAMPLE: let widthConstraint = Constraint.dim(square,to:canvas,axis:.horizontal)
+     * EXAMPLE: let widthConstraint = Constraint.width(square,to:canvas,axis:.horizontal)
      */
     static func width(_ view:UIView,to:UIView,offset:CGFloat = 0,multiplier:CGFloat = 1) -> NSLayoutConstraint{
         return NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: to, attribute: .width, multiplier: multiplier, constant: offset)//NSLayoutAttribute.notAnAttribute
@@ -92,9 +92,10 @@ extension Constraint{
     //        return (x,y)
     //    }
 }
-//layoutAttri (internal)
 extension Constraint{
-    //x
+    /**
+     * x (internal)
+     */
     private static func layoutAttr(_ align:HorizontalAlign,useMargin:Bool = false) -> NSLayoutAttribute{
         switch align{
         case .left: return useMargin ? NSLayoutAttribute.leftMargin : NSLayoutAttribute.left //fatalError("err")
@@ -102,7 +103,9 @@ extension Constraint{
         case .centerX: return useMargin ? NSLayoutAttribute.centerXWithinMargins : NSLayoutAttribute.centerX
         }
     }
-    //y
+    /**
+     * y (internal)
+     */
     private static func layoutAttr(_ align:VerticalAlign,useMargin:Bool = false) -> NSLayoutAttribute{
         switch align{
         case .top: return useMargin ? NSLayoutAttribute.topMargin : NSLayoutAttribute.top

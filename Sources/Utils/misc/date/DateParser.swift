@@ -156,6 +156,7 @@ class DateParser {
     /**
      * EXAMPLE: date("2018-05-01T18:38:43.162Z", format:"yyyy-MM-dd'T'HH:mm:ss.SSSz") //2018-05-01 18:38:43 +0000
      * Format-example: 2018-05-01T18:38:43.162Z (ISO 8601) (standard json)
+     * Format: 2018-05-01T18:38:43.162Z -> "Y-MM-dd'T'HH:mm:ssZ"
      * Z - indicates that the time value is the time in Greenwich, England, or UTC time.
      */
     static func date(_ dateStr:String, format:String) -> Date? {

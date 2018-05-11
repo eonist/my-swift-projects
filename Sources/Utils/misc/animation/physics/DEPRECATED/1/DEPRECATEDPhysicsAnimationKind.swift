@@ -3,7 +3,7 @@ import Foundation
  * TODO: ⚠️️ Try to get rid of the :class by making the var's mutable somehow
  * This class exists so that Springer and Easer can have fewer vars, by instead accessing vars through getters and setters that derive their values from tuples 
  */
-protocol PhysicsAnimationKind:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
+protocol DEPRECATEDPhysicsAnimationKind:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
     associatedtype argType
     /*Signatures*/
     typealias FrameTickSignature = (argType)->Void/*generic call back signature, use Spring.FrameTick outside this class*/
@@ -21,7 +21,7 @@ protocol PhysicsAnimationKind:class{//TODO: ⚠️️ Rename to PhysicsAnimKind
 /**
  * Getters and setters for the value tuples
  */
-extension PhysicsAnimationKind{
+extension DEPRECATEDPhysicsAnimationKind{
     var targetValue:argType {get{return initValues.targetValue}set{initValues.targetValue = newValue}}
     var velocity:argType {get{return initValues.velocity}set{initValues.velocity = newValue}}
     var value:argType {get{return initValues.value}set{initValues.value = newValue}}

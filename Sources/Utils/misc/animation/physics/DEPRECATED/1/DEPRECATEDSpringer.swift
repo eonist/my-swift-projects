@@ -2,7 +2,7 @@ import Foundation
 /**
  * That Springer class
  */
-class Springer<T>: FrameAnimator,PhysicsAnimationKind{
+class DEPRECATEDSpringer<T>: DEPRECATEDFrameAnimator,DEPRECATEDPhysicsAnimationKind{
     typealias argType = T
     typealias Config = (spring:argType,friction:argType)/*Signatures*/
     var initValues:InitValues
@@ -25,7 +25,7 @@ class Springer<T>: FrameAnimator,PhysicsAnimationKind{
 /**
  * Springer for CGFloat
  */
-class NumberSpringer:Springer<CGFloat> {
+class NumberSpringer:DEPRECATEDSpringer<CGFloat> {
     override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring
@@ -47,7 +47,7 @@ class NumberSpringer:Springer<CGFloat> {
 /**
  * Springer for CGPoint
  */
-class PointSpringer:Springer<CGPoint> {
+class PointSpringer:DEPRECATEDSpringer<CGPoint> {
     override func updatePosition() {
         let d = (targetValue - value)
         let a = d * config.spring

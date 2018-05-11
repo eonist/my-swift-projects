@@ -5,7 +5,7 @@ import Foundation
  * NOTE: This is the Base class
  * NOTE: You could add RectEaser aswell which would have 4 values to ease. After this you dont need many more subclasses as you can use NUmberEaser for color for instance. Maybe if you want to do 3d you need support for 3,6,12 values etc. These can be added later
  */
-class Easer<T>:FrameAnimator,PhysicsAnimationKind {
+class DEPRECATEDEaser<T>:DEPRECATEDFrameAnimator,DEPRECATEDPhysicsAnimationKind {
     typealias argType = T
     var easing:argType
     var initValues:InitValues
@@ -27,7 +27,7 @@ class Easer<T>:FrameAnimator,PhysicsAnimationKind {
 /**
  * Easer for CGFloat
  */
-class NumberEaser:Easer<CGFloat> {
+class NumberEaser:DEPRECATEDEaser<CGFloat> {
     override func updatePosition() {
         velocity = (targetValue - value) * easing
         value += velocity
@@ -42,7 +42,7 @@ class NumberEaser:Easer<CGFloat> {
 /**
  * Easer for CGPoint
  */
-class PointEaser:Easer<CGPoint> {
+class PointEaser:DEPRECATEDEaser<CGPoint> {
     override func updatePosition() {
         velocity = (targetValue - value) * easing
         value = value + velocity

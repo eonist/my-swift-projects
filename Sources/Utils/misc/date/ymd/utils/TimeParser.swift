@@ -4,7 +4,7 @@ class TimeParser {
     /**
      * This method can offset a date with months.
      * Return year and month when offseting with n months
-     * IMPORTANT: this approache wont work if you include day. Leap years etc. Use Date() and it's utils for that
+     * IMPORTANT: ⚠️️ this approache won't work if you include day. Leap years etc. Use Date() and it's utils for that
      * PARAM: offset: num of months to offset
      * EXAMPLE: offset(year: 2016, month: 11, offset: 6)//(year: 2017, month: 5)
      * EXAMPLE: offset(year: 2016, month: 11, offset: 2)//(year: 2017, month: 1)
