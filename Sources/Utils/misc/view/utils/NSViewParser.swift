@@ -5,7 +5,7 @@ class NSViewParser {
      * Returns an array of all the children in PARAM: view that is of type PARAM: classType
      * NOTE: this works with classes and protocols
      * IMPORTANT: ⚠️️ Remember to use: IA.self and A.self as the type 
-     * TODO: rename to childrenByClassType, maybe not?, I say not!
+     * TODO: ⚠️️ rename to childrenByClassType, maybe not?, I say not!
      */
     static func childrenOfType<T>(_ view:NSView, _ type:T.Type? = nil)->[T] {
         return view.subviews.compactMap{$0 as? T}
@@ -16,14 +16,14 @@ class NSViewParser {
     static func parents(_ view:NSView)->[NSView]{
         var parents:[NSView] = []
         var parent:NSView? = view.superview// :TODO: seperate this into a check if its DO then that, if its Window then do that
-        while(parent != nil) {//loops up the object hierarchy as long as the parent is a Element supertype
+        while parent != nil {//loops up the object hierarchy as long as the parent is a Element supertype
             _ = ArrayModifier.unshift(&parents,parent!)
             parent = parent!.superview
         }
         return parents
     }
     /**
-     * TODO: should this return nil instead of -1? its easier to debug if it returns nil
+     * TODO: ⚠️️ should this return nil instead of -1? its easier to debug if it returns nil
      */
     static func indexOf(_ view:NSView,_ subView:NSView)->Int{
         return view.subviews.index(where: {$0 === subView}) ?? -1
@@ -54,11 +54,11 @@ class NSViewParser {
      * EXAMPLE: index(self,subSubSubChild)
      */
     static func index(_ parent:NSView,_ child:NSView) -> [Int]? {
-        if(parent === child) {return []}
-        else if(!parent.subviews.isEmpty){
+        if parent === child {return []}
+        else if !parent.subviews.isEmpty {
             for (i,view) in parent.subviews.enumerated(){
                 let match:[Int]? = !view.subviews.isEmpty ? index(view,child) : nil
-                if(match != nil) {return [i] + match!}
+                if match != nil {return [i] + match!}
             }
         }
         return nil

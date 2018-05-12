@@ -10,7 +10,7 @@ class InteractiveViewUtils{
      */
     func immediate(current:NSView,_ origin:NSView)->NSView{//origin may be a CALayer, test this later
         var view:NSView = origin
-        while(view.superview != current) {
+        while view.superview != current {
             view = view.superview!
         }
         return view

@@ -107,7 +107,7 @@ class ArrayModifier{
     static func shuffle<T>(_ array:inout [T])->[T]{
         for i in 0 ..< (array.count - 1) {
             let j = Int(arc4random_uniform(UInt32(array.count - i))) + i
-            ArrayModifier.swap(&array, array[i], array[j])//the & sign indicates that you confirm that the values will be changed
+            array.swapAt(i, j)//was: ArrayModifier.swap(&array, array[i], array[j])//the & sign indicates that you confirm that the values will be changed
         }
         return array
     }
@@ -126,8 +126,8 @@ class ArrayModifier{
      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
      */
     static func addAt<T>(_ array:inout [T], _ item:T, _ index:Int){
-        if(index == 0) {_ = array.unshift(item)}/*add item at the begining of an array*/
-        else if(index == array.count) {array.append(item)}/*add item at the end of an array*/
+        if index == 0 {_ = array.unshift(item)}/*add item at the begining of an array*/
+        else if index == array.count {array.append(item)}/*add item at the end of an array*/
         else {_ = array.splice2(index, 0, [item])}
     }
     /**
@@ -317,6 +317,7 @@ class ArrayModifier{
     /**
      * Swaps two items in PARAM: vector at PARAM: index1 PARAM: index2
      * NOTE: there is also the ArrayModifier.move method which is similar (it similar but doesnt do a 2-way swap)
+     * NOTE: there is also native: array.swapAt(i, j)
      */
     static func indexSwap<T>(_ array:inout [T],_ index1:Int,_ index2:Int) -> [T] {
         if index1 != -1 && index2 != -1 {
@@ -377,7 +378,7 @@ class ArrayModifier{
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
      * EXAMPLE: removeDups([1,2,2,3,4,4,4,5],{$0 == $1})//Output: 1,2,3,4,5
      * NOTE This can also be done with functional programming .reduce See notes in the research docs
-     * MORE EXAPLES: https://github.com/eonist/swift-utils/wiki/Array-tricks
+     * MORE EXAMPLES: https://github.com/eonist/swift-utils/wiki/Array-tricks
      */
     static func removeDups<T>(_ arr:[T], _ condition:(_ a:T, _ b:T)->Bool)->[T]{
         var result:[T] = []

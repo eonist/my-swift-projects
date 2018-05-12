@@ -54,10 +54,10 @@ class ClassParser {
         return instances.first(where: {$0 as? T != nil}) ?? nil
     }
     //DEPRECATED:
-    static func classType(_ instance:Any)->Any.Type{return ClassParser.type(instance)}
+    static func classType(_ instance:Any) -> Any.Type{return ClassParser.type(instance)}
 }
 extension ClassParser{
-    static func stringType(_ instance:Any)->String{/*Convenience*/
+    static func stringType(_ instance:Any) -> String{/*Convenience*/
         return String(describing: ClassParser.classType(instance))
     }
 }

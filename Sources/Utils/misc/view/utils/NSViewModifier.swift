@@ -6,11 +6,11 @@ import Cocoa
 class NSViewModifier {
     static func applyColor(_ view:NSView,_ nsFillColor:NSColor = NSColor.clear,_ nsLineColor:NSColor = NSColor.clear,_ lineWidth:Int = 0){
         let cgFillColor:CGColor = CGColorParser.cgColor(nsFillColor)
-        if(nsFillColor != NSColor.clear){/*clearColor: 0.0 white, 0.0 alpha */
+        if nsFillColor != NSColor.clear {/*clearColor: 0.0 white, 0.0 alpha */
             view.layer!.backgroundColor = cgFillColor
         }
         let cgLineColor:CGColor = CGColorParser.cgColor(nsLineColor)
-        if(nsLineColor != NSColor.clear){/*clearColor: 0.0 white, 0.0 alpha */
+        if nsLineColor != NSColor.clear {/*clearColor: 0.0 white, 0.0 alpha */
             view.layer!.borderColor = cgLineColor
             view.layer!.borderWidth = CGFloat(lineWidth)
         }
@@ -24,7 +24,7 @@ class NSViewModifier {
      * view.subviews.map({ $0.removeFromSuperview() }) // this returns modified array
      */
     static func removeAllChildren(_ view:NSView){
-        while(view.subviews.count > 0) {view.subviews[0].removeFromSuperview()}
+        while view.subviews.count > 0 {view.subviews[0].removeFromSuperview()}
     }
     /**
      * NOTE: This can also be used as a setSubViewAt method. Apple will reuse the same View so no duplicates. Although apples own sort method is prefered, but it uses c-pointers which can be hard to implement in swift. 
@@ -32,9 +32,9 @@ class NSViewModifier {
      * TODO: add a method named prepend that inserts NSView items at the top of the stack
      */
     static func addSubviewAt<T:NSView>(_ view: T,_ subView:T, _ i:Int)->NSView{//Returns the subview for convenience
-        if(view.subviews.isEmpty){
+        if view.subviews.isEmpty {
             view.addSubview(subView)
-        }else if(i == 0){/*the view.subviews.count > 0*/
+        }else if i == 0 {/*the view.subviews.count > 0*/
             view.addSubview(subView, positioned: NSWindow.OrderingMode.below, relativeTo: view.subviews[0])
         }else{/*i > 0 && view.subviews.coun > 0*/
             let relativeView = view.subviews[i-1]

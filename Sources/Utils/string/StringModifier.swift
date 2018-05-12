@@ -40,6 +40,7 @@ class StringModifier{
      * Replaces first match
      * Replaces PARAM: match in PARAM: input with PARAM: replacement
      * EXAMPLE: replaceFirst("Hello" + " " + "😄","😄","🐈") // Hello 🐈
+     * NOTE: you can also do: "magic.zip".replacingOccurrences(of: "zip", with: "jpg")//magic.jpg
      */
     static func replaceFirst(_ input:String,_ match:String,_ replacement:String)->String{
         var input = input

@@ -21,8 +21,8 @@ class ClassAsserter{
 	 * NOTE: You may try this aswell instance.isKindOfClass(classType)//seems not to work
      * NOTE: beware of isKindOfClass vs isMemberOfClass
      * NOTE: this works: layer.isKindOfClass(CALayer.self)//true /*Remeber that the instance must extend NSObject*/
-     * CAUTION: doesnt work well with Double,String etc
-     * IMPORTANT: doesnt work with protocols yet, do protocols as the example bellow:
+     * CAUTION: ⚠️️ doesn't work well with Double,String etc
+     * IMPORTANT: ⚠️️ doesn't work with protocols yet, do protocols as the example bellow:
      * EXAMPLE: 
      * protocol Decoratable{}
      * class A:Decoratable{}
@@ -48,7 +48,7 @@ class ClassAsserter{
      * EXAMPLE: isOfSame("","")//true
      * EXAMPLE: isOfSame("".dynamicType,"".dynamicType)//true
      * EXAMPLE: isOfSame(SomeClass.self,SomeClass())//true
-     * CAUTION: currently checking against protocols isnt supported
+     * CAUTION: ⚠️️ currently checking against protocols isnt supported
      */
     static func isOfSame(_ a: AnyObject, _ b: AnyObject) -> Bool {
         return object_getClassName(a) == object_getClassName(b)
@@ -57,7 +57,7 @@ class ClassAsserter{
      * NOTE: you can also check if a class or instance is of a Protocol type: object.dynamicType is Decoratable.Type//true (this does not work if you add that line of text inside a method)
      * NOTE: protocol_conformsToProtocol(a,b) also exist
      * NOTE: // Works, but seems hackish as it reverts to string comparison NSStringFromProtocol(proto) == NSStringFromProtocol(Foo)
-     * TODO: needs example, cant get this to work easily
+     * TODO: ⚠️️ needs example, cant get this to work easily
      */
     static func isOfSameProtocol(_ a:Protocol,_ b:Protocol) -> Bool {
         return protocol_isEqual(a, b)

@@ -21,9 +21,9 @@ func bgSleep(_ sleepDurInSec:CGFloat, _ closure:@escaping ()->Void){
 }
 
 //DEPRECATED
-var mainQueue:DispatchQueue {return main}/*DEPRECATED*/
-var bgQueue:DispatchQueue {return bg}/*DEPRECATED*/
+//var mainQueue:DispatchQueue {return main}/*DEPRECATED*/
+//var bgQueue:DispatchQueue {return bg}/*DEPRECATED*/
 
 //LEGACY support:
-func async(_ queue:DispatchQueue , _ block:@escaping () -> Void) -> Void {return queue.async(execute: block)}//swift 3 update, The bellow line may work, but maybe not. Do more swift 3 async research
+//func async(_ queue:DispatchQueue , _ block:@escaping () -> Void) -> Void {return queue.async(execute: block)}//swift 3 update, The bellow line may work, but maybe not. Do more swift 3 async research
 
