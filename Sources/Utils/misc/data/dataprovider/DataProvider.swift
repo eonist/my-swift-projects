@@ -28,12 +28,12 @@ import Foundation
  */
 typealias DP = DataProvider
 /**
- * COnvert to struct, EventSender can be implemented as protocol and extension and var etc
+ * Convert to struct, EventSender can be implemented as protocol and extension and var etc
+ * NOTE: add allowDuplicates in a subclass of this
  */
 class DataProvider:EventSender,DataProvidable{// :TODO: ⚠️️ move methods into parsers,modifiers asserters
     var items:[[String:String]]//ideally it should be string,AnyObject//TODO: ⚠️️ Maybe make this public getter private setter
     var count:Int{return self.items.count}
-    //private var allowDuplicates:Bool = true
     /**
      * Constructs the DataProvider class
      * PARAM: object: Creates a new DataProvider object using a list, XML instance or an array of data objects as the data source.

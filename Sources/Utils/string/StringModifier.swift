@@ -69,10 +69,10 @@ class StringModifier{
      * Example: reverse("hello")//"olleh"
 	 */		
 	static func reverse(_ str:String)->String{
-        return String(str.string.reversed())//new in swift 2
+        return String(str.string.reversed())
 	}
 	static func capitalize(_ string:String)->String{
-		return string.capitalized//swift 3 upgrade
+		return string.capitalized
 	}
     /*
      * Returns a lowercase string

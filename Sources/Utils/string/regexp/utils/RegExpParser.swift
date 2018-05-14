@@ -35,26 +35,26 @@ public class RegExpParser{
         return output
     }
     /**
-     * Computes and returns an array comprised of url protocol(s) from @param input
-     * @param input: a string comprised of url(s)
-     * @example:"http://www.forta.com/\n " +"https://mail.forta.com/\n " +"ftp://ftp.forta.com/\n";//http, https, ftp
-     * @Note: More url patterns in RegExpDescriber.url
-     * @Note also see RegExpParser.htmlLinks
+     * Returns an array comprised of url protocol(s) from PARAM input
+     * PARAM: input: a string comprised of url(s)
+     * EXAMPLE:"http://www.forta.com/\n " +"https://mail.forta.com/\n " +"ftp://ftp.forta.com/\n";//http, https, ftp
+     * NOTE: More url patterns in RegExpDescriber.url
+     * NOTE also see RegExpParser.htmlLinks
      */
     static func urlProtocol(_ input:String) -> Array<String> {
         return input.match(".+(?=:)")
     }
     /**
-     * Computes and returns the content between two title tags from @param input
+     * Returns the content between two title tags from PARAM input
      * contentBetweenTitleTags("<HEAD> <TITLE>John Forta's Homepage</TITLE> </HEAD>");//John Forta's Homepage
-     * @Note: For more html parsing see RegExpMatcher and RegExpModifier
+     * NOTE: For more html parsing see RegExpMatcher and RegExpModifier
      */
     static func contentBetweenTitleTags(_ input:String) -> [String] {
         return input.match(Pattern.contentBetweenTitleTags)
     }
     /**
-     * Computes and returns an array comprised of dollar price amounts (excluding "$" character) from @param input
-     * @example:
+     * Returns an array comprised of dollar price amounts (excluding "$" character) from PARAM input
+     * EXAMPLE:
      * 	var text:String =  "ABC01: $23.45 " +
      *						"HGG42: $5.31 " +
      *						"CFMX1: $899.00 " +
@@ -66,24 +66,24 @@ public class RegExpParser{
         return input.match(Pattern.usPrices)
     }
     /**
-     * Computes and retruns an array comprised of digits not preceeded by the "$" character from @param input
-     * @example:
+     * Retruns an array comprised of digits not preceeded by the "$" character from PARAM input
+     * EXAMPLE:
      * nonUsPrices("<I paid $30 for 100 apples, 50 oranges, and 60 pears. I saved $5 on this order.");//100,50,60
      */
     static func nonUsPrices (_ input:String) -> [String] {
         return input.match(Pattern.nonUsPrices);
     }
     /**
-     * Computes and returns lowercase words between @param rangeStart and @param rangeEnd
-     * @example:
+     * Returns lowercase words between PARAM rangeStart and PARAM rangeEnd
+     * EXAMPLE:
      */
     static func lowerCaseWordsWithinRange(_ input:String, rangeStart:String, rangeEnd:String)-> [String] {
         let patternString:String = "\\b[a-z]{" + rangeStart + "," + rangeEnd + "}\\b"
         return input.match(patternString)
     }
     /**
-     * Computes and returns an array with lowercase words from @param input
-     * @example:
+     * Returns an array with lowercase words from PARAM input
+     * EXAMPLE:
      * getLowerCaseWordsInString("Test this out"))//this, out
      * getLowerCaseWordsInString("test this 123"))//test, this
      * getLowerCaseWordsInString("test this").length)//2
@@ -93,19 +93,19 @@ public class RegExpParser{
         return input.match(pattern)
     }
     /**
-     * Computes and returns an array with lowercaseWords from @param input
+     * Returns an array with lowercaseWords from PARAM input
      */
     static func lowerCaseWordsWithExecution(_ input:String)-> [String] {
         let pattern:String = "\\b[a-z]+\\b"
         return RegExp.matches(input, pattern).map {
-            Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
+//            Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
             let word:String = $0.value(input, 1)/*capturing group 1*/
             return word
         }//Outputs: name: green, value: 00FF00...and so on
     }
     /**
      * Returns all email instances in a string
-     * @example
+     * EXAMPLE
      * emails("emails: user@domain.com, user@server.com");// user@domain.com, user@server.com
      * Tip:// simpler: \\w+@\\w+\\.\\w+
      */
@@ -115,18 +115,18 @@ public class RegExpParser{
     }
     /**
      * Returns all words in a string
-     * @example:
+     * EXAMPLE:
      * words("The German people.")//Outputs: The, German, people
      */
     static func words(_ input:String)-> [String] {
         return input.match(Pattern.words)/*alternativ pattern: /[a-z]+ig/;*/
     }
     /**
-     * Returns all words startingWith @param firstCharacter subseeds with any of the characters passed through @param subseedingCharacters and ends with the character @param endCharacter
-     * @param startingCharacter:
-     * @param anySubseedingCharacters:
-     * @param endingCharacter:
-     * @example
+     * Returns all words startingWith PARAM firstCharacter subseeds with any of the characters passed through PARAM subseedingCharacters and ends with the character PARAM endCharacter
+     * PARAM startingCharacter:
+     * PARAM anySubseedingCharacters:
+     * PARAM endingCharacter:
+     * EXAMPLE
      * wordsThatStartSubseedAndEndWith("but bat samba bit nothing bet","b","aeiou","t")//Output: but,bat,bit,bet
      */
     static func wordsThatStartSubseedAndEndWith(_ input:String, startingCharacter:String, anySubseedingCharacters:String, endingCharacter:String)-> [String] {
@@ -134,25 +134,25 @@ public class RegExpParser{
         return input.match(patternString);
     }
     /**
-     * Returns all sentences after \n ("newline break") from @param input
-     * @Note: alternative pattern: /.+/s
+     * Returns all sentences after \n ("newline break") from PARAM input
+     * NOTE: alternative pattern: /.+/s
      */
     static func sentences(_ input:String)-> [String] {
         let pattern = "^[A-z .,]"//alternative: /.+/s;//Uses the s-flag which  is:  dot matches newline
         return input.match(pattern)
     }
     /**
-     * Computes and returns each word with a hexadecimal rgb value from @param input
-     * @example:
+     * Computes and returns each word with a hexadecimal rgb value from PARAM input
+     * EXAMPLE:
      * rgbHexaDecimals("<BODY BGCOLOR=#336633 TEXT=#FFFFFF MARGINWIDTH=0 MARGINHEIGHT=0 TOPMARGIN=0 LEFTMARGIN=0>");//output: 336633,FFFFFF
      */
     static func rgbHexaDecimals(_ input:String)-> [String] {
         return input.match(Pattern.rgbHexaDecimals)
     }
     /**
-     * Computes and returns each html link from @param url
-     * @param input: a string that contains an URL
-     * @example:
+     * Returns each html link from PARAM url
+     * PARAM input: a string that contains an URL
+     * EXAMPLE:
      * htmlLinks("this website does searches: http://www.google.com");//http://www.google.com
      */
     static func htmlLinks(_ input:String) -> [String] {
@@ -160,8 +160,8 @@ public class RegExpParser{
         return input.match(pattern)
     }
     /**
-     * Computes and returnes the index of the first word that starts with @param startingWith from @param input
-     * @example:
+     * Returnes the index of the first word that starts with PARAM startingWith from PARAM input
+     * EXAMPLE:
      * indexOfWordStartingWith("Something happened last winter","la");//19
      */
     static func indexOfWordStartingWith(_ input:String, startingWith:String) -> Int? {
@@ -169,8 +169,8 @@ public class RegExpParser{
         return input.search(pattern)
     }
     /**
-     * Computes and returns U.S. ZIP codes. These may be five-digit ZIP codes formatted as 12345 or ZIP+4 codes formatted as 12345-6789. (The hyphen is used only if the additional four digits are present.)
-     * @example:
+     * Returns U.S. ZIP codes. These may be five-digit ZIP codes formatted as 12345 or ZIP+4 codes formatted as 12345-6789. (The hyphen is used only if the additional four digits are present.)
+     * EXAMPLE:
      * usZipCodes("11111 22222 33333- 44444-4444");
      */
     static func usZipCodes(input:String)-> [String] {
@@ -187,9 +187,9 @@ public class RegExpParser{
         return input.match(pattern)
     }
     /**
-     * Computes and retuns an array comprised of objects containing a name and a value from @param input
-     * @param input a string containing css properties
-     * @example cssProoperties("color:blue;thickness:2;font:Helvetica;");//[{name:color,value:blue},{name:thickness,value:2},{name:font,value:helvetica}]
+     * Retuns an array comprised of objects containing a name and a value from PARAM input
+     * PARAM input a string containing css properties
+     * EXAMPLE cssProoperties("color:blue;thickness:2;font:Helvetica;");//[{name:color,value:blue},{name:thickness,value:2},{name:font,value:helvetica}]
      */
     static func cssProperties(_ input:String)-> [(name:String,value:String)] {
         let pattern = "(\\w*?)\\:(.*?)\\;"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
