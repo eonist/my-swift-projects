@@ -91,6 +91,17 @@ class DateParser {
         return date.dayName != nil ? String(date.dayName!.string.first!) : ""
     }
     /**
+     * Returns Mon,Tue,Wed
+     */
+    static func semiShortDayName(_ date:Date)->String?{
+        if let dayName:String = date.dayName{
+            let str:String = StringParser.subStr(dayName, 0, 3)
+            return str
+        }else {
+            return nil
+        }
+    }
+    /**
      * Jan,Feb,Mar etc
      */
     static func shortMonthName(_ date:Date)->String{
