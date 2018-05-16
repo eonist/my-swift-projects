@@ -89,7 +89,7 @@ extension String{
         let endIndex = str.idx(end/*-beginning*/)//<--this was a bug
         return startIndex..<endIndex
     }
-    func stringRange(_ str:String,_ beginning:Int, len:Int) -> Range<String.Index>{
+    func stringRange(_ str:String,_ beginning:Int, len:Int) -> Range<String.Index>{//startIndex..<endIndex
         let startIndex = str.idx(beginning)
         let endIndex = str.idx(beginning+len)
         return startIndex..<endIndex//swift 3 upgrade, was->Range(start:startIndex,end:endIndex)

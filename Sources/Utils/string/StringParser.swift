@@ -67,10 +67,13 @@ class StringParser{
     }
     /**
      * substr("Hello from Paris, Texas!!!",11,15); // output: Paris, Texas!!!
+     * NOTE: ref: https://stackoverflow.com/a/39677704/5389500
      */
     static func subStr(_ str:String, _ beginning:Int,_ len:Int)->String{
-        let range = str.stringRange(str, beginning, len:len)
-        let retVal = str[range.start..<range.end]//swift 4 upgrade, was: return str.substring(with:range)
+       //str.stringRange(str, beginning, len:len)
+        let start = str.index(str.startIndex, offsetBy: beginning)
+        let end = str.index(str.startIndex, offsetBy: beginning+len)
+        let retVal = str[start..<end]//swift 4 upgrade, was: return str.substring(with:range)
         return String(retVal)
     }
     /**

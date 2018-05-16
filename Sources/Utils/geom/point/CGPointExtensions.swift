@@ -31,7 +31,9 @@ extension CGPoint{
     /*Asserters*/
     func equals(_ p:CGPoint) -> Bool {return CGPointAsserter.equals(self, p)}
     func isNear(_ p:CGPoint,_ epsilon:CGFloat) -> Bool {return CGPointAsserter.nearEquals(self, p, epsilon)}
-    
+    /**
+     * EXAMPLE: CGPoint(x:20,y:30)[.hor]//20
+     */
     subscript(dir:Dir) -> CGFloat {/*Convenience*/
         get {
             switch dir{
