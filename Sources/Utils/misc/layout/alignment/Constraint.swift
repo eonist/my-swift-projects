@@ -168,4 +168,24 @@ extension UIView {
         return constraints
     }
 }
+/**
+ * Convenient
+ */
+extension UIView{
+    typealias ConstraintClosure = (_ view:UIView) -> [NSLayoutConstraint]
+    /**
+     * EXAMPLE:
+     * camTopBar.activateConstraint{ view in
+     *      let anchor = Constraint.anchor(view, to: self, align: .topLeft, alignTo: .topLeft)
+     *      let size = Constraint.size(view, size: CGSize.init(width: UIScreen.main.bounds.width, height: TopBar.topBarHeight))
+     *      return [anchor.x,anchor.y,size.w,size.h]
+     * }
+     */
+    func activateConstraint(closure:ConstraintClosure) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = closure(self)
+        NSLayoutConstraint.activate(constraints)
+    }
+}
+
 #endif
