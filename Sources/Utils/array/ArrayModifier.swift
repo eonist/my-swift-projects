@@ -4,37 +4,37 @@ import Foundation
  */
 class ArrayModifier{
     
-	/**
-	 * Adds one or more elements to the beginning of an array and returns the new length of the array.
-	 * NOTE: The other elements in the array are moved from their
+    /**
+     * Adds one or more elements to the beginning of an array and returns the new length of the array.
+     * NOTE: The other elements in the array are moved from their
      * NOTE: unShift is the same as "prepend"
-	 * original position, i, to i+1.
-	 * OUTPUT:
-	 * let arr = [a,b,c,d];arr.unShift(X)
+     * original position, i, to i+1.
+     * OUTPUT:
+     * let arr = [a,b,c,d];arr.unShift(X)
      * print(arr)//[x,a,b,c,d]
      * RETURNS: An integer representing the new length of the array
      */
     static func unshift<T>(_ array: inout [T],_ item:T, _ index:Int = 0)->Int{
-		array.insert(item,at:index)
-		return array.count
-	}
-	/**
-	 * Removes the first element from an array and returns that element.
-	 * NOTE: The remaining array elements are moved from their original position, i, to i-1.
+        array.insert(item,at:index)
+        return array.count
+    }
+    /**
+     * Removes the first element from an array and returns that element.
+     * NOTE: The remaining array elements are moved from their original position, i, to i-1.
      * EXAMPLE:
      * var a = ["a","b","c"]
      * Swift.print("a.shift(): " + "\(a.shift())")//a
      * Swift.print("a: " + "\(a)")//b,c
-	 */
-	static func shift<T>(_ array: inout [T])->T{
+     */
+    static func shift<T>(_ array: inout [T])->T{
         return array.removeFirst()
-	}
-	/**
-	 * POP
-	 * Removes the last element from an array and returns the value of that element.
+    }
+    /**
+     * POP
+     * Removes the last element from an array and returns the value of that element.
      * NOTE: try using the native: .popLast()
-	 */
-	static func pop<T>(_ array:inout [T])->T? {
+     */
+    static func pop<T>(_ array:inout [T])->T? {
         let last = array.last
         if let last = last {
             array.removeLast()
@@ -42,24 +42,24 @@ class ArrayModifier{
         }
         return nil
     }
-     /**
-	  * Removes items from PARAM: array from PARAM: start until PARAM: delCount, and optionally inserts PARAM: values
-      * RETURNS: An array containing the elements that were removed from the original array.
-      * NOTE: splice can also be used to remove item from array
-      * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
-      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
-      * IM ORTANT: the original array is modified
-      * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
-      * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
-      * EXAMPLE: splice2([a,b,c],2,1)//[c]
-      * EXAMPLE: splice2([a,b,c],0,1)//[a]
-      * TODO: You could probably use the native: array.replaceRange instead
-      * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
-	  */
+    /**
+     * Removes items from PARAM: array from PARAM: start until PARAM: delCount, and optionally inserts PARAM: values
+     * RETURNS: An array containing the elements that were removed from the original array.
+     * NOTE: splice can also be used to remove item from array
+     * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
+     * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
+     * IM ORTANT: the original array is modified
+     * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
+     * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
+     * EXAMPLE: splice2([a,b,c],2,1)//[c]
+     * EXAMPLE: splice2([a,b,c],0,1)//[a]
+     * TODO: You could probably use the native: array.replaceRange instead
+     * ⚠️️ implement native: arr.insert(contentsOf:at:) bellow
+     */
     static func splice2<T>(_ arr:inout [T],_ startIdx:Int,_ delCount:Int,_ values:[T] = [])->[T]{
         let returnArray  = slice2(arr, startIdx, startIdx + delCount)
         arr.removeSubrange(startIdx..<startIdx + delCount)
-        if(values.count > 0 ){arr.insert(contentsOf: values, at: startIdx)}
+        if values.count > 0 {arr.insert(contentsOf: values, at: startIdx)}
         return returnArray
     }
     /**
@@ -86,7 +86,7 @@ class ArrayModifier{
     static func displace<T>(_ array:inout [T], _ from:Int, _ to:Int) -> [T] {
         var from = from
         var to = to
-        if(to < from) {
+        if to < from {
             _ = array.splice2(to, 0, [array[from]])
             from += 1
             _ = array.splice2(from, 1)
@@ -166,7 +166,7 @@ class ArrayModifier{
     static func removeMany<T>(_ array:inout [T],_ many:[T]) -> [T] {
         many.forEach{
             let index:Int = ArrayParser.indx(array, $0)
-            if(index != -1) {array.remove(at: index)}
+            if index != -1 {array.remove(at: index)}
         }
         return array
     }
@@ -189,7 +189,7 @@ class ArrayModifier{
      */
     static func removeManyByKey<T>(_ array:inout [[String:T]],_ many:[T],_ key:String) -> [[String:T]] where T:Comparable {
         var i:Int = 0
-        while (i < array.count){//<--swift 3 support -> was simple c-style for loop
+        while i < array.count {
             let dict:[String:T] = array[i]
             let toMatch:T = dict[key]!
             if(ArrayParser.index(many, toMatch) != -1) {
@@ -230,7 +230,7 @@ class ArrayModifier{
      */
     static func mergeInPlaceAt<T>(_ a:inout [T], _ b:inout [T], _ i:Int) -> [T] {
         if i == 0 {
-            while(b.count > 0) {
+            while b.count > 0 {
                 _ = a.unshift(b.splice2(b.count-1,1)[0])// :TODO: ⚠️️  if splice is faster than unshift then use splice
             }
         }else if i == a.count {
@@ -463,3 +463,4 @@ class ArrayModifier{
     }
     
 }
+
