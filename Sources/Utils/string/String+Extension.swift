@@ -112,7 +112,8 @@ extension String{
     var content:String? {return FileParser.content(self.tildePath)}
     
     var nsColor:NSColor{return StringParser.nsColor(self)}
-    var int:Int{return Int(self)!}
+//    var int:Int{return Int(self)!}
+    var int:Int?{return Int(self)}
 
     /**
      * Since swift 4 There is also native count, But it doesn't return Int

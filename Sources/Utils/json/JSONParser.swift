@@ -3,6 +3,7 @@ import Foundation
 /**
  * NOTE: See TreeConverter.tree(json) for how you can convert json into data object you can more easily traverse, you can then do JSON -> Tree -> XML
  * TODO: ⚠️️You can also look at the XML classes and reflection classes for how to make more json <-> convert methods
+ * important. see string extension "".json for json serilization from string and data
  */
 class JSONParser{
     /**
@@ -60,7 +61,7 @@ class JSONParser{
         do {
             let jsonData:Data = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)// here "jsonData" is the dictionary encoded in JSON data
 //            Swift.print("jsonData.stringValue: " + "\(jsonData.stringValue)")
-            return jsonData.stringValue
+            return NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) as String?
         } catch {
             print(error.localizedDescription)
             return nil

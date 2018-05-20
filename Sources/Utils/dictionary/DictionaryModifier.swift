@@ -28,6 +28,7 @@ class DictionaryModifier{
 	}
     /**
      * Converts tuples to dict
+     * NOTE: this can also be done with reduce, and that might be a bit more optimized
      */
     static func dict<K,V>(_ tuples:[(K,V)])->[K:V]{
         var dict:[K:V] = [K:V]()

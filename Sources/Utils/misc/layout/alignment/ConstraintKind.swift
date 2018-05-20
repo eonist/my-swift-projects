@@ -1,3 +1,4 @@
+#if os(iOS)
 import UIKit
 
 protocol ConstraintKind:class{
@@ -32,3 +33,4 @@ extension ConstraintKind where Self:UIView{
         anim.startAnimation()
     }
 }
+#endif

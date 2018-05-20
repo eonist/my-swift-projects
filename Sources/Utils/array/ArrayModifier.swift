@@ -461,6 +461,4 @@ class ArrayModifier{
         array.append(item)
         return array
     }
-    
 }
-

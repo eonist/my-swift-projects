@@ -18,10 +18,9 @@ class IntParser{
      * print(IntParser.normalize(7, 7))//0
      * print(IntParser.normalize(8, 7))//1
      * print(IntParser.normalize(12, 7))//5
-     *
+     * Was: return index >= 0 ? (index < len ? index : index % len) : (len + (index % len))//IMPORTANT: print(IntParser.normalize(-7, 7)) yields 7, which is wrong it should be 0
      */
     static func normalize(_ index:Int,_ len:Int) -> Int {
-//        return index >= 0 ? (index < len ? index : index % len) : (len + (index % len))//IMPORTANT: print(IntParser.normalize(-7, 7)) yields 7, which is wrong it should be 0
         if index >= 0 {
             if index < len{
                 return index
@@ -35,7 +34,6 @@ class IntParser{
                 return len + (index % len)
             }
         }
-        
     }
     static func kind(_ theInt:Int)->String{
         switch theInt {
