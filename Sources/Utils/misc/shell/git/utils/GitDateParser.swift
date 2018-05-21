@@ -78,6 +78,6 @@ private class Utils{
 //        Swift.print("date: " + "\(date)")
         let parts:[String] = date.split("-")
 //        Swift.print("parts: " + "\(parts)")
-        return .init(year:parts[0].int,month:parts[1].int,day:parts[2].int)
+        return .init(year:parts[0].int!,month:parts[1].int!,day:parts[2].int!)
     }
 }

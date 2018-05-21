@@ -67,7 +67,7 @@ class GitUtils{
         let result:String = ShellUtils.run(shellScript,localRepoPath)
         if result.isEmpty {return 0}
         let retVal:String = result.endsWith("\n") ? result.trimRight("\n") : result/*the result sometimes has a trailing line-break, this must be removed*/
-        return retVal.int - 1
+        return retVal.int! - 1
     }
     /**
      * NOTE: to find the first hash in a repo use this git command: git log -1 --pretty=format:"%H" ✅
