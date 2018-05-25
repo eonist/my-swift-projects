@@ -19,8 +19,8 @@ class TrigParser {
      */
     static func normalize(_ angle:CGFloat)->CGFloat {
         var angle = angle
-        while (angle < 0) {angle += π*2}
-        while (angle >= π*2) {angle -= π*2}
+        while angle < 0 {angle += π*2}
+        while angle >= π*2 {angle -= π*2}
         return angle
     }
     /**

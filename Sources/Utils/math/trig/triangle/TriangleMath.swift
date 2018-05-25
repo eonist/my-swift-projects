@@ -94,7 +94,7 @@ class TriangleMath {
         //Swift.print("B: " + B)
         let C:CGFloat = π - B - A/*Angle C*/
         let c:CGFloat = CGPoint.distance(p1, p2)/*The length of side c*/
-        if(A < B) {
+        if A < B {
             return p1.add(CGPoint.polarPoint(cBCTob2(c, B, C), anglA))
         }/*p3*/
         else {
@@ -299,7 +299,7 @@ class TriangleMath {
          return sqrt(aSquared)
      }
      /**
-      * // :TODO: this is possible, its basically bcAToa, but you switch out the c in the equation, you have done this on paper before so it will work once you code it.
+      * // :TODO: ⚠️️ this is possible, its basically bcAToa, but you switch out the c in the equation, you have done this on paper before so it will work once you code it.
       */
      static func abAToc() {
          
