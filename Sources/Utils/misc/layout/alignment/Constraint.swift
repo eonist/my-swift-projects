@@ -69,6 +69,7 @@ extension Constraint{
     /**
      * New
      * NOTE: Useful if you want to set a width of an object to the height of another object
+     * NOTE: You can also use it on it's own view to copy width to height for instance
      */
     static func length(_ view:UIView,to:UIView,viewAxis:Axis,toAxis:Axis,offset:CGFloat = 0,multiplier:CGFloat = 1) -> NSLayoutConstraint{
         let viewAttr:NSLayoutAttribute = viewAxis == .horizontal ? .width : .height
