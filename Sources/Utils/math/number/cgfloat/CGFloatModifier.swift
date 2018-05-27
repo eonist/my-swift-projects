@@ -41,7 +41,7 @@ class CGFloatModifier {
      */
     static func roundTo(_ number:CGFloat, _ closest:CGFloat) -> CGFloat {
         let remainder:CGFloat = number %% closest
-        if(remainder == 0) {return number}
+        if remainder == 0 {return number}
         else if abs(remainder) < (closest/2) { return number - remainder}
         else if NumberAsserter.negative(number,0) { return number - (closest+remainder)}
         else {return number + (closest-remainder)}

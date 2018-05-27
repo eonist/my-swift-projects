@@ -148,6 +148,7 @@ public class CGFloatParser{
         //Swift.print(value)
         var curVal:CGFloat = 0
         interpolatedRange.append(min)
+        //use reduce on the bellow
         for _ in 1..<length-1{//was: for var i = 1; i < length-1; ++i{
             //Swift.print("i: " + "\(i)")
             curVal += increaseBy
