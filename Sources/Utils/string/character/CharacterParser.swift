@@ -35,14 +35,14 @@ class CharacterParser {
     /**
      * Retrieve last letter
      */
-    static func last(_ str:String)->Character{
-        return str.string.last!
+    static func last(_ str:String)->Character?{
+        return str.string.last
     }
     /**
      * Retrieve first letter
      */
-    static func first(_ str:String)->Character{
-        return str.string.first!
+    static func first(_ str:String)->Character?{
+        return str.string.first
     }
     /**
      * Returns the PARAM: str in reverse order
