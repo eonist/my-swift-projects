@@ -24,16 +24,10 @@ class TimeParser {
      * EXAMPLE: TimeParser.numOfMonths(from: (year:2015,month:10), to: (year:2016,month:3))//5
      */
     static func numOfMonths(from:YM,to:YM)->Int{
-//        Swift.print("to.year : " + "\(to.year )")
-//        Swift.print("from.year: " + "\(from.year)")
         let numOfYears:Int = to.year - from.year
-//        Swift.print("numOfYears: " + "\(numOfYears)")
         let totNumOfMonths:Int = numOfYears * 12
-//        Swift.print("totNumOfMonths: " + "\(totNumOfMonths)")
         let begining:Int = totNumOfMonths - from.month
-//        Swift.print("begining: " + "\(begining)")
         let numOfMonths:Int = begining + to.month
-//        Swift.print("numOfMonths: " + "\(numOfMonths)")
         return numOfMonths
     }
 }

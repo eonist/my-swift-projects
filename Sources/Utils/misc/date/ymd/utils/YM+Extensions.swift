@@ -5,10 +5,7 @@ extension YearMonth{
      * Returns: 2016'12
      */
     static func yearMonthKey(year:Int,month:Int)->Int{
-//        Swift.print("year: " + "\(year)")
-//        Swift.print("month: " + "\(month)")
         let monthStr:String = StringParser.pad(value: month, padCount: 2, padStr: "0")
-//        Swift.print("monthStr: " + "\(monthStr)")
         let key:Int = (year.string + monthStr).int!
         return key
     }
@@ -20,8 +17,6 @@ extension YearMonth{
      */
     static func year(ym:Int) -> Int{
         let year = ym.string.subString(0, ym.string.count - 2).int!
-        //        Swift.print("ymd.string: " + "\(ymd.string)")
-        //        Swift.print("year: " + "\(year)")
         return year
     }
     /**

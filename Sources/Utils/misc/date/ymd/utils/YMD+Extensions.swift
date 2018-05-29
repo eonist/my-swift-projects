@@ -11,16 +11,11 @@ extension YearMonthDay{
      */
     static func yearMonthDayKey(year:Int,month:Int,day:Int) -> Int{
         let yearMonthKey:Int = YM.yearMonthKey(year: year, month: month)
-//        Swift.print("yearMonthKey: " + "\(yearMonthKey)")
         let dayStr:String = StringParser.pad(value: day, padCount: 2, padStr: "0")
-//        Swift.print("dayStr: " + "\(dayStr)")
         let key:Int = (yearMonthKey.string + dayStr).int!
         return key
     }
     static func yearMonthDayKey(ymd:YMD) -> Int{//convenience
-//        Swift.print("ymd.year: " + "\(ymd.year)")
-//        Swift.print("ymd.month: " + "\(ymd.month)")
-//        Swift.print("ymd.day: " + "\(ymd.day)")
         return yearMonthDayKey(year: ymd.year, month: ymd.month, day: ymd.day)
     }
 }
@@ -35,8 +30,6 @@ extension YearMonthDay{
      */
     static func year(ymd:Int) -> Int{
         let year = ymd.string.subString(0, ymd.string.count - 4).int!
-        //        Swift.print("ymd.string: " + "\(ymd.string)")
-        //        Swift.print("year: " + "\(year)")
         return year
     }
     /**

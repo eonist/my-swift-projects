@@ -28,14 +28,14 @@ extension Date{
     var simpleDate:String{/*Convenience*/
         return DateParser.simpleDate(self)
     }
-    func offsetByDays(_ days:Int)->Date{/*Convenience*/
-        return DateModifier.offsetByDays(self,days)
+    func offsetByDays(_ days:Int)->Date?{/*Convenience*/
+        return DateModifier.offsetByDays(self,days: days)
     }
-    func offsetByMonths(_ months:Int)->Date{/*Convenience*/
-        return DateModifier.offsetByMonths(self, months)
+    func offsetByMonths(_ months:Int)->Date?{/*Convenience*/
+        return DateModifier.offsetByMonths(self, months: months)
     }
-    func offsetByYears(_ years:Int)->Date{/*Convenience*/
-        return DateModifier.offsetByYears(self, years)
+    func offsetByYears(_ years:Int)->Date?{/*Convenience*/
+        return DateModifier.offsetByYears(self, years: years)
     }
     func numOfDays(_ until:Date)->Int{/*Convenience*/
         return DateParser.numOfDays(self, until)

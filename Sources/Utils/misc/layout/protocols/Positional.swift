@@ -1,6 +1,6 @@
 import Foundation
 /**
- * TODO: Rename to Positional
+ * TODO: ⚠️️ Rename to Positional
  */
 protocol Positional:class {/*<--new extends class makes it castable w/o creating a copy -> struct has issues with casting etc...*/
     func setPosition(_ position:CGPoint)

@@ -34,7 +34,6 @@ class DateParser {
         let formatter:DateFormatter = DateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
         let dateStr:String = formatter.string(from: date)
-        //Swift.print("dateTimePrefix: " + "\(dateTimePrefix)")
         return dateStr
     }
     /**
@@ -48,26 +47,25 @@ class DateParser {
         }
         let calendar = Calendar.current
         var components = DateComponents()
-        if year != nil {components.year = year!}//⚠️️ use if let
-        if month != nil {components.month = month!}
-        if day != nil {components.day = day!}
-        if hour != nil {components.hour = hour!}
-        if minute != nil {components.minute = minute!}
-        if second != nil {components.second = second!}
+        if let year = year {components.year = year}
+        if let month = month{components.month = month}
+        if let day = day {components.day = day}
+        if let hour = hour {components.hour = hour}
+        if let minute = minute {components.minute = minute}
+        if let second = second {components.second = second}
         return calendar.date(from: components)
     }
     /**
      * NOTE: there are also other date styles aviable: MediumStyle, FullStyle, NoStyle, ShortStyle, LongStyle, "EEEE"
      * NOTE: some date style examples: convertedDate: Thursday, 8 December 2016 convertedDate: 8 Dec 2016 convertedDate: 08/12/2016 convertedDate: Thursday
      * EXAMPLE: NSDate().shortDate// outputs: 08/12/2016
-     * TODO: move into DateParser
+     * TODO: ⚠️️ move into DateParser
      */
     static func shortDate(_ date:Date) -> String{//TODO: move the content bellow into DateParser
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateStyle = .short//swift 3 -> was: dateFormatter.style.short
         let convertedDate = dateFormatter.string(from:date)
-        //Swift.print("convertedDate: " + "\(convertedDate)")
         return convertedDate
     }
     /**
@@ -88,7 +86,9 @@ class DateParser {
      * Returns m,t,w,t,f,s,s for date
      */
     static func shortDayName(_ date:Date)->String{
-        return date.dayName != nil ? String(date.dayName!.string.first!) : ""
+        if let dayName = date.dayName, let first = dayName.string.first {
+            return String(first)
+        } else { return "" }//TODO: ⚠️️ return nil instead?
     }
     /**
      * Returns Mon,Tue,Wed
@@ -121,7 +121,6 @@ class DateParser {
         let length:Int = days.upperBound - days.lowerBound
         return length
     }
-    
     /**
      * Seconds
      */

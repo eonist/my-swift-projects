@@ -32,17 +32,17 @@ extension NSTouch.Phase{
      * TODO: Would it be possible to return .began.rawValue instead?
      */
     var type:String{
-        if self == NSTouch.Phase.began {
+        if self == .began {
             return "began"
-        }else if self == NSTouch.Phase.moved {
+        }else if self ==  .moved {
             return "moved"
-        }else if self == NSTouch.Phase.stationary {
+        }else if self ==  .stationary {
             return "stationary"
-        }else if self == NSTouch.Phase.ended {
+        }else if self ==  .ended {
             return "ended"
-        }else if self == NSTouch.Phase.cancelled {
+        }else if self ==  .cancelled {
             return "cancelled"
-        }else if self == NSTouch.Phase.touching {
+        }else if self ==  .touching {
             return "touching"
         }else{
             return "no match"
@@ -54,17 +54,17 @@ extension NSTouch.Phase{
  */
 extension NSEvent.Phase{
     var type:String{
-        if self == NSEvent.Phase.began {
+        if self == .began {
             return "began"
-        }else if self == NSEvent.Phase.stationary {
+        }else if self == .stationary {
             return "stationary"
-        }else if self == NSEvent.Phase.changed {
+        }else if self == .changed {
             return "changed"
-        }else if self == NSEvent.Phase.ended {
+        }else if self == .ended {
             return "ended"
-        }else if self == NSEvent.Phase.cancelled {
+        }else if self == .cancelled {
             return "cancelled"
-        }else if self == NSEvent.Phase.mayBegin {
+        }else if self == .mayBegin {
             return "mayBegin"
         }else{
             return "no match"
