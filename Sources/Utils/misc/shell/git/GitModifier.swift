@@ -61,7 +61,6 @@ class GitModifier{
         let credentials:String = key != nil ? key!.user + ":" + key!.pass + "@" : ""
         let remoteLocation:String = "https://" + credentials + repo.remotePath
         let shellScript:String = Git.path + Git.git + " " + Git.pull + " " + remoteLocation + " " + repo.branch
-//        Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,repo.localPath)
     }
     /**
@@ -124,7 +123,6 @@ class GitModifier{
      */
     static func replaceRemote(localRepoPath:String, replacementRepoRemote:String)->String{
         let shellScript:String = Git.path + Git.git + " " +  Git.remote + " " + "set-url" + " " + Git.origin + " " + replacementRepoRemote
-//        Swift.print("shellScript: " + "\(shellScript)")
         return ShellUtils.run(shellScript,localRepoPath)
     }
    /**
@@ -134,12 +132,11 @@ class GitModifier{
     */
    static func clone(_ remotePath:String, _ localPath:String)->String{
         let shellScript:String = Git.path + Git.git + " " + Git.clone + " " + remotePath + " " + localPath
-//        Swift.print("GitModifier.clone() shellScript: \(shellScript)")
         return ShellUtils.run(shellScript,localPath)
    }
    /**
     * NOTE: brings your remote refs up to date
-    * TODO: Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
+    * TODO: ⚠️️ Ellaborate, it seems this method is needed to get the cherry method to work, can it be used with specific branches?
     */
    static func gitRemoteUpdate(_ localRepoPath:String)->String{
        let shellScript:String = Git.path + Git.git + " " + Git.remote + " " + Git.update
@@ -203,10 +200,8 @@ class GitModifier{
     */
 	static func checkOut(_ localRepoPath:String, _ loc:String, _ filePath:String)->String{
 		var shellScript:String = Git.path + Git.git + " " + Git.checkOut + " " +  loc
-        if (filePath != " "){ shellScript  += " " + filePath }
-//        Swift.print("checkOut.shellScript: " + "\(shellScript)")
+        if filePath != " " { shellScript  += " " + filePath }
 		let retVal = ShellUtils.run(shellScript,localRepoPath)
-//        Swift.print("checkOut.retVal: " + "\(retVal)")
         return retVal
 	}
     /*

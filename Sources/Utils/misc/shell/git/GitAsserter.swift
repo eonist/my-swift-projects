@@ -41,7 +41,6 @@ class GitAsserter{
 	 * Asserts if there are unmerged paths that needs resolvment
 	 */
 	static func hasUnMergedPaths(_ localPath:String)->Bool{
-		//Swift.print("hasUnMergePaths")
         let result = GitParser.unMergedFiles(localPath)
 		return !result.isEmpty
 	}

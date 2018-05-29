@@ -5,7 +5,7 @@ class GitUtils{
 	 * CAUTION: ⚠️️ It's best practice to always commit any uncommited files before you attempt to pull
 	 * CAUTION: ⚠️️ Remember to wrap this method in a try error clause, so that you can handle merge conflicts
 	 * NOTE: the goal of this method is to arrive at the same state as the remote branch (git clone )
-	 * TODO: add support for different local and remote branch name
+	 * TODO: ⚠️️ add support for different local and remote branch name
 	 */
     static func manualPull(_ repo:GitRepo) -> Bool{
 //		Swift.print("GitUtils.manualPull()")
@@ -58,7 +58,7 @@ class GitUtils{
 	}
     /**
      * Returns the commit count
-     * CAUTION: returns count +1
+     * CAUTION: ⚠️️ returns count +1
      * Alt command: git log  --pretty=format:"Sha1: %h" | wc -l  outputs correct count ✅
      */
     static func commitCount(_ localRepoPath:String) -> Int{

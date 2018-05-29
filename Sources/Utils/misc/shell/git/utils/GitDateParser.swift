@@ -6,16 +6,10 @@ class GitDateParser {
      */
     static func commitDates(localRepoPath:String,since:Date,until:Date) -> [YMD]{
         let since:String = GitDateUtils.gitTime(since)
-//        Swift.print("since: " + "\(since)")
         let until:String = GitDateUtils.gitTime(until)
-//        Swift.print("until: " + "\(until)")
         let commitDatesStr:String = Utils.commitDates(localRepoPath: localRepoPath, since:since, until:until)
-//        Swift.print("commitDatesStr: " + "\(commitDatesStr)")
         let commitDates:[String] = StringParser.paragraphs(commitDatesStr)
-//        Swift.print("commitDates.count: " + "\(commitDates.count)")
-        return commitDates.map {
-            return Utils.date(date:$0)
-        }
+        return commitDates.map { Utils.date(date:$0) }
     }
     /**
      * New
@@ -39,22 +33,15 @@ private class Utils{
      */
     static func commitDates(localRepoPath:String,since:String,until:String) -> String{
         let shellScript:String = "\(Git.path + Git.git) \(Git.log) --since=\"\(since.encode()!)\" --until=\"\(until.encode()!)\" --date=short --pretty=format:\("%cd".encode()!)"
-//        Swift.print("shellScript: " + "\(shellScript)")
-//        Swift.print("localRepoPath: " + "\(localRepoPath)")
         let result:String = ShellUtils.run(shellScript,localRepoPath)
-//        Swift.print("result: " + "\(result)")
         return result
     }
     /**
      * Date of first commit in git (least recent aka "initial commit date")
      */
     static func firstCommitDate(localRepoPath:String)->String{
-//        let shellScript:String = Git.path +  "git log --pretty=oneline --date=short --pretty=format:\("%cd".encode()!)  --reverse | head -1"//has pipe
-        let shellScript:String = "\(Git.path + Git.git) rev-list --max-parents=0 HEAD --date=short --pretty=format:\("%cd".encode()!)"
-//        Swift.print("shellScript: " + "\(shellScript)")
-//        Swift.print("localRepoPath: " + "\(localRepoPath)")
+        let shellScript:String = "\(Git.path + Git.git) rev-list --max-parents=0 HEAD --date=short --pretty=format:\("%cd".encode()!)"//        let shellScript:String = Git.path +  "git log --pretty=oneline --date=short --pretty=format:\("%cd".encode()!)  --reverse | head -1"//has pipe
         let result:String = ShellUtils.run(shellScript,localRepoPath)
-//        Swift.print("result: " + "\(result)")
         return result
     }
     /**
@@ -75,9 +62,7 @@ private class Utils{
      * Converts 2017-09-02 -> (year:2017,month:09,day:02)
      */
     static func date(date:String) -> YMD{
-//        Swift.print("date: " + "\(date)")
         let parts:[String] = date.split("-")
-//        Swift.print("parts: " + "\(parts)")
         return .init(year:parts[0].int!,month:parts[1].int!,day:parts[2].int!)
     }
 }
