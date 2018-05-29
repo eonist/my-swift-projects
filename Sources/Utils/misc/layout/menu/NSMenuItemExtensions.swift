@@ -4,5 +4,5 @@ extension NSMenuItem {
     /**
      * Makes checking an NSMenuItem check state much more convenient
      */
-    var isChecked:Bool {get{return self.state == NSControl.StateValue.on} set{self.state = newValue ?  NSControl.StateValue.on : NSControl.StateValue.off}}
+    var isChecked:Bool {get{return self.state == .on} set{self.state = newValue ?  .on : .off}}
 }
