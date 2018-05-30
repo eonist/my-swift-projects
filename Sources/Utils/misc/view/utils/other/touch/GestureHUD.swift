@@ -9,7 +9,7 @@ class GestureHUD {
         self.view = view
     }
     func touchesBegan(_ event:NSEvent){
-        let touches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.began, in: view)
+        let touches:Set<NSTouch> = event.touches(matching:.began, in: view)
         for touch in touches {//
 //            Swift.print("touchesBegan id: "+"\((touch as NSTouch).identity)")
             let id:String = "\(touch.identity)"
@@ -32,7 +32,7 @@ class GestureHUD {
         }
     }
     func touchesEnded(_ event:NSEvent){
-        let endingTouches:Set<NSTouch> = event.touches(matching:NSTouch.Phase.ended, in: view)
+        let endingTouches:Set<NSTouch> = event.touches(matching:.ended, in: view)
 //        Swift.print("endingTouches.count: " + "\(endingTouches.count)")
         for endingTouch in endingTouches {
             let id:String = "\(endingTouch.identity)"
