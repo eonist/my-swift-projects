@@ -59,6 +59,7 @@ class StringParser{
     }
     /**
 	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
+     * NOTE: get last 4 chars: String(a.suffix(4)) or a.substring(from:a.index(a.endIndex, offsetBy: -4))
 	 */
     static func subString(_ str:String,_ beginning:Int,_ end:Int)->String{
         let range = str.stringRange(str, beginning, end:end)
