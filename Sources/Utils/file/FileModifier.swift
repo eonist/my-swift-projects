@@ -47,15 +47,28 @@ class FileModifier{
             return false
         }
     }
-    static func createDir(_ path:String) -> Bool{
-//        let documentsPath1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
-//        let logsPath = documentsPath1.appendingPathComponent("data")
-//        print(logsPath!)
+    /**
+     * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, data)//returns true or false depending on if something was written or not
+     */
+    static func write(path:String,data:Data) -> Bool{
+        do {
+            try data.write(to: URL(fileURLWithPath: path), options: [.atomic])
+            return true
+        } catch let error{
+            print("failed to write file – bad permissions, bad filename, missing permissions, or something else error: \(error.localizedDescription)")
+            return false
+        }
+    }
+    /**
+     * EXAMPLE: FileModifier.createDir("~/Desktop/temp/".tildePath)//returns true or false depending on if something was created or not
+     * NOTE: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
+     */
+    static func createDir(path:String) -> Bool{
         do {
             try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             return true
-        } catch let error as NSError {
-            NSLog("Unable to create directory \(error.debugDescription)")
+        } catch let error  {
+            Swift.print("Unable to create directory \(error.localizedDescription)")
             return false
         }
     }

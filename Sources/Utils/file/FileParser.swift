@@ -41,6 +41,7 @@ class FileParser{
     }
     /**
      * Returns paths of content in a dir
+     * NOTE: This is the root folder of the main Harddrive on your computer
      */
     static func contentOfDir(_ path:String)->[String]?{
         let fileManager = FileManager.default
