@@ -27,7 +27,7 @@ class FilePathModifier {
 //            Swift.print("isBacklash: \(baseURL + filePath)")
             let baseURL = baseURL.hasSuffix("/") ? baseURL : baseURL + "/"
             return FilePathModifier.normalize(baseURL + filePath) ?? nil//returns absolute path
-        }else if FileAsserter.exists(filePath){//absolute path that exists
+        }else if FileAsserter.exists(path: filePath){//absolute path that exists
             return filePath
         }else if FilePathAsserter.isAbsolute(filePath){//absolute but doesn't exists
             return baseURL + filePath
