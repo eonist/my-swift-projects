@@ -7,7 +7,7 @@ import Foundation
 class SimpleTimer {
     typealias Tick = ()->Void
     private var timer:Timer?
-    private var interval:TimeInterval /*in seconds*/
+    var interval:TimeInterval /*in seconds*/
     private var repeats:Bool
     var tick:Tick
     
