@@ -1,4 +1,3 @@
-
 import Foundation
 /**
  * EXAMPLE: CountDownTimer.init(duration:5,interval:0.1).onComplete{Swift.print("5 seconds up")}

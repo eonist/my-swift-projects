@@ -34,5 +34,15 @@ extension UIView{
         }
         return nil
     }
+    /**
+     * Creates UIImage from a view
+     */
+    var snapShot:UIImage?{
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let image:UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
 #endif
