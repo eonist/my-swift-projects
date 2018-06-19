@@ -7,6 +7,8 @@ class FileModifier{
 	 * TODO: additional catch clauses:
      * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
      * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
+     * IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
+     * IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
 	 */
 	static func move(_ fromURL:String, toURL:String) {
 		let fileManager = FileManager.default
@@ -20,16 +22,20 @@ class FileModifier{
 	}
     /**
      * Copies a file to another location
+     * IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
+     * IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
      */
-    static func copy(_ fromURL:String, toURL:String){
+    static func copy(_ fromURL:String, toURL:String) -> Bool{
         let fileManager = FileManager.default
         let fromURL:URL = URL(fileURLWithPath: fromURL)
         let toURL:URL = URL(fileURLWithPath: toURL)
         do {
             try fileManager.copyItem(at: fromURL, to: toURL)
+            return true
         }
         catch let error as NSError {
-            print("Error: \(error)")
+            print("⚠️️ copy.Error: \(error)")
+            return false
         }
     }
     /**
@@ -82,7 +88,7 @@ class FileModifier{
             return true
         }
         catch let error as NSError {
-            print("Error: \(error)")
+            print("delete.Error: \(error)")
             return false
         }
     }
@@ -95,7 +101,7 @@ class FileModifier{
             try fileManager.moveItem(atPath: fromURL, toPath: toURL)
             return true
         }catch let error as NSError {
-            print("Error: \(error)")
+            print("rename.Error: \(error)")
             return false
         }
     }
@@ -108,7 +114,7 @@ class FileModifier{
             try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             return true
         }catch let error as NSError {
-            print("Error: \(error)")
+            print("createFolder.Error: \(error)")
             return false
         }
     }
