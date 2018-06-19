@@ -1,6 +1,5 @@
 import Foundation
 
-
 class GitTypes{
     /**
      * Describe

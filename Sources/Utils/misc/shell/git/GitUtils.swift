@@ -91,7 +91,7 @@ class GitUtils{
         return result
     }
     /**
-     * NOTE: There is also: --since --before //TODO: ⚠️️ figgure out the difference
+     * NOTE: There is also: --since --before //TODO: ⚠️️ figure out the difference
      * NOTE: git log --after="2013-11-12 00:00" --before="2013-11-12 23:59"
      * PARAM: since and until: must be in this format: "2016-11-21 20:59:59" (aka git time, use GitDateUtils to convert Date to GitDate)
      */

@@ -30,7 +30,7 @@ class GitAsserter{
 	 * You could also maybe use log to assert this, see is_remote_branch_ahead but opposite
 	 */
 	static func hasLocalCommits(_ localRepoPath:String, _ branch:String)->Bool{
-		//--move the bellow to gitModifier?
+		//TODO: ⚠️️ move the bellow to gitModifier?
 		_ = GitModifier.gitRemoteUpdate(localRepoPath)/*🌵 in order for the cherry to work with "git add" that uses https, we need to call this method*/
 		let cherryResult:String = GitParser.cherry(localRepoPath, branch)//🌵
 		//Swift.print("cherryResult: " + "\(cherryResult)")

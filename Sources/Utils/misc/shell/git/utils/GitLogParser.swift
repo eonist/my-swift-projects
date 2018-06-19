@@ -24,7 +24,7 @@ private class Utils{
         //if(str.count > 5) {str = str.subString(3, str.count-2)}
         return trim(str)
     }
-    static var trimPattern:String = "^(?:'?\n*\r*)(.*?)(?:\n*\r*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
+    static let trimPattern:String = "^(?:'?\n*\r*)(.*?)(?:\n*\r*'?)$"//"(?:^'?\n*)(.*?)(?:(\n+?'?$)|('$)|$)"
     /**
      * NOTE: trims away astray characters from left and right of the body
      */

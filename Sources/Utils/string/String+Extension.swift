@@ -56,9 +56,15 @@ extension String{
     func search(_ pattern:String)->Int?{/*Convenince*/
         return RegExp.search(self,pattern)
     }
+    /**
+     * TODO: ⚠️️ Rename to var encoded
+     */
     func encode()->String?{/*Convenince*/
         return StringParser.encode(self)
     }
+    /**
+     * TODO: ⚠️️ Rename to var decoded
+     */
     func decode()->String?{/*Convenince*/
         return StringParser.decode(self)
     }
