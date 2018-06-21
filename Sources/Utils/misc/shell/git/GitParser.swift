@@ -1,4 +1,5 @@
 import Foundation
+
 class GitParser{
 	/**
 	 * Returns current git status
