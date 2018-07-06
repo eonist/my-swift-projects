@@ -201,7 +201,7 @@ private class Utils{
     }
     /**
      * Asserts if the PARAM value is a basic type
-     * TODO: Write an assert utility method that takes types and asserts true pr false for an instance
+     * TODO: ⚠️️ Write an assert utility method that takes types and asserts true pr false for an instance
      */
     static func stringConvertiable(_ val:Any)->Bool{
         return val is Int || val is UInt || val is CGFloat || val is String || val is Double || val is Float || val is Bool

@@ -5,6 +5,8 @@
  * String(A.self.dynamicType)//A.Type
  * String(A.self)//A
  * String(A)//A
+ * String(describing: type(of: object))  // to get name of class via instance
+ * String(describing: SomeClass.self) or "\(SomeClass.self)" // to get name of swift class
  */
 class ClassParser {
     /**
