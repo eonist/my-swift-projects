@@ -2,6 +2,7 @@
 import UIKit
 /**
  * Aligning relative to another view (x,y)
+ * Discussion: Snapkit and Carthography are too clever and caters to too many facets of autolayout. This library is just a simple extension that does basic autolayout while reducing the setup time in half.
  * TODO: ⚠️️ The examples in this class is a bit outdated and needs an update ⚠️️
  * NOTE: Has a lot of NSConstraint and NSAnchor info: https://stackoverflow.com/a/26181982/5389500
  * Discussion: anchor is a more appropriate name than, pin,pos,pt,edge,put,magnet,align,corner (anchor can represent both corner,edge and center)
