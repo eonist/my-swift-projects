@@ -44,5 +44,20 @@ extension UIView{
         UIGraphicsEndImageContext()
         return image
     }
+    /**
+     * Returns rotation of view
+     */
+    var rotation:CGFloat{
+        let radians = atan2(self.transform.b, self.transform.a)
+        let degrees = radians * 180 / .pi
+        return degrees
+    }
+    /**
+     * NOTE: this method gives you the scale regardless of rotation or translation applied to transform:
+     * REF: https://stackoverflow.com/a/46223255/5389500
+     */
+    var scale:CGFloat {
+        return sqrt(self.transform.a * self.transform.a + self.transform.c * self.transform.c)
+    }
 }
 #endif
