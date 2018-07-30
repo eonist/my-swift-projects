@@ -185,7 +185,7 @@ extension UIView{
      */
     func activateConstraint(closure:ConstraintClosure) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = closure(self)
+        let constraints = closure(self)/*the constraints is returned from the closure*/
         NSLayoutConstraint.activate(constraints)
     }
 }

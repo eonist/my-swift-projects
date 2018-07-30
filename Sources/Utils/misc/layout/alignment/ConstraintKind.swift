@@ -1,15 +1,18 @@
 #if os(iOS)
 import UIKit
 
+typealias SizeConstraint = (w:NSLayoutConstraint,h:NSLayoutConstraint)
+typealias AnchorConstraint = (x:NSLayoutConstraint,y:NSLayoutConstraint)
+
 protocol ConstraintKind:class{
-    var anchor:(x:NSLayoutConstraint,y:NSLayoutConstraint)? {get set}
-    var size:(w:NSLayoutConstraint,h:NSLayoutConstraint)? {get set}
+    var anchor:AnchorConstraint? {get set}
+    var size:SizeConstraint? {get set}
 }
 extension ConstraintKind{
     /**
      * Convenient
      */
-    func setConstraint(anchor:(x:NSLayoutConstraint,y:NSLayoutConstraint),size:(w:NSLayoutConstraint,h:NSLayoutConstraint)) {
+    func setConstraint(anchor:AnchorConstraint,size:SizeConstraint) {
         self.anchor = anchor
         self.size = size
     }
@@ -31,12 +34,16 @@ extension ConstraintKind where Self:UIView{
         UIView.animate({self.update(offset: to, align: align, alignTo: alignTo)},onComplete:onComplete)
     }
 }
+/**
+ * Animation (Static & convenient)
+ */
 extension UIView{
-    typealias AnimComplete = ()-> Void
-    typealias AnimUpdate = ()-> Void
+    typealias AnimComplete = () -> Void
+    typealias AnimUpdate = () -> Void
     static func defaultOnComplete() {Swift.print("default anim completed closure")}
     /**
      * Animate
+     * Example:
      */
     static func animate(_ onUpdate:@escaping AnimUpdate,onComplete:@escaping AnimComplete = UIView.defaultOnComplete){
         let anim = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
