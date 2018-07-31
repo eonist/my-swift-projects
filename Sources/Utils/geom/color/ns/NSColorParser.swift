@@ -83,16 +83,19 @@ extension NSColorParser{
         return hsv.rgb.nsColor
     }
     /**
-     *
+     * Returns NSColor for rgb
      */
     static func nsColor(_ rgb:RGB) -> NSColor{
         return NSColorParser.nsColor(rgb.r,rgb.g,rgb.b)
     }
+    /**
+     * returns NSColor for hsb
+     */
     static func nsColor(_ hsb:HSB) -> NSColor{
         return hsb.rgb.nsColor
     }
     /**
-     *
+     * Returns random color
      */
     static func randomColor()-> NSColor{
         let r:CGFloat  = CGFloat(arc4random() % 255) / 255.0//Swift 3 upgrade, -> was rand()
@@ -101,17 +104,6 @@ extension NSColorParser{
         let nsColor:NSColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: 1)
         return nsColor
     }
-    /**
-     * Returns a random CGColor
-     */
-    static func random()->CGColor{
-        let r:CGFloat  = CGFloat(arc4random() % 255) / 255.0
-        let g:CGFloat  = CGFloat(arc4random() % 255) / 255.0
-        let b:CGFloat  = CGFloat(arc4random() % 255) / 255.0
-        let color:CGColor  = CGColor(red: r, green: g, blue: b, alpha: 1.0)
-        return color
-    }
-    
     /**
      * Interpolates between two NSColors 
      * TODO: ⚠️️ interpolating between gray and black at scalar 0 yields a darker tone than gray. Try fixing this by looking at the components, or maybe even using the CIColor trick
