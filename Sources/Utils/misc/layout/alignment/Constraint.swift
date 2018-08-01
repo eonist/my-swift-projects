@@ -11,8 +11,6 @@ import UIKit
  * EXAMPLE: let pos = Constraint.anchor(square,to:canvas,targetAlign:.topleft,toAlign:.topleft)
  * EXAMPLE: let size = Constraint.size(square,to:canvas)
  * EXAMPLE: NSLayoutConstraint.activate([anchor.x,anchor.y,size.w,size.h])
- * PARAM: align: self alignment point
- * PARAM: alignTo: external view to align self with
  */
 class Constraint{
     /**
@@ -187,34 +185,8 @@ extension UIView{
      */
     func activateConstraint(closure:ConstraintClosure) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = closure(self)/*the constraints is returned from the closure*/
+        let constraints:[NSLayoutConstraint] = closure(self)/*the constraints is returned from the closure*/
         NSLayoutConstraint.activate(constraints)
-    }
-}
-extension ConstraintKind where Self:UIView{
-    /**
-     * Updates horizontal anchor
-     */
-    func update(offset:CGFloat, align:HorizontalAlign, alignTo:HorizontalAlign){
-        guard let superview:UIView = self.superview else {fatalError("err superview not available")}
-        guard let oldAnchor = self.anchor else {fatalError("err anchor not available")}
-        NSLayoutConstraint.deactivate([oldAnchor.x])
-        let newAnchorX = Constraint.anchor(self, to: superview, align: align, alignTo: alignTo, offset: offset)
-        NSLayoutConstraint.activate([newAnchorX])
-        self.anchor?.x = newAnchorX
-        superview.layoutIfNeeded()/*The superview is responsible for updating subView constraint updates*/
-    }
-    /**
-     * Updates vertical anchor
-     */
-    func update(offset:CGFloat, align:VerticalAlign, alignTo:VerticalAlign){
-        guard let superview:UIView = self.superview else {fatalError("err superview not available")}
-        guard let oldAnchor = self.anchor else {fatalError("err anchor not available")}
-        NSLayoutConstraint.deactivate([oldAnchor.y])
-        let newAnchorY = Constraint.anchor(self, to: superview, align: align, alignTo: alignTo, offset: offset)
-        NSLayoutConstraint.activate([newAnchorY])
-        self.anchor?.y = newAnchorY
-        superview.layoutIfNeeded()/*The superview is responsible for updating subView constraint updates*/
     }
 }
 #endif

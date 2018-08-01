@@ -3,12 +3,7 @@ import UIKit
 
 typealias SizeConstraint = (w:NSLayoutConstraint,h:NSLayoutConstraint)
 typealias AnchorConstraint = (x:NSLayoutConstraint,y:NSLayoutConstraint)
-/**
- * Stores the constraints, for easy activating and deactivating
- * EXAMPLE:
- * var size:SizeConstraint?
- * var anchor:AnchorConstraint?
- */
+
 protocol ConstraintKind:class{
     var anchor:AnchorConstraint? {get set}
     var size:SizeConstraint? {get set}
@@ -37,6 +32,48 @@ extension ConstraintKind where Self:UIView{
      */
     func animate(to:CGFloat, align:VerticalAlign = .top, alignTo:VerticalAlign = .top, onComplete:@escaping AnimComplete = Self.defaultOnComplete){
         UIView.animate({self.update(offset: to, align: align, alignTo: alignTo)},onComplete:onComplete)
+    }
+}
+/**
+ * Update
+ */
+extension ConstraintKind where Self:UIView{
+    typealias ReturnType = (anchor:AnchorConstraint,size:SizeConstraint)
+    typealias ConstraintKindClosure = (_ view:UIView) -> ReturnType
+    /**
+     * Same as UIView().activateConstraint... but also sets size and anchor constraints (ConstraintKind) (For animation etc)
+     * TODO: ⚠️️ maybe reuse the code from activateConstraint, by forwarning the closure etc.
+     */
+    func activateConstraint(closure:ConstraintKindClosure) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let constraints:ReturnType = closure(self)/*the constraints is returned from the closure*/
+        self.size = constraints.size
+        self.anchor = constraints.anchor
+        NSLayoutConstraint.activate([constraints.anchor.x,constraints.anchor.y,constraints.size.w,constraints.size.h])
+    }
+    /**
+     * Updates horizontal anchor
+     */
+    func update(offset:CGFloat, align:HorizontalAlign, alignTo:HorizontalAlign){
+        guard let superview:UIView = self.superview else {fatalError("err superview not available")}
+        guard let oldAnchor = self.anchor else {fatalError("err anchor not available")}
+        NSLayoutConstraint.deactivate([oldAnchor.x])
+        let newAnchorX = Constraint.anchor(self, to: superview, align: align, alignTo: alignTo, offset: offset)
+        NSLayoutConstraint.activate([newAnchorX])
+        self.anchor?.x = newAnchorX
+        superview.layoutIfNeeded()/*The superview is responsible for updating subView constraint updates*/
+    }
+    /**
+     * Updates vertical anchor
+     */
+    func update(offset:CGFloat, align:VerticalAlign, alignTo:VerticalAlign){
+        guard let superview:UIView = self.superview else {fatalError("err superview not available")}
+        guard let oldAnchor = self.anchor else {fatalError("err anchor not available")}
+        NSLayoutConstraint.deactivate([oldAnchor.y])
+        let newAnchorY = Constraint.anchor(self, to: superview, align: align, alignTo: alignTo, offset: offset)
+        NSLayoutConstraint.activate([newAnchorY])
+        self.anchor?.y = newAnchorY
+        superview.layoutIfNeeded()/*The superview is responsible for updating subView constraint updates*/
     }
 }
 /**
