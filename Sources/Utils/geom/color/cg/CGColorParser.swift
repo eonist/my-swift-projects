@@ -41,7 +41,7 @@ class CGColorParser {
         let r:CGFloat  = CGFloat(arc4random() % 255) / 255.0
         let g:CGFloat  = CGFloat(arc4random() % 255) / 255.0
         let b:CGFloat  = CGFloat(arc4random() % 255) / 255.0
-        let color:CGColor  = CGColor(red: r, green: g, blue: b, alpha: 1.0)
+        let color:CGColor  = CGColor.init(red: r, green: g, blue: b, alpha: 1.0)
         return color
     }
 }

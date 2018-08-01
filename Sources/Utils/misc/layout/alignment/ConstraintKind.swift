@@ -3,7 +3,12 @@ import UIKit
 
 typealias SizeConstraint = (w:NSLayoutConstraint,h:NSLayoutConstraint)
 typealias AnchorConstraint = (x:NSLayoutConstraint,y:NSLayoutConstraint)
-
+/**
+ * Stores the constraints, for easy activating and deactivating
+ * EXAMPLE:
+ * var size:SizeConstraint?
+ * var anchor:AnchorConstraint?
+ */
 protocol ConstraintKind:class{
     var anchor:AnchorConstraint? {get set}
     var size:SizeConstraint? {get set}

@@ -11,6 +11,8 @@ import UIKit
  * EXAMPLE: let pos = Constraint.anchor(square,to:canvas,targetAlign:.topleft,toAlign:.topleft)
  * EXAMPLE: let size = Constraint.size(square,to:canvas)
  * EXAMPLE: NSLayoutConstraint.activate([anchor.x,anchor.y,size.w,size.h])
+ * PARAM: align: self alignment point
+ * PARAM: alignTo: external view to align self with
  */
 class Constraint{
     /**
