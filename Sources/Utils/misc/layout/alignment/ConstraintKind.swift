@@ -38,13 +38,21 @@ extension ConstraintKind where Self:UIView{
  * Update
  */
 extension ConstraintKind where Self:UIView{
+    typealias UIViewConstraintKind = UIView & ConstraintKind
     typealias ReturnType = (anchor:AnchorConstraint,size:SizeConstraint)
-    typealias ConstraintKindClosure = (_ view:UIView) -> ReturnType
+    typealias ConstraintKindClosure = (_ view:UIViewConstraintKind) -> ReturnType
     /**
      * Same as UIView().activateConstraint... but also sets size and anchor constraints (ConstraintKind) (For animation etc)
      * TODO: ⚠️️ maybe reuse the code from activateConstraint, by forwarning the closure etc.
+     * TODO: ⚠️️ Could be possible to do something like: typealias UIViewConstraintKind = UIView & ConstraintKind
+     * Example:
+     * sliderBar.activateConstraintKind { view in
+     *      let anchor = Constraint.anchor(view, to: self, align: .topLeft, alignTo: .topLeft)
+     *      let size = Constraint.size(view, size: size)
+     *      return (anchor:anchor, size:size)
+     * }
      */
-    func activateConstraint(closure:ConstraintKindClosure) {
+    func activateConstraintKind(closure:ConstraintKindClosure) {
         self.translatesAutoresizingMaskIntoConstraints = false
         let constraints:ReturnType = closure(self)/*the constraints is returned from the closure*/
         self.size = constraints.size
