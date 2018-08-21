@@ -7,6 +7,7 @@ extension CGColor {
     }
     /**
      * EXAMPLE: NSColor.redColor().cgColor.alpha(0.5)//Output: a black color with 50% transparancy
+     * NOTE: to read alpha: color.cgColor.alpha
      */
     func alpha(_ alpha:CGFloat)->CGColor{
         return self.copy(alpha: alpha)!

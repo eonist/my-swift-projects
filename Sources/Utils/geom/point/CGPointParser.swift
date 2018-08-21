@@ -59,6 +59,8 @@ class CGPointParser{
      * NOTE: One can also use Point.polar(radius,radian) or equivilent method in the spesific language
      * Base formula CosΘ = x/len
      * Base Formula SinΘ = y/len
+     * EXAMPLE: CGPoint.polarPoint(100, π/4)//polarPoint:  (70.7106781186548, 70.7106781186547) bottomRight corner
+     * NOTE: π = Double.pi
      */
     static func polar(_ radius:CGFloat, _ angle:CGFloat) -> CGPoint {
         let x:CGFloat = /*radius + */(radius * cos(angle))

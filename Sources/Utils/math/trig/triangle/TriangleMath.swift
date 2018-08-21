@@ -328,6 +328,7 @@ class TriangleMath {
       * NOTE: This function is reverse of Point.polar(len, angle):Point
       * NOTE: this finds the radius of a circle (magnitude)
       * Base Formula c2 = a^2 + b^2
+      * NOTE: This can be used to find hypotenuse and diagonal of a Square
       */
      static func polarToLength(_ x:CGFloat, _ y:CGFloat) -> CGFloat {
          return sqrt(pow(x, 2) + pow(y, 2))
