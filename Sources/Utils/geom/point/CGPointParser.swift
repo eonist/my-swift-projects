@@ -51,6 +51,7 @@ class CGPointParser{
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2))
     }
     /**
+     * A method to check distance between two points
      * Ref: https://en.wikipedia.org/wiki/Pythagorean_theorem
      */
     static func dist(a: CGPoint, b: CGPoint) -> CGFloat {
