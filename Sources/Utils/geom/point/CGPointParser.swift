@@ -51,6 +51,14 @@ class CGPointParser{
         return sqrt(pow(xDifference, 2) + pow(yDifference, 2))
     }
     /**
+     * Ref: https://en.wikipedia.org/wiki/Pythagorean_theorem
+     */
+    static func dist(a: CGPoint, b: CGPoint) -> CGFloat {
+        let xDist = a.x - b.x
+        let yDist = a.y - b.y
+        return CGFloat(sqrt(xDist * xDist + yDist * yDist))
+    }
+    /**
      * Returns a point, in a polar cordinate system (from 0,0), for PARAM: angle and PARAM: length
      * Return: a point on a circle where the pivot is TopLeft Corner (0,0)
      * PARAM: radius: the radius of the circle
