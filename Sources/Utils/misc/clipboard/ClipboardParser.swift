@@ -14,3 +14,24 @@ class ClipboardParser {
         return stringData(NSPasteboard.PasteboardType.string.rawValue)
     }
 }
+
+
+///**
+// * NOTE: remember to assert if the clipboard has the requested format first by using ClipboardAsserter.hasData etc
+// */
+//static func getString() -> String? {
+//    return UIPasteboard.general.string
+//}
+
+
+//static func hasString() -> Bool {//Untested
+//    return UIPasteboard.general.hasStrings
+//}
+
+
+/**
+ * NOTE: remember to assert if the clipboard has the requested format first by using ClipboardAsserter.hasData etc
+ */
+//static func getString() -> String? {
+//    return UIPasteboard.general.string
+//}
