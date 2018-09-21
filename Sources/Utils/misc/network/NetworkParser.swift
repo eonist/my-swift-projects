@@ -20,7 +20,7 @@ class NetworkParser{
     static func str(url: URL, downloadComplete:@escaping DownloadComplete = defaultDownloadComplete) {
         data(url: url) { data, response, error in
             guard let data = data, error == nil else { downloadComplete(nil,.errorGettingDataFromURL(error,response)); return}
-            //            Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
+            //Swift.print(response?.suggestedFilename ?? url.lastPathComponent)
             guard let stringValue = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {downloadComplete(nil,.dataIsNotString);return}
             downloadComplete(stringValue,nil)
         }
@@ -44,7 +44,7 @@ class NetworkParser{
      * EXAMPLE: urlStr:"https://www.google.com/dev/push?tx=someValue"
      * PARAM: httpBody: some servers requires the params to be encoded as data
      */
-    static func data(url: URL,  httpMethod:HTTPMethodType = .get, httpBody:Data? = nil, completion: @escaping URLQuery = defaultURLQueryComplete) {
+    static func data(url:URL, httpMethod:HTTPMethodType = .get, httpBody:Data? = nil, completion: @escaping URLQuery = defaultURLQueryComplete) {
         let session:URLSession = URLSession.shared
         var request = URLRequest.init(url: url)
         request.httpMethod = httpMethod.rawValue//get or post
@@ -83,7 +83,7 @@ extension NetworkParser{
         }
     }
     /**
-     * New
+     * Default callback method for data(url: URL)
      */
     static var defaultURLQueryComplete:URLQuery = { data, response, error in
         if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
@@ -93,7 +93,7 @@ extension NetworkParser{
         }
     }
     /**
-     * New
+     * Default callback method for data(webPath:String) call
      */
     static var defaultDataComplete:DataDownloadComplete = { (data:Data?,error:DownloadError?) in
         if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {

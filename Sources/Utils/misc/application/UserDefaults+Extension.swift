@@ -13,7 +13,7 @@ extension UserDefaults {
      * Removes all keys and values from user defaults
      */
     static func removeAll() {
-        UserDefaults.standard.dictionaryRepresentation().forEach{ for (key, _) in
+        UserDefaults.standard.dictionaryRepresentation().forEach{  (key, _) in
             UserDefaults.standard.removeObject(forKey: key)
         }
     }
