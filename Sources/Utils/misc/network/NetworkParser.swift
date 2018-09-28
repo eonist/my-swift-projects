@@ -45,13 +45,19 @@ class NetworkParser{
      * PARAM: httpBody: some servers requires the params to be encoded as data
      */
     static func data(url:URL, httpMethod:HTTPMethodType = .get, httpBody:Data? = nil, completion: @escaping URLQuery = defaultURLQueryComplete) {
-        let session:URLSession = URLSession.shared
-        var request = URLRequest.init(url: url)
-        request.httpMethod = httpMethod.rawValue//get or post
+        var urlRequest = URLRequest.init(url: url)
+        urlRequest.httpMethod = httpMethod.rawValue//get or post
         if let httpBody = httpBody {
-            request.httpBody = httpBody
+            urlRequest.httpBody = httpBody
         }
-        let task:URLSessionTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+        data(urlRequest: urlRequest)
+    }
+    /**
+     * New (Used for Custom URLRequests)
+     */
+    static func data(urlRequest:URLRequest, completion: @escaping URLQuery = defaultURLQueryComplete) {
+        let session:URLSession = URLSession.shared
+        let task:URLSessionTask = session.dataTask(with: urlRequest as URLRequest) { (data, response, error) in
             completion(data, response, error)
         }
         task.resume()
@@ -85,7 +91,7 @@ extension NetworkParser{
     /**
      * Default callback method for data(url: URL)
      */
-    static var defaultURLQueryComplete:URLQuery = { data, response, error in
+    static var defaultURLQueryComplete:URLQuery = { (data:Data?, response:URLResponse?, error:Error?) in
         if let data = data, let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
             Swift.print("str:  \(str)")
         }else{

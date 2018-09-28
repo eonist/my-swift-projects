@@ -22,7 +22,8 @@ import Cocoa
  */
 public class Graphics{
     lazy public var context:CGContext = {
-        return NSGraphicsContext.current?.cgContext ?? {fatalError("Context not available")}()/* Get the handle to the current context */
+      //this could be buggy in swift 4.2
+      return ((NSGraphicsContext.current?.cgContext ?? {fatalError("Context not available")}())!)/* Get the handle to the current context */
     }()
     var mode:(fill:FillMode,stroke:StrokeMode) = (.None, .None)
     var gradient:GraphicsGradientKind?/* = GraphicsGradient()*//*This value exists because we will use it when doing radial and linear gradient construction and need access to matrix etc*/

@@ -3,8 +3,9 @@ import Foundation
  * Demonstrates async iterator
  */
 class DemoIterator:ArrayIterator<DemoItem> {
-    var complete:()->Void
-    init(array: Array<T>,onComplete:@escaping ()->Void) {
+    typealias Completed = ()->Void
+    var complete:Completed
+    init(array: Array<T>,onComplete:@escaping Completed) {
         self.complete = onComplete
         super.init(array: array)
     }
@@ -39,3 +40,7 @@ func iterate(){
     }
 }
 //iterate()
+
+class ReverseableDemo{
+    
+}

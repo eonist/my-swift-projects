@@ -40,8 +40,10 @@ extension CGPath {
             let body = unsafeBitCast(info, to: Body.self)
             body(element.pointee)
         }
-        Swift.print(MemoryLayout.size(ofValue: body))
-        let unsafeBody = unsafeBitCast(body, to: UnsafeMutableRawPointer.self)
-        self.apply(info: unsafeBody, function: callback as! CGPathApplierFunction)
+      fatalError("out of order in swift 4.2")
+        //Swift.print(MemoryLayout.size(ofValue: body))
+        //let unsafeBody = unsafeBitCast(body, to: UnsafeMutableRawPointer.self)
+        //self.apply(info: unsafeBody, function: callback as! CGPathApplierFunction)
     }
 }
+

@@ -9,7 +9,9 @@ extension Range {
      */
     init(_ start:Bound,_ end:Bound){/*Conveninence initializer*/
         //TODO:  try ->return self.indices.count or self.underestimateCount()
-        self.init(start..<end/*<-CountableRange<Int>*/)//which->converts to Range<Int>
+      Swift.print("RangeExtension.init coud be broken in 4.2 ⚠️️")
+      self.init(uncheckedBounds: (( start,  end)))///*<-CountableRange<Int>*/ //which->converts to Range<Int
+      //self.init(start..<end, end)<
     }
     var start:Bound {return self.lowerBound}//(0..<4).lowerBound -> 0
     var end:Bound {return self.upperBound}//(0..<4).upperBound -> 4
