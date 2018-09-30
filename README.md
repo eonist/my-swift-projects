@@ -1,7 +1,7 @@
 ![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-macOS/iOS-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
 [![codebeat](https://codebeat.co/badges/59d2725a-e28e-4da4-9749-3ddc138be55b)](https://codebeat.co/projects/github-com-eonist-swift-utils) [![SPM compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) 
 
-A collection of my swift util libs:
+### A collection of my swift util libs:
 
 | Name  |  | Name |  | Name |  |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -11,3 +11,5 @@ A collection of my swift util libs:
 |  [FileWatcher](https://github.com/eonist/FileWatcher)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileWatcher.svg"> | [FileLib](https://github.com/gitsync/FileLib/)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">  | [ColorLib](https://github.com/gitsync/ColorLib)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/ColorLib.svg"> |
 | [EventLib](https://github.com/gitsync/EventLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/EventLib.svg"> | [SQLiteLib](https://github.com/gitsync/SQLiteLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SQLiteLib.svg"> | [ReflectionLib](https://github.com/gitsync/ReflectionLib)   |  | |
 
+### Manual installation gifs:
+[http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/](http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/) 
