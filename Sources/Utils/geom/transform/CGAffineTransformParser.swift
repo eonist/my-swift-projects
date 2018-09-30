@@ -53,7 +53,11 @@ class CGAffineTransformParser {
     static func copy(_ transform:CGTransform)->CGTransform{
         return CGAffineTransform(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty)//radialGradient.gradientTransform
     }
+   /**
+    * Updated in swift 4.2
+    */
     static func concat(_ a:CGTransform,_ b:CGTransform)->CGTransform{
-        return CGAffineTransformParser.concat(a, b)
+        //return CGAffineTransformParser.concat(a, b)
+         return a.concatenating(b)
     }
 }

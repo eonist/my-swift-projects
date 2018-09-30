@@ -9,13 +9,15 @@ class CustomMenuItem:NSMenuItem{
     @objc func onSelect(event:AnyObject) {
         Swift.print("override in superClass")
     }
-    /**
-     * Return true if you want to enable the menu item, false will disable it
-     * NOTE: add assertion logic here
-     */
-    override func validateMenuItem(_ menuItem:NSMenuItem) -> Bool {
-        //override in subclass (optional)
-        return true
-    }
+   /**
+    * Return true if you want to enable the menu item, false will disable it
+    * NOTE: add assertion logic here
+    * UPDATE: swift 4.2 removed validateMenuItem(_ menuItem:NSMenuItem) -> Bool
+    */
+   public func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
+      //override in subclass (optional)
+      return true
+   }
+  
     required init(coder decoder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

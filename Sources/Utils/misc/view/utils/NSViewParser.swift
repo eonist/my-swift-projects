@@ -65,9 +65,10 @@ class NSViewParser {
     }
     /**
      * New
+     * Update: Swift 4.2
      */
     static func first<T>(view:NSView, ofKind:T.Type? = nil) -> T?{
-        return view.subviews.lazy.flatMap{$0 as? T}.first
+        return view.subviews.lazy.compactMap{$0 as? T}.first
     }
     //DEPRECATED
     //static func getSubviewAt(_ view:NSView, _ i:Int)->NSView{return view.subviews[i]}/*favour getSubViewAt method instead, as its optional*/

@@ -13,9 +13,8 @@ class TextFormatUtils {
         textParagraph.minimumLineHeight = textParagraph.maximumLineHeight
         //        Swift.print("textParagraph.minimumLineHeight: " + "\(textParagraph.minimumLineHeight)")
         textParagraph.alignment = TextFieldParser.alignment(textFormat.align)//Left,Right,Justified,Natural,Center
-        let attribs:[NSAttributedStringKey : Any] = [NSAttributedStringKey.font:font,NSAttributedStringKey.foregroundColor:textColor,NSAttributedStringKey.paragraphStyle:textParagraph]
+        let attribs:[NSAttributedString.Key : Any] = [NSAttributedString.Key.font:font,NSAttributedString.Key.foregroundColor:textColor,NSAttributedString.Key.paragraphStyle:textParagraph]
         let attrString:NSAttributedString = NSAttributedString.init(string: stringValue, attributes: attribs)
-        
         return attrString
     }
 }

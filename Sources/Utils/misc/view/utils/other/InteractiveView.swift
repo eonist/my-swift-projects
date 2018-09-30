@@ -151,13 +151,14 @@ class InteractiveView:FlippedView,InteractiveViewable{
     /**
      * NOTE: Looping backwards is very important as it's the only way to target the front-most views in the stack
      * NOTE: Why is this needed? because normal hitTesting doesn't work if the frame size is zero. or if a subView is outside the frame.
+     * UPDATE: uses compactMap instead of flatmap, hopefully it doesnt break functionality
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
 //        Swift.print("hitTest: \(self)")
         //let p = aPoint + CGPoint(-layer!.position.x,layer!.position.y)
         //Swift.print("hitTest() \(type(of: self)) aPoint: " + "\(aPoint) p: \(p) layer!.position: " + "\(layer!.position)")
         guard isInteractive else{return nil/*else (aka not interactive)*/}
-        return subviews.reversed().lazy.flatMap{$0.hitTest(aPoint)}.first/*if non-nil then a point was found within its hittable area,if no hitView is found return nil, the parent hitTest will then continue it's search through its siblings etc*/
+        return subviews.reversed().lazy.compactMap{$0.hitTest(aPoint)}.first/*if non-nil then a point was found within its hittable area,if no hitView is found return nil, the parent hitTest will then continue it's search through its siblings etc*/
     }
     /**
      * Enables the hand cursor on enter

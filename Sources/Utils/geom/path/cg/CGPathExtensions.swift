@@ -4,9 +4,9 @@ extension CGMutablePath{
     /**
      * NOTE: its probably better to move this method into the Graphic class since then it can be overriden by subclasses, which you cant do with this extension method, really?
      */
-    func add(_ path:CGPath){
-        self.add(path)//swift 3 update
-    }
+    //func add(_ path:CGPath){
+     //   self.add(path)//swift 3 update
+    //}
     /**
      * Returns a copy of it self
      * NOTE: this was previously copy, but swift 3 uses this method

@@ -1,3 +1,4 @@
+import Foundation
 /**
  * Align is a util class to help align views and graphics. The core principle is based around a stage-pivot and an object pivot. The align type you add to these two pivot deterimins the final position of the object
  * NOTE: The align method only supports NSView/UIView. But use alignmentPoint instead if you have to work with different class types. As it does the same thing as the align method does
