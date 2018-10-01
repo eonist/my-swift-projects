@@ -11,5 +11,8 @@
 |  [FileWatcher](https://github.com/eonist/FileWatcher)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileWatcher.svg"> | [FileLib](https://github.com/gitsync/FileLib/)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">  | [ColorLib](https://github.com/gitsync/ColorLib)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/ColorLib.svg"> |
 | [EventLib](https://github.com/gitsync/EventLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/EventLib.svg"> | [SQLiteLib](https://github.com/gitsync/SQLiteLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SQLiteLib.svg"> | [ReflectionLib](https://github.com/gitsync/ReflectionLib)   |  | |
 
-### Manual installation gifs:
+### Manual installation:
 [http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/](http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/) 
+
+### Building from .framework
+[http://eon.codes/blog/2017/11/08/local-frameworks/](http://eon.codes/blog/2017/11/08/local-frameworks/) 
