@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: ⚠️️ add none?
  */
-enum Alignment:String{//Both axises
+enum Alignment:String{/*Both axises*/
     case topLeft = "topLeft"
     case topCenter = "topCenter"
     case topRight = "topRight"
@@ -13,11 +13,11 @@ enum Alignment:String{//Both axises
     case centerRight = "centerRight"
     case centerCenter = "centerCenter"
 }
-enum Axis:String{//axis alignment
+enum Axis:String{/*axis alignment*/
     case horizontal = "horizontal"
     case vertical = "vertical"
 }
-enum AlignType:String{//Single axis
+enum AlignType:String{/*Single axis*/
     case left = "left"
     case right = "right"
     case top = "top"
@@ -28,13 +28,16 @@ enum AlignType:String{//Single axis
 enum HorizontalAlign:String{
     case left = "left"
     case right = "right"
-    case centerX = "center"//use centerX or else .dot syntax fails
+    case centerX = "center"/*use centerX or else .dot syntax fails*/
 }
 enum VerticalAlign:String{
     case top = "top"
     case bottom = "bottom"
-    case centerY = "centerY"//use centerY or else .dot syntax fails
+    case centerY = "centerY"/*use centerY or else .dot syntax fails*/
 }
+/**
+ * Helper util
+ */
 extension Alignment{
     var horAlign:HorizontalAlign {
         switch self {
@@ -51,4 +54,3 @@ extension Alignment{
         }
     }
 }
-
