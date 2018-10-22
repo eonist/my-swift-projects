@@ -54,6 +54,7 @@ public class CGFloatParser{
      * PARAM: b: end number
      * PARAM: fraction: interpolation value (between 0 - 1) could also be named scalar
      * EXAMPLE: interpolate(5, 15, 0.5) //10
+     * EXAMPLE: interpolate(a: -150.0, b: -375.0, fraction: 0.1)//-172.5, also works on negative values 👌
      */
     static func interpolate(_ a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {
         return fraction * (b - a) + a
