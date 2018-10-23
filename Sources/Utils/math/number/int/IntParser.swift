@@ -35,7 +35,10 @@ class IntParser{
             }
         }
     }
-    static func kind(_ theInt:Int)->String{
+    /**
+     * TODO: ⚠️️ Return enum
+     */
+    static func kind(_ theInt:Int) -> String{
         switch theInt {
             case 0:
                 return "Zero"
@@ -91,8 +94,4 @@ class IntParser{
    static func digitCount(_ n: Int) -> Int {
        return Int(log2(Double(n)) / log2(10.0)) + 1
    }
-   /**
-    * random true or flase
-    */
-   var eitherOr:Bool {return arc4random_uniform(2) == 0}
 }
