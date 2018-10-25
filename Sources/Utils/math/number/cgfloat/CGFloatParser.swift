@@ -44,8 +44,8 @@ public class CGFloatParser{
      */
     static func difference(_ a:CGFloat, _ b:CGFloat)->CGFloat{
         let distance:CGFloat = CGFloatParser.distance(a, b)
-        if(a > b) {return -distance}
-        else if(a < b) {return distance}
+        if a > b {return -distance}
+        else if a < b {return distance}
         else {return 0}
     }
     /**
@@ -74,7 +74,7 @@ public class CGFloatParser{
     static func scalar(_ start:CGFloat,_ end:CGFloat, _ progress:CGFloat) -> CGFloat {
         var a:CGFloat
         var b:CGFloat
-        if(NumberAsserter.negative(start,0) || NumberAsserter.negative(end,0) && end < start){
+        if NumberAsserter.negative(start,0) || NumberAsserter.negative(end,0) && end < start {
             a = Swift.min(start, end)
             b = Swift.max(start, end)
         }else{
@@ -82,7 +82,7 @@ public class CGFloatParser{
             b = Swift.min(start, end)
         }
         var scalar:CGFloat = (progress-b)/(a-b)
-        if(scalar.isNaN) {scalar = 0}
+        if scalar.isNaN {scalar = 0}
         return scalar
     }
     /**
@@ -96,8 +96,8 @@ public class CGFloatParser{
      * TODO: ⚠️️ Do a bulk test to see which is faster, then maybe deprecate this method
      */
     static func distance(_ a:CGFloat,_ b:CGFloat)->CGFloat {
-        if(a.isNegative && b.isNegative) {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
-        else if(a.isPositive && b.isPositive) {return Swift.max(a, b) - Swift.min(a,b)}
+        if a.isNegative && b.isNegative {return abs(Swift.min(a,b)) - abs(Swift.max(a,b))}
+        else if a.isPositive && b.isPositive {return Swift.max(a, b) - Swift.min(a,b)}
         else {return abs(a) + abs(b)}/*if a is positive then b is negative and opposite*/
     }
     /**

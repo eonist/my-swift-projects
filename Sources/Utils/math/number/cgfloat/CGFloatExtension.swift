@@ -32,7 +32,7 @@ extension Sequence where Iterator.Element == CGFloat {
     var average:CGFloat {return CGFloatParser.average(self as! [CGFloat])}
 }
 /*extension Array where Element == CGFloat{
- 
+
  }*/
 /**
  * Swift 3 removed the possibility to cast CGFloat to Bool This method brings back this functionality.
@@ -75,13 +75,13 @@ infix operator %%/*<--infix operator is required for custom infix char combos*/
  * Brings back simple modulo syntax (was removed in swift 3)
  * Calculates the remainder of expression1 divided by expression2
  * The sign of the modulo result matches the sign of the dividend (the first number). For example, -4 % 3 and -4 % -3 both evaluate to -1
- * EXAMPLE: 
+ * EXAMPLE:
  * print(12 %% 5)    // 2
  * print(4.3 %% 2.1) // 0.0999999999999996
  * print(4 %% 4)     // 0
  * NOTE: The first print returns 2, rather than 12/5 or 2.4, because the modulo (%) operator returns only the remainder. The second trace returns 0.0999999999999996 instead of the expected 0.1 because of the limitations of floating-point accuracy in binary computing.
  * NOTE: Int's and UInt can still use single %
- * NOTE: there is also .remainder which supports returning negatives as oppose to truncatingRemainder (aka the old %) which returns only positive.
+ * NOTE: there is also .remainder which supports returning negatives as oppose to truncatingRemainder (aka the old %) which returns only positive. .remiander also behaves diferently with negative values. Sometimes more usefully so
  */
 public func %% (left:CGFloat, right:CGFloat) -> CGFloat {
     return left.truncatingRemainder(dividingBy: right)
