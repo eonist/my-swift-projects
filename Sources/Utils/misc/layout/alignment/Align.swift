@@ -58,4 +58,3 @@ extension Align{
         views.forEach{ view in Align.align(view, canvasSize: canvasSize, canvasAlign: canvasAlign, viewAlign: viewAlign, offset: offset)}
     }
 }
-
