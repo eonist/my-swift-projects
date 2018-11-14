@@ -1,5 +1,4 @@
-
-import UIKit
+import Foundation
 /**
  * let animator = TimeAnimator(duration:0.3,onChange:{/*animate stuff*/},onComplete:{/*anim completed*/})
  * animator.start()
@@ -14,6 +13,7 @@ import UIKit
  *    self.frame.origin.x self.curX
  * }
  * animator.start()
+ * NOTE: there is also `animator.reset()` and `animator.duration` if the animator is suppose to be interactive etc
  */
 class TimeAnimator:SimpleTimer{
    static let fps:TimeInterval = 1/30/*1/30 is 30FPS 1/60 IS 60FPS*/
