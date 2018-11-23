@@ -1,4 +1,5 @@
 import Foundation
+
 class IntParser{
     /**
      * Return a  Random number within a min max value

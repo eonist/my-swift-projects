@@ -3,7 +3,7 @@ import Foundation
  * There is also: dropLast and dropFirst: Swift.print("arr: " + "\(Array([0,1,2,3].dropLast()))")//[0, 1, 2]
  */
 class ArrayModifier{
-    
+
     /**
      * Adds one or more elements to the beginning of an array and returns the new length of the array.
      * NOTE: The other elements in the array are moved from their
@@ -104,6 +104,7 @@ class ArrayModifier{
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
      * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
      * TODO: ⚠️️ You should add the disregard attribute above this method
+     * IMPORTANT: IN swift 4 there is: [1, 2, 3, 4].shuffle()
      */
     static func shuffle<T>(_ array:inout [T])->[T]{
         for i in 0 ..< (array.count - 1) {
