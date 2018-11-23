@@ -3,38 +3,6 @@
 import UIKit.UIView
 extension UIView{
     /**
-     * Returns a ViewController of a class Kind
-     * EXAMPLE: UIView.vc(vcKind: CustomViewController.self)//ref to an instance of CustomViewController
-     */
-    public static func vc<T:UIViewController>(vcKind:T.Type? = nil) -> T?{
-        guard let appDelegate:AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return nil}
-        if let vc = appDelegate.window?.rootViewController as? T {
-            return vc
-        }else if let vc = appDelegate.window?.rootViewController?.presentedViewController as? T {
-            return vc
-        }else if let vc = appDelegate.window?.rootViewController?.childViewControllers  {
-            return vc.lazy.flatMap{$0 as? T}.first
-        }
-        return nil
-    }
-    public static func topMostController() -> UIViewController? {
-        var topController: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController?
-        while topController.presentedViewController != nil {
-            topController = topController.presentedViewController!
-        }
-        return topController
-    }
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
-    }
-    /**
      * Creates UIImage from a view
      */
     var snapShot:UIImage?{
@@ -58,6 +26,68 @@ extension UIView{
      */
     var scale:CGFloat {
         return sqrt(self.transform.a * self.transform.a + self.transform.c * self.transform.c)
+    }
+}
+/**
+ * Controller related
+ */
+extension UIView{
+   /**
+    * Returns a ViewController of a class Kind
+    * EXAMPLE: UIView.vc(vcKind: CustomViewController.self)//ref to an instance of CustomViewController
+    */
+   public static func vc<T:UIViewController>(vcKind:T.Type? = nil) -> T?{
+      guard let appDelegate:AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return nil}
+      if let vc = appDelegate.window?.rootViewController as? T {
+           return vc
+      }else if let vc = appDelegate.window?.rootViewController?.presentedViewController as? T {
+           return vc
+      }else if let vc = appDelegate.window?.rootViewController?.childViewControllers  {
+           return vc.lazy.flatMap{$0 as? T}.first
+      }
+      return nil
+   }
+   /*
+   * Returns the top most viewController
+   */
+   public static func topMostController() -> UIViewController? {
+      var topController: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController?
+      while topController.presentedViewController != nil {
+           topController = topController.presentedViewController!
+      }
+      return topController
+   }
+   /**
+    * Returns parent viewController
+    */
+   var parentViewController: UIViewController? {
+      var parentResponder: UIResponder? = self
+      while parentResponder != nil {
+           parentResponder = parentResponder!.next
+           if let viewController = parentResponder as? UIViewController {
+               return viewController
+           }
+      }
+      return nil
+   }
+   /**
+    * Easily get Controller
+    */
+   func controller() -> UIViewController? {
+        if let nextViewControllerResponder = next as? UIViewController {
+            return nextViewControllerResponder
+        } else if let nextViewResponder = next as? UIView {
+            return nextViewResponder.controller()
+        } else  {
+            return nil
+        }
+    }
+   /**
+    * Easily get navController from
+    */
+    func navigationController() -> UINavigationController? {
+        guard let controller = controller() else { return nil }
+        return controller.navigationController
     }
 }
 #endif

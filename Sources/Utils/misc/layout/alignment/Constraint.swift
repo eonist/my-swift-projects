@@ -129,7 +129,7 @@ extension NSLayoutConstraint{
             return constraints.filter { constraint in
                 return constraint.firstAttribute == kind
             }
-            }.flatMap({$0})//flattens 2d array to 1d array
+            }.compactMap({$0})//flattens 2d array to 1d array
     }
 }
 extension UIView {
