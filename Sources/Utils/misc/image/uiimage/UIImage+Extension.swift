@@ -29,19 +29,20 @@ extension UIView {
         let color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
         return color
     }
-    /*
-    * let resizedImage = image.resize(to: CGSize(width: 50, height: 50))
-    */
-    func resize(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
-    }
+
 }
 /**
  * TODO: Add a way to also get response, maybe look into result?
  */
 extension UIImage{
+   /*
+   * let resizedImage = image.resize(to: CGSize(width: 50, height: 50))
+   */
+   func resize(to size: CGSize) -> UIImage {
+      return UIGraphicsImageRenderer(size: size).image { _ in
+           draw(in: CGRect(origin: .zero, size: size))
+      }
+   }
     typealias DownloadComplete = (UIImage?,IMGError?) -> Void
     enum IMGError: Error {
         case invalideWebPath
