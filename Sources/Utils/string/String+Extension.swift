@@ -7,7 +7,7 @@ import Cocoa
  * Convenince extensions for often used string methods
  */
 extension String {
-    //init(_ value:Any) doesnt work as String("hello".reversed()) must go through 
+    //init(_ value:Any) doesnt work as String("hello".reversed()) must go through
     init(_ value:CGFloat){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Int){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
     init(_ value:Bool){self.init(describing:value)}/*Brings back simple String casting which was removed in swift 3*/
@@ -77,7 +77,7 @@ extension String{
     func indexOf(_ b:String)->Int{/*Convenince*/
         return StringParser.indexOf(self, b)
     }
-    
+
     func trim(_ leftAndRight:Character)->String{/*Convenince*/
         return StringParser.trim(self, leftAndRight)
     }
@@ -103,12 +103,12 @@ extension String{
     func array<T>(_ cast:(_ char:Character)->T)->[T]{
         return StringParser.array(self, cast)
     }
-    
+
     /**
      * CAUTION: if you do "0xFF0000FF".uint it will give the wrong value, use UInt(Double("")!) instead for cases like that
      */
     var uint:UInt{return UInt(Float(self)!)}
-    
+
     /**
      * EXAMPLE: "<p>text</p>".xml//Output: xml
      */
@@ -116,7 +116,7 @@ extension String{
     var url:URL? {return FilePathParser.path(self)}/*Convenince*/
     var lineCount:Int{return StringParser.lineCount(self)}
     var content:String? {return FileParser.content(self.tildePath)}
-    
+
     var nsColor:NSColor{return StringParser.nsColor(self)}
 //    var int:Int{return Int(self)!}
     var int:Int?{return Int(self)}
@@ -174,10 +174,23 @@ public func * (left: String, right: Int) -> String {
     }
 }
 /**
+ * UI-related
+ */
+extension String{
+    /**
+     * NOTE: for Single Line
+     */
+    func textWidth(font: UIFont?) -> CGFloat {
+        let attributes = font != nil ? [NSAttributedStringKey.font: font!] : [:]
+        let w = self.size(withAttributes: attributes).width
+        return w
+    }
+}
+
+/**
  * Error
  */
 //extension String: Error {}/*Then you can just throw a string*/
 //extension String: LocalizedError {/*adds error.localizedDescription*/
 //    public var errorDescription: String? { return self }
 //}
-
