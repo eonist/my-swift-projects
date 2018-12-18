@@ -1,5 +1,5 @@
 /**
- * Makes it possible to add padding to UILabel 
+ * Makes it possible to add padding to UILabel.
  * EXAMPLE: $0.padding = UIEdgeInsets(top: -10, left: 0, bottom: -10, right: 0)
  */
 extension UILabel {
