@@ -179,6 +179,7 @@ public func * (left: String, right: Int) -> String {
 extension String{
     /**
      * NOTE: for Single Line
+     * Alternativly: let size = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:18.0)])
      */
     func textWidth(font: UIFont?) -> CGFloat {
         let attributes = font != nil ? [NSAttributedStringKey.font: font!] : [:]
