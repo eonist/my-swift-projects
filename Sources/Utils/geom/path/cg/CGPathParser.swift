@@ -5,7 +5,7 @@ class CGPathParser{
     /**
      * Returns a path with straight lines derived from an array of points (think follow the dots)
      * TODO: shouldnt this path be closed by a real close call?
-     * NOTE: effectivly it creates a PolyLine, 
+     * NOTE: effectivly it creates a PolyLine,
      */
     static func polyLine(_ points:[CGPoint],_ close:Bool = false,_ offset:CGPoint = CGPoint(0,0)) -> CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
@@ -80,6 +80,7 @@ class CGPathParser{
      * TODO:  Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void you have the code for this somewhere
      * NOTE: was: //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
      * NOTE: you can also use: CGPathCreateWithRoundedRect() and CGPathAddRoundedRect()
+     * TODO: use apples native roundedCorner class to represents the corner fillets, and pas cgrect, also add shouldclose flag
      */
     static func roundRect(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat, _ topLeftRadius:CGFloat, _ topRightRadius:CGFloat, _ bottomLeftRadius:CGFloat, _ bottomRightRadius:CGFloat) -> CGMutablePath{
         let rect:CGRect = CGRect(x,y,w,h)
@@ -99,13 +100,13 @@ class CGPathParser{
     static func boundingBox(_ path:CGPath,_ lineStyle:LineStylable)->CGRect{
         let outlinePath:CGPath? = path.copy(strokingWithWidth:lineStyle.thickness, lineCap:lineStyle.lineCap, lineJoin:lineStyle.lineJoin, miterLimit:lineStyle.miterLimit)//swift 3 upgrade, used -> CGPathCreateCopyByStrokingPath
         var boundingBox:CGRect = outlinePath!.boundingBoxOfPath/*there is also CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        if(boundingBox.x.isInfinite){boundingBox = CGRect(path.currentPoint,boundingBox.size)}/*<--fix for paths that have zero width or height*/
+        if boundingBox.x.isInfinite {boundingBox = CGRect(path.currentPoint,boundingBox.size)}/*<--fix for paths that have zero width or height*/
         return boundingBox
     }
     /**
      * NOTE: see CGPath().forEach or see examples for this on stackoverflow,
      */
-    static func nsBezierPath(_ path:CGPath)->NSBezierPath?{
+    static func nsBezierPath(_ path:CGPath) -> NSBezierPath?{
         return nil
     }
 }

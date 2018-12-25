@@ -1,29 +1,43 @@
 import Foundation
 
 class CGPathModifier {
-    /**
-     * Translates PARAM: path
-     * NOTE: the path is returned for the sake of convenience
-     * NOTE: there is also: CGPathCreateCopyByTransformingPath
-     * EXAMPLE: CGPathModifier.translate(&path,20,20)
-     * CAUTION: When using this method remeber to use the CGPathCreateMutableCopy(somePath) if you dont want to edit the original path (THe return statment is jsut for convenince)
-     */
-    static func translate(_ path:inout CGMutablePath,_ x:CGFloat = 0,_ y:CGFloat = 0)->CGMutablePath{
-        var transformation:CGAffineTransform = CGAffineTransform(translationX: x, y: y)//swift 3 was -> CGAffineTransformMakeTranslation(x,
-        path = path.mutableCopy(using: &transformation)!//swift 3 , was-> CGPathCreateMutableCopyByTransformingPath
-        return path
-    }
-    /**
-     * Rotates PARAM: path
-     * EXAMPLE: rotate(path,M_PI/4.0)//45deg
-     * CAUTION: When using this method remeber to use the CGPathCreateMutableCopy(somePath) if you dont want to edit the original path (THe return statment is jsut for convenince)
-     */
-    static func rotate(_ path:inout CGPath,_ angle:Double)->CGPath{
-        let ang:CGFloat = CGFloat(angle)
-        var transformation:CGAffineTransform  = CGAffineTransform(rotationAngle: ang)//swift 3-> was: CGAffineTransformMakeRotation
-        path = path.mutableCopy(using: &transformation)!
-        return path
-    }
+   /**
+   * Translates PARAM: path
+   * NOTE: the path is returned for the sake of convenience
+   * NOTE: there is also: CGPathCreateCopyByTransformingPath
+   * EXAMPLE: CGPathModifier.translate(&path,20,20)
+   * CAUTION: ⚠️️ When using this method remeber to use the CGPathCreateMutableCopy(somePath) if you dont want to edit the original path (THe return statment is jsut for convenince)
+   */
+  @discardableResult
+  static func translate( path:inout CGMutablePath, p:CGPoint) -> CGMutablePath{
+     var transformation:CGAffineTransform = CGAffineTransform(translationX: p.x, y: p.y)//swift 3 was -> CGAffineTransformMakeTranslation(x,
+     path = path.mutableCopy(using: &transformation)!//swift 3 , was-> CGPathCreateMutableCopyByTransformingPath
+     return path
+  }
+  /**
+   * Rotates PARAM: path
+   * EXAMPLE: CGPathModifier.rotate(path:path,angle:CGFloat.pi/4.0)//45deg
+   * CAUTION: ⚠️️ When using this method remeber to use the CGPathCreateMutableCopy(somePath) if you dont want to edit the original path (THe return statment is jsut for convenince)
+   */
+  @discardableResult
+  static func rotate(path:inout CGMutablePath, angle:CGFloat) -> CGPath{
+     var transformation:CGAffineTransform  = CGAffineTransform(rotationAngle: angle)//swift 3-> was: CGAffineTransformMakeRotation
+     path = path.mutableCopy(using: &transformation)!
+     return path
+  }
+  /**
+   * Rotates a path around its center axis
+   */
+  @discardableResult
+  static func centerRotate(path:inout CGMutablePath, angle:CGFloat) -> CGPath{
+     let rect = path.boundingBox
+     let offset:CGPoint = .init(x:-rect.width/2,y:-(rect.height)/2)
+     CGPathModifier.translate(path: &path, p: offset)
+     CGPathModifier.rotate(path:&path,angle:-CGFloat.pi/2.0)//45deg
+     let reOffset:CGPoint = .init(x:rect.width/2,y:(rect.height)/2)
+     CGPathModifier.translate(path: &path, p: reOffset)
+     return path
+  }
     /**
      * Scales PARAM: path
      * EXAMPLE: scale(path,2,2)//doubles the size of the path
