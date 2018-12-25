@@ -19,7 +19,7 @@ class CGPointParser{
      * TODO: ⚠️️ why is this safe and regular polar isn't?
      * TODO: ⚠️️ use switch
      */
-    static func safePolar(_ len:CGFloat, _ angle:CGFloat)->CGPoint {
+    static func safePolar(_ len:CGFloat, _ angle:CGFloat) -> CGPoint {
         var x:CGFloat = cos(angle) * len
         var y:CGFloat = sin(angle) * len
         if angle == 0 {
@@ -114,7 +114,7 @@ class CGPointParser{
      * NOTE: this method is great if you have 2 points and you want to find the third but you only know the x value of that point
      * PARAM: slope (the rate of change between x and y) use PointParser.slope(p1,p2) to find the slope
      * PARAM: p1: the first Point that makes up the line that makes up the slope
-     * PARAM: x2: the x marks the spot. X is the final x in the point on the slope. 
+     * PARAM: x2: the x marks the spot. X is the final x in the point on the slope.
      * EXAMPLE: PointParser.y(CGPoint(100,100), 200, 1);//Output: 200
      */
     static func y(_ p1:CGPoint,_ x2:CGFloat,_ slope:CGFloat)->CGFloat {
@@ -138,7 +138,7 @@ class CGPointParser{
         return CGPoint(x,y)
     }
     /**
-     * 
+     *
      */
     static func relativeDifference(_ a:CGPoint,_ b:CGPoint)->CGPoint{
         let x:CGFloat = CGFloatParser.relativeDifference(a.x, b.x)
@@ -278,7 +278,7 @@ class CGPointParser{
      * NOTE: if eigther p1 or p2 is CoLinear and within with p3 and p4 then it will yield an intersection
      * NOTE: if line a touches the start or end of line b then it intersects
      * NOTE: if 2 lines are colinear this method will return (x=0, y=NaN) or (x=NaN, y=0) or (x=NaN, y=NaN) same if the lines are equal
-     * NOTE: you can also use convergingPoint in TriangleMath instead of intersection 
+     * NOTE: you can also use convergingPoint in TriangleMath instead of intersection
      * TODO: thouroughly test this function before deployment, what happens with parralell lines for instance?
      * TODO: comment this method
      * TODO: do reasearch into vectors, slope and the intersection of vectrors
