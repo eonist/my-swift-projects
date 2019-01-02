@@ -8,14 +8,14 @@ extension  TriangleMath {
     * Returns the point that can be used to bisect an angle in an triangle
     * TODO: ⚠️️ I think this bisects an opposite line not the angle, indeed it does, but if the triangle has equal legs its also the bisector angle point
     */
-   static func bisectorPoint(_ anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint) -> CGPoint {
+   static func bisectorPoint(anchor:CGPoint, p1:CGPoint, p2:CGPoint) -> CGPoint {
        let x:CGPoint = anchor.add(CGPoint.polarPoint(CGPoint.distance(p1, anchor), Trig.angle(anchor, p2)))
        return CGPoint.interpolate(p1, x, 0.5)
    }
    /**
     * PARAM: radius is the length of the extending vector (so to speak)
     */
-   static func bisectorPT(_ anchor:CGPoint, _ p1:CGPoint, _ p2:CGPoint, _ radius:CGFloat = 100) -> CGPoint{
+   static func bisectorPT(anchor:CGPoint, p1:CGPoint, p2:CGPoint, radius:CGFloat = 100) -> CGPoint{
        let bisectorAngle = TriangleMath.bisectorAngle(anchor,p1,p2)
        let bisectorPT:CGPoint = anchor + CGPoint.polarPoint(radius,bisectorAngle)
        return bisectorPT
@@ -24,7 +24,7 @@ extension  TriangleMath {
     * Returns the angle bisector from a triangle construction
     * NOTE: another way to find the bisector is: Trig.angle(pivot, p1) + (Trig.difference(pivot, p1, p2))/2
     */
-   static func bisectorAngle(_ anchor:CGPoint,_ pt1:CGPoint,_ pt2:CGPoint) -> CGFloat {
+   static func bisectorAngle(anchor:CGPoint,pt1:CGPoint,pt2:CGPoint) -> CGFloat {
        let angle1:CGFloat = Trig.angle(anchor, pt1)
        let angle2:CGFloat = Trig.angle(anchor, pt2)
        return Trig.angleBisector(angle1, angle2)
@@ -41,7 +41,7 @@ extension  TriangleMath {
     * TODO: ⚠️️ could we use more Vector math like formulas here? by using slopes etc
     * TODO: ⚠️️ what happens if the vectors ar parallel?, i guess you need to assert if they are not parallel first, but what about diverging?
     */
-   static func convergingPoint(_ p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+   static func convergingPoint(p1:CGPoint,p2:CGPoint,anglA:CGFloat,angleB:CGFloat) -> CGPoint {
        let A:CGFloat = Trig.angleSpan(Trig.angle(p1, p2), anglA)
        //Swift.print("A: " + A)
        let B:CGFloat = Trig.angleSpan(angleB,Trig.angle(p2, p1))
@@ -58,7 +58,7 @@ extension  TriangleMath {
    /**
     * NOTE: rotates the "out-angles" to be "in-angles"
     */
-   static func divergingPoint(_ p1:CGPoint,_ p2:CGPoint,_ anglA:CGFloat,_ angleB:CGFloat) -> CGPoint {
+   static func divergingPoint(p1:CGPoint,p2:CGPoint,anglA:CGFloat,angleB:CGFloat) -> CGPoint {
        return convergingPoint(p1, p2, anglA + π, angleB + π)
    }
 

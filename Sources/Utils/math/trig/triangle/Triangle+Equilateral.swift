@@ -11,6 +11,13 @@ class TriangleMath {
    }
    /**
     * Creates an equal sided triangle (equilateral triangle)
+    * EXAMPLE:
+    * let triangle = TriangleMath.equilateralTriangle(height: 100)
+    * let points:[CGPoint] = [triangle.a,triangle.b,triangle.c]
+    * let cgPath = CGPathParser.polyLine(points:points, close: true)
+    * let shapeLayer:CAShapeLayer = .init()
+    * CGPathModifier.fill(shape: shapeLayer, cgPath: cgPath, fillColor: .green)
+    * self.view.layer.addSublayer(shapeLayer)
     */
    static func equilateralTriangle(height:CGFloat) -> (a:CGPoint,b:CGPoint,c:CGPoint) {
       let adjacentSide = TriangleMath.adjacent(opposite: 100)

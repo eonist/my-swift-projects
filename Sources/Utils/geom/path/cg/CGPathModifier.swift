@@ -26,14 +26,15 @@ class CGPathModifier {
      return path
   }
   /**
-   * Rotates a path around its center axis
+   * Rotates a path around it's center axis
+   * EXAMPLE: -CGFloat.pi/2.0
    */
   @discardableResult
   static func centerRotate(path:inout CGMutablePath, angle:CGFloat) -> CGPath{
      let rect = path.boundingBox
      let offset:CGPoint = .init(x:-rect.width/2,y:-(rect.height)/2)
      CGPathModifier.translate(path: &path, p: offset)
-     CGPathModifier.rotate(path:&path,angle:-CGFloat.pi/2.0)//45deg
+     CGPathModifier.rotate(path:&path,angle:angle)//45deg
      let reOffset:CGPoint = .init(x:rect.width/2,y:(rect.height)/2)
      CGPathModifier.translate(path: &path, p: reOffset)
      return path
@@ -66,4 +67,15 @@ class CGPathModifier {
         var transformation:CGAffineTransform = transformation.copy()
         return path.mutableCopy(using: &transformation)!//Swift 3 upgrade
     }
+}
+
+extension CGPathModifier {
+
+   /**
+    * Add color to shape
+    */
+   static func fill(shape:CAShapeLayer, cgPath:CGPath, fillColor:UIColor){
+      shape.path = cgPath/*Setup the CAShapeLayer with the path, colors, and line width*/
+      shape.fillColor = fillColor.cgColor
+   }
 }

@@ -1,4 +1,4 @@
-
+import Foundation
 /**
  * Law of sin
  * Law of sin:
@@ -21,14 +21,14 @@ extension TriangleMath {
     * NOTE: Based on formula: b/SinB = c/SinC
     */
    static func bABToa(_ b:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
-      return sin(A*Trig.rad) * (b / sin(B*Trig.rad))
+      return sin(A*㎭) * (b / sin(B*㎭))
    }
    /**
     * Returns the Side a of an triangle
     * Based on formula: a/SinA = c/SinC
     */
    static func cACToa(_ c:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
-      return sin(A*Trig.rad) * (c / sin(C*Trig.rad))
+      return sin(A*㎭) * (c / sin(C*㎭))
    }
    /**
     * Returns the Side a of an triangle
@@ -46,7 +46,7 @@ extension TriangleMath {
     * NOTE: this can be used to calculate the shortest side if you have the opposite (adjacent,opposite,hypotenouse)
     */
    static func aABTob(_ a:CGFloat,_ A:CGFloat,_ B:CGFloat) -> CGFloat {
-      return sin(B*Trig.rad) * (a / sin(A*Trig.rad))
+      return sin(B*㎭) * (a / sin(A*㎭))
    }
    /**
     * Returns the Side c of an triangle
@@ -54,14 +54,14 @@ extension TriangleMath {
     * NOTE: google right angle triangle to see where the sides and angles lay
     */
    static func aACToc(_ a:CGFloat,_ A:CGFloat,_ C:CGFloat) -> CGFloat {
-      return sin(C*Trig.rad) * (a / sin(A*Trig.rad))
+      return sin(C*㎭) * (a / sin(A*㎭))
    }
    /**
     * Returns the Side b of an triangle
     * NOTE: Based on formula: b/SinB = c/SinC
     */
    static func cBCTob(_ c:CGFloat,_ B:CGFloat,_ C:CGFloat) ->CGFloat {
-      return sin(B*Trig.rad) * (c / sin(C*Trig.rad))
+      return sin(B*㎭) * (c / sin(C*㎭))
    }
    /**
     * Returns the Side b of an triangle
@@ -75,7 +75,7 @@ extension TriangleMath {
     * Based on formula: c/SinC = b/SinB
     */
    static func bBCToc(_ b:CGFloat,_ B:CGFloat,_ C:CGFloat)->CGFloat {
-      return sin(C*Trig.rad) * (b / sin(B*Trig.rad))
+      return sin(C*㎭) * (b / sin(B*㎭))
    }
    /**
     * Returns side c from PARAM: b, PARAM: A and PARAM: C

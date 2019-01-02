@@ -23,8 +23,13 @@ class CGRectParser{
     }
     /**
      * EXAMPLE: roundRect(CGRect rect, CGFloat radius)
+     * EXAMPLE:
+     * let cgPath = CGRectParser.roundRect(rect:.init(origin: .zero, size: .init(width:100,height:100)), radius: 20)
+     * let shapeLayer:CAShapeLayer = .init()
+     * CGPathModifier.fill(shape: shapeLayer, cgPath: cgPath, fillColor: .green)
+     * self.view.layer.addSublayer(shapeLayer)
      */
-    static func roundRect(_ rect:CGRect,   radius:CGFloat) -> CGMutablePath{
+    static func roundRect(rect:CGRect, radius:CGFloat) -> CGMutablePath{
         let path:CGMutablePath = CGMutablePath()
         path.move(to:CGPoint(rect.midX, rect.minY))//was-> CGPathMoveToPoint
         path.addArc(tangent1End: CGPoint(rect.maxX, rect.minY), tangent2End: CGPoint(rect.maxX, rect.maxY), radius: radius)//Swift 3 upgrade, was-> CGPathAddArcToPoint(path, nil, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect), radius)

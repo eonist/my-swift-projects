@@ -14,7 +14,7 @@ extension TriangleMath {
     * which can be written: Cos A = (b^2+c^2-a^2)/(2bc)
     * which can be written A = acos((b^2+c^2-a^2)/(2bc))
     */
-   static func abcToA(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+   static func abcToA(a:CGFloat, b:CGFloat, c:CGFloat) -> CGFloat {
       return acos((pow(b, 2)+pow(c, 2)-pow(a, 2))/(2*b*c))
    }
    /**
@@ -22,7 +22,7 @@ extension TriangleMath {
     * Note: Law of cosine
     * Formula: Cos B = (a^2+c^2-b^2)/(2ac)
     */
-   static func abcToB(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+   static func abcToB(a:CGFloat, b:CGFloat, c:CGFloat) -> CGFloat {
       return acos((pow(a, 2)+pow(c, 2)-pow(b, 2))/(2*a*c))
    }
    /**
@@ -30,7 +30,7 @@ extension TriangleMath {
     * Note: Law of cosine
     * Formula: Cos C = (a^2+b^2-c^2)/(2ab)
     */
-   static func abcToC(_ a:CGFloat, _ b:CGFloat, _ c:CGFloat) -> CGFloat {
+   static func abcToC(a:CGFloat, b:CGFloat, c:CGFloat) -> CGFloat {
       return acos((pow(a, 2)+pow(b, 2)-pow(c, 2))/(2*a*b))
    }
    /**
@@ -39,8 +39,8 @@ extension TriangleMath {
     * Base Formula: a^2 = b^2+c^2 - 2bc * Cos(A)
     * // :TODO: you could add an if clause if A is 90 deg, then the cosine is 0 but its not 0 in computer math, so its more correct to use 0
     */
-   static func bcAToa(_ b:CGFloat, _ c:CGFloat, _ A:CGFloat) -> CGFloat {
-      let cosineOfAngle:CGFloat = cos(A*Trig.rad)
+   static func bcAToa(b:CGFloat, c:CGFloat, A:CGFloat) -> CGFloat {
+      let cosineOfAngle:CGFloat = cos(A*㎭)
       let aSquared:CGFloat = pow(b, 2)+pow(c, 2)-(2*b*c)*cosineOfAngle
       return sqrt(aSquared)
    }
@@ -54,8 +54,8 @@ extension TriangleMath {
     * Returns the angle B for any triangle
     * Base Formula: sin(A)/a = sin(A)/b
     */
-   static func abAToB(_ a:CGFloat, _ b:CGFloat, _ A:CGFloat) -> CGFloat {
-      let sinB:CGFloat = (b*sin(A*Trig.rad))/a
+   static func abAToB(a:CGFloat, b:CGFloat, A:CGFloat) -> CGFloat {
+      let sinB:CGFloat = (b*sin(A*㎭))/a
       return asin(sinB)*Trig.deg
    }
    /**
@@ -63,7 +63,7 @@ extension TriangleMath {
     * NOTE: formula: c^2 = a^2 + b^2 - 2(a*b)(cos(angle)) (Law of sin)
     * PARAM: C must be in radians not degrees
     */
-   static func abCToc(_ a:CGFloat,_ b:CGFloat,_ C:CGFloat) -> CGFloat {
+   static func abCToc(a:CGFloat,b:CGFloat,C:CGFloat) -> CGFloat {
       return sqrt(pow(a,2) + pow(b,2) - (2*(a*b)*cos(C)))
    }
 }
