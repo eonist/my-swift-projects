@@ -16,6 +16,10 @@ extension CGAffineTransform {
     mutating func rotateAroundPoint(_ rotation:CGFloat, _ pivot:CGPoint){/*Convenience*/
         self = CGTransform.rotateAroundPoint(self, rotation,pivot)
     }
+    /**
+    * - parameter scale: CGPoint values from 0-1
+    * - parameter pivot: The CGPoint to scale from
+    */
     mutating func scaleFromPoint(scale:CGPoint, pivot:CGPoint){/*Convenience*/
         self = CGTransform.scaleFromPoint(transform:self, scale:scale,pivot:pivot)
     }
