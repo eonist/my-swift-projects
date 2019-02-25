@@ -15,13 +15,14 @@ class RGBParser {
      *  PARAM: brightness The brightness. 0-1
      *  RETURN: An RGB color.
      *  EXAMPLE: rgbByHue(360,1,1);//0xFF0000
+     * - Important: ⚠️️ It's not the most efficient way so I wouldn't go using this where a view will be constantly re-drawn.
      */
     static func rgb(_ hsb:HSB)->RGB {
         let hue:CGFloat = hsb.h*360
         let saturation:CGFloat = hsb.s
         let brightness:CGFloat = hsb.b
-        var r:CGFloat 
-        var g:CGFloat 
+        var r:CGFloat
+        var g:CGFloat
         var b:CGFloat
         if (saturation == 0) {r = brightness; g = brightness;b = brightness}
         else {
@@ -36,28 +37,28 @@ class RGBParser {
                     r = brightness
                     g = t
                     b = p
-                    break 
+                    break
                 case 1:
-                    r = q                    
+                    r = q
                     g = brightness
                     b = p
-                    break 
+                    break
                 case 2:
                     r = p
                     g = brightness
-                    b = t 
+                    b = t
                     break
                 case 3:
                     r = p
                     g = q
                     b = brightness
-                    break 
+                    break
                 case 4:
                     r = t
                     g = p
-                    b = brightness 
+                    b = brightness
                     break
-                case 5: 
+                case 5:
                     r = brightness
                     g = p
                     b = q

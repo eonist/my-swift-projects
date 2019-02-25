@@ -48,6 +48,9 @@ extension Array{
     mutating func insertAt(_ item:Element, _ index:Int) -> [Element]{//convenience
         return ArrayModifier.insertAt(&self, item, index)
     }
+    /**
+     * IMPORTANT: ⚠️️ you can also use the native [1,2,3,4,5][0..<3]//[1,2,3]//⚠️️ does not support all array types, Casting as array helps sometimes: Array([1,2,3,4,5][0..<3])
+     */
     func slice2(_ startIndex:Int, _ endIndex:Int) ->[Element]{/*Convenince*/
         return ArrayModifier.slice2(self,startIndex,endIndex)
     }
@@ -57,7 +60,7 @@ extension Array{
  */
 extension Array {
     /**
-     * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together. 
+     * NOTE: the concat method is not like append. Append adds an item to the original array, concat creates a new array all together.
      * NOTE: If you need a mutating concatination behaviour use the += operator
      * IMPORTANT: this method was mutating before, but that wasn't the intended behaviour!?!
      */
@@ -116,6 +119,7 @@ extension Array {
      * NOTE: Performance wise `self.dropFirst(at).first` is as fast as doing .contain,
      * ⚠️️IMPORTANT:⚠️️ Do not use this with arrays such as :[Int?], TODO: ⚠️️ should we rather do idx < .count?
      * EXAMPLE: if let item = [a,b,c,d][safe:3] {print(item)}
+     * - Note: you can also do Optional(arr[4]) maybe?
      */
     subscript(safe index: Index) -> Iterator.Element? {
         if indices.contains(index) { return self[index] }
@@ -137,6 +141,16 @@ extension Array where Element:Comparable{
     func has(_ value:Element)->Bool{
         return self.index(of: value) != nil
     }
+    /**
+    * Returns the last index that match condition
+    * ## Examples:
+    * [0,55,14,55,22,33,55,76,120].lastIndex(where: {$0 == 55}// 6
+    * - Note: This is now an native method: dataArr.lastIndex(where: {})
+    */
+   func lastIndex(where condition:(Element)->Bool) -> Int?{
+      guard let idx:Int = self.reversed().firstIndex(where: condition) else {return nil}
+      return self.count-1-idx
+   }
 }
 extension Array where Element:Equatable{
     func existAtOrBefore(_ idx:Int, _ item:Element) -> Bool{
@@ -163,7 +177,7 @@ extension Array:AnyArray{}//Maybe rename to ArrayType
 extension NSArray:AnyArray{}/*<-empty arrays are always NSArray so this is needed*/
 
 /**
- * var arr = [1,2,3] 
+ * var arr = [1,2,3]
  * arr += 4
  * print(arr)//1,2,3,4
  */

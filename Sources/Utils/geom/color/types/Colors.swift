@@ -2,7 +2,7 @@ import Cocoa
 /**
  * // :TODO: WHITE1,WHITE2, BLACK2, BLACK3 etc
  * // :TODO: add CYAN,MAGENTA,KEY,YELLOW CMYK
- * TODO: ⚠️️ make these consts lowercase
+ * TODO: ⚠️️ make these consts lowercase, use static let, 
  */
 class Colors {
     static var GREY_1:UInt = 0x111111/*near black*/
@@ -213,6 +213,6 @@ extension Colors{
     static func pink()->NSColor{return NSColorParser.nsColor(Colors.pink())}
     static func darkGray()->NSColor{return NSColorParser.nsColor(Colors.darkGray())}
     static func lightGray()->NSColor{return NSColorParser.nsColor(Colors.lightGray())}
-    
+
     static func fancyColors() -> Array<(name:String,color:NSColor)> {return [("red",red()),("orange",orange()),("yellow",yellow()),("green",green()),("lightBlue",lightBlue()),("darkBlue",darkBlue()),("purple",purple()),("pink",pink()),("darkGray",darkGray()),("lightGray",lightGray())]}//,,,
 }

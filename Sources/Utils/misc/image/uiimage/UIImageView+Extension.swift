@@ -22,7 +22,7 @@ extension UIImageView{
     /**
      * Sets image async
      */
-    func setImage(webPath:String,useBGThread:Bool = true,onError:@escaping OnError = defaultErrorHandler){
+    func setImage(webPath:String, useBGThread:Bool = true, onError:@escaping OnError = defaultErrorHandler){
         let thread:DispatchQueue = (useBGThread ? .global(qos: .background) : .main)//create bg or main thread
         thread.async {
             UIImage.image(webPath: webPath) { (image:UIImage?,error:UIImage.IMGError?) in
@@ -37,4 +37,3 @@ extension UIImageView{
         }
     }
 }
-

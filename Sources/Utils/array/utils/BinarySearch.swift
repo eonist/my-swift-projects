@@ -3,6 +3,7 @@ import Foundation
 class BinarySearch{
     /**
      * Finds a correct index to insert an item at
+     * - Description: Basically the binaryIndex finds the next index or the end index in a sorted array
      * EXAMPLE: let key = 11
      * EXAMPLE: var numbers = [9,15,91]
      * EXAMPLE: let idx = binaryIndex(numbers,key,0,numbers.count)//1

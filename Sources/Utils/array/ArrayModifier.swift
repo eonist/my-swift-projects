@@ -48,8 +48,8 @@ class ArrayModifier{
      * NOTE: splice can also be used to remove item from array
      * EXAMPLE: [1,2,3,4].splice(0, 1).count//3
      * EXAMPLE: splice(["spinach","green pepper","cilantro","onion","avocado"],0, 1, ["tomato"])// tomato,green pepper, cilantro,onion,avocado
-     * IM ORTANT: the original array is modified
-     * IMPORTANT: back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
+     * IMPORTANT: ⚠️️ the original array is modified
+     * IMPORTANT: ⚠️️ back and forth with this method, first it returned the removed elements, then it returned the resulting array, now its confirmed that splice should return the removed elements, this can cause some problems with legacy code. Be carefull
      * EXAMPLE: splice2([a,b,c],0,3)//[a,b,c]
      * EXAMPLE: splice2([a,b,c],2,1)//[c]
      * EXAMPLE: splice2([a,b,c],0,1)//[a]
@@ -68,7 +68,7 @@ class ArrayModifier{
      * IMPORTANT: ⚠️️ let arr:[Int] = [1,2,3,4,5]; arr.slice2(0,arr.count)//1,2,3,4,5. if you use .count-1 then you get all but the last
      * RETURNS: The items from startIndex to endIndex
      * EXAMPLE: ArrayModifier.slice2(["a","b","c","d","e","f"],1,6)//["b", "c", "d", "e", "f"]
-     * NOTE: ⚠️️ you can also use the native [1,2,3,4,5][0..<3]//[1,2,3]//⚠️️ does not support all array types, Casting as array helps sometimes: Array([1,2,3,4,5][0..<3])
+     * IMPORTANT: ⚠️️ you can also use the native [1,2,3,4,5][0..<3]//[1,2,3]//⚠️️ does not support all array types, Casting as array helps sometimes: Array([1,2,3,4,5][0..<3])
      * TODO: ⚠️️ should probably be moved to ArrayParser?
      */
     static func slice2<T>(_ array:[T],_ startIndex:Int, _ endIndex:Int)->[T]{//TODO:Rename this to just slice, soon!
@@ -104,7 +104,7 @@ class ArrayModifier{
      * NOTE: GKLinearCongruentialRandomSource(seed: mySeedValue).arrayByShufflingObjectsInArray(array)
      * EXAMPLE: shuffle([1, 2, 3, 4, 5, 6, 7, 8])// e.g., [4, 2, 6, 8, 7, 3, 5, 1]
      * TODO: ⚠️️ You should add the disregard attribute above this method
-     * IMPORTANT: IN swift 4 there is: [1, 2, 3, 4].shuffle()
+     * IMPORTANT: ⚠️️ Since swift 4 there is: [1, 2, 3, 4].shuffle()
      */
     static func shuffle<T>(_ array:inout [T])->[T]{
         for i in 0 ..< (array.count - 1) {
@@ -206,6 +206,7 @@ class ArrayModifier{
      * Randomnizes the order of an array
      * NOTE: Randomize vs randomise -> the later is the british spelling
      * NOTE: the array is returned for the sake of convenience
+     * - IMPORTANT: ⚠️️ Swift 4 brings arr.shuffled()
      */
     static func randomize<T>(_ array:inout [T] ) -> [T] {
         array.sort { Bool,arg  in

@@ -38,20 +38,19 @@ class FileModifier{
             return false
         }
     }
-    /**
-     * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
-     * NOTE: this method over-writes data to files that already exists as well
-     * NOTE: this method creates a new file if non exists before
+	 /**
+     * ## Examples: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
+     * - Note: this method over-writes data to files that already exists as well
+     * - Note: this method creates a new file if non exists before
      */
-    static func write(_ path:String, content:String)->Bool{
-//        Swift.print("FileModifier.write")
+    static func write(_ path: String, content: String) -> Bool {
         do {
-            try content.write(toFile:path, atomically:true, encoding:.utf8)
+            try content.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
             return true
         } catch {
             print("failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding")
-            return false
         }
+        return false
     }
     /**
      * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, data)//returns true or false depending on if something was written or not

@@ -14,6 +14,7 @@ class RangeAsserter{
      * NOTE: if the number is on the edge it is considered within. Use absolutelyWithin if you need to not include edge
      * TODO: Add some examples
      * TODO: a potential bug is that <= max isn't correct, if it is max then its not within, if you think about how integers work, but this may also be correct since if a number range is asserted it may need to also include the max, for now use contained if you deal with integers
+     * - Note: You can use the native: (200 ... 299).contains(250)//true or (200 ..< 299).contains(250)
      */
     static func within<T>(_ range:Range<T>,_ number:T)->Bool {
         return number <= RangeParser.max(range) && number >= RangeParser.min(range)

@@ -58,9 +58,13 @@ class StringParser{
         return String(describing: string.string.last)//swift 3 upgrade -> was: String()
     }
     /**
-	 * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
+     * substring("Hello from Paris, Texas!!!", 11,15); // output: Pari
      * NOTE: get last 4 chars: String(a.suffix(4)) or a.substring(from:a.index(a.endIndex, offsetBy: -4))
-	 */
+     * FROM swift 4 we use:
+     * let newStr = str[..<index] The same stands for partial range from operators, just leave the other side empty:
+     * let newStr = str[index...] Keep in mind that these range operators return a Substring. If you want to convert it to a string, use String's initialization function:
+     * let newStr = String(str[..<index])
+     */
     static func subString(_ str:String,_ beginning:Int,_ end:Int)->String{
         let range = str.stringRange(str, beginning, end:end)
         let retVal = str[range.start..<range.end]//swift 4 upgrade, was: return str.substring(with:range)
@@ -87,7 +91,7 @@ class StringParser{
 		let b:String = subStr(str,index,str.string.count - index)//bug fix, was subStr
 		return [a,b]
 	}
-    
+
     /**
      * Returns the index of the first match of PARAM: b in PARAM: a
      * New: if the PARAM: b isnt present in PARAM a then return -1 indicating the string was not found
@@ -149,7 +153,7 @@ class StringParser{
     static func percentage(_ value:String)->CGFloat{
         return value.match(".*?(?=%)")[0].cgFloat
     }
-    
+
     /**
      * Returns a digit as a Number or a String type (suffix are removed from the return value)
      * RETURN: a Numberor a String type
@@ -185,7 +189,7 @@ class StringParser{
         }
     }
     /**
-     * Returns NSColor for variouse literal color formats 
+     * Returns NSColor for variouse literal color formats
      */
     static func nsColor(_ hexColor:String)->NSColor{
         return StringParser.color(hexColor).color
@@ -240,10 +244,17 @@ class StringParser{
         //impliment this
     }
     /**
-     * EXAMPLE: pad(value:6,padCount:3,padStr:"0")//"006"
+     * Prefix an int with a set amount of characters
+     * ## Examples:
+     * prefix(value:6,padCount:3,padStr:"0")//"006"
+     * - Important: there is a native equivilent for this method: String(format: "%02d", myInt)
      */
-    static func pad(value:Int,padCount:Int,padStr:String) -> String{
-        var padding:String {return padStr * (padCount - value.string.count)}
-        return value.string.count < padCount ? padding + value.string : value.string
-    }
+     static func prefix(input:Int, padCount:Int, padStr:String) -> String{
+         let padding:String = padStr * (padCount - String(input).count)
+         if value.string.count < padCount {
+            padding + String(input)
+         }else {
+            String(input)
+         }
+     }
 }

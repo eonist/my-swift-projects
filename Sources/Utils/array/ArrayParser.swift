@@ -123,7 +123,7 @@ class ArrayParser{
     /**
      * Returns a new array with every item in PARAM: array sorted according a custom method provided in PARAM: contition
      * NOTE: leaves the original array intact
-     * NOTE: ⚠️️ there is also Native: .sort and .sortInPlace 
+     * NOTE: ⚠️️ there is also Native: .sort and .sortInPlace
      * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */
     static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
@@ -162,9 +162,9 @@ class ArrayParser{
        return arr.first(where:{method($0,match)})//New upgrade, more functional 🤖
     }
     /**
-     * Returns the first occurence of an PARAM: match in PARAM: arr that meets PARAM: condition 
+     * Returns the first occurence of an PARAM: match in PARAM: arr that meets PARAM: condition
      * NOTE: Think of this method as "a conditional indexOf method"
-     * NOTE: the great thing about this method is that your types doesn't need to extend equatable. As not all types needs to be equatable 
+     * NOTE: the great thing about this method is that your types doesn't need to extend equatable. As not all types needs to be equatable
      * EXAMPLE: [("a",0),("x",1),("b",0),("b",1),("c",2)].first(("b",1), {$0.1 == $1.1 && $0.0 == $1.0})//("b", 1)
      */
     static func first<T>(_ arr:[T], _ match:T, _ condition:(_ a:T, _ b:T)->Bool)->T?{
@@ -218,6 +218,14 @@ class ArrayParser{
     static func range(from:Int,to:Int) -> [Int]{
         return (from..<to).map{$0}
     }
+    /*
+    * - Important ⚠️️ Swift 4.1 has array.randomElement()
+    */
+    static func randomItem<T>(array:[T]) -> T? {
+      if isEmpty { return nil }
+      let index = Int(arc4random_uniform(UInt32(self.count)))
+      return array[index]
+   }
 }
 private class Utils{
     /**

@@ -1,6 +1,6 @@
 import Foundation
 
-class AdvanceArrayModifier {    
+class AdvanceArrayModifier {
     /**
      * NOTE: the index is returned for convenience
      */
@@ -34,4 +34,20 @@ class AdvanceArrayModifier {
         }
         return sortedIndices
     }
+    /**
+    * Scales an array in both x and y axis
+    * - Discussion: Great for scaling an image with pixel perfection
+    * # Examples:
+    * Swift.print(scaleArr(arr:[0,1,1,0],size:(width:2,height:2),scale:2))//[0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0]
+    * Swift.print(scaleArr(arr:[0,0,0, 1,0,1, 0,0,0],size:(width:3,height:3),scale:2))//[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    */
+   stati func scaleArr(arr:[Int],size:(width:Int,height:Int),scale:Int) -> [Int]{
+      return (0..<size.width*2).flatMap{ x in
+         return (0..<size.height*2).map{ y in
+            let i = x/2*size.width+y/2
+            let item:Int = arr[i]
+            return item
+         }
+      }
+   }
 }

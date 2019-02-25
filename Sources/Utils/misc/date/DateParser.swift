@@ -221,4 +221,16 @@ extension DateParser {
             return isPlural ? self.full + "s" : self.full
         }
     }
+    /**
+    * Converts seconds into a more readable time format
+    * - Note: Very useful when used when performance testing with: abs(startTime.timeIntervalSinceNow)
+    * ## Examples:
+    * time(secs:5275.3535753853)//01:27:55
+    */
+   static func time(secs:Double) ->String{
+      let seconds:Int = Int(secs) % 60
+      let minutes:Int = Int(secs/60) % 60
+      let hours:Int = Int(secs/(60*60))
+      return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+   }
 }

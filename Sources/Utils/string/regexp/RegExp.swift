@@ -15,7 +15,7 @@ public class RegExp{
      * EXAMPLE: RegExp.test("hello world","o.*o")//true
      * CAUTION: upgraded in swift 3, was-> str.rangeOfString(pattern, options: .RegularExpressionSearch) != nil
      */
-    static func test(_ str:String,_ pattern:String)->Bool{
+    static func test(_ str:String, pattern:String)->Bool{
         return str.range(of: pattern, options:.regularExpression) != nil//or do something like this: return RegExpParser.match(pattern,options).count > 0
     }
     /**
@@ -28,7 +28,7 @@ public class RegExp{
      * TODO: Then if it is outof bound return eigther an empty array or nil
      * TODO: Then only do substringwithrange if NSRange is not NSOutOfBoundRange type
      */
-    static func match(_ text:String, _ pattern:String, _ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
+    static func match(_ text:String, pattern:String, options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [String] {
         return matches(text, pattern).map { (text as NSString).substring(with: $0.range)}
     }
     /**
@@ -40,7 +40,7 @@ public class RegExp{
      * NOTE: its also possible to find number of matches this way: regex.numberOfMatchesInString(text options:[] NSMakeRange(0, nsString.length))
      * TODO: ⚠️️ Figure out how to do numbered capturing groups ($n - n is a digit. Back referencing to a capture group. n must be >= 0 and not greater than ) maybe with \$2 \$3 etc?
      * TODO: Research how to deal with swift unicode chars, emojis etc: see this: http://stackoverflow.com/questions/25882503/how-can-i-use-nsregularexpression-on-swift-strings-with-variable-width-unicode-c
-     * EXAMPLE: 
+     * EXAMPLE:
      * let str = "blue:0000FF green:00FF00 red:FF0000"
      * RegExp.matches(str, "(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
      *     Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
@@ -49,7 +49,7 @@ public class RegExp{
      *     let value = $0.value(str, 2)/*capturing group 2*/
      * }//Outputs: name: green, value: 00FF00...and so on
      */
-    static func matches(_ text:String!, _ pattern:String!, _ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {
+    static func matches(_ text:String!, pattern:String!, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> [NSTextCheckingResult] {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: options)
             let nsString = text as NSString
@@ -74,7 +74,7 @@ public class RegExp{
      * EXAMPLE: RegExp.replace("<strong>Hell</strong>o, <strong>Hell</strong>o, <strong>Hell</strong>o", "<\\/?strong>",  "*")//Output:  "*Hell*o, *Hell*o, *Hell*o"
      * EXAMPLE: RegExp.replace("yeah yeah","(\\b\\w+\\b)", "bla")//bla bla
      */
-    static func replace(_ str:String,_ pattern:String,_ replacement:String,_ options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive)->String{
+    static func replace(_ str:String,_ pattern:String, replacement:String, options:NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive)->String{
         do {
             let stringlength = str.string.count
             let regex = try NSRegularExpression(pattern:pattern , options: options)
@@ -97,7 +97,7 @@ public class RegExp{
         RegExp.matches(str, pattern).reversed().forEach() {
             let range:NSRange = $0.range(at: 1)
 //            Swift.print("range: " + "\(range)")
-            
+
             let stringRange = str.stringRange(str, range.location, len:range.length)
             let match:String = StringParser.subStr(str, range.location, range.length)//swift 4 upgrade, was: str.substring(with: stringRange) //TODO: ⚠️️ reuse the stringRange to get the subrange here
 //            Swift.print("match: " + "\(match)")
@@ -113,13 +113,13 @@ public class RegExp{
      * EXAMPLE: RegExp.value(fullString,match,StatusParts.second.rawValue)
      * TODO: ⚠️️ you should check if there is content in the range first, if ther eis not return nilor error
      */
-    static func value(_ str:String, _ result:NSTextCheckingResult, _ key:Int)->String{
+    static func value(_ str:String, result:NSTextCheckingResult, key:Int)->String{
         return (str as NSString).substring(with: result.range(at: key))
     }
     /**
      * New, finds first index of pattern in string
      */
-    static func search(_ input:String, _ pattern:String,_ options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> Int?{
+    static func search(_ input:String, pattern:String, options: NSRegularExpression.Options = NSRegularExpression.Options.caseInsensitive) -> Int?{
         guard let range = input.range(of: pattern, options:.regularExpression) else{return nil}
         return input.distance(from:input.startIndex,to:range.lowerBound)
     }
@@ -130,18 +130,18 @@ public class RegExp{
         //TODO: ⚠️️ research enumerateMatches, it takes a method and enumerate all matches.
         //NSRegularExpression.replacementString has an offset, which I think you can use
     }
-    
+
 //    static func replaceMatches<T: Sequence>(in source:String, matches:T, using replacer:(Match) -> String?) -> String where T.Iterator.Element : Match {
-//        
+//
 //        "str".matches("(\\w+?)\\:([A-Z0-9]+?)(?: |$)").forEach {
 //            Swift.print("match.numberOfRanges: " + "\($0.numberOfRanges)")/*The first item is the entire match*/
 //            let content = (str as NSString).substringWithRange($0.rangeAtIndex(0))/*the entire match*/
 //            let name = $0.value("", 1)/*capturing group 1*/
-//            
+//
 //            (str as NSString).substring(with: result.rangeAt(key))
-//            
+//
 //        }
-//        
+//
 //        var result = ""
 //        var lastRange:StringRange = source.startIndex ..< source.startIndex
 //        for match in matches {
@@ -156,11 +156,11 @@ public class RegExp{
 //        result += source.substring(from: lastRange.upperBound)
 //        return result
 //    }
-//    
-//    
+//
+//
     /**
      Replaces all occurances of the pattern using supplied replacer function.
-     
+
      - parameters:
      - source: String to be matched to the pattern
      - replacer: Function that takes a match and returns a replacement. If replacement is nil, the original match gets inserted instead
@@ -170,10 +170,10 @@ public class RegExp{
 //        let matches = findAll(in: source)
 //        return replaceMatches(in: source, matches: matches, using: replacer)
 //    }
-    
+
 }
 extension NSTextCheckingResult{
-    func value(_ str:String, _ key:Int)->String{//Convenience
+    func value(_ str:String, key:Int)->String{//Convenience
         return RegExp.value(str, self, key)
     }
 }
