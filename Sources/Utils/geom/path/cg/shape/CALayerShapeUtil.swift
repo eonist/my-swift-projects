@@ -23,6 +23,18 @@ class CGShapeUtil {
       return lineLayer
 	}
    /**
+    * polyline
+    */
+   static func drawPolyLine(points:[CGPoint],style:(fillColor:UIColor?,strokeColor:UIColor?,thickness:CGFloat?)?),close:Bool = false) -> CAShapeLayer{
+      let shapeLayer:CAShapeLayer = .init()
+		let path:CGMutablePath = CGPathParser.polyline(points.points,close:close)
+      shapeLayer.path = path/*Setup the CAShapeLayer with the path, colors, and line width*/
+      shapeLayer.strokeColor = style?.strokeColor?.cgColor
+      shapeLayer.lineWidth = style?.thickness ?? shapeLayer.lineWidth
+      shapeLayer.fillColor = style?.fillColor?.cgColor
+      return shapeLayer
+   }
+   /**
     * Draws a rectange in shapeLayer
     * ## Examples:
     * let rectShape = CGShapeUtil.drawRect(shapeLayer:.init(),.init(x:0,y:0,width:100,height:100),style(nil,.black,14))
