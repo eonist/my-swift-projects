@@ -25,7 +25,7 @@ extension CGPoint{
     func copy()->CGPoint{return CGPoint(self.x,self.y)}
     func clone()->CGPoint{return CGPoint(self.x,self.y)}
     func add(_ p:CGPoint)->CGPoint{return CGPointParser.add(self, p)}
-    func subtract(_ p:CGPoint) -> CGPoint {return CGPointParser.subtract(self, p)}
+    func subtract(_ p:CGPoint) -> CGPoint {return CGPointParser.substract(self, p)}
     func multiply(_ p:CGPoint) -> CGPoint {return CGPointParser.multiply(self, p)}
     func divide(_ p:CGPoint) -> CGPoint {return CGPointParser.divide(self, p)}
     /*Asserters*/

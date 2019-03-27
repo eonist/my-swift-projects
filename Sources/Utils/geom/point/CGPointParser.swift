@@ -44,6 +44,7 @@ class CGPointParser{
      * Returns the distance between two points
      * NOTE: Math formula for distance of two points is: AB2 = dx2 + dy2 (distance = sqrt(dx2 + dy2)) where one side is dx - the difference in x-coordinates, and the other is dy - the difference in y-coordinates.
      * NOTE: Math formula: c^2=a^2+b^2 (||u|| = √h^2+v^2) (in triangle notation c= hypotenus etc)
+     * there is also : let distance = hypot(p1.x - p2.x, p1.y - p2.y)
      */
     static func distance(_ a:CGPoint,_ b:CGPoint) -> CGFloat{
         let xDifference:CGFloat = CGFloatParser.relativeDifference(a.x,b.x)
@@ -133,9 +134,9 @@ class CGPointParser{
      * TODO: is there a math formula ? write the formula you have atleast
      */
     static func difference(_ p1:CGPoint,_ p2:CGPoint)->CGPoint {
-        let x:CGFloat = CGFloatParser.difference(p1.x, p2.x)
-        let y:CGFloat = CGFloatParser.difference(p1.y, p2.y)
-        return CGPoint(x,y)
+        let x:CGFloat = p2.x - p1.x
+        let y:CGFloat = p2.y - p1.y
+        return .init(x,y)
     }
     /**
      *
@@ -183,7 +184,7 @@ class CGPointParser{
     /**
      * Returns a CGRect that makes derived from PARAM: points (think bounding box of points)
      */
-    static func rectangle(_ points:Array<CGPoint>)->CGRect{
+    static func rectangle(_ points:[CGPoint])->CGRect{
         var max:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         var min:CGPoint = points.count > 0 ? (points[0] as CGPoint).copy():CGPoint()
         points.forEach { point in
@@ -211,16 +212,9 @@ class CGPointParser{
      * TODO: rename to average?
      * TODO: add support for ...args see dataprovider for example, this may slow down this function which needs to be fast,maybe make a fastMedian suppliment function then?
      */
-    static func median(_ points:[CGPoint]) -> CGPoint{
-        var median:CGPoint = CGPoint()
-        points.forEach { point in
-            median.x += point.x//TODO: possibly use point.add?, you can also just do median += point here
-            median.y += point.y
-        }
-        let numOfPoints:Int = points.count
-        median.x /= numOfPoints.cgFloat//TODO: possibly use point.divide or similar utility function?
-        median.y /= numOfPoints.cgFloat
-        return median
+     static func median(pts:[CGPoint]) -> CGPoint{
+       let median:CGPoint = pts.reduce(.zero) { .init(x:$0.x + $1.x, y:$0.y + $1.y) }
+       return .init(x:median.x / CGFloat(pts.count), y:median.y / CGFloat(pts.count))
     }
     /**
      * Returns a Point half way between PARAM: p1 and p2
@@ -241,10 +235,27 @@ class CGPointParser{
      * NOTE: formula: "(x1+x2)/2 , (y1,y2)/2"
      * NOTE: probably faster than using interpolation
      * EXAMPLE: midPoint(CGPoint(0,0),CGPoint(100,100))//CGPoint(50,50)
+     * Caution: this only works if p1 is .zero
      */
     static func midPoint(_ p1:CGPoint,_ p2:CGPoint) -> CGPoint {
         return CGPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2)
     }
+    /**
+     * Returns a Point half way between a and b
+     */
+    static func midPt(a:CGPoint, b:CGPoint) -> CGPoint {
+         let minX:CGFloat =  min(a.x,b.x)
+         let minY:CGFloat =  min(a.y,b.y)
+         let maxX:CGFloat =  max(a.x,b.x)
+         let maxY:CGFloat =  max(a.y,b.y)
+         let x:CGFloat = minX+((maxX-minX)/2)
+         let y:CGFloat = minY+((maxY-minY)/2)
+         let center:CGPoint = .init(x:x,y:y)
+         return center
+    }
+    static func midPt(){
+
+   }
     /**
      * Returns a new point comprised of the addition of two points
      */
@@ -254,7 +265,7 @@ class CGPointParser{
     /**
      * Returns a new point comprised of the subtraction of two points
      */
-    static func subtract(_ a:CGPoint,_ b:CGPoint) -> CGPoint {
+    static func substract(_ a:CGPoint,_ b:CGPoint) -> CGPoint {
         return CGPoint(a.x-b.x, a.y-b.y)
     }
     /**
@@ -293,12 +304,9 @@ class CGPointParser{
         let x4:CGFloat = p4.x
         let y4:CGFloat = p4.y
         let dx1:CGFloat = p2.x - x1
-        //Swift.print("dx1: " + "\(dx1)")
         let dx2:CGFloat = p3.x - x4
-        //Swift.print("dx2: " + "\(dx2)")
         var p:CGPoint = CGPoint()
         if  dx1 == 0 || dx2 == 0 {//TODO: not 0 or what?
-            //print("case a");
             p.x = 0
             p.y = 0
             /*return NaN;*/
@@ -306,12 +314,10 @@ class CGPointParser{
         let m1:CGFloat = (p2.y - y1) / dx1
         let m2:CGFloat = (p3.y - y4) / dx2
         if dx1 == 0{//TODO: not 0 or what?
-            //print("case b")
             p.x = x1
             p.y = m2 * (x1 - x4) + y4
             return p
         }else if dx2 == 0 {//TODO: not 0 or what?
-            //print("case c");
             p.x = x4
             p.y = m1 * (x4 - x1) + y1
             return p
@@ -320,6 +326,18 @@ class CGPointParser{
         p.y = m1 * (p.x - x1) + y1
         return p
     }
+    /*
+    * New
+    */
+    static func intersection2(a: (p1: CGPoint, p2: CGPoint), b: (p1: CGPoint, p2: CGPoint)) -> CGPoint? {
+      let distance:CGFloat = (a.p2.x - a.p1.x) * (b.p2.y - b.p1.y) - (a.p2.y - a.p1.y) * (b.p2.x - b.p1.x)
+      if distance == 0 { return nil }/*error, parallel lines*/
+      let u:CGFloat = ((b.p1.x - a.p1.x) * (b.p2.y - b.p1.y) - (b.p1.y - a.p1.y) * (b.p2.x - b.p1.x)) / distance
+      let v:CGFloat = ((b.p1.x - a.p1.x) * (a.p2.y - a.p1.y) - (b.p1.y - a.p1.y) * (a.p2.x - a.p1.x)) / distance
+      if (u < 0.0 || u > 1.0) {return nil}/*error, intersection not inside a*/
+      if (v < 0.0 || v > 1.0) {return nil}/*error, intersection not inside b*/
+      return .init(x:a.p1.x + u * (a.p2.x - a.p1.x), y:a.p1.y + u * (a.p2.y - a.p1.y))
+   }
     /**
      * beta
      * NOTE: sometimes when 2 lines touch at the begining or ends they dont yeild the correct intersection

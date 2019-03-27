@@ -101,6 +101,15 @@ class TrigParser {
         return angleSpan(a, b, isClockWise ? Trig.clockWise : Trig.counterClockWise)
     }
     /**
+    * Angle span
+    */
+   static func angleSpan3(pivot:CGPoint,a:CGPoint,b:CGPoint)->CGFloat{
+      let angle1 = Trig.angle(pivot, a)
+      let angle2 = Trig.angle(pivot, b)
+      let A = abs(Trig.difference(angle1, angle2))
+      return A
+   }
+    /**
      * Returns a flipped angle between -3.14 and 3.14 (an angle that is flipped in the x or y axis)
      * PARAM: angle between -3.14 and +3.14 (if you want to use angles from 0 to 6.28 use Angle.normalize2 on the PARAM: angle first)
      * PARAM: horizontalAxis: horizontal axis multiplier

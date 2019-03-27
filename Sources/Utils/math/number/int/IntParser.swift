@@ -4,6 +4,7 @@ class IntParser{
     /**
      * Return a  Random number within a min max value
      * EXAMPLE: IntParser.random(0,3)//Can return either of: 0,1,2,3
+     @ - Important: You now have the native `let randomInt = Int.random(in: 1..<5)`
      */
     static func random(_ min:Int, _ max:Int)->Int{//returns an integer between 0 - x
         return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
@@ -96,5 +97,5 @@ class IntParser{
    static func digitCount(_ n: Int) -> Int {
        return Int(log2(Double(n)) / log2(10.0)) + 1
    }
-   
+
 }
