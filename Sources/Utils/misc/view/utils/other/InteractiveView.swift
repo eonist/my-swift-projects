@@ -7,7 +7,7 @@ import Cocoa
  * NOTE: its primary use-case is to wrap NSEvents into Event so that the view hierarchy can retrieve the view where the event came from which is not possible when using NSEvent. NSEvent cant be subclasses so this is the best solution I've found for this particular use-case.
  * CAUTION: ⚠️️ seems to not work as a container for i.e Adding a button to a View instance (for now use FlippedView when using it as a container)
  * TODO: ⚠️️ Make the isChildrenInteractive:Bool -> You may want to make a variable that also can set the isInteractive var of children of the view:
- * IMPORTANT: ⚠️️ you must implement custom hitTest overrides for NSViews added as subViews to this class. 
+ * IMPORTANT: ⚠️️ you must implement custom hitTest overrides for NSViews added as subViews to this class.
  */
 class InteractiveView:FlippedView,InteractiveViewable{
     /*By default we assign the propegation closure to the event, this event may be overridden in other classes, which leads to the event beeing redirected, we can always assign the default behaviour back */
@@ -29,7 +29,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
         self.layerContentsRedrawPolicy = .onSetNeedsDisplay/*Supposedly this makes anim fast, may or may not have an effect, try diable and enable it from time to time*/
     }
     /**
-     * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down 
+     * EXAMPLE: override onEvent in a subClass then assert origin === thumb && event.type == ButtonEvent.down
      */
     func onEvent(_ event:Event){
         self.event(event.setImmediate(self))//the setImmediate attaches the immediate instance to the event.
@@ -38,7 +38,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
      * MouseMove (only fires when the mouse is actualy moving on the visible  part of the view)
      * NOTE: It could be possible to only call this method if a bool value was true. Optimization
      * NOTE: if you override this method in subclasses, then also call the the super of this method to avoid loss of functionality
-     * TODO: ⚠️️ When you implement propegation of the mouseMove method, mousemove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
+     * TODO: ⚠️️ When you implement propegation of the mouseMove method, mouseMove needs a bool to turn it on or it will flood its parents with calls, isMouseMovable could be used
      */
     func mouseMoved(_ event:MouseEvent){
 //        Swift.print("mouseMoved")
@@ -47,7 +47,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
         parent.mouseMoved(event.setImmediate(self).cast())/*informs the parent that an event occured*/
     }
     /**
-     * Only fires if the mouse is over the visible part of this view 
+     * Only fires if the mouse is over the visible part of this view
      * NOTE: you have to implement a hitTest that aserts that the aPoint is within the path. (either in the CALayer or at the last hitTesable NSView in your stack)
      */
     func mouseOver(_ event:MouseEvent){
@@ -107,7 +107,7 @@ class InteractiveView:FlippedView,InteractiveViewable{
             mouseMoved(MouseEvent(event,self))
         }
         else if isMouseOver {mouseOut(MouseEvent(event,self));isMouseOver = false}//mouse move on the "invisible" parth of the view
-        
+
     }
     /**
      * Fires when the mouse enters the tracking area, regardless if it is overlapping with other trackingAreas of other views
@@ -131,14 +131,14 @@ class InteractiveView:FlippedView,InteractiveViewable{
     override func mouseExited(with event: NSEvent){
 //        Swift.print("mouseExited")
         //Swift.print("\(type(of: self))" + ".mouseExited: event.locationInWindow: " + "\(event.locationInWindow)")
-        
+
         //⚠️️ I'm not sure if the bellow code is perfectly stable in all cases, more testing needed
-        
+
         guard hasMouseEntered && isMouseOver else {return}
         hasMouseEntered = false/*optimization*/
         isMouseOver = false
         mouseOut(MouseEvent(event,self))
-        
+
         //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseDown(with event: NSEvent) {

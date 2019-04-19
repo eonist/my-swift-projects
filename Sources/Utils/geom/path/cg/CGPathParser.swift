@@ -83,23 +83,22 @@ class CGPathParser{
         return ellipsePath
     }
     /**
-     * EXAMPLE: roundRect(5,100,100)
-     * TODO:  Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void you have the code for this somewhere
-     * NOTE: was: //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
-     * NOTE: you can also use: CGPathCreateWithRoundedRect() and CGPathAddRoundedRect()
-     * TODO: use apples native roundedCorner class to represents the corner fillets, and pas cgrect, also add shouldclose flag
-     */
-    static func roundRect( x:CGFloat,  y:CGFloat,  w:CGFloat,  h:CGFloat,  topLeftRadius:CGFloat,  topRightRadius:CGFloat,  bottomLeftRadius:CGFloat,  bottomRightRadius:CGFloat) -> CGMutablePath{
-        let rect:CGRect = CGRect(x,y,w,h)
-        let path:CGMutablePath = CGMutablePath()
-        path.move(to: CGPoint(rect.midX, rect.minY))//swift 3 was-> CGPathMoveToPoint
-        path.addArc(tangent1End: CGPoint(rect.maxX, rect.minY), tangent2End: CGPoint(rect.maxX, rect.maxY), radius: topRightRadius)//TR //swift 3 was CGPathAddArcToPoint
-        path.addArc(tangent1End: CGPoint(rect.maxX, rect.maxY), tangent2End: CGPoint(rect.minX, rect.maxY), radius: bottomRightRadius)
-        path.addArc(tangent1End: CGPoint(rect.minX, rect.maxY), tangent2End: CGPoint(rect.minX, rect.minY), radius: bottomLeftRadius)
-        path.addArc(tangent1End: CGPoint(rect.minX, rect.minY), tangent2End: CGPoint(rect.maxX, rect.minY), radius: topLeftRadius)
-        path.closeSubpath()
-        return path
-    }
+    * EXAMPLE: roundRect(5,100,100)
+    * - TODO: Draws a rounded rectangle using the size of individual x and y radii to draw the rounded corners.: drawRoundRectComplex2(x:Number, y:Number, width:Number, height:Number, radiusX:Number, radiusY:Number, topLeftRadiusX:Number, topLeftRadiusY:Number, topRightRadiusX:Number, topRightRadiusY:Number, bottomLeftRadiusX:Number, bottomLeftRadiusY:Number, bottomRightRadiusX:Number, bottomRightRadiusY:Number):void you have the code for this somewhere
+    * - NOTE: was: //radius:CGFloat = 10, _ w:CGFloat = 100,_ h:CGFloat = 100, _ x:CGFloat = 0,_ y:CGFloat = 0
+    * - NOTE: you can also use: CGPathCreateWithRoundedRect() and CGPathAddRoundedRect()
+    * - TODO: use apples native roundedCorner class to represents the corner fillets, and pas cgrect, also add shouldclose flag
+    */
+   static func roundedRect(rect:CGRect, radius:(topLeft:CGFloat,  topRight:CGFloat,  bottomLeft:CGFloat,  bottomRight:CGFloat)) -> CGMutablePath{
+      let path:CGMutablePath = .init()
+      path.move(to: .init(x:rect.midX, y:rect.minY))//swift 3 was-> CGPathMoveToPoint
+      path.addArc(tangent1End: .init(x:rect.maxX, y:rect.minY), tangent2End: .init(x:rect.maxX, y:rect.maxY), radius: radius.topRight)//TR //swift 3 was CGPathAddArcToPoint
+      path.addArc(tangent1End: .init(x:rect.maxX, y:rect.maxY), tangent2End: .init(x:rect.minX, y:rect.maxY), radius: radius.bottomRight)
+      path.addArc(tangent1End: .init(x:rect.minX, y:rect.maxY), tangent2End: .init(x:rect.minX, y:rect.minY), radius: radius.bottomLeft)
+      path.addArc(tangent1End: .init(x:rect.minX, y:rect.minY), tangent2End: .init(x:rect.maxX, y:rect.minY), radius: radius.topLeft)
+      path.closeSubpath()
+      return path
+   }
     /**
      * Returns the boundingBox for the stroke in (the returned CGRect is in 0,0 space)
      * TODO: Move this method somewhere else?
