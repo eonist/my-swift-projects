@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Great resource for formating date: https://nsdateformatter.com
+ */
 class DateParser {
     /**
      * Returns relative time like: 2y, 11m, 3w, 4h, 2d, 5m,  3sec (aka: time ago)
@@ -77,6 +79,10 @@ class DateParser {
         let day:String = date.day.string
         return "\(year)/\(month)/\(day)"
     }
+    /**
+     * Returns "April" etc
+     * Remark:  dateFormatter.dateFormat = "dd MMMM yyyy" // 02 April 2019
+     */
     static func monthName(_ date:Date) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
