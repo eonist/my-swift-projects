@@ -3,7 +3,9 @@ import UIKit
 extension UITableView:UITableViewDataSource {}
 extension UITableViewDataSource where Self:UITableView {
     /**
-     * EXAMPLE: tableView.cells//list of cells in a tableview
+     * Returns all ells in a table
+     * ## Examples:
+     * tableView.cells // array of cells in a tableview
      */
     var cells:[UITableViewCell] {
         return (0..<self.numberOfSections).indices.map { (sectionIndex:Int) -> [UITableViewCell] in
