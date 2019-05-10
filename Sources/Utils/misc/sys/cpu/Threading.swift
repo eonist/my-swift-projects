@@ -19,3 +19,10 @@ func bgSleep(_ sleepDurInSec: CGFloat, _ closure:@escaping () -> Void) {
         }
     }
 }
+
+/**
+ * Adds supports for fractional time
+ */
+func sleep(_ seconds: Double){
+    usleep(useconds_t(seconds * 1000000)) // wait for n secs
+}
