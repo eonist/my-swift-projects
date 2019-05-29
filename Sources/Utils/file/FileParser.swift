@@ -13,7 +13,7 @@ class FileParser{
      */
     static func content(_ path: String) -> String? {
         do {
-            let content = try String(contentsOfFile: path, encoding: String.Encoding.utf8) as String//encoding: NSUTF8StringEncoding
+            let content = try String(contentsOfFile: path, encoding: /*String.Encoding*/.utf8) as String//encoding: NSUTF8StringEncoding
             return content
         } catch {
             return nil
@@ -21,7 +21,7 @@ class FileParser{
     }
     /**
      * FileParser.resourceContent("example","txt")
-     * Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
+     * ## Example: Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
      */
     static func resourceContent(_ fileName:String, fileExtension:String)->String?{
         if let filepath:String = Bundle.main.path(forResource: fileName, ofType:fileExtension ) {
