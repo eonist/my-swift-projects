@@ -1,5 +1,10 @@
-![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-macOS/iOS-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
-[![codebeat](https://codebeat.co/badges/59d2725a-e28e-4da4-9749-3ddc138be55b)](https://codebeat.co/projects/github-com-eonist-swift-utils) [![SPM compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) 
+![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) 
+![platform](https://img.shields.io/badge/Platform-macOS/iOS-blue.svg) 
+![Lang](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
+[![codebeat](https://codebeat.co/badges/59d2725a-e28e-4da4-9749-3ddc138be55b)](https://codebeat.co/projects/github-com-eonist-swift-utils) 
+[![SPM compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![GitHub stars](https://img.shields.io/github/stars/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/issues)
 
 ### A collection of my swift util libs:
 
