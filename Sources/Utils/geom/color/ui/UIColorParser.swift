@@ -17,7 +17,7 @@ class UIColorParser{
    /**
     * Returns color for point in UIView
     */
-   static func color(point:CGPoint) -> UIColor {
+   static func color(image: UIView, point: CGPoint) -> UIColor {
       let colorSpace:CGColorSpace = CGColorSpaceCreateDeviceRGB()
       let bitmapInfo = CGBitmapInfo.init(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)//fromRaw()!
 
@@ -25,7 +25,7 @@ class UIColorParser{
 
       if let context = CGContext(data: &pixelData, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) {
          context.translateBy(x: -point.x, y: -point.y)
-         self.layer.render(in: context)
+         image.layer.render(in: context)
       }
 
       let red:CGFloat = CGFloat(pixelData[0])/CGFloat(255.0)
