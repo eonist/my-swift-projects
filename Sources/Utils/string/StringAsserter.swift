@@ -4,8 +4,7 @@ class StringAsserter{
         static let metric:String = "^-?\\d*?\\.?\\d*?(ems|%)?$"
         static let color:String = "^#?([a-fA-F0-9]{3}){1,2}$"
     }
-    
-    /**
+  /**
 	 * Example: Asserts if a word is duoble quated: isWrappedWith("\"abc123\"", "\"")//true
 	 */
 	static func isWrappedWith(_ string:String, _ char:Character)->Bool{
@@ -19,7 +18,7 @@ class StringAsserter{
 	 *	PARAM: string: The string that the prefix will be checked against.
 	 *	PARAM: prefix: The prefix that will be tested against the string.
 	 *	RETURN: True if the string starts with the prefix, false if it does not.
-	 */	
+	 */
 	static func beginsWith(_ string:String, _ prefix:String)->Bool{
         return string.hasPrefix(prefix)
 	}
@@ -39,7 +38,7 @@ class StringAsserter{
     /**
      * Check if string contains another string
      */
-    static func contains(_ a:String, _ b:String)->Bool{
+    static func contains(_ a: String, _ b: String) -> Bool{
         return a.range(of: b) != nil
     }
     /**
@@ -66,7 +65,7 @@ class StringAsserter{
     static func webColor(_ string:String)->Bool {
         return WebColors.webColors.has(string)/*was regexp, is now array assert because probably faster*/
     }
-    
+
     /**
      * Asserts if a string is in lower case
      */
