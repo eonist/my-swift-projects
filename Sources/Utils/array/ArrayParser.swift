@@ -5,52 +5,53 @@ import Foundation
  */
 class ArrayParser{
     /**
-     * NOTE: This method compares value not reference
-     * NOTE: String class works with Comparable and not Equatable, Use this method when dealing with Strings
-     * NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
-     * NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
-     * NOTE: the multiple generig type could also be written like this: <T : protocol<Equatable, Comparable>>
-     * NOTE: there is also Native: [].index(where: {$0 == val})
-     * IMPORTANT: ⚠️️ If you want to compare String, int, CGFloat etc use this as is,
-     * IMPORTANT: ⚠️️ if you want to compare custom classes, then you should compare reference or
-     * IMPORTANT: ⚠️️ if you want to compare values then you must implement Equatable or COmparable in this class
-     * EXAMPLE: ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
-     * EXAMPLE: indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
+     * - NOTE: This method compares value not reference
+     * - NOTE: String class works with Comparable and not Equatable, Use this method when dealing with Strings
+     * - NOTE: you can also do things like {$0 > 5} , {$0 == str}  etc
+     * - NOTE: this may also work: haystack.filter({$0 == needle}).count > 0
+     * - NOTE: the multiple generig type could also be written like this: <T : protocol<Equatable, Comparable>>
+     * - NOTE: there is also Native: [].index(where: {$0 == val})
+     * - IMPORTANT: ⚠️️ If you want to compare String, int, CGFloat etc use this as is,
+     * - IMPORTANT: ⚠️️ if you want to compare custom classes, then you should compare reference or
+     * - IMPORTANT: ⚠️️ if you want to compare values then you must implement Equatable or COmparable in this class
+     * ## EXAMPLES:
+     * ArrayParser.index(["abc","123","xyz","456"], "xyz")//2
+     * indexOf(["Apples", "Peaches", "Plums"],"Peaches")//1
      */
-    static func index<T>(_ array : [T], _ value:T)->Int where T:Comparable{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
+    static func index<T>(_ array : [T], _ value: T) -> Int where T: Comparable{//the <T: Comparable> The Comparable protocol extends the Equatable protocol -> implement both of them
         return array.index(of: value) ?? -1
     }
     /**
-     * New
-     * NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
-     * IMPORTANT: ⚠️️ compares reference not value
-     * NOTE: use native arr.index(where {..}) ?? -1 instead
-     * TODO: ⚠️️ maybe this can be cleaned up with Any?
+     * - NOTE: If you want to compare values rather than references. Then use the "==" compare operator and make sure you test if an instance is of String or Int or CGFloat etc. and then cast it to that type before you attempt to use the "==" operator. AnyObject in of it self cant be tested with the == operator. I can definitely see the use case for testing value rather than ref.
+     * - IMPORTANT: ⚠️️ compares reference not value
+     * - NOTE: use native arr.index(where {..}) ?? -1 instead
+     * - Fixme: ⚠️️ maybe this can be cleaned up with Any?
      */
     static func indx<T>(_ arr: [T], _ item: T) -> Int{//<--use inout for both args?
-        return arr.index(where: {($0 as AnyObject) === (item as AnyObject)}) ?? -1
+        return arr.index { ($0 as AnyObject) === (item as AnyObject)} ?? -1
     }
     /**
-     * NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
-     * NOTE: dupplets doesn't seem to be castable to AnyObject
-     * NOTE: Compares reference not value
+     * - NOTE: I feel this is the best implementation as it doesn't copy anything, "direct comparison" with the inout args
+     * - NOTE: dupplets doesn't seem to be castable to AnyObject
+     * - NOTE: Compares reference not value
      */
     static func idx<T>(_ arr:inout [T], _ item:inout T) -> Int{
-        return arr.index(where: {($0 as AnyObject) === (item as AnyObject)}) ?? -1//we cast to AnyObject because generics can't ref compare, but AnyObject can
+        return arr.index { ($0 as AnyObject) === (item as AnyObject) } ?? -1//we cast to AnyObject because generics can't ref compare, but AnyObject can
     }
     /**
      * Returns the index of the first instance that matches the PARAM: item in the PARAM: arr, -1 of none is found
-     * NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
-     * IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
-     * IMPORTANT: compares reference not value
+     * - NOTE: works with AnyObject aswell. Unlike the apple provided array.indexOf that only works with Equatable items
+     * - IMPORTANT: This method only works with instances that are casted as AnyObject, use the indx method instead as it is cleaner
+     * - IMPORTANT: compares reference not value
      */
     static func indexOf(_ arr:[AnyObject],_ item:AnyObject)-> Int{
         return arr.index(where: {$0 === item}) ?? -1
     }
     /**
      * Returns an array with itmes that are not the same in 2 arrays
-     * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
-     * IMPORTANT: compares value not reference (If you need support for ref make a new method)
+     * ## EXAMPLES:
+     * difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
+     * - IMPORTANT: compares value not reference (If you need support for ref make a new method)
      */
     static func difference<T>(_ a:[T], _ b:[T] )->[T] where T:Comparable{
         var diff:[T] = []
@@ -59,38 +60,40 @@ class ArrayParser{
         return diff
     }
     /**
-     * EXAMPLE: diff(["a","b","c"],["a","b","c","d","e","f","g"]);//(b:4,5,6)
-     * EXPERIMENTAL
+     * Simple diffing method (EXPERIMENTAL)
+     * ## EXAMPLES:
+     * diff(["a","b","c"],["a","b","c","d","e","f","g"]); // (b:4,5,6)
      */
-    static func diff<T>(_ a:[T], _ b:[T] )->(a:[Int],b:[Int]) where T:Comparable{
-        var (diffA,diffB):([Int],[Int]) = ([],[])
-        for (i,item) in a.enumerated() { if (b.index(of: item) == nil) {diffA.append(i)}}
-        for (i,item) in b.enumerated() { if (a.index(of: item) == nil) {diffB.append(i)}}
-        return (a:diffA,b:diffB)
+    static func diff<T>(_ a: [T], _ b: [T] ) -> (a: [Int], b: [Int]) where T: Comparable{
+        var (diffA, diffB): ([Int], [Int]) = ([], [])
+        for (i, item) in a.enumerated() { if (b.index(of: item) == nil) { diffA.append(i) } }
+        for (i, item) in b.enumerated() { if (a.index(of: item) == nil) { diffB.append(i) } }
+        return (a: diffA, b: diffB)
     }
     /**
      * Returns an array with itmes that are not the same in 2 arrays
-     * EXAMPLE: difference([1,2,3],[1,2,3,4,5,6]);//4,5,6
-     * IMPORTANT: compares reference not value
+     * ## EXAMPLES:
+     * difference([1,2,3],[1,2,3,4,5,6]); // 4,5,6
+     * - IMPORTANT: compares reference not value
      */
     static func difference<T>(_ a:[T], _ b:[T] )->[T] {
         var diff:[T] = []
-        for item in a { if ArrayParser.indx(b,item) == -1 {diff.append(item)}}
-        for item in b { if ArrayParser.indx(a,item) == -1 {diff.append(item)}}
+        for item in a { if ArrayParser.indx(b, item) == -1 { diff.append(item) } }
+        for item in b { if ArrayParser.indx(a, item) == -1 { diff.append(item) } }
         return diff
     }
     /**
-     * EXAMPLE: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
-     * NOTE: the orgiginal version of this method is a little different, it uses an indexOf call
-     * IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
+     * ## EXAMPLES: similar([1, 2, 3, 10, 100],[1, 2, 3, 4, 5, 6])
+     * - NOTE: the orgiginal version of this method is a little different, it uses an indexOf call
+     * - IMPORTANT: this compares value similarity not reference, make a similar method if its needed for references aswell, or add some more logic to this method to support both. A bool flag can differentiate etc
      */
-    static func similar<T:Equatable>(_ a:[T],_ b:[T])->[T]{//TODO:Add support for COmparable to this method
-        return a.filter(){x in b.first(where: {x == $0}) != nil}
+    static func similar<T:Equatable>(_ a: [T], _ b: [T]) -> [T] { // Fixme: Add support for COmparable to this method
+        return a.filter() { x in b.first { x == $0 } != nil }
     }
     /**
      * Returns a list unique with all the unique Int from PARAM: ints
-     * EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
-     * TODO: there are probably more functional ways of doing this method 🤖 yes there is use reduce or set
+     * ## EXAMPLE: unique([1, 2, 3, 1, 2, 10, 100])//[1, 2, 3, 10, 100]
+     * - Fixme: there are probably more functional ways of doing this method 🤖 yes there is use reduce or set
      */
     static func unique(_ ints:[Int])->[Int]{//use comparable instead of int, see RangeAsserter for example for how to implement that
         var uniqueList:[Int] = []
@@ -108,55 +111,57 @@ class ArrayParser{
     }
     /**
      * Returns the first item in an array
-     * NOTE: there is also the native: [1,2,3].first//1
+     * - NOTE: there is also the native: [1,2,3].first//1
      */
-    static func first<T>(_ arr:[T])->T{
+    static func first<T>(_ arr: [T]) -> T {
         return arr[0]
     }
     /**
      * Returns the last item in an array
-     * NOTE: there is also the native: [1,2,3].last//3
+     * - NOTE: there is also the native: [1,2,3].last//3
      */
-    static func last<T>(_ arr:[T])->T{
+    static func last<T>(_ arr: [T]) -> T {
         return arr[arr.count-1]
     }
     /**
      * Returns a new array with every item in PARAM: array sorted according a custom method provided in PARAM: contition
-     * NOTE: leaves the original array intact
-     * NOTE: ⚠️️ there is also Native: .sort and .sortInPlace
-     * EXAMPLE: Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
+     * - NOTE: leaves the original array intact
+     * - NOTE: ⚠️️ there is also Native: .sort and .sortInPlace
+     * ## EXAMPLES:
+     * Print(ArrayParser.conditionSort([4,2,5,1,0,-1,22,3],<));// -1,0,1,2,3,4,5,22
      */
-    static func conditionSort<T>(_ array:[T],_ condition: (_ a: T, _ b: T)->Bool)->[T]{
-        var sortedArray:[T] = []
-        array.forEach{
-            let index:Int = Utils.index($0, sortedArray, condition)
-            if index > -1{_ = ArrayModifier.splice2(&sortedArray,index, 1, [$0,sortedArray[index]])}
-            else{sortedArray.append($0)/*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */}
+    static func conditionSort<T>(_ array: [T], _ condition: (_ a: T, _ b: T) -> Bool) -> [T] {
+        var sortedArray: [T] = []
+        array.forEach {
+            let index: Int = Utils.index($0, sortedArray, condition)
+            if index > -1 { _ = ArrayModifier.splice2(&sortedArray, index, 1, [$0, sortedArray[index]]) }
+            else { sortedArray.append($0) } /*add the weightedStyle to index 0 of the sortedStyles array or weigthedStyle does not have priority append weightedStyle to the end of the array */
         }
         return sortedArray
     }
     /**
      * Returns the first item in PARAM: array that is of PARAM: type
-     * TODO: ⚠️️ rename to first?
+     * - Fixme: ⚠️️ rename to first?
      */
-    static func firstItemByType<T>(_ array:[Any?], type:T.Type) -> T?{
-        return array.first(where: {$0 as? T != nil}) as? T
+    static func firstItemByType<T>(_ array: [Any?], type: T.Type) -> T? {
+        return array.first { $0 as? T != nil } as? T
     }
     /**
      * Returns all items in PARAM: array that is of PARAM: type
-     * NOTE: You can also do: `items.lazy.flatMap{$0 as? NSView}.first`
+     * - NOTE: You can also do: `items.lazy.flatMap{$0 as? NSView}.first`
      */
-    static func itemsByType<T>(_ array:[Any?], type:T.Type) -> [T]{
-        return array.filter(){$0 as? T != nil}.map{ $0 as! T}
+    static func itemsByType<T>(_ array: [Any?], type: T.Type) -> [T] {
+        return array.filter() { $0 as? T != nil }.map{ $0 as! T }
     }
     /**
      * Think of this method as: firstOccurence of something
      * Returns the first item that matches PARAM: match according to the constraints in PARAM: method
-     * EXAMPLE: ["a","b","c"].first("b",{$0 == $1})//b
-     * EXAMPLE: [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
-     * EXAMPLE: [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
-     * NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
-     * NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
+     * ## EXAMPLES:
+     * ["a","b","c"].first("b",{$0 == $1})//b
+     * [("a",0),("b",1)].first("b",{$0.0 == $1}).1//b
+     * [(id:"a",val:0),(id:"b",val:1)].first("b",{$0.id == $1}).val//b
+     * - NOTE: This method should have an extension, but making an extension for two generic variables proved difficult, more research needed, for now use the ArrayParser.first method call
+     * - NOTE: you could do: arr.forEach{/*assert logic goes here*/} but forEach can't return early so you are forced to iterate the entire list
      */
     static func first<T,V>(_ arr:[T],_ match:V,_ method:@escaping (T,V)->Bool) -> T?  where V:Equatable{
        return arr.first(where:{method($0,match)})//New upgrade, more functional 🤖

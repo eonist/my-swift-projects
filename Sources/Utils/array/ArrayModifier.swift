@@ -385,11 +385,12 @@ class ArrayModifier{
     }
     /**
      * We use a method instead of just a match:Equatable, that way we can add multiple match conditions 👌
-     * EXAMPLE: removeDups([1,2,2,3,4,4,4,5],{$0 == $1})//Output: 1,2,3,4,5
-     * NOTE This can also be done with functional programming .reduce See notes in the research docs
-     * MORE EXAMPLES: https://github.com/eonist/swift-utils/wiki/Array-tricks
+     * ## EXAMPLES:
+     * removeDups([1,2,2,3,4,4,4,5],{$0 == $1})//Output: 1,2,3,4,5
+     * - Note: This can also be done with functional programming .reduce See notes in the research docs
+     * - Note: MORE EXAMPLES: https://github.com/eonist/swift-utils/wiki/Array-tricks
      */
-    static func removeDups<T>(_ arr: [T], _ condition: (_ a:T, _ b:T) -> Bool) -> [T] {
+    static func removeDups<T>(_ arr: [T], _ condition: (_ a: T, _ b: T) -> Bool) -> [T] {
         var result: [T] = []
         arr.forEach { item in
             if result.first(where:{condition(item,$0)}) == nil {result.append(item)}//append if doesn't exists
@@ -398,17 +399,17 @@ class ArrayModifier{
     }
     /**
      * Very simple numeric sorter
-     * NOTE: you could also use some sort of bubble sort
-     * NOTE: modifies the original array,returns the array (convenient)
-     * TODO: ⚠️️ You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
-     * EXAMPLE:
+     * - NOTE: you could also use some sort of bubble sort
+     * - NOTE: modifies the original array,returns the array (convenient)
+     * - Fixme: ⚠️️ You could possibly add support for Generics that can use the < and > and maybe add a boolean for forward / backward support?
+     * ## EXAMPLES:
      * var arr:Array = [5,4,1,2,0]
      * ArrayModifier.numericSort(&arr)
      * Swift.print(arr)//0, 1, 2, 4, 5
      */
     static func numericSort(_ array:inout [Int]) -> [Int]{
         for i in 1..<array.count{
-            var e:Int = i
+            var e: Int = i
             while e > 0 && array[i] < array[e-1] {
                 e -= 1
             }
@@ -418,54 +419,55 @@ class ArrayModifier{
     }
     /**
      * Replaces PARAM: searchFor with PARAM: replaceWith (the existing item is deleted)
-     * NOTE: on pretext is that the item to search for must already exist in the array or else this method doesnt work
-     * NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
-     * IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is important
+     * - NOTE: on pretext is that the item to search for must already exist in the array or else this method doesnt work
+     * - NOTE: this only works if the oldItem is already in the array, if there is a chance that its not this function probably doesnt work
+     * - IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is important
      */
-    static func replace<T>(_ array:inout [T], _ searchFor:T, _ replaceWith:T) -> Int {
-        let index:Int = ArrayParser.indx(array, searchFor)
+    static func replace<T>(_ array:inout [T], _ searchFor: T, _ replaceWith: T) -> Int {
+        let index: Int = ArrayParser.indx(array, searchFor)
         array[index] = replaceWith
         return index
     }
     /**
-     * TODO: Make it work even if the length of the array the_replacements is longer than the matches
-     * IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is needed
+     * - Fixme: Make it work even if the length of the array the_replacements is longer than the matches
+     * - IMPORTANT: ⚠️️ Compares reference not value, create a similar method if value comparing is needed
      */
-    static func replaceMany<T>(_ array:inout [T], _ matches:[T], _ replacments:[T]) -> [T]{
+    static func replaceMany<T>(_ array:inout [T], _ matches: [T], _ replacments: [T]) -> [T] {
         for i in 0..<matches.count {
-            let index:Int = ArrayParser.indx(array, matches[i])//finds index of reference
-            if index != -1 {array[index] = replacments[i]}
+            let index: Int = ArrayParser.indx(array, matches[i]) // finds index of reference
+            if index != -1 { array[index] = replacments[i] }
         }
         return array
     }
     /**
      * Inserts "before" PARAM index (see examples bellow)
-     * NOTE: Another way to think of it is that the index always becomes the index of the item in the array
-     * RETURN: the mutated PARAM arr
-     * EXAMPLE: ["a","b","c"].insert("x", 0)//x,a,b,c
-     * EXAMPLE: ["a","b","c"].insert("x", 1)//a,x,b,c
-     * EXAMPLE: ["a","b","c"].insert("x", 2)//q,b,x,c
-     * EXAMPLE: ["a","b","c"].insert("x", 3)//a,b,c,x
-     * NOTE: ArrayModifier.addAt does the same thing as this method
+     * - NOTE: Another way to think of it is that the index always becomes the index of the item in the array
+     * - RETURN: the mutated PARAM arr
+     * ## EXAMPLES:
+     * ["a","b","c"].insert("x", 0)//x,a,b,c
+     * ["a","b","c"].insert("x", 1)//a,x,b,c
+     * ["a","b","c"].insert("x", 2)//q,b,x,c
+     * ["a","b","c"].insert("x", 3)//a,b,c,x
+     * - NOTE: ArrayModifier.addAt does the same thing as this method
      */
-    static func insertAt<T>(_ arr:inout [T], _ item:T, _ index:Int) -> [T]{
+    static func insertAt<T>(_ arr:inout [T], _ item: T, _ index: Int) -> [T] {
         arr.insert(item, at: index)
         return arr
     }
     /**
      * Removes the first item then adds an item to the end of the arr
      * [a,b,c].shiftAppend(d)//[b,c,d]
-     * CAUTION: [0,0,0,0,5].avg//1 Sometimes you want this to result in 5. use [].filter{$0 != 0} to remove 0
+     * - CAUTION: [0,0,0,0,5].avg//1 Sometimes you want this to result in 5. use [].filter{$0 != 0} to remove 0
      */
-    static func shiftAppend<T>(_ arr:inout [T], _ item:T) -> [T]{
+    static func shiftAppend<T>(_ arr:inout [T], _ item: T) -> [T]{
         _ = arr.shift()
         arr.append(item)
         return arr
     }
     /**
-     * Note: Useful if you want to do inline appendation
+     * - Note: Useful if you want to do inline appendation
      */
-    static func append<T>(_ array:[T],_ item:T)->[T]{
+    static func append<T>(_ array: [T],_ item: T) -> [T] {
         var array = array
         array.append(item)
         return array
