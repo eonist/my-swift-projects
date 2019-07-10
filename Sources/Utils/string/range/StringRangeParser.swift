@@ -14,7 +14,7 @@ class StringRangeParser {
     /**
      * Returns a Range instance for PARAM: str from PARAM: i to PARAM: i + PARAM: len
      */
-    static func strRange(_ str:String,_ i:Int,_ len:Int)->Range<String.Index>{
+    static func strRange(_ str:String,_ i:Int,_ len:Int) -> Range<String.Index> {
         let startIndex:String.Index = str.idx(i)
         let endIndex:String.Index = str.idx(i + len/* + 1*/)//+1 because swift 3 upgrade doesn't allow ... ranges
         let range = startIndex..<endIndex//swift 3 upgrade was-> startIndex...endIndex

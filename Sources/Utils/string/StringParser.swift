@@ -1,10 +1,10 @@
 import Cocoa
-class StringParser{
-    enum Pattern{
-        static let digit:String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
-        static let path:String = "^.*?\\/(?=\\w*?\\.\\w*?$)"
-        static let fileName:String = "^.*?\\/(\\w*?\\.\\w*?$)"
-        static let colorHex:String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$"
+class StringParser {
+    enum Pattern {
+        static let digit: String = "^(\\-?\\d*?\\.?\\d*?)(px|$)"//\-?\d*?(\.?)((?1)\d+?(?=px)
+        static let path: String = "^.*?\\/(?=\\w*?\\.\\w*?$)"
+        static let fileName: String = "^.*?\\/(\\w*?\\.\\w*?$)"
+        static let colorHex: String = "(?<=^#)(?:[a-fA-F0-9]{3}){1,2}|(?<!^#)(?:[a-fA-F0-9]{3}){1,2}$"
     }
     /**
      * Returns encode text (escaped)
@@ -13,7 +13,7 @@ class StringParser{
      * Example: encode("<image location:files/img/image.jpg")--%3Cimage+location%3Afiles%2Fimg%2Fimage.jpg
      * EXAMPLE: "testing this stuff.121".encode//testing%20this%20stuff.121
      */
-    static func encode(_ str:String)->String?{
+    static func encode(_ str: String)->String?{
         return str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
     /**
