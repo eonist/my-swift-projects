@@ -6,7 +6,7 @@ class RegExpAdvanceParser {
          * Returns an URL regular expression pattern
          */
         static let urlPattern:String = {
-            var str:String = ""
+            var str: String = ""
             str += "\\b"//the border between a word character and a non word charactre
             str += "("//Group1 start
             str += "(" //Group2 staret
@@ -165,10 +165,10 @@ class RegExpAdvanceParser {
      * Matches all <IMG> tags and <IMG> enclosed between <A> tags and if so it includes the <A> tag in the match
      */
     static func imgLink() {
-        //locate all <IMG> tags in your text; in addition, if any <IMG> tags are links (enclosed between <A> and </A> tags), 
+        //locate all <IMG> tags in your text; in addition, if any <IMG> tags are links (enclosed between <A> and </A> tags),
         //you need to match the complete link tags as well.
-        //The syntax for this type of condition is (?(backreference)true). 
-        //The ? starts the condition, the backreference is specified within parentheses, 
+        //The syntax for this type of condition is (?(backreference)true).
+        //The ? starts the condition, the backreference is specified within parentheses,
         //and the expression to be evaluated only if the backreference is present immediately follows.
         var str:String = "<!-- Nav bar --> "
                             str += "<TD>"
@@ -203,7 +203,7 @@ class RegExpAdvanceParser {
                 pattern += "[Aa]" //Subseed by A or a
                 pattern += ">" //Subseeded with ">"
             pattern += ")"//Group2 end
-        
+
         str.match(pattern).forEach {
             print($0)
         }
