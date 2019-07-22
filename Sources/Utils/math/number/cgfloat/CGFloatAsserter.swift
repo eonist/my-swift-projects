@@ -4,7 +4,7 @@ import Foundation
  * TODO: Rename this to CGFloatAsserter, and then make a typeAlias to NumberAsserter -> to not break legacy code. (Do the same with PointAserter etc)
  */
 class CGFloatAsserter{
-    static let epsilon:CGFloat = 10e-12
+    static let epsilon: CGFloat = 10e-12
     /**
      * RETURN: true if number is odd
      * EXAMPLE:
@@ -24,14 +24,15 @@ class CGFloatAsserter{
         return !odd(number)
     }
     /**
-     * NOTE: I think this could be written simpler: Math.abs(a - b) <= epsilon, test different cases to verify, only would it work with negative values as the current method does?
-     * EXAMPLE: print(NumberAsserter.isNear(-1.8650465545944293 , -1.8650465545944273, NumberAsserter.EPSILON));//true, result is 10e-15 which is less than 10e-12
+     * - Note: You can do Swift.abs(4.1 - 4.0) <= 0.1 // true,where 0.1 is the epsilon (also works for negative values)
+     * ## Examples:
+     * Swift.print(NumberAsserter.isNear(-1.8650465545944293 , -1.8650465545944273, NumberAsserter.EPSILON));//true, result is 10e-15 which is less than 10e-12
      */
-    static func isNear(_ a:CGFloat,_ b:CGFloat,_ epsilon:CGFloat)->Bool {//this could also be named almostEqual
-        if a == b { return true}
-        else{
-            let result:CGFloat = Swift.max(a, b) - Swift.min(a, b)
-            return result < epsilon//TODO: we could do <= here
+    static func isNear(_ a: CGFloat, _ b: CGFloat, _ epsilon: CGFloat = 10e-12) -> Bool {//this could also be named almostEqual
+        if a == b { return true }
+        else {
+            let result: CGFloat = Swift.max(a, b) - Swift.min(a, b)
+            return result < epsilon // Fixme: ⚠️️  we could do <= here
         }
     }
     /**

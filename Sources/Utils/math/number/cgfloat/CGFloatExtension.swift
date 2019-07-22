@@ -4,7 +4,7 @@ var NaN:CGFloat = CGFloat.nan/*Global variable for the sake of convenience*/
 
 extension CGFloat {
     func toFixed(_ places:Int)->CGFloat{return CGFloatModifier.toFixed(self, places)}
-    func isNear(_ value:CGFloat,_ epsilon:CGFloat)->Bool{return CGFloatAsserter.isNear(self, value, epsilon)}
+    func isNear(_ value: CGFloat, _ epsilon: CGFloat = 10e-12)->Bool{return CGFloatAsserter.isNear(self, value, epsilon)}
     var uint:UInt{return UInt(self)}
     var int:Int{return Int(self)}
     var float:Float{return Float(self)}
