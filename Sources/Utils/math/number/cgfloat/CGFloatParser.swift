@@ -49,13 +49,14 @@ public class CGFloatParser{
         else {return 0}
     }
     /**
-     * Linearly interpolation (lerp)
-     * PARAM: a: start number
-     * PARAM: b: end number
-     * PARAM: fraction: interpolation value (between 0 - 1) could also be named scalar
-     * EXAMPLE: interpolate(5, 15, 0.5) //10
-     * EXAMPLE: interpolate(a: -150.0, b: -375.0, fraction: 0.1)//-172.5, also works on negative values 👌
-     */
+    * Linearly interpolation (lerp)
+    * - Parameter: a: start number
+    * - Parameter: b: end number
+    * - Parameter: fraction: interpolation value (between 0 - 1) could also be named scalar
+    * ## Examples:
+    * interpolate(5, 15, 0.5) //10
+    * interpolate(a: -150.0, b: -375.0, fraction: 0.1)//-172.5, also works on negative values 👌
+    */
     static func interpolate(_ a: CGFloat, _ b: CGFloat, _ fraction: CGFloat) -> CGFloat {
         return fraction * (b - a) + a
     }

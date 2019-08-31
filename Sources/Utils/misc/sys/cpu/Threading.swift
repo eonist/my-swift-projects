@@ -10,6 +10,7 @@ var main: DispatchQueue = { DispatchQueue.main }()
 /**
  * Helps sleep whatever is defined within the PARAM: closure with-out blocking the app
  * - TODO: ⚠️️ You can put this method another place maybe?
+ * - Can be done other ways too. See swift-tricks article
  */
 func bgSleep(_ sleepDurInSec: CGFloat, _ closure:@escaping () -> Void) {
     bg.async {
