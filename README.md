@@ -2,7 +2,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/issues)
 
-### A collection of my opensource swift projects:
 An overview of my most relevant open-source projects on GitHub <!--more-->
 
 ### Swift modules:
