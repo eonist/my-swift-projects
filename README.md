@@ -1,5 +1,4 @@
 ![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) 
-![Lang](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
 [![GitHub stars](https://img.shields.io/github/stars/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/issues)
 
