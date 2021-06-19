@@ -1,23 +1,52 @@
 ![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) 
-![platform](https://img.shields.io/badge/Platform-macOS/iOS-blue.svg) 
 ![Lang](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
-[![codebeat](https://codebeat.co/badges/59d2725a-e28e-4da4-9749-3ddc138be55b)](https://codebeat.co/projects/github-com-eonist-swift-utils) 
-[![SPM compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![GitHub stars](https://img.shields.io/github/stars/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/eonist/swift-utils.svg?style=flat-square)](https://github.com/eonist/swift-utils/issues)
 
-### A collection of my swift util libs:
+### A collection of my opensource swift projects:
+An overview of my most relevant open-source projects on GitHub <!--more-->
 
-| Name  |  | Name |  | Name |  |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| [GraphicsLib](#graphicslib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GraphicsLib.svg">  | [GitLib](#gitlib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/GitLib.svg">  |  [KeyChainLib](#keychainlib/)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/KeyChainLib.svg"> |
-| [SVGLib](https://github.com/gitsync/SVGLib)   |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SvgLib.svg"> | [JSONLib](https://github.com/gitsync/JSONLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/jsonlib3.svg">  | [RegExpLib](https://github.com/gitsync/RegExpLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/RegExpLib.svg">  |
-| [MathLib](https://github.com/gitsync/MathLib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/MathLib.svg">  | [XMLLib](https://github.com/gitsync/XMLLib)   | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/XMLLib.svg"> | [AnimLib](https://github.com/gitsync/AnimLib/)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/AnimLib.svg">  |
-|  [FileWatcher](https://github.com/eonist/FileWatcher)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileWatcher.svg"> | [FileLib](https://github.com/gitsync/FileLib/)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">  | [ColorLib](https://github.com/gitsync/ColorLib)  |  <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/ColorLib.svg"> |
-| [EventLib](https://github.com/gitsync/EventLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/EventLib.svg"> | [SQLiteLib](https://github.com/gitsync/SQLiteLib)  | <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/SQLiteLib.svg"> | [ReflectionLib](https://github.com/gitsync/ReflectionLib)   |  | |
+### Swift modules:
+- 🔦 Simplifies adding DarkMode [https://github.com/sentryco/DarkMode](https://github.com/sentryco/DarkMode)
+- 📷 Camera Kit [https://github.com/eonist/HybridCamera](https://github.com/eonist/Hybrid-Camera)
+- 💞 Concurrency tools [https://github.com/eonist/ParallelLoop](https://github.com/eonist/ParallelLoop)
+- 📏 AutoLayout framework [https://github.com/eonist/Spatial](https://github.com/eonist/Spatial)
+- 🖥 Simple to use MacOS UI elements [https://github.com/eonist/MUI](https://github.com/eonist/MUI)
+- 🔍 Track your file events [https://github.com/eonist/FileWatcher](https://github.com/eonist/FileWatcher)
+- 💗 Set properties with a closure [https://github.com/eonist/With](https://github.com/eonist/With)
+- 🗄 Stream files to storage [https://github.com/eonist/FileStreamer](https://github.com/eonist/FileStreamer)
+- 🖼 Fancy layout framework [https://github.com/eonist/FlowLayout](https://github.com/eonist/FlowLayout)
+- 🏃 Makes running test sequences easier [https://github.com/eonist/TestRunner](https://github.com/eonist/TestRunner)
+- 🧬 Create hash of files [https://github.com/eonist/FileHasher](https://github.com/eonist/FileHasher)
 
-### Manual installation:
-[http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/](http://eon.codes/blog/2018/09/30/Manually-adding-a-lib/) 
+### Sugar:
+- 🧪 UITest helpers [https://github.com/eonist/UITestSugar](https://github.com/eonist/UITestSugar)
+- 🔸 Result helpers [https://github.com/eonist/ResultSugar](https://github.com/eonist/ResultSugar)
+- 📋 Clipboard helpers [https://github.com/eonist/ClipboardSugar](https://github.com/eonist/ClipboardSugar)
+- 🔌 Network helpers [https://github.com/eonist/NetworkSugar](https://github.com/eonist/NetworkSugar)
+- 📆 Date helpers [https://github.com/eonist/DateSugar](https://github.com/eonist/DateSugar)
+- 🔑 Keychain helpers [https://github.com/eonist/KeychainSugar](https://github.com/eonist/KeychainSugar)
 
-### Building from .framework
-[http://eon.codes/blog/2017/11/08/local-frameworks/](http://eon.codes/blog/2017/11/08/local-frameworks/) 
+### Utils
+- 🕵️ Binary search utils [https://github.com/eonist/BinarySearch](https://github.com/eonist/BinarySearch)
+- 📐 Trigonometry utils [https://github.com/eonist/TrigKit](https://github.com/eonist/TrigKit)
+- ⏱ A way to measure time in closures [https://github.com/eonist/TimeMeasure](https://github.com/eonist/TimeMeasure)
+
+### Niche:
+- 📜 Adds pagination support for UITable [https://github.com/eonist/PaginationTable](https://github.com/eonist/PaginationTable)
+- 👨‍🔬 Mock server api to test pagination [https://github.com/eonist/PaginationService](https://github.com/eonist/PaginationService)
+- ✍️ Adds bulk edit functionality to UITable [https://github.com/eonist/EditTableView](https://github.com/eonist/EditTableView)
+- 🌀 Adds support for Custom a RefreshControll for UITabel [https://github.com/eonist/RefreshControlKit](https://github.com/eonist/RefreshControlKit)
+- 🖲 Adds support for toggling zoom lens for Hybrid-camera [https://github.com/eonist/ZoomSwitcherKit](https://github.com/eonist/ZoomSwitcherKit)
+
+### Oldies but goodies:
+- 🗃 A way to create classes and structs from json or xml: [https://github.com/eonist/ReflectionLib](https://github.com/eonist/ReflectionLib)  (Needs some love soon)
+- 🎨 Custom design progress indicators: [https://github.com/eonist/ProgressIndicator](https://github.com/eonist/ProgressIndicator)
+- 🎒 Alternative way to added file assets in SPM: [https://github.com/eonist/ResourceHelper](https://github.com/eonist/ResourceHelper)
+
+### Gists:
+- 📱 Extension to get device model name [https://github.com/eonist/DeviceModelName](https://github.com/eonist/DeviceModelName)
+
+### Honourable mentions:
+- 🖌 Always loved the DrawLab experiment: Totally want to revisit it one day and work on it:
+[https://github.com/eonist/DrawLab](https://github.com/eonist/DrawLab)
