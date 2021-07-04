@@ -19,7 +19,7 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 
 ### Sugar:
 - 🧪 [UITestSugar](https://github.com/eonist/UITestSugar) - UITest helpers 
-- 🔸 [ResultSugar](https://github.com/eonist/ResultSugar) - Result helpers 
+- 🔸 [ResultSugar](https://github.com/eonist/ResultSugar) - Result helpers ![Builds](https://github.com/eonist/ResultSugar/workflows/Builds/badge.svg)
 - 📋 [ClipboardSugar](https://github.com/eonist/ClipboardSugar) - Clipboard helpers 
 - 🔌 [NetworkSugar](https://github.com/eonist/NetworkSugar) - Network helpers 
 - 📆 [DateSugar](https://github.com/eonist/DateSugar) - Date helpers 
@@ -27,7 +27,7 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 
 ### Utils
 - 🕵️ [BinarySearch](https://github.com/eonist/BinarySearch) - Binary search utils 
-- 📐 [TrigKit](https://github.com/eonist/TrigKit) - Trigonometry utils 
+- 📐 [TrigKit](https://github.com/eonist/TrigKit) - Trigonometry utils [![Github actions badge](https://badgen.net/github/checks/eonist/TrigKit?icon=github&label=Tests)](https://github.com/eonist/TrigKit/actions)
 - ⏱ [TimeMeasure](https://github.com/eonist/TimeMeasure) - A way to measure time in closures 
 
 ### Niche:
@@ -40,7 +40,7 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 ### Oldies but goodies:
 - 🗃 [ReflectionLib](https://github.com/eonist/ReflectionLib) - A way to create classes and structs from json or xml (Needs some love soon)
 - 🎨 [ProgressIndicator](https://github.com/eonist/ProgressIndicator) - Custom design progress indicators
-- 🎒 [ResourceHelper](https://github.com/eonist/ResourceHelper) - Alternative way to added file assets in SPM
+- 🎒 [ResourceHelper](https://github.com/eonist/ResourceHelper) - Alternative way to added file assets in SPM ![Builds](https://github.com/eonist/ResourceHelper/workflows/Builds/badge.svg)
 
 ### Gists:
 - 📱 [DeviceModelName](https://github.com/eonist/DeviceModelName) - Extension to get device model name 
