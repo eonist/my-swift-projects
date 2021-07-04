@@ -5,7 +5,7 @@
 An overview of my most relevant open-source projects on GitHub <!--more-->
 
 ### Swift modules:
-- 🔦 Simplifies adding DarkMode [DarkMode](https://github.com/sentryco/DarkMode)
+- 🔦 Simplifies adding DarkMode [DarkMode](https://github.com/sentryco/DarkMode) [![Tests](https://github.com/sentryco/DarkMode/actions/workflows/Tests.yml/badge.svg)](https://github.com/sentryco/DarkMode/actions/workflows/Tests.yml)
 - 📷 Camera Kit [HybridCamera](https://github.com/eonist/Hybrid-Camera)
 - 💞 Concurrency tools [ParallelLoop](https://github.com/eonist/ParallelLoop)
 - 📏 AutoLayout framework [Spatial](https://github.com/eonist/Spatial)
