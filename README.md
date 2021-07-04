@@ -6,16 +6,16 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 
 ### Swift modules:
 - 🔦 Simplifies adding DarkMode [DarkMode](https://github.com/sentryco/DarkMode) [![Tests](https://github.com/sentryco/DarkMode/actions/workflows/Tests.yml/badge.svg)](https://github.com/sentryco/DarkMode/actions/workflows/Tests.yml)
-- 📷 Camera Kit [HybridCamera](https://github.com/eonist/Hybrid-Camera)
-- 💞 Concurrency tools [ParallelLoop](https://github.com/eonist/ParallelLoop)
-- 📏 AutoLayout framework [Spatial](https://github.com/eonist/Spatial)
-- 🖥 Simple to use MacOS UI elements [MUI](https://github.com/eonist/MUI)
-- 🔍 Track your file events [FileWatcher](https://github.com/eonist/FileWatcher)
-- 💗 Set properties with a closure [With](https://github.com/eonist/With)
-- 🗄 Stream files to storage [FileStreamer](https://github.com/eonist/FileStreamer)
-- 🖼 Fancy layout framework [FlowLayout](https://github.com/eonist/FlowLayout)
-- 🏃 Makes running test sequences easier [TestRunner](https://github.com/eonist/TestRunner)
-- 🧬 Create hash of files [FileHasher](https://github.com/eonist/FileHasher)
+- 📷 Camera Kit [HybridCamera](https://github.com/eonist/HybridCamera)
+- 💞 Concurrency tools [ParallelLoop](https://github.com/eonist/ParallelLoop) ![Tests](https://github.com/light-stream/ParallelLoop/workflows/Tests/badge.svg)
+- 📏 AutoLayout framework [Spatial](https://github.com/eonist/Spatial) ![Tests](https://github.com/eonist/Spatial/workflows/Tests/badge.svg)
+- 🖥 Simple to use MacOS UI elements [MUI](https://github.com/eonist/MUI) ![Tests](https://github.com/eonist/MacUI/workflows/Tests/badge.svg)
+- 🔍 Track your file events [FileWatcher](https://github.com/eonist/FileWatcher) [![Tests](https://github.com/eonist/FileWatcher/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/FileWatcher/actions/workflows/Tests.yml)
+- 💗 Set properties with a closure [With](https://github.com/eonist/With) [![Github actions badge](https://badgen.net/github/checks/eonist/With?icon=github&label=Tests)](https://github.com/eonist/With/actions)
+- 🗄 Stream files to storage [FileStreamer](https://github.com/eonist/FileStreamer) ![Tests](https://github.com/light-stream/FileStreamer/workflows/Tests/badge.svg)
+- 🖼 Fancy layout framework [FlowLayout](https://github.com/eonist/FlowLayout) [![Tests](https://github.com/eonist/FlowLayout/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/FlowLayout/actions/workflows/Tests.yml)
+- 🏃 Makes running test sequences easier [TestRunner](https://github.com/eonist/TestRunner) [![Tests](https://github.com/eonist/TestRunner/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/TestRunner/actions/workflows/Tests.yml)
+- 🧬 Create hash of files [FileHasher](https://github.com/eonist/FileHasher) ![Tests](https://github.com/eonist/FileHasher/workflows/Tests/badge.svg)
 
 ### Sugar:
 - 🧪 UITest helpers [UITestSugar](https://github.com/eonist/UITestSugar)
