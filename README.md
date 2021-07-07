@@ -22,8 +22,8 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 ### Sugar:
 | Name | Description | Tests |
 | :-- | :-- | :-- |
-🧪 [UITestSugar](https://github.com/eonist/UITestSugar) | UITest helpers |
 🔸 [ResultSugar](https://github.com/eonist/ResultSugar) | Result helpers | ![Builds](https://github.com/eonist/ResultSugar/workflows/Builds/badge.svg)
+🧪 [UITestSugar](https://github.com/eonist/UITestSugar) | UITest helpers |
 📋 [ClipboardSugar](https://github.com/eonist/ClipboardSugar) | Clipboard helpers |
 🔌 [NetworkSugar](https://github.com/eonist/NetworkSugar) | Network helpers |
 📆 [DateSugar](https://github.com/eonist/DateSugar) | Date helpers |
