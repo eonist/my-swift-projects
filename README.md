@@ -61,3 +61,6 @@ An overview of my most relevant open-source projects on GitHub <!--more-->
 | Name | Description | Tests
 | :-- | :-- | :-- |
 🖌 [DrawLab](https://github.com/eonist/DrawLab) | DrawLab experiment
+
+### Todo:
+- Add tests to projects that doesn't have tests
